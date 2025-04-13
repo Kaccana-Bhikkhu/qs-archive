@@ -2305,7 +2305,7 @@
       "fileNumber": 3,
       "kind": "Quote",
       "flags": "f",
-      "text": "\"Sometimes there may be doubt, so you must have sati, to be the one who knows, continually following and examining the agitated mind.\"",
+      "text": "Sometimes there may be doubt, so you must have sati, to be the one who knows, continually following and examining the agitated mind.",
       "teachers": [
         "AChah"
       ],
@@ -41556,7 +41556,7 @@
       "fileNumber": 3,
       "kind": "Question",
       "flags": "",
-      "text": "I have a hard time breathing normally due to congestion and athsma. How does one get past the initial fear, 'I just can't breath. How am I going to do this?'",
+      "text": "I have a hard time breathing normally due to congestion and athsma. How does one get past the initial fear, 'I just can't breathe. How am I going to do this?'",
       "teachers": [
         "AP"
       ],
@@ -49619,7 +49619,7 @@
       "fileNumber": 4,
       "kind": "Question",
       "flags": "",
-      "text": "Could you clarify “the body in the body?”",
+      "text": "Could you clarify ‘the body in the body?’",
       "teachers": [
         "AP",
         "AKd"
@@ -67044,13 +67044,13 @@
         },
         {
           "kind": "Response",
-          "flags": "",
+          "flags": "-",
           "text": "",
           "teachers": [
             "AKd"
           ],
           "tags": [],
-          "indentLevel": 1
+          "indentLevel": 2
         }
       ],
       "tags": [
@@ -73736,7 +73736,7 @@
       "fileNumber": 7,
       "kind": "Question",
       "flags": "",
-      "text": "“Teacher of Gods and Humans”. Can you talk about this? What Gods did the Buddha teach? What other beings did the Buddha teach?",
+      "text": "‘Teacher of Gods and Humans’. Can you talk about this? What Gods did the Buddha teach? What other beings did the Buddha teach?",
       "teachers": [
         "AP"
       ],
@@ -74038,7 +74038,7 @@
       "fileNumber": 14,
       "kind": "Question",
       "flags": "",
-      "text": "“There is a crack in everything. That’s where the light gets in.” — Leonard Cohen. Lots of cracks out there. Lots of potential for awakenings and wise compassionate action. Do you agree? If so, where do you see the light emerging? In what arenas? Where would you focus your energy if you were not a monk?",
+      "text": "There is a crack in everything. That’s where the light gets in.' — Leonard Cohen. Lots of cracks out there. Lots of potential for awakenings and wise compassionate action. Do you agree? If so, where do you see the light emerging? In what arenas? Where would you focus your energy if you were not a monk?",
       "teachers": [
         "AP"
       ],
@@ -75270,7 +75270,7 @@
       "fileNumber": 6,
       "kind": "Question",
       "flags": "",
-      "text": "“Buddha is Teacher of Gods and Humans”, so according to Buddha, there is no one God but many Gods or it depends on what is meant by God?",
+      "text": "‘Buddha is Teacher of Gods and Humans,’ so according to Buddha, there is no one God but many Gods or it depends on what is meant by God?",
       "teachers": [
         "AP"
       ],
@@ -75723,7 +75723,7 @@
       "fileNumber": 2,
       "kind": "Comment",
       "flags": "",
-      "text": "One of my favorite things about the sutta [MN 19] is where [the Buddha] says, 'Before I was awakened, it occured to me, \"Suppose I divide my thoughts into two classes.\"' It's like an experiment.",
+      "text": "One of my favorite things about the sutta [MN 19] is where [the Buddha] says, “Before I was awakened, it occured to me, ‘Suppose I divide my thoughts into two classes.’” It's like an experiment.",
       "teachers": [],
       "fTags": [],
       "annotations": [],
@@ -89808,7 +89808,6 @@
         "Four Noble Truths",
         "Liberation",
         "Mindfulness of body",
-        "Mindfulness of body",
         "Mindfulness of dhammas",
         "Factors of Awakening"
       ],
@@ -99515,10 +99514,10 @@
         "AP"
       ],
       "fTags": [
-        "Ajahn Chah"
+        "Ajahn Pasanno"
       ],
       "fTagOrder": [
-        160
+        110
       ],
       "annotations": [
         {
@@ -109572,7 +109571,7 @@
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
-      "form1": "unimplemented",
+      "form1": "++Simile{s}++|| from {teachers}||{colon}{\".\" if not text else \" \" + text}",
       "form2": "++Simile{s}{colon}++ {text}|| — {teachers}.",
       "form3": "unimplemented",
       "exclude": false,
@@ -109644,7 +109643,7 @@
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
-      "form1": "unimplemented",
+      "form1": "++Meditation instruction{s}++|| from {teachers}||{colon}{\".\" if not text else \" \" + text}",
       "form2": "++Meditation instruction{s}{colon}++ {text}|| offered by {teachers}.",
       "form3": "unimplemented",
       "exclude": false,
@@ -109972,7 +109971,7 @@
       "form2": "unimplemented",
       "form3": "unimplemented",
       "exclude": false,
-      "usageNotes": "A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. The fragment excerpt tags are replaced by the tags applied to the main fragment annotation. Main fragments do not display a separate audio player."
+      "usageNotes": "A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. If tags are applied to the main fragment annotation, the fragment excerpt tags are replaced by these tags. Main fragments do not display a separate audio player."
     },
     "Alternate audio": {
       "kind": "Alternate audio",
@@ -110155,6 +110154,21 @@
       "excerptCount": 0,
       "htmlFile": ""
     },
+    "various": {
+      "teacher": "various",
+      "fullName": "various authors",
+      "attributionName": "various authors",
+      "indexExcerpts": true,
+      "indexSessions": true,
+      "searchable": true,
+      "teacherPage": false,
+      "attribute": true,
+      "allowTag": false,
+      "group": "Communities",
+      "lineage": "Other",
+      "excerptCount": 0,
+      "htmlFile": ""
+    },
     "AMun": {
       "teacher": "AMun",
       "fullName": "Ajahn Mun Bhūridatto",
@@ -110290,6 +110304,21 @@
       "lineage": "Other Thai Forest",
       "excerptCount": 1,
       "htmlFile": "ajahn-gi.html"
+    },
+    "AJumnien": {
+      "teacher": "AJumnien",
+      "fullName": "Ajahn Jumnien Sīlaseṭṭho",
+      "attributionName": "Ajahn Jumnien",
+      "indexExcerpts": true,
+      "indexSessions": true,
+      "searchable": true,
+      "teacherPage": false,
+      "attribute": true,
+      "allowTag": true,
+      "group": "Monastics",
+      "lineage": "Other Thai Forest",
+      "excerptCount": 0,
+      "htmlFile": ""
     },
     "APannavaddho": {
       "teacher": "APannavaddho",
@@ -110756,7 +110785,7 @@
       "attribute": true,
       "allowTag": true,
       "group": "Monastics",
-      "lineage": "Thai disciples of Ajahn Chah",
+      "lineage": "Western disciples of Ajahn Chah",
       "excerptCount": 1,
       "htmlFile": ""
     },
@@ -113028,7 +113057,10 @@
       "fullPali": "upekkhā",
       "number": "",
       "alternateTranslations": [],
-      "glosses": [],
+      "glosses": [
+        "unshakeability",
+        "balance"
+      ],
       "related": [],
       "flags": "*",
       "subtags": [],
@@ -116358,7 +116390,8 @@
       "number": "",
       "alternateTranslations": [
         "Attachment",
-        "Grasping"
+        "Grasping",
+        "Sustanence"
       ],
       "glosses": [],
       "related": [],
@@ -119250,7 +119283,7 @@
       "eventCount": 3,
       "sessionCount": 37,
       "excerptCount": 612,
-      "fTagCount": 7,
+      "fTagCount": 6,
       "listIndex": 477
     },
     "Ajahn Chah lineage": {
@@ -119887,7 +119920,7 @@
       "eventCount": 1,
       "sessionCount": 1,
       "excerptCount": 276,
-      "fTagCount": 6,
+      "fTagCount": 7,
       "listIndex": 505
     },
     "Ajahn Viradhammo": {
@@ -127797,6 +127830,12 @@
       "address": "",
       "websiteLink": "https://ajatananda.org/"
     },
+    "Wat Pah Nanachat": {
+      "venue": "Wat Pah Nanachat",
+      "location": "Bung Wai, Thailand",
+      "address": "Bung Wai, Warin Chamrap District, Ubon Ratchathani 34310, Thailand",
+      "websiteLink": "https://www.watpahnanachat.org/"
+    },
     "Online": {
       "venue": "Online",
       "location": "Online",
@@ -128857,6 +128896,28 @@
       "remoteUrl": "",
       "author": [
         "AMunindo"
+      ]
+    },
+    "no ajahn chah": {
+      "abbreviation": "No Ajahn Chah",
+      "title": "_No Ajahn Chah_",
+      "attribution": "by Ajahn Chah",
+      "pdfPageOffset": 7,
+      "filename": "chah_no_ajahn_chah.pdf",
+      "remoteUrl": "https://www.abhayagiri.org/media/books/chah_no_ajahn_chah.pdf",
+      "author": [
+        "AChah"
+      ]
+    },
+    "recollections of ajahn chah": {
+      "abbreviation": "Recollections of Ajahn Chah",
+      "title": "_Recollections of Ajahn Chah_",
+      "attribution": "by various authors",
+      "pdfPageOffset": 6,
+      "filename": "Recollections_of_Ajahn_Chah_-_Various_Authors.pdf",
+      "remoteUrl": "https://media.amaravati.org/en/dhamma-books/recollections-of-ajahn-chah/dl/pdf",
+      "author": [
+        "various"
       ]
     }
   },
@@ -139583,7 +139644,7 @@
       "sessions": 5,
       "excerpts": 22,
       "answersListenedTo": 22,
-      "tagsApplied": 168,
+      "tagsApplied": 167,
       "invalidTags": 0,
       "duration": "6:37:13"
     },
@@ -139696,38 +139757,6 @@
       "tagsApplied": 129,
       "invalidTags": 0,
       "duration": "1:26:45"
-    }
-  },
-  "lineage": {
-    "Root teachers": {
-      "lineage": "Root teachers"
-    },
-    "Disciples of Ajahn Chah": {
-      "lineage": "Disciples of Ajahn Chah"
-    },
-    "Thai disciples of Ajahn Chah": {
-      "lineage": "Thai disciples of Ajahn Chah"
-    },
-    "Western disciples of Ajahn Chah": {
-      "lineage": "Western disciples of Ajahn Chah"
-    },
-    "Other Thai Forest": {
-      "lineage": "Other Thai Forest"
-    },
-    "Other Thai": {
-      "lineage": "Other Thai"
-    },
-    "Other Theravāda": {
-      "lineage": "Other Theravāda"
-    },
-    "Māhayāna": {
-      "lineage": "Māhayāna"
-    },
-    "Vajrayāna": {
-      "lineage": "Vajrayāna"
-    },
-    "Christian monastics": {
-      "lineage": "Christian monastics"
     }
   },
   "name": {
@@ -142060,95 +142089,6 @@
       "duplicate": ""
     }
   },
-  "prefix": {
-    "Ajahn": {
-      "prefix": "Ajahn"
-    },
-    "Tan": {
-      "prefix": "Tan"
-    },
-    "Bhikkhu": {
-      "prefix": "Bhikkhu"
-    },
-    "Bhante": {
-      "prefix": "Bhante"
-    },
-    "The": {
-      "prefix": "The"
-    },
-    "Upasikā": {
-      "prefix": "Upasikā"
-    },
-    "Mae Chee": {
-      "prefix": "Mae Chee"
-    },
-    "Chao Khun": {
-      "prefix": "Chao Khun"
-    },
-    "Tan Chao Khun": {
-      "prefix": "Tan Chao Khun"
-    },
-    "Venerable": {
-      "prefix": "Venerable"
-    },
-    "Ven.": {
-      "prefix": "Ven."
-    },
-    "Ayya": {
-      "prefix": "Ayya"
-    },
-    "Master": {
-      "prefix": "Master"
-    },
-    "Reverend": {
-      "prefix": "Reverend"
-    },
-    "Rev.": {
-      "prefix": "Rev."
-    },
-    "Mahatma": {
-      "prefix": "Mahatma"
-    },
-    "Lama": {
-      "prefix": "Lama"
-    },
-    "King": {
-      "prefix": "King"
-    },
-    "Wat": {
-      "prefix": "Wat"
-    },
-    "Wat Pah": {
-      "prefix": "Wat Pah"
-    },
-    "Somdet Phra": {
-      "prefix": "Somdet Phra"
-    },
-    "Somdet": {
-      "prefix": "Somdet"
-    },
-    "Dr.": {
-      "prefix": "Dr."
-    },
-    "Father": {
-      "prefix": "Father"
-    },
-    "Recollection/": {
-      "prefix": "Recollection/"
-    },
-    "Posture/": {
-      "prefix": "Posture/"
-    },
-    "History/": {
-      "prefix": "History/"
-    },
-    "Geography/": {
-      "prefix": "Geography/"
-    },
-    "Culture/": {
-      "prefix": "Culture/"
-    }
-  },
   "redirect": {
     "tags/one-pointedness.html": {
       "oldPage": "tags/one-pointedness.html",
@@ -142189,6 +142129,41 @@
     "tags/mae-chee-songchai.html": {
       "oldPage": "tags/mae-chee-songchai.html",
       "newPage": "tags/mae-somchai.html"
+    }
+  },
+  "lineage": {
+    "Root teachers": {
+      "lineage": "Root teachers"
+    },
+    "Disciples of Ajahn Chah": {
+      "lineage": "Disciples of Ajahn Chah"
+    },
+    "Thai disciples of Ajahn Chah": {
+      "lineage": "Thai disciples of Ajahn Chah"
+    },
+    "Western disciples of Ajahn Chah": {
+      "lineage": "Western disciples of Ajahn Chah"
+    },
+    "Other Thai Forest": {
+      "lineage": "Other Thai Forest"
+    },
+    "Other Thai": {
+      "lineage": "Other Thai"
+    },
+    "Other Theravāda": {
+      "lineage": "Other Theravāda"
+    },
+    "Māhayāna": {
+      "lineage": "Māhayāna"
+    },
+    "Vajrayāna": {
+      "lineage": "Vajrayāna"
+    },
+    "Christian monastics": {
+      "lineage": "Christian monastics"
+    },
+    "Other": {
+      "lineage": "Other"
     }
   },
   "subtopic": {
@@ -143474,7 +143449,7 @@
       "subtags": {},
       "htmlPath": "tags/ajahn-chah.html",
       "excerptCount": 612,
-      "fTagCount": 7
+      "fTagCount": 6
     },
     "Ajahn Sumedho": {
       "tag": "Ajahn Sumedho",
@@ -143494,13 +143469,13 @@
       "displayAs": "Ajahn Pasanno",
       "pali": "",
       "related": [],
-      "status": "Sorted",
+      "status": "Reviewed",
       "topicCode": "teachers",
       "progressMemo": "Looking for one more excerpt about AP training under LP Chah.",
       "subtags": {},
       "htmlPath": "tags/ajahn-pasanno.html",
       "excerptCount": 276,
-      "fTagCount": 6
+      "fTagCount": 7
     },
     "Culture/Natural environment": {
       "tag": "Culture/Natural environment",
@@ -143923,6 +143898,109 @@
       "fTagCount": 4
     }
   },
+  "prefix": {
+    "Ajahn": {
+      "prefix": "Ajahn"
+    },
+    "Tan": {
+      "prefix": "Tan"
+    },
+    "Bhikkhu": {
+      "prefix": "Bhikkhu"
+    },
+    "Bhante": {
+      "prefix": "Bhante"
+    },
+    "The": {
+      "prefix": "The"
+    },
+    "Upasikā": {
+      "prefix": "Upasikā"
+    },
+    "Mae Chee": {
+      "prefix": "Mae Chee"
+    },
+    "Chao Khun": {
+      "prefix": "Chao Khun"
+    },
+    "Tan Chao Khun": {
+      "prefix": "Tan Chao Khun"
+    },
+    "Venerable": {
+      "prefix": "Venerable"
+    },
+    "Ven.": {
+      "prefix": "Ven."
+    },
+    "Ayya": {
+      "prefix": "Ayya"
+    },
+    "Master": {
+      "prefix": "Master"
+    },
+    "Reverend": {
+      "prefix": "Reverend"
+    },
+    "Rev.": {
+      "prefix": "Rev."
+    },
+    "Mahatma": {
+      "prefix": "Mahatma"
+    },
+    "Lama": {
+      "prefix": "Lama"
+    },
+    "King": {
+      "prefix": "King"
+    },
+    "Wat": {
+      "prefix": "Wat"
+    },
+    "Wat Pah": {
+      "prefix": "Wat Pah"
+    },
+    "Somdet Phra": {
+      "prefix": "Somdet Phra"
+    },
+    "Somdet": {
+      "prefix": "Somdet"
+    },
+    "Dr.": {
+      "prefix": "Dr."
+    },
+    "Father": {
+      "prefix": "Father"
+    },
+    "Recollection/": {
+      "prefix": "Recollection/"
+    },
+    "Posture/": {
+      "prefix": "Posture/"
+    },
+    "History/": {
+      "prefix": "History/"
+    },
+    "Geography/": {
+      "prefix": "Geography/"
+    },
+    "Culture/": {
+      "prefix": "Culture/"
+    }
+  },
+  "reviewedTag": {
+    "Food": {
+      "tag": "Food"
+    },
+    "Merit": {
+      "tag": "Merit"
+    },
+    "Perception": {
+      "tag": "Perception"
+    },
+    "Nature of mind": {
+      "tag": "Nature of mind"
+    }
+  },
   "group": {
     "Communities": {
       "group": "Communities"
@@ -143935,17 +144013,6 @@
     },
     "Lay supporters": {
       "group": "Lay supporters"
-    }
-  },
-  "reviewedTag": {
-    "Food": {
-      "tag": "Food"
-    },
-    "Merit": {
-      "tag": "Merit"
-    },
-    "Perception": {
-      "tag": "Perception"
     }
   },
   "tagSubsumed": {
@@ -144918,7 +144985,14 @@
     "Time",
     "Geography/India",
     "Taoism",
-    "Principles of non-decline"
+    "Principles of non-decline",
+    "Isan",
+    "Aranya Bodhi Hermitage",
+    "Thubten Chodron",
+    "Manjushri Institute",
+    "Larry Rosenberg",
+    "Ajahn Puth",
+    "Rodney Smith"
   ],
   "keyCaseTranslation": {
     "": "",

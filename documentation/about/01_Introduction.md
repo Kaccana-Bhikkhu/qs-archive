@@ -3,7 +3,7 @@
 
 # Introduction
 
-Pre-release version. Build date: December 24, 2024.
+Pre-release version. Build date: April 13, 2025.
 
 Ajahn Pasanno, one of founding abbots of Abhayagiri Monastery and now its Guiding Elder, excels at answering Dhamma questions. There are more than 100 hours of his question and answer sessions posted online. If you have a Dhamma question, it’s likely that Ajahn Pasanno has spoken to it in the past. But how will you find his answer amidst the hours of available recordings?
 
