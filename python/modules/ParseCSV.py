@@ -48,6 +48,14 @@ class ExcerptFlag(StrEnum):
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
+
+# Each fTagOrder integer is followed by a single character flag specifying where to display this featured excerpt
+class FTagOrderFlag(StrEnum):
+    EVERYWHERE = "E"        # Display this featured excerpt everywhere (default)
+    TAG_ONLY = "T"          # Display only on tag pages (no subtopic pages)
+    PRIMARY_SUBTOPIC = "P"  # Display on tag pages and when this tag appears in a subtopic
+                            # not followed by an apostrophe
+    # Lowercase versions of these flags indicate not to feature the excerpt on the front page
     
 
 gCamelCaseTranslation = {}
@@ -807,6 +815,7 @@ def FinalizeExcerptTags(x: dict) -> None:
         x.pop("aListen",None)
         if not x["fTags"]:
             x.pop("fTagOrder")
+            x.pop("fTagOrderFlags",None)
         
         # Remove these keys from all annotations
         for a in x["annotations"]:
@@ -1135,7 +1144,7 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
                 endTime = lastClip.ToClipTD().end
                 if sameFile and endTime and endTime > nextClip.ToClipTD().start:
                     if ExcerptFlag.OVERLAP not in nextExcerpt["flags"]:
-                        Alert.warning(f"excerpt",nextExcerpt,"unexpectedly overlaps with the previous excerpt. This should be either changed or flagged with 'o'.")
+                        Alert.warning(nextExcerpt,"unexpectedly overlaps with the previous excerpt. This should be either changed or flagged with 'o'.")
         
         # If a session ends with an Edited audio excerpt, calculate its duration.
         if "startTimeInSession" in sessionExcerpts[-1]:
@@ -1290,10 +1299,22 @@ def LoadEventFile(database,eventName,directory):
         # Remove sessions if none of the session teachers have given consent
     database["sessions"] += sessions
 
+    # Convert ? characters to numbers indicating draft fTags
     for x in rawExcerpts:
         x["fTagOrder"] = re.sub(r"\?+",lambda m: str(len(m[0]) + 1000),x["fTagOrder"])
     for key in ["teachers","qTag1","aTag1","fTags","fTagOrder"]:
         ListifyKey(rawExcerpts,key)
+    for x in rawExcerpts:
+        # Handle fTag order flags
+        flags = [re.match(r"[a-zA-Z]$",s) for s in x["fTagOrder"]]
+        flags = [f[0] if f else FTagOrderFlag.EVERYWHERE for f in flags]
+        for n,f in enumerate(flags):
+            if f.upper() not in FTagOrderFlag:
+                Alert.warning("Ignoring unknown fTag order flag",repr(f),"in",x)
+                flags[n] = FTagOrderFlag.EVERYWHERE
+        x["fTagOrderFlags"] = "".join(flags)
+
+        x["fTagOrder"]= [re.sub(r"[a-zA-Z]","",s) for s in x["fTagOrder"]]
     ConvertToInteger(rawExcerpts,"sessionNumber")
     ConvertToInteger(rawExcerpts,"fTagOrder")
     
