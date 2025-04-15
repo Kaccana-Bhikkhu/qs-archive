@@ -55,7 +55,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 8,Sutta,,,,"DN 2.98: ""These are shoals of fish...""",,,,,,,,,,,,,,
 8,Asked by,,34:34,42:02.5,Composed attention to the body and reflection on Dhamma in walking meditation.,,Mindfulness of body,Posture/Walking,,,Tranquility,,,,,,,,
 8,Indirect quote,,,,You can get a lot of wisdom from walking meditation.|Ajahn Chah,,Ajahn Chah,Posture/Walking,Discernment,,,,,,,,,,
-9,Summary,,,,"Continuing with the second tetrad of the Ānāpānasati Sutta (MN 118), Ajahn Pasanno urges us to use awareness grounded in mindfulness of breathing to investigate feelings, perceptions, and hindrances.",,,,,,,,,,,,,,
+9,Summary,,Session,,"Continuing with the second tetrad of the Ānāpānasati Sutta (MN 118), Ajahn Pasanno urges us to use awareness grounded in mindfulness of breathing to investigate feelings, perceptions, and hindrances.",,,,,,,,,,,,,,
 9,Story,,11:41,13:49,"Winnie-the-Pooh hears a buzzing sound, associates it with honey, and begins climbing a tree.",,Winnie-the-Pooh,Perception,,,Conditionality,,,,,Yes,,,
 9,Cut audio,,13:25,13:35,,,,,,,,,,,,,,,
 9,Teaching,,19:33,24:01,Relaxing into the breath when experiencing pain in meditation.,,Pain,Tranquility,,,,,,,,,,,
@@ -71,7 +71,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 10,Reflection,,38:12,45:57,"Differing interpretations of citta; returning to the knowing, our refuge of peace.",,Heart/mind,Nature of mind,Knowing itself,,Unwholesome Roots,Unconditioned,Commentaries,P. A. Payutto,Ajahn Chah,,,Nature of mind,200
 11,Summary,,Session,,"AN 10.2 explains that samādhi and liberation follow naturally from gladdening the mind with a foundation of virtue. Elucidating the tenth step of the Ānāpānasati Sutta (MN 118), Ajahn Pasanno describes various ways to allow the mind to delight in Dhamma and stillness.",,Mindfulness of breathing,,,,,,,,,,,,
 11,Reflection,,6:22,13:37,Fine-tuning the balance between stillness and investigation.,,Calming meditation,Insight meditation,,,Mindfulness of breathing,,,,,,,Calming meditation,200
-11,,,,,,,,,,,,,,,,,,Insight meditation,200
+11,Extra tags,,,,,,,,,,,,,,,,,Insight meditation,200
 11,Sutta,,,,"SN 15.1: ""Bound by ignorance and obstructed by craving.""",,Ignorance,Craving,,,,,,,,,,,
 11,Reflection,,36:17,40:12,Gladdening the mind through corpse contemplation.,,Recollection/Death,Unattractiveness,,,Mae Chee Sansanee,Disasters,Dispassion,,,,,,
 12,Summary,,Session,,"Practicing the eleventh step of ānāpānasati (MN 118) involves purifying the mind of obstructve states and firmly establishing the mind with the breath so that it becomes pliant, malleable, and bright.",,Mindfulness of breathing,,,,,,,,,,,,
@@ -108,7 +108,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 15,Cut audio,,25:21,25:26,,,,,,,,,,,,,,,
 15,Cut audio,,34:02,34:17,,,,,,,,,,,,,,,
 16,Summary,,Session,,"The contemplation of death resets our priorities and lays the ground for dispassion to cool the heart of its impusles to follow desires, moods, and biases.",,,,,,,,,,,,,,
-16,Simile,,12:36,14:05,"As dawn precedes sunrise, when one recognizes the quality of appamāda (heedfulness), one can expect the unfolding of the Eightfold Path. (SN 45.55)",,Similes,Heedfulness,Eightfold Path,,liber,,,,,,,,
+16,Simile,,12:36,14:05,"As dawn precedes sunrise, when one recognizes the quality of appamāda (heedfulness), one can expect the unfolding of the Eightfold Path. (SN 45.55)",,Similes,Heedfulness,Eightfold Path,,Liberation,,,,,,,,
 16,Cut audio,,13:00,13:07,,,,,,,,,,,,,,,
 16,Story,,15:18,17:20,"Larry Rosenberg watches a 1938 film and realizes that the actors, directors, and producers are all dead.",,Larry Rosenberg,Artistic expression,,,,,,,,,,,
 16,Reflection,,17:55,20:55,"If this were the last moment of my life, is this the kind of mental state I want to carry into death?",,,,,,Mindfulness of breathing,Ajahn Pasanno,,,,,,,
@@ -124,7 +124,8 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 17,Meditation instruction,1s,,,Rest attention midway between the eye and a visual object.,AJumnien,Sense bases,Emptiness,,,,,,,,,,,
 17,Fragment,,22:50,24:56,,,,,,,,,,,,,,,
 17,Teaching,0,,,Samatha practices allow us to become familiar with peaceful places in our mind.,,Calming meditation,Tranquility,,,,,,,,,,,
-17,Teaching,1,26:20,28:21.5,Can you be continuously angry for two hours?,AChah,Aversion,Impermanence,,,Becoming,Cessation,,,,Yes,,,
+17,Fragment,,26:20,28:21.5,,,,,,,,,,,,,,,
+17,Teaching,1,,,Can you be continuously angry for two hours?,AChah,Aversion,Impermanence,,,Becoming,Cessation,,,,Yes,,,
 17,Teaching,,29:12,30:31,Ajahn Buddhadāsa translates nirodha as quenching.,,Ajahn Buddhadāsa,Cessation,Translation,,,,,,,Yes,,,
 18,Summary,,Session,,"Reflecting on the last step of the Ānāpānasati Sutta (MN 118), Ajahn Pasanno explains how relinquishment is key to entering and abiding in Dhamma. He encourages us to contemplate relinquishment with each in and out breath.",,Mindfulness of breathing,,,,,,,,,,,,
 18,Recollection,,6:30,8:49,Total relinquishment was a characteristic of Ajahn Chah's practice.,,Ajahn Chah,,,,Ajahn Pasanno,Dhamma,,,,,,Relinquishment,80
@@ -144,6 +145,3 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 19,Commentary,,,,"Mindfulness has the characteristic of remembering, its function is not forgetting, and it manifests as guarding. (Path of Purification p. 154)",,Mindfulness,,,,,,,,,,,,
 19,Teaching,,35:44,42:58,"When mindfulness is established and the breath becomes subtle, attend to the presence of the breath and the knower itself.",,Tranquility,Knowing itself,,,Relinquishment,Delusion,,,,,,Knowing itself,250
 19,Indirect quote,,,,"If you let go a little, you get a little peace. If you let go a lot, you get a lot of peace. If you let go completely, you get complete peace.|Ajahn Chah",,Relinquishment,,,,,,,,,,,,
-19,,,,,,,,,,,,,,,,,,,
-19,,,,,,,,,,,,,,,,,,,
-19,,,,,,,,,,,,,,,,,,,

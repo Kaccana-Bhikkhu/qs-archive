@@ -15,9 +15,9 @@ Dhamma talk,Teachings,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Dhamma talk{s}++|| 
 Quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Quote:++ {prefix} “{text}” {suffix}|| — {teachers}.,unimplemented,,A quote from the teacher him/herself.
 Indirect quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Quote:++ {prefix} “{text}”{' — ' if suffix else ''}{suffix}{'.' if suffix else ''}|| Quoted by {teachers}.,unimplemented,,"The teacher quoting someone else. If the person quoted is a teacher, they should get the first tag."
 ,,,,,,,,,,,,,,,
-Meditation instruction,Meditations,2,Yes,No,Yes,Yes,Yes,No,No,Excerpt,"++Meditation instruction{s}++|| from {teachers}||{colon}{""."" if not text else "" "" + text}",++Meditation instruction{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
-Guided meditation,Meditations,2,Yes,No,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Guided meditation{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
-Chanting,Meditations,2,Yes,No,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Chanting{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
+Meditation instruction,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Meditation instruction{s}++|| from {teachers}||{colon}{""."" if not text else "" "" + text}",++Meditation instruction{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
+Guided meditation,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Guided meditation{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
+Chanting,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Chanting{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
 ,,,,,,,,,,,,,,,
 Reading,Readings,1,Yes,Yes,Yes,Yes,Yes,Yes,No,None,++Reading{s}{colon}++ {text},++Reading{s}{colon}++ {text},unimplemented,,"{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and "" by {teachers}"" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
 ,,,,,,,,,,,,,,,
