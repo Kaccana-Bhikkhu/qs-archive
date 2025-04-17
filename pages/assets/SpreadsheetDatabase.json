@@ -149081,6 +149081,41 @@
       "duration": "58:29"
     }
   },
+  "lineage": {
+    "Root teachers": {
+      "lineage": "Root teachers"
+    },
+    "Disciples of Ajahn Chah": {
+      "lineage": "Disciples of Ajahn Chah"
+    },
+    "Thai disciples of Ajahn Chah": {
+      "lineage": "Thai disciples of Ajahn Chah"
+    },
+    "Western disciples of Ajahn Chah": {
+      "lineage": "Western disciples of Ajahn Chah"
+    },
+    "Other Thai Forest": {
+      "lineage": "Other Thai Forest"
+    },
+    "Other Thai": {
+      "lineage": "Other Thai"
+    },
+    "Other Theravāda": {
+      "lineage": "Other Theravāda"
+    },
+    "Māhayāna": {
+      "lineage": "Māhayāna"
+    },
+    "Vajrayāna": {
+      "lineage": "Vajrayāna"
+    },
+    "Christian monastics": {
+      "lineage": "Christian monastics"
+    },
+    "Other": {
+      "lineage": "Other"
+    }
+  },
   "name": {
     "Amaravati Saṅgha": {
       "fullName": "Amaravati Saṅgha",
@@ -151411,6 +151446,95 @@
       "duplicate": ""
     }
   },
+  "prefix": {
+    "Ajahn": {
+      "prefix": "Ajahn"
+    },
+    "Tan": {
+      "prefix": "Tan"
+    },
+    "Bhikkhu": {
+      "prefix": "Bhikkhu"
+    },
+    "Bhante": {
+      "prefix": "Bhante"
+    },
+    "The": {
+      "prefix": "The"
+    },
+    "Upasikā": {
+      "prefix": "Upasikā"
+    },
+    "Mae Chee": {
+      "prefix": "Mae Chee"
+    },
+    "Chao Khun": {
+      "prefix": "Chao Khun"
+    },
+    "Tan Chao Khun": {
+      "prefix": "Tan Chao Khun"
+    },
+    "Venerable": {
+      "prefix": "Venerable"
+    },
+    "Ven.": {
+      "prefix": "Ven."
+    },
+    "Ayya": {
+      "prefix": "Ayya"
+    },
+    "Master": {
+      "prefix": "Master"
+    },
+    "Reverend": {
+      "prefix": "Reverend"
+    },
+    "Rev.": {
+      "prefix": "Rev."
+    },
+    "Mahatma": {
+      "prefix": "Mahatma"
+    },
+    "Lama": {
+      "prefix": "Lama"
+    },
+    "King": {
+      "prefix": "King"
+    },
+    "Wat": {
+      "prefix": "Wat"
+    },
+    "Wat Pah": {
+      "prefix": "Wat Pah"
+    },
+    "Somdet Phra": {
+      "prefix": "Somdet Phra"
+    },
+    "Somdet": {
+      "prefix": "Somdet"
+    },
+    "Dr.": {
+      "prefix": "Dr."
+    },
+    "Father": {
+      "prefix": "Father"
+    },
+    "Recollection/": {
+      "prefix": "Recollection/"
+    },
+    "Posture/": {
+      "prefix": "Posture/"
+    },
+    "History/": {
+      "prefix": "History/"
+    },
+    "Geography/": {
+      "prefix": "Geography/"
+    },
+    "Culture/": {
+      "prefix": "Culture/"
+    }
+  },
   "redirect": {
     "tags/one-pointedness.html": {
       "oldPage": "tags/one-pointedness.html",
@@ -151451,41 +151575,6 @@
     "tags/mae-chee-songchai.html": {
       "oldPage": "tags/mae-chee-songchai.html",
       "newPage": "tags/mae-somchai.html"
-    }
-  },
-  "lineage": {
-    "Root teachers": {
-      "lineage": "Root teachers"
-    },
-    "Disciples of Ajahn Chah": {
-      "lineage": "Disciples of Ajahn Chah"
-    },
-    "Thai disciples of Ajahn Chah": {
-      "lineage": "Thai disciples of Ajahn Chah"
-    },
-    "Western disciples of Ajahn Chah": {
-      "lineage": "Western disciples of Ajahn Chah"
-    },
-    "Other Thai Forest": {
-      "lineage": "Other Thai Forest"
-    },
-    "Other Thai": {
-      "lineage": "Other Thai"
-    },
-    "Other Theravāda": {
-      "lineage": "Other Theravāda"
-    },
-    "Māhayāna": {
-      "lineage": "Māhayāna"
-    },
-    "Vajrayāna": {
-      "lineage": "Vajrayāna"
-    },
-    "Christian monastics": {
-      "lineage": "Christian monastics"
-    },
-    "Other": {
-      "lineage": "Other"
     }
   },
   "subtopic": {
@@ -153220,93 +153309,18 @@
       "fTagCount": 4
     }
   },
-  "prefix": {
-    "Ajahn": {
-      "prefix": "Ajahn"
+  "group": {
+    "Communities": {
+      "group": "Communities"
     },
-    "Tan": {
-      "prefix": "Tan"
+    "Monastics": {
+      "group": "Monastics"
     },
-    "Bhikkhu": {
-      "prefix": "Bhikkhu"
+    "Lay teachers": {
+      "group": "Lay teachers"
     },
-    "Bhante": {
-      "prefix": "Bhante"
-    },
-    "The": {
-      "prefix": "The"
-    },
-    "Upasikā": {
-      "prefix": "Upasikā"
-    },
-    "Mae Chee": {
-      "prefix": "Mae Chee"
-    },
-    "Chao Khun": {
-      "prefix": "Chao Khun"
-    },
-    "Tan Chao Khun": {
-      "prefix": "Tan Chao Khun"
-    },
-    "Venerable": {
-      "prefix": "Venerable"
-    },
-    "Ven.": {
-      "prefix": "Ven."
-    },
-    "Ayya": {
-      "prefix": "Ayya"
-    },
-    "Master": {
-      "prefix": "Master"
-    },
-    "Reverend": {
-      "prefix": "Reverend"
-    },
-    "Rev.": {
-      "prefix": "Rev."
-    },
-    "Mahatma": {
-      "prefix": "Mahatma"
-    },
-    "Lama": {
-      "prefix": "Lama"
-    },
-    "King": {
-      "prefix": "King"
-    },
-    "Wat": {
-      "prefix": "Wat"
-    },
-    "Wat Pah": {
-      "prefix": "Wat Pah"
-    },
-    "Somdet Phra": {
-      "prefix": "Somdet Phra"
-    },
-    "Somdet": {
-      "prefix": "Somdet"
-    },
-    "Dr.": {
-      "prefix": "Dr."
-    },
-    "Father": {
-      "prefix": "Father"
-    },
-    "Recollection/": {
-      "prefix": "Recollection/"
-    },
-    "Posture/": {
-      "prefix": "Posture/"
-    },
-    "History/": {
-      "prefix": "History/"
-    },
-    "Geography/": {
-      "prefix": "Geography/"
-    },
-    "Culture/": {
-      "prefix": "Culture/"
+    "Lay supporters": {
+      "group": "Lay supporters"
     }
   },
   "reviewedTag": {
@@ -153321,20 +153335,6 @@
     },
     "Nature of mind": {
       "tag": "Nature of mind"
-    }
-  },
-  "group": {
-    "Communities": {
-      "group": "Communities"
-    },
-    "Monastics": {
-      "group": "Monastics"
-    },
-    "Lay teachers": {
-      "group": "Lay teachers"
-    },
-    "Lay supporters": {
-      "group": "Lay supporters"
     }
   },
   "tagSubsumed": {

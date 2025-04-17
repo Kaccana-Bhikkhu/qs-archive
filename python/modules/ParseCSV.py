@@ -1309,7 +1309,9 @@ def LoadEventFile(database,eventName,directory):
         flags = [re.match(r"[a-zA-Z]$",s) for s in x["fTagOrder"]]
         flags = [f[0] if f else FTagOrderFlag.EVERYWHERE for f in flags]
         for n,f in enumerate(flags):
-            if f.upper() not in FTagOrderFlag:
+            try:
+                FTagOrderFlag(f.upper()) # This conversion fails if we don't recognize the flag
+            except ValueError:
                 Alert.warning("Ignoring unknown fTag order flag",repr(f),"in",x)
                 flags[n] = FTagOrderFlag.EVERYWHERE
         x["fTagOrderFlags"] = "".join(flags)
