@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Callable, Iterator
 from typing import Any, Tuple
-import Utils
+import Utils, ParseCSV
 import copy
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
@@ -132,12 +132,31 @@ class Tag(Filter):
         return self.negate
 
 class FTag(Tag):
-    "A filter that passes items containing particular featured tags."
+    "A filter that passes excerpts containing particular featured tags."
 
     def Match(self, item: dict) -> bool:        
         for t in item.get("fTags",()):
             if t in self.passTags:
                 return not self.negate
+        
+        return self.negate
+
+class ClusterFTag(Filter):
+    "A filter that passes excerpts that should be featured on a cluster page."
+
+    def __init__(self,cluster:str) -> None:
+        super().__init__()
+        self.cluster = cluster
+        self.passTags = FrozenSet([cluster] + list(gDatabase["subtopic"][cluster]["subtags"]))
+    
+    def Match(self, item: dict) -> bool:
+        for n,t in enumerate(item.get("fTags",())):
+            if t in self.passTags:
+                flag = item["fTagOrderFlags"][n].upper()
+                if flag == ParseCSV.FTagOrderFlag.EVERYWHERE:
+                    return not self.negate
+                if flag == ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC and not t in gDatabase["subtopic"].get("secondarySubtags",()):
+                    return not self.negate
         
         return self.negate
 

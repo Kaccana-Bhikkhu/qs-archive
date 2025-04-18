@@ -70,7 +70,7 @@
             "args": [
                 "Prototype",
                 "--buildOnly",
-                "tags"
+                "clusters"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

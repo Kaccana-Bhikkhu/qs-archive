@@ -819,7 +819,7 @@ def FinalizeExcerptTags(x: dict) -> None:
         
         # Remove these keys from all annotations
         for a in x["annotations"]:
-            for key in ("qTag","aTag","fTags","fTagOrder"):
+            for key in ("qTag","aTag","fTags","fTagOrder","fTagOrderFlags"):
                 a.pop(key,None)
 
 def AddExcerptTags(excerpt: dict,annotation: dict) -> None:
@@ -827,6 +827,7 @@ def AddExcerptTags(excerpt: dict,annotation: dict) -> None:
 
     for key in ("qTag","aTag","fTags","fTagOrder"):
         excerpt[key] = excerpt.get(key,[]) + annotation.get(key,[])
+    excerpt["fTagOrderFlags"] = excerpt.get("fTagOrderFlags","") + annotation.get("fTagOrderFlags","")
 
 def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
     """Add an annotation to a excerpt."""
@@ -1209,6 +1210,7 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
                 aTag = fragmentTagSource["aTag"],
                 fTags = fragmentFTagSource["fTags"],
                 fTagOrder = fragmentFTagSource["fTagOrder"],
+                fTagOrderFlags = fragmentFTagSource["fTagOrderFlags"],
 
                 startTime = fragmentAnnotation["startTime"],
                 endTime = fragmentAnnotation["endTime"],
@@ -1306,7 +1308,7 @@ def LoadEventFile(database,eventName,directory):
         ListifyKey(rawExcerpts,key)
     for x in rawExcerpts:
         # Handle fTag order flags
-        flags = [re.match(r"[a-zA-Z]$",s) for s in x["fTagOrder"]]
+        flags = [re.search(r"[a-zA-Z]$",s) for s in x["fTagOrder"]]
         flags = [f[0] if f else FTagOrderFlag.EVERYWHERE for f in flags]
         for n,f in enumerate(flags):
             try:

@@ -1525,11 +1525,12 @@ def LinkToTeacherPage(page: Html.PageDesc) -> Html.PageDesc:
     
     return page
 
-def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: Html.PageDesc) -> Iterator[Html.PageAugmentorType]:
+def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: Html.PageDesc,cluster:str = "") -> Iterator[Html.PageAugmentorType]:
     """Generate a list of pages obtained by running a series of tag subsearches.
     tags: The tag or tags to search for.
     tagExcerpts: The excerpts to search. Should already have passed Filter.Tag(tags).
-    basePage: The base page to append our pages to."""
+    basePage: The base page to append our pages to.
+    cluster: The tag cluster represented by tags."""
 
     def FilteredTagMenuItem(excerpts: Iterable[dict],filter: Filter.Filter,menuTitle: str,fileExt:str = "") -> Html.PageDescriptorMenuItem:
         if not fileExt:
@@ -1549,7 +1550,11 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             yield firstPage # First yield the menu item descriptor, if any
             firstPage = next(menuItemAndPages)
 
-        featuredExcerpts = list(Database.RemoveFragments(Filter.FTag(tags).Apply(excerpts)))
+        if cluster:
+            featuredExcerpts = Filter.ClusterFTag(cluster).Apply(excerpts)
+        else:
+            featuredExcerpts = Filter.FTag(tags).Apply(excerpts)
+        featuredExcerpts = list(Database.RemoveFragments(featuredExcerpts))
         if featuredExcerpts:
             featuredExcerpts.sort(key = lambda x: Database.FTagOrder(x,tags))
 
@@ -2082,7 +2087,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
                 return Database.FTagOrder(x,searchTags)
 
             searchTags = [cluster] + list(gDatabase["subtopic"][cluster]["subtags"].keys())
-            excerptsByTopic[cluster] = sorted(Database.RemoveFragments(Filter.FTag(searchTags).Apply(gDatabase["excerpts"])),key=SortKey)
+            excerptsByTopic[cluster] = sorted(Database.RemoveFragments(Filter.ClusterFTag(cluster).Apply(gDatabase["excerpts"])),key=SortKey)
 
         def FeaturedExcerptList(item: tuple[dict,str,bool,bool]) -> tuple[str,str,str,str]:
             excerpt,tag,firstExcerpt,lastExcerpt = item
@@ -2168,7 +2173,7 @@ def TagClusterPages(topicDir: str):
         basePage.keywords = ["Tag cluster",clusterInfo["displayAs"]]
         basePage.AppendContent(f"Tag cluster: {clusterInfo['displayAs']}",section="citationTitle")
 
-        yield from TagSubsearchPages(tags,relevantExcerpts,basePage)
+        yield from TagSubsearchPages(tags,relevantExcerpts,basePage,cluster=cluster)
 
 def AddTopicButtons(page: Html.PageDesc) -> None:
     """Add buttons to show and hide subtopics to this under-construction page."""
