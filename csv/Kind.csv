@@ -21,14 +21,14 @@ Chanting,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Chantin
 ,,,,,,,,,,,,,,,
 Reading,Readings,1,Yes,Yes,Yes,Yes,Yes,Yes,No,None,++Reading{s}{colon}++ {text},++Reading{s}{colon}++ {text},unimplemented,,"{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and "" by {teachers}"" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
 ,,,,,,,,,,,,,,,
-Reference,References,1,No,Yes,No,No,Yes,,No,,++Reference{s}++: {text},unimplemented,unimplemented,,
-Sutta,References,1,No,Yes,No,No,Yes,,No,,++Sutta{s}++: {text},unimplemented,unimplemented,,
+Reference,References,1,No,Yes,No,No,Yes,,No,,++Reference{s}:++ {text},unimplemented,unimplemented,,
+Sutta,References,1,No,Yes,No,No,Yes,,No,,++Sutta{s}:++ {text},unimplemented,unimplemented,,
 Vinaya,References,1,No,Yes,No,No,Yes,,No,,++Vinaya:++ {text},unimplemented,unimplemented,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 Comment,Other,1,Yes,Yes,Yes,Yes,Yes,No,No,Anon,"++Comment{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Comment{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Comment{s}++ by {teachers}.,,
 Discussion,Other,2,Yes,Yes,Yes,Yes,Yes,No,No,Anon,"++Discussion{s}++|| led by {teachers}||{colon}{""."" if not text else "" "" + text}",++Discussion{s}{colon}++ {text}|| led by {teachers}.,{text}|| ++Discussion{s}++ led by {teachers}.,,
-Note,Other,1,No,Yes,No,No,No,,No,,++Note{s}++: {text},unimplemented,unimplemented,,
+Note,Other,1,No,Yes,No,No,No,,No,,++Note{s}:++ {text},unimplemented,unimplemented,,
 Summary,Other,1,Yes,No,Yes,Yes,Yes,No,No,Session,{text},unimplemented,unimplemented,,"Used for session excerpts; can be blank. If the session excerpt has a list of items (e. g. readings), the items should be annotations to a summary excerpt."
 Other,Other,0,Yes,Yes,Yes,Yes,Yes,No,No,None,unimplemented,unimplemented,unimplemented,,
 ,,,,,,,,,,,,,,,

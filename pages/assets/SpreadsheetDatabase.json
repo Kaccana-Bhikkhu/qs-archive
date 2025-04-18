@@ -10077,7 +10077,7 @@
       "fileNumber": 0,
       "kind": "Summary",
       "flags": "",
-      "text": "Reflecting on the second tetrad of the Ānāpānasati Sutta (MN 118), Ajahn Pasanno describes meditation as relaxing so that awareness comes to the fore and describes the importance of perception in relating to painful, pleasant, and neutral feeling.",
+      "text": "Reflecting on the second tetrad of the Ānāpānasati Sutta (MN 118), Ajahn Pasanno describes meditation as relaxing so that awareness comes to the fore and explains the importance of perception in relating to painful, pleasant, and neutral feeling.",
       "teachers": [
         "AP"
       ],
@@ -10106,7 +10106,7 @@
       "fileNumber": 1,
       "kind": "Reflection",
       "flags": "",
-      "text": "Long-term effective strategies for dealing wiht pain.",
+      "text": "Long-term effective strategies for dealing with pain.",
       "teachers": [
         "AP"
       ],
@@ -10781,7 +10781,7 @@
       "fileNumber": 3,
       "kind": "Teaching",
       "flags": "",
-      "text": "The [commentaries](Path of Purification p. 135) contast the Five Hindrances with the five factors of firsh jhāna.",
+      "text": "The [commentaries](Path of Purification p. 135) contast the Five Hindrances with the five factors of first jhāna.",
       "teachers": [
         "AP"
       ],
@@ -11269,7 +11269,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 10.34: Satipaṭṭhāna Sutta, mindfulness of mind section",
+          "text": "MN 10.34: Satipaṭṭhāna Sutta, mindfulness of mind section.",
           "fTagOrderFlags": "",
           "tags": [],
           "indentLevel": 1
@@ -11547,7 +11547,7 @@
       "fileNumber": 0,
       "kind": "Summary",
       "flags": "",
-      "text": "Practicing the eleventh step of ānāpānasati (MN 118) involves purifying the mind of obstructve states and firmly establishing the mind with the breath so that it becomes pliant, malleable, and bright.",
+      "text": "Practicing the eleventh step of ānāpānasati (MN 118) involves purifying the mind of obstructive states and firmly establishing the mind with the breath so that it becomes pliant, malleable, and bright.",
       "teachers": [
         "AP"
       ],
@@ -11651,7 +11651,7 @@
       "fileNumber": 3,
       "kind": "Teaching",
       "flags": "",
-      "text": "Ārammaṇupanijjhāna and lakkhaṇupanijjhāna.",
+      "text": "Ārammaṇupanijjhāna (meditation using an object as a focus) and lakkhaṇupanijjhāna (meditation using the characteristics as a focus); when to contemplate anicca, dukkha, anatta.",
       "teachers": [
         "AP"
       ],
@@ -11661,9 +11661,10 @@
         "Jhāna",
         "Calming meditation",
         "Insight meditation",
+        "Characteristics of existence",
         "Concentration"
       ],
-      "qTagCount": 4,
+      "qTagCount": 5,
       "clips": [
         [
           "$",
@@ -11759,7 +11760,7 @@
       "fileNumber": 0,
       "kind": "Summary",
       "flags": "",
-      "text": "When practicing the twelth step of ānāpānasati (MN 118), each breath is the occasion to release the clinging that binds us to suffering.",
+      "text": "When practicing the twelfth step of ānāpānasati (MN 118), each breath is the occasion to release the clinging that binds us to suffering.",
       "teachers": [
         "AP"
       ],
@@ -11806,7 +11807,7 @@
       "sessionNumber": 13,
       "excerptNumber": 2,
       "fileNumber": 2,
-      "kind": "Teaching",
+      "kind": "Reflection",
       "flags": "",
       "text": "We're not diminished beings if we don't get what we want.",
       "teachers": [
@@ -12414,11 +12415,11 @@
       "annotations": [],
       "tags": [
         "Mindfulness of breathing",
-        "Amulets",
         "Recollection/Death",
-        "Dispassion"
+        "Dispassion",
+        "Amulets"
       ],
-      "qTagCount": 4,
+      "qTagCount": 3,
       "clips": [
         [
           "$",
@@ -12435,7 +12436,7 @@
       "fileNumber": 5,
       "kind": "Story",
       "flags": "",
-      "text": "A group of Thai villagers are afraid to dig up their dead to conduct funeral rites.",
+      "text": "A group of Thai villagers are afraid to dig up their dead in order to conduct funeral rites.",
       "teachers": [
         "AP"
       ],
@@ -13092,7 +13093,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 10: Satipaṭṭhāna Sutta",
+          "text": "MN 10: Satipaṭṭhāna Sutta.",
           "fTagOrderFlags": "",
           "tags": [],
           "indentLevel": 1
@@ -110362,7 +110363,7 @@
         "Mindfulness of breathing"
       ],
       "website": "https://www.abhayagiri.org/media/discs/APasannoRetreats/2005%20Anapanasati/index.htm",
-      "description": "Ajahn Pasanno offered this series of Dhamma talks on the stages of ānāpānasati to the Abhayagiri community at the beginning of the 2005 Winter Retreat. It is his most detailed description of his favorite meditation technique.",
+      "description": "Ajahn Pasanno offered this series of Dhamma talks on the Ānāpānasati Sutta (MN 118) to the Abhayagiri community at the beginning of the 2005 Winter Retreat. These are the most detailed teachings on his favorite meditation technique.",
       "sessions": 19,
       "excerpts": 72
     },
@@ -118722,7 +118723,7 @@
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
-      "form1": "++Reference{s}++: {text}",
+      "form1": "++Reference{s}:++ {text}",
       "form2": "unimplemented",
       "form3": "unimplemented",
       "exclude": false,
@@ -118740,7 +118741,7 @@
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
-      "form1": "++Sutta{s}++: {text}",
+      "form1": "++Sutta{s}:++ {text}",
       "form2": "unimplemented",
       "form3": "unimplemented",
       "exclude": false,
@@ -118812,7 +118813,7 @@
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
-      "form1": "++Note{s}++: {text}",
+      "form1": "++Note{s}:++ {text}",
       "form2": "unimplemented",
       "form3": "unimplemented",
       "exclude": false,
@@ -125495,7 +125496,7 @@
       "primaries": 0,
       "htmlFile": "characteristics-of-existence.html",
       "sessionCount": 1,
-      "excerptCount": 36,
+      "excerptCount": 37,
       "listIndex": 268
     },
     "Impermanence": {
@@ -140746,7 +140747,7 @@
       "tag": "",
       "virtualTag": "Indeterminate qualities",
       "subtagCount": 48,
-      "subtagExcerptCount": 1071
+      "subtagExcerptCount": 1072
     },
     {
       "level": 2,
@@ -141151,12 +141152,12 @@
       "flags": "",
       "name": "Characteristics of existence",
       "pali": "",
-      "excerptCount": 36,
+      "excerptCount": 37,
       "subsumed": false,
-      "text": "Characteristics of existence (36)",
+      "text": "Characteristics of existence (37)",
       "tag": "Characteristics of existence",
       "subtagCount": 9,
-      "subtagExcerptCount": 475
+      "subtagExcerptCount": 476
     },
     {
       "level": 3,
