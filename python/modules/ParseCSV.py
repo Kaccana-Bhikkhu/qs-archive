@@ -601,7 +601,10 @@ def CollectKeyTopics(database:dict[str]) -> None:
     primarySubtopics = set()
     thisSubtopic = None
     for subtopic in database["subtopic"].values():
-        subtopic["tag"] = subtopic["tag"].rstrip("'")
+        secondarySubtopic = subtopic["tag"].endswith("'")
+        if secondarySubtopic:
+            subtopic["tag"] = subtopic["tag"].rstrip("'")
+
         if subtopic["keyTopic"]:
             currentKeyTopic = {
                 "code": subtopic["topicCode"],
@@ -636,6 +639,9 @@ def CollectKeyTopics(database:dict[str]) -> None:
                 subtopic.pop(key,None)
             
             currentKeyTopic["subtopics"].append(subtopic["tag"])
+        
+        if secondarySubtopic:
+            thisSubtopic["secondarySubtags"] = thisSubtopic.get("secondarySubtags",[]) + [subtopic["tag"]]
     
     subtagsOnly = set(database["subtopic"]) - primarySubtopics
     for tag in subtagsOnly:
@@ -1579,8 +1585,7 @@ def CountAndVerify(database):
     for topic in database["keyTopic"].values():
         topicExcerpts = set()
         for cluster in topic["subtopics"]:
-            allTags = set([cluster] + list(database["subtopic"][cluster]["subtags"].keys()))
-            tagExcerpts = set(id(x) for x in Filter.FTag(allTags)(database["excerpts"]))
+            tagExcerpts = set(id(x) for x in Filter.ClusterFTag(cluster)(database["excerpts"]))
             database["subtopic"][cluster]["fTagCount"] = len(tagExcerpts)
             topicExcerpts.update(tagExcerpts)
         

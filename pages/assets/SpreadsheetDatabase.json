@@ -149838,7 +149838,7 @@
       },
       "htmlPath": "clusters/dhamma.html",
       "excerptCount": 83,
-      "fTagCount": 5
+      "fTagCount": 4
     },
     "Saṅgha": {
       "tag": "Saṅgha",
@@ -151186,6 +151186,9 @@
         "Abbot": "+",
         "Monastery organizational structure": "-"
       },
+      "secondarySubtags": [
+        "Saṅgha"
+      ],
       "htmlPath": "clusters/communal-harmony.html",
       "excerptCount": 150,
       "fTagCount": 7
@@ -151339,6 +151342,9 @@
         "Conflict": "+",
         "Leadership": "+"
       },
+      "secondarySubtags": [
+        "Communal harmony"
+      ],
       "htmlPath": "clusters/community.html",
       "excerptCount": 136,
       "fTagCount": 5
@@ -152138,7 +152144,7 @@
         "Saṅgha"
       ],
       "excerptCount": 260,
-      "fTagCount": 15
+      "fTagCount": 14
     },
     "foundations": {
       "code": "foundations",

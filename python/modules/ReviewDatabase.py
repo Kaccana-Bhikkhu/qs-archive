@@ -1,4 +1,4 @@
-"""Check links in the documentation and events directories using BeautifulSoup.
+"""Check SpreadsheetDatabase.json for errors, inconsistencies, and incompleteness.
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ def OptimalFTagCount(tagOrSubtopic: dict[str],database:dict[str] = {}) -> tuple[
 
     if not database:
         database = gDatabase
-    subtopic = "subtags" in tagOrSubtopic
+    subtopic = "topicCode" in tagOrSubtopic
 
     # Start with an estimate based on the number of excerpts for this tag/subtopic
     if subtopic:
@@ -243,11 +243,16 @@ def AuditNames() -> None:
 def CheckAttributions() -> None:
     """Give warnings for unattributed excerpts and annotations."""
 
-    kind = gDatabase["kind"]
     for x in gDatabase["excerpts"]:
         for item in Filter.AllItems(x):
             if item["kind"] == "Other" and not item["teachers"]:
                 Alert.caution(item,"takes teachers but does not have any.")
+
+def CheckTags() -> None:
+    """Raise a caution if there are unsorted tags."""
+    unsortedTags = gDatabase["tag"].get("New unsorted tags",None)
+    if unsortedTags:
+        Alert.caution("There are",len(unsortedTags["subtags"]),"unsorted tags:",unsortedTags["subtags"])
 
 def CheckRelatedTags() -> None:
     """Print alerts if related tags are duplicated elsewhere in the tag info page."""
@@ -256,7 +261,7 @@ def CheckRelatedTags() -> None:
         otherTags.update(tagInfo["supertags"])
         overlap = otherTags & set(tagInfo["related"])
         if overlap:
-            Alert .caution(tagInfo,"related tags",overlap,"are already mentioned as subtags or supertags.")
+            Alert.caution(tagInfo,"related tags",overlap,"are already mentioned as subtags or supertags.")
 
 def FeaturedExcerptSummary(subtopicOrTag: str,header: bool = False,printFTag: bool = False) -> str:
     """Return a list of this subtopic's featured excerpts in tab separated values format."""
@@ -387,6 +392,7 @@ def main() -> None:
     VerifyListCounts()
     AuditNames()
     # CheckAttributions()
+    CheckTags()
     CheckRelatedTags()
     CheckFTagOrder()
     LogReviewedFTags()
