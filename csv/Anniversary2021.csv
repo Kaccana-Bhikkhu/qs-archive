@@ -102,7 +102,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 8,Story,,10:14,12:10,"In May 1994, the English Saṅgha Trust gives Ajahn Amaro permission to start looking for property in California. Master Hua offers 125 acres of forest in Mendocino County the next day.",,Elders' Council,Ajahn Amaro,Ajahn Sumedho,Master Hsuan Hua,Amaravati,Ajahn Viradhammo,,,,,,,
 8,Extra tags,,,,,,Generosity,,,,,,,,,,,,
 8,Story,,12:11,15:32,Ajahn Amaro visits the Abhayagiri property for the first time.,,Ajahn Amaro,Lodging,Culture/Natural environment,,Master Hsuan Hua,Funerals,City of Ten Thousand Buddhas,Debbie Stamp,Lay supporters,,,,
-8,Extra tags,,,,,,,,,,Simplicity,Holy Tranfiguration Monastery,,,,,,,
+8,Extra tags,,,,,,,,,,Simplicity,Holy Transfiguration Monastery,,,,,,,
 8,Story,o,15:31,,Buying the property next to the land Master Hua donated.,,Saṅghapāla,Commerce/economics,Generosity,Lodging,Lay supporters,Ajahn Sumedho,Ajahn Amaro,,,,,,
 8,Story,,21:14,23:28,Moving onto the Abhayagiri land.,,Lodging,,,,Ajahn Karuṇadhammo,Postulants,Ajahn Amaro,Saṅghapāla,Lay supporters,,,,
 8,Story,,23:37,,Ajahn Pasanno's involvement in the Abhayagiri project.,,Ajahn Pasanno,Abbot,,,Forest versus city monks,Humility,Ajahn Amaro,Personality,City of Ten Thousand Buddhas,,,,
@@ -110,7 +110,8 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 8,Recollection,3s,27:38,,Serendipitous generosity in the early days of Abhayagiri.,,Lay supporters,Generosity,,,Buddha images,Building projects,Lodging,,,,,,
 8,Indirect quote,,30:28,35:12,"Ajahn, maybe if you just taught Theravāda Buddhism, that would be great.|A Saṅghapāla board member to Ajahn Amaro",,Saṅghapāla,Ajahn Amaro,Theravāda,,Ajahn Pasanno,Culture/West,Spiritual traditions,Monastic life,Idealism,,,Theravāda,100
 8,Quote,,,,It wasn't sensible to try to be all things to all people.,,Abhayagiri,Spiritual traditions,,,,,,,,,,,
-8,Quote,,35:17.5,,Abhayagiri ethos:|We all live in the forest. Everyone's in a kuti.|,,Lodging,Culture/Natural environment,,,Amaravati,Ajahn Amaro,Ajahn Pasanno,Weather,,,,,
+8,Quote,,35:17.5,,Abhayagiri ethos:|We all live in the forest. Everyone's in a kuti.|,,Lodging,Culture/Natural environment,,,Amaravati,Ajahn Amaro,Ajahn Pasanno,Weather,,,,Lodging,60
+8,Extra tags,,,,,,,,,,,,,,,,,Culture/Natural environment,120
 8,Quote,,,,Mindfulness of the body is an absolute necessity.,,Mindfulness of body,Abhayagiri,Culture/Natural environment,,,,,,,,,,
 8,Quote,0a,38:19.5,40:27,"++Quote:++ ""We're not about doing retreats. We're a community."" — {teachers} speaking about Abhayagiri.",,Community,Meditation retreats,,,Culture/Natural environment,,,,,,,,
 8,Reflection,0a,40:47,48:31.5,"Shedding, impermanence, and not-self: ++Reflections++ on moving to Amaravati by {teachers}.",,Ajahn Amaro,Impermanence,Not-self,Amaravati,Lodging,Ajahn Sumedho,Travel,Ajahn Pasanno,Spaciousness,,,,
@@ -149,9 +150,9 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 11,Recollection,s,31:45,33:38,of almsround and learning Thai at Wat Pah Nanachat.,,Wat Pah Nanachat,Almsround,Ajahn Ñāṇiko,Learning,,,,,,Yes,,,
 11,Extra tags,,,,,,Thai,,,,,,,,,,,,
 11,Indirect quote,,,,"If you want to learn something, recite it every morning on almsround.|Ajahn Chah",,Ajahn Chah,Learning,Almsround,,,,,,,,,,
-11,Reflection,,37:07,41:12,Ajahn Liem's ethos regarding building projects: creating a secluded place to practice.,,Ajahn Liem,Lodging,Building projects,Seclusion,Eight Precepts,Generosity,Sutta,,,Yes,,,
+11,Reflection,,37:07,41:12,Ajahn Liem's ethos regarding building projects: creating a secluded place to practice.,,Ajahn Liem,Lodging,Building projects,Seclusion,Eight Precepts,Generosity,Sutta,,,Yes,,Lodging,50
 11,Extra tags,,,,,,Meditation,,,,,,,,,,,,
-11,Reflection,,41:16,42:42,The purpose of monastic facilities.,,Lodging,Monastic life,,,Human,Idealism,Culture/Natural environment,Sequence of training,Rains retreat,Yes,,,
+11,Reflection,,41:16,42:42,The purpose of monastic facilities.,,Lodging,Monastic life,,,Human,Idealism,Culture/Natural environment,Sequence of training,Rains retreat,Yes,,Lodging,70
 11,Reflection,,42:52,49:33,The pulse of the year at Abhayagiri and the annual Vassa Vinaya studies.,,Monastic life,Rains retreat,Vinaya,Learning,Protocols,Not handling money,Kaṭhina,Ajahn Pasanno,Meditation retreats,,,Abhayagiri,120
 12,,,0:01,6:08,"When everything goes the way you want and you are about to retire, but you feel a subtle, barely detectable dissatisfaction, and you're not sure why. What specific things should you do besides ordaining and becoming a monk?",,Suffering,Lay life,Retirement,,Saṃsāra,Clinging,Cause of Suffering,Relinquishment,,,,Suffering,150
 12,Indirect quote,0,,,"Advice from an aged elder: ""I think you should follow the Eightfold Path."" — Bhante Dharmawara",,Bhante Dharmawara,Eightfold Path,City of Ten Thousand Buddhas,Health care,,,,,,,,,
@@ -177,9 +178,9 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 16,Cut audio,,2:20,2:29,,,,,,,,,,,,,,,
 16,,,4:12,6:07,Are monks in the forest tradition required to meditate near dead bodies in cremation grounds? Is that to uproot defilements of fear of death? Is it considered psychologically safe?,,Thai Forest Tradition,Recollection/Death,Fear,Death,Ascetic practices,Wat Pah Nanachat,Naturalness,,,,,,
 16,Indirect quote,,,,Death is the most ordinary thing in the world.|Ajahn Liem,,Ajahn Liem,Death,Naturalness,,,,,,,,,,
-16,,,6:09,8:03,Can you expand on what is the korwat for how to treat teachers and how to treat guests?,,Protocols,Respect for elders,Hospitality,,,,,,,,,,
+16,,,6:09,8:03,Can you expand on what is the korwat for how to treat teachers and how to treat guests?,,Protocols,Respect for elders,Hospitality,,,,,,,,,Respect for elders,120
 16,Vinaya,,,,Kd 18: Vattakkhandhaka and explanation in [BMC 2]() [Chapter 13](BMC 2 p. 935),,Protocols,,,,,,,,,,,,
-16,,,8:17,11:04,Could you please elaborate on rules fro putting one's hands in añjali when speaking to a monk at Abhayagiri? And what about bowing? It's a weakness in my practice that I would like to improve.,,Respect,Abhayagiri,Bowing,,Mindfulness,Faith,Devotional practice,Continuity of mindfulness,,,,,
+16,,,8:17,11:04,Could you please elaborate on rules for putting one's hands in añjali when speaking to a monk at Abhayagiri? And what about bowing? It's a weakness in my practice that I would like to improve.,,Respect,Abhayagiri,Bowing,,Mindfulness,Faith,Devotional practice,Continuity of mindfulness,,,,,
 16,,,11:10,15:31,"When someone shows you how to do something correctly but the manner in which they convey the message is rude, what is the most skillful thing you can do to let the person know they were perceived as rude but fully absorb the content of their beneficial message?",,Admonishment/feedback,Right Speech,,,Cultural context,Equanimity,Nonviolent Communication,,,,,,
 16,,,15:45,16:56,Can you tell us about the history of female monastics or aspirants who stayed at the monastery in the early days and why it didn't work out?,,Women's monastic forms,Abhayagiri,,,Ajahn Sundarā,Ajahn Jitindriyā,Sīladharā,,,,,,
 16,,,17:00,18:59,"How do you understand the phrase, 'The body within the body?'",,Right Mindfulness,Mindfulness of body,,,Views,Discernment,Relinquishment,,,,,,
@@ -206,6 +207,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 18,Extra tags,,,,,,Leadership,,,,,,,,,,,,
 18,Reflection,,6:33,7:19,The Buddha laid down practical guidelines for monastics living in community.,,Buddha/Biography,Saṅgha,Vinaya,Protocols,Teaching Dhamma,,,,,,,,
 18,Reflection,,7:20.5,9:47,"As Westerners, we have needed to put conscious care and effort into establishing how to live together in close quarters.",,Abhayagiri,Culture/West,Community,Lodging,Culture/Thailand,Ajahn Chah,,,,,,Communal harmony,140
+18,Extra tags,,,,,,,,,,,,,,,,,Community,140
 18,Cut audio,,9:40,9:42,,,,,,,,,,,,,,,
 18,Teaching,3,9:48,,Background to the sārāṇīyā dhammas: the quarrel at Kosambi.,,Saṅgha,Buddha/Biography,Conflict,Principles of Cordiality,,,,,,,,,
 18,Sutta,,,,MN 48: Kosambi Sutta.,,,,,,,,,,,,,,
@@ -221,8 +223,8 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 18,Sutta,,,,MN 48: Kosambi Sutta.,,,,,,,,,,,,,,
 18,Teaching,3,25:32,26:02,Principle of Cordiality #5: Ethical behaivor and respect.,,Principles of Cordiality,Vinaya,Respect,,,,,,,,,,
 18,Sutta,,,,MN 48: Kosambi Sutta.,,,,,,,,,,,,,,
-18,Teaching,3,26:05,33:18,Principle of Cordiality #6: Core aspects of Right View that lead to communal harmony: Our actions have consequences. We can change. Liberation is possible.,,Principles of Cordiality,Right View,Saṅgha,Kamma,Judgementalism,Habits,Four Noble Truths,,,,,,
-18,Extra tags,,,,,,Right Effort,Liberation,,,,,,,,,,,
+18,Teaching,3,26:05,33:18,Principle of Cordiality #6: Core aspects of Right View that lead to communal harmony: Our actions have consequences. We can change. Liberation is possible.,,Principles of Cordiality,Right View,Saṅgha,Kamma,Judgementalism,Habits,Four Noble Truths,,,,,Right View,170
+18,Extra tags,,,,,,Right Effort,Liberation,,,,,,,,,,Communal harmony,170
 18,Sutta,,,,MN 48: Kosambi Sutta.,,,,,,,,,,,,,,
 18,Teaching,3,33:23,,The first two reviewing knowledges of one who has made progress on the path: Freedom from the hindrances and serenity of mind.,,Meditation/Results,Hindrances,Tranquility,,Principles of Cordiality,Right View,Abhayagiri,Conflict,,,,,
 18,Sutta,,,,MN 48: Kosambi Sutta.,,,,,,,,,,,,,,

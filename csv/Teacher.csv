@@ -68,7 +68,7 @@ AKd,Ajahn Karuṇadhammo,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of
 AJoti,Ajahn Jotipālo,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 ANy,Ajahn Ñāṇiko,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AAh,Ajahn Ahiṃsako,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
-AJivako,Ajahn Jīvako,,Pending,No,Pending,No,Yes,No,Monastics,Western disciples of Ajahn Chah
+AJivako,Ajahn Jīvako,,Yes,Yes,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
 AKsp,Ajahn Kassapo,,Yes,No,No,No,Yes,No,Monastics,Western disciples of Ajahn Chah
 ACu,Ajahn Cunda,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
 AKc,Ajahn Kaccāna,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
@@ -91,10 +91,10 @@ ACandasiri,Ajahn Candasiri,,Pending,No,Pending,No,Yes,Pending,Monastics,Western 
 ,,,,,,,,,,
 AMahaprasert,Ajahn Mahā Prasert,,Pending,Pending,Yes,Pending,Yes,Pending,Monastics,Other Thai
 ,,,,,,,,,,
-HSure,Reverend Heng Sure,,Pending,Pending,Pending,Pending,Yes,Pending,Monastics,Māhayāna
-HShun,Dharma Master Heng Lyu,Heng Lyu,Pending,Pending,Pending,Pending,Yes,Pending,Monastics,Māhayāna
-HLyu,Dharma Master Heng Shun,Heng Shun,Pending,Pending,Pending,Pending,Yes,Pending,Monastics,Māhayāna
-FDamien,Father Damien,,Pending,Pending,Pending,Pending,Yes,Pending,Monastics,Christian monastics
+HSure,Reverend Heng Sure,,Pending,Pending,Pending,No,Yes,Pending,Monastics,Māhayāna
+HShun,Dharma Master Heng Lyu,Heng Shun,Pending,Pending,Pending,No,Yes,Pending,Monastics,Māhayāna
+HLyu,Dharma Master Heng Shun,Heng Lyu,Pending,Pending,Pending,No,Yes,Pending,Monastics,Māhayāna
+FDamien,Father Damien,,Pending,Pending,Pending,No,Yes,Pending,Monastics,Christian monastics
 ,,,,,,,,,,
 ,,,,,,,,,,
 Pabongka,Pabongka Rinpoche,,No,No,Yes,Yes,Yes,Yes,Monastics,Vajrayāna
@@ -119,6 +119,14 @@ Kittisaro,Kittisaro,,Yes,Yes,Yes,Yes,Yes,Yes,Lay teachers,
 Thanissara,Ṭhānissarā,,Yes,Yes,Yes,Yes,Yes,Yes,Lay teachers,
 PBreiter,Paul Breiter,,Yes,Yes,Yes,Yes,Yes,Yes,Lay teachers,
 NMeister,Nan Meister,,Yes,No,Yes,No,Yes,No,Lay supporters,
+,,,,,,,,,,
+Sanghapala,Saṅghapāla board members,,Yes,Yes,Yes,No,Yes,Yes,Lay supporters,
+MLieberman,Marc Lieberman,,Yes,Yes,Yes,No,Yes,Yes,Lay supporters,
+SBarber,Susan Barber,,Pending,Pending,Yes,No,Pending,Pending,Lay supporters,
+FKral,Fred Kral,,Pending,Pending,Yes,No,Pending,Pending,Lay supporters,
+NBrewer,Noel Brewer,,Pending,Pending,Yes,No,Pending,Pending,Lay supporters,
+PMayland,Peter Mayland,,Pending,Pending,Yes,No,Pending,Pending,Lay supporters,
+MSponseller,Mark Sponseller,,Pending,Pending,Yes,No,Pending,Pending,Lay supporters,
 ,,,,,,,,,,
 ,,,,,,,,,,
 SHanna,Sol Hanna,,No,No,Yes,No,Yes,No,Lay teachers,
