@@ -155,7 +155,7 @@ class ClusterFTag(Filter):
                 flag = item["fTagOrderFlags"][n].upper()
                 if len(self.passTags) == 1 or flag == ParseCSV.FTagOrderFlag.EVERYWHERE:
                     return not self.negate
-                if flag == ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC and not t in gDatabase["subtopic"].get("secondarySubtags",()):
+                if flag == ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC and not t in gDatabase["subtopic"][self.cluster].get("secondarySubtags",()):
                     return not self.negate
         
         return self.negate

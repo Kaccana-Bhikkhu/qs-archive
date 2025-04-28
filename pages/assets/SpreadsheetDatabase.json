@@ -24914,12 +24914,14 @@
       ],
       "text": "Is body scan as a meditation practice done in the Ajahn Chah tradition? Is there a sutta where the Buddha talks about it?",
       "fTags": [
-        "Mindfulness of body"
+        "Mindfulness of body",
+        "Body scanning"
       ],
       "fTagOrder": [
+        110,
         110
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "EE",
       "annotations": [
         {
           "kind": "Quote",
@@ -48136,7 +48138,7 @@
       "fTagOrder": [
         120
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [
         {
           "kind": "Commentary",
@@ -51342,7 +51344,7 @@
         100,
         160
       ],
-      "fTagOrderFlags": "EE",
+      "fTagOrderFlags": "ET",
       "annotations": [
         {
           "kind": "Cut audio",
@@ -54727,7 +54729,7 @@
       "fTagOrder": [
         100
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [
         {
           "kind": "Sutta",
@@ -57126,7 +57128,7 @@
       "fTagOrder": [
         200
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Jhāna",
@@ -61606,7 +61608,7 @@
       "fTagOrder": [
         180
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "P",
       "annotations": [
         {
           "kind": "Quote",
@@ -84521,7 +84523,7 @@
       "fTagOrder": [
         110
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "P",
       "annotations": [],
       "tags": [
         "Renunciation",
@@ -93201,7 +93203,7 @@
       "fTagOrder": [
         180
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "P",
       "annotations": [],
       "tags": [
         "Goodwill",
@@ -104354,7 +104356,7 @@
       "fTagOrder": [
         100
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "P",
       "annotations": [],
       "tags": [
         "Goodwill",
@@ -107856,7 +107858,7 @@
         "Jhāna"
       ],
       "fTagOrder": [
-        1001
+        250
       ],
       "fTagOrderFlags": "E",
       "annotations": [],
@@ -120732,6 +120734,10 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "skillful-qualities.html",
+      "partOfSubtopics": [
+        "Skillful qualities"
+      ],
+      "subtopics": [],
       "excerptCount": 76,
       "fTagCount": 2,
       "listIndex": 0
@@ -120849,6 +120855,10 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "right-intention.html",
+      "partOfSubtopics": [
+        "Right Intention"
+      ],
+      "subtopics": [],
       "excerptCount": 22,
       "listIndex": 4
     },
@@ -120872,7 +120882,8 @@
       "primaries": 1,
       "htmlFile": "renunciation.html",
       "partOfSubtopics": [
-        "Renunciation"
+        "Renunciation",
+        "Right Intention"
       ],
       "subtopics": [],
       "excerptCount": 20,
@@ -123002,7 +123013,8 @@
       "primaries": 1,
       "htmlFile": "goodwill.html",
       "partOfSubtopics": [
-        "Goodwill"
+        "Goodwill",
+        "Right Intention"
       ],
       "subtopics": [],
       "eventCount": 2,
@@ -126239,7 +126251,7 @@
       "htmlFile": "sangha.html",
       "partOfSubtopics": [
         "Saṅgha",
-        "Communal harmony"
+        "Fourfold Assembly"
       ],
       "subtopics": [],
       "sessionCount": 2,
@@ -127123,6 +127135,7 @@
         "Mindfulness of body"
       ],
       "excerptCount": 11,
+      "fTagCount": 1,
       "listIndex": 388
     },
     "Noting": {
@@ -134936,8 +134949,9 @@
       "primaries": 1,
       "htmlFile": "fourfold-assembly.html",
       "partOfSubtopics": [
-        "Communal harmony"
+        "Fourfold Assembly"
       ],
+      "subtopics": [],
       "excerptCount": 2,
       "listIndex": 797
     },
@@ -134960,10 +134974,8 @@
       "primaries": 1,
       "htmlFile": "communal-harmony.html",
       "partOfSubtopics": [
-        "Communal harmony",
         "Community"
       ],
-      "subtopics": [],
       "sessionCount": 1,
       "excerptCount": 52,
       "fTagCount": 4,
@@ -134992,7 +135004,7 @@
       "primaries": 0,
       "htmlFile": "principles-of-cordiality.html",
       "partOfSubtopics": [
-        "Communal harmony"
+        "Fourfold Assembly"
       ],
       "excerptCount": 10,
       "listIndex": 799
@@ -135015,7 +135027,7 @@
       "primaries": 0,
       "htmlFile": "monastery-organizational-structure.html",
       "partOfSubtopics": [
-        "Communal harmony"
+        "Fourfold Assembly"
       ],
       "excerptCount": 3,
       "listIndex": 804
@@ -135038,7 +135050,7 @@
       "primaries": 0,
       "htmlFile": "sangha-decision-making.html",
       "partOfSubtopics": [
-        "Communal harmony"
+        "Fourfold Assembly"
       ],
       "excerptCount": 21,
       "listIndex": 805
@@ -135061,7 +135073,7 @@
       "primaries": 0,
       "htmlFile": "abbot.html",
       "partOfSubtopics": [
-        "Communal harmony"
+        "Fourfold Assembly"
       ],
       "excerptCount": 31,
       "fTagCount": 1,
@@ -148977,7 +148989,7 @@
       "startDate": "22/11/2013",
       "teachers": "AP;AKd;ANy;DS",
       "sessions": 8,
-      "excerpts": 176,
+      "excerpts": 177,
       "answersListenedTo": 38,
       "tagsApplied": 486,
       "invalidTags": 0,
@@ -152325,6 +152337,28 @@
       "excerptCount": 41,
       "fTagCount": 4
     },
+    "Right Intention": {
+      "tag": "Right Intention",
+      "displayAs": "Right Intention",
+      "pali": "",
+      "related": [],
+      "status": "",
+      "topicCode": "path",
+      "progressMemo": "",
+      "subtags": {
+        "Renunciation": "+",
+        "Goodwill": "+",
+        "Compassion": "+"
+      },
+      "secondarySubtags": [
+        "Renunciation",
+        "Goodwill",
+        "Compassion"
+      ],
+      "htmlPath": "clusters/right-intention.html",
+      "excerptCount": 185,
+      "fTagCount": 4
+    },
     "Right Speech": {
       "tag": "Right Speech",
       "displayAs": "Right Speech",
@@ -152423,7 +152457,7 @@
       },
       "htmlPath": "clusters/right-concentration.html",
       "excerptCount": 187,
-      "fTagCount": 8
+      "fTagCount": 5
     },
     "Meditation": {
       "tag": "Meditation",
@@ -152455,7 +152489,7 @@
       },
       "htmlPath": "clusters/mindfulness-of-body.html",
       "excerptCount": 156,
-      "fTagCount": 8
+      "fTagCount": 7
     },
     "Mindfulness of breathing": {
       "tag": "Mindfulness of breathing",
@@ -152562,6 +152596,19 @@
       "htmlPath": "tags/long-term-practice.html",
       "excerptCount": 39,
       "fTagCount": 3
+    },
+    "Skillful qualities": {
+      "tag": "Skillful qualities",
+      "displayAs": "Skillful qualities",
+      "pali": "kusalā dhammā",
+      "related": [],
+      "status": "",
+      "topicCode": "skillful",
+      "progressMemo": "",
+      "subtags": {},
+      "htmlPath": "tags/skillful-qualities.html",
+      "excerptCount": 76,
+      "fTagCount": 2
     },
     "Faith": {
       "tag": "Faith",
@@ -153456,8 +153503,8 @@
       "excerptCount": 131,
       "fTagCount": 5
     },
-    "Communal harmony": {
-      "tag": "Communal harmony",
+    "Fourfold Assembly": {
+      "tag": "Fourfold Assembly",
       "displayAs": "Monastic community",
       "pali": "Saṅgha",
       "related": [],
@@ -153466,18 +153513,19 @@
       "progressMemo": "",
       "subtags": {
         "Saṅgha": "+",
-        "Fourfold Assembly": "+",
+        "Communal harmony": "+",
         "Principles of Cordiality": "+",
         "Saṅgha decision making": "+",
         "Abbot": "+",
         "Monastery organizational structure": "-"
       },
       "secondarySubtags": [
-        "Saṅgha"
+        "Saṅgha",
+        "Communal harmony"
       ],
-      "htmlPath": "clusters/communal-harmony.html",
-      "excerptCount": 150,
-      "fTagCount": 8
+      "htmlPath": "clusters/fourfold-assembly.html",
+      "excerptCount": 118,
+      "fTagCount": 7
     },
     "Ascetic practices": {
       "tag": "Ascetic practices",
@@ -153628,9 +153676,6 @@
         "Conflict": "+",
         "Leadership": "+"
       },
-      "secondarySubtags": [
-        "Communal harmony"
-      ],
       "htmlPath": "clusters/community.html",
       "excerptCount": 138,
       "fTagCount": 6
@@ -154477,6 +154522,7 @@
         "Middle Path",
         "Eightfold Path",
         "Right View",
+        "Right Intention",
         "Right Speech",
         "Right Action",
         "Right Livelihood",
@@ -154484,8 +154530,8 @@
         "Right Mindfulness",
         "Right Concentration"
       ],
-      "excerptCount": 604,
-      "fTagCount": 34
+      "excerptCount": 735,
+      "fTagCount": 35
     },
     "meditation": {
       "code": "meditation",
@@ -154507,7 +154553,7 @@
         "Long-term practice"
       ],
       "excerptCount": 674,
-      "fTagCount": 38
+      "fTagCount": 37
     },
     "skillful": {
       "code": "skillful",
@@ -154517,6 +154563,7 @@
       "longNote": "",
       "listFile": "skillful.html",
       "subtopics": [
+        "Skillful qualities",
         "Faith",
         "Energy",
         "Mindfulness",
@@ -154529,8 +154576,8 @@
         "Compassion",
         "Equanimity"
       ],
-      "excerptCount": 842,
-      "fTagCount": 41
+      "excerptCount": 872,
+      "fTagCount": 43
     },
     "unskillful": {
       "code": "unskillful",
@@ -154663,12 +154710,12 @@
         "Requisites",
         "Thai Forest Tradition",
         "Vinaya",
-        "Communal harmony",
+        "Fourfold Assembly",
         "Ascetic practices",
         "Women's monastic forms"
       ],
-      "excerptCount": 696,
-      "fTagCount": 42
+      "excerptCount": 676,
+      "fTagCount": 41
     },
     "monasteries": {
       "code": "monasteries",
