@@ -538,6 +538,39 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
                 a(TagDescription(gDatabase["tag"][tag],fullTag=True,flags=TagDescriptionFlag.COUNT_FIRST + TagDescriptionFlag.SHOW_STAR,drilldownLink=True))
     
     page = Html.PageDesc(info)
+
+    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
+    page.AppendContent(Html.Tag("span",{"style":"float: right;"})(printableLinks))
+
+    page.AppendContent(str(a))
+    page.AppendContent("Most common tags",section="citationTitle")
+    page.keywords = ["Tags","Most common tags"]
+    yield page
+
+    # Now yield a printable version for tag counting purposes
+    tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
+                                key = lambda tag: (-ExcerptCount(tag),tag))
+    a = Airium()
+    with a.p():
+        a("The number of featured excerpts for each tag appears in parentheses.")
+    with a.div(Class="listing"):
+        for tag in tagsSortedByQCount:
+            with a.p():
+                code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
+                tagLink = HtmlTagLink(tag)
+                fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
+                minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])
+                
+                tagStyle = Html.Wrapper()
+                if tag in Database.SoloSubtopics():
+                    tagStyle = Html.Tag("b")
+                elif tag in Database.KeyTopicTags():
+                    # If this tag is part of a subtopic and has no fTags which do not appear in the subtopic
+                    tagStyle = Html.Tag("i")
+
+                a(f"{ExcerptCount(tag)} {code} {tagStyle(tagLink)} ({fTagCount}:{minFTag}-{maxFTag})")
+
+    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
     page.AppendContent(str(a))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
@@ -2269,11 +2302,12 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                         bitsAfterDash = []
                         if len(subtags) > 1:
                             subtagStrs = []
+                            subtopicExcerpts = Filter.ClusterFTag(subtopic)(gDatabase['excerpts'])
                             for tag in subtags:
                                 if tag in ReviewDatabase.SignificantSubtagsWithoutFTags():
                                     tagCount = "<b>∅</b>"
                                 else:
-                                    tagCount = str(gDatabase['tag'][tag].get("fTagCount",0))
+                                    tagCount = str(Filter.FTag(tag).Count(subtopicExcerpts))
                                 tagCount += f"/{gDatabase['tag'][tag].get('excerptCount',0)}"
                                 subtagStrs.append(HtmlTagLink(tag) + (f" ({tagCount})" if printPage else ""))
                             bitsAfterDash.append(f"Cluster includes: {', '.join(subtagStrs)}")

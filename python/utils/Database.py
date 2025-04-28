@@ -158,6 +158,16 @@ def KeyTopicTags() -> dict[str,None]:
             returnValue[tag] = None
     return returnValue
 
+@lru_cache(maxsize=None)
+def SoloSubtopics() -> dict[str,None]:
+    "Return a dict of tag names which are subtopics without subtags."
+
+    returnValue = {}
+    for subtopic in gDatabase["subtopic"].values():
+        if not subtopic["subtags"]:
+            returnValue[subtopic["tag"]] = None
+    return returnValue
+
 def SubtopicsAndTags() -> Iterable[str]:
     "Iterate over all subtopics and then over all tags not in subtopics"
     yield from gDatabase["subtopic"].values()

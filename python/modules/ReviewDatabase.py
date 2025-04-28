@@ -56,14 +56,17 @@ def OptimalFTagCount(tagOrSubtopic: dict[str],database:dict[str] = {}) -> tuple[
 
     if not database:
         database = gDatabase
-    subtopic = "topicCode" in tagOrSubtopic
+    soloSubtopics = Database.SoloSubtopics()
+    subtopic = ("topicCode" in tagOrSubtopic or tagOrSubtopic["tag"] in soloSubtopics)
+            # Use the subtopic formula for tags which are subtopics containing no subtags
 
     # Start with an estimate based on the number of excerpts for this tag/subtopic
+    excerptCount = tagOrSubtopic.get("excerptCount",0)
     if subtopic:
-        minFTags = bisect.bisect_right((6,18,54,144,384,1024),tagOrSubtopic["excerptCount"])
+        minFTags = bisect.bisect_right((6,18,54,144,384,1024),excerptCount)
     else:
-        minFTags = bisect.bisect_right((12,30,72,180,480,1278),tagOrSubtopic["excerptCount"])
-    maxFTags = bisect.bisect_right((4,8,16,32,80,200,500,1250),tagOrSubtopic["excerptCount"])
+        minFTags = bisect.bisect_right((12,30,72,180,480,1278),excerptCount)
+    maxFTags = bisect.bisect_right((4,8,16,32,80,200,500,1250),excerptCount)
 
     # Then add fTags to subtopics with many significant subtags
     significantTags = 0
@@ -81,15 +84,18 @@ def OptimalFTagCount(tagOrSubtopic: dict[str],database:dict[str] = {}) -> tuple[
     #if oldMax != maxFTags:
     #    Alert.extra(tagOrSubtopic,"now needs",minFTags,"-",maxFTags,"fTags. Subtags:",significantTags,"significant;",insignificantTags,"insignificant.")
 
-    difference = min(tagOrSubtopic["fTagCount"] - minFTags,0) or max(tagOrSubtopic["fTagCount"] - maxFTags,0)
+    fTagCount = tagOrSubtopic.get("fTagCount",0)
+    difference = min(fTagCount - minFTags,0) or max(fTagCount - maxFTags,0)
 
     return minFTags,maxFTags,difference
 
 def FTagStatusCode(tagOrSubtopic: dict[str]) -> str:
     """Return a one-character code indicating the status of this tag or subtopic's featured excerpts."""
 
+    tagName = tagOrSubtopic["tag"]
     _,_,diffFTag = OptimalFTagCount(tagOrSubtopic)
-    if tagOrSubtopic.get("status","") == "Reviewed":
+    if tagOrSubtopic.get("status","") == "Reviewed" or \
+            (tagName in Database.SoloSubtopics() and gDatabase["subtopic"][tagName]["status"] == "Reviewed"):
         prefixChar = "☑"
     elif tagOrSubtopic.get("fTagCount",0) == 0:
         prefixChar = "∅"

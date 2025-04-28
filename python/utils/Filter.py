@@ -70,6 +70,10 @@ class Filter:
         "Return True if this filter passes item."
         return not self.negate
     
+    def Count(self,items: Iterable[dict]) -> int:
+        "Return the number of items that pass this filter"
+        return sum(1 for item in items if self.Match(item))
+
     def Apply(self,items: Iterable[dict]) -> Iterator[dict]:
         "Return an iterator over items that pass this filter. "
         return (item for item in items if self.Match(item))

@@ -624,8 +624,8 @@
     "_modified": "2025-04-28 06:25:58.000000"
   },
   "indexes/SortedTags.html": {
-    "md5": "4b5fb3ea7117dbeca7152e57f8ea50c6",
-    "_modified": "2025-04-28 09:08:16.000000"
+    "md5": "93728f77976f29fb9617dbf83b8c5d57",
+    "_modified": "2025-04-28 09:46:40.000000"
   },
   "indexes/EventsBySeries.html": {
     "md5": "09846c7c757880b7661d16f3733a5a2a",
@@ -10808,8 +10808,8 @@
     "_modified": "2025-04-28 09:08:10.000000"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "7fe54e7f8dd6ca66b90994a63bdac2ec",
-    "_modified": "2025-04-28 09:08:10.000000"
+    "md5": "2379413ff23449b2fd88025507f3f532",
+    "_modified": "2025-04-28 09:33:08.000000"
   },
   "indexes/AllExcerpts-featured.html": {
     "md5": "f2bf8f4ccfb0eb46116ebbb13e432da5",
@@ -13128,8 +13128,8 @@
     "_modified": "2025-04-28 06:26:36.000000"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "83220abf04049b9605687482eeb24102",
-    "_modified": "2025-04-28 09:08:10.000000"
+    "md5": "c8c7c769c0f14a66c8d89e04932e6601",
+    "_modified": "2025-04-28 09:33:08.000000"
   },
   "tags/monasteries-relevant.html": {
     "md5": "56d5ec80e586c5c605265753e3649fdc",
@@ -14626,5 +14626,9 @@
   "clusters/right-intention-reference.html": {
     "md5": "45f66856231504c92b2743984072420d",
     "_modified": "2025-04-28 08:43:14.000000"
+  },
+  "indexes/SortedTags_print.html": {
+    "md5": "ed7bb7724ac5df5d884b9807be927e53",
+    "_modified": "2025-04-28 10:36:14.000000"
   }
 }
