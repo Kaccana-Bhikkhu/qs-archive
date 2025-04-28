@@ -18032,7 +18032,13 @@
       "teachers": [
         "AChah"
       ],
-      "fTags": [],
+      "fTags": [
+        "Similes"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Alternate audio",
@@ -25057,7 +25063,10 @@
       "tags": [
         "Family",
         "Birth",
-        "Characteristics of existence"
+        "Characteristics of existence",
+        "Trust",
+        "Heedfulness",
+        "Generosity"
       ],
       "qTagCount": 3,
       "clips": [
@@ -33028,7 +33037,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Characteristics of existence"
+      ],
+      "fTagOrder": [
+        160
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Meditation",
@@ -68018,9 +68033,10 @@
       "annotations": [],
       "tags": [
         "Sutta",
-        "Learning"
+        "Learning",
+        "Lay life"
       ],
-      "qTagCount": 2,
+      "qTagCount": 3,
       "clips": [
         [
           "$",
@@ -76873,23 +76889,31 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Characteristics of existence"
+      ],
+      "fTagOrder": [
+        120
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Not-self",
         "Insight meditation",
         "Happiness",
-        "Characteristics of existence"
+        "Characteristics of existence",
+        "Impermanence",
+        "Suffering"
       ],
-      "qTagCount": 4,
+      "qTagCount": 6,
       "clips": [
         [
           "$",
           "0:11",
-          "3:21"
+          "3:15"
         ]
       ],
-      "duration": "3:10"
+      "duration": "3:04"
     },
     {
       "event": "TG2016",
@@ -77896,11 +77920,12 @@
       "fTags": [],
       "annotations": [],
       "tags": [
+        "Meditation/General advice",
         "Determination",
         "Compassion",
         "Pain"
       ],
-      "qTagCount": 3,
+      "qTagCount": 4,
       "clips": [
         [
           "$",
@@ -78469,7 +78494,17 @@
         "AP"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "",
+          "text": "[Inner Listening]().",
+          "tags": [
+            "Sound of silence"
+          ],
+          "indentLevel": 1
+        }
+      ],
       "tags": [
         "Sound of silence",
         "Ajahn Chah",
@@ -78523,12 +78558,14 @@
         "AP"
       ],
       "fTags": [
-        "Jhāna"
+        "Jhāna",
+        "Similes"
       ],
       "fTagOrder": [
-        90
+        90,
+        200
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "EE",
       "annotations": [
         {
           "kind": "Sutta",
@@ -89278,11 +89315,11 @@
       "sessionNumber": 3,
       "excerptNumber": 13,
       "fileNumber": 13,
-      "kind": "Question",
+      "kind": "Reading",
       "flags": "",
       "text": "Stillness Flowing p. 682 \"Dhamma Practice\"",
       "teachers": [
-        "AP"
+        "AJaya"
       ],
       "fTags": [],
       "annotations": [],
@@ -93394,7 +93431,7 @@
         {
           "kind": "Quote",
           "flags": "",
-          "text": "The peace of Nibbāna is note something that you gain, that you get, that you claim ownership over; it's by relinquishing and releasing these bases of identity.",
+          "text": "The peace of Nibbāna is not something that you gain, that you get, that you claim ownership over; it's by relinquishing and releasing these bases of identity.",
           "teachers": [
             "AP"
           ],
@@ -95167,7 +95204,7 @@
       "fTagOrder": [
         120
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "P",
       "annotations": [
         {
           "kind": "Indirect quote",
@@ -119657,7 +119694,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 56,
       "sessionCount": 259,
-      "excerptCount": 2046,
+      "excerptCount": 2045,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -119779,7 +119816,7 @@
       "allowTag": true,
       "group": "Monastics",
       "lineage": "Western disciples of Ajahn Chah",
-      "excerptCount": 35,
+      "excerptCount": 36,
       "htmlFile": "ajahn-jayasaro.html"
     },
     "ASd": {
@@ -122326,7 +122363,7 @@
         "Suffering"
       ],
       "subtopics": [],
-      "excerptCount": 217,
+      "excerptCount": 218,
       "fTagCount": 5,
       "listIndex": 270
     },
@@ -123296,7 +123333,7 @@
         "Generosity"
       ],
       "subtopics": [],
-      "excerptCount": 115,
+      "excerptCount": 116,
       "fTagCount": 3,
       "listIndex": 128
     },
@@ -123844,7 +123881,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "heedfulness.html",
-      "excerptCount": 14,
+      "excerptCount": 15,
       "fTagCount": 1,
       "listIndex": 165
     },
@@ -123998,7 +124035,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "trust.html",
-      "excerptCount": 21,
+      "excerptCount": 22,
       "listIndex": 173
     },
     "Courage": {
@@ -125534,6 +125571,7 @@
       "htmlFile": "characteristics-of-existence.html",
       "sessionCount": 1,
       "excerptCount": 37,
+      "fTagCount": 2,
       "listIndex": 268
     },
     "Impermanence": {
@@ -125564,7 +125602,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 111,
+      "excerptCount": 112,
       "fTagCount": 5,
       "listIndex": 269
     },
@@ -126964,7 +127002,7 @@
       "partOfSubtopics": [
         "Meditation"
       ],
-      "excerptCount": 24,
+      "excerptCount": 25,
       "fTagCount": 2,
       "listIndex": 351
     },
@@ -128115,6 +128153,7 @@
       "htmlFile": "similes.html",
       "sessionCount": 1,
       "excerptCount": 116,
+      "fTagCount": 2,
       "listIndex": 467
     },
     "Symbolism": {
@@ -135536,7 +135575,7 @@
         "Everyday life"
       ],
       "eventCount": 1,
-      "excerptCount": 58,
+      "excerptCount": 59,
       "fTagCount": 4,
       "listIndex": 844
     },
@@ -138358,6 +138397,17 @@
       "author": [
         "ASumedho"
       ]
+    },
+    "inner listening": {
+      "abbreviation": "Inner Listening",
+      "title": "_Inner Listening_",
+      "attribution": "by Ajahn Amaro",
+      "pdfPageOffset": 0,
+      "filename": "Inner_Listening_-_Ajahn_Amaro.pdf",
+      "remoteUrl": "https://www.abhayagiri.org/media/books/Inner_Listening_-_Ajahn_Amaro.pdf",
+      "author": [
+        "AA"
+      ]
     }
   },
   "tagDisplayList": [
@@ -139090,7 +139140,7 @@
       "text": "Four Noble Truths (54) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 20,
-      "subtagExcerptCount": 878
+      "subtagExcerptCount": 879
     },
     {
       "level": 3,
@@ -139103,7 +139153,7 @@
       "text": "Noble Truth of Suffering (24) [dukkha ariya-sacca]",
       "tag": "Noble Truth of Suffering",
       "subtagCount": 8,
-      "subtagExcerptCount": 498
+      "subtagExcerptCount": 499
     },
     {
       "level": 4,
@@ -139155,9 +139205,9 @@
       "flags": "",
       "name": "Suffering",
       "pali": "dukkha",
-      "excerptCount": 217,
+      "excerptCount": 218,
       "subsumed": false,
-      "text": "Suffering (217) [dukkha]",
+      "text": "Suffering (218) [dukkha]",
       "tag": "Suffering"
     },
     {
@@ -139703,7 +139753,7 @@
       "text": "Seven Treasures (7) [satta dhanā]",
       "tag": "Treasures",
       "subtagCount": 12,
-      "subtagExcerptCount": 612
+      "subtagExcerptCount": 613
     },
     {
       "level": 3,
@@ -139825,9 +139875,9 @@
       "flags": "*",
       "name": "Generosity",
       "pali": "dāna",
-      "excerptCount": 115,
+      "excerptCount": 116,
       "subsumed": false,
-      "text": "Generosity (115) [dāna]",
+      "text": "Generosity (116) [dāna]",
       "tag": "Generosity"
     },
     {
@@ -139852,7 +139902,7 @@
       "text": "Ten Perfections (14) [dasa pāramiyo]",
       "tag": "Perfections",
       "subtagCount": 10,
-      "subtagExcerptCount": 607
+      "subtagExcerptCount": 608
     },
     {
       "level": 3,
@@ -139860,9 +139910,9 @@
       "flags": "",
       "name": "Generosity",
       "pali": "dāna",
-      "excerptCount": 115,
+      "excerptCount": 116,
       "subsumed": false,
-      "text": "Generosity (115) [dāna]",
+      "text": "Generosity (116) [dāna]",
       "tag": "Generosity"
     },
     {
@@ -140244,9 +140294,9 @@
       "flags": "",
       "name": "Heedfulness",
       "pali": "appamāda",
-      "excerptCount": 14,
+      "excerptCount": 15,
       "subsumed": false,
-      "text": "Heedfulness (14) [appamāda]",
+      "text": "Heedfulness (15) [appamāda]",
       "tag": "Heedfulness"
     },
     {
@@ -140334,9 +140384,9 @@
       "flags": "",
       "name": "Trust",
       "pali": "",
-      "excerptCount": 21,
+      "excerptCount": 22,
       "subsumed": false,
-      "text": "Trust (21)",
+      "text": "Trust (22)",
       "tag": "Trust"
     },
     {
@@ -141400,9 +141450,9 @@
       "flags": "",
       "name": "Suffering",
       "pali": "dukkha",
-      "excerptCount": 217,
+      "excerptCount": 218,
       "subsumed": false,
-      "text": "Suffering (217) [dukkha]",
+      "text": "Suffering (218) [dukkha]",
       "tag": "Suffering"
     },
     {
@@ -141424,9 +141474,9 @@
       "flags": "*",
       "name": "Impermanence",
       "pali": "anicca",
-      "excerptCount": 111,
+      "excerptCount": 112,
       "subsumed": false,
-      "text": "Impermanence (111) [anicca]",
+      "text": "Impermanence (112) [anicca]",
       "tag": "Impermanence"
     },
     {
@@ -141435,9 +141485,9 @@
       "flags": "*",
       "name": "Suffering",
       "pali": "dukkha",
-      "excerptCount": 217,
+      "excerptCount": 218,
       "subsumed": false,
-      "text": "Suffering (217) [dukkha]",
+      "text": "Suffering (218) [dukkha]",
       "tag": "Suffering"
     },
     {
@@ -142358,9 +142408,9 @@
       "flags": "",
       "name": "Meditation/General advice",
       "pali": "",
-      "excerptCount": 24,
+      "excerptCount": 25,
       "subsumed": false,
-      "text": "Meditation/General advice (24)",
+      "text": "Meditation/General advice (25)",
       "tag": "Meditation/General advice"
     },
     {
@@ -143306,9 +143356,9 @@
       "flags": "",
       "name": "Generosity",
       "pali": "dāna",
-      "excerptCount": 115,
+      "excerptCount": 116,
       "subsumed": false,
-      "text": "Generosity (115) [dāna]",
+      "text": "Generosity (116) [dāna]",
       "tag": "Generosity"
     },
     {
@@ -146873,7 +146923,7 @@
       "text": "Renunciant practice (2)",
       "tag": "Renunciant practice",
       "subtagCount": 77,
-      "subtagExcerptCount": 1030
+      "subtagExcerptCount": 1031
     },
     {
       "level": 2,
@@ -147229,7 +147279,7 @@
       "text": "Monastic life (192) [brahmacariyā]",
       "tag": "Monastic life",
       "subtagCount": 49,
-      "subtagExcerptCount": 879
+      "subtagExcerptCount": 880
     },
     {
       "level": 3,
@@ -147400,7 +147450,7 @@
       "text": "Saṅgha (66)",
       "tag": "Saṅgha",
       "subtagCount": 10,
-      "subtagExcerptCount": 450
+      "subtagExcerptCount": 451
     },
     {
       "level": 4,
@@ -147435,7 +147485,7 @@
       "text": "Six Principles of Cordiality (10) [cha dhammā sārāṇīyā]",
       "tag": "Principles of Cordiality",
       "subtagCount": 4,
-      "subtagExcerptCount": 332
+      "subtagExcerptCount": 333
     },
     {
       "level": 5,
@@ -147454,9 +147504,9 @@
       "flags": "h",
       "name": "Sharing requisites in common",
       "pali": "",
-      "excerptCount": 115,
+      "excerptCount": 116,
       "subsumed": true,
-      "text": "Sharing requisites in common see Generosity (115)",
+      "text": "Sharing requisites in common see Generosity (116)",
       "tag": "Generosity"
     },
     {
@@ -147942,9 +147992,9 @@
       "flags": "",
       "name": "Lay life",
       "pali": "",
-      "excerptCount": 58,
+      "excerptCount": 59,
       "subsumed": false,
-      "text": "Lay life (58)",
+      "text": "Lay life (59)",
       "tag": "Lay life"
     },
     {
@@ -148929,7 +148979,7 @@
       "sessions": 8,
       "excerpts": 176,
       "answersListenedTo": 38,
-      "tagsApplied": 483,
+      "tagsApplied": 486,
       "invalidTags": 0,
       "duration": "7:52:27"
     },
@@ -149083,7 +149133,7 @@
       "sessions": 8,
       "excerpts": 229,
       "answersListenedTo": 94,
-      "tagsApplied": 587,
+      "tagsApplied": 588,
       "invalidTags": 0,
       "duration": "8:38:19"
     },
@@ -149126,8 +149176,8 @@
       "teachers": "AP;ASd;AKd;DS",
       "sessions": 8,
       "excerpts": 123,
-      "answersListenedTo": 87,
-      "tagsApplied": 730,
+      "answersListenedTo": 88,
+      "tagsApplied": 734,
       "invalidTags": 0,
       "duration": "7:54:29"
     },
@@ -151947,7 +151997,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/impermanence.html",
-      "excerptCount": 111,
+      "excerptCount": 112,
       "fTagCount": 5
     },
     "Suffering": {
@@ -151960,7 +152010,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/suffering.html",
-      "excerptCount": 217,
+      "excerptCount": 218,
       "fTagCount": 5
     },
     "Fear": {
@@ -152120,7 +152170,7 @@
         "Recollection/Generosity": "+"
       },
       "htmlPath": "clusters/generosity.html",
-      "excerptCount": 120,
+      "excerptCount": 121,
       "fTagCount": 3
     },
     "Goodwill": {
@@ -152387,7 +152437,7 @@
         "Meditation/General advice": "+"
       },
       "htmlPath": "clusters/meditation.html",
-      "excerptCount": 103,
+      "excerptCount": 104,
       "fTagCount": 4
     },
     "Mindfulness of body": {
@@ -153514,7 +153564,7 @@
         "Lay life": "+"
       },
       "htmlPath": "clusters/everyday-life.html",
-      "excerptCount": 91,
+      "excerptCount": 92,
       "fTagCount": 5
     },
     "Health": {
@@ -154363,7 +154413,7 @@
         "Death",
         "Grief"
       ],
-      "excerptCount": 552,
+      "excerptCount": 553,
       "fTagCount": 25
     },
     "refuges": {
@@ -154397,7 +154447,7 @@
         "Precepts",
         "Renunciation"
       ],
-      "excerptCount": 409,
+      "excerptCount": 410,
       "fTagCount": 20
     },
     "truths": {
@@ -154456,7 +154506,7 @@
         "Knowing itself",
         "Long-term practice"
       ],
-      "excerptCount": 673,
+      "excerptCount": 674,
       "fTagCount": 38
     },
     "skillful": {
@@ -154654,7 +154704,7 @@
         "Commerce/economics",
         "Technology"
       ],
-      "excerptCount": 532,
+      "excerptCount": 533,
       "fTagCount": 39
     }
   },
