@@ -306,8 +306,10 @@ def CheckFTagOrder() -> None:
     for subtopicOrTag in Database.SubtopicsAndTags():
         tags = [subtopicOrTag["tag"]]
         if "topicCode" in subtopicOrTag: # Is this a subtopic?
+            featuredExcerpts = Filter.ClusterFTag(tags[0])(gDatabase["excerpts"])
             tags += list(subtopicOrTag.get("subtags",()))
-        featuredExcerpts = Filter.FTag(tags)(gDatabase["excerpts"])
+        else:
+            featuredExcerpts = Filter.FTag(tags)(gDatabase["excerpts"])
         problems = []
         fTagOrder = set(Database.FTagOrder(x,tags) for x in featuredExcerpts)
         if len(fTagOrder) < len(featuredExcerpts):
@@ -357,10 +359,18 @@ def NeedsAudioEditing() -> None:
         print("\n".join(Database.ItemRepr(x) for x in amplifyQuestions))
         print()
     
-    audioEditing = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.AUDIO_EDITING in x["flags"]]
-    if audioEditing:
-        Alert.notice("The following",len(audioEditing),"excerpts need audio editing:",lineSpacing=0)
-        print("\n".join(Database.ItemRepr(x) for x in audioEditing))
+    checkSplit = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.AUDIO_EDITING in x["flags"]]
+    if checkSplit:
+        Alert.notice("The following",len(checkSplit),"excerpts need audio editing:",lineSpacing=0)
+        print("\n".join(Database.ItemRepr(x) for x in checkSplit))
+        print()
+    
+    checkSplit = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.CHECK_SPLIT in x["flags"]]
+    if checkSplit:
+        Alert.notice("Split points should be checked for the following",len(checkSplit),"excerpts:",lineSpacing=0)
+        for x in checkSplit:
+            print(Database.ItemRepr(x))
+            print("   " + str(x["clips"]))
         print()
 
 def DumpCSV(directory:str) -> None:

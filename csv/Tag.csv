@@ -1,5 +1,5 @@
 Modified:,2025,,,,,,,,,,,,,,
-Count,218,901,54,445,181,45,74,,47,87,13,938,408,877,877
+Count,218,901,54,445,185,45,74,,47,87,13,937,408,876,876
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -596,7 +596,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Ṭhitapañño,,,,,,,,,,               Ajahn Ṭhitapañño,,Ajahn Ṭhitapañño,Ajahn Ṭhitapañño
 6,,Ajahn Kovilo,,,,,,,,,,               Ajahn Kovilo,,Ajahn Kovilo,Ajahn Kovilo
 6,,Ajahn Sudhīro,,,,,,,,,,               Ajahn Sudhīro,,Ajahn Sudhīro,Ajahn Sudhīro
-,,,,,,,,,,,,,,,
+6,,Ajahn Pesalo,,,,,,,,,,               Ajahn Pesalo,,Ajahn Pesalo,Ajahn Pesalo
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -609,7 +609,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Dee,,,,,,,,,,               Ajahn Dee,,Ajahn Dee,Ajahn Dee
 6,,Ajahn Phut,,,,,,,,,,               Ajahn Phut,,Ajahn Phut,Ajahn Phut
 6,,Ajahn Gi Dhammuttamo,,,Ajahn Gi,,,,,,,               Ajahn Gi Dhammuttamo,,Ajahn Gi,Ajahn Gi
-,,,,,,,,,,,,,,,
+6,,Ajahn Puth Thaniyo,,,Ajahn Puth,,,,,,,               Ajahn Puth Thaniyo,,Ajahn Puth,Ajahn Puth
 6,,Ajahn Jia Cundo,,,Ajahn Jia,,,,,,,               Ajahn Jia Cundo,,Ajahn Jia,Ajahn Jia
 6,,Ajahn Sanong Katapuñño,,,Ajahn Sanong,,,,,,,               Ajahn Sanong Katapuñño,,Ajahn Sanong,Ajahn Sanong
 6,,Ajahn Sim Buddhacaro,,,Ajahn Sim,,,,,,,               Ajahn Sim Buddhacaro,,Ajahn Sim,Ajahn Sim
@@ -667,18 +667,23 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Dr. Hammalawa Saddhatissa,,,Dr. Saddhatissa,,,,,,,         Dr. Hammalawa Saddhatissa,,Dr. Saddhatissa,Dr. Saddhatissa
 4,,Bhante Yogavacara Rahula,,,Bhante Rahula,,,,,,,         Bhante Yogavacara Rahula,,Bhante Rahula,Bhante Rahula
 4,,Bhante Dharmawara,,,,,,,,,,         Bhante Dharmawara,,Bhante Dharmawara,Bhante Dharmawara
+4,,Taungpulu Sayadaw,,,,,,,,,,         Taungpulu Sayadaw,,Taungpulu Sayadaw,Taungpulu Sayadaw
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,PS,Mahāyāna monastics,,,,,,,,,,      Mahāyāna monastics,,Mahāyāna monastics,Mahāyāna monastics
 4,,Dōgen,,,,,,,,,,         Dōgen,,Dōgen,Dōgen
 4,,Master Hsu Yun,,,,,,,,,,         Master Hsu Yun,,Master Hsu Yun,Master Hsu Yun
 4,,Master Hsuan Hua,,,,,,,,,,         Master Hsuan Hua,,Master Hsuan Hua,Master Hsuan Hua
 4,,The Dalai Lama,,,Dalai Lama,,,,,,,         The Dalai Lama,,Dalai Lama,Dalai Lama
 4,,Reverend Heng Sure,,,Rev. Heng Sure,,,,,,,         Reverend Heng Sure,,Rev. Heng Sure,Rev. Heng Sure
+4,,Dharma Master Heng Shun,,,Heng Shun,,,,,,,         Dharma Master Heng Shun,,Heng Shun,Heng Shun
 4,,Trulshik Rinpoche,,,,,,,,,,         Trulshik Rinpoche,,Trulshik Rinpoche,Trulshik Rinpoche
 4,,Lama Zopa Rinpoche,,,Lama Zopa,,,,,,,         Lama Zopa Rinpoche,,Lama Zopa,Lama Zopa
 4,,Harata Rōshi,,,,,,,,,,         Harata Rōshi,,Harata Rōshi,Harata Rōshi
 4,,Dharma Master Heng Lyu,,,Heng Lyu,,,,,,,         Dharma Master Heng Lyu,,Heng Lyu,Heng Lyu
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
+4,,Thubten Chodron,,,,,,,,,,         Thubten Chodron,,Thubten Chodron,Thubten Chodron
+4,,Master Xuanzang,,,,,,,,,,         Master Xuanzang,,Master Xuanzang,Master Xuanzang
 ,,,,,,,,,,,,,,,
 3,P,Christian monastics,,,,,,,,,,      Christian monastics,,Christian monastics,Christian monastics
 4,,Father Boniface,,,,,,,,,,         Father Boniface,,Father Boniface,Father Boniface
@@ -698,6 +703,10 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Jack Kornfield,,,,,,,,,,      Jack Kornfield,,Jack Kornfield,Jack Kornfield
 3,,Paul Breiter,,,,,,,,,,      Paul Breiter,,Paul Breiter,Paul Breiter
 3,,Joseph Kappel,,,,,,,,,,      Joseph Kappel,,Joseph Kappel,Joseph Kappel
+3,,Larry Rosenberg,,,,,,,,,,      Larry Rosenberg,,Larry Rosenberg,Larry Rosenberg
+3,,Rodney Smith,,,,,,,,,,      Rodney Smith,,Rodney Smith,Rodney Smith
+3,,Joseph Goldstein,,,,,,,,,,      Joseph Goldstein,,Joseph Goldstein,Joseph Goldstein
+3,,Stephen Levine,,,,,,,,,,      Stephen Levine,,Stephen Levine,Stephen Levine
 ,,,,,,,,,,,,,,,
 3,,Kittisaro,,,,,,,,,,      Kittisaro,,Kittisaro,Kittisaro
 3,,Ṭhānissarā,,,,,,,,,,      Ṭhānissarā,,Ṭhānissarā,Ṭhānissarā
@@ -744,7 +753,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 5,,Temple Forest Monastery,,,Temple Monastery,,,,,,,            Temple Forest Monastery,,Temple Monastery,Temple Monastery
 ,,,,,,,,,,,,,,,
 4,,Tisarana Monastery,,,Tisarana,,,,,,,         Tisarana Monastery,,Tisarana,Tisarana
-,,,,,,,,,,,,,,,
+4,,Arrow River Forest Hermitage,,,Arrow River,,,,,,,         Arrow River Forest Hermitage,,Arrow River,Arrow River
 4,,Abhayagiri Monastery,,,Abhayagiri,,,,,,,         Abhayagiri Monastery,,Abhayagiri,Abhayagiri
 5,p,Saṅghapāla Foundation,,,Saṅghapāla,,,,,,,            Saṅghapāla Foundation,,Saṅghapāla,Saṅghapāla
 4,,Pacific Hermitage,,,,,,,,,,         Pacific Hermitage,,Pacific Hermitage,Pacific Hermitage
@@ -760,7 +769,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Wat Pah Ban Tat,,,,,,,,Ajahn Mahā Boowa,,      Wat Pah Ban Tat,,Wat Pah Ban Tat,Wat Pah Ban Tat
 3,,Wat Suan Mokkh,,,,,,,,Ajahn Buddhadāsa,,      Wat Suan Mokkh,,Wat Suan Mokkh,Wat Suan Mokkh
 3,,Wat Burapha,,,,,,,,Ajahn Dune,,      Wat Burapha,,Wat Burapha,Wat Burapha
-,,,,,,,,,,,,,,,
+3,,Wat Phleng Vipassanā,,,,,,,,,,      Wat Phleng Vipassanā,,Wat Phleng Vipassanā,Wat Phleng Vipassanā
 2,PS,Thai Forest monasteries in the West,,,,,,,,,,   Thai Forest monasteries in the West,,Thai Forest monasteries in the West,Thai Forest monasteries in the West
 3,,Wat Buridat,,,,,,,,,,      Wat Buridat,,Wat Buridat,Wat Buridat
 3,,Wat Metta,,,,,,,,,,      Wat Metta,,Wat Metta,Wat Metta
@@ -774,6 +783,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 3,,Dhammadharini Monastery,,,,,,,,,,      Dhammadharini Monastery,,Dhammadharini Monastery,Dhammadharini Monastery
+3,,Aranya Bodhi Hermitage,,,,,,,,,,      Aranya Bodhi Hermitage,,Aranya Bodhi Hermitage,Aranya Bodhi Hermitage
 3,,Karuna Buddhist Vihara,,,,,,,,,,      Karuna Buddhist Vihara,,Karuna Buddhist Vihara,Karuna Buddhist Vihara
 ,,,,,,,,,,,,,,,
 2,P,Christian monasteries,,,,,,,,,,   Christian monasteries,,Christian monasteries,Christian monasteries
@@ -784,7 +794,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Insight Meditation Society,,,,,,,,,,      Insight Meditation Society,,Insight Meditation Society,Insight Meditation Society
 3,,Spirit Rock Meditation Center,,,Spirit Rock,,,,,,,      Spirit Rock Meditation Center,,Spirit Rock,Spirit Rock
 3,,Panyaprateep School,,,,,,,,,,      Panyaprateep School,,Panyaprateep School,Panyaprateep School
-,,,,,,,,,,,,,,,
+3,,Manjushri Institute,,,,,,,,,,      Manjushri Institute,,Manjushri Institute,Manjushri Institute
 ,,,,,,,,,,,,,,,
 1,,Nature of the cosmos,,,,,,,,,,Nature of the cosmos,,Nature of the cosmos,Nature of the cosmos
 2,,Time,,kāla,,,,,,,,   Time,kāla,Time,Time [kāla]
@@ -852,6 +862,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Thai language,,,Thai,,,,,,,      Thai language,,Thai,Thai
 4,,Question in Thai,,,,,,,,,,         Question in Thai,,Question in Thai,Question in Thai
 4,,Thai audio,,,,,,,,,,         Thai audio,,Thai audio,Thai audio
+3,,Isan/Lao language,,,Isan,,,,,,,      Isan/Lao language,,Isan,Isan
 3,,Translation,,,,,,,,,,      Translation,,Translation,Translation
 3,,Etymology,,,,,,,,,,      Etymology,,Etymology,Etymology
 ,,,,,,,,,,,,,,,
@@ -961,7 +972,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Older monks,,,,,,,,,,         Older monks,,Older monks,Older monks
 4,*,Temporary ordination,,,,,,,,,,         Temporary ordination,,Temporary ordination,Temporary ordination
 4,,Thai sects,,,,,,,,,,         Thai sects,,Thai sects,Thai sects
-4,,Novices,,samanera,,,,,,,,         Novices,samanera,Novices,Novices [samanera]
+4,,Novices,,sāmaṇera,,,,,,,,         Novices,sāmaṇera,Novices,Novices [sāmaṇera]
 4,,Postulants,,anagārika,,,Pakow <em>Thai</em>,,,,,         Postulants,anagārika,Postulants,Postulants [anagārika]
 3,*,Women's monastic forms,,,,,,,,,,      Women's monastic forms,,Women's monastic forms,Women's monastic forms
 4,*,,,Bhikkhunī,,,,,,,,         Bhikkhunī,,Bhikkhunī,Bhikkhunī
@@ -993,7 +1004,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Pain,,dukkha,,,,,,,,      Pain,dukkha,Pain,Pain [dukkha]
 2,.,Personal,,,,,,,,,,   Personal,,,
 3,,Health,,,,,,,,,,      Health,,Health,Health
-4,,Excercise,,,,,,,,,,         Excercise,,Excercise,Excercise
+4,,Exercise,,,,,,,,,,         Exercise,,Exercise,Exercise
 4,,Chi Gong,,,,,,,,,,         Chi Gong,,Chi Gong,Chi Gong
 4,,Smoking,,,,,,,,,,         Smoking,,Smoking,Smoking
 4,,Mental illness,,,,,,,,,,         Mental illness,,Mental illness,Mental illness
@@ -1050,22 +1061,3 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Advertizing,,,,,,,,,,         Advertizing,,Advertizing,Advertizing
 4,,Internet,,,,,,,,,,         Internet,,Internet,Internet
 4,,Social media,,,,,,,,,,         Social media,,Social media,Social media
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-1,,New unsorted tags,,,,,,,,,,New unsorted tags,,New unsorted tags,New unsorted tags
-2,,Arrow River,,,,,,,,,,   Arrow River,,Arrow River,Arrow River
-2,,Ajahn Pesalo,,,,,,,,,,   Ajahn Pesalo,,Ajahn Pesalo,Ajahn Pesalo
-2,,Isan,,,,,,,,,,   Isan,,Isan,Isan
-2,,Aranya Bodhi Hermitage,,,,,,,,,,   Aranya Bodhi Hermitage,,Aranya Bodhi Hermitage,Aranya Bodhi Hermitage
-2,,Thubten Chodron,,,,,,,,,,   Thubten Chodron,,Thubten Chodron,Thubten Chodron
-2,,Manjushri Institute,,,,,,,,,,   Manjushri Institute,,Manjushri Institute,Manjushri Institute
-2,,Larry Rosenberg,,,,,,,,,,   Larry Rosenberg,,Larry Rosenberg,Larry Rosenberg
-2,,Ajahn Puth,,,,,,,,,,   Ajahn Puth,,Ajahn Puth,Ajahn Puth
-2,,Rodney Smith,,,,,,,,,,   Rodney Smith,,Rodney Smith,Rodney Smith
-2,,Master Xuanzang,,,,,,,,,,   Master Xuanzang,,Master Xuanzang,Master Xuanzang
-2,,Heng Shun,,,,,,,,,,   Heng Shun,,Heng Shun,Heng Shun
-2,,Wat Phleng Vipassanā,,,,,,,,,,   Wat Phleng Vipassanā,,Wat Phleng Vipassanā,Wat Phleng Vipassanā
-2,,Taungpulu Sayadaw,,,,,,,,,,   Taungpulu Sayadaw,,Taungpulu Sayadaw,Taungpulu Sayadaw
-2,,Joseph Goldstein,,,,,,,,,,   Joseph Goldstein,,Joseph Goldstein,Joseph Goldstein
-2,,Stephen Levine,,,,,,,,,,   Stephen Levine,,Stephen Levine,Stephen Levine

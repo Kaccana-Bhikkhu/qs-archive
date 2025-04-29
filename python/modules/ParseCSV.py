@@ -48,6 +48,7 @@ class ExcerptFlag(StrEnum):
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
+    CHECK_SPLIT = "C"       # Check beginning, end, and cut split points
 
 # Each fTagOrder integer is followed by a single character flag specifying where to display this featured excerpt
 class FTagOrderFlag(StrEnum):
@@ -1123,7 +1124,7 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
             if altAudioList:
                 ProcessAltAudio(x,altAudioList[0])
             
-            appendAudioList = [a for a in x["annotations"] if a["kind"] in ("Append audio","Cut audio")]
+            appendAudioList = [a for a in x["annotations"] if a["kind"] in ("Append audio","Cut audio") and a["indentLevel"] == 1]
             if appendAudioList:
                 ProcessAppendAudio(x,appendAudioList)
 
@@ -1171,7 +1172,6 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
 
 def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
     """Process the fragments in excerpt and return a list to add to the event."""
-    # fragmentNumbers = [n for n,a in enumerate(excerpt["annotations"]) if a["Kind"] == "Fragment"]
     
     fragmentExcerpts = []
     nextFileNumber = excerpt["fileNumber"] + 1
@@ -1601,7 +1601,7 @@ def CountAndVerify(database):
         if tagDesc["primaries"] > 1:
             Alert.caution(f"{tagDesc['primaries']} instances of tag {tagDesc['tag']} are flagged as primary.")
         if tagDesc["copies"] > 1 and tagDesc["primaries"] == 0 and TagFlag.VIRTUAL not in tagDesc["flags"]:
-            Alert.notice(f"Notice: None of {tagDesc['copies']} instances of tag {tagDesc['tag']} are designated as primary.")
+            Alert.notice(f"None of {tagDesc['copies']} instances of tag {tagDesc['tag']} are designated as primary.")
 
 
 def AddArguments(parser):
