@@ -148,7 +148,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SplitMp3"
+                "ReviewDatabase"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

@@ -5,6 +5,9 @@ from __future__ import annotations
 
 import os, bisect, csv, re
 from functools import lru_cache
+from itertools import accumulate
+from datetime import timedelta
+from Mp3DirectCut import TimeDeltaToStr
 import Database, Filter
 import Utils, Database, Alert
 import FileRegister
@@ -189,9 +192,15 @@ def AuditNames() -> None:
                         "Vajrayāna":"Mahāyāna monastics"}
     groupExpectedSupertag = {"Lay teachers":"Lay teachers"}
     namesByDate = defaultdict(list)
+    abbreviationExpansions = {prefix["prefix"]:prefix["shortFor"] for prefix in gDatabase["prefix"].values() if prefix["shortFor"]}
     for n in names.values():
-        if n["tag"] and n["attributionName"] and n["tag"] != n["attributionName"]:
-            Alert.notice(f"Short names don't match: tag: {repr(n['tag'])}; attributionName: {repr(n['attributionName'])}.")
+        tagName = n["tag"]
+        if tagName and n["attributionName"]:
+            for a,f in abbreviationExpansions.items():
+                if tagName.startswith(a):
+                    tagName = tagName.replace(a,f,1)
+            if tagName != n["attributionName"]:
+                Alert.notice(f"Short names don't match: tag: {repr(n['tag'])}; attributionName: {repr(n['attributionName'])}.")
         if n["supertag"] and n["lineage"] and lineageExpectedSupertag.get(n["lineage"],n["supertag"]) != n["supertag"]:
             Alert.caution(f"{n['name']} mismatch: lineage: {n['lineage']}, supertag: {n['supertag']}")
         if n["supertag"] and n["group"] and groupExpectedSupertag.get(n["group"],n["supertag"]) != n["supertag"]:
@@ -367,10 +376,12 @@ def NeedsAudioEditing() -> None:
     
     checkSplit = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.CHECK_SPLIT in x["flags"]]
     if checkSplit:
-        Alert.notice("Split points should be checked for the following",len(checkSplit),"excerpts:",lineSpacing=0)
+        Alert.notice("Audio break points should be checked for the following",len(checkSplit),"excerpts:",lineSpacing=0)
         for x in checkSplit:
             print(Database.ItemRepr(x))
-            print("   " + str(x["clips"]))
+            durations = [clip.Duration(None) for clip in x["clips"][0:-1]]
+            splitPoints = [TimeDeltaToStr(d) for d in accumulate(durations,initial=timedelta(0))]
+            print(f"   Break points: {', '.join(['start'] + splitPoints[1:] + ['end'])}.")
         print()
 
 def DumpCSV(directory:str) -> None:
