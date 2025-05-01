@@ -74,7 +74,7 @@ def CheckUrl(url:str) -> UrlInfo:
                 idItems = soup.find_all(id=True)
                 bookmarks = set(item.get("id") for item in idItems)
                 if fragmentToCheck not in bookmarks:
-                    Alert.warning("Cannot find bookmark",fragmentToCheck,"in",url)
+                    Alert.warning("Cannot find bookmark","#" + fragmentToCheck,"in",url)
                 result = UrlInfo(good=True,bookmarks=bookmarks)
             else:
                 result = UrlInfo(good=True,bookmarks=[])

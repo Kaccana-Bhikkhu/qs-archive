@@ -7,7 +7,7 @@
 - [2021 Awaken to the New Year Retreat](../../pages/events/Awaken2021.html).
 - Spirit Rock daylong events: [Happiness on the Buddhist Path (2023)](../../pages/events/SRD2023.html) and [Perspectives on Buddhist Practice from Ajahn Chah (2024)](../../pages/events/SRD2024.html).
 - [2025 Q&A session with monks at Wat Pah Nanachat](../../pages/events/Nanachat2025.html).
-- Most tags applied to over 25 excerpts feature at least one excerpt.
+- Most [tags applied to over 25 excerpts](../indexes/SortedTags.html) feature at least one excerpt.
 
 ## Content
 This release contains 2809 excerpts from 57 events, comprising over 150 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 475 transcribed pages, of which 400 have been entered into the Archive. The detailed status of transcription is as follows:
@@ -16,19 +16,19 @@ This release contains 2809 excerpts from 57 events, comprising over 150 hours of
 The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](../../pages/about/09_Want-to-help.html) for details.
 
 ### Winter Retreats
-All sessions from the [2014](../../pages/events/WR2014.html) and [2015](../../pages/events/WR2015.html) Winter Retreats are included in the Archive. The 2013 and 2016 Winter Retreats have been transcribed on paper but not entered into the Archive. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](../../pages/events/WR2018-2.html). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats).
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](../../pages/events/WR2005-1.html) and the [2014](../../pages/events/WR2014.html) and [2015](../../pages/events/WR2015.html) Winter Retreats are included in the Archive. The 2013 and 2016 Winter Retreats have been transcribed on paper; some sessions from the [2016 retreat](../../pages/events/WR2016.html) are online. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](../../pages/events/WR2018-2.html). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats).
 
 ### Spirit Rock Daylongs
-All four recordings of daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center on abhayagiri.org before 2020 are included in the Archive. More recent daylongs are not yet included.
+Six daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
 
 ### Upāsikā Days
 All 21 Upāsikā Days led by Ajahn Pasanno with recordings on abhayagiri.org are in the Archive. Two more on YouTube haven't made it yet.
 
 ### Abhayagiri Anniversary Events
-The Archive contains material from the 2016, 2021, and 2024 anniversaries.
+The Archive contains material from the [2016](../../pages/events/Anniversary2016.html), [2021](../../pages/events/Anniversary2021.html), and [2024](../../pages/events/Anniversary2024.html) anniversaries.
 
 ### Other
-Almost all teachers have given consent for their 2001 Ajahn Chah Conference audio.
+Almost all teachers have given consent for their [2001 Ajahn Chah Conference](../../pages/events/Chah2001.html) audio.
 
 ## Known issues and limitations
 
