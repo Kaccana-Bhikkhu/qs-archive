@@ -122056,6 +122056,7 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "directed-thought-and-evaluation.html",
+      "note": "This tag refers to skillful thinking in meditation. See [Proliferation](tag:) for unskillful thinking.",
       "partOfSubtopics": [
         "Right Concentration"
       ],
@@ -122107,6 +122108,7 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "happiness.html",
+      "note": "The Pāli word sukha includes both pleasure and happiness.",
       "partOfSubtopics": [
         "Happiness"
       ],
@@ -122374,6 +122376,7 @@
       "copies": 3,
       "primaries": 1,
       "htmlFile": "suffering.html",
+      "note": "Although included in the Pāli word dukkha, painful bodily feeling appears under [Pain](tag:).",
       "partOfSubtopics": [
         "Suffering"
       ],
@@ -122402,6 +122405,7 @@
       "copies": 3,
       "primaries": 1,
       "htmlFile": "pain.html",
+      "note": "This tag refers to painful bodily feeling. See [Suffering](tag:) for the more general human experience.",
       "excerptCount": 35,
       "fTagCount": 4,
       "listIndex": 70
@@ -124471,6 +124475,7 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "sensual-desire.html",
+      "note": "This tag refers to sensual pleasure (kāma) as well as the desire for it (kāmacchanda).",
       "partOfSubtopics": [
         "Sensual desire"
       ],
@@ -124801,6 +124806,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "proliferation.html",
+      "note": "Proliferation (papañca) refers both to unskillful, out-of-control thinking and to the more subtle objectification that positions a subjective self in a world of objective things.",
       "partOfSubtopics": [
         "Proliferation"
       ],
@@ -125864,6 +125870,7 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "moods-of-the-mind.html",
+      "note": "This tag refers specifically to the Thai phrase _arom kong jit_, and is distinct from the English tag [Emotion](tag:).",
       "excerptCount": 9,
       "fTagCount": 1,
       "listIndex": 282
@@ -126215,6 +126222,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "dhamma.html",
+      "note": "",
       "partOfSubtopics": [
         "Dhamma"
       ],
@@ -127885,6 +127893,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "knowing-itself.html",
+      "note": "This tag includes the Thai Buddhist concept of _poo roo_, the one who knows.",
       "partOfSubtopics": [
         "Knowing itself"
       ],
@@ -132062,6 +132071,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "elders-council.html",
+      "note": "Although the Elders' Council organization coalesced in the 1990s, this tag applies retroactively to the group of European monasteries that formed it.",
       "excerptCount": 8,
       "listIndex": 648
     },
@@ -133622,6 +133632,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "culturenatural-environment.html",
+      "note": "This tag refers to the the effect of humans on the environment. See [Culture/Natural environment](tag:) for the effect of the environment on humans.",
       "partOfSubtopics": [
         "Culture/Natural environment"
       ],
@@ -136467,6 +136478,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "environment.html",
+      "note": "This tag refers to the effect of the environment on humans. See [Environment](tag:) for the effect of humans on the environment.",
       "partOfSubtopics": [
         "Environment"
       ],
@@ -149443,6 +149455,56 @@
       "duration": "58:29"
     }
   },
+  "tagNote": {
+    "Proliferation": {
+      "tag": "Proliferation",
+      "note": "Proliferation (papañca) refers both to unskillful, out-of-control thinking and to the more subtle objectification that positions a subjective self in a world of objective things."
+    },
+    "Elders' Council": {
+      "tag": "Elders' Council",
+      "note": "Although the Elders' Council organization coalesced in the 1990s, this tag applies retroactively to the group of European monasteries that formed it."
+    },
+    "Moods of the mind": {
+      "tag": "Moods of the mind",
+      "note": "This tag refers specifically to the Thai phrase _arom kong jit_, and is distinct from the English tag [Emotion](tag:)."
+    },
+    "Sensual desire": {
+      "tag": "Sensual desire",
+      "note": "This tag refers to sensual pleasure (kāma) as well as the desire for it (kāmacchanda)."
+    },
+    "Happiness": {
+      "tag": "Happiness",
+      "note": "The Pāli word sukha includes both pleasure and happiness."
+    },
+    "Pain": {
+      "tag": "Pain",
+      "note": "This tag refers to painful bodily feeling. See [Suffering](tag:) for the more general human experience."
+    },
+    "Suffering": {
+      "tag": "Suffering",
+      "note": "Although included in the Pāli word dukkha, painful bodily feeling appears under [Pain](tag:)."
+    },
+    "Directed thought and evaluation": {
+      "tag": "Directed thought and evaluation",
+      "note": "This tag refers to skillful thinking in meditation. See [Proliferation](tag:) for unskillful thinking."
+    },
+    "Knowing itself": {
+      "tag": "Knowing itself",
+      "note": "This tag includes the Thai Buddhist concept of _poo roo_, the one who knows."
+    },
+    "Culture/Natural environment": {
+      "tag": "Culture/Natural environment",
+      "note": "This tag refers to the the effect of humans on the environment. See [Culture/Natural environment](tag:) for the effect of the environment on humans."
+    },
+    "Environment": {
+      "tag": "Environment",
+      "note": "This tag refers to the effect of the environment on humans. See [Environment](tag:) for the effect of humans on the environment."
+    },
+    "Dhamma": {
+      "tag": "Dhamma",
+      "note": ""
+    }
+  },
   "lineage": {
     "Root teachers": {
       "lineage": "Root teachers"
@@ -152563,7 +152625,7 @@
       "related": [],
       "status": "",
       "topicCode": "path",
-      "progressMemo": "Needs an excerpt about killing.",
+      "progressMemo": "",
       "subtags": {
         "Killing": "+",
         "Stealing": "+",
@@ -152608,7 +152670,7 @@
       ],
       "status": "Sorted",
       "topicCode": "path",
-      "progressMemo": "Look for excerpt about clear comprehension.",
+      "progressMemo": "",
       "subtags": {
         "Ardency": "+",
         "Clear comprehension": "+"
@@ -152715,7 +152777,7 @@
       "related": [],
       "status": "",
       "topicCode": "meditation",
-      "progressMemo": "Need to review excerpts in UD2019-5.",
+      "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/recollection.html",
       "excerptCount": 56,
@@ -152852,9 +152914,10 @@
       "status": "Reviewed",
       "topicCode": "skillful",
       "progressMemo": "",
+      "clusterNote": "[Discernment](tag:) (pañña) includes correct perception and skillful choices at any level of refinement. [Investigation of states](tag:) (dhamma-vicaya) refers specifically to identifying skillful and unskillful states of mind in the early stages of meditation. [Appropriate attention](tag:) (yoniso manasikāra) refers to acts of discernment related to the field of attention.",
       "subtags": {
-        "Appropriate attention": "+",
-        "Investigation of states": "+"
+        "Investigation of states": "+",
+        "Appropriate attention": "+"
       },
       "htmlPath": "clusters/discernment.html",
       "excerptCount": 214,
@@ -153139,9 +153202,9 @@
       "displayAs": "Rebirth",
       "pali": "",
       "related": [],
-      "status": "Sorted",
+      "status": "Reviewed",
       "topicCode": "perspectives",
-      "progressMemo": "Wait for AKd Anniv 2021 excerpt.",
+      "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/rebirth.html",
       "excerptCount": 50,
@@ -153516,7 +153579,7 @@
       "related": [],
       "status": "Reviewed",
       "topicCode": "teachers",
-      "progressMemo": "Looking for one more excerpt about AP training under LP Chah.",
+      "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/ajahn-pasanno.html",
       "excerptCount": 297,
@@ -154693,7 +154756,7 @@
       "code": "path",
       "topic": "The Noble Eightfold Path",
       "pali": "ariya aṭṭaṅgika magga",
-      "shortNote": "For Right Intention, see [Renunciation](cluster:), [Non-ill-will](cluster:Goodwill), and [Non-cruelty](cluster:Compassion).",
+      "shortNote": "",
       "longNote": "",
       "listFile": "path.html",
       "subtopics": [
@@ -154973,6 +155036,7 @@
     "Can be annotation?": "canBeAnnotation",
     "Can be excerpt?": "canBeExcerpt",
     "Category": "category",
+    "Cluster note": "clusterNote",
     "Code": "code",
     "Date": "date",
     "Default form": "defaultForm",
@@ -155019,6 +155083,7 @@
     "Medium": "medium",
     "Name": "name",
     "New Page": "newPage",
+    "Note": "note",
     "Off topic?": "offTopic",
     "Old Page": "oldPage",
     "PDF page offset": "pdfPageOffset",
@@ -155059,6 +155124,7 @@
     "Subtopic": "subtopic",
     "Tag": "tag",
     "Tag menu": "tagMenu",
+    "TagNote": "tagNote",
     "Tags": "tags",
     "Tags 2": "tags2",
     "Tags 3": "tags3",

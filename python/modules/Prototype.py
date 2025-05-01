@@ -1745,6 +1745,10 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
             a(ListLinkedTags("Subtag",[t for t in tagInfo['subtags'] if t not in subsumedTags]))
             a(ListLinkedTags("See also",tagInfo['related'],plural = ""))
             a(ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False))
+        
+        if "note" in tagInfo:
+            with a.p():
+                a(tagInfo["note"])
         a.hr()
         
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
@@ -2213,6 +2217,9 @@ def TagClusterPages(topicDir: str):
             relatedClusters = [HtmlSubtopicLink(c) for c in clusterInfo["related"]]
             a(TitledList("See also",relatedClusters,plural=""))
         
+        if "clusterNote" in clusterInfo:
+            with a.p():
+                a(clusterInfo["clusterNote"])
         a.hr()
         
         pageInfo = Html.PageInfo("Tag cluster: " + clusterInfo["displayAs"],clusterInfo["htmlPath"])

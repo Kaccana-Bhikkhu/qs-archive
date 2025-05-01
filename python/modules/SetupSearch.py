@@ -171,7 +171,9 @@ def SubtopicBlob(subtopic:str) -> str:
 def SubtopicBlobs() -> Iterator[dict]:
     """Return a blob for each subtopic, sorted alphabetically."""
 
-    alphabetizedSubtopics = [(AlphabetizeName(subtopic["displayAs"]),subtopic["tag"]) for subtopic in gDatabase["subtopic"].values()]
+    soloSubtopics = Database.SoloSubtopics()
+    alphabetizedSubtopics = [(AlphabetizeName(subtopic["displayAs"]),subtopic["tag"]) for subtopic in gDatabase["subtopic"].values()
+                             if subtopic["tag"] not in soloSubtopics]
     alphabetizedSubtopics.sort()
 
     for _,subtopic in alphabetizedSubtopics:

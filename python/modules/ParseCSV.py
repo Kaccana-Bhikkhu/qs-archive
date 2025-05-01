@@ -415,6 +415,12 @@ def LoadTagsFile(database,tagFileName):
         tag["subtags"] = [t for t in tag["subtags"] if t not in virtualHeadings]
             # Remove virtual headings from subtag lists
 
+    for note in database["tagNote"].values():
+        try:
+            tags[note["tag"]]["note"] = note["note"]
+        except KeyError:
+            Alert.caution("Cannot find tag",note["tag"],"in order to apply a note to it.")
+
     database["tag"] = tags
     database["tagRaw"] = rawTagList
     database["tagSubsumed"] = subsumedTags
@@ -661,6 +667,8 @@ def CollectKeyTopics(database:dict[str]) -> None:
             subtopic["htmlPath"] = f"clusters/{Utils.slugify(subtopic['tag'])}.html"
         else: # Tags without subtopics link to pages in the tags directory
             subtopic["htmlPath"] = f"tags/{database['tag'][subtopic['tag']]['htmlFile']}"
+        if not subtopic["clusterNote"]:
+            del subtopic["clusterNote"]
 
     database["keyTopic"] = keyTopic
 

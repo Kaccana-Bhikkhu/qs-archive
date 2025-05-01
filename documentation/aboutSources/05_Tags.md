@@ -52,16 +52,6 @@ Sometimes separate Pāli terms appearing in the various lists are sufficiently c
 
 Although the basic structure began with the Buddha’s lists, it evolved organically to fit the audio content. In the course of this process, many somewhat arbitrary decisions must be made, particularly regarding how to mesh Pāli and English concepts. For example, multiple Pāli terms are clearly related to [Discernment](tag:) (pañña; see “[Why is discernment a better word for wisdom?](excerpt:SRD2013_S1_F3)”). When tagging English discourse, when to use [Discernment](tag:) and when to use related terms? The Archive uses the following scheme: [Investigation of states](tag:) (dhamma-vicaya) for identifying skillful and unskillful states of mind in the early stages of meditation and [Appropriate attention](tag:) (yoniso manasikāra) for acts of discernment related to the field of attention. Vīmaṃsā, one of the four [Bases of Success](drilldown:) describes reviewing the results of past actions with a view to further improve in the future, but the Archive subsumes this under the tag [Discernment](tag:).
 
-Other somewhat arbitrary choices regarding specific tags include the following:
-
- - Thinking is [Directed thought and evaluation](tag:) or [Proliferation](tag:) depending on its skillfulness.
- - [Proliferation](tag:) encompasses both unskillful obsessive thinking and objectification, two translations of papañca.
- - [Suffering](tag:) refers to the common experience; [Noble Truth of Suffering](tag:) applies only to reflective understanding of dukkha as part of the Path.
- - The tag scheme distinguishes [Suffering](tag:) and [Pain](tag:) as two distinct meanings of the Pāli word dukkha, but pleasure and happiness (two meanings of sukha) are both tagged [Happiness](tag:).
- - Sensual pleasure and sensual desire are both tagged [Sensual desire](tag:).
- - Several Thai words are frequently translated as “the one who knows.” These are tagged [Knowing itself](tag:).
- - [Moods of the mind](tag:) refers specifically to the Thai phrase _arom kong jit_, and is distinct from the English tag [Emotion](tag:).
-
 ## History and Culture Tags
 
 The root tags [History](tag:) and [Cultural context](tag:) contain many similar subtags. History tags apply to verifiable statements about people, dates, etc., while culture tags apply to generalized statements about culture in particular times and places. The latter are invariably subjective. The frequency of [Culture/Thailand](tag:) and [Culture/West](tag:) reflects an ongoing dialogue about how to skillfully adapt (or not adapt) the practices and attitudes of the Thai Forest Tradition to the modern Western context.
