@@ -70,7 +70,7 @@
             "args": [
                 "Prototype",
                 "--buildOnly",
-                "none"
+                "events"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

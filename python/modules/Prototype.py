@@ -891,9 +891,14 @@ def EventSeriesAndDateStr(event: dict) -> str:
 
 def EventVenueStr(event: dict) -> str:
     "Return a string describing the event venue"
-    if not event["venue"]:
+    if event["venue"] == "None":
         if event["format"] == "Interview":
             return "Online interview" if event["medium"] == "Online" else "Interview"
+        if event["medium"] == "Online":
+            return "Online"
+        else:
+            Alert.caution(event,": only online events should specify venue = None.")
+            return ""
     
     venueStr = event['venue']
     if gDatabase['venue'][event['venue']]['location']:
@@ -1446,8 +1451,18 @@ def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
 def EventDescription(event: dict,showMonth = False) -> str:
     href = Html.Wrapper(f"<a href = {Database.EventLink(event['code'])}>","</a>")
     if showMonth:
-        date = Utils.ParseDate(event["startDate"])
-        monthStr = f' – {date.strftime("%B")} {int(date.year)}'
+        startDate = Utils.ParseDate(event["startDate"])
+        monthStr = f'{startDate.strftime("%B")} {int(startDate.year)}'
+        if event["endDate"]:
+            endDate = Utils.ParseDate(event["endDate"])
+            endMonthStr = f'{endDate.strftime("%B")} {int(endDate.year)}'
+            if endMonthStr != monthStr:
+                if startDate.year == endDate.year:
+                    monthStr = f'{startDate.strftime("%B")} to {endMonthStr}'
+                else:
+                    monthStr = f'{monthStr} to {endMonthStr}'
+        monthStr = ' – ' + monthStr
+
     else:
         monthStr = ""
     return f"<p>{href.Wrap(event['title'])} ({event['excerpts']}){monthStr}</p>"
