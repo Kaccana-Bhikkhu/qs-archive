@@ -2173,8 +2173,14 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
             heading = "Tag cluster: " if isCluster else "Tag: "
             text = clusterInfo["displayAs"] if isCluster else tag
             heading += HtmlSubtopicLink(tag,text=text).replace(".html","-relevant.html")
+            pali = clusterInfo["pali"]
             if not isCluster and clusterInfo["displayAs"] != tag:
-                heading = f"{clusterInfo['displayAs']} ({heading})"
+                if pali:
+                    heading = f"{clusterInfo['displayAs']} ({pali}) ({heading})"
+                else:
+                    heading = f"{clusterInfo['displayAs']} ({heading})"
+            elif pali:
+                heading += f" ({pali})"
             return heading,excerptHtml,gDatabase["tag"][tag]["htmlFile"].replace(".html",""),clusterInfo["displayAs"]
 
         def PairExcerptsWithTopic() -> Generator[tuple[dict,str]]:
@@ -2221,8 +2227,11 @@ def TagClusterPages(topicDir: str):
             with a.p():
                 a(clusterInfo["clusterNote"])
         a.hr()
-        
-        pageInfo = Html.PageInfo("Tag cluster: " + clusterInfo["displayAs"],clusterInfo["htmlPath"])
+
+        pageTitle = titleInBody = "Tag cluster: " + clusterInfo["displayAs"]
+        if clusterInfo["pali"]:
+            titleInBody += f" ({clusterInfo['pali']})"
+        pageInfo = Html.PageInfo(pageTitle,clusterInfo["htmlPath"],titleInBody)
         basePage = Html.PageDesc(pageInfo)
         basePage.AppendContent(str(a))
         basePage.keywords = ["Tag cluster",clusterInfo["displayAs"]]
