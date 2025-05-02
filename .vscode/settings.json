@@ -2,5 +2,6 @@
     "python/modules",
     "python/utils"
     ],
-    "liveServer.settings.root":"/"
+    "liveServer.settings.root": "/",
+    "python.REPL.enableREPLSmartSend": false
 }

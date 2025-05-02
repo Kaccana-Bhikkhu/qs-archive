@@ -1,5 +1,5 @@
-Modified:,2024,,,,,,,,,,,,,,
-Count,218,885,54,445,180,45,74,,47,86,13,921,408,860,860
+Modified:,2025,,,,,,,,,,,,,,
+Count,218,900,54,445,183,45,74,,47,87,13,936,408,875,875
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -39,7 +39,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,*,Mindfulness of body,,kāyagatā-sati,,,Mindfulness immersed in the body,,,,,         Mindfulness of body,kāyagatā-sati,Mindfulness of body,Mindfulness of body [kāyagatā-sati]
 5,,Mindfulness of breathing,,ānāpānasati,,,Mindfulness of in-and-out breathing,,,,,            Mindfulness of breathing,ānāpānasati,Mindfulness of breathing,Mindfulness of breathing [ānāpānasati]
 5,,Four Postures,4,,Postures,,,,,,,            Four Postures,,Postures,Postures
-5,,Clear comprehension,,sampajañña,,,Alertness;Full awareness,,,,,            Clear comprehension,sampajañña,Clear comprehension,Clear comprehension [sampajañña]
+5,,Clear comprehension,,sampajañña,,,Alertness;Full awareness;Situational awareness,,,,,            Clear comprehension,sampajañña,Clear comprehension,Clear comprehension [sampajañña]
 5,,Unattractiveness/32 parts,,asubha/dvattiṁsākāra,Unattractiveness,asubha,,,,,,            Unattractiveness/32 parts,asubha,Unattractiveness,Unattractiveness [asubha]
 5,,Elements,,dhātu,,,Properties,,,,,            Elements,dhātu,Elements,Elements [dhātu]
 5,,Recollection/Death,,maraṇassati,,,,,,,,            Recollection/Death,maraṇassati,Recollection/Death,Recollection/Death [maraṇassati]
@@ -53,7 +53,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 5,,Seven Factors of Awakening,,satta bojjhaṅgā,Factors of Awakening,bojjhaṅgā,Seven Wings to Awakening,,,,,            Seven Factors of Awakening,bojjhaṅgā,Factors of Awakening,Factors of Awakening [bojjhaṅgā]
 5,,Four Noble Truths,,cattāri ariya-saccāni,,,,,,,,            Four Noble Truths,cattāri ariya-saccāni,Four Noble Truths,Four Noble Truths [cattāri ariya-saccāni]
 4,0*,Ardency,,ātāpi,,,,,,Energy,,         Ardency,ātāpi,Ardency,Ardency [ātāpi]
-4,0*,Clear comprehension,,sampajañña,,,Alertness;Full awareness,,,Discernment,,         Clear comprehension,sampajañña,Clear comprehension,Clear comprehension [sampajañña]
+4,0*,Clear comprehension,,sampajañña,,,Alertness;Full awareness;Situational awareness,,,Discernment,,         Clear comprehension,sampajañña,Clear comprehension,Clear comprehension [sampajañña]
 4,0*,Mindfulness,,sati,,,,,,,,         Mindfulness,sati,Mindfulness,Mindfulness [sati]
 3,*,Right Concentration,,sammā-samādhi,,,,,,,,      Right Concentration,sammā-samādhi,Right Concentration,Right Concentration [sammā-samādhi]
 4,*,,,Jhāna,,,,,,,,         Jhāna,,Jhāna,Jhāna
@@ -123,7 +123,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,*,Goodwill,,mettā,,,Well-wishing,,,,,      Goodwill,mettā,Goodwill,Goodwill [mettā]
 3,*,Compassion,,karuṇā,,,,,,,,      Compassion,karuṇā,Compassion,Compassion [karuṇā]
 3,*,Empathetic joy,,muditā,,,,,,,,      Empathetic joy,muditā,Empathetic joy,Empathetic joy [muditā]
-3,*,Equanimity,,upekkhā,,,,,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
+3,*,Equanimity,,upekkhā,,,,unshakeability;balance,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
 2,,Seven Treasures,7,satta dhanā,Treasures,dhana,,,,,,   Seven Treasures,dhana,Treasures,Treasures [dhana]
 3,,Faith,,saddhā,,,,,,,,      Faith,saddhā,Faith,Faith [saddhā]
 3,*,Virtue,,sīla,,,,,,,,      Virtue,sīla,Virtue,Virtue [sīla]
@@ -276,7 +276,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Craving for sensuality,,kāma-taṇhā,,,,,Sensual desire,,,         Craving for sensuality,kāma-taṇhā,,
 4,,Craving to become,,bhava-taṇhā,,,,,Becoming,,,         Craving to become,bhava-taṇhā,,
 4,,Craving not to become,,vibhava-taṇhā,,,,,,,,         Craving not to become,vibhava-taṇhā,Craving not to become,Craving not to become [vibhava-taṇhā]
-3,,Clinging,,upādāna,,,Attachment;Grasping,,,,,      Clinging,upādāna,Clinging,Clinging [upādāna]
+3,,Clinging,,upādāna,,,Attachment;Grasping;Sustanence,,,,,      Clinging,upādāna,Clinging,Clinging [upādāna]
 4,h,Sensuality-clinging,,kāmupādāna,,,,,Sensual desire,,,         Sensuality-clinging,kāmupādāna,,
 4,h,View-clinging,,diṭṭhupādāna,,,,,Views,,,         View-clinging,diṭṭhupādāna,,
 4,h,Precepts-and-practices clinging,,sīlabbatupādāna,,,,,Attachment to precepts and practices,,,         Precepts-and-practices clinging,sīlabbatupādāna,,
@@ -383,7 +383,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Mindfulness of body,,kāyagatā-sati,,,Mindfulness immersed in the body,,,,,      Mindfulness of body,kāyagatā-sati,Mindfulness of body,Mindfulness of body [kāyagatā-sati]
 4,,Mindfulness of breathing,,ānāpānasati,,,Mindfulness of in-and-out breathing,,,,,         Mindfulness of breathing,ānāpānasati,Mindfulness of breathing,Mindfulness of breathing [ānāpānasati]
 4,,Four Postures,4,,Postures,,,,,,,         Four Postures,,Postures,Postures
-4,,Clear comprehension,,sampajañña,,,Alertness;Full awareness,,,,,         Clear comprehension,sampajañña,Clear comprehension,Clear comprehension [sampajañña]
+4,,Clear comprehension,,sampajañña,,,Alertness;Full awareness;Situational awareness,,,,,         Clear comprehension,sampajañña,Clear comprehension,Clear comprehension [sampajañña]
 4,,Unattractiveness/32 parts,,asubha/dvattiṁsākāra,Unattractiveness,asubha,,,,,,         Unattractiveness/32 parts,asubha,Unattractiveness,Unattractiveness [asubha]
 4,,Elements,,dhātu,,,,,,,,         Elements,dhātu,Elements,Elements [dhātu]
 4,,Recollection/Death,,maraṇassati,,,,,,,,         Recollection/Death,maraṇassati,Recollection/Death,Recollection/Death [maraṇassati]
@@ -505,7 +505,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,,Stories,,,,,,,,,,   Stories,,Stories,Stories
 2,,Similes,,opammā,,,,,,,,   Similes,opammā,Similes,Similes [opammā]
 2,,Symbolism,,,,,,,,,,   Symbolism,,Symbolism,Symbolism
-2,,Dhamma books,,,,,,,,,,   Dhamma books,,Dhamma books,Dhamma books
+2,,Dhamma books,,,,,,,,Learning,,   Dhamma books,,Dhamma books,Dhamma books
 3,,Free distribution,,,,,,,,,,      Free distribution,,Free distribution,Free distribution
 2,,Dhamma recordings,,,,,,,,,,   Dhamma recordings,,Dhamma recordings,Dhamma recordings
 2,,Dhamma online,,,,,,,,,,   Dhamma online,,Dhamma online,Dhamma online
@@ -527,7 +527,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 6,,Ajahn Anek Yasadinno,,,Ajahn Anek,,,,,,,               Ajahn Anek Yasadinno,,Ajahn Anek,Ajahn Anek
 6,,Ajahn Koon Aggadhammo,,,Ajahn Koon,,,,,,,               Ajahn Koon Aggadhammo,,Ajahn Koon,Ajahn Koon
-6,,Ajahn Toon Cittasallo,,,Ajahn Toon,,,,,,,               Ajahn Toon Cittasallo,,Ajahn Toon,Ajahn Toon
+6,,Ajahn Toon Cattasallo,,,Ajahn Toon,,,,,,,               Ajahn Toon Cattasallo,,Ajahn Toon,Ajahn Toon
 6,,Ajahn Gunha Sukhagāmo,,,Ajahn Gunha,,,,,,,               Ajahn Gunha Sukhagāmo,,Ajahn Gunha,Ajahn Gunha
 6,,Ajahn Bunjong,,,,,,,,,,               Ajahn Bunjong,,Ajahn Bunjong,Ajahn Bunjong
 6,,Ajahn Mahā In,,,,,,,,,,               Ajahn Mahā In,,Ajahn Mahā In,Ajahn Mahā In
@@ -538,7 +538,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Mahā Adisak Dhammābhinando,,,Ajahn Mahā Adisak,,,,,,,               Ajahn Mahā Adisak Dhammābhinando,,Ajahn Mahā Adisak,Ajahn Mahā Adisak
 6,,Ajahn Preecha Jutindharo,,,Ajahn Preecha,,,,,,,               Ajahn Preecha Jutindharo,,Ajahn Preecha,Ajahn Preecha
 6,,Ajahn Jundee Kantasāro,,,Ajahn Jundee,,,,,,,               Ajahn Jundee Kantasāro,,Ajahn Jundee,Ajahn Jundee
-6,,Ajahn Vitoon,,,,,,,,,,               Ajahn Vitoon,,Ajahn Vitoon,Ajahn Vitoon
+,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 6,,Ajahn Mahā Suporn,,,,,,,,,,               Ajahn Mahā Suporn,,Ajahn Mahā Suporn,Ajahn Mahā Suporn
 ,,,,,,,,,,,,,,,
@@ -596,7 +596,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Ṭhitapañño,,,,,,,,,,               Ajahn Ṭhitapañño,,Ajahn Ṭhitapañño,Ajahn Ṭhitapañño
 6,,Ajahn Kovilo,,,,,,,,,,               Ajahn Kovilo,,Ajahn Kovilo,Ajahn Kovilo
 6,,Ajahn Sudhīro,,,,,,,,,,               Ajahn Sudhīro,,Ajahn Sudhīro,Ajahn Sudhīro
-,,,,,,,,,,,,,,,
+6,,Ajahn Pesalo,,,,,,,,,,               Ajahn Pesalo,,Ajahn Pesalo,Ajahn Pesalo
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -609,7 +609,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Dee,,,,,,,,,,               Ajahn Dee,,Ajahn Dee,Ajahn Dee
 6,,Ajahn Phut,,,,,,,,,,               Ajahn Phut,,Ajahn Phut,Ajahn Phut
 6,,Ajahn Gi Dhammuttamo,,,Ajahn Gi,,,,,,,               Ajahn Gi Dhammuttamo,,Ajahn Gi,Ajahn Gi
-,,,,,,,,,,,,,,,
+6,,Ajahn Puth Thaniyo,,,Ajahn Puth,,,,,,,               Ajahn Puth Thaniyo,,Ajahn Puth,Ajahn Puth
 6,,Ajahn Jia Cundo,,,Ajahn Jia,,,,,,,               Ajahn Jia Cundo,,Ajahn Jia,Ajahn Jia
 6,,Ajahn Sanong Katapuñño,,,Ajahn Sanong,,,,,,,               Ajahn Sanong Katapuñño,,Ajahn Sanong,Ajahn Sanong
 6,,Ajahn Sim Buddhacaro,,,Ajahn Sim,,,,,,,               Ajahn Sim Buddhacaro,,Ajahn Sim,Ajahn Sim
@@ -640,7 +640,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 5,.PSh,Western teachers,,,,,,,,,,            Western teachers,,,
 ,,,,,,,,,,,,,,,
 6,,Ajahn Khantipālo,,,,,,,,,,               Ajahn Khantipālo,,Ajahn Khantipālo,Ajahn Khantipālo
-6,,Ajahn Paññavaddho,,,,,,,,,,               Ajahn Paññavaddho,,Ajahn Paññavaddho,Ajahn Paññavaddho
+6,,Ajahn Paññāvaḍḍho,,,,,,,,,,               Ajahn Paññāvaḍḍho,,Ajahn Paññāvaḍḍho,Ajahn Paññāvaḍḍho
 6,,Ajahn Piyadhammo,,,,,,,,,,               Ajahn Piyadhammo,,Ajahn Piyadhammo,Ajahn Piyadhammo
 ,,,,,,,,,,,,,,,
 6,,Ajahn Ṭhānissaro,,,,,,,,,,               Ajahn Ṭhānissaro,,Ajahn Ṭhānissaro,Ajahn Ṭhānissaro
@@ -656,28 +656,34 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Ajahn Mahā Prasert,,,,,,,,,,         Ajahn Mahā Prasert,,Ajahn Mahā Prasert,Ajahn Mahā Prasert
 3,PS,Other Theravāda monastics,,,,,,,,,,      Other Theravāda monastics,,Other Theravāda monastics,Other Theravāda monastics
 4,,Mahasi Sayadaw,,,,,,,,,,         Mahasi Sayadaw,,Mahasi Sayadaw,Mahasi Sayadaw
+4,,Venerable Ñāṇatiloka,,,Ven. Ñāṇatiloka,,,,,,,         Venerable Ñāṇatiloka,,Ven. Ñāṇatiloka,Ven. Ñāṇatiloka
 4,,Venerable Ñāṇamoli,,,Ven. Ñāṇamoli,,,,,,,         Venerable Ñāṇamoli,,Ven. Ñāṇamoli,Ven. Ñāṇamoli
 4,,Pa Auk Sayadaw,,,,,,,,,,         Pa Auk Sayadaw,,Pa Auk Sayadaw,Pa Auk Sayadaw
 4,,Preah Mahāghosānanda,,,,,,,,,,         Preah Mahāghosānanda,,Preah Mahāghosānanda,Preah Mahāghosānanda
 4,,Bhante Gunaratana,,,,,,,,,,         Bhante Gunaratana,,Bhante Gunaratana,Bhante Gunaratana
 4,,Bhikkhu Bodhi,,,,,,,,,,         Bhikkhu Bodhi,,Bhikkhu Bodhi,Bhikkhu Bodhi
 4,,Venerable Analayo,,,Ven. Analayo,,,,,,,         Venerable Analayo,,Ven. Analayo,Ven. Analayo
-4,,Ayya Tāthalokā,,,,,,,,,,         Ayya Tāthalokā,,Ayya Tāthalokā,Ayya Tāthalokā
+4,,Ayya Tathālokā,,,,,,,,,,         Ayya Tathālokā,,Ayya Tathālokā,Ayya Tathālokā
 4,,Dr. Hammalawa Saddhatissa,,,Dr. Saddhatissa,,,,,,,         Dr. Hammalawa Saddhatissa,,Dr. Saddhatissa,Dr. Saddhatissa
 4,,Bhante Yogavacara Rahula,,,Bhante Rahula,,,,,,,         Bhante Yogavacara Rahula,,Bhante Rahula,Bhante Rahula
 4,,Bhante Dharmawara,,,,,,,,,,         Bhante Dharmawara,,Bhante Dharmawara,Bhante Dharmawara
+4,,Taungpulu Sayadaw,,,,,,,,,,         Taungpulu Sayadaw,,Taungpulu Sayadaw,Taungpulu Sayadaw
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,PS,Mahāyāna monastics,,,,,,,,,,      Mahāyāna monastics,,Mahāyāna monastics,Mahāyāna monastics
 4,,Dōgen,,,,,,,,,,         Dōgen,,Dōgen,Dōgen
 4,,Master Hsu Yun,,,,,,,,,,         Master Hsu Yun,,Master Hsu Yun,Master Hsu Yun
 4,,Master Hsuan Hua,,,,,,,,,,         Master Hsuan Hua,,Master Hsuan Hua,Master Hsuan Hua
 4,,The Dalai Lama,,,Dalai Lama,,,,,,,         The Dalai Lama,,Dalai Lama,Dalai Lama
 4,,Reverend Heng Sure,,,Rev. Heng Sure,,,,,,,         Reverend Heng Sure,,Rev. Heng Sure,Rev. Heng Sure
+4,,Bhikshu Heng Shun,,,,,,,,,,         Bhikshu Heng Shun,,Bhikshu Heng Shun,Bhikshu Heng Shun
 4,,Trulshik Rinpoche,,,,,,,,,,         Trulshik Rinpoche,,Trulshik Rinpoche,Trulshik Rinpoche
 4,,Lama Zopa Rinpoche,,,Lama Zopa,,,,,,,         Lama Zopa Rinpoche,,Lama Zopa,Lama Zopa
-4,,Harata Roshi,,,,,,,,,,         Harata Roshi,,Harata Roshi,Harata Roshi
-4,,Dharma Master Heng Lyu,,,Heng Lyu,,,,,,,         Dharma Master Heng Lyu,,Heng Lyu,Heng Lyu
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
+4,,Harata Rōshi,,,,,,,,,,         Harata Rōshi,,Harata Rōshi,Harata Rōshi
+4,,Bhikshu Heng Lyu,,,,,,,,,,         Bhikshu Heng Lyu,,Bhikshu Heng Lyu,Bhikshu Heng Lyu
+4,,Thubten Chodron,,,,,,,,,,         Thubten Chodron,,Thubten Chodron,Thubten Chodron
+4,,Master Xuanzang,,,,,,,,,,         Master Xuanzang,,Master Xuanzang,Master Xuanzang
 ,,,,,,,,,,,,,,,
 3,P,Christian monastics,,,,,,,,,,      Christian monastics,,Christian monastics,Christian monastics
 4,,Father Boniface,,,,,,,,,,         Father Boniface,,Father Boniface,Father Boniface
@@ -697,6 +703,10 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Jack Kornfield,,,,,,,,,,      Jack Kornfield,,Jack Kornfield,Jack Kornfield
 3,,Paul Breiter,,,,,,,,,,      Paul Breiter,,Paul Breiter,Paul Breiter
 3,,Joseph Kappel,,,,,,,,,,      Joseph Kappel,,Joseph Kappel,Joseph Kappel
+3,,Larry Rosenberg,,,,,,,,,,      Larry Rosenberg,,Larry Rosenberg,Larry Rosenberg
+3,,Rodney Smith,,,,,,,,,,      Rodney Smith,,Rodney Smith,Rodney Smith
+3,,Joseph Goldstein,,,,,,,,,,      Joseph Goldstein,,Joseph Goldstein,Joseph Goldstein
+3,,Stephen Levine,,,,,,,,,,      Stephen Levine,,Stephen Levine,Stephen Levine
 ,,,,,,,,,,,,,,,
 3,,Kittisaro,,,,,,,,,,      Kittisaro,,Kittisaro,Kittisaro
 3,,Ṭhānissarā,,,,,,,,,,      Ṭhānissarā,,Ṭhānissarā,Ṭhānissarā
@@ -722,7 +732,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Wat Pah Supattaram,,,,,,,,,,         Wat Pah Supattaram,,Wat Pah Supattaram,Wat Pah Supattaram
 4,,Wat Pahk Kut Wai,,,,,,,,,,         Wat Pahk Kut Wai,,Wat Pahk Kut Wai,Wat Pahk Kut Wai
 4,,Wat Pah Boon Lorm,,,,,,,,,,         Wat Pah Boon Lorm,,Wat Pah Boon Lorm,Wat Pah Boon Lorm
-4,,Wat Pu Deng Dang,,,,,,,,,,         Wat Pu Deng Dang,,Wat Pu Deng Dang,Wat Pu Deng Dang
+4,,Wat Phu Din Dang,,,,,,,,,,         Wat Phu Din Dang,,Wat Phu Din Dang,Wat Phu Din Dang
 4,,Dtao Dtum Monastery,,,Dtao Dum,,,,,,,         Dtao Dtum Monastery,,Dtao Dum,Dtao Dum
 4,,Poo Jum Gom Monastery,,,Poo Jum Gom,,,,,,,         Poo Jum Gom Monastery,,Poo Jum Gom,Poo Jum Gom
 4,,Anandagiri Monastery,,,Anandagiri,,,,,,,         Anandagiri Monastery,,Anandagiri,Anandagiri
@@ -743,7 +753,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 5,,Temple Forest Monastery,,,Temple Monastery,,,,,,,            Temple Forest Monastery,,Temple Monastery,Temple Monastery
 ,,,,,,,,,,,,,,,
 4,,Tisarana Monastery,,,Tisarana,,,,,,,         Tisarana Monastery,,Tisarana,Tisarana
-,,,,,,,,,,,,,,,
+4,,Arrow River Forest Hermitage,,,Arrow River,,,,,,,         Arrow River Forest Hermitage,,Arrow River,Arrow River
 4,,Abhayagiri Monastery,,,Abhayagiri,,,,,,,         Abhayagiri Monastery,,Abhayagiri,Abhayagiri
 5,p,Saṅghapāla Foundation,,,Saṅghapāla,,,,,,,            Saṅghapāla Foundation,,Saṅghapāla,Saṅghapāla
 4,,Pacific Hermitage,,,,,,,,,,         Pacific Hermitage,,Pacific Hermitage,Pacific Hermitage
@@ -759,7 +769,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Wat Pah Ban Tat,,,,,,,,Ajahn Mahā Boowa,,      Wat Pah Ban Tat,,Wat Pah Ban Tat,Wat Pah Ban Tat
 3,,Wat Suan Mokkh,,,,,,,,Ajahn Buddhadāsa,,      Wat Suan Mokkh,,Wat Suan Mokkh,Wat Suan Mokkh
 3,,Wat Burapha,,,,,,,,Ajahn Dune,,      Wat Burapha,,Wat Burapha,Wat Burapha
-,,,,,,,,,,,,,,,
+3,,Wat Phleng Vipassanā,,,,,,,,,,      Wat Phleng Vipassanā,,Wat Phleng Vipassanā,Wat Phleng Vipassanā
 2,PS,Thai Forest monasteries in the West,,,,,,,,,,   Thai Forest monasteries in the West,,Thai Forest monasteries in the West,Thai Forest monasteries in the West
 3,,Wat Buridat,,,,,,,,,,      Wat Buridat,,Wat Buridat,Wat Buridat
 3,,Wat Metta,,,,,,,,,,      Wat Metta,,Wat Metta,Wat Metta
@@ -773,17 +783,18 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 3,,Dhammadharini Monastery,,,,,,,,,,      Dhammadharini Monastery,,Dhammadharini Monastery,Dhammadharini Monastery
+3,,Aranya Bodhi Hermitage,,,,,,,,,,      Aranya Bodhi Hermitage,,Aranya Bodhi Hermitage,Aranya Bodhi Hermitage
 3,,Karuna Buddhist Vihara,,,,,,,,,,      Karuna Buddhist Vihara,,Karuna Buddhist Vihara,Karuna Buddhist Vihara
 ,,,,,,,,,,,,,,,
 2,P,Christian monasteries,,,,,,,,,,   Christian monasteries,,Christian monasteries,Christian monasteries
-3,,Holy Tranfiguration Monastery,,,,,,Mount Tabor Monastery,,,,      Holy Tranfiguration Monastery,,Holy Tranfiguration Monastery,Holy Tranfiguration Monastery
+3,,Holy Transfiguration Monastery,,,,,,Mount Tabor Monastery,,,,      Holy Transfiguration Monastery,,Holy Transfiguration Monastery,Holy Transfiguration Monastery
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 2,PS,Non-monastic centers,,,,,,,,,,   Non-monastic centers,,Non-monastic centers,Non-monastic centers
 3,,Insight Meditation Society,,,,,,,,,,      Insight Meditation Society,,Insight Meditation Society,Insight Meditation Society
 3,,Spirit Rock Meditation Center,,,Spirit Rock,,,,,,,      Spirit Rock Meditation Center,,Spirit Rock,Spirit Rock
 3,,Panyaprateep School,,,,,,,,,,      Panyaprateep School,,Panyaprateep School,Panyaprateep School
-,,,,,,,,,,,,,,,
+3,,Manjushri Institute,,,,,,,,,,      Manjushri Institute,,Manjushri Institute,Manjushri Institute
 ,,,,,,,,,,,,,,,
 1,,Nature of the cosmos,,,,,,,,,,Nature of the cosmos,,Nature of the cosmos,Nature of the cosmos
 2,,Time,,kāla,,,,,,,,   Time,kāla,Time,Time [kāla]
@@ -851,6 +862,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Thai language,,,Thai,,,,,,,      Thai language,,Thai,Thai
 4,,Question in Thai,,,,,,,,,,         Question in Thai,,Question in Thai,Question in Thai
 4,,Thai audio,,,,,,,,,,         Thai audio,,Thai audio,Thai audio
+3,,Isan/Lao language,,,Isan,,,,,,,      Isan/Lao language,,Isan,Isan
 3,,Translation,,,,,,,,,,      Translation,,Translation,Translation
 3,,Etymology,,,,,,,,,,      Etymology,,Etymology,Etymology
 ,,,,,,,,,,,,,,,
@@ -960,7 +972,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Older monks,,,,,,,,,,         Older monks,,Older monks,Older monks
 4,*,Temporary ordination,,,,,,,,,,         Temporary ordination,,Temporary ordination,Temporary ordination
 4,,Thai sects,,,,,,,,,,         Thai sects,,Thai sects,Thai sects
-4,,Novices,,samanera,,,,,,,,         Novices,samanera,Novices,Novices [samanera]
+4,,Novices,,sāmaṇera,,,,,,,,         Novices,sāmaṇera,Novices,Novices [sāmaṇera]
 4,,Postulants,,anagārika,,,Pakow <em>Thai</em>,,,,,         Postulants,anagārika,Postulants,Postulants [anagārika]
 3,*,Women's monastic forms,,,,,,,,,,      Women's monastic forms,,Women's monastic forms,Women's monastic forms
 4,*,,,Bhikkhunī,,,,,,,,         Bhikkhunī,,Bhikkhunī,Bhikkhunī
@@ -992,7 +1004,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Pain,,dukkha,,,,,,,,      Pain,dukkha,Pain,Pain [dukkha]
 2,.,Personal,,,,,,,,,,   Personal,,,
 3,,Health,,,,,,,,,,      Health,,Health,Health
-4,,Excercise,,,,,,,,,,         Excercise,,Excercise,Excercise
+4,,Exercise,,,,,,,,,,         Exercise,,Exercise,Exercise
 4,,Chi Gong,,,,,,,,,,         Chi Gong,,Chi Gong,Chi Gong
 4,,Smoking,,,,,,,,,,         Smoking,,Smoking,Smoking
 4,,Mental illness,,,,,,,,,,         Mental illness,,Mental illness,Mental illness

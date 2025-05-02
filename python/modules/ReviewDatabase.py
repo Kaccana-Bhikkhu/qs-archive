@@ -1,10 +1,13 @@
-"""Check links in the documentation and events directories using BeautifulSoup.
+"""Check SpreadsheetDatabase.json for errors, inconsistencies, and incompleteness.
 """
 
 from __future__ import annotations
 
 import os, bisect, csv, re
 from functools import lru_cache
+from itertools import accumulate
+from datetime import timedelta
+from Mp3DirectCut import TimeDeltaToStr
 import Database, Filter
 import Utils, Database, Alert
 import FileRegister
@@ -56,14 +59,17 @@ def OptimalFTagCount(tagOrSubtopic: dict[str],database:dict[str] = {}) -> tuple[
 
     if not database:
         database = gDatabase
-    subtopic = "subtags" in tagOrSubtopic
+    soloSubtopics = Database.SoloSubtopics()
+    subtopic = ("topicCode" in tagOrSubtopic or tagOrSubtopic["tag"] in soloSubtopics)
+            # Use the subtopic formula for tags which are subtopics containing no subtags
 
     # Start with an estimate based on the number of excerpts for this tag/subtopic
+    excerptCount = tagOrSubtopic.get("excerptCount",0)
     if subtopic:
-        minFTags = bisect.bisect_right((6,18,54,144,384,1024),tagOrSubtopic["excerptCount"])
+        minFTags = bisect.bisect_right((6,18,54,144,384,1024),excerptCount)
     else:
-        minFTags = bisect.bisect_right((12,30,72,180,480,1278),tagOrSubtopic["excerptCount"])
-    maxFTags = bisect.bisect_right((4,8,16,32,80,200,500,1250),tagOrSubtopic["excerptCount"])
+        minFTags = bisect.bisect_right((12,30,72,180,480,1278),excerptCount)
+    maxFTags = bisect.bisect_right((4,8,16,32,80,200,500,1250),excerptCount)
 
     # Then add fTags to subtopics with many significant subtags
     significantTags = 0
@@ -81,15 +87,18 @@ def OptimalFTagCount(tagOrSubtopic: dict[str],database:dict[str] = {}) -> tuple[
     #if oldMax != maxFTags:
     #    Alert.extra(tagOrSubtopic,"now needs",minFTags,"-",maxFTags,"fTags. Subtags:",significantTags,"significant;",insignificantTags,"insignificant.")
 
-    difference = min(tagOrSubtopic["fTagCount"] - minFTags,0) or max(tagOrSubtopic["fTagCount"] - maxFTags,0)
+    fTagCount = tagOrSubtopic.get("fTagCount",0)
+    difference = min(fTagCount - minFTags,0) or max(fTagCount - maxFTags,0)
 
     return minFTags,maxFTags,difference
 
 def FTagStatusCode(tagOrSubtopic: dict[str]) -> str:
     """Return a one-character code indicating the status of this tag or subtopic's featured excerpts."""
 
+    tagName = tagOrSubtopic["tag"]
     _,_,diffFTag = OptimalFTagCount(tagOrSubtopic)
-    if tagOrSubtopic.get("status","") == "Reviewed":
+    if tagOrSubtopic.get("status","") == "Reviewed" or \
+            (tagName in Database.SoloSubtopics() and gDatabase["subtopic"][tagName]["status"] == "Reviewed"):
         prefixChar = "☑"
     elif tagOrSubtopic.get("fTagCount",0) == 0:
         prefixChar = "∅"
@@ -183,9 +192,15 @@ def AuditNames() -> None:
                         "Vajrayāna":"Mahāyāna monastics"}
     groupExpectedSupertag = {"Lay teachers":"Lay teachers"}
     namesByDate = defaultdict(list)
+    abbreviationExpansions = {prefix["prefix"]:prefix["shortFor"] for prefix in gDatabase["prefix"].values() if prefix["shortFor"]}
     for n in names.values():
-        if n["tag"] and n["attributionName"] and n["tag"] != n["attributionName"]:
-            Alert.notice(f"Short names don't match: tag: {repr(n['tag'])}; attributionName: {repr(n['attributionName'])}.")
+        tagName = n["tag"]
+        if tagName and n["attributionName"]:
+            for a,f in abbreviationExpansions.items():
+                if tagName.startswith(a):
+                    tagName = tagName.replace(a,f,1)
+            if tagName != n["attributionName"]:
+                Alert.notice(f"Short names don't match: tag: {repr(n['tag'])}; attributionName: {repr(n['attributionName'])}.")
         if n["supertag"] and n["lineage"] and lineageExpectedSupertag.get(n["lineage"],n["supertag"]) != n["supertag"]:
             Alert.caution(f"{n['name']} mismatch: lineage: {n['lineage']}, supertag: {n['supertag']}")
         if n["supertag"] and n["group"] and groupExpectedSupertag.get(n["group"],n["supertag"]) != n["supertag"]:
@@ -243,11 +258,16 @@ def AuditNames() -> None:
 def CheckAttributions() -> None:
     """Give warnings for unattributed excerpts and annotations."""
 
-    kind = gDatabase["kind"]
     for x in gDatabase["excerpts"]:
         for item in Filter.AllItems(x):
             if item["kind"] == "Other" and not item["teachers"]:
                 Alert.caution(item,"takes teachers but does not have any.")
+
+def CheckTags() -> None:
+    """Raise a caution if there are unsorted tags."""
+    unsortedTags = gDatabase["tag"].get("New unsorted tags",None)
+    if unsortedTags:
+        Alert.caution("There are",len(unsortedTags["subtags"]),"unsorted tags:",unsortedTags["subtags"])
 
 def CheckRelatedTags() -> None:
     """Print alerts if related tags are duplicated elsewhere in the tag info page."""
@@ -256,7 +276,7 @@ def CheckRelatedTags() -> None:
         otherTags.update(tagInfo["supertags"])
         overlap = otherTags & set(tagInfo["related"])
         if overlap:
-            Alert .caution(tagInfo,"related tags",overlap,"are already mentioned as subtags or supertags.")
+            Alert.caution(tagInfo,"related tags",overlap,"are already mentioned as subtags or supertags.")
 
 def FeaturedExcerptSummary(subtopicOrTag: str,header: bool = False,printFTag: bool = False) -> str:
     """Return a list of this subtopic's featured excerpts in tab separated values format."""
@@ -295,8 +315,10 @@ def CheckFTagOrder() -> None:
     for subtopicOrTag in Database.SubtopicsAndTags():
         tags = [subtopicOrTag["tag"]]
         if "topicCode" in subtopicOrTag: # Is this a subtopic?
+            featuredExcerpts = Filter.ClusterFTag(tags[0])(gDatabase["excerpts"])
             tags += list(subtopicOrTag.get("subtags",()))
-        featuredExcerpts = Filter.FTag(tags)(gDatabase["excerpts"])
+        else:
+            featuredExcerpts = Filter.FTag(tags)(gDatabase["excerpts"])
         problems = []
         fTagOrder = set(Database.FTagOrder(x,tags) for x in featuredExcerpts)
         if len(fTagOrder) < len(featuredExcerpts):
@@ -346,10 +368,20 @@ def NeedsAudioEditing() -> None:
         print("\n".join(Database.ItemRepr(x) for x in amplifyQuestions))
         print()
     
-    audioEditing = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.AUDIO_EDITING in x["flags"]]
-    if audioEditing:
-        Alert.notice("The following",len(audioEditing),"excerpts need audio editing:",lineSpacing=0)
-        print("\n".join(Database.ItemRepr(x) for x in audioEditing))
+    checkSplit = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.AUDIO_EDITING in x["flags"]]
+    if checkSplit:
+        Alert.notice("The following",len(checkSplit),"excerpts need audio editing:",lineSpacing=0)
+        print("\n".join(Database.ItemRepr(x) for x in checkSplit))
+        print()
+    
+    checkSplit = [x for x in gDatabase["excerpts"] if ParseCSV.ExcerptFlag.CHECK_SPLIT in x["flags"]]
+    if checkSplit:
+        Alert.notice("Audio break points should be checked for the following",len(checkSplit),"excerpts:",lineSpacing=0)
+        for x in checkSplit:
+            print(Database.ItemRepr(x))
+            durations = [clip.Duration(None) for clip in x["clips"][0:-1]]
+            splitPoints = [TimeDeltaToStr(d) for d in accumulate(durations,initial=timedelta(0))]
+            print(f"   Break points: {', '.join(['start'] + splitPoints[1:] + ['end'])}.")
         print()
 
 def DumpCSV(directory:str) -> None:
@@ -387,6 +419,7 @@ def main() -> None:
     VerifyListCounts()
     AuditNames()
     # CheckAttributions()
+    CheckTags()
     CheckRelatedTags()
     CheckFTagOrder()
     LogReviewedFTags()

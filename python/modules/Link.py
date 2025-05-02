@@ -144,7 +144,7 @@ def RemoteMp3Tags(url:str) -> dict:
 
 class Mp3ClipChecker(RemoteURLChecker):
     """Read the ID3 CLIP tag created by SplitMp3 and verify that it matches the excerpt clips field."""
-    trustCache: bool    # If true, use cached ID3 tags rather than reading the file
+    trustCache: bool    # If true, use cached ID3 tags rather than reading the file (currently ignored)
 
     def __init__(self,trustCache = False):
         super().__init__(openLocalFiles=True)
@@ -184,9 +184,12 @@ class Mp3LengthChecker(RemoteURLChecker):
         self.invalidateDelta = invalidateDelta
 
     def ValidateContents(self,url:str,item:dict,contents:BinaryIO) -> bool:
-        parsed = urlparse(url)
-        if not parsed.path.lower().endswith(".mp3"):
-            return True,contents
+        if Utils.RemoteURL(url):
+            filePath = urlparse(url).path
+        else:
+            filePath = url
+        if not filePath.lower().endswith(".mp3"):
+            return False
         
         try:
             contents.seek(0)
@@ -198,8 +201,12 @@ class Mp3LengthChecker(RemoteURLChecker):
 
         audio = mutagen.mp3.MP3(data)
         length = audio.info.length
-        expectedLengthStr = item.get("duration","0")
-        expectedLength = Mp3DirectCut.ToTimeDelta(expectedLengthStr).total_seconds()
+        try:
+            expectedLengthStr = item.get("duration","no duration key")
+            expectedLength = Mp3DirectCut.ToTimeDelta(expectedLengthStr).total_seconds()
+        except (Mp3DirectCut.ParseError,AttributeError):
+            Alert.warning(item,"expected duration",repr(expectedLengthStr),"cannot be parsed as a time value.")
+            return False
         diff = abs(length - expectedLength)
         lengthStr = Mp3DirectCut.TimeDeltaToStr(timedelta(seconds=length),decimal=True)
         
@@ -210,6 +217,32 @@ class Mp3LengthChecker(RemoteURLChecker):
         elif diff >= self.warningDelta:
             Alert.caution(item,"indicates a duration of",expectedLengthStr,"but its mp3 file at",url,"has duration",lengthStr)
         return True
+
+class Mp3LengthAndClipChecker(RemoteURLChecker):
+    """Check both mp3 length and clip ID3 tag."""
+    clipChecker: Mp3ClipChecker
+    lengthChecker: Mp3LengthChecker
+
+    def __init__(self):
+        super().__init__(openLocalFiles=True)
+        self.clipChecker = Mp3ClipChecker()
+        self.lengthChecker = Mp3LengthChecker()
+    
+    def ValidateContents(self,url:str,item:dict,contents:BinaryIO) -> bool:
+        parsed = urlparse(url)
+        if not parsed.path.lower().endswith(".mp3"):
+            return False
+        
+        try:
+            contents.seek(0)
+            data = contents
+        except IOError:
+            data = BytesIO()
+            data.write(contents.read())
+            data.seek(0)
+        
+        return self.clipChecker.ValidateContents(url,item,data) and self.lengthChecker.ValidateContents(url,item,data)
+
 
 REMOTE_KEY = { # Specify the dictionary key indicating the remote URL for each item type
     ItemType.AUDIO_SOURCE: "url",
@@ -602,7 +635,10 @@ def Initialize() -> None:
         if itemType == ItemType.AUDIO_SOURCE:
             return Mp3LengthChecker() if level >= 4 else RemoteURLChecker()
         if itemType == ItemType.EXCERPT:
-            return Mp3ClipChecker(trustCache=False) if level >=3 else Mp3ClipChecker(trustCache=True)
+            if level >= 4:
+                return Mp3LengthAndClipChecker()
+            else:
+                return Mp3ClipChecker(trustCache=False) if level >=3 else Mp3ClipChecker(trustCache=True)
         if itemType == ItemType.REFERENCE:
             return RemoteURLChecker() if level >= 3 else LinkValidator()
         

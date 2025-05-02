@@ -50,16 +50,26 @@ def ApplyToBodyText(transform: Callable[...,Tuple[str,int]],passItemAsSecondArgu
         s["sessionTitle"],count = twoVariableTransform(s["sessionTitle"],s)
         changeCount += count
     
+    for t in gDatabase["tag"].values():
+        if "note" in t:
+            t["note"],count = twoVariableTransform(t["note"],t)
+            changeCount += count
+
     for t in gDatabase["keyTopic"].values():
         t["shortNote"],count = twoVariableTransform(t["shortNote"],t)
         changeCount += count
         t["longNote"],count = twoVariableTransform(t["longNote"],t)
         changeCount += count
+    
+    for s in gDatabase["subtopic"].values():
+        if "clusterNote" in s:
+            s["clusterNote"],count = twoVariableTransform(s["clusterNote"],s)
+            changeCount += count
 
     return changeCount
     
 
-def ExtractAnnotation(form: str) -> Tuple[str,str]:
+def ExtractAttribution(form: str) -> Tuple[str,str]:
     """Split the form into body and attribution parts, which are separated by ||.
     Example: Story|| told by @!teachers!@||: @!text!@ ->
     body = Story||{attribution}||:: @!text!@
@@ -89,7 +99,7 @@ def PrepareTemplates():
         kind["body"] = []; kind["attribution"] = []
         for form in kind["form"]:
             
-            body, attribution = ExtractAnnotation(form)
+            body, attribution = ExtractAttribution(form)
             kind["body"].append(body)
             kind["attribution"].append(attribution)
 
@@ -161,7 +171,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         bodyTemplateStr = kind["body"][formNumber]
         attributionTemplateStr = kind["attribution"][formNumber]
     else:
-        bodyTemplateStr,attributionTemplateStr = ExtractAnnotation(FStringToPyratemp(item["text"]))
+        bodyTemplateStr,attributionTemplateStr = ExtractAttribution(FStringToPyratemp(item["text"]))
     
     if ParseCSV.ExcerptFlag.UNQUOTE in item["flags"]: # This flag indicates no quotes
         bodyTemplateStr = re.sub('[“”]','',bodyTemplateStr) # Templates should use only double smart quotes
@@ -236,7 +246,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         if quotedTeacher:
             parts = re.split(Utils.RegexMatchAny([gDatabase["teacher"][quotedTeacher]["attributionName"]]),item["body"])
             if len(parts) > 1:
-                parts[-2] = Prototype.LinkTeachersInText(parts[-2])
+                parts[-2] = Prototype.LinkTeachersInText(parts[-2],[quotedTeacher])
                 item["body"] = "".join(parts)
 
 def RenderExcerpts() -> None:
@@ -302,7 +312,7 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
 def ReferenceMatchRegExs(referenceDB: dict[dict]) -> tuple[str]:
     escapedTitles = [re.escape(abbrev) for abbrev in referenceDB]
     titleRegex = Utils.RegexMatchAny(escapedTitles)
-    pageReference = r'(?:pages?|pp?\.)\s+-?[0-9]+(?:\-[0-9]+)?' 
+    pageReference = r'(?:pages?|pp?\.)\s+-?[0-9]+(?:[-–][0-9]+)?' 
 
     refForm2 = r'\[' + titleRegex + r'\]\((' + pageReference + ')?\)'
     refForm3 = r'\]\(' + titleRegex + r'(\s+' + pageReference + ')?\)'
@@ -313,7 +323,6 @@ def ReferenceMatchRegExs(referenceDB: dict[dict]) -> tuple[str]:
 
 def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Search for references of the form [abbreviation]() OR abbreviation page|p. N, add author and link information.
-    If the excerpt is a reading, make the author the teacher.
     ApplyToFunction allows us to apply these same operations to other collections of text (e.g. documentation)"""
 
     def ParsePageNumber(text: str) -> int|None:
@@ -363,7 +372,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             returnValue = f"{reference['title']}"
 
         if reference['attribution']:
-            returnValue += " " + Prototype.LinkTeachersInText(reference['attribution'])
+            returnValue += " " + Prototype.LinkTeachersInText(reference['attribution'],reference['author'])
         
         if not url and reference["remoteUrl"]:
             returnValue += " " + reference["remoteUrl"]
@@ -410,7 +419,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
         items = [reference['title'],f", [{matchObject[2]}]({url})"]
         if reference["attribution"]:
-            items.insert(1," " + Prototype.LinkTeachersInText(reference['attribution']))
+            items.insert(1," " + Prototype.LinkTeachersInText(reference['attribution'],reference['author']))
         return "".join(items)
 
     def ReferenceForm4(bodyStr: str) -> tuple[str,int]:

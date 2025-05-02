@@ -38,8 +38,8 @@ def Duplicates(source: Iterable) -> list:
     itemCount = Counter(source)
     return [item for item,count in itemCount.items() if count > 1]
 
-def PosixToWindows(path:str) -> str:
-    return str(pathlib.PureWindowsPath(pathlib.PurePosixPath(path)))
+def PosixToNative(path:str) -> str:
+    return str(pathlib.PurePath(pathlib.PurePosixPath(path)))
 
 PosixJoin = posixpath.join
 PosixSplit = posixpath.split

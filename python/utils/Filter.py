@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Callable, Iterator
 from typing import Any, Tuple
-import Utils
+import Utils, ParseCSV
 import copy
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
@@ -70,6 +70,10 @@ class Filter:
         "Return True if this filter passes item."
         return not self.negate
     
+    def Count(self,items: Iterable[dict]) -> int:
+        "Return the number of items that pass this filter"
+        return sum(1 for item in items if self.Match(item))
+
     def Apply(self,items: Iterable[dict]) -> Iterator[dict]:
         "Return an iterator over items that pass this filter. "
         return (item for item in items if self.Match(item))
@@ -132,12 +136,31 @@ class Tag(Filter):
         return self.negate
 
 class FTag(Tag):
-    "A filter that passes items containing particular featured tags."
+    "A filter that passes excerpts containing particular featured tags."
 
     def Match(self, item: dict) -> bool:        
         for t in item.get("fTags",()):
             if t in self.passTags:
                 return not self.negate
+        
+        return self.negate
+
+class ClusterFTag(Filter):
+    "A filter that passes excerpts that should be featured on a cluster page."
+
+    def __init__(self,cluster:str) -> None:
+        super().__init__()
+        self.cluster = cluster
+        self.passTags = FrozenSet([cluster] + list(gDatabase["subtopic"][cluster]["subtags"]))
+    
+    def Match(self, item: dict) -> bool:
+        for n,t in enumerate(item.get("fTags",())):
+            if t in self.passTags:
+                flag = item["fTagOrderFlags"][n].upper()
+                if len(self.passTags) == 1 or flag == ParseCSV.FTagOrderFlag.EVERYWHERE:
+                    return not self.negate
+                if flag == ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC and not t in gDatabase["subtopic"][self.cluster].get("secondarySubtags",()):
+                    return not self.negate
         
         return self.negate
 

@@ -5,12 +5,15 @@ from __future__ import annotations
 import os, shutil, platform
 import copy
 from datetime import time,timedelta
-from typing import List, Union, NamedTuple, Iterator, Iterable
+from typing import List, Union, NamedTuple, Iterator, Iterable, TextIO
 
 executable = 'mp3DirectCut.exe'
 executableDir = 'mp3DirectCut'
+
 joinUsingPydub = False
 pydubBitrate = "64k"
+
+mp3spltCommand = "mp3splt -Q -f"
 class Mp3CutError(Exception):
     "Raised if mp3DirectCut returns with an error code"
     pass
@@ -146,7 +149,7 @@ class ClipTD(Clip):
     def __eq__(self,other:Clip):
         return self.file == other.file and self.start == other.start and self.end == other.end
 
-def TimeToCueStr(time):
+def TimeToCueStr(time: timedelta) -> str:
     "Convert a timedelta object to the form MM:SS:hh, where hh is in hundreths of seconds"
     
     minutes = time.seconds // 60
@@ -169,13 +172,87 @@ def ConfigureMp3DirectCut() -> str:
     return mp3DirectCutProgram
 
 
-def WriteCue(cueTime,cueNum,cueFile):
+def WriteCue(cueTime: timedelta,cueNum: int,cueFile: TextIO):
     "Write a cue to a Mp3DirectCut .cue file"
     print(f'  TRACK {cueNum:02d} AUDIO',file=cueFile)
     print(f'    TITLE "(Track {cueNum:02d})"',file=cueFile)
     print(f'    INDEX 01 {TimeToCueStr(cueTime)}',file=cueFile)
 
-def SinglePassSplit(file:str, clips:list[ClipTD],outputDir:str = None,deleteCueFile:str = True) -> None:
+def RawMp3DirectCut(programName: str,file:str,splitPoints: list[timedelta],deleteCueFile:bool = True) -> list[str]:
+    """Implement RawSplit using Mp3DirectCut"""
+    
+    directory,originalFileName = os.path.split(file)
+    fileNameBase,extension = os.path.splitext(originalFileName)
+    cueFileName = fileNameBase + '.cue'
+    
+    cueFilePath = os.path.join(directory,cueFileName)
+    with open(cueFilePath,'w', encoding='utf-8') as cueFile:
+        print('TITLE "(Title N.N.)"',file=cueFile)
+        print(f'FILE "{originalFileName}" MP3',file=cueFile)
+        
+        for trackNumber,splitPoint in enumerate(splitPoints):
+            WriteCue(splitPoint,trackNumber + 1,cueFile)
+            
+    trackNames = [fileNameBase + f' Track {track:02d}.mp3' for track in range(1,len(splitPoints) + 1)]
+    for name in trackNames:
+        if os.path.exists(os.path.join(directory,name)):
+            os.remove(os.path.join(directory,name))
+    
+    command = programName + ' "' + cueFilePath + '" /split'
+    result = os.system(command)
+    if result:
+        raise Mp3CutError(f"{command} returned code {result}; mp3 file not split.")
+    
+    if deleteCueFile:
+        os.remove(cueFilePath)
+    
+    return trackNames
+
+def TimeToMp3spltFormat(time: timedelta|None) -> str:
+    "Convert a timedelta object to the form MM.SS.hh, where hh is in hundreths of seconds"
+    
+    if time is None:
+        return "EOF"
+    minutes = time.seconds // 60
+    seconds = time.seconds % 60
+    hundreths = time.microseconds // 10000
+    
+    return f"{minutes:02d}.{seconds:02d}.{hundreths:02d}"
+    
+
+def RawMp3splt(file:str,splitPoints: list[timedelta]) -> list[str]:
+    """Implement RawSplit using mp3splt"""
+
+    directory,originalFileName = os.path.split(file)
+    fileNameBase,extension = os.path.splitext(originalFileName)
+    trackNames = [fileNameBase + f' {track:02d}.mp3' for track in range(1,len(splitPoints) + 1)]
+    for name in trackNames:
+        if os.path.exists(os.path.join(directory,name)):
+            os.remove(os.path.join(directory,name))
+
+    splitTimes = [TimeToMp3spltFormat(t) for t in splitPoints]
+    splitTimes.append(TimeToMp3spltFormat(None))
+    command = f'{mp3spltCommand} -o @f+@N2 "{file}" {" ".join(splitTimes)}'
+    result = os.system(command)
+    if result:
+        raise Mp3CutError(f"{command} returned code {result}; mp3 file not split.")
+    
+    return trackNames
+    
+
+def RawSplit(file:str,splitPoints: list[timedelta],deleteCueFile:bool = True) -> list[str]:
+    """Split file into a series of mp3 files at the points specified by splitPoints.
+    The last split point is implicitly the end of the file.
+    Return a list of file names of the resulting mp3 files, equal in length to splitPoints.
+    Dispatch function for RawMp3DirectCut and RawMp3Splt."""
+
+    try:
+        programName = ConfigureMp3DirectCut()
+        return RawMp3DirectCut(programName,file,splitPoints,deleteCueFile)
+    except ExecutableNotFound as error:
+        return RawMp3splt(file,splitPoints)
+
+def SinglePassSplit(file:str, clips:list[ClipTD],outputDir:str = None,deleteCueFile:bool = True) -> None:
     """Run Mp3DirectCut once to split an mp3 file into tracks.
     This function forms the base for functions like Split and MultiFileSplitJoin.
     file - Name and path of the file to split. Write access is required to this directory.
@@ -188,60 +265,44 @@ def SinglePassSplit(file:str, clips:list[ClipTD],outputDir:str = None,deleteCueF
     outputDir - move the splith mp3 files here; defaults to same directory as file
     deleteCueFile - delete cue file when finished?"""
     
-    mp3DirectCutProgram = ConfigureMp3DirectCut()
-    directory,originalFileName = os.path.split(file)
-    fileNameBase,extension = os.path.splitext(originalFileName)
-    cueFileName = fileNameBase + '.cue'
-    
-    cueFilePath = os.path.join(directory,cueFileName)
-    cueFilePath = cueFilePath.replace('/','\\')
-    with open(cueFilePath,'w', encoding='utf-8') as cueFile:
-        print('TITLE "(Title N.N.)"',file=cueFile)
-        print(f'FILE "{originalFileName}" MP3',file=cueFile)
+    if not os.path.isfile(file):
+        raise Mp3CutError(f"Source file {file} not found.")
+
+    trackNum = 1
+    prevClipEnd = timedelta(seconds = 0)
+    splitPoints:list[timedelta] = [prevClipEnd]
+    throwawayTracks = set()
+    for clip in clips:
+        if prevClipEnd is not None:
+            if clip.start < prevClipEnd:
+                raise TimeError(f"Split point {clip}: Clips to extract must be in sequential order.")
+            elif clip.start > prevClipEnd:
+                throwawayTracks.add(trackNum)
         
-        trackNum = 1
-        prevClipEnd = timedelta(seconds = 0)
-        WriteCue(prevClipEnd,trackNum,cueFile)
-        throwawayTracks = set()
-        for clip in clips:
-            if prevClipEnd is not None:
-                if clip.start < prevClipEnd:
-                    raise TimeError(f"Split point {clip}: Clips to extract must be in sequential order.")
-                elif clip.start > prevClipEnd:
-                    throwawayTracks.add(trackNum)
-            
-            if clip.start != prevClipEnd:
-                trackNum += 1
-                WriteCue(clip.start,trackNum,cueFile)
-            
-            if clip.end:
-                if clip.start >= clip.end:
-                    raise TimeError(f"Split point {clip}: Clip end must be after clip start.")
-                trackNum += 1
-                WriteCue(clip.end,trackNum,cueFile)
-                prevClipEnd = clip.end
-            else:
-                prevClipEnd = None
+        if clip.start != prevClipEnd:
+            trackNum += 1
+            splitPoints.append(clip.start)
         
-        if prevClipEnd is not None: # If the last track has an end time, discard the last mp3 file from the split operation
-            throwawayTracks.add(trackNum)
-            
-    totalTracks = trackNum
-    trackNames = [fileNameBase + f' Track {track:02d}.mp3' for track in range(1,totalTracks + 1)]
-    for name in trackNames:
-        if os.path.exists(os.path.join(directory,name)):
-            os.remove(os.path.join(directory,name))
+        if clip.end:
+            if clip.start >= clip.end:
+                raise TimeError(f"Split point {clip}: Clip end must be after clip start.")
+            trackNum += 1
+            splitPoints.append(clip.end)
+            prevClipEnd = clip.end
+        else:
+            prevClipEnd = None
     
-    command = mp3DirectCutProgram + ' "' + cueFilePath + '" /split'
-    result = os.system(command)
-    if result:
-        raise Mp3CutError(f"{command} returned code {result}; mp3 file not split.")
+    if prevClipEnd is not None: # If the last track has an end time, discard the last mp3 file from the split operation
+        throwawayTracks.add(trackNum)
     
+    trackNames = RawSplit(file,splitPoints,deleteCueFile)
+
+    directory = os.path.split(file)[0]
     if outputDir is None:
         outputDir = directory
         
     splitIndex = 0
-    for trackNum in range(1,totalTracks + 1):
+    for trackNum in range(1,len(trackNames) + 1):
         trackFile = os.path.join(directory,trackNames[trackNum - 1])
         if trackNum in throwawayTracks:
             os.remove(trackFile)
@@ -252,8 +313,6 @@ def SinglePassSplit(file:str, clips:list[ClipTD],outputDir:str = None,deleteCueF
             os.rename(trackFile,newName)
             splitIndex += 1
     
-    if deleteCueFile:
-        os.remove(cueFilePath)
 
 def Split(file:str, clips:list[Clip],outputDir:str = None,deleteCueFile:str = True) -> None:
     """Run Mp3DirectCut (possibly multiple times) to split an mp3 file into tracks.

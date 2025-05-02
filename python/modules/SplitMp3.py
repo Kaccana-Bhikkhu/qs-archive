@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-import os, json, platform
+import os
+import subprocess
 import Database
 import Utils, Alert, Link, TagMp3, PrepareUpload
 import Mp3DirectCut
@@ -10,7 +11,16 @@ from Mp3DirectCut import Clip, ClipTD
 from typing import List, Union, NamedTuple
 from datetime import timedelta
 
-Mp3DirectCut.SetExecutable(Utils.PosixToWindows(Utils.PosixJoin('tools','Mp3DirectCut')))
+Mp3DirectCut.SetExecutable(Utils.PosixToNative(Utils.PosixJoin('tools','Mp3DirectCut')))
+
+def NativeFilePaths(clipsDict: dict[str,list[Clip]]) -> dict[str,list[Clip]]:
+    """Convert the clip file names to native file paths."""
+
+    returnValue:dict[str,list[Clip]] = {}
+    for outputFile,clipList in clipsDict.items():
+        newClipList = [c._replace(file=Utils.PosixToNative(c.file)) for c in clipList]
+        returnValue[outputFile] = newClipList
+    return returnValue
 
 def AddArguments(parser):
     "Add command-line arguments used by this module"
@@ -31,9 +41,15 @@ def main():
     """ Split the Q&A session mp3 files into individual excerpts.
     Read the beginning and end points from Database.json."""
     
-    if platform.system() != "Windows":
-        Alert.error(f"SplitMp3 requires Windows to run mp3DirectCut.exe. mp3 files cannot be split on {platform.system()}.")
-        return
+    try:
+        Mp3DirectCut.ConfigureMp3DirectCut()
+    except Mp3DirectCut.ExecutableNotFound as error:
+        processError = subprocess.call(f"{Mp3DirectCut.mp3spltCommand} -h",shell=True,stdout=subprocess.DEVNULL)
+        if processError:
+            Alert.error(f"Mp3DirectCut returns error {error}. Cannot find command {Mp3DirectCut.mp3spltCommand}. Mp3 files cannot be split.")
+            return
+        else:        
+            Alert.notice(f"Cannot find Mp3DirectCut executable. Will use {Mp3DirectCut.mp3spltCommand}.")
     
     Mp3DirectCut.joinUsingPydub = gOptions.joinUsingPydub
 
@@ -71,7 +87,7 @@ def main():
                     sourceFile = session["filename"]
                 source = gDatabase["audioSource"].get(sourceFile,None)
                 if source:
-                    clips[index] = clips[index]._replace(file=Utils.PosixToWindows(Link.URL(source,"local")))
+                    clips[index] = clips[index]._replace(file=Link.URL(source,"local"))
                 else:
                     Alert.error(f"Cannot find source file '{sourceFile}' for",excerpt,". Will not split this excerpt.")
                     allFilesFound = False
@@ -110,7 +126,8 @@ def main():
         for sources,clipsDict in Mp3DirectCut.GroupBySourceFiles(excerptClipsDict):
             # Invoke Mp3DirectCut on each group of clips:
             try:
-                Mp3DirectCut.MultiFileSplitJoin(clipsDict,outputDir=Utils.PosixToWindows(outputDir))
+                nativeClipsDict = NativeFilePaths(clipsDict)
+                Mp3DirectCut.MultiFileSplitJoin(nativeClipsDict,outputDir=Utils.PosixToNative(outputDir))
             except Mp3DirectCut.ExecutableNotFound as err:
                 Alert.error(err)
                 Alert.status("Continuing to next module.")

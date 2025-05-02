@@ -70,7 +70,7 @@
             "args": [
                 "Prototype",
                 "--buildOnly",
-                "tags"
+                "events"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -128,14 +128,27 @@
             "justMyCode": true
         },
         {
+            "name": "QuickBuild",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/QSArchive.py",
+            "args": [
+                "DownloadCSV,SplitMp3,Prototype",
+                "--buildOnly",
+                "events",
+                "--linkCheckLevel",
+                "excerptMp3:3"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Testing",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupRandom",
-                "--events",
-                "SRD2010"
+                "ReviewDatabase"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

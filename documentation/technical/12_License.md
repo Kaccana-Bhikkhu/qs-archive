@@ -11,11 +11,11 @@ However, we would like to allow others to reuse portions of this project apart f
 
 For these reasons, portions of the Archive may be distributed under three different licenses:
 
-__1. The audio and transcribed teachings__ as a unified whole are © 2024 Abhayagiri Buddhist Monastery. This material may be distributed non-commercially and without modification. Any distribution of this material must at a minimum include this license and all files needed to display the complete website and play each audio clip. Along with these files, you may additionally include any new material created as part of the Archive (including items #2 and #3 below) and any parts of the Archive drawn from other sources (e.g. session audio recordings and pdf files of the references) as long as the license of that source permits.
+__1. The audio and transcribed teachings__ as a unified whole are © 2025 Abhayagiri Buddhist Monastery. This material may be distributed non-commercially and without modification. Any distribution of this material must at a minimum include this license and all files needed to display the complete website and play each audio clip. Along with these files, you may additionally include any new material created as part of the Archive (including items #2 and #3 below) and any parts of the Archive drawn from other sources (e.g. session audio recordings and pdf files of the references) as long as the license of that source permits.
 
 Please contact [questionsandstories@abhayagiri.org](mailto:questionsandstories@abhayagiri.org) for technical instructions to duplicate the Archive or for permission to reformat or distribute partial copies of the teachings within the Archive.
 
-__2. The hierarchical tagging scheme and documentation__ are © 2024 Abhayagiri Monastery and licensed under [_CC BY-NC_](https://creativecommons.org/licenses/by-nc/4.0/). This consists of the Tags and TagCluster sheets in the APQS Archive main spreadsheet and the markdown files in the documentation directory.
+__2. The hierarchical tagging scheme and documentation__ are © 2025 Abhayagiri Monastery and licensed under [_CC BY-NC_](https://creativecommons.org/licenses/by-nc/4.0/). This consists of the Tags and TagCluster sheets in the APQS Archive main spreadsheet and the markdown files in the documentation directory.
 
 __3. The database format and website generation engine__ are dedicated to the public domain under [_CC 0_](https://creativecommons.org/publicdomain/zero/1.0/). This includes all source code and all sheets in the APQS Archive main spreadsheet except the Tags sheet and sheets containing transcribed audio recordings. It explicitly excludes all audio files and any file or spreadsheet sheet which contains transcribed audio recordings.
 

@@ -48,6 +48,15 @@ class ExcerptFlag(StrEnum):
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
+    CHECK_SPLIT = "C"       # Check beginning, end, and cut split points
+
+# Each fTagOrder integer is followed by a single character flag specifying where to display this featured excerpt
+class FTagOrderFlag(StrEnum):
+    EVERYWHERE = "E"        # Display this featured excerpt everywhere (default)
+    TAG_ONLY = "T"          # Display only on tag pages (no subtopic pages)
+    PRIMARY_SUBTOPIC = "P"  # Display on tag pages and when this tag appears in a subtopic
+                            # not followed by an apostrophe
+    # Lowercase versions of these flags indicate not to feature the excerpt on the front page
     
 
 gCamelCaseTranslation = {}
@@ -406,6 +415,12 @@ def LoadTagsFile(database,tagFileName):
         tag["subtags"] = [t for t in tag["subtags"] if t not in virtualHeadings]
             # Remove virtual headings from subtag lists
 
+    for note in database["tagNote"].values():
+        try:
+            tags[note["tag"]]["note"] = note["note"]
+        except KeyError:
+            Alert.caution("Cannot find tag",note["tag"],"in order to apply a note to it.")
+
     database["tag"] = tags
     database["tagRaw"] = rawTagList
     database["tagSubsumed"] = subsumedTags
@@ -593,7 +608,10 @@ def CollectKeyTopics(database:dict[str]) -> None:
     primarySubtopics = set()
     thisSubtopic = None
     for subtopic in database["subtopic"].values():
-        subtopic["tag"] = subtopic["tag"].rstrip("'")
+        secondarySubtopic = subtopic["tag"].endswith("'")
+        if secondarySubtopic:
+            subtopic["tag"] = subtopic["tag"].rstrip("'")
+
         if subtopic["keyTopic"]:
             currentKeyTopic = {
                 "code": subtopic["topicCode"],
@@ -628,6 +646,9 @@ def CollectKeyTopics(database:dict[str]) -> None:
                 subtopic.pop(key,None)
             
             currentKeyTopic["subtopics"].append(subtopic["tag"])
+        
+        if secondarySubtopic:
+            thisSubtopic["secondarySubtags"] = thisSubtopic.get("secondarySubtags",[]) + [subtopic["tag"]]
     
     subtagsOnly = set(database["subtopic"]) - primarySubtopics
     for tag in subtagsOnly:
@@ -646,6 +667,8 @@ def CollectKeyTopics(database:dict[str]) -> None:
             subtopic["htmlPath"] = f"clusters/{Utils.slugify(subtopic['tag'])}.html"
         else: # Tags without subtopics link to pages in the tags directory
             subtopic["htmlPath"] = f"tags/{database['tag'][subtopic['tag']]['htmlFile']}"
+        if not subtopic["clusterNote"]:
+            del subtopic["clusterNote"]
 
     database["keyTopic"] = keyTopic
 
@@ -807,10 +830,11 @@ def FinalizeExcerptTags(x: dict) -> None:
         x.pop("aListen",None)
         if not x["fTags"]:
             x.pop("fTagOrder")
+            x.pop("fTagOrderFlags",None)
         
         # Remove these keys from all annotations
         for a in x["annotations"]:
-            for key in ("qTag","aTag","fTags","fTagOrder"):
+            for key in ("qTag","aTag","fTags","fTagOrder","fTagOrderFlags"):
                 a.pop(key,None)
 
 def AddExcerptTags(excerpt: dict,annotation: dict) -> None:
@@ -818,6 +842,7 @@ def AddExcerptTags(excerpt: dict,annotation: dict) -> None:
 
     for key in ("qTag","aTag","fTags","fTagOrder"):
         excerpt[key] = excerpt.get(key,[]) + annotation.get(key,[])
+    excerpt["fTagOrderFlags"] = excerpt.get("fTagOrderFlags","") + annotation.get("fTagOrderFlags","")
 
 def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
     """Add an annotation to a excerpt."""
@@ -874,7 +899,8 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
         for teacher in set(annotation["teachers"]) - set(teacherList):
             gUnattributedTeachers[teacher] += 1
 
-        if annotation["kind"] == "Reading":
+        # If the annotation is a reading and the teacher is not specified, make the author the teacher.
+        if annotation["kind"] == "Reading" and not annotation["teachers"]:
             AppendUnique(teacherList,ReferenceAuthors(annotation["text"]))
 
         annotation["teachers"] = teacherList
@@ -895,7 +921,7 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
         prevAnnotationLevel = excerpt["annotations"][-1]["indentLevel"]
     else:
         prevAnnotationLevel = 0
-    if annotation["indentLevel"] - 1 > prevAnnotationLevel:
+    if annotation["indentLevel"] - 1 > prevAnnotationLevel and not excerpt["exclude"]:
         Alert.warning("Annotation",annotation,"to",excerpt,": Cannot increase indentation level by more than one.")
     
     excerpt["annotations"].append(annotation)
@@ -950,7 +976,7 @@ def NumberExcerpts(excerpts: dict[str]) -> None:
 def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> None:
     """For excerpts in a given event, convert startTime and endTime keys into the clips key.
     Add audio sources from sessions (and eventually audio annotations) to database["audioSource"]
-    Eventually this function will scan for Alternate audio, Edited audio, Append audio, and Cut audio annotations for extended functionality."""
+    Process Alternate audio, Edited audio, Append audio, and Cut audio annotations."""
     
     def AddAudioSource(filename:str, duration:str, event: str, url: str) -> None:
         """Add an audio source to database["audioSource"]."""
@@ -1106,7 +1132,7 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
             if altAudioList:
                 ProcessAltAudio(x,altAudioList[0])
             
-            appendAudioList = [a for a in x["annotations"] if a["kind"] in ("Append audio","Cut audio")]
+            appendAudioList = [a for a in x["annotations"] if a["kind"] in ("Append audio","Cut audio") and a["indentLevel"] == 1]
             if appendAudioList:
                 ProcessAppendAudio(x,appendAudioList)
 
@@ -1134,7 +1160,7 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
                 endTime = lastClip.ToClipTD().end
                 if sameFile and endTime and endTime > nextClip.ToClipTD().start:
                     if ExcerptFlag.OVERLAP not in nextExcerpt["flags"]:
-                        Alert.warning(f"excerpt",nextExcerpt,"unexpectedly overlaps with the previous excerpt. This should be either changed or flagged with 'o'.")
+                        Alert.warning(nextExcerpt,"unexpectedly overlaps with the previous excerpt. This should be either changed or flagged with 'o'.")
         
         # If a session ends with an Edited audio excerpt, calculate its duration.
         if "startTimeInSession" in sessionExcerpts[-1]:
@@ -1143,10 +1169,17 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
         for x in sessionExcerpts:
             if "clips" in x:
                 x["duration"] = ExcerptDuration(x,sessionDuration)
+    
+    for session in sessions:
+        # Add information about session audio files that are not used directly
+        # The presence of remoteMp3Url key means we haven't processed this session yet
+        if "remoteMp3Url" in session and session["filename"] in database["audioSource"]:
+            AddAudioSource(session["filename"],session["duration"],session["event"],session["remoteMp3Url"])
+            del session["remoteMp3Url"]
+
 
 def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
     """Process the fragments in excerpt and return a list to add to the event."""
-    # fragmentNumbers = [n for n,a in enumerate(excerpt["annotations"]) if a["Kind"] == "Fragment"]
     
     fragmentExcerpts = []
     nextFileNumber = excerpt["fileNumber"] + 1
@@ -1191,6 +1224,7 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
                 aTag = fragmentTagSource["aTag"],
                 fTags = fragmentFTagSource["fTags"],
                 fTagOrder = fragmentFTagSource["fTagOrder"],
+                fTagOrderFlags = fragmentFTagSource["fTagOrderFlags"],
 
                 startTime = fragmentAnnotation["startTime"],
                 endTime = fragmentAnnotation["endTime"],
@@ -1281,10 +1315,24 @@ def LoadEventFile(database,eventName,directory):
         # Remove sessions if none of the session teachers have given consent
     database["sessions"] += sessions
 
+    # Convert ? characters to numbers indicating draft fTags
     for x in rawExcerpts:
         x["fTagOrder"] = re.sub(r"\?+",lambda m: str(len(m[0]) + 1000),x["fTagOrder"])
     for key in ["teachers","qTag1","aTag1","fTags","fTagOrder"]:
         ListifyKey(rawExcerpts,key)
+    for x in rawExcerpts:
+        # Handle fTag order flags
+        flags = [re.search(r"[a-zA-Z]$",s) for s in x["fTagOrder"]]
+        flags = [f[0] if f else FTagOrderFlag.EVERYWHERE for f in flags]
+        for n,f in enumerate(flags):
+            try:
+                FTagOrderFlag(f.upper()) # This conversion fails if we don't recognize the flag
+            except ValueError:
+                Alert.warning("Ignoring unknown fTag order flag",repr(f),"in",x)
+                flags[n] = FTagOrderFlag.EVERYWHERE
+        x["fTagOrderFlags"] = "".join(flags)
+
+        x["fTagOrder"]= [re.sub(r"[a-zA-Z]","",s) for s in x["fTagOrder"]]
     ConvertToInteger(rawExcerpts,"sessionNumber")
     ConvertToInteger(rawExcerpts,"fTagOrder")
     
@@ -1342,7 +1390,8 @@ def LoadEventFile(database,eventName,directory):
             elif defaultTeacher != "None":
                 x["teachers"] = list(ourSession["teachers"]) # Make a copy to prevent subtle errors
         
-        if x["kind"] == "Reading":
+        # If the excerpt is a reading and the teacher is not specified, make the author the teacher.
+        if x["kind"] == "Reading" and not x["teachers"]:
             AppendUnique(x["teachers"],ReferenceAuthors(x["text"]))
         
         if x["sessionNumber"] != lastSession:
@@ -1544,8 +1593,7 @@ def CountAndVerify(database):
     for topic in database["keyTopic"].values():
         topicExcerpts = set()
         for cluster in topic["subtopics"]:
-            allTags = set([cluster] + list(database["subtopic"][cluster]["subtags"].keys()))
-            tagExcerpts = set(id(x) for x in Filter.FTag(allTags)(database["excerpts"]))
+            tagExcerpts = set(id(x) for x in Filter.ClusterFTag(cluster)(database["excerpts"]))
             database["subtopic"][cluster]["fTagCount"] = len(tagExcerpts)
             topicExcerpts.update(tagExcerpts)
         
@@ -1561,7 +1609,7 @@ def CountAndVerify(database):
         if tagDesc["primaries"] > 1:
             Alert.caution(f"{tagDesc['primaries']} instances of tag {tagDesc['tag']} are flagged as primary.")
         if tagDesc["copies"] > 1 and tagDesc["primaries"] == 0 and TagFlag.VIRTUAL not in tagDesc["flags"]:
-            Alert.notice(f"Notice: None of {tagDesc['copies']} instances of tag {tagDesc['tag']} are designated as primary.")
+            Alert.notice(f"None of {tagDesc['copies']} instances of tag {tagDesc['tag']} are designated as primary.")
 
 
 def AddArguments(parser):
@@ -1651,9 +1699,13 @@ def main():
     excludeAlert(f": {gRemovedExcerpts} excerpts and {gRemovedAnnotations} annotations in all.")
     gUnattributedTeachers.pop("Anon",None)
     if gUnattributedTeachers:
-        excludeAlert(f": Did not attribute excerpts to the following teachers:",dict(gUnattributedTeachers))
+        excludeAlert(f": Did not attribute excerpts to the following {len(gUnattributedTeachers)} teachers:",dict(gUnattributedTeachers))
     if gDatabase["tagRedacted"]:
-        excludeAlert(f": Redacted these tags due to teacher consent:",gDatabase["tagRedacted"])
+        excludeAlert(f": Redacted {len(gDatabase['tagRedacted'])} tags due to teacher consent:",gDatabase["tagRedacted"])
+    nonSearchableTeachers = [t for t in gDatabase["teacher"].values() if not t["searchable"]]
+    if nonSearchableTeachers:
+        nonSearchableTeachers = [t["fullName"] for t in nonSearchableTeachers]
+        excludeAlert(f": These {len(nonSearchableTeachers)} teachers are excluded from search blobs:",nonSearchableTeachers)
 
     if not len(gDatabase["event"]):
         Alert.error("No excerpts have been parsed. Aborting.")

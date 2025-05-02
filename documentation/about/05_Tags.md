@@ -10,34 +10,34 @@ The superstructure of the tagging scheme can be understood by examining this gro
 
 __A. Mental qualities__
 
-1. [Skillful qualities](../../pages/drilldown/skillful-qualities.html#skillful-qualities) (129 subtags, 1807 excerpts)
-2. [Unskillful qualities](../../pages/drilldown/unskillful-qualities.html#unskillful-qualities) (38 subtags, 760 excerpts)
-3. [Indeterminate qualities](../../pages/drilldown/indeterminate-qualities.html#indeterminate-qualities) (47 subtags, 967 excerpts)
+1. [Skillful qualities](../../pages/drilldown/skillful-qualities.html#skillful-qualities) (129 subtags, 2019 excerpts)
+2. [Unskillful qualities](../../pages/drilldown/unskillful-qualities.html#unskillful-qualities) (38 subtags, 852 excerpts)
+3. [Indeterminate qualities](../../pages/drilldown/indeterminate-qualities.html#indeterminate-qualities) (48 subtags, 1072 excerpts)
 
  __B. Modes of practice__
 
-4. [Three Refuges](../../pages/drilldown/three-refuges.html#three-refuges) (6 subtags, 266 excerpts)
-5. [Devotional practice](../../pages/drilldown/devotional-practice.html#devotional-practice) (22 subtags, 219 excerpts)
-6. [Precepts](../../pages/drilldown/precepts.html#precepts) (16 subtags, 196 excerpts)
-7. [Meditation](../../pages/drilldown/meditation.html#meditation) (68 subtags, 1186 excerpts)
+4. [Three Refuges](../../pages/drilldown/three-refuges.html#three-refuges) (6 subtags, 288 excerpts)
+5. [Devotional practice](../../pages/drilldown/devotional-practice.html#devotional-practice) (22 subtags, 227 excerpts)
+6. [Precepts](../../pages/drilldown/precepts.html#precepts) (16 subtags, 210 excerpts)
+7. [Meditation](../../pages/drilldown/meditation.html#meditation) (69 subtags, 1339 excerpts)
 
  __C. Sources of Dhamma teachings__
 
-8. [Teaching Dhamma](../../pages/drilldown/teaching-dhamma.html#teaching-dhamma) (38 subtags, 1059 excerpts)
-9. [Teachers](../../pages/drilldown/teachers.html#teachers) (130 subtags, 1109 excerpts)
-10. [Monasteries](../../pages/drilldown/monasteries.html#monasteries) (45 subtags, 424 excerpts)
+8. [Teaching Dhamma](../../pages/drilldown/teaching-dhamma.html#teaching-dhamma) (38 subtags, 1181 excerpts)
+9. [Teachers](../../pages/drilldown/teachers.html#teachers) (143 subtags, 1232 excerpts)
+10. [Monasteries](../../pages/drilldown/monasteries.html#monasteries) (48 subtags, 456 excerpts)
 
  __D. Context of teaching and and practice__
 
-11. [Nature of the cosmos](../../pages/drilldown/nature-of-the-cosmos.html#nature-of-the-cosmos) (22 subtags, 364 excerpts)
-12. [History](../../pages/drilldown/history.html#history) (12 subtags, 175 excerpts)
-13. [Cultural context](../../pages/drilldown/cultural-context.html#cultural-context) (23 subtags, 508 excerpts)
-14. [Spiritual traditions](../../pages/drilldown/spiritual-traditions.html#spiritual-traditions) (15 subtags, 111 excerpts)
+11. [Nature of the cosmos](../../pages/drilldown/nature-of-the-cosmos.html#nature-of-the-cosmos) (22 subtags, 397 excerpts)
+12. [History](../../pages/drilldown/history.html#history) (12 subtags, 178 excerpts)
+13. [Cultural context](../../pages/drilldown/cultural-context.html#cultural-context) (25 subtags, 548 excerpts)
+14. [Spiritual traditions](../../pages/drilldown/spiritual-traditions.html#spiritual-traditions) (15 subtags, 124 excerpts)
 
  __E. Domains of teaching and practice__
 
-15. [Renunciant practice](../../pages/drilldown/renunciant-practice.html#renunciant-practice) (76 subtags, 964 excerpts)
-16. [Everyday life](../../pages/drilldown/everyday-life.html#everyday-life) (69 subtags, 791 excerpts)
+15. [Renunciant practice](../../pages/drilldown/renunciant-practice.html#renunciant-practice) (77 subtags, 1025 excerpts)
+16. [Everyday life](../../pages/drilldown/everyday-life.html#everyday-life) (70 subtags, 850 excerpts)
 
 Like the teachings themselves, the tag structure gives first priority to understanding skillful and unskillful states of mind. Next come strategies for cultivating skillful states of mind and details about the transmission of the teachings, followed by tags describing the context within which this all occurs.
 
@@ -51,16 +51,6 @@ Sometimes separate Pāli terms appearing in the various lists are sufficiently c
 ## Tag Choices
 
 Although the basic structure began with the Buddha’s lists, it evolved organically to fit the audio content. In the course of this process, many somewhat arbitrary decisions must be made, particularly regarding how to mesh Pāli and English concepts. For example, multiple Pāli terms are clearly related to [[Discernment](../../pages/tags/discernment.html)] (pañña; see “[Why is discernment a better word for wisdom?](../../pages/events/SRD2013.html#SRD2013_S01_F03)”). When tagging English discourse, when to use [[Discernment](../../pages/tags/discernment.html)] and when to use related terms? The Archive uses the following scheme: [[Investigation of states](../../pages/tags/investigation-of-states.html)] (dhamma-vicaya) for identifying skillful and unskillful states of mind in the early stages of meditation and [[Appropriate attention](../../pages/tags/appropriate-attention.html)] (yoniso manasikāra) for acts of discernment related to the field of attention. Vīmaṃsā, one of the four [Bases of Success](../../pages/drilldown/bases-of-success.html#bases-of-success) describes reviewing the results of past actions with a view to further improve in the future, but the Archive subsumes this under the tag [[Discernment](../../pages/tags/discernment.html)].
-
-Other somewhat arbitrary choices regarding specific tags include the following:
-
- - Thinking is [[Directed thought and evaluation](../../pages/tags/directed-thought-and-evaluation.html)] or [[Proliferation](../../pages/tags/proliferation.html)] depending on its skillfulness.
- - [[Proliferation](../../pages/tags/proliferation.html)] encompasses both unskillful obsessive thinking and objectification, two translations of papañca.
- - [[Suffering](../../pages/tags/suffering.html)] refers to the common experience; [[Noble Truth of Suffering](../../pages/tags/noble-truth-of-suffering.html)] applies only to reflective understanding of dukkha as part of the Path.
- - The tag scheme distinguishes [[Suffering](../../pages/tags/suffering.html)] and [[Pain](../../pages/tags/pain.html)] as two distinct meanings of the Pāli word dukkha, but pleasure and happiness (two meanings of sukha) are both tagged [[Happiness](../../pages/tags/happiness.html)].
- - Sensual pleasure and sensual desire are both tagged [[Sensual desire](../../pages/tags/sensual-desire.html)].
- - Several Thai words are frequently translated as “the one who knows.” These are tagged [[Knowing itself](../../pages/tags/knowing-itself.html)].
- - [[Moods of the mind](../../pages/tags/moods-of-the-mind.html)] refers specifically to the Thai phrase _arom kong jit_, and is distinct from the English tag [[Emotion](../../pages/tags/emotion.html)].
 
 ## History and Culture Tags
 

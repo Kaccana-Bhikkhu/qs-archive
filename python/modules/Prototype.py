@@ -195,7 +195,9 @@ def LinkTeachersInText(text: str,specificTeachers:Iterable[str]|None = None) -> 
 
     global gAllTeacherRegex
     if not gAllTeacherRegex:
-        gAllTeacherRegex = Utils.RegexMatchAny(t["attributionName"] for t in gDatabase["teacher"].values() if t["htmlFile"])
+        teacherList = sorted((t["attributionName"] for t in gDatabase["teacher"].values() if t["htmlFile"]),key=lambda s: -len(s))
+            # Put longest items first so that Ajahn Chah Sangha doesn't match Ajahn Chah
+        gAllTeacherRegex = Utils.RegexMatchAny(teacherList)
     
     if specificTeachers is None:
         teacherRegex = gAllTeacherRegex
@@ -536,6 +538,39 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
                 a(TagDescription(gDatabase["tag"][tag],fullTag=True,flags=TagDescriptionFlag.COUNT_FIRST + TagDescriptionFlag.SHOW_STAR,drilldownLink=True))
     
     page = Html.PageDesc(info)
+
+    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
+    page.AppendContent(Html.Tag("span",{"style":"float: right;"})(printableLinks))
+
+    page.AppendContent(str(a))
+    page.AppendContent("Most common tags",section="citationTitle")
+    page.keywords = ["Tags","Most common tags"]
+    yield page
+
+    # Now yield a printable version for tag counting purposes
+    tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
+                                key = lambda tag: (-ExcerptCount(tag),tag))
+    a = Airium()
+    with a.p():
+        a("The number of featured excerpts for each tag appears in parentheses.")
+    with a.div(Class="listing"):
+        for tag in tagsSortedByQCount:
+            with a.p():
+                code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
+                tagLink = HtmlTagLink(tag)
+                fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
+                minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])
+                
+                tagStyle = Html.Wrapper()
+                if tag in Database.SoloSubtopics():
+                    tagStyle = Html.Tag("b")
+                elif tag in Database.KeyTopicTags():
+                    # If this tag is part of a subtopic and has no fTags which do not appear in the subtopic
+                    tagStyle = Html.Tag("i")
+
+                a(f"{ExcerptCount(tag)} {code} {tagStyle(tagLink)} ({fTagCount}:{minFTag}-{maxFTag})")
+
+    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
     page.AppendContent(str(a))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
@@ -856,9 +891,14 @@ def EventSeriesAndDateStr(event: dict) -> str:
 
 def EventVenueStr(event: dict) -> str:
     "Return a string describing the event venue"
-    if not event["venue"]:
+    if event["venue"] == "None":
         if event["format"] == "Interview":
             return "Online interview" if event["medium"] == "Online" else "Interview"
+        if event["medium"] == "Online":
+            return "Online"
+        else:
+            Alert.caution(event,": only online events should specify venue = None.")
+            return ""
     
     venueStr = event['venue']
     if gDatabase['venue'][event['venue']]['location']:
@@ -1411,8 +1451,18 @@ def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
 def EventDescription(event: dict,showMonth = False) -> str:
     href = Html.Wrapper(f"<a href = {Database.EventLink(event['code'])}>","</a>")
     if showMonth:
-        date = Utils.ParseDate(event["startDate"])
-        monthStr = f' – {date.strftime("%B")} {int(date.year)}'
+        startDate = Utils.ParseDate(event["startDate"])
+        monthStr = f'{startDate.strftime("%B")} {int(startDate.year)}'
+        if event["endDate"]:
+            endDate = Utils.ParseDate(event["endDate"])
+            endMonthStr = f'{endDate.strftime("%B")} {int(endDate.year)}'
+            if endMonthStr != monthStr:
+                if startDate.year == endDate.year:
+                    monthStr = f'{startDate.strftime("%B")} to {endMonthStr}'
+                else:
+                    monthStr = f'{monthStr} to {endMonthStr}'
+        monthStr = ' – ' + monthStr
+
     else:
         monthStr = ""
     return f"<p>{href.Wrap(event['title'])} ({event['excerpts']}){monthStr}</p>"
@@ -1523,11 +1573,12 @@ def LinkToTeacherPage(page: Html.PageDesc) -> Html.PageDesc:
     
     return page
 
-def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: Html.PageDesc) -> Iterator[Html.PageAugmentorType]:
+def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: Html.PageDesc,cluster:str = "") -> Iterator[Html.PageAugmentorType]:
     """Generate a list of pages obtained by running a series of tag subsearches.
     tags: The tag or tags to search for.
     tagExcerpts: The excerpts to search. Should already have passed Filter.Tag(tags).
-    basePage: The base page to append our pages to."""
+    basePage: The base page to append our pages to.
+    cluster: The tag cluster represented by tags."""
 
     def FilteredTagMenuItem(excerpts: Iterable[dict],filter: Filter.Filter,menuTitle: str,fileExt:str = "") -> Html.PageDescriptorMenuItem:
         if not fileExt:
@@ -1547,7 +1598,11 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             yield firstPage # First yield the menu item descriptor, if any
             firstPage = next(menuItemAndPages)
 
-        featuredExcerpts = list(Database.RemoveFragments(Filter.FTag(tags).Apply(excerpts)))
+        if cluster:
+            featuredExcerpts = Filter.ClusterFTag(cluster).Apply(excerpts)
+        else:
+            featuredExcerpts = Filter.FTag(tags).Apply(excerpts)
+        featuredExcerpts = list(Database.RemoveFragments(featuredExcerpts))
         if featuredExcerpts:
             featuredExcerpts.sort(key = lambda x: Database.FTagOrder(x,tags))
 
@@ -1690,6 +1745,10 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
             a(ListLinkedTags("Subtag",[t for t in tagInfo['subtags'] if t not in subsumedTags]))
             a(ListLinkedTags("See also",tagInfo['related'],plural = ""))
             a(ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False))
+        
+        if "note" in tagInfo:
+            with a.p():
+                a(tagInfo["note"])
         a.hr()
         
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
@@ -2080,7 +2139,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
                 return Database.FTagOrder(x,searchTags)
 
             searchTags = [cluster] + list(gDatabase["subtopic"][cluster]["subtags"].keys())
-            excerptsByTopic[cluster] = sorted(Database.RemoveFragments(Filter.FTag(searchTags).Apply(gDatabase["excerpts"])),key=SortKey)
+            excerptsByTopic[cluster] = sorted(Database.RemoveFragments(Filter.ClusterFTag(cluster).Apply(gDatabase["excerpts"])),key=SortKey)
 
         def FeaturedExcerptList(item: tuple[dict,str,bool,bool]) -> tuple[str,str,str,str]:
             excerpt,tag,firstExcerpt,lastExcerpt = item
@@ -2114,8 +2173,14 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
             heading = "Tag cluster: " if isCluster else "Tag: "
             text = clusterInfo["displayAs"] if isCluster else tag
             heading += HtmlSubtopicLink(tag,text=text).replace(".html","-relevant.html")
+            pali = clusterInfo["pali"]
             if not isCluster and clusterInfo["displayAs"] != tag:
-                heading = f"{clusterInfo['displayAs']} ({heading})"
+                if pali:
+                    heading = f"{clusterInfo['displayAs']} ({pali}) ({heading})"
+                else:
+                    heading = f"{clusterInfo['displayAs']} ({heading})"
+            elif pali:
+                heading += f" ({pali})"
             return heading,excerptHtml,gDatabase["tag"][tag]["htmlFile"].replace(".html",""),clusterInfo["displayAs"]
 
         def PairExcerptsWithTopic() -> Generator[tuple[dict,str]]:
@@ -2158,15 +2223,21 @@ def TagClusterPages(topicDir: str):
             relatedClusters = [HtmlSubtopicLink(c) for c in clusterInfo["related"]]
             a(TitledList("See also",relatedClusters,plural=""))
         
+        if "clusterNote" in clusterInfo:
+            with a.p():
+                a(clusterInfo["clusterNote"])
         a.hr()
-        
-        pageInfo = Html.PageInfo("Tag cluster: " + clusterInfo["displayAs"],clusterInfo["htmlPath"])
+
+        pageTitle = titleInBody = "Tag cluster: " + clusterInfo["displayAs"]
+        if clusterInfo["pali"]:
+            titleInBody += f" ({clusterInfo['pali']})"
+        pageInfo = Html.PageInfo(pageTitle,clusterInfo["htmlPath"],titleInBody)
         basePage = Html.PageDesc(pageInfo)
         basePage.AppendContent(str(a))
         basePage.keywords = ["Tag cluster",clusterInfo["displayAs"]]
         basePage.AppendContent(f"Tag cluster: {clusterInfo['displayAs']}",section="citationTitle")
 
-        yield from TagSubsearchPages(tags,relevantExcerpts,basePage)
+        yield from TagSubsearchPages(tags,relevantExcerpts,basePage,cluster=cluster)
 
 def AddTopicButtons(page: Html.PageDesc) -> None:
     """Add buttons to show and hide subtopics to this under-construction page."""
@@ -2262,11 +2333,12 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                         bitsAfterDash = []
                         if len(subtags) > 1:
                             subtagStrs = []
+                            subtopicExcerpts = Filter.ClusterFTag(subtopic)(gDatabase['excerpts'])
                             for tag in subtags:
                                 if tag in ReviewDatabase.SignificantSubtagsWithoutFTags():
                                     tagCount = "<b>∅</b>"
                                 else:
-                                    tagCount = str(gDatabase['tag'][tag].get("fTagCount",0))
+                                    tagCount = str(Filter.FTag(tag).Count(subtopicExcerpts))
                                 tagCount += f"/{gDatabase['tag'][tag].get('excerptCount',0)}"
                                 subtagStrs.append(HtmlTagLink(tag) + (f" ({tagCount})" if printPage else ""))
                             bitsAfterDash.append(f"Cluster includes: {', '.join(subtagStrs)}")

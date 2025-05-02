@@ -6,12 +6,11 @@ import json, re, itertools
 import Html2 as Html
 import Link
 from Prototype import gDatabase
-from ReviewDatabase import gDatabase
 import SplitMp3
 import Utils
 import Alert
 import Filter
-from ParseCSV import ExcerptFlag, TagFlag
+import ParseCSV
 from functools import lru_cache
 
 
@@ -35,7 +34,7 @@ def RemoveFragments(excerpts: Iterable[dict[str]]) -> Iterable[dict[str]]:
 
     lastNonFragment = ()
     for x in excerpts:
-        if ExcerptFlag.FRAGMENT in x["flags"]:
+        if ParseCSV.ExcerptFlag.FRAGMENT in x["flags"]:
             if (x["event"],x["sessionNumber"],int(x["excerptNumber"])) != lastNonFragment:
                 yield x
         else:
@@ -159,11 +158,21 @@ def KeyTopicTags() -> dict[str,None]:
             returnValue[tag] = None
     return returnValue
 
+@lru_cache(maxsize=None)
+def SoloSubtopics() -> set[str]:
+    "Return a set of tag names which are subtopics without subtags."
+
+    returnValue = set()
+    for subtopic in gDatabase["subtopic"].values():
+        if not subtopic["subtags"]:
+            returnValue.add(subtopic["tag"])
+    return returnValue
+
 def SubtopicsAndTags() -> Iterable[str]:
     "Iterate over all subtopics and then over all tags not in subtopics"
     yield from gDatabase["subtopic"].values()
     keyTopicTags = KeyTopicTags()
-    yield from (tag for tag in gDatabase["tag"].values() if tag["tag"] not in keyTopicTags and TagFlag.VIRTUAL not in tag["flags"])
+    yield from (tag for tag in gDatabase["tag"].values() if tag["tag"] not in keyTopicTags and ParseCSV.TagFlag.VIRTUAL not in tag["flags"])
 
 def ParentTagListEntry(listIndex: int) -> dict|None:
     "Return a the entry in gDatabase['tagDisplayList'] that corresponds to this tag's parent tag."
@@ -467,16 +476,16 @@ def SubtagIterator(tagOrSubtopic:dict[str]) -> Iterable[str]:
     if "topicCode" in tagOrSubtopic:
         yield from tagOrSubtopic.get("subtags",())
 
-def FTagAndOrder(excerpt: dict,fTags: Iterable[str]) -> tuple[str,int]:
-    """Return the tuple (fTag,fTagOrder) for the first matching fTag in fTags."""
+def FTagAndOrder(excerpt: dict,fTags: Iterable[str]) -> tuple[str,int,str]:
+    """Return the tuple (fTag,fTagOrder,fTagOrderFlag) for the first matching fTag in fTags."""
     
     for tag in fTags:
         try:
             fTagIndex = excerpt["fTags"].index(tag)
-            return excerpt["fTags"][fTagIndex],excerpt["fTagOrder"][fTagIndex]
+            return excerpt["fTags"][fTagIndex],excerpt["fTagOrder"][fTagIndex],excerpt["fTagOrderFlags"][fTagIndex]
         except (ValueError, IndexError):
             pass
-    return "",999
+    return "",999,""
 
 def FTagOrder(excerpt: dict,fTags: Iterable[str]) -> int:
     """Return fTagOrder of the first matching fTag in fTags."""
