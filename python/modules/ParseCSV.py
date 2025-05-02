@@ -921,7 +921,7 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
         prevAnnotationLevel = excerpt["annotations"][-1]["indentLevel"]
     else:
         prevAnnotationLevel = 0
-    if annotation["indentLevel"] - 1 > prevAnnotationLevel:
+    if annotation["indentLevel"] - 1 > prevAnnotationLevel and not excerpt["exclude"]:
         Alert.warning("Annotation",annotation,"to",excerpt,": Cannot increase indentation level by more than one.")
     
     excerpt["annotations"].append(annotation)
@@ -1699,9 +1699,13 @@ def main():
     excludeAlert(f": {gRemovedExcerpts} excerpts and {gRemovedAnnotations} annotations in all.")
     gUnattributedTeachers.pop("Anon",None)
     if gUnattributedTeachers:
-        excludeAlert(f": Did not attribute excerpts to the following teachers:",dict(gUnattributedTeachers))
+        excludeAlert(f": Did not attribute excerpts to the following {len(gUnattributedTeachers)} teachers:",dict(gUnattributedTeachers))
     if gDatabase["tagRedacted"]:
-        excludeAlert(f": Redacted these tags due to teacher consent:",gDatabase["tagRedacted"])
+        excludeAlert(f": Redacted {len(gDatabase['tagRedacted'])} tags due to teacher consent:",gDatabase["tagRedacted"])
+    nonSearchableTeachers = [t for t in gDatabase["teacher"].values() if not t["searchable"]]
+    if nonSearchableTeachers:
+        nonSearchableTeachers = [t["fullName"] for t in nonSearchableTeachers]
+        excludeAlert(f": These {len(nonSearchableTeachers)} teachers are excluded from search blobs:",nonSearchableTeachers)
 
     if not len(gDatabase["event"]):
         Alert.error("No excerpts have been parsed. Aborting.")
