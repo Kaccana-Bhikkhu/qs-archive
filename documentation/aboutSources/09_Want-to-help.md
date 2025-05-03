@@ -6,24 +6,6 @@ If you would like to contribute to the Ajahn Pasanno Question and Story Archive,
 -----
 
 ## Ways Anyone Can Contribute:
-### Suggest excerpts to feature
-The October 2024 release introduces hand-picked featured excerpts which appear at the top of the corresponding tag pages. Featured excerpts can be clear answers to the most common or significant questions, pivotal or illustrative stories in the life of a teacher or community, or insightful reflections about important aspects of Dhamma. The eventual goal is that tags applied to 100 or more excerpts will feature three to five excerpts illustrating key aspects of the topic. Less common tags will feature fewer excerpts.
-
-As of the November 2024 release, most important tags feature at least one excerpt. However, many tags could benefit from a few more. If you come across a particularly good excerpt that does not display a star, please suggest it as described below. Some pointers for suggesting featured excerpts:
-
- - Single-topic questions (e.g. “Equanimity...your thoughts?”) often make good featured excerpts.
- - Short answers are often preferable to long answers.
- - Try not to duplicate material when possible.
- - Illustrative stories and memorable quotes are a plus.
- - Feel free to point out stories or quotes that the Archive hasn't transcribed if they contribute substantially to the topic.
- - Featured excerpts may be arranged logically, chronologically, or simplest to most in-depth.
- - You may suggest that closely-related tags in the same key topic (e.g. Continuity of mindfulness and Present moment awareness) be combined into a single tag cluster or that new tags should be added to key topics.
- - If an excellent answer follows a nearly inaudible question, we can amplify the question. Or better yet, amplify the question yourself and send the edited audio file.
- - One can select only part of an excerpt to feature as a fragment.
-
-Please send your suggestions to [questionsandstories@abhayagiri.org](mailto:questionsandstories@abhayagiri.org). Additional support for suggesting featured excerpts may be provided if there is sufficient interest.
-
------
 
 ### Find stories in Dhamma talks
 The APQS Archive indexes stories told in Q&A sessions and Dhamma discussions. Ajahn Pasanno tells many stories during Dhamma talks, but we’re not planning to hunt for them all. If you remember inspiring stories told by or about Ajahn Pasanno contained in recordings on [abhayagiri.org](https://www.abhayagiri.org/talks), please send them to us. If the story isn’t duplicated elsewhere in the archive and seems worthy to be included, we’ll aim to add it to a future version of the Archive.
@@ -67,6 +49,6 @@ There are many ways a skilled and generous programmer could help with the Archiv
 
 __Fix bugs:__ For the current list, see [About: status](about:status#known-issues-and-limitations) and [Github issues](https://github.com/Kaccana-Bhikkhu/qs-archive/issues).
 
-__Cross-platform mp3 splitting:__ The project currently uses Windows-only mp3DirectCut to quickly and losslessly split mp3 files. [mp3splt](https://mp3splt.sourceforge.net/mp3splt_page/about.php) is a cross-platfrom command-line utility with similar functionality. Rewriting `Mp3DirectCut.SinglePassSplit` to use this utility would make the QSArchive software fully functional on many platforms.
+__Cross-platform mp3 splitting:__ The project currently uses Windows-only [mp3DirectCut](https://mpesch3.de/) or [mp3splt](https://mp3splt.sourceforge.net/mp3splt_page/about.php) to quickly and losslessly split mp3 files. mp3splt is cross-platform but occasionally sets the length metadata incorrectly when splitting variable-length mp3 files, so it isn't reliable enough for production work. [FFcuesplitter](https://github.com/jeanslack/FFcuesplitter) is a python script that uses ffmpeg to split mp3 files. It is possible that rewriting `Mp3DirectCut.SinglePassSplit` to use FFCuesplitter would make the QSArchive software fully functional on multiple platforms.
 
-__Create a modern search-driven website:__ A modern website designed for mobile devices (and perhaps fully integrated into abhayagiri.org) would make the Archive material substantially more accessible.
+__Help deploy the new homepage:__ A generous supporter has designed a new homepage for the Archive. Integrating it with the current website will stretch the limits of Ajahn Kaccāna's knowledge of Javascript. A skilled Javascript programmer might be able to contribute here.
