@@ -1301,7 +1301,6 @@ def LoadEventFile(database,eventName,directory):
         s.pop("excerpts",None)
         Utils.ReorderKeys(s,["event","sessionNumber"])
         RemoveUnknownTeachers(s["teachers"],s)
-        s["teachers"] = [teacher for teacher in s["teachers"] if TeacherConsent(database["teacher"],[teacher],"attribute")]
 
     if not gOptions.ignoreExcludes:
         sessions = FilterAndExplain(sessions,lambda s: not s["exclude"],excludeAlert,"- exclude flag Yes.")
@@ -1414,6 +1413,7 @@ def LoadEventFile(database,eventName,directory):
         if x["exclude"] and not gOptions.ignoreExcludes:
             excludeReason = [x," - marked for exclusion in spreadsheet"]
         elif database["kind"][x["kind"]].get("exclude",False):
+            x["exclude"] = True
             excludeReason = [x,"is of kind",x["kind"],"which is excluded in the spreadsheet"]
         elif not (TeacherConsent(database["teacher"],x["teachers"],"indexExcerpts") or database["kind"][x["kind"]]["ignoreConsent"]):
             x["exclude"] = True
@@ -1449,6 +1449,12 @@ def LoadEventFile(database,eventName,directory):
     originalCount = len(excerpts)
     excerpts = [x for x in excerpts if not x["exclude"]]
         # Remove excluded excerpts, those we didn't get consent for, and excerpts which are too corrupted to interpret
+    
+    # Remove teacher names from sessions based on teacher consent.
+    # This must happen after processing excerpts so that teacher inheritance still functions appropriately.
+    for s in sessions:
+        s["teachers"] = [teacher for teacher in s["teachers"] if TeacherConsent(database["teacher"],[teacher],"attribute")]
+
     global gRemovedExcerpts
     gRemovedExcerpts += originalCount - len(excerpts)
     sessionsWithExcerpts = set(x["sessionNumber"] for x in excerpts)
@@ -1477,7 +1483,7 @@ def LoadEventFile(database,eventName,directory):
 
     database["excerpts"] += excerpts
 
-    eventDesc["sessions"] = len(sessions)
+    eventDesc["sessions"] = len(sessionsWithExcerpts)
     eventDesc["excerpts"] = Database.CountExcerpts(excerpts) # Count only non-session excerpts   
 
 def CountInstances(source: dict|list,sourceKey: str,countDicts: List[dict],countKey: str,zeroCount = False) -> int:

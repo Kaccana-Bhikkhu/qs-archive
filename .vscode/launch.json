@@ -57,7 +57,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "ParseCSV"
+                "ParseCSV",
+                "--explainExcludes"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
