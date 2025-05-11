@@ -17,7 +17,8 @@ body {
 }
 
 .left-column {
-	flex: 0 0 900px; /* Change this value to adjust the left column width */
+	flex: 0 0 900px;
+	/* Change this value to adjust the left column width */
 	padding: 30px;
 	border-right: 1px solid #ccc;
 }
@@ -73,59 +74,61 @@ header a:hover {
 
 /* Style the back link */
 .back-link {
-	text-align: right; 
-	font-size: 16px; 
-	margin: 0; 
-  }
-  
-  .back-link a {
-	text-decoration: none; 
-	color: #333; 
-	transition: color 0.2s ease-in-out; 
-  }
-  
-  .back-link a:hover {
-	color: #c7a630; 
-  }
-  
+	text-align: right;
+	font-size: 16px;
+	margin: 0;
+}
+
+.back-link a {
+	text-decoration: none;
+	color: #333;
+	transition: color 0.2s ease-in-out;
+}
+
+.back-link a:hover {
+	color: #c7a630;
+}
+
 
 #topnav a {
-	text-decoration: none; 
+	text-decoration: none;
 	color: rgb(30, 29, 29);
 	text-align: center;
 	padding: 0.4em;
 	font-size: 1.1em;
 	font-weight: 400;
 	font-family: "Roboto", sans-serif;
-	transition: border-bottom 0.2s ease-in-out; /* Add a smooth transition for the underline effect */
+	transition: border-bottom 0.2s ease-in-out;
+	/* Add a smooth transition for the underline effect */
 	margin-right: 10px;
-  }
-  
-  #topnav a:hover {
-	color: #7c7367; 
-	text-decoration: none;
-  }
+}
 
-  #topnav a.active {
-		color: #7c7367;
-		border-bottom: 1px dotted #a28a4e; /* Adjust the width (1px) as needed */
-	  }
-  
+#topnav a:hover {
+	color: #7c7367;
+	text-decoration: none;
+}
+
+#topnav a.active {
+	color: #7c7367;
+	border-bottom: 1px dotted #a28a4e;
+	/* Adjust the width (1px) as needed */
+}
+
 
 hr {
-	border: none; 
-	border-top: 2px solid #909294; 
-	margin: 20px 0; 
-  }
+	border: none;
+	border-top: 2px solid #909294;
+	margin: 20px 0;
+}
 
 /* menu between header and title bar*/
 .sublink {
 	display: flex;
 	justify-content: center;
 	margin-left: 20px;
-  }
-  
-  .sublink a {
+}
+
+.sublink a {
 	text-decoration: none;
 	color: rgb(74, 75, 76);
 	text-align: center;
@@ -135,25 +138,25 @@ hr {
 	font-family: "Roboto", sans-serif;
 	transition: border-bottom 0.2s ease-in-out;
 	margin-right: 10px;
-  }
-  
-  .sublink a:hover {
+}
+
+.sublink a:hover {
 	color: #a28a4e;
 	text-decoration: none;
-  }
-  
-  .sublink a.active {
+}
+
+.sublink a.active {
 	color: #a28a4e;
 	border-bottom: 1px dotted #a28a4e;
-  }
+}
 
-  /* sublink2 for menus below title bar */
-  .sublink2 {
+/* sublink2 for menus below title bar */
+.sublink2 {
 	display: flex;
 	justify-content: left;
-  }
-  
-  .sublink2 a {
+}
+
+.sublink2 a {
 	text-decoration: none;
 	color: rgb(74, 75, 76);
 	text-align: center;
@@ -163,45 +166,48 @@ hr {
 	font-family: "Roboto", sans-serif;
 	transition: border-bottom 0.2s ease-in-out;
 	margin-right: 10px;
-  }
-  
-  .sublink2 a:hover {
+}
+
+.sublink2 a:hover {
 	color: #a28a4e;
 	text-decoration: none;
-  }
-  
-  .sublink2 a.active {
+}
+
+.sublink2 a.active {
 	color: #a28a4e;
 	border-bottom: 1px dotted #a28a4e;
-  }
-  
-  /* Media query for mobile screens */
-  @media screen and (max-width: 767px) {
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 767px) {
 	.sublink {
-	  flex-direction: column; 
-	  align-items: center; 
+		flex-direction: column;
+		align-items: center;
 	}
-  
+
 	.sublink a {
-	  margin-right: 0; /* Remove right margin on smaller screens for better spacing */
+		margin-right: 0;
+		/* Remove right margin on smaller screens for better spacing */
 	}
 
 	.sublink2 {
-		flex-direction: column; 
-		align-items: center; 
-	  }
-	
-	  .sublink2 a {
-		margin-right: 0; /* Remove right margin on smaller screens for better spacing */
-	  }
-  }
-  
-  
-  /* Style the bold links (inside <b> tags) */
-  .sublink b a {
-	font-weight: 600; /* Apply a slightly thicker font weight for bold links */
-  }
-  
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.sublink2 a {
+		margin-right: 0;
+		/* Remove right margin on smaller screens for better spacing */
+	}
+}
+
+
+/* Style the bold links (inside <b> tags) */
+.sublink b a {
+	font-weight: 600;
+	/* Apply a slightly thicker font weight for bold links */
+}
+
 /* Text */
 p {
 	margin: 0 auto;
@@ -211,7 +217,7 @@ p {
 	color: #333;
 	line-height: 1.6;
 	font-family: "Georgia", serif;
-  }
+}
 
 p.smaller {
 	font-family: "Roboto", sans-serif;
@@ -226,7 +232,8 @@ p.x-cite {
 	padding-bottom: 0;
 }
 
-ul,ol {
+ul,
+ol {
 	font-size: 18px;
 	color: #333;
 	line-height: 1.6;
@@ -240,9 +247,24 @@ div.listing p {
 
 div.featured {
 	border-left: 3px solid #a28a4e;
+
+	button#playFeatured {
+		height: 40px;
+		width: 40px;
+		border-radius: 0.4rem;
+		border: none;
+		margin-right: 7px;
+
+		background: url(assets/play.svg) center no-repeat;
+		background-size: 40%;
+		background-color: #f0f0f0;
+		cursor: pointer;
+		vertical-align: middle;
+	}
 }
 
-div.featured p,div {
+div.featured p,
+div {
 	padding-left: 20px;
 }
 
@@ -257,10 +279,10 @@ div.no-padding {
 	margin-bottom: 1em;
 	color: #a68b55;
 	background-color: #f0f0f0;
-	padding: 1.3rem 2.2rem;
+	padding: 0 2.2rem;
 	border-radius: 0.4rem;
 	box-shadow: 0px 1px 1px #b5a26c;
-	line-height: 1.8;
+	line-height: 4.6rem;
 }
 
 .track-title {
@@ -326,7 +348,7 @@ p.page-list {
 }
 
 p.page-list a.active {
-	font-weight:bold;
+	font-weight: bold;
 	border-bottom: 1px dotted #a28a4e;
 }
 
@@ -363,6 +385,7 @@ h4 {
 h5 {
 	font-size: 1rem;
 }
+
 /* Style links */
 a {
 	color: #9b7030;
@@ -372,12 +395,13 @@ a {
 a:hover {
 	color: #c7a630;
 	text-decoration: none;
-	
+
 }
 
 hr {
 	border: 0;
-	border-top: 1px solid #c0c0c0; /* Silver grey */
+	border-top: 1px solid #c0c0c0;
+	/* Silver grey */
 	margin: 1.5em 0;
 }
 
@@ -387,6 +411,7 @@ hr.dashed {
 	margin-left: 10px;
 	width: 100%;
 }
+
 .image-div {
 	width: 100%;
 	max-width: 700px;
@@ -410,7 +435,7 @@ footer {
 }
 
 p#cite-as {
-	font-size:1em;
+	font-size: 1em;
 }
 
 /* form {

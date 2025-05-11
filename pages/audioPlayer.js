@@ -8,6 +8,9 @@ let currentlyPlaying = null;
 let shouldClose = false;
 let playerTimeout;
 
+globalThis.playlist = [];
+
+/** @param {number} sec */
 const time = (sec) =>
 	`${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, "0")}`;
 
@@ -16,7 +19,9 @@ const time = (sec) =>
  * @param {string} title
  * @param {HTMLAudioElement} audio
  */
-const playAudio = (title, audio) => {
+const playAudio = (title, audio, onPlaylist = false) => {
+	if (!onPlaylist) playlist = [];
+	
 	let duration = Math.round(audio.duration);
 
 	audioTitle.innerHTML = `${title} <span>${time(0)} / ${time(duration)}</span>`;
@@ -75,12 +80,32 @@ setInterval(() => {
 			currentlyPlaying.currentTime = 0;
 			durationTitle.innerText = `${time(currentTime)} / ${time(duration)}`;
 
-			shouldClose = true;
-			playerTimeout = setTimeout(() => {
-				if (shouldClose) closePlayer();
-			}, 10_000);
+			console.log("player finished.", playlist);
+			if (playlist.length === 0) {
+				shouldClose = true;
+				playerTimeout = setTimeout(() => {
+					if (shouldClose) closePlayer();
+				}, 10_000);
+			} else {
+				console.log("going to next on playlist");
+				setTimeout(
+					() => playlist.shift().play(true),
+					1_000,
+				);
+			}
 		}
 	}
 }, 1000);
+
+/*
+*/
+
+export function loadFeaturedPlaylist() {
+	document.querySelector("div.featured button#playFeatured").addEventListener("click", () => {
+	  playlist = [];
+	  document.querySelectorAll("div.featured audio-chip").forEach(c => playlist.push(c));
+	  playlist.shift().play(true);
+	})
+}
 
 globalThis.playAudio = playAudio;
