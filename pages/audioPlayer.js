@@ -20,7 +20,10 @@ const time = (sec) =>
  * @param {HTMLAudioElement} audio
  */
 const playAudio = (title, audio, onPlaylist = false) => {
-	if (!onPlaylist) playlist = [];
+	if (!onPlaylist) {
+		globalThis.playlist = [];
+		console.log("cleared playlist");
+	}
 	
 	let duration = Math.round(audio.duration);
 

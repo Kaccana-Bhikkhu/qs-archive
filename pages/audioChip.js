@@ -79,7 +79,6 @@ class AudioChip extends HTMLElement {
 
 		const wrapper = document.createElement("div");
 		wrapper.classList.add("wrapper");
-
 		const button = document.createElement("button");
 		button.classList.add("play");
 
@@ -89,7 +88,7 @@ class AudioChip extends HTMLElement {
 			this.#titleWithLink = this.title;
 		}
 
-		button.addEventListener("click", this.play.bind(this));
+		button.addEventListener("click", this.play.bind(this, false));
 
 		const timeLabel = document.createElement("span");
 		if (loadAudio) timeLabel.innerText = "...";
