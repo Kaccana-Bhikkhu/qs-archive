@@ -955,6 +955,7 @@ class Formatter:
         self.excerptPreferStartTime = False # Display the excerpt start time instead of duration when available
         self.excerptAttributeSource = False # Add a line after each excerpt linking to its source?
             # Best used with showHeading = False
+        self.excerptShowFragmentPlayers = True # Include fragment annotation bodies in html?
         self.showFTagOrder = () # Display {fTagOrder} before each excerpt
             # Helps to sort featured excerpts in the preview edition
         
@@ -1177,7 +1178,7 @@ class Formatter:
             
             tagsAlreadyPrinted = set(x["tags"])
             for annotation in x["annotations"]:
-                if annotation["body"]:
+                if annotation["body"] and not (annotation["kind"] == "Fragment" and not self.excerptShowFragmentPlayers):
                     indentLevel = annotation['indentLevel']
                     if not x["fileNumber"] and not x["body"] and not hasMultipleAnnotations:
                         # If a single annotation follows a blank session excerpt, don't indent and add [Session] in front of it
@@ -1615,6 +1616,7 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
 
             featuredFormatter = copy.copy(formatter)
             featuredFormatter.SetHeaderlessFormat()
+            featuredFormatter.excerptShowFragmentPlayers = False
             if gOptions.draftFTags == "number":
                 featuredFormatter.showFTagOrder = tags
 
