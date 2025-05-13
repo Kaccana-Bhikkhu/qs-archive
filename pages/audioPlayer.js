@@ -5,7 +5,7 @@ let durationTitle = audioTitle.querySelector("span");
 const playBar = audioPlayer.querySelector("input[type=range]");
 /** @type {HTMLAudioElement} */
 let currentlyPlaying = null;
-let shouldClose = false;
+let actionScheduled = false;
 let playerTimeout;
 
 globalThis.playlist = [];
@@ -55,7 +55,7 @@ const closePlayer = () => {
 };
 
 playBar.addEventListener("change", () => {
-	shouldClose = false;
+	actionScheduled = false;
 	let currentTime = Math.round(currentlyPlaying.currentTime);
 	currentlyPlaying.currentTime = playBar.value;
 	durationTitle.innerText = `${time(currentTime)} / ${time(
@@ -63,7 +63,7 @@ playBar.addEventListener("change", () => {
 	)}`;
 });
 playButton.addEventListener("click", () => {
-	shouldClose = false;
+	actionScheduled = false;
 	playButton.classList.toggle("playing");
 	currentlyPlaying.paused ? currentlyPlaying.play() : currentlyPlaying.pause();
 });
@@ -85,14 +85,17 @@ setInterval(() => {
 
 			console.log("player finished.", playlist);
 			if (playlist.length === 0) {
-				shouldClose = true;
+				actionScheduled = true;
 				playerTimeout = setTimeout(() => {
-					if (shouldClose) closePlayer();
+					if (actionScheduled) closePlayer();
 				}, 10_000);
 			} else {
 				console.log("going to next on playlist");
+				actionScheduled = true;
 				setTimeout(
-					() => playlist.shift().play(true),
+					() => {
+						if (actionScheduled) playlist.shift()?.play(true);
+          },
 					1_000,
 				);
 			}
