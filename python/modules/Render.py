@@ -217,6 +217,21 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
     colon = "" if not text or re.match(r"\s*[a-z]",text) else ":"
     renderDict = {"text": text, "s": plural, "colon": colon, "prefix": prefix, "suffix": suffix, "teachers": teacherStr}
 
+    if item["kind"] == "Fragment": # Note that fragments must be annotations, so container is our excerpt
+        fragmentFileNumber = container["fileNumber"] + 1
+        for a in container["annotations"]:
+            if a is item:
+                break
+            if a["kind"] in ("Fragment","Main fragment"):
+                fragmentFileNumber += 1 # count fragments before this one
+
+        renderDict["player"] = f"[](player:{Database.ItemCode(event=container["event"],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
+        """ if fragmentAnnotation["text"].lower() == "noplayer":
+            fragmentAnnotation["text"] = ""
+        elif not mainFragment: # Main fragments don't display a player
+            fragmentAnnotation["text"] = f"[](player:{Database.ItemCode(event=excerpt['event'],session=excerpt['sessionNumber'],fileNumber=nextFileNumber)})"
+        """
+
     item["body"] = bodyTemplate(**renderDict)
 
     if teachers:
@@ -314,8 +329,8 @@ def ReferenceMatchRegExs(referenceDB: dict[dict]) -> tuple[str]:
     titleRegex = Utils.RegexMatchAny(escapedTitles)
     pageReference = r'(?:pages?|pp?\.)\s+-?[0-9]+(?:[-–][0-9]+)?' 
 
-    refForm2 = r'\[' + titleRegex + r'\]\((' + pageReference + ')?\)'
-    refForm3 = r'\]\(' + titleRegex + r'(\s+' + pageReference + ')?\)'
+    refForm2 = r'\[' + titleRegex + r'\]\((' + pageReference + r')?\)'
+    refForm3 = r'\]\(' + titleRegex + r'(\s+' + pageReference + r')?\)'
 
     refForm4 = titleRegex + r'\s+(' + pageReference + ')'
 

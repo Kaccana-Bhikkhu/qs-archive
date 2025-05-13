@@ -40,7 +40,7 @@ Asked by,Attribution,1,No,Yes,No,Yes,No,No,Yes,None,{'Asked by ' if text else ''
 ,,,,,,,,,,,,,,,
 Extra tags,Other,0,No,Yes,No,No,Yes,,No,,unimplemented,unimplemented,unimplemented,,
 ,,,,,,,,,,,,,,,
-Fragment,Fragment,0,No,Yes,Yes,No,No,,,,unimplemented,unimplemented,unimplemented,,A fragment annotation indicates that the next annotation and its sub-annotations should be duplicated in a separate except following the main excerpt. The Fragment annotation itself is rendered as an audio player to play that excerpt unless text == 'noPlayer'.
+Fragment,Fragment,1,No,Yes,Yes,No,No,,,,{'' if text =='noPlayer' else player},unimplemented,unimplemented,,A fragment annotation indicates that the next annotation and its sub-annotations should be duplicated in a separate except following the main excerpt. The Fragment annotation itself is rendered as an audio player to play that excerpt unless text == 'noPlayer'.
 Main fragment,Fragment,1,No,Yes,Yes,No,Yes,,,,,unimplemented,unimplemented,,"A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. If tags are applied to the main fragment annotation, the fragment excerpt tags are replaced by these tags. Main fragments do not display a separate audio player."
 ,,,,,,,,,,,,,,,
 Alternate audio,Audio,1,No,Yes,Yes,No,No,,No,,,unimplemented,unimplemented,,Specifes an audio file which is treated as if it were the session audio file for this excerpt. Text has the format: filename.mp3|url. End time specifies the duration of the file.
