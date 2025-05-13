@@ -942,6 +942,7 @@ def ExcerptDurationStr(excerpts: List[dict],countEvents = True,countSessions = T
     strItems.append(f"{Mp3DirectCut.TimeDeltaToStr(duration)} total duration")
     
     return ' '.join(strItems)
+
 class Formatter: 
     """A class that formats lists of events, sessions, and excerpts into html"""
     
@@ -1609,7 +1610,7 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             headerHtml = []
             headerStr = "Featured excerpt"
             if len(featuredExcerpts) > 1:
-                headerStr += f"s ({len(featuredExcerpts)})"
+                headerStr += f's ({len(featuredExcerpts)}) — Play all <button id="playFeatured"></button>'
             headerHtml.append('<div class="featured">' + Html.Tag("div",{"class":"title","id":"featured"})(headerStr))
 
             featuredFormatter = copy.copy(formatter)
