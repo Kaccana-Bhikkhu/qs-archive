@@ -1,9 +1,6 @@
 import posix from "./path.js";
 const { join, dirname } = posix;
 const absoluteURLRegex = "^(//|[a-z+]+:)"
-const triggerOnce = {
-	once: true,
-  };
 
 const css = `
 	.wrapper {
@@ -55,6 +52,7 @@ const time = (sec) =>
 class AudioChip extends HTMLElement {
 	/** @type {HTMLAudioElement} */
 	audio;
+	#titleWithLink;
 
 	constructor() {
 		super();
@@ -69,7 +67,7 @@ class AudioChip extends HTMLElement {
 		// Remove it if not using frame.js.
 		let url = location.hash.split("#")[1];
 		if (url && !src.match(absoluteURLRegex)) {
-			src = join(dirname(url),src);
+			src = join(dirname(url), src);
 		};
 
 		this.audio = new Audio(src);
@@ -81,32 +79,16 @@ class AudioChip extends HTMLElement {
 
 		const wrapper = document.createElement("div");
 		wrapper.classList.add("wrapper");
-
 		const button = document.createElement("button");
 		button.classList.add("play");
 
-		let titleWithLink = this.title;
 		if (this.dataset.titleLink) {
-			titleWithLink = `<a href="#${this.dataset.titleLink}">${this.title}</a>`
+			this.#titleWithLink = `<a href="#${this.dataset.titleLink}">${this.title}</a>`
+		} else {
+			this.#titleWithLink = this.title;
 		}
 
-		button.addEventListener("click", () => {
-			if (this.audio.readyState >= 3) {
-				console.log("audio already loaded; begin playing");
-				playAudio(titleWithLink, this.audio);
-			} else {
-				this.audio.addEventListener(
-					"canplay",
-					(() => {
-						console.log("canplay event triggered; begin playing");
-						playAudio(titleWithLink, this.audio);
-					}),
-					triggerOnce
-				);
-				this.audio.load();
-				console.log("waiting for audio loading");
-			}
-		});
+		button.addEventListener("click", this.play.bind(this, false));
 
 		const timeLabel = document.createElement("span");
 		if (loadAudio) timeLabel.innerText = "...";
@@ -130,6 +112,24 @@ class AudioChip extends HTMLElement {
 
 		wrapper.append(button, timeLabel, download);
 		this.shadowRoot.append(style, wrapper);
+	}
+
+	play(onPlaylist = false) {
+		if (this.audio.readyState >= 3) {
+			console.log("audio already loaded; begin playing");
+			playAudio(this.#titleWithLink, this.audio, onPlaylist);
+		} else {
+			this.audio.addEventListener(
+				"canplay",
+				(() => {
+					console.log("canplay event triggered; begin playing");
+					playAudio(this.#titleWithLink, this.audio, onPlaylist);
+				}),
+				{ once: true },
+			);
+			this.audio.load();
+			console.log("waiting for audio loading");
+		}
 	}
 }
 
