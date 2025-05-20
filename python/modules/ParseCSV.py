@@ -1246,10 +1246,6 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
             
             fragmentExcerpts.append(fragmentExcerpt)
 
-        if fragmentAnnotation["text"].lower() == "noplayer":
-            fragmentAnnotation["text"] = ""
-        elif not mainFragment: # Main fragments don't display a player
-            fragmentAnnotation["text"] = f"[](player:{Database.ItemCode(event=excerpt['event'],session=excerpt['sessionNumber'],fileNumber=nextFileNumber)})"
         nextFileNumber += 1
     
     return fragmentExcerpts

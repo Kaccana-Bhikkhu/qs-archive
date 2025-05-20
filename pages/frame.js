@@ -2,6 +2,7 @@ import posix from "./path.js";
 import { loadSearchPage } from "./search.js";
 import { loadHomepage } from "./randomExcerpt.js";
 import { loadToggleView } from "./toggle-view.js";
+import { loadFeaturedPlaylist } from "./audioPlayer.js";
 const { join, dirname } = posix;
 const frame = document.querySelector("div#frame");
 const titleEl = document.querySelector("title");
@@ -132,6 +133,7 @@ async function changeURL(pUrl,scrollTo = null) {
 			loadToggleView();
 			loadSearchPage(); // loadSearchPage() and loadHomepage() modify the DOM and are responsible for calling
 			loadHomepage(); // configureLinks() and loadToggleView() on any elements they add.
+			loadFeaturedPlaylist();
 			if (scrollTo && Object.hasOwn(scrollTo,"scrollX") && Object.hasOwn(scrollTo,"scrollY"))
 				window.scrollTo(scrollTo.scrollX,scrollTo.scrollY)
 			else {
@@ -178,5 +180,5 @@ if (frame) {
 }
 
 window.addEventListener("scrollend", (event) => {
-	history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY},"");
-  });
+	history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
+});
