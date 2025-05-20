@@ -279,10 +279,10 @@ div.no-padding {
 	margin-bottom: 1em;
 	color: #a68b55;
 	background-color: #f0f0f0;
-	padding: 0 2.2rem;
+	padding: 1.3rem 2.2rem;
 	border-radius: 0.4rem;
 	box-shadow: 0px 1px 1px #b5a26c;
-	line-height: 4.6rem;
+	line-height: 1.8;
 }
 
 .track-title {
