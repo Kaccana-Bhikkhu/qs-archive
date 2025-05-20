@@ -56,12 +56,24 @@ const closePlayer = () => {
 
 playBar.addEventListener("change", () => {
 	actionScheduled = false;
-	let currentTime = Math.round(currentlyPlaying.currentTime);
 	currentlyPlaying.currentTime = playBar.value;
-	durationTitle.innerText = `${time(currentTime)} / ${time(
+	if (currentlyPlaying.wasPlaying)
+		currentlyPlaying.play();
+	delete currentlyPlaying.wasPlaying;
+	durationTitle.innerText = `${time(Math.round(currentlyPlaying.currentTime))} / ${time(
 		Math.round(currentlyPlaying.duration)
 	)}`;
 });
+playBar.addEventListener("input", () => {
+	actionScheduled = false;
+	if (currentlyPlaying.wasPlaying == undefined)
+		currentlyPlaying.wasPlaying = !currentlyPlaying.paused;
+	currentlyPlaying.pause();
+	durationTitle.innerText = `${time(Math.round(playBar.value))} / ${time(
+		Math.round(currentlyPlaying.duration)
+	)}`;
+});
+
 playButton.addEventListener("click", () => {
 	actionScheduled = false;
 	playButton.classList.toggle("playing");
