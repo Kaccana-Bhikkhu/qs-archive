@@ -1,7 +1,3 @@
-import posix from "./path.js";
-const { join, dirname } = posix;
-const absoluteURLRegex = "^(//|[a-z+]+:)"
-
 const css = `
 	.wrapper {
 		height: 40px;
@@ -58,18 +54,20 @@ class AudioChip extends HTMLElement {
 		super();
 
 		this.attachShadow({ mode: "open" });
+
+		this.originalSetAttribute = this.setAttribute
+		this.setAttribute = (key,value) => {
+			this.originalSetAttribute(key,value);
+			if (key == "src") {
+				this.audio.src = value;
+				if (this.dataset.duration == null)
+					this.audio.load();
+			}
+		}
 	}
 
 	connectedCallback() {
 		let src = this.getAttribute("src");
-
-		// This code makes src paths relative to the path specified in the hash section of the URL.
-		// Remove it if not using frame.js.
-		let url = location.hash.split("#")[1];
-		if (url && !src.match(absoluteURLRegex)) {
-			src = join(dirname(url), src);
-		};
-
 		this.audio = new Audio(src);
 		let loadAudio = this.dataset.duration == null;
 		if (loadAudio)
