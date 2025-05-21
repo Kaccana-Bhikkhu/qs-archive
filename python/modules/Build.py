@@ -271,9 +271,6 @@ def IndentedHtmlTagList(tagList:list[dict] = [],showSubtagCount = True,showStar 
     """Generate html for an indented list of tags.
     tagList is the list of tags to print; use the global list if not provided"""
     
-    tabMeasurement = 'em'
-    tabLength = 2
-    
     a = Airium()
     
     if not tagList:
@@ -283,7 +280,7 @@ def IndentedHtmlTagList(tagList:list[dict] = [],showSubtagCount = True,showStar 
     with a.div(Class="listing"):
         for item in tagList:
             bookmark = Utils.slugify(item["tag"] or item["name"])
-            with a.p(id = bookmark,style = f"margin-left: {tabLength * (item['level']-baseIndent)}{tabMeasurement};"):
+            with a.p(id = bookmark,Class = f"indent-{item['level']-baseIndent}"):
                 a(HtmlTagListItem(item,showSubtagCount=showSubtagCount,showStar=showStar))
     
     return str(a)
@@ -296,15 +293,12 @@ def DrilldownTemplate() -> pyratemp.Template:
     xTagIndexes: the set of integer tag indexes to expand
     """
 
-    tabMeasurement = 'em'
-    tabLength = 2
-
     tagList = gDatabase["tagDisplayList"]
     a = Airium()
     with a.div(Class="listing"):
         for index, item in enumerate(tagList):            
             bookmark = Utils.slugify(item["tag"] or item["name"])
-            with a.p(id = bookmark,style = f"margin-left: {tabLength * (item['level']-1)}{tabMeasurement};"):
+            with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
                 itemHtml = HtmlTagListItem(item,showSubtagCount=True)
                 
                 drilldownLink = ""
@@ -507,7 +501,7 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
         content = IndentedHtmlTagList(tagList,showSubtagCount=False)
         tagList[0]["indexNumber"] = storedNumber
 
-        content = content.replace('style="margin-left: 0em;">','style="margin-left: 0em; font-weight:bold;">')
+        content = content.replace('class="indent-0">','class="indent-0" style="font-weight:bold;">')
             # Apply boldface to the top line only
         content = re.sub(r"(\s+)</p>",r":\1</p>",content,count = 1)
             # Add a colon at the end of the first paragraph only.
@@ -540,7 +534,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page = Html.PageDesc(info)
 
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
-    page.AppendContent(Html.Tag("span",{"style":"float: right;"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
 
     page.AppendContent(str(a))
     page.AppendContent("Most common tags",section="citationTitle")
@@ -1140,9 +1134,6 @@ class Formatter:
         """Return a html list of the excerpts."""
         
         a = Airium()
-        tabMeasurement = 'em'
-        tabLength = 2
-        
         prevEvent = None
         prevSession = None
         if excerpts:
@@ -1186,7 +1177,7 @@ class Formatter:
                     if ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
                         indentLevel = 0
 
-                    with a.p(style = f"margin-left: {tabLength * indentLevel}{tabMeasurement};"):
+                    with a.p(Class = f"indent-{indentLevel}"):
                         if not indentLevel and not ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
                             a(f"[{Html.Tag('span',{'style':'text-decoration: underline;'})('Session')}]")
                         a(localFormatter.FormatAnnotation(x,annotation,tagsAlreadyPrinted))
@@ -2128,7 +2119,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
             page.AppendContent(HtmlKeyTopicLink(topicList[topicNumber - 1],
                                                 text=f"<< {gDatabase['keyTopic'][topicList[topicNumber - 1]]['topic']}") + "\n")
         if topicNumber < len(topicList) - 1:
-            page.AppendContent(Html.Tag("span",{"style":"float:right;"})(HtmlKeyTopicLink(topicList[topicNumber + 1],
+            page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(HtmlKeyTopicLink(topicList[topicNumber + 1],
                                                 text=f"{gDatabase['keyTopic'][topicList[topicNumber + 1]]['topic']} >>" + "\n")))
         page.AppendContent("<br>")
 
@@ -2254,7 +2245,7 @@ def AddTopicButtons(page: Html.PageDesc) -> None:
     if gOptions.uploadMirror == "preview":
         printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html")})("Printable with memos")
 
-    page.AppendContent(Html.Tag("span",{"style":"float: right;"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
     page.AppendContent("<br><br>")
 
 
@@ -2276,10 +2267,10 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
             #    text += f'&nbsp;{FA_STAR}'
             clusterLinks.append(Html.Tag("a",{"href":link})(text))
 
-        clusterList = Html.Tag("p",{"style":"margin-left: 2em;"})(" &emsp; ".join(clusterLinks))
+        clusterList = Html.Tag("p",{"class":"indent-1"})(" &emsp; ".join(clusterLinks))
 
         if keyTopic["shortNote"]:
-            clusterList = "\n".join([clusterList,Html.Tag("p",{"style":"margin-left: 2em;"})(keyTopic["shortNote"])])
+            clusterList = "\n".join([clusterList,Html.Tag("p",{"class":"indent-1"})(keyTopic["shortNote"])])
         heading = Html.Tag("a",{"href": Utils.PosixJoin("../",topicDir,keyTopic["listFile"])})(keyTopic["topic"])
         heading += f" ({keyTopic['fTagCount']})"
         return heading,clusterList,keyTopic["code"]
@@ -2315,7 +2306,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                     a(HtmlKeyTopicLink(topicCode,count=True))
             with a.div(id=topicCode + ".b",Class="no-padding"):
                 for subtopic in topic["subtopics"]:
-                    with a.p(style="margin-left: 2em;"):
+                    with a.p(Class="indent-1"):
                         subtags = list(Database.SubtagIterator(gDatabase["subtopic"][subtopic]))
                         fTagCount = gDatabase['subtopic'][subtopic].get('fTagCount',0)
                         minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["subtopic"][subtopic])
@@ -2350,11 +2341,11 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                         if bitsAfterDash:
                             a(" – " + "; ".join(bitsAfterDash))
                         if printPage and progressMemos:
-                            with a.p(style="margin-left: 4em;"):
+                            with a.p(Class="indent-2"):
                                 a(gDatabase['subtopic'][subtopic]["progressMemo"] or ".")
 
                 if topic["shortNote"] and not printPage:
-                    with a.p(style="margin-left: 2em;"):
+                    with a.p(Class="indent-1"):
                         a(topic["shortNote"])
 
 
@@ -2452,7 +2443,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         # Hack: Add buttons to basePage after yielding printPage so that all subsequent pages have buttons at the top.
         basePage.AppendContent(Html.Tag("button",{"type":"button","onclick":Utils.JavascriptLink(contractAllItem.AddQuery("showAll").file)})("Expand all"))
         basePage.AppendContent(Html.Tag("button",{"type":"button","onclick":Utils.JavascriptLink(contractAllItem.file)})("Contract all"))
-        basePage.AppendContent(Html.Tag("span",{"style":"float: right;"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
+        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
         basePage.AppendContent("<br><br>")
         basePage.AppendContent(f"Numbers in parentheses: (featured excerpts{FA_STAR}/excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
 
