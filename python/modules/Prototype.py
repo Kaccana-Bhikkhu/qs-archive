@@ -2639,11 +2639,10 @@ def main():
 
     indexDir ="indexes"
     mainMenu = []
-    # mainMenu.append(Homepage())
+    mainMenu.append(Homepage())
     technicalMenu = list(DocumentationMenu("technical"))
     technicalMenu[0] = technicalMenu[0]._replace(title="Technical")
     mainMenu.append(DocumentationMenu("about",
-                                      specialFirstItem=Html.PageInfo("About","homepage.html","The Ajahn Pasanno Question and Story Archive"),
                                       extraItems=[technicalMenu]))
     mainMenu.append(DocumentationMenu("misc",makeMenu=False))
 

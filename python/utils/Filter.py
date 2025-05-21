@@ -259,6 +259,16 @@ class Flags(Filter):
     
         return self.negate
 
+class HomepageExcerpts(Filter):
+    "A Filter that passes excerpts that should be diplayed on the homepage based on their fTagOrderFlags."
+
+    def Match(self, excerpt):
+        flags = excerpt.get("fTagOrderFlags","")
+        if flags and flags.lower() != flags:
+            return not self.negate
+    
+        return self.negate
+
 class FilterGroup(Filter):
     """A group of filters to operate on items using boolean operations.
     The default group passes items which match all filters e.g And."""

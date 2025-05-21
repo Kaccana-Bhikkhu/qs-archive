@@ -14,6 +14,7 @@ def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
     
     formatter = Prototype.Formatter()
     formatter.SetHeaderlessFormat()
+    formatter.excerptDefaultTeacher = {"AP"}
     html = formatter.HtmlExcerptList([excerpt])
 
     keyTopicTags = Database.KeyTopicTags()
@@ -41,8 +42,9 @@ def FeaturedExcerptEntries() -> list[dict[str]]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
 
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    keyTopicFilter = Filter.And(keyTopicFilter,Filter.MaxFTagOrder(500))
-    featuredExcerpts =  [x for x in keyTopicFilter(gDatabase["excerpts"])]
+    teacherFilter = Filter.And(Filter.Teacher("AP"))
+    homepageFilter = Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts())
+    featuredExcerpts =  [x for x in homepageFilter(gDatabase["excerpts"])]
 
     removeFragments = Filter.Kind(Filter.InverseSet(["Fragment"]))
     featuredExcerpts = [removeFragments.FilterAnnotations(x) for x in featuredExcerpts]
@@ -95,4 +97,5 @@ def main() -> None:
     random.seed(42)
     database = RemakeRandomExcerpts(maxLength=gOptions.randomExcerptCount)
     WriteDatabase(database)
+    Alert.info("RandomExcerpts.json remade with",len(database["excerpts"]),"random excerpts.")
     
