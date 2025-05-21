@@ -1,6 +1,6 @@
 import posix from "./path.js";
 import { loadSearchPage } from "./search.js";
-import { loadHomepage } from "./randomExcerpt.js";
+import { loadHomepage } from "./homepage.js";
 import { loadToggleView } from "./toggle-view.js";
 import { loadFeaturedPlaylist } from "./audioPlayer.js";
 const { join, dirname } = posix;

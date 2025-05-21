@@ -7,7 +7,7 @@ from typing import List, Iterator, Iterable, Tuple, Callable
 from airium import Airium
 import Mp3DirectCut
 import Database, ReviewDatabase
-import Utils, Alert, Filter, ParseCSV, Document, Render, SetupRandom
+import Utils, Alert, Filter, ParseCSV, Document, Render, SetupHomepage
 import Html2 as Html
 from datetime import timedelta
 import re, copy, itertools
@@ -2497,7 +2497,7 @@ def Homepage():
     try:
         event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
         defaultExcerpt = Database.ExcerptDict()[event][session][fileNumber]
-        excerptHtml = SetupRandom.ExcerptEntry(defaultExcerpt)["html"]
+        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["html"]
     except (KeyError,ValueError):
         Alert.error(f"Unable to parse or find excerpt code {repr(gOptions.homepageDefaultExcerpt)} specified by --homepageDefaultExcerpt.")
         excerptHtml = ""
