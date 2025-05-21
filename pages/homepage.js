@@ -46,7 +46,7 @@ export async function loadHomepage() {
         .then((response) => response.json())
         .then((json) => {
             gDatabase = json; 
-            console.log("Loaded random excerpt database.");
+            debugLog("Loaded random excerpt database.");
         });
     }
     displayNextExcerpt(0);

@@ -114,19 +114,19 @@ class AudioChip extends HTMLElement {
 
 	play(onPlaylist = false) {
 		if (this.audio.readyState >= 3) {
-			console.log("audio already loaded; begin playing");
+			debugLog("audio already loaded; begin playing");
 			playAudio(this.#titleWithLink, this.audio, onPlaylist);
 		} else {
 			this.audio.addEventListener(
 				"canplay",
 				(() => {
-					console.log("canplay event triggered; begin playing");
+					debugLog("canplay event triggered; begin playing");
 					playAudio(this.#titleWithLink, this.audio, onPlaylist);
 				}),
 				{ once: true },
 			);
 			this.audio.load();
-			console.log("waiting for audio loading");
+			debugLog("waiting for audio loading");
 		}
 	}
 }

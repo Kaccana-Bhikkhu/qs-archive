@@ -79,7 +79,7 @@ export async function loadSearchPage() {
         .then((response) => response.json())
         .then((json) => {
             gDatabase = json; 
-            console.log("Loaded search database.");
+            debugLog("Loaded search database.");
             for (let code in gSearchers) {
                 gSearchers[code].loadItemsFomDatabase(gDatabase)
             }
@@ -136,7 +136,7 @@ class SearchBase {
 
     matchesItem(item) { // Does this search group match an item?
         if (this.negate) {
-            console.log("negate")
+            debugLog("negate")
         }
         for (const blob of item.blobs) {
             if (this.matchesBlob(blob))
@@ -201,7 +201,7 @@ class SearchTerm extends SearchBase {
         if (aTagMatch) {
             finalRegEx += "(?!.*//)";
         }
-        console.log("searchElement:",searchElement,finalRegEx);
+        debugLog("searchElement:",searchElement,finalRegEx);
         this.matcher = new RegExp(finalRegEx);
 
         if (this.matchesMetadata)
@@ -209,14 +209,14 @@ class SearchTerm extends SearchBase {
 
         // Start processing again to create RegExps for bold text
         let boldItem = escaped;
-        console.log("boldItem before:",boldItem);
+        debugLog("boldItem before:",boldItem);
         boldItem = boldItem.replaceAll(MATCH_END_DELIMITERS,"");
 
         for (const letter in PALI_DIACRITIC_MATCH_ALL) { // 
             boldItem = boldItem.replaceAll(letter,PALI_DIACRITIC_MATCH_ALL[letter]);
         }
 
-        console.log("boldItem after:",boldItem);
+        debugLog("boldItem after:",boldItem);
         this.boldTextMatcher = boldItem;
     }
 
@@ -312,7 +312,7 @@ export class SearchQuery {
         ];
         parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
         let partsSearch = "\\s*(" + parts.join("|") + ")"
-        console.log(partsSearch);
+        debugLog(partsSearch);
         partsSearch = new RegExp(partsSearch,"g");
     
         // 2. Create items and groups from the found parts
@@ -330,13 +330,13 @@ export class SearchQuery {
                     textMatchItems.push(term.boldTextMatcher);
             }
         }
-        console.log("textMatchItems",textMatchItems);
+        debugLog("textMatchItems",textMatchItems);
         if (textMatchItems.length > 0)
             this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})(?![^<]*\>)`,"gi");
                 // Negative lookahead assertion to avoid modifying html tags.
         else
             this.boldTextRegex = /^a\ba/ // a RegEx that doesn't match anything
-        console.log(this.boldTextRegex)
+        debugLog(this.boldTextRegex)
     }
 
     filterItems(items) { // Return an array containing items that match all groups in this query
@@ -438,7 +438,7 @@ class Searcher {
     }
 
     search(searchQuery) {
-        console.log(this.name,"search.");
+        debugLog(this.name,"search.");
         this.query = searchQuery
         this.foundItems = searchQuery.filterItems(this.items);
     }
@@ -717,7 +717,7 @@ class MultiSearcher {
     }
 
     search(searchQuery) {
-        console.log("Multisearch.");
+        debugLog("Multisearch.");
         this.query = searchQuery;
         for (let s of this.searches) {
             s.search(searchQuery);
@@ -819,7 +819,7 @@ class RandomSearcher extends Searcher {
 function searchFromURL() {
     // Find excerpts matching the search query from the page URL.
     if (!gDatabase) {
-        console.log("Error: database not loaded.");
+        debugLog("Error: database not loaded.");
         return;
     }
 
@@ -833,7 +833,7 @@ function searchFromURL() {
         return;
     }
 
-    console.log("Called searchFromURL. Query:",query);
+    debugLog("Called searchFromURL. Query:",query);
     frame.querySelector('#search-text').value = query;
 
     if (!query.trim() && searchKind != "random") {
@@ -842,7 +842,7 @@ function searchFromURL() {
     }
 
     let searchGroups = new SearchQuery(query);
-    console.log(searchGroups);
+    debugLog(searchGroups);
 
     gSearchers[searchKind].search(searchGroups);
     gSearchers[searchKind].showResults();
@@ -851,7 +851,7 @@ function searchFromURL() {
 function searchButtonClick(searchKind) {
     // Read the search bar text, push the updated URL to history, and run a search.
     let query = frame.querySelector('#search-text').value;
-    console.log("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
+    debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
     let search = new URLSearchParams({q : encodeURIComponent(query),search : searchKind});
     history.pushState({},"",location.href); // First push a new history frame

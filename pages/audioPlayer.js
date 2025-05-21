@@ -22,7 +22,7 @@ const time = (sec) =>
 const playAudio = (title, audio, onPlaylist = false) => {
 	if (!onPlaylist) {
 		globalThis.playlist = [];
-		console.log("cleared playlist");
+		debugLog("cleared playlist");
 	}
 	
 	let duration = Math.round(audio.duration);
@@ -46,7 +46,7 @@ const playAudio = (title, audio, onPlaylist = false) => {
 };
 
 const closePlayer = () => {
-	console.log("closing player");
+	debugLog("closing player");
 	currentlyPlaying.currentTime = 0;
 	currentlyPlaying.pause();
 	audioPlayer.classList.remove("show");
@@ -95,14 +95,14 @@ setInterval(() => {
 			currentlyPlaying.currentTime = 0;
 			durationTitle.innerText = `${time(currentTime)} / ${time(duration)}`;
 
-			console.log("player finished.", playlist);
+			debugLog("player finished.", playlist);
 			if (playlist.length === 0) {
 				actionScheduled = true;
 				playerTimeout = setTimeout(() => {
 					if (actionScheduled) closePlayer();
 				}, 10_000);
 			} else {
-				console.log("going to next on playlist");
+				debugLog("going to next on playlist");
 				actionScheduled = true;
 				setTimeout(
 					() => {
@@ -119,7 +119,7 @@ setInterval(() => {
 */
 
 export function loadFeaturedPlaylist() {
-	document.querySelector("div.featured button#playFeatured").addEventListener("click", () => {
+	document.querySelector("div.featured button#playFeatured")?.addEventListener("click", () => {
 	  playlist = [];
 	  document.querySelectorAll("div.featured audio-chip").forEach(c => playlist.push(c));
 	  playlist.shift().play(true);
