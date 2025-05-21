@@ -20,11 +20,11 @@ def WordCount(text: str) -> int:
     else:
         return len(words) - (not words[0])
 
-def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPrototype:str = "../",pathToBase = "../../",html:bool = True) -> list[Html.PageDesc]:
+def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = "../",pathToBase = "../../",html:bool = True) -> list[Html.PageDesc]:
     """Read and render the documentation files. Return a list of PageDesc objects.
     aboutDir: the name of the directory to read from; files are read from aboutDir + "Sources".
     destDir: the destination directory; set to aboutDir if not given.
-    pathToPrototype: path from the where the documentation will be written to the prototype directory.
+    pathToPages: path from the where the documentation will be written to the pages directory.
     pathToBase: the path to the base directory
     html: Render the file into html? - Leave in .md format if false.
     """
@@ -56,7 +56,7 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPrototype:str 
         
         return changeCount
             
-    Render.LinkSubpages(ApplyToText,pathToPrototype,pathToBase)
+    Render.LinkSubpages(ApplyToText,pathToPages,pathToBase)
     Render.LinkKnownReferences(ApplyToText)
     Render.LinkSuttas(ApplyToText)
 
@@ -137,7 +137,7 @@ def main() -> None:
 
     with FileRegister.HashWriter("./",Utils.PosixJoin(gOptions.documentationDir,"misc/HashCache.json"),exactDates=True) as writer:
         for directory in ['about','misc','technical']:
-            for page in RenderDocumentationFiles(directory,pathToPrototype=Utils.PosixJoin("../../",gOptions.prototypeDir),pathToBase="../../",html=False):
+            for page in RenderDocumentationFiles(directory,pathToPages=Utils.PosixJoin("../../",gOptions.pagesDir),pathToBase="../../",html=False):
                 status = writer.WriteTextFile(page.info.file,str(page),
                         mode=FileRegister.Write.DESTINATION_CHANGED if gOptions.overwriteDocumentation else FileRegister.Write.DESTINATION_UNCHANGED)
 

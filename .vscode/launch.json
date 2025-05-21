@@ -64,12 +64,12 @@
             "justMyCode": true
         },
         {
-            "name": "Prototype",
+            "name": "Build",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "Prototype",
+                "Build",
                 "--buildOnly",
                 "events"
             ],
@@ -134,7 +134,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "DownloadCSV,SplitMp3,Prototype",
+                "DownloadCSV,SplitMp3,Build",
                 "--buildOnly",
                 "events",
                 "--linkCheckLevel",

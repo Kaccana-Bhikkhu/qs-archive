@@ -147324,6 +147324,20 @@
       "duration": "58:29"
     }
   },
+  "group": {
+    "Communities": {
+      "group": "Communities"
+    },
+    "Monastics": {
+      "group": "Monastics"
+    },
+    "Lay teachers": {
+      "group": "Lay teachers"
+    },
+    "Lay supporters": {
+      "group": "Lay supporters"
+    }
+  },
   "lineage": {
     "Root teachers": {
       "lineage": "Root teachers"
@@ -150055,20 +150069,6 @@
     "tags/mae-chee-songchai.html": {
       "oldPage": "tags/mae-chee-songchai.html",
       "newPage": "tags/mae-somchai.html"
-    }
-  },
-  "group": {
-    "Communities": {
-      "group": "Communities"
-    },
-    "Monastics": {
-      "group": "Monastics"
-    },
-    "Lay teachers": {
-      "group": "Lay teachers"
-    },
-    "Lay supporters": {
-      "group": "Lay supporters"
     }
   },
   "reviewedTag": {

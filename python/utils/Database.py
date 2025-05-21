@@ -5,7 +5,7 @@ from collections import defaultdict
 import json, re, itertools
 import Html2 as Html
 import Link
-from Prototype import gDatabase
+from Build import gDatabase
 import SplitMp3
 import Utils
 import Alert

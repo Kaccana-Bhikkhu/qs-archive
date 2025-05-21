@@ -6,13 +6,13 @@ from __future__ import annotations
 import os, json, datetime
 import random
 from typing import NamedTuple, Iterable
-import Utils, Alert, Prototype, Filter, Database
+import Utils, Alert, Build, Filter, Database
 import Filter
 
 def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
     """Return a dictionary containing the information needed to display this excerpt on the front page."""
     
-    formatter = Prototype.Formatter()
+    formatter = Build.Formatter()
     formatter.SetHeaderlessFormat()
     formatter.excerptDefaultTeacher = {"AP"}
     html = formatter.HtmlExcerptList([excerpt])
@@ -25,11 +25,11 @@ def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
         subtopic = gDatabase["subtopic"][gDatabase["tag"][tag]["partOfSubtopics"][0]]
         isCluster = subtopic["subtags"] # A cluster has subtags; a regular tag doesn't
         if isCluster:
-            tagDescription = f"tag cluster {Prototype.HtmlSubtopicLink(subtopic['tag'])}"
+            tagDescription = f"tag cluster {Build.HtmlSubtopicLink(subtopic['tag'])}"
         else:
-            tagDescription = f"tag {Prototype.HtmlTagLink(tag)}"
+            tagDescription = f"tag {Build.HtmlTagLink(tag)}"
 
-        html += f"<hr><p>Featured in {tagDescription}, part of key topic {Prototype.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
+        html += f"<hr><p>Featured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
 
     return {
         "code": Database.ItemCode(excerpt),

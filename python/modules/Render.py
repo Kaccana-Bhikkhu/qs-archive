@@ -1,5 +1,5 @@
 """Render the text of each excerpt in the database with its annotations to html using the pyratemp templates in database["Kind"].
-The only remaining work for Prototype.py to do is substitute the list of teachers for {attribtuion}, {attribtuion2}, and {attribtuion3} when needed."""
+The only remaining work for Build.py to do is substitute the list of teachers for {attribtuion}, {attribtuion2}, and {attribtuion3} when needed."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from markdown_newtab_remote import NewTabRemoteExtension
 from typing import Tuple, Type, Callable
 import pyratemp
 from functools import lru_cache
-import ParseCSV, Prototype, Utils, Alert, Link
+import ParseCSV, Build, Utils, Alert, Link
 import Html2 as Html
 import urllib.parse
 
@@ -200,7 +200,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
                 defaultTeachers = ()
         if set(defaultTeachers) == set(teachers) and ParseCSV.ExcerptFlag.ATTRIBUTE not in item["flags"] and not gOptions.attributeAll:
             teachers = () # Don't attribute an annotation which has the same teachers as it's excerpt
-    teacherStr = Prototype.ListLinkedTeachers(teachers = teachers,lastJoinStr = ' and ')
+    teacherStr = Build.ListLinkedTeachers(teachers = teachers,lastJoinStr = ' and ')
 
     text = item["text"]
     prefix = ""
@@ -261,7 +261,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         if quotedTeacher:
             parts = re.split(Utils.RegexMatchAny([gDatabase["teacher"][quotedTeacher]["attributionName"]]),item["body"])
             if len(parts) > 1:
-                parts[-2] = Prototype.LinkTeachersInText(parts[-2],[quotedTeacher])
+                parts[-2] = Build.LinkTeachersInText(parts[-2],[quotedTeacher])
                 item["body"] = "".join(parts)
 
 def RenderExcerpts() -> None:
@@ -309,7 +309,7 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     def LinkItem(bodyStr: str) -> Tuple[str,int]:
         return re.subn(suttaMatch,RefToReadingFaithfully,bodyStr,flags = re.IGNORECASE)
     
-    with open(Utils.PosixJoin(gOptions.prototypeDir,'assets/citationHelper/Suttas.json'), 'r', encoding='utf-8') as file: 
+    with open(Utils.PosixJoin(gOptions.pagesDir,'assets/citationHelper/Suttas.json'), 'r', encoding='utf-8') as file: 
         suttas = json.load(file)
     suttaAbbreviations = [s[0] for s in suttas]
 
@@ -363,7 +363,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     def NoScriptForLocalReferences(url:str) -> str:
         """Add #noscript to the end of local references to break out of frame.js."""
         parsed = urllib.parse.urlparse(url)
-        if parsed.netloc or gOptions.prototypeDir in parsed.path.split("/"):
+        if parsed.netloc or gOptions.pagesDir in parsed.path.split("/"):
             return url
         else:
             return url + "#noscript"
@@ -387,7 +387,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             returnValue = f"{reference['title']}"
 
         if reference['attribution']:
-            returnValue += " " + Prototype.LinkTeachersInText(reference['attribution'],reference['author'])
+            returnValue += " " + Build.LinkTeachersInText(reference['attribution'],reference['author'])
         
         if not url and reference["remoteUrl"]:
             returnValue += " " + reference["remoteUrl"]
@@ -434,7 +434,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
         items = [reference['title'],f", [{matchObject[2]}]({url})"]
         if reference["attribution"]:
-            items.insert(1," " + Prototype.LinkTeachersInText(reference['attribution'],reference['author']))
+            items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
         return "".join(items)
 
     def ReferenceForm4(bodyStr: str) -> tuple[str,int]:
@@ -449,9 +449,9 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     
     Alert.extra(f"{referenceCount} links generated to references")
 
-def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPrototype:str = "../",pathToHome:str = "../../") -> None:
+def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = "../",pathToHome:str = "../../") -> None:
     """Link references to subpages of the form [subpage](pageType:pageName) as described in LinkReferences().
-    pathToPrototype is the path from the directory where the files are written to the prototype directory.
+    pathToPages is the path from the directory where the files are written to the pages directory.
     pathToBaseForNonPages is the path to root directory from this file for links that don't go to html pages.
     It is necessary to distinguish between the two since frame.js modifies paths to local html files"""
 
@@ -483,9 +483,9 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPrototype:str 
                     wrapper = Html.Wrapper("[","]")
             else:
                 if tag.lower() == "root":
-                    linkTo = f"drilldown/{Prototype.DrilldownPageFile(-1)}"
+                    linkTo = f"drilldown/{Build.DrilldownPageFile(-1)}"
                 elif realTag:
-                    linkTo = f"drilldown/{Prototype.DrilldownPageFile(realTag,jumpToEntry=True)}"
+                    linkTo = f"drilldown/{Build.DrilldownPageFile(realTag,jumpToEntry=True)}"
                 else:
                     Alert.warning("Cannot link to tag",tag,"in link",matchObject[0])
         elif pageType in excerptTypes:
@@ -503,13 +503,13 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPrototype:str 
             if fileNumber is not None:
                 x = Database.FindExcerpt(event,session,fileNumber)
                 if x:
-                    linkTo = Prototype.Mp3ExcerptLink(x)
+                    linkTo = Build.Mp3ExcerptLink(x)
                 else:
                     Alert.warning("Cannot find excerpt corresponding to code",link,"in link",matchObject[0])
                     return text
 
             if not linkTo:
-                linkTo = Prototype.AudioIcon(link,title=text)
+                linkTo = Build.AudioIcon(link,title=text)
             return f"<!--HTML{linkTo}-->"
         elif pageType == "teacher":
             if link:
@@ -537,7 +537,7 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPrototype:str 
             linkTo = f"images/{link}"
         elif pageType == "photo":
             linkToPage = False
-            imagePath = Utils.PosixJoin(pathToPrototype,"images/photos",link)
+            imagePath = Utils.PosixJoin(pathToPages,"images/photos",link)
             if not hashTag:
                 hashTag = "cover"
             text = f'<!--HTML <img src="{imagePath}" alt="{text}" class="{hashTag}" title="{text}" align="bottom" width="200" border="0"/> -->'
@@ -559,7 +559,7 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPrototype:str 
                 Alert.warning("Cannot link to key topic",link,"in link",matchObject[0])
 
         if linkTo:
-            path = Utils.PosixJoin(pathToPrototype if linkToPage else pathToHome,linkTo)
+            path = Utils.PosixJoin(pathToPages if linkToPage else pathToHome,linkTo)
             return wrapper(f"[{text}]({path}{'#' + hashTag if hashTag else ''})")
         else:
             return text
@@ -604,8 +604,8 @@ def LinkReferences() -> None:
             In the latter case, subpage specifies the title of the audio.
         teacher - Link to a teacher page; pageName is the teacher code, e.g. AP
         about - Link to about page pageName
-        image - Link to images in prototypeDir/images
-        photo - Link to photos in prototypeDir/images/photos
+        image - Link to images in pagesDir/images
+        photo - Link to photos in pagesDir/images/photos
         topic - Link to the subtopic page corresponding to this tag
         topicList - Link to the topic list page specified by this topic code"""
 
@@ -624,7 +624,7 @@ def SmartQuotes(text: str) -> tuple[str,int]:
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--renderedDatabase',type=str,default='prototype/RenderedDatabase.json',help='Database after rendering each excerpt; Default: prototype/RenderedDatabase.json')
+    parser.add_argument('--renderedDatabase',type=str,default='pages/RenderedDatabase.json',help='Database after rendering each excerpt; Default: pages/RenderedDatabase.json')
 
 def ParseArguments() -> None:
     pass

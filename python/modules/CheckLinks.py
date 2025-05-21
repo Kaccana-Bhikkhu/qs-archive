@@ -19,7 +19,7 @@ gCheckedUrl:dict[str,UrlInfo] = {}
 
 def GetEventLinks() -> list[str]:
     """Return a list of urls for events."""
-    return [Utils.PosixJoin(gOptions.mirrorUrl[gOptions.linkCheckMirror],gOptions.prototypeDir,"events",eventCode + ".html") for eventCode in gDatabase["event"]]
+    return [Utils.PosixJoin(gOptions.mirrorUrl[gOptions.linkCheckMirror],gOptions.pagesDir,"events",eventCode + ".html") for eventCode in gDatabase["event"]]
 
 def ScanPageForLinks(url: str) -> list[str]:
     """Scan the page url and return a list of all links."""
@@ -108,9 +108,9 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 
 def main() -> None:
     Alert.info("Checking about pages...")
-    aboutUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.prototypeDir,"about")) if filename.lower().endswith(".html")]
-    aboutUrls = [Utils.PosixJoin(gOptions.prototypeDir,"homepage.html")] + \
-        [Utils.PosixJoin(gOptions.prototypeDir,"about",filename) for filename in aboutUrls]
+    aboutUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"about")) if filename.lower().endswith(".html")]
+    aboutUrls = [Utils.PosixJoin(gOptions.pagesDir,"homepage.html")] + \
+        [Utils.PosixJoin(gOptions.pagesDir,"about",filename) for filename in aboutUrls]
     urlsToCheck = set()
     for url in aboutUrls:
         urlsToCheck.update(ScanPageForLinks(url))

@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import os, json, re
 import Database, SetupHomepage
-import Utils, Alert, ParseCSV, Prototype, Filter
+import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
@@ -118,7 +118,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
 
 def OptimizedExcerpts() -> list[dict]:
     returnValue = []
-    formatter = Prototype.Formatter()
+    formatter = Build.Formatter()
     formatter.excerptOmitSessionTags = False
     formatter.showHeading = False
     formatter.headingShowTeacher = False
@@ -132,7 +132,7 @@ def OptimizedExcerpts() -> list[dict]:
 def SessionHeader() -> dict[str,str]:
     "Return a dict of session headers rendered into html."
     returnValue = {}
-    formatter = Prototype.Formatter()
+    formatter = Build.Formatter()
     formatter.headingShowTags = False
     formatter.headingShowTeacher = False
 
@@ -153,7 +153,7 @@ def KeyTopicBlobs() -> Iterator[dict]:
                 Enclose(Blobify([topic["topic"]]),"^"),
                 Enclose(Blobify([topic["pali"]]),"<>")
                 ])],
-            "html": re.sub(r"\)$",f"{Prototype.FA_STAR})",Prototype.HtmlKeyTopicLink(topic["code"],count=True))
+            "html": re.sub(r"\)$",f"{Build.FA_STAR})",Build.HtmlKeyTopicLink(topic["code"],count=True))
                 # Add a star before the last parenthesis to indicate these are featured excerpts.
         }
 
@@ -179,13 +179,13 @@ def SubtopicBlobs() -> Iterator[dict]:
         s = gDatabase["subtopic"][subtopic]
 
         if s["fTagCount"]:
-            fTagStr = f"{s['fTagCount']}{Prototype.FA_STAR}/"
+            fTagStr = f"{s['fTagCount']}{Build.FA_STAR}/"
         else:
             fTagStr = ""
         relevantCount = Database.CountExcerpts(Filter.MostRelevant(Database.SubtagIterator(s))(gDatabase["excerpts"]),countSessionExcerpts=True)
         
         htmlParts = [
-            Prototype.HtmlSubtopicLink(subtopic).replace(".html","-relevant.html"),
+            Build.HtmlSubtopicLink(subtopic).replace(".html","-relevant.html"),
             f"({fTagStr}{relevantCount})"
         ]
         if s["pali"]:
@@ -225,7 +225,7 @@ def TagBlobs() -> Iterator[dict]:
     for _,tag in alphabetizedTags:
         yield {
             "blobs": [TagBlob(tag)],
-            "html": Prototype.TagDescription(gDatabase["tag"][tag],fullTag=True,drilldownLink=True,flags=Prototype.TagDescriptionFlag.SHOW_STAR)
+            "html": Build.TagDescription(gDatabase["tag"][tag],fullTag=True,drilldownLink=True,flags=Build.TagDescriptionFlag.SHOW_STAR)
         }
 
 def TeacherBlobs() -> Iterator[dict]:
@@ -233,12 +233,12 @@ def TeacherBlobs() -> Iterator[dict]:
 
     teachersWithPages = [t for t in gDatabase["teacher"].values() if t["htmlFile"]]
 
-    alphabetizedTeachers = Prototype.AlphabetizedTeachers(teachersWithPages)
+    alphabetizedTeachers = Build.AlphabetizedTeachers(teachersWithPages)
 
     for name,teacher in alphabetizedTeachers:
         yield {
             "blobs": [Enclose(Blobify(AllNames([teacher["teacher"]])),"{}")],
-            "html": re.sub("(^<p>|</p>$)","",Prototype.TeacherDescription(teacher,name)).strip()
+            "html": re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
                 # Remove the paragraph markers added by TeacherDescription
         }
 
@@ -267,11 +267,11 @@ def EventBlobs() -> Iterator[dict]:
             sessionTeachers.update(session["teachers"])
         listedTeachers = [teacherCode for teacherCode in event["teachers"] if teacherCode in sessionTeachers]
 
-        tagString = "".join(f'[{Prototype.HtmlTagLink(tag)}]' for tag in event["tags"])
+        tagString = "".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
 
         lines = [
             f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
-            Prototype.ItemList([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers])
+            Build.ItemList([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers])
         ]
 
         yield {
@@ -327,5 +327,5 @@ def main() -> None:
     Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))
     Alert.debug("Characters remaining in blobs:","".join(sorted(gOutputChars)))
 
-    with open(Utils.PosixJoin(gOptions.prototypeDir,"assets","SearchDatabase.json"), 'w', encoding='utf-8') as file:
+    with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(optimizedDB, file, ensure_ascii=False, indent=2)

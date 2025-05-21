@@ -125,7 +125,7 @@ def LoadDatabaseAndAddMissingOps(opSet: set[str]) -> Tuple[dict,set[str]]:
 
 # The list of code modules/ops to implement
 requireSpreadsheetDB = ['ReviewDatabase','DownloadFiles','SplitMp3','ExportAudio','Link','Render']
-requireRenderedDB = ['Document','Prototype','SetupSearch','SetupHomepage','TagMp3','PrepareUpload','CheckLinks']
+requireRenderedDB = ['Document','Build','SetupSearch','SetupHomepage','TagMp3','PrepareUpload','CheckLinks']
 moduleList = ['DownloadCSV','ParseCSV'] + requireSpreadsheetDB + requireRenderedDB
 optionalModules = {'ExportAudio'} # These aren't included in All
 
@@ -139,11 +139,18 @@ AP QA archive main Google Sheet.""")
 parser.add_argument('ops',type=str,help="""A comma-separated list of operations to perform. No spaces allowed. Available operations:
 DownloadCSV - download csv files from the Google Sheet.
 ParseCSV - convert the csv files downloaded from the Google Sheet to SpreadsheetDatabase.json.
+ReviewDatabase - run various checks on the content of SpreadsheetDatabase.json.
+DownloadFiles - download files from remote links or mirrors when needed.
 SplitMp3 - split mp3 files into individual excerpts based on the times in SpreadsheetDatabase.json.
+Link - try to find valid links to excerpt mp3 files, session mp3 files, and references.
 Render - use pryatemp and markdown to convert excerpts into html and saves to RenderedDatabase.json.
 Document - create the .md files in documentation/about from documentation/aboutSources.
-Prototype - create html files for all menus and excerpts.
+Build - create html files for all menus and excerpts.
+SetupSearch - create SearchDatabase.json.
+SetupHomepage - create HomepageDatabase.json.
 TagMp3 - update the ID3 tags on excerpt mp3 files.
+PrepareUpload - move files that don't need to be uploaded to noUpload directories.
+CheckLinks - validate hyperlinks in documentation files and excerpts.
 All - run all the above modules in sequence.
 """)
 

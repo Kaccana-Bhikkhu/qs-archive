@@ -1,4 +1,4 @@
-"""A module to create various prototype versions of the website for testing purposes"""
+"""Write html files to the pages directory"""
 
 from __future__ import annotations
 
@@ -50,7 +50,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     """Write an html file for page using the global template"""
     page.gOptions = gOptions
 
-    template = Utils.PosixJoin(gOptions.prototypeDir,gOptions.globalTemplate)
+    template = Utils.PosixJoin(gOptions.pagesDir,gOptions.globalTemplate)
     if page.info.file.endswith("_print.html"):
         template = Utils.AppendToFilename(template,"_print")
     pageHtml = page.RenderWithTemplate(template)
@@ -102,7 +102,7 @@ def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",
 
 def HtmlTagLink(tag:str, fullTag: bool = False,text:str = "",link = True,showStar = False) -> str:
     """Turn a tag name into a hyperlink to that tag.
-    Simplying assumption: All html pages (except homepage.html and index.html) are in a subdirectory of prototype.
+    Simplying assumption: All html pages (except homepage.html and index.html) are in a subdirectory of pages.
     Thus ../tags will reference the tags directory from any other html pages.
     If fullTag, the link text contains the full tag name."""
     
@@ -1937,7 +1937,7 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     """Create the Search menu item and its associated submenus."""
 
     searchPageName = "Text-search.html"
-    searchTemplate = Utils.PosixJoin(gOptions.prototypeDir,"templates",searchPageName)
+    searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",searchPageName)
     searchPage = Utils.ReadFile(searchTemplate)
     
     pageInfo = Html.PageInfo("Search",Utils.PosixJoin(searchDir,searchPageName),titleIB="Search")
@@ -2070,7 +2070,7 @@ def ExtractHtmlBody(fileName: str) -> str:
 
 def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageInfo|None = None,extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
     """Read markdown pages from documentation/directory, convert them to html, 
-    write them in prototype/about, and create a menu out of them.
+    write them in pages/about, and create a menu out of them.
     specialFirstItem optionally designates the PageInfo for the first item"""
 
     @Alert.extra.Supress()
@@ -2492,7 +2492,7 @@ def Homepage():
     """Return a single menu item for the homepage."""
 
     homepageName = "homepage.html"
-    template = pyratemp.Template(filename=Utils.PosixJoin(gOptions.prototypeDir,"templates",homepageName))
+    template = pyratemp.Template(filename=Utils.PosixJoin(gOptions.pagesDir,"templates",homepageName))
 
     try:
         event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
@@ -2534,7 +2534,7 @@ def WriteSitemapURL(pagePath:str,xml:Airium) -> None:
         with xml.loc():
             xml(f"{gOptions.info.cannonicalURL}{pagePath}")
         with xml.lastmod():
-            xml(Utils.ModificationDate(Utils.PosixJoin(gOptions.prototypeDir,pagePath)).strftime("%Y-%m-%d"))
+            xml(Utils.ModificationDate(Utils.PosixJoin(gOptions.pagesDir,pagePath)).strftime("%Y-%m-%d"))
         with xml.changefreq():
             xml("weekly")
         with xml.priority():
@@ -2554,10 +2554,10 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
 def WriteIndexPage(writer: FileRegister.HashWriter):
     """Copy the contents of homepage.html into the body of index.html."""
 
-    homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.prototypeDir,"homepage.html"))
+    homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.pagesDir,"homepage.html"))
     homepageBody = re.sub(r"<script>.*?</script>","",homepageBody,flags=re.DOTALL)
 
-    indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.prototypeDir,"templates","index.html"))
+    indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates","index.html"))
     
     indexHtml = pyratemp.Template(indexTemplate)(bodyHtml = homepageBody,gOptions = gOptions)
     writer.WriteTextFile(Utils.PosixJoin("index.html"),indexHtml)
@@ -2566,7 +2566,7 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
     indexPageRedirect = ("../index.html","homepage.html")
     
     for oldPage,newPage in [indexPageRedirect]:
-        newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.prototypeDir,newPage))
+        newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,newPage))
         if newPage == "homepage.html": # ../index.html lives at the root directory, so we need to change all relative links to it.
             cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html")
             newPageHtml = re.sub(r'location.replace\([^)]*\)','location.replace("pages/index.html#homepage.html")',newPageHtml)
@@ -2575,15 +2575,15 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
             newPageHtml = re.sub(r'src="(?![^"]*://)','src="pages/',newPageHtml,flags=re.IGNORECASE)
                 # Then replace all href and src links
         else:
-            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.prototypeDir,newPage)
+            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,newPage)
         newPageHtml = newPageHtml.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
         writer.WriteTextFile(oldPage,newPageHtml)
 
 def AddArguments(parser):
     "Add command-line arguments used by this module"
     
-    parser.add_argument('--prototypeDir',type=str,default='prototype',help='Write prototype files to this directory; Default: ./prototype')
-    parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to prototypeDir; Default: templates/Global.html')
+    parser.add_argument('--pagesDir',type=str,default='pages',help='Write html files to this directory; Default: ./pages')
+    parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--excerptsPerPage',type=int,default=100,help='Maximum excerpts per page')
@@ -2626,8 +2626,8 @@ def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
         yield next(iter(iterator))
 
 def main():
-    if not os.path.exists(gOptions.prototypeDir):
-        os.makedirs(gOptions.prototypeDir)
+    if not os.path.exists(gOptions.pagesDir):
+        os.makedirs(gOptions.pagesDir)
     
     if gOptions.buildOnly != gAllSections:
         if gOptions.buildOnly:
@@ -2656,7 +2656,7 @@ def main():
     mainMenu.append([Html.PageInfo("Back to Abhayagiri.org","https://www.abhayagiri.org/questions-and-stories")])
     
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
-            FileRegister.HashWriter(gOptions.prototypeDir,"assets/HashCache.json",exactDates=True) as writer):
+            FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
         startTime = time.perf_counter()
         pageWriteTime = 0.0
@@ -2666,7 +2666,7 @@ def main():
             pageWriteTime += time.perf_counter() - pageWriteStart
             print(f"{gOptions.info.cannonicalURL}{newPage.info.file}",file=urlListFile)
     
-        Alert.extra(f"Prototype main build loop took {time.perf_counter() - startTime:.3f} seconds.")
+        Alert.extra(f"Build main loop took {time.perf_counter() - startTime:.3f} seconds.")
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")
 
         writer.WriteTextFile("sitemap.xml",XmlSitemap(writer))

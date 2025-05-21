@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import json, re, os
 import Database
-import Utils, Alert, Filter, Link, Prototype
+import Utils, Alert, Filter, Link, Build
 from typing import Tuple, Type, Callable
 from Mp3DirectCut import Clip
 import mutagen
@@ -71,7 +71,7 @@ def ExcerptComment(excerpt:dict,session:dict,event:dict) -> str:
     
     date = Utils.ReformatDate(session["date"],fullMonth=True) + ","
     
-    parts = [body,date,Prototype.EventVenueStr(event) + "."]
+    parts = [body,date,Build.EventVenueStr(event) + "."]
     allTags = Filter.AllTagsOrdered(excerpt)
     if allTags:
         parts.append("Tag:" if len(allTags) == 1 else "Tags:")
