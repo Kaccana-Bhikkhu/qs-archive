@@ -54,15 +54,16 @@ class AudioChip extends HTMLElement {
 		super();
 
 		this.attachShadow({ mode: "open" });
+	}
 
-		this.originalSetAttribute = this.setAttribute
-		this.setAttribute = (key,value) => {
-			this.originalSetAttribute(key,value);
-			if (key == "src") {
-				this.audio.src = value;
-				if (this.dataset.duration == null)
-					this.audio.load();
-			}
+	setAttribute(key,value) {
+		super.setAttribute(key,value);
+		if (key == "src") {
+			console.log("Changed src from",this.audio.src,"to",value);
+			this.audio.src = value; // Change playing audio
+			if (this.dataset.duration == null)
+				this.audio.load();
+			this.shadowRoot.querySelector("a").href = value; // Change the file to download
 		}
 	}
 
