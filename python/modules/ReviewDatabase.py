@@ -247,7 +247,7 @@ def AuditNames() -> None:
     for name in nameList:
         name["sortBy"] = SortKey(name)
 
-    with open(Utils.PosixJoin(gOptions.prototypeDir,"assets/NameAudit.csv"), 'w', encoding='utf-8', newline='') as file:
+    with open(Utils.PosixJoin(gOptions.pagesDir,"assets/NameAudit.csv"), 'w', encoding='utf-8', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(allFields)
         for n in nameList:

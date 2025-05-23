@@ -47,8 +47,8 @@
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"
 
-// Prototype options:
---prototypeDir pages
+// Build options:
+--pagesDir pages
 --globalTemplate templates/Global.html
 --redirectToJavascript
 --maxPlayerTitleLength 1000

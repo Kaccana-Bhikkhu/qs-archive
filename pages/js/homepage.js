@@ -2,7 +2,7 @@ import {configureLinks} from './frame.js';
 
 const DEBUG = false;
 
-let gDatabase = null; // The global database, loaded from assets/RandomExcerpts.json
+let gDatabase = null; // The global database, loaded from assets/Homepage.json
 
 let currentExcerpt = 0; // The excerpt currently displayed
 
@@ -42,11 +42,11 @@ export async function loadHomepage() {
     nextButton.onclick = () => { displayNextExcerpt(1); };
 
     if (!gDatabase) {
-        await fetch('./assets/RandomExcerpts.json')
+        await fetch('./assets/Homepage.json')
         .then((response) => response.json())
         .then((json) => {
             gDatabase = json; 
-            console.log("Loaded random excerpt database.");
+            debugLog("Loaded random excerpt database.");
         });
     }
     displayNextExcerpt(0);

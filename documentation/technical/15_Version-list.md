@@ -103,3 +103,5 @@
 - 5.3 (December 2024 release) Search all button. Random excerpt generation moved to search page. Added events: Abhayagiri Anniversaries 2016 (partial), 2021, and 2025; Practice and Study Day 2023. Listened in detail to some excerpts from TG2013. Reviewed and edited audio for many featured excerpts.
 
 - 5.4 (May 2025 release) Added events: Winter Retreat 2005 Ānāpānasati, Winter Retreat 2016 (partial), Awaken to the New Year 2021, Spirit Rock 2023 and 2024 daylongs, a 2025 Wat Pah Nanachat Q&A session, and two online events from 2024. Most tags applied to over 25 excerpts feature at least one excerpt. Mp3 splitting with mp3splt. Fixed Javascript bugs on Firefox and Mac browsers.
+
+- 5.4.1 (May 2025 release #2) Play all featured excerpts on tag and cluster pages. Contributed by Owen.

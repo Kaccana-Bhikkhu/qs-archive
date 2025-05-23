@@ -1,8 +1,7 @@
 import posix from "./path.js";
 import { loadSearchPage } from "./search.js";
-import { loadHomepage } from "./randomExcerpt.js";
+import { loadHomepage } from "./homepage.js";
 import { loadToggleView } from "./toggle-view.js";
-import { loadFeaturedPlaylist } from "./audioPlayer.js";
 const { join, dirname } = posix;
 const frame = document.querySelector("div#frame");
 const titleEl = document.querySelector("title");
@@ -10,6 +9,12 @@ const absoluteURLRegex = "^(//|[a-z+]+:)"
 const errorPage = "./about/Page-Not-Found.html"
 
 const SEARCH_PART = /\?[^#]*/
+
+const DEBUG = false;
+globalThis.debugLog = (...args) => {
+	if (DEBUG)
+		console.log(...args);
+}
 
 export function frameSearch(hash = null) {
 	// return a URLSearchParams object corresponding to the search params given in the URL hash
@@ -54,7 +59,7 @@ function pageText(r,url) {
 	if (r.ok) {
 		return r.text().then((text) => Promise.resolve([text,url]))
 	} else {
-		console.log("Page not found. Fetching",errorPage)
+		debugLog("Page not found. Fetching",errorPage)
 		return fetch(errorPage)
 			.then((r) => r.text())
 			.then((text) => Promise.resolve([text.replace("$PAGE$",url),errorPage]))
@@ -66,8 +71,7 @@ export function configureLinks(frame,url) {
 	["href","src"].forEach((attribute) => {
 		frame.querySelectorAll("["+attribute+"]").forEach((el) => {
 			let attributePath = el.getAttribute(attribute);
-			// Don't modify: 1. Absolute URLs; 2. Links to #bookmark; 3. audio-chip tags (processed in audioChip.js) 
-			if (!attributePath.match(absoluteURLRegex) && !attributePath.startsWith("#") && !(el.localName == "audio-chip")) {
+			if (!attributePath.match(absoluteURLRegex) && !attributePath.startsWith("#")) {
 				el.setAttribute(attribute,join(dirname(url),attributePath));
 			};
 		});
@@ -115,7 +119,7 @@ export function configureLinks(frame,url) {
 
 async function changeURL(pUrl,scrollTo = null) {
 	pUrl = decodeURIComponent(pUrl);
-	console.log("changeURL",pUrl);
+	debugLog("changeURL",pUrl);
 	await fetch("./" + pUrl)
 		.then((r) => pageText(r,pUrl))
 		.then((result) => {
@@ -133,7 +137,6 @@ async function changeURL(pUrl,scrollTo = null) {
 			loadToggleView();
 			loadSearchPage(); // loadSearchPage() and loadHomepage() modify the DOM and are responsible for calling
 			loadHomepage(); // configureLinks() and loadToggleView() on any elements they add.
-			loadFeaturedPlaylist();
 			if (scrollTo && Object.hasOwn(scrollTo,"scrollX") && Object.hasOwn(scrollTo,"scrollY"))
 				window.scrollTo(scrollTo.scrollX,scrollTo.scrollY)
 			else {

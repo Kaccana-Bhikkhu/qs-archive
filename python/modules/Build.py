@@ -1,4 +1,4 @@
-"""A module to create various prototype versions of the website for testing purposes"""
+"""Write html files to the pages directory"""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from typing import List, Iterator, Iterable, Tuple, Callable
 from airium import Airium
 import Mp3DirectCut
 import Database, ReviewDatabase
-import Utils, Alert, Filter, ParseCSV, Document, Render, SetupRandom
+import Utils, Alert, Filter, ParseCSV, Document, Render, SetupHomepage
 import Html2 as Html
 from datetime import timedelta
 import re, copy, itertools
@@ -50,7 +50,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     """Write an html file for page using the global template"""
     page.gOptions = gOptions
 
-    template = Utils.PosixJoin(gOptions.prototypeDir,gOptions.globalTemplate)
+    template = Utils.PosixJoin(gOptions.pagesDir,gOptions.globalTemplate)
     if page.info.file.endswith("_print.html"):
         template = Utils.AppendToFilename(template,"_print")
     pageHtml = page.RenderWithTemplate(template)
@@ -102,7 +102,7 @@ def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",
 
 def HtmlTagLink(tag:str, fullTag: bool = False,text:str = "",link = True,showStar = False) -> str:
     """Turn a tag name into a hyperlink to that tag.
-    Simplying assumption: All html pages (except homepage.html and index.html) are in a subdirectory of prototype.
+    Simplying assumption: All html pages (except homepage.html and index.html) are in a subdirectory of pages.
     Thus ../tags will reference the tags directory from any other html pages.
     If fullTag, the link text contains the full tag name."""
     
@@ -271,9 +271,6 @@ def IndentedHtmlTagList(tagList:list[dict] = [],showSubtagCount = True,showStar 
     """Generate html for an indented list of tags.
     tagList is the list of tags to print; use the global list if not provided"""
     
-    tabMeasurement = 'em'
-    tabLength = 2
-    
     a = Airium()
     
     if not tagList:
@@ -283,7 +280,7 @@ def IndentedHtmlTagList(tagList:list[dict] = [],showSubtagCount = True,showStar 
     with a.div(Class="listing"):
         for item in tagList:
             bookmark = Utils.slugify(item["tag"] or item["name"])
-            with a.p(id = bookmark,style = f"margin-left: {tabLength * (item['level']-baseIndent)}{tabMeasurement};"):
+            with a.p(id = bookmark,Class = f"indent-{item['level']-baseIndent}"):
                 a(HtmlTagListItem(item,showSubtagCount=showSubtagCount,showStar=showStar))
     
     return str(a)
@@ -296,15 +293,12 @@ def DrilldownTemplate() -> pyratemp.Template:
     xTagIndexes: the set of integer tag indexes to expand
     """
 
-    tabMeasurement = 'em'
-    tabLength = 2
-
     tagList = gDatabase["tagDisplayList"]
     a = Airium()
     with a.div(Class="listing"):
         for index, item in enumerate(tagList):            
             bookmark = Utils.slugify(item["tag"] or item["name"])
-            with a.p(id = bookmark,style = f"margin-left: {tabLength * (item['level']-1)}{tabMeasurement};"):
+            with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
                 itemHtml = HtmlTagListItem(item,showSubtagCount=True)
                 
                 drilldownLink = ""
@@ -507,7 +501,7 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
         content = IndentedHtmlTagList(tagList,showSubtagCount=False)
         tagList[0]["indexNumber"] = storedNumber
 
-        content = content.replace('style="margin-left: 0em;">','style="margin-left: 0em; font-weight:bold;">')
+        content = content.replace('class="indent-0">','class="indent-0" style="font-weight:bold;">')
             # Apply boldface to the top line only
         content = re.sub(r"(\s+)</p>",r":\1</p>",content,count = 1)
             # Add a colon at the end of the first paragraph only.
@@ -540,7 +534,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page = Html.PageDesc(info)
 
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
-    page.AppendContent(Html.Tag("span",{"style":"float: right;"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
 
     page.AppendContent(str(a))
     page.AppendContent("Most common tags",section="citationTitle")
@@ -1140,9 +1134,6 @@ class Formatter:
         """Return a html list of the excerpts."""
         
         a = Airium()
-        tabMeasurement = 'em'
-        tabLength = 2
-        
         prevEvent = None
         prevSession = None
         if excerpts:
@@ -1186,7 +1177,7 @@ class Formatter:
                     if ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
                         indentLevel = 0
 
-                    with a.p(style = f"margin-left: {tabLength * indentLevel}{tabMeasurement};"):
+                    with a.p(Class = f"indent-{indentLevel}"):
                         if not indentLevel and not ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
                             a(f"[{Html.Tag('span',{'style':'text-decoration: underline;'})('Session')}]")
                         a(localFormatter.FormatAnnotation(x,annotation,tagsAlreadyPrinted))
@@ -1937,7 +1928,7 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     """Create the Search menu item and its associated submenus."""
 
     searchPageName = "Text-search.html"
-    searchTemplate = Utils.PosixJoin(gOptions.prototypeDir,"templates",searchPageName)
+    searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",searchPageName)
     searchPage = Utils.ReadFile(searchTemplate)
     
     pageInfo = Html.PageInfo("Search",Utils.PosixJoin(searchDir,searchPageName),titleIB="Search")
@@ -2070,7 +2061,7 @@ def ExtractHtmlBody(fileName: str) -> str:
 
 def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageInfo|None = None,extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
     """Read markdown pages from documentation/directory, convert them to html, 
-    write them in prototype/about, and create a menu out of them.
+    write them in pages/about, and create a menu out of them.
     specialFirstItem optionally designates the PageInfo for the first item"""
 
     @Alert.extra.Supress()
@@ -2128,7 +2119,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
             page.AppendContent(HtmlKeyTopicLink(topicList[topicNumber - 1],
                                                 text=f"<< {gDatabase['keyTopic'][topicList[topicNumber - 1]]['topic']}") + "\n")
         if topicNumber < len(topicList) - 1:
-            page.AppendContent(Html.Tag("span",{"style":"float:right;"})(HtmlKeyTopicLink(topicList[topicNumber + 1],
+            page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(HtmlKeyTopicLink(topicList[topicNumber + 1],
                                                 text=f"{gDatabase['keyTopic'][topicList[topicNumber + 1]]['topic']} >>" + "\n")))
         page.AppendContent("<br>")
 
@@ -2254,7 +2245,7 @@ def AddTopicButtons(page: Html.PageDesc) -> None:
     if gOptions.uploadMirror == "preview":
         printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html")})("Printable with memos")
 
-    page.AppendContent(Html.Tag("span",{"style":"float: right;"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
     page.AppendContent("<br><br>")
 
 
@@ -2276,10 +2267,10 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
             #    text += f'&nbsp;{FA_STAR}'
             clusterLinks.append(Html.Tag("a",{"href":link})(text))
 
-        clusterList = Html.Tag("p",{"style":"margin-left: 2em;"})(" &emsp; ".join(clusterLinks))
+        clusterList = Html.Tag("p",{"class":"indent-1"})(" &emsp; ".join(clusterLinks))
 
         if keyTopic["shortNote"]:
-            clusterList = "\n".join([clusterList,Html.Tag("p",{"style":"margin-left: 2em;"})(keyTopic["shortNote"])])
+            clusterList = "\n".join([clusterList,Html.Tag("p",{"class":"indent-1"})(keyTopic["shortNote"])])
         heading = Html.Tag("a",{"href": Utils.PosixJoin("../",topicDir,keyTopic["listFile"])})(keyTopic["topic"])
         heading += f" ({keyTopic['fTagCount']})"
         return heading,clusterList,keyTopic["code"]
@@ -2315,7 +2306,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                     a(HtmlKeyTopicLink(topicCode,count=True))
             with a.div(id=topicCode + ".b",Class="no-padding"):
                 for subtopic in topic["subtopics"]:
-                    with a.p(style="margin-left: 2em;"):
+                    with a.p(Class="indent-1"):
                         subtags = list(Database.SubtagIterator(gDatabase["subtopic"][subtopic]))
                         fTagCount = gDatabase['subtopic'][subtopic].get('fTagCount',0)
                         minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["subtopic"][subtopic])
@@ -2350,11 +2341,11 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                         if bitsAfterDash:
                             a(" – " + "; ".join(bitsAfterDash))
                         if printPage and progressMemos:
-                            with a.p(style="margin-left: 4em;"):
+                            with a.p(Class="indent-2"):
                                 a(gDatabase['subtopic'][subtopic]["progressMemo"] or ".")
 
                 if topic["shortNote"] and not printPage:
-                    with a.p(style="margin-left: 2em;"):
+                    with a.p(Class="indent-1"):
                         a(topic["shortNote"])
 
 
@@ -2452,7 +2443,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         # Hack: Add buttons to basePage after yielding printPage so that all subsequent pages have buttons at the top.
         basePage.AppendContent(Html.Tag("button",{"type":"button","onclick":Utils.JavascriptLink(contractAllItem.AddQuery("showAll").file)})("Expand all"))
         basePage.AppendContent(Html.Tag("button",{"type":"button","onclick":Utils.JavascriptLink(contractAllItem.file)})("Contract all"))
-        basePage.AppendContent(Html.Tag("span",{"style":"float: right;"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
+        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
         basePage.AppendContent("<br><br>")
         basePage.AppendContent(f"Numbers in parentheses: (featured excerpts{FA_STAR}/excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
 
@@ -2492,12 +2483,12 @@ def Homepage():
     """Return a single menu item for the homepage."""
 
     homepageName = "homepage.html"
-    template = pyratemp.Template(filename=Utils.PosixJoin(gOptions.prototypeDir,"templates",homepageName))
+    template = pyratemp.Template(filename=Utils.PosixJoin(gOptions.pagesDir,"templates",homepageName))
 
     try:
         event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
         defaultExcerpt = Database.ExcerptDict()[event][session][fileNumber]
-        excerptHtml = SetupRandom.ExcerptEntry(defaultExcerpt)["html"]
+        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["html"]
     except (KeyError,ValueError):
         Alert.error(f"Unable to parse or find excerpt code {repr(gOptions.homepageDefaultExcerpt)} specified by --homepageDefaultExcerpt.")
         excerptHtml = ""
@@ -2534,7 +2525,7 @@ def WriteSitemapURL(pagePath:str,xml:Airium) -> None:
         with xml.loc():
             xml(f"{gOptions.info.cannonicalURL}{pagePath}")
         with xml.lastmod():
-            xml(Utils.ModificationDate(Utils.PosixJoin(gOptions.prototypeDir,pagePath)).strftime("%Y-%m-%d"))
+            xml(Utils.ModificationDate(Utils.PosixJoin(gOptions.pagesDir,pagePath)).strftime("%Y-%m-%d"))
         with xml.changefreq():
             xml("weekly")
         with xml.priority():
@@ -2554,10 +2545,10 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
 def WriteIndexPage(writer: FileRegister.HashWriter):
     """Copy the contents of homepage.html into the body of index.html."""
 
-    homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.prototypeDir,"homepage.html"))
+    homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.pagesDir,"homepage.html"))
     homepageBody = re.sub(r"<script>.*?</script>","",homepageBody,flags=re.DOTALL)
 
-    indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.prototypeDir,"templates","index.html"))
+    indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates","index.html"))
     
     indexHtml = pyratemp.Template(indexTemplate)(bodyHtml = homepageBody,gOptions = gOptions)
     writer.WriteTextFile(Utils.PosixJoin("index.html"),indexHtml)
@@ -2566,7 +2557,7 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
     indexPageRedirect = ("../index.html","homepage.html")
     
     for oldPage,newPage in [indexPageRedirect]:
-        newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.prototypeDir,newPage))
+        newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,newPage))
         if newPage == "homepage.html": # ../index.html lives at the root directory, so we need to change all relative links to it.
             cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html")
             newPageHtml = re.sub(r'location.replace\([^)]*\)','location.replace("pages/index.html#homepage.html")',newPageHtml)
@@ -2575,15 +2566,15 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
             newPageHtml = re.sub(r'src="(?![^"]*://)','src="pages/',newPageHtml,flags=re.IGNORECASE)
                 # Then replace all href and src links
         else:
-            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.prototypeDir,newPage)
+            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,newPage)
         newPageHtml = newPageHtml.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
         writer.WriteTextFile(oldPage,newPageHtml)
 
 def AddArguments(parser):
     "Add command-line arguments used by this module"
     
-    parser.add_argument('--prototypeDir',type=str,default='prototype',help='Write prototype files to this directory; Default: ./prototype')
-    parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to prototypeDir; Default: templates/Global.html')
+    parser.add_argument('--pagesDir',type=str,default='pages',help='Write html files to this directory; Default: ./pages')
+    parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--excerptsPerPage',type=int,default=100,help='Maximum excerpts per page')
@@ -2626,8 +2617,8 @@ def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
         yield next(iter(iterator))
 
 def main():
-    if not os.path.exists(gOptions.prototypeDir):
-        os.makedirs(gOptions.prototypeDir)
+    if not os.path.exists(gOptions.pagesDir):
+        os.makedirs(gOptions.pagesDir)
     
     if gOptions.buildOnly != gAllSections:
         if gOptions.buildOnly:
@@ -2639,11 +2630,10 @@ def main():
 
     indexDir ="indexes"
     mainMenu = []
-    # mainMenu.append(Homepage())
+    mainMenu.append(Homepage())
     technicalMenu = list(DocumentationMenu("technical"))
     technicalMenu[0] = technicalMenu[0]._replace(title="Technical")
     mainMenu.append(DocumentationMenu("about",
-                                      specialFirstItem=Html.PageInfo("About","homepage.html","The Ajahn Pasanno Question and Story Archive"),
                                       extraItems=[technicalMenu]))
     mainMenu.append(DocumentationMenu("misc",makeMenu=False))
 
@@ -2657,7 +2647,7 @@ def main():
     mainMenu.append([Html.PageInfo("Back to Abhayagiri.org","https://www.abhayagiri.org/questions-and-stories")])
     
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
-            FileRegister.HashWriter(gOptions.prototypeDir,"assets/HashCache.json",exactDates=True) as writer):
+            FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
         startTime = time.perf_counter()
         pageWriteTime = 0.0
@@ -2667,7 +2657,7 @@ def main():
             pageWriteTime += time.perf_counter() - pageWriteStart
             print(f"{gOptions.info.cannonicalURL}{newPage.info.file}",file=urlListFile)
     
-        Alert.extra(f"Prototype main build loop took {time.perf_counter() - startTime:.3f} seconds.")
+        Alert.extra(f"Build main loop took {time.perf_counter() - startTime:.3f} seconds.")
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")
 
         writer.WriteTextFile("sitemap.xml",XmlSitemap(writer))

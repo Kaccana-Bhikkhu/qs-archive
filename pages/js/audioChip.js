@@ -1,7 +1,3 @@
-import posix from "./path.js";
-const { join, dirname } = posix;
-const absoluteURLRegex = "^(//|[a-z+]+:)"
-
 const css = `
 	.wrapper {
 		height: 40px;
@@ -60,16 +56,19 @@ class AudioChip extends HTMLElement {
 		this.attachShadow({ mode: "open" });
 	}
 
+	setAttribute(key,value) {
+		super.setAttribute(key,value);
+		if (key == "src") {
+			console.log("Changed src from",this.audio.src,"to",value);
+			this.audio.src = value; // Change playing audio
+			if (this.dataset.duration == null)
+				this.audio.load();
+			this.shadowRoot.querySelector("a").href = value; // Change the file to download
+		}
+	}
+
 	connectedCallback() {
 		let src = this.getAttribute("src");
-
-		// This code makes src paths relative to the path specified in the hash section of the URL.
-		// Remove it if not using frame.js.
-		let url = location.hash.split("#")[1];
-		if (url && !src.match(absoluteURLRegex)) {
-			src = join(dirname(url), src);
-		};
-
 		this.audio = new Audio(src);
 		let loadAudio = this.dataset.duration == null;
 		if (loadAudio)
@@ -116,19 +115,19 @@ class AudioChip extends HTMLElement {
 
 	play(onPlaylist = false) {
 		if (this.audio.readyState >= 3) {
-			console.log("audio already loaded; begin playing");
+			debugLog("audio already loaded; begin playing");
 			playAudio(this.#titleWithLink, this.audio, onPlaylist);
 		} else {
 			this.audio.addEventListener(
 				"canplay",
 				(() => {
-					console.log("canplay event triggered; begin playing");
+					debugLog("canplay event triggered; begin playing");
 					playAudio(this.#titleWithLink, this.audio, onPlaylist);
 				}),
 				{ once: true },
 			);
 			this.audio.load();
-			console.log("waiting for audio loading");
+			debugLog("waiting for audio loading");
 		}
 	}
 }

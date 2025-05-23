@@ -138,12 +138,12 @@ def AppendToFilename(filename:str, appendStr: str) -> str:
     return name + appendStr + ext
 
 def AboutPageLookup(pageName:str,aboutPageCache:dict = {}) -> str|None:
-    "Search for an about page based on its name. Return the path to the page relative to prototypeDir."
+    "Search for an about page based on its name. Return the path to the page relative to pagesDir."
 
     if not aboutPageCache: # modify the value of a default argument to create a cache of potential tag references
         dirs = ["about"]
         for dir in dirs:
-            fileList = os.listdir(PosixJoin(gOptions.prototypeDir,dir))
+            fileList = os.listdir(PosixJoin(gOptions.pagesDir,dir))
             for file in fileList:
                 m = re.match(r"[0-9]*_?(.*)\.html",file)
                 if m:

@@ -1,4 +1,4 @@
-"""Maintain pages/assets/RandomExcerpts.json, which contains rendered random featured excerpts to display on the homepage.
+"""Maintain pages/assets/Homepage.json, which contains rendered random featured excerpts to display on the homepage.
 """
 
 from __future__ import annotations
@@ -6,14 +6,15 @@ from __future__ import annotations
 import os, json, datetime
 import random
 from typing import NamedTuple, Iterable
-import Utils, Alert, Prototype, Filter, Database
+import Utils, Alert, Build, Filter, Database
 import Filter
 
 def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
     """Return a dictionary containing the information needed to display this excerpt on the front page."""
     
-    formatter = Prototype.Formatter()
+    formatter = Build.Formatter()
     formatter.SetHeaderlessFormat()
+    formatter.excerptDefaultTeacher = {"AP"}
     html = formatter.HtmlExcerptList([excerpt])
 
     keyTopicTags = Database.KeyTopicTags()
@@ -24,11 +25,11 @@ def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
         subtopic = gDatabase["subtopic"][gDatabase["tag"][tag]["partOfSubtopics"][0]]
         isCluster = subtopic["subtags"] # A cluster has subtags; a regular tag doesn't
         if isCluster:
-            tagDescription = f"tag cluster {Prototype.HtmlSubtopicLink(subtopic['tag'])}"
+            tagDescription = f"tag cluster {Build.HtmlSubtopicLink(subtopic['tag'])}"
         else:
-            tagDescription = f"tag {Prototype.HtmlTagLink(tag)}"
+            tagDescription = f"tag {Build.HtmlTagLink(tag)}"
 
-        html += f"<hr><p>Featured in {tagDescription}, part of key topic {Prototype.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
+        html += f"<hr><p>Featured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
 
     return {
         "code": Database.ItemCode(excerpt),
@@ -41,8 +42,9 @@ def FeaturedExcerptEntries() -> list[dict[str]]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
 
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    keyTopicFilter = Filter.And(keyTopicFilter,Filter.MaxFTagOrder(500))
-    featuredExcerpts =  [x for x in keyTopicFilter(gDatabase["excerpts"])]
+    teacherFilter = Filter.And(Filter.Teacher("AP"))
+    homepageFilter = Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts())
+    featuredExcerpts =  [x for x in homepageFilter(gDatabase["excerpts"])]
 
     removeFragments = Filter.Kind(Filter.InverseSet(["Fragment"]))
     featuredExcerpts = [removeFragments.FilterAnnotations(x) for x in featuredExcerpts]
@@ -72,12 +74,12 @@ def RemakeRandomExcerpts(maxLength:int = 0,shuffle = True) -> dict[str]:
 
 def WriteDatabase(newDatabase: dict[str]) -> None:
     """Write newDatabase to the random excerpt .json file"""
-    with open(gOptions.randomExcerptDatabase, 'w', encoding='utf-8') as file:
+    with open(gOptions.homepageDatabase, 'w', encoding='utf-8') as file:
         json.dump(newDatabase, file, ensure_ascii=False, indent=2)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--randomExcerptDatabase',type=str,default="pages/assets/RandomExcerpts.json",help="Random excerpt database filename.")
+    parser.add_argument('--homepageDatabase',type=str,default="pages/assets/Homepage.json",help="Homepage database filename.")
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the database.")
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
     # parser.add_argument('--option',**Utils.STORE_TRUE,help='This is an option.')
@@ -95,4 +97,5 @@ def main() -> None:
     random.seed(42)
     database = RemakeRandomExcerpts(maxLength=gOptions.randomExcerptCount)
     WriteDatabase(database)
+    Alert.info("Homepage.json remade with",len(database["excerpts"]),"random excerpts.")
     

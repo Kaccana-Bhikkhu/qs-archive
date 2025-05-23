@@ -11,7 +11,7 @@ from Mp3DirectCut import TimeDeltaToStr,ToTimeDelta
 import Utils
 from typing import List, Iterator, Tuple, Callable, Any, TextIO
 from datetime import timedelta
-import Prototype, Alert
+import Build, Alert
 from enum import Enum
 from collections import Counter, defaultdict
 import itertools
@@ -478,7 +478,7 @@ def RemoveUnusedTags(database: dict) -> None:
                         seenNumberedTagYet = True
 
     """remainingTags = set(usedTags)
-    with open("prototype/UsedTags.txt",mode="w",encoding='utf-8') as file:
+    with open("pages/UsedTags.txt",mode="w",encoding='utf-8') as file:
         for rawTag in database["tagRaw"]:
             tag = rawTag["tag"]
             name = FirstValidValue(rawTag,["fullTag","pali"])
@@ -1737,4 +1737,4 @@ def main():
     with open(gOptions.spreadsheetDatabase, 'w', encoding='utf-8') as file:
         json.dump(gDatabase, file, ensure_ascii=False, indent=2)
 
-    Alert.info(Prototype.ExcerptDurationStr(gDatabase["excerpts"],countSessionExcerpts=True,sessionExcerptDuration=False),indent = 0)
+    Alert.info(Build.ExcerptDurationStr(gDatabase["excerpts"],countSessionExcerpts=True,sessionExcerptDuration=False),indent = 0)

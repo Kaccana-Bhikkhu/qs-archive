@@ -208,6 +208,11 @@ hr {
 	/* Apply a slightly thicker font weight for bold links */
 }
 
+/* Floating menus */
+.floating-menu {
+	float: right;
+}
+
 /* Text */
 p {
 	margin: 0 auto;
@@ -230,6 +235,31 @@ p.x-cite {
 	text-align: right;
 	padding-top: 0;
 	padding-bottom: 0;
+}
+
+p.indent-0 {
+	margin-left: 0em;
+}
+p.indent-1 {
+	margin-left: 2em;
+}
+p.indent-2 {
+	margin-left: 4em;
+}
+p.indent-3 {
+	margin-left: 6em;
+}
+p.indent-4 {
+	margin-left: 8em;
+}
+p.indent-5 {
+	margin-left: 10em;
+}
+p.indent-6 {
+	margin-left: 12em;
+}
+p.indent-7 {
+	margin-left: 14em;
 }
 
 ul,

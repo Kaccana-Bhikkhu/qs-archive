@@ -297,8 +297,8 @@ class Linker:
             if Utils.RemoteURL(url):
                 return url
             else: 
-                return Utils.PosixJoin(gOptions.prototypeDir,"indexes",url)
-                # If the remote link specifies a local file, the path will be relative to prototypeDir/indexes.
+                return Utils.PosixJoin(gOptions.pagesDir,"indexes",url)
+                # If the remote link specifies a local file, the path will be relative to pagesDir/indexes.
                 # This occurs only with references.
         
         filename = self.Filename(item)
