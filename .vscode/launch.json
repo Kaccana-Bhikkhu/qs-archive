@@ -149,7 +149,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "ReviewDatabase"
+                "SetupHomepage"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

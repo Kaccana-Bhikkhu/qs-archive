@@ -1933,7 +1933,20 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     
     pageInfo = Html.PageInfo("Search",Utils.PosixJoin(searchDir,searchPageName),titleIB="Search")
     yield pageInfo
-    yield (pageInfo._replace(title="Text search"), searchPage)
+
+    featuredPageName = "Featured.html"
+    featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
+    featuredPage = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
+
+    searchMenu = [
+        (pageInfo._replace(title="Text search"), searchPage),
+        (featuredExcerptPageInfo,featuredPage)
+    ]
+    
+    basePage = Html.PageDesc()
+    for page in basePage.AddMenuAndYieldPages(searchMenu,**SUBMENU_STYLE):
+        yield page
+
 
 def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
     """Add a table of contents to the event which is being built."""
@@ -2488,7 +2501,7 @@ def Homepage():
     try:
         event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
         defaultExcerpt = Database.ExcerptDict()[event][session][fileNumber]
-        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["html"]
+        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["shortHtml"]
     except (KeyError,ValueError):
         Alert.error(f"Unable to parse or find excerpt code {repr(gOptions.homepageDefaultExcerpt)} specified by --homepageDefaultExcerpt.")
         excerptHtml = ""

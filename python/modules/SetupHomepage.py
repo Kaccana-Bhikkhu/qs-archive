@@ -7,7 +7,9 @@ import os, json, datetime
 import random
 from typing import NamedTuple, Iterable
 import Utils, Alert, Build, Filter, Database
+from copy import copy
 import Filter
+import Html2 as Html
 
 def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
     """Return a dictionary containing the information needed to display this excerpt on the front page."""
@@ -16,6 +18,13 @@ def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
     formatter.SetHeaderlessFormat()
     formatter.excerptDefaultTeacher = {"AP"}
     html = formatter.HtmlExcerptList([excerpt])
+
+    simpleExcerpt = copy(excerpt)
+    simpleExcerpt["annotations"] = ()
+    simpleExcerpt["tags"] = ()
+    formatter.SetHeaderlessFormat(False)
+    moreLink = Html.Tag("i","a",{"href":"search/Featured.html"})("details...")
+    shortHtml = Html.Tag("p")(f"{formatter.FormatExcerpt(simpleExcerpt)} {moreLink}")
 
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
@@ -36,6 +45,7 @@ def ExcerptEntry(excerpt:dict[str]) -> dict[str]:
         "text": excerpt["text"],
         "fTag": topicTags[0] if topicTags else "",
         "html": html,
+        "shortHtml": shortHtml
     }
 
 def FeaturedExcerptEntries() -> list[dict[str]]:
@@ -79,7 +89,7 @@ def WriteDatabase(newDatabase: dict[str]) -> None:
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--homepageDatabase',type=str,default="pages/assets/Homepage.json",help="Homepage database filename.")
+    parser.add_argument('--homepageDatabase',type=str,default="pages/assets/HomepageDatabase.json",help="Homepage database filename.")
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the database.")
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
     # parser.add_argument('--option',**Utils.STORE_TRUE,help='This is an option.')

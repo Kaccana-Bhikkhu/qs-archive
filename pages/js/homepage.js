@@ -1,22 +1,33 @@
+// homepage.js scripts the pages homepage.html and search/Featured.html
+// Both pages rely on ./assets/Homepage.json
+
 import {configureLinks} from './frame.js';
 
 const DEBUG = false;
 
-let gDatabase = null; // The global database, loaded from assets/Homepage.json
+let gHomepageDatabase = null; // The global database, loaded from assets/HomepageDatabase.json
 
-let currentExcerpt = 0; // The excerpt currently displayed
+let todaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
+let currentExcerpt = 0; // The featured excerpt currently displayed on search/Featured.html
 
-function displayExcerpt() {
-    // Display the html code for current excerpt
+function initializeTodaysExcerpt() {
+    // Calculate which featured excerpt to display based on today's date
 
-    let excerptCount = gDatabase.excerpts.length;
+    todaysExcerpt = 0;
+    currentExcerpt = todaysExcerpt;
+}
+
+function displayFeaturedExcerpt() {
+    // Display the html code for current featured excerpt
+
+    let excerptCount = gHomepageDatabase.excerpts.length;
     let excerptToDisplay = ((currentExcerpt % excerptCount) + excerptCount) % excerptCount
 
     let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = gDatabase.excerpts[excerptToDisplay].html;
+    displayArea.innerHTML = gHomepageDatabase.excerpts[excerptToDisplay].html;
     configureLinks(displayArea,"indexes/homepage.html");
 
-    let titleArea = document.getElementById("date-title");
+    let titleArea = document.getElementById("page-title");
     let title = "Today's featured excerpt:"
     if (currentExcerpt > 0)
         title = `Random excerpt (${currentExcerpt}):`;
@@ -29,32 +40,36 @@ function displayExcerpt() {
     titleArea.innerHTML = title;
 }
 
-export async function loadHomepage() {
-    // Called when the search page is loaded. Load the random excerpt database
-    // and configure the forward and back buttons
-
-    let prevButton = document.getElementById("random-prev");
-    if (!prevButton)
-        return; // Exit if the previous excerpt button isn't found.
-    let nextButton = document.getElementById("random-next");
-
-    prevButton.onclick = () => { displayNextExcerpt(-1); };
-    nextButton.onclick = () => { displayNextExcerpt(1); };
-
-    if (!gDatabase) {
-        await fetch('./assets/Homepage.json')
-        .then((response) => response.json())
-        .then((json) => {
-            gDatabase = json; 
-            debugLog("Loaded random excerpt database.");
-        });
-    }
-    displayNextExcerpt(0);
-}
-
-function displayNextExcerpt(increment) {
+function displayNextFeaturedExcerpt(increment) {
     // display the next or previous (increment = -1) random excerpt
     currentExcerpt += increment;
 
-    displayExcerpt(currentExcerpt);
+    displayFeaturedExcerpt();
+}
+
+export async function loadHomepage() {
+    // Called when pages are loaded. Load gHomepageDatabase and wire the needed elements
+
+    if (!gHomepageDatabase) {
+        await fetch('./assets/HomepageDatabase.json')
+        .then((response) => response.json())
+        .then((json) => {
+            gHomepageDatabase = json; 
+            debugLog("Loaded homepage database.");
+        });
+        initializeTodaysExcerpt()
+    }
+
+    // This code runs only for search/Featured.html
+    let prevButton = document.getElementById("random-prev");
+    let nextButton = document.getElementById("random-next");
+    if (prevButton || nextButton) {
+        prevButton.onclick = () => { displayNextFeaturedExcerpt(-1); };
+        nextButton.onclick = () => { displayNextFeaturedExcerpt(1); };
+        displayNextFeaturedExcerpt(0);
+    }
+
+    // This code runs only for homepage.html
+    let displayArea = document.getElementById("todays-excerpt");
+    displayArea.innerHTML = gHomepageDatabase.excerpts[todaysExcerpt].shortHtml;
 }
