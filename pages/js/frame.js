@@ -10,7 +10,7 @@ const errorPage = "./about/Page-Not-Found.html"
 
 const SEARCH_PART = /\?[^#]*/
 
-const DEBUG = false;
+const DEBUG = true;
 globalThis.debugLog = (...args) => {
 	if (DEBUG)
 		console.log(...args);
@@ -184,4 +184,11 @@ if (frame) {
 
 window.addEventListener("scrollend", (event) => {
 	history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
+});
+
+// Initialize the static header and footer when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    debugLog("DOMContentLoaded event");
+	configureLinks(document.getElementById("header"),"index.html");
+	configureLinks(document.querySelector("footer"),"index.html");
 });
