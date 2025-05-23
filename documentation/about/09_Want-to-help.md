@@ -47,7 +47,7 @@ __Time commitment:__ Variable, but programming projects always take longer than 
 
 There are many ways a skilled and generous programmer could help with the Archive ([github](https://github.com/Kaccana-Bhikkhu/qs-archive)). Here are some ideas, ranked roughly in order of usefulness with the really big project last.
 
-__Fix bugs:__ For the current list, see [About: status](../../pages/about/08_Status.html#known-issues-and-limitations) and [Github issues](https://github.com/Kaccana-Bhikkhu/qs-archive/issues).
+__Fix bugs:__ For the current list, see [About: status](../../pages/about/Status.html#known-issues-and-limitations) and [Github issues](https://github.com/Kaccana-Bhikkhu/qs-archive/issues).
 
 __Cross-platform mp3 splitting:__ The project currently uses Windows-only [mp3DirectCut](https://mpesch3.de/) or [mp3splt](https://mp3splt.sourceforge.net/mp3splt_page/about.php) to quickly and losslessly split mp3 files. mp3splt is cross-platform but occasionally sets the length metadata incorrectly when splitting variable-length mp3 files, so it isn't reliable enough for production work. [FFcuesplitter](https://github.com/jeanslack/FFcuesplitter) is a python script that uses ffmpeg to split mp3 files. It is possible that rewriting `Mp3DirectCut.SinglePassSplit` to use FFCuesplitter would make the QSArchive software fully functional on multiple platforms.
 

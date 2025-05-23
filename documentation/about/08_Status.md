@@ -13,7 +13,7 @@
 This release contains 2769 excerpts from 57 events, comprising over 150 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 475 transcribed pages, of which 400 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
-The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](../../pages/about/09_Want-to-help.html) for details.
+The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](../../pages/about/Want-to-help.html) for details.
 
 ### Winter Retreats
 Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](../../pages/events/WR2005-1.html) and the [2014](../../pages/events/WR2014.html) and [2015](../../pages/events/WR2015.html) Winter Retreats are included in the Archive. The 2013 and 2016 Winter Retreats have been transcribed on paper; some sessions from the [2016 retreat](../../pages/events/WR2016.html) are online. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](../../pages/events/WR2018-2.html). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats).
@@ -46,7 +46,7 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](..
 - [Text search feature](../search/Text-search.html)
 ### July 2024:
 - Added much material from the [2001 Ajahn Chah Weekend](../../pages/events/Chah2001.html). Some sessions have been omitted pending obtaining teacher consent.
-- Finalized the [license details](../../pages/about/12_License.html).
+- Finalized the [license details](../../pages/about/License.html).
 - Allow search engine indexing (we hope!).
 ### August 2024:
 - October 2017 Upāsikā Day: [Can We Function Without Attachement?](../../pages/events/UD2017-4.html)

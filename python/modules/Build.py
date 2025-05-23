@@ -1543,7 +1543,7 @@ def EventsMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
         [seriesInfo,listing(ListEventsBySeries(gDatabase["event"].values()))],
         [chronologicalInfo,listing(ListEventsByYear(gDatabase["event"].values()))],
         [detailInfo,listing(ListDetailedEvents(gDatabase["event"].values()))],
-        [Html.PageInfo("About event series","about/02_Event-series.html")],
+        [Html.PageInfo("About event series","about/Event-series.html")],
         EventPages("events")
     ]
 
@@ -2405,7 +2405,7 @@ def KeyTopicMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     keyTopicMenu = [
         CompactKeyTopics(indexDir,topicDir),
         DetailedKeyTopics(indexDir,topicDir),
-        [Html.PageInfo("About key topics","about/04_Overview.html#key-topics-and-tag-clusters")],
+        [Html.PageInfo("About key topics","about/Overview.html#key-topics-and-tag-clusters")],
         PrintTopics(indexDir,topicDir,yieldMenuItem=False),
         PrintTopics(indexDir,topicDir,progressMemos=True,yieldMenuItem=False),
         TagClusterPages("clusters"),
@@ -2485,7 +2485,7 @@ def TagMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
         AlphabeticalTagList(indexDir),
         NumericalTagList(indexDir),
         MostCommonTagList(indexDir),
-        [Html.PageInfo("About tags","about/05_Tags.html")],
+        [Html.PageInfo("About tags","about/Tags.html")],
         TagPages("tags")
     ]
 

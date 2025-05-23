@@ -79,7 +79,8 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = ".
             m = re.match(r"[0-9]*_?([^.]*)",fileName)
             title = m[1].replace("-"," ")
 
-        page = Html.PageDesc(Html.PageInfo(title,Utils.PosixJoin(destDir,fileName),titleInPage))
+        noNumbers = re.sub(r"^[0-9]+_","",fileName)
+        page = Html.PageDesc(Html.PageInfo(title,Utils.PosixJoin(destDir,noNumbers if html else fileName),titleInPage))
         page.AppendContent(fileText)
         page.sourceFile = Utils.PosixJoin(sourceDir,Utils.ReplaceExtension(fileName,".md"))
         renderedPages.append(page)
