@@ -979,10 +979,10 @@ class Formatter:
         a(' ')
         if self.excerptNumbers:
             if excerpt['excerptNumber']:
-                with a.b(style="text-decoration: underline;"):
+                with a.span(Class="excerpt-number"):
                     a(f"{excerpt['excerptNumber']}.")
             else:
-                a(f"[{Html.Tag('span',{'style':'text-decoration: underline;'})('Session')}]")
+                a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
         if self.showFTagOrder and set(excerpt["fTags"]) & set(self.showFTagOrder):
             a(" {" + str(Database.FTagOrder(excerpt,self.showFTagOrder)) + "}")
 
@@ -1179,7 +1179,7 @@ class Formatter:
 
                     with a.p(Class = f"indent-{indentLevel}"):
                         if not indentLevel and not ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
-                            a(f"[{Html.Tag('span',{'style':'text-decoration: underline;'})('Session')}]")
+                            a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
                         a(localFormatter.FormatAnnotation(x,annotation,tagsAlreadyPrinted))
                     tagsAlreadyPrinted.update(annotation.get("tags",()))
             
@@ -1543,7 +1543,7 @@ def EventsMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
         [seriesInfo,listing(ListEventsBySeries(gDatabase["event"].values()))],
         [chronologicalInfo,listing(ListEventsByYear(gDatabase["event"].values()))],
         [detailInfo,listing(ListDetailedEvents(gDatabase["event"].values()))],
-        [Html.PageInfo("About event series","about/02_Event-series.html")],
+        [Html.PageInfo("About event series","about/Event-series.html")],
         EventPages("events")
     ]
 
@@ -1933,7 +1933,20 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     
     pageInfo = Html.PageInfo("Search",Utils.PosixJoin(searchDir,searchPageName),titleIB="Search")
     yield pageInfo
-    yield (pageInfo._replace(title="Text search"), searchPage)
+
+    featuredPageName = "Featured.html"
+    featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
+    featuredPage = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
+
+    searchMenu = [
+        (pageInfo._replace(title="Text search"), searchPage),
+        (featuredExcerptPageInfo,featuredPage)
+    ]
+    
+    basePage = Html.PageDesc()
+    for page in basePage.AddMenuAndYieldPages(searchMenu,**SUBMENU_STYLE):
+        yield page
+
 
 def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
     """Add a table of contents to the event which is being built."""
@@ -2392,7 +2405,7 @@ def KeyTopicMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     keyTopicMenu = [
         CompactKeyTopics(indexDir,topicDir),
         DetailedKeyTopics(indexDir,topicDir),
-        [Html.PageInfo("About key topics","about/04_Overview.html#key-topics-and-tag-clusters")],
+        [Html.PageInfo("About key topics","about/Overview.html#key-topics-and-tag-clusters")],
         PrintTopics(indexDir,topicDir,yieldMenuItem=False),
         PrintTopics(indexDir,topicDir,progressMemos=True,yieldMenuItem=False),
         TagClusterPages("clusters"),
@@ -2472,7 +2485,7 @@ def TagMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
         AlphabeticalTagList(indexDir),
         NumericalTagList(indexDir),
         MostCommonTagList(indexDir),
-        [Html.PageInfo("About tags","about/05_Tags.html")],
+        [Html.PageInfo("About tags","about/Tags.html")],
         TagPages("tags")
     ]
 
@@ -2488,7 +2501,7 @@ def Homepage():
     try:
         event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
         defaultExcerpt = Database.ExcerptDict()[event][session][fileNumber]
-        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["html"]
+        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["shortHtml"]
     except (KeyError,ValueError):
         Alert.error(f"Unable to parse or find excerpt code {repr(gOptions.homepageDefaultExcerpt)} specified by --homepageDefaultExcerpt.")
         excerptHtml = ""
@@ -2577,10 +2590,15 @@ def AddArguments(parser):
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
+    
     parser.add_argument('--excerptsPerPage',type=int,default=100,help='Maximum excerpts per page')
     parser.add_argument('--minSubsearchExcerpts',type=int,default=10,help='Create subsearch pages for pages with at least this many excerpts.')
     parser.add_argument('--attributeAll',**Utils.STORE_TRUE,help="Attribute all excerpts; mostly for debugging")
     parser.add_argument('--keyTopicsLinkToTags',**Utils.STORE_TRUE,help="Tags listed in the Key topics page link to tags instead of topics.")
+    
+    parser.add_argument('--documentationDir',type=str,default='documentation',help='Read and write documentation files here; Default: ./documenation')
+    parser.add_argument('--info',type=str,action="append",default=[],help="Specify infomation about this build. Format key:value")
+    
     parser.add_argument('--maxPlayerTitleLength',type=int,default = 30,help="Maximum length of title tag for chip audio player.")
     parser.add_argument('--blockRobots',**Utils.STORE_TRUE,help="Use <meta name robots> to prevent crawling staging sites.")
     parser.add_argument('--redirectToJavascript',**Utils.STORE_TRUE,help="Redirect page to index.html/#page if Javascript is available.")
@@ -2602,6 +2620,19 @@ def ParseArguments():
         if unknownSections:
             Alert.warning(f"--buildOnly: Unrecognized section(s) {unknownSections} will be ignored.")
             gOptions.buildOnly = gOptions.buildOnly.difference(unknownSections)
+    
+    # Parse gOptions.info
+    class NameSpace:
+        pass
+    infoObject = NameSpace()
+    for item in gOptions.info:
+        split = item.split(":",maxsplit=1)
+        if len(split) > 1:
+            value = split[1]
+        else:
+            value = True
+        setattr(infoObject,split[0],value)
+    gOptions.info = infoObject
 
 def Initialize() -> None:
     pass

@@ -27,40 +27,24 @@
 
       url = new URL(location.href)
       if (url.protocol != "file:" && !isBotUserAgent) {
-        location.replace("../index.html#about/09_Want-to-help.html" + url.search + url.hash);
+        location.replace("../index.html#about/Want-to-help.html" + url.search + url.hash);
       }
     </script>
-  <div id="header">
-    <h1><strong>The Ajahn Pasanno Question and Story Archive</strong></h1>
-    <br>
-    <nav id="topnav">
-      <a href="../homepage.html#_keep_scroll">Home</a>
-      <a href="../about/01_Introduction.html#_keep_scroll" class="active">About</a>
-      <a href="../search/Text-search.html#_keep_scroll">Search</a>
-      <a href="../indexes/KeyTopics.html?hideAll#_keep_scroll">Key topics</a>
-      <a href="../drilldown/root.html#_keep_scroll">Tags</a>
-      <a href="../indexes/EventsBySubject.html#_keep_scroll">Events</a>
-      <a href="../teachers/TeachersAlphabetical.html#_keep_scroll">Teachers</a>
-      <a href="../indexes/AllExcerpts.html#_keep_scroll">All excerpts</a>
-      <a href="https://www.abhayagiri.org/questions-and-stories">Back to Abhayagiri.org</a>
-    </nav>
-  </div>
-<br>
 
 
-  <div class="title">The Ajahn Pasanno Question and Story Archive
+  <div class="title" id="page-title">The Ajahn Pasanno Question and Story Archive
   </div>
 
 <div class="main">
-<div class="sublink2"> <a href="../about/01_Introduction.html#_keep_scroll">About</a>
-      <a href="../about/02_Event-series.html#_keep_scroll">Event series</a>
-      <a href="../about/04_Overview.html#_keep_scroll">Overview</a>
-      <a href="../about/05_Tags.html#_keep_scroll">Tags</a>
-      <a href="../about/08_Status.html#_keep_scroll">Status</a>
-      <a href="../about/09_Want-to-help.html#_keep_scroll" class="active">Want to help?</a>
-      <a href="../about/10_Acknowledgements.html#_keep_scroll">Acknowledgements</a>
-      <a href="../about/11_Contact.html#_keep_scroll">Contact</a>
-      <a href="../about/09_Search-instructions.html#_keep_scroll">Technical</a> </div>
+<div class="sublink2"> <a href="../about/Introduction.html#_keep_scroll">About</a>
+      <a href="../about/Event-series.html#_keep_scroll">Event series</a>
+      <a href="../about/Overview.html#_keep_scroll">Overview</a>
+      <a href="../about/Tags.html#_keep_scroll">Tags</a>
+      <a href="../about/Status.html#_keep_scroll">Status</a>
+      <a href="../about/Want-to-help.html#_keep_scroll" class="active">Want to help?</a>
+      <a href="../about/Acknowledgements.html#_keep_scroll">Acknowledgements</a>
+      <a href="../about/Contact.html#_keep_scroll">Contact</a>
+      <a href="../about/Search-instructions.html#_keep_scroll">Technical</a> </div>
 <hr>
 
 <!--TITLE:Want to help?-->
@@ -96,16 +80,10 @@
 <p><strong>Requirements:</strong> Proficiency with Javascript web programming, python, and/or Google Sheets gs script</p>
 <p><strong>Time commitment:</strong> Variable, but programming projects always take longer than you think.</p>
 <p>There are many ways a skilled and generous programmer could help with the Archive (<a href="https://github.com/Kaccana-Bhikkhu/qs-archive" target="_blank">github</a>). Here are some ideas, ranked roughly in order of usefulness with the really big project last.</p>
-<p><strong>Fix bugs:</strong> For the current list, see <a href="../about/08_Status.html#known-issues-and-limitations">About: status</a> and <a href="https://github.com/Kaccana-Bhikkhu/qs-archive/issues" target="_blank">Github issues</a>.</p>
+<p><strong>Fix bugs:</strong> For the current list, see <a href="../about/Status.html#known-issues-and-limitations">About: status</a> and <a href="https://github.com/Kaccana-Bhikkhu/qs-archive/issues" target="_blank">Github issues</a>.</p>
 <p><strong>Cross-platform mp3 splitting:</strong> The project currently uses Windows-only <a href="https://mpesch3.de/" target="_blank">mp3DirectCut</a> or <a href="https://mp3splt.sourceforge.net/mp3splt_page/about.php" target="_blank">mp3splt</a> to quickly and losslessly split mp3 files. mp3splt is cross-platform but occasionally sets the length metadata incorrectly when splitting variable-length mp3 files, so it isn't reliable enough for production work. <a href="https://github.com/jeanslack/FFcuesplitter" target="_blank">FFcuesplitter</a> is a python script that uses ffmpeg to split mp3 files. It is possible that rewriting <code>Mp3DirectCut.SinglePassSplit</code> to use FFCuesplitter would make the QSArchive software fully functional on multiple platforms.</p>
 <p><strong>Help deploy the new homepage:</strong> A generous supporter has designed a new homepage for the Archive. Integrating it with the current website will stretch the limits of Ajahn Kaccāna's knowledge of Javascript. A skilled Javascript programmer might be able to contribute here.</p>
 </div>
-
-<footer>
-    <p id="copyright">&copy; 2025 Abhayagiri Buddhist Monastery – <a href="../about/12_License.html">License</a></p>
-    <p id="cite-as"><b>How to cite this page</b> (suggested style): “About: Want to help?,” The Ajahn Pasanno Question and Story Archive, May 2025 release,
-      <a href="https://abhayagiri.org/questions/about/09_Want-to-help.html">https://abhayagiri.org/questions/about/09_Want-to-help.html</a>.</p>
-</footer>
 
 </body>
 </html>

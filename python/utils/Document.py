@@ -79,7 +79,8 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = ".
             m = re.match(r"[0-9]*_?([^.]*)",fileName)
             title = m[1].replace("-"," ")
 
-        page = Html.PageDesc(Html.PageInfo(title,Utils.PosixJoin(destDir,fileName),titleInPage))
+        noNumbers = re.sub(r"^[0-9]+_","",fileName)
+        page = Html.PageDesc(Html.PageInfo(title,Utils.PosixJoin(destDir,noNumbers if html else fileName),titleInPage))
         page.AppendContent(fileText)
         page.sourceFile = Utils.PosixJoin(sourceDir,Utils.ReplaceExtension(fileName,".md"))
         renderedPages.append(page)
@@ -104,60 +105,6 @@ def PrintWordCount() -> None:
     for name in wc:
         Alert.info(f"{name} word count: {wc[name]}")
 
-def AddArguments(parser) -> None:
-    "Add command-line arguments used by this module"
-    parser.add_argument('--documentationDir',type=str,default='documentation',help='Read and write documentation files here; Default: ./documenation')
-    parser.add_argument('--info',type=str,action="append",default=[],help="Specify infomation about this build. Format key:value")
-    parser.add_argument('--overwriteDocumentation',**Utils.STORE_TRUE,help='Write documentation files without checking modification dates.')
-
-def ParseArguments() -> None:
-    class NameSpace:
-        pass
-    infoObject = NameSpace()
-    for item in gOptions.info:
-        split = item.split(":",maxsplit=1)
-        if len(split) > 1:
-            value = split[1]
-        else:
-            value = True
-        setattr(infoObject,split[0],value)
-    gOptions.info = infoObject
-    
-
-def Initialize() -> None:
-    pass
-
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 gDocumentationWordCount = 0
-
-def main() -> None:
-    global gDocumentationWordCount
-    gDocumentationWordCount = 0
-
-    with FileRegister.HashWriter("./",Utils.PosixJoin(gOptions.documentationDir,"misc/HashCache.json"),exactDates=True) as writer:
-        for directory in ['about','misc','technical']:
-            for page in RenderDocumentationFiles(directory,pathToPages=Utils.PosixJoin("../../",gOptions.pagesDir),pathToBase="../../",html=False):
-                status = writer.WriteTextFile(page.info.file,str(page),
-                        mode=FileRegister.Write.DESTINATION_CHANGED if gOptions.overwriteDocumentation else FileRegister.Write.DESTINATION_UNCHANGED)
-
-                if status == FileRegister.Status.BLOCKED:
-                        # If the destination file has been modified, check to see if the source file is newer.
-                        # If so, overwrite. Otherwise generate a warning.
-                    sourcePath = Utils.PosixJoin(gOptions.documentationDir,directory + "Sources",Utils.PosixSplit(page.info.file)[1])
-                    if Utils.DependenciesModified(page.info.file,[sourcePath]):
-                        writer.WriteTextFile(page.info.file,str(page))
-                    else:
-                        Alert.warning("Did not overwrite",page.info.file,"because this file has a later modification date than its source,",sourcePath)
-
-
-        Alert.extra()
-        Alert.extra("Documentation files:",writer.StatusSummary())
-        deleteCount = writer.DeleteUnregisteredFiles("documentation/about",r".*\.md")
-        deleteCount += writer.DeleteUnregisteredFiles("documentation/technical",r".*\.md")
-        deleteCount += writer.DeleteUnregisteredFiles("documentation/misc",r".*\.md")
-        if deleteCount:
-            Alert.info(deleteCount,"documentation file(s) deleted.")
-
-    if Alert.verbosity >= 2:
-        PrintWordCount()

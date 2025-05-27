@@ -74,14 +74,14 @@ export async function loadSearchPage() {
         }
     });
 
-    if (!gDatabase) {
+    if (!gSearchDatabase) {
         await fetch('./assets/SearchDatabase.json')
         .then((response) => response.json())
         .then((json) => {
-            gDatabase = json; 
+            gSearchDatabase = json; 
             debugLog("Loaded search database.");
             for (let code in gSearchers) {
-                gSearchers[code].loadItemsFomDatabase(gDatabase)
+                gSearchers[code].loadItemsFomDatabase(gSearchDatabase)
             }
         });
 
@@ -818,7 +818,7 @@ class RandomSearcher extends Searcher {
 
 function searchFromURL() {
     // Find excerpts matching the search query from the page URL.
-    if (!gDatabase) {
+    if (!gSearchDatabase) {
         debugLog("Error: database not loaded.");
         return;
     }
@@ -860,7 +860,7 @@ function searchButtonClick(searchKind) {
     searchFromURL();
 }
 
-let gDatabase = null; // The global database, loaded from assets/SearchDatabase.json
+let gSearchDatabase = null; // The global search database, loaded from assets/SearchDatabase.json
 let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",

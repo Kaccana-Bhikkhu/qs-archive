@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Daily featured excerpts – The Ajahn Pasanno Question and Story Archive">
+  <meta name="keywords" content="">
+  <meta name="author" content="Abhayagiri Buddhist Monastery">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily featured excerpts</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
+    
+</head>
+<body>
+    <script>
+      const agent = window.navigator.userAgent;
+      const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+      let isBotUserAgent = false;
+      for (bot of botUsers){
+        if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+          isBotUserAgent = true;
+          break;
+        }
+      }
+
+      url = new URL(location.href)
+      if (url.protocol != "file:" && !isBotUserAgent) {
+        location.replace("../index.html#search/Featured.html" + url.search + url.hash);
+      }
+    </script>
+
+  <div class="sublink">
+    <a href="../search/Text-search.html#_keep_scroll">Text search</a>
+      <a href="../search/Featured.html#_keep_scroll" class="active">Daily featured excerpts</a>
+  </div>
+  <br>
+
+  <div class="title" id="page-title">Featured excerpts
+  </div>
+
+<div class="main">
+<button type="button" id="random-prev">&lt;&lt;</button>
+&emsp;
+<button type="button" id="random-next">&gt;&gt;</button>
+
+<hr>
+
+<div id="random-excerpt">$!noscriptExcerptHtml!$</div>
+</div>
+
+</body>
+</html>

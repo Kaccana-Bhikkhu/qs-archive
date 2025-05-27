@@ -1,7 +1,5 @@
-## Reading documentation
-Rendered documentation files are in the `about` directory.
+The [about pages](https://abhayagiri.org/questions/) are built from the .md files in the `aboutSources` and `technicalSources` directories.
 
-## Writing documentation
-The files in the `about` directory are created from the files in the `aboutSources` directory by running `QSArchive.py Document`. If you edit the `about` directory directly, your changes will be overwritten the next time the script runs.
+Custom event table of contents are built from .md files in `tableOfContents`.
 
 For available link formats, see the function `LinkReferences()` in `python/modules/Render.py`.

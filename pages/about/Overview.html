@@ -27,47 +27,31 @@
 
       url = new URL(location.href)
       if (url.protocol != "file:" && !isBotUserAgent) {
-        location.replace("../index.html#about/04_Overview.html" + url.search + url.hash);
+        location.replace("../index.html#about/Overview.html" + url.search + url.hash);
       }
     </script>
-  <div id="header">
-    <h1><strong>The Ajahn Pasanno Question and Story Archive</strong></h1>
-    <br>
-    <nav id="topnav">
-      <a href="../homepage.html#_keep_scroll">Home</a>
-      <a href="../about/01_Introduction.html#_keep_scroll" class="active">About</a>
-      <a href="../search/Text-search.html#_keep_scroll">Search</a>
-      <a href="../indexes/KeyTopics.html?hideAll#_keep_scroll">Key topics</a>
-      <a href="../drilldown/root.html#_keep_scroll">Tags</a>
-      <a href="../indexes/EventsBySubject.html#_keep_scroll">Events</a>
-      <a href="../teachers/TeachersAlphabetical.html#_keep_scroll">Teachers</a>
-      <a href="../indexes/AllExcerpts.html#_keep_scroll">All excerpts</a>
-      <a href="https://www.abhayagiri.org/questions-and-stories">Back to Abhayagiri.org</a>
-    </nav>
-  </div>
-<br>
 
 
-  <div class="title">The Ajahn Pasanno Question and Story Archive
+  <div class="title" id="page-title">The Ajahn Pasanno Question and Story Archive
   </div>
 
 <div class="main">
-<div class="sublink2"> <a href="../about/01_Introduction.html#_keep_scroll">About</a>
-      <a href="../about/02_Event-series.html#_keep_scroll">Event series</a>
-      <a href="../about/04_Overview.html#_keep_scroll" class="active">Overview</a>
-      <a href="../about/05_Tags.html#_keep_scroll">Tags</a>
-      <a href="../about/08_Status.html#_keep_scroll">Status</a>
-      <a href="../about/09_Want-to-help.html#_keep_scroll">Want to help?</a>
-      <a href="../about/10_Acknowledgements.html#_keep_scroll">Acknowledgements</a>
-      <a href="../about/11_Contact.html#_keep_scroll">Contact</a>
-      <a href="../about/09_Search-instructions.html#_keep_scroll">Technical</a> </div>
+<div class="sublink2"> <a href="../about/Introduction.html#_keep_scroll">About</a>
+      <a href="../about/Event-series.html#_keep_scroll">Event series</a>
+      <a href="../about/Overview.html#_keep_scroll" class="active">Overview</a>
+      <a href="../about/Tags.html#_keep_scroll">Tags</a>
+      <a href="../about/Status.html#_keep_scroll">Status</a>
+      <a href="../about/Want-to-help.html#_keep_scroll">Want to help?</a>
+      <a href="../about/Acknowledgements.html#_keep_scroll">Acknowledgements</a>
+      <a href="../about/Contact.html#_keep_scroll">Contact</a>
+      <a href="../about/Search-instructions.html#_keep_scroll">Technical</a> </div>
 <hr>
 
  <img src="../images/photos/AP Thailand 2018.jpg" alt="Ajahn Pasanno, Thailand 2018" class="cover" title="Ajahn Pasanno, Thailand 2018" align="bottom" width="200" border="0"/> 
 <h1 id="overview">Overview</h1>
 <p>The Ajahn Pasanno Question and Story Archive is an attempt to make the recorded oral teachings of Ajahn Pasanno and those who teach alongside him more accessible. There are already many books and booklets of Ajahn Pasanno’s transcribed teachings, but these cover only a fraction of the available audio recordings. In particular, there are hours of recorded question and answer sessions and topical discussions which are very relevant to people with similar concerns and of less interest to everyone else. Transcribing all of these would be a major undertaking.</p>
 <p>In addition, transcription inevitably flattens the nuance and emotional warmth of Ajahn Pasanno’s teachings. Anyone who has participated in Dhamma discussion with him knows the empathetic chuckle that frequently accompanies his responses, which is often as much a teaching as the answer itself.</p>
-<p>The archive tags and partially transcribes questions and discussions such that visitors can find what they are looking for while the bulk of the content remains in audio form. As of July 2024, Ajahn Kaccāna has been the only contributor to the transcribed content of the archive, but <a href="../about/10_Acknowledgements.html">many others</a> have helped with web design, organizing the tags, and writing documentation.</p>
+<p>The archive tags and partially transcribes questions and discussions such that visitors can find what they are looking for while the bulk of the content remains in audio form. As of July 2024, Ajahn Kaccāna has been the only contributor to the transcribed content of the archive, but <a href="../about/Acknowledgements.html">many others</a> have helped with web design, organizing the tags, and writing documentation.</p>
 <h2 id="website">Website</h2>
 <p>This website is a series of static pages generated from the archive database. It was originally conceived of as a prototype stepping stone to a modern search-driven website created by someone with more web skills. However, with a css makeover by Chris Claudius and a floating media player created by Owen L. (@MageOwl), the prototype began to look and work well enough to publish.</p>
 <h2 id="structure">Structure</h2>
@@ -76,12 +60,12 @@
 <h3 id="excerpts">Excerpts</h3>
 <p>Each session contains one or more excerpts, which are references to specific audio clips within the session. The excerpt is the most basic unit in the archive database. Each excerpt is categorized by kind (e.g. question, comment, reading, guided meditation, etc.), which the website often displays in bold text. Each excerpt contains a text description called the body text. The precise meaning of the body text and how it is displayed depend on the kind of excerpt. For example, the body text of questions is the question itself, which is usually displayed in quotation marks, while the body text of readings is the title, author, and pages of what was read. Excerpts also specify one or more teachers, the meaning of which again depends on the kind of excerpt. For questions, it’s the teacher who answered the question; for readings, it’s the author of the book (The <em>reader</em> of the book can be specified by an annotation to the excerpt as described later on). Excerpts further specify a start and end time within the session they are a part of. The website generation software uses this information to split the session audio into multiple files corresponding to each excerpt.</p>
 <h3 id="tags">Tags</h3>
-<p>Each excerpt is labeled by a set of tags that describe its content. To aid in searching, tags which are mentioned in the question itself are designated q-tags, and those which apply only to the answer are designated a-tags. The symbol ‘//’ separates q-tags from a-tags in the website display. For excerpts which are not questions, q-tags correspond to the topic of the excerpt and a-tags to its explication. The tags are organized in a hierarchical structure, which is described in detail <a href="../about/05_Tags.html">here</a>.</p>
+<p>Each excerpt is labeled by a set of tags that describe its content. To aid in searching, tags which are mentioned in the question itself are designated q-tags, and those which apply only to the answer are designated a-tags. The symbol ‘//’ separates q-tags from a-tags in the website display. For excerpts which are not questions, q-tags correspond to the topic of the excerpt and a-tags to its explication. The tags are organized in a hierarchical structure, which is described in detail <a href="../about/Tags.html">here</a>.</p>
 <h3 id="annotations">Annotations</h3>
 <p>Excerpts may further be described by a series of annotations, which the website displays as indented paragraphs below the main body of an excerpt. Like excerpts, each annotation has a kind. For example, in answering the question below, Ajahn Pasanno refers to the Amaravati Chanting book, a simile in a sutta, a story about Ajahn Chah and a quote by the Dalai Lama. Depending on their kind, annotations may have teachers and tags associated with them, but have no audio clip independent of the excerpt they belong to. All tags applied to excerpts are considered a-tags for search purposes.</p>
 <h3 id="featured-excerpts">Featured Excerpts</h3>
 <p>Many tags apply to so many excerpts that it's difficult to read through them all to find the most relevant. For this reason, the October 2024 release introduces hand-picked featured excerpts that appear first in the list for a particular tag. Featured excerpts can be clear answers to the most common or significant questions, pivotal or illustrative stories in the life of a teacher or community, or insightful reflections about important aspects of Dhamma. Tags for which an excerpt is featured are marked with a star (<i class="fa fa-star" style="color: #9b7030;"></i>).</p>
-<p>Deciding which excerpts to feature takes time and care. The goal is that tags applied to 100 or more excerpts will feature three to five excerpts illustrating key aspects of the topic, arranged chronologically or simplest to most in-depth. Less common tags will feature fewer excerpts. The process of selecting featured excerpts is now well underway. If you would like to suggest excerpts to feature, please refer to the guidelines on the <a href="../about/09_Want-to-help.html#ways-anyone-can-contribute">Want to Help?</a> page.</p>
+<p>Deciding which excerpts to feature takes time and care. The goal is that tags applied to 100 or more excerpts will feature three to five excerpts illustrating key aspects of the topic, arranged chronologically or simplest to most in-depth. Less common tags will feature fewer excerpts. The process of selecting featured excerpts is now well underway. If you would like to suggest excerpts to feature, please refer to the guidelines on the <a href="../about/Want-to-help.html#ways-anyone-can-contribute">Want to Help?</a> page.</p>
 <h3 id="example-excerpt">Example Excerpt</h3>
 <p><img alt="ExampleExcerpt" src="../images/ExampleExcerpt.png" /></p>
 <p>The figure above shows the website display of excerpt 3 in session 1 of the 2008 Metta Retreat. The audio begins at 7:18 in the session and runs for 17 minutes, 10 seconds. [<a href="../tags/death.html">Death</a>] and [<a href="../tags/rebirth.html">Rebirth</a>] are the two q-tags; all other tags are a-tags. The excerpt itself is a question, and it contains four annotations of varying kinds. The star indicates that this is a featured excerpt for the tag [<a href="../tags/death.html">Death</a>].</p>
@@ -93,17 +77,11 @@
 <p>The website menus link to a series of static pages which allow the user to browse the tags, events, and teachers contained in the archive in a variety of ways. Links to particular tags, events, and teachers go to static pages which list each relevant excerpt. Event pages simply list each excerpt in each of the event sessions. The tag and teacher pages also group excerpts by event and session, but additionally allow the user to narrow the search by excerpt kind. (Pages containing fewer than 10 excerpts don’t have this feature.) Selecting the “All excerpts” menu item allows one to see all excerpts of a particular kind in the archive.</p>
 <p>The January 2024 release added a <a href="../search/Text-search.html">text search feature</a>.</p>
 <h2 id="scope">Scope</h2>
-<p>The project currently focuses on Q&amp;A sessions and discussions led by Ajahn Pasanno. Events including particularly valuable stories are annotated in greater detail. If there is energy and interest, we might expand the scope to include events led by other Abhayagiri teachers and teachers visiting Abhayagiri. In this case, it would become the Abhayagiri Question and Story Archive. However this is as far as the project will go. The audio sources will remain only abhayagiri.org, Abhayagiri’s YouTube channel, and Abhayagiri's audio archive (with consultation and permission). Perhaps others might create a website to index Q&amp;A sessions from other teachers (see <a href="../about/12_License.html">License</a>). An <a href="http://birken.ca/qaa/qaa.php" target="_blank">index of Ajahn Sona YouTube Q&amp;A sessions</a> already exists. <a href="https://dhammakatha.org/" target="_blank">Dhammakatha.org</a> compiles Ajahn Munindo's audio answers to Dhamma questions submitted by students.</p>
+<p>The project currently focuses on Q&amp;A sessions and discussions led by Ajahn Pasanno. Events including particularly valuable stories are annotated in greater detail. If there is energy and interest, we might expand the scope to include events led by other Abhayagiri teachers and teachers visiting Abhayagiri. In this case, it would become the Abhayagiri Question and Story Archive. However this is as far as the project will go. The audio sources will remain only abhayagiri.org, Abhayagiri’s YouTube channel, and Abhayagiri's audio archive (with consultation and permission). Perhaps others might create a website to index Q&amp;A sessions from other teachers (see <a href="../about/License.html">License</a>). An <a href="http://birken.ca/qaa/qaa.php" target="_blank">index of Ajahn Sona YouTube Q&amp;A sessions</a> already exists. <a href="https://dhammakatha.org/" target="_blank">Dhammakatha.org</a> compiles Ajahn Munindo's audio answers to Dhamma questions submitted by students.</p>
 <h2 id="teacher-consent">Teacher consent</h2>
 <p>Not all monks and nuns want their teachings widely distributed. Most monastics in this tradition went forth due to their experience of suffering and faith in the Dhamma rather than a desire or ability to teach. Monastics are generally introverts. A properly-implemented <a href="https://www.accesstoinsight.org/lib/authors/thanissaro/economy.html" target="_blank">economy of gifts</a> ensures that material support for monastics is independent of teaching activity, and the concern is more that people receive skillful answers to their questions than that they listen to our answers. At the same time, a diversity of voices answering a question can help the listener understand multiple perspectives.</p>
 <p>For these reasons, we ask teachers individually about their detailed preferences before including their material in the archive. If teachers prefer, they can review each excerpt individually before deciding whether it should be included in the archive. It’s too much to ask volunteers to keep track of whether or not they should transcribe a question based on all these factors, so the database keeps track of which teachers have given their consent for what. The website generation engine excludes questions accordingly before they become available online.</p>
 </div>
-
-<footer>
-    <p id="copyright">&copy; 2025 Abhayagiri Buddhist Monastery – <a href="../about/12_License.html">License</a></p>
-    <p id="cite-as"><b>How to cite this page</b> (suggested style): “About: Overview,” The Ajahn Pasanno Question and Story Archive, May 2025 release,
-      <a href="https://abhayagiri.org/questions/about/04_Overview.html">https://abhayagiri.org/questions/about/04_Overview.html</a>.</p>
-</footer>
 
 </body>
 </html>

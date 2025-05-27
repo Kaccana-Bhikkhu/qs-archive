@@ -14,7 +14,7 @@ scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
 sys.path.append(os.path.join(scriptDir,'python/modules')) # Look for modules in these subdirectories of the directory containing QAarchive.py
 sys.path.append(os.path.join(scriptDir,'python/utils'))
 
-import Utils, Alert, Filter, Database
+import Utils, Alert, Filter, Database, Document
 Alert.ObjectPrinter = Database.ItemRepr
 
 def PrintModuleSeparator(moduleName:str) -> None:
@@ -125,7 +125,7 @@ def LoadDatabaseAndAddMissingOps(opSet: set[str]) -> Tuple[dict,set[str]]:
 
 # The list of code modules/ops to implement
 requireSpreadsheetDB = ['ReviewDatabase','DownloadFiles','SplitMp3','ExportAudio','Link','Render']
-requireRenderedDB = ['Document','Build','SetupSearch','SetupHomepage','TagMp3','PrepareUpload','CheckLinks']
+requireRenderedDB = ['Build','SetupSearch','SetupHomepage','TagMp3','PrepareUpload','CheckLinks']
 moduleList = ['DownloadCSV','ParseCSV'] + requireSpreadsheetDB + requireRenderedDB
 optionalModules = {'ExportAudio'} # These aren't included in All
 
@@ -144,7 +144,6 @@ DownloadFiles - download files from remote links or mirrors when needed.
 SplitMp3 - split mp3 files into individual excerpts based on the times in SpreadsheetDatabase.json.
 Link - try to find valid links to excerpt mp3 files, session mp3 files, and references.
 Render - use pryatemp and markdown to convert excerpts into html and saves to RenderedDatabase.json.
-Document - create the .md files in documentation/about from documentation/aboutSources.
 Build - create html files for all menus and excerpts.
 SetupSearch - create SearchDatabase.json.
 SetupHomepage - create HomepageDatabase.json.
@@ -211,8 +210,9 @@ Alert.Debugging(clOptions.debug)
 for mod in modules.values():
     mod.gOptions = clOptions
         # Let each module access all arguments
-Utils.gOptions = clOptions
-Database.gOptions = clOptions
+utilityModules = [Utils,Database,Document,Filter]
+for mod in utilityModules:
+    mod.gOptions = clOptions
 
 for modName in priorityInitialization:
     modules[modName].ParseArguments()
@@ -258,8 +258,8 @@ if newOpSet != opSet:
 # Set up the global namespace for each module - this allows the modules to call each other out of order
 for mod in modules.values():
     mod.gDatabase = database
-Database.gDatabase = database
-Filter.gDatabase = database
+for mod in utilityModules:
+    mod.gDatabase = database
 
 # Then run the specified operations in sequential order
 initialized = False
