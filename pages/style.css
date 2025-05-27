@@ -262,6 +262,15 @@ p.indent-7 {
 	margin-left: 14em;
 }
 
+span.excerpt-number {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+span.session-excerpt-header {
+	text-decoration: underline;
+}
+
 ul,
 ol {
 	font-size: 18px;

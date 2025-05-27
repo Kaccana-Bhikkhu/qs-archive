@@ -979,10 +979,10 @@ class Formatter:
         a(' ')
         if self.excerptNumbers:
             if excerpt['excerptNumber']:
-                with a.b(style="text-decoration: underline;"):
+                with a.span(Class="excerpt-number"):
                     a(f"{excerpt['excerptNumber']}.")
             else:
-                a(f"[{Html.Tag('span',{'style':'text-decoration: underline;'})('Session')}]")
+                a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
         if self.showFTagOrder and set(excerpt["fTags"]) & set(self.showFTagOrder):
             a(" {" + str(Database.FTagOrder(excerpt,self.showFTagOrder)) + "}")
 
@@ -1179,7 +1179,7 @@ class Formatter:
 
                     with a.p(Class = f"indent-{indentLevel}"):
                         if not indentLevel and not ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
-                            a(f"[{Html.Tag('span',{'style':'text-decoration: underline;'})('Session')}]")
+                            a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
                         a(localFormatter.FormatAnnotation(x,annotation,tagsAlreadyPrinted))
                     tagsAlreadyPrinted.update(annotation.get("tags",()))
             
