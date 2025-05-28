@@ -176,6 +176,8 @@ span.session-excerpt-header {
 
 ul,
 ol {
+	margin: 0 0 10px 40px;
+	padding: 10px;
 	font-size: 18px;
 	color: #333;
 	line-height: 1.6;
@@ -187,6 +189,7 @@ div.listing p {
 }
 
 div.featured {
+	padding: 20px;
 	border-left: 3px solid #a28a4e;
 
 	button#playFeatured {
@@ -253,12 +256,12 @@ div#page-title {
 }
 
 .main {
-	margin: 0 0 20px 10px;
+	margin: 0 10px 20px 10px;
 	max-width: 1200px;
 	background-color: var(--color-white);
 	border-radius: 0.5em;
 	color: #080808;
-	padding: 10px;
+	padding: 20px;
 	font-size: 16px;
 	line-height: 1.5;
 }
@@ -281,39 +284,6 @@ p.page-list {
 p.page-list a.active {
 	font-weight: bold;
 	border-bottom: 1px dotted #a28a4e;
-}
-
-/* Headings */
-h1,
-h2,
-h3,
-h4,
-h5 {
-	font-weight: 500;
-	line-height: 1.3;
-	margin: 0 0 10px 0;
-	margin-bottom: 0.5rem;
-	margin-top: 0;
-}
-
-h1 {
-	font-size: 1.8rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-}
-
-h3 {
-	font-size: 1.2rem;
-}
-
-h4 {
-	font-size: 1.1rem;
-}
-
-h5 {
-	font-size: 1rem;
 }
 
 /* Style links */
@@ -353,14 +323,6 @@ hr.dashed {
 	width: 100%;
 	height: auto;
 	display: block;
-}
-
-footer {
-	background-color: #f5f4f0;
-	padding: 1em;
-	text-align: center;
-	font-size: 0.8em;
-	color: rgb(30, 29, 29);
 }
 
 p#cite-as {
@@ -482,10 +444,34 @@ body {
 }
 
 /* Common header styles - for consistency */
-h1, h2, h3 {
-    font-weight: 300;
+h1, h2, h3, h4, h5 {
+    font-weight: 450;
+	line-height: 1.3;
+	margin: 0 0 10px 0;
+	margin-bottom: 0.5rem;
+	margin-top: 0;
     letter-spacing: 0.5px;
     color: var(--color-primary);
+}
+
+h1 {
+	font-size: 1.8rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.2rem;
+}
+
+h4 {
+	font-size: 1.1rem;
+}
+
+h5 {
+	font-size: 1rem;
 }
 
 /* Main header */
@@ -802,7 +788,6 @@ h1, h2, h3 {
 .footer {
     background-color: var(--color-bamboo-dark);
     text-align: center;
-    padding: 1rem 0;
     margin-top: 2rem;
 }
 
