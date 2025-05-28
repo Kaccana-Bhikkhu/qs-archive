@@ -80,40 +80,61 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
 	</head>
 	<body>
-	<div id="header">
-		<h1><strong>The Ajahn Pasanno Question and Story Archive</strong></h1>
-		<!--(if gOptions.uploadMirror == "preview")-->
-		<h4>Pre-release version; please share and link to the <a href="https://abhayagiri.org/questions/">main site</a>.</h4>
-		<!--(end)-->
+	<div class="min-h-screen bg-gradient">
+		<header class="header">
+            <div class="container">
+                <h1>The Ajahn Pasanno Archive</h1>
+                <div class="header-content">
+                    
+                    <nav class="main-nav">
+                        <div class="hamburger">☰</div>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li class="dropdown">
+                                <a href="#">Tags ▾</a>
+                                <div class="dropdown-content">
+                                    <a href="/tags/meditation">Meditation</a>
+                                    <a href="/tags/dhamma">Dhamma</a>
+                                    <a href="/tags/mindfulness">Mindfulness</a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-trigger">Key Topics ▾</a>
+                                <div class="dropdown-content">
+                                    <a href="/topics/meditation">Meditation Practice</a>
+                                    <a href="/topics/suttas">Suttas</a>
+                                    <a href="/topics/monastic-life">Monastic Life</a>
+                                </div>
+                            </li>
+                            <li><a href="/teachers">Teachers</a></li>
+                            <li><a href="/about">About</a></li>
+                        </ul>
+                    </nav>
+                    <a href="/" class="home-icon">
+                        <i class="icon-home"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
 		<br>
-		<nav id="topnav">
-		<a href="homepage.html#_keep_scroll">Home</a>
-		<a href="about/Introduction.html#_keep_scroll">About</a>
-		<a href="search/Text-search.html#_keep_scroll">Search</a>
-		<a href="indexes/KeyTopics.html?hideAll#_keep_scroll">Key topics</a>
-		<a href="drilldown/root.html#_keep_scroll">Tags</a>
-		<a href="indexes/EventsBySubject.html#_keep_scroll">Events</a>
-		<a href="teachers/TeachersAlphabetical.html#_keep_scroll">Teachers</a>
-		<a href="indexes/AllExcerpts.html#_keep_scroll">All excerpts</a>
-		<a href="https://www.abhayagiri.org/questions-and-stories">Back to Abhayagiri.org</a>
-		</nav>
-	</div>
-	<br>
 
-		<div id="frame" data-url="homepage.html">$!bodyHtml!$</div>
+		<main class="container main-content">
+			<div id="frame" data-url="homepage.html">$!bodyHtml!$</div>
+		</main>
 
 		<footer class="footer">
             <p>&copy; $!gOptions.info.releaseYear!$ Abhayagiri Buddhist Monastery – <a href="about/License.html">License</a></p>
         </footer>
+	</div>
 
-		<div id="audio-player" class="overlay">
-			<button class="play"></button>
-			<span class="audio-title"> <span> </span></span>
-			<input type="range" />
-		</div>
+	<div id="audio-player" class="overlay">
+		<button class="play"></button>
+		<span class="audio-title"> <span> </span></span>
+		<input type="range" />
+	</div>
 
-		<script src="./js/audioPlayer.js" type="module"></script>
-		<script src="./js/audioChip.js" type="module"></script>
-		<script src="./js/frame.js" type="module"></script>
+	<script src="./js/audioPlayer.js" type="module"></script>
+	<script src="./js/audioChip.js" type="module"></script>
+	<script src="./js/frame.js" type="module"></script>
 	</body>
 </html>
