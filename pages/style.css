@@ -257,17 +257,6 @@ div.no-padding {
 	line-height: 1.5;
 }
 
-/* .intro::before {
-  content: "";
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  border-radius: 5%;
-  background-image: url("https://www.abhayagiri.org/talks/8093/image/thumb.jpg");
-  background-size: cover;
-  margin-right: 10px;
-} */
-
 .info-box {
 	background-color: #59aed6;
 	padding: 20px;
@@ -372,15 +361,6 @@ p#cite-as {
 	font-size: 1em;
 }
 
-/* form {
-	background-color: #35373bdf;
-	width: 300px;
-	height: 44px;
-	border-radius: 5px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-} */
 
 input {
 	/* all: unset; */
