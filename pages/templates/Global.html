@@ -54,9 +54,13 @@
     <!--(end)-->
   </div>
 
+<!--(if not page.HasSection("customLayout"))-->
 <div class="main">
+<!--(end)-->
 $!page.RenderNumberedSections()!$
+<!--(if not page.HasSection("customLayout"))-->
 </div>
+<!--(end)-->
 
 </body>
 </html>

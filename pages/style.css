@@ -251,6 +251,8 @@ div.no-padding {
 .main {
 	margin: 0 0 20px 10px;
 	max-width: 1200px;
+	background-color: var(--color-white);
+	border-radius: 0.5em;
 	color: #080808;
 	padding: 10px;
 	font-size: 16px;
