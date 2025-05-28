@@ -72,4 +72,5 @@ export async function loadHomepage() {
     // This code runs only for homepage.html
     let displayArea = document.getElementById("todays-excerpt");
     displayArea.innerHTML = gHomepageDatabase.excerpts[todaysExcerpt].shortHtml;
+    configureLinks(displayArea,"index.html");
 }

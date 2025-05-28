@@ -189,6 +189,6 @@ window.addEventListener("scrollend", (event) => {
 // Initialize the static header and footer when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     debugLog("DOMContentLoaded event");
-	configureLinks(document.getElementById("header"),"index.html");
+	configureLinks(document.querySelector("header"),"index.html");
 	configureLinks(document.querySelector("footer"),"index.html");
 });
