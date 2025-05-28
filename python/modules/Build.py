@@ -2508,7 +2508,7 @@ def Homepage():
 
     html = str(template(noscriptExcerptHtml=excerptHtml))
 
-    pageInfo = Html.PageInfo("Home",homepageName,"The Ajahn Pasanno Question and Story Archive")
+    pageInfo = Html.PageInfo("Home",homepageName,"")
     yield pageInfo
 
     pageDesc = Html.PageDesc(pageInfo)

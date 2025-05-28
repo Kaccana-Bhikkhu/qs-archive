@@ -32,20 +32,89 @@
       }
     </script>
 
+  <main class="container main-content">
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="pages/images/aj_passano_abh.jpg" alt="Ajahn Passano">
+        <div class="hero-overlay">
+            <h2>Welcome to the Archive</h2>
+        </div>
+    </div>
 
-  <div class="title" id="page-title">The Ajahn Pasanno Question and Story Archive
-  </div>
+    <!-- Featured and Timer Grid -->
+    <div class="content-grid">
+        <!-- Daily Featured -->
+        <div class="daily-featured">
+            <h2>Daily Featured Teaching</h2>
+            <div id="todays-excerpt"><p><audio-chip src="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" title="The Teaching and the Training, S3 E1" data-title-link="events/WR2018-2.html#WR2018-2_S03_F01" data-duration="141"><a href="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" download="The Teaching and the Training, S3 E1.mp3">Download audio</a> (2:21)</audio-chip><br /> <span class="excerpt-number">1.</span> “Why are the precepts worded as things not to do rather than as aspirations?”   <i><a href="pages/search/Featured.html">details...</a></i></p></div>
+        </div>
 
-<span style="float: right;"><img src="pages/images/photos/AjahnPasanno.jpg" alt="Ajahn Pasanno" title="" width="200" border="0"></span>
+        <!-- Meditation Timer -->
+        <div class="meditation-timer">
+            <h2>Meditative Timer</h2>
+            <div class="timer-display">
+                <div class="time" id="timeDisplay">05:00</div>
+                <div class="timer-controls">
+                    <button class="timer-button" id="timerPlayButton">
+                        <img src="pages/images/icons/play.svg" alt="Play" class="button-icon">
+                    </button>
+                    <button class="timer-button" id="resetButton">
+                        <img src="pages/images/icons/reset.svg" alt="Reset" class="button-icon">
+                    </button>
+                </div>
+            </div>
+            <div class="duration-control">
+                <label>Duration (minutes): <span id="durationDisplay">5</span></label>
+                <input type="range" id="durationSlider" min="1" max="60" value="5">
+            </div>
+            <div class="reflection-message">
+                <p>The Reflection Timer allows you to set a little time to meditate on what you have just heard. The present moment is the only time to be fully aware.</p>
+            </div>
+        </div>
+    </div>
 
-<p>An organized collection of audio Dhamma from Ajahn Pasanno.<p>
+    <!-- Introduction -->
+    <div class="introduction">
+        <h2>About Ajahn Pasanno</h2>
+        <div class="intro-content">
+            <div class="intro-image">
+                <img src="pages/images/ajahnpassano.jpg" alt="Ajahn Pasanno">
+            </div>
+            <div class="intro-text">
+                <p>Ajahn Pasanno, one of the founding abbots of Abhayagiri Monastery and now its Guiding Elder, excels at answering Dhamma questions.</p>
+                <p>Known for his clarity, wisdom, and compassionate approach, Ajahn Pasanno has been instrumental in bringing the Forest Tradition of Theravada Buddhism to the West.</p>
+                
+            </div>
+        </div>
+    </div>
 
-<div class="title" id="date-title">Today's featured excerpt:</div>
-
-<div id="todays-excerpt"><p><audio-chip src="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" title="The Teaching and the Training, S3 E1" data-title-link="events/WR2018-2.html#WR2018-2_S03_F01" data-duration="141"><a href="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" download="The Teaching and the Training, S3 E1.mp3">Download audio</a> (2:21)</audio-chip><br /> <span class="excerpt-number">1.</span> “Why are the precepts worded as things not to do rather than as aspirations?”   <i><a href="pages/search/Featured.html">details...</a></i></p></div>
-
-<hr>
-
+    <!-- Explore Content -->
+    <div class="explore-content">
+        <h2>Explore the Archive</h2>
+        <div class="exploration-paths">
+            <a href="pages//drilldown/root.html" class="path-card">
+                <i class="icon-tags"></i>
+                <h3>Browse by Tags</h3>
+                <p>Explore teachings through specific themes like meditation, mindfulness, or daily practice</p>
+            </a>
+            <a href="pages//indexes/KeyTopics.html?hideAll" class="path-card">
+                <i class="icon-book-open"></i>
+                <h3>Key Topics</h3>
+                <p>Discover comprehensive collections of teachings organized by major Buddhist concepts</p>
+            </a>
+            <a href="pages//teachers/TeachersLineage.html" class="path-card">
+                <i class="icon-users"></i>
+                <h3>Teachers</h3>
+                <p>Access teachings from Ajahn Pasanno and other respected Buddhist teachers</p>
+            </a>
+            <a href="pages//indexes/EventsBySubject.html" class="path-card">
+                <i class="icon-calendar"></i>
+                <h3>Events</h3>
+                <p>Find teachings from specific retreats, talks, and ceremonies</p>
+            </a>
+        </div>
+    </div>
+</main>
 
 </body>
 </html>

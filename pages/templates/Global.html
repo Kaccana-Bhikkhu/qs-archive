@@ -41,25 +41,26 @@
     </span>
   <!--(end)-->
 
-<!--(if page.HasSection("subMenu"))-->
-  <div class="sublink">
-    $!page.section["subMenu"].Render()!$
-  </div>
-  <br>
-<!--(end)-->
-
-  <div class="title" id="page-title">$!page.info.titleInBody!$
-    <!--(if page.HasSection("smallTitle"))-->
-    &nbsp&nbsp<span style="font-size:65%;">$!page.section["smallTitle"]!$</span>
-    <!--(end)-->
-  </div>
-
 <!--(if not page.HasSection("customLayout"))-->
-<div class="main">
-<!--(end)-->
-$!page.RenderNumberedSections()!$
-<!--(if not page.HasSection("customLayout"))-->
-</div>
+  <!--(if page.HasSection("subMenu"))-->
+    <div class="sublink">
+      $!page.section["subMenu"].Render()!$
+    </div>
+  <!--(end)-->
+
+  <!--(if page.info.titleInBody)-->
+    <div class="title" id="page-title">$!page.info.titleInBody!$
+      <!--(if page.HasSection("smallTitle"))-->
+        &nbsp&nbsp<span style="font-size:65%;">$!page.section["smallTitle"]!$</span>
+      <!--(end)-->
+    </div>
+  <!--(end)-->
+
+  <div class="main">
+  $!page.RenderNumberedSections()!$
+  </div>
+<!--(else)-->
+  $!page.RenderNumberedSections()!$
 <!--(end)-->
 
 </body>

@@ -32,6 +32,7 @@ hr {
 	display: flex;
 	justify-content: center;
 	margin-left: 20px;
+	padding-top: 20px;
 }
 
 .sublink a {
@@ -203,13 +204,16 @@ div.featured {
 	}
 }
 
-div.featured p,
-div {
+div.featured p {
 	padding-left: 20px;
 }
 
 div.no-padding {
 	padding: 0px;
+}
+
+div#page-title {
+	margin: 20px;
 }
 
 .title {
