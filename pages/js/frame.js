@@ -11,10 +11,10 @@ const errorPage = "./about/Page-Not-Found.html"
 const SEARCH_PART = /\?[^#]*/
 
 const DEBUG = true;
-globalThis.debugLog = (...args) => {
-	if (DEBUG)
-		console.log(...args);
-}
+if (DEBUG) 
+	globalThis.debugLog = console.log.bind(window.console)
+else 
+	globalThis.debugLog = function(){};
 
 export function frameSearch(hash = null) {
 	// return a URLSearchParams object corresponding to the search params given in the URL hash
