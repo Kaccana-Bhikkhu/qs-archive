@@ -8,20 +8,20 @@ const DEBUG = false;
 let gHomepageDatabase = null; // The global database, loaded from assets/HomepageDatabase.json
 
 let todaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
-let currentExcerpt = 0; // The featured excerpt currently displayed on search/Featured.html
+let gCurrentExcerpt = 0; // The featured excerpt currently displayed on search/Featured.html
 
 function initializeTodaysExcerpt() {
     // Calculate which featured excerpt to display based on today's date
 
     todaysExcerpt = 0;
-    currentExcerpt = todaysExcerpt;
+    gCurrentExcerpt = todaysExcerpt;
 }
 
 function displayFeaturedExcerpt() {
     // Display the html code for current featured excerpt
 
     let excerptCount = gHomepageDatabase.excerpts.length;
-    let excerptToDisplay = ((currentExcerpt % excerptCount) + excerptCount) % excerptCount
+    let excerptToDisplay = ((gCurrentExcerpt % excerptCount) + excerptCount) % excerptCount
 
     let displayArea = document.getElementById("random-excerpt");
     displayArea.innerHTML = gHomepageDatabase.excerpts[excerptToDisplay].html;
@@ -29,11 +29,11 @@ function displayFeaturedExcerpt() {
 
     let titleArea = document.getElementById("page-title");
     let title = "Today's featured excerpt:"
-    if (currentExcerpt > 0)
-        title = `Random excerpt (${currentExcerpt}):`;
-    else if (currentExcerpt < 0) {
+    if (gCurrentExcerpt > 0)
+        title = `Random excerpt (${gCurrentExcerpt}):`;
+    else if (gCurrentExcerpt < 0) {
         let pastDate = new Date();
-        pastDate.setDate(pastDate.getDate() + currentExcerpt);
+        pastDate.setDate(pastDate.getDate() + gCurrentExcerpt);
         title = `Excerpt featured on ${pastDate.toDateString()}:`;
     }
 
@@ -42,13 +42,121 @@ function displayFeaturedExcerpt() {
 
 function displayNextFeaturedExcerpt(increment) {
     // display the next or previous (increment = -1) random excerpt
-    currentExcerpt += increment;
+    gCurrentExcerpt += increment;
 
     displayFeaturedExcerpt();
 }
 
+// Homepage date display
+function updateDate() {
+    const dateElement = document.getElementById('currentDate');
+    if (dateElement) {
+        const formattedDate = new Date().toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        dateElement.textContent = formattedDate;
+    }
+}
+
+// Utility Functions
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Meditation Timer
+class MeditationTimer {
+    constructor() {
+        this.duration = 5;
+        this.timeLeft = this.duration;
+        this.isActive = false;
+        this.interval = null;
+        this.bell = new Audio('assets/sounds/meditation-bell.mp3');
+        
+        // DOM Elements
+        this.timeDisplay = document.getElementById('timeDisplay');
+        this.playButton = document.getElementById('timerPlayButton');
+        this.resetButton = document.getElementById('resetButton');
+        this.durationSlider = document.getElementById('durationSlider');
+        this.durationDisplay = document.getElementById('durationDisplay');
+
+        this.initializeListeners();
+    }
+
+    initializeListeners() {
+        this.playButton.addEventListener('click', () => this.toggleTimer());
+        this.resetButton.addEventListener('click', () => this.resetTimer());
+        this.durationSlider.addEventListener('input', (e) => this.updateDuration(e));
+    }
+
+    toggleTimer() {
+        this.isActive = !this.isActive;
+        const playButtonIcon = this.playButton.querySelector('img');
+        playButtonIcon.src = this.isActive ? 
+            'images/icons/pause.svg' : 
+            'images/icons/play.svg';
+
+        if (this.isActive) {
+            this.startTimer();
+        } else {
+            this.pauseTimer();
+        }
+    }
+
+    startTimer() {
+        this.interval = setInterval(() => {
+            this.timeLeft--;
+            this.updateDisplay();
+            
+            if (this.timeLeft === 0) {
+                this.handleTimerComplete();
+            }
+        }, 1000);
+    }
+
+    pauseTimer() {
+        clearInterval(this.interval);
+    }
+
+    resetTimer() {
+        this.isActive = false;
+        clearInterval(this.interval);
+        this.timeLeft = this.duration;
+        
+        // Update the play button icon to show play
+        const playButtonIcon = this.playButton.querySelector('img');
+        playButtonIcon.src = 'images/icons/play.svg';
+        
+        this.updateDisplay();
+    }
+
+    updateDuration(event) {
+        this.duration = parseInt(event.target.value);
+        this.durationDisplay.textContent = this.duration;
+        if (!this.isActive) {
+            this.timeLeft = this.duration;
+            this.updateDisplay();
+        }
+    }
+
+    updateDisplay() {
+        this.timeDisplay.textContent = formatTime(this.timeLeft);
+    }
+
+    handleTimerComplete() {
+        this.isActive = false;
+        this.resetTimer();
+        this.bell.play().catch(error => console.log('Error playing bell:', error));
+    }
+}
+
 export async function loadHomepage() {
-    // Called when pages are loaded. Load gHomepageDatabase and wire the needed elements
+    // Called every time a page is loaded.
+    // Load gHomepageDatabase and wire the needed elements
 
     if (!gHomepageDatabase) {
         await fetch('./assets/HomepageDatabase.json')
@@ -70,7 +178,32 @@ export async function loadHomepage() {
     }
 
     // This code runs only for homepage.html
-    let displayArea = document.getElementById("todays-excerpt");
-    displayArea.innerHTML = gHomepageDatabase.excerpts[todaysExcerpt].shortHtml;
-    configureLinks(displayArea,"index.html");
+    let featuredExcerptContainer = document.getElementById("todays-excerpt");
+    if (featuredExcerptContainer) {
+        featuredExcerptContainer.innerHTML = gHomepageDatabase.excerpts[todaysExcerpt].shortHtml;
+        configureLinks(featuredExcerptContainer,"index.html");
+        
+        updateDate();
+        new MeditationTimer();
+    }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Called only once after pages/index.html DOM is loaded
+    debugLog("DOMContentLoaded event");
+	configureLinks(document.querySelector("header"),"index.html");
+	configureLinks(document.querySelector("footer"),"index.html");
+
+    document.querySelector('.hamburger').addEventListener('click', function() {
+        debugLog("Clicked hamburger.");
+        document.querySelector('.main-nav').classList.toggle('active');
+    });
+
+    document.querySelectorAll('.dropdown > a').forEach(function(dropdownTrigger) {
+        dropdownTrigger.addEventListener('click', function(event) {
+            event.preventDefault();
+            debugLog("Clicked menu item.")
+            this.parentElement.classList.toggle('active');
+        });
+    });
+});

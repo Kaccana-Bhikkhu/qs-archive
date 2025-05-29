@@ -481,6 +481,10 @@ h5 {
     margin-bottom: 1rem;
 }
 
+/* No padding for paragaphs in homepage.html */
+main.main-content p {
+	padding: 0;
+}
 
 .main-nav ul {
     display: flex;
@@ -632,7 +636,7 @@ h5 {
 .featured-image {
     width: 128px;
     height: 128px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 1rem;

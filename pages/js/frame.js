@@ -185,10 +185,3 @@ if (frame) {
 window.addEventListener("scrollend", (event) => {
 	history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
 });
-
-// Initialize the static header and footer when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    debugLog("DOMContentLoaded event");
-	configureLinks(document.querySelector("header"),"index.html");
-	configureLinks(document.querySelector("footer"),"index.html");
-});

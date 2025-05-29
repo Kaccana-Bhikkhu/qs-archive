@@ -4,7 +4,7 @@ The Ajahn Pasanno Question and Story Archive is an attempt to make the recorded 
 
 In addition, transcription inevitably flattens the nuance and emotional warmth of Ajahn Pasanno’s teachings. Anyone who has participated in Dhamma discussion with him knows the empathetic chuckle that frequently accompanies his responses, which is often as much a teaching as the answer itself.
 
-The archive tags and partially transcribes questions and discussions such that visitors can find what they are looking for while the bulk of the content remains in audio form. As of July 2024, Ajahn Kaccāna has been the only contributor to the transcribed content of the archive, but [many others](about:Acknowledgements) have helped with web design, organizing the tags, and writing documentation.
+The archive tags and partially transcribes questions and discussions such that visitors can find what they are looking for while the bulk of the content remains in audio form. As of July 2024, Ajahn Kaccāna has been the only contributor to the transcribed content of the archive, but [many others](about:Credits) have helped with web design, organizing the tags, and writing documentation.
 
 ## Website
 This website is a series of static pages generated from the archive database. It was originally conceived of as a prototype stepping stone to a modern search-driven website created by someone with more web skills. However, with a css makeover by Chris Claudius and a floating media player created by Owen L. (@MageOwl), the prototype began to look and work well enough to publish.
