@@ -119,7 +119,7 @@ setInterval(() => {
 */
 
 export function loadFeaturedPlaylist() {
-	document.querySelector("div.featured button#playFeatured").addEventListener("click", () => {
+	document.querySelector("div.featured button#playFeatured")?.addEventListener("click", () => {
 	  playlist = [];
 	  document.querySelectorAll("div.featured audio-chip").forEach(c => playlist.push(c));
 	  playlist.shift().play(true);
