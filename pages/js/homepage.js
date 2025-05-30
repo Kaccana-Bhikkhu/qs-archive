@@ -72,7 +72,7 @@ function formatTime(seconds) {
 class MeditationTimer {
     constructor() {
         this.duration = 5;
-        this.timeLeft = this.duration;
+        this.timeLeft = this.duration * 60;
         this.isActive = false;
         this.interval = null;
         this.bell = new Audio('assets/sounds/meditation-bell.mp3');
@@ -125,7 +125,7 @@ class MeditationTimer {
     resetTimer() {
         this.isActive = false;
         clearInterval(this.interval);
-        this.timeLeft = this.duration;
+        this.timeLeft = this.duration * 60;
         
         // Update the play button icon to show play
         const playButtonIcon = this.playButton.querySelector('img');
@@ -138,7 +138,7 @@ class MeditationTimer {
         this.duration = parseInt(event.target.value);
         this.durationDisplay.textContent = this.duration;
         if (!this.isActive) {
-            this.timeLeft = this.duration;
+            this.timeLeft = this.duration * 60;
             this.updateDisplay();
         }
     }
@@ -207,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Clicking on the hamburger icon toggles the main nav menu
     document.querySelector('.hamburger').addEventListener('click', function() {
-        debugLog("Clicked hamburger.");
         document.querySelector('.main-nav').classList.toggle('active');
         dropdownMenuClick(); // Close all dropdown menus
     });
@@ -215,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close the dropdown menus and the main nav menu on a menu click
     document.querySelectorAll('.dropdown-content > a').forEach(function(dropdownTrigger) {
         dropdownTrigger.addEventListener('click', function() {
-            debugLog("Clicked menu item.");
             this.parentElement.style.display = "none";
             document.querySelector('.main-nav').classList.remove("active");
             dropdownMenuClick();
@@ -225,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close the dropdown menus when the user clicks anywhere else
     document.addEventListener('click',function(event) {
         if (!event.target.matches('.dropdown *')) {
-            debugLog("Clicked outside the menu.")
             dropdownMenuClick();
         }
     });
@@ -234,10 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Re-enable hover functionality when mousing over a dropdown menu
         dropdownMenu.addEventListener('mouseenter', function() {
             this.querySelector(".dropdown-content").style.display = "";
-            debugLog("Moved over menu.");
         });
         dropdownMenu.querySelector(".dropdown-trigger").addEventListener('click', function() {
-            debugLog("Clicked dropdown menu title.");
             dropdownMenuClick(this.parentElement);
         });
     });
