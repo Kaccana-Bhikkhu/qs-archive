@@ -331,18 +331,10 @@ p#cite-as {
 
 
 input {
-	/* all: unset; */
 	font: 16px system-ui;
 	padding: 6px 10px;
 	width: 100%;
-	/* color: #fff;
-	height: 100%; */
 }
-
-/* ::placeholder {
-	color: #fff;
-	opacity: 0.7;
-} */
 
 svg {
 	color: #fff;
@@ -353,11 +345,9 @@ svg {
 }
 
 button {
-	/* all: unset; */
 	cursor: pointer;
 	margin-right: 5px;
-	/* width: 44px;
-	height: 44px; */
+	padding: 2px 6px;
 }
 
 img.cover {
