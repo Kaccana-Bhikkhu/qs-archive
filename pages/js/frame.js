@@ -92,9 +92,13 @@ export function configureLinks(frame,url) {
 		if (href.startsWith("#")) {
 			let noBookmark = decodeURIComponent(locationNoQuery.href).split("#").slice(0,2).join("#");
 			el.href = noBookmark+href;
-			el.addEventListener("click", () => {
-				history.pushState({}, "", el.href);
-				document.getElementById(href.slice(1)).scrollIntoView();
+			el.addEventListener("click", (event) => {
+				event.preventDefault();
+				let bookmarkedItem = document.getElementById(href.slice(1));
+				if (bookmarkedItem) {
+					history.pushState({}, "", el.href);
+					bookmarkedItem.scrollIntoView();
+				}
 			});
 		} else {
 			let url = href;

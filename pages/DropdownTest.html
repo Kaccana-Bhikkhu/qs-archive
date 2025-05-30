@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Show Hide Dropdown Using CSS</title>
+<style type="text/css">
+    ul{
+        padding: 0;
+        list-style: none;
+        background: #f2f2f2;
+    }
+    ul li{
+        display: inline-block;
+        position: relative;
+        line-height: 21px;
+        text-align: left;
+    }
+    ul li a{
+        display: block;
+        padding: 8px 25px;
+        color: #333;
+        text-decoration: none;
+    }
+    ul li a:hover{
+        color: #fff;
+        background: #939393;
+    }
+    ul li ul.dropdown{
+        min-width: 100%; /* Set width of the dropdown */
+        background: #f2f2f2;
+        display: none;
+        position: absolute;
+        z-index: 999;
+        left: 0;
+    }
+    ul li:hover ul.dropdown{
+        display: block; /* Display the dropdown */
+    }
+    ul li ul.dropdown li{
+        display: block;
+    }
+</style>  
+</head>
+<body>
+    <ul>
+        <li>
+            <a id="product" href="#" onmouseover="enableDropdown()">Products</a>
+            <ul id="dropdown" class="dropdown">
+                <li><a href="javascript:myFunction_1();">Laptops</a></li>
+                <li><a href="javascript:myFunction_2();">Monitors</a></li>
+                <li><a href="javascript:myFunction_3();">Printers</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
+
+<script>
+  function disableDropdown()
+  {
+      // dismiss menu by disabling each drop down menu in UI
+      document.getElementById('dropdown').style.display = 'none';
+  }
+
+  function enableDropdown()
+  {
+      // re-enable each drop down menu in UI
+      document.getElementById('dropdown').style.display = '';
+  }
+
+  function myFunction_1()
+  {
+      document.getElementById('product').innerHTML = 'Laptop selected!';
+      disableDropdown();
+  }
+
+  function myFunction_2()
+  {
+      document.getElementById('product').innerHTML = 'Monitors selected!';
+      disableDropdown();
+  }
+  function myFunction_3()
+  {
+      document.getElementById('product').innerHTML = 'Printers selected!';
+      disableDropdown();
+  } 
+
+</script>

@@ -194,16 +194,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	configureLinks(document.querySelector("header"),"index.html");
 	configureLinks(document.querySelector("footer"),"index.html");
 
+    // Clicking on the hamburger icon toggles the main nav menu
     document.querySelector('.hamburger').addEventListener('click', function() {
         debugLog("Clicked hamburger.");
         document.querySelector('.main-nav').classList.toggle('active');
     });
 
-    document.querySelectorAll('.dropdown > a').forEach(function(dropdownTrigger) {
-        dropdownTrigger.addEventListener('click', function(event) {
-            event.preventDefault();
-            debugLog("Clicked menu item.")
-            this.parentElement.classList.toggle('active');
+    
+    // Close the dropdown menu and the main nav menu on a menu click
+    document.querySelectorAll('.dropdown-content > a').forEach(function(dropdownTrigger) {
+        dropdownTrigger.addEventListener('click', function() {
+            debugLog("Clicked menu item.");
+            this.parentElement.style.display = "none";
+            document.querySelector('.main-nav').classList.remove("active");
+        });
+    });
+
+    // Re-enable hover functionality when mousing over a dropdown menu
+    document.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        dropdownMenu.addEventListener('mouseenter', function() {
+            this.querySelector(".dropdown-content").style.display = "";
+            debugLog("Moved over menu.");
         });
     });
 });

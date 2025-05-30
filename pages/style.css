@@ -486,25 +486,6 @@ main.main-content p {
 	padding: 0;
 }
 
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.main-nav a {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: rgba(74, 60, 49, 0.7);
-}
-
 /* Base styles for navigation */
 .main-nav ul {
     display: flex;
@@ -537,7 +518,7 @@ main.main-content p {
 }
 
 .main-nav .dropdown:hover .dropdown-content {
-    display: block;
+	display: block;
 }
 
 .main-nav .dropdown-content a {
