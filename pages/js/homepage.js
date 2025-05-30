@@ -188,6 +188,17 @@ export async function loadHomepage() {
     }
 }
 
+function dropdownMenuClick(clickedItem = null) {
+    // Toggle the menu item clicked (a div.dropdown element)
+    // Close all other menus
+    document.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        if (dropdownMenu ===clickedItem)
+            dropdownMenu.classList.toggle('menu-open');
+        else
+            dropdownMenu.classList.remove('menu-open');
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Called only once after pages/index.html DOM is loaded
     debugLog("DOMContentLoaded event");
@@ -198,23 +209,36 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.hamburger').addEventListener('click', function() {
         debugLog("Clicked hamburger.");
         document.querySelector('.main-nav').classList.toggle('active');
+        dropdownMenuClick(); // Close all dropdown menus
     });
 
-    
-    // Close the dropdown menu and the main nav menu on a menu click
+    // Close the dropdown menus and the main nav menu on a menu click
     document.querySelectorAll('.dropdown-content > a').forEach(function(dropdownTrigger) {
         dropdownTrigger.addEventListener('click', function() {
             debugLog("Clicked menu item.");
             this.parentElement.style.display = "none";
             document.querySelector('.main-nav').classList.remove("active");
+            dropdownMenuClick();
         });
     });
 
-    // Re-enable hover functionality when mousing over a dropdown menu
+    // Close the dropdown menus when the user clicks anywhere else
+    document.addEventListener('click',function(event) {
+        if (!event.target.matches('.dropdown *')) {
+            debugLog("Clicked outside the menu.")
+            dropdownMenuClick();
+        }
+    });
+
     document.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        // Re-enable hover functionality when mousing over a dropdown menu
         dropdownMenu.addEventListener('mouseenter', function() {
             this.querySelector(".dropdown-content").style.display = "";
             debugLog("Moved over menu.");
+        });
+        dropdownMenu.querySelector(".dropdown-trigger").addEventListener('click', function() {
+            debugLog("Clicked dropdown menu title.");
+            dropdownMenuClick(this.parentElement);
         });
     });
 });

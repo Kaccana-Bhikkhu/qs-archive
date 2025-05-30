@@ -517,8 +517,16 @@ main.main-content p {
 	padding-left: 0;
 }
 
-.main-nav .dropdown:hover .dropdown-content {
-	display: block;
+@media (hover: hover) {
+	.main-nav .dropdown:hover .dropdown-content {
+		display: block;
+	}
+}
+
+@media (hover: none) {
+	.main-nav .dropdown.menu-open .dropdown-content {
+		display: block;
+	}
 }
 
 .main-nav .dropdown-content a {
