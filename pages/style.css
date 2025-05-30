@@ -540,6 +540,10 @@ main.main-content p {
     background-color: #cec5b9;
 }
 
+.dropdown-content hr {
+	margin: 0.2em 0.5em;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .main-nav ul {
