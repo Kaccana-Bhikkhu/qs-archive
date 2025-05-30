@@ -415,13 +415,24 @@ body {
 
 .header {
     background-color: var(--color-bamboo-dark);
-    padding: 1rem 0; 
+    padding: 0.5rem 0 0.4rem 0; 
 }
 
 .header h1 {
     text-align: center;
     font-weight: 300;
-    font-size: 2rem;    
+    font-size: 2rem; 
+    letter-spacing: 0.5px; 
+    margin-bottom: 1rem; 
+    color: var(--color-primary);
+}
+
+.header h2 {
+	font-style: italic;
+    text-align: center;
+    font-weight: 350;
+    font-size: 1rem;
+	line-height: 0.2rem;
     letter-spacing: 0.5px; 
     margin-bottom: 1rem; 
     color: var(--color-primary);
@@ -430,7 +441,7 @@ body {
 .header-content {
     display: flex;
     justify-content: space-between; /* align three items evenly */
-    align-items: center;
+    align-items: top;
 }
 
 /* Common header styles - for consistency */
@@ -477,6 +488,10 @@ main.main-content p {
 }
 
 /* Base styles for navigation */
+.main-nav {
+	align-self: center;
+}
+
 .main-nav ul {
     display: flex;
     list-style: none;
@@ -548,7 +563,6 @@ main.main-content p {
 
     .hamburger {
         display: block;
-        cursor: pointer;
     }
 }
 
@@ -563,10 +577,7 @@ main.main-content p {
 	margin: 0px 20px;
 	text-align:center;
 	transition: color 0.3s;
-	/*background-color: var(--color-bamboo);
-	border-radius: 8px;
-	border: 2px solid var(--color-bamboo-darker);
-	*/
+	cursor: pointer;
 }
 
 .main-menu-icon:hover {
