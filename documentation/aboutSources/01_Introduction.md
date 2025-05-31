@@ -1,4 +1,3 @@
-<!--TITLE:About-->
 [](photo:AjahnPasanno.jpg)
 
 # Introduction

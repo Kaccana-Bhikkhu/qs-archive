@@ -69,7 +69,7 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = ".
             htmlFiles[Utils.ReplaceExtension(fileName,".html")] = html
         fileContents = htmlFiles
 
-    titleInPage = "The Ajahn Pasanno Question and Story Archive"
+    titleInPage = "About the Ajahn Pasanno Archive"
     renderedPages = []
     for fileName,fileText in fileContents.items():
         titleMatch = re.search(r"<!--TITLE:(.*?)-->",fileText)

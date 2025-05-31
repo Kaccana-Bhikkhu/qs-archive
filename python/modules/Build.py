@@ -2508,9 +2508,13 @@ def Homepage():
 
     html = str(template(noscriptExcerptHtml=excerptHtml))
 
-    pageInfo = Html.PageInfo("Home",homepageName,"The Ajahn Pasanno Question and Story Archive")
+    pageInfo = Html.PageInfo("Home",homepageName,"")
     yield pageInfo
-    yield (pageInfo, html)
+
+    pageDesc = Html.PageDesc(pageInfo)
+    pageDesc.AppendContent(html)
+    pageDesc.AppendContent("Yes",section="customLayout")
+    yield pageDesc
 
 
 SUBPAGE_SUFFIXES = {"qtag","atag","quote","text","reading","story","reference","from","by","meditation","teaching"}

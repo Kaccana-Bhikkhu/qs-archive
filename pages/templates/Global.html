@@ -41,22 +41,27 @@
     </span>
   <!--(end)-->
 
-<!--(if page.HasSection("subMenu"))-->
-  <div class="sublink">
-    $!page.section["subMenu"].Render()!$
+<!--(if not page.HasSection("customLayout"))-->
+  <!--(if page.HasSection("subMenu"))-->
+    <div class="sublink">
+      $!page.section["subMenu"].Render()!$
+    </div>
+  <!--(end)-->
+
+  <!--(if page.info.titleInBody)-->
+    <div class="title" id="page-title">$!page.info.titleInBody!$
+      <!--(if page.HasSection("smallTitle"))-->
+        &nbsp&nbsp<span style="font-size:65%;">$!page.section["smallTitle"]!$</span>
+      <!--(end)-->
+    </div>
+  <!--(end)-->
+
+  <div class="main">
+  $!page.RenderNumberedSections()!$
   </div>
-  <br>
+<!--(else)-->
+  $!page.RenderNumberedSections()!$
 <!--(end)-->
-
-  <div class="title" id="page-title">$!page.info.titleInBody!$
-    <!--(if page.HasSection("smallTitle"))-->
-    &nbsp&nbsp<span style="font-size:65%;">$!page.section["smallTitle"]!$</span>
-    <!--(end)-->
-  </div>
-
-<div class="main">
-$!page.RenderNumberedSections()!$
-</div>
 
 </body>
 </html>

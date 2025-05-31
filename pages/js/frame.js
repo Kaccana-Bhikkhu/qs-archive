@@ -11,10 +11,10 @@ const errorPage = "./about/Page-Not-Found.html"
 const SEARCH_PART = /\?[^#]*/
 
 const DEBUG = true;
-globalThis.debugLog = (...args) => {
-	if (DEBUG)
-		console.log(...args);
-}
+if (DEBUG) 
+	globalThis.debugLog = console.log.bind(window.console)
+else 
+	globalThis.debugLog = function(){};
 
 export function frameSearch(hash = null) {
 	// return a URLSearchParams object corresponding to the search params given in the URL hash
@@ -92,9 +92,13 @@ export function configureLinks(frame,url) {
 		if (href.startsWith("#")) {
 			let noBookmark = decodeURIComponent(locationNoQuery.href).split("#").slice(0,2).join("#");
 			el.href = noBookmark+href;
-			el.addEventListener("click", () => {
-				history.pushState({}, "", el.href);
-				document.getElementById(href.slice(1)).scrollIntoView();
+			el.addEventListener("click", (event) => {
+				event.preventDefault();
+				let bookmarkedItem = document.getElementById(href.slice(1));
+				if (bookmarkedItem) {
+					history.pushState({}, "", el.href);
+					bookmarkedItem.scrollIntoView();
+				}
 			});
 		} else {
 			let url = href;
@@ -184,11 +188,4 @@ if (frame) {
 
 window.addEventListener("scrollend", (event) => {
 	history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
-});
-
-// Initialize the static header and footer when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    debugLog("DOMContentLoaded event");
-	configureLinks(document.getElementById("header"),"index.html");
-	configureLinks(document.querySelector("footer"),"index.html");
 });
