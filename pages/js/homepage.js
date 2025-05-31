@@ -6,6 +6,7 @@ import {configureLinks} from './frame.js';
 const DEBUG = false;
 
 let gHomepageDatabase = null; // The global database, loaded from assets/HomepageDatabase.json
+let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let todaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
 let gCurrentExcerpt = 0; // The featured excerpt currently displayed on search/Featured.html
@@ -158,6 +159,8 @@ export async function loadHomepage() {
     // Called every time a page is loaded.
     // Load gHomepageDatabase and wire the needed elements
 
+    dropdownMenuClick(null); // Close all dropdown menus
+
     if (!gHomepageDatabase) {
         await fetch('./assets/HomepageDatabase.json')
         .then((response) => response.json())
@@ -188,15 +191,24 @@ export async function loadHomepage() {
     }
 }
 
-function dropdownMenuClick(clickedItem = null) {
+function dropdownMenuClick(clickedItem) {
     // Toggle the menu item clicked (a div.dropdown element)
-    // Close all other menus
-    document.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
-        if (dropdownMenu ===clickedItem)
+    // Close all other menus; clickedItem == null closes all menus.
+    gNavBar.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        if (dropdownMenu === clickedItem)
             dropdownMenu.classList.toggle('menu-open');
         else
             dropdownMenu.classList.remove('menu-open');
     });
+    // The same for the floating search bar
+    if (clickedItem === document.getElementById('nav-search-icon')) {
+        let searchBar = document.querySelector('.floating-search');
+        searchBar.classList.toggle('active');
+        if (searchBar.classList.contains('active'))
+            document.getElementById('floating-search-input').focus();
+    }
+    else
+        document.querySelector('.floating-search').classList.remove('active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -205,35 +217,42 @@ document.addEventListener('DOMContentLoaded', () => {
 	configureLinks(document.querySelector("header"),"index.html");
 	configureLinks(document.querySelector("footer"),"index.html");
 
+    gNavBar = document.querySelector('.header-content');
+
     // Clicking on the hamburger icon toggles the main nav menu
-    document.querySelector('.hamburger').addEventListener('click', function() {
-        document.querySelector('.main-nav').classList.toggle('active');
-        dropdownMenuClick(); // Close all dropdown menus
+    gNavBar.querySelector('.hamburger').addEventListener('click', function() {
+        gNavBar.querySelector('.main-nav').classList.toggle('active');
+        dropdownMenuClick(null); // Close all dropdown menus
     });
 
     // Close the dropdown menus and the main nav menu on a menu click
-    document.querySelectorAll('.dropdown-content > a').forEach(function(dropdownTrigger) {
+    gNavBar.querySelectorAll('.dropdown-content > a').forEach(function(dropdownTrigger) {
         dropdownTrigger.addEventListener('click', function() {
             this.parentElement.style.display = "none";
-            document.querySelector('.main-nav').classList.remove("active");
-            dropdownMenuClick();
+            gNavBar.querySelector('.main-nav').classList.remove("active");
+            dropdownMenuClick(null);
         });
     });
 
     // Close the dropdown menus when the user clicks anywhere else
-    document.addEventListener('click',function(event) {
-        if (!event.target.matches('.dropdown *')) {
-            dropdownMenuClick();
+    gNavBar.addEventListener('click',function(event) {
+        if (!(event.target.classList.contains('keep-nav-menu-open') || event.target.matches('.keep-nav-menu-open *'))) {
+            dropdownMenuClick(null);
         }
     });
 
-    document.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+    gNavBar.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        dropdownMenu.querySelector(".dropdown-trigger").addEventListener('click', function() {
+            dropdownMenuClick(this.parentElement);
+        });
         // Re-enable hover functionality when mousing over a dropdown menu
         dropdownMenu.addEventListener('mouseenter', function() {
             this.querySelector(".dropdown-content").style.display = "";
         });
-        dropdownMenu.querySelector(".dropdown-trigger").addEventListener('click', function() {
-            dropdownMenuClick(this.parentElement);
-        });
+    });
+
+    // Clicking the search button toggles the floating search bar
+    document.getElementById('nav-search-icon').addEventListener('click', function() {
+        dropdownMenuClick(this); // Close all dropdown menus
     });
 });
