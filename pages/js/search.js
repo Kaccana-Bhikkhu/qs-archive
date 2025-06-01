@@ -49,7 +49,10 @@ export async function loadSearchPage() {
     for (let searchCode in gSearchers) {
         let searchButton = document.getElementById(`search-${searchCode}-button`);
         if (searchButton) {
-            searchButton.onclick = () => { searchButtonClick(searchCode); }
+            searchButton.addEventListener("click",function(event) {
+                searchButtonClick(searchCode);
+                event.preventDefault();
+            });
             searchButtonsFound += 1;
         }
     }
@@ -61,18 +64,6 @@ export async function loadSearchPage() {
     let query = params.has("q") ? decodeURIComponent(params.get("q")) : "";
     if (!query)
         document.getElementById("search-text").focus();
-
-    // Execute a function when the user presses a key on the keyboard
-    // https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event
-    document.getElementById("search-text").addEventListener("keydown", function(event) {
-        // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            document.getElementById("search-all-button").click();
-        }
-    });
 
     if (!gSearchDatabase) {
         await fetch('./assets/SearchDatabase.json')
