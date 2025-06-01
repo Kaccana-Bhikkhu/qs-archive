@@ -1,7 +1,7 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
 // Both pages rely on ./assets/Homepage.json
 
-import {configureLinks} from './frame.js';
+import {configureLinks, openLocalPage} from './frame.js';
 
 const DEBUG = false;
 
@@ -160,6 +160,7 @@ export async function loadHomepage() {
     // Load gHomepageDatabase and wire the needed elements
 
     dropdownMenuClick(null); // Close all dropdown menus
+    gNavBar.querySelector('.main-nav').classList.remove("active");
 
     if (!gHomepageDatabase) {
         await fetch('./assets/HomepageDatabase.json')
@@ -235,8 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close the dropdown menus when the user clicks anywhere else
-    gNavBar.addEventListener('click',function(event) {
-        if (!(event.target.classList.contains('keep-nav-menu-open') || event.target.matches('.keep-nav-menu-open *'))) {
+    document.addEventListener('click',function(event) {
+        if (!event.target.matches('.keep-nav-menu-open, .keep-nav-menu-open *')) {
             dropdownMenuClick(null);
         }
     });
@@ -254,5 +255,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clicking the search button toggles the floating search bar
     document.getElementById('nav-search-icon').addEventListener('click', function() {
         dropdownMenuClick(this); // Close all dropdown menus
+    });
+    // Handle clicking the search button
+    document.getElementById('floating-search-go').addEventListener('click', function(event) {
+        let searchQuery = document.getElementById('floating-search-input').value;
+        debugLog('Search bar search for',searchQuery);
+        event.preventDefault();
+        openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all`);
     });
 });
