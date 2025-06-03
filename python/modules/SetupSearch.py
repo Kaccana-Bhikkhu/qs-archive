@@ -321,7 +321,6 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 
-    optimizedDB["searches"]["random"] = {"items":SetupHomepage.RemakeRandomExcerpts(shuffle=False)}
     optimizedDB["blobDict"] = list(gBlobDict.values())
 
     Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))

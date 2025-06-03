@@ -578,6 +578,7 @@ main.main-content p {
 	text-align:center;
 	transition: color 0.3s;
 	cursor: pointer;
+	max-height: 85px;
 }
 
 .main-menu-icon:hover {
@@ -827,4 +828,129 @@ main.main-content p {
 
 .mb-8 {
     margin-bottom: 2rem;
+}
+
+/* Floating search bar styles */
+div.floating-search {
+	position: fixed;
+	z-index: 2;
+	top: 10px;
+	left: 16px;
+	width: 80%;
+	max-width: 768px;
+	padding: 10px;
+	border-radius: 0.4rem;
+
+	background-color: #f0f0f0;
+	color: #a68b55;
+	box-shadow: 0 2px #a68b5599;
+
+	transform: translateY(-120%);
+	transition: transform 200ms ease-out;
+}
+
+div.floating-search.active {
+	transform: none;
+}
+
+.floating-search form {
+	display: flex;
+}
+
+.floating-search form input {
+	font-size: 1.1rem;
+	display: inline;
+	margin-right: 18px;
+}
+
+.floating-search form button {
+	color: #a68b55;
+	padding: 8px;
+	display: inline;
+}
+
+/* Abhayagiri grid menu styles */
+div.abhayagiri-grid-menu {
+	position: absolute;
+	display:none;
+	z-index: 2;
+	right: 0px;
+	margin: 6px;
+	width: 300px;
+	height: 400px;
+	padding: 10px;
+	color: white;
+	background-color: black;
+}
+
+div.abhayagiri-grid-menu.active {
+	display:block;
+}
+
+/* Audio player styles moved from index.html */
+.overlay {
+	position: fixed;
+}
+
+#audio-player {
+	display: grid;
+	bottom: 16px;
+	right: 16px;
+	padding: 10px;
+	min-height: 40px;
+	width: 320px;
+	max-width: calc(100vw - 52px);
+
+	background-color: #f0f0f0;
+	border-radius: 0.4rem;
+	color: #a68b55;
+
+	grid-template-columns: 40px 1fr;
+	grid-template-rows: 1fr 18px;
+	column-gap: 3%;
+	row-gap: 0px;
+	box-shadow: 0 2px #a68b5599;
+
+	transform: translateY(140%);
+	transition: transform 200ms ease-out;
+}
+
+#audio-player.show {
+	transform: none;
+}
+
+#audio-player button.play {
+	grid-area: 1 / 1 / 3 / 2;
+
+	vertical-align: middle;
+	height: 100%;
+	width: 40px;
+	border-radius: 0.4rem;
+	border: none;
+	margin-right: 7px;
+
+	background: url(assets/play.svg) center no-repeat;
+	background-size: 40%;
+	background-color: #e3e3e3;
+	cursor: pointer;
+}
+#audio-player button.play.playing {
+	background-image: url(assets/pause.svg);
+}
+
+#audio-player span.audio-title {
+	grid-area: 1 / 2 / 2 / 3;
+
+	font-size: 15px;
+	vertical-align: middle;
+}
+#audio-player span.audio-title span {
+	float: right;
+}
+
+#audio-player input {
+	grid-area: 2 / 2 / 3 / 3;
+	appearance: auto;
+	padding: 0;
+	accent-color: #a68b55;
 }

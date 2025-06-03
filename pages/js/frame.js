@@ -55,6 +55,17 @@ export function setFrameSearch(params,modifyLocation = null) {
 	}
 }
 
+export function openLocalPage(path,query,bookmark) {
+	// Open a local page in this frame
+	// path is relative to pages/index.html
+
+	let newFullUrl = new URL(location);
+	newFullUrl.hash = `#${path}` + (query ? `?${query}` :"") + (bookmark ? `#${bookmark}` :"");
+
+	history.pushState({}, "", newFullUrl);
+	changeURL(path);
+}
+
 function pageText(r,url) {
 	if (r.ok) {
 		return r.text().then((text) => Promise.resolve([text,url]))
@@ -122,6 +133,8 @@ export function configureLinks(frame,url) {
 }
 
 async function changeURL(pUrl,scrollTo = null) {
+	if (!pUrl)
+		pUrl = "homepage.html";
 	pUrl = decodeURIComponent(pUrl);
 	debugLog("changeURL",pUrl);
 	await fetch("./" + pUrl)
