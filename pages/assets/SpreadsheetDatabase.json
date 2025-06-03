@@ -102449,7 +102449,7 @@
         {
           "kind": "Quote",
           "flags": "",
-          "text": "If you start investigatig and you get really interested, you'll start to get calm.",
+          "text": "If you start investigating and you get really interested, you'll start to get calm.",
           "teachers": [
             "AP"
           ],
@@ -151907,6 +151907,38 @@
       "note": ""
     }
   },
+  "dispatch": {
+    "Hierarchical View": {
+      "title": "Hierarchical View",
+      "category": "Tags",
+      "link": "drilldown/root.html",
+      "description": "Delve through the conceptual organization of content tags"
+    },
+    "Numerical Lists": {
+      "title": "Numerical Lists",
+      "category": "Tags",
+      "link": "indexes/NumericalTags.html",
+      "description": "Explore key Pāli concepts the way the Buddha himself organized them"
+    },
+    "Most Common Tags": {
+      "title": "Most Common Tags",
+      "category": "Tags",
+      "link": "indexes/SortedTags.html",
+      "description": "The most frequent tags reflect Ajahn Pasanno's priorites and values"
+    },
+    "Alphabetized Tags": {
+      "title": "Alphabetized Tags",
+      "category": "Tags",
+      "link": "indexes/AlphabeticalTags.html",
+      "description": "A long list of tags; searching is usually faster"
+    },
+    "About Tags": {
+      "title": "About Tags",
+      "category": "Tags",
+      "link": "about/Tags.html",
+      "description": "Learn how the Archive chooses and organizes content tags"
+    }
+  },
   "tagSubsumed": {
     "Non-ill-will": {
       "tag": "Non-ill-will",
@@ -152928,6 +152960,7 @@
     "Date": "date",
     "Default form": "defaultForm",
     "Description": "description",
+    "Dispatch": "dispatch",
     "Display as": "displayAs",
     "Duplicate": "duplicate",
     "Duration": "duration",
@@ -152965,6 +152998,7 @@
     "Known year": "knownYear",
     "Level": "level",
     "Lineage": "lineage",
+    "Link": "link",
     "Location": "location",
     "Long note": "longNote",
     "Medium": "medium",

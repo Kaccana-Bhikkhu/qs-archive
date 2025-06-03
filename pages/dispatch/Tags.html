@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Explore tags – The Ajahn Pasanno Question and Story Archive">
+  <meta name="keywords" content="Tags">
+  <meta name="author" content="Abhayagiri Buddhist Monastery">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore tags</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
+    
+</head>
+<body>
+    <script>
+      const agent = window.navigator.userAgent;
+      const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+      let isBotUserAgent = false;
+      for (bot of botUsers){
+        if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+          isBotUserAgent = true;
+          break;
+        }
+      }
+
+      url = new URL(location.href)
+      if (url.protocol != "file:" && !isBotUserAgent) {
+        location.replace("../index.html#dispatch/Tags.html" + url.search + url.hash);
+      }
+    </script>
+
+
+    <div class="title" id="page-title">Explore tags
+    </div>
+
+  <div class="main">
+  <div class="explore-content">
+  <h2>Explore tags by...</h2>
+  <div class="exploration-paths">
+    <a class="path-card" href="../drilldown/root.html">
+      <i class="icon-tags"></i>
+      <h3>Hierarchical View</h3>
+      <p>Delve through the conceptual organization of content tags</p>
+    </a>
+    <a class="path-card" href="../indexes/NumericalTags.html">
+      <i class="icon-tags"></i>
+      <h3>Numerical Lists</h3>
+      <p>Explore key Pāli concepts the way the Buddha himself organized them</p>
+    </a>
+    <a class="path-card" href="../indexes/SortedTags.html">
+      <i class="icon-tags"></i>
+      <h3>Most Common Tags</h3>
+      <p>The most frequent tags reflect Ajahn Pasanno's priorites and values</p>
+    </a>
+    <a class="path-card" href="../indexes/AlphabeticalTags.html">
+      <i class="icon-tags"></i>
+      <h3>Alphabetized Tags</h3>
+      <p>A long list of tags; searching is usually faster</p>
+    </a>
+    <a class="path-card" href="../about/Tags.html">
+      <i class="icon-tags"></i>
+      <h3>About Tags</h3>
+      <p>Learn how the Archive chooses and organizes content tags</p>
+    </a>
+  </div>
+</div>
+  </div>
+
+</body>
+</html>

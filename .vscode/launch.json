@@ -71,7 +71,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "events"
+                "none"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

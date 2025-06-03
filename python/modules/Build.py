@@ -2516,6 +2516,33 @@ def Homepage():
     pageDesc.AppendContent("Yes",section="customLayout")
     yield pageDesc
 
+def DispatchPages():
+    """Return a series of pages that link to subcategories of tags, teachers, and events.
+    Created from gDatabase["dispatch"]; does not yield a menu item."""
+
+    groupedByPage:dict[str,list[dict[str,str]]] = defaultdict(list)
+    for link in gDatabase["dispatch"].values():
+        groupedByPage[link["category"]].append(link)
+    
+    for pageName,pageLinks in groupedByPage.items():
+        title = f"Explore {pageName.lower()}"
+        pageInfo = Html.PageInfo(title,Utils.PosixJoin("dispatch",pageName+".html"))
+
+        a = Airium()
+        with a.div(Class='explore-content'):
+            a.h2(_t=f'Explore {pageName.lower()} by...')
+            with a.div(Class='exploration-paths'):
+                for link in pageLinks:
+                    with a.a(Class='path-card', href=Utils.PosixJoin("../",link["link"])):
+                        a.i(Class='icon-tags')
+                        a.h3(_t=link["title"])
+                        a.p(_t=link["description"])
+        
+        pageDesc = Html.PageDesc(pageInfo)
+        pageDesc.AppendContent(str(a))
+        pageDesc.keywords = [pageName]
+        yield pageDesc
+        
 
 SUBPAGE_SUFFIXES = {"qtag","atag","quote","text","reading","story","reference","from","by","meditation","teaching"}
 
@@ -2681,6 +2708,8 @@ def main():
 
     mainMenu.append([Html.PageInfo("Back to Abhayagiri.org","https://www.abhayagiri.org/questions-and-stories")])
     
+    mainMenu.append(DispatchPages())
+
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
