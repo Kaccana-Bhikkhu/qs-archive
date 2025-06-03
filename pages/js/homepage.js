@@ -204,12 +204,12 @@ function dropdownMenuClick(clickedItem) {
 
     // The same for the floating search bar
     if (clickedItem === document.getElementById('nav-search-icon')) {
-        let searchBar = document.querySelector('.floating-search');
+        let searchBar = gNavBar.querySelector('.floating-search');
         searchBar.classList.toggle('active');
         if (searchBar.classList.contains('active'))
             document.getElementById('floating-search-input').focus();
     } else
-        document.querySelector('.floating-search').classList.remove('active');
+        gNavBar.querySelector('.floating-search').classList.remove('active');
     
     // and the Abhayagiri nav menu
     if (clickedItem === document.getElementById('nav-abhayagiri-icon')) {
@@ -218,12 +218,8 @@ function dropdownMenuClick(clickedItem) {
         document.querySelector('.abhayagiri-grid-menu').classList.remove('active');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Called only once after pages/index.html DOM is loaded
-    debugLog("DOMContentLoaded event");
-	configureLinks(document.querySelector("header"),"index.html");
-	configureLinks(document.querySelector("footer"),"index.html");
-
+function setupNavMenuTriggers() {
+    // Configure javascript triggers for header elements
     gNavBar = document.querySelector('.header-content');
 
     // Clicking on the hamburger icon toggles the main nav menu
@@ -264,7 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Handle clicking the search button
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
-        let searchQuery = document.getElementById('floating-search-input').value;
+        let inputBox = document.getElementById('floating-search-input');
+        let searchQuery = encodeURIComponent(inputBox.value);
+        inputBox.value = "";
         debugLog('Search bar search for',searchQuery);
         event.preventDefault();
         openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all`);
@@ -272,6 +270,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Clicking Abhayagiri icon toggles the Abhayagiri grid menu
     document.getElementById('nav-abhayagiri-icon').addEventListener('click', function() {
-        dropdownMenuClick(this); // Close all dropdown menus
+        dropdownMenuClick(this);
     });
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", function(event) {
+        // '/' key opens the search bar if it's not open already
+        if ((event.key == "/") && !gNavBar.querySelector('.floating-search.active')) {
+            event.preventDefault();
+            document.getElementById("nav-search-icon").click();
+        }
+        // Esc key closes all menus if any are open
+        if ((event.key == "Escape") && gNavBar.querySelector('.active')) {
+            event.preventDefault();
+            dropdownMenuClick(null);
+            gNavBar.querySelector('.main-nav').classList.remove("active");
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Called only once after pages/index.html DOM is loaded
+    debugLog("DOMContentLoaded event");
+	configureLinks(document.querySelector("header"),"index.html");
+	configureLinks(document.querySelector("footer"),"index.html");
+
+    setupNavMenuTriggers();
 });
