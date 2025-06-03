@@ -832,7 +832,8 @@ main.main-content p {
 
 /* Floating search bar styles */
 div.floating-search {
-	position: absolute;
+	position: fixed;
+	z-index: 2;
 	top: 10px;
 	left: 16px;
 	width: 80%;
@@ -866,6 +867,24 @@ div.floating-search.active {
 	color: #a68b55;
 	padding: 8px;
 	display: inline;
+}
+
+/* Abhayagiri grid menu styles */
+div.abhayagiri-grid-menu {
+	position: absolute;
+	display:none;
+	z-index: 2;
+	right: 0px;
+	margin: 6px;
+	width: 300px;
+	height: 400px;
+	padding: 10px;
+	color: white;
+	background-color: black;
+}
+
+div.abhayagiri-grid-menu.active {
+	display:block;
 }
 
 /* Audio player styles moved from index.html */

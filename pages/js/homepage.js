@@ -201,15 +201,21 @@ function dropdownMenuClick(clickedItem) {
         else
             dropdownMenu.classList.remove('menu-open');
     });
+
     // The same for the floating search bar
     if (clickedItem === document.getElementById('nav-search-icon')) {
         let searchBar = document.querySelector('.floating-search');
         searchBar.classList.toggle('active');
         if (searchBar.classList.contains('active'))
             document.getElementById('floating-search-input').focus();
-    }
-    else
+    } else
         document.querySelector('.floating-search').classList.remove('active');
+    
+    // and the Abhayagiri nav menu
+    if (clickedItem === document.getElementById('nav-abhayagiri-icon')) {
+        document.querySelector('.abhayagiri-grid-menu').classList.toggle('active');
+    } else
+        document.querySelector('.abhayagiri-grid-menu').classList.remove('active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -262,5 +268,10 @@ document.addEventListener('DOMContentLoaded', () => {
         debugLog('Search bar search for',searchQuery);
         event.preventDefault();
         openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all`);
+    });
+
+    // Clicking Abhayagiri icon toggles the Abhayagiri grid menu
+    document.getElementById('nav-abhayagiri-icon').addEventListener('click', function() {
+        dropdownMenuClick(this); // Close all dropdown menus
     });
 });
