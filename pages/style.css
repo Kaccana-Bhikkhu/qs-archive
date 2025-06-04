@@ -441,7 +441,7 @@ body {
 .header-content {
     display: flex;
     justify-content: space-between; /* align three items evenly */
-    align-items: top;
+    align-items: start;
 }
 
 /* Common header styles - for consistency */
@@ -496,8 +496,12 @@ main.main-content p {
     display: flex;
     list-style: none;
     gap: 2rem;
-    margin: 0;
+    margin-bottom: 0.5rem;
     padding: 0;
+}
+
+.main-nav li.highlighted {
+	border-bottom: 1px dotted var(--color-primary);
 }
 
 .main-nav a {

@@ -5,10 +5,11 @@ import { loadToggleView } from "./toggle-view.js";
 const { join, dirname } = posix;
 const frame = document.querySelector("div#frame");
 const titleEl = document.querySelector("title");
-const absoluteURLRegex = "^(//|[a-z+]+:)"
-const errorPage = "./about/Page-Not-Found.html"
+const absoluteURLRegex = "^(//|[a-z+]+:)";
+const errorPage = "./about/Page-Not-Found.html";
 
-const SEARCH_PART = /\?[^#]*/
+const PATH_PART = /[^#?]*/;
+const SEARCH_PART = /\?[^#]*/;
 
 const DEBUG = true;
 if (DEBUG) 
@@ -53,6 +54,16 @@ export function setFrameSearch(params,modifyLocation = null) {
 		url.hash = hash;
 		history.replaceState(history.state,"",url);
 	}
+}
+
+export function framePage() {
+	// Returns the current open page
+
+	let path = location.hash.slice(1).match(PATH_PART)[0];
+	if (path)
+		return path
+	else
+		return "homepage.html";
 }
 
 export function openLocalPage(path,query,bookmark) {

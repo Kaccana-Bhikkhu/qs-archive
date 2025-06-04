@@ -1,7 +1,7 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
 // Both pages rely on ./assets/Homepage.json
 
-import {configureLinks, openLocalPage} from './frame.js';
+import {configureLinks, openLocalPage, framePage} from './frame.js';
 
 const DEBUG = false;
 
@@ -155,6 +155,27 @@ class MeditationTimer {
     }
 }
 
+function highlightNavMenuItem() {
+    // Highlight items in the main nav menu if the appropriate page is loaded
+
+    const pagesWithin = { // regex matches to highlight each menu item
+        "Home": /^homepage/,
+        "Key Topics ▾": /^topics|^cluster/,
+        "Tags ▾": /^tags|^drilldown|^dispatch\/Tags/,
+        "Events ▾": /^events|^dispatch\/Events/,
+        "About": /^about/
+    }
+
+    let openPage = framePage();
+    debugLog("Currently open:",openPage);
+    for (let item of gNavBar.querySelector(".main-nav").querySelectorAll("li")) {
+        if (pagesWithin[item.querySelector("a").textContent].test(openPage))
+            item.classList.add("highlighted")
+        else
+            item.classList.remove("highlighted");
+    }
+}
+
 export async function loadHomepage() {
     // Called every time a page is loaded.
     // Load gHomepageDatabase and wire the needed elements
@@ -171,6 +192,8 @@ export async function loadHomepage() {
         });
         initializeTodaysExcerpt()
     }
+
+    highlightNavMenuItem();
 
     // This code runs only for search/Featured.html
     let prevButton = document.getElementById("random-prev");
