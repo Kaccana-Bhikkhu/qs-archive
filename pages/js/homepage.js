@@ -176,7 +176,18 @@ function highlightNavMenuItem() {
     }
 }
 
-export async function loadHomepage() {
+function configurePopupMenus(loadedFrame) {
+    // Set triggers for select.sublink-dropdown items on the page
+
+    for (let menu of loadedFrame.querySelectorAll("select.sublink-dropdown")) {
+        menu.addEventListener("change",function (event) {
+            openLocalPage(event.target.value);
+            debugLog("Selection changed to",event.target.value);
+        })
+    }
+}
+
+export async function loadHomepage(loadedFrame) {
     // Called every time a page is loaded.
     // Load gHomepageDatabase and wire the needed elements
 
@@ -194,6 +205,7 @@ export async function loadHomepage() {
     }
 
     highlightNavMenuItem();
+    configurePopupMenus(loadedFrame);
 
     // This code runs only for search/Featured.html
     let prevButton = document.getElementById("random-prev");

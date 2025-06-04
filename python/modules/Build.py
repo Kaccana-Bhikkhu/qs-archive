@@ -1820,7 +1820,6 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
 
             filterMenu = [f for f in filterMenu if f] # Remove blank menu items
             yield from map(LinkToTagPage,basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE))
-            yield from map(LinkToTagPage,basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE))
         else:
             yield from map(LinkToTagPage,MultiPageExcerptList(basePage,relevantExcerpts,formatter))
 
@@ -2103,7 +2102,7 @@ def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageI
 
     if makeMenu:
         basePage = Html.PageDesc()
-        yield from basePage.AddMenuAndYieldPages(aboutMenu,**EXTRA_MENU_STYLE)
+        yield from basePage.AddMenuAndYieldPages(aboutMenu,menuClass=Html.PopupMenu)
     else:
         yield from aboutMenu
 

@@ -2,14 +2,15 @@
 
 from __future__ import annotations
 
-from typing import NamedTuple, TypeVar, Union
+from typing import NamedTuple, TypeVar, Union, Type
 import pyratemp
+from airium import Airium
 import itertools
 from pathlib import Path
 from collections.abc import Iterator, Iterable, Callable
 from typing import List
 import copy
-import Utils
+import Utils, Alert
 import re
 import urllib.parse
 
@@ -142,6 +143,30 @@ class Menu(Renderable):
         for n,item in enumerate(self.items):
             if item.file == itemFileName:
                 self.menu_highlightedItem = n
+
+class PopupMenu(Menu):
+    """Creates a popup menu using the <select> tag that links to the pages specified in items.
+    Requires Javascript in homepage.js in order to operate."""
+
+    def __init__(self,items: list[PageInfo],highlightedItem:int|None = None):
+        self.items = items
+        self.menu_highlightedItem = highlightedItem
+        self.menu_keepScroll = True
+    
+    def __str__(self) -> str:
+        """Return an html string corresponding to the rendered menu."""
+        a = Airium()
+
+        with a.select(Class="sublink-dropdown",value=self.items[self.menu_highlightedItem].file):
+            for n,item in enumerate(self.items):
+                highlight = {}
+                if n == self.menu_highlightedItem:
+                    highlight = dict(selected="selected")
+                with a.option(value=item.file,**highlight):
+                    a(item.title)
+        
+        return str(a)
+        
 
 # Use Union[] to maintain compatibility with Python 3.9
 PageAugmentorType = Union[str,tuple[PageInfo,str],"PageDesc"]
@@ -303,7 +328,10 @@ class PageDesc(Renderable):
         with open(filePath,'w',encoding='utf-8') as file:
             print(pageHtml,file=file)
 
-    def _PagesFromMenuGenerators(self,menuGenerators: Iterable[PageGeneratorMenuItem],menuSection:str|None = None,**menuStyle) -> Iterator[PageDesc]:
+    def _PagesFromMenuGenerators(self,menuGenerators: Iterable[PageGeneratorMenuItem],
+                                 menuSection:str|None = None,
+                                 menuClass:Type=Menu,
+                                 **menuStyle) -> Iterator[PageDesc]:
         """Generate a series of PageDesc objects from a list of functions that each describe one item in a menu.
         self: The page we have constructed so far.
         menuGenerators: An iterable (often a list) of generator functions, each of which describes a menu item and its associated pages.
@@ -311,6 +339,8 @@ class PageDesc(Renderable):
             Each generator function (optionally) first yields a PageInfo object containing the menu title and link.
             Next it yields a series of PageDesc objects which have been cloned from basePage plus the menu.
             An empty generator means that no menu item is generated.
+        menuSection is the section to add the menu to
+        menuClass is the class of menu to use
         AddMenuAndYieldPages is a simpler version of this function."""
         
         menuGenerators = [m(self) for m in menuGenerators] # Initialize the menu iterators
@@ -321,7 +351,7 @@ class PageDesc(Renderable):
         menuGenerators = [m for m,item in zip(menuGenerators,menuItems) if item]
         menuItems = [item for item in menuItems if item]
 
-        menuSection = self.AppendContent(Menu(menuItems,**menuStyle),section=menuSection)
+        menuSection = self.AppendContent(menuClass(menuItems,**menuStyle),section=menuSection)
 
         for itemNumber,menuIterator in enumerate(menuGenerators):
             self.section[menuSection].menu_highlightedItem = itemNumber
@@ -331,7 +361,10 @@ class PageDesc(Renderable):
         for morePages in generatorsWithNoAssociatedMenuItem:
             yield from morePages
 
-    def AddMenuAndYieldPages(self,menuDescriptors: Iterable[PageGeneratorMenuItem | PageDescriptorMenuItem],menuSection:str|None = None,**menuStyle) -> Iterator[PageDesc]:
+    def AddMenuAndYieldPages(self,menuDescriptors: Iterable[PageGeneratorMenuItem | PageDescriptorMenuItem],
+                             menuSection:str|None = None,
+                             menuClass:Type=Menu,
+                             **menuStyle) -> Iterator[PageDesc]:
         """Add a menu described by the first item yielded by each item in menuDescriptors.
         Then generate a series of PageDesc objects from the remaining iterator items in menuDescriptors.
         this: The page we have constructed so far.
@@ -363,7 +396,7 @@ class PageDesc(Renderable):
             # See https://docs.python.org/3.4/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result 
             # and https://stackoverflow.com/questions/452610/how-do-i-create-a-list-of-lambdas-in-a-list-comprehension-for-loop 
             # for why we need to use m = m.
-        yield from self._PagesFromMenuGenerators(menuFunctions,menuSection=menuSection,**menuStyle)
+        yield from self._PagesFromMenuGenerators(menuFunctions,menuSection=menuSection,menuClass=menuClass,**menuStyle)
 
 
 ITEM_NO_COUNT = "<!--NO_COUNT-->" # Don't count an item with this in htmlBody 

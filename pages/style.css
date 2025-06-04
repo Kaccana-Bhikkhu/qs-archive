@@ -373,6 +373,7 @@ button {
 
 img.cover {
 	width: 50%;
+	min-width: 300px;
 	margin: auto;
 	display: block;
 	margin-bottom: 8px;
