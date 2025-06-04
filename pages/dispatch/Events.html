@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Explore events – The Ajahn Pasanno Question and Story Archive">
+  <meta name="keywords" content="Events">
+  <meta name="author" content="Abhayagiri Buddhist Monastery">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore events</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
+    
+</head>
+<body>
+    <script>
+      const agent = window.navigator.userAgent;
+      const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+      let isBotUserAgent = false;
+      for (bot of botUsers){
+        if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+          isBotUserAgent = true;
+          break;
+        }
+      }
+
+      url = new URL(location.href)
+      if (url.protocol != "file:" && !isBotUserAgent) {
+        location.replace("../index.html#dispatch/Events.html" + url.search + url.hash);
+      }
+    </script>
+
+
+    <div class="title" id="page-title">Explore events
+    </div>
+
+  <div class="main">
+  <div class="explore-content">
+  <h2>Explore events by...</h2>
+  <div class="exploration-paths">
+    <a class="path-card" href="../indexes/EventsBySeries.html">
+      <i class="icon-tags"></i>
+      <h3>Series</h3>
+      <p>Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more</p>
+    </a>
+    <a class="path-card" href="../indexes/EventsBySubject.html">
+      <i class="icon-tags"></i>
+      <h3>Subject</h3>
+      <p>Explore in-depth teachings on specific topics</p>
+    </a>
+    <a class="path-card" href="../indexes/EventsChronological.html">
+      <i class="icon-tags"></i>
+      <h3>Date</h3>
+      <p>Listen to over twenty years of Ajahn Pasanno's teachings</p>
+    </a>
+    <a class="path-card" href="../about/Event-series.html">
+      <i class="icon-tags"></i>
+      <h3>About Event Series</h3>
+      <p>Learn what makes each event venue unique</p>
+    </a>
+  </div>
+</div>
+  </div>
+
+</body>
+</html>

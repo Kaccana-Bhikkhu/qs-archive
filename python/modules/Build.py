@@ -61,7 +61,7 @@ def DeleteUnwrittenHtmlFiles(writer: FileRegister.HashWriter) -> None:
 
     # Delete files only in directories we have built
     dirs = gOptions.buildOnly & {"events","topics","tags","clusters","teachers","drilldown","search"}
-    dirs.add("about")
+    dirs.update(("about","dispatch"))
     if gOptions.buildOnly == gAllSections:
         dirs.add("indexes")
 
