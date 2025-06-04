@@ -22,11 +22,9 @@ from contextlib import nullcontext
 from functools import lru_cache
 import urllib.parse
 
-MAIN_MENU_STYLE = dict(menuSection="mainMenu")
-SUBMENU_STYLE = dict(menuSection="subMenu")
 BASE_MENU_STYLE = dict(separator="\n"+6*" ",highlight={"class":"active"})
-MAIN_MENU_STYLE |= BASE_MENU_STYLE
-SUBMENU_STYLE |= BASE_MENU_STYLE
+MAIN_MENU_STYLE = BASE_MENU_STYLE | dict(menuSection="mainMenu")
+SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="subMenu")
 EXTRA_MENU_STYLE = BASE_MENU_STYLE | dict(wrapper=Html.Tag("div",{"class":"sublink2"}) + "\n<hr>\n")
 
 FA_STAR = '<i class="fa fa-star" style="color: #9b7030;"></i>'
@@ -534,7 +532,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page = Html.PageDesc(info)
 
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
-    page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1"})(printableLinks))
 
     page.AppendContent(str(a))
     page.AppendContent("Most common tags",section="citationTitle")
@@ -2247,19 +2245,19 @@ def TagClusterPages(topicDir: str):
         yield from TagSubsearchPages(tags,relevantExcerpts,basePage,cluster=cluster)
 
 def AddTopicButtons(page: Html.PageDesc) -> None:
-    """Add buttons to show and hide subtopics to this under-construction page."""
+    """Add buttons to show and hide subtopics."""
 
-    page.AppendContent(Html.Tag("button",{"type":"button",
+    page.AppendContent(Html.Tag("button",{"type":"button","class":"hide-thin-screen-1",
                                           "onclick":Utils.JavascriptLink(page.info.AddQuery("showAll").file)})("Expand all"))
-    page.AppendContent(Html.Tag("button",{"type":"button",
+    page.AppendContent(Html.Tag("button",{"type":"button","class":"hide-thin-screen-1",
                                           "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file)})("Contract all"))
     
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html")})("Printable")
     if gOptions.uploadMirror == "preview":
         printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html")})("Printable with memos")
 
-    page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
-    page.AppendContent("<br><br>")
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1"})(printableLinks))
+    page.AppendContent(2*'<br class="hide-thin-screen-1">')
 
 
 def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem:
@@ -2454,10 +2452,14 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         yield printPage
 
         # Hack: Add buttons to basePage after yielding printPage so that all subsequent pages have buttons at the top.
-        basePage.AppendContent(Html.Tag("button",{"type":"button","onclick":Utils.JavascriptLink(contractAllItem.AddQuery("showAll").file)})("Expand all"))
-        basePage.AppendContent(Html.Tag("button",{"type":"button","onclick":Utils.JavascriptLink(contractAllItem.file)})("Contract all"))
-        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
-        basePage.AppendContent("<br><br>")
+        basePage.AppendContent(Html.Tag("button",{"type":"button",
+                                                  "onclick":Utils.JavascriptLink(contractAllItem.AddQuery("showAll").file),
+                                                  "class":"hide-thin-screen-1"})("Expand all"))
+        basePage.AppendContent(Html.Tag("button",{"type":"button",
+                                                  "onclick":Utils.JavascriptLink(contractAllItem.file),
+                                                  "class":"hide-thin-screen-1"})("Contract all"))
+        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
+        basePage.AppendContent(2*'<br class="hide-thin-screen-1">')
         basePage.AppendContent(f"Numbers in parentheses: (featured excerpts{FA_STAR}/excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
 
         rootPage = Html.PageDesc(contractAllItem)
