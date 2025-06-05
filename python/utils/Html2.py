@@ -146,18 +146,18 @@ class Menu(Renderable):
 
 class PopupMenu(Menu):
     """Creates a popup menu using the <select> tag that links to the pages specified in items.
-    Requires Javascript in homepage.js in order to operate."""
+    Requires Javascript in order to operate."""
 
-    def __init__(self,items: list[PageInfo],highlightedItem:int|None = None):
+    def __init__(self,items: list[PageInfo],highlightedItem:int|None = None,popupMenu_wrapper:Wrapper = Wrapper()):
         self.items = items
         self.menu_highlightedItem = highlightedItem
-        self.menu_keepScroll = True
+        self.popupMenu_wrapper = popupMenu_wrapper
     
     def __str__(self) -> str:
         """Return an html string corresponding to the rendered menu."""
         a = Airium()
 
-        with a.select(Class="sublink-dropdown",value=self.items[self.menu_highlightedItem].file):
+        with a.select():
             for n,item in enumerate(self.items):
                 highlight = {}
                 if n == self.menu_highlightedItem:
@@ -165,7 +165,7 @@ class PopupMenu(Menu):
                 with a.option(value=item.file,**highlight):
                     a(item.title)
         
-        return str(a)
+        return self.popupMenu_wrapper(str(a))
         
 
 # Use Union[] to maintain compatibility with Python 3.9

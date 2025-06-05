@@ -108,6 +108,25 @@ hr {
 	border-bottom: 1px dotted #a28a4e;
 }
 
+div.sublink-popup {
+	display: flex;
+	justify-content: center;
+}
+
+.sublink-popup select {
+	/* appearance: none; */
+	font-size: 18px;
+	padding: 0.2em 1em 0.2em 1em;
+	color: var(--color-primary);
+	background-color: var(--color-bamboo);
+	border-radius: 0.25rem;
+	min-width: 200px;
+}
+
+.sublink-popup option {
+	font-size: 100%;
+}
+
 /* Media query for mobile screens */
 @media screen and (max-width: 599px) {
 	.sublink {
@@ -126,7 +145,6 @@ hr {
 		/* Remove right margin on smaller screens for better spacing */
 	}
 }
-
 
 /* Style the bold links (inside <b> tags) */
 .sublink b a {

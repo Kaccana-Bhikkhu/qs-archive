@@ -2102,7 +2102,9 @@ def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageI
 
     if makeMenu:
         basePage = Html.PageDesc()
-        yield from basePage.AddMenuAndYieldPages(aboutMenu,menuClass=Html.PopupMenu)
+        yield from basePage.AddMenuAndYieldPages(aboutMenu,
+                                                menuClass=Html.PopupMenu,
+                                                popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup"}) + "<hr>")
     else:
         yield from aboutMenu
 

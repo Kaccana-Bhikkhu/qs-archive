@@ -179,7 +179,7 @@ function highlightNavMenuItem() {
 function configurePopupMenus(loadedFrame) {
     // Set triggers for select.sublink-dropdown items on the page
 
-    for (let menu of loadedFrame.querySelectorAll("select.sublink-dropdown")) {
+    for (let menu of loadedFrame.querySelectorAll(".sublink-popup select")) {
         menu.addEventListener("change",function (event) {
             openLocalPage(event.target.value);
             debugLog("Selection changed to",event.target.value);
