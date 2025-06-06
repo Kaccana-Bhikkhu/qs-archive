@@ -10,9 +10,10 @@ from pathlib import Path
 from collections.abc import Iterator, Iterable, Callable
 from typing import List
 import copy
-import Utils, Alert
+import Utils
 import re
 import urllib.parse
+from bisect import bisect_right
 
 class Wrapper(NamedTuple):
     "A prefix and suffix to wrap an html object in."
@@ -97,7 +98,11 @@ class Menu(Renderable):
     menu_highlightTags:Wrapper
     menu_keepScroll: bool
 
-    def __init__(self,items: list[PageInfo],highlightedItem:int|None = None,separator:int|str = " &emsp; ",highlight:dict=dict(style="font-weight:bold;text-decoration: underline;",),wrapper:Wrapper = Wrapper()) -> None:
+    def __init__(self,items: list[PageInfo],
+                 highlightedItem:int|None = None,
+                 separator:int|str = " &emsp; ",
+                 highlight:dict=dict(style="font-weight:bold;text-decoration: underline;"),
+                 wrapper:Wrapper = Wrapper()) -> None:
         """items: a list of PageInfo objects containing the menu text (title) and html link (file) of each menu item.
         highlightedItem: which (if any) of the menu items is highlighted.
         separator: html code between each menu item; defaults to an em space.
@@ -147,6 +152,7 @@ class Menu(Renderable):
 class PopupMenu(Menu):
     """Creates a popup menu using the <select> tag that links to the pages specified in items.
     Requires Javascript in order to operate."""
+    popupMenu_wrapper: Wrapper
 
     def __init__(self,items: list[PageInfo],highlightedItem:int|None = None,popupMenu_wrapper:Wrapper = Wrapper()):
         self.items = items
@@ -166,6 +172,51 @@ class PopupMenu(Menu):
                     a(item.title)
         
         return self.popupMenu_wrapper(str(a))
+
+def ResponsiveItem(wideHtml: str,thinHtml: str,changeOver: int,container:str = "div") -> str:
+    """Return html code that switches between wideHtml and thinHtml at the point specified by changeOver.
+    wideHtml: html code in case of wide screen
+    thinHtml: html code in case of thin screen
+    changeOver: the changeover point; see style.css for 
+    container: the html element for the container"""
+
+    if changeOver:
+        if container:
+            return "\n".join((Tag(container,{"class":f"hide-thin-screen-{changeOver}"})(wideHtml),
+                              Tag(container,{"class":f"hide-wide-screen-{changeOver}"})(thinHtml)))
+        else: # If container is not given, the changeover is already encoded in the html
+            return "\n".join((wideHtml,thinHtml))
+    else:
+        return wideHtml
+
+
+class ResponsivePopupMenu(Menu):
+    """Create both a popup menu and a classic text bar menu.
+    Use hide-thin-screen-N classes to show only one menu depending on screen width."""
+    popupMenu_wrapper: Wrapper
+    responsiveContainer: str
+
+    def __init__(self,items: list[PageInfo],
+                 highlightedItem:int|None = None,
+                 separator:int|str = " &emsp; ",
+                 highlight:dict=dict(style="font-weight:bold;text-decoration: underline;"),
+                 wrapper:Wrapper = Wrapper(),
+                 popupMenu_wrapper:Wrapper = Wrapper(),
+                 responsiveContainer = "div") -> None:
+        """items: a list of PageInfo objects containing the menu text (title) and html link (file) of each menu item.
+        highlightedItem: which (if any) of the menu items is highlighted.
+        separator: html code between each menu item; defaults to an em space.
+        highlight: a dictionary of attributes to apply to the highlighted menu item.
+        wrapper: html to insert before and after the menu.
+        popupMenu_wrapper: html to insert before and after the <select> popup menu
+        """
+        super().__init__(items,highlightedItem,separator,highlight,wrapper)
+        self.popupMenu_wrapper = popupMenu_wrapper
+        self.responsiveContainer = responsiveContainer
+    
+    def __str__(self):
+        changeOver = bisect_right((3,6,9,11),len(self.items))
+        return ResponsiveItem(super().__str__(),PopupMenu.__str__(self),changeOver,container=self.responsiveContainer)
         
 
 # Use Union[] to maintain compatibility with Python 3.9

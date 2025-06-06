@@ -7,24 +7,46 @@
 /* Responsive items hide/show classes;
 three classes going from small to large */
 
-@media screen and (max-width: 599px) {
+@media screen and (max-width: 600px) {
 	.hide-thin-screen-1 {
 		display: none !important;
 	}
 }
-@media screen and (min-width: 599px) {
+@media screen and (min-width: 601px) {
 	.hide-wide-screen-1 {
 		display: none !important;
 	}
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 730px) {
 	.hide-thin-screen-2 {
 		display: none !important;
 	}
 }
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 731px) {
 	.hide-wide-screen-2 {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 860px) {
+	.hide-thin-screen-3 {
+		display: none !important;
+	}
+}
+@media screen and (min-width: 861px) {
+	.hide-wide-screen-3 {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.hide-thin-screen-4 {
+		display: none !important;
+	}
+}
+@media screen and (min-width: 1001px) {
+	.hide-wide-screen-4 {
 		display: none !important;
 	}
 }
@@ -81,6 +103,23 @@ hr {
 	border-bottom: 1px dotted #a28a4e;
 }
 
+/* When sublink is replaced by a popup menu*/
+.sublink-popup {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+
+.sublink-popup select {
+	font-size: 18px;
+	padding: 0.3em 1em 0.3em 1em;
+	color: var(--color-primary);
+	background-color: var(--color-bamboo);
+	border: 1px solid var(--color-primary);
+	border-radius: 0.5rem;
+	min-width: 200px;
+}
+
 /* sublink2 for menus below title bar */
 .sublink2 {
 	display: flex;
@@ -108,42 +147,14 @@ hr {
 	border-bottom: 1px dotted #a28a4e;
 }
 
-div.sublink-popup {
-	display: flex;
-	justify-content: center;
-}
-
-.sublink-popup select {
-	/* appearance: none; */
+.sublink2-popup select {
 	font-size: 18px;
-	padding: 0.2em 1em 0.2em 1em;
+	padding: 0.3em 1em 0.3em 1em;
 	color: var(--color-primary);
 	background-color: var(--color-bamboo);
-	border-radius: 0.25rem;
+	border: 1px solid var(--color-primary);
+	border-radius: 0.5rem;
 	min-width: 200px;
-}
-
-.sublink-popup option {
-	font-size: 100%;
-}
-
-/* Media query for mobile screens */
-@media screen and (max-width: 599px) {
-	.sublink {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 760px) {
-	.sublink2 {
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.sublink2 a {
-		margin-right: 0;
-		/* Remove right margin on smaller screens for better spacing */
-	}
 }
 
 /* Style the bold links (inside <b> tags) */
@@ -594,7 +605,7 @@ main.main-content p {
 }
 
 /* Responsive styles */
-@media (max-width: 760px) {
+@media (max-width: 730px) {
     .main-nav ul {
         flex-direction: column;
         gap: 1rem;
@@ -610,7 +621,7 @@ main.main-content p {
     }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 731px) {
     .hamburger {
         display: none;
     }
@@ -680,7 +691,7 @@ main.main-content p {
     margin-bottom: 2rem;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 731px) {
     .content-grid {
         grid-template-columns: 1fr 1fr;
     }
@@ -833,7 +844,7 @@ main.main-content p {
     margin-top: 1.5rem;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 731px) {
     .exploration-paths {
         grid-template-columns: 1fr 1fr;
     }

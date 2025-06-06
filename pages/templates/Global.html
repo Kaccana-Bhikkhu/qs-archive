@@ -43,9 +43,12 @@
 
 <!--(if not page.HasSection("customLayout"))-->
   <!--(if page.HasSection("subMenu"))-->
-    <div class="sublink">
+    <div class="sublink hide-thin-screen-1">
       $!page.section["subMenu"].Render()!$
     </div>
+  <!--(end)-->
+  <!--(if page.HasSection("customSubMenu"))-->
+    $!page.section["customSubMenu"].Render()!$
   <!--(end)-->
 
   <!--(if page.info.titleInBody)-->

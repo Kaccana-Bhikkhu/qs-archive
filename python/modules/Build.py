@@ -25,7 +25,15 @@ import urllib.parse
 BASE_MENU_STYLE = dict(separator="\n"+6*" ",highlight={"class":"active"})
 MAIN_MENU_STYLE = BASE_MENU_STYLE | dict(menuSection="mainMenu")
 SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="subMenu")
-EXTRA_MENU_STYLE = BASE_MENU_STYLE | dict(wrapper=Html.Tag("div",{"class":"sublink2"}) + "\n<hr>\n")
+LONG_SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="customSubMenu",
+                           menuClass=Html.ResponsivePopupMenu,
+                           responsiveContainer = "",
+                           wrapper=Html.Tag("div",{"class":"sublink hide-thin-screen-3"}),
+                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup hide-wide-screen-3"}))
+EXTRA_MENU_STYLE = BASE_MENU_STYLE | dict(menuClass=Html.ResponsivePopupMenu,
+                                          wrapper=Html.Tag("div",{"class":"sublink2"}) + "\n<hr>\n",
+                                          popupMenu_wrapper=Html.Tag("div",{"class":"sublink2-popup"}) + "\n<hr>\n")
+
 
 FA_STAR = '<i class="fa fa-star" style="color: #9b7030;"></i>'
 
@@ -1405,7 +1413,7 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
-    yield from basePage.AddMenuAndYieldPages(filterMenu,**SUBMENU_STYLE)
+    yield from basePage.AddMenuAndYieldPages(filterMenu,**LONG_SUBMENU_STYLE)
 
 def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
     """Generate html containing a detailed list of all events."""
@@ -2102,9 +2110,7 @@ def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageI
 
     if makeMenu:
         basePage = Html.PageDesc()
-        yield from basePage.AddMenuAndYieldPages(aboutMenu,
-                                                menuClass=Html.PopupMenu,
-                                                popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup"}) + "<hr>")
+        yield from basePage.AddMenuAndYieldPages(aboutMenu,**EXTRA_MENU_STYLE)
     else:
         yield from aboutMenu
 
