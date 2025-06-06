@@ -184,7 +184,7 @@ def ResponsiveItem(wideHtml: str,thinHtml: str,changeOver: int,container:str = "
         if container:
             return "\n".join((Tag(container,{"class":f"hide-thin-screen-{changeOver}"})(wideHtml),
                               Tag(container,{"class":f"hide-wide-screen-{changeOver}"})(thinHtml)))
-        else: # If container is not given, the changeover is already encoded in the html
+        else: # If container is an empty string, the changeover is already encoded in the html
             return "\n".join((wideHtml,thinHtml))
     else:
         return wideHtml
@@ -517,7 +517,7 @@ def ListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,str,str
 
     return page
 
-def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,str,str|None,str]],*args,**kwdArgs):
+def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,str,str|None,str]],*args,**kwdArgs) -> PageDesc:
     """Create a list using the same parameters as ListWithHeadings and add a toggle-view opener/closer to each heading."""
     
     toggler = Tag("a")(Tag("i",{"class":"fa fa-minus-square toggle-view","id":"HEADING_ID"})())
@@ -542,3 +542,23 @@ def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,s
 
 
     return ListWithHeadings(items,WrapWithDivTag,headingWrapper=toggleHeading,*args,**kwdArgs)
+
+def TruncatedList(items: Iterable[str],alwaysShow:int = 1,truncateAfter:int = None,morePrompt:str = "details"):
+    """Concatenates the html strings in items. If items is longer than than truncateAfter,
+    show only the first alwaysShow items and include a toggle-view hide-self element to show the rest.
+    truncateAfter defaults to alwaysShow + 1.
+    Strings containing only whitespace are not counted."""
+    
+    if truncateAfter is None:
+        truncateAfter = alwaysShow + 1
+    items = [i for i in items if i.strip()]
+    if len(items) <= truncateAfter:
+        return "\n".join(items)
+    
+    promptID = Utils.slugify(morePrompt)
+
+    firstBlock = "\n".join(items[0:alwaysShow])
+    prompt = Tag("a",{"class":"toggle-view hide-self","id":promptID,"href":"#"},"i")(morePrompt + "...")
+    hiddenBlock = Tag("div",{"id":promptID + ".b","style":"display:none"})("\n".join(items[alwaysShow:]))
+
+    return "\n".join((firstBlock,prompt,hiddenBlock))

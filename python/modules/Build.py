@@ -1982,11 +1982,12 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
             # If all sessions have a title, list sessions by title
             a.hr()
             with a.div(Class="listing"):
+                lines = []
                 for s in sessions:
-                    with a.p():
-                        a(f"Session {s['sessionNumber']}:")
-                        with a.a(href = f"#{Database.ItemCode(s)}"):
-                            a(str(s['sessionTitle']))
+                    titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(str(s['sessionTitle']))
+                    lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}"))
+
+                a(Html.TruncatedList(lines,alwaysShow=3,morePrompt="Show all sessions"))
         else:
             squish = Airium(source_minify = True) # Temporarily eliminate whitespace in html code to fix minor glitches
             squish("Sessions:")
