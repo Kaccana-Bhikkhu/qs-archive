@@ -5,13 +5,12 @@ from __future__ import annotations
 from datetime import timedelta, datetime
 import copy
 import re, os,argparse
-from urllib.parse import urlparse
 from typing import BinaryIO
 import Alert
 import pathlib, posixpath
 from collections import Counter
 from collections.abc import Iterable
-from urllib.parse import urljoin,urlparse,quote,urlunparse
+from urllib.parse import urljoin,urlparse,quote,urlunparse,unquote
 import urllib.request, urllib.error
 from DjangoTextUtils import slugify, RemoveDiacritics
 from concurrent.futures import ThreadPoolExecutor
@@ -75,7 +74,7 @@ def OpenUrlOrFile(url:str) -> BinaryIO:
         url = QuotePath(url)
         return urllib.request.urlopen(url)
     else:
-        return open(url,"rb")
+        return open(unquote(url),"rb")
 
 def JavascriptLink(url:str) -> str:
     "Return Javascript code to jump to url."

@@ -149,7 +149,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupHomepage"
+                "CheckLinks"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
