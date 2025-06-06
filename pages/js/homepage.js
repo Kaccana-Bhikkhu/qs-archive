@@ -185,6 +185,12 @@ function configurePopupMenus(loadedFrame) {
             debugLog("Selection changed to",event.target.value);
         })
     }
+    for (let menu of loadedFrame.querySelectorAll(".sublink2-popup select")) {
+        menu.addEventListener("change",function (event) {
+            openLocalPage(event.target.value);
+            debugLog("Selection changed to",event.target.value);
+        })
+    }
 }
 
 export async function loadHomepage(loadedFrame) {
