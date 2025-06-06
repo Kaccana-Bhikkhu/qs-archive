@@ -1749,6 +1749,14 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         if "note" in tagInfo:
             with a.p():
                 a(tagInfo["note"])
+        
+        # Truncate lines in the header, then add the rest of the page
+        header = str(a)
+        headerChars = len(Utils.RemoveHtmlTags(header))
+        header = Html.TruncateHtmlText(str(a),alwaysShow = 2 if headerChars < 270 else 1,
+                                       morePrompt="details",hideWidth=1)
+        a = Airium()
+        a(header)
         a.hr()
         
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)

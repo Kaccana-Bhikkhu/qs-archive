@@ -15,6 +15,11 @@ import re
 import urllib.parse
 from bisect import bisect_right
 
+def CountLines(htmlText:str) -> int:
+    """Estimate the number of lines in htmlText"""
+
+    return len(re.findall(r"<br|<p|<div",htmlText,re.IGNORECASE)) + 1
+
 class Wrapper(NamedTuple):
     "A prefix and suffix to wrap an html object in."
     prefix: str = ""
@@ -543,11 +548,17 @@ def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,s
 
     return ListWithHeadings(items,WrapWithDivTag,headingWrapper=toggleHeading,*args,**kwdArgs)
 
-def TruncatedList(items: Iterable[str],alwaysShow:int = 1,truncateAfter:int = None,morePrompt:str = "details"):
+def TruncatedList(items: Iterable[str],alwaysShow:int = 1,
+                  truncateAfter:int = None,morePrompt:str = "details",hideWidth:int = 0,
+                  blockID:str = "",blockTag:str = "div"):
     """Concatenates the html strings in items. If items is longer than than truncateAfter,
     show only the first alwaysShow items and include a toggle-view hide-self element to show the rest.
     truncateAfter defaults to alwaysShow + 1.
-    Strings containing only whitespace are not counted."""
+    Strings containing only whitespace are not counted.
+    If hideWidth is specified, hide the details only on screens
+    smaller than this index (see hide-thin-screen-N in style.css).
+    blockID and blockTag apply to the hidden content block
+    """
     
     if truncateAfter is None:
         truncateAfter = alwaysShow + 1
@@ -555,10 +566,37 @@ def TruncatedList(items: Iterable[str],alwaysShow:int = 1,truncateAfter:int = No
     if len(items) <= truncateAfter:
         return "\n".join(items)
     
-    promptID = Utils.slugify(morePrompt)
+    promptID = blockID or Utils.slugify(morePrompt)
 
     firstBlock = "\n".join(items[0:alwaysShow])
-    prompt = Tag("a",{"class":"toggle-view hide-self","id":promptID,"href":"#"},"i")(morePrompt + "...")
-    hiddenBlock = Tag("div",{"id":promptID + ".b","style":"display:none"})("\n".join(items[alwaysShow:]))
+    prompt = Tag("a",{"class":"toggle-view hide-self" + (f" hide-wide-screen-{hideWidth}" if hideWidth else ""),
+                      "id":promptID,"href":"#"},"i")(morePrompt + "...")
+
+    attributes = {"id":promptID + ".b"}
+    if hideWidth:
+        attributes["class"] = f"hide-thin-screen-{hideWidth}"
+    else:
+        attributes["style"] = "display:none"
+    hiddenBlock = Tag(blockTag,attributes)("\n".join(items[alwaysShow:]))
 
     return "\n".join((firstBlock,prompt,hiddenBlock))
+
+def TruncateHtmlText(htmlText:str,alwaysShow:int = 1,truncateAfter:int = None,morePrompt:str = "show all",hideWidth:int = 0,blockID:str = ""):
+    """Similar to TruncatedList, but with html text. Lines must be broken by <br>"""
+
+    if truncateAfter is None:
+        truncateAfter = alwaysShow + 1
+    if CountLines(htmlText) <= truncateAfter:
+        return htmlText
+    else:
+        separatedText = re.split(r"<br[^>]*>",htmlText,maxsplit=alwaysShow,flags=re.IGNORECASE)
+        #separatedText = htmlText.split("<br>",maxsplit=alwaysShow) # Split out the first few lines
+        if len(separatedText) != alwaysShow + 1:
+            print("Only found",len(separatedText) - 1,"<br> tags. Cannot split this html text.")
+            return htmlText
+        
+        # Append <br> to all lines except the last to restore the line breaks.
+        for index in range(len(separatedText) - 1):
+            separatedText[index] += "<br>"
+
+        return TruncatedList(separatedText,alwaysShow=alwaysShow,truncateAfter=0,morePrompt=morePrompt,hideWidth=hideWidth,blockID=blockID)
