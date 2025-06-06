@@ -296,6 +296,7 @@ function setupNavMenuTriggers() {
     // Handle clicking the search button
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
         let inputBox = document.getElementById('floating-search-input');
+        inputBox.blur();
         let searchQuery = encodeURIComponent(inputBox.value);
         inputBox.value = "";
         debugLog('Search bar search for',searchQuery);

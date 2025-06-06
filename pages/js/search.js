@@ -783,7 +783,9 @@ function searchFromURL() {
 
 function searchButtonClick(searchKind) {
     // Read the search bar text, push the updated URL to history, and run a search.
-    let query = frame.querySelector('#search-text').value;
+    let searchInput = frame.querySelector('#search-text');
+    searchInput.blur();
+    let query = searchInput.value;
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
     let search = new URLSearchParams({q : encodeURIComponent(query),search : searchKind});
