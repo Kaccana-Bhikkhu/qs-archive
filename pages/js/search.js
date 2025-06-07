@@ -648,7 +648,7 @@ export class ExcerptSearcher extends PagedSearcher {
     itemsPerPage = 100; // The number of items to display per page.
         // itemsPerPage = 0 displays all items regardless of length.
         // The base class Searcher displays only one page.
-    divClass = "main"; // Enlcose the search results in a <div> tag with this class.
+    divClass = ""; // Enlcose the search results in a <div> tag with this class.
     sessionHeader = {};   // Contains rendered headers for each session.
 
     loadItemsFomDatabase(database) {

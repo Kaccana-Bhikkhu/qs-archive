@@ -215,6 +215,30 @@ p.indent-7 {
 	margin-left: 14em;
 }
 
+@media screen and (max-width: 600px) {
+	p.indent-1 {
+		margin-left: 1em;
+	}
+	p.indent-2 {
+		margin-left: 2em;
+	}
+	p.indent-3 {
+		margin-left: 3em;
+	}
+	p.indent-4 {
+		margin-left: 4em;
+	}
+	p.indent-5 {
+		margin-left: 5em;
+	}
+	p.indent-6 {
+		margin-left: 6em;
+	}
+	p.indent-7 {
+		margin-left: 7em;
+	}
+}
+
 span.excerpt-number {
 	text-decoration: underline;
 	font-weight: bold;
@@ -897,7 +921,6 @@ div.floating-search {
 
 	background-color: #f0f0f0;
 	color: #a68b55;
-	box-shadow: 0 2px #a68b5599;
 
 	transform: translateY(-120%);
 	transition: transform 200ms ease-out;
@@ -905,6 +928,7 @@ div.floating-search {
 
 div.floating-search.active {
 	transform: none;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 .floating-search form {
@@ -963,7 +987,7 @@ div.abhayagiri-grid-menu.active {
 	grid-template-rows: 1fr 18px;
 	column-gap: 3%;
 	row-gap: 0px;
-	box-shadow: 0 2px #a68b5599;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
 	transform: translateY(140%);
 	transition: transform 200ms ease-out;
