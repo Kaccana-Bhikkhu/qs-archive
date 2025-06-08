@@ -330,7 +330,7 @@ def DrilldownTemplate() -> pyratemp.Template:
                         # Add html links to the drilldown boxes that work without Javascript
 
                     hideCode = f"""$!'' if {index} in xTagIndexes else 'style="display: none;"'!$"""
-                    divTag = f'<div id="{drilldownID + ".b"}" class="no-padding" {hideCode}>'
+                    divTag = f'<div id="{drilldownID + ".b"}" {hideCode}>'
                 elif nextLevel < item["level"]:
                     divTag = "</div>" * (item["level"] - nextLevel)
             
@@ -2334,7 +2334,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                         pass
                 with a.span(style="text-decoration: underline;" if printPage else ""):
                     a(HtmlKeyTopicLink(topicCode,count=True))
-            with a.div(id=topicCode + ".b",Class="no-padding"):
+            with a.div(id=topicCode + ".b"):
                 for subtopic in topic["subtopics"]:
                     with a.p(Class="indent-1"):
                         subtags = list(Database.SubtagIterator(gDatabase["subtopic"][subtopic]))
