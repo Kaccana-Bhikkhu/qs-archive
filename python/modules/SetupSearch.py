@@ -153,8 +153,7 @@ def KeyTopicBlobs() -> Iterator[dict]:
                 Enclose(Blobify([topic["topic"]]),"^"),
                 Enclose(Blobify([topic["pali"]]),"<>")
                 ])],
-            "html": re.sub(r"\)$",f"{Build.FA_STAR})",Build.HtmlKeyTopicLink(topic["code"],count=True))
-                # Add a star before the last parenthesis to indicate these are featured excerpts.
+            "html": Build.HtmlKeyTopicLink(topic["code"],count=True)
         }
 
 def SubtopicBlob(subtopic:str) -> str:
@@ -178,15 +177,11 @@ def SubtopicBlobs() -> Iterator[dict]:
     for _,subtopic in alphabetizedSubtopics:
         s = gDatabase["subtopic"][subtopic]
 
-        if s["fTagCount"]:
-            fTagStr = f"{s['fTagCount']}{Build.FA_STAR}/"
-        else:
-            fTagStr = ""
         relevantCount = Database.CountExcerpts(Filter.MostRelevant(Database.SubtagIterator(s))(gDatabase["excerpts"]),countSessionExcerpts=True)
         
         htmlParts = [
             Build.HtmlSubtopicLink(subtopic).replace(".html","-relevant.html"),
-            f"({fTagStr}{relevantCount})"
+            f"({relevantCount})"
         ]
         if s["pali"]:
             htmlParts.insert(1,f"({s['pali']})")
@@ -225,7 +220,7 @@ def TagBlobs() -> Iterator[dict]:
     for _,tag in alphabetizedTags:
         yield {
             "blobs": [TagBlob(tag)],
-            "html": Build.TagDescription(gDatabase["tag"][tag],fullTag=True,drilldownLink=True,flags=Build.TagDescriptionFlag.SHOW_STAR)
+            "html": Build.TagDescription(gDatabase["tag"][tag],fullTag=True,drilldownLink=True)
         }
 
 def TeacherBlobs() -> Iterator[dict]:
