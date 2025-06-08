@@ -160,16 +160,16 @@ function highlightNavMenuItem() {
 
     const pagesWithin = { // regex matches to highlight each menu item
         "Home": /^homepage/,
-        "Key Topics ▾": /^topics|^cluster/,
-        "Tags ▾": /^tags|^drilldown|^dispatch\/Tags/,
-        "Events ▾": /^events|^dispatch\/Events/,
+        "Key": /^topics|^cluster/,
+        "Tags": /^tags|^drilldown|^dispatch\/Tags/,
+        "Events": /^events|^dispatch\/Events/,
         "About": /^about/
     }
 
     let openPage = framePage();
-    debugLog("Currently open:",openPage);
     for (let item of gNavBar.querySelector(".main-nav").querySelectorAll("li")) {
-        if (pagesWithin[item.querySelector("a").textContent].test(openPage))
+        let firstMenuWord = item.querySelector("a").textContent.match(/[a-zA-Z]*/)[0];
+        if (pagesWithin[firstMenuWord]?.test(openPage))
             item.classList.add("highlighted")
         else
             item.classList.remove("highlighted");
