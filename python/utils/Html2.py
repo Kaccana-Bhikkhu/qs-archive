@@ -17,8 +17,16 @@ from bisect import bisect_right
 
 def CountLines(htmlText:str) -> int:
     """Estimate the number of lines in htmlText"""
-
     return len(re.findall(r"<br|<p|<div",htmlText,re.IGNORECASE)) + 1
+
+def CountChars(htmlText:str, firstNLines:int = 0) -> int:
+    """Estimate the number of characters in htmlText.
+    If firstNLines is given, count charcters in only these lines."""
+
+    if firstNLines:
+        separatedText = re.split(r"<br[^>]*>",htmlText,maxsplit=firstNLines,flags=re.IGNORECASE)
+        htmlText = " ".join(separatedText[0:-1])
+    return len(Utils.RemoveHtmlTags(htmlText))
 
 class Wrapper(NamedTuple):
     "A prefix and suffix to wrap an html object in."
@@ -590,7 +598,6 @@ def TruncateHtmlText(htmlText:str,alwaysShow:int = 1,truncateAfter:int = None,mo
         return htmlText
     else:
         separatedText = re.split(r"<br[^>]*>",htmlText,maxsplit=alwaysShow,flags=re.IGNORECASE)
-        #separatedText = htmlText.split("<br>",maxsplit=alwaysShow) # Split out the first few lines
         if len(separatedText) != alwaysShow + 1:
             print("Only found",len(separatedText) - 1,"<br> tags. Cannot split this html text.")
             return htmlText

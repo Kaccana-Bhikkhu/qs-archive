@@ -1752,8 +1752,8 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         
         # Truncate lines in the header, then add the rest of the page
         header = str(a)
-        headerChars = len(Utils.RemoveHtmlTags(header))
-        header = Html.TruncateHtmlText(str(a),alwaysShow = 2 if headerChars < 270 else 1,
+        headerChars = Html.CountChars(header,firstNLines=2)
+        header = Html.TruncateHtmlText(str(a),alwaysShow = 2 if headerChars < 120 else 1,
                                        morePrompt="details",hideWidth=1)
         a = Airium()
         a(header)
@@ -2647,6 +2647,7 @@ def AddArguments(parser):
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")
     parser.add_argument('--skipSubsearchPages',**Utils.STORE_TRUE,help="Don't build subsearch pages")
+    parser.add_argument('--quickBuild',**Utils.STORE_TRUE,help="Shortcut for --buildOnlyFirstPage and --skipSubsearchPages")
 
     parser.add_argument('--excerptsPerPage',type=int,default=100,help='Maximum excerpts per page')
     parser.add_argument('--minSubsearchExcerpts',type=int,default=10,help='Create subsearch pages for pages with at least this many excerpts.')
@@ -2713,11 +2714,13 @@ def main():
             Alert.warning(f"Building only section(s) --buildOnly {gOptions.buildOnly}. This should be used only for testing and debugging purposes.")
         else:
             Alert.warning(f"No sections built due to --buildOnly none. This should be used only for testing and debugging purposes.")
-        
+    
+    if gOptions.quickBuild:
+        gOptions.buildOnlyFirstPage = gOptions.skipSubsearchPages = True
     limitedBuild = [opt for opt in ["buildOnlyIndexes","buildOnlyFirstPage","skipSubsearchPages"]
                     if getattr(gOptions,opt)]
     if limitedBuild:
-        Alert.warning("Limited build options",limitedBuild,"set. This should only be used for testing and debugging purposes.")
+        Alert.warning("Limited build options",limitedBuild,". This should only be used for testing and debugging purposes.")
 
     basePage = Html.PageDesc()
 
