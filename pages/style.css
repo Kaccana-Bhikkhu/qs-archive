@@ -285,10 +285,6 @@ div.featured p {
 	padding-left: 20px;
 }
 
-div.no-padding {
-	padding: 0px;
-}
-
 div#page-title {
 	margin: 20px;
 }
@@ -402,7 +398,6 @@ hr.dashed {
 p#cite-as {
 	font-size: 1em;
 }
-
 
 input {
 	font: 16px system-ui;
