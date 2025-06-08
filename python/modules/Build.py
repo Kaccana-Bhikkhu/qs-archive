@@ -2293,8 +2293,6 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
             else:
                 link = Utils.PosixJoin("../",topicDir,keyTopic["listFile"]) + "#" + gDatabase["tag"][tag]["htmlFile"].replace(".html","")
             text = gDatabase["subtopic"][tag]["displayAs"]
-            #if gDatabase["subtopic"][tag]["fTagCount"]:
-            #    text += f'&nbsp;{FA_STAR}'
             clusterLinks.append(Html.Tag("a",{"href":link})(text))
 
         clusterList = Html.Tag("p",{"class":"indent-1"})(" &emsp; ".join(clusterLinks))
@@ -2302,11 +2300,10 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
         if keyTopic["shortNote"]:
             clusterList = "\n".join([clusterList,Html.Tag("p",{"class":"indent-1"})(keyTopic["shortNote"])])
         heading = Html.Tag("a",{"href": Utils.PosixJoin("../",topicDir,keyTopic["listFile"])})(keyTopic["topic"])
-        heading += f" ({keyTopic['fTagCount']})"
         return heading,clusterList,keyTopic["code"]
 
     pageContent = Html.ToggleListWithHeadings(gDatabase["keyTopic"].values(),KeyTopicList,
-                                        bodyWrapper=f"Number of featured excerpts for each topic appears in parentheses.<br><br>" + Html.Tag("div",{"class":"listing"}),
+                                        bodyWrapper=Html.Tag("div",{"class":"listing"}),
                                         addMenu=False,betweenSections="\n")
 
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
