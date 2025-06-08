@@ -35,7 +35,7 @@ EXTRA_MENU_STYLE = BASE_MENU_STYLE | dict(menuClass=Html.ResponsivePopupMenu,
                                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink2-popup"}) + "\n<hr>\n")
 
 
-FA_STAR = '<i class="fa fa-star" style="color: #9b7030;"></i>'
+FA_STAR = '<i class="fa fa-star"></i>'
 
 def WriteIndentedTagDisplayList(fileName):
     with open(fileName,'w',encoding='utf-8') as file:
@@ -305,7 +305,7 @@ def DrilldownTemplate() -> pyratemp.Template:
         for index, item in enumerate(tagList):            
             bookmark = Utils.slugify(item["tag"] or item["name"])
             with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
-                itemHtml = HtmlTagListItem(item,showSubtagCount=True)
+                itemHtml = HtmlTagListItem(item,showSubtagCount=True,showStar=False)
                 
                 drilldownLink = ""
                 divTag = "" # These are start and end tags for the toggle-view divisions
@@ -504,7 +504,7 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
         storedNumber = tagList[0]["indexNumber"]
         tagList[0]["indexNumber"] = ""    # Temporarily remove any digit before the first entry.
-        content = IndentedHtmlTagList(tagList,showSubtagCount=False)
+        content = IndentedHtmlTagList(tagList,showSubtagCount=False,showStar = False)
         tagList[0]["indexNumber"] = storedNumber
 
         content = content.replace('class="indent-0">','class="indent-0" style="font-weight:bold;">')
@@ -535,7 +535,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     with a.div(Class="listing"):
         for tag in tagsSortedByQCount:
             with a.p():
-                a(TagDescription(gDatabase["tag"][tag],fullTag=True,flags=TagDescriptionFlag.COUNT_FIRST + TagDescriptionFlag.SHOW_STAR,drilldownLink=True))
+                a(TagDescription(gDatabase["tag"][tag],fullTag=True,flags=TagDescriptionFlag.COUNT_FIRST,drilldownLink=True))
     
     page = Html.PageDesc(info)
 
@@ -627,7 +627,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     def EnglishEntry(tag: dict,tagName: str,fullTag:bool=False,drilldownLink = True) -> _Alphabetize:
         "Return an entry for an English item in the alphabetized list"
         tagName = AlphabetizeName(tagName)
-        html = TagDescription(tag,fullTag=fullTag,listAs=tagName,drilldownLink=drilldownLink,flags = TagDescriptionFlag.SHOW_STAR)
+        html = TagDescription(tag,fullTag=fullTag,listAs=tagName,drilldownLink=drilldownLink)
         return Alphabetize(tagName,html)
 
     def NonEnglishEntry(tag: dict,fullTag:bool = False,drilldownLink = True) -> _Alphabetize:
@@ -635,7 +635,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
             text = tag["fullPali"]
         else:
             text = tag["pali"]
-        html = TagDescription(tag,fullTag,flags=TagDescriptionFlag.PALI_FIRST + TagDescriptionFlag.SHOW_STAR,drilldownLink=drilldownLink)
+        html = TagDescription(tag,fullTag,flags=TagDescriptionFlag.PALI_FIRST,drilldownLink=drilldownLink)
         return Alphabetize(text,html)
 
     entries = defaultdict(list)
@@ -675,7 +675,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
                     # File the abbreviated tag separately if it's not a simple truncation
             
             if re.match(slashPrefixes,tag["fullTag"]):
-                entries["english"].append(Alphabetize(tag["fullTag"],TagDescription(tag,fullTag=True,flags = TagDescriptionFlag.SHOW_STAR)))
+                entries["english"].append(Alphabetize(tag["fullTag"],TagDescription(tag,fullTag=True)))
                 # Alphabetize tags like History/Thailand under History/Thailand as well as Thailand, History
 
             if tag["pali"]: # Add an entry for foriegn language items
@@ -694,7 +694,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
                     entries["other"].append(entry)
             
             for translation in tag["alternateTranslations"]:
-                html = f"{translation} – alternative translation of {TagDescription(tag,fullTag=True,flags=TagDescriptionFlag.PALI_FIRST + TagDescriptionFlag.SHOW_STAR,drilldownLink=False)}"
+                html = f"{translation} – alternative translation of {TagDescription(tag,fullTag=True,flags=TagDescriptionFlag.PALI_FIRST,drilldownLink=False)}"
                 if LanguageTag(translation):
                     entries["other"].append(Alphabetize(translation,html))
                 else:
@@ -708,7 +708,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
             if paliGloss:
                 gloss = RemoveLanguageTag(gloss)
                 
-            html = f"{gloss} – see {TagDescription(tag,fullTag=True,flags = TagDescriptionFlag.SHOW_STAR)}"
+            html = f"{gloss} – see {TagDescription(tag,fullTag=True)}"
             if paliGloss:
                 entries["pali"].append(Alphabetize(gloss,html))
             elif LanguageTag(gloss):
@@ -723,13 +723,13 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
             continue
 
         subsumedUnder = gDatabase["tag"][subsumedTag["subsumedUnder"]]
-        referenceText = f" – see {TagDescription(subsumedUnder,fullTag=True,flags = TagDescriptionFlag.SHOW_STAR)}"
+        referenceText = f" – see {TagDescription(subsumedUnder,fullTag=True)}"
         
         if subsumedTag["tag"] != subsumedTag["pali"]:
-            entries["english"].append(Alphabetize(subsumedTag["fullTag"],TagDescription(subsumedTag,fullTag = True,link = False,flags = TagDescriptionFlag.SHOW_STAR) + referenceText))
+            entries["english"].append(Alphabetize(subsumedTag["fullTag"],TagDescription(subsumedTag,fullTag = True,link = False) + referenceText))
             if not AlphabetizeName(subsumedTag["fullTag"]).startswith(AlphabetizeName(subsumedTag["tag"])):
                 # File the abbreviated tag separately if it's not a simple truncation
-                entries["english"].append(Alphabetize(subsumedTag["tag"],TagDescription(subsumedTag,fullTag = False,link = False,flags = TagDescriptionFlag.SHOW_STAR) + referenceText))
+                entries["english"].append(Alphabetize(subsumedTag["tag"],TagDescription(subsumedTag,fullTag = False,link = False) + referenceText))
         
         hasPali = subsumedTag["pali"] and not LanguageTag(subsumedTag["fullPali"])
         if subsumedTag["pali"]:
@@ -2482,7 +2482,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         basePage.AppendContent(2*'<br>')
         basePage.AppendContent('</div>')
 
-        basePage.AppendContent(f"Numbers in parentheses: (featured excerpts{FA_STAR}/excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
+        basePage.AppendContent(f"Numbers in parentheses: (Excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
 
         rootPage = Html.PageDesc(contractAllItem)
         rootPage.AppendContent(EvaluateDrilldownTemplate())
