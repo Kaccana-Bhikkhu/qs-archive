@@ -71,7 +71,8 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "tags"
+                "tags",
+                "--buildOnlyFirstPage"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

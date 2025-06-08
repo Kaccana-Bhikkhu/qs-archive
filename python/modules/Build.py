@@ -1198,12 +1198,11 @@ class Formatter:
             
         return str(a)
 
-def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter: Formatter,itemLimit:int = 0,allItemsPage = False) -> Iterator[Html.PageAugmentorType]:
+def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter: Formatter,itemLimit:int = 0) -> Iterator[Html.PageAugmentorType]:
     """Split an excerpt list into multiple pages, yielding a series of PageAugmentorType objects
         basePage: Content of the page above the menu and excerpt list. Later pages add "-N" to the file name.
         excerpts, formatter: As in HtmlExcerptList
-        itemLimit: Limit lists to roughly this many items, but break pages only at session boundaries.
-        allItemsPage: Create a page with all items but without audio players that links back to the separate pages."""
+        itemLimit: Limit lists to roughly this many items, but break pages only at session boundaries."""
 
     pageNumber = 1
     menuItems = []
@@ -1211,18 +1210,17 @@ def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter:
     prevSession = None
     if itemLimit == 0:
         itemLimit = gOptions.excerptsPerPage
-    excerptPage:dict[str:str] = {}
-        # Keys are the mp3 file name of each excerpt; values are the html file the excerpt is listed in
-
+    
     def PageHtml() -> Html.PageAugmentorType:
         if pageNumber > 1:
             fileName = Utils.AppendToFilename(basePage.info.file,f"-{pageNumber}")
         else:
             fileName = basePage.info.file
         menuItem = Html.PageInfo(str(pageNumber),fileName,basePage.info.titleInBody)
-        pageHtml = formatter.HtmlExcerptList(excerptsInThisPage)
-
-        excerptPage.update((Database.ItemCode(x),fileName) for x in excerptsInThisPage)
+        if gOptions.buildOnlyFirstPage and pageNumber > 1:
+            pageHtml = ""
+        else:
+            pageHtml = formatter.HtmlExcerptList(excerptsInThisPage)
 
         return menuItem,(basePage.info._replace(file=fileName),pageHtml)
 
@@ -1239,13 +1237,6 @@ def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter:
     
     if excerptsInThisPage or not menuItems:
         menuItems.append(PageHtml())
-    
-    def LinkToPage(mp3Link:re.Match) -> str:
-        htmlPage = excerptPage.get(mp3Link[1],None)
-        if htmlPage:
-            return f'href="../{htmlPage}#{mp3Link[1]}"'
-        else:
-            return mp3Link[0]
 
     if len(menuItems) > 1:
         # Figure out which section in page contains the Menu object and copy it to the end of the page
@@ -1259,6 +1250,8 @@ def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter:
             bottomMenu.menu_keepScroll = False
             page.AppendContent(bottomMenu) # Duplicate the page menu at the bottom of the page
             yield page
+            if gOptions.buildOnlyFirstPage:
+                return
     else:
         clone = basePage.Clone()
         clone.AppendContent(menuItems[0][1][1])
@@ -1413,7 +1406,10 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
-    yield from basePage.AddMenuAndYieldPages(filterMenu,**LONG_SUBMENU_STYLE)
+    pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**LONG_SUBMENU_STYLE)
+    if gOptions.skipSubsearchPages:
+        pageIterator = Utils.SingleItemIterator(pageIterator,0)
+    yield from pageIterator
 
 def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
     """Generate html containing a detailed list of all events."""
@@ -1545,8 +1541,8 @@ def EventsMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
 
     listing = Html.Tag("div",{"class":"listing"})
     eventMenu = [
-        [subjectInfo,listing(ListEventsBySubject(gDatabase["event"].values()))],
         [seriesInfo,listing(ListEventsBySeries(gDatabase["event"].values()))],
+        [subjectInfo,listing(ListEventsBySubject(gDatabase["event"].values()))],
         [chronologicalInfo,listing(ListEventsByYear(gDatabase["event"].values()))],
         [detailInfo,listing(ListDetailedEvents(gDatabase["event"].values()))],
         [Html.PageInfo("About event series","about/Event-series.html")],
@@ -1660,9 +1656,13 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             FilteredTagMenuItem(tagExcerpts,Filter.SingleItemMatch(Filter.Tag(tags),Filter.Kind("Reference")),"References")
         ]
 
+        hasEventsPage = bool(filterMenu[0])
         filterMenu = [f for f in filterMenu if f] # Remove blank menu items
         if len(filterMenu) > 1:
-            yield from map(LinkToTeacherPage,basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE))
+            pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE)
+            if gOptions.skipSubsearchPages: # Write only the main page if this is the case
+                pageIterator = Utils.SingleItemIterator(pageIterator,1 if hasEventsPage else 0)
+            yield from map(LinkToTeacherPage,pageIterator)
             return
     
     basePage.AppendContent("",newSection=True)
@@ -1835,7 +1835,10 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
             ]
 
             filterMenu = [f for f in filterMenu if f] # Remove blank menu items
-            yield from map(LinkToTagPage,basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE))
+            pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE)
+            if gOptions.skipSubsearchPages:
+                pageIterator = Utils.SingleItemIterator(pageIterator,0)
+            yield from map(LinkToTagPage,pageIterator)
         else:
             yield from map(LinkToTagPage,MultiPageExcerptList(basePage,relevantExcerpts,formatter))
 
@@ -1921,10 +1924,10 @@ def TeacherMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
 
     listing = Html.Tag("div",{"class":"listing"})
     teacherMenu = [
-        [alphabeticalInfo,listing(ListTeachersAlphabetical(teachersInUse))],
-        [chronologicalInfo,listing(ListTeachersChronological(teachersInUse))],
         [lineageInfo,listing(ListTeachersLineage(teachersInUse))],
         [excerptInfo,listing(ListTeachersByExcerpts(teachersInUse))],
+        [alphabeticalInfo,listing(ListTeachersAlphabetical(teachersInUse))],
+        [chronologicalInfo,listing(ListTeachersChronological(teachersInUse))],
         TeacherPages("teachers")
     ]
 
@@ -2503,9 +2506,9 @@ def TagMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
 
     tagMenu = [
         TagHierarchyMenu(indexDir,drilldownDir),
-        AlphabeticalTagList(indexDir),
         NumericalTagList(indexDir),
         MostCommonTagList(indexDir),
+        AlphabeticalTagList(indexDir),
         [Html.PageInfo("About tags","about/Tags.html")],
         TagPages("tags")
     ]
@@ -2642,7 +2645,9 @@ def AddArguments(parser):
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
-    
+    parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")
+    parser.add_argument('--skipSubsearchPages',**Utils.STORE_TRUE,help="Don't build subsearch pages")
+
     parser.add_argument('--excerptsPerPage',type=int,default=100,help='Maximum excerpts per page')
     parser.add_argument('--minSubsearchExcerpts',type=int,default=10,help='Create subsearch pages for pages with at least this many excerpts.')
     parser.add_argument('--attributeAll',**Utils.STORE_TRUE,help="Attribute all excerpts; mostly for debugging")
@@ -2708,6 +2713,11 @@ def main():
             Alert.warning(f"Building only section(s) --buildOnly {gOptions.buildOnly}. This should be used only for testing and debugging purposes.")
         else:
             Alert.warning(f"No sections built due to --buildOnly none. This should be used only for testing and debugging purposes.")
+        
+    limitedBuild = [opt for opt in ["buildOnlyIndexes","buildOnlyFirstPage","skipSubsearchPages"]
+                    if getattr(gOptions,opt)]
+    if limitedBuild:
+        Alert.warning("Limited build options",limitedBuild,"set. This should only be used for testing and debugging purposes.")
 
     basePage = Html.PageDesc()
 
@@ -2749,8 +2759,9 @@ def main():
         WriteIndexPage(writer)
         WriteRedirectPages(writer)
         Alert.extra("html files:",writer.StatusSummary())
-        if gOptions.buildOnly == gAllSections and writer.Count(FileRegister.Status.STALE):
-            Alert.extra("stale files:",writer.FilesWithStatus(FileRegister.Status.STALE))
-        if not gOptions.keepOldHtmlFiles and not gOptions.buildOnlyIndexes:
-            DeleteUnwrittenHtmlFiles(writer)
+        if not limitedBuild:
+            if gOptions.buildOnly == gAllSections and writer.Count(FileRegister.Status.STALE):
+                Alert.extra("stale files:",writer.FilesWithStatus(FileRegister.Status.STALE))
+            if not gOptions.keepOldHtmlFiles:
+                DeleteUnwrittenHtmlFiles(writer)
     

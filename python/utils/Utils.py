@@ -37,6 +37,14 @@ def Duplicates(source: Iterable) -> list:
     itemCount = Counter(source)
     return [item for item,count in itemCount.items() if count > 1]
 
+def SingleItemIterator(source: Iterable,itemNumber: int) -> Iterable:
+    "Return an iterator that takes a single indexed item from source"
+
+    iterator = iter(source)
+    for _ in range(itemNumber):
+        next(iterator)
+    return (next(iterator),)
+
 def PosixToNative(path:str) -> str:
     return str(pathlib.PurePath(pathlib.PurePosixPath(path)))
 
