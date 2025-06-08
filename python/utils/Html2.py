@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import NamedTuple, TypeVar, Union
+from typing import NamedTuple, TypeVar, Union, Type
 import pyratemp
+from airium import Airium
 import itertools
 from pathlib import Path
 from collections.abc import Iterator, Iterable, Callable
@@ -12,6 +13,20 @@ import copy
 import Utils
 import re
 import urllib.parse
+from bisect import bisect_right
+
+def CountLines(htmlText:str) -> int:
+    """Estimate the number of lines in htmlText"""
+    return len(re.findall(r"<br|<p|<div",htmlText,re.IGNORECASE)) + 1
+
+def CountChars(htmlText:str, firstNLines:int = 0) -> int:
+    """Estimate the number of characters in htmlText.
+    If firstNLines is given, count charcters in only these lines."""
+
+    if firstNLines:
+        separatedText = re.split(r"<br[^>]*>",htmlText,maxsplit=firstNLines,flags=re.IGNORECASE)
+        htmlText = " ".join(separatedText[0:-1])
+    return len(Utils.RemoveHtmlTags(htmlText))
 
 class Wrapper(NamedTuple):
     "A prefix and suffix to wrap an html object in."
@@ -96,7 +111,11 @@ class Menu(Renderable):
     menu_highlightTags:Wrapper
     menu_keepScroll: bool
 
-    def __init__(self,items: list[PageInfo],highlightedItem:int|None = None,separator:int|str = " &emsp; ",highlight:dict=dict(style="font-weight:bold;text-decoration: underline;",),wrapper:Wrapper = Wrapper()) -> None:
+    def __init__(self,items: list[PageInfo],
+                 highlightedItem:int|None = None,
+                 separator:int|str = " &emsp; ",
+                 highlight:dict=dict(style="font-weight:bold;text-decoration: underline;"),
+                 wrapper:Wrapper = Wrapper()) -> None:
         """items: a list of PageInfo objects containing the menu text (title) and html link (file) of each menu item.
         highlightedItem: which (if any) of the menu items is highlighted.
         separator: html code between each menu item; defaults to an em space.
@@ -142,6 +161,76 @@ class Menu(Renderable):
         for n,item in enumerate(self.items):
             if item.file == itemFileName:
                 self.menu_highlightedItem = n
+
+class PopupMenu(Menu):
+    """Creates a popup menu using the <select> tag that links to the pages specified in items.
+    Requires Javascript in order to operate."""
+    popupMenu_wrapper: Wrapper
+
+    def __init__(self,items: list[PageInfo],highlightedItem:int|None = None,popupMenu_wrapper:Wrapper = Wrapper()):
+        self.items = items
+        self.menu_highlightedItem = highlightedItem
+        self.popupMenu_wrapper = popupMenu_wrapper
+    
+    def __str__(self) -> str:
+        """Return an html string corresponding to the rendered menu."""
+        a = Airium()
+
+        with a.select():
+            for n,item in enumerate(self.items):
+                highlight = {}
+                if n == self.menu_highlightedItem:
+                    highlight = dict(selected="selected")
+                with a.option(value=item.file,**highlight):
+                    a(item.title)
+        
+        return self.popupMenu_wrapper(str(a))
+
+def ResponsiveItem(wideHtml: str,thinHtml: str,changeOver: int,container:str = "div") -> str:
+    """Return html code that switches between wideHtml and thinHtml at the point specified by changeOver.
+    wideHtml: html code in case of wide screen
+    thinHtml: html code in case of thin screen
+    changeOver: the changeover point; see style.css for 
+    container: the html element for the container"""
+
+    if changeOver:
+        if container:
+            return "\n".join((Tag(container,{"class":f"hide-thin-screen-{changeOver}"})(wideHtml),
+                              Tag(container,{"class":f"hide-wide-screen-{changeOver}"})(thinHtml)))
+        else: # If container is an empty string, the changeover is already encoded in the html
+            return "\n".join((wideHtml,thinHtml))
+    else:
+        return wideHtml
+
+
+class ResponsivePopupMenu(Menu):
+    """Create both a popup menu and a classic text bar menu.
+    Use hide-thin-screen-N classes to show only one menu depending on screen width."""
+    popupMenu_wrapper: Wrapper
+    responsiveContainer: str
+
+    def __init__(self,items: list[PageInfo],
+                 highlightedItem:int|None = None,
+                 separator:int|str = " &emsp; ",
+                 highlight:dict=dict(style="font-weight:bold;text-decoration: underline;"),
+                 wrapper:Wrapper = Wrapper(),
+                 popupMenu_wrapper:Wrapper = Wrapper(),
+                 responsiveContainer = "div") -> None:
+        """items: a list of PageInfo objects containing the menu text (title) and html link (file) of each menu item.
+        highlightedItem: which (if any) of the menu items is highlighted.
+        separator: html code between each menu item; defaults to an em space.
+        highlight: a dictionary of attributes to apply to the highlighted menu item.
+        wrapper: html to insert before and after the menu.
+        popupMenu_wrapper: html to insert before and after the <select> popup menu
+        """
+        super().__init__(items,highlightedItem,separator,highlight,wrapper)
+        self.popupMenu_wrapper = popupMenu_wrapper
+        self.responsiveContainer = responsiveContainer
+    
+    def __str__(self):
+        changeOver = bisect_right((3,6,9,11),len(self.items))
+        return ResponsiveItem(super().__str__(),PopupMenu.__str__(self),changeOver,container=self.responsiveContainer)
+        
 
 # Use Union[] to maintain compatibility with Python 3.9
 PageAugmentorType = Union[str,tuple[PageInfo,str],"PageDesc"]
@@ -303,7 +392,10 @@ class PageDesc(Renderable):
         with open(filePath,'w',encoding='utf-8') as file:
             print(pageHtml,file=file)
 
-    def _PagesFromMenuGenerators(self,menuGenerators: Iterable[PageGeneratorMenuItem],menuSection:str|None = None,**menuStyle) -> Iterator[PageDesc]:
+    def _PagesFromMenuGenerators(self,menuGenerators: Iterable[PageGeneratorMenuItem],
+                                 menuSection:str|None = None,
+                                 menuClass:Type=Menu,
+                                 **menuStyle) -> Iterator[PageDesc]:
         """Generate a series of PageDesc objects from a list of functions that each describe one item in a menu.
         self: The page we have constructed so far.
         menuGenerators: An iterable (often a list) of generator functions, each of which describes a menu item and its associated pages.
@@ -311,6 +403,8 @@ class PageDesc(Renderable):
             Each generator function (optionally) first yields a PageInfo object containing the menu title and link.
             Next it yields a series of PageDesc objects which have been cloned from basePage plus the menu.
             An empty generator means that no menu item is generated.
+        menuSection is the section to add the menu to
+        menuClass is the class of menu to use
         AddMenuAndYieldPages is a simpler version of this function."""
         
         menuGenerators = [m(self) for m in menuGenerators] # Initialize the menu iterators
@@ -321,7 +415,7 @@ class PageDesc(Renderable):
         menuGenerators = [m for m,item in zip(menuGenerators,menuItems) if item]
         menuItems = [item for item in menuItems if item]
 
-        menuSection = self.AppendContent(Menu(menuItems,**menuStyle),section=menuSection)
+        menuSection = self.AppendContent(menuClass(menuItems,**menuStyle),section=menuSection)
 
         for itemNumber,menuIterator in enumerate(menuGenerators):
             self.section[menuSection].menu_highlightedItem = itemNumber
@@ -331,7 +425,10 @@ class PageDesc(Renderable):
         for morePages in generatorsWithNoAssociatedMenuItem:
             yield from morePages
 
-    def AddMenuAndYieldPages(self,menuDescriptors: Iterable[PageGeneratorMenuItem | PageDescriptorMenuItem],menuSection:str|None = None,**menuStyle) -> Iterator[PageDesc]:
+    def AddMenuAndYieldPages(self,menuDescriptors: Iterable[PageGeneratorMenuItem | PageDescriptorMenuItem],
+                             menuSection:str|None = None,
+                             menuClass:Type=Menu,
+                             **menuStyle) -> Iterator[PageDesc]:
         """Add a menu described by the first item yielded by each item in menuDescriptors.
         Then generate a series of PageDesc objects from the remaining iterator items in menuDescriptors.
         this: The page we have constructed so far.
@@ -363,7 +460,7 @@ class PageDesc(Renderable):
             # See https://docs.python.org/3.4/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result 
             # and https://stackoverflow.com/questions/452610/how-do-i-create-a-list-of-lambdas-in-a-list-comprehension-for-loop 
             # for why we need to use m = m.
-        yield from self._PagesFromMenuGenerators(menuFunctions,menuSection=menuSection,**menuStyle)
+        yield from self._PagesFromMenuGenerators(menuFunctions,menuSection=menuSection,menuClass=menuClass,**menuStyle)
 
 
 ITEM_NO_COUNT = "<!--NO_COUNT-->" # Don't count an item with this in htmlBody 
@@ -433,7 +530,7 @@ def ListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,str,str
 
     return page
 
-def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,str,str|None,str]],*args,**kwdArgs):
+def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,str,str|None,str]],*args,**kwdArgs) -> PageDesc:
     """Create a list using the same parameters as ListWithHeadings and add a toggle-view opener/closer to each heading."""
     
     toggler = Tag("a")(Tag("i",{"class":"fa fa-minus-square toggle-view","id":"HEADING_ID"})())
@@ -452,9 +549,61 @@ def ToggleListWithHeadings(items: list[T],itemRenderer: Callable[[T],tuple[str,s
             headingID = textHeading
         headingID = Utils.slugify(headingID)
 
-        htmlBody = Tag("div",{"id":headingID + ".b","class":"no-padding"})(htmlBody)
+        htmlBody = Tag("div",{"id":headingID + ".b"})(htmlBody)
 
         return htmlHeading,htmlBody,headingID,textHeading
 
 
     return ListWithHeadings(items,WrapWithDivTag,headingWrapper=toggleHeading,*args,**kwdArgs)
+
+def TruncatedList(items: Iterable[str],alwaysShow:int = 1,
+                  truncateAfter:int = None,morePrompt:str = "details",hideWidth:int = 0,
+                  blockID:str = "",blockTag:str = "div"):
+    """Concatenates the html strings in items. If items is longer than than truncateAfter,
+    show only the first alwaysShow items and include a toggle-view hide-self element to show the rest.
+    truncateAfter defaults to alwaysShow + 1.
+    Strings containing only whitespace are not counted.
+    If hideWidth is specified, hide the details only on screens
+    smaller than this index (see hide-thin-screen-N in style.css).
+    blockID and blockTag apply to the hidden content block
+    """
+    
+    if truncateAfter is None:
+        truncateAfter = alwaysShow + 1
+    items = [i for i in items if i.strip()]
+    if len(items) <= truncateAfter:
+        return "\n".join(items)
+    
+    promptID = blockID or Utils.slugify(morePrompt)
+
+    firstBlock = "\n".join(items[0:alwaysShow])
+    prompt = Tag("a",{"class":"toggle-view hide-self" + (f" hide-wide-screen-{hideWidth}" if hideWidth else ""),
+                      "id":promptID,"href":"#"},"i")(morePrompt + "...")
+
+    attributes = {"id":promptID + ".b"}
+    if hideWidth:
+        attributes["class"] = f"hide-thin-screen-{hideWidth}"
+    else:
+        attributes["style"] = "display:none"
+    hiddenBlock = Tag(blockTag,attributes)("\n".join(items[alwaysShow:]))
+
+    return "\n".join((firstBlock,prompt,hiddenBlock))
+
+def TruncateHtmlText(htmlText:str,alwaysShow:int = 1,truncateAfter:int = None,morePrompt:str = "show all",hideWidth:int = 0,blockID:str = ""):
+    """Similar to TruncatedList, but with html text. Lines must be broken by <br>"""
+
+    if truncateAfter is None:
+        truncateAfter = alwaysShow + 1
+    if CountLines(htmlText) <= truncateAfter:
+        return htmlText
+    else:
+        separatedText = re.split(r"<br[^>]*>",htmlText,maxsplit=alwaysShow,flags=re.IGNORECASE)
+        if len(separatedText) != alwaysShow + 1:
+            print("Only found",len(separatedText) - 1,"<br> tags. Cannot split this html text.")
+            return htmlText
+        
+        # Append <br> to all lines except the last to restore the line breaks.
+        for index in range(len(separatedText) - 1):
+            separatedText[index] += "<br>"
+
+        return TruncatedList(separatedText,alwaysShow=alwaysShow,truncateAfter=0,morePrompt=morePrompt,hideWidth=hideWidth,blockID=blockID)

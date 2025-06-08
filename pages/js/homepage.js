@@ -1,7 +1,7 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
 // Both pages rely on ./assets/Homepage.json
 
-import {configureLinks, openLocalPage} from './frame.js';
+import {configureLinks, openLocalPage, framePage} from './frame.js';
 
 const DEBUG = false;
 
@@ -155,7 +155,45 @@ class MeditationTimer {
     }
 }
 
-export async function loadHomepage() {
+function highlightNavMenuItem() {
+    // Highlight items in the main nav menu if the appropriate page is loaded
+
+    const pagesWithin = { // regex matches to highlight each menu item
+        "Home": /^homepage/,
+        "Key": /^topics|^cluster/,
+        "Tags": /^tags|^drilldown|^dispatch\/Tags/,
+        "Events": /^events|^dispatch\/Events/,
+        "About": /^about/
+    }
+
+    let openPage = framePage();
+    for (let item of gNavBar.querySelector(".main-nav").querySelectorAll("li")) {
+        let firstMenuWord = item.querySelector("a").textContent.match(/[a-zA-Z]*/)[0];
+        if (pagesWithin[firstMenuWord]?.test(openPage))
+            item.classList.add("highlighted")
+        else
+            item.classList.remove("highlighted");
+    }
+}
+
+function configurePopupMenus(loadedFrame) {
+    // Set triggers for select.sublink-dropdown items on the page
+
+    for (let menu of loadedFrame.querySelectorAll(".sublink-popup select")) {
+        menu.addEventListener("change",function (event) {
+            openLocalPage(event.target.value);
+            debugLog("Selection changed to",event.target.value);
+        })
+    }
+    for (let menu of loadedFrame.querySelectorAll(".sublink2-popup select")) {
+        menu.addEventListener("change",function (event) {
+            openLocalPage(event.target.value);
+            debugLog("Selection changed to",event.target.value);
+        })
+    }
+}
+
+export async function loadHomepage(loadedFrame) {
     // Called every time a page is loaded.
     // Load gHomepageDatabase and wire the needed elements
 
@@ -171,6 +209,9 @@ export async function loadHomepage() {
         });
         initializeTodaysExcerpt()
     }
+
+    highlightNavMenuItem();
+    configurePopupMenus(loadedFrame);
 
     // This code runs only for search/Featured.html
     let prevButton = document.getElementById("random-prev");
@@ -261,6 +302,7 @@ function setupNavMenuTriggers() {
     // Handle clicking the search button
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
         let inputBox = document.getElementById('floating-search-input');
+        inputBox.blur();
         let searchQuery = encodeURIComponent(inputBox.value);
         inputBox.value = "";
         debugLog('Search bar search for',searchQuery);

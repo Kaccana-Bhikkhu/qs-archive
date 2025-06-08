@@ -5,13 +5,12 @@ from __future__ import annotations
 from datetime import timedelta, datetime
 import copy
 import re, os,argparse
-from urllib.parse import urlparse
 from typing import BinaryIO
 import Alert
 import pathlib, posixpath
 from collections import Counter
 from collections.abc import Iterable
-from urllib.parse import urljoin,urlparse,quote,urlunparse
+from urllib.parse import urljoin,urlparse,quote,urlunparse,unquote
 import urllib.request, urllib.error
 from DjangoTextUtils import slugify, RemoveDiacritics
 from concurrent.futures import ThreadPoolExecutor
@@ -37,6 +36,14 @@ def Duplicates(source: Iterable) -> list:
     "Return a list of the items which appear more than once in source."
     itemCount = Counter(source)
     return [item for item,count in itemCount.items() if count > 1]
+
+def SingleItemIterator(source: Iterable,itemNumber: int) -> Iterable:
+    "Return an iterator that takes a single indexed item from source"
+
+    iterator = iter(source)
+    for _ in range(itemNumber):
+        next(iterator)
+    return (next(iterator),)
 
 def PosixToNative(path:str) -> str:
     return str(pathlib.PurePath(pathlib.PurePosixPath(path)))
@@ -75,7 +82,7 @@ def OpenUrlOrFile(url:str) -> BinaryIO:
         url = QuotePath(url)
         return urllib.request.urlopen(url)
     else:
-        return open(url,"rb")
+        return open(unquote(url),"rb")
 
 def JavascriptLink(url:str) -> str:
     "Return Javascript code to jump to url."

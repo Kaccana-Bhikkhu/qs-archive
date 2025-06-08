@@ -271,7 +271,7 @@ def EventBlobs() -> Iterator[dict]:
 
         lines = [
             f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
-            Build.ItemList([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers])
+            Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers]),lastJoinStr = " and ")
         ]
 
         yield {

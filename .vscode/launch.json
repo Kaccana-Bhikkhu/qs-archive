@@ -71,7 +71,8 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "events"
+                "tags",
+                "--quickBuild"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -149,7 +150,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupHomepage"
+                "CheckLinks"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

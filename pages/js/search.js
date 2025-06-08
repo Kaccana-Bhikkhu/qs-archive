@@ -531,8 +531,8 @@ class TruncatedSearcher extends Searcher {
             firstItems = this.renderItems(0,this.truncateAt - 1);
             let moreItemsBody = this.renderItems(this.truncateAt - 1);
             moreItems = ` 
-            <a class="toggle-view hide-self" id="${resultsId}-more"><i>Show all ${this.foundItems.length}...</i></a>
-            <div class="no-padding" id="${resultsId}-more.b" style="display:none;">
+            <a class="toggle-view hide-self" id="${resultsId}-more" href="#"><i>Show all ${this.foundItems.length}...</i></a>
+            <id="${resultsId}-more.b" style="display:none;">
             ${moreItemsBody}
             </div>
             `;
@@ -648,7 +648,7 @@ export class ExcerptSearcher extends PagedSearcher {
     itemsPerPage = 100; // The number of items to display per page.
         // itemsPerPage = 0 displays all items regardless of length.
         // The base class Searcher displays only one page.
-    divClass = "main"; // Enlcose the search results in a <div> tag with this class.
+    divClass = ""; // Enlcose the search results in a <div> tag with this class.
     sessionHeader = {};   // Contains rendered headers for each session.
 
     loadItemsFomDatabase(database) {
@@ -755,58 +755,6 @@ class MultiSearcher {
     }
 }
 
-class RandomSearcher extends Searcher {
-    // A search interface that returns a random excerpt regardless of the search input.
-    randomExcerptNumber = 0;
-
-    constructor() {
-        super("random","random excerpt");
-    }
-
-    search(searchQuery,pressedRandomButton) {
-        // Priority #1: Featured excerpt from search query.
-        // #N means display featured excerpt number N.
-        let itemNumber = document.getElementById('search-text').value.match(/#[0-9]+$/);
-        if (itemNumber) {
-            itemNumber = Number(itemNumber[0].slice(1));
-
-            let prevRandomNumber = document.getElementById("message").innerHTML.match(/#[0-9]+:$/);
-            if (prevRandomNumber) {
-                prevRandomNumber = Number(prevRandomNumber[0].slice(1,-1));
-                if ((itemNumber == prevRandomNumber) && pressedRandomButton) { // Generate a new random number if the query matches what we're already displaying.
-                    itemNumber = 0;
-                    document.getElementById('search-text').value = "";
-                }
-            }
-        }
-
-        let params = frameSearch();
-        // Priority #2: Featured excerpt from ?random=N URL params.
-        if (!itemNumber) {
-            itemNumber = params.has("random") ? Number(decodeURIComponent(params.get("random"))) : 0;
-        }
-
-        if (!itemNumber) {// If neither are specified, then generate a new one
-            itemNumber = Math.floor(Math.random() * this.items.excerpts.length) + 1;
-            params.set("random",String(itemNumber));
-            setFrameSearch(params);
-        }
-        itemNumber = modulus(itemNumber - 1,this.items.excerpts.length) + 1;
-
-        this.randomExcerptNumber = itemNumber;
-        this.foundItems = [this.items.excerpts[itemNumber - 1]];
-    }
-
-    renderItems(startItem=0,endItem=null) {
-        // Return our single found item
-        return this.foundItems[0].html;
-    }
-
-    showResults(message="") {
-        displaySearchResults(`Featured excerpt #${this.randomExcerptNumber}:`,this.htmlSearchResults())
-    }
-}
-
 function searchFromURL() {
     // Find excerpts matching the search query from the page URL.
     if (!gSearchDatabase) {
@@ -818,16 +766,10 @@ function searchFromURL() {
     let query = params.has("q") ? decodeURIComponent(params.get("q")) : "";
     let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
 
-    if (/#[0-9]+$/.test(query.trim())) { // '#NN' selects a specific featured excerpt.
-        gSearchers["random"].search("",searchKind == "random");
-        gSearchers["random"].showResults();
-        return;
-    }
-
     debugLog("Called searchFromURL. Query:",query);
     frame.querySelector('#search-text').value = query;
 
-    if (!query.trim() && searchKind != "random") {
+    if (!query.trim()) {
         clearSearchResults();
         return;
     }
@@ -841,7 +783,9 @@ function searchFromURL() {
 
 function searchButtonClick(searchKind) {
     // Read the search bar text, push the updated URL to history, and run a search.
-    let query = frame.querySelector('#search-text').value;
+    let searchInput = frame.querySelector('#search-text');
+    searchInput.blur();
+    let query = searchInput.value;
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
     let search = new URLSearchParams({q : encodeURIComponent(query),search : searchKind});
@@ -868,6 +812,5 @@ let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("t","teacher",5),
         new TruncatedSearcher("e","event",3),
         new ExcerptSearcher()
-    ),
-    "random": new RandomSearcher()
+    )
 };

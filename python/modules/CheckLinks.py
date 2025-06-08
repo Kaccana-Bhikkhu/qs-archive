@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import os
+import re
 import Utils, Alert, Link
 from typing import NamedTuple, Iterable
 from bs4 import BeautifulSoup
@@ -55,6 +56,19 @@ def ScanPageForLinks(url: str) -> list[str]:
     
     return urlsToCheck
 
+def CheckFileCase(posixPath: str):
+    """Check for case inconsistencies in posixPath relative to the (potentially case-insensiteve) local file system."""
+
+    posixParts = posixPath.split("/")
+    realParts = re.split(r"[\\/]",os.path.realpath(posixPath))
+
+    for p,r in zip(reversed(posixParts),reversed(realParts)):
+        if p != r and p != "." and r != ".":
+            Alert.warning("Case mismatch between URL",posixPath,"and file on disk",os.path.realpath(posixPath))
+            print("path:",p)
+            print("disk:",r)
+            return
+
 def CheckUrl(url:str) -> UrlInfo:
     """Check a URL if we haven't already done so."""
     if url in gCheckedUrl:
@@ -68,6 +82,8 @@ def CheckUrl(url:str) -> UrlInfo:
     url = urllib.parse.urlunparse(parsed._replace(fragment=""))
 
     try:
+        if not Utils.RemoteURL(url):
+            CheckFileCase(url)
         with Utils.OpenUrlOrFile(url) as page:
             if htmlFile and fragmentToCheck:
                 soup = BeautifulSoup(page,"html.parser")
@@ -113,6 +129,16 @@ def main() -> None:
         [Utils.PosixJoin(gOptions.pagesDir,"about",filename) for filename in aboutUrls]
     urlsToCheck = set()
     for url in aboutUrls:
+        urlsToCheck.update(ScanPageForLinks(url))
+    
+    Alert.info(len(urlsToCheck),"urls to check.")
+    CheckUrls(urlsToCheck)
+
+    Alert.info("Checking dispatch pages...")
+    dispatchUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"dispatch")) if filename.lower().endswith(".html")]
+    dispatchUrls = [Utils.PosixJoin(gOptions.pagesDir,"dispatch",filename) for filename in dispatchUrls]
+    urlsToCheck = set()
+    for url in dispatchUrls:
         urlsToCheck.update(ScanPageForLinks(url))
     
     Alert.info(len(urlsToCheck),"urls to check.")

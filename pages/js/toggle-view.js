@@ -16,11 +16,14 @@ function setVisible(element,newVisible,changeURL) {
         return;
 
     if (element.classList.contains("hide-self")) { // Hide ourselves when showing the body
-        body.style.display = "block";
+        body.style.display = "";
         element.style.display = "none";
+        for (let n = 1; n <= 4; n++) {
+            body.classList.remove(`hide-thin-screen-${n}`) // Remove width-conditional hiding classes
+        }
     } else {
         if (body.style.display == "none") {
-            body.style.display = "block";
+            body.style.display = "";
             element.className = "fa fa-minus-square toggle-view";
         } else {
             body.style.display = "none";
