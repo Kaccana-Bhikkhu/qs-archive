@@ -532,7 +532,7 @@ class TruncatedSearcher extends Searcher {
             let moreItemsBody = this.renderItems(this.truncateAt - 1);
             moreItems = ` 
             <a class="toggle-view hide-self" id="${resultsId}-more" href="#"><i>Show all ${this.foundItems.length}...</i></a>
-            <id="${resultsId}-more.b" style="display:none;">
+            <div id="${resultsId}-more.b" style="display:none;">
             ${moreItemsBody}
             </div>
             `;
