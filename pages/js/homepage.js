@@ -3,26 +3,39 @@
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 
-const DEBUG = false;
+const DEBUG = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
-let gCurrentExcerpt = 0; // The featured excerpt currently displayed on search/Featured.html
+let gSearchFeaturedOffset = 0; // The featured excerpt currently displayed on search/Featured.html
 
-function initializeTodaysExcerpt() {
+function calendarModulus(index) {
+    // Return index modulo the length of the calendar
+
+    let excerptCount = gFeaturedDatabase.calendar.length;
+    return ((index % excerptCount) + excerptCount) % excerptCount;
+}
+
+let gDebugDateOffset = 0;
+function initializeTodaysExcerpt(todaysDate) {
     // Calculate which featured excerpt to display based on today's date
+    // todaysDate overrides today with a different date
 
-    gTodaysExcerpt = 0;
-    gCurrentExcerpt = gTodaysExcerpt;
+    if (!todaysDate)
+        todaysDate = new Date();
+    let calendarStartDate = new Date(gFeaturedDatabase.startDate);
+    let daysSinceStart = Math.floor((todaysDate - calendarStartDate) / (1000 * 3600 * 24));
+    debugLog("Days since start:",todaysDate,calendarStartDate,daysSinceStart);
+    gTodaysExcerpt = calendarModulus(daysSinceStart);
+    gSearchFeaturedOffset = 0;
 }
 
 function displayFeaturedExcerpt() {
     // Display the html code for current featured excerpt on search/Featured.html
 
-    let excerptCount = gFeaturedDatabase.calendar.length;
-    let excerptToDisplay = ((gCurrentExcerpt % excerptCount) + excerptCount) % excerptCount
+    let excerptToDisplay = calendarModulus(gTodaysExcerpt + gSearchFeaturedOffset);
 
     let displayArea = document.getElementById("random-excerpt");
     displayArea.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[excerptToDisplay]].html;
@@ -30,11 +43,11 @@ function displayFeaturedExcerpt() {
 
     let titleArea = document.getElementById("page-title");
     let title = "Today's featured excerpt:"
-    if (gCurrentExcerpt > 0)
-        title = `Random excerpt (${gCurrentExcerpt}):`;
-    else if (gCurrentExcerpt < 0) {
+    if (gSearchFeaturedOffset > 0)
+        title = `Random excerpt (${gSearchFeaturedOffset}):`;
+    else if (gSearchFeaturedOffset < 0) {
         let pastDate = new Date();
-        pastDate.setDate(pastDate.getDate() + gCurrentExcerpt);
+        pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
         title = `Excerpt featured on ${pastDate.toDateString()}:`;
     }
 
@@ -43,16 +56,18 @@ function displayFeaturedExcerpt() {
 
 function displayNextFeaturedExcerpt(increment) {
     // display the next or previous (increment = -1) random excerpt
-    gCurrentExcerpt += increment;
+    gSearchFeaturedOffset += increment;
 
     displayFeaturedExcerpt();
 }
 
 // Homepage date display
-function updateDate() {
+function updateDate(theDate) {
     const dateElement = document.getElementById('currentDate');
     if (dateElement) {
-        const formattedDate = new Date().toLocaleDateString('en-US', {
+        if (!theDate)
+            theDate = new Date();
+        const formattedDate = theDate.toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
@@ -193,6 +208,30 @@ function configurePopupMenus(loadedFrame) {
     }
 }
 
+function initializeHomepage() {
+    // This code to configure the homepage runs only for homepage.html
+    let featuredExcerptContainer = document.getElementById("todays-excerpt");
+    if (!featuredExcerptContainer)
+        return;
+    
+    featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+    configureLinks(featuredExcerptContainer,"index.html");
+    
+    updateDate();
+    new MeditationTimer();
+}
+
+function initializeSearchFeatured() {
+    // This initialization code runs only for search/Featured.html
+    let prevButton = document.getElementById("random-prev");
+    let nextButton = document.getElementById("random-next");
+    if (prevButton || nextButton) {
+        prevButton.onclick = () => { displayNextFeaturedExcerpt(-1); };
+        nextButton.onclick = () => { displayNextFeaturedExcerpt(1); };
+        displayNextFeaturedExcerpt(0);
+    }
+}
+
 export async function loadHomepage(loadedFrame) {
     // Called every time a page is loaded.
     // Load gFeaturedDatabase and wire the needed elements
@@ -213,24 +252,8 @@ export async function loadHomepage(loadedFrame) {
     highlightNavMenuItem();
     configurePopupMenus(loadedFrame);
 
-    // This code runs only for search/Featured.html
-    let prevButton = document.getElementById("random-prev");
-    let nextButton = document.getElementById("random-next");
-    if (prevButton || nextButton) {
-        prevButton.onclick = () => { displayNextFeaturedExcerpt(-1); };
-        nextButton.onclick = () => { displayNextFeaturedExcerpt(1); };
-        displayNextFeaturedExcerpt(0);
-    }
-
-    // This code runs only for homepage.html
-    let featuredExcerptContainer = document.getElementById("todays-excerpt");
-    if (featuredExcerptContainer) {
-        featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
-        configureLinks(featuredExcerptContainer,"index.html");
-        
-        updateDate();
-        new MeditationTimer();
-    }
+    initializeHomepage();
+    initializeSearchFeatured();
 }
 
 function dropdownMenuClick(clickedItem) {
@@ -338,4 +361,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	configureLinks(document.querySelector("footer"),"index.html");
 
     setupNavMenuTriggers();
+
+    if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
+        document.addEventListener("keydown", function(event) {
+            if ((event.key == "ArrowLeft") || (event.key == "ArrowRight")) {
+                if (event.key == "ArrowLeft")
+                    gDebugDateOffset -= 1
+                else
+                    gDebugDateOffset += 1
+                let debugDate = new Date();
+                debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
+                initializeTodaysExcerpt(debugDate);
+                let featuredExcerptContainer = document.getElementById("todays-excerpt");
+                if (featuredExcerptContainer) {
+                    featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                    configureLinks(featuredExcerptContainer,"index.html");
+                    updateDate(debugDate);
+                }
+            }
+        });
+    }
 });

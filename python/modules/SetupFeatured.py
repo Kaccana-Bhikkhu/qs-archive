@@ -28,7 +28,7 @@ class FeaturedDatabase(TypedDict):
     
     excerpts: dict[str,ExcerptDict] # Details about the excerpts; keys are given by the excerpt codes
 
-    startDate: str                  # The date to display the first exerpt in calendar; DD/MM/YYYY
+    startDate: str                  # The date to display the first exerpt in calendar in iso format
     calendar: list[str]             # The list of excerpt codes to display on each date
 
 def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
@@ -42,7 +42,6 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     simpleExcerpt = copy(excerpt)
     simpleExcerpt["annotations"] = ()
     simpleExcerpt["tags"] = ()
-    formatter.SetHeaderlessFormat(False)
     moreLink = Html.Tag("i","a",{"href":"search/Featured.html"})("details...")
     shortHtml = Html.Tag("p")(f"{formatter.FormatExcerpt(simpleExcerpt)} {moreLink}")
 
@@ -102,7 +101,7 @@ def RemakeRandomExcerpts(maxLength:int = 0,shuffle = True,historyDays = 0) -> di
     if maxLength:
         calendar = calendar[:maxLength]
 
-    startDate = (datetime.date.today() - timedelta(days=historyDays)).strftime("%d/%m/%Y")
+    startDate = (datetime.date.today() - timedelta(days=historyDays)).isoformat()
 
     return dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar)
 
