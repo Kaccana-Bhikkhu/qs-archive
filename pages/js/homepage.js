@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage} from './frame.js';
 
 const DEBUG = false;
 
-let gHomepageDatabase = null; // The global database, loaded from assets/HomepageDatabase.json
+let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
@@ -19,13 +19,13 @@ function initializeTodaysExcerpt() {
 }
 
 function displayFeaturedExcerpt() {
-    // Display the html code for current featured excerpt
+    // Display the html code for current featured excerpt on search/Featured.html
 
-    let excerptCount = gHomepageDatabase.excerpts.length;
+    let excerptCount = gFeaturedDatabase.calendar.length;
     let excerptToDisplay = ((gCurrentExcerpt % excerptCount) + excerptCount) % excerptCount
 
     let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = gHomepageDatabase.excerpts[excerptToDisplay].html;
+    displayArea.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[excerptToDisplay]].html;
     configureLinks(displayArea,"indexes/homepage.html");
 
     let titleArea = document.getElementById("page-title");
@@ -195,16 +195,16 @@ function configurePopupMenus(loadedFrame) {
 
 export async function loadHomepage(loadedFrame) {
     // Called every time a page is loaded.
-    // Load gHomepageDatabase and wire the needed elements
+    // Load gFeaturedDatabase and wire the needed elements
 
     dropdownMenuClick(null); // Close all dropdown menus
     gNavBar.querySelector('.main-nav').classList.remove("active");
 
-    if (!gHomepageDatabase) {
-        await fetch('./assets/HomepageDatabase.json')
+    if (!gFeaturedDatabase) {
+        await fetch('./assets/FeaturedDatabase.json')
         .then((response) => response.json())
         .then((json) => {
-            gHomepageDatabase = json; 
+            gFeaturedDatabase = json; 
             debugLog("Loaded homepage database.");
         });
         initializeTodaysExcerpt()
@@ -225,7 +225,7 @@ export async function loadHomepage(loadedFrame) {
     // This code runs only for homepage.html
     let featuredExcerptContainer = document.getElementById("todays-excerpt");
     if (featuredExcerptContainer) {
-        featuredExcerptContainer.innerHTML = gHomepageDatabase.excerpts[gTodaysExcerpt].shortHtml;
+        featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
         configureLinks(featuredExcerptContainer,"index.html");
         
         updateDate();
