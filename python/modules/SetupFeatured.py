@@ -1,4 +1,4 @@
-"""Maintain pages/assets/Homepage.json, which contains rendered random featured excerpts to display on the homepage.
+"""Maintain pages/assets/FeaturedDatabase.json, which contains rendered random featured excerpts to display on the homepage.
 """
 
 from __future__ import annotations
@@ -84,12 +84,12 @@ def RemakeRandomExcerpts(maxLength:int = 0,shuffle = True) -> dict[str]:
 
 def WriteDatabase(newDatabase: dict[str]) -> None:
     """Write newDatabase to the random excerpt .json file"""
-    with open(gOptions.homepageDatabase, 'w', encoding='utf-8') as file:
+    with open(gOptions.featuredDatabase, 'w', encoding='utf-8') as file:
         json.dump(newDatabase, file, ensure_ascii=False, indent=2)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--homepageDatabase',type=str,default="pages/assets/HomepageDatabase.json",help="Homepage database filename.")
+    parser.add_argument('--featuredDatabase',type=str,default="pages/assets/FeaturedDatabase.json",help="Featured database filename.")
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the database.")
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
     # parser.add_argument('--option',**Utils.STORE_TRUE,help='This is an option.')
@@ -107,5 +107,5 @@ def main() -> None:
     random.seed(42)
     database = RemakeRandomExcerpts(maxLength=gOptions.randomExcerptCount)
     WriteDatabase(database)
-    Alert.info("Homepage.json remade with",len(database["excerpts"]),"random excerpts.")
+    Alert.info(gOptions.featuredDatabase,"remade with",len(database["excerpts"]),"random excerpts.")
     

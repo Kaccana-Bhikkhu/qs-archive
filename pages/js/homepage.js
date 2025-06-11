@@ -8,14 +8,14 @@ const DEBUG = false;
 let gHomepageDatabase = null; // The global database, loaded from assets/HomepageDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
-let todaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
+let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
 let gCurrentExcerpt = 0; // The featured excerpt currently displayed on search/Featured.html
 
 function initializeTodaysExcerpt() {
     // Calculate which featured excerpt to display based on today's date
 
-    todaysExcerpt = 0;
-    gCurrentExcerpt = todaysExcerpt;
+    gTodaysExcerpt = 0;
+    gCurrentExcerpt = gTodaysExcerpt;
 }
 
 function displayFeaturedExcerpt() {
@@ -225,7 +225,7 @@ export async function loadHomepage(loadedFrame) {
     // This code runs only for homepage.html
     let featuredExcerptContainer = document.getElementById("todays-excerpt");
     if (featuredExcerptContainer) {
-        featuredExcerptContainer.innerHTML = gHomepageDatabase.excerpts[todaysExcerpt].shortHtml;
+        featuredExcerptContainer.innerHTML = gHomepageDatabase.excerpts[gTodaysExcerpt].shortHtml;
         configureLinks(featuredExcerptContainer,"index.html");
         
         updateDate();
