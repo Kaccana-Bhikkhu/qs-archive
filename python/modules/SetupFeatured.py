@@ -68,8 +68,9 @@ def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
 
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    teacherFilter = Filter.And(Filter.Teacher("AP"))
-    homepageFilter = Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts())
+    teacherFilter = Filter.Teacher("AP")
+    kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
+    homepageFilter = Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
     featuredExcerpts =  [x for x in homepageFilter(gDatabase["excerpts"])]
 
     removeFragments = Filter.Kind(Filter.InverseSet(["Fragment"]))
