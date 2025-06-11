@@ -747,6 +747,10 @@ main.main-content p {
     object-fit: cover;
 }
 
+.featured-excerpt {
+	width: 100%;
+}
+
 /* Meditation Timer Styles */
 .meditation-timer {
     background: rgba(255, 255, 255, 0.8);

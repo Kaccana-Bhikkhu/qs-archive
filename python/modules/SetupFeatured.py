@@ -42,9 +42,7 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     simpleExcerpt = copy(excerpt)
     simpleExcerpt["annotations"] = ()
     simpleExcerpt["tags"] = ()
-    moreLink = Html.Tag("i","a",{"href":"search/Featured.html"})("details...")
-    shortHtml = Html.Tag("p")(f"{formatter.FormatExcerpt(simpleExcerpt)} {moreLink}")
-
+    shortHtml = formatter.FormatExcerpt(simpleExcerpt)
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
 
