@@ -214,6 +214,9 @@ function initializeHomepage() {
     if (!featuredExcerptContainer)
         return;
     
+    document.getElementById("details-link").addEventListener("click",function() {
+        gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
+    });
     featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
     configureLinks(featuredExcerptContainer,"index.html");
     
