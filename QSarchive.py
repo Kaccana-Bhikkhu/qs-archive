@@ -19,9 +19,9 @@ Alert.ObjectPrinter = Database.ItemRepr
 
 def PrintModuleSeparator(moduleName:str) -> None:
     if moduleName:
-        Alert.structure(f"{'-'*10} {moduleName} {'-'*(25 - len(moduleName))}")
+        Alert.structure(f"{'='*10} {moduleName} {'='*(25 - len(moduleName))}")
     else:
-        Alert.structure('-'*37)
+        Alert.structure('='*37)
 
 def ReadJobOptions(jobName: str) -> list[str]:
     "Read a list of job options from the .vscode/launch.json"

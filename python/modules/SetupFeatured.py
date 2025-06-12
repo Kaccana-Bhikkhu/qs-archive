@@ -31,6 +31,34 @@ class FeaturedDatabase(TypedDict):
     startDate: str                  # The date to display the first exerpt in calendar in iso format
     calendar: list[str]             # The list of excerpt codes to display on each date
 
+def ReadDatabase(filename:str) -> FeaturedDatabase:
+    """Read a FeaturedDatabase.json file specified by filename"""
+    with open(filename, 'r', encoding='utf-8') as file: # Otherwise read the database from disk
+        newDB = json.load(file)
+    return newDB
+
+def WriteDatabase(newDatabase: FeaturedDatabase) -> None:
+    """Write newDatabase to the random excerpt .json file"""
+    with open(gOptions.featuredDatabase, 'w', encoding='utf-8') as file:
+        json.dump(newDatabase, file, ensure_ascii=False, indent=2)
+
+def PrintInfo(database: FeaturedDatabase) -> None:
+    """Print information about this featured excerpt database."""
+    Alert.info("Featured excerpt database contains",len(database["excerpts"]),"random excerpts.")
+
+    calendarLength = len(database['calendar'])
+    daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
+
+    Alert.info(f"Calendar length {calendarLength}; {calendarLength - daysPast - 1} excerpts remaining.")
+    
+
+def ParseNumericalParameter(parameter: str,defaultValue:int = 0) -> int:
+    numberStr = re.search(r"[0-9]+",parameter)
+    if numberStr:
+        return int(numberStr[0])
+    else:
+        return defaultValue
+
 def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     """Return a dictionary containing the information needed to display this excerpt on the front page."""
     
@@ -88,36 +116,50 @@ def Header() -> dict[str]:
         "excerptSources": gOptions.excerptMp3
     }
 
-def RemakeRandomExcerpts(maxLength:int = 0,shuffle = True,historyDays = 0) -> dict[str]:
-    """Return a completely new random excerpt dictionary."""
-    """maxLength is the maximum length of the random excerpt calendar.
-    begin with historyDays of initial history."""
+def Remake(paramStr: str) -> bool:
+    """Create a completely new random excerpt dictionary.
+    paramStr (if given) specifies the number of excerpts to put in the past."""
+
+    global gFeaturedDatabase
 
     entries = FeaturedExcerptEntries()
     calendar = list(entries)
-    if shuffle:
-        random.shuffle(calendar)
-    if maxLength:
-        calendar = calendar[:maxLength]
+    random.shuffle(calendar)
 
+    historyDays = ParseNumericalParameter(paramStr)
     startDate = (datetime.date.today() - timedelta(days=historyDays)).isoformat()
+    
+    gFeaturedDatabase = dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar)
 
-    return dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar)
+    Alert.info("Generated new featured excerpt database with",len(gFeaturedDatabase["excerpts"]),"entries")
+    if historyDays:
+        Alert.info(historyDays,"past days placed in calendar.")
+    return True
 
-def ReadDatabase(filename:str) -> dict[str]:
-    """Read a FeaturedDatabase.json file specified by filename"""
-    with open(filename, 'r', encoding='utf-8') as file: # Otherwise read the database from disk
-        newDB = json.load(file)
-    return newDB
+def Check(paramStr: str) -> bool:
+    """Checks gFeaturedDatabase to make sure that everything is okay.
+    Returns False if any of the checks fail."""
+    
+    return True
 
-def WriteDatabase(newDatabase: dict[str]) -> None:
-    """Write newDatabase to the random excerpt .json file"""
-    with open(gOptions.featuredDatabase, 'w', encoding='utf-8') as file:
-        json.dump(newDatabase, file, ensure_ascii=False, indent=2)
+def AnnounceSubmodule(submoduleName: str) -> None:
+    """Print the name and parameter of this submodule."""
+    if submoduleName:
+        parameter = gOptions.featured[submoduleName]
+        parameterStr = f" with parameter {repr(parameter)}" if parameter else ""
+        Alert.structure(f"------- Running SetupFeatured.{submoduleName.capitalize()}(){parameterStr}")
+    else:
+        Alert.structure(f"------- All submodules finished.")
 
-def PrintInfo(database: dict[str]) -> None:
-    """Print information about this featured excerpt database."""
-    Alert.info("Database contains",len(database["excerpts"]),"random excerpts.")
+def RunSubmodule(submoduleName: str) -> bool:
+    """Runs the named submodule if it was specified by --featured.
+    Returns False if the submodule doesn't run or returns False."""
+
+    if submoduleName in gOptions.featured:
+        AnnounceSubmodule(submoduleName)
+        return gSubmodules[submoduleName](gOptions.featured[submoduleName])
+    else:
+        return False
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -126,33 +168,37 @@ def AddArguments(parser) -> None:
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the calendar.")
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
 
-gOperations = ["remake","check"]
+gSubmodules = {op.__name__.lower():op for op in [Remake,Check]}
 
 def ParseArguments() -> None:
     # --featured is a comma-separated list of operations from gOperations optionally followed by non-alphabetic parameters
     gOptions.featured = [re.match(r"([a-z]*)(.*)",op.strip(),re.IGNORECASE) for op in gOptions.featured.split(',')]
     gOptions.featured = {m[1].lower():m[2] for m in gOptions.featured}
 
-    unrecognized = [op for op in gOptions.featured if op not in gOperations]
+    unrecognized = [op for op in gOptions.featured if op not in gSubmodules]
     if unrecognized:
-        Alert.warning("--featured specifies unknown operation(s)",unrecognized,". Available operations are",gOperations)
+        Alert.warning("--featured specifies unknown operation(s)",unrecognized,". Available operations are",gSubmodules)
 
 def Initialize() -> None:
     pass
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
+
 gFeaturedDatabase:FeaturedDatabase = {}
 
 def main() -> None:
     global gFeaturedDatabase
-    if "remake" in gOptions.featured:
-        random.seed(42)
-        gFeaturedDatabase = RemakeRandomExcerpts(maxLength=gOptions.randomExcerptCount,historyDays = 30)
-        Alert.info(gOptions.featuredDatabase,"remade with",len(gFeaturedDatabase["excerpts"]),"random excerpts.")
-    else:
-        gFeaturedDatabase = ReadDatabase(gOptions.featuredDatabase)
+
+    random.seed(42)
+    RunSubmodule("remake")
     
+    if not gFeaturedDatabase:
+        gFeaturedDatabase = ReadDatabase(gOptions.featuredDatabase)
+
+    RunSubmodule("check")
+    
+    AnnounceSubmodule("")
     PrintInfo(gFeaturedDatabase)
     WriteDatabase(gFeaturedDatabase)
     
