@@ -152,7 +152,7 @@
             "args": [
                 "SetupFeatured",
                 "--featured",
-                "remake"
+                "check"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

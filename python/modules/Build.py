@@ -2523,8 +2523,7 @@ def Homepage():
     template = pyratemp.Template(filename=Utils.PosixJoin(gOptions.pagesDir,"templates",homepageName))
 
     try:
-        event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
-        defaultExcerpt = Database.ExcerptDict()[event][session][fileNumber]
+        defaultExcerpt = Database.FindExcerpt(gOptions.homepageDefaultExcerpt)
         excerptHtml = SetupFeatured.ExcerptEntry(defaultExcerpt)["shortHtml"]
     except (KeyError,ValueError):
         Alert.error(f"Unable to parse or find excerpt code {repr(gOptions.homepageDefaultExcerpt)} specified by --homepageDefaultExcerpt.")
