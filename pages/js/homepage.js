@@ -10,6 +10,7 @@ let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
 let gSearchFeaturedOffset = 0; // The featured excerpt currently displayed on search/Featured.html
+let gRandomExcerpts = []; // The random excerpts we have generated this session.
 
 function calendarModulus(index) {
     // Return index modulo the length of the calendar
@@ -35,22 +36,28 @@ function initializeTodaysExcerpt(todaysDate) {
 function displayFeaturedExcerpt() {
     // Display the html code for current featured excerpt on search/Featured.html
 
-    let excerptToDisplay = calendarModulus(gTodaysExcerpt + gSearchFeaturedOffset);
-
-    let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[excerptToDisplay]].html;
-    configureLinks(displayArea,"indexes/homepage.html");
-
-    let titleArea = document.getElementById("page-title");
+    let excerptToDisplay = gFeaturedDatabase.calendar[calendarModulus(gTodaysExcerpt + gSearchFeaturedOffset)];
+    
     let title = "Today's featured excerpt:"
-    if (gSearchFeaturedOffset > 0)
+    if (gSearchFeaturedOffset > 0) {
+        let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
+        while (gRandomExcerpts.length < gSearchFeaturedOffset) {
+            let randomIndex = Math.floor(Math.random() * excerptCodes.length);
+            gRandomExcerpts.push(excerptCodes[randomIndex]);
+        }
+        excerptToDisplay = gRandomExcerpts[gSearchFeaturedOffset - 1];
         title = `Random excerpt (${gSearchFeaturedOffset}):`;
-    else if (gSearchFeaturedOffset < 0) {
+    } else if (gSearchFeaturedOffset < 0) {
         let pastDate = new Date();
         pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
         title = `Excerpt featured on ${pastDate.toDateString()}:`;
     }
 
+    let displayArea = document.getElementById("random-excerpt");
+    displayArea.innerHTML = gFeaturedDatabase.excerpts[excerptToDisplay].html;
+    configureLinks(displayArea,"indexes/homepage.html");
+
+    let titleArea = document.getElementById("page-title");
     titleArea.innerHTML = title;
 }
 
