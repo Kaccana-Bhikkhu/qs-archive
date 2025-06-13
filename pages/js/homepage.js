@@ -264,6 +264,7 @@ export async function loadHomepage(loadedFrame) {
 
     initializeHomepage();
     initializeSearchFeatured();
+    lucide.createIcons(lucide.icons);
 }
 
 function dropdownMenuClick(clickedItem) {

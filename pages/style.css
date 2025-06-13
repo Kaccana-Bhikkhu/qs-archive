@@ -405,14 +405,6 @@ input {
 	width: 100%;
 }
 
-svg {
-	color: #fff;
-	fill: currentColor;
-	width: 24px;
-	height: 24px;
-	padding: 10px;
-}
-
 button {
 	cursor: pointer;
 	margin-right: 5px;
@@ -866,6 +858,22 @@ main.main-content p {
     .exploration-paths {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+/* Style for icons */
+svg.lucide {
+	width: 32px;
+	height: 32px;
+	margin: 0 15px 0 5px;
+}
+
+.exploration-paths h3 {
+	display:flex;
+}
+
+.exploration-paths h3 img{
+	width: 32px;
+	margin: 0 15px 0 5px;
 }
 
 .path-card {

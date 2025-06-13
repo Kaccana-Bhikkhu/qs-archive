@@ -57598,7 +57598,7 @@
         {
           "kind": "Reading",
           "flags": "",
-          "text": "Introduction to Middle Length Discourses of the Buddha p. 31-32 (quoted in The Island p. 36-37).",
+          "text": "Introduction to Middle Length Discourses of the Buddha p. 31-32 (quoted in The Island p. 41-42).",
           "teachers": [
             "AP",
             "AA"
@@ -57609,7 +57609,7 @@
         {
           "kind": "Reading",
           "flags": "",
-          "text": "The Island p. 222-224, [30-31](The Island p. 30).",
+          "text": "The Island p. 224-226, [33-34](The Island p. 33).",
           "teachers": [
             "AP",
             "AA"
@@ -67207,7 +67207,7 @@
       "teachers": [
         "AP"
       ],
-      "text": "Could you describe the progression of anagārikaand sāmaṇera training?",
+      "text": "Could you describe the progression of anagārika and sāmaṇera training?",
       "fTags": [
         "Sequence of training",
         "Ordination"
@@ -135619,8 +135619,8 @@
       "title": "_The Island_",
       "attribution": "by Ajahn Pasanno and Ajahn Amaro",
       "pdfPageOffset": 0,
-      "filename": "Pasanno_Amaro_The_Island.pdf",
-      "remoteUrl": "https://www.abhayagiri.org/media/discs/2015WinterRetreat/Sources/Pasanno_Amaro_The_Island.pdf",
+      "filename": "The-Island-Web-2020 ed..pdf",
+      "remoteUrl": "https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf",
       "author": [
         "AP",
         "AA"
@@ -136246,6 +136246,17 @@
         "ASumedho"
       ]
     },
+    "anthology v3": {
+      "abbreviation": "Anthology V3",
+      "title": "_The Anthology Vol. 2_",
+      "attribution": "by Ajahn Sumedho",
+      "pdfPageOffset": 17,
+      "filename": "Ajahn Sumedho Volume 3 - Direct Realization.pdf",
+      "remoteUrl": "https://www.abhayagiri.org/media/books/Ajahn%20Sumedho%20Volume%203%20-%20Direct%20Realization.pdf",
+      "author": [
+        "ASumedho"
+      ]
+    },
     "walking meditation": {
       "abbreviation": "Walking Meditation",
       "title": "_Walking Meditation_",
@@ -136279,9 +136290,20 @@
         "AbhSangha"
       ]
     },
+    "meditations v1": {
+      "abbreviation": "Meditations V1",
+      "title": "_Meditations Vol. 5_",
+      "attribution": "by Ajahn Ṭhānissaro",
+      "pdfPageOffset": 0,
+      "filename": "Meditations1_181215.pdf",
+      "remoteUrl": "https://www.dhammatalks.org/Archive/Writings/Ebooks/Meditations1_181215.pdf",
+      "author": [
+        "AThan"
+      ]
+    },
     "meditations v5": {
       "abbreviation": "Meditations V5",
-      "title": "_Meditations Vol. 5_",
+      "title": "_Meditations Vol. 4_",
       "attribution": "by Ajahn Ṭhānissaro",
       "pdfPageOffset": 1,
       "filename": "meditations5_v210213.pdf",
@@ -136465,6 +136487,17 @@
       "remoteUrl": "https://www.abhayagiri.org/media/books/Inner_Listening_-_Ajahn_Amaro.pdf",
       "author": [
         "AA"
+      ]
+    },
+    "karma of questions": {
+      "abbreviation": "Karma of Questions",
+      "title": "_The Karma of Questions_",
+      "attribution": "by Ajahn Ṭhānissaro",
+      "pdfPageOffset": 1,
+      "filename": "KarmaOfQuestions210213.pdf",
+      "remoteUrl": "https://www.dhammatalks.org/Archive/Writings/Ebooks/KarmaOfQuestions210213.pdf",
+      "author": [
+        "AThan"
       ]
     }
   },
@@ -146978,7 +147011,7 @@
       "sessions": 57,
       "excerpts": 5,
       "answersListenedTo": 5,
-      "tagsApplied": 368,
+      "tagsApplied": 509,
       "invalidTags": 0,
       "duration": "58:38"
     },
@@ -151908,89 +151941,133 @@
     }
   },
   "dispatch": {
+    "Key Topics": {
+      "title": "Key Topics",
+      "category": "main",
+      "link": "indexes/KeyTopics.html?hideAll",
+      "description": "Discover comprehensive collections of teachings organized by major Buddhist concepts",
+      "icon": "book-open",
+      "futureIcon": ""
+    },
+    "Tags": {
+      "title": "Tags",
+      "category": "main",
+      "link": "dispatch/Tags.html",
+      "description": "Explore teachings through specific themes like meditation, mindfulness, or daily practice",
+      "icon": "tags",
+      "futureIcon": ""
+    },
+    "Events": {
+      "title": "Events",
+      "category": "main",
+      "link": "dispatch/Events.html",
+      "description": "Find teachings from specific retreats, talks, and ceremonies",
+      "icon": "calendar",
+      "futureIcon": ""
+    },
+    "Teachers": {
+      "title": "Teachers",
+      "category": "main",
+      "link": "dispatch/Teachers.html",
+      "description": "Access teachings from Ajahn Pasanno and other respected Buddhist teachers",
+      "icon": "users",
+      "futureIcon": ""
+    },
     "Hierarchy": {
       "title": "Hierarchy",
       "category": "Tags",
       "link": "drilldown/root.html",
       "description": "Delve into the conceptual structure of the archive",
-      "icon": "Drilldown icon"
+      "icon": "<img src=\"../assets/text-bullet-list-tree-explore.svg\">",
+      "futureIcon": "Drilldown icon"
     },
     "Numbered Lists": {
       "title": "Numbered Lists",
       "category": "Tags",
       "link": "indexes/NumericalTags.html",
       "description": "Explore key Pāli concepts the way the Buddha himself organized them",
-      "icon": "List 1,2,3"
+      "icon": "list-ordered",
+      "futureIcon": ""
     },
     "Most Common": {
       "title": "Most Common",
       "category": "Tags",
       "link": "indexes/SortedTags.html",
       "description": "The most common tags reflect the heart of Ajahn Pasanno's teachings",
-      "icon": ""
+      "icon": "",
+      "futureIcon": ""
     },
     "About Tags": {
       "title": "About Tags",
       "category": "Tags",
       "link": "about/Tags.html",
       "description": "Learn how the archive selects and organizes content tags",
-      "icon": "Tag"
+      "icon": "tag",
+      "futureIcon": ""
     },
     "Series": {
       "title": "Series",
       "category": "Events",
       "link": "indexes/EventsBySeries.html",
       "description": "Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more",
-      "icon": ""
+      "icon": "",
+      "futureIcon": ""
     },
     "Subject": {
       "title": "Subject",
       "category": "Events",
       "link": "indexes/EventsBySubject.html",
       "description": "Explore in-depth teachings on specific topics",
-      "icon": ""
+      "icon": "",
+      "futureIcon": ""
     },
     "Date": {
       "title": "Date",
       "category": "Events",
       "link": "indexes/EventsChronological.html",
       "description": "Listen to over twenty years of Ajahn Pasanno's teachings",
-      "icon": "Calendar"
+      "icon": "calendar",
+      "futureIcon": ""
     },
     "About Event Series": {
       "title": "About Event Series",
       "category": "Events",
       "link": "about/Event-series.html",
       "description": "Learn what makes each event venue unique",
-      "icon": "Cushion"
+      "icon": "",
+      "futureIcon": "Cushion"
     },
     "Lineage": {
       "title": "Lineage",
       "category": "Teachers",
       "link": "teachers/TeachersLineage.html",
       "description": "Explore the roots of the Thai Forest Tradition",
-      "icon": "Tree"
+      "icon": "",
+      "futureIcon": "Tree"
     },
     "Most Frequent": {
       "title": "Most Frequent",
       "category": "Teachers",
       "link": "teachers/TeachersByExcerpts.html",
       "description": "Listen to Ajahn Pasanno's most frequent co-teachers",
-      "icon": ""
+      "icon": "",
+      "futureIcon": ""
     },
     "Name": {
       "title": "Name",
       "category": "Teachers",
       "link": "teachers/TeachersAlphabetical.html",
       "description": "Find teachers in an alphabetical list",
-      "icon": "Letter A"
+      "icon": "arrow-down-a-z",
+      "futureIcon": ""
     },
     "Chronology": {
       "title": "Chronology",
       "category": "Teachers",
       "link": "teachers/TeachersChronological.html",
       "description": "View teachers in order of ordination or birth",
-      "icon": "Calendar"
+      "icon": "calendar",
+      "futureIcon": ""
     }
   },
   "tagSubsumed": {
@@ -153036,6 +153113,7 @@
     "Full Name": "fullName",
     "Full name": "fullName",
     "Full tag": "fullTag",
+    "Future icon": "futureIcon",
     "Glosses": "glosses",
     "Group": "group",
     "Icon": "icon",
