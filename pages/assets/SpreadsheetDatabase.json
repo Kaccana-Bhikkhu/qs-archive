@@ -151946,128 +151946,112 @@
       "category": "main",
       "link": "indexes/KeyTopics.html?hideAll",
       "description": "Discover comprehensive collections of teachings organized by major Buddhist concepts",
-      "icon": "book-open",
-      "futureIcon": ""
+      "icon": "book-open"
     },
     "Tags": {
       "title": "Tags",
       "category": "main",
       "link": "dispatch/Tags.html",
       "description": "Explore teachings through specific themes like meditation, mindfulness, or daily practice",
-      "icon": "tags",
-      "futureIcon": ""
+      "icon": "tags"
     },
     "Events": {
       "title": "Events",
       "category": "main",
       "link": "dispatch/Events.html",
       "description": "Find teachings from specific retreats, talks, and ceremonies",
-      "icon": "calendar",
-      "futureIcon": ""
+      "icon": "calendar"
     },
     "Teachers": {
       "title": "Teachers",
       "category": "main",
       "link": "dispatch/Teachers.html",
       "description": "Access teachings from Ajahn Pasanno and other respected Buddhist teachers",
-      "icon": "users",
-      "futureIcon": ""
+      "icon": "users"
     },
     "Hierarchy": {
       "title": "Hierarchy",
       "category": "Tags",
       "link": "drilldown/root.html",
       "description": "Delve into the conceptual structure of the archive",
-      "icon": "<img src=\"../assets/text-bullet-list-tree-explore.svg\">",
-      "futureIcon": "Drilldown icon"
+      "icon": "<img src=\"../images/icons/text-bullet-list-tree-explore.svg\">"
     },
     "Numbered Lists": {
       "title": "Numbered Lists",
       "category": "Tags",
       "link": "indexes/NumericalTags.html",
       "description": "Explore key Pāli concepts the way the Buddha himself organized them",
-      "icon": "list-ordered",
-      "futureIcon": ""
+      "icon": "list-ordered"
     },
     "Most Common": {
       "title": "Most Common",
       "category": "Tags",
       "link": "indexes/SortedTags.html",
       "description": "The most common tags reflect the heart of Ajahn Pasanno's teachings",
-      "icon": "",
-      "futureIcon": ""
+      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
     },
     "About Tags": {
       "title": "About Tags",
       "category": "Tags",
       "link": "about/Tags.html",
       "description": "Learn how the archive selects and organizes content tags",
-      "icon": "tag",
-      "futureIcon": ""
+      "icon": "tag"
     },
     "Series": {
       "title": "Series",
       "category": "Events",
       "link": "indexes/EventsBySeries.html",
       "description": "Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more",
-      "icon": "",
-      "futureIcon": ""
+      "icon": "<img src=\"../images/icons/Cushion.png\">"
     },
     "Subject": {
       "title": "Subject",
       "category": "Events",
       "link": "indexes/EventsBySubject.html",
       "description": "Explore in-depth teachings on specific topics",
-      "icon": "",
-      "futureIcon": ""
+      "icon": "<img src=\"../images/icons/DhammaWheel.png\">"
     },
     "Date": {
       "title": "Date",
       "category": "Events",
       "link": "indexes/EventsChronological.html",
       "description": "Listen to over twenty years of Ajahn Pasanno's teachings",
-      "icon": "calendar",
-      "futureIcon": ""
+      "icon": "calendar"
     },
     "About Event Series": {
       "title": "About Event Series",
       "category": "Events",
       "link": "about/Event-series.html",
       "description": "Learn what makes each event venue unique",
-      "icon": "",
-      "futureIcon": "Cushion"
+      "icon": "<img src=\"../images/icons/reshot-icon-meditation.svg\">"
     },
     "Lineage": {
       "title": "Lineage",
       "category": "Teachers",
       "link": "teachers/TeachersLineage.html",
       "description": "Explore the roots of the Thai Forest Tradition",
-      "icon": "",
-      "futureIcon": "Tree"
+      "icon": "<img src=\"../images/icons/reshot-icon-detailed-tree.svg\">"
     },
     "Most Frequent": {
       "title": "Most Frequent",
       "category": "Teachers",
       "link": "teachers/TeachersByExcerpts.html",
       "description": "Listen to Ajahn Pasanno's most frequent co-teachers",
-      "icon": "",
-      "futureIcon": ""
+      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
     },
     "Name": {
       "title": "Name",
       "category": "Teachers",
       "link": "teachers/TeachersAlphabetical.html",
       "description": "Find teachers in an alphabetical list",
-      "icon": "arrow-down-a-z",
-      "futureIcon": ""
+      "icon": "arrow-down-a-z"
     },
     "Chronology": {
       "title": "Chronology",
       "category": "Teachers",
       "link": "teachers/TeachersChronological.html",
       "description": "View teachers in order of ordination or birth",
-      "icon": "calendar",
-      "futureIcon": ""
+      "icon": "calendar"
     }
   },
   "tagSubsumed": {
@@ -153113,7 +153097,6 @@
     "Full Name": "fullName",
     "Full name": "fullName",
     "Full tag": "fullTag",
-    "Future icon": "futureIcon",
     "Glosses": "glosses",
     "Group": "group",
     "Icon": "icon",

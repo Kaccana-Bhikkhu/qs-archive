@@ -871,9 +871,14 @@ svg.lucide {
 	display:flex;
 }
 
-.exploration-paths h3 img{
+.exploration-paths h3 img {
 	width: 32px;
 	margin: 0 15px 0 5px;
+}
+
+.exploration-paths p {
+	padding: 0;
+	margin: 0;
 }
 
 .path-card {
@@ -883,6 +888,9 @@ svg.lucide {
     text-decoration: none;
     color: var(--color-primary);
     transition: all 0.3s;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .path-card:hover {
