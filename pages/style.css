@@ -975,6 +975,15 @@ div.abhayagiri-grid-menu.active {
 	display:block;
 }
 
+/* Featured excerpt page styles */
+
+div.featured-page button {
+	color: #a68b55;
+	margin-left: 3rem;
+	padding: 8px;
+	display: inline;
+}
+
 /* Audio player styles moved from index.html */
 .overlay {
 	position: fixed;
