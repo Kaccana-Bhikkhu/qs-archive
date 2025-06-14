@@ -150,7 +150,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "CheckLinks"
+                "SetupFeatured",
+                "--featured",
+                "check"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

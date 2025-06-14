@@ -7,7 +7,7 @@ from typing import List, Iterator, Iterable, Tuple, Callable
 from airium import Airium
 import Mp3DirectCut
 import Database, ReviewDatabase
-import Utils, Alert, Filter, ParseCSV, Document, Render, SetupHomepage
+import Utils, Alert, Filter, ParseCSV, Document, Render, SetupFeatured
 import Html2 as Html
 from datetime import timedelta
 import re, copy, itertools
@@ -2523,14 +2523,15 @@ def Homepage():
     template = pyratemp.Template(filename=Utils.PosixJoin(gOptions.pagesDir,"templates",homepageName))
 
     try:
-        event,session,fileNumber = Database.ParseItemCode(gOptions.homepageDefaultExcerpt)
-        defaultExcerpt = Database.ExcerptDict()[event][session][fileNumber]
-        excerptHtml = SetupHomepage.ExcerptEntry(defaultExcerpt)["shortHtml"]
+        defaultExcerpt = Database.FindExcerpt(gOptions.homepageDefaultExcerpt)
+        excerptHtml = SetupFeatured.ExcerptEntry(defaultExcerpt)["shortHtml"]
     except (KeyError,ValueError):
         Alert.error(f"Unable to parse or find excerpt code {repr(gOptions.homepageDefaultExcerpt)} specified by --homepageDefaultExcerpt.")
         excerptHtml = ""
 
-    html = str(template(noscriptExcerptHtml=excerptHtml))
+    exploreMainContent = next(iter(DispatchIterator())).Render()
+
+    html = str(template(noscriptExcerptHtml=excerptHtml,exploreContent=exploreMainContent))
 
     pageInfo = Html.PageInfo("Home",homepageName,"")
     yield pageInfo
@@ -2540,7 +2541,7 @@ def Homepage():
     pageDesc.AppendContent("Yes",section="customLayout")
     yield pageDesc
 
-def DispatchPages():
+def DispatchIterator():
     """Return a series of pages that link to subcategories of tags, teachers, and events.
     Created from gDatabase["dispatch"]; does not yield a menu item."""
 
@@ -2552,21 +2553,31 @@ def DispatchPages():
         title = f"Explore {pageName.lower()}"
         pageInfo = Html.PageInfo(title,Utils.PosixJoin("dispatch",pageName+".html"))
 
+        prompt = "the Archive" if pageName == "main" else f"{pageName.lower()} by..."
         a = Airium()
         with a.div(Class='explore-content'):
-            a.h2(_t=f'Explore {pageName.lower()} by...')
+            a.h2(_t=f'Explore {prompt}')
             with a.div(Class='exploration-paths'):
                 for link in pageLinks:
                     with a.a(Class='path-card', href=Utils.PosixJoin("../",link["link"])):
-                        a.i(Class='icon-tags')
-                        a.h3(_t=link["title"])
+                        with a.h3():
+                            if link["icon"]:
+                                if "<" in link["icon"]:
+                                    a(link["icon"])
+                                else:
+                                    a.i(**{"data-lucide":link["icon"]})
+                            a(link["title"])
                         a.p(_t=link["description"])
         
         pageDesc = Html.PageDesc(pageInfo)
         pageDesc.AppendContent(str(a))
         pageDesc.keywords = [pageName]
         yield pageDesc
-        
+
+def DispatchPages():
+    pages = iter(DispatchIterator())
+    next(pages) # Discard the first page corresponding to the items on the homepage
+    yield from pages
 
 SUBPAGE_SUFFIXES = {"qtag","atag","quote","text","reading","story","reference","from","by","meditation","teaching"}
 

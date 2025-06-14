@@ -21,6 +21,7 @@ The Archive relies upon many common open-source and freeware tools. In addition 
 - Series - Winter Retreats: Dave Getzschman
 - Want to Help?: Somkid
 - Acknowledgements: Jonny Breeze
+- Icons from [Lucide](https://lucide.dev/), [FontAwesome](https://fontawesome.com/v4/icons/), and [ReShot](https://www.reshot.com/)
 
 -----
 

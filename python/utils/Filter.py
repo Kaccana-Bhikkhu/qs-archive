@@ -312,6 +312,13 @@ class SingleItemMatch(FilterGroup):
                 return not self.negate
         
         return self.negate
+    
+class ExcerptMatch(FilterGroup):
+    "Pass excerpts for which the excerpt itself matches all these conditions. Annotations are ignored."
+
+    def Match(self, item: dict) -> bool:
+        excerptOnly = next(iter(AllSingularItems(item)))
+        return super().Match(excerptOnly)
 
 def MostRelevant(tags:str|Iterable[str]) -> Filter:
     "Return a filter that passes the most relevant excerpts for the given tag(s)."

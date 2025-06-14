@@ -219,17 +219,20 @@ def SessionDict() -> dict[str,dict[int,dict[str]]]:
         sessionDict[s["event"]][s["sessionNumber"]] = s
     return sessionDict
 
-def FindExcerpt(event: str, session: int|None, fileNumber: int|None) -> dict|None:
-    "Return the excerpt that matches these parameters. Otherwise return None."
+def FindExcerpt(eventOrCode: str, session: int|None = None, fileNumber: int|None = None) -> dict|None:
+    """Return the excerpt that matches these parameters. Otherwise return None."""
 
     if not gDatabase:
         return None
-    if not event or fileNumber is None:
-        return None
+    if fileNumber is None:
+        if eventOrCode:
+            eventOrCode,session,fileNumber = ParseItemCode(eventOrCode)
+        if fileNumber is None:
+            return None
     if session is None:
         session = 0
     try:
-        return ExcerptDict()[event][session][fileNumber]
+        return ExcerptDict()[eventOrCode][session][fileNumber]
     except KeyError:
         return None
 

@@ -1,14 +1,18 @@
 Modified:,2025,,,
 Title,Category,Link,Description,Icon
-Hierarchy,Tags,drilldown/root.html,Delve into the conceptual structure of the archive,Drilldown icon
-Numbered Lists,Tags,indexes/NumericalTags.html,Explore key Pāli concepts the way the Buddha himself organized them,"List 1,2,3"
-Most Common,Tags,indexes/SortedTags.html,The most common tags reflect the heart of Ajahn Pasanno's teachings,
-About Tags,Tags,about/Tags.html,Learn how the archive selects and organizes content tags,Tag
-Series,Events,indexes/EventsBySeries.html,"Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more",
-Subject,Events,indexes/EventsBySubject.html,Explore in-depth teachings on specific topics,
-Date,Events,indexes/EventsChronological.html,Listen to over twenty years of Ajahn Pasanno's teachings,Calendar
-About Event Series,Events,about/Event-series.html,Learn what makes each event venue unique,Cushion
-Lineage,Teachers,teachers/TeachersLineage.html,Explore the roots of the Thai Forest Tradition,Tree
-Most Frequent,Teachers,teachers/TeachersByExcerpts.html,Listen to Ajahn Pasanno's most frequent co-teachers,
-Name,Teachers,teachers/TeachersAlphabetical.html,Find teachers in an alphabetical list,Letter A
-Chronology,Teachers,teachers/TeachersChronological.html,View teachers in order of ordination or birth,Calendar
+Key Topics,main,indexes/KeyTopics.html?hideAll,Discover comprehensive collections of teachings organized by major Buddhist concepts,book-open
+Tags,main,dispatch/Tags.html,"Explore teachings through specific themes like meditation, mindfulness, or daily practice",tags
+Events,main,dispatch/Events.html,"Find teachings from specific retreats, talks, and ceremonies",calendar
+Teachers,main,dispatch/Teachers.html,Access teachings from Ajahn Pasanno and other respected Buddhist teachers,users
+Hierarchy,Tags,drilldown/root.html,Delve into the conceptual structure of the archive,"<img src=""../images/icons/text-bullet-list-tree-explore.svg"">"
+Numbered Lists,Tags,indexes/NumericalTags.html,Explore key Pāli concepts the way the Buddha himself organized them,list-ordered
+Most Common,Tags,indexes/SortedTags.html,The most common tags reflect the heart of Ajahn Pasanno's teachings,"<img src=""../images/icons/DescendingNumbers.png"">"
+About Tags,Tags,about/Tags.html,Learn how the archive selects and organizes content tags,tag
+Series,Events,indexes/EventsBySeries.html,"Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more","<img src=""../images/icons/Cushion.png"">"
+Subject,Events,indexes/EventsBySubject.html,Explore in-depth teachings on specific topics,"<img src=""../images/icons/DhammaWheel.png"">"
+Date,Events,indexes/EventsChronological.html,Listen to over twenty years of Ajahn Pasanno's teachings,calendar
+About Event Series,Events,about/Event-series.html,Learn what makes each event venue unique,"<img src=""../images/icons/reshot-icon-meditation.svg"">"
+Lineage,Teachers,teachers/TeachersLineage.html,Explore the roots of the Thai Forest Tradition,"<img src=""../images/icons/reshot-icon-detailed-tree.svg"">"
+Most Frequent,Teachers,teachers/TeachersByExcerpts.html,Listen to Ajahn Pasanno's most frequent co-teachers,"<img src=""../images/icons/DescendingNumbers.png"">"
+Name,Teachers,teachers/TeachersAlphabetical.html,Find teachers in an alphabetical list,arrow-down-a-z
+Chronology,Teachers,teachers/TeachersChronological.html,View teachers in order of ordination or birth,calendar

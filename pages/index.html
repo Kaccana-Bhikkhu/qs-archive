@@ -74,7 +74,7 @@
                     </nav>
                     <span class="main-menu-icon keep-nav-menu-open" style="line-height: 0.9rem;">
                         <div id="nav-abhayagiri-icon">
-                            <a href="#">
+                            <a href="https://abhayagiri.org">
                                 <img src="images/icons/HandWithLeaves.png" height="50">
                             <br>
                             <span style="font-size: 80%;">abhayagiri.org</span>
@@ -111,7 +111,12 @@
                 <div class="featured-image">
                     <img src="images/buddha.jpg" alt="Featured teaching">
                 </div>
-                <div id="todays-excerpt"><p><audio-chip src="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" title="The Teaching and the Training, S3 E1" data-title-link="events/WR2018-2.html#WR2018-2_S03_F01" data-duration="141"><a href="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" download="The Teaching and the Training, S3 E1.mp3">Download audio</a> (2:21)</audio-chip><br /> <span class="excerpt-number">1.</span> “Why are the precepts worded as things not to do rather than as aspirations?”   <i><a href="search/Featured.html">details...</a></i></p></div>
+                <div class="featured-excerpt">
+                    <p>
+                        <span id="todays-excerpt"><audio-chip src="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" title="The Teaching and the Training, S3 E1" data-title-link="events/WR2018-2.html#WR2018-2_S03_F01" data-duration="141"><a href="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" download="The Teaching and the Training, S3 E1.mp3">Download audio</a> (2:21)</audio-chip><br />  “Why are the precepts worded as things not to do rather than as aspirations?”  </span>
+                        <i><a id="details-link" href="search/Featured.html">details...</a></i>
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -156,30 +161,38 @@
 
     <!-- Explore Content -->
     <div class="explore-content">
-        <h2>Explore the Archive</h2>
-        <div class="exploration-paths">
-            <a href="indexes/KeyTopics.html?hideAll" class="path-card">
-                <i class="icon-book-open"></i>
-                <h3>Key Topics</h3>
-                <p>Discover comprehensive collections of teachings organized by major Buddhist concepts</p>
-            </a>
-            <a href="dispatch/Tags.html" class="path-card">
-                <i class="icon-tags"></i>
-                <h3>Tags</h3>
-                <p>Explore teachings through specific themes like meditation, mindfulness, or daily practice</p>
-            </a>
-            <a href="dispatch/Events.html" class="path-card">
-                <i class="icon-calendar"></i>
-                <h3>Events</h3>
-                <p>Find teachings from specific retreats, talks, and ceremonies</p>
-            </a>
-            <a href="dispatch/Teachers.html" class="path-card">
-                <i class="icon-users"></i>
-                <h3>Teachers</h3>
-                <p>Access teachings from Ajahn Pasanno and other respected Buddhist teachers</p>
-            </a>
-        </div>
-    </div>
+  <h2>Explore the Archive</h2>
+  <div class="exploration-paths">
+    <a class="path-card" href="indexes/KeyTopics.html?hideAll">
+      <h3>
+        <i data-lucide="book-open"></i>
+        Key Topics
+      </h3>
+      <p>Discover comprehensive collections of teachings organized by major Buddhist concepts</p>
+    </a>
+    <a class="path-card" href="dispatch/Tags.html">
+      <h3>
+        <i data-lucide="tags"></i>
+        Tags
+      </h3>
+      <p>Explore teachings through specific themes like meditation, mindfulness, or daily practice</p>
+    </a>
+    <a class="path-card" href="dispatch/Events.html">
+      <h3>
+        <i data-lucide="calendar"></i>
+        Events
+      </h3>
+      <p>Find teachings from specific retreats, talks, and ceremonies</p>
+    </a>
+    <a class="path-card" href="dispatch/Teachers.html">
+      <h3>
+        <i data-lucide="users"></i>
+        Teachers
+      </h3>
+      <p>Access teachings from Ajahn Pasanno and other respected Buddhist teachers</p>
+    </a>
+  </div>
+</div>
 </main>
 
 </div>
@@ -196,6 +209,7 @@
 		<input type="range" />
 	</div>
 
+    <script src="https://unpkg.com/lucide@latest"></script>
 	<script src="./js/audioPlayer.js" type="module"></script>
 	<script src="./js/audioChip.js" type="module"></script>
 	<script src="./js/frame.js" type="module"></script>

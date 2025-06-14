@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import os, json, re
-import Database, SetupHomepage
+import Database, SetupFeatured
 import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable

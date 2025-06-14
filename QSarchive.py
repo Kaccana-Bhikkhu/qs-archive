@@ -19,9 +19,9 @@ Alert.ObjectPrinter = Database.ItemRepr
 
 def PrintModuleSeparator(moduleName:str) -> None:
     if moduleName:
-        Alert.structure(f"{'-'*10} {moduleName} {'-'*(25 - len(moduleName))}")
+        Alert.structure(f"{'='*10} {moduleName} {'='*(25 - len(moduleName))}")
     else:
-        Alert.structure('-'*37)
+        Alert.structure('='*37)
 
 def ReadJobOptions(jobName: str) -> list[str]:
     "Read a list of job options from the .vscode/launch.json"
@@ -125,7 +125,7 @@ def LoadDatabaseAndAddMissingOps(opSet: set[str]) -> Tuple[dict,set[str]]:
 
 # The list of code modules/ops to implement
 requireSpreadsheetDB = ['ReviewDatabase','DownloadFiles','SplitMp3','ExportAudio','Link','Render']
-requireRenderedDB = ['Build','SetupSearch','SetupHomepage','TagMp3','PrepareUpload','CheckLinks']
+requireRenderedDB = ['Build','SetupSearch','SetupFeatured','TagMp3','PrepareUpload','CheckLinks']
 moduleList = ['DownloadCSV','ParseCSV'] + requireSpreadsheetDB + requireRenderedDB
 optionalModules = {'ExportAudio'} # These aren't included in All
 
@@ -146,7 +146,7 @@ Link - try to find valid links to excerpt mp3 files, session mp3 files, and refe
 Render - use pryatemp and markdown to convert excerpts into html and saves to RenderedDatabase.json.
 Build - create html files for all menus and excerpts.
 SetupSearch - create SearchDatabase.json.
-SetupHomepage - create HomepageDatabase.json.
+SetupFeatured - create FeaturedDatabase.json.
 TagMp3 - update the ID3 tags on excerpt mp3 files.
 PrepareUpload - move files that don't need to be uploaded to noUpload directories.
 CheckLinks - validate hyperlinks in documentation files and excerpts.
