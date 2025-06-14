@@ -50,6 +50,7 @@ def PosixToNative(path:str) -> str:
 
 PosixJoin = posixpath.join
 PosixSplit = posixpath.split
+PosixRelpath = posixpath.relpath
 
 def RemoveHtmlTags(html: str) -> str:
     return re.sub(r"\<[^>]*\>","",html)

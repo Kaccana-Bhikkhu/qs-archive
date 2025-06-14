@@ -2633,21 +2633,51 @@ def WriteIndexPage(writer: FileRegister.HashWriter):
     writer.WriteTextFile(Utils.PosixJoin("index.html"),indexHtml)
 
 def WriteRedirectPages(writer: FileRegister.HashWriter):
-    indexPageRedirect = ("../index.html","homepage.html")
-    
-    for oldPage,newPage in [indexPageRedirect]:
-        newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,newPage))
-        if newPage == "homepage.html": # ../index.html lives at the root directory, so we need to change all relative links to it.
-            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html")
-            newPageHtml = re.sub(r'location.replace\([^)]*\)','location.replace("pages/index.html#homepage.html")',newPageHtml)
-                # Replace the redirect in Javascript
-            newPageHtml = re.sub(r'href="(?![^"]*://)','href="pages/',newPageHtml,flags=re.IGNORECASE)
-            newPageHtml = re.sub(r'src="(?![^"]*://)','src="pages/',newPageHtml,flags=re.IGNORECASE)
-                # Then replace all href and src links
+    hardRedirect = pyratemp.Template(Utils.ReadFile("pages/templates/Redirect.html"))
+
+    # This is the Javascript redirect code from Global.html configured to redirect index.html to pages/index.html
+    javaScriptRedirect = """
+<script>
+    const agent = window.navigator.userAgent;
+    const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+    let isBotUserAgent = false;
+    for (bot of botUsers){
+    if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+        isBotUserAgent = true;
+        break;
+    }
+    }
+
+    url = new URL(location.href)
+    if (url.protocol != "file:" && !isBotUserAgent) {
+    location.replace("pages/index.html");
+    }
+</script>
+"""
+
+    for redirect in gDatabase["redirect"].values():
+        if redirect["type"] == "Soft":
+            newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
+            if redirect["oldPage"] == "../index.html": # ../index.html lives at the root directory, so we need to change all relative links to it.
+                cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html")
+                newPageHtml = newPageHtml.replace("<body>","<body>" + javaScriptRedirect)
+                    # Add Javascript redirect code
+
+                newPageHtml = re.sub(r'href="(?![^"]*://)','href="pages/',newPageHtml,flags=re.IGNORECASE)
+                newPageHtml = re.sub(r'src="(?![^"]*://)','src="pages/',newPageHtml,flags=re.IGNORECASE)
+                    # Then replace all href and src links
+            else:
+                cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])
+            newPageHtml = newPageHtml.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
+        elif redirect["type"] == "Hard":
+            oldDir,oldFile = Utils.PosixSplit(redirect["oldPage"])
+            newDir,newFile = Utils.PosixSplit(redirect["newPage"])
+            newPageHtml = hardRedirect(newPage = Utils.PosixJoin(Utils.PosixRelpath(newDir,oldDir),newFile))
         else:
-            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,newPage)
-        newPageHtml = newPageHtml.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
-        writer.WriteTextFile(oldPage,newPageHtml)
+            Alert.error("Unknown redirect type",redirect["type"])
+            continue
+
+        writer.WriteTextFile(redirect["oldPage"],newPageHtml)
 
 def AddArguments(parser):
     "Add command-line arguments used by this module"
