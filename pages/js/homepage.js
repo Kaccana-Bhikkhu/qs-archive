@@ -344,10 +344,12 @@ function setupNavMenuTriggers() {
         openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all`);
     });
 
+    /* Uncomment this code to begin working on #113: Grid menu matching abhayagiri.org
     // Clicking Abhayagiri icon toggles the Abhayagiri grid menu
     document.getElementById('nav-abhayagiri-icon').addEventListener('click', function() {
         dropdownMenuClick(this);
     });
+    */
 
     // Keyboard shortcuts
     document.addEventListener("keydown", function(event) {
