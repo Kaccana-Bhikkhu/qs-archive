@@ -79,7 +79,19 @@ export function openLocalPage(path,query,bookmark) {
 
 function pageText(r,url) {
 	if (r.ok) {
-		return r.text().then((text) => Promise.resolve([text,url]))
+		return r.text().then((text) => {
+			let redirect = text.match(/<meta[^>]*http-equiv[^>]*refresh[^>]*>/);
+			if (redirect) {
+				debugLog("Page contains redirect tag",redirect[0]);
+				let redirectTo = redirect[0].match(/url='([^']*)'/);
+				redirectTo = join(dirname(url),redirectTo[1]);
+				debugLog("Redirecting to",redirectTo);
+				return fetch(redirectTo)
+					.then((r) => r.text())
+					.then((text) => Promise.resolve([text,redirectTo]))
+			} else
+				return Promise.resolve([text,url]);
+		})
 	} else {
 		debugLog("Page not found. Fetching",errorPage)
 		return fetch(errorPage)
@@ -152,6 +164,10 @@ async function changeURL(pUrl,scrollTo = null) {
 		.then((r) => pageText(r,pUrl))
 		.then((result) => {
 			let [text, resultUrl] = result;
+			let currentLocation = new URL(location);
+			currentLocation.hash = `#${resultUrl.replace(/^\.\//,"")}`;
+			history.replaceState(history.state,"",currentLocation);
+
 			text = text.replaceAll(/<link[^>]*rel="stylesheet"[^>]*style\.css[^>]*>/gi,"");
 			frame.innerHTML = text;
 
