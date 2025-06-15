@@ -190,51 +190,51 @@ p.x-cite {
 	padding-bottom: 0;
 }
 
-p.indent-0 {
+.indent-0 {
 	margin-left: 0em;
 }
-p.indent-1 {
+.indent-1 {
 	margin-left: 2em;
 }
-p.indent-2 {
+.indent-2 {
 	margin-left: 4em;
 }
-p.indent-3 {
+.indent-3 {
 	margin-left: 6em;
 }
-p.indent-4 {
+.indent-4 {
 	margin-left: 8em;
 }
-p.indent-5 {
+.indent-5 {
 	margin-left: 10em;
 }
-p.indent-6 {
+.indent-6 {
 	margin-left: 12em;
 }
-p.indent-7 {
+.indent-7 {
 	margin-left: 14em;
 }
 
 @media screen and (max-width: 600px) {
-	p.indent-1 {
+	.indent-1 {
 		margin-left: 1em;
 	}
-	p.indent-2 {
+	.indent-2 {
 		margin-left: 2em;
 	}
-	p.indent-3 {
+	.indent-3 {
 		margin-left: 3em;
 	}
-	p.indent-4 {
+	.indent-4 {
 		margin-left: 4em;
 	}
-	p.indent-5 {
+	.indent-5 {
 		margin-left: 5em;
 	}
-	p.indent-6 {
+	.indent-6 {
 		margin-left: 6em;
 	}
-	p.indent-7 {
+	.indent-7 {
 		margin-left: 7em;
 	}
 }

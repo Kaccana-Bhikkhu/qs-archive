@@ -71,7 +71,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "tags",
+                "none",
                 "--quickBuild"
             ],
             "console": "integratedTerminal",

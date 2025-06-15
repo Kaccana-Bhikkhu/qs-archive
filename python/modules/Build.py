@@ -2089,10 +2089,13 @@ def ExtractHtmlBody(fileName: str) -> str:
     
     return htmlPage[bodyStart.span()[1]:bodyEnd.span()[0]]
 
-def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageInfo|None = None,extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
+def DocumentationMenu(directory: str,makeMenu = True,
+                      specialFirstItem:Html.PageInfo|None = None, menuTitle:str|None = None,
+                      extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
     """Read markdown pages from documentation/directory, convert them to html, 
     write them in pages/about, and create a menu out of them.
-    specialFirstItem optionally designates the PageInfo for the first item"""
+    specialFirstItem optionally designates the PageInfo for the first item.
+    menuTitle is the title of this menu itself; it defaults to the first item."""
 
     @Alert.extra.Supress()
     def QuietRender() -> Iterator[Html.PageDesc]:
@@ -2106,7 +2109,10 @@ def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageI
                     if not specialFirstItem.file:
                         specialFirstItem = specialFirstItem._replace(file=page.info.file)
                     page.info = specialFirstItem
-                yield page.info
+                if menuTitle:
+                    yield page.info._replace(title=menuTitle)
+                else:
+                    yield page.info
         page.keywords = ["About","Ajahn Pasanno","Question","Story","Archive"]
         citation = "About"
         if page.info.title != "About":
@@ -2621,6 +2627,47 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
     
     return str(xml)
 
+class HtmlSiteMap:
+    """Builds an html site map based on the menus of the pages that we pass it."""
+    pageHtml:Airium = Airium() # Html of the page we have built so far
+    menusAdded:set[str] = set() # The main menu items we have already added to the site map
+
+    def __init__(self):
+        pass
+
+    def RegisterPage(self,page: Html.PageDesc) -> None:
+        """Read the menus of this page in order to (possibly) add it to the site map."""
+        if not page.HasSection("mainMenu") or page.section["mainMenu"].menu_highlightedItem is None:
+            return # Exit if there is no highlighted item in the main menu
+        
+        highlightedItem:Html.PageInfo = page.section["mainMenu"].items[page.section["mainMenu"].menu_highlightedItem]
+        if highlightedItem.title in self.menusAdded:
+            return # Exit if we have already seen this item
+        
+        self.menusAdded.add(highlightedItem.title)
+
+        otherMenus = []
+        for s in itertools.chain(("subMenu","customSubMenu"),range(page.numberedSections)):
+            if isinstance(page.section.get(s,None),Html.Menu):
+                otherMenus.append(page.section[s])
+
+        if otherMenus:
+            with self.pageHtml.p():
+                with self.pageHtml.b():
+                    self.pageHtml(highlightedItem.title)
+                for item in otherMenus[0].items:
+                    with self.pageHtml.p(Class="indent-1").a(href=item.file):
+                        self.pageHtml(item.title)
+        else:
+            with self.pageHtml.p().b().a(href=highlightedItem.file):
+                self.pageHtml(highlightedItem.title)
+
+    def Build(self) -> Html.PageDesc:
+        "Return a page description object containing the site map."
+        page = Html.PageDesc(Html.PageInfo("Site map",Utils.PosixJoin("sitemap.html")))
+        page.AppendContent(f'<div class="listing">\n{str(self.pageHtml)}</div>\n')
+        return page
+
 def WriteIndexPage(writer: FileRegister.HashWriter):
     """Copy the contents of homepage.html into the body of index.html."""
 
@@ -2766,36 +2813,39 @@ def main():
     basePage = Html.PageDesc()
 
     indexDir ="indexes"
-    mainMenu = []
-    mainMenu.append(Homepage())
-    technicalMenu = list(DocumentationMenu("technical"))
-    technicalMenu[0] = technicalMenu[0]._replace(title="Technical")
-    mainMenu.append(DocumentationMenu("about",
-                                      extraItems=[technicalMenu]))
-    mainMenu.append(DocumentationMenu("misc",makeMenu=False))
+    sitemapMenu = []
+    sitemapMenu.append(Homepage())
 
-    mainMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(KeyTopicMenu(indexDir),{"topics","clusters"} | gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(TagMenu(indexDir),{"tags","drilldown"} | gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(EventsMenu(indexDir),"events" in gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
-
-    mainMenu.append([Html.PageInfo("Back to Abhayagiri.org","https://www.abhayagiri.org/questions-and-stories")])
+    sitemapMenu.append(YieldAllIf(KeyTopicMenu(indexDir),{"topics","clusters"} | gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(TagMenu(indexDir),{"tags","drilldown"} | gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(EventsMenu(indexDir),"events" in gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
-    mainMenu.append(DispatchPages())
+    technicalMenu = DocumentationMenu("technical",menuTitle="Technical")
+    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",extraItems=[technicalMenu]))
+    sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
+
+    sitemapMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
+    
+    sitemapMenu.append(DispatchPages())
 
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
         startTime = time.perf_counter()
         pageWriteTime = 0.0
-        for newPage in basePage.AddMenuAndYieldPages(mainMenu,**MAIN_MENU_STYLE):
+        sitemap = HtmlSiteMap()
+        for newPage in basePage.AddMenuAndYieldPages(sitemapMenu,**MAIN_MENU_STYLE):
             pageWriteStart = time.perf_counter()
             WritePage(newPage,writer)
+            sitemap.RegisterPage(newPage)
             pageWriteTime += time.perf_counter() - pageWriteStart
             print(f"{gOptions.info.cannonicalURL}{newPage.info.file}",file=urlListFile)
-    
+
+        if gOptions.buildOnly == gAllSections:
+            WritePage(sitemap.Build(),writer) # The site map is only complete when all pages are built
+
         Alert.extra(f"Build main loop took {time.perf_counter() - startTime:.3f} seconds.")
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")
 
