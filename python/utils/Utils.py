@@ -153,7 +153,7 @@ def AboutPageLookup(pageName:str,aboutPageCache:dict = {}) -> str|None:
         for dir in dirs:
             fileList = os.listdir(PosixJoin(gOptions.pagesDir,dir))
             for file in fileList:
-                m = re.match(r"[0-9]*_?(.*)\.html",file)
+                m = re.match(r"(.*)\.html",file)
                 if m:
                     aboutPageCache[m[1].lower()] = PosixJoin(dir,m[0])
 
