@@ -2668,54 +2668,46 @@ class HtmlSiteMap:
         page.AppendContent(f'<div class="listing">\n{str(self.pageHtml)}</div>\n')
         return page
 
-def WriteIndexPage(writer: FileRegister.HashWriter):
-    """Copy the contents of homepage.html into the body of index.html."""
+def DesignateCannonical(htmlPage: str,cannonicalURL: str) -> str:
+    """Add a rel="cannonical" link to htmlPage."""
+
+    return htmlPage.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
+
+def WriteIndexPages(writer: FileRegister.HashWriter):
+    """Copy the contents of homepage.html into the body of pages/index.html and index.html."""
 
     homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.pagesDir,"homepage.html"))
-    homepageBody = re.sub(r"<script>.*?</script>","",homepageBody,flags=re.DOTALL)
 
     indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates","index.html"))
-    
+
+    # Remove the homepage redirect code from pages/index.html (the cannonical index page)
+    homepageBodyNoRedirect = re.sub(r"<script>.*?</script>","",homepageBody,flags=re.DOTALL)
+    indexHtml = pyratemp.Template(indexTemplate)(bodyHtml = homepageBodyNoRedirect,gOptions = gOptions)
+    writer.WriteTextFile("index.html",indexHtml)
+
+    # Keep the redirect code in the root index.html 
     indexHtml = pyratemp.Template(indexTemplate)(bodyHtml = homepageBody,gOptions = gOptions)
-    writer.WriteTextFile(Utils.PosixJoin("index.html"),indexHtml)
+    # Adjust for the change in directory
+    indexHtml = re.sub(r'href="(?![^"]*://)',f'href="{gOptions.pagesDir}/',indexHtml,flags=re.IGNORECASE)
+    indexHtml = re.sub(r'src="(?![^"]*://)',f'src="{gOptions.pagesDir}/',indexHtml,flags=re.IGNORECASE)
+    indexHtml,replaceCount = re.subn(r'location.replace\("index.html#homepage.html"',
+                                     f'location.replace("{gOptions.pagesDir}/index.html"',
+                                     indexHtml,flags=re.IGNORECASE)
+    if replaceCount != 1:
+        Alert.error("Unable to replace redirect code in pages/templates/index.html")
+
+    indexHtml = DesignateCannonical(indexHtml,Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html"))
+    writer.WriteTextFile("../index.html",indexHtml)
+
 
 def WriteRedirectPages(writer: FileRegister.HashWriter):
     hardRedirect = pyratemp.Template(Utils.ReadFile("pages/templates/Redirect.html"))
 
-    # This is the Javascript redirect code from Global.html configured to redirect index.html to pages/index.html
-    javaScriptRedirect = """
-<script>
-    const agent = window.navigator.userAgent;
-    const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
-    let isBotUserAgent = false;
-    for (bot of botUsers){
-    if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
-        isBotUserAgent = true;
-        break;
-    }
-    }
-
-    url = new URL(location.href)
-    if (url.protocol != "file:" && !isBotUserAgent) {
-    location.replace("pages/index.html");
-    }
-</script>
-"""
-
     for redirect in gDatabase["redirect"].values():
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
-            if redirect["oldPage"] == "../index.html": # ../index.html lives at the root directory, so we need to change all relative links to it.
-                cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html")
-                newPageHtml = newPageHtml.replace("<body>","<body>" + javaScriptRedirect)
-                    # Add Javascript redirect code
-
-                newPageHtml = re.sub(r'href="(?![^"]*://)','href="pages/',newPageHtml,flags=re.IGNORECASE)
-                newPageHtml = re.sub(r'src="(?![^"]*://)','src="pages/',newPageHtml,flags=re.IGNORECASE)
-                    # Then replace all href and src links
-            else:
-                cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])
-            newPageHtml = newPageHtml.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
+            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])
+            newPageHtml = DesignateCannonical(newPageHtml,cannonicalURL)
         elif redirect["type"] == "Hard":
             oldDir,oldFile = Utils.PosixSplit(redirect["oldPage"])
             newDir,newFile = Utils.PosixSplit(redirect["newPage"])
@@ -2850,7 +2842,7 @@ def main():
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")
 
         writer.WriteTextFile("sitemap.xml",XmlSitemap(writer))
-        WriteIndexPage(writer)
+        WriteIndexPages(writer)
         WriteRedirectPages(writer)
         Alert.extra("html files:",writer.StatusSummary())
         if not limitedBuild:

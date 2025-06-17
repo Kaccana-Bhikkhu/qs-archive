@@ -10,23 +10,6 @@
 	<link rel="canonical" href="https://www.abhayagiri.org/questions/index.html">
 </head>
 	<body>
-<script>
-    const agent = window.navigator.userAgent;
-    const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
-    let isBotUserAgent = false;
-    for (bot of botUsers){
-    if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
-        isBotUserAgent = true;
-        break;
-    }
-    }
-
-    url = new URL(location.href)
-    if (url.protocol != "file:" && !isBotUserAgent) {
-    location.replace("pages/index.html");
-    }
-</script>
-
 	<div class="min-h-screen bg-gradient">
 		<header class="header">
             <div class="container">
@@ -108,7 +91,22 @@
 
 
 		<div id="frame">
-    
+    <script>
+      const agent = window.navigator.userAgent;
+      const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+      let isBotUserAgent = false;
+      for (bot of botUsers){
+        if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+          isBotUserAgent = true;
+          break;
+        }
+      }
+
+      url = new URL(location.href)
+      if (url.protocol != "file:" && !isBotUserAgent) {
+        location.replace("pages/index.html" + url.search + url.hash);
+      }
+    </script>
 
   <main class="container main-content">
     <!-- Hero Section -->
@@ -233,5 +231,4 @@
 	<script src="pages/./js/frame.js" type="module"></script>
 	</body>
 </html>
-
 

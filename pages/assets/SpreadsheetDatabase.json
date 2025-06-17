@@ -150177,11 +150177,6 @@
     }
   },
   "redirect": {
-    "../index.html": {
-      "oldPage": "../index.html",
-      "newPage": "index.html",
-      "type": "Soft"
-    },
     "about/01_Introduction.html": {
       "oldPage": "about/01_Introduction.html",
       "newPage": "about/Introduction.html",
