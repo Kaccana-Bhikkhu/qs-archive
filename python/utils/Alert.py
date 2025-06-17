@@ -1,6 +1,6 @@
 """A module to print and log errors and notifications taking into account verbosity and debug status."""
 from __future__ import annotations
-from typing import Any
+from typing import Any, List
 from contextlib import contextmanager
 verbosity = 0
 ObjectPrinter = repr # Call this function to convert items to print into strings
@@ -51,6 +51,21 @@ class AlertClass:
                     print()
     
     __call__ = Show
+
+    def ShowFirstItems(self,items:List[Any],itemName:str = "item",truncateAt:int = 10,specialPlural:str = "") -> None:
+        """Print the prompt 'The first N item(s) are [....]"""
+        if not items:
+            return
+        first = "first " if len(items) > truncateAt else ""
+        if len(items) > 1:
+            if specialPlural:
+                itemName = specialPlural
+            elif itemName.endswith("y"):
+                itemName = itemName[0:-1] + "ies"
+            else:
+                itemName += "s"
+        stringList = [str(i) for i in items[0:truncateAt]]
+        self.Show(f"The {first}{len(stringList)} {itemName} {'is' if len(items) == 1 else 'are'}",stringList)
 
     def CountString(self) -> str:
         "Return a string describing how many alerts have occured."

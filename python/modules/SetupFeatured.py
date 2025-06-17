@@ -6,12 +6,14 @@ from __future__ import annotations
 import os, json, datetime, re
 from datetime import timedelta
 import random
-from typing import NamedTuple, Iterable, TypedDict
+from typing import Callable, TypedDict
 import Utils, Alert, Build, Filter, Database
 from copy import copy
 import Filter
 import Html2 as Html
 
+# A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
+SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
       text: str         # Text of the excerpt; used to identify this excerpt when its code changes
       fTags: list[str]  # The excerpt's fTags
@@ -53,7 +55,7 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
     try:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
-        Alert.info(f"Wrote featured excerpt DB to {filename}.")
+        Alert.info(f"Wrote featured excerpt database to {filename}.")
         return True
     except OSError as err:
         Alert.error(f"Could not write {gOptions.featuredDatabase} due to {err}")
@@ -176,46 +178,65 @@ def Check(paramStr: str) -> bool:
         databaseGood = False
 
     mismatchedEntries = []
+    textMismatches = []
     for excerptCode,databaseEntry in gFeaturedDatabase["excerpts"].items():
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if currentExcerpt:
             currentEntry = ExcerptEntry(currentExcerpt)
             if currentEntry != databaseEntry:
                 mismatchedEntries.append(excerptCode)
+                if currentEntry["text"] != databaseEntry["text"]:
+                    textMismatches.append(excerptCode)
         else:
             mismatchedEntries.append(excerptCode)
     
     if mismatchedEntries:
         Alert.error(len(mismatchedEntries),"entries do not match between the current database and the database read from disk.")
-        Alert.essential("Run the update or fix modules to correct this problem.")
-        Alert.essential(f"The first {min(len(mismatchedEntries),10)} mismatched excerpts are",mismatchedEntries[0:10])
+        Alert.essential(len(mismatchedEntries) - len(textMismatches),"entries simply need to be updated with the Update module.")
+        Alert.essential(len(textMismatches),"entries texts do not match and might require the Fix module if they have moved.")
+        Alert.essential.ShowFirstItems(textMismatches,"text mismatched excerpt")
         databaseGood = False
     
     missingCalendarItems = [code for code in gFeaturedDatabase["calendar"] if code not in gFeaturedDatabase["excerpts"]]
     if missingCalendarItems:
         Alert.error(len(missingCalendarItems),"calendar entries cannot be found in the excerpt list.")
         Alert.essential("Run the fix module to correct this problem.")
-        Alert.essential(f"The first {min(len(missingCalendarItems),10)} missing entries are",missingCalendarItems[0:10])
+        Alert.essential.ShowFirstItems(missingCalendarItems,"missing entry")
         databaseGood = False
 
     return databaseGood
 
-def AnnounceSubmodule(submoduleName: str) -> None:
+def Write(paramStr: str,goodDatabase:bool = True) -> bool:
+    """Write the database to disk if it is good or paramStr contains 'always'."""
+    paramStr = paramStr.lower()
+    if goodDatabase or "always" in paramStr:
+        if not goodDatabase:
+            Alert.warning("The database contains errors, but is being written to disk anyway.")
+        if "never" in paramStr:
+            Alert.info("Database not written to disk.")
+        else:
+            WriteDatabase(gFeaturedDatabase)
+    else:
+        Alert.info("The database contains unidentified or improperly linked excerpts and cannot be written.")
+
+def AnnounceSubmodule(submodule: SubmoduleType|None) -> None:
     """Print the name and parameter of this submodule."""
-    if submoduleName:
-        parameter = gOptions.featured[submoduleName]
+    if submodule:
+        submoduleName = submodule.__name__.lower()
+        parameter = gOptions.featured.get(submoduleName,"")
         parameterStr = f" with parameter {repr(parameter)}" if parameter else ""
         Alert.structure(f"------- Running SetupFeatured.{submoduleName.capitalize()}(){parameterStr}")
     else:
         Alert.structure(f"------- All submodules finished.")
 
-def RunSubmodule(submoduleName: str) -> bool|None:
+def RunSubmodule(submodule: SubmoduleType,alwaysRun:bool = False,**kwargs) -> bool|None:
     """Runs the named submodule if it was specified by --featured and returns the result.
     Returns None if the submodule doesn't run."""
 
-    if submoduleName in gOptions.featured:
-        AnnounceSubmodule(submoduleName)
-        return gSubmodules[submoduleName](gOptions.featured[submoduleName])
+    submoduleName = submodule.__name__.lower()
+    if submoduleName in gOptions.featured or alwaysRun:
+        AnnounceSubmodule(submodule)
+        return submodule(gOptions.featured.get(submoduleName,""),**kwargs)
     else:
         return None
 
@@ -226,14 +247,10 @@ def AddArguments(parser) -> None:
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the calendar.")
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
 
-gSubmodules = {op.__name__.lower():op for op in [Remake,Read,Check]}
-
 def ParseArguments() -> None:
     # --featured is a comma-separated list of operations from gOperations optionally followed by non-alphabetic parameters
     gOptions.featured = [re.match(r"([a-z]*)(.*)",op.strip(),re.IGNORECASE) for op in gOptions.featured.split(',')]
     gOptions.featured = {m[1].lower():m[2] for m in gOptions.featured}
-
-    gOptions.featured["read"] = "" # Always read the database if it isn't generated in another way
 
     unrecognized = [op for op in gOptions.featured if op not in gSubmodules]
     if unrecognized:
@@ -246,24 +263,23 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 gFeaturedDatabase:FeaturedDatabase = {}
+gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write]}
 
 def main() -> None:
     global gFeaturedDatabase
 
     random.seed(42)
-    RunSubmodule("remake") or RunSubmodule("read")
+    RunSubmodule(Remake) or RunSubmodule(Read,alwaysRun=True)
     if not gFeaturedDatabase:
         return
     
     PrintInfo(gFeaturedDatabase)
-    databaseGood = True
+    goodDatabase = True
 
-    if RunSubmodule("check") == False:
-        databaseGood = False
+    if RunSubmodule(Check) == False:
+        goodDatabase = False
     
-    AnnounceSubmodule("")
-    if databaseGood:
-        WriteDatabase(gFeaturedDatabase)
-    else:
-        Alert.info("The database contains unidentified or improperly linked excerpts and cannot be written.")
+    RunSubmodule(Write,alwaysRun=True,goodDatabase=goodDatabase)
+
+    AnnounceSubmodule(None)
     
