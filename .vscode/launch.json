@@ -152,7 +152,7 @@
             "args": [
                 "SetupFeatured",
                 "--featured",
-                "check"
+                "check,update"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

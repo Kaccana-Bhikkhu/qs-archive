@@ -2723,6 +2723,8 @@ def AddArguments(parser):
     
     parser.add_argument('--pagesDir',type=str,default='pages',help='Write html files to this directory; Default: ./pages')
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
+    parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
+
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")
