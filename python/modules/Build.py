@@ -189,6 +189,12 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 
     return ", ".join(bits)
 
+def SearchLink(query:str,searchType:str = "x") -> str:
+    """Returns a link to the search page with a specifed search string."""
+
+    htmlQuery = urllib.parse.urlencode({"q":query,"search":searchType},doseq=True,quote_via=urllib.parse.quote)
+    return f"../search/Text-search.html?{htmlQuery}"
+
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
     "Write a list of hyperlinked tags"
     
@@ -2037,8 +2043,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a.br()
 
         if featuredExcerpts:
-            query = urllib.parse.urlencode({"q":f"@{eventCode} +","search":"x"},doseq=True,quote_via=urllib.parse.quote)
-            with a.a(href = f"../search/Text-search.html?{query}"):
+            with a.a(href=SearchLink(f"@{eventCode} +")):
                 a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
             a(f"({len(featuredExcerpts)})")
             a.br()
