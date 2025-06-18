@@ -150,7 +150,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupFeatured",
+                "PrepareUpload",
                 "--featured",
                 "check,update"
             ],

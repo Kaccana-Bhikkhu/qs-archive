@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-import os
+import os, re
 import Utils, Alert, Link
 from typing import Iterable
 
@@ -53,6 +53,16 @@ def MoveItemsIn(items: list[dict]|dict[dict],name: str) -> None:
     if movedToDir or movedToNoUpload or otherFilesMoved:
         Alert.extra(f"Moved {movedToDir} {name}(s) to usual directory; moved {movedToNoUpload} {name}(s) and {otherFilesMoved} other file(s) to NoUpload directory.")
 
+def CheckJavascriptFiles() -> None:
+    "Print cautions if debug flags are set in .js files."
+
+    for fileName in sorted(os.listdir(Utils.PosixJoin(gOptions.pagesDir,"js"))):
+        filePath = Utils.PosixJoin(gOptions.pagesDir,"js",fileName)
+        fileContents = Utils.ReadFile(filePath)
+        if re.search(r"DEBUG\s*=\s*true",fileContents):
+            Alert.caution(filePath,"contains DEBUG = true; this should be changed to false before uploading.")
+
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     pass
@@ -71,4 +81,7 @@ def main() -> None:
     MoveItemsIn(gDatabase["audioSource"],"session mp3")
     MoveItemsIn(gDatabase["excerpts"],"excerpt mp3")
     MoveItemsIn(gDatabase["reference"],"reference")
+
+    if gOptions.uploadMirror != "preview":
+        CheckJavascriptFiles()
     
