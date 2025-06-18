@@ -8,7 +8,7 @@ If you would like to contribute to the Ajahn Pasanno Archive, here are some poss
 ## Ways Anyone Can Contribute:
 
 ### Find stories in Dhamma talks
-The APQS Archive indexes stories told in Q&A sessions and Dhamma discussions. Ajahn Pasanno tells many stories during Dhamma talks, but we’re not planning to hunt for them all. If you remember inspiring stories told by or about Ajahn Pasanno contained in recordings on [abhayagiri.org](https://www.abhayagiri.org/talks), please send them to us. If the story isn’t duplicated elsewhere in the archive and seems worthy to be included, we’ll aim to add it to a future version of the Archive.
+The Ajahn Pasanno Archive indexes stories told in Q&A sessions and Dhamma discussions. Ajahn Pasanno tells many stories during Dhamma talks, but we’re not planning to hunt for them all. If you remember inspiring stories told by or about Ajahn Pasanno contained in recordings on [abhayagiri.org](https://www.abhayagiri.org/talks), please send them to us. If the story isn’t duplicated elsewhere in the archive and seems worthy to be included, we’ll aim to add it to a future version of the Archive.
 
 When you submit stories, please include:
 
