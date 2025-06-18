@@ -463,12 +463,7 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
     def SubpageSubstitution(matchObject: re.Match) -> str:
         text,pageType,quoteDelimiter,fullLink = matchObject.groups()
         pageType = pageType.lower()
-        hashSplit = fullLink.split("#",maxsplit=1)
-        if len(hashSplit) > 1:
-            link,hashTag = hashSplit
-        else:
-            link = fullLink
-            hashTag = ""
+        link,hashTag = re.match(r"([^#]*)#?(.*)",fullLink).groups()
 
         linkTo = ""
         linkToPage = True
