@@ -1990,7 +1990,10 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
         
         html = markdown.markdown(markdownText,extensions = ["sane_lists",NewTabRemoteExtension()])
         a.hr()
-        with a.div(Class="listing"):
+        with a.h2():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view",id="TOC")
+            a("Table of Contents")
+        with a.div(Class="listing",id="TOC.b",style="display: none;"):
             a(html)
         return
 
