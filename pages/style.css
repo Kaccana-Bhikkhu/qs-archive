@@ -455,11 +455,14 @@ i.fa.fa-star {
 }
 
 body {
-	display: flex;
-	justify-content: center;
     font-family: system-ui, -apple-system, sans-serif;
     color: var(--color-primary);
     line-height: 1.5;
+}
+
+body.main-page {
+	display: flex;
+	justify-content: center;
 }
 
 .min-h-screen {

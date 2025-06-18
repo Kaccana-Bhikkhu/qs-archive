@@ -1993,7 +1993,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
         with a.h2():
             a.a(href="#").i(Class="fa fa-plus-square toggle-view",id="TOC")
             a("Table of Contents")
-        with a.div(Class="listing",id="TOC.b",style="display: none;"):
+        with a.div(Class="listing javascript-hide",id="TOC.b"):
             a(html)
         return
 
