@@ -2,12 +2,10 @@
 
 # Status
 
-## New in the May 2025 release:
-- [Winter Retreat 2005 Ānāpānasati talks](event:WR2005-1): Ajahn Pasanno's most detailed teachings about mindfulness of breathing.
-- [2021 Awaken to the New Year Retreat](event:Awaken2021).
-- Spirit Rock daylong events: [Happiness on the Buddhist Path (2023)](event:SRD2023) and [Perspectives on Buddhist Practice from Ajahn Chah (2024)](event:SRD2024).
-- [2025 Q&A session with monks at Wat Pah Nanachat](event:Nanachat2025).
-- Most [tags applied to over 25 excerpts](../indexes/SortedTags.html) feature at least one excerpt.
+## New in the June 2025 release:
+- Redesigned home page including daily featured excerpts.
+- Floating search bar available on all pages; press '/' to bring up the search bar anywhere on the page.
+- Improved support for devices with small screens.
 
 ## Content
 This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 150 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 475 transcribed pages, of which 400 have been entered into the Archive. The detailed status of transcription is as follows:
@@ -16,7 +14,7 @@ This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDataba
 The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](about:want-to-help) for details.
 
 ### Winter Retreats
-Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014) and [2015](event:WR2015) Winter Retreats are included in the Archive. The 2013 and 2016 Winter Retreats have been transcribed on paper; some sessions from the [2016 retreat](event:WR2016) are online. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats).
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014) and [2015](event:WR2015) Winter Retreats are included in the Archive. The 2013 and 2016 Winter Retreats have been transcribed on paper; some sessions from the [2016 retreat](event:WR2016) are online. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island]() during Amaravati's 2025 Winter Retreat; recordings are being [posted online](https://amaravati.org/dhamma-audio-library/?wpv-category=audio&wpv-fpmtp_series=the-island-2025&wpv_aux_current_post_id=29850&wpv_aux_parent_post_id=29850&wpv_view_count=29392) and will later be included in the Archive.
 
 ### Spirit Rock Daylongs
 Six daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
@@ -73,3 +71,9 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - Material from Abhayagiri's [20th](event:Anniversary2016), [25th](event:Anniversary2021), and [28th](event:Anniversary2024) anniversaries
 - [Practice and Study Day 2023](event:PSD2023): Mindfulness of Breathing
 - More featured excerpts including [Ajahn Chah's teaching to Marjorie](excerpt:Chah2001_S02_F03)
+### May 2025 release:
+- [Winter Retreat 2005 Ānāpānasati talks](event:WR2005-1): Ajahn Pasanno's most detailed teachings about mindfulness of breathing.
+- [2021 Awaken to the New Year Retreat](event:Awaken2021).
+- Spirit Rock daylong events: [Happiness on the Buddhist Path (2023)](event:SRD2023) and [Perspectives on Buddhist Practice from Ajahn Chah (2024)](event:SRD2024).
+- [2025 Q&A session with monks at Wat Pah Nanachat](event:Nanachat2025).
+- Most [tags applied to over 25 excerpts](../indexes/SortedTags.html) feature at least one excerpt.

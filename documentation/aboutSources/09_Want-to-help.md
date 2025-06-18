@@ -1,7 +1,7 @@
 <!--TITLE:Want to help?-->
 [Preparing for Abhayagiri's 20th Anniversary Celebration](photo:Abhayagiri 20th Anniversary.jpg)
 # Want to Help?
-If you would like to contribute to the Ajahn Pasanno Question and Story Archive, here are some possibilities.
+If you would like to contribute to the Ajahn Pasanno Archive, here are some possibilities.
 
 -----
 
@@ -24,7 +24,7 @@ For example: “Master Hsu Yun and the Bandits,” 13:49 in the talk “Developi
 ----
 
 ### Point out typos, tagging errors, or audio glitches
-There is so much potential material for the Archive that little proofreading has been done after typing in transcriptions. Thus typos are inevitable, and some tags intended for one excerpt might end up on another. There’s no need for the Archive to be as polished as a printed book, and it often quotes imperfectly phrased questions verbatim. Nevertheless, please let me know if you find any glitches.
+There is so much potential material for the Archive that little proofreading has been done after typing in transcriptions. Thus typos are inevitable, and some tags intended for one excerpt might end up on another. There’s no need for the Archive to be as polished as a printed book, and it often quotes imperfectly phrased questions verbatim. Nevertheless, please let us know if you find any glitches.
 
 -----
 
@@ -51,4 +51,3 @@ __Fix bugs:__ For the current list, see [About: status](about:status#known-issue
 
 __Cross-platform mp3 splitting:__ The project currently uses Windows-only [mp3DirectCut](https://mpesch3.de/) or [mp3splt](https://mp3splt.sourceforge.net/mp3splt_page/about.php) to quickly and losslessly split mp3 files. mp3splt is cross-platform but occasionally sets the length metadata incorrectly when splitting variable-length mp3 files, so it isn't reliable enough for production work. [FFcuesplitter](https://github.com/jeanslack/FFcuesplitter) is a python script that uses ffmpeg to split mp3 files. It is possible that rewriting `Mp3DirectCut.SinglePassSplit` to use FFCuesplitter would make the QSArchive software fully functional on multiple platforms.
 
-__Help deploy the new homepage:__ A generous supporter has designed a new homepage for the Archive. Integrating it with the current website will stretch the limits of Ajahn Kaccāna's knowledge of Javascript. A skilled Javascript programmer might be able to contribute here.
