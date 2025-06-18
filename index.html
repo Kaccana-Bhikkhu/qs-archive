@@ -1,20 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Home – The Ajahn Pasanno Question and Story Archive">
-  <meta name="keywords" content="">
-  <meta name="author" content="Abhayagiri Buddhist Monastery">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-
-<link rel="stylesheet" href="pages/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
-    
-<link rel="canonical" href="https://www.abhayagiri.org/questions/index.html">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>The Ajahn Pasanno Archive</title>
+		<link rel="stylesheet" href="pages/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
+	<link rel="canonical" href="https://www.abhayagiri.org/questions/index.html">
 </head>
-<body>
+	<body class="main-page bg-gradient">
+	<div class="min-h-screen bg-gradient">
+		<header class="header">
+            <div class="container">
+                <h1>The Ajahn Pasanno Archive</h1>
+                <h2>Audio Questions, Stories, and Quotes</h2>
+                <div class="header-content">
+                    <div class="floating-search keep-nav-menu-open">
+                        <form id="floating-search-form">
+                            <input type="text" id="floating-search-input" placeholder="Search the teachings..."/>
+                            <button type="submit" id="floating-search-go"><i class="fa fa-arrow-right fa-lg"></i></button>
+                        </form>
+                    </div>
+                    <span class="main-menu-icon keep-nav-menu-open" id="nav-search-icon">
+                        <i class="fa fa-search fa-3x"></i>
+                        <br>
+                        Search
+                    </span>
+                    <nav class="main-nav">
+                        <span class="main-menu-icon hamburger">
+                            <i class="fa fa-bars fa-3x"></i>
+                            <br>
+                            Menu
+                        </span>
+                        <ul class="keep-nav-menu-open">
+                            <li><a href="pages/homepage.html">Home</a></li>
+							<li class="dropdown">
+                                <a href="pages/#" class="dropdown-trigger">Key Topics&nbsp;▾</a>
+                                <div class="dropdown-content">
+                                    <a href="pages/topics/meditation.html">Meditation practice</a>
+                                    <a href="pages/topics/path.html">Noble Eightfold Path</a>
+                                    <a href="pages/topics/monastic.html">Monastic life</a>
+									<a href="pages/topics/everyday.html">Everyday life practice</a>
+									<hr>
+									<a href="pages/indexes/KeyTopics.html?hideAll">All key topics</a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="pages/#" class="dropdown-trigger">Tags ▾</a>
+                                <div class="dropdown-content">
+                                    <a href="pages/tags/mindfulness.html">Mindfulness</a>
+                                    <a href="pages/tags/thai-forest-tradition.html">Thai Forest Tradition</a>
+									<a href="pages/tags/ajahn-chah.html">Ajahn Chah</a>
+									<a href="pages/tags/ajahn-pasanno.html">Ajahn Pasanno</a>
+									<hr>
+									<a href="pages/drilldown/root.html" class="hide-thin-screen-1">All tags</a>
+                                    <a href="pages/dispatch/Tags.html" class="hide-wide-screen-1">All tags</a>
+                                </div>
+                            </li>
+							<li class="dropdown">
+                                <a href="pages/#" class="dropdown-trigger">Events ▾</a>
+                                <div class="dropdown-content">
+                                    <a href="pages/events/Chah2001.html">Remembering Ajahn Chah Weekend</a>
+									<a href="pages/events/UD2014-1.html">Death and Dying</a>
+									<a href="pages/events/SRD2023.html">Happiness on the Buddhist Path</a>
+									<a href="pages/events/Nanachat2025.html">Q&A at Wat Pah Nanachat</a>
+									<hr>
+									<a href="pages/indexes/EventsBySeries.html" class="hide-thin-screen-1">All events</a>
+                                    <a href="pages/dispatch/Events.html" class="hide-wide-screen-1">All events</a>
+                                </div>
+                            </li>
+                            <li><a href="pages/about/Introduction.html">About</a></li>
+                        </ul>
+                    </nav>
+                    <span class="main-menu-icon keep-nav-menu-open" style="line-height: 0.9rem;">
+                        <div id="nav-abhayagiri-icon">
+                            <a href="https://abhayagiri.org">
+                                <img src="pages/images/icons/HandWithLeaves.png" height="50">
+                            <br>
+                            <span style="font-size: 80%;">abhayagiri.org</span>
+                            </a>
+                        </div>
+                        <div class="abhayagiri-grid-menu">
+                            Grid menu matching abhayagiri.org
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+
+		<div id="frame">
     <script>
       const agent = window.navigator.userAgent;
       const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
@@ -28,7 +104,7 @@
 
       url = new URL(location.href)
       if (url.protocol != "file:" && !isBotUserAgent) {
-        location.replace("pages/index.html#homepage.html");
+        location.replace("pages/index.html" + url.search + url.hash);
       }
     </script>
 
@@ -135,6 +211,24 @@
 </div>
 </main>
 
-</body>
+</div>
+
+
+		<footer class="footer">
+            <p>&copy; 2025 Abhayagiri Buddhist Monastery – <a href="pages/about/License.html">License</a> – <a href="pages/sitemap.html">Site map</a></p>
+        </footer>
+	</div>
+
+	<div id="audio-player" class="overlay">
+		<button class="play"></button>
+		<span class="audio-title"> <span> </span></span>
+		<input type="range" />
+	</div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+	<script src="pages/./js/audioPlayer.js" type="module"></script>
+	<script src="pages/./js/audioChip.js" type="module"></script>
+	<script src="pages/./js/frame.js" type="module"></script>
+	</body>
 </html>
 

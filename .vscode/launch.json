@@ -71,7 +71,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "tags",
+                "none",
                 "--quickBuild"
             ],
             "console": "integratedTerminal",
@@ -150,9 +150,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupFeatured",
+                "PrepareUpload",
                 "--featured",
-                "check"
+                "check,update"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

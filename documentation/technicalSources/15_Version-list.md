@@ -105,3 +105,5 @@
 - 5.4 (May 2025 release) Added events: Winter Retreat 2005 Ānāpānasati, Winter Retreat 2016 (partial), Awaken to the New Year 2021, Spirit Rock 2023 and 2024 daylongs, a 2025 Wat Pah Nanachat Q&A session, and two online events from 2024. Most tags applied to over 25 excerpts feature at least one excerpt. Mp3 splitting with mp3splt. Fixed Javascript bugs on Firefox and Mac browsers.
 
 - 5.4.1 (May 2025 release #2) Play all featured excerpts on tag and cluster pages. Contributed by Owen.
+
+- 6.0 (June 2025 release) Home page redesigned by Chris Claudius. Floating search bar available from the main menu and by pressing '/' anywhere on a page. SetupFeatured.py manages the daily featured excerpt history database. Improved support for small screens. Dispatch pages explain the features of the archive in detail. Html sitemap. Remove NN_ from the about page filenames. Html redirects from pages which have moved.

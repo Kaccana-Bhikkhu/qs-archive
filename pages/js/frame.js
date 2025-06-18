@@ -11,7 +11,7 @@ const errorPage = "./about/Page-Not-Found.html";
 const PATH_PART = /[^#?]*/;
 const SEARCH_PART = /\?[^#]*/;
 
-const DEBUG = true;
+const DEBUG = false;
 if (DEBUG) 
 	globalThis.debugLog = console.log.bind(window.console)
 else 
@@ -74,12 +74,27 @@ export function openLocalPage(path,query,bookmark) {
 	newFullUrl.hash = `#${path}` + (query ? `?${query}` :"") + (bookmark ? `#${bookmark}` :"");
 
 	history.pushState({}, "", newFullUrl);
-	changeURL(path);
+	changeURL(newFullUrl.hash.slice(1));
 }
 
 function pageText(r,url) {
 	if (r.ok) {
-		return r.text().then((text) => Promise.resolve([text,url]))
+		return r.text().then((text) => {
+			let redirect = text.match(/<meta[^>]*http-equiv[^>]*refresh[^>]*>/);
+			if (redirect) {
+				debugLog("Page contains redirect tag",redirect[0]);
+				let redirectTo = redirect[0].match(/url='([^']*)'/);
+				redirectTo = join(dirname(url),redirectTo[1]);
+				let queryAndHash = url.match(/[#?].*/);
+				if (!redirectTo.match(/[#?].*/) && queryAndHash) // Preserve query and hash if redirectTo doesn't specify them
+					redirectTo += queryAndHash[0];
+				debugLog("Redirecting to",redirectTo);
+				return fetch(redirectTo)
+					.then((r) => r.text())
+					.then((text) => Promise.resolve([text,redirectTo]))
+			} else
+				return Promise.resolve([text,url]);
+		})
 	} else {
 		debugLog("Page not found. Fetching",errorPage)
 		return fetch(errorPage)
@@ -152,6 +167,12 @@ async function changeURL(pUrl,scrollTo = null) {
 		.then((r) => pageText(r,pUrl))
 		.then((result) => {
 			let [text, resultUrl] = result;
+			if (resultUrl != pUrl) { // Update location if we were redirected to another page
+				let currentLocation = new URL(location);
+				currentLocation.hash = `#${resultUrl.replace(/^\.\//,"")}`;
+				history.replaceState(history.state,"",currentLocation);
+			}
+
 			text = text.replaceAll(/<link[^>]*rel="stylesheet"[^>]*style\.css[^>]*>/gi,"");
 			frame.innerHTML = text;
 

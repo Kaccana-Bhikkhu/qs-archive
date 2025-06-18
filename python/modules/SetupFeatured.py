@@ -6,12 +6,15 @@ from __future__ import annotations
 import os, json, datetime, re
 from datetime import timedelta
 import random
-from typing import NamedTuple, Iterable, TypedDict
+from difflib import SequenceMatcher
+from typing import Callable, TypedDict
 import Utils, Alert, Build, Filter, Database
 from copy import copy
 import Filter
 import Html2 as Html
 
+# A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
+SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
       text: str         # Text of the excerpt; used to identify this excerpt when its code changes
       fTags: list[str]  # The excerpt's fTags
@@ -53,7 +56,7 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
     try:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
-        Alert.info(f"Wrote featured excerpt DB to {filename}.")
+        Alert.info(f"Wrote featured excerpt database to {filename}.")
         return True
     except OSError as err:
         Alert.error(f"Could not write {gOptions.featuredDatabase} due to {err}")
@@ -67,7 +70,7 @@ def PrintInfo(database: FeaturedDatabase) -> None:
     calendarLength = len(database['calendar'])
     daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
 
-    Alert.info(f"Calendar length {calendarLength}; {calendarLength - daysPast - 1} excerpts remaining.")
+    Alert.info(f"Calendar length {calendarLength}; {daysPast} days of history; {calendarLength - daysPast - 1} excerpts remaining.")
     
 
 def ParseNumericalParameter(parameter: str,defaultValue:int = 0) -> int:
@@ -163,6 +166,31 @@ def ExcerptMirrorList(database: FeaturedDatabase) -> list[str]:
     
     return [database["mirrors"][s] for s in database["excerptSources"]]
 
+def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[ExcerptDict]]:
+    """Returns the entries in gFeaturedDatabase that don't match the current excerpt database.
+    Returns the tuple (textMatches,textMismatches,missingEntries):
+    textMatches: The text matches but fTags or html doesn't
+    textMismatches: The text doesn't match
+    missingEntries: The item code cannot be found in the current database."""
+
+    textMatches = []
+    textMismatches = []
+    missingEntries = []
+    for excerptCode,databaseEntry in gFeaturedDatabase["excerpts"].items():
+        currentExcerpt = Database.FindExcerpt(excerptCode)
+        if currentExcerpt:
+            currentEntry = ExcerptEntry(currentExcerpt)
+            if currentEntry != databaseEntry:
+                if currentEntry["text"] == databaseEntry["text"]:
+                    textMatches.append(excerptCode)
+                else:
+                    textMismatches.append(excerptCode)
+        else:
+            missingEntries.append(excerptCode)
+    
+    return textMatches,textMismatches,missingEntries
+
+
 def Check(paramStr: str) -> bool:
     """Checks gFeaturedDatabase to make sure that everything matches the current environment.
     Returns False if any of the checks fail."""
@@ -175,47 +203,96 @@ def Check(paramStr: str) -> bool:
         Alert.error("The database specifies excerpt mirrors",databaseMirrors,"which do not match the command line mirrors",currentMirrors)
         databaseGood = False
 
-    mismatchedEntries = []
-    for excerptCode,databaseEntry in gFeaturedDatabase["excerpts"].items():
-        currentExcerpt = Database.FindExcerpt(excerptCode)
-        if currentExcerpt:
-            currentEntry = ExcerptEntry(currentExcerpt)
-            if currentEntry != databaseEntry:
-                mismatchedEntries.append(excerptCode)
-        else:
-            mismatchedEntries.append(excerptCode)
-    
-    if mismatchedEntries:
-        Alert.error(len(mismatchedEntries),"entries do not match between the current database and the database read from disk.")
-        Alert.essential("Run the update or fix modules to correct this problem.")
-        Alert.essential(f"The first {min(len(mismatchedEntries),10)} mismatched excerpts are",mismatchedEntries[0:10])
-        databaseGood = False
+    textMatches,textMismatches,missingEntries = DatabaseMismatches()
+    databaseGood = databaseGood and not any((textMatches,textMismatches,missingEntries))
+
+    if missingEntries:
+        Alert.error(len(missingEntries),"""entries in the database read from disk cannot be found in the current database.
+These may require the Fix module if excerpts have moved or the Remove module if they have been deleted.""")
+        Alert.essential.ShowFirstItems(missingEntries,"missing excerpt")
+
+    if textMatches or textMismatches:
+        Alert.error(len(textMatches) + len(textMismatches),"entries do not match between the current database and the database read from disk.")
+        if textMatches:
+            Alert.essential(len(textMatches),"entries simply need to be updated with the Update module.")
+        if textMismatches:
+            Alert.essential(len(textMismatches),"entries texts do not match and might require the Fix module if excerpts have moved.")
+            Alert.essential.ShowFirstItems(textMismatches,"text mismatched excerpt")
     
     missingCalendarItems = [code for code in gFeaturedDatabase["calendar"] if code not in gFeaturedDatabase["excerpts"]]
     if missingCalendarItems:
         Alert.error(len(missingCalendarItems),"calendar entries cannot be found in the excerpt list.")
         Alert.essential("Run the fix module to correct this problem.")
-        Alert.essential(f"The first {min(len(missingCalendarItems),10)} missing entries are",missingCalendarItems[0:10])
+        Alert.essential.ShowFirstItems(missingCalendarItems,"missing entry")
         databaseGood = False
 
+    if databaseGood:
+        Alert.info("No errors found in database.")
     return databaseGood
 
-def AnnounceSubmodule(submoduleName: str) -> None:
+def Update(paramStr: str) -> bool:
+    """Set entries in gFeaturedDatabase equal to the current database if the text string matches closely enough.
+    Return True if we modify gFeaturedDatabase."""
+
+    databaseChanged = False
+    textMatches,textMismatches,missingEntries = DatabaseMismatches()
+
+    for code in textMatches:
+        gFeaturedDatabase["excerpts"][code] = ExcerptEntry(Database.FindExcerpt(code))
+        databaseChanged = True
+    if textMatches:
+        Alert.info("Updated",len(textMatches),"excerpts with identical text strings.")
+    
+    for code in textMismatches:
+        currentEntry = ExcerptEntry(Database.FindExcerpt(code))
+        entryOnDisk = gFeaturedDatabase["excerpts"][code]
+        ratio = SequenceMatcher(a=entryOnDisk["text"],b=currentEntry["text"]).ratio()
+        updated = "does not match; not updated"
+        if ratio >= gOptions.updateThreshold:
+            gFeaturedDatabase["excerpts"][code] = currentEntry
+            updated = "matches; updated"
+            databaseChanged = True
+        Alert.extra("")
+        Alert.info(f"Excerpt: {code}; ratio:{ratio:.3f}; {updated}.")
+        Alert.extra("Old:",entryOnDisk["text"],indent=6)
+        Alert.extra("New:",currentEntry["text"],indent=6)
+
+    if not databaseChanged:
+        Alert.info("No changes made to database.")
+    return databaseChanged
+
+
+def Write(paramStr: str,goodDatabase:bool = True) -> bool:
+    """Write the database to disk if it is good or paramStr contains 'always'."""
+    paramStr = paramStr.lower()
+    if goodDatabase or "always" in paramStr:
+        if not goodDatabase:
+            Alert.warning("The database contains errors, but is being written to disk anyway.")
+        if "never" in paramStr:
+            Alert.info("Database not written to disk.")
+        else:
+            WriteDatabase(gFeaturedDatabase)
+    else:
+        Alert.info("The database contains unidentified or improperly linked excerpts and cannot be written.")
+
+def AnnounceSubmodule(submodule: SubmoduleType|None) -> None:
     """Print the name and parameter of this submodule."""
-    if submoduleName:
-        parameter = gOptions.featured[submoduleName]
+    if submodule:
+        submoduleName = submodule.__name__.lower()
+        parameter = gOptions.featured.get(submoduleName,"")
         parameterStr = f" with parameter {repr(parameter)}" if parameter else ""
         Alert.structure(f"------- Running SetupFeatured.{submoduleName.capitalize()}(){parameterStr}")
     else:
         Alert.structure(f"------- All submodules finished.")
 
-def RunSubmodule(submoduleName: str) -> bool|None:
+def RunSubmodule(submodule: SubmoduleType,alwaysRun:bool = False,**kwargs) -> bool|None:
     """Runs the named submodule if it was specified by --featured and returns the result.
     Returns None if the submodule doesn't run."""
 
-    if submoduleName in gOptions.featured:
-        AnnounceSubmodule(submoduleName)
-        return gSubmodules[submoduleName](gOptions.featured[submoduleName])
+    submoduleName = submodule.__name__.lower()
+    if submoduleName in gOptions.featured or alwaysRun:
+        AnnounceSubmodule(submodule)
+        return submodule(gOptions.featured.get(submoduleName,""),**kwargs)
     else:
         return None
 
@@ -224,16 +301,12 @@ def AddArguments(parser) -> None:
     parser.add_argument('--featured',type=str,default="check",help="Comma-separated list of operations to run on the featured database.")
     parser.add_argument('--featuredDatabase',type=str,default="pages/assets/FeaturedDatabase.json",help="Featured database filename.")
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the calendar.")
-    parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
-
-gSubmodules = {op.__name__.lower():op for op in [Remake,Read,Check]}
+    parser.add_argument('--updateThreshold',type=float,default=0.8,help="SetupFeatured.Update replaces old text with new if ratio is at least this.")
 
 def ParseArguments() -> None:
     # --featured is a comma-separated list of operations from gOperations optionally followed by non-alphabetic parameters
     gOptions.featured = [re.match(r"([a-z]*)(.*)",op.strip(),re.IGNORECASE) for op in gOptions.featured.split(',')]
     gOptions.featured = {m[1].lower():m[2] for m in gOptions.featured}
-
-    gOptions.featured["read"] = "" # Always read the database if it isn't generated in another way
 
     unrecognized = [op for op in gOptions.featured if op not in gSubmodules]
     if unrecognized:
@@ -246,24 +319,31 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 gFeaturedDatabase:FeaturedDatabase = {}
+gRepairModules:list[SubmoduleType] = [Update]
+gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules}
 
 def main() -> None:
     global gFeaturedDatabase
 
     random.seed(42)
-    RunSubmodule("remake") or RunSubmodule("read")
+
+    databaseChanged = RunSubmodule(Remake)
+    if not databaseChanged:
+        RunSubmodule(Read,alwaysRun=True)
     if not gFeaturedDatabase:
         return
     
     PrintInfo(gFeaturedDatabase)
-    databaseGood = True
+    goodDatabase = RunSubmodule(Check)
 
-    if RunSubmodule("check") == False:
-        databaseGood = False
+    databaseChanged = any(RunSubmodule(m) for m in gRepairModules) or databaseChanged
     
-    AnnounceSubmodule("")
-    if databaseGood:
-        WriteDatabase(gFeaturedDatabase)
+    if not goodDatabase or databaseChanged:
+        goodDatabase = RunSubmodule(Check,alwaysRun=True)
+
+    if databaseChanged:
+        RunSubmodule(Write,alwaysRun=True,goodDatabase=goodDatabase)
     else:
-        Alert.info("The database contains unidentified or improperly linked excerpts and cannot be written.")
+        AnnounceSubmodule(None)
+        Alert.info("No changes need to be written to disk.")
     

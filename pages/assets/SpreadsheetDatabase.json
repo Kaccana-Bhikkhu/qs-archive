@@ -150062,46 +150062,160 @@
       "shortFor": ""
     }
   },
+  "dispatch": {
+    "Key Topics": {
+      "title": "Key Topics",
+      "category": "main",
+      "link": "indexes/KeyTopics.html?hideAll",
+      "description": "Discover comprehensive collections of teachings organized by major Buddhist concepts",
+      "icon": "book-open"
+    },
+    "Tags": {
+      "title": "Tags",
+      "category": "main",
+      "link": "dispatch/Tags.html",
+      "description": "Explore teachings through specific themes like meditation, mindfulness, or daily practice",
+      "icon": "tags"
+    },
+    "Events": {
+      "title": "Events",
+      "category": "main",
+      "link": "dispatch/Events.html",
+      "description": "Find teachings from specific retreats, talks, and ceremonies",
+      "icon": "calendar"
+    },
+    "Teachers": {
+      "title": "Teachers",
+      "category": "main",
+      "link": "dispatch/Teachers.html",
+      "description": "Access teachings from Ajahn Pasanno and other respected Buddhist teachers",
+      "icon": "users"
+    },
+    "Hierarchy": {
+      "title": "Hierarchy",
+      "category": "Tags",
+      "link": "drilldown/root.html",
+      "description": "Delve into the conceptual structure of the archive",
+      "icon": "<img src=\"../images/icons/text-bullet-list-tree-explore.svg\">"
+    },
+    "Numbered Lists": {
+      "title": "Numbered Lists",
+      "category": "Tags",
+      "link": "indexes/NumericalTags.html",
+      "description": "Explore key Pāli concepts the way the Buddha himself organized them",
+      "icon": "list-ordered"
+    },
+    "Most Common": {
+      "title": "Most Common",
+      "category": "Tags",
+      "link": "indexes/SortedTags.html",
+      "description": "The most common tags reflect the heart of Ajahn Pasanno's teachings",
+      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
+    },
+    "About Tags": {
+      "title": "About Tags",
+      "category": "Tags",
+      "link": "about/Tags.html",
+      "description": "Learn how the archive selects and organizes content tags",
+      "icon": "tag"
+    },
+    "Series": {
+      "title": "Series",
+      "category": "Events",
+      "link": "indexes/EventsBySeries.html",
+      "description": "Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more",
+      "icon": "<img src=\"../images/icons/Cushion.png\">"
+    },
+    "Subject": {
+      "title": "Subject",
+      "category": "Events",
+      "link": "indexes/EventsBySubject.html",
+      "description": "Explore in-depth teachings on specific topics",
+      "icon": "<img src=\"../images/icons/DhammaWheel.png\">"
+    },
+    "Date": {
+      "title": "Date",
+      "category": "Events",
+      "link": "indexes/EventsChronological.html",
+      "description": "Listen to over twenty years of Ajahn Pasanno's teachings",
+      "icon": "calendar"
+    },
+    "About Event Series": {
+      "title": "About Event Series",
+      "category": "Events",
+      "link": "about/Event-series.html",
+      "description": "Learn what makes each event venue unique",
+      "icon": "<img src=\"../images/icons/reshot-icon-meditation.svg\">"
+    },
+    "Lineage": {
+      "title": "Lineage",
+      "category": "Teachers",
+      "link": "teachers/TeachersLineage.html",
+      "description": "Explore the roots of the Thai Forest Tradition",
+      "icon": "<img src=\"../images/icons/reshot-icon-detailed-tree.svg\">"
+    },
+    "Most Frequent": {
+      "title": "Most Frequent",
+      "category": "Teachers",
+      "link": "teachers/TeachersByExcerpts.html",
+      "description": "Listen to Ajahn Pasanno's most frequent co-teachers",
+      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
+    },
+    "Name": {
+      "title": "Name",
+      "category": "Teachers",
+      "link": "teachers/TeachersAlphabetical.html",
+      "description": "Find teachers in an alphabetical list",
+      "icon": "arrow-down-a-z"
+    },
+    "Chronology": {
+      "title": "Chronology",
+      "category": "Teachers",
+      "link": "teachers/TeachersChronological.html",
+      "description": "View teachers in order of ordination or birth",
+      "icon": "calendar"
+    }
+  },
   "redirect": {
-    "tags/one-pointedness.html": {
-      "oldPage": "tags/one-pointedness.html",
-      "newPage": "tags/unification.html"
+    "about/01_Introduction.html": {
+      "oldPage": "about/01_Introduction.html",
+      "newPage": "about/Introduction.html",
+      "type": "Hard"
     },
-    "tags/one-pointedness-qtag.html": {
-      "oldPage": "tags/one-pointedness-qtag.html",
-      "newPage": "tags/unification-qtag.html"
+    "about/02_Event-series.html": {
+      "oldPage": "about/02_Event-series.html",
+      "newPage": "about/Event-series.html",
+      "type": "Hard"
     },
-    "tags/one-pointedness-atag.html": {
-      "oldPage": "tags/one-pointedness-atag.html",
-      "newPage": "tags/unification-atag.html"
+    "about/04_Overview.html": {
+      "oldPage": "about/04_Overview.html",
+      "newPage": "about/Overview.html",
+      "type": "Hard"
     },
-    "tags/one-pointedness-quote.html": {
-      "oldPage": "tags/one-pointedness-quote.html",
-      "newPage": "tags/unification-quote.html"
+    "about/05_Tags.html": {
+      "oldPage": "about/05_Tags.html",
+      "newPage": "about/Tags.html",
+      "type": "Hard"
     },
-    "tags/sense-of-urgency.html": {
-      "oldPage": "tags/sense-of-urgency.html",
-      "newPage": "tags/spiritual-urgency.html"
+    "about/09_Want-to-help.html": {
+      "oldPage": "about/09_Want-to-help.html",
+      "newPage": "about/Want-to-help.html",
+      "type": "Hard"
     },
-    "tags/sense-of-urgency-qtag.html": {
-      "oldPage": "tags/sense-of-urgency-qtag.html",
-      "newPage": "tags/spiritual-urgency-qtag.html"
+    "about/08_Status.html": {
+      "oldPage": "about/08_Status.html",
+      "newPage": "about/Status.html",
+      "type": "Hard"
     },
-    "tags/sense-of-urgency-atag.html": {
-      "oldPage": "tags/sense-of-urgency-atag.html",
-      "newPage": "tags/spiritual-urgency-atag.html"
+    "about/10_Acknowledgements.html": {
+      "oldPage": "about/10_Acknowledgements.html",
+      "newPage": "about/Credits.html",
+      "type": "Hard"
     },
-    "tags/sense-of-urgency-reading.html": {
-      "oldPage": "tags/sense-of-urgency-reading.html",
-      "newPage": "tags/spiritual-urgency-reading.html"
-    },
-    "tags/sense-of-urgency-story.html": {
-      "oldPage": "tags/sense-of-urgency-story.html",
-      "newPage": "tags/spiritual-urgency-story.html"
-    },
-    "tags/mae-chee-songchai.html": {
-      "oldPage": "tags/mae-chee-songchai.html",
-      "newPage": "tags/mae-somchai.html"
+    "about/11_Contact.html": {
+      "oldPage": "about/11_Contact.html",
+      "newPage": "about/Contact.html",
+      "type": "Hard"
     }
   },
   "reviewedTag": {
@@ -151940,120 +152054,6 @@
       "note": ""
     }
   },
-  "dispatch": {
-    "Key Topics": {
-      "title": "Key Topics",
-      "category": "main",
-      "link": "indexes/KeyTopics.html?hideAll",
-      "description": "Discover comprehensive collections of teachings organized by major Buddhist concepts",
-      "icon": "book-open"
-    },
-    "Tags": {
-      "title": "Tags",
-      "category": "main",
-      "link": "dispatch/Tags.html",
-      "description": "Explore teachings through specific themes like meditation, mindfulness, or daily practice",
-      "icon": "tags"
-    },
-    "Events": {
-      "title": "Events",
-      "category": "main",
-      "link": "dispatch/Events.html",
-      "description": "Find teachings from specific retreats, talks, and ceremonies",
-      "icon": "calendar"
-    },
-    "Teachers": {
-      "title": "Teachers",
-      "category": "main",
-      "link": "dispatch/Teachers.html",
-      "description": "Access teachings from Ajahn Pasanno and other respected Buddhist teachers",
-      "icon": "users"
-    },
-    "Hierarchy": {
-      "title": "Hierarchy",
-      "category": "Tags",
-      "link": "drilldown/root.html",
-      "description": "Delve into the conceptual structure of the archive",
-      "icon": "<img src=\"../images/icons/text-bullet-list-tree-explore.svg\">"
-    },
-    "Numbered Lists": {
-      "title": "Numbered Lists",
-      "category": "Tags",
-      "link": "indexes/NumericalTags.html",
-      "description": "Explore key Pāli concepts the way the Buddha himself organized them",
-      "icon": "list-ordered"
-    },
-    "Most Common": {
-      "title": "Most Common",
-      "category": "Tags",
-      "link": "indexes/SortedTags.html",
-      "description": "The most common tags reflect the heart of Ajahn Pasanno's teachings",
-      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
-    },
-    "About Tags": {
-      "title": "About Tags",
-      "category": "Tags",
-      "link": "about/Tags.html",
-      "description": "Learn how the archive selects and organizes content tags",
-      "icon": "tag"
-    },
-    "Series": {
-      "title": "Series",
-      "category": "Events",
-      "link": "indexes/EventsBySeries.html",
-      "description": "Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more",
-      "icon": "<img src=\"../images/icons/Cushion.png\">"
-    },
-    "Subject": {
-      "title": "Subject",
-      "category": "Events",
-      "link": "indexes/EventsBySubject.html",
-      "description": "Explore in-depth teachings on specific topics",
-      "icon": "<img src=\"../images/icons/DhammaWheel.png\">"
-    },
-    "Date": {
-      "title": "Date",
-      "category": "Events",
-      "link": "indexes/EventsChronological.html",
-      "description": "Listen to over twenty years of Ajahn Pasanno's teachings",
-      "icon": "calendar"
-    },
-    "About Event Series": {
-      "title": "About Event Series",
-      "category": "Events",
-      "link": "about/Event-series.html",
-      "description": "Learn what makes each event venue unique",
-      "icon": "<img src=\"../images/icons/reshot-icon-meditation.svg\">"
-    },
-    "Lineage": {
-      "title": "Lineage",
-      "category": "Teachers",
-      "link": "teachers/TeachersLineage.html",
-      "description": "Explore the roots of the Thai Forest Tradition",
-      "icon": "<img src=\"../images/icons/reshot-icon-detailed-tree.svg\">"
-    },
-    "Most Frequent": {
-      "title": "Most Frequent",
-      "category": "Teachers",
-      "link": "teachers/TeachersByExcerpts.html",
-      "description": "Listen to Ajahn Pasanno's most frequent co-teachers",
-      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
-    },
-    "Name": {
-      "title": "Name",
-      "category": "Teachers",
-      "link": "teachers/TeachersAlphabetical.html",
-      "description": "Find teachers in an alphabetical list",
-      "icon": "arrow-down-a-z"
-    },
-    "Chronology": {
-      "title": "Chronology",
-      "category": "Teachers",
-      "link": "teachers/TeachersChronological.html",
-      "description": "View teachers in order of ordination or birth",
-      "icon": "calendar"
-    }
-  },
   "tagSubsumed": {
     "Non-ill-will": {
       "tag": "Non-ill-will",
@@ -153176,6 +153176,7 @@
     "Title": "title",
     "Topic code": "topicCode",
     "Tweak": "tweak",
+    "Type": "type",
     "Usage notes": "usageNotes",
     "Value": "value",
     "Venue": "venue",

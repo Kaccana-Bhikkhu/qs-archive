@@ -5,6 +5,8 @@ The [search page](../search/Text-search.html) allows one to search excerpts for 
 
 The December 2024 release adds a "Search all" button which simultaneously searches key topics, subtopics, tags, teachers, events, and excerpts. Most of the documentation below still applies.
 
+The June 2025 release adds a floating search bar to the main menu. Pressing '/' brings up the floating search bar from anywhere in a page.
+
 ## Searching for text
 
 To search for text, tags, or teachers, simply type the text into the search bar.

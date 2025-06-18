@@ -3,7 +3,7 @@
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 
-const DEBUG = true;
+const DEBUG = false;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
@@ -55,7 +55,7 @@ function displayFeaturedExcerpt() {
 
     let displayArea = document.getElementById("random-excerpt");
     displayArea.innerHTML = gFeaturedDatabase.excerpts[excerptToDisplay].html;
-    configureLinks(displayArea,"indexes/homepage.html");
+    configureLinks(displayArea,"search/homepage.html");
 
     let titleArea = document.getElementById("page-title");
     titleArea.innerHTML = title;
@@ -225,8 +225,9 @@ function initializeHomepage() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
     featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
-    configureLinks(featuredExcerptContainer,"index.html");
-    
+    configureLinks(featuredExcerptContainer,"search/homepage.html");
+        // links in excerpts are relative to depth 1 pages
+
     updateDate();
     new MeditationTimer();
 }
@@ -388,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let featuredExcerptContainer = document.getElementById("todays-excerpt");
                 if (featuredExcerptContainer) {
                     featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
-                    configureLinks(featuredExcerptContainer,"index.html");
+                    configureLinks(featuredExcerptContainer,"search/homepage.html");
                     updateDate(debugDate);
                 }
             }

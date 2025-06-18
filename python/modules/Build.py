@@ -189,6 +189,12 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 
     return ", ".join(bits)
 
+def SearchLink(query:str,searchType:str = "x") -> str:
+    """Returns a link to the search page with a specifed search string."""
+
+    htmlQuery = urllib.parse.urlencode({"q":query,"search":searchType},doseq=True,quote_via=urllib.parse.quote)
+    return f"../search/Text-search.html?{htmlQuery}"
+
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
     "Write a list of hyperlinked tags"
     
@@ -320,7 +326,7 @@ def DrilldownTemplate() -> pyratemp.Template:
                             tagAtPrevLevel = reverseIndex
                             break
                     drilldownFile = DrilldownPageFile(index)
-                    drilldownID = drilldownFile.replace(".html","")
+                    drilldownID = drilldownFile.replace(".html",".d")
                     prevLevelDrilldownFile = DrilldownPageFile(tagAtPrevLevel)
                     
                     boxType = f"$!'minus' if {index} in xTagIndexes else 'plus'!$"
@@ -1984,7 +1990,10 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
         
         html = markdown.markdown(markdownText,extensions = ["sane_lists",NewTabRemoteExtension()])
         a.hr()
-        with a.div(Class="listing"):
+        with a.h2():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view",id="TOC")
+            a("Table of Contents")
+        with a.div(Class="listing javascript-hide",id="TOC.b"):
             a(html)
         return
 
@@ -2037,8 +2046,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a.br()
 
         if featuredExcerpts:
-            query = urllib.parse.urlencode({"q":f"@{eventCode} +","search":"x"},doseq=True,quote_via=urllib.parse.quote)
-            with a.a(href = f"../search/Text-search.html?{query}"):
+            with a.a(href=SearchLink(f"@{eventCode} +")):
                 a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
             a(f"({len(featuredExcerpts)})")
             a.br()
@@ -2089,10 +2097,13 @@ def ExtractHtmlBody(fileName: str) -> str:
     
     return htmlPage[bodyStart.span()[1]:bodyEnd.span()[0]]
 
-def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageInfo|None = None,extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
+def DocumentationMenu(directory: str,makeMenu = True,
+                      specialFirstItem:Html.PageInfo|None = None, menuTitle:str|None = None,
+                      extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
     """Read markdown pages from documentation/directory, convert them to html, 
     write them in pages/about, and create a menu out of them.
-    specialFirstItem optionally designates the PageInfo for the first item"""
+    specialFirstItem optionally designates the PageInfo for the first item.
+    menuTitle is the title of this menu itself; it defaults to the first item."""
 
     @Alert.extra.Supress()
     def QuietRender() -> Iterator[Html.PageDesc]:
@@ -2106,7 +2117,10 @@ def DocumentationMenu(directory: str,makeMenu = True,specialFirstItem:Html.PageI
                     if not specialFirstItem.file:
                         specialFirstItem = specialFirstItem._replace(file=page.info.file)
                     page.info = specialFirstItem
-                yield page.info
+                if menuTitle:
+                    yield page.info._replace(title=menuTitle)
+                else:
+                    yield page.info
         page.keywords = ["About","Ajahn Pasanno","Question","Story","Archive"]
         citation = "About"
         if page.info.title != "About":
@@ -2621,39 +2635,104 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
     
     return str(xml)
 
-def WriteIndexPage(writer: FileRegister.HashWriter):
-    """Copy the contents of homepage.html into the body of index.html."""
+class HtmlSiteMap:
+    """Builds an html site map based on the menus of the pages that we pass it."""
+    pageHtml:Airium = Airium() # Html of the page we have built so far
+    menusAdded:set[str] = set() # The main menu items we have already added to the site map
+
+    def __init__(self):
+        pass
+
+    def RegisterPage(self,page: Html.PageDesc) -> None:
+        """Read the menus of this page in order to (possibly) add it to the site map."""
+        if not page.HasSection("mainMenu") or page.section["mainMenu"].menu_highlightedItem is None:
+            return # Exit if there is no highlighted item in the main menu
+        
+        highlightedItem:Html.PageInfo = page.section["mainMenu"].items[page.section["mainMenu"].menu_highlightedItem]
+        if highlightedItem.title in self.menusAdded:
+            return # Exit if we have already seen this item
+        
+        self.menusAdded.add(highlightedItem.title)
+
+        otherMenus = []
+        for s in itertools.chain(("subMenu","customSubMenu"),range(page.numberedSections)):
+            if isinstance(page.section.get(s,None),Html.Menu):
+                otherMenus.append(page.section[s])
+
+        if otherMenus:
+            with self.pageHtml.p():
+                with self.pageHtml.b():
+                    self.pageHtml(highlightedItem.title)
+                for item in otherMenus[0].items:
+                    with self.pageHtml.p(Class="indent-1").a(href=item.file):
+                        self.pageHtml(item.title)
+        else:
+            with self.pageHtml.p().b().a(href=highlightedItem.file):
+                self.pageHtml(highlightedItem.title)
+
+    def Build(self) -> Html.PageDesc:
+        "Return a page description object containing the site map."
+        page = Html.PageDesc(Html.PageInfo("Site map",Utils.PosixJoin("sitemap.html")))
+        page.AppendContent(f'<div class="listing">\n{str(self.pageHtml)}</div>\n')
+        return page
+
+def DesignateCannonical(htmlPage: str,cannonicalURL: str) -> str:
+    """Add a rel="cannonical" link to htmlPage."""
+
+    return htmlPage.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
+
+def WriteIndexPages(writer: FileRegister.HashWriter):
+    """Copy the contents of homepage.html into the body of pages/index.html and index.html."""
 
     homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.pagesDir,"homepage.html"))
-    homepageBody = re.sub(r"<script>.*?</script>","",homepageBody,flags=re.DOTALL)
 
     indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates","index.html"))
-    
+
+    # Remove the homepage redirect code from pages/index.html (the cannonical index page)
+    homepageBodyNoRedirect = re.sub(r"<script>.*?</script>","",homepageBody,flags=re.DOTALL)
+    indexHtml = pyratemp.Template(indexTemplate)(bodyHtml = homepageBodyNoRedirect,gOptions = gOptions)
+    writer.WriteTextFile("index.html",indexHtml)
+
+    # Keep the redirect code in the root index.html 
     indexHtml = pyratemp.Template(indexTemplate)(bodyHtml = homepageBody,gOptions = gOptions)
-    writer.WriteTextFile(Utils.PosixJoin("index.html"),indexHtml)
+    # Adjust for the change in directory
+    indexHtml = re.sub(r'href="(?![^"]*://)',f'href="{gOptions.pagesDir}/',indexHtml,flags=re.IGNORECASE)
+    indexHtml = re.sub(r'src="(?![^"]*://)',f'src="{gOptions.pagesDir}/',indexHtml,flags=re.IGNORECASE)
+    indexHtml,replaceCount = re.subn(r'location.replace\("index.html#homepage.html"',
+                                     f'location.replace("{gOptions.pagesDir}/index.html"',
+                                     indexHtml,flags=re.IGNORECASE)
+    if replaceCount != 1:
+        Alert.error("Unable to replace redirect code in pages/templates/index.html")
+
+    indexHtml = DesignateCannonical(indexHtml,Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html"))
+    writer.WriteTextFile("../index.html",indexHtml)
+
 
 def WriteRedirectPages(writer: FileRegister.HashWriter):
-    indexPageRedirect = ("../index.html","homepage.html")
-    
-    for oldPage,newPage in [indexPageRedirect]:
-        newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,newPage))
-        if newPage == "homepage.html": # ../index.html lives at the root directory, so we need to change all relative links to it.
-            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,"index.html")
-            newPageHtml = re.sub(r'location.replace\([^)]*\)','location.replace("pages/index.html#homepage.html")',newPageHtml)
-                # Replace the redirect in Javascript
-            newPageHtml = re.sub(r'href="(?![^"]*://)','href="pages/',newPageHtml,flags=re.IGNORECASE)
-            newPageHtml = re.sub(r'src="(?![^"]*://)','src="pages/',newPageHtml,flags=re.IGNORECASE)
-                # Then replace all href and src links
+    hardRedirect = pyratemp.Template(Utils.ReadFile("pages/templates/Redirect.html"))
+
+    for redirect in gDatabase["redirect"].values():
+        if redirect["type"] == "Soft":
+            newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
+            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])
+            newPageHtml = DesignateCannonical(newPageHtml,cannonicalURL)
+        elif redirect["type"] == "Hard":
+            oldDir,oldFile = Utils.PosixSplit(redirect["oldPage"])
+            newDir,newFile = Utils.PosixSplit(redirect["newPage"])
+            newPageHtml = hardRedirect(newPage = Utils.PosixJoin(Utils.PosixRelpath(newDir,oldDir),newFile))
         else:
-            cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,newPage)
-        newPageHtml = newPageHtml.replace('</head>',f'<link rel="canonical" href="{cannonicalURL}">\n</head>')
-        writer.WriteTextFile(oldPage,newPageHtml)
+            Alert.error("Unknown redirect type",redirect["type"])
+            continue
+
+        writer.WriteTextFile(redirect["oldPage"],newPageHtml)
 
 def AddArguments(parser):
     "Add command-line arguments used by this module"
     
     parser.add_argument('--pagesDir',type=str,default='pages',help='Write html files to this directory; Default: ./pages')
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
+    parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
+
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")
@@ -2736,41 +2815,44 @@ def main():
     basePage = Html.PageDesc()
 
     indexDir ="indexes"
-    mainMenu = []
-    mainMenu.append(Homepage())
-    technicalMenu = list(DocumentationMenu("technical"))
-    technicalMenu[0] = technicalMenu[0]._replace(title="Technical")
-    mainMenu.append(DocumentationMenu("about",
-                                      extraItems=[technicalMenu]))
-    mainMenu.append(DocumentationMenu("misc",makeMenu=False))
+    sitemapMenu = []
+    sitemapMenu.append(Homepage())
 
-    mainMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(KeyTopicMenu(indexDir),{"topics","clusters"} | gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(TagMenu(indexDir),{"tags","drilldown"} | gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(EventsMenu(indexDir),"events" in gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
-    mainMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
-
-    mainMenu.append([Html.PageInfo("Back to Abhayagiri.org","https://www.abhayagiri.org/questions-and-stories")])
+    sitemapMenu.append(YieldAllIf(KeyTopicMenu(indexDir),{"topics","clusters"} | gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(TagMenu(indexDir),{"tags","drilldown"} | gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(EventsMenu(indexDir),"events" in gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
+    sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
-    mainMenu.append(DispatchPages())
+    technicalMenu = DocumentationMenu("technical",menuTitle="Technical")
+    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",extraItems=[technicalMenu]))
+    sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
+
+    sitemapMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
+    
+    sitemapMenu.append(DispatchPages())
 
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
         startTime = time.perf_counter()
         pageWriteTime = 0.0
-        for newPage in basePage.AddMenuAndYieldPages(mainMenu,**MAIN_MENU_STYLE):
+        sitemap = HtmlSiteMap()
+        for newPage in basePage.AddMenuAndYieldPages(sitemapMenu,**MAIN_MENU_STYLE):
             pageWriteStart = time.perf_counter()
             WritePage(newPage,writer)
+            sitemap.RegisterPage(newPage)
             pageWriteTime += time.perf_counter() - pageWriteStart
             print(f"{gOptions.info.cannonicalURL}{newPage.info.file}",file=urlListFile)
-    
+
+        if gOptions.buildOnly == gAllSections:
+            WritePage(sitemap.Build(),writer) # The site map is only complete when all pages are built
+
         Alert.extra(f"Build main loop took {time.perf_counter() - startTime:.3f} seconds.")
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")
 
         writer.WriteTextFile("sitemap.xml",XmlSitemap(writer))
-        WriteIndexPage(writer)
+        WriteIndexPages(writer)
         WriteRedirectPages(writer)
         Alert.extra("html files:",writer.StatusSummary())
         if not limitedBuild:

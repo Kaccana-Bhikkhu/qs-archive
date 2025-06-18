@@ -1,4 +1,4 @@
-"""Main program to create the Ajahn Pasanno Question and Story Archive website
+"""Main program to create the Ajahn Pasanno Archive website
 """
 
 from __future__ import annotations
@@ -133,7 +133,7 @@ modules = {modName:importlib.import_module(modName) for modName in moduleList}
 priorityInitialization = ['Link']
 Utils.ExtendUnique(priorityInitialization,modules.keys())
 
-parser = argparse.ArgumentParser(description="""Create the Ajahn Pasanno Question and Story Archive website from mp3 files and the 
+parser = argparse.ArgumentParser(description="""Create the Ajahn Pasanno Archive website from mp3 files and the 
 AP QA archive main Google Sheet.""")
 
 parser.add_argument('ops',type=str,help="""A comma-separated list of operations to perform. No spaces allowed. Available operations:

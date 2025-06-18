@@ -53,14 +53,21 @@ function clickListener(event) {
 }
 
 export function loadToggleView(frame) {
+    if (!frame)
+        frame = document;
+    for (let el of frame.getElementsByClassName("javascript-hide")) {
+        el.style.display = "none";
+    }
+    for (let el of frame.getElementsByClassName("javascript-show")) {
+        el.style.display = "block";
+    }
+
     let params = frameSearch()
     let initView = params.has("showAll") ? true : (params.has("hideAll") ? false : null)
     let toggled = (params.get("toggle") || "").split(".");
     if (toggled[0] == "")
         toggled.splice(0,1);
 
-    if (!frame)
-        frame = document;
     let togglers = frame.getElementsByClassName("toggle-view");
     for (let t of togglers) {
         if (toggled.indexOf(t.id) == -1)

@@ -457,12 +457,13 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
 
     tagTypes = {"tag","drilldown"}
     excerptTypes = {"event","excerpt","session"}
-    pageTypes = Utils.RegexMatchAny(tagTypes.union(excerptTypes,{"teacher","about","image","photo","player","topic","cluster"}))
-    linkRegex = r"\[([^][]*)\]\(" + pageTypes + r":([^()#]*)#?([^()#]*)\)"
+    pageTypes = Utils.RegexMatchAny(tagTypes.union(excerptTypes,{"teacher","about","image","photo","player","topic","cluster","search"}))
+    linkRegex = r"\[([^][]*)\]\(" + pageTypes + r":([\"'`]?)(.*?)\3\)"
 
     def SubpageSubstitution(matchObject: re.Match) -> str:
-        text,pageType,link,hashTag = matchObject.groups()
+        text,pageType,quoteDelimiter,fullLink = matchObject.groups()
         pageType = pageType.lower()
+        link,hashTag = re.match(r"([^#]*)#?(.*)",fullLink).groups()
 
         linkTo = ""
         linkToPage = True
@@ -557,6 +558,9 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
                 linkTo = f"topics/{link}.html"
             else:
                 Alert.warning("Cannot link to key topic",link,"in link",matchObject[0])
+        elif pageType == "search":
+            linkTo = Build.SearchLink(fullLink).replace("../","")
+            hashTag = ""
 
         if linkTo:
             path = Utils.PosixJoin(pathToPages if linkToPage else pathToHome,linkTo)

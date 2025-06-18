@@ -19,7 +19,7 @@ If you are less certain what you're looking for, the [key topics page](../indexe
 
 For in-depth study, see what's available on the [events by subjects page](../indexes/EventsBySubject.html).
 
-To browse and listen to stories, visit the [all stories page](../indexes/AllExcerpts-story.html).
+To listen to stories illustrating key Dhamma principles, [search for featured stories](search:"#Story +").
 
 For the conceptual framework underlying these teachings, look at the [numerical tags page](../indexes/NumericalTags.html) or the [tag hierarchy page](../drilldown/root.html).
 

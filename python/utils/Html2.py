@@ -577,14 +577,14 @@ def TruncatedList(items: Iterable[str],alwaysShow:int = 1,
     promptID = blockID or Utils.slugify(morePrompt)
 
     firstBlock = "\n".join(items[0:alwaysShow])
-    prompt = Tag("a",{"class":"toggle-view hide-self" + (f" hide-wide-screen-{hideWidth}" if hideWidth else ""),
-                      "id":promptID,"href":"#"},"i")(morePrompt + "...")
+    prompt = Tag("a",{"class":"toggle-view hide-self javascript-show" + (f" hide-wide-screen-{hideWidth}" if hideWidth else ""),
+                      "id":promptID,"href":"#","style":"display:none"},"i")(morePrompt + "...")
 
     attributes = {"id":promptID + ".b"}
     if hideWidth:
         attributes["class"] = f"hide-thin-screen-{hideWidth}"
     else:
-        attributes["style"] = "display:none"
+        attributes["class"] = "javascript-hide"
     hiddenBlock = Tag(blockTag,attributes)("\n".join(items[alwaysShow:]))
 
     return "\n".join((firstBlock,prompt,hiddenBlock))

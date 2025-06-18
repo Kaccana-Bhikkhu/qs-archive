@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="$!default('''page.section['citationTitle']''',page.info.title)!$ – The Ajahn Pasanno Question and Story Archive">
+  <meta name="description" content="$!default('''page.section['citationTitle']''',page.info.title)!$ – The Ajahn Pasanno Archive">
   <meta name="keywords" content="$!', '.join(page.keywords)!$">
   <meta name="author" content="Abhayagiri Buddhist Monastery">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
 $!page.RenderNumberedSections()!$
 
 <p id="copyright" class="indent-0">&copy; $!page.gOptions.info.releaseYear!$ Abhayagiri Buddhist Monastery – <a href="../about/License.html">License</a></p>
-<p id="cite-as" class="indent-0"><b>How to cite this page</b> (suggested style): “$!page.section["citationTitle"] if page.HasSection("citationTitle") else page.info.title!$,” The Ajahn Pasanno Question and Story Archive, $!page.gOptions.info.releaseName!$,
+<p id="cite-as" class="indent-0"><b>How to cite this page</b> (suggested style): “$!page.section["citationTitle"] if page.HasSection("citationTitle") else page.info.title!$,” The Ajahn Pasanno Archive, $!page.gOptions.info.releaseName!$,
       $!f'<a href="{page.gOptions.info.citationURL}{page.info.file}">{page.gOptions.info.citationURL}{page.info.file}</a>'!$.</p>
 
 </body>
