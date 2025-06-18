@@ -171,7 +171,6 @@ hr {
 /* Text */
 p {
 	margin: 0 auto;
-	max-width: 1200px;
 	padding: 15px;
 	font-size: 18px;
 	color: #333;
@@ -327,7 +326,6 @@ div#page-title {
 
 .main {
 	margin: 0 10px 20px 10px;
-	max-width: 1200px;
 	background-color: var(--color-white);
 	border-radius: 0.5em;
 	color: #080808;
@@ -457,6 +455,8 @@ i.fa.fa-star {
 }
 
 body {
+	display: flex;
+	justify-content: center;
     font-family: system-ui, -apple-system, sans-serif;
     color: var(--color-primary);
     line-height: 1.5;
@@ -464,6 +464,7 @@ body {
 
 .min-h-screen {
     min-height: 100vh;
+	max-width: 1200px;
 	padding-left: 0
 }
 
@@ -472,7 +473,6 @@ body {
 }
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -480,7 +480,13 @@ body {
 
 .header {
     background-color: var(--color-bamboo-dark);
-    padding: 0.5rem 0 0.4rem 0; 
+    padding: 0.5rem 0 0.4rem 0;
+}
+
+@media screen and (min-width:1218px)  {
+	.header {
+		border-radius: 0 0 0.5rem 0.5rem;
+	}
 }
 
 .header h1 {
