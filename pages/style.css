@@ -467,6 +467,7 @@ body.main-page {
 
 .min-h-screen {
     min-height: 100vh;
+	width: 100%;
 	max-width: 1200px;
 	padding-left: 0
 }
@@ -486,7 +487,7 @@ body.main-page {
     padding: 0.5rem 0 0.4rem 0;
 }
 
-@media screen and (min-width:1218px)  {
+@media screen and (min-width:1204px)  {
 	.header {
 		border-radius: 0 0 0.5rem 0.5rem;
 	}
