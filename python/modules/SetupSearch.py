@@ -177,11 +177,9 @@ def SubtopicBlobs() -> Iterator[dict]:
     for _,subtopic in alphabetizedSubtopics:
         s = gDatabase["subtopic"][subtopic]
 
-        relevantCount = Database.CountExcerpts(Filter.MostRelevant(Database.SubtagIterator(s))(gDatabase["excerpts"]),countSessionExcerpts=True)
-        
         htmlParts = [
-            Build.HtmlSubtopicLink(subtopic).replace(".html","-relevant.html"),
-            f"({relevantCount})"
+            Build.HtmlSubtopicLink(subtopic),
+            f"({s["excerptCount"]})"
         ]
         if s["pali"]:
             htmlParts.insert(1,f"({s['pali']})")
