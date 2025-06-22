@@ -18,7 +18,7 @@
 --spreadsheetDatabase pages/assets/SpreadsheetDatabase.json
 
 // DownloadCSV options:
---spreadsheet "https://docs.google.com/spreadsheets/d/1z4yOBV4wHrFzJVFCLWlGP0eQyS_RQ7onN3AS8AXa1rE/"
+--spreadsheet "https://docs.google.com/spreadsheets/d/1muIfv73Q00fAvIYx-mwy6lGPyZ8Zqg1LgXhsKxdW10o/"
 --summarySheetID 2007732801
 
 // ParseCSV options:
@@ -57,7 +57,7 @@
 // Increase verbosity to maximum
 -vvv
 
---args python/config/BuildAbhayagiri.args
+--args python/config/BuildPreview.args
 --linkCheckLevel 1
 --sheets Changed
 // --linkCheckLevel excerptMp3:local:3 // Use this to update excerpts with changed timestamps. Somewhat slower.

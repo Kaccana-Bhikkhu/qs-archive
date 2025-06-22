@@ -136,6 +136,11 @@ def Header() -> dict[str]:
         "excerptSources": gOptions.excerptMp3
     }
 
+def UpdateHeader(database: FeaturedDatabase) -> None:
+    for key,value in Header().items():
+        if key != "made":
+            database[key] = value
+
 def Remake(paramStr: str) -> bool:
     """Create a completely new random excerpt dictionary.
     paramStr (if given) specifies the number of excerpts to put in the past."""
@@ -298,7 +303,7 @@ def RunSubmodule(submodule: SubmoduleType,alwaysRun:bool = False,**kwargs) -> bo
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--featured',type=str,default="check",help="Comma-separated list of operations to run on the featured database.")
+    parser.add_argument('--featured',type=str,default="update",help="Comma-separated list of operations to run on the featured database.")
     parser.add_argument('--featuredDatabase',type=str,default="pages/assets/FeaturedDatabase.json",help="Featured database filename.")
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the calendar.")
     parser.add_argument('--updateThreshold',type=float,default=0.8,help="SetupFeatured.Update replaces old text with new if ratio is at least this.")
@@ -336,7 +341,11 @@ def main() -> None:
     PrintInfo(gFeaturedDatabase)
     goodDatabase = RunSubmodule(Check)
 
-    databaseChanged = any(RunSubmodule(m) for m in gRepairModules) or databaseChanged
+    databaseRepaired = any(RunSubmodule(m) for m in gRepairModules)
+    if databaseRepaired:
+        UpdateHeader(gFeaturedDatabase)
+
+    databaseChanged = databaseRepaired or databaseChanged
     
     if not goodDatabase or databaseChanged:
         goodDatabase = RunSubmodule(Check,alwaysRun=True)
