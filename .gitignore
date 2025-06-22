@@ -1,6 +1,8 @@
-*.mp3
-*.MP3
-*.Mp3
+audio/**/*.mp3
+audio/**/*.MP3
+audio/**/*.Mp3
+python/**/*.mp3
+
 tools/mp3DirectCut/
 *__pycache__
 *.DS_Store
