@@ -510,6 +510,10 @@ body.main-page {
     color: var(--color-primary);
 }
 
+.header h4 {
+	text-align: center;
+}
+
 .header-content {
     display: flex;
     justify-content: space-between; /* align three items evenly */
