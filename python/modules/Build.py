@@ -2360,7 +2360,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                         if prefixChar and printPage:
                             a(f"{prefixChar} ")
                         with a.strong() if len(subtags) > 1 else nullcontext(0):
-                            a(HtmlSubtopicLink(subtopic))
+                            a(HtmlSubtopicLink(subtopic).replace(".html","-relevant.html"))
                         
                         parenthetical = str(fTagCount)
                         if printPage:

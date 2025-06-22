@@ -279,13 +279,15 @@ function dropdownMenuClick(clickedItem) {
     });
 
     // The same for the floating search bar
+    let searchBar = gNavBar.querySelector('.floating-search');
     if (clickedItem === document.getElementById('nav-search-icon')) {
-        let searchBar = gNavBar.querySelector('.floating-search');
         searchBar.classList.toggle('active');
-        if (searchBar.classList.contains('active'))
-            document.getElementById('floating-search-input').focus();
     } else
-        gNavBar.querySelector('.floating-search').classList.remove('active');
+        searchBar.classList.remove('active');
+    if (searchBar.classList.contains('active'))
+        document.getElementById('floating-search-input').focus();
+    else
+        document.getElementById('floating-search-input').blur();
     
     // and the Abhayagiri nav menu
     if (clickedItem === document.getElementById('nav-abhayagiri-icon')) {
