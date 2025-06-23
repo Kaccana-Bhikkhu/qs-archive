@@ -65,7 +65,7 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
 
 def PrintInfo(database: FeaturedDatabase) -> None:
     """Print information about this featured excerpt database."""
-    Alert.info("Featured excerpt database contains",len(database["excerpts"]),"random excerpts.")
+    Alert.info("Featured excerpt database contains",len(database["excerpts"]),"excerpts.")
 
     calendarLength = len(database['calendar'])
     daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
@@ -114,15 +114,17 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
         "shortHtml": shortHtml
     }
 
-def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
-    """Return a list of entries corresponding to featured excerpts in key topics."""
-
+def FeaturedExcerptFilter() -> Filter.Filter:
+    """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
     teacherFilter = Filter.Teacher("AP")
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    homepageFilter = Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
-    featuredExcerpts =  [x for x in homepageFilter(gDatabase["excerpts"])]
+    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
 
+def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
+    """Return a list of entries corresponding to featured excerpts in key topics."""
+
+    featuredExcerpts =  [x for x in FeaturedExcerptFilter()(gDatabase["excerpts"])]
     return {Database.ItemCode(x):ExcerptEntry(x) for x in featuredExcerpts}
 
 def Header() -> dict[str]:
@@ -224,7 +226,11 @@ These may require the Fix module if excerpts have moved or the Remove module if 
             Alert.essential(len(textMismatches),"entries texts do not match and might require the Fix module if excerpts have moved.")
             Alert.essential.ShowFirstItems(textMismatches,"text mismatched excerpt")
     
-    missingCalendarItems = [code for code in gFeaturedDatabase["calendar"] if code not in gFeaturedDatabase["excerpts"]]
+    excerptsInCalendar = set(gFeaturedDatabase["calendar"])
+    excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
+    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+
+    missingCalendarItems = excerptsInCalendar - excerptsInDatabase
     if missingCalendarItems:
         Alert.error(len(missingCalendarItems),"calendar entries cannot be found in the excerpt list.")
         Alert.essential("Run the fix module to correct this problem.")
@@ -233,6 +239,13 @@ These may require the Fix module if excerpts have moved or the Remove module if 
 
     if databaseGood:
         Alert.info("No errors found in database.")
+    
+    newFeaturedExcerpts = currentFeaturedExcerpts - excerptsInDatabase
+    if newFeaturedExcerpts:
+        Alert.info(len(newFeaturedExcerpts),"new featured excerpts do not appear in the database.")
+        Alert.info("Run the remakeFuture module to include them.")
+        Alert.info.ShowFirstItems(newFeaturedExcerpts,"new excerpt")
+
     return databaseGood
 
 def Update(paramStr: str) -> bool:
