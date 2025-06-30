@@ -198,8 +198,9 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
                 defaultTeachers = parent.get("teachers",())
             else:
                 defaultTeachers = ()
-        if set(defaultTeachers) == set(teachers) and ParseCSV.ExcerptFlag.ATTRIBUTE not in item["flags"] and not gOptions.attributeAll:
-            teachers = () # Don't attribute an annotation which has the same teachers as it's excerpt
+        if set(defaultTeachers) == set(teachers) and formNumber >= 0 and ParseCSV.ExcerptFlag.ATTRIBUTE not in item["flags"] and not gOptions.attributeAll:
+            teachers = () # Don't attribute an annotation which has the same teachers as its excerpt
+                          # unless it's a custom template (form 0) or explicitly indicates attribution.
     teacherStr = Build.ListLinkedTeachers(teachers = teachers,lastJoinStr = ' and ')
 
     text = item["text"]
