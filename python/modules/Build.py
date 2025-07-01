@@ -326,7 +326,7 @@ def DrilldownTemplate() -> pyratemp.Template:
                             tagAtPrevLevel = reverseIndex
                             break
                     drilldownFile = DrilldownPageFile(index)
-                    drilldownID = drilldownFile.replace(".html",".d")
+                    drilldownID = drilldownFile.replace(".html","-d")
                     prevLevelDrilldownFile = DrilldownPageFile(tagAtPrevLevel)
                     
                     boxType = f"$!'minus' if {index} in xTagIndexes else 'plus'!$"
