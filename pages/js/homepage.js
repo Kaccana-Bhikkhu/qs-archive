@@ -398,3 +398,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Code to configure floating menu autocomplete functionality
+// See https://tarekraafat.github.io/autoComplete.js/#/usage for details
+const autoCompleteJS = new autoComplete({
+    selector: "#floating-search-input",
+    placeHolder: "Search the teachings...",
+    data: {
+        src: [
+            {"tag": "Mindfulness"},
+            {"tag": "Concentration"},
+            {"tag": "Nature of mind"},
+            {"tag": "Ajahn Chah"},
+            {"teacher": "Ajahn Amaro"}
+        ],
+        keys: ["tag", "teacher"],
+        cache: true,
+    },
+    resultItem: {
+        highlight: true
+    },
+    events: {
+        input: {
+            selection: (event) => {
+                const selection = event.detail.selection.value;
+                const itemKind = Object.keys(selection)[0];
+                const itemName = selection[itemKind];
+            }
+        }
+    }
+});
