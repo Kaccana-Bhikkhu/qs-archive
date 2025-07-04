@@ -3,20 +3,40 @@
 
 from __future__ import annotations
 
-import os,json
+import os,json,itertools,re
 import Utils, Alert, Database
 from typing import TypedDict, Iterable
 
-class AutoCompleteDatabase(TypedDict):
-    entries: list[dict[str,str]]    # The list of auto complete entries;
-                                    # Each item is a single-entry dict of the form
-                                    # kind:entry, e.g. "teacher":"Ajahn Pasanno"
-    pageLinks: dict[str,str]        # Keys concatenate entries with _
-                                    # Values are the page to link to
-                                    # e.g. "teacher_Ajahn Pasanno":"teachers/ajahn-pasanno.html"
+class AutoCompleteEntry(TypedDict):
+    long: str           # The long (or only) entry, e.g. Ajahn Chah Subadho
+    short: str          # The shorter tag or name, e.g. Ajahn Chah
+    number: str         # Digit(s) associated with this entry; e.g. Four Noble Truths
+    link: str           # Link to page, e.g. teachers/ajahn-chah.html
+    icon: str           # Icon to display to the left of the auto complete entry
+    suffix: str         # Text to display after the entry
 
-    
+numberNames = {3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight",
+               9:"nine", 10:"ten", 12: "twelve"}
+numberRegex:dict[int,re.Pattern] = {n:re.compile(r"\b"+string,re.IGNORECASE) for n,string in numberNames.items()}
 
+def NumberFromText(text:str) -> int|None:
+    "Scan text to see if it contains a number. Only look for numbers which are used"
+    for n,regex in numberRegex.items():
+        if regex.search(text):
+            return n
+    return None
+
+def Entry(long: str,link: str,short: str = "", number: int = None,icon: str = "",suffix:str = "") -> AutoCompleteEntry:
+    "Return an AutoCompleteEntry corresponding to these parameters."
+    number = "" if number is None else str(number)
+    return dict(long=long,link=link,short=short,number=number,icon=icon,suffix=suffix)
+
+def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield auto complete entries for the key topics"
+    for topic in gDatabase["keyTopic"].values():
+        yield Entry(topic["topic"],Utils.PosixJoin("topics",topic["listFile"]),
+                    icon="book-open",suffix = f"({topic['fTagCount']})",
+                    number=NumberFromText(topic["topic"]))
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -33,10 +53,20 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    newDatabase:AutoCompleteDatabase = {
-        "entries": [],
-        "pageLinks": {}
-    }
+    entrySources = [KeyTopicEntries()]
+    newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
+
+    filename = gOptions.autoCompleteDatabase
+    try:
+        with open(filename, 'w', encoding='utf-8') as file:
+            json.dump(newDatabase, file, ensure_ascii=False, indent=2)
+        Alert.info(f"Wrote auto complete database to {filename}.")
+        return True
+    except OSError as err:
+        Alert.error(f"Could not write {filename} due to {err}")
+        return False
+    
+    """
 
     blankEntry = dict.fromkeys(["topic","subtopic","tag","event","teacher"],"")
 
@@ -62,13 +92,4 @@ def main() -> None:
     for teacher in gDatabase["teacher"].values():
         if teacher["htmlFile"]:
             AddEntry("teacher",teacher["attributionName"],Utils.PosixJoin("teachers",teacher["htmlFile"]))
-
-    filename = gOptions.autoCompleteDatabase
-    try:
-        with open(filename, 'w', encoding='utf-8') as file:
-            json.dump(newDatabase, file, ensure_ascii=False, indent=2)
-        Alert.info(f"Wrote auto complete database to {filename}.")
-        return True
-    except OSError as err:
-        Alert.error(f"Could not write {filename} due to {err}")
-        return False
+"""

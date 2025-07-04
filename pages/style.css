@@ -875,7 +875,7 @@ main.main-content p {
 }
 
 /* Style for icons */
-svg.lucide {
+.exploration-paths svg.lucide {
 	width: 32px;
 	height: 32px;
 	margin: 0 15px 0 5px;
@@ -1065,6 +1065,13 @@ div.featured-page button {
 	appearance: auto;
 	padding: 0;
 	accent-color: #a68b55;
+}
+
+svg.list-icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 4px;
+	vertical-align:middle;
 }
 
 /*

@@ -414,29 +414,30 @@ const autoCompleteJS = new autoComplete({
                 const source = await fetch("assets/AutoCompleteDatabase.json");
                 autoCompleteDatabase = await source.json();
                 // Returns Fetched data
-                return autoCompleteDatabase.entries;
+                return autoCompleteDatabase;
             } catch (error) {
                 return error;
             }
         },
-        keys: ["topic","subtopic","tag","event","teacher"],
+        keys: ["long","short","number"],
         cache: true,
     },
     resultItem: {
         highlight: true
     },
     resultsList: {
-        maxResults: 15
+        maxResults: 15,
+        element: (list,data) => {
+            lucide.createIcons(lucide.icons); // Render the icons after building the list
+        }
     },
     events: {
         input: {
             selection: (event) => {
                 const selection = event.detail.selection.value;
-                const itemKind = Object.keys(selection)[0];
-                const itemName = selection[itemKind];
 
-                debugLog("Selected",itemKind,itemName);
-                openLocalPage(autoCompleteDatabase.pageLinks[itemKind + "_" + itemName])
+                debugLog("Selected",selection.icon,selection.long);
+                openLocalPage(selection.link)
             },
             keyup: (event) => {
                 if (event.code == "Enter") {
@@ -444,5 +445,15 @@ const autoCompleteJS = new autoComplete({
                 }
             }
         }
+    },
+    resultItem: {
+        element: (item, data) => {
+            // Modify Results Item Style
+            // item.style = "display: flex;";
+            // Modify Results Item Content
+            let matchText = data.key == "number" ? data.value.long : data.match;
+            item.innerHTML = `<i class="list-icon" data-lucide="${data.value.icon}"></i> ${matchText} ${data.value.suffix}`;
+        },
+        highlight: true,
     }
 });
