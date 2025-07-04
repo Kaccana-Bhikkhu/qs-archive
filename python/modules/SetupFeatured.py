@@ -59,7 +59,7 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
         Alert.info(f"Wrote featured excerpt database to {filename}.")
         return True
     except OSError as err:
-        Alert.error(f"Could not write {gOptions.featuredDatabase} due to {err}")
+        Alert.error(f"Could not write {filename} due to {err}")
         return False
     
 

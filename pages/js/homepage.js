@@ -3,7 +3,7 @@
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 
-const DEBUG = false;
+const DEBUG = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
@@ -399,24 +399,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+let autoCompleteDatabase = {};
+
 // Code to configure floating menu autocomplete functionality
 // See https://tarekraafat.github.io/autoComplete.js/#/usage for details
 const autoCompleteJS = new autoComplete({
     selector: "#floating-search-input",
     placeHolder: "Search the teachings...",
+    diacritics: true, // Don't be picky about diacritics
     data: {
-        src: [
-            {"tag": "Mindfulness"},
-            {"tag": "Concentration"},
-            {"tag": "Nature of mind"},
-            {"tag": "Ajahn Chah"},
-            {"teacher": "Ajahn Amaro"}
-        ],
-        keys: ["tag", "teacher"],
+        src: async () => {
+            try {
+                // Fetch External Data Source
+                const source = await fetch("assets/AutoCompleteDatabase.json");
+                autoCompleteDatabase = await source.json();
+                // Returns Fetched data
+                return autoCompleteDatabase.entries;
+            } catch (error) {
+                return error;
+            }
+        },
+        keys: ["topic","subtopic","tag","event","teacher"],
         cache: true,
     },
     resultItem: {
         highlight: true
+    },
+    resultsList: {
+        maxResults: 15
     },
     events: {
         input: {
@@ -424,6 +434,14 @@ const autoCompleteJS = new autoComplete({
                 const selection = event.detail.selection.value;
                 const itemKind = Object.keys(selection)[0];
                 const itemName = selection[itemKind];
+
+                debugLog("Selected",itemKind,itemName);
+                openLocalPage(autoCompleteDatabase.pageLinks[itemKind + "_" + itemName])
+            },
+            keyup: (event) => {
+                if (event.code == "Enter") {
+                    document.getElementById('floating-search-go').click();
+                }
             }
         }
     }
