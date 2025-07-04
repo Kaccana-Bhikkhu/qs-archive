@@ -1093,9 +1093,11 @@ Styles below this line copied and modified from
   padding-left: 10px;
   font-size: 1rem;
   color: rgb(116, 116, 116);
-  border-radius: 4px;
-  /* border: 1px solid rgba(33, 33, 33, 0.2); */
   outline: none;
+}
+
+.autoComplete_wrapper > input:focus {
+	border-radius: 4px;
 }
 
 .autoComplete_wrapper > input::placeholder {
@@ -1146,7 +1148,6 @@ Styles below this line copied and modified from
 
 .autoComplete_wrapper > ul > li mark {
   background-color: transparent;
-  /* color: rgba(255, 122, 122, 1); */
   font-weight: bold;
 }
 
