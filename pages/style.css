@@ -1067,9 +1067,10 @@ div.featured-page button {
 	accent-color: #a68b55;
 }
 
-svg.list-icon {
+svg.list-icon, img.list-icon {
 	width: 20px;
 	height: 20px;
+	color: var(--color-primary);
 	margin-right: 4px;
 	vertical-align:middle;
 }

@@ -6,6 +6,7 @@ from __future__ import annotations
 import os,json,itertools,re
 import Utils, Alert, Database
 from typing import TypedDict, Iterable
+from Build import FA_STAR
 
 class AutoCompleteEntry(TypedDict):
     long: str           # The long (or only) entry, e.g. Ajahn Chah Subadho
@@ -35,8 +36,27 @@ def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
     for topic in gDatabase["keyTopic"].values():
         yield Entry(topic["topic"],Utils.PosixJoin("topics",topic["listFile"]),
-                    icon="book-open",suffix = f"({topic['fTagCount']})",
+                    icon="book-open",suffix = f"({topic['fTagCount']}{FA_STAR})",
                     number=NumberFromText(topic["topic"]))
+
+def SutopicEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield auto complete entries for subtopics"
+    for subtopic in gDatabase["subtopic"].values():
+        if subtopic["autoComplete"] == "Display":
+            text = subtopic["displayAs"]
+            pali = subtopic["pali"]
+        else:
+            text = subtopic["tag"]
+            pali = gDatabase["tag"][subtopic["tag"]]["pali"]
+        isCluster = bool(subtopic["subtags"])
+
+        suffix = f"({subtopic['excerptCount']})"
+        if pali:
+            suffix = f"({pali}) {suffix}"
+        yield Entry(text,subtopic["htmlPath"],
+                    icon = '<img src="images/icons/Cluster.png" class="list-icon">' if isCluster else "tag",
+                    suffix = suffix,
+                    number=NumberFromText(text))
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -53,14 +73,14 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    entrySources = [KeyTopicEntries()]
+    entrySources = [KeyTopicEntries(),SutopicEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     filename = gOptions.autoCompleteDatabase
     try:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
-        Alert.info(f"Wrote auto complete database to {filename}.")
+        Alert.info(f"Wrote {len(newDatabase)} auto complete entries to {filename}.")
         return True
     except OSError as err:
         Alert.error(f"Could not write {filename} due to {err}")

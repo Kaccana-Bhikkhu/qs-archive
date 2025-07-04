@@ -5,7 +5,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(25)"
+    "suffix": "(25<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "The Three Refuges",
@@ -13,7 +13,7 @@
     "short": "",
     "number": "3",
     "icon": "book-open",
-    "suffix": "(14)"
+    "suffix": "(14<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Foundations of Dhamma Practice",
@@ -21,7 +21,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(20)"
+    "suffix": "(20<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "The Four Noble Truths",
@@ -29,7 +29,7 @@
     "short": "",
     "number": "4",
     "icon": "book-open",
-    "suffix": "(8)"
+    "suffix": "(8<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "The Noble Eightfold Path",
@@ -37,7 +37,7 @@
     "short": "",
     "number": "8",
     "icon": "book-open",
-    "suffix": "(35)"
+    "suffix": "(35<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Meditation Practices",
@@ -45,7 +45,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(37)"
+    "suffix": "(37<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Skillful Qualities",
@@ -53,7 +53,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(43)"
+    "suffix": "(43<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Unskillful Qualities",
@@ -61,7 +61,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(41)"
+    "suffix": "(41<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Buddhist Perspectives on the World",
@@ -69,7 +69,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(22)"
+    "suffix": "(22<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Dependent Origination",
@@ -77,7 +77,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(22)"
+    "suffix": "(22<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Fruits of the Practice",
@@ -85,7 +85,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(18)"
+    "suffix": "(18<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Teaching and Teachers",
@@ -93,7 +93,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(30)"
+    "suffix": "(30<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Context of the Teachings",
@@ -101,7 +101,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(14)"
+    "suffix": "(14<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Monastic Life",
@@ -109,7 +109,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(41)"
+    "suffix": "(41<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Monasteries",
@@ -117,7 +117,7 @@
     "short": "",
     "number": "",
     "icon": "book-open",
-    "suffix": "(10)"
+    "suffix": "(10<i class=\"fa fa-star\"></i>)"
   },
   {
     "long": "Everyday Life Practice",
@@ -125,6 +125,966 @@
     "short": "",
     "number": "",
     "icon": "book-open",
+    "suffix": "(39<i class=\"fa fa-star\"></i>)"
+  },
+  {
+    "long": "Impermanence",
+    "link": "tags/impermanence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(anicca) (113)"
+  },
+  {
+    "long": "Suffering",
+    "link": "tags/suffering.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(dukkha) (220)"
+  },
+  {
+    "long": "Fear",
+    "link": "tags/fear.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(bhaya) (87)"
+  },
+  {
+    "long": "Sickness",
+    "link": "tags/sickness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(byādhi) (90)"
+  },
+  {
+    "long": "Ageing",
+    "link": "tags/ageing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(jarā) (37)"
+  },
+  {
+    "long": "Death",
+    "link": "clusters/death.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(maraṇa) (156)"
+  },
+  {
+    "long": "Grief",
+    "link": "tags/grief.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(domanassa) (39)"
+  },
+  {
+    "long": "Three Refuges",
+    "link": "tags/three-refuges.html",
+    "short": "",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(tisaraṇa) (52)"
+  },
+  {
+    "long": "Buddha",
+    "link": "clusters/buddha.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(Buddha) (87)"
+  },
+  {
+    "long": "Dhamma",
+    "link": "clusters/dhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(Dhamma) (85)"
+  },
+  {
+    "long": "Saṅgha",
+    "link": "clusters/sangha.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(Saṅgha) (76)"
+  },
+  {
+    "long": "Spiritual friendship",
+    "link": "clusters/spiritual-friendship.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(kalyāṇa-mittatā) (60)"
+  },
+  {
+    "long": "Generosity",
+    "link": "clusters/generosity.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(dāna) (122)"
+  },
+  {
+    "long": "Goodwill",
+    "link": "tags/goodwill.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(mettā) (152)"
+  },
+  {
+    "long": "Virtue",
+    "link": "clusters/virtue.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sīla) (89)"
+  },
+  {
+    "long": "Precepts",
+    "link": "clusters/precepts.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sikkhāpada) (70)"
+  },
+  {
+    "long": "Renunciation",
+    "link": "tags/renunciation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(nekkhamma) (21)"
+  },
+  {
+    "long": "Four Noble Truths",
+    "link": "tags/four-noble-truths.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(cattāri ariya-saccāni) (59)"
+  },
+  {
+    "long": "Noble Truth of Suffering",
+    "link": "tags/noble-truth-of-suffering.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(dukkha ariya-sacca) (24)"
+  },
+  {
+    "long": "Cause of Suffering",
+    "link": "tags/cause-of-suffering.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(dukkha-samudayo) (39)"
+  },
+  {
+    "long": "Cessation of Suffering",
+    "link": "tags/cessation-of-suffering.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(dukkha-nirodho) (63)"
+  },
+  {
+    "long": "Middle Path",
+    "link": "tags/middle-path.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(majjhimā paṭipadā) (31)"
+  },
+  {
+    "long": "Eightfold Path",
+    "link": "tags/eightfold-path.html",
+    "short": "",
+    "number": "8",
+    "icon": "tag",
+    "suffix": "(aṭṭaṅgika magga) (58)"
+  },
+  {
+    "long": "Right View",
+    "link": "tags/right-view.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(sammā-diṭṭhi) (41)"
+  },
+  {
+    "long": "Right Intention",
+    "link": "clusters/right-intention.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sammā-saṅkappa) (187)"
+  },
+  {
+    "long": "Right Speech",
+    "link": "clusters/right-speech.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sammā-vācā) (73)"
+  },
+  {
+    "long": "Right Action",
+    "link": "clusters/right-action.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sammā-kammanta) (40)"
+  },
+  {
+    "long": "Right Livelihood",
+    "link": "tags/right-livelihood.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(sammā-ājīva) (39)"
+  },
+  {
+    "long": "Right Effort",
+    "link": "tags/right-effort.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(sammā-vāyāma) (106)"
+  },
+  {
+    "long": "Right Mindfulness",
+    "link": "clusters/right-mindfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sammā-sati) (165)"
+  },
+  {
+    "long": "Right Concentration",
+    "link": "clusters/right-concentration.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(sammā-samādhi) (191)"
+  },
+  {
+    "long": "Meditation",
+    "link": "clusters/meditation.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(bhāvanā) (108)"
+  },
+  {
+    "long": "Mindfulness of body",
+    "link": "clusters/mindfulness-of-body.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(kāyagatā-sati) (161)"
+  },
+  {
+    "long": "Mindfulness of breathing",
+    "link": "tags/mindfulness-of-breathing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(ānāpānasati) (185)"
+  },
+  {
+    "long": "Walking meditation",
+    "link": "tags/posturewalking.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(caranta) (39)"
+  },
+  {
+    "long": "Chanting",
+    "link": "tags/chanting.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(81)"
+  },
+  {
+    "long": "Recollection",
+    "link": "tags/recollection.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(anusati) (56)"
+  },
+  {
+    "long": "Continuity of mindfulness",
+    "link": "clusters/continuity-of-mindfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(89)"
+  },
+  {
+    "long": "Direct experience",
+    "link": "tags/direct-experience.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Knowing itself",
+    "link": "tags/knowing-itself.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(71)"
+  },
+  {
+    "long": "Long-term practice",
+    "link": "tags/long-term-practice.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
     "suffix": "(39)"
+  },
+  {
+    "long": "Skillful qualities",
+    "link": "tags/skillful-qualities.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(kusalā dhammā) (81)"
+  },
+  {
+    "long": "Faith",
+    "link": "tags/faith.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(saddhā) (118)"
+  },
+  {
+    "long": "Energy",
+    "link": "clusters/energy.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(viriya) (71)"
+  },
+  {
+    "long": "Mindfulness",
+    "link": "tags/mindfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(sati) (124)"
+  },
+  {
+    "long": "Concentration",
+    "link": "tags/concentration.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(samādhi) (98)"
+  },
+  {
+    "long": "Discernment",
+    "link": "clusters/discernment.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(paññā) (220)"
+  },
+  {
+    "long": "Skillful desire",
+    "link": "tags/desire.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(chanda) (59)"
+  },
+  {
+    "long": "Patience",
+    "link": "tags/patience.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(khanti) (62)"
+  },
+  {
+    "long": "Happiness",
+    "link": "tags/happiness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(sukha) (159)"
+  },
+  {
+    "long": "Gratitude",
+    "link": "tags/gratitude.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(kataññu) (92)"
+  },
+  {
+    "long": "Compassion",
+    "link": "tags/compassion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(karuṇā) (121)"
+  },
+  {
+    "long": "Equanimity",
+    "link": "tags/equanimity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(upekkhā) (56)"
+  },
+  {
+    "long": "Unwholesome Roots",
+    "link": "clusters/unwholesome-roots.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(akusala-mūlā) (109)"
+  },
+  {
+    "long": "The Five Hindrances",
+    "link": "tags/hindrances.html",
+    "short": "",
+    "number": "5",
+    "icon": "tag",
+    "suffix": "(pañca nīvaraṇāni) (53)"
+  },
+  {
+    "long": "Sensual desire",
+    "link": "clusters/sensual-desire.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(kāmacchanda) (82)"
+  },
+  {
+    "long": "Aversion and Ill-will",
+    "link": "clusters/aversion.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(dosa-byāpāda) (114)"
+  },
+  {
+    "long": "Sloth and torpor",
+    "link": "tags/sloth-and-torpor.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(thīna-middha) (47)"
+  },
+  {
+    "long": "Restlessness and worry",
+    "link": "tags/restlessness-and-worry.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(uddhacca-kukkucca) (64)"
+  },
+  {
+    "long": "Doubt",
+    "link": "tags/doubt.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(vicikiccha) (40)"
+  },
+  {
+    "long": "Delusion",
+    "link": "tags/delusion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(moha) (57)"
+  },
+  {
+    "long": "Proliferation",
+    "link": "tags/proliferation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(papañca) (127)"
+  },
+  {
+    "long": "Views",
+    "link": "tags/views.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(diṭṭhī) (50)"
+  },
+  {
+    "long": "Self-identity view",
+    "link": "tags/self-identity-view.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(sakkāya-diṭṭhi) (177)"
+  },
+  {
+    "long": "Conceit and guilt",
+    "link": "clusters/conceit.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(māna) (121)"
+  },
+  {
+    "long": "Conditionality",
+    "link": "tags/conditionality.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(idappaccayatā) (99)"
+  },
+  {
+    "long": "Kamma",
+    "link": "tags/kamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(Kamma) (94)"
+  },
+  {
+    "long": "Rebirth",
+    "link": "tags/rebirth.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(51)"
+  },
+  {
+    "long": "Not-self",
+    "link": "tags/not-self.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(anattā) (95)"
+  },
+  {
+    "long": "Nature of mind",
+    "link": "tags/nature-of-mind.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "Realms of existence",
+    "link": "clusters/realms-of-existence.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(133)"
+  },
+  {
+    "long": "Dependent origination",
+    "link": "tags/dependent-origination.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(paticca-samuppāda) (30)"
+  },
+  {
+    "long": "Ignorance",
+    "link": "tags/ignorance.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(avijjā) (13)"
+  },
+  {
+    "long": "Volitional formations",
+    "link": "tags/volitional-formations.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(saṅkhāra) (42)"
+  },
+  {
+    "long": "Consciousness",
+    "link": "tags/consciousness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(viññāṇa) (35)"
+  },
+  {
+    "long": "Name and form",
+    "link": "tags/aggregates.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(nāma-rūpa) (56)"
+  },
+  {
+    "long": "Sense bases",
+    "link": "tags/sense-bases.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(āyatana) (43)"
+  },
+  {
+    "long": "Contact",
+    "link": "tags/contact.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(phassa) (19)"
+  },
+  {
+    "long": "Feeling",
+    "link": "tags/feeling.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(vedanā) (60)"
+  },
+  {
+    "long": "Craving",
+    "link": "tags/craving.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(taṇhā) (61)"
+  },
+  {
+    "long": "Clinging",
+    "link": "tags/clinging.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(upādāna) (109)"
+  },
+  {
+    "long": "Becoming",
+    "link": "clusters/becoming.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(bhava) (51)"
+  },
+  {
+    "long": "Dispassion",
+    "link": "clusters/dispassion.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(virāga) (81)"
+  },
+  {
+    "long": "Relinquishment",
+    "link": "tags/relinquishment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(paṭinissagga) (193)"
+  },
+  {
+    "long": "Liberation",
+    "link": "clusters/liberation.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(vimutti) (131)"
+  },
+  {
+    "long": "Stages of awakening",
+    "link": "clusters/stages-of-awakening.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(72)"
+  },
+  {
+    "long": "Nibbāna",
+    "link": "clusters/nibbana.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(Nibbāna) (71)"
+  },
+  {
+    "long": "Teaching Dhamma",
+    "link": "clusters/teaching-dhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(197)"
+  },
+  {
+    "long": "Teachers",
+    "link": "clusters/teachers.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(104)"
+  },
+  {
+    "long": "Buddha (biographical)",
+    "link": "tags/buddhabiography.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(53)"
+  },
+  {
+    "long": "Ajahn Mun",
+    "link": "tags/ajahn-mun.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(65)"
+  },
+  {
+    "long": "Ajahn Chah",
+    "link": "tags/ajahn-chah.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(663)"
+  },
+  {
+    "long": "Ajahn Sumedho",
+    "link": "tags/ajahn-sumedho.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(111)"
+  },
+  {
+    "long": "Ajahn Pasanno",
+    "link": "tags/ajahn-pasanno.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(305)"
+  },
+  {
+    "long": "Natural environment",
+    "link": "tags/culturenatural-environment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "Language",
+    "link": "clusters/language.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(184)"
+  },
+  {
+    "long": "Thai culture",
+    "link": "clusters/culturethailand.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(246)"
+  },
+  {
+    "long": "Western culture",
+    "link": "tags/culturewest.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(148)"
+  },
+  {
+    "long": "Monastic life",
+    "link": "clusters/monastic-life.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(brahmacariyā) (296)"
+  },
+  {
+    "long": "Monastic life/Motivation",
+    "link": "tags/monastic-lifemotivation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(36)"
+  },
+  {
+    "long": "Mutual lay/Saṅgha support",
+    "link": "clusters/mutual-laysangha-support.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(84)"
+  },
+  {
+    "long": "The Four Requisites",
+    "link": "clusters/requisites.html",
+    "short": "",
+    "number": "4",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(118)"
+  },
+  {
+    "long": "Thai Forest Tradition",
+    "link": "tags/thai-forest-tradition.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(91)"
+  },
+  {
+    "long": "Vinaya",
+    "link": "clusters/vinaya.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(Vinaya) (134)"
+  },
+  {
+    "long": "Monastic community",
+    "link": "clusters/fourfold-assembly.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(Saṅgha) (119)"
+  },
+  {
+    "long": "Ascetic practices",
+    "link": "clusters/ascetic-practices.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(dhutaṅga) (106)"
+  },
+  {
+    "long": "Women's monastic forms",
+    "link": "clusters/womens-monastic-forms.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Wat Pah Pong",
+    "link": "tags/wat-pah-pong.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(107)"
+  },
+  {
+    "long": "Wat Pah Nanachat",
+    "link": "tags/wat-pah-nanachat.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(76)"
+  },
+  {
+    "long": "Abhayagiri",
+    "link": "tags/abhayagiri.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(223)"
+  },
+  {
+    "long": "Everyday life",
+    "link": "clusters/everyday-life.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(92)"
+  },
+  {
+    "long": "Health",
+    "link": "clusters/health.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(97)"
+  },
+  {
+    "long": "Family",
+    "link": "clusters/family.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(93)"
+  },
+  {
+    "long": "Relationships",
+    "link": "tags/relationships.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Community",
+    "link": "clusters/community.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(139)"
+  },
+  {
+    "long": "Environment",
+    "link": "tags/environment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Work",
+    "link": "clusters/work.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(48)"
+  },
+  {
+    "long": "Politics and society",
+    "link": "clusters/politics-and-society.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(84)"
+  },
+  {
+    "long": "Commerce and economics",
+    "link": "clusters/commerceeconomics.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Technology and media",
+    "link": "clusters/technology.html",
+    "short": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
+    "suffix": "(56)"
   }
 ]

@@ -437,6 +437,9 @@ const autoCompleteJS = new autoComplete({
                 const selection = event.detail.selection.value;
 
                 debugLog("Selected",selection.icon,selection.long);
+                let inputBox = document.getElementById('floating-search-input');
+                inputBox.blur();
+                inputBox.value = "";
                 openLocalPage(selection.link)
             },
             keyup: (event) => {
@@ -452,7 +455,10 @@ const autoCompleteJS = new autoComplete({
             // item.style = "display: flex;";
             // Modify Results Item Content
             let matchText = data.key == "number" ? data.value.long : data.match;
-            item.innerHTML = `<i class="list-icon" data-lucide="${data.value.icon}"></i> ${matchText} ${data.value.suffix}`;
+            let icon = data.value.icon;
+            if (icon && !icon.match("<"))
+                icon = `<i class="list-icon" data-lucide="${icon}"></i>`
+            item.innerHTML = `${icon} ${matchText} ${data.value.suffix}`;
         },
         highlight: true,
     }
