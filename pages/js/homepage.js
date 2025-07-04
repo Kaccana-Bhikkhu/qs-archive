@@ -422,6 +422,7 @@ const autoCompleteJS = new autoComplete({
         keys: ["long","short","number"],
         cache: true,
     },
+    submit: true,
     resultItem: {
         highlight: true
     },
@@ -442,11 +443,6 @@ const autoCompleteJS = new autoComplete({
                 inputBox.value = "";
                 openLocalPage(selection.link)
             },
-            keyup: (event) => {
-                if (event.code == "Enter") {
-                    document.getElementById('floating-search-go').click();
-                }
-            }
         }
     },
     resultItem: {
