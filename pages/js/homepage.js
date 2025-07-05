@@ -479,7 +479,7 @@ const autoCompleteJS = new autoComplete({
             // Modify Results Item Style
             // item.style = "display: flex;";
             // Modify Results Item Content
-            let matchText = data.key == "number" ? data.value.long : data.match;
+            let matchText = data.key == "number" ? data.value.short : data.match;
             let icon = data.value.icon;
             if (icon && !icon.match("<"))
                 icon = `<i class="list-icon" data-lucide="${icon}"></i>`

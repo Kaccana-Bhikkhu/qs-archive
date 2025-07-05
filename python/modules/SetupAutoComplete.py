@@ -68,30 +68,34 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
                  if t["htmlFile"] and t.get("excerptCount",0) and not TagFlag.HIDE in t["flags"]]
     tags = sorted(tags,key = lambda t: t["listIndex"])
 
+    def TagEntry(tag:dict) -> AutoCompleteEntry:
+        "Returns an entry for this tag."
+        short = RemoveLanguageTag(tag["tag"])
+        shortPali = RemoveLanguageTag(tag["pali"])
+        if tag["pali"] and shortPali != short:
+            short += f" ({shortPali})"
+        elif TagFlag.DISPLAY_GLOSS in tag["flags"]:
+            short += f" ({tag['glosses'][0]})"
+        
+        long = ""
+        if tag["fullTag"] != tag["tag"]:
+            long = RemoveLanguageTag(tag["fullTag"])
+            longPali = RemoveLanguageTag(tag["fullPali"])
+            if tag["fullPali"] and longPali != long:
+                long += f" ({longPali})"
+            elif TagFlag.DISPLAY_GLOSS in tag["flags"]:
+                long += f" ({tag['glosses'][0]})"
+
+        return Entry(short = short,
+                    long = long,
+                    link = Utils.PosixJoin("tags",tag.get("htmlFile","")),
+                    icon="tag",suffix = f"({tag.get('excerptCount',0)})",
+                    number=tag["number"])
+        
     # First yield basic tag information
     for tag in tags:
-        short = suffix = ""
-        long = RemoveLanguageTag(tag["fullTag"])
-        longPali = RemoveLanguageTag(tag["fullPali"])
-        if tag["fullPali"] and longPali != long:
-            long += f" ({longPali})"
-        elif TagFlag.DISPLAY_GLOSS in tag["flags"]:
-            long += f" ({tag['glosses'][0]})"
-        
-        if tag["fullTag"] != tag["tag"]:
-            short = RemoveLanguageTag(tag["tag"])
-            shortPali = RemoveLanguageTag(tag["pali"])
-            if tag["pali"] and shortPali != short:
-                short += f" ({shortPali})"
-            elif TagFlag.DISPLAY_GLOSS in tag["flags"]:
-                short += f" ({tag['glosses'][0]})"
+        yield TagEntry(tag)
 
-        yield Entry(long = long,
-                    short = short,
-                    link = Utils.PosixJoin("tags",tag["htmlFile"]),
-                    icon="tag",suffix = f"({tag['excerptCount']})",
-                    number=tag["number"])
-    
     # Yield alternate translations
     for tag in tags:
         for translation in tag["alternateTranslations"]:
@@ -102,9 +106,21 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
     for tag in tags:
         for gloss in tag["glosses"]:
             yield Entry(RemoveLanguageTag(gloss),Utils.PosixJoin("tags",tag["htmlFile"]),
-                suffix=f' – see {tagIcon} {RemoveLanguageTag(tag['tag'])}')
-    
-            
+                suffix=f" – see {tagIcon} {RemoveLanguageTag(tag['tag'])} ({tag['excerptCount']})")
+
+    # Yield subsumed tags
+    for subsumedTag in gDatabase["tagSubsumed"].values():
+        if TagFlag.HIDE in subsumedTag["flags"]:
+            continue
+        
+        subsumedUnder = gDatabase["tag"][subsumedTag["subsumedUnder"]]
+
+        subsumedEntry = TagEntry(subsumedTag)
+        subsumedEntry["icon"] = ""
+        subsumedEntry["link"] = Utils.PosixJoin("tags",subsumedUnder["htmlFile"])
+        subsumedEntry["suffix"] = f" – see {tagIcon} {RemoveLanguageTag(subsumedUnder['tag'])} ({subsumedUnder['excerptCount']})"
+        yield subsumedEntry
+                    
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -122,7 +138,7 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 
 def main() -> None:
     entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries()]
-    #entrySources = [TagEntries()]
+    # entrySources = [TagEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()
