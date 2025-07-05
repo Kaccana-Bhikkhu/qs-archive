@@ -6,7 +6,8 @@ from __future__ import annotations
 import os,json,itertools,re
 import Utils, Alert, Database
 from typing import TypedDict, Iterable
-from Build import FA_STAR
+from Build import FA_STAR, RemoveLanguageTag
+from ParseCSV import TagFlag
 
 class AutoCompleteEntry(TypedDict):
     long: str           # The long (or only) entry, e.g. Ajahn Chah Subadho
@@ -59,6 +60,37 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
                     suffix = suffix,
                     number=NumberFromText(text))
 
+def TagEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield auto complete entries for tags"
+
+    tags = [t for t in gDatabase["tag"].values()
+                 if t["htmlFile"] and t.get("excerptCount",0)]
+    tags = sorted(tags,key = lambda t: t["listIndex"])
+
+    # First the most basic tag information
+    for tag in tags:
+        short = suffix = ""
+        long = RemoveLanguageTag(tag["fullTag"])
+        longPali = RemoveLanguageTag(tag["fullPali"])
+        if tag["fullPali"] and longPali != long:
+            long += f" ({longPali})"
+        elif TagFlag.DISPLAY_GLOSS in tag["flags"]:
+            long += f" ({tag['glosses'][0]})"
+        
+        if tag["fullTag"] != tag["tag"]:
+            short = RemoveLanguageTag(tag["tag"])
+            shortPali = RemoveLanguageTag(tag["pali"])
+            if tag["pali"] and shortPali != short:
+                short += f" ({shortPali})"
+            elif TagFlag.DISPLAY_GLOSS in tag["flags"]:
+                short += f" ({tag['glosses'][0]})"
+
+        yield Entry(long = long,
+                    short = short,
+                    link = Utils.PosixJoin("tags",tag["htmlFile"]),
+                    icon="tag",suffix = f"({tag['excerptCount']})",
+                    number=tag["number"])
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--autoCompleteDatabase',type=str,default="pages/assets/AutoCompleteDatabase.json",help="AutoComplete database filename.")
@@ -74,7 +106,7 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    entrySources = [KeyTopicEntries(),SutopicEntries()]
+    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()

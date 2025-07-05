@@ -419,8 +419,19 @@ const autoCompleteJS = new autoComplete({
                 return error;
             }
         },
-        keys: ["long","short","number"],
+        keys: ["short","long","number"],
         cache: true,
+        filter: (results) => {
+            // Filter entries that link to the same file
+            let links = new Set();
+            let deduplicated = [];
+            for (let item of results) {
+                if (!links.has(item.value.link))
+                    deduplicated.push(item);
+                links.add(item.value.link)  
+            }
+            return deduplicated;
+            },
     },
     submit: true,
     query: (input) => {

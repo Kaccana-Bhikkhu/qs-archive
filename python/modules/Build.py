@@ -605,7 +605,7 @@ def LanguageTag(tagString: str) -> str:
 
 def RemoveLanguageTag(tagString: str) -> str:
     "Return tagString with any language tag removed."
-    return re.sub(r"<em>([^<]*)</em>$","",tagString).strip()
+    return re.sub(r"<em>([^<]*)</em>","",tagString).strip()
 
 def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted alphabetically."""

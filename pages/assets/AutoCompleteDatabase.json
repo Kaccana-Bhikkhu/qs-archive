@@ -1086,5 +1086,5437 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\" class=\"list-icon\">",
     "suffix": "(56)"
+  },
+  {
+    "long": "Skillful qualities (kusalā dhammā)",
+    "link": "tags/skillful-qualities.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(81)"
+  },
+  {
+    "long": "Middle Path (majjhimā paṭipadā)",
+    "link": "tags/middle-path.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(31)"
+  },
+  {
+    "long": "Noble Eightfold Path (ariya aṭṭaṅgika magga)",
+    "link": "tags/eightfold-path.html",
+    "short": "Eightfold Path (aṭṭaṅgika magga)",
+    "number": "8",
+    "icon": "tag",
+    "suffix": "(58)"
+  },
+  {
+    "long": "Right View (sammā-diṭṭhi)",
+    "link": "tags/right-view.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(41)"
+  },
+  {
+    "long": "Right Intention (sammā-saṅkappa)",
+    "link": "tags/right-intention.html",
+    "short": "",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Renunciation (nekkhamma)",
+    "link": "tags/renunciation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Right Speech (sammā-vācā)",
+    "link": "tags/right-speech.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(33)"
+  },
+  {
+    "long": "False speech (musā-vādā)",
+    "link": "tags/false-speech.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Malicious speech (pisuṇāya vācā)",
+    "link": "tags/malicious-speech.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Harsh speech (pharusāya vācā)",
+    "link": "tags/harsh-speech.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Idle chatter (samphappalāpa)",
+    "link": "tags/idle-chatter.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Admonishment/feedback",
+    "link": "tags/admonishmentfeedback.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Listening",
+    "link": "tags/listening.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Nonviolent Communication",
+    "link": "tags/nonviolent-communication.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Right Action (sammā-kammanta)",
+    "link": "tags/right-action.html",
+    "short": "",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Killing (pāṇātipāta)",
+    "link": "tags/killing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Vegetarianism",
+    "link": "tags/vegetarianism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Suicide",
+    "link": "tags/suicide.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Euthanasia",
+    "link": "tags/euthanasia.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Abortion",
+    "link": "tags/abortion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Stealing (adinnādāna)",
+    "link": "tags/stealing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Sexual misconduct (kāmesu micchācāra)",
+    "link": "tags/sexual-misconduct.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Right Livelihood (sammā-ājīva)",
+    "link": "tags/right-livelihood.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Right Effort (sammā-vāyāma)",
+    "link": "tags/right-effort.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(106)"
+  },
+  {
+    "long": "Right Mindfulness (sammā-sati)",
+    "link": "tags/right-mindfulness.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(67)"
+  },
+  {
+    "long": "Mindfulness of body (kāyagatā-sati)",
+    "link": "tags/mindfulness-of-body.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(103)"
+  },
+  {
+    "long": "Mindfulness of feeling (vedanā-sati)",
+    "link": "tags/mindfulness-of-feeling.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Mindfulness of mind (citta-sati)",
+    "link": "tags/mindfulness-of-mind.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "Mindfulness of dhammas (dhammā-sati)",
+    "link": "tags/mindfulness-of-dhammas.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Ardency (ātāpi)",
+    "link": "tags/ardency.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(43)"
+  },
+  {
+    "long": "Clear comprehension (sampajañña)",
+    "link": "tags/clear-comprehension.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(73)"
+  },
+  {
+    "long": "Mindfulness (sati)",
+    "link": "tags/mindfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(124)"
+  },
+  {
+    "long": "Right Concentration (sammā-samādhi)",
+    "link": "tags/right-concentration.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Jhāna",
+    "link": "tags/jhana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(80)"
+  },
+  {
+    "long": "Directed thought and evaluation (vitakka-vicāra)",
+    "link": "tags/directed-thought-and-evaluation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(86)"
+  },
+  {
+    "long": "Happiness (sukha)",
+    "link": "tags/happiness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(159)"
+  },
+  {
+    "long": "Concentration (samādhi)",
+    "link": "tags/concentration.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(98)"
+  },
+  {
+    "long": "Unification (ekaggatā)",
+    "link": "tags/unification.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Formless attainments (āruppa)",
+    "link": "tags/formless-attainments.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Four Noble Truths (cattāri ariya-saccāni)",
+    "link": "tags/four-noble-truths.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(59)"
+  },
+  {
+    "long": "Noble Truth of Suffering (dukkha ariya-sacca)",
+    "link": "tags/noble-truth-of-suffering.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Birth (jāti)",
+    "link": "tags/birth.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(14)"
+  },
+  {
+    "long": "Ageing (jarā)",
+    "link": "tags/ageing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(37)"
+  },
+  {
+    "long": "Sickness (byādhi)",
+    "link": "tags/sickness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(90)"
+  },
+  {
+    "long": "Death (maraṇa)",
+    "link": "tags/death.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(131)"
+  },
+  {
+    "long": "Pain (dukkha)",
+    "link": "tags/pain.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(40)"
+  },
+  {
+    "long": "Grief (domanassa)",
+    "link": "tags/grief.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Noble Truth of the Cause of Suffering (dukkha-samudaya ariya-sacca)",
+    "link": "tags/cause-of-suffering.html",
+    "short": "Cause of Suffering (dukkha-samudayo)",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Craving not to become (vibhava-taṇhā)",
+    "link": "tags/craving-not-to-become.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Noble Truth of the Cessation of Suffering (dukkha-nirodha ariya-saccaṃ)",
+    "link": "tags/cessation-of-suffering.html",
+    "short": "Cessation of Suffering (dukkha-nirodho)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(63)"
+  },
+  {
+    "long": "Aids to Awakening (bodhipakkhiyādhammā)",
+    "link": "tags/aids-to-awakening.html",
+    "short": "",
+    "number": "37",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Four Bases of Success (cattāro iddhipādā)",
+    "link": "tags/bases-of-success.html",
+    "short": "Bases of Success (iddhipādā)",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Desire (chanda)",
+    "link": "tags/desire.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(59)"
+  },
+  {
+    "long": "Heart/mind (citta)",
+    "link": "tags/heartmind.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(53)"
+  },
+  {
+    "long": "Five Faculties (pañca indriyā)",
+    "link": "tags/faculties.html",
+    "short": "Faculties (indriyā)",
+    "number": "5",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Faith (saddhā)",
+    "link": "tags/faith.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(118)"
+  },
+  {
+    "long": "Energy (viriya)",
+    "link": "tags/energy.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(48)"
+  },
+  {
+    "long": "Discernment (paññā)",
+    "link": "tags/discernment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(160)"
+  },
+  {
+    "long": "Seven Factors of Awakening (satta bojjhaṅgā)",
+    "link": "tags/factors-of-awakening.html",
+    "short": "Factors of Awakening (bojjhaṅgā)",
+    "number": "7",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Investigation of states (dhamma-vicaya)",
+    "link": "tags/investigation-of-states.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Rapture (pīti)",
+    "link": "tags/rapture.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(38)"
+  },
+  {
+    "long": "Tranquility (passaddhi)",
+    "link": "tags/tranquility.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(113)"
+  },
+  {
+    "long": "Divine Abidings (brahmavihārā)",
+    "link": "tags/divine-abidings.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Goodwill (mettā)",
+    "link": "tags/goodwill.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(152)"
+  },
+  {
+    "long": "Compassion (karuṇā)",
+    "link": "tags/compassion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(121)"
+  },
+  {
+    "long": "Empathetic joy (muditā)",
+    "link": "tags/empathetic-joy.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Equanimity (upekkhā)",
+    "link": "tags/equanimity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(56)"
+  },
+  {
+    "long": "Seven Treasures (satta dhanā)",
+    "link": "tags/treasures.html",
+    "short": "Treasures (dhana)",
+    "number": "7",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Virtue (sīla)",
+    "link": "tags/virtue.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(74)"
+  },
+  {
+    "long": "Conscience and prudence (hiri-otappa)",
+    "link": "tags/conscience-and-prudence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Learning (suta)",
+    "link": "tags/learning.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(97)"
+  },
+  {
+    "long": "Tipiṭaka (Pāli Canon)",
+    "link": "tags/tipitaka.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Sutta",
+    "link": "tags/sutta.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(63)"
+  },
+  {
+    "long": "Abhidhamma",
+    "link": "tags/abhidhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Āgama",
+    "link": "tags/agama.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Commentaries (aṭṭhakathā)",
+    "link": "tags/commentaries.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(25)"
+  },
+  {
+    "long": "Generosity (dāna)",
+    "link": "tags/generosity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(117)"
+  },
+  {
+    "long": "Ten Perfections (dasa pāramiyo)",
+    "link": "tags/perfections.html",
+    "short": "Perfections (pāramiyo)",
+    "number": "10",
+    "icon": "tag",
+    "suffix": "(14)"
+  },
+  {
+    "long": "Patience (khanti)",
+    "link": "tags/patience.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(62)"
+  },
+  {
+    "long": "Truth (sacca)",
+    "link": "tags/truth.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(50)"
+  },
+  {
+    "long": "Determination (adhiṭṭhāna)",
+    "link": "tags/determination.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(35)"
+  },
+  {
+    "long": "Progress of insight",
+    "link": "tags/progress-of-insight.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(19)"
+  },
+  {
+    "long": "Seclusion (viveka)",
+    "link": "tags/seclusion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(41)"
+  },
+  {
+    "long": "Knowledge and vision (ñāṇadassana)",
+    "link": "tags/knowledge-and-vision.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(27)"
+  },
+  {
+    "long": "Disenchantment (nibbidā)",
+    "link": "tags/disenchantment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Dispassion (virāga)",
+    "link": "tags/dispassion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(37)"
+  },
+  {
+    "long": "Cessation (nirodha)",
+    "link": "tags/cessation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(38)"
+  },
+  {
+    "long": "Relinquishment (paṭinissagga)",
+    "link": "tags/relinquishment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(193)"
+  },
+  {
+    "long": "Release (vossagga)",
+    "link": "tags/release.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Liberation (vimutti)",
+    "link": "tags/liberation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(116)"
+  },
+  {
+    "long": "Stages of awakening",
+    "link": "tags/stages-of-awakening.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Stream entry (sotāpanna)",
+    "link": "tags/stream-entry.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Factors for stream entry (sotāpattiyaṅga)",
+    "link": "tags/factors-for-stream-entry.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Association with people of integrity (sappurisasaṁseva)",
+    "link": "tags/association-with-people-of-integrity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Spiritual friendship (kalyāṇa-mittatā)",
+    "link": "tags/spiritual-friendship.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "Hearing the true Dhamma (saddhammassavana)",
+    "link": "tags/hearing-the-true-dhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Appropriate attention (yoniso manasikāra)",
+    "link": "tags/appropriate-attention.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Practicing in accordance with Dhamma (dhammā­nu­dhamma­p­paṭipatti)",
+    "link": "tags/practicing-in-accordance-with-dhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(33)"
+  },
+  {
+    "long": "Once return (sakadāgāmī)",
+    "link": "tags/once-return.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Non-return (anāgamī)",
+    "link": "tags/non-return.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Arahant",
+    "link": "tags/arahant.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Bodhisattva",
+    "link": "tags/bodhisattva.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Paccekabuddha",
+    "link": "tags/paccekabuddha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Heedfulness (appamāda)",
+    "link": "tags/heedfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Spiritual search (ariya-pariyesanā)",
+    "link": "tags/spiritual-search.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(14)"
+  },
+  {
+    "long": "Spiritual urgency (saṃvega)",
+    "link": "tags/spiritual-urgency.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Gratitude (kataññu)",
+    "link": "tags/gratitude.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(92)"
+  },
+  {
+    "long": "Merit (puñña)",
+    "link": "tags/merit.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(50)"
+  },
+  {
+    "long": "Forgiveness (khama)",
+    "link": "tags/forgiveness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Contentment (santuṭṭhi)",
+    "link": "tags/contentment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Trust",
+    "link": "tags/trust.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Courage",
+    "link": "tags/courage.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Humility",
+    "link": "tags/humility.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Dignity",
+    "link": "tags/dignity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Non-contention",
+    "link": "tags/non-contention.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Self-reliance",
+    "link": "tags/self-reliance.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Unskillful qualities (akusalā dhammā)",
+    "link": "tags/unskillful-qualities.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(42)"
+  },
+  {
+    "long": "Three Unwholesome Roots (ti-akusala-mūlā)",
+    "link": "tags/unwholesome-roots.html",
+    "short": "Unwholesome Roots (akusala-mūlā)",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(71)"
+  },
+  {
+    "long": "Greed (lobha)",
+    "link": "tags/greed.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Aversion (dosa)",
+    "link": "tags/aversion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(101)"
+  },
+  {
+    "long": "Delusion (moha)",
+    "link": "tags/delusion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(57)"
+  },
+  {
+    "long": "Four Biases (catarī agatī)",
+    "link": "tags/biases.html",
+    "short": "Biases (agatī)",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Outflows (āsava)",
+    "link": "tags/outflows.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Five Hindrances (pañca nīvaraṇāni)",
+    "link": "tags/hindrances.html",
+    "short": "Hindrances (nīvaraṇāni)",
+    "number": "5",
+    "icon": "tag",
+    "suffix": "(53)"
+  },
+  {
+    "long": "Sensual desire (kāmacchanda)",
+    "link": "tags/sensual-desire.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(70)"
+  },
+  {
+    "long": "Ill-will (byāpāda)",
+    "link": "tags/ill-will.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Sloth and torpor (thīna-middha)",
+    "link": "tags/sloth-and-torpor.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Restlessness and worry (uddhacca-kukkucca)",
+    "link": "tags/restlessness-and-worry.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(64)"
+  },
+  {
+    "long": "Doubt (vicikiccha)",
+    "link": "tags/doubt.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(40)"
+  },
+  {
+    "long": "Ten Fetters (dasa saṃyojanā)",
+    "link": "tags/fetters.html",
+    "short": "Fetters (dasa samyojana)",
+    "number": "10",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Self-identity view (sakkāya-diṭṭhi)",
+    "link": "tags/self-identity-view.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(177)"
+  },
+  {
+    "long": "Attachment to precepts and practices (sīlabbata-parāmāsa)",
+    "link": "tags/attachment-to-precepts-and-practices.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Craving for material existence (rūparāga)",
+    "link": "tags/craving-for-material-existence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Conceit (māna)",
+    "link": "tags/conceit.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Heedlessness (pamāda)",
+    "link": "tags/heedlessness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Proliferation (papañca)",
+    "link": "tags/proliferation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(127)"
+  },
+  {
+    "long": "Views (diṭṭhī)",
+    "link": "tags/views.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(50)"
+  },
+  {
+    "long": "Judgementalism",
+    "link": "tags/judgementalism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(38)"
+  },
+  {
+    "long": "Perfectionism",
+    "link": "tags/perfectionism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Jealousy",
+    "link": "tags/jealousy.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Competitiveness",
+    "link": "tags/competitiveness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Selfishness",
+    "link": "tags/selfishness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Guilt/shame/inadequacy",
+    "link": "tags/guiltshameinadequacy.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Self-pity",
+    "link": "tags/self-pity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Depression",
+    "link": "tags/depression.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(19)"
+  },
+  {
+    "long": "Loneliness",
+    "link": "tags/loneliness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Abuse/violence",
+    "link": "tags/abuseviolence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Addiction",
+    "link": "tags/addiction.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Spiritual bypass",
+    "link": "tags/spiritual-bypass.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Four Nutriments (cattāro āhārā)",
+    "link": "tags/nutriment.html",
+    "short": "Nutriment (āhāra)",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Physical food (kabaliṅkāra āhāra)",
+    "link": "tags/food.html",
+    "short": "Food (āhāra)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(56)"
+  },
+  {
+    "long": "Mental volition (manosañcetanā)",
+    "link": "tags/volition.html",
+    "short": "Volition (cetanā)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(51)"
+  },
+  {
+    "long": "Five Aggregates (pañcakkhandhā)",
+    "link": "tags/aggregates.html",
+    "short": "Aggregates (khandhā)",
+    "number": "5",
+    "icon": "tag",
+    "suffix": "(56)"
+  },
+  {
+    "long": "Form (rūpa)",
+    "link": "tags/form.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(14)"
+  },
+  {
+    "long": "Feeling (vedanā)",
+    "link": "tags/feeling.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(60)"
+  },
+  {
+    "long": "Perception (saññā)",
+    "link": "tags/perception.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(54)"
+  },
+  {
+    "long": "Volitional formations (saṅkhāra)",
+    "link": "tags/volitional-formations.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(42)"
+  },
+  {
+    "long": "Consciousness (viññāṇa)",
+    "link": "tags/consciousness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(35)"
+  },
+  {
+    "long": "Conditionality (idappaccayatā)",
+    "link": "tags/conditionality.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(99)"
+  },
+  {
+    "long": "Dependent origination (paticca-samuppāda)",
+    "link": "tags/dependent-origination.html",
+    "short": "",
+    "number": "12",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Ignorance (avijjā)",
+    "link": "tags/ignorance.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Six Sense Bases (saḷ-āyatana)",
+    "link": "tags/sense-bases.html",
+    "short": "Sense bases (āyatana)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(43)"
+  },
+  {
+    "long": "Contact (phassa)",
+    "link": "tags/contact.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(19)"
+  },
+  {
+    "long": "Neither-painful-nor-pleasant feeling (adukkhamasukhā vedanā)",
+    "link": "tags/neutral-feeling.html",
+    "short": "Neutral feeling (adukkhamasukhā vedanā)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Craving (taṇhā)",
+    "link": "tags/craving.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(61)"
+  },
+  {
+    "long": "Clinging (upādāna)",
+    "link": "tags/clinging.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(109)"
+  },
+  {
+    "long": "Doctrine-of-self clinging (attavādupādāna)",
+    "link": "tags/doctrine-of-self-clinging.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Becoming (bhava)",
+    "link": "tags/becoming.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Characteristics of existence",
+    "link": "tags/characteristics-of-existence.html",
+    "short": "",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Impermanence (anicca)",
+    "link": "tags/impermanence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(113)"
+  },
+  {
+    "long": "Suffering (dukkha)",
+    "link": "tags/suffering.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(220)"
+  },
+  {
+    "long": "Not-self (anattā)",
+    "link": "tags/not-self.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(95)"
+  },
+  {
+    "long": "Naturalness (dhammaṭṭhitatā)",
+    "link": "tags/naturalness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(28)"
+  },
+  {
+    "long": "Lawfulness (dhammaniymatā)",
+    "link": "tags/lawfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Emptiness (suññatā)",
+    "link": "tags/emptiness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Suchness (tathatā)",
+    "link": "tags/suchness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Not-made-of-that (atammayatā)",
+    "link": "tags/not-made-of-that.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Three Aspects of Understanding",
+    "link": "tags/aspects-of-understanding.html",
+    "short": "Aspects of Understanding",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Gratification (assāda)",
+    "link": "tags/gratification.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Drawbacks (ādīnava)",
+    "link": "tags/drawbacks.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Escape (nissaraṇa)",
+    "link": "tags/escape.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Moods of the mind (Arom kong git)",
+    "link": "tags/moods-of-the-mind.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Emotion",
+    "link": "tags/emotion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Attitude",
+    "link": "tags/attitude.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Personality",
+    "link": "tags/personality.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(42)"
+  },
+  {
+    "long": "Habits",
+    "link": "tags/habits.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(28)"
+  },
+  {
+    "long": "Humor",
+    "link": "tags/humor.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(48)"
+  },
+  {
+    "long": "Fear (bhaya)",
+    "link": "tags/fear.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(87)"
+  },
+  {
+    "long": "Idealism",
+    "link": "tags/idealism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(45)"
+  },
+  {
+    "long": "Intuition",
+    "link": "tags/intuition.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Beauty",
+    "link": "tags/beauty.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Three Refuges (tisaraṇa)",
+    "link": "tags/three-refuges.html",
+    "short": "",
+    "number": "3",
+    "icon": "tag",
+    "suffix": "(52)"
+  },
+  {
+    "long": "Buddha",
+    "link": "tags/buddha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(55)"
+  },
+  {
+    "long": "Dhamma",
+    "link": "tags/dhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(70)"
+  },
+  {
+    "long": "Devotional practice",
+    "link": "tags/devotional-practice.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(28)"
+  },
+  {
+    "long": "Ceremony/ritual",
+    "link": "tags/ceremonyritual.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Pūjā",
+    "link": "tags/puja.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Chanting",
+    "link": "tags/chanting.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(81)"
+  },
+  {
+    "long": "Anumodanā (Delighting in goodness)",
+    "link": "tags/anumodana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Protective chants (paritta)",
+    "link": "tags/protective-chants.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Prayer",
+    "link": "tags/prayer.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Asking forgiveness ceremony",
+    "link": "tags/asking-forgiveness-ceremony.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Festival days",
+    "link": "tags/festival-days.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Lunar observance days (uposatha)",
+    "link": "tags/lunar-observance-days.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Kaṭhina",
+    "link": "tags/kathina.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Ajahn Chah Remembrance Day",
+    "link": "tags/ajahn-chah-remembrance-day.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Visiting holy sites",
+    "link": "tags/visiting-holy-sites.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Relics (sarīra)",
+    "link": "tags/relics.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Stupas/monuments (thūpaṃ)",
+    "link": "tags/stupasmonuments.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Bodhi Tree",
+    "link": "tags/bodhi-tree.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Buddha images",
+    "link": "tags/buddha-images.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Malas",
+    "link": "tags/malas.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Amulets",
+    "link": "tags/amulets.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Icons",
+    "link": "tags/icons.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Funerals",
+    "link": "tags/funerals.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Superstition",
+    "link": "tags/superstition.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Precepts (sikkhāpada)",
+    "link": "tags/precepts.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(46)"
+  },
+  {
+    "long": "Five Precepts (pañca sikkhāpadāni)",
+    "link": "tags/five-precepts.html",
+    "short": "",
+    "number": "5",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Intoxicants (surāmeraya-majja-pamādaṭṭhānā)",
+    "link": "tags/intoxicants.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Eight Precepts (aṭṭha sikkhāpadāni)",
+    "link": "tags/eight-precepts.html",
+    "short": "",
+    "number": "8",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Eating after noon (vikāla-bhojana)",
+    "link": "tags/eating-after-noon.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Entertainment and adornment (nacca-gīta-vādita)",
+    "link": "tags/entertainment-and-adornment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "High and luxurious beds (uccāsayana-mahāsayanā)",
+    "link": "tags/high-and-luxurious-beds.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Meditation (bhāvanā)",
+    "link": "tags/meditation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(85)"
+  },
+  {
+    "long": "Meditation/General advice",
+    "link": "tags/meditationgeneral-advice.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(25)"
+  },
+  {
+    "long": "Meditation/Techniques",
+    "link": "tags/meditationtechniques.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Mindfulness of breathing (ānāpānasati)",
+    "link": "tags/mindfulness-of-breathing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(185)"
+  },
+  {
+    "long": "Unattractiveness/32 parts (asubha/dvattiṁsākāra)",
+    "link": "tags/unattractiveness.html",
+    "short": "Unattractiveness (asubha)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(42)"
+  },
+  {
+    "long": "Elements (dhātu)",
+    "link": "tags/elements.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(26)"
+  },
+  {
+    "long": "Perception of light (āloka-saññā)",
+    "link": "tags/perception-of-light.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Kasiṇa",
+    "link": "tags/kasina.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Visualization",
+    "link": "tags/visualization.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(14)"
+  },
+  {
+    "long": "Body scanning",
+    "link": "tags/body-scanning.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Noting",
+    "link": "tags/noting.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Mantra",
+    "link": "tags/mantra.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Buddho mantra",
+    "link": "tags/buddho-mantra.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Koan",
+    "link": "tags/koan.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Hua tou",
+    "link": "tags/hua-tou.html",
+    "short": "Hua tou",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Sound of silence",
+    "link": "tags/sound-of-silence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Movement meditation",
+    "link": "tags/movement-meditation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Gladdening the mind (abhippamodaya citta)",
+    "link": "tags/gladdening-the-mind.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(52)"
+  },
+  {
+    "long": "Calming meditation (samatha)",
+    "link": "tags/calming-meditation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(42)"
+  },
+  {
+    "long": "Insight meditation (vipassanā)",
+    "link": "tags/insight-meditation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(45)"
+  },
+  {
+    "long": "Recollection (anusati)",
+    "link": "tags/recollection.html",
+    "short": "",
+    "number": "10",
+    "icon": "tag",
+    "suffix": "(56)"
+  },
+  {
+    "long": "Recollection/Buddha (buddhānussati)",
+    "link": "tags/recollectionbuddha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Recollection/Dhamma (dhammānussati)",
+    "link": "tags/recollectiondhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Recollection/Saṅgha (saṅghānussati)",
+    "link": "tags/recollectionsangha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Recollection/Virtue (sīlānussati)",
+    "link": "tags/recollectionvirtue.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(19)"
+  },
+  {
+    "long": "Recollection/Generosity (cāgānussati)",
+    "link": "tags/recollectiongenerosity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Recollection/Devas (devatānussati)",
+    "link": "tags/recollectiondevas.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Recollection/Death (maraṇassati)",
+    "link": "tags/recollectiondeath.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Recollection/Peace (upasamānussati)",
+    "link": "tags/recollectionpeace.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Four Protective Meditations (caturārakkhā bhāvanā)",
+    "link": "tags/protective-meditations.html",
+    "short": "Protective Meditations (rakkhā bhāvanā)",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Four Postures",
+    "link": "tags/postures.html",
+    "short": "Postures",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Posture/Sitting (nisinna)",
+    "link": "tags/posturesitting.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Posture/Walking (caranta)",
+    "link": "tags/posturewalking.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Posture/Lying down (sayāna)",
+    "link": "tags/posturelying-down.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Posture/Standing (tiṭṭhanta)",
+    "link": "tags/posturestanding.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Bowing",
+    "link": "tags/bowing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Mudra (Hand posture)",
+    "link": "tags/mudra.html",
+    "short": "Mudra (Hand posture)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Meditation retreats",
+    "link": "tags/meditation-retreats.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(37)"
+  },
+  {
+    "long": "Meditation/Results",
+    "link": "tags/meditationresults.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Wrong concentration (micchā-samādhi)",
+    "link": "tags/wrong-concentration.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Nimitta",
+    "link": "tags/nimitta.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Continuity of mindfulness",
+    "link": "tags/continuity-of-mindfulness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(53)"
+  },
+  {
+    "long": "Present moment awareness",
+    "link": "tags/present-moment-awareness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Spaciousness",
+    "link": "tags/spaciousness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(31)"
+  },
+  {
+    "long": "Direct experience",
+    "link": "tags/direct-experience.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Knowing itself",
+    "link": "tags/knowing-itself.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(71)"
+  },
+  {
+    "long": "Meditation/Unusual experiences",
+    "link": "tags/meditationunusual-experiences.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Long-term practice",
+    "link": "tags/long-term-practice.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(39)"
+  },
+  {
+    "long": "Teaching Dhamma",
+    "link": "tags/teaching-dhamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(158)"
+  },
+  {
+    "long": "The Gradual Teaching (anupubbikathā)",
+    "link": "tags/gradual-teaching.html",
+    "short": "Gradual Teaching (anupubbikathā)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Questions (pañhā)",
+    "link": "tags/questions.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Dhamma discussion (dhammasākacchā)",
+    "link": "tags/dhamma-discussion.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Personal presence",
+    "link": "tags/personal-presence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Fierce/direct teaching",
+    "link": "tags/fiercedirect-teaching.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(43)"
+  },
+  {
+    "long": "Stories",
+    "link": "tags/stories.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Similes (opammā)",
+    "link": "tags/similes.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(118)"
+  },
+  {
+    "long": "Symbolism",
+    "link": "tags/symbolism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Dhamma books",
+    "link": "tags/dhamma-books.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(36)"
+  },
+  {
+    "long": "Free distribution",
+    "link": "tags/free-distribution.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Dhamma recordings",
+    "link": "tags/dhamma-recordings.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Dhamma online",
+    "link": "tags/dhamma-online.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Teachers",
+    "link": "tags/teachers.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(25)"
+  },
+  {
+    "long": "Monastic teachers",
+    "link": "tags/monastic-teachers.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Thai Forest Tradition",
+    "link": "tags/thai-forest-tradition.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(91)"
+  },
+  {
+    "long": "Ajahn Sao Kantasīlo",
+    "link": "tags/ajahn-sao.html",
+    "short": "Ajahn Sao",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Ajahn Mun Bhūridatto",
+    "link": "tags/ajahn-mun.html",
+    "short": "Ajahn Mun",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(65)"
+  },
+  {
+    "long": "Ajahn Chah Subhaddo",
+    "link": "tags/ajahn-chah.html",
+    "short": "Ajahn Chah",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(663)"
+  },
+  {
+    "long": "Ajahn Chah lineage",
+    "link": "tags/ajahn-chah-lineage.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Ajahn Mahā Amorn Khemacitto",
+    "link": "tags/ajahn-maha-amorn.html",
+    "short": "Ajahn Mahā Amorn",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Ajahn Jun Indavīro",
+    "link": "tags/ajahn-jun.html",
+    "short": "Ajahn Jun",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Sinuan",
+    "link": "tags/ajahn-sinuan.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Liem Ṭhitadhammo",
+    "link": "tags/ajahn-liem.html",
+    "short": "Ajahn Liem",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(41)"
+  },
+  {
+    "long": "Ajahn Boon Choo Ṭhitaguṇo",
+    "link": "tags/ajahn-boon-choo.html",
+    "short": "Ajahn Boon Choo",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Ajahn Mahā Suporn",
+    "link": "tags/ajahn-maha-suporn.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Toon Cattasallo",
+    "link": "tags/ajahn-toon.html",
+    "short": "Ajahn Toon",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Koon Aggadhammo",
+    "link": "tags/ajahn-koon.html",
+    "short": "Ajahn Koon",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Ajahn Mahā In",
+    "link": "tags/ajahn-maha-in.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Anek Yasadinno",
+    "link": "tags/ajahn-anek.html",
+    "short": "Ajahn Anek",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Bunjong",
+    "link": "tags/ajahn-bunjong.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Gunha Sukhagāmo",
+    "link": "tags/ajahn-gunha.html",
+    "short": "Ajahn Gunha",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Somboon Cittapañño",
+    "link": "tags/ajahn-somboon.html",
+    "short": "Ajahn Somboon",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Jundee Kantasāro",
+    "link": "tags/ajahn-jundee.html",
+    "short": "Ajahn Jundee",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Piak Kantasīlo",
+    "link": "tags/ajahn-piak.html",
+    "short": "Ajahn Piak",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Ajahn Anan Akiñcano",
+    "link": "tags/ajahn-anan.html",
+    "short": "Ajahn Anan",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Ajahn Dtun Thiracitto",
+    "link": "tags/ajahn-dtun.html",
+    "short": "Ajahn Dtun",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Mae Somchai",
+    "link": "tags/mae-somchai.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Preecha Jutindharo",
+    "link": "tags/ajahn-preecha.html",
+    "short": "Ajahn Preecha",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Mahā Adisak Dhammābhinando",
+    "link": "tags/ajahn-maha-adisak.html",
+    "short": "Ajahn Mahā Adisak",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Western Ajahn Chah lineage",
+    "link": "tags/western-ajahn-chah-lineage.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Sumedho",
+    "link": "tags/ajahn-sumedho.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(111)"
+  },
+  {
+    "long": "Ajahn Khemadhammo",
+    "link": "tags/ajahn-khemadhammo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Ajahn Jāgaro",
+    "link": "tags/ajahn-jagaro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Pasanno",
+    "link": "tags/ajahn-pasanno.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(305)"
+  },
+  {
+    "long": "Ajahn Anando",
+    "link": "tags/ajahn-anando.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Ajahn Brahmavaṃso",
+    "link": "tags/ajahn-brahmavamso.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Tiradhammo",
+    "link": "tags/ajahn-tiradhammo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Viradhammo",
+    "link": "tags/ajahn-viradhammo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Ajahn Gavesako",
+    "link": "tags/ajahn-gavesako.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Puriso",
+    "link": "tags/ajahn-puriso.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Ajahn Sucitto",
+    "link": "tags/ajahn-sucitto.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Ajahn Munindo",
+    "link": "tags/ajahn-munindo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Mae Chee Kumfah",
+    "link": "tags/mae-chee-kumfah.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Amaro",
+    "link": "tags/ajahn-amaro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(78)"
+  },
+  {
+    "long": "Ajahn Ñāṇadhammo",
+    "link": "tags/ajahn-nanadhammo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Jayasaro",
+    "link": "tags/ajahn-jayasaro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Ajahn Vajiro",
+    "link": "tags/ajahn-vajiro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Sundarā",
+    "link": "tags/ajahn-sundara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Ajahn Visuddhi",
+    "link": "tags/ajahn-visuddhi.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Jitindriyā",
+    "link": "tags/ajahn-jitindriya.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Soṇa",
+    "link": "tags/ajahn-sona.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Jayanto",
+    "link": "tags/ajahn-jayanto.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Kusalo",
+    "link": "tags/ajahn-kusalo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Yatiko",
+    "link": "tags/ajahn-yatiko.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Sudanto",
+    "link": "tags/ajahn-sudanto.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Ajahn Achalo",
+    "link": "tags/ajahn-achalo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Siripañño",
+    "link": "tags/ajahn-siripanno.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Karuṇadhammo",
+    "link": "tags/ajahn-karunadhammo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(28)"
+  },
+  {
+    "long": "Ajahn Kevali",
+    "link": "tags/ajahn-kevali.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Jotipālo",
+    "link": "tags/ajahn-jotipalo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Ajahn Ñāṇiko",
+    "link": "tags/ajahn-naniko.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Ajahn Pavaro",
+    "link": "tags/ajahn-pavaro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Kovilo",
+    "link": "tags/ajahn-kovilo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Kalyāṇo",
+    "link": "tags/ajahn-kalyano.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Other Thai Forest teachers",
+    "link": "tags/other-thai-forest-teachers.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Waen Suciṇṇo",
+    "link": "tags/ajahn-waen.html",
+    "short": "Ajahn Waen",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Dune Atulo",
+    "link": "tags/ajahn-dune.html",
+    "short": "Ajahn Dune",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Ajahn Tongrat Kantasīlo",
+    "link": "tags/ajahn-tongrat.html",
+    "short": "Ajahn Tongrat",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Ajahn Kinaree Candiyo",
+    "link": "tags/ajahn-kinaree.html",
+    "short": "Ajahn Kinaree",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Ajahn Supah Kantasīlo",
+    "link": "tags/ajahn-supah.html",
+    "short": "Ajahn Supah",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Khao Anālayo",
+    "link": "tags/ajahn-khao.html",
+    "short": "Ajahn Khao",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Ajahn Fun Ācāro",
+    "link": "tags/ajahn-fun.html",
+    "short": "Ajahn Fun",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Tate Desaransi",
+    "link": "tags/ajahn-tate.html",
+    "short": "Ajahn Tate",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Chorp Ṭhānasamo",
+    "link": "tags/ajahn-chorp.html",
+    "short": "Ajahn Chorp",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Buddhadāsa Indapañño",
+    "link": "tags/ajahn-buddhadasa.html",
+    "short": "Ajahn Buddhadāsa",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Ajahn Lee Dhammadharo",
+    "link": "tags/ajahn-lee-dhammadharo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Ajahn Sim Buddhacaro",
+    "link": "tags/ajahn-sim.html",
+    "short": "Ajahn Sim",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Ajahn Paññānanda Padumuttaro",
+    "link": "tags/ajahn-pannananda.html",
+    "short": "Ajahn Paññānanda",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Ajahn Mahā Boowa Ñāṇasampanno",
+    "link": "tags/ajahn-maha-boowa.html",
+    "short": "Ajahn Mahā Boowa",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(44)"
+  },
+  {
+    "long": "Ajahn Fuang Jotiko",
+    "link": "tags/ajahn-fuang.html",
+    "short": "Ajahn Fuang",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Jia Cundo",
+    "link": "tags/ajahn-jia.html",
+    "short": "Ajahn Jia",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Mae Chee Kaew",
+    "link": "tags/mae-chee-kaew.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Ajahn Suwat Suvaco",
+    "link": "tags/ajahn-suwat.html",
+    "short": "Ajahn Suwat",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Puth Thaniyo",
+    "link": "tags/ajahn-puth.html",
+    "short": "Ajahn Puth",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Gi Dhammuttamo",
+    "link": "tags/ajahn-gi.html",
+    "short": "Ajahn Gi",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Baen Dhanākaro",
+    "link": "tags/ajahn-baen.html",
+    "short": "Ajahn Baen",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Ajahn Jumnien",
+    "link": "tags/ajahn-jumnien.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Plien Paññapatipo",
+    "link": "tags/ajahn-plien.html",
+    "short": "Ajahn Plien",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ajahn Teean Cittasubho",
+    "link": "tags/ajahn-teean.html",
+    "short": "Ajahn Teean",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Ajahn Sanong Katapuñño",
+    "link": "tags/ajahn-sanong.html",
+    "short": "Ajahn Sanong",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Wanchai Vicitto",
+    "link": "tags/ajahn-wanchai.html",
+    "short": "Ajahn Wanchai",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Ajahn Mahā Chatchai",
+    "link": "tags/ajahn-maha-chatchai.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Mae Chee Sansanee",
+    "link": "tags/mae-chee-sansanee.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Utane Kalyāno",
+    "link": "tags/ajahn-utane.html",
+    "short": "Ajahn Utane",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Khantipālo",
+    "link": "tags/ajahn-khantipalo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Ajahn Paññāvaḍḍho",
+    "link": "tags/ajahn-pannavaddho.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Ajahn Ṭhānissaro",
+    "link": "tags/ajahn-thanissaro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Ajahn Piyadhammo",
+    "link": "tags/ajahn-piyadhammo.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Other Thai monastics",
+    "link": "tags/other-thai-monastics.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ajahn Vajirayan Vajirañāno",
+    "link": "tags/ajahn-vajirayan.html",
+    "short": "Ajahn Vajirayan",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Tan Chao Khun Upāli Guṇūpamājahn",
+    "link": "tags/chao-khun-upali.html",
+    "short": "Chao Khun Upāli",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Somdet Phra Vajirañāṇavarorasa",
+    "link": "tags/somdet-vajirananavarorasa.html",
+    "short": "Somdet Vajirañāṇavarorasa",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Chao Khun Nor",
+    "link": "tags/chao-khun-nor.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "P. A. Payutto",
+    "link": "tags/p-a-payutto.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Ajahn Mahā Prasert",
+    "link": "tags/ajahn-maha-prasert.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Tan Chao Khun Prayoon Dhammacitto",
+    "link": "tags/chao-khun-prayoon.html",
+    "short": "Chao Khun Prayoon",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Venerable Ñāṇatiloka",
+    "link": "tags/ven-nanatiloka.html",
+    "short": "Ven. Ñāṇatiloka",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Taungpulu Sayadaw",
+    "link": "tags/taungpulu-sayadaw.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Mahasi Sayadaw",
+    "link": "tags/mahasi-sayadaw.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Preah Mahāghosānanda",
+    "link": "tags/preah-mahaghosananda.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Bhante Dharmawara",
+    "link": "tags/bhante-dharmawara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Bhante Gunaratana",
+    "link": "tags/bhante-gunaratana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Pa Auk Sayadaw",
+    "link": "tags/pa-auk-sayadaw.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Bhikkhu Bodhi",
+    "link": "tags/bhikkhu-bodhi.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Bhante Yogavacara Rahula",
+    "link": "tags/bhante-rahula.html",
+    "short": "Bhante Rahula",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Ayya Tathālokā",
+    "link": "tags/ayya-tathaloka.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Venerable Analayo",
+    "link": "tags/ven-analayo.html",
+    "short": "Ven. Analayo",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Master Xuanzang",
+    "link": "tags/master-xuanzang.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Dōgen",
+    "link": "tags/dogen.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Master Hsu Yun",
+    "link": "tags/master-hsu-yun.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Trulshik Rinpoche",
+    "link": "tags/trulshik-rinpoche.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Master Hsuan Hua",
+    "link": "tags/master-hsuan-hua.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(26)"
+  },
+  {
+    "long": "The Dalai Lama",
+    "link": "tags/dalai-lama.html",
+    "short": "Dalai Lama",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Harata Rōshi",
+    "link": "tags/harata-roshi.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Lama Zopa Rinpoche",
+    "link": "tags/lama-zopa.html",
+    "short": "Lama Zopa",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Reverend Heng Sure",
+    "link": "tags/rev-heng-sure.html",
+    "short": "Rev. Heng Sure",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Bhikshu Heng Shun",
+    "link": "tags/bhikshu-heng-shun.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Thubten Chodron",
+    "link": "tags/thubten-chodron.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Bhikshu Heng Lyu",
+    "link": "tags/bhikshu-heng-lyu.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Father Boniface",
+    "link": "tags/father-boniface.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Father Damien",
+    "link": "tags/father-damien.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Lay teachers",
+    "link": "tags/lay-teachers.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Mahatma Gandhi",
+    "link": "tags/mahatma-gandhi.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Krishnamurti",
+    "link": "tags/krishnamurti.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Upasikā Kee Nanayon",
+    "link": "tags/upasika-kee-nanayon.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Dipa Ma",
+    "link": "tags/dipa-ma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Maurice Walsh",
+    "link": "tags/maurice-walsh.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "S. N. Goenka",
+    "link": "tags/s-n-goenka.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Ram Dass",
+    "link": "tags/ram-dass.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Larry Rosenberg",
+    "link": "tags/larry-rosenberg.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Stephen Levine",
+    "link": "tags/stephen-levine.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Joseph Goldstein",
+    "link": "tags/joseph-goldstein.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Jack Kornfield",
+    "link": "tags/jack-kornfield.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Rodney Smith",
+    "link": "tags/rodney-smith.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Paul Breiter",
+    "link": "tags/paul-breiter.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Joseph Kappel",
+    "link": "tags/joseph-kappel.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(27)"
+  },
+  {
+    "long": "Nick Scott",
+    "link": "tags/nick-scott.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Kittisaro",
+    "link": "tags/kittisaro.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Ṭhānissarā",
+    "link": "tags/thanissara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Debbie Stamp",
+    "link": "tags/debbie-stamp.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Ruth Denison",
+    "link": "tags/ruth-denison.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Lay supporters",
+    "link": "tags/lay-supporters.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "King Bhumibol Adulyadej (Rama IX)",
+    "link": "tags/king-rama-ix.html",
+    "short": "King Rama IX",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "George Sharp",
+    "link": "tags/george-sharp.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Saṅghapāla Foundation",
+    "link": "tags/sanghapala.html",
+    "short": "Saṅghapāla",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(27)"
+  },
+  {
+    "long": "Community of Abhayagiri Lay Ministers",
+    "link": "tags/calm-group.html",
+    "short": "CALM Group",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Monasteries",
+    "link": "tags/monasteries.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Ajahn Chah monasteries",
+    "link": "tags/ajahn-chah-monasteries.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Thai Ajahn Chah monasteries",
+    "link": "tags/thai-ajahn-chah-monasteries.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Wat Pahk Kut Wai",
+    "link": "tags/wat-pahk-kut-wai.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Nong Pah Pong",
+    "link": "tags/wat-pah-pong.html",
+    "short": "Wat Pah Pong",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(107)"
+  },
+  {
+    "long": "Wat Tam Saeng Pet",
+    "link": "tags/wat-tam-saeng-pet.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Wat Keuan",
+    "link": "tags/wat-keuan.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Wat Pah Supattaram",
+    "link": "tags/wat-pah-supattaram.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Phu Din Dang",
+    "link": "tags/wat-phu-din-dang.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Pah Nanachat",
+    "link": "tags/wat-pah-nanachat.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(76)"
+  },
+  {
+    "long": "Wat Fah Krahm",
+    "link": "tags/wat-fah-krahm.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Wat Pah Boon Lorm",
+    "link": "tags/wat-pah-boon-lorm.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Dtao Dtum Monastery",
+    "link": "tags/dtao-dum.html",
+    "short": "Dtao Dum",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Poo Jum Gom Monastery",
+    "link": "tags/poo-jum-gom.html",
+    "short": "Poo Jum Gom",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Anandagiri Monastery",
+    "link": "tags/anandagiri.html",
+    "short": "Anandagiri",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Western Ajahn Chah monasteries",
+    "link": "tags/western-ajahn-chah-monasteries.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Elders' Council monasteries",
+    "link": "tags/elders-council.html",
+    "short": "Elders' Council",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Cittaviveka Monastery",
+    "link": "tags/chithurst.html",
+    "short": "Chithurst",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Aruna Ratanagiri Monastery",
+    "link": "tags/aruna-ratanagiri.html",
+    "short": "Aruna Ratanagiri",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Amaravati Monastery",
+    "link": "tags/amaravati.html",
+    "short": "Amaravati",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Kloster Dhammapala",
+    "link": "tags/dhammapala.html",
+    "short": "Dhammapala",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Temple Forest Monastery",
+    "link": "tags/temple-monastery.html",
+    "short": "Temple Monastery",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Arrow River Forest Hermitage",
+    "link": "tags/arrow-river.html",
+    "short": "Arrow River",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Abhayagiri Monastery",
+    "link": "tags/abhayagiri.html",
+    "short": "Abhayagiri",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(223)"
+  },
+  {
+    "long": "Tisarana Monastery",
+    "link": "tags/tisarana.html",
+    "short": "Tisarana",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Pacific Hermitage",
+    "link": "tags/pacific-hermitage.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Other Thai forest monasteries",
+    "link": "tags/other-thai-forest-monasteries.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Phleng Vipassanā",
+    "link": "tags/wat-phleng-vipassana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Burapha",
+    "link": "tags/wat-burapha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Wat Suan Mokkh",
+    "link": "tags/wat-suan-mokkh.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Khao Wongkot",
+    "link": "tags/wat-khao-wongkot.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Pah Ban Tat",
+    "link": "tags/wat-pah-ban-tat.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Wat Asokaram",
+    "link": "tags/wat-asokaram.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Wat Buridat",
+    "link": "tags/wat-buridat.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Wat Metta",
+    "link": "tags/wat-metta.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Wat Ram Poeng",
+    "link": "tags/wat-ram-poeng.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Abhayagiri Monastery (Sri Lanka)",
+    "link": "tags/abhayagiri-sri-lanka.html",
+    "short": "Abhayagiri (Sri Lanka)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Three Conditions Monastery",
+    "link": "tags/three-conditions-monastery.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Gold Mountain Monastery",
+    "link": "tags/gold-mountain-monastery.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "City of Ten Thousand Buddhas",
+    "link": "tags/city-of-ten-thousand-buddhas.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Dhammadharini Monastery",
+    "link": "tags/dhammadharini-monastery.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Aranya Bodhi Hermitage",
+    "link": "tags/aranya-bodhi-hermitage.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Karuna Buddhist Vihara",
+    "link": "tags/karuna-buddhist-vihara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Holy Transfiguration Monastery",
+    "link": "tags/holy-transfiguration-monastery.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Non-monastic centers",
+    "link": "tags/non-monastic-centers.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Insight Meditation Society",
+    "link": "tags/insight-meditation-society.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Manjushri Institute",
+    "link": "tags/manjushri-institute.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Spirit Rock Meditation Center",
+    "link": "tags/spirit-rock.html",
+    "short": "Spirit Rock",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Panyaprateep School",
+    "link": "tags/panyaprateep-school.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Nature of the cosmos",
+    "link": "tags/nature-of-the-cosmos.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Kamma",
+    "link": "tags/kamma.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(94)"
+  },
+  {
+    "long": "Rebirth",
+    "link": "tags/rebirth.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(51)"
+  },
+  {
+    "long": "Saṃsāra",
+    "link": "tags/samsara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Realms of existence",
+    "link": "tags/realms-of-existence.html",
+    "short": "",
+    "number": "5",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Deva",
+    "link": "tags/deva.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Human (manussa)",
+    "link": "tags/human.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(68)"
+  },
+  {
+    "long": "Ghost (peta)",
+    "link": "tags/ghost.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Animal (tiracchāna)",
+    "link": "tags/animal.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Hell (niraya)",
+    "link": "tags/hell.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "God",
+    "link": "tags/god.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Māra",
+    "link": "tags/mara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Non-human beings (amanussa)",
+    "link": "tags/non-human-beings.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Nature of mind",
+    "link": "tags/nature-of-mind.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "Memory (sati)",
+    "link": "tags/memory.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(19)"
+  },
+  {
+    "long": "Dreams (supinā)",
+    "link": "tags/dreams.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Psychic powers (iddhi)",
+    "link": "tags/psychic-powers.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Supernatural",
+    "link": "tags/supernatural.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Nibbāna",
+    "link": "tags/nibbana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "The Deathless (amata)",
+    "link": "tags/deathless.html",
+    "short": "Deathless (amata)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Unestablished consciousness (appatiṭṭhitaṁ viññāṇaṁ)",
+    "link": "tags/unestablished-consciousness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "The Unconditioned/Ultimate Truth (asaṅkhata)",
+    "link": "tags/unconditioned.html",
+    "short": "Unconditioned (asaṅkhata)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "History",
+    "link": "tags/history.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Buddha/Biography",
+    "link": "tags/buddhabiography.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(53)"
+  },
+  {
+    "long": "Great disciples",
+    "link": "tags/great-disciples.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "History/Early Buddhism",
+    "link": "tags/historyearly-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "History/Indian Buddhism",
+    "link": "tags/historyindian-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "History/Sri Lankan Buddhism",
+    "link": "tags/historysri-lankan-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "History/Thai Buddhism",
+    "link": "tags/historythai-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "History/Other Theravāda traditions",
+    "link": "tags/historyother-theravada-traditions.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "History/Mahāyāna Buddhism",
+    "link": "tags/historymahayana-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "History/America",
+    "link": "tags/historyamerica.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "History/Western Buddhism",
+    "link": "tags/historywestern-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "History/Western Buddhist monasticism",
+    "link": "tags/historywestern-buddhist-monasticism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(23)"
+  },
+  {
+    "long": "Geography/India",
+    "link": "tags/geographyindia.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Geography/Thailand",
+    "link": "tags/geographythailand.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Cultural context",
+    "link": "tags/cultural-context.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Culture/Natural environment",
+    "link": "tags/culturenatural-environment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(49)"
+  },
+  {
+    "long": "Culture/Asia",
+    "link": "tags/cultureasia.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Culture/India",
+    "link": "tags/cultureindia.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(26)"
+  },
+  {
+    "long": "Culture/Sri Lanka",
+    "link": "tags/culturesri-lanka.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Culture/Thailand",
+    "link": "tags/culturethailand.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(162)"
+  },
+  {
+    "long": "Culture/Other Theravāda traditions",
+    "link": "tags/cultureother-theravada-traditions.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Culture/Native American",
+    "link": "tags/culturenative-american.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Culture/West",
+    "link": "tags/culturewest.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(148)"
+  },
+  {
+    "long": "Women in Buddhism",
+    "link": "tags/women-in-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Language",
+    "link": "tags/language.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(51)"
+  },
+  {
+    "long": "Pāli",
+    "link": "tags/pali.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(94)"
+  },
+  {
+    "long": "Thai language",
+    "link": "tags/thai.html",
+    "short": "Thai",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(50)"
+  },
+  {
+    "long": "Question in Thai",
+    "link": "tags/question-in-thai.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Thai audio",
+    "link": "tags/thai-audio.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Isan/Lao language",
+    "link": "tags/isan.html",
+    "short": "Isan",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Translation",
+    "link": "tags/translation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(80)"
+  },
+  {
+    "long": "Etymology",
+    "link": "tags/etymology.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Buddhist identity",
+    "link": "tags/buddhist-identity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(26)"
+  },
+  {
+    "long": "Winnie-the-Pooh",
+    "link": "tags/winnie-the-pooh.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "The Far Side",
+    "link": "tags/the-far-side.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Spiritual traditions",
+    "link": "tags/spiritual-traditions.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Theravāda",
+    "link": "tags/theravada.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(28)"
+  },
+  {
+    "long": "Mahāyāna",
+    "link": "tags/mahayana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Pure Land",
+    "link": "tags/pure-land.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Zen",
+    "link": "tags/zen.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Vajrayāna",
+    "link": "tags/vajrayana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Secular Buddhism",
+    "link": "tags/secular-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Hinduism",
+    "link": "tags/hinduism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Advaita Vedanta",
+    "link": "tags/advaita-vedanta.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Judaism",
+    "link": "tags/judaism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Christianity",
+    "link": "tags/christianity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(37)"
+  },
+  {
+    "long": "Islam",
+    "link": "tags/islam.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Philosophy",
+    "link": "tags/philosophy.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Atheism/agnosticism",
+    "link": "tags/atheismagnosticism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Western psychology",
+    "link": "tags/western-psychology.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Cults",
+    "link": "tags/cults.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Renunciant practice",
+    "link": "tags/renunciant-practice.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Celibacy (brahmacariyā)",
+    "link": "tags/celibacy.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Simplicity",
+    "link": "tags/simplicity.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(41)"
+  },
+  {
+    "long": "Four Requisites",
+    "link": "tags/requisites.html",
+    "short": "Requisites",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Robes (cīvara)",
+    "link": "tags/robes.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Almsfood (piṇḍapāta)",
+    "link": "tags/almsfood.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Almsbowl (patta)",
+    "link": "tags/almsbowl.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Almsround (Pindapat)",
+    "link": "tags/almsround.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(43)"
+  },
+  {
+    "long": "Lodging (senāsana)",
+    "link": "tags/lodging.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(47)"
+  },
+  {
+    "long": "Building projects",
+    "link": "tags/building-projects.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Medicinal requisites (gilāna-paccaya-bhesajja-parikkhāraṃ)",
+    "link": "tags/medicinal-requisites.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Qualities for non-decline (aparihānāya dhammā)",
+    "link": "tags/qualities-for-non-decline.html",
+    "short": "",
+    "number": "4",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Sense restraint (indriyesu guttadvāro)",
+    "link": "tags/sense-restraint.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(24)"
+  },
+  {
+    "long": "Moderation in eating (bhojane mattaññū)",
+    "link": "tags/moderation-in-eating.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Devotion to wakefulness (jāgariyaṁ anuyutto)",
+    "link": "tags/devotion-to-wakefulness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(26)"
+  },
+  {
+    "long": "Monastic life (brahmacariyā)",
+    "link": "tags/monastic-life.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(193)"
+  },
+  {
+    "long": "Monastic life/Motivation",
+    "link": "tags/monastic-lifemotivation.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(36)"
+  },
+  {
+    "long": "Ordination (upasampadā)",
+    "link": "tags/ordination.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Mentoring",
+    "link": "tags/mentoring.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(28)"
+  },
+  {
+    "long": "Vinaya",
+    "link": "tags/vinaya.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(86)"
+  },
+  {
+    "long": "Pāṭimokkha",
+    "link": "tags/patimokkha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Confession (paṭidesanā)",
+    "link": "tags/confession.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Disciplinary transactions",
+    "link": "tags/disciplinary-transactions.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Dependence (nissaya)",
+    "link": "tags/dependence.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Sequence of training",
+    "link": "tags/sequence-of-training.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(35)"
+  },
+  {
+    "long": "Protocols (kiccavatta)",
+    "link": "tags/protocols.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(19)"
+  },
+  {
+    "long": "Not handling money",
+    "link": "tags/not-handling-money.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Rains retreat (vassa)",
+    "link": "tags/rains-retreat.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Mutual lay/Saṅgha support",
+    "link": "tags/mutual-laysangha-support.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(46)"
+  },
+  {
+    "long": "Saṅgha (Monastic community)",
+    "link": "tags/sangha.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(66)"
+  },
+  {
+    "long": "Fourfold Assembly",
+    "link": "tags/fourfold-assembly.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Communal harmony (sāmaggī)",
+    "link": "tags/communal-harmony.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(52)"
+  },
+  {
+    "long": "Six Principles of Cordiality (cha dhammā sārāṇīyā)",
+    "link": "tags/principles-of-cordiality.html",
+    "short": "Principles of Cordiality (dhammā sārāṇīyā)",
+    "number": "6",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Principles of (communal) non-decline (aparihānāya dhammā)",
+    "link": "tags/principles-of-non-decline.html",
+    "short": "Principles of non-decline (aparihānāya dhammā)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Monastery organizational structure",
+    "link": "tags/monastery-organizational-structure.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Saṅgha decision making",
+    "link": "tags/sangha-decision-making.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Role of abbot",
+    "link": "tags/abbot.html",
+    "short": "Abbot",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(32)"
+  },
+  {
+    "long": "Perception of a samaṇa (samaṇa saññā)",
+    "link": "tags/perception-of-a-samana.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Respect",
+    "link": "tags/respect.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Monastic titles",
+    "link": "tags/monastic-titles.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Respect for elders",
+    "link": "tags/respect-for-elders.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(25)"
+  },
+  {
+    "long": "Upatakh (attendant to senior monks)",
+    "link": "tags/upatakh.html",
+    "short": "Upatakh (attendant to senior monks)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(20)"
+  },
+  {
+    "long": "Hospitality",
+    "link": "tags/hospitality.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Monastic routine/schedule",
+    "link": "tags/monastic-routine.html",
+    "short": "Monastic routine",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Ascetic practices (dhutaṅga)",
+    "link": "tags/ascetic-practices.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(27)"
+  },
+  {
+    "long": "Tudong (ascetic wandering)",
+    "link": "tags/tudong.html",
+    "short": "Tudong (ascetic wandering)",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(77)"
+  },
+  {
+    "long": "Fasting",
+    "link": "tags/fasting.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Sitter's practice",
+    "link": "tags/sitters-practice.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Monastic crafts",
+    "link": "tags/monastic-crafts.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Types of monks",
+    "link": "tags/types-of-monks.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Forest versus city monks",
+    "link": "tags/forest-versus-city-monks.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Study monks",
+    "link": "tags/study-monks.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Older monks",
+    "link": "tags/older-monks.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Temporary ordination",
+    "link": "tags/temporary-ordination.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Thai sects",
+    "link": "tags/thai-sects.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(21)"
+  },
+  {
+    "long": "Novices (sāmaṇera)",
+    "link": "tags/novices.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Postulants (anagārika)",
+    "link": "tags/postulants.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Women's monastic forms",
+    "link": "tags/womens-monastic-forms.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Bhikkhunī",
+    "link": "tags/bhikkhuni.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Sīladharā",
+    "link": "tags/siladhara.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Mae Chee",
+    "link": "tags/mae-chee.html",
+    "short": "Mae Chee",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Disrobing",
+    "link": "tags/disrobing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(18)"
+  },
+  {
+    "long": "Everyday life practice",
+    "link": "tags/everyday-life.html",
+    "short": "Everyday life",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(37)"
+  },
+  {
+    "long": "Lay life",
+    "link": "tags/lay-life.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(59)"
+  },
+  {
+    "long": "Conventions",
+    "link": "tags/conventions.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(22)"
+  },
+  {
+    "long": "Eight Worldly Conditions (aṭṭha lokadhammā)",
+    "link": "tags/worldly-conditions.html",
+    "short": "Worldly Conditions (lokadhammā)",
+    "number": "8",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Fame and disrepute (yaso ca ayaso ca)",
+    "link": "tags/fame-and-disrepute.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Blame and praise (nindā ca pasaṃsā ca)",
+    "link": "tags/blame-and-praise.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Health",
+    "link": "tags/health.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(25)"
+  },
+  {
+    "long": "Exercise",
+    "link": "tags/exercise.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Chi Gong",
+    "link": "tags/chi-gong.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Smoking",
+    "link": "tags/smoking.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Mental illness",
+    "link": "tags/mental-illness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Purpose/meaning",
+    "link": "tags/purposemeaning.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Cleanliness",
+    "link": "tags/cleanliness.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Work",
+    "link": "tags/work.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(45)"
+  },
+  {
+    "long": "Time management",
+    "link": "tags/time-management.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Relationships",
+    "link": "tags/relationships.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Family",
+    "link": "tags/family.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(71)"
+  },
+  {
+    "long": "Parents",
+    "link": "tags/parents.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(30)"
+  },
+  {
+    "long": "Children",
+    "link": "tags/children.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Artistic expression",
+    "link": "tags/artistic-expression.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(13)"
+  },
+  {
+    "long": "Recreation/leisure/sport",
+    "link": "tags/recreationleisuresport.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Travel",
+    "link": "tags/travel.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Pace of life",
+    "link": "tags/pace-of-life.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "Retirement",
+    "link": "tags/retirement.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Community",
+    "link": "tags/community.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(60)"
+  },
+  {
+    "long": "Environment",
+    "link": "tags/environment.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(29)"
+  },
+  {
+    "long": "Weather (utu)",
+    "link": "tags/weather.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Leadership",
+    "link": "tags/leadership.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(17)"
+  },
+  {
+    "long": "Conflict",
+    "link": "tags/conflict.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(38)"
+  },
+  {
+    "long": "Meditation groups",
+    "link": "tags/meditation-groups.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Sharing circles",
+    "link": "tags/sharing-circles.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Politics and society",
+    "link": "tags/politics-and-society.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(59)"
+  },
+  {
+    "long": "Royalty",
+    "link": "tags/royalty.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Service",
+    "link": "tags/service.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Activism",
+    "link": "tags/activism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(8)"
+  },
+  {
+    "long": "Non-profit organizations",
+    "link": "tags/non-profit-organizations.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Corruption",
+    "link": "tags/corruption.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Crime",
+    "link": "tags/crime.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(7)"
+  },
+  {
+    "long": "Prisons",
+    "link": "tags/prisons.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Discrimination",
+    "link": "tags/discrimination.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(3)"
+  },
+  {
+    "long": "Military",
+    "link": "tags/military.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(16)"
+  },
+  {
+    "long": "Commerce/economics",
+    "link": "tags/commerceeconomics.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(38)"
+  },
+  {
+    "long": "Poverty",
+    "link": "tags/poverty.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Health care",
+    "link": "tags/health-care.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(52)"
+  },
+  {
+    "long": "Pandemic",
+    "link": "tags/pandemic.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(11)"
+  },
+  {
+    "long": "Disasters",
+    "link": "tags/disasters.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(5)"
+  },
+  {
+    "long": "Science",
+    "link": "tags/science.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(10)"
+  },
+  {
+    "long": "Technology",
+    "link": "tags/technology.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(15)"
+  },
+  {
+    "long": "Industry",
+    "link": "tags/industry.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(2)"
+  },
+  {
+    "long": "Online community",
+    "link": "tags/online-community.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(9)"
+  },
+  {
+    "long": "Media",
+    "link": "tags/media.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(12)"
+  },
+  {
+    "long": "News",
+    "link": "tags/news.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Advertizing",
+    "link": "tags/advertizing.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Internet",
+    "link": "tags/internet.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(6)"
+  },
+  {
+    "long": "Social media",
+    "link": "tags/social-media.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(4)"
+  },
+  {
+    "long": "Ajahn Dong",
+    "link": "tags/ajahn-dong.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
+  },
+  {
+    "long": "Nichiren Buddhism",
+    "link": "tags/nichiren-buddhism.html",
+    "short": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "(1)"
   }
 ]
