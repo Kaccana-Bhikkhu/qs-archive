@@ -2,6 +2,7 @@
 // Both pages rely on ./assets/Homepage.json
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
+import './autoComplete.js';
 
 const DEBUG = true;
 
@@ -399,8 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-let autoCompleteDatabase = {};
-
+let gAutoCompleteDatabase = {};
+let gQuery = "";
 // Code to configure floating menu autocomplete functionality
 // See https://tarekraafat.github.io/autoComplete.js/#/usage for details
 const autoCompleteJS = new autoComplete({
@@ -412,9 +413,9 @@ const autoCompleteJS = new autoComplete({
             try {
                 // Fetch External Data Source
                 const source = await fetch("assets/AutoCompleteDatabase.json");
-                autoCompleteDatabase = await source.json();
+                gAutoCompleteDatabase = await source.json();
                 // Returns Fetched data
-                return autoCompleteDatabase;
+                return gAutoCompleteDatabase;
             } catch (error) {
                 return error;
             }
@@ -424,14 +425,15 @@ const autoCompleteJS = new autoComplete({
         filter: (results) => {
             // Filter entries that link to the same file
             let links = new Set();
-            let deduplicated = [];
-            for (let item of results) {
-                if (!links.has(item.value.link))
-                    deduplicated.push(item);
-                links.add(item.value.link)  
-            }
-            return deduplicated;
-            },
+            return results.filter((item) => {
+                if (item.key == "number" && item.value.number != gQuery)
+                    return false; // Number search must match exactly
+                if (links.has(item.value.link))
+                    return false; // Remove items that link to identical pages
+                links.add(item.value.link);
+                return true;
+            });
+        },
     },
     submit: true,
     query: (input) => {
@@ -441,7 +443,9 @@ const autoCompleteJS = new autoComplete({
 
         input = input.replace(/^\s+/,""); // Strip leading whitespace
         input = input.replace(/\s+/," ") // Convert all whitespace to single spaces
-        return input.trim() ? input : ""; // Don't search if it's only whitespace
+        input = input.trim() ? input : ""; // Don't search if it's only whitespace
+        gQuery = input;
+        return input;
     },
     resultItem: {
         highlight: true
@@ -449,6 +453,11 @@ const autoCompleteJS = new autoComplete({
     resultsList: {
         maxResults: 15,
         element: (list,data) => {
+            if (data.results.length < data.matches.length) {
+                const info = document.createElement("p");
+                info.innerHTML = `Showing <strong>${data.results.length}</strong> out of <strong>${data.matches.length}</strong> results`;
+                list.append(info);
+            }
             lucide.createIcons(lucide.icons); // Render the icons after building the list
         }
     },

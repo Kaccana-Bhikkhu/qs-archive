@@ -1160,6 +1160,11 @@ Styles below this line copied and modified from
   background-color: rgba(123, 123, 123, 0.1);
 }
 
+.autoComplete_wrapper > ul > p {
+	font-size: 16px;
+	padding: 0px 20px 10px 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .autoComplete_wrapper > input {
     width: 18rem;
