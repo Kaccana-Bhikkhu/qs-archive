@@ -50,9 +50,10 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
             pali = gDatabase["tag"][subtopic["tag"]]["pali"]
         isCluster = bool(subtopic["subtags"])
 
-        suffix = f"({subtopic['excerptCount']})"
         if pali:
-            suffix = f"({pali}) {suffix}"
+            text += f" ({pali})"
+
+        suffix = f"({subtopic['excerptCount']})"
         yield Entry(text,subtopic["htmlPath"],
                     icon = '<img src="images/icons/Cluster.png" class="list-icon">' if isCluster else "tag",
                     suffix = suffix,
@@ -75,6 +76,13 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 def main() -> None:
     entrySources = [KeyTopicEntries(),SutopicEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
+
+    characters = set()
+    for entry in newDatabase:
+        characters.update(entry["long"])
+        characters.update(entry["short"])
+        characters.update(entry["number"])
+    Alert.debug("Search string characters:","".join(sorted(characters)))
 
     filename = gOptions.autoCompleteDatabase
     try:

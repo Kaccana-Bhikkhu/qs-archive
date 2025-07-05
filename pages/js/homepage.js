@@ -423,6 +423,15 @@ const autoCompleteJS = new autoComplete({
         cache: true,
     },
     submit: true,
+    query: (input) => {
+        // Don't search if the input contains blob control characters not used for other purposes
+        if (/[()<>&^#]/.test(input))
+            return "";
+
+        input = input.replace(/^\s+/,""); // Strip leading whitespace
+        input = input.replace(/\s+/," ") // Convert all whitespace to single spaces
+        return input.trim() ? input : ""; // Don't search if it's only whitespace
+    },
     resultItem: {
         highlight: true
     },
