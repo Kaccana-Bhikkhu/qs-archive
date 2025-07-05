@@ -426,8 +426,10 @@
         if (ctx.resultsList.tabSelect && ctx.cursor >= 0) select(ctx, event);
         break;
       case 27:
+        /* Commented out to keep search query when floating search bar is closed.
         ctx.input.value = "";
         eventEmitter('clear', ctx);
+        */
         close(ctx);
         break;
     }

@@ -455,7 +455,7 @@ const autoCompleteJS = new autoComplete({
         element: (list,data) => {
             if (data.results.length < data.matches.length) {
                 const info = document.createElement("p");
-                info.innerHTML = `Showing <strong>${data.results.length}</strong> out of <strong>${data.matches.length}</strong> results`;
+                info.innerHTML = `Showing <b>${data.results.length}</b> out of <b>${data.matches.length}</b> results`;
                 list.append(info);
             }
             lucide.createIcons(lucide.icons); // Render the icons after building the list

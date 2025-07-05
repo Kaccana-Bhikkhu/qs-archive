@@ -28,10 +28,10 @@ def NumberFromText(text:str) -> int|None:
             return n
     return None
 
-def Entry(long: str,link: str,short: str = "", number: int = None,icon: str = "",suffix:str = "") -> AutoCompleteEntry:
+def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = "",suffix:str = "") -> AutoCompleteEntry:
     "Return an AutoCompleteEntry corresponding to these parameters."
     number = "" if number is None else str(number)
-    return dict(long=long,link=link,short=short,number=number,icon=icon,suffix=suffix)
+    return dict(short=short,link=link,long=long,number=number,icon=icon,suffix=suffix)
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
@@ -63,11 +63,12 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
 def TagEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for tags"
 
+    tagIcon = '<i class="inline-icon" data-lucide="tag"></i>'
     tags = [t for t in gDatabase["tag"].values()
-                 if t["htmlFile"] and t.get("excerptCount",0)]
+                 if t["htmlFile"] and t.get("excerptCount",0) and not TagFlag.HIDE in t["flags"]]
     tags = sorted(tags,key = lambda t: t["listIndex"])
 
-    # First the most basic tag information
+    # First yield basic tag information
     for tag in tags:
         short = suffix = ""
         long = RemoveLanguageTag(tag["fullTag"])
@@ -90,6 +91,20 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
                     link = Utils.PosixJoin("tags",tag["htmlFile"]),
                     icon="tag",suffix = f"({tag['excerptCount']})",
                     number=tag["number"])
+    
+    # Yield alternate translations
+    for tag in tags:
+        for translation in tag["alternateTranslations"]:
+            yield Entry(RemoveLanguageTag(translation),Utils.PosixJoin("tags",tag["htmlFile"]),
+                suffix=f" – <i>alt. trans. of</i> <b>{RemoveLanguageTag(tag['pali'])}</b>")
+    
+    # Yield glosses
+    for tag in tags:
+        for gloss in tag["glosses"]:
+            yield Entry(RemoveLanguageTag(gloss),Utils.PosixJoin("tags",tag["htmlFile"]),
+                suffix=f' – see {tagIcon} {RemoveLanguageTag(tag['tag'])}')
+    
+            
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -107,6 +122,7 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 
 def main() -> None:
     entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries()]
+    #entrySources = [TagEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()
