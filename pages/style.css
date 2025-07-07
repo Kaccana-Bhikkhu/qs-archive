@@ -938,7 +938,8 @@ div.floating-search {
 	z-index: 2;
 	top: 10px;
 	left: 16px;
-	width: 80%;
+	width: 85%;
+	min-width: 468px;
 	max-width: 768px;
 	padding: 10px;
 	border-radius: 0.4rem;
@@ -948,6 +949,14 @@ div.floating-search {
 
 	transform: translateY(-120%);
 	transition: transform 200ms ease-out;
+}
+
+@media screen and (max-width: 514px) {
+	div.floating-search {
+		right: 16px;
+		width: auto;
+		min-width: auto;
+	}
 }
 
 div.floating-search.active {

@@ -287,8 +287,14 @@ function dropdownMenuClick(clickedItem) {
     } else
         searchBar.classList.remove('active');
     if (searchBar.classList.contains('active')) {
-        document.getElementById('floating-search-input').focus();
+        let searchBar = document.getElementById('floating-search-input');
+        searchBar.focus();
         loadSearchDatabase(); // load the search database in preparation for displaying how many excerpts we've found
+        if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
+            setTimeout(function() {
+                gAutoComplete.start();
+                countFoundExcerpts();
+            },200);
     } else {
         document.getElementById('floating-search-input').blur();
         displayExcerptCount(0);
@@ -478,6 +484,17 @@ function displayExcerptCount(itemsFound) {
     document.getElementById("found-count").innerText = text;
 }
 
+function countFoundExcerpts() {
+    let query = document.getElementById("floating-search-input").value.trim();
+    if (!query) {
+        displayExcerptCount(0);
+        return;
+    }
+    let searchGroups = new SearchQuery(query);
+    gSearchers["x"].search(searchGroups);
+    displayExcerptCount(gSearchers["x"].foundItems.length);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Called only once after pages/index.html DOM is loaded
     debugLog("DOMContentLoaded event");
@@ -487,18 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavMenuTriggers();
 
     // Display the number of excerpts found with this search
-    let searchInput = document.getElementById("floating-search-input");
-    searchInput.addEventListener("input",function(event) {
-        let query = searchInput.value.trim();
-        if (!query) {
-            displayExcerptCount(0);
-            return;
-        }
-
-        let searchGroups = new SearchQuery(query);
-        gSearchers["x"].search(searchGroups);
-        displayExcerptCount(gSearchers["x"].foundItems.length);
-    });
+    document.getElementById("floating-search-input").addEventListener("input",countFoundExcerpts);
 
     setupAutoComplete();
 
