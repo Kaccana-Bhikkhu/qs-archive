@@ -972,6 +972,15 @@ div.floating-search.active {
 	display: inline;
 }
 
+.floating-search #found-count {
+	position: absolute;
+	color: #00000060;
+	top: 23px;
+	right: 80px;
+	text-align: right;
+	font-weight: lighter;
+}
+
 /* Abhayagiri grid menu styles */
 div.abhayagiri-grid-menu {
 	position: absolute;

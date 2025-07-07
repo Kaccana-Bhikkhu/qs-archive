@@ -3,6 +3,7 @@
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
+import {SearchQuery,gSearchers,loadSearchDatabase} from './search.js';
 
 const DEBUG = true;
 
@@ -285,10 +286,13 @@ function dropdownMenuClick(clickedItem) {
         searchBar.classList.toggle('active');
     } else
         searchBar.classList.remove('active');
-    if (searchBar.classList.contains('active'))
+    if (searchBar.classList.contains('active')) {
         document.getElementById('floating-search-input').focus();
-    else
+        loadSearchDatabase(); // load the search database in preparation for displaying how many excerpts we've found
+    } else {
         document.getElementById('floating-search-input').blur();
+        displayExcerptCount(0);
+    }
     
     // and the Abhayagiri nav menu
     if (clickedItem === document.getElementById('nav-abhayagiri-icon')) {
@@ -371,6 +375,109 @@ function setupNavMenuTriggers() {
     });
 }
 
+let gAutoCompleteDatabase = {};
+let gQuery = "";
+let gAutoComplete = null;
+
+function setupAutoComplete() {
+    // Code to configure floating menu autocomplete functionality
+    // See https://tarekraafat.github.io/autoComplete.js/#/usage for details
+    gAutoComplete = new autoComplete({
+        selector: "#floating-search-input",
+        placeHolder: "Search the teachings...",
+        diacritics: true, // Don't be picky about diacritics
+        data: {
+            src: async () => {
+                try {
+                    // Fetch External Data Source
+                    const source = await fetch("assets/AutoCompleteDatabase.json");
+                    gAutoCompleteDatabase = await source.json();
+                    // Returns Fetched data
+                    return gAutoCompleteDatabase;
+                } catch (error) {
+                    return error;
+                }
+            },
+            keys: ["short","long","number"],
+            cache: true,
+            filter: (results) => {
+                // Filter entries that link to the same file
+                let links = new Set();
+                return results.filter((item) => {
+                    if (item.key == "number" && item.value.number != gQuery)
+                        return false; // Number search must match exactly
+                    if (links.has(item.value.link))
+                        return false; // Remove items that link to identical pages
+                    links.add(item.value.link);
+                    return true;
+                });
+            },
+        },
+        submit: true,
+        query: (input) => {
+            // Don't search if the input contains blob control characters not used for other purposes
+            if (/[()<>&^#]/.test(input))
+                return "";
+
+            input = input.replace(/^\s+/,""); // Strip leading whitespace
+            input = input.replace(/\s+/," ") // Convert all whitespace to single spaces
+            input = input.trim() ? input : ""; // Don't search if it's only whitespace
+            gQuery = input;
+            return input;
+        },
+        resultItem: {
+            highlight: true
+        },
+        resultsList: {
+            maxResults: 15,
+            element: (list,data) => {
+                if (data.results.length < data.matches.length) {
+                    const info = document.createElement("p");
+                    info.innerHTML = `Showing <b>${data.results.length}</b> out of <b>${data.matches.length}</b> results`;
+                    list.append(info);
+                }
+                lucide.createIcons(lucide.icons); // Render the icons after building the list
+            }
+        },
+        events: {
+            input: {
+                selection: (event) => {
+                    const selection = event.detail.selection.value;
+
+                    debugLog("Selected",selection.icon,selection.long);
+                    let inputBox = document.getElementById('floating-search-input');
+                    inputBox.blur();
+                    inputBox.value = "";
+                    openLocalPage(selection.link)
+                },
+            }
+        },
+        resultItem: {
+            element: (item, data) => {
+                // Modify Results Item Style
+                // item.style = "display: flex;";
+                // Modify Results Item Content
+                let matchText = data.key == "number" ? data.value.short : data.match;
+                let icon = data.value.icon;
+                if (icon && !icon.match("<"))
+                    icon = `<i data-lucide="${icon}"></i>`
+                let suffix = data.value.suffix;
+                if (data.value.excerptCount)
+                    suffix += ` (${data.value.excerptCount})`;
+                item.innerHTML = `${icon} ${matchText} ${suffix}`;
+            },
+            highlight: true,
+        }
+    });
+}
+
+function displayExcerptCount(itemsFound) {
+    // Display the number of excerpts found in the floating search bar
+
+    let text = itemsFound ? `${itemsFound} excerpt${itemsFound > 1 ? "s" : ""}` : "";
+    document.getElementById("found-count").innerText = text;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Called only once after pages/index.html DOM is loaded
     debugLog("DOMContentLoaded event");
@@ -378,6 +485,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	configureLinks(document.querySelector("footer"),"index.html");
 
     setupNavMenuTriggers();
+
+    // Display the number of excerpts found with this search
+    let searchInput = document.getElementById("floating-search-input");
+    searchInput.addEventListener("input",function(event) {
+        let query = searchInput.value.trim();
+        if (!query) {
+            displayExcerptCount(0);
+            return;
+        }
+
+        let searchGroups = new SearchQuery(query);
+        gSearchers["x"].search(searchGroups);
+        displayExcerptCount(gSearchers["x"].foundItems.length);
+    });
+
+    setupAutoComplete();
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
         document.addEventListener("keydown", function(event) {
@@ -397,97 +520,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    }
-});
-
-let gAutoCompleteDatabase = {};
-let gQuery = "";
-// Code to configure floating menu autocomplete functionality
-// See https://tarekraafat.github.io/autoComplete.js/#/usage for details
-const autoCompleteJS = new autoComplete({
-    selector: "#floating-search-input",
-    placeHolder: "Search the teachings...",
-    diacritics: true, // Don't be picky about diacritics
-    data: {
-        src: async () => {
-            try {
-                // Fetch External Data Source
-                const source = await fetch("assets/AutoCompleteDatabase.json");
-                gAutoCompleteDatabase = await source.json();
-                // Returns Fetched data
-                return gAutoCompleteDatabase;
-            } catch (error) {
-                return error;
-            }
-        },
-        keys: ["short","long","number"],
-        cache: true,
-        filter: (results) => {
-            // Filter entries that link to the same file
-            let links = new Set();
-            return results.filter((item) => {
-                if (item.key == "number" && item.value.number != gQuery)
-                    return false; // Number search must match exactly
-                if (links.has(item.value.link))
-                    return false; // Remove items that link to identical pages
-                links.add(item.value.link);
-                return true;
-            });
-        },
-    },
-    submit: true,
-    query: (input) => {
-        // Don't search if the input contains blob control characters not used for other purposes
-        if (/[()<>&^#]/.test(input))
-            return "";
-
-        input = input.replace(/^\s+/,""); // Strip leading whitespace
-        input = input.replace(/\s+/," ") // Convert all whitespace to single spaces
-        input = input.trim() ? input : ""; // Don't search if it's only whitespace
-        gQuery = input;
-        return input;
-    },
-    resultItem: {
-        highlight: true
-    },
-    resultsList: {
-        maxResults: 15,
-        element: (list,data) => {
-            if (data.results.length < data.matches.length) {
-                const info = document.createElement("p");
-                info.innerHTML = `Showing <b>${data.results.length}</b> out of <b>${data.matches.length}</b> results`;
-                list.append(info);
-            }
-            lucide.createIcons(lucide.icons); // Render the icons after building the list
-        }
-    },
-    events: {
-        input: {
-            selection: (event) => {
-                const selection = event.detail.selection.value;
-
-                debugLog("Selected",selection.icon,selection.long);
-                let inputBox = document.getElementById('floating-search-input');
-                inputBox.blur();
-                inputBox.value = "";
-                openLocalPage(selection.link)
-            },
-        }
-    },
-    resultItem: {
-        element: (item, data) => {
-            // Modify Results Item Style
-            // item.style = "display: flex;";
-            // Modify Results Item Content
-            let matchText = data.key == "number" ? data.value.short : data.match;
-            let icon = data.value.icon;
-            if (icon && !icon.match("<"))
-                icon = `<i data-lucide="${icon}"></i>`
-            let suffix = data.value.suffix;
-            if (data.value.excerptCount)
-                suffix += ` (${data.value.excerptCount})`;
-            item.innerHTML = `${icon} ${matchText} ${suffix}`;
-        },
-        highlight: true,
     }
 });
