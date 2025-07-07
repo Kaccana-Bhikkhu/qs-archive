@@ -8,6 +8,8 @@ import Utils, Alert, Database
 from typing import TypedDict, Iterable
 from Build import FA_STAR, RemoveLanguageTag
 from ParseCSV import TagFlag
+from bs4 import BeautifulSoup
+
 
 class AutoCompleteEntry(TypedDict):
     long: str           # The long (or only) entry, e.g. Ajahn Chah Subadho
@@ -56,7 +58,7 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
             text += f" ({pali})"
 
         yield Entry(text,subtopic["htmlPath"],
-                    icon = '<img src="images/icons/Cluster.png" class="list-icon">' if isCluster else "tag",
+                    icon = '<img src="images/icons/Cluster.png">' if isCluster else "tag",
                     excerptCount = subtopic['excerptCount'],
                     number=NumberFromText(text))
 
@@ -135,6 +137,32 @@ def TeacherEntries() -> Iterable[AutoCompleteEntry]:
                         icon="user",
                         excerptCount=teacher["excerptCount"])
 
+def CategoryEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield auto complete entries for All Excerpts, All Stories, etc. pages"
+    sitemap = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"sitemap.html"))
+    soup = BeautifulSoup(sitemap,"html.parser")
+    links = soup.find_all("a")
+
+    for link in links:
+        href = link.get("href")
+        text = link.get_text().strip()
+        if "AllExcerpts" not in href:
+            continue
+
+        splitText = re.match(r"(.*) \(([0-9]+)\)$",text) # Split category and number
+        text = splitText[1]
+
+        if not text.startswith("All"):
+            if text == "Featured":
+                text = "All featured excerpts"
+            else:
+                text = "All " + text.lower()
+
+        Alert.info(href,text)
+        yield Entry(text,href,
+                    excerptCount = int(splitText[2]),
+                    icon='<img src="images/icons/All.png">')
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--autoCompleteDatabase',type=str,default="pages/assets/AutoCompleteDatabase.json",help="AutoComplete database filename.")
@@ -150,8 +178,7 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),EventEntries(),TeacherEntries()]
-    #entrySources = [TeacherEntries()]
+    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),EventEntries(),TeacherEntries(),CategoryEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()
@@ -171,30 +198,3 @@ def main() -> None:
         Alert.error(f"Could not write {filename} due to {err}")
         return False
     
-    """
-
-    blankEntry = dict.fromkeys(["topic","subtopic","tag","event","teacher"],"")
-
-    def AddEntry(kind: str,entry: str,link: str) -> None:
-        "Add an entry to the auto complete database"
-        newDatabase["entries"].append(blankEntry | {kind:entry})
-        newDatabase["pageLinks"][kind + "_" + entry] = link
-
-    for topic in gDatabase["keyTopic"].values():
-        AddEntry("topic",topic["topic"],Utils.PosixJoin("topics",topic["listFile"]))
-
-    for subtopic in gDatabase["subtopic"].values():
-        AddEntry("subtopic",subtopic["displayAs"],subtopic["htmlPath"])
-
-    for tag in gDatabase["tag"].values():
-        if tag["htmlFile"]:
-            AddEntry("tag",tag["tag"],Utils.PosixJoin("tags",tag["htmlFile"]))
-    
-    for event in gDatabase["event"].values():
-        AddEntry("event",event["title"],Database.EventLink(event["code"]).replace("../",""))
-            # Eliminate the leading ../ in the path returned by EventLink
-
-    for teacher in gDatabase["teacher"].values():
-        if teacher["htmlFile"]:
-            AddEntry("teacher",teacher["attributionName"],Utils.PosixJoin("teachers",teacher["htmlFile"]))
-"""

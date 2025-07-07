@@ -1067,7 +1067,7 @@ div.featured-page button {
 	accent-color: #a68b55;
 }
 
-svg.list-icon, img.list-icon {
+.autoComplete_wrapper ul svg, .autoComplete_wrapper ul img {
 	width: 20px;
 	height: 20px;
 	color: var(--color-primary);
@@ -1075,13 +1075,9 @@ svg.list-icon, img.list-icon {
 	vertical-align:middle;
 }
 
-svg.inline-icon, img.inline-icon {
-	width: 20px;
-	height: 20px;
-	color: var(--color-primary);
+.autoComplete_wrapper ul svg.inline-icon, .autoComplete_wrapper ul img.inline-icon {
+	margin-left: 3px;
 	margin-right: 2px;
-	margin-left: 2px;
-	vertical-align:middle;
 }
 
 /*

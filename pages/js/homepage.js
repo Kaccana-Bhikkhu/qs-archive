@@ -482,7 +482,7 @@ const autoCompleteJS = new autoComplete({
             let matchText = data.key == "number" ? data.value.short : data.match;
             let icon = data.value.icon;
             if (icon && !icon.match("<"))
-                icon = `<i class="list-icon" data-lucide="${icon}"></i>`
+                icon = `<i data-lucide="${icon}"></i>`
             let suffix = data.value.suffix;
             if (data.value.excerptCount)
                 suffix += ` (${data.value.excerptCount})`;
