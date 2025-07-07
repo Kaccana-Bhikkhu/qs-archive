@@ -483,7 +483,10 @@ const autoCompleteJS = new autoComplete({
             let icon = data.value.icon;
             if (icon && !icon.match("<"))
                 icon = `<i class="list-icon" data-lucide="${icon}"></i>`
-            item.innerHTML = `${icon} ${matchText} ${data.value.suffix}`;
+            let suffix = data.value.suffix;
+            if (data.value.excerptCount)
+                suffix += ` (${data.value.excerptCount})`;
+            item.innerHTML = `${icon} ${matchText} ${suffix}`;
         },
         highlight: true,
     }

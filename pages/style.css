@@ -1174,10 +1174,6 @@ Styles below this line copied and modified from
 	padding: 0px 20px 10px 20px;
 }
 
-.autoComplete_wrapper > ul b {
-	color:var(--color-primary);
-}
-
 @media only screen and (max-width: 600px) {
   .autoComplete_wrapper > input {
     width: 18rem;

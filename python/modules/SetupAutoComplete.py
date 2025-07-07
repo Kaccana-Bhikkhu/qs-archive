@@ -16,6 +16,7 @@ class AutoCompleteEntry(TypedDict):
     link: str           # Link to page, e.g. teachers/ajahn-chah.html
     icon: str           # Icon to display to the left of the auto complete entry
     suffix: str         # Text to display after the entry
+    excerptCount: int   # The number of excerpts on this page
 
 numberNames = {3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight",
                9:"nine", 10:"ten", 12: "twelve"}
@@ -28,10 +29,10 @@ def NumberFromText(text:str) -> int|None:
             return n
     return None
 
-def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = "",suffix:str = "") -> AutoCompleteEntry:
+def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = "",suffix:str = "",excerptCount:int = 0) -> AutoCompleteEntry:
     "Return an AutoCompleteEntry corresponding to these parameters."
     number = "" if number is None else str(number)
-    return dict(short=short,link=link,long=long,number=number,icon=icon,suffix=suffix)
+    return dict(short=short,link=link,long=long,number=number,icon=icon,suffix=suffix,excerptCount=excerptCount)
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
@@ -54,10 +55,9 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
         if pali:
             text += f" ({pali})"
 
-        suffix = f"({subtopic['excerptCount']})"
         yield Entry(text,subtopic["htmlPath"],
                     icon = '<img src="images/icons/Cluster.png" class="list-icon">' if isCluster else "tag",
-                    suffix = suffix,
+                    excerptCount = subtopic['excerptCount'],
                     number=NumberFromText(text))
 
 def TagEntries() -> Iterable[AutoCompleteEntry]:
@@ -89,22 +89,16 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
         return Entry(short = short,
                     long = long,
                     link = Utils.PosixJoin("tags",tag.get("htmlFile","")),
-                    icon="tag",suffix = f"({tag.get('excerptCount',0)})",
+                    icon="tag",excerptCount=tag.get('excerptCount',0),
                     number=tag["number"])
         
     # First yield basic tag information
     for tag in tags:
         yield TagEntry(tag)
 
-    # Yield alternate translations
+    # Yield glosses and alternate translations
     for tag in tags:
-        for translation in tag["alternateTranslations"]:
-            yield Entry(RemoveLanguageTag(translation),Utils.PosixJoin("tags",tag["htmlFile"]),
-                suffix=f" – <i>alt. trans. of</i> <b>{RemoveLanguageTag(tag['pali'])}</b>")
-    
-    # Yield glosses
-    for tag in tags:
-        for gloss in tag["glosses"]:
+        for gloss in tag["glosses"] + tag["alternateTranslations"]:
             yield Entry(RemoveLanguageTag(gloss),Utils.PosixJoin("tags",tag["htmlFile"]),
                 suffix=f" – see {tagIcon} {RemoveLanguageTag(tag['tag'])} ({tag['excerptCount']})")
 
@@ -118,9 +112,28 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
         subsumedEntry = TagEntry(subsumedTag)
         subsumedEntry["icon"] = ""
         subsumedEntry["link"] = Utils.PosixJoin("tags",subsumedUnder["htmlFile"])
-        subsumedEntry["suffix"] = f" – see {tagIcon} {RemoveLanguageTag(subsumedUnder['tag'])} ({subsumedUnder['excerptCount']})"
+        subsumedEntry["suffix"] = f" – see {tagIcon} {RemoveLanguageTag(subsumedUnder['tag'])}"
+        subsumedEntry["excerptCount"] = subsumedUnder['excerptCount']
         yield subsumedEntry
-                    
+
+def EventEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield auto complete entries each event"
+    for event in gDatabase["event"].values():
+        yield Entry(Utils.RemoveHtmlTags(Database.ItemCitation(event)),
+                    Database.EventLink(event["code"]).replace("../",""), # Eliminate the leading ../ in the path returned by EventLink
+                    icon="calendar",
+                    excerptCount=event["excerpts"])
+
+def TeacherEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield auto complete entries for each teacher"
+    for teacher in gDatabase["teacher"].values():
+        if teacher["htmlFile"]:
+            long = teacher["fullName"] if teacher["fullName"] != teacher["attributionName"] else ""
+            yield Entry(teacher["attributionName"],
+                        Utils.PosixJoin("teachers",teacher["htmlFile"]),
+                        long = long,
+                        icon="user",
+                        excerptCount=teacher["excerptCount"])
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -137,8 +150,8 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries()]
-    # entrySources = [TagEntries()]
+    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),EventEntries(),TeacherEntries()]
+    #entrySources = [TeacherEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()

@@ -106,7 +106,7 @@ def ItemCitation(item: dict) -> str:
     if not re.search(r"[0-9]{4}",eventName):
         eventYear = re.search(r"[0-9]{4}",event)
         if eventYear:
-            eventName += f" ({eventYear[0]})"
+            eventName += f" [{eventYear[0]}]"
     parts = [Html.Tag("a",{"href":EventLink(event)})(eventName)]
     if session:
         parts.append(Html.Tag("a",{"href":EventLink(event,session)})(f"Session {session}"))
