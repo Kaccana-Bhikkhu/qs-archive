@@ -6,7 +6,7 @@ from __future__ import annotations
 import os,json,itertools,re
 import Utils, Alert, Database
 from typing import TypedDict, Iterable
-from Build import FA_STAR, RemoveLanguageTag
+from Build import FA_STAR, RemoveLanguageTag, HtmlIcon
 from ParseCSV import TagFlag
 from bs4 import BeautifulSoup
 
@@ -34,7 +34,7 @@ def NumberFromText(text:str) -> int|None:
 def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = "",suffix:str = "",excerptCount:int = 0) -> AutoCompleteEntry:
     "Return an AutoCompleteEntry corresponding to these parameters."
     number = "" if number is None else str(number)
-    return dict(short=short,link=link,long=long,number=number,icon=icon,suffix=suffix,excerptCount=excerptCount)
+    return dict(short=short,link=link,long=long,number=number,icon=HtmlIcon(icon),suffix=suffix,excerptCount=excerptCount)
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
@@ -58,7 +58,7 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
             text += f" ({pali})"
 
         yield Entry(text,subtopic["htmlPath"],
-                    icon = '<img src="images/icons/Cluster.png">' if isCluster else "tag",
+                    icon = "Cluster.png" if isCluster else "tag",
                     excerptCount = subtopic['excerptCount'],
                     number=NumberFromText(text))
 
@@ -160,7 +160,7 @@ def CategoryEntries() -> Iterable[AutoCompleteEntry]:
 
         yield Entry(text,href,
                     excerptCount = int(splitText[2]),
-                    icon='<img src="images/icons/All.png">')
+                    icon="All.png")
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"

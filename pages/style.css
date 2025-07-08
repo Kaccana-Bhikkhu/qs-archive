@@ -288,7 +288,7 @@ div#page-title {
 	margin: 20px;
 }
 
-.title {
+div.title {
 	font-size: 1.3em;
 	font-weight: 500;
 	margin-bottom: 1em;
@@ -298,6 +298,19 @@ div#page-title {
 	border-radius: 0.4rem;
 	box-shadow: 0px 1px 1px #b5a26c;
 	line-height: 1.8;
+}
+
+div.title#page-title {
+	color: var(--color-primary);
+	font-weight: 400;
+}
+
+div.title img, div.title svg {
+	width: 28px;
+	height: 28px;
+	margin-right: 4px;
+	vertical-align:text-bottom;
+	color: var(--color-primary);
 }
 
 .track-title {
