@@ -34,7 +34,7 @@ def NumberFromText(text:str) -> int|None:
 def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = "",suffix:str = "",excerptCount:int = 0) -> AutoCompleteEntry:
     "Return an AutoCompleteEntry corresponding to these parameters."
     number = "" if number is None else str(number)
-    return dict(short=short,link=link,long=long,number=number,icon=HtmlIcon(icon),suffix=suffix,excerptCount=excerptCount)
+    return dict(short=short,link=link,long=long,number=number,icon=HtmlIcon(icon,directoryDepth=0),suffix=suffix,excerptCount=excerptCount)
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
@@ -162,6 +162,18 @@ def CategoryEntries() -> Iterable[AutoCompleteEntry]:
                     excerptCount = int(splitText[2]),
                     icon="All.png")
 
+def AboutEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield an entry for each about page by scanning Search-instructions.html for menu options"
+    technicalAboutPage = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"about","Search-instructions.html"))
+    soup = BeautifulSoup(technicalAboutPage,"html.parser")
+    menuOptions = soup.find_all("option")
+
+    for option in menuOptions:
+        filePath = option.get("value")
+        text = option.get_text().strip()
+        if text != "Technical":
+            yield Entry("About: " + text,filePath,icon="text")
+    
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--autoCompleteDatabase',type=str,default="pages/assets/AutoCompleteDatabase.json",help="AutoComplete database filename.")
@@ -177,7 +189,8 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),EventEntries(),TeacherEntries(),CategoryEntries()]
+    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),
+                    EventEntries(),TeacherEntries(),CategoryEntries(),AboutEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()
