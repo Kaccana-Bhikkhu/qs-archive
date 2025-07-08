@@ -158,7 +158,6 @@ def CategoryEntries() -> Iterable[AutoCompleteEntry]:
             else:
                 text = "All " + text.lower()
 
-        Alert.info(href,text)
         yield Entry(text,href,
                     excerptCount = int(splitText[2]),
                     icon='<img src="images/icons/All.png">')

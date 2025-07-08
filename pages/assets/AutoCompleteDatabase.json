@@ -645,7 +645,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 82
+    "excerptCount": 81
   },
   {
     "short": "Aversion and Ill-will (dosa-byāpāda)",
@@ -861,7 +861,7 @@
     "number": "",
     "icon": "tag",
     "suffix": "",
-    "excerptCount": 61
+    "excerptCount": 62
   },
   {
     "short": "Clinging (upādāna)",
@@ -2292,7 +2292,7 @@
     "number": "",
     "icon": "tag",
     "suffix": "",
-    "excerptCount": 12
+    "excerptCount": 11
   },
   {
     "short": "Aversion (dosa)",
@@ -2706,7 +2706,7 @@
     "number": "",
     "icon": "tag",
     "suffix": "",
-    "excerptCount": 61
+    "excerptCount": 62
   },
   {
     "short": "Clinging (upādāna)",
@@ -4194,6 +4194,15 @@
     "excerptCount": 10
   },
   {
+    "short": "Ajahn Kalyāṇo",
+    "link": "tags/ajahn-kalyano.html",
+    "long": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
     "short": "Ajahn Visuddhi",
     "link": "tags/ajahn-visuddhi.html",
     "long": "",
@@ -4327,15 +4336,6 @@
     "icon": "tag",
     "suffix": "",
     "excerptCount": 2
-  },
-  {
-    "short": "Ajahn Kalyāṇo",
-    "link": "tags/ajahn-kalyano.html",
-    "long": "",
-    "number": "",
-    "icon": "tag",
-    "suffix": "",
-    "excerptCount": 1
   },
   {
     "short": "Ajahn Waen",
@@ -5049,15 +5049,6 @@
     "excerptCount": 1
   },
   {
-    "short": "Paul Breiter",
-    "link": "tags/paul-breiter.html",
-    "long": "",
-    "number": "",
-    "icon": "tag",
-    "suffix": "",
-    "excerptCount": 22
-  },
-  {
     "short": "Joseph Kappel",
     "link": "tags/joseph-kappel.html",
     "long": "",
@@ -5065,6 +5056,15 @@
     "icon": "tag",
     "suffix": "",
     "excerptCount": 27
+  },
+  {
+    "short": "Paul Breiter",
+    "link": "tags/paul-breiter.html",
+    "long": "",
+    "number": "",
+    "icon": "tag",
+    "suffix": "",
+    "excerptCount": 22
   },
   {
     "short": "Nick Scott",
@@ -9425,6 +9425,15 @@
   {
     "short": "Ajahn Mahā Prasert",
     "link": "teachers/ajahn-maha-prasert.html",
+    "long": "",
+    "number": "",
+    "icon": "user",
+    "suffix": "",
+    "excerptCount": 6
+  },
+  {
+    "short": "Father Damien",
+    "link": "teachers/father-damien.html",
     "long": "",
     "number": "",
     "icon": "user",
