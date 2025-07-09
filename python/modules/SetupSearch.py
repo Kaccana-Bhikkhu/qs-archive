@@ -250,7 +250,7 @@ def TeacherBlobs() -> Iterator[dict]:
     for name,teacher in alphabetizedTeachers:
         yield {
             "blobs": [Enclose(Blobify(AllNames([teacher["teacher"]])),"{}")],
-            "html": re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
+            "html": Build.HtmlIcon("user") + " " + re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
                 # Remove the paragraph markers added by TeacherDescription
         }
 
@@ -284,7 +284,7 @@ def EventBlobs() -> Iterator[dict]:
         tagString = "".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
 
         lines = [
-            f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
+            Build.HtmlIcon("calendar") + " " + f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
             Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers]),lastJoinStr = " and ")
         ]
 
