@@ -261,6 +261,25 @@ div.listing p {
 	padding: 8px;
 }
 
+div.listing img, div.listing svg {
+	width: 24px;
+	height: 24px;
+	margin-right: 4px;
+	vertical-align:text-bottom;
+}
+
+div.listing img.small-icon {
+	width: 12px;
+	height: 12px;
+	vertical-align: baseline;
+}
+
+img.small-icon, svg.small-icon {
+	width: 12px;
+	height: 12px;
+	margin-right: 4px;
+}
+
 div.featured {
 	padding: 20px;
 	border-left: 3px solid #a28a4e;

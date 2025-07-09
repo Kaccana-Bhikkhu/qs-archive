@@ -405,7 +405,7 @@ def DrilldownPageFile(tagNumberOrName: int|str,jumpToEntry:bool = False) -> str:
 
 def DrilldownIconLink(tag: str,iconWidth = 20):
     drillDownPage = "../drilldown/" + DrilldownPageFile(gDatabase["tag"][tag]["listIndex"],jumpToEntry=True)
-    return Html.Tag("a",dict(href=drillDownPage,title="Show in tag hierarchy"))(Html.Tag("img",dict(src="../assets/text-bullet-list-tree.svg",width=iconWidth)).prefix)
+    return Html.Tag("a",dict(href=drillDownPage,title="Show in tag hierarchy"))(HtmlIcon("text-bullet-list-tree.svg",iconClass="small-icon"))
 
 def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
     """Write a series of html files to create a hierarchial drill-down list of tags."""
