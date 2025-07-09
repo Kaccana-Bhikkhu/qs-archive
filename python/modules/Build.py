@@ -2175,7 +2175,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
 
     topicList = list(gDatabase["keyTopic"])
     for topicNumber,topic in enumerate(gDatabase["keyTopic"].values()):
-        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),HtmlIcon("book-open") + " " + topic["topic"] + ": Featured excerpts")
+        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),HtmlIcon("Key.png") + " " + topic["topic"] + ": Featured excerpts")
         page = Html.PageDesc(info)
         page.AppendContent("Featured excerpts about " + topic["topic"],section="citationTitle")
         page.keywords = ["Key topics",topic["topic"]]
@@ -2349,7 +2349,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
     AddTopicButtons(page)
     page.AppendContent(pageContent)
-    page.AppendContent(HtmlIcon("book-open"),section="titleIcon")
+    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics",section="citationTitle")
@@ -2423,7 +2423,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
         AddTopicButtons(page)
 
     page.AppendContent(str(a))
-    page.AppendContent(HtmlIcon("book-open"),section="titleIcon")
+    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics in detail",section="citationTitle")

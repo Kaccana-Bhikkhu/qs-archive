@@ -155384,7 +155384,7 @@
       "category": "main",
       "link": "indexes/KeyTopics.html?hideAll",
       "description": "Discover comprehensive collections of teachings organized by major Buddhist concepts",
-      "icon": "book-open"
+      "icon": "Key.png"
     },
     "Tags": {
       "title": "Tags",
@@ -155412,7 +155412,7 @@
       "category": "Tags",
       "link": "drilldown/root.html",
       "description": "Delve into the conceptual structure of the archive",
-      "icon": "<img src=\"../images/icons/text-bullet-list-tree-explore.svg\">"
+      "icon": "text-bullet-list-tree-explore.svg"
     },
     "Numbered Lists": {
       "title": "Numbered Lists",
@@ -155426,7 +155426,7 @@
       "category": "Tags",
       "link": "indexes/SortedTags.html",
       "description": "The most common tags reflect the heart of Ajahn Pasanno's teachings",
-      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
+      "icon": "DescendingNumbers.png"
     },
     "About Tags": {
       "title": "About Tags",
@@ -155440,14 +155440,14 @@
       "category": "Events",
       "link": "indexes/EventsBySeries.html",
       "description": "Survey Thanksgiving Retreats, Winter Retreats, Upāsikā Days, and more",
-      "icon": "<img src=\"../images/icons/Cushion.png\">"
+      "icon": "Cushion.png"
     },
     "Subject": {
       "title": "Subject",
       "category": "Events",
       "link": "indexes/EventsBySubject.html",
       "description": "Explore in-depth teachings on specific topics",
-      "icon": "<img src=\"../images/icons/DhammaWheel.png\">"
+      "icon": "DhammaWheel.png"
     },
     "Date": {
       "title": "Date",
@@ -155461,21 +155461,21 @@
       "category": "Events",
       "link": "about/Event-series.html",
       "description": "Learn what makes each event venue unique",
-      "icon": "<img src=\"../images/icons/reshot-icon-meditation.svg\">"
+      "icon": "reshot-icon-meditation.svg"
     },
     "Lineage": {
       "title": "Lineage",
       "category": "Teachers",
       "link": "teachers/TeachersLineage.html",
       "description": "Explore the roots of the Thai Forest Tradition",
-      "icon": "<img src=\"../images/icons/reshot-icon-detailed-tree.svg\">"
+      "icon": "reshot-icon-detailed-tree.svg"
     },
     "Most Frequent": {
       "title": "Most Frequent",
       "category": "Teachers",
       "link": "teachers/TeachersByExcerpts.html",
       "description": "Listen to Ajahn Pasanno's most frequent co-teachers",
-      "icon": "<img src=\"../images/icons/DescendingNumbers.png\">"
+      "icon": "DescendingNumbers.png"
     },
     "Name": {
       "title": "Name",

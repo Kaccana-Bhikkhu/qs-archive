@@ -40,7 +40,7 @@ def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
     for topic in gDatabase["keyTopic"].values():
         yield Entry(topic["topic"],Utils.PosixJoin("topics",topic["listFile"]),
-                    icon="book-open",suffix = f"({topic['fTagCount']}{FA_STAR})",
+                    icon="Key.png",suffix = f"({topic['fTagCount']}{FA_STAR})",
                     number=NumberFromText(topic["topic"]))
 
 def SutopicEntries() -> Iterable[AutoCompleteEntry]:
