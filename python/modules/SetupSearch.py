@@ -89,6 +89,8 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
     """Create a list of search strings corresponding to the items in excerpt."""
     returnValue = []
     for item in Filter.AllItems(excerpt):
+        if gDatabase["kind"][item["kind"]]["category"] in ("Fragment","Audio"):
+            continue
         aTags = item.get("tags",[])
         if item is excerpt:
             qTags = aTags[0:item["qTagCount"]]
