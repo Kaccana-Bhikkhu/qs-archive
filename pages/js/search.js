@@ -390,6 +390,16 @@ function displaySearchResults(message,searchResults) {
     instructionsFrame.style.display = "none";
 
     resultsFrame.innerHTML = searchResults;
+    lucide.createIcons(lucide.icons);
+    // If we find a subtopic that is itself a tag, change "Tags" to "Other tags"
+    let subtopicResults = document.getElementById("results-b");
+    if (subtopicResults && document.getElementById("results-g")) {
+        if (subtopicResults.querySelector(".lucide-tag")) {
+            let tagHeader = resultsFrame.querySelector("#results-g h3");
+            tagHeader.innerHTML = tagHeader.innerHTML.replace("Tags","Other tags")
+        }
+    }
+
     configureLinks(resultsFrame,location.hash.slice(1));
     loadToggleView(resultsFrame);
 

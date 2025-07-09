@@ -186,7 +186,7 @@ def SubtopicBlobs() -> Iterator[dict]:
                 blob += Enclose([RawBlobify(s["displayAs"])],"^")
             yield {
                 "blobs": [blob],
-                "html": Build.TagDescription(gDatabase["tag"][s["tag"]],listAs=s["displayAs"])
+                "html": Build.HtmlIcon("tag") + " " + Build.TagDescription(gDatabase["tag"][s["tag"]],listAs=s["displayAs"])
             }
             continue
 
@@ -225,14 +225,16 @@ def TagBlob(tagName:str) -> str:
 def TagBlobEntry(tagName:str) -> dict:
     return {
         "blobs": [TagBlob(tagName)],
-        "html": Build.TagDescription(gDatabase["tag"][tagName],fullTag=True)
+        "html": Build.HtmlIcon("tag") + " " + Build.TagDescription(gDatabase["tag"][tagName],fullTag=True)
     }
 
 def TagBlobs() -> Iterator[dict]:
     """Return a blob for each tag, sorted alphabetically."""
 
+    soloSubtopics = Database.SoloSubtopics()
     alphabetizedTags = [(AlphabetizeName(tag["fullTag"]),tag["tag"]) for tag in gDatabase["tag"].values() 
-                        if tag["htmlFile"] and not ParseCSV.TagFlag.HIDE in tag["flags"]]
+                        if tag["htmlFile"] and not ParseCSV.TagFlag.HIDE in tag["flags"]
+                        and tag["tag"] not in soloSubtopics]
     alphabetizedTags.sort()
 
     for _,tag in alphabetizedTags:
@@ -276,6 +278,8 @@ def EventBlobs() -> Iterator[dict]:
         for session in Database.SessionDict()[event["code"]].values():
             sessionTeachers.update(session["teachers"])
         listedTeachers = [teacherCode for teacherCode in event["teachers"] if teacherCode in sessionTeachers]
+        if not listedTeachers:
+            listedTeachers = event["teachers"]
 
         tagString = "".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
 
