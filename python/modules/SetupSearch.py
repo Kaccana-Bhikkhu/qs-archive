@@ -153,7 +153,7 @@ def KeyTopicBlobs() -> Iterator[dict]:
                 Enclose(Blobify([topic["topic"]]),"^"),
                 Enclose(Blobify([topic["pali"]]),"<>")
                 ])],
-            "html": Build.HtmlKeyTopicLink(topic["code"],count=True)
+            "html": Build.HtmlIcon("Key.png") + " " + Build.HtmlKeyTopicLink(topic["code"],count=True)
         }
 
 def SubtopicBlob(subtopic:str) -> str:
@@ -177,12 +177,23 @@ def SubtopicBlobs() -> Iterator[dict]:
     for _,subtopic in alphabetizedSubtopics:
         s = gDatabase["subtopic"][subtopic]
 
+        if not s["subtags"]:
+            blob = TagBlob(s["tag"])
+            if s["tag"] != s["displayAs"]:
+                blob += Enclose([RawBlobify(s["displayAs"])],"^")
+            yield {
+                "blobs": [blob],
+                "html": Build.TagDescription(gDatabase["tag"][s["tag"]],listAs=s["displayAs"])
+            }
+            continue
+
         htmlParts = [
+            Build.HtmlIcon("Cluster.png"),
             Build.HtmlSubtopicLink(subtopic),
             f"({s["excerptCount"]})"
         ]
         if s["pali"]:
-            htmlParts.insert(1,f"({s['pali']})")
+            htmlParts.insert(2,f"({s['pali']})")
 
         yield {
             "blobs": [SubtopicBlob(subtopic)],
@@ -208,6 +219,12 @@ def TagBlob(tagName:str) -> str:
         blob = blob.replace("]","]+") # add "+" after each tag closure.
     return blob
 
+def TagBlobEntry(tagName:str) -> dict:
+    return {
+        "blobs": [TagBlob(tagName)],
+        "html": Build.TagDescription(gDatabase["tag"][tagName],fullTag=True)
+    }
+
 def TagBlobs() -> Iterator[dict]:
     """Return a blob for each tag, sorted alphabetically."""
 
@@ -216,10 +233,7 @@ def TagBlobs() -> Iterator[dict]:
     alphabetizedTags.sort()
 
     for _,tag in alphabetizedTags:
-        yield {
-            "blobs": [TagBlob(tag)],
-            "html": Build.TagDescription(gDatabase["tag"][tag],fullTag=True,drilldownLink=True)
-        }
+        yield TagBlobEntry(tag)
 
 def TeacherBlobs() -> Iterator[dict]:
     """Return a blob for each teacher, sorted alphabetically."""
