@@ -33,7 +33,7 @@ def RawBlobify(item: str) -> str:
     output = re.sub(r"!?\[([^]]*)\]\([^)]*\)",r"\1",output) # Extract text from Markdown hyperlinks
     output = output.replace("++","") # Remove ++ bold format markers
     output = re.sub(r"[|]"," ",output) # convert these characters to a space
-    output = re.sub(r"[][#()@_*]^","",output) # remove these characters
+    output = re.sub(r"[][#()@_*^]","",output) # remove these characters
     output = re.sub(r"\s+"," ",output.strip()) # normalize whitespace
     return output
 
