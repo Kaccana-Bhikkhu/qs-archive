@@ -2,10 +2,10 @@
 
 # Status
 
-## New in the June 2025 release:
-- Redesigned home page including daily featured excerpts.
-- Floating search bar available on all pages; press '/' to bring up the search bar anywhere on the page.
-- Improved support for devices with small screens.
+## New in the July 2025 release:
+ - Auto complete menu drops down from the floating search bar.
+ - Illustrate many pages with icons.
+ - More material added to the [2016 Winter Retreat](event:WR2016).
 
 ## Content
 This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 150 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 475 transcribed pages, of which 400 have been entered into the Archive. The detailed status of transcription is as follows:
@@ -77,3 +77,7 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - Spirit Rock daylong events: [Happiness on the Buddhist Path (2023)](event:SRD2023) and [Perspectives on Buddhist Practice from Ajahn Chah (2024)](event:SRD2024).
 - [2025 Q&A session with monks at Wat Pah Nanachat](event:Nanachat2025).
 - Most [tags applied to over 25 excerpts](../indexes/SortedTags.html) feature at least one excerpt.
+### June 2025 release:
+- Redesigned home page including daily featured excerpts.
+- Floating search bar available on all pages; press '/' to bring up the search bar anywhere on the page.
+- Improved support for devices with small screens.

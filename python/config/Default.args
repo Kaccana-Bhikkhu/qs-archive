@@ -41,8 +41,8 @@
 --renderedDatabase pages/assets/RenderedDatabase.json
 
 // Document options:
---info "releaseName:May 2025 release"
---info "releaseDate:May 2, 2025"
+--info "releaseName:July 2025 release"
+--info "releaseDate:July 10, 2025"
 --info "releaseYear:2025"
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"
@@ -57,7 +57,7 @@
 // Increase verbosity to maximum
 -vvv
 
---args python/config/BuildPreview.args
+--args python/config/BuildAbhayagiri.args
 --linkCheckLevel 1
 --sheets Changed
 // --linkCheckLevel excerptMp3:local:3 // Use this to update excerpts with changed timestamps. Somewhat slower.

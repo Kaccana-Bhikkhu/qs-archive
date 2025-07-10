@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase} from './search.js';
 
-const DEBUG = true;
+const DEBUG = false;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
