@@ -41,6 +41,20 @@ function modulus(numerator,denominator) {
     return ((numerator % denominator) + denominator) % denominator;
 }
 
+export async function loadSearchDatabase() {
+    if (!gSearchDatabase) {
+        await fetch('./assets/SearchDatabase.json')
+        .then((response) => response.json())
+        .then((json) => {
+            gSearchDatabase = json; 
+            debugLog("Loaded search database.");
+            for (let code in gSearchers) {
+                gSearchers[code].loadItemsFomDatabase(gSearchDatabase)
+            }
+        });
+    }
+}
+
 export async function loadSearchPage() {
     // Called when a search page is loaded. Load the database, configure the search button,
     // fill the search bar with the URL query string and run a search.
@@ -65,18 +79,7 @@ export async function loadSearchPage() {
     if (!query)
         document.getElementById("search-text").focus();
 
-    if (!gSearchDatabase) {
-        await fetch('./assets/SearchDatabase.json')
-        .then((response) => response.json())
-        .then((json) => {
-            gSearchDatabase = json; 
-            debugLog("Loaded search database.");
-            for (let code in gSearchers) {
-                gSearchers[code].loadItemsFomDatabase(gSearchDatabase)
-            }
-        });
-
-    }
+    await loadSearchDatabase();
 
     searchFromURL();
 }
@@ -387,6 +390,16 @@ function displaySearchResults(message,searchResults) {
     instructionsFrame.style.display = "none";
 
     resultsFrame.innerHTML = searchResults;
+    lucide.createIcons(lucide.icons);
+    // If we find a subtopic that is itself a tag, change "Tags" to "Other tags"
+    let subtopicResults = document.getElementById("results-b");
+    if (subtopicResults && document.getElementById("results-g")) {
+        if (subtopicResults.querySelector(".lucide-tag")) {
+            let tagHeader = resultsFrame.querySelector("#results-g h3");
+            tagHeader.innerHTML = tagHeader.innerHTML.replace("Tags","Other tags")
+        }
+    }
+
     configureLinks(resultsFrame,location.hash.slice(1));
     loadToggleView(resultsFrame);
 
@@ -796,7 +809,7 @@ function searchButtonClick(searchKind) {
 }
 
 let gSearchDatabase = null; // The global search database, loaded from assets/SearchDatabase.json
-let gSearchers = { // A dictionary of searchers by item code
+export let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",
         new Searcher("k","key topic"),

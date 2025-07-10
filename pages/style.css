@@ -261,6 +261,25 @@ div.listing p {
 	padding: 8px;
 }
 
+div.listing img, div.listing svg {
+	width: 24px;
+	height: 24px;
+	margin-right: 4px;
+	vertical-align:text-bottom;
+}
+
+div.listing img.small-icon {
+	width: 12px;
+	height: 12px;
+	vertical-align: baseline;
+}
+
+img.small-icon, svg.small-icon {
+	width: 12px;
+	height: 12px;
+	margin-right: 4px;
+}
+
 div.featured {
 	padding: 20px;
 	border-left: 3px solid #a28a4e;
@@ -288,7 +307,7 @@ div#page-title {
 	margin: 20px;
 }
 
-.title {
+div.title {
 	font-size: 1.3em;
 	font-weight: 500;
 	margin-bottom: 1em;
@@ -298,6 +317,19 @@ div#page-title {
 	border-radius: 0.4rem;
 	box-shadow: 0px 1px 1px #b5a26c;
 	line-height: 1.8;
+}
+
+div.title#page-title {
+	color: var(--color-primary);
+	font-weight: 400;
+}
+
+div.title img, div.title svg {
+	width: 28px;
+	height: 28px;
+	margin-right: 4px;
+	vertical-align:text-bottom;
+	color: var(--color-primary);
 }
 
 .track-title {
@@ -508,6 +540,10 @@ body.main-page {
     font-size: 1rem;
     letter-spacing: 0.5px; 
     color: var(--color-primary);
+}
+
+.header h4 {
+	text-align: center;
 }
 
 .header-content {
@@ -871,7 +907,7 @@ main.main-content p {
 }
 
 /* Style for icons */
-svg.lucide {
+.exploration-paths svg.lucide {
 	width: 32px;
 	height: 32px;
 	margin: 0 15px 0 5px;
@@ -934,7 +970,8 @@ div.floating-search {
 	z-index: 2;
 	top: 10px;
 	left: 16px;
-	width: 80%;
+	width: 85%;
+	min-width: 468px;
 	max-width: 768px;
 	padding: 10px;
 	border-radius: 0.4rem;
@@ -944,6 +981,14 @@ div.floating-search {
 
 	transform: translateY(-120%);
 	transition: transform 200ms ease-out;
+}
+
+@media screen and (max-width: 514px) {
+	div.floating-search {
+		right: 16px;
+		width: auto;
+		min-width: auto;
+	}
 }
 
 div.floating-search.active {
@@ -959,12 +1004,22 @@ div.floating-search.active {
 	font-size: 1.1rem;
 	display: inline;
 	margin-right: 18px;
+	width:100%;
 }
 
 .floating-search form button {
 	color: #a68b55;
 	padding: 8px;
 	display: inline;
+}
+
+.floating-search #found-count {
+	position: absolute;
+	color: #00000060;
+	top: 23px;
+	right: 80px;
+	text-align: right;
+	font-weight: lighter;
 }
 
 /* Abhayagiri grid menu styles */
@@ -1060,4 +1115,113 @@ div.featured-page button {
 	appearance: auto;
 	padding: 0;
 	accent-color: #a68b55;
+}
+
+.autoComplete_wrapper ul svg, .autoComplete_wrapper ul img {
+	width: 20px;
+	height: 20px;
+	color: var(--color-primary);
+	margin-right: 4px;
+	vertical-align:middle;
+}
+
+.autoComplete_wrapper ul svg.inline-icon, .autoComplete_wrapper ul img.inline-icon {
+	margin-left: 3px;
+	margin-right: 2px;
+}
+
+/*
+Styles below this line copied and modified from
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.02.min.css">
+*/
+
+.autoComplete_wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-right: 18px;
+}
+
+.autoComplete_wrapper > input {
+  width: 370px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 1rem;
+  color: rgb(116, 116, 116);
+  outline: none;
+}
+
+.autoComplete_wrapper > input:focus {
+	border-radius: 4px;
+}
+
+.autoComplete_wrapper > input::placeholder {
+  color: rgba(123, 123, 123, 0.5);
+  transition: all 0.3s ease;
+}
+
+.autoComplete_wrapper > ul {
+  position: absolute;
+  max-height: 226px;
+  overflow-y: scroll;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(33, 33, 33, 0.1);
+  z-index: 1000;
+  outline: none;
+}
+
+.autoComplete_wrapper > ul > li {
+  padding: 10px 20px;
+  list-style: none;
+  text-align: left;
+  font-size: 16px;
+  color: #212121;
+  transition: all 0.1s ease-in-out;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.autoComplete_wrapper > ul > li::selection {
+  color: rgba(#ffffff, 0);
+  background-color: rgba(#ffffff, 0);
+}
+
+.autoComplete_wrapper > ul > li:hover {
+  cursor: pointer;
+  background-color: rgba(123, 123, 123, 0.1);
+}
+
+.autoComplete_wrapper > ul > li mark {
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.autoComplete_wrapper > ul > li mark::selection {
+  color: rgba(#ffffff, 0);
+  background-color: rgba(#ffffff, 0);
+}
+
+.autoComplete_wrapper > ul > li[aria-selected="true"] {
+  background-color: rgba(123, 123, 123, 0.1);
+}
+
+.autoComplete_wrapper > ul > p {
+	font-size: 16px;
+	padding: 0px 20px 10px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .autoComplete_wrapper > input {
+    width: 18rem;
+  }
 }

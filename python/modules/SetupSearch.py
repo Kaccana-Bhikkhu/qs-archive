@@ -30,10 +30,11 @@ def RawBlobify(item: str) -> str:
     output = output.replace("–","-").replace("—","-") # Conert all dashes to hypens
     output = Utils.RemoveDiacritics(output.lower())
     output = re.sub(r"\<[^>]*\>","",output) # Remove html tags
+    output = re.sub(r"\{[^>]*\}","",output) # Remove template evaluation expressions, e.g. {teachers}
     output = re.sub(r"!?\[([^]]*)\]\([^)]*\)",r"\1",output) # Extract text from Markdown hyperlinks
     output = output.replace("++","") # Remove ++ bold format markers
     output = re.sub(r"[|]"," ",output) # convert these characters to a space
-    output = re.sub(r"[][#()@_*]^","",output) # remove these characters
+    output = re.sub(r"[][#()@_*^]","",output) # remove these characters
     output = re.sub(r"\s+"," ",output.strip()) # normalize whitespace
     return output
 
@@ -88,6 +89,8 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
     """Create a list of search strings corresponding to the items in excerpt."""
     returnValue = []
     for item in Filter.AllItems(excerpt):
+        if gDatabase["kind"][item["kind"]]["category"] in ("Fragment","Audio"):
+            continue
         aTags = item.get("tags",[])
         if item is excerpt:
             qTags = aTags[0:item["qTagCount"]]
@@ -153,7 +156,7 @@ def KeyTopicBlobs() -> Iterator[dict]:
                 Enclose(Blobify([topic["topic"]]),"^"),
                 Enclose(Blobify([topic["pali"]]),"<>")
                 ])],
-            "html": Build.HtmlKeyTopicLink(topic["code"],count=True)
+            "html": Build.HtmlIcon("Key.png") + " " + Build.HtmlKeyTopicLink(topic["code"],count=True)
         }
 
 def SubtopicBlob(subtopic:str) -> str:
@@ -177,12 +180,23 @@ def SubtopicBlobs() -> Iterator[dict]:
     for _,subtopic in alphabetizedSubtopics:
         s = gDatabase["subtopic"][subtopic]
 
+        if not s["subtags"]:
+            blob = TagBlob(s["tag"])
+            if s["tag"] != s["displayAs"]:
+                blob += Enclose([RawBlobify(s["displayAs"])],"^")
+            yield {
+                "blobs": [blob],
+                "html": Build.HtmlIcon("tag") + " " + Build.TagDescription(gDatabase["tag"][s["tag"]],listAs=s["displayAs"])
+            }
+            continue
+
         htmlParts = [
+            Build.HtmlIcon("Cluster.png"),
             Build.HtmlSubtopicLink(subtopic),
             f"({s["excerptCount"]})"
         ]
         if s["pali"]:
-            htmlParts.insert(1,f"({s['pali']})")
+            htmlParts.insert(2,f"({s['pali']})")
 
         yield {
             "blobs": [SubtopicBlob(subtopic)],
@@ -208,18 +222,23 @@ def TagBlob(tagName:str) -> str:
         blob = blob.replace("]","]+") # add "+" after each tag closure.
     return blob
 
+def TagBlobEntry(tagName:str) -> dict:
+    return {
+        "blobs": [TagBlob(tagName)],
+        "html": Build.HtmlIcon("tag") + " " + Build.TagDescription(gDatabase["tag"][tagName],fullTag=True)
+    }
+
 def TagBlobs() -> Iterator[dict]:
     """Return a blob for each tag, sorted alphabetically."""
 
+    soloSubtopics = Database.SoloSubtopics()
     alphabetizedTags = [(AlphabetizeName(tag["fullTag"]),tag["tag"]) for tag in gDatabase["tag"].values() 
-                        if tag["htmlFile"] and not ParseCSV.TagFlag.HIDE in tag["flags"]]
+                        if tag["htmlFile"] and not ParseCSV.TagFlag.HIDE in tag["flags"]
+                        and tag["tag"] not in soloSubtopics]
     alphabetizedTags.sort()
 
     for _,tag in alphabetizedTags:
-        yield {
-            "blobs": [TagBlob(tag)],
-            "html": Build.TagDescription(gDatabase["tag"][tag],fullTag=True,drilldownLink=True)
-        }
+        yield TagBlobEntry(tag)
 
 def TeacherBlobs() -> Iterator[dict]:
     """Return a blob for each teacher, sorted alphabetically."""
@@ -231,7 +250,7 @@ def TeacherBlobs() -> Iterator[dict]:
     for name,teacher in alphabetizedTeachers:
         yield {
             "blobs": [Enclose(Blobify(AllNames([teacher["teacher"]])),"{}")],
-            "html": re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
+            "html": Build.HtmlIcon("user") + " " + re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
                 # Remove the paragraph markers added by TeacherDescription
         }
 
@@ -259,11 +278,13 @@ def EventBlobs() -> Iterator[dict]:
         for session in Database.SessionDict()[event["code"]].values():
             sessionTeachers.update(session["teachers"])
         listedTeachers = [teacherCode for teacherCode in event["teachers"] if teacherCode in sessionTeachers]
+        if not listedTeachers:
+            listedTeachers = event["teachers"]
 
         tagString = "".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
 
         lines = [
-            f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
+            Build.HtmlIcon("calendar") + " " + f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
             Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers]),lastJoinStr = " and ")
         ]
 

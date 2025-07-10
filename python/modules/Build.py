@@ -55,6 +55,8 @@ def WriteIndentedTagDisplayList(fileName):
 def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     """Write an html file for page using the global template"""
     page.gOptions = gOptions
+    if page.HasSection("titleIcon"):
+        page.section["titleIcon"] = HtmlIcon(page.section["titleIcon"]) + " "
 
     template = Utils.PosixJoin(gOptions.pagesDir,gOptions.globalTemplate)
     if page.info.file.endswith("_print.html"):
@@ -105,6 +107,18 @@ def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",
     #listStr = joinStr.join(items)
     
     return title + titleEnd + listStr + endStr
+
+def HtmlIcon(iconName:str,iconClass:str = "",directoryDepth:int = 1) -> str:
+    "Return html code for an icon"
+    if "<" in iconName: # Return raw html unchanged
+        return iconName
+    elif iconName.lower().split(".")[-1] in ("png","svg","jpg","jpeg"):
+        return f'''<img src="{'../'*directoryDepth}images/icons/{iconName}"{f' class="{iconClass}"' if iconClass else ""}>'''
+    else:
+        attributes = {"data-lucide":iconName}
+        if iconClass:
+            attributes["class"] = iconClass
+        return Html.Tag("i",attributes)("")
 
 def HtmlTagLink(tag:str, fullTag: bool = False,text:str = "",link = True,showStar = False) -> str:
     """Turn a tag name into a hyperlink to that tag.
@@ -326,7 +340,7 @@ def DrilldownTemplate() -> pyratemp.Template:
                             tagAtPrevLevel = reverseIndex
                             break
                     drilldownFile = DrilldownPageFile(index)
-                    drilldownID = drilldownFile.replace(".html",".d")
+                    drilldownID = drilldownFile.replace(".html","-d")
                     prevLevelDrilldownFile = DrilldownPageFile(tagAtPrevLevel)
                     
                     boxType = f"$!'minus' if {index} in xTagIndexes else 'plus'!$"
@@ -391,7 +405,7 @@ def DrilldownPageFile(tagNumberOrName: int|str,jumpToEntry:bool = False) -> str:
 
 def DrilldownIconLink(tag: str,iconWidth = 20):
     drillDownPage = "../drilldown/" + DrilldownPageFile(gDatabase["tag"][tag]["listIndex"],jumpToEntry=True)
-    return Html.Tag("a",dict(href=drillDownPage,title="Show in tag hierarchy"))(Html.Tag("img",dict(src="../assets/text-bullet-list-tree.svg",width=iconWidth)).prefix)
+    return Html.Tag("a",dict(href=drillDownPage,title="Show in tag hierarchy"))(HtmlIcon("text-bullet-list-tree.svg",iconClass="small-icon"))
 
 def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
     """Write a series of html files to create a hierarchial drill-down list of tags."""
@@ -410,6 +424,7 @@ def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
                 reverseIndex -= 1
             
             page = Html.PageDesc(pageInfo._replace(file=Utils.PosixJoin(pageInfo.file,DrilldownPageFile(n))))
+            page.AppendContent(HtmlIcon("tags"),section="titleIcon")
             page.keywords.append(tag["name"])
             page.AppendContent(EvaluateDrilldownTemplate(expandSpecificTags=tagsToExpand))
             page.specialJoinChar["citationTitle"] = ""
@@ -525,6 +540,7 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
     page = Html.PageDesc(info)
     page.AppendContent(pageContent)
+    page.AppendContent(HtmlIcon("tags"),section="titleIcon")
     page.AppendContent("Numerical tags",section="citationTitle")
     page.keywords = ["Tags","Numerical tags"]
     yield page 
@@ -549,6 +565,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1"})(printableLinks))
 
     page.AppendContent(str(a))
+    page.AppendContent(HtmlIcon("tags"),section="titleIcon")
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
     yield page
@@ -605,7 +622,7 @@ def LanguageTag(tagString: str) -> str:
 
 def RemoveLanguageTag(tagString: str) -> str:
     "Return tagString with any language tag removed."
-    return re.sub(r"<em>([^<]*)</em>$","",tagString).strip()
+    return re.sub(r"<em>([^<]*)</em>","",tagString).strip()
 
 def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted alphabetically."""
@@ -798,6 +815,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
     basePage = Html.PageDesc()
     basePage.keywords = ["Tags","Alphabetical"]
+    basePage.AppendContent(HtmlIcon("tags"),section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(subMenu,**EXTRA_MENU_STYLE):
         titleWithoutLength = " ".join(page.info.title.split(" ")[:-1])
         page.keywords.append(titleWithoutLength)
@@ -1332,8 +1350,6 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     pageInfo = Html.PageInfo("All excerpts",Utils.PosixJoin(pageDir,"AllExcerpts.html"))
     yield pageInfo
 
-    basePage = Html.PageDesc(pageInfo)
-
     formatter = Formatter()
     formatter.headingShowSessionTitle = True
     formatter.excerptOmitSessionTags = False
@@ -1412,6 +1428,9 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
+
+    basePage = Html.PageDesc(pageInfo)
+    basePage.AppendContent(HtmlIcon("All.png"),section="titleIcon")
     pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**LONG_SUBMENU_STYLE)
     if gOptions.skipSubsearchPages:
         pageIterator = Utils.SingleItemIterator(pageIterator,0)
@@ -1697,7 +1716,7 @@ def TagBreadCrumbs(tagInfo: dict) -> tuple[str,list[str]]:
         listIndex -= 1
     
     parents.reverse()
-    return " / ".join(parents + [tagInfo["fullTag"]]) + "\n<br>\n"
+    return " / ".join(parents + [tagInfo["fullTag"]]) + "&nbsp; " + DrilldownIconLink(tagInfo["tag"],iconWidth = 16) + "\n<br>\n"
 
 
 def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
@@ -1766,8 +1785,9 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a.hr()
         
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
-        pageInfo = Html.PageInfo(tag,Utils.PosixJoin(tagPageDir,tagInfo["htmlFile"]),DrilldownIconLink(tag,iconWidth = 20) + " &nbsp;" + tagPlusPali)
+        pageInfo = Html.PageInfo(tag,Utils.PosixJoin(tagPageDir,tagInfo["htmlFile"]),tagPlusPali)
         basePage = Html.PageDesc(pageInfo)
+        basePage.AppendContent(HtmlIcon("tag"),section="titleIcon")
         basePage.AppendContent(str(a))
         basePage.keywords = ["Tag",tagInfo["fullTag"]]
         if tagInfo["fullPali"]:
@@ -1906,7 +1926,6 @@ def ListTeachersLineage(teachers: list[dict]) -> str:
     lineages.append("") # Prevent an error if group is blank
     hasLineage = [t for t in teachers if t["lineage"] and t["group"] == "Monastics"]
     hasLineage.sort(key=TeacherDate)
-        # NOTE: We will sort by teacher date once this information gets into the spreadsheet
     hasLineage.sort(key=lambda t: lineages.index(t["lineage"]))
     return str(Html.ListWithHeadings(hasLineage,lambda t: (t["lineage"],TeacherDescription(t)) ))
 
@@ -1938,7 +1957,10 @@ def TeacherMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     basePage = Html.PageDesc()
+    basePage.AppendContent(HtmlIcon("user"),section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(teacherMenu,**SUBMENU_STYLE):
+        if "Teachers" in page.info.file: # Index files use the plural icon
+            page.section["titleIcon"] = HtmlIcon("users")
         if page.info.titleInBody.startswith("Teachers – "):
             _,subSection = page.info.titleInBody.split(" – ")
             page.AppendContent(f"Teachers: {subSection}",section="citationTitle")
@@ -2077,6 +2099,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             titleInBody += " – " + eventInfo["subtitle"]
 
         page = Html.PageDesc(Html.PageInfo(eventInfo["title"],Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
+        page.AppendContent("calendar",section="titleIcon")
         page.AppendContent(str(a))
         page.keywords = ["Event",eventInfo["title"]]
         page.AppendContent(f"Event: {eventInfo['title']}",section="citationTitle")
@@ -2128,7 +2151,7 @@ def DocumentationMenu(directory: str,makeMenu = True,
             citation += f": {page.info.title}"
 
         page.AppendContent(citation,section="citationTitle")
-
+        page.AppendContent("text",section="titleIcon")
         aboutMenu.append([page.info,page])
         
     for item in extraItems:
@@ -2152,9 +2175,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
 
     topicList = list(gDatabase["keyTopic"])
     for topicNumber,topic in enumerate(gDatabase["keyTopic"].values()):
-        link = Html.Tag("a",{"href": Utils.PosixJoin("../",topicDetailPage.AddQuery(f"hideAll&toggle={topic['code']}").file + "#" + topic["code"]),"title":"Show in key topic list"})
-        listIconLink = link(Html.Tag("img",dict(src="../assets/text-bullet-list-tree.svg",width=20)).prefix)
-        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),listIconLink + "&nbsp; Featured excerpts about " + topic["topic"])
+        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),HtmlIcon("Key.png") + " " + topic["topic"] + ": Featured excerpts")
         page = Html.PageDesc(info)
         page.AppendContent("Featured excerpts about " + topic["topic"],section="citationTitle")
         page.keywords = ["Key topics",topic["topic"]]
@@ -2188,7 +2209,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
             if firstExcerpt:
                 lines = []
                 if clusterInfo["subtags"]:
-                    lines.append("Cluster includes: " + HtmlSubtopicTagList(clusterInfo,summarize=5)) #  + "<br>\n<br>\n"
+                    lines.append("Cluster includes: " + HtmlSubtopicTagList(clusterInfo,summarize=5))
                 relatedEvents = list(Filter.Tag([clusterInfo["tag"]] + list(clusterInfo["subtags"]))(gDatabase["event"].values()))
                 if relatedEvents:
                     lines.append("Related events: " + ", ".join(Database.ItemCitation(e) for e in relatedEvents))
@@ -2208,15 +2229,16 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
                 excerptHtml += "\n<hr>"
 
             isCluster = bool(clusterInfo["subtags"])
-            heading = "Tag cluster: " if isCluster else "Tag: "
+            heading = HtmlIcon("Cluster.png") if isCluster else HtmlIcon("tag")
+            heading += " "
             text = clusterInfo["displayAs"] if isCluster else tag
             heading += HtmlSubtopicLink(tag,text=text).replace(".html","-relevant.html")
             pali = clusterInfo["pali"]
             if not isCluster and clusterInfo["displayAs"] != tag:
                 if pali:
-                    heading = f"{clusterInfo['displayAs']} ({pali}) ({heading})"
+                    heading = f"{clusterInfo['displayAs']} ({pali}) {heading}"
                 else:
-                    heading = f"{clusterInfo['displayAs']} ({heading})"
+                    heading = f"{clusterInfo['displayAs']} {heading}"
             elif pali:
                 heading += f" ({pali})"
             return heading,excerptHtml,gDatabase["tag"][tag]["htmlFile"].replace(".html",""),clusterInfo["displayAs"]
@@ -2266,11 +2288,12 @@ def TagClusterPages(topicDir: str):
                 a(clusterInfo["clusterNote"])
         a.hr()
 
-        pageTitle = titleInBody = "Tag cluster: " + clusterInfo["displayAs"]
+        pageTitle = titleInBody = clusterInfo["displayAs"]
         if clusterInfo["pali"]:
             titleInBody += f" ({clusterInfo['pali']})"
         pageInfo = Html.PageInfo(pageTitle,clusterInfo["htmlPath"],titleInBody)
         basePage = Html.PageDesc(pageInfo)
+        basePage.AppendContent("Cluster.png",section="titleIcon")
         basePage.AppendContent(str(a))
         basePage.keywords = ["Tag cluster",clusterInfo["displayAs"]]
         basePage.AppendContent(f"Tag cluster: {clusterInfo['displayAs']}",section="citationTitle")
@@ -2326,6 +2349,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
     AddTopicButtons(page)
     page.AppendContent(pageContent)
+    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics",section="citationTitle")
@@ -2399,6 +2423,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
         AddTopicButtons(page)
 
     page.AppendContent(str(a))
+    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics in detail",section="citationTitle")
@@ -2497,6 +2522,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         basePage.AppendContent('</div>')
 
         basePage.AppendContent(f"Numbers in parentheses: (Excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
+        basePage.AppendContent(HtmlIcon("tags"),section="titleIcon")
 
         rootPage = Html.PageDesc(contractAllItem)
         rootPage.AppendContent(EvaluateDrilldownTemplate())
@@ -2576,10 +2602,7 @@ def DispatchIterator():
                     with a.a(Class='path-card', href=Utils.PosixJoin("../",link["link"])):
                         with a.h3():
                             if link["icon"]:
-                                if "<" in link["icon"]:
-                                    a(link["icon"])
-                                else:
-                                    a.i(**{"data-lucide":link["icon"]})
+                                a(HtmlIcon(link["icon"]))
                             a(link["title"])
                         a.p(_t=link["description"])
         
@@ -2607,7 +2630,9 @@ def WriteSitemapURL(pagePath:str,xml:Airium) -> None:
     if pagePath == "homepage.html":
         pagePath = "index.html"
     elif directory == "about":
-        if not re.match("[0-9]+_",pathParts[-1]):
+        if re.match("[0-9]+_",pathParts[-1]):
+            return
+        if pathParts[-1] == "Page-Not-Found.html":
             return
     elif directory == "events":
         priority = 0.9
@@ -2626,7 +2651,6 @@ def WriteSitemapURL(pagePath:str,xml:Airium) -> None:
 
 def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
     """Look through the html files we've written and create an xml sitemap."""
-    pass
 
     xml = Airium()
     with xml.urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"):

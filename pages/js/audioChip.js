@@ -59,7 +59,6 @@ class AudioChip extends HTMLElement {
 	setAttribute(key,value) {
 		super.setAttribute(key,value);
 		if (key == "src") {
-			console.log("Changed src from",this.audio.src,"to",value);
 			this.audio.src = value; // Change playing audio
 			if (this.dataset.duration == null)
 				this.audio.load();

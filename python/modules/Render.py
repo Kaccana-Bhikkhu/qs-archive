@@ -182,6 +182,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
     plural = "s" if (ParseCSV.ExcerptFlag.PLURAL in item["flags"]) else "" # Is the excerpt heading plural?
 
     teachers = item.get("teachers",())
+    showAttribution = True
     if container:
         if item["kind"] == "Read by":
             grandparent = Database.ParentAnnotation(container,Database.ParentAnnotation(container,item))
@@ -198,8 +199,8 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
                 defaultTeachers = parent.get("teachers",())
             else:
                 defaultTeachers = ()
-        if set(defaultTeachers) == set(teachers) and ParseCSV.ExcerptFlag.ATTRIBUTE not in item["flags"] and not gOptions.attributeAll:
-            teachers = () # Don't attribute an annotation which has the same teachers as it's excerpt
+        showAttribution = set(defaultTeachers) != set(teachers) or ParseCSV.ExcerptFlag.ATTRIBUTE in item["flags"] or gOptions.attributeAll
+            # Don't show the attribution section for annotations which have the same teachers as their excerpt
     teacherStr = Build.ListLinkedTeachers(teachers = teachers,lastJoinStr = ' and ')
 
     text = item["text"]
@@ -226,15 +227,10 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
                 fragmentFileNumber += 1 # count fragments before this one
 
         renderDict["player"] = f"[](player:{Database.ItemCode(event=container["event"],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
-        """ if fragmentAnnotation["text"].lower() == "noplayer":
-            fragmentAnnotation["text"] = ""
-        elif not mainFragment: # Main fragments don't display a player
-            fragmentAnnotation["text"] = f"[](player:{Database.ItemCode(event=excerpt['event'],session=excerpt['sessionNumber'],fileNumber=nextFileNumber)})"
-        """
 
     item["body"] = bodyTemplate(**renderDict)
 
-    if teachers:
+    if teachers and showAttribution:
 
         # Does the text before the attribution end in a full stop?
         fullStop = "." if re.search(r"[.?!][^a-zA-Z]*\{attribution\}",item["body"]) else ""

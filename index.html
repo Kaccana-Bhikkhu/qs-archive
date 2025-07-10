@@ -18,8 +18,9 @@
                 <div class="header-content">
                     <div class="floating-search keep-nav-menu-open">
                         <form id="floating-search-form">
-                            <input type="text" id="floating-search-input" placeholder="Search the teachings..."/>
+                            <input type="text" id="floating-search-input" placeholder="Search the teachings..." autocomplete="off"/>
                             <button type="submit" id="floating-search-go"><i class="fa fa-arrow-right fa-lg"></i></button>
+                            <span id="found-count"></span>
                         </form>
                     </div>
                     <span class="main-menu-icon keep-nav-menu-open" id="nav-search-icon">
@@ -181,7 +182,7 @@
   <div class="exploration-paths">
     <a class="path-card" href="pages/indexes/KeyTopics.html?hideAll">
       <h3>
-        <i data-lucide="book-open"></i>
+        <img src="pages/images/icons/Key.png">
         Key Topics
       </h3>
       <p>Discover comprehensive collections of teachings organized by major Buddhist concepts</p>

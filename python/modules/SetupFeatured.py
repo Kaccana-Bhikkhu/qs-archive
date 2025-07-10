@@ -59,13 +59,13 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
         Alert.info(f"Wrote featured excerpt database to {filename}.")
         return True
     except OSError as err:
-        Alert.error(f"Could not write {gOptions.featuredDatabase} due to {err}")
+        Alert.error(f"Could not write {filename} due to {err}")
         return False
     
 
 def PrintInfo(database: FeaturedDatabase) -> None:
     """Print information about this featured excerpt database."""
-    Alert.info("Featured excerpt database contains",len(database["excerpts"]),"random excerpts.")
+    Alert.info("Featured excerpt database contains",len(database["excerpts"]),"excerpts.")
 
     calendarLength = len(database['calendar'])
     daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
@@ -114,15 +114,17 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
         "shortHtml": shortHtml
     }
 
-def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
-    """Return a list of entries corresponding to featured excerpts in key topics."""
-
+def FeaturedExcerptFilter() -> Filter.Filter:
+    """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
     teacherFilter = Filter.Teacher("AP")
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    homepageFilter = Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
-    featuredExcerpts =  [x for x in homepageFilter(gDatabase["excerpts"])]
+    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
 
+def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
+    """Return a list of entries corresponding to featured excerpts in key topics."""
+
+    featuredExcerpts =  [x for x in FeaturedExcerptFilter()(gDatabase["excerpts"])]
     return {Database.ItemCode(x):ExcerptEntry(x) for x in featuredExcerpts}
 
 def Header() -> dict[str]:
@@ -135,6 +137,11 @@ def Header() -> dict[str]:
         "mirrors": gOptions.mirrorUrl,
         "excerptSources": gOptions.excerptMp3
     }
+
+def UpdateHeader(database: FeaturedDatabase) -> None:
+    for key,value in Header().items():
+        if key != "made":
+            database[key] = value
 
 def Remake(paramStr: str) -> bool:
     """Create a completely new random excerpt dictionary.
@@ -219,7 +226,11 @@ These may require the Fix module if excerpts have moved or the Remove module if 
             Alert.essential(len(textMismatches),"entries texts do not match and might require the Fix module if excerpts have moved.")
             Alert.essential.ShowFirstItems(textMismatches,"text mismatched excerpt")
     
-    missingCalendarItems = [code for code in gFeaturedDatabase["calendar"] if code not in gFeaturedDatabase["excerpts"]]
+    excerptsInCalendar = set(gFeaturedDatabase["calendar"])
+    excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
+    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+
+    missingCalendarItems = excerptsInCalendar - excerptsInDatabase
     if missingCalendarItems:
         Alert.error(len(missingCalendarItems),"calendar entries cannot be found in the excerpt list.")
         Alert.essential("Run the fix module to correct this problem.")
@@ -228,6 +239,13 @@ These may require the Fix module if excerpts have moved or the Remove module if 
 
     if databaseGood:
         Alert.info("No errors found in database.")
+    
+    newFeaturedExcerpts = currentFeaturedExcerpts - excerptsInDatabase
+    if newFeaturedExcerpts:
+        Alert.info(len(newFeaturedExcerpts),"new featured excerpts do not appear in the database.")
+        Alert.info("Run the remakeFuture module to include them.")
+        Alert.info.ShowFirstItems(newFeaturedExcerpts,"new excerpt")
+
     return databaseGood
 
 def Update(paramStr: str) -> bool:
@@ -298,7 +316,7 @@ def RunSubmodule(submodule: SubmoduleType,alwaysRun:bool = False,**kwargs) -> bo
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--featured',type=str,default="check",help="Comma-separated list of operations to run on the featured database.")
+    parser.add_argument('--featured',type=str,default="update",help="Comma-separated list of operations to run on the featured database.")
     parser.add_argument('--featuredDatabase',type=str,default="pages/assets/FeaturedDatabase.json",help="Featured database filename.")
     parser.add_argument('--randomExcerptCount',type=int,default=0,help="Include only this many random excerpts in the calendar.")
     parser.add_argument('--updateThreshold',type=float,default=0.8,help="SetupFeatured.Update replaces old text with new if ratio is at least this.")
@@ -336,7 +354,11 @@ def main() -> None:
     PrintInfo(gFeaturedDatabase)
     goodDatabase = RunSubmodule(Check)
 
-    databaseChanged = any(RunSubmodule(m) for m in gRepairModules) or databaseChanged
+    databaseRepaired = any(RunSubmodule(m) for m in gRepairModules)
+    if databaseRepaired:
+        UpdateHeader(gFeaturedDatabase)
+
+    databaseChanged = databaseRepaired or databaseChanged
     
     if not goodDatabase or databaseChanged:
         goodDatabase = RunSubmodule(Check,alwaysRun=True)

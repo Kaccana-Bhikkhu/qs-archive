@@ -107,3 +107,5 @@
 - 5.4.1 (May 2025 release #2) Play all featured excerpts on tag and cluster pages. Contributed by Owen.
 
 - 6.0 (June 2025 release) Home page redesigned by Chris Claudius. Floating search bar available from the main menu and by pressing '/' anywhere on a page. SetupFeatured.py manages the daily featured excerpt history database. Improved support for small screens. Dispatch pages explain the features of the archive in detail. Html sitemap. Remove NN_ from the about page filenames. Html redirects from pages which have moved.
+
+- 6.1 (July 2025 release) Add auto complete to floating search bar. Add icons to search results and many other pages. Add more sessions to Winter Retreat 2016. More teachers have given permission for Abhayagiri's 20th anniversary event.

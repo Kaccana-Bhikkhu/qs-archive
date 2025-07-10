@@ -18,7 +18,7 @@
 --spreadsheetDatabase pages/assets/SpreadsheetDatabase.json
 
 // DownloadCSV options:
---spreadsheet "https://docs.google.com/spreadsheets/d/1z4yOBV4wHrFzJVFCLWlGP0eQyS_RQ7onN3AS8AXa1rE/"
+--spreadsheet "https://docs.google.com/spreadsheets/d/1muIfv73Q00fAvIYx-mwy6lGPyZ8Zqg1LgXhsKxdW10o/"
 --summarySheetID 2007732801
 
 // ParseCSV options:
@@ -41,8 +41,8 @@
 --renderedDatabase pages/assets/RenderedDatabase.json
 
 // Document options:
---info "releaseName:May 2025 release"
---info "releaseDate:May 2, 2025"
+--info "releaseName:July 2025 release"
+--info "releaseDate:July 10, 2025"
 --info "releaseYear:2025"
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"

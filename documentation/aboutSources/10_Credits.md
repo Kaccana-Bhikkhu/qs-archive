@@ -14,6 +14,7 @@ Ajahn Thee Sabbajayanto and Janejira Sutanonpaiboon translated the Archive landi
 The Archive relies upon many common open-source and freeware tools. In addition to the python modules listed in [requirements.txt](https://github.com/Kaccana-Bhikkhu/qs-archive/blob/main/requirements.txt), we would like to specifically acknowledge:
 
 - [mp3DirectCut](https://mpesch3.de/): Fast, lossless audio splitting
+- [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/): Powerful vanilla Javascript auto complete engine
 - [readingfaithfully.org](https://sutta.readingfaithfully.org/): Easy links to free sutta translations
 
 ## Photo Credits
