@@ -2630,7 +2630,9 @@ def WriteSitemapURL(pagePath:str,xml:Airium) -> None:
     if pagePath == "homepage.html":
         pagePath = "index.html"
     elif directory == "about":
-        if not re.match("[0-9]+_",pathParts[-1]):
+        if re.match("[0-9]+_",pathParts[-1]):
+            return
+        if pathParts[-1] == "Page-Not-Found.html":
             return
     elif directory == "events":
         priority = 0.9
