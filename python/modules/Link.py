@@ -21,6 +21,7 @@ from enum import Enum
 from collections import Counter
 import copy
 import contextlib
+import posixpath
 
 class StrEnum(str,Enum):
     pass
@@ -294,6 +295,7 @@ class Linker:
         
         if mirror == "remote":
             url = item.get(REMOTE_KEY[self.itemType],"")
+            return url
             if Utils.RemoteURL(url):
                 return url
             else: 
@@ -302,6 +304,11 @@ class Linker:
                 # This occurs only with references.
         
         filename = self.Filename(item)
+        if mirror in ("local",gOptions.uploadMirror):
+            localPath = posixpath.normpath(posixpath.join(gOptions.mirror[self.itemType]["local"],filename))
+            if posixpath.commonpath((localPath,gOptions.pagesDir)) == gOptions.pagesDir:
+                return localPath
+
         if filename:
             return urljoin(gOptions.mirror[self.itemType][mirror],self.Filename(item))
         else:

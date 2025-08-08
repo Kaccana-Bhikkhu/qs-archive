@@ -15,13 +15,14 @@ from markdown.inlinepatterns import \
     ShortReferenceInlineProcessor, \
     LINK_RE, REFERENCE_RE, AUTOLINK_RE, AUTOMAIL_RE
 
+import Utils
 
 class NewTabMixin(object):
     def handleMatch(self, m, data):
         el, start, end = super(NewTabMixin, self).handleMatch(m, data)
         if el is not None:
             link = el.get('href')
-            if link and '://' in link:
+            if link and Utils.RemoteURL(link):
                 el.set('target', '_blank')
         return el, start, end
 
