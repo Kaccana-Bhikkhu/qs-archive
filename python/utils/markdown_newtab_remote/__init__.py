@@ -15,15 +15,17 @@ from markdown.inlinepatterns import \
     ShortReferenceInlineProcessor, \
     LINK_RE, REFERENCE_RE, AUTOLINK_RE, AUTOMAIL_RE
 
-import Utils
+from urllib.parse import urlparse
 
 class NewTabMixin(object):
     def handleMatch(self, m, data):
         el, start, end = super(NewTabMixin, self).handleMatch(m, data)
         if el is not None:
             link = el.get('href')
-            if link and Utils.RemoteURL(link):
-                el.set('target', '_blank')
+            if link:
+                parsed = urlparse(link)
+                if parsed.netloc or parsed.path.endswith(".pdf"):
+                    el.set('target', '_blank')
         return el, start, end
 
 
