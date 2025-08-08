@@ -214,6 +214,15 @@ p.x-cite {
 	margin-left: 14em;
 }
 
+blockquote {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    unicode-bidi: isolate;
+}
+
 @media screen and (max-width: 600px) {
 	.indent-1 {
 		margin-left: 1em;
