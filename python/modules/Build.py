@@ -28,8 +28,8 @@ SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="subMenu")
 LONG_SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="customSubMenu",
                            menuClass=Html.ResponsivePopupMenu,
                            responsiveContainer = "",
-                           wrapper=Html.Tag("div",{"class":"sublink hide-thin-screen-3"}),
-                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup hide-wide-screen-3"}))
+                           wrapper=Html.Tag("div",{"class":"sublink hide-thin-screen-3 noscript-show"}),
+                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup hide-wide-screen-3 noscript-hide"}))
 EXTRA_MENU_STYLE = BASE_MENU_STYLE | dict(menuClass=Html.ResponsivePopupMenu,
                                           wrapper=Html.Tag("div",{"class":"sublink2"}) + "\n<hr>\n",
                                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink2-popup"}) + "\n<hr>\n")
@@ -562,7 +562,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page = Html.PageDesc(info)
 
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
-    page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
     page.AppendContent(HtmlIcon("tags"),section="titleIcon")
@@ -2013,7 +2013,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
         html = markdown.markdown(markdownText,extensions = ["sane_lists",NewTabRemoteExtension()])
         a.hr()
         with a.h2():
-            a.a(href="#").i(Class="fa fa-plus-square toggle-view",id="TOC")
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
             a("Table of Contents")
         with a.div(Class="listing javascript-hide",id="TOC.b"):
             a(html)
@@ -2303,11 +2303,13 @@ def TagClusterPages(topicDir: str):
 def AddTopicButtons(page: Html.PageDesc) -> None:
     """Add buttons to show and hide subtopics."""
 
-    page.AppendContent('<div class="hide-thin-screen-1">')
+    page.AppendContent('<div class="hide-thin-screen-1 noscript-show">')
     page.AppendContent(Html.Tag("button",{"type":"button",
-                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("showAll").file + "#keep_scroll")})("Expand all"))
+                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("showAll").file + "#keep_scroll"),
+                                          "class":"noscript-hide"})("Expand all"))
     page.AppendContent(Html.Tag("button",{"type":"button",
-                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file + "#keep_scroll")})("Contract all"))
+                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file + "#keep_scroll"),
+                                          "class":"noscript-hide"})("Contract all"))
     
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html")})("Printable")
     if gOptions.uploadMirror == "preview":
@@ -2510,7 +2512,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         yield printPage
 
         # Hack: Add buttons to basePage after yielding printPage so that all subsequent pages have buttons at the top.
-        basePage.AppendContent('<div class="hide-thin-screen-1">')
+        basePage.AppendContent('<div class="hide-thin-screen-1 noscript-show">')
         basePage.AppendContent(Html.Tag("button",{"type":"button",
                                                   "onclick":Utils.JavascriptLink(contractAllItem.AddQuery("showAll").file + "#keep_scroll")
                                                   })("Expand all"))

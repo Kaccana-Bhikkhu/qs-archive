@@ -58,9 +58,6 @@ export function loadToggleView(frame) {
     for (let el of frame.getElementsByClassName("javascript-hide")) {
         el.style.display = "none";
     }
-    for (let el of frame.getElementsByClassName("javascript-show")) {
-        el.style.display = "block";
-    }
 
     let params = frameSearch()
     let initView = params.has("showAll") ? true : (params.has("hideAll") ? false : null)

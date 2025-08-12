@@ -190,13 +190,14 @@ def ResponsiveItem(wideHtml: str,thinHtml: str,changeOver: int,container:str = "
     """Return html code that switches between wideHtml and thinHtml at the point specified by changeOver.
     wideHtml: html code in case of wide screen
     thinHtml: html code in case of thin screen
-    changeOver: the changeover point; see style.css for 
+    changeOver: the changeover point; see style.css for definitions
     container: the html element for the container"""
 
     if changeOver:
         if container:
-            return "\n".join((Tag(container,{"class":f"hide-thin-screen-{changeOver}"})(wideHtml),
-                              Tag(container,{"class":f"hide-wide-screen-{changeOver}"})(thinHtml)))
+            return "\n".join((Tag(container,{"class":f"hide-thin-screen-{changeOver} noscript-show"})(wideHtml),
+                              Tag(container,{"class":f"hide-wide-screen-{changeOver} noscript-hide"})(thinHtml)))
+                    # We assume wideHtml is a simple menu that works without scripting
         else: # If container is an empty string, the changeover is already encoded in the html
             return "\n".join((wideHtml,thinHtml))
     else:
@@ -577,12 +578,12 @@ def TruncatedList(items: Iterable[str],alwaysShow:int = 1,
     promptID = blockID or Utils.slugify(morePrompt)
 
     firstBlock = "\n".join(items[0:alwaysShow])
-    prompt = Tag("a",{"class":"toggle-view hide-self javascript-show" + (f" hide-wide-screen-{hideWidth}" if hideWidth else ""),
-                      "id":promptID,"href":"#","style":"display:none"},"i")(morePrompt + "...")
+    prompt = Tag("a",{"class":"toggle-view hide-self" + (f" hide-wide-screen-{hideWidth}" if hideWidth else ""),
+                      "id":promptID,"href":"#"},"i")(morePrompt + "...")
 
     attributes = {"id":promptID + ".b"}
     if hideWidth:
-        attributes["class"] = f"hide-thin-screen-{hideWidth}"
+        attributes["class"] = f"hide-thin-screen-{hideWidth} noscript-show"
     else:
         attributes["class"] = "javascript-hide"
     hiddenBlock = Tag(blockTag,attributes)("\n".join(items[alwaysShow:]))

@@ -181,6 +181,7 @@ async function changeURL(pUrl,scrollTo = null) {
 			innerTitle.remove();
 
 			frame.querySelector("#javascript-link")?.setAttribute("style","display:none;");
+			document.getElementById("noscript-style-block")?.remove();
 
 			configureLinks(frame,resultUrl);
 			loadToggleView();
