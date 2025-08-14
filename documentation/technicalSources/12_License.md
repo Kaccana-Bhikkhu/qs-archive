@@ -1,5 +1,5 @@
 [Abhayagiri Reception Hall Buddha Image](photo:Abhayagiri Buddha Rupa.jpg)
-# License
+
 
 This license applies to all new material created as part of the Ajahn Pasanno Archive. This includes all versions of the website itself, the json database files, the material on github, and all versions of the main Google sheet used to generate the database and website. It neither grants nor removes permissions regarding material used in the Archive obtained from other sources.
 

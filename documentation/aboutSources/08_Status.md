@@ -1,6 +1,6 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-# Status
+
 
 ## New in the July 2025 release:
  - Auto complete menu drops down from the floating search bar.

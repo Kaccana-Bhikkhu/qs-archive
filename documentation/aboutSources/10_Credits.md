@@ -1,5 +1,5 @@
 [Thai New Year 2023](photo:Thai New Year 2023.jpg)
-# Acknowledgements
+
 
 This project would not have been possible without the assistance of many people. It would have been prohibitively expensive and time-consuming if not built upon previous open-source software projects.
 

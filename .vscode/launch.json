@@ -70,7 +70,8 @@
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
                 "Build",
-                "--quickBuild"
+                "--buildOnly",
+                "none"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

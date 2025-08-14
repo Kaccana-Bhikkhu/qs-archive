@@ -57,13 +57,16 @@
   <!--(end)-->
 
 <!--(if not page.HasSection("customLayout"))-->
+  <!--(if page.HasSection("customSubMenu"))-->
+    $!page.section["customSubMenu"].Render()!$
+  <!--(end)-->
+  <!--(if page.HasSection("customSubMenu2"))-->
+    $!page.section["customSubMenu2"].Render()!$
+  <!--(end)-->
   <!--(if page.HasSection("subMenu"))-->
     <div class="sublink hide-thin-screen-1 noscript-show">
       $!page.section["subMenu"].Render()!$
     </div>
-  <!--(end)-->
-  <!--(if page.HasSection("customSubMenu"))-->
-    $!page.section["customSubMenu"].Render()!$
   <!--(end)-->
 
   <!--(if page.info.titleInBody)-->

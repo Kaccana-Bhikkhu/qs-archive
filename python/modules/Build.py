@@ -2122,6 +2122,7 @@ def ExtractHtmlBody(fileName: str) -> str:
 
 def DocumentationMenu(directory: str,makeMenu = True,
                       specialFirstItem:Html.PageInfo|None = None, menuTitle:str|None = None,
+                      menuStyle: dict = {},
                       extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
     """Read markdown pages from documentation/directory, convert them to html, 
     write them in pages/about, and create a menu out of them.
@@ -2159,7 +2160,7 @@ def DocumentationMenu(directory: str,makeMenu = True,
 
     if makeMenu:
         basePage = Html.PageDesc()
-        yield from basePage.AddMenuAndYieldPages(aboutMenu,**EXTRA_MENU_STYLE)
+        yield from basePage.AddMenuAndYieldPages(aboutMenu,**menuStyle)
     else:
         yield from aboutMenu
 
@@ -2850,8 +2851,10 @@ def main():
     sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
     sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
-    technicalMenu = DocumentationMenu("technical",menuTitle="Technical")
-    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",extraItems=[technicalMenu]))
+    technicalMenu = DocumentationMenu("technical",menuTitle="Technical",
+                                      menuStyle=LONG_SUBMENU_STYLE | dict(menuSection="customSubMenu2"))
+    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",
+                                         menuStyle=LONG_SUBMENU_STYLE,extraItems=[technicalMenu]))
     sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
 
     sitemapMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
