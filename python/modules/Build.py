@@ -1575,6 +1575,7 @@ def EventsMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     basePage = Html.PageDesc()
+    basePage.AppendContent("calendar",section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(eventMenu,**SUBMENU_STYLE):
         if page.info.titleInBody.startswith("Events – "):
             _,subSection = page.info.titleInBody.split(" – ")
@@ -2099,7 +2100,6 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             titleInBody += " – " + eventInfo["subtitle"]
 
         page = Html.PageDesc(Html.PageInfo(eventInfo["title"],Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
-        page.AppendContent("calendar",section="titleIcon")
         page.AppendContent(str(a))
         page.keywords = ["Event",eventInfo["title"]]
         page.AppendContent(f"Event: {eventInfo['title']}",section="citationTitle")
