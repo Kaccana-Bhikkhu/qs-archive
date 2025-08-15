@@ -233,6 +233,10 @@
 	<script src="./js/audioPlayer.js" type="module"></script>
 	<script src="./js/audioChip.js" type="module"></script>
 	<script src="./js/frame.js" type="module"></script>
+    <script type="module">
+        import {openLocalPage} from "./js/frame.js";
+        globalThis.openLocalPage = openLocalPage;
+    </script>
 	</body>
 </html>
 

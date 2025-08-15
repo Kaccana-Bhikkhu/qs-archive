@@ -2332,13 +2332,26 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     with a.div(Class='explore-content'):
         with a.div(Class='exploration-paths'):
             for topic in gDatabase["keyTopic"].values():
-                with a.a(Class='path-card', href=Utils.PosixJoin("../","topics",topic["listFile"])):
+                with a.div(Class='path-card'):
+                    a.a(Class='path-overlay',href=Utils.PosixJoin("../",topicDir,topic["listFile"]))
+
                     with a.h3():
                         a(HtmlIcon(Utils.PosixJoin("topics",
-                                                       topic["listFile"].replace(".html",".png"))))
+                                topic["listFile"].replace(".html",".png"))))
                         a(topic["topic"])
-                    with a.p().i():
-                        a("Subtopics...")
+                
+                    with a.p():
+                        clusterLinks = []
+                        for tag in topic["subtopics"]:
+                            if gOptions.keyTopicsLinkToTags:
+                                link = Utils.PosixJoin("../",Utils.AppendToFilename(gDatabase["subtopic"][tag]["htmlPath"],"-relevant"))
+                            else:
+                                link = Utils.PosixJoin("../",topicDir,topic["listFile"]) + "#" + gDatabase["tag"][tag]["htmlFile"].replace(".html","")
+                            text = gDatabase["subtopic"][tag]["displayAs"]
+                            clusterLinks.append(Html.Tag("a",{"href":link})(text))
+                        
+                        clusterList = " &emsp; ".join(clusterLinks)
+                        a(Html.HiddenBlock(clusterList,"subtopics",blockID=topic["code"],blockTag="p"))
 
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
     page.AppendContent(str(a))
@@ -2348,37 +2361,6 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     page.AppendContent(f"Key topics",section="citationTitle")
 
     yield page
-
-    """def KeyTopicList(keyTopic: dict) -> tuple[str,str,str]:     
-        clusterLinks = []
-        for tag in keyTopic["subtopics"]:
-            if gOptions.keyTopicsLinkToTags:
-                link = Utils.PosixJoin("../",Utils.AppendToFilename(gDatabase["subtopic"][tag]["htmlPath"],"-relevant"))
-            else:
-                link = Utils.PosixJoin("../",topicDir,keyTopic["listFile"]) + "#" + gDatabase["tag"][tag]["htmlFile"].replace(".html","")
-            text = gDatabase["subtopic"][tag]["displayAs"]
-            clusterLinks.append(Html.Tag("a",{"href":link})(text))
-
-        clusterList = Html.Tag("p",{"class":"indent-1"})(" &emsp; ".join(clusterLinks))
-
-        if keyTopic["shortNote"]:
-            clusterList = "\n".join([clusterList,Html.Tag("p",{"class":"indent-1"})(keyTopic["shortNote"])])
-        heading = Html.Tag("a",{"href": Utils.PosixJoin("../",topicDir,keyTopic["listFile"])})(keyTopic["topic"])
-        return heading,clusterList,keyTopic["code"]
-
-    pageContent = Html.ToggleListWithHeadings(gDatabase["keyTopic"].values(),KeyTopicList,
-                                        bodyWrapper=Html.Tag("div",{"class":"listing"}),
-                                        addMenu=False,betweenSections="\n")
-
-    page = Html.PageDesc(menuItem._replace(title="Key topics"))
-    AddTopicButtons(page)
-    page.AppendContent(pageContent)
-    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
-
-    page.keywords = ["Key topics"]
-    page.AppendContent(f"Key topics",section="citationTitle")
-
-    yield page"""
 
 def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemos = False) -> Html.PageDescriptorMenuItem:
     "Yield a page listing all topic headings."

@@ -590,6 +590,16 @@ def TruncatedList(items: Iterable[str],alwaysShow:int = 1,
 
     return "\n".join((firstBlock,prompt,hiddenBlock))
 
+def HiddenBlock(htmlBlock:str,prompt:str = "details",hideWidth:int = 0,blockID:str = "",blockTag:str = "div") -> str:
+    """Return hmtl code for a hidden text block.
+    htmlBlock: the html to hide.
+    prompt: the prompt to display in place of the hidden block.
+    hideWidth: if specified, hide this block only on screens smaller than this index.
+    blockID: the id of the hidden text block; must be unique on the page.
+    blockTag: the tag to enclose the hidden block within."""
+
+    return TruncatedList([htmlBlock],alwaysShow=0,truncateAfter=0,morePrompt=prompt,hideWidth=hideWidth,blockID=blockID,blockTag=blockTag)
+
 def TruncateHtmlText(htmlText:str,alwaysShow:int = 1,truncateAfter:int = None,morePrompt:str = "show all",hideWidth:int = 0,blockID:str = ""):
     """Similar to TruncatedList, but with html text. Lines must be broken by <br>"""
 
