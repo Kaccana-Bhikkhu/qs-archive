@@ -1,6 +1,6 @@
 {
     "name":"Ajahn Pasanno Archive",
-    "short_name":"",
+    "short_name":"APArchive",
     "icons":[
         {
             "src":"../images/android-chrome-192x192.png",
@@ -13,7 +13,8 @@
             "type":"image/png"
         }
     ],
-    "theme_color":"#ffffff",
+    "start_url":"../index.html",
+    "theme_color":"#4a3c31",
     "background_color":"#ffffff",
     "display":"standalone"
 }
