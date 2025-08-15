@@ -2,10 +2,9 @@
 
 
 
-## New in the July 2025 release:
- - Auto complete menu drops down from the floating search bar.
- - Illustrate many pages with icons.
- - More material added to the [2016 Winter Retreat](event:WR2016).
+## New in the August 2025 release:
+ - Color icons represent each key topic.
+ - Can be installed as a progressive web app (but has no offline capability).
 
 ## Content
 This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 150 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 475 transcribed pages, of which 400 have been entered into the Archive. The detailed status of transcription is as follows:
@@ -81,3 +80,7 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - Redesigned home page including daily featured excerpts.
 - Floating search bar available on all pages; press '/' to bring up the search bar anywhere on the page.
 - Improved support for devices with small screens.
+### July 2025 release:
+ - Auto complete menu drops down from the floating search bar.
+ - Illustrate many pages with icons.
+ - More material added to the [2016 Winter Retreat](event:WR2016).

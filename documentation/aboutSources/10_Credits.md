@@ -23,6 +23,7 @@ The Archive relies upon many common open-source and freeware tools. In addition 
 - Want to Help?: Somkid
 - Acknowledgements: Jonny Breeze
 - Icons from [Lucide](https://lucide.dev/), [FontAwesome](https://fontawesome.com/v4/icons/), and [ReShot](https://www.reshot.com/)
+- Key topic icons created by Ajahn Kovilo and ChatGPT
 
 -----
 
