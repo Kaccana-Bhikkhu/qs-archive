@@ -12,7 +12,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
         <link rel="manifest" href="assets/site.webmanifest">
 
-        <style id="noscript-style-block">
+        <style id="script-style-block">
             .noscript-show {
                 display: block !important;
             }
@@ -24,7 +24,7 @@
             }
         </style>
         <script> <!--Remove the above styles when scripting is enabled-->
-            document.getElementById("noscript-style-block").remove();
+            document.getElementById("script-style-block").textContent = ".javascript-hide {display: none !important;}";
         </script>
     </head>
 	<body class="main-page bg-gradient">

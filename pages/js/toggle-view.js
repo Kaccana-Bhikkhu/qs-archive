@@ -10,17 +10,18 @@ function setVisible(element,newVisible,changeURL) {
         return;
 
     let body = document.getElementById(element.id + ".b");
-    let isVisible = body.style.display != "none";
+    let isVisible = window.getComputedStyle(body).display != "none";
 
     if (newVisible == isVisible)
         return;
 
     if (element.classList.contains("hide-self")) { // Hide ourselves when showing the body
         body.style.display = "";
-        element.style.display = "none";
         for (let n = 1; n <= 4; n++) {
-            body.classList.remove(`hide-thin-screen-${n}`) // Remove width-conditional hiding classes
+            body.classList.remove(`hide-thin-screen-${n}`); // Remove width-conditional hiding classes
         }
+        body.classList.remove("javascript-hide");
+        element.style.display = "none";
     } else {
         if (body.style.display == "none") {
             body.style.display = "";
@@ -55,9 +56,6 @@ function clickListener(event) {
 export function loadToggleView(frame) {
     if (!frame)
         frame = document;
-    for (let el of frame.getElementsByClassName("javascript-hide")) {
-        el.style.display = "none";
-    }
 
     let params = frameSearch()
     let initView = params.has("showAll") ? true : (params.has("hideAll") ? false : null)
