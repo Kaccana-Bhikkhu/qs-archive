@@ -2172,12 +2172,11 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
     formatter = Formatter()
     formatter.SetHeaderlessFormat()
 
-    topicDetailPage = next(DetailedKeyTopics(indexDir,topicDir))
-
     topicList = list(gDatabase["keyTopic"])
     for topicNumber,topic in enumerate(gDatabase["keyTopic"].values()):
-        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),HtmlIcon("Key.png") + " " + topic["topic"] + ": Featured excerpts")
+        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),topic["topic"] + ": Featured excerpts")
         page = Html.PageDesc(info)
+        page.AppendContent(Utils.PosixJoin("topics",topic["code"] + ".png"),section="titleIcon")
         page.AppendContent("Featured excerpts about " + topic["topic"],section="citationTitle")
         page.keywords = ["Key topics",topic["topic"]]
 
@@ -2337,7 +2336,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
 
                     with a.h3():
                         a(HtmlIcon(Utils.PosixJoin("topics",
-                                topic["listFile"].replace(".html",".png"))))
+                                topic["code"] + ".png")))
                         a(topic["topic"])
                 
                     with a.p():
@@ -2376,6 +2375,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                 if not printPage:
                     with a.a().i(Class = "fa fa-minus-square toggle-view",id=topicCode):
                         pass
+                    a("&nbsp;" + HtmlIcon(Utils.PosixJoin("topics",topicCode + ".png")))
                 with a.span(style="text-decoration: underline;" if printPage else ""):
                     a(HtmlKeyTopicLink(topicCode,count=True))
             with a.div(id=topicCode + ".b"):
