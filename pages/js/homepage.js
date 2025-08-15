@@ -117,20 +117,19 @@ class MeditationTimer {
         this.playButton.addEventListener('click', () => this.toggleTimer());
         this.resetButton.addEventListener('click', () => this.resetTimer());
         this.durationSlider.addEventListener('input', (e) => this.updateDuration(e));
+
+        this.updateDisplay();
     }
 
     toggleTimer() {
         this.isActive = !this.isActive;
-        const playButtonIcon = this.playButton.querySelector('img');
-        playButtonIcon.src = this.isActive ? 
-            'images/icons/pause.svg' : 
-            'images/icons/play.svg';
 
         if (this.isActive) {
             this.startTimer();
         } else {
             this.pauseTimer();
         }
+        this.updateDisplay();
     }
 
     startTimer() {
@@ -171,6 +170,10 @@ class MeditationTimer {
 
     updateDisplay() {
         this.timeDisplay.textContent = formatTime(this.timeLeft);
+        const playButtonIcon = this.playButton.querySelector('img');
+        playButtonIcon.src = this.isActive ? 
+            'images/icons/pause.svg' : 
+            'images/icons/play.svg';
     }
 
     handleTimerComplete() {
