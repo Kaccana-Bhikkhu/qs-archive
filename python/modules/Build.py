@@ -2328,7 +2328,28 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     menuItem = Html.PageInfo("Compact",Utils.PosixJoin(indexDir,"KeyTopics.html"),"Key topics")
     yield menuItem.AddQuery("hideAll")
 
-    def KeyTopicList(keyTopic: dict) -> tuple[str,str,str]:     
+    a = Airium()
+    with a.div(Class='explore-content'):
+        with a.div(Class='exploration-paths'):
+            for topic in gDatabase["keyTopic"].values():
+                with a.a(Class='path-card', href=Utils.PosixJoin("../","topics",topic["listFile"])):
+                    with a.h3():
+                        a(HtmlIcon(Utils.PosixJoin("topics",
+                                                       topic["listFile"].replace(".html",".png"))))
+                        a(topic["topic"])
+                    with a.p().i():
+                        a("Subtopics...")
+
+    page = Html.PageDesc(menuItem._replace(title="Key topics"))
+    page.AppendContent(str(a))
+    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
+
+    page.keywords = ["Key topics"]
+    page.AppendContent(f"Key topics",section="citationTitle")
+
+    yield page
+
+    """def KeyTopicList(keyTopic: dict) -> tuple[str,str,str]:     
         clusterLinks = []
         for tag in keyTopic["subtopics"]:
             if gOptions.keyTopicsLinkToTags:
@@ -2357,7 +2378,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics",section="citationTitle")
 
-    yield page
+    yield page"""
 
 def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemos = False) -> Html.PageDescriptorMenuItem:
     "Yield a page listing all topic headings."

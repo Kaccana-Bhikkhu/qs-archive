@@ -917,17 +917,20 @@ main.main-content p {
 
 /* Style for icons */
 .exploration-paths svg.lucide {
-	width: 32px;
-	height: 32px;
+	width: 44px;
+	height: 44px;
 	margin: 0 15px 0 5px;
 }
 
 .exploration-paths h3 {
 	display:flex;
+	align-items: center;
+	font-size: 1.4rem;
 }
 
 .exploration-paths h3 img {
-	width: 32px;
+	width: 44px;
+	height: 44px;
 	margin: 0 15px 0 5px;
 }
 
