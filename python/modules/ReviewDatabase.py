@@ -296,8 +296,9 @@ def FeaturedExcerptSummary(subtopicOrTag: str,header: bool = False,printFTag: bo
     featuredExcerpts = sorted(featuredExcerpts,key=lambda x: Database.FTagOrder(x,tags))
     for x in featuredExcerpts:
         fTagAndOrder = Database.FTagAndOrder(x,tags)
+        flag = "" if fTagAndOrder[2] == ParseCSV.FTagOrderFlag.EVERYWHERE else fTagAndOrder[2]
         items = [
-            str(fTagAndOrder[1]),
+            str(fTagAndOrder[1]) + flag,
             Database.ItemCode(x),
             x["duration"],
             x["kind"],
@@ -329,6 +330,16 @@ def CheckFTagOrder() -> None:
             Alert.notice(subtopicOrTag,f"has {' and '.join(problems)}:",lineSpacing=0)
             print(FeaturedExcerptSummary(subtopicOrTag["tag"]))
             print()
+    
+    for x in gDatabase["excerpts"]:
+        for n,fTag in enumerate(x["fTags"]):
+            flag = x["fTagOrderFlags"][n]
+            if flag.upper() != ParseCSV.FTagOrderFlag.EVERYWHERE:
+                if flag.upper() in (ParseCSV.FTagOrderFlag.TAG_ONLY,ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC):
+                    if fTag not in Database.KeyTopicTags():
+                        Alert.caution(x,"has fTagOrderFlag",repr(flag),"but",fTag,"is not a subtopic.")
+                    elif flag.upper() == ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC and fTag not in Database.SecondarySubtopics():
+                        Alert.caution(x,"has fTagOrderFlag",repr(flag),"but",fTag,"appears in only one subtopic.")
 
 def LogReviewedFTags() -> None:
     """Write one file for each reviewed subtopic or tag containing its list of featured excerpts so git will flag any changes."""

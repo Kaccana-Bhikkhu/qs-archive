@@ -168,6 +168,15 @@ def SoloSubtopics() -> set[str]:
             returnValue.add(subtopic["tag"])
     return returnValue
 
+@lru_cache(maxsize=None)
+def SecondarySubtopics() -> set[str]:
+    "Return a set of tag names which are subtopics of more than one key topic."
+
+    returnValue = set()
+    for subtopic in gDatabase["subtopic"].values():
+        returnValue.update(subtopic.get("secondarySubtags",()))
+    return returnValue
+
 def SubtopicsAndTags() -> Iterable[str]:
     "Iterate over all subtopics and then over all tags not in subtopics"
     yield from gDatabase["subtopic"].values()
