@@ -103,10 +103,10 @@ class MeditationTimer {
         this.interval = null;
         this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         
-        this.initializeDOM();
+        this.reloadPage();
     }
 
-    initializeDOM() {
+    reloadPage() {
         // DOM elements must be updated each time we reload the main page
         this.timeDisplay = document.getElementById('timeDisplay');
         this.playButton = document.getElementById('timerPlayButton');
@@ -117,6 +117,8 @@ class MeditationTimer {
         this.playButton.addEventListener('click', () => this.toggleTimer());
         this.resetButton.addEventListener('click', () => this.resetTimer());
         this.durationSlider.addEventListener('input', (e) => this.updateDuration(e));
+        this.durationSlider.value = this.duration;
+        this.durationDisplay.textContent = this.duration;
 
         this.updateDisplay();
     }
@@ -227,7 +229,7 @@ function initializeHomepage() {
     if (!featuredExcerptContainer)
         return;
     
-    gMeditationTimer.initializeDOM();
+    gMeditationTimer.reloadPage();
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
