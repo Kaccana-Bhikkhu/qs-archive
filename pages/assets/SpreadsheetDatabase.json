@@ -22102,7 +22102,7 @@
           ],
           "tags": [
             "Right Livelihood",
-            "Learning",
+            "Education",
             "Military",
             "Monastic life/Motivation"
           ],
@@ -22115,7 +22115,7 @@
         "Commerce/economics",
         "Right Intention",
         "Right Livelihood",
-        "Learning",
+        "Education",
         "Idealism",
         "Requisites",
         "Happiness"
@@ -28735,7 +28735,7 @@
         "Cultural context",
         "Buddhist identity",
         "Culture/West",
-        "Learning"
+        "Education"
       ],
       "qTagCount": 2,
       "clips": [
@@ -30938,7 +30938,7 @@
         }
       ],
       "tags": [
-        "Learning",
+        "Education",
         "Pāli",
         "History/Thai Buddhism",
         "Ajahn Chah",
@@ -31023,7 +31023,7 @@
         }
       ],
       "tags": [
-        "Learning",
+        "Education",
         "Pāli",
         "Culture/Thailand",
         "Study monks",
@@ -35500,7 +35500,7 @@
       "tags": [
         "History/Thai Buddhism",
         "Children",
-        "Learning",
+        "Education",
         "Meditation",
         "Three Refuges",
         "Chanting",
@@ -89873,13 +89873,14 @@
       "tags": [
         "Culture/Thailand",
         "Sutta",
+        "Education",
         "Learning",
         "History/Thai Buddhism",
         "Ajahn Buddhadāsa",
         "Ajahn Mahā Boowa",
         "Ajahn Mun"
       ],
-      "qTagCount": 3,
+      "qTagCount": 4,
       "clips": [
         [
           "$",
@@ -91613,7 +91614,7 @@
       "tags": [
         "Ajahn Chah",
         "Science",
-        "Learning"
+        "Education"
       ],
       "qTagCount": 3,
       "clips": [
@@ -96101,7 +96102,7 @@
       "tags": [
         "Eightfold Path",
         "Nibbāna",
-        "Learning",
+        "Education",
         "Work",
         "Lay life",
         "Human",
@@ -128357,7 +128358,7 @@
       "primaries": 1,
       "htmlFile": "learning.html",
       "sessionCount": 1,
-      "excerptCount": 98,
+      "excerptCount": 93,
       "fTagCount": 4,
       "listIndex": 121
     },
@@ -142169,7 +142170,10 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "education.html",
-      "excerptCount": 1,
+      "partOfSubtopics": [
+        "Politics and society"
+      ],
+      "excerptCount": 9,
       "listIndex": 910
     },
     "Commerce/economics": {
@@ -143881,7 +143885,7 @@
       "text": "Skillful qualities (81) [kusalā dhammā]",
       "tag": "Skillful qualities",
       "subtagCount": 129,
-      "subtagExcerptCount": 2103
+      "subtagExcerptCount": 2102
     },
     {
       "level": 2,
@@ -145212,7 +145216,7 @@
       "text": "Seven Treasures (7) [satta dhanā]",
       "tag": "Treasures",
       "subtagCount": 12,
-      "subtagExcerptCount": 636
+      "subtagExcerptCount": 632
     },
     {
       "level": 3,
@@ -145253,12 +145257,12 @@
       "flags": "*",
       "name": "Learning",
       "pali": "suta",
-      "excerptCount": 98,
+      "excerptCount": 93,
       "subsumed": false,
-      "text": "Learning (98) [suta]",
+      "text": "Learning (93) [suta]",
       "tag": "Learning",
       "subtagCount": 6,
-      "subtagExcerptCount": 264
+      "subtagExcerptCount": 259
     },
     {
       "level": 4,
@@ -153529,7 +153533,7 @@
       "text": "Everyday life practice (37)",
       "tag": "Everyday life",
       "subtagCount": 71,
-      "subtagExcerptCount": 834
+      "subtagExcerptCount": 837
     },
     {
       "level": 2,
@@ -153974,7 +153978,7 @@
       "text": "Community (61)",
       "tag": "Community",
       "subtagCount": 34,
-      "subtagExcerptCount": 354
+      "subtagExcerptCount": 358
     },
     {
       "level": 3,
@@ -154197,9 +154201,9 @@
       "flags": "",
       "name": "Education",
       "pali": "",
-      "excerptCount": 1,
+      "excerptCount": 9,
       "subsumed": false,
-      "text": "Education (1)",
+      "text": "Education (9)",
       "tag": "Education"
     },
     {
@@ -154771,7 +154775,7 @@
       "sessions": 4,
       "excerpts": 44,
       "answersListenedTo": 44,
-      "tagsApplied": 474,
+      "tagsApplied": 475,
       "invalidTags": 0,
       "duration": "2:52:36"
     },
@@ -159820,6 +159824,7 @@
       "topicCode": "everyday",
       "progressMemo": "",
       "subtags": {
+        "Education": "+",
         "Service": "-",
         "Activism": "+",
         "Non-profit organizations": "-",
@@ -159829,7 +159834,7 @@
         "Military": "-"
       },
       "htmlPath": "clusters/politics-and-society.html",
-      "excerptCount": 84,
+      "excerptCount": 91,
       "fTagCount": 5
     },
     "Commerce/economics": {
@@ -160860,7 +160865,7 @@
         "Commerce/economics",
         "Technology"
       ],
-      "excerptCount": 545,
+      "excerptCount": 550,
       "fTagCount": 40
     }
   },
