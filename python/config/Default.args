@@ -50,7 +50,6 @@
 // Build options:
 --pagesDir pages
 --globalTemplate templates/Global.html
---redirectToJavascript
 --maxPlayerTitleLength 1000
 --keyTopicsLinkToTags
 
