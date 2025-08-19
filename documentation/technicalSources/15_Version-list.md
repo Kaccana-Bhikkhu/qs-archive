@@ -1,5 +1,5 @@
 [Ajahn Pasanno in Thailand, December 2015](photo:LPP with novices Thailand Dec 2015.jpg)
-# Version list
+
 - 1.0: First publicly available prototype; contains all questions from Thanksgiving Retreats 2013-2015 from pre-existing transcriptions; subject tags are based on transcription text rather than audio content.
 
 - 1.9: Index stories, quotes, and readings in addition to questions. Added Spirit Rock daylong events from 2010 and 2011. The tag list has expanded to include tags from many events transcribed on paper that have not yet been entered into the online archive. Almost all documentation still applies to version 1.0.
@@ -109,3 +109,5 @@
 - 6.0 (June 2025 release) Home page redesigned by Chris Claudius. Floating search bar available from the main menu and by pressing '/' anywhere on a page. SetupFeatured.py manages the daily featured excerpt history database. Improved support for small screens. Dispatch pages explain the features of the archive in detail. Html sitemap. Remove NN_ from the about page filenames. Html redirects from pages which have moved.
 
 - 6.1 (July 2025 release) Add auto complete to floating search bar. Add icons to search results and many other pages. Add more sessions to Winter Retreat 2016. More teachers have given permission for Abhayagiri's 20th anniversary event.
+
+- 6.2 (August 2025 release) Color icons represent each key topic. Can be installed as a progressive web app (but has no offline capability).

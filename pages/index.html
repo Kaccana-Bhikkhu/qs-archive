@@ -7,7 +7,26 @@
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
-	</head>
+	    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link rel="manifest" href="assets/site.webmanifest">
+
+        <style id="script-style-block">
+            .noscript-show {
+                display: block !important;
+            }
+            .noscript-hide {
+                display: none !important;
+            }
+            .hide-self {
+                display: none !important;
+            }
+        </style>
+        <script> <!--Remove the above styles when scripting is enabled-->
+            document.getElementById("script-style-block").textContent = ".javascript-hide {display: none !important;}";
+        </script>
+    </head>
 	<body class="main-page bg-gradient">
 	<div class="min-h-screen bg-gradient">
 		<header class="header">
@@ -214,6 +233,10 @@
 	<script src="./js/audioPlayer.js" type="module"></script>
 	<script src="./js/audioChip.js" type="module"></script>
 	<script src="./js/frame.js" type="module"></script>
+    <script type="module">
+        import {openLocalPage} from "./js/frame.js";
+        globalThis.openLocalPage = openLocalPage;
+    </script>
 	</body>
 </html>
 

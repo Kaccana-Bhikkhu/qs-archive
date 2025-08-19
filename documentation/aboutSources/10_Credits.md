@@ -1,5 +1,5 @@
 [Thai New Year 2023](photo:Thai New Year 2023.jpg)
-# Acknowledgements
+
 
 This project would not have been possible without the assistance of many people. It would have been prohibitively expensive and time-consuming if not built upon previous open-source software projects.
 
@@ -23,6 +23,7 @@ The Archive relies upon many common open-source and freeware tools. In addition 
 - Want to Help?: Somkid
 - Acknowledgements: Jonny Breeze
 - Icons from [Lucide](https://lucide.dev/), [FontAwesome](https://fontawesome.com/v4/icons/), and [ReShot](https://www.reshot.com/)
+- Key topic icons created by Ajahn Kovilo and ChatGPT
 
 -----
 

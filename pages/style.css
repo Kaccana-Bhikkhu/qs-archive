@@ -214,6 +214,15 @@ p.x-cite {
 	margin-left: 14em;
 }
 
+blockquote {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    unicode-bidi: isolate;
+}
+
 @media screen and (max-width: 600px) {
 	.indent-1 {
 		margin-left: 1em;
@@ -908,17 +917,20 @@ main.main-content p {
 
 /* Style for icons */
 .exploration-paths svg.lucide {
-	width: 32px;
-	height: 32px;
+	width: 44px;
+	height: 44px;
 	margin: 0 15px 0 5px;
 }
 
 .exploration-paths h3 {
 	display:flex;
+	align-items: center;
+	font-size: 1.4rem;
 }
 
 .exploration-paths h3 img {
-	width: 32px;
+	width: 44px;
+	height: 44px;
 	margin: 0 15px 0 5px;
 }
 
@@ -928,6 +940,7 @@ main.main-content p {
 }
 
 .path-card {
+	position: relative;
     background: var(--color-bamboo);
     padding: 1.5rem;
     border-radius: 0.5rem;
@@ -937,6 +950,21 @@ main.main-content p {
 	display: flex;
     flex-direction: column;
     justify-content: space-around;
+	cursor: pointer;
+}
+
+/* Hack to work around prohibited nested a tags: https://codepen.io/pwkip/pen/oGMZjb */
+.path-card .path-overlay {
+	position:absolute;
+  	left:0;
+  	top:0;
+  	bottom:0;
+  	right:0;
+}
+
+.path-card a:not(.path-overlay) {
+	position: relative;
+	z-index: 1;
 }
 
 .path-card:hover {

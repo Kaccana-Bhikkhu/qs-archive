@@ -1,6 +1,6 @@
 [](photo:AjahnPasanno.jpg)
 
-# Introduction
+
 
 <!--(if gOptions.uploadMirror == "preview")-->
 Pre-release version. Build date: $!today!$.

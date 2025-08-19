@@ -1,6 +1,6 @@
 <!--TITLE:Want to help?-->
 [Preparing for Abhayagiri's 20th Anniversary Celebration](photo:Abhayagiri 20th Anniversary.jpg)
-# Want to Help?
+
 If you would like to contribute to the Ajahn Pasanno Archive, here are some possibilities.
 
 -----

@@ -1,5 +1,5 @@
 [Abhayagiri Reception Hall Buddha Image](photo:Abhayagiri Buddha Rupa.jpg)
-# License
+
 
 This license applies to all new material created as part of the Ajahn Pasanno Archive. This includes all versions of the website itself, the json database files, the material on github, and all versions of the main Google sheet used to generate the database and website. It neither grants nor removes permissions regarding material used in the Archive obtained from other sources.
 
@@ -17,7 +17,7 @@ Please contact [questionsandstories@abhayagiri.org](mailto:questionsandstories@a
 
 __2. The hierarchical tagging scheme and documentation__ are © $!gOptions.info.releaseYear!$ Abhayagiri Monastery and licensed under [_CC BY-NC_](https://creativecommons.org/licenses/by-nc/4.0/). This consists of the Tags and TagCluster sheets in the APQS Archive main spreadsheet and the markdown files in the documentation directory.
 
-__3. The database format and website generation engine__ are dedicated to the public domain under [_CC 0_](https://creativecommons.org/publicdomain/zero/1.0/). This includes all source code and all sheets in the APQS Archive main spreadsheet except the Tags sheet and sheets containing transcribed audio recordings. It explicitly excludes all audio files and any file or spreadsheet sheet which contains transcribed audio recordings.
+__3. The database format and website generation engine__ are dedicated to the public domain under [_CC 0_](https://creativecommons.org/publicdomain/zero/1.0/). This includes all source code and all sheets in the APQS Archive main spreadsheet except the Tags and TagCluster sheets and sheets containing transcribed audio recordings. It explicitly excludes all audio files and any file or spreadsheet sheet which contains transcribed audio recordings.
 
 This license applies to all versions of the Archive that have been posted on abhayagiri.org. However, we encourage anyone distributing or mirroring the Archive to keep your distribution up to date.
 
@@ -25,7 +25,7 @@ This license applies to all versions of the Archive that have been posted on abh
 
 ### Use in Generative AI
 
-Given the current trajectory of artificial intelligence, it seems plausible that a computer trained on hours of audio and visual recordings of a person answering questions on a subject could recreate that person's responses to similar questions. One could imagine a video screen of Ajahn Pasanno sitting on the Abhayagiri Dhamma seat and responding to verbal questions in real time. Magical animated paintings of dead people who converse with Harry Potter and his friends fit perfectly in their fictional world. A real life AI simulacrum of Ajahn Pasanno seems distinctly creepy.
+Given the current trajectory of artificial intelligence, it seems plausible that a computer trained on hours of audio and visual recordings of a person answering questions on a subject could recreate that person's responses to similar questions. One could imagine a video screen of Ajahn Pasanno sitting on the Abhayagiri Dhamma seat and responding to verbal questions in real time. Magical animated paintings of dead people who converse with Harry Potter and his friends fit perfectly in their fictional world. An AI simulacrum of Ajahn Pasanno seems distinctly creepy.
 
 I mentioned these thoughts to Ajahn Pasanno in June 2023, and he concurred with my impressions. He added that he doesn't think humans are currently discerning enough to make skillful use of artificial intelligence.
 

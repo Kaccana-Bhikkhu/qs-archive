@@ -28,8 +28,8 @@ SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="subMenu")
 LONG_SUBMENU_STYLE = BASE_MENU_STYLE | dict(menuSection="customSubMenu",
                            menuClass=Html.ResponsivePopupMenu,
                            responsiveContainer = "",
-                           wrapper=Html.Tag("div",{"class":"sublink hide-thin-screen-3"}),
-                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup hide-wide-screen-3"}))
+                           wrapper=Html.Tag("div",{"class":"sublink hide-thin-screen-3 noscript-show"}),
+                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink-popup hide-wide-screen-3 noscript-hide"}))
 EXTRA_MENU_STYLE = BASE_MENU_STYLE | dict(menuClass=Html.ResponsivePopupMenu,
                                           wrapper=Html.Tag("div",{"class":"sublink2"}) + "\n<hr>\n",
                                           popupMenu_wrapper=Html.Tag("div",{"class":"sublink2-popup"}) + "\n<hr>\n")
@@ -562,7 +562,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page = Html.PageDesc(info)
 
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
-    page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1"})(printableLinks))
+    page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
     page.AppendContent(HtmlIcon("tags"),section="titleIcon")
@@ -1575,6 +1575,7 @@ def EventsMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     basePage = Html.PageDesc()
+    basePage.AppendContent("calendar",section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(eventMenu,**SUBMENU_STYLE):
         if page.info.titleInBody.startswith("Events – "):
             _,subSection = page.info.titleInBody.split(" – ")
@@ -2013,7 +2014,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
         html = markdown.markdown(markdownText,extensions = ["sane_lists",NewTabRemoteExtension()])
         a.hr()
         with a.h2():
-            a.a(href="#").i(Class="fa fa-plus-square toggle-view",id="TOC")
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
             a("Table of Contents")
         with a.div(Class="listing javascript-hide",id="TOC.b"):
             a(html)
@@ -2099,7 +2100,6 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             titleInBody += " – " + eventInfo["subtitle"]
 
         page = Html.PageDesc(Html.PageInfo(eventInfo["title"],Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
-        page.AppendContent("calendar",section="titleIcon")
         page.AppendContent(str(a))
         page.keywords = ["Event",eventInfo["title"]]
         page.AppendContent(f"Event: {eventInfo['title']}",section="citationTitle")
@@ -2122,6 +2122,7 @@ def ExtractHtmlBody(fileName: str) -> str:
 
 def DocumentationMenu(directory: str,makeMenu = True,
                       specialFirstItem:Html.PageInfo|None = None, menuTitle:str|None = None,
+                      menuStyle: dict = {},
                       extraItems:Iterator[Iterator[Html.PageDescriptorMenuItem]] = []) -> Html.PageDescriptorMenuItem:
     """Read markdown pages from documentation/directory, convert them to html, 
     write them in pages/about, and create a menu out of them.
@@ -2159,7 +2160,7 @@ def DocumentationMenu(directory: str,makeMenu = True,
 
     if makeMenu:
         basePage = Html.PageDesc()
-        yield from basePage.AddMenuAndYieldPages(aboutMenu,**EXTRA_MENU_STYLE)
+        yield from basePage.AddMenuAndYieldPages(aboutMenu,**menuStyle)
     else:
         yield from aboutMenu
 
@@ -2171,12 +2172,11 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
     formatter = Formatter()
     formatter.SetHeaderlessFormat()
 
-    topicDetailPage = next(DetailedKeyTopics(indexDir,topicDir))
-
     topicList = list(gDatabase["keyTopic"])
     for topicNumber,topic in enumerate(gDatabase["keyTopic"].values()):
-        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),HtmlIcon("Key.png") + " " + topic["topic"] + ": Featured excerpts")
+        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),topic["topic"] + ": Featured excerpts")
         page = Html.PageDesc(info)
+        page.AppendContent(Utils.PosixJoin("topics",topic["code"] + ".png"),section="titleIcon")
         page.AppendContent("Featured excerpts about " + topic["topic"],section="citationTitle")
         page.keywords = ["Key topics",topic["topic"]]
 
@@ -2303,11 +2303,13 @@ def TagClusterPages(topicDir: str):
 def AddTopicButtons(page: Html.PageDesc) -> None:
     """Add buttons to show and hide subtopics."""
 
-    page.AppendContent('<div class="hide-thin-screen-1">')
+    page.AppendContent('<div class="hide-thin-screen-1 noscript-show">')
     page.AppendContent(Html.Tag("button",{"type":"button",
-                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("showAll").file + "#keep_scroll")})("Expand all"))
+                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("showAll").file + "#keep_scroll"),
+                                          "class":"noscript-hide"})("Expand all"))
     page.AppendContent(Html.Tag("button",{"type":"button",
-                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file + "#keep_scroll")})("Contract all"))
+                                          "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file + "#keep_scroll"),
+                                          "class":"noscript-hide"})("Contract all"))
     
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html")})("Printable")
     if gOptions.uploadMirror == "preview":
@@ -2325,30 +2327,33 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     menuItem = Html.PageInfo("Compact",Utils.PosixJoin(indexDir,"KeyTopics.html"),"Key topics")
     yield menuItem.AddQuery("hideAll")
 
-    def KeyTopicList(keyTopic: dict) -> tuple[str,str,str]:     
-        clusterLinks = []
-        for tag in keyTopic["subtopics"]:
-            if gOptions.keyTopicsLinkToTags:
-                link = Utils.PosixJoin("../",Utils.AppendToFilename(gDatabase["subtopic"][tag]["htmlPath"],"-relevant"))
-            else:
-                link = Utils.PosixJoin("../",topicDir,keyTopic["listFile"]) + "#" + gDatabase["tag"][tag]["htmlFile"].replace(".html","")
-            text = gDatabase["subtopic"][tag]["displayAs"]
-            clusterLinks.append(Html.Tag("a",{"href":link})(text))
+    a = Airium()
+    with a.div(Class='explore-content'):
+        with a.div(Class='exploration-paths'):
+            for topic in gDatabase["keyTopic"].values():
+                with a.div(Class='path-card'):
+                    a.a(Class='path-overlay',href=Utils.PosixJoin("../",topicDir,topic["listFile"]))
 
-        clusterList = Html.Tag("p",{"class":"indent-1"})(" &emsp; ".join(clusterLinks))
-
-        if keyTopic["shortNote"]:
-            clusterList = "\n".join([clusterList,Html.Tag("p",{"class":"indent-1"})(keyTopic["shortNote"])])
-        heading = Html.Tag("a",{"href": Utils.PosixJoin("../",topicDir,keyTopic["listFile"])})(keyTopic["topic"])
-        return heading,clusterList,keyTopic["code"]
-
-    pageContent = Html.ToggleListWithHeadings(gDatabase["keyTopic"].values(),KeyTopicList,
-                                        bodyWrapper=Html.Tag("div",{"class":"listing"}),
-                                        addMenu=False,betweenSections="\n")
+                    with a.h3():
+                        a(HtmlIcon(Utils.PosixJoin("topics",
+                                topic["code"] + ".png")))
+                        a(topic["topic"])
+                
+                    with a.p():
+                        clusterLinks = []
+                        for tag in topic["subtopics"]:
+                            if gOptions.keyTopicsLinkToTags:
+                                link = Utils.PosixJoin("../",Utils.AppendToFilename(gDatabase["subtopic"][tag]["htmlPath"],"-relevant"))
+                            else:
+                                link = Utils.PosixJoin("../",topicDir,topic["listFile"]) + "#" + gDatabase["tag"][tag]["htmlFile"].replace(".html","")
+                            text = gDatabase["subtopic"][tag]["displayAs"]
+                            clusterLinks.append(Html.Tag("a",{"href":link})(text))
+                        
+                        clusterList = " &emsp; ".join(clusterLinks)
+                        a(Html.HiddenBlock(clusterList,"subtopics",blockID=topic["code"],blockTag="p"))
 
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
-    AddTopicButtons(page)
-    page.AppendContent(pageContent)
+    page.AppendContent(str(a))
     page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
@@ -2370,6 +2375,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                 if not printPage:
                     with a.a().i(Class = "fa fa-minus-square toggle-view",id=topicCode):
                         pass
+                    a("&nbsp;" + HtmlIcon(Utils.PosixJoin("topics",topicCode + ".png")))
                 with a.span(style="text-decoration: underline;" if printPage else ""):
                     a(HtmlKeyTopicLink(topicCode,count=True))
             with a.div(id=topicCode + ".b"):
@@ -2510,7 +2516,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         yield printPage
 
         # Hack: Add buttons to basePage after yielding printPage so that all subsequent pages have buttons at the top.
-        basePage.AppendContent('<div class="hide-thin-screen-1">')
+        basePage.AppendContent('<div class="hide-thin-screen-1 noscript-show">')
         basePage.AppendContent(Html.Tag("button",{"type":"button",
                                                   "onclick":Utils.JavascriptLink(contractAllItem.AddQuery("showAll").file + "#keep_scroll")
                                                   })("Expand all"))
@@ -2848,8 +2854,10 @@ def main():
     sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
     sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
-    technicalMenu = DocumentationMenu("technical",menuTitle="Technical")
-    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",extraItems=[technicalMenu]))
+    technicalMenu = DocumentationMenu("technical",menuTitle="Technical",
+                                      menuStyle=LONG_SUBMENU_STYLE | dict(menuSection="customSubMenu2"))
+    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",
+                                         menuStyle=LONG_SUBMENU_STYLE,extraItems=[technicalMenu]))
     sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
 
     sitemapMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))

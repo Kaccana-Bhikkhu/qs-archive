@@ -69,7 +69,6 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = ".
             htmlFiles[Utils.ReplaceExtension(fileName,".html")] = html
         fileContents = htmlFiles
 
-    titleInPage = "About the Ajahn Pasanno Archive"
     renderedPages = []
     for fileName,fileText in fileContents.items():
         titleMatch = re.search(r"<!--TITLE:(.*?)-->",fileText)
@@ -80,7 +79,7 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = ".
             title = m[1].replace("-"," ")
 
         noNumbers = re.sub(r"^[0-9]+_","",fileName)
-        page = Html.PageDesc(Html.PageInfo(title,Utils.PosixJoin(destDir,noNumbers if html else fileName),titleInPage))
+        page = Html.PageDesc(Html.PageInfo(title,Utils.PosixJoin(destDir,noNumbers if html else fileName)))
         page.AppendContent(fileText)
         page.sourceFile = Utils.PosixJoin(sourceDir,Utils.ReplaceExtension(fileName,".md"))
         renderedPages.append(page)

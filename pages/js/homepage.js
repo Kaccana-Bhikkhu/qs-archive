@@ -40,7 +40,7 @@ function displayFeaturedExcerpt() {
 
     let excerptToDisplay = gFeaturedDatabase.calendar[calendarModulus(gTodaysExcerpt + gSearchFeaturedOffset)];
     
-    let title = "Today's featured excerpt:"
+    let title = "Today's featured excerpt"
     if (gSearchFeaturedOffset > 0) {
         let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
         while (gRandomExcerpts.length < gSearchFeaturedOffset) {
@@ -48,11 +48,12 @@ function displayFeaturedExcerpt() {
             gRandomExcerpts.push(excerptCodes[randomIndex]);
         }
         excerptToDisplay = gRandomExcerpts[gSearchFeaturedOffset - 1];
-        title = `Random excerpt (${gSearchFeaturedOffset}):`;
+        title = `Random excerpt (${gSearchFeaturedOffset})`;
     } else if (gSearchFeaturedOffset < 0) {
         let pastDate = new Date();
         pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
-        title = `Excerpt featured on ${pastDate.toDateString()}:`;
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        title = `Excerpt featured on ${pastDate.toLocaleDateString("en-us",options)}`;
     }
 
     let displayArea = document.getElementById("random-excerpt");
@@ -102,17 +103,17 @@ class MeditationTimer {
         this.interval = null;
         this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         
-        // DOM Elements
+        this.initializeDOM();
+    }
+
+    initializeDOM() {
+        // DOM elements must be updated each time we reload the main page
         this.timeDisplay = document.getElementById('timeDisplay');
         this.playButton = document.getElementById('timerPlayButton');
         this.resetButton = document.getElementById('resetButton');
         this.durationSlider = document.getElementById('durationSlider');
         this.durationDisplay = document.getElementById('durationDisplay');
 
-        this.initializeListeners();
-    }
-
-    initializeListeners() {
         this.playButton.addEventListener('click', () => this.toggleTimer());
         this.resetButton.addEventListener('click', () => this.resetTimer());
         this.durationSlider.addEventListener('input', (e) => this.updateDuration(e));
@@ -223,6 +224,7 @@ function initializeHomepage() {
     if (!featuredExcerptContainer)
         return;
     
+    gMeditationTimer.initializeDOM();
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
@@ -231,7 +233,6 @@ function initializeHomepage() {
         // links in excerpts are relative to depth 1 pages
 
     updateDate();
-    new MeditationTimer();
 }
 
 function initializeSearchFeatured() {
@@ -251,7 +252,7 @@ export async function loadHomepage(loadedFrame) {
 
     dropdownMenuClick(null); // Close all dropdown menus
     gNavBar.querySelector('.main-nav').classList.remove("active");
-
+    
     if (!gFeaturedDatabase) {
         await fetch('./assets/FeaturedDatabase.json')
         .then((response) => response.json())
@@ -495,6 +496,7 @@ function countFoundExcerpts() {
     displayExcerptCount(gSearchers["x"].foundItems.length);
 }
 
+let gMeditationTimer = null;
 document.addEventListener('DOMContentLoaded', () => {
     // Called only once after pages/index.html DOM is loaded
     debugLog("DOMContentLoaded event");
@@ -502,6 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	configureLinks(document.querySelector("footer"),"index.html");
 
     setupNavMenuTriggers();
+    gMeditationTimer = new MeditationTimer();
 
     // Display the number of excerpts found with this search
     document.getElementById("floating-search-input").addEventListener("input",countFoundExcerpts);

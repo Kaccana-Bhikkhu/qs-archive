@@ -356,13 +356,18 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 Alert.warning(reference,"does not specify pdfPageOffset.")
         return pageOffset
 
-    def NoScriptForLocalReferences(url:str) -> str:
-        """Add #noscript to the end of local references to break out of frame.js."""
+    def ProcessLocalReferences(url:str) -> str:
+        """Remove the redundant ../pages portion of local references to html pages;
+        add #noscript to the end of local references to non-html pages to break out of frame.js."""
         parsed = urllib.parse.urlparse(url)
-        if parsed.netloc or gOptions.pagesDir in parsed.path.split("/"):
+        if parsed.netloc:
             return url
         else:
-            return url + "#noscript"
+            pagesPath = Utils.PosixNorm(Utils.PosixJoin("../",gOptions.pagesDir))
+            if pagesPath in url:
+                return Utils.PosixNorm(url.replace(pagesPath,""))
+            else:
+                return url + "#noscript"
 
     def ReferenceForm2Substitution(matchObject: re.Match) -> str:
         try:
@@ -377,7 +382,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if page:
                 url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
 
-            url = NoScriptForLocalReferences(url)
+            url = ProcessLocalReferences(url)
             returnValue = f"[{reference['title']}]({url})"
         else:
             returnValue = f"{reference['title']}"
@@ -408,7 +413,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         if page:
            url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
         
-        url = NoScriptForLocalReferences(url)
+        url = ProcessLocalReferences(url)
         return f"]({url})"
 
     def ReferenceForm3(bodyStr: str) -> tuple[str,int]:
@@ -426,7 +431,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         page = ParsePageNumber(matchObject[2])
         if page:
            url +=  f"#page={page + PdfPageOffset(reference)}"
-        url = NoScriptForLocalReferences(url)
+        url = ProcessLocalReferences(url)
 
         items = [reference['title'],f", [{matchObject[2]}]({url})"]
         if reference["attribution"]:
@@ -590,11 +595,11 @@ def LinkReferences() -> None:
     """Add hyperlinks to references contained in the excerpts and annotations.
     Allowable formats are:
     1. [reference](link) - Markdown format for arbitrary hyperlinks
-    2. [title]() or [title](page N) - Titles in Reference sheet; if page N or p. N appears between the parenthesis, link to this page in the pdf, but don't display in the html
+    2. [title]() or [title](page N) - Titles in Reference sheet; if page N or p. N appears between the parentheses, link to this page in the pdf, but don't display in the html
     3. [xxxxx](title) or [xxxxx](title page N) - Apply hyperlink from title to arbitrary text xxxxx
     4. title page N - Link to specific page for titles in Reference sheet which shows the page number
     5. SS N.N - Link to Sutta/vinaya SS section N.N at sutta.readingfaithfully.org
-    6. [reference](SS N.N) - Markdown hyperlink pointing to sutta..
+    6. [reference](SS N.N) - Markdown hyperlink pointing to sutta.
     7. [subpage](pageType:pageName) - Link to a subpage within the QS Archive. Options for pageType are:
         tag - Link to the named tag page - Link to tag subpage and enclose the entire reference in brackets if pageName is ommited
         drilldown - Link to the primary tag given by pageName
