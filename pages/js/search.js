@@ -20,7 +20,7 @@ Object.keys(PALI_DIACRITICS).forEach((letter) => {
     PALI_DIACRITIC_MATCH_ALL[letter] = `[${letter}${PALI_DIACRITICS[letter]}]`;
 });
 
-const DEBUG = false;
+const DEBUG = true;
 
 export function regExpEscape(literal_string) {
     return literal_string.replace(/[-[\]{}()*+!<>=:?.\/\\^$|#\s,]/g, '\\$&');
@@ -103,6 +103,14 @@ function matchEnclosedText(separators,dontMatchAfterSpace) {
     ].join("");
 }
 
+function matchQuotes(quoteChar) {
+    // Returns a regex string that matches the content between quoteChar.
+    // Only stops when another quoteChar or the end of this string is encountered.
+
+    let escapedQuoteChar = regExpEscape(quoteChar);
+    return `${escapedQuoteChar}[^${escapedQuoteChar}]*${escapedQuoteChar}?`;
+}
+
 function substituteWildcards(regExpString) {
     // Convert the following wildcards to RegExp strings:
     // * Match any or no characters
@@ -162,9 +170,6 @@ class SearchTerm extends SearchBase {
 
         this.matchesMetadata = HAS_METADATADELIMITERS.test(searchElement);
 
-        this.negate = searchElement.startsWith("!");
-        searchElement = searchElement.replace(/^!/,"");
-
         if (/^[0-9]+$/.test(searchElement)) // Enclose bare numbers in quotes so 7 does not match 37
             searchElement = '"' + searchElement + '"'
 
@@ -179,15 +184,14 @@ class SearchTerm extends SearchBase {
             aTagMatch = true;
         }
         
-        let unwrapped = searchElement;
-        switch (searchElement[0]) {
-            case '"': // Items in quotes must match on word boundaries.
-                unwrapped = "$" + searchElement.replace(/^"+/,'').replace(/"+$/,'') + "$";
-                break;
-        }
-
+        // Replace quote marks at beginning and end with word boundary markers '$' 
+        let unwrapped = searchElement.replace(/^"+/,'$').replace(/"+$/,'$');
+        // Remove $ boundary markers if the first/last character is not a word character
+        unwrapped = unwrapped .replace(/^\$(?=\W)/,"").replace(/(?<=\W)\$$/,"");
         // Replace inner * and $ with appropriate operators.
         let escaped = substituteWildcards(unwrapped);
+        
+
         let finalRegEx = escaped;
         if (qTagMatch) {
             finalRegEx += "(?=.*//)";
@@ -294,7 +298,7 @@ export class SearchQuery {
     
         // 1. Build a regex to parse queryText into items
         let parts = [
-            matchEnclosedText('""',''),
+            matchQuotes('"'),
                 // Match text enclosed in quotes
             matchEnclosedText('{}',SPECIAL_SEARCH_CHARS),
                 // Match teachers enclosed in braces
@@ -304,15 +308,18 @@ export class SearchQuery {
             "[^ ]+"
                 // Match everything else until we encounter a space
         ];
-        parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
-        let partsSearch = "\\s*(" + parts.join("|") + ")"
+        // parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
+        let partsSearch = `\\s*(!?)(${parts.join("|")})`
         debugLog(partsSearch);
         partsSearch = new RegExp(partsSearch,"g");
     
         // 2. Create items and groups from the found parts
         for (let match of queryText.matchAll(partsSearch)) {
             let group = new SearchAnd();
-            group.addTerm(match[1].trim());
+            group.addTerm(match[2].trim());
+            if (match[1]) { // Negate expressions preceeded by '!'
+                group.terms[group.terms.length - 1].negate = true;
+            }
             this.groups.push(group);
         }
 
