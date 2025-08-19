@@ -27287,7 +27287,7 @@
       "teachers": [
         "AP"
       ],
-      "text": "Is the following correct? -The 3 Characteristics can be seen as verbs? The end of Dukkha occurs when the 3 Characteristics are fully understood..? Dukkha in the outside world continues but one who realized the Truth is not 'dukkha-ed' because anatta is understood?",
+      "text": "Is the following correct? -The 3 Characteristics can be seen as verbs? The end of Dukkha occurs when the 3 Characteristics are fully understood...? Dukkha in the outside world continues but one who realized the Truth is not 'dukkha-ed' because anatta is understood?",
       "fTags": [],
       "annotations": [],
       "tags": [
@@ -27622,7 +27622,7 @@
       "teachers": [
         "AP"
       ],
-      "text": "Is there a difference in doing a good deed for a monastic versus a lay-person in regards to generating merit? Can only humans create merit..devas..animals?",
+      "text": "Is there a difference in doing a good deed for a monastic versus a lay-person in regards to generating merit? Can only humans create merit? What about devas and animals?",
       "fTags": [],
       "annotations": [],
       "tags": [
@@ -42354,7 +42354,9 @@
         "Heedfulness",
         "Virtue",
         "Death",
-        "Recollection/Death"
+        "Recollection/Death",
+        "Happiness",
+        "Spaciousness"
       ],
       "qTagCount": 6,
       "clips": [
@@ -61905,8 +61907,9 @@
           "tags": [
             "Abhayagiri",
             "Ajahn Jotipālo",
+            "Father Damien",
             "Artistic expression",
-            "Christianity"
+            "Holy Transfiguration Monastery"
           ],
           "indentLevel": 1
         }
@@ -75585,7 +75588,7 @@
       "fileNumber": 2,
       "kind": "Story",
       "flags": "",
-      "text": "Heng Shun meets Ajahn Pasanno at Wat Pleng Vipassanā in 1973.",
+      "text": "Heng Shun meets Ajahn Pasanno at Wat Phleng Vipassanā in 1973.",
       "teachers": [
         "HShun"
       ],
@@ -114544,6 +114547,7 @@
             "Ajahn Chah",
             "Sickness",
             "Lunar observance days",
+            "Posture/Sitting",
             "Sitter's practice"
           ],
           "indentLevel": 1
@@ -114554,8 +114558,7 @@
         "Teaching Dhamma",
         "Ajahn Chah",
         "Lunar observance days",
-        "Sitter's practice",
-        "Posture/Sitting"
+        "Devotion to wakefulness"
       ],
       "qTagCount": 3,
       "clips": [
@@ -127294,7 +127297,7 @@
       ],
       "subtopics": [],
       "eventCount": 1,
-      "excerptCount": 159,
+      "excerptCount": 160,
       "fTagCount": 5,
       "listIndex": 58
     },
@@ -133029,7 +133032,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "spaciousness.html",
-      "excerptCount": 31,
+      "excerptCount": 32,
       "listIndex": 428
     },
     "Direct experience": {
@@ -136365,7 +136368,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "father-damien.html",
-      "excerptCount": 3,
+      "excerptCount": 4,
       "listIndex": 607
     },
     "Lay teachers": {
@@ -137938,7 +137941,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "holy-transfiguration-monastery.html",
-      "excerptCount": 5,
+      "excerptCount": 6,
       "listIndex": 681
     },
     "Non-monastic centers": {
@@ -139713,7 +139716,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "christianity.html",
-      "excerptCount": 37,
+      "excerptCount": 36,
       "listIndex": 762
     },
     "Islam": {
@@ -140184,7 +140187,7 @@
       "partOfSubtopics": [
         "Energy"
       ],
-      "excerptCount": 26,
+      "excerptCount": 27,
       "fTagCount": 1,
       "listIndex": 798
     },
@@ -144491,7 +144494,7 @@
       "text": "Right Concentration (24) [sammā-samādhi]",
       "tag": "Right Concentration",
       "subtagCount": 9,
-      "subtagExcerptCount": 452
+      "subtagExcerptCount": 453
     },
     {
       "level": 4,
@@ -144543,9 +144546,9 @@
       "flags": "*",
       "name": "Happiness",
       "pali": "sukha",
-      "excerptCount": 159,
+      "excerptCount": 160,
       "subsumed": false,
-      "text": "Happiness (159) [sukha]",
+      "text": "Happiness (160) [sukha]",
       "tag": "Happiness"
     },
     {
@@ -146668,7 +146671,7 @@
       "text": "Dependent origination (30) [paticca-samuppāda]",
       "tag": "Dependent origination",
       "subtagCount": 20,
-      "subtagExcerptCount": 748
+      "subtagExcerptCount": 749
     },
     {
       "level": 3,
@@ -146747,7 +146750,7 @@
       "text": "Feeling (60) [vedanā]",
       "tag": "Feeling",
       "subtagCount": 3,
-      "subtagExcerptCount": 244
+      "subtagExcerptCount": 245
     },
     {
       "level": 4,
@@ -146755,9 +146758,9 @@
       "flags": "",
       "name": "Pleasant feeling",
       "pali": "sukhā vedanā",
-      "excerptCount": 159,
+      "excerptCount": 160,
       "subsumed": true,
-      "text": "Pleasant feeling [sukhā vedanā] see Happiness (159)",
+      "text": "Pleasant feeling [sukhā vedanā] see Happiness (160)",
       "tag": "Happiness"
     },
     {
@@ -148056,7 +148059,7 @@
       "text": "Right Concentration (24) [sammā-samādhi]",
       "tag": "Right Concentration",
       "subtagCount": 8,
-      "subtagExcerptCount": 400
+      "subtagExcerptCount": 401
     },
     {
       "level": 3,
@@ -148108,9 +148111,9 @@
       "flags": "",
       "name": "Happiness",
       "pali": "sukha",
-      "excerptCount": 159,
+      "excerptCount": 160,
       "subsumed": false,
-      "text": "Happiness (159) [sukha]",
+      "text": "Happiness (160) [sukha]",
       "tag": "Happiness"
     },
     {
@@ -148686,7 +148689,7 @@
       "text": "Meditation/Results (10)",
       "tag": "Meditation/Results",
       "subtagCount": 7,
-      "subtagExcerptCount": 246
+      "subtagExcerptCount": 247
     },
     {
       "level": 3,
@@ -148738,9 +148741,9 @@
       "flags": "",
       "name": "Spaciousness",
       "pali": "",
-      "excerptCount": 31,
+      "excerptCount": 32,
       "subsumed": false,
-      "text": "Spaciousness (31)",
+      "text": "Spaciousness (32)",
       "tag": "Spaciousness"
     },
     {
@@ -150730,7 +150733,7 @@
       "text": "Christian monastics",
       "tag": "Christian monastics",
       "subtagCount": 2,
-      "subtagExcerptCount": 4
+      "subtagExcerptCount": 5
     },
     {
       "level": 4,
@@ -150749,9 +150752,9 @@
       "flags": "",
       "name": "Father Damien",
       "pali": "",
-      "excerptCount": 3,
+      "excerptCount": 4,
       "subsumed": false,
-      "text": "Father Damien (3)",
+      "text": "Father Damien (4)",
       "tag": "Father Damien"
     },
     {
@@ -151582,7 +151585,7 @@
       "text": "Christian monasteries",
       "tag": "Christian monasteries",
       "subtagCount": 1,
-      "subtagExcerptCount": 5
+      "subtagExcerptCount": 6
     },
     {
       "level": 3,
@@ -151590,9 +151593,9 @@
       "flags": "",
       "name": "Holy Transfiguration Monastery",
       "pali": "",
-      "excerptCount": 5,
+      "excerptCount": 6,
       "subsumed": false,
-      "text": "Holy Transfiguration Monastery (5)",
+      "text": "Holy Transfiguration Monastery (6)",
       "tag": "Holy Transfiguration Monastery"
     },
     {
@@ -152394,7 +152397,7 @@
       "text": "Spiritual traditions (12)",
       "tag": "Spiritual traditions",
       "subtagCount": 16,
-      "subtagExcerptCount": 135
+      "subtagExcerptCount": 134
     },
     {
       "level": 2,
@@ -152516,9 +152519,9 @@
       "flags": "",
       "name": "Christianity",
       "pali": "",
-      "excerptCount": 37,
+      "excerptCount": 36,
       "subsumed": false,
-      "text": "Christianity (37)",
+      "text": "Christianity (36)",
       "tag": "Christianity"
     },
     {
@@ -152886,7 +152889,7 @@
       "text": "Qualities for non-decline (1) [aparihānāya dhammā]",
       "tag": "Qualities for non-decline",
       "subtagCount": 4,
-      "subtagExcerptCount": 123
+      "subtagExcerptCount": 124
     },
     {
       "level": 3,
@@ -152927,9 +152930,9 @@
       "flags": "",
       "name": "Devotion to wakefulness",
       "pali": "jāgariyaṁ anuyutto",
-      "excerptCount": 26,
+      "excerptCount": 27,
       "subsumed": false,
-      "text": "Devotion to wakefulness (26) [jāgariyaṁ anuyutto]",
+      "text": "Devotion to wakefulness (27) [jāgariyaṁ anuyutto]",
       "tag": "Devotion to wakefulness"
     },
     {
@@ -153533,7 +153536,7 @@
       "text": "Everyday life practice (37)",
       "tag": "Everyday life",
       "subtagCount": 71,
-      "subtagExcerptCount": 837
+      "subtagExcerptCount": 838
     },
     {
       "level": 2,
@@ -153694,7 +153697,7 @@
       "text": "Eight Worldly Conditions (6) [aṭṭha lokadhammā]",
       "tag": "Worldly Conditions",
       "subtagCount": 5,
-      "subtagExcerptCount": 201
+      "subtagExcerptCount": 202
     },
     {
       "level": 3,
@@ -153735,9 +153738,9 @@
       "flags": "",
       "name": "Pleasure",
       "pali": "sukha",
-      "excerptCount": 159,
+      "excerptCount": 160,
       "subsumed": true,
-      "text": "Pleasure [sukha] see Happiness (159)",
+      "text": "Pleasure [sukha] see Happiness (160)",
       "tag": "Happiness"
     },
     {
@@ -154555,7 +154558,7 @@
       "sessions": 2,
       "excerpts": 43,
       "answersListenedTo": 43,
-      "tagsApplied": 231,
+      "tagsApplied": 233,
       "invalidTags": 0,
       "duration": "3:02:40"
     },
@@ -154643,7 +154646,7 @@
       "sessions": 2,
       "excerpts": 16,
       "answersListenedTo": 16,
-      "tagsApplied": 173,
+      "tagsApplied": 174,
       "invalidTags": 0,
       "duration": "1:11:21"
     },
@@ -157982,6 +157985,9 @@
     },
     "Funerals": {
       "tag": "Funerals"
+    },
+    "Wat Pah Pong": {
+      "tag": "Wat Pah Pong"
     }
   },
   "subtopic": {
@@ -158667,7 +158673,7 @@
         "Devotion to wakefulness": "+"
       },
       "htmlPath": "clusters/energy.html",
-      "excerptCount": 72,
+      "excerptCount": 73,
       "fTagCount": 2
     },
     "Mindfulness": {
@@ -158755,7 +158761,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/happiness.html",
-      "excerptCount": 159,
+      "excerptCount": 160,
       "fTagCount": 5
     },
     "Gratitude": {
@@ -160690,7 +160696,7 @@
         "Compassion",
         "Equanimity"
       ],
-      "excerptCount": 907,
+      "excerptCount": 909,
       "fTagCount": 43
     },
     "unskillful": {

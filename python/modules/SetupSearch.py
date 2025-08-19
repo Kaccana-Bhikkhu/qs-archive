@@ -110,7 +110,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
         ]
         if item is excerpt:
-            bits.append(Enclose(Blobify([excerpt["event"] + f"@s{excerpt['sessionNumber']:02d}"]),"@"))
+            bits.append(Enclose(Blobify([excerpt["event"],f"s{excerpt['sessionNumber']:02d}"]),"@"))
         
         joined = "".join(bits)
         for fTag in itertools.chain(excerpt["fTags"],excerpt.get("fragmentFTags",())):

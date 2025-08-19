@@ -1,4 +1,4 @@
-import {SearchQuery,ExcerptSearcher} from '../../pages/search.js';
+import {SearchQuery,ExcerptSearcher} from '../../pages/js/search.js';
 
 let gDatabase = null;
 let gSearcher = null;
@@ -69,8 +69,8 @@ function runUnitTests() {
     let unitTestList = [
         ["Search functionality from Version 4.0:"],
         ["@UD2014-1",43,"All excerpts in UD2014-1"],
-        ["@UD2014-1 {Ajahn",25,'All teachers beginning with "Ajahn"'],
-        ["@UD2014-1 {Ajahn*}",25,'All teachers beginning with "Ajahn" (2)'],
+        ["@UD2014-1 {Ajahn",26,'All teachers beginning with "Ajahn"'],
+        ["@UD2014-1 {Ajahn*}",26,'All teachers beginning with "Ajahn" (2)'],
         ["@UD2014-1 [*w*]",11,'All tags containing "w"'],
         ['@UD2014-1 Thai',2,'Thai'],
         ['@UD2014-1 Thai$',1,'Thai$'],
@@ -81,12 +81,12 @@ function runUnitTests() {
         ['@UD2014-1 "#R"',0,'Kinds only "R"'],
         ['@UD2014-1 [$K',6,'Tags starting with "K"'],
         ['@UD2014-1 [$K]',0,'Tags only "K"'],
-        ['@UD2014-1 [M*t*]',12,'Tags containing "M" followed by "t"'],
+        ['@UD2014-1 [M*t*]',11,'Tags containing "M" followed by "t"'],
         ['@UD2014-1 [S*l$*]',4,'Tags starting with "S" whose first word ends in "l"'],
         ['@UD2014-1 H_t',10,'H_t'],
         ['@UD2014-1 $H_s$',6,'$H_s$'],
         ['@UD2014-1 ^H',3,'Texts beginning with "H"'],
-        ['@UD2014-1 .^',31,'Texts ending with "."'],
+        ['@UD2014-1 .^',32,'Texts ending with "."'],
         ['@UD2014-1 ?^',13,'Texts ending with "?"'],
         ['@UD2014-1 #Question',13,'Questions'],
         ['@UD2014-1 "of good"',1,'"of good"'],
