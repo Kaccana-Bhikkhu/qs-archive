@@ -108,6 +108,11 @@ function runUnitTests() {
         ['@UD2014-1 //[Merit]',5,'All excerpts with aTag [Merit]'],
         ['Negation operator'],
         ['@UD2014-1 !death',2,'All excerpts that do not contain text "death"'],
+        ['@UD2014-1 !',1,'All excerpts that contain "!"'],
+        ['@UD2014-1 !!',42,'All excerpts that do not contain "!"'],
+        ['Raw regular expressions'],
+        ['@UD2014-1 `[0-9]{3}`',7,'All excerpts containing 3 digits in a row'],
+        ['@UD2014-1 `a\\WB``',4,'All excerpts containing a followed by a non-word character followed by b'],
     ];
 
     let results = ["All results are from searching UD2014-1 and tag [Renunciation].<br><br>"];

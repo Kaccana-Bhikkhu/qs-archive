@@ -161,6 +161,7 @@ class SearchBase {
 class SearchTerm extends SearchBase {
     matcher; // A RegEx created from searchElement
     matchesMetadata = false; // Does this search term apply to metadata?
+    rawRegExp = false; // Was this created from a raw regular expression enclosed in backquotes?
     boldTextMatcher = ""; // A RegEx string used to highlight this term when displaying results
 
     constructor(searchElement) {
@@ -169,49 +170,60 @@ class SearchTerm extends SearchBase {
         super();
 
         this.matchesMetadata = HAS_METADATADELIMITERS.test(searchElement);
+        this.rawRegExp = searchElement.startsWith("`");
 
-        if (/^[0-9]+$/.test(searchElement)) // Enclose bare numbers in quotes so 7 does not match 37
-            searchElement = '"' + searchElement + '"'
+        let finalRegEx = "";
+        let escaped = "";
+        if (this.rawRegExp) {
+            finalRegEx = searchElement.replace(/^`/,"").replace(/`$/,""); // Remove enclosing `
+            escaped = finalRegEx;
+            debugLog("raw RegExp:",finalRegEx);
+        } else {
+            if (/^[0-9]+$/.test(searchElement)) // Enclose bare numbers in quotes so 7 does not match 37
+                searchElement = '"' + searchElement + '"'
 
-        let qTagMatch = false;
-        let aTagMatch = false;
-        if (/\]\/\/$/.test(searchElement)) { // Does this query match qTags only?
-            searchElement = searchElement.replace(/\/*$/,"");
-            qTagMatch = true;
-        }
-        if (/^\/\/\[/.test(searchElement)) { // Does this query match aTags only?
-            searchElement = searchElement.replace(/^\/*/,"");
-            aTagMatch = true;
-        }
-        
-        // Replace quote marks at beginning and end with word boundary markers '$' 
-        let unwrapped = searchElement.replace(/^"+/,'$').replace(/"+$/,'$');
-        // Remove $ boundary markers if the first/last character is not a word character
-        unwrapped = unwrapped .replace(/^\$(?=\W)/,"").replace(/(?<=\W)\$$/,"");
-        // Replace inner * and $ with appropriate operators.
-        let escaped = substituteWildcards(unwrapped);
-        
+            let qTagMatch = false;
+            let aTagMatch = false;
+            if (/\]\/\/$/.test(searchElement)) { // Does this query match qTags only?
+                searchElement = searchElement.replace(/\/*$/,"");
+                qTagMatch = true;
+            }
+            if (/^\/\/\[/.test(searchElement)) { // Does this query match aTags only?
+                searchElement = searchElement.replace(/^\/*/,"");
+                aTagMatch = true;
+            }
+            
+            // Replace quote marks at beginning and end with word boundary markers '$' 
+            let unwrapped = searchElement.replace(/^"+/,'$').replace(/"+$/,'$');
+            // Remove $ boundary markers if the first/last character is not a word character
+            unwrapped = unwrapped .replace(/^\$(?=\W)/,"").replace(/(?<=\W)\$$/,"");
+            // Replace inner * and $ with appropriate operators.
+            escaped = substituteWildcards(unwrapped);
+            
 
-        let finalRegEx = escaped;
-        if (qTagMatch) {
-            finalRegEx += "(?=.*//)";
+            finalRegEx = escaped;
+            if (qTagMatch) {
+                finalRegEx += "(?=.*//)";
+            }
+            if (aTagMatch) {
+                finalRegEx += "(?!.*//)";
+            }
+            debugLog("searchElement:",searchElement,finalRegEx);
         }
-        if (aTagMatch) {
-            finalRegEx += "(?!.*//)";
-        }
-        debugLog("searchElement:",searchElement,finalRegEx);
         this.matcher = new RegExp(finalRegEx);
 
-        if (this.matchesMetadata)
-            return; // Don't apply boldface to metadata searches
+        if (this.matchesMetadata || (this.rawRegExp && /\[\^|\\[DWS]/.test(finalRegEx)))
+            return; // Don't apply boldface to metadata searches or negated character classes
 
         // Start processing again to create RegExps for bold text
         let boldItem = escaped;
         debugLog("boldItem before:",boldItem);
         boldItem = boldItem.replaceAll(MATCH_END_DELIMITERS,"");
 
-        for (const letter in PALI_DIACRITIC_MATCH_ALL) { // 
-            boldItem = boldItem.replaceAll(letter,PALI_DIACRITIC_MATCH_ALL[letter]);
+        for (const letter in PALI_DIACRITIC_MATCH_ALL) {
+            const realLetter = new RegExp(`\\\\.|\\[.*?\\]|${letter}`,"g");
+            boldItem = boldItem.replaceAll(realLetter,(s) => s === letter ? PALI_DIACRITIC_MATCH_ALL[letter] : s);
+                // Match all diacritics of actual letters, but don't change RegExp operators
         }
 
         debugLog("boldItem after:",boldItem);
@@ -293,13 +305,18 @@ export class SearchQuery {
         // Search keys within a search group must be matched within the same blob.
         // So (#Read Pasanno}) matches only kind 'Reading' or 'Read by' with teacher ending with Pasanno
         
-        queryText = queryText.toLowerCase();
+        // 0. Convert query to lowercase and remove diacritics
+        queryText = queryText.replaceAll(/\\.|[^\\]+/g,(s) => s.startsWith("\\") ? s : s.toLowerCase());
+            // Regular expressions may include character classes with capital letters such as \W
+            // Blobs do not contain the character "\", so a non-RegExp query containing "\" won't match anything anyway. 
         queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
     
         // 1. Build a regex to parse queryText into items
         let parts = [
             matchQuotes('"'),
                 // Match text enclosed in quotes
+            matchQuotes('`'),
+                // Regular expressions enclosed in backquotes
             matchEnclosedText('{}',SPECIAL_SEARCH_CHARS),
                 // Match teachers enclosed in braces
             "/*" + matchEnclosedText('[]',SPECIAL_SEARCH_CHARS) + "\\+?/*",
