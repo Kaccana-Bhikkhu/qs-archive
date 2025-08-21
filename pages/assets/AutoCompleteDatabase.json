@@ -537,7 +537,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 72
+    "excerptCount": 73
   },
   {
     "short": "Mindfulness (sati)",
@@ -591,7 +591,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 159
+    "excerptCount": 160
   },
   {
     "short": "Gratitude (kataññu)",
@@ -1545,7 +1545,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 159
+    "excerptCount": 160
   },
   {
     "short": "Concentration (samādhi)",
@@ -3624,7 +3624,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 31
+    "excerptCount": 32
   },
   {
     "short": "Direct experience",
@@ -4929,7 +4929,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 3
+    "excerptCount": 4
   },
   {
     "short": "Lay teachers",
@@ -5550,7 +5550,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 5
+    "excerptCount": 6
   },
   {
     "short": "Non-monastic centers",
@@ -6216,7 +6216,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 37
+    "excerptCount": 36
   },
   {
     "short": "Islam",
@@ -6396,7 +6396,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 26
+    "excerptCount": 27
   },
   {
     "short": "Monastic life (brahmacariyā)",
@@ -8132,7 +8132,7 @@
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"\"></i>",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Holy Transfiguration Monastery (5)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Holy Transfiguration Monastery (6)",
     "excerptCount": 0
   },
   {
@@ -8448,7 +8448,7 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Happiness",
-    "excerptCount": 159
+    "excerptCount": 160
   },
   {
     "short": "Unpleasant feeling (dukkhā vedanā)",
@@ -8511,7 +8511,7 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Happiness",
-    "excerptCount": 159
+    "excerptCount": 160
   },
   {
     "short": "Remembering Ajahn Chah Weekend [2001]",
@@ -9448,6 +9448,15 @@
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
     "excerptCount": 6
+  },
+  {
+    "short": "Bhikshu Heng Shun",
+    "link": "teachers/bhikshu-heng-shun.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"user\"></i>",
+    "suffix": "",
+    "excerptCount": 8
   },
   {
     "short": "Father Damien",

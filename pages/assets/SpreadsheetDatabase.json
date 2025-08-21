@@ -125405,7 +125405,7 @@
       "indexExcerpts": true,
       "indexSessions": true,
       "searchable": true,
-      "teacherPage": false,
+      "teacherPage": true,
       "attribute": true,
       "allowTag": true,
       "group": "Monastics",
@@ -125413,7 +125413,7 @@
       "eventCount": 1,
       "sessionCount": 1,
       "excerptCount": 8,
-      "htmlFile": ""
+      "htmlFile": "bhikshu-heng-shun.html"
     },
     "HLyu": {
       "teacher": "HLyu",
