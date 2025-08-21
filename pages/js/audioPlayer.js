@@ -38,7 +38,7 @@ const playAudio = (title, audio, onPlaylist = false) => {
 		currentlyPlaying.currentTime = 0;
 	}
 	currentlyPlaying = audio;
-	if (playerTimeout != null) clearTimeout(playerTimeout)
+	if (playerTimeout !== null) clearTimeout(playerTimeout)
 	audio.play();
 
 	playBar.max = duration;
@@ -66,7 +66,7 @@ playBar.addEventListener("change", () => {
 });
 playBar.addEventListener("input", () => {
 	actionScheduled = false;
-	if (currentlyPlaying.wasPlaying == undefined)
+	if (currentlyPlaying.wasPlaying === undefined)
 		currentlyPlaying.wasPlaying = !currentlyPlaying.paused;
 	currentlyPlaying.pause();
 	durationTitle.innerText = `${time(Math.round(playBar.value))} / ${time(
@@ -81,7 +81,7 @@ playButton.addEventListener("click", () => {
 });
 
 setInterval(() => {
-	if (currentlyPlaying != null) {
+	if (currentlyPlaying !== null) {
 		let currentTime = Math.round(currentlyPlaying.currentTime);
 		let duration = Math.round(currentlyPlaying.duration);
 		if (!currentlyPlaying.paused) {
@@ -116,7 +116,7 @@ setInterval(() => {
 }, 1000);
 
 document.addEventListener("click",(el) => {
-	if (el.target.id == "playFeatured") {
+	if (el.target.id === "playFeatured") {
 		playlist = [];
 	  	document.querySelectorAll("div.featured audio-chip").forEach(c => playlist.push(c));
 	  	playlist.shift().play(true);

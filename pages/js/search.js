@@ -378,7 +378,7 @@ export function renderExcerpts(excerpts,searcher,sessionHeaders) {
     let lastSession = null;
 
     for (const x of excerpts) {
-        if (x.session != lastSession) {
+        if (x.session !== lastSession) {
             bits.push(sessionHeaders[x.session]);
             lastSession = x.session;
         }
@@ -475,7 +475,7 @@ class Searcher {
         // Convert a list of items to html code by concatenating their html attributes
         // Display strings in boldTextItems in bold.
 
-        if (endItem == null)
+        if (endItem === null)
             endItem = undefined;
         let rendered = [];
         for (let item of this.foundItems.slice(startItem,endItem)) {
@@ -557,7 +557,7 @@ class TruncatedSearcher extends Searcher {
     }
 
     htmlSearchResults() {
-        if (this.foundItems.length == 0)
+        if (this.foundItems.length === 0)
             return "";
 
         let resultsId = `results-${this.code}`;
@@ -603,7 +603,7 @@ class PagedSearcher extends Searcher {
             return "";
 
         let pageCount = Math.ceil(this.foundItems.length / this.itemsPerPage);
-        if (pageCount == 1) {
+        if (pageCount === 1) {
             return super.htmlSearchResults();
         }
 
@@ -623,7 +623,7 @@ class PagedSearcher extends Searcher {
             let pageLinks = pageNumbers.map((n) => {
                 let newParams = frameSearch(location.hash);
                 newParams.set(pageNumberParam,String(n));
-                return `<a href="${setFrameSearch(newParams,location)}"${n == currentPage ? 'class="active"' : ''}>${n}</a>`;
+                return `<a href="${setFrameSearch(newParams,location)}"${n === currentPage ? 'class="active"' : ''}>${n}</a>`;
             });
 
             pageMenu = `\n<p class="page-list">Page:&emsp;${pageLinks.join("&emsp;")}</p>`;
@@ -699,7 +699,7 @@ export class ExcerptSearcher extends PagedSearcher {
         // inserting session headers where needed.
         // Display strings in boldTextItems in bold.
 
-        if (endItem == null)
+        if (endItem === null)
             endItem = undefined;
 
         let bits = [];
@@ -709,7 +709,7 @@ export class ExcerptSearcher extends PagedSearcher {
             bits.push("<br/>");
 
         for (const x of this.foundItems.slice(startItem,endItem)) {
-            if (x.session != lastSession) {
+            if (x.session !== lastSession) {
                 bits.push(this.sessionHeader[x.session]);
                 lastSession = x.session;
             }

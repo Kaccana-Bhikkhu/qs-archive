@@ -21,7 +21,7 @@ export function frameSearch(hash = null) {
 	// return a URLSearchParams object corresponding to the search params given in the URL hash
 	// representing the frame location
 	
-	if (hash == null)
+	if (hash === null)
 		hash = location.hash;
 	
 	let subURLSearch = hash.slice(1).match(SEARCH_PART);
@@ -167,7 +167,7 @@ async function changeURL(pUrl,scrollTo = null) {
 		.then((r) => pageText(r,pUrl))
 		.then((result) => {
 			let [text, resultUrl] = result;
-			if (resultUrl != pUrl) { // Update location if we were redirected to another page
+			if (resultUrl !== pUrl) { // Update location if we were redirected to another page
 				let currentLocation = new URL(location);
 				currentLocation.hash = `#${resultUrl.replace(/^\.\//,"")}`;
 				history.replaceState(history.state,"",currentLocation);
@@ -222,8 +222,8 @@ if (frame) {
 	}
 
 	let url = new URL(location.href)
-	// Skip changeURL for local files and robots loading index.html (url.hash == '')
-	if (url.protocol != "file:" && (!isBotUserAgent || url.hash)) {
+	// Skip changeURL for local files and robots loading index.html (url.hash === '')
+	if (url.protocol !== "file:" && (!isBotUserAgent || url.hash)) {
 		changeURL(location.hash.slice(1) || frame.dataset.url);
 
 		addEventListener("popstate", (event) => {
