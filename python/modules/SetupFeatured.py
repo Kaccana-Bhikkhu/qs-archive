@@ -173,16 +173,19 @@ def ExcerptMirrorList(database: FeaturedDatabase) -> list[str]:
     
     return [database["mirrors"][s] for s in database["excerptSources"]]
 
-def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[ExcerptDict]]:
+def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[ExcerptDict],list[ExcerptDict]]:
     """Returns the entries in gFeaturedDatabase that don't match the current excerpt database.
     Returns the tuple (textMatches,textMismatches,missingEntries):
     textMatches: The text matches but fTags or html doesn't
     textMismatches: The text doesn't match
-    missingEntries: The item code cannot be found in the current database."""
+    missingEntries: The item code cannot be found in the current database.
+    removedEntries: These items are no longer featured."""
 
     textMatches = []
     textMismatches = []
     missingEntries = []
+    removedEntries = []
+    featuredfilter = FeaturedExcerptFilter()
     for excerptCode,databaseEntry in gFeaturedDatabase["excerpts"].items():
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if currentExcerpt:
@@ -192,10 +195,12 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
                     textMatches.append(excerptCode)
                 else:
                     textMismatches.append(excerptCode)
+            if not featuredfilter.Match(currentExcerpt):
+                removedEntries.append(excerptCode)
         else:
             missingEntries.append(excerptCode)
     
-    return textMatches,textMismatches,missingEntries
+    return textMatches,textMismatches,missingEntries,removedEntries
 
 
 def Check(paramStr: str) -> bool:
@@ -210,8 +215,8 @@ def Check(paramStr: str) -> bool:
         Alert.error("The database specifies excerpt mirrors",databaseMirrors,"which do not match the command line mirrors",currentMirrors)
         databaseGood = False
 
-    textMatches,textMismatches,missingEntries = DatabaseMismatches()
-    databaseGood = databaseGood and not any((textMatches,textMismatches,missingEntries))
+    textMatches,textMismatches,missingEntries,removedEntries = DatabaseMismatches()
+    databaseGood = databaseGood and not any((textMatches,textMismatches,missingEntries,removedEntries))
 
     if missingEntries:
         Alert.error(len(missingEntries),"""entries in the database read from disk cannot be found in the current database.
@@ -226,6 +231,9 @@ These may require the Fix module if excerpts have moved or the Remove module if 
             Alert.essential(len(textMismatches),"entries texts do not match and might require the Fix module if excerpts have moved.")
             Alert.essential.ShowFirstItems(textMismatches,"text mismatched excerpt")
     
+    if removedEntries:
+        Alert.warning.ShowFirstItems(removedEntries,"removed excerpt")
+    
     excerptsInCalendar = set(gFeaturedDatabase["calendar"])
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
     currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
@@ -234,7 +242,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     if missingCalendarItems:
         Alert.error(len(missingCalendarItems),"calendar entries cannot be found in the excerpt list.")
         Alert.essential("Run the fix module to correct this problem.")
-        Alert.essential.ShowFirstItems(missingCalendarItems,"missing entry")
+        Alert.essential.ShowFirstItems(sorted(missingCalendarItems),"missing entry")
         databaseGood = False
 
     if databaseGood:
@@ -244,7 +252,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     if newFeaturedExcerpts:
         Alert.info(len(newFeaturedExcerpts),"new featured excerpts do not appear in the database.")
         Alert.info("Run the remakeFuture module to include them.")
-        Alert.info.ShowFirstItems(newFeaturedExcerpts,"new excerpt")
+        Alert.info.ShowFirstItems(sorted(newFeaturedExcerpts),"new excerpt")
 
     return databaseGood
 
@@ -253,7 +261,7 @@ def Update(paramStr: str) -> bool:
     Return True if we modify gFeaturedDatabase."""
 
     databaseChanged = False
-    textMatches,textMismatches,missingEntries = DatabaseMismatches()
+    textMatches,textMismatches,missingEntries,removedEntries = DatabaseMismatches()
 
     for code in textMatches:
         gFeaturedDatabase["excerpts"][code] = ExcerptEntry(Database.FindExcerpt(code))
