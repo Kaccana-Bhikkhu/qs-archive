@@ -212,7 +212,7 @@ class SearchTerm extends SearchBase {
         }
         this.matcher = new RegExp(finalRegEx);
 
-        if (this.matchesMetadata || (this.rawRegExp && /\[\^|\\[DWS]/.test(finalRegEx)))
+        if (this.matchesMetadata)
             return; // Don't apply boldface to metadata searches or negated character classes
 
         // Start processing again to create RegExps for bold text
@@ -350,8 +350,7 @@ export class SearchQuery {
         }
         debugLog("textMatchItems",textMatchItems);
         if (textMatchItems.length > 0)
-            this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})(?![^<]*\>)`,"gi");
-                // Negative lookahead assertion to avoid modifying html tags.
+            this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})`,"gi");
         else
             this.boldTextRegex = /^a\ba/ // a RegEx that doesn't match anything
         debugLog(this.boldTextRegex)
@@ -366,7 +365,13 @@ export class SearchQuery {
     }
 
     displayMatchesInBold(string) { // Add <b> and </b> tags to string to display matches in bold
-       return string.replace(this.boldTextRegex,"<b>$&</b>")
+        let boldRegExp = this.boldTextRegex;
+        function boldText(text) {
+            // Apply <b> tag to text matches but not html tags
+            return text.startsWith("<") ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
+        }
+        return string.replaceAll(/<[^>]*>|[^<>]*/g,boldText).replaceAll("</b><b>","");
+            // Remove redundant </b> tags
     }
 }
 
