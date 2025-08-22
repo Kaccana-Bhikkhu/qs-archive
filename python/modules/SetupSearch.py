@@ -9,6 +9,7 @@ import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
+from SetupFeatured import FeaturedExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
     """Enclose the strings in items in the specified characters:
@@ -125,10 +126,14 @@ def OptimizedExcerpts() -> list[dict]:
     formatter.excerptOmitSessionTags = False
     formatter.showHeading = False
     formatter.headingShowTeacher = False
-    for x in Database.RemoveFragments(gDatabase["excerpts"]):
+    featuredFilter = FeaturedExcerptFilter()
+    for fragmentGroup in Database.GroupFragments(gDatabase["excerpts"]):
+        x = fragmentGroup[0]
         xDict = {"session": Database.ItemCode(event=x["event"],session=x["sessionNumber"]),
                  "blobs": ExcerptBlobs(x),
                  "html": formatter.HtmlExcerptList([x])}
+        if featuredFilter(fragmentGroup):
+            xDict["blobs"][0] = xDict["blobs"][0].replace("|#","|#homepage#")
         returnValue.append(xDict)
     return returnValue
 

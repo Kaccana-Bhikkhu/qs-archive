@@ -117,9 +117,9 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
 def FeaturedExcerptFilter() -> Filter.Filter:
     """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    teacherFilter = Filter.Teacher("AP")
+    teacherFilter = Filter.FirstTeacher("AP")
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
+    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageFlags(),kindFilter)
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
