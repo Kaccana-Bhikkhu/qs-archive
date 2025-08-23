@@ -370,7 +370,7 @@ export class SearchQuery {
             // Apply <b> tag to text matches but not html tags
             return text.startsWith("<") ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
         }
-        return string.replaceAll(/<[^>]*>|[^<>]*/g,boldText).replaceAll("</b><b>","");
+        return string.replaceAll(/<b>[^>]*<\/b>|<[^>]*>|[^<>]*/g,boldText).replaceAll("</b><b>","");
             // Remove redundant </b> tags
     }
 }
