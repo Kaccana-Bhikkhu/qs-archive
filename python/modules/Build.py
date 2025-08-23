@@ -2174,7 +2174,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
 
     topicList = list(gDatabase["keyTopic"])
     for topicNumber,topic in enumerate(gDatabase["keyTopic"].values()):
-        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),topic["topic"] + ": Featured excerpts")
+        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),f"{topic['topic']}: Featured excerpts ({topic['fTagCount']})")
         page = Html.PageDesc(info)
         page.AppendContent(Utils.PosixJoin("topics",topic["code"] + ".png"),section="titleIcon")
         page.AppendContent("Featured excerpts about " + topic["topic"],section="citationTitle")

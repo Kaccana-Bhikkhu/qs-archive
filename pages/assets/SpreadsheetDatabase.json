@@ -158259,68 +158259,6 @@
       "excerptCount": 323,
       "fTagCount": 7
     },
-    "Culture/Natural environment": {
-      "tag": "Culture/Natural environment",
-      "displayAs": "Natural environment",
-      "pali": "",
-      "related": [],
-      "status": "",
-      "autoComplete": "Display",
-      "topicCode": "context",
-      "progressMemo": "",
-      "subtags": {},
-      "htmlPath": "tags/culturenatural-environment.html",
-      "excerptCount": 49,
-      "fTagCount": 2
-    },
-    "Language": {
-      "tag": "Language",
-      "displayAs": "Language",
-      "pali": "",
-      "related": [],
-      "status": "",
-      "autoComplete": "",
-      "topicCode": "context",
-      "progressMemo": "",
-      "subtags": {
-        "Pāli": "+",
-        "Translation": "+"
-      },
-      "htmlPath": "clusters/language.html",
-      "excerptCount": 184,
-      "fTagCount": 3
-    },
-    "Culture/Thailand": {
-      "tag": "Culture/Thailand",
-      "displayAs": "Thai culture",
-      "pali": "",
-      "related": [],
-      "status": "",
-      "autoComplete": "Display",
-      "topicCode": "context",
-      "progressMemo": "",
-      "subtags": {
-        "Thai": "+",
-        "History/Thai Buddhism": "+"
-      },
-      "htmlPath": "clusters/culturethailand.html",
-      "excerptCount": 249,
-      "fTagCount": 6
-    },
-    "Culture/West": {
-      "tag": "Culture/West",
-      "displayAs": "Western culture",
-      "pali": "",
-      "related": [],
-      "status": "",
-      "autoComplete": "Display",
-      "topicCode": "context",
-      "progressMemo": "",
-      "subtags": {},
-      "htmlPath": "tags/culturewest.html",
-      "excerptCount": 150,
-      "fTagCount": 3
-    },
     "Monastic life": {
       "tag": "Monastic life",
       "displayAs": "Monastic life",
@@ -158530,6 +158468,68 @@
       "htmlPath": "tags/abhayagiri.html",
       "excerptCount": 221,
       "fTagCount": 5
+    },
+    "Culture/Natural environment": {
+      "tag": "Culture/Natural environment",
+      "displayAs": "Natural environment",
+      "pali": "",
+      "related": [],
+      "status": "",
+      "autoComplete": "Display",
+      "topicCode": "context",
+      "progressMemo": "",
+      "subtags": {},
+      "htmlPath": "tags/culturenatural-environment.html",
+      "excerptCount": 49,
+      "fTagCount": 2
+    },
+    "Language": {
+      "tag": "Language",
+      "displayAs": "Language",
+      "pali": "",
+      "related": [],
+      "status": "",
+      "autoComplete": "",
+      "topicCode": "context",
+      "progressMemo": "",
+      "subtags": {
+        "Pāli": "+",
+        "Translation": "+"
+      },
+      "htmlPath": "clusters/language.html",
+      "excerptCount": 184,
+      "fTagCount": 3
+    },
+    "Culture/Thailand": {
+      "tag": "Culture/Thailand",
+      "displayAs": "Thai culture",
+      "pali": "",
+      "related": [],
+      "status": "",
+      "autoComplete": "Display",
+      "topicCode": "context",
+      "progressMemo": "",
+      "subtags": {
+        "Thai": "+",
+        "History/Thai Buddhism": "+"
+      },
+      "htmlPath": "clusters/culturethailand.html",
+      "excerptCount": 249,
+      "fTagCount": 6
+    },
+    "Culture/West": {
+      "tag": "Culture/West",
+      "displayAs": "Western culture",
+      "pali": "",
+      "related": [],
+      "status": "",
+      "autoComplete": "Display",
+      "topicCode": "context",
+      "progressMemo": "",
+      "subtags": {},
+      "htmlPath": "tags/culturewest.html",
+      "excerptCount": 150,
+      "fTagCount": 3
     },
     "Everyday life": {
       "tag": "Everyday life",
@@ -159634,22 +159634,6 @@
       "excerptCount": 1102,
       "fTagCount": 31
     },
-    "context": {
-      "code": "context",
-      "topic": "Context of the Teachings",
-      "pali": "",
-      "shortNote": "",
-      "longNote": "",
-      "listFile": "context.html",
-      "subtopics": [
-        "Culture/Natural environment",
-        "Language",
-        "Culture/Thailand",
-        "Culture/West"
-      ],
-      "excerptCount": 524,
-      "fTagCount": 14
-    },
     "monastic": {
       "code": "monastic",
       "topic": "Monastic Life",
@@ -159685,6 +159669,22 @@
       ],
       "excerptCount": 374,
       "fTagCount": 11
+    },
+    "context": {
+      "code": "context",
+      "topic": "Context of the Teachings",
+      "pali": "",
+      "shortNote": "",
+      "longNote": "",
+      "listFile": "context.html",
+      "subtopics": [
+        "Culture/Natural environment",
+        "Language",
+        "Culture/Thailand",
+        "Culture/West"
+      ],
+      "excerptCount": 524,
+      "fTagCount": 14
     },
     "everyday": {
       "code": "everyday",
