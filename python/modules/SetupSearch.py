@@ -9,6 +9,7 @@ import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
+from SetupFeatured import FeaturedExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
     """Enclose the strings in items in the specified characters:
@@ -57,7 +58,8 @@ def Blobify(items: Iterable[str],alphanumericOnly = False) -> Iterator[str]:
 
         for prefix in gDatabase["prefix"]: # But discard generic titles
             nonSearchableTeachers.discard(RawBlobify(prefix))
-        Alert.debug(len(nonSearchableTeachers),"non-consenting teachers:",nonSearchableTeachers)
+        if gOptions.explainExcludes or gOptions.debug:
+            Alert.essential(len(nonSearchableTeachers),"non-consenting teachers:",nonSearchableTeachers)
 
         if nonSearchableTeachers:
             gNonSearchableTeacherRegex = Utils.RegexMatchAny(nonSearchableTeachers,literal=True)
@@ -110,7 +112,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
         ]
         if item is excerpt:
-            bits.append(Enclose(Blobify([excerpt["event"] + f"@s{excerpt['sessionNumber']:02d}"]),"@"))
+            bits.append(Enclose(Blobify(Database.ExcerptNumberCode(excerpt).split("_")),"@"))
         
         joined = "".join(bits)
         for fTag in itertools.chain(excerpt["fTags"],excerpt.get("fragmentFTags",())):
@@ -125,10 +127,14 @@ def OptimizedExcerpts() -> list[dict]:
     formatter.excerptOmitSessionTags = False
     formatter.showHeading = False
     formatter.headingShowTeacher = False
-    for x in Database.RemoveFragments(gDatabase["excerpts"]):
+    featuredFilter = FeaturedExcerptFilter()
+    for fragmentGroup in Database.GroupFragments(gDatabase["excerpts"]):
+        x = fragmentGroup[0]
         xDict = {"session": Database.ItemCode(event=x["event"],session=x["sessionNumber"]),
                  "blobs": ExcerptBlobs(x),
                  "html": formatter.HtmlExcerptList([x])}
+        if featuredFilter(fragmentGroup):
+            xDict["blobs"][0] = xDict["blobs"][0].replace("|#","|#homepage#")
         returnValue.append(xDict)
     return returnValue
 

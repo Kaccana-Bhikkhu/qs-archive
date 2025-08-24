@@ -103,6 +103,14 @@ function matchEnclosedText(separators,dontMatchAfterSpace) {
     ].join("");
 }
 
+function matchQuotes(quoteChar) {
+    // Returns a regex string that matches the content between quoteChar.
+    // Only stops when another quoteChar or the end of this string is encountered.
+
+    let escapedQuoteChar = regExpEscape(quoteChar);
+    return `${escapedQuoteChar}[^${escapedQuoteChar}]*${escapedQuoteChar}?`;
+}
+
 function substituteWildcards(regExpString) {
     // Convert the following wildcards to RegExp strings:
     // * Match any or no characters
@@ -153,6 +161,7 @@ class SearchBase {
 class SearchTerm extends SearchBase {
     matcher; // A RegEx created from searchElement
     matchesMetadata = false; // Does this search term apply to metadata?
+    rawRegExp = false; // Was this created from a raw regular expression enclosed in backquotes?
     boldTextMatcher = ""; // A RegEx string used to highlight this term when displaying results
 
     constructor(searchElement) {
@@ -161,53 +170,60 @@ class SearchTerm extends SearchBase {
         super();
 
         this.matchesMetadata = HAS_METADATADELIMITERS.test(searchElement);
+        this.rawRegExp = searchElement.startsWith("`");
 
-        this.negate = searchElement.startsWith("!");
-        searchElement = searchElement.replace(/^!/,"");
+        let finalRegEx = "";
+        let escaped = "";
+        if (this.rawRegExp) {
+            finalRegEx = searchElement.replace(/^`/,"").replace(/`$/,""); // Remove enclosing `
+            escaped = finalRegEx;
+            debugLog("raw RegExp:",finalRegEx);
+        } else {
+            if (/^[0-9]+$/.test(searchElement)) // Enclose bare numbers in quotes so 7 does not match 37
+                searchElement = '"' + searchElement + '"'
 
-        if (/^[0-9]+$/.test(searchElement)) // Enclose bare numbers in quotes so 7 does not match 37
-            searchElement = '"' + searchElement + '"'
+            let qTagMatch = false;
+            let aTagMatch = false;
+            if (/\]\/\/$/.test(searchElement)) { // Does this query match qTags only?
+                searchElement = searchElement.replace(/\/*$/,"");
+                qTagMatch = true;
+            }
+            if (/^\/\/\[/.test(searchElement)) { // Does this query match aTags only?
+                searchElement = searchElement.replace(/^\/*/,"");
+                aTagMatch = true;
+            }
+            
+            // Replace quote marks at beginning and end with word boundary markers '$' 
+            let unwrapped = searchElement.replace(/^"+/,'$').replace(/"+$/,'$');
+            // Remove $ boundary markers if the first/last character is not a word character
+            unwrapped = unwrapped .replace(/^\$(?=\W)/,"").replace(/(?<=\W)\$$/,"");
+            // Replace inner * and $ with appropriate operators.
+            escaped = substituteWildcards(unwrapped);
+            
 
-        let qTagMatch = false;
-        let aTagMatch = false;
-        if (/\]\/\/$/.test(searchElement)) { // Does this query match qTags only?
-            searchElement = searchElement.replace(/\/*$/,"");
-            qTagMatch = true;
+            finalRegEx = escaped;
+            if (qTagMatch) {
+                finalRegEx += "(?=.*//)";
+            }
+            if (aTagMatch) {
+                finalRegEx += "(?!.*//)";
+            }
+            debugLog("searchElement:",searchElement,finalRegEx);
         }
-        if (/^\/\/\[/.test(searchElement)) { // Does this query match aTags only?
-            searchElement = searchElement.replace(/^\/*/,"");
-            aTagMatch = true;
-        }
-        
-        let unwrapped = searchElement;
-        switch (searchElement[0]) {
-            case '"': // Items in quotes must match on word boundaries.
-                unwrapped = "$" + searchElement.replace(/^"+/,'').replace(/"+$/,'') + "$";
-                break;
-        }
-
-        // Replace inner * and $ with appropriate operators.
-        let escaped = substituteWildcards(unwrapped);
-        let finalRegEx = escaped;
-        if (qTagMatch) {
-            finalRegEx += "(?=.*//)";
-        }
-        if (aTagMatch) {
-            finalRegEx += "(?!.*//)";
-        }
-        debugLog("searchElement:",searchElement,finalRegEx);
         this.matcher = new RegExp(finalRegEx);
 
         if (this.matchesMetadata)
-            return; // Don't apply boldface to metadata searches
+            return; // Don't apply boldface to metadata searches or negated character classes
 
         // Start processing again to create RegExps for bold text
         let boldItem = escaped;
         debugLog("boldItem before:",boldItem);
         boldItem = boldItem.replaceAll(MATCH_END_DELIMITERS,"");
 
-        for (const letter in PALI_DIACRITIC_MATCH_ALL) { // 
-            boldItem = boldItem.replaceAll(letter,PALI_DIACRITIC_MATCH_ALL[letter]);
+        for (const letter in PALI_DIACRITIC_MATCH_ALL) {
+            const realLetter = new RegExp(`\\\\.|\\[.*?\\]|${letter}`,"g");
+            boldItem = boldItem.replaceAll(realLetter,(s) => s === letter ? PALI_DIACRITIC_MATCH_ALL[letter] : s);
+                // Match all diacritics of actual letters, but don't change RegExp operators
         }
 
         debugLog("boldItem after:",boldItem);
@@ -289,13 +305,18 @@ export class SearchQuery {
         // Search keys within a search group must be matched within the same blob.
         // So (#Read Pasanno}) matches only kind 'Reading' or 'Read by' with teacher ending with Pasanno
         
-        queryText = queryText.toLowerCase();
+        // 0. Convert query to lowercase and remove diacritics
+        queryText = queryText.replaceAll(/\\.|[^\\]+/g,(s) => s.startsWith("\\") ? s : s.toLowerCase());
+            // Regular expressions may include character classes with capital letters such as \W
+            // Blobs do not contain the character "\", so a non-RegExp query containing "\" won't match anything anyway. 
         queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
     
         // 1. Build a regex to parse queryText into items
         let parts = [
-            matchEnclosedText('""',''),
+            matchQuotes('"'),
                 // Match text enclosed in quotes
+            matchQuotes('`'),
+                // Regular expressions enclosed in backquotes
             matchEnclosedText('{}',SPECIAL_SEARCH_CHARS),
                 // Match teachers enclosed in braces
             "/*" + matchEnclosedText('[]',SPECIAL_SEARCH_CHARS) + "\\+?/*",
@@ -304,15 +325,18 @@ export class SearchQuery {
             "[^ ]+"
                 // Match everything else until we encounter a space
         ];
-        parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
-        let partsSearch = "\\s*(" + parts.join("|") + ")"
+        // parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
+        let partsSearch = `\\s*(!?)(${parts.join("|")})`
         debugLog(partsSearch);
         partsSearch = new RegExp(partsSearch,"g");
     
         // 2. Create items and groups from the found parts
         for (let match of queryText.matchAll(partsSearch)) {
             let group = new SearchAnd();
-            group.addTerm(match[1].trim());
+            group.addTerm(match[2].trim());
+            if (match[1]) { // Negate expressions preceeded by '!'
+                group.terms[group.terms.length - 1].negate = true;
+            }
             this.groups.push(group);
         }
 
@@ -326,11 +350,10 @@ export class SearchQuery {
         }
         debugLog("textMatchItems",textMatchItems);
         if (textMatchItems.length > 0)
-            this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})(?![^<]*\>)`,"gi");
-                // Negative lookahead assertion to avoid modifying html tags.
+            this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})`,"gi");
         else
-            this.boldTextRegex = /^a\ba/ // a RegEx that doesn't match anything
-        debugLog(this.boldTextRegex)
+            this.boldTextRegex = /^a\ba/g; // a RegEx that doesn't match anything
+        debugLog(this.boldTextRegex);
     }
 
     filterItems(items) { // Return an array containing items that match all groups in this query
@@ -342,7 +365,13 @@ export class SearchQuery {
     }
 
     displayMatchesInBold(string) { // Add <b> and </b> tags to string to display matches in bold
-       return string.replace(this.boldTextRegex,"<b>$&</b>")
+        let boldRegExp = this.boldTextRegex;
+        function boldText(text) {
+            // Apply <b> tag to text matches but not html tags
+            return text.startsWith("<") ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
+        }
+        return string.replaceAll(/<b>[^>]*<\/b>|<[^>]*>|[^<>]*/g,boldText).replaceAll("</b><b>","");
+            // Remove redundant </b> tags
     }
 }
 
@@ -354,7 +383,7 @@ export function renderExcerpts(excerpts,searcher,sessionHeaders) {
     let lastSession = null;
 
     for (const x of excerpts) {
-        if (x.session != lastSession) {
+        if (x.session !== lastSession) {
             bits.push(sessionHeaders[x.session]);
             lastSession = x.session;
         }
@@ -451,7 +480,7 @@ class Searcher {
         // Convert a list of items to html code by concatenating their html attributes
         // Display strings in boldTextItems in bold.
 
-        if (endItem == null)
+        if (endItem === null)
             endItem = undefined;
         let rendered = [];
         for (let item of this.foundItems.slice(startItem,endItem)) {
@@ -533,7 +562,7 @@ class TruncatedSearcher extends Searcher {
     }
 
     htmlSearchResults() {
-        if (this.foundItems.length == 0)
+        if (this.foundItems.length === 0)
             return "";
 
         let resultsId = `results-${this.code}`;
@@ -579,7 +608,7 @@ class PagedSearcher extends Searcher {
             return "";
 
         let pageCount = Math.ceil(this.foundItems.length / this.itemsPerPage);
-        if (pageCount == 1) {
+        if (pageCount === 1) {
             return super.htmlSearchResults();
         }
 
@@ -599,7 +628,7 @@ class PagedSearcher extends Searcher {
             let pageLinks = pageNumbers.map((n) => {
                 let newParams = frameSearch(location.hash);
                 newParams.set(pageNumberParam,String(n));
-                return `<a href="${setFrameSearch(newParams,location)}"${n == currentPage ? 'class="active"' : ''}>${n}</a>`;
+                return `<a href="${setFrameSearch(newParams,location)}"${n === currentPage ? 'class="active"' : ''}>${n}</a>`;
             });
 
             pageMenu = `\n<p class="page-list">Page:&emsp;${pageLinks.join("&emsp;")}</p>`;
@@ -675,7 +704,7 @@ export class ExcerptSearcher extends PagedSearcher {
         // inserting session headers where needed.
         // Display strings in boldTextItems in bold.
 
-        if (endItem == null)
+        if (endItem === null)
             endItem = undefined;
 
         let bits = [];
@@ -685,7 +714,7 @@ export class ExcerptSearcher extends PagedSearcher {
             bits.push("<br/>");
 
         for (const x of this.foundItems.slice(startItem,endItem)) {
-            if (x.session != lastSession) {
+            if (x.session !== lastSession) {
                 bits.push(this.sessionHeader[x.session]);
                 lastSession = x.session;
             }

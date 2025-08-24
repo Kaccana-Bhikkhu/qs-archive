@@ -149,7 +149,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupAutoComplete",
+                "SetupFeatured",
                 "--featured",
                 "check,update"
             ],

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="$!default('''page.section['citationTitle']''',page.info.title)!$ – The Ajahn Pasanno Archive">
-  <meta name="keywords" content="$!', '.join(page.keywords)!$">
-  <meta name="author" content="Abhayagiri Buddhist Monastery">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$!page.info.title!$</title>
+<meta charset="UTF-8">
+<meta name="description" content="$!default('''page.section['citationTitle']''',page.info.title)!$ – The Ajahn Pasanno Archive">
+<meta name="keywords" content="$!', '.join(page.keywords)!$">
+<meta name="author" content="Abhayagiri Buddhist Monastery">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$!page.info.title!$</title>
 <!--(if page.gOptions.blockRobots)-->
   <meta name="robots" content="noindex, nofollow" />
 <!--(end)-->
@@ -17,7 +17,9 @@
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-<link rel="manifest" href="assets/site.webmanifest">
+<!--(if page.gOptions.uploadMirror == "abhayagiri")-->
+  <link rel="manifest" href="assets/site.webmanifest">
+<!--(end)-->
 
 <style id="noscript-style-block">
     .noscript-show {
@@ -32,29 +34,22 @@
 </style>
 </head>
 <body>
-  <!--(if page.gOptions.redirectToJavascript)-->
-    <script>
-      const agent = window.navigator.userAgent;
-      const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
-      let isBotUserAgent = false;
-      for (bot of botUsers){
-        if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
-          isBotUserAgent = true;
-          break;
-        }
+  <script>
+    const agent = window.navigator.userAgent;
+    const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+    let isBotUserAgent = false;
+    for (bot of botUsers){
+      if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+        isBotUserAgent = true;
+        break;
       }
+    }
 
-      url = new URL(location.href)
-      if (url.protocol != "file:" && !isBotUserAgent) {
-        location.replace("../index.html#$!page.info.file!$" + url.search + url.hash);
-      }
-    </script>
-  <!--(else)-->
-    <span id="javascript-link">
-      <a href="../index.html#$!page.info.file!$">Enable floating audio player (Javascript)</a>
-      <br>
-    </span>
-  <!--(end)-->
+    url = new URL(location.href)
+    if (url.protocol != "file:" && !isBotUserAgent) {
+      location.replace("../index.html#$!page.info.file!$" + url.search + url.hash);
+    }
+  </script>
 
 <!--(if not page.HasSection("customLayout"))-->
   <!--(if page.HasSection("customSubMenu"))-->

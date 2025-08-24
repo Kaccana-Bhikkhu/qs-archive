@@ -103,10 +103,10 @@ class MeditationTimer {
         this.interval = null;
         this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         
-        this.initializeDOM();
+        this.reloadPage();
     }
 
-    initializeDOM() {
+    reloadPage() {
         // DOM elements must be updated each time we reload the main page
         this.timeDisplay = document.getElementById('timeDisplay');
         this.playButton = document.getElementById('timerPlayButton');
@@ -117,20 +117,21 @@ class MeditationTimer {
         this.playButton.addEventListener('click', () => this.toggleTimer());
         this.resetButton.addEventListener('click', () => this.resetTimer());
         this.durationSlider.addEventListener('input', (e) => this.updateDuration(e));
+        this.durationSlider.value = this.duration;
+        this.durationDisplay.textContent = this.duration;
+
+        this.updateDisplay();
     }
 
     toggleTimer() {
         this.isActive = !this.isActive;
-        const playButtonIcon = this.playButton.querySelector('img');
-        playButtonIcon.src = this.isActive ? 
-            'images/icons/pause.svg' : 
-            'images/icons/play.svg';
 
         if (this.isActive) {
             this.startTimer();
         } else {
             this.pauseTimer();
         }
+        this.updateDisplay();
     }
 
     startTimer() {
@@ -171,6 +172,10 @@ class MeditationTimer {
 
     updateDisplay() {
         this.timeDisplay.textContent = formatTime(this.timeLeft);
+        const playButtonIcon = this.playButton.querySelector('img');
+        playButtonIcon.src = this.isActive ? 
+            'images/icons/pause.svg' : 
+            'images/icons/play.svg';
     }
 
     handleTimerComplete() {
@@ -224,7 +229,7 @@ function initializeHomepage() {
     if (!featuredExcerptContainer)
         return;
     
-    gMeditationTimer.initializeDOM();
+    gMeditationTimer.reloadPage();
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
@@ -273,7 +278,7 @@ export async function loadHomepage(loadedFrame) {
 
 function dropdownMenuClick(clickedItem) {
     // Toggle the menu item clicked (a div.dropdown element)
-    // Close all other menus; clickedItem == null closes all menus.
+    // Close all other menus; clickedItem === null closes all menus.
     gNavBar.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
         if (dropdownMenu === clickedItem)
             dropdownMenu.classList.toggle('menu-open');
@@ -369,12 +374,12 @@ function setupNavMenuTriggers() {
     // Keyboard shortcuts
     document.addEventListener("keydown", function(event) {
         // '/' key opens the search bar if it's not open already
-        if ((event.key == "/") && !gNavBar.querySelector('.floating-search.active')) {
+        if ((event.key === "/") && !gNavBar.querySelector('.floating-search.active')) {
             event.preventDefault();
             document.getElementById("nav-search-icon").click();
         }
         // Esc key closes all menus if any are open
-        if ((event.key == "Escape") && gNavBar.querySelector('.active')) {
+        if ((event.key === "Escape") && gNavBar.querySelector('.active')) {
             event.preventDefault();
             dropdownMenuClick(null);
             gNavBar.querySelector('.main-nav').classList.remove("active");
@@ -411,7 +416,7 @@ function setupAutoComplete() {
                 // Filter entries that link to the same file
                 let links = new Set();
                 return results.filter((item) => {
-                    if (item.key == "number" && item.value.number != gQuery)
+                    if (item.key === "number" && item.value.number !== gQuery)
                         return false; // Number search must match exactly
                     if (links.has(item.value.link))
                         return false; // Remove items that link to identical pages
@@ -464,7 +469,7 @@ function setupAutoComplete() {
                 // Modify Results Item Style
                 // item.style = "display: flex;";
                 // Modify Results Item Content
-                let matchText = data.key == "number" ? data.value.short : data.match;
+                let matchText = data.key === "number" ? data.value.short : data.match;
                 let icon = data.value.icon;
                 if (icon && !icon.match("<"))
                     icon = `<i data-lucide="${icon}"></i>`
@@ -513,8 +518,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
         document.addEventListener("keydown", function(event) {
-            if ((event.key == "ArrowLeft") || (event.key == "ArrowRight")) {
-                if (event.key == "ArrowLeft")
+            if ((event.key === "ArrowLeft") || (event.key === "ArrowRight")) {
+                if (event.key === "ArrowLeft")
                     gDebugDateOffset -= 1
                 else
                     gDebugDateOffset += 1

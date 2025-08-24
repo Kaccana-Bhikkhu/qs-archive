@@ -6,13 +6,13 @@ function setVisible(element,newVisible,changeURL) {
     // newVisible: true = show, false = hide, null = no change, any other value = toggle
     // if changeURL, then update the URL hash query component
 
-    if (newVisible == null)
+    if (newVisible === null)
         return;
 
     let body = document.getElementById(element.id + ".b");
-    let isVisible = window.getComputedStyle(body).display != "none";
+    let isVisible = window.getComputedStyle(body).display !== "none";
 
-    if (newVisible == isVisible)
+    if (newVisible === isVisible)
         return;
 
     if (element.classList.contains("hide-self")) { // Hide ourselves when showing the body
@@ -23,7 +23,7 @@ function setVisible(element,newVisible,changeURL) {
         body.classList.remove("javascript-hide");
         element.style.display = "none";
     } else {
-        if (body.style.display == "none") {
+        if (body.style.display === "none") {
             body.style.display = "";
             element.className = "fa fa-minus-square toggle-view";
         } else {
@@ -35,10 +35,10 @@ function setVisible(element,newVisible,changeURL) {
     if (changeURL) {
         let params = frameSearch();
         let toggled = (params.get("toggle") || "").split(".");
-        if (toggled[0] == "")
+        if (toggled[0] === "")
             toggled.splice(0,1);
         let index = toggled.indexOf(element.id);
-        if (index == -1) {
+        if (index === -1) {
             toggled.push(element.id);
         } else {
             toggled.splice(index,1);
@@ -60,14 +60,14 @@ export function loadToggleView(frame) {
     let params = frameSearch()
     let initView = params.has("showAll") ? true : (params.has("hideAll") ? false : null)
     let toggled = (params.get("toggle") || "").split(".");
-    if (toggled[0] == "")
+    if (toggled[0] === "")
         toggled.splice(0,1);
 
     let togglers = frame.getElementsByClassName("toggle-view");
     for (let t of togglers) {
-        if (toggled.indexOf(t.id) == -1)
+        if (toggled.indexOf(t.id) === -1)
             setVisible(t,initView);
-        else if (initView == null)
+        else if (initView === null)
             setVisible(t,"toggle");
         else
             setVisible(t,!initView);

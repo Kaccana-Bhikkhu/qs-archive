@@ -2174,7 +2174,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
 
     topicList = list(gDatabase["keyTopic"])
     for topicNumber,topic in enumerate(gDatabase["keyTopic"].values()):
-        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),topic["topic"] + ": Featured excerpts")
+        info = Html.PageInfo(topic["topic"],Utils.PosixJoin(topicDir,topic["listFile"]),f"{topic['topic']}: Featured excerpts ({topic['fTagCount']})")
         page = Html.PageDesc(info)
         page.AppendContent(Utils.PosixJoin("topics",topic["code"] + ".png"),section="titleIcon")
         page.AppendContent("Featured excerpts about " + topic["topic"],section="citationTitle")
@@ -2779,7 +2779,6 @@ def AddArguments(parser):
     
     parser.add_argument('--maxPlayerTitleLength',type=int,default = 30,help="Maximum length of title tag for chip audio player.")
     parser.add_argument('--blockRobots',**Utils.STORE_TRUE,help="Use <meta name robots> to prevent crawling staging sites.")
-    parser.add_argument('--redirectToJavascript',**Utils.STORE_TRUE,help="Redirect page to index.html/#page if Javascript is available.")
     parser.add_argument('--urlList',type=str,default='',help='Write a list of URLs to this file.')
     parser.add_argument('--keepOldHtmlFiles',**Utils.STORE_TRUE,help="Keep old html files from previous runs; otherwise delete them.")
     

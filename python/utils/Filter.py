@@ -191,7 +191,7 @@ class MaxFTagOrder(Filter):
         else:
             return not self.negate
 class Teacher(Filter):
-    "A filter that passes items containing a particular tag."
+    "A filter that passes items containing particular teacher(s)."
 
     def __init__(self,passTeachers:str|Iterable[str],quotesOthers:bool = True,quotedBy:bool = True) -> None:
         super().__init__()
@@ -216,6 +216,21 @@ class Teacher(Filter):
                     return not self.negate
                 
         return self.negate
+
+class FirstTeacher(Filter):
+    "A filter that passes items matching a particular first teacher."
+
+    def __init__(self,firstTeacher:str) -> None:
+        super().__init__()
+        self.firstTeacher = firstTeacher
+    
+    def Match(self, item: dict) -> bool:
+        for i in AllItems(item):
+            if i.get("teachers",None) and i["teachers"][0] == self.firstTeacher:
+                return not self.negate
+                
+        return self.negate
+
 
 class Kind(Filter):
     "A filter that passes items of a particular kind."
@@ -259,7 +274,7 @@ class Flags(Filter):
     
         return self.negate
 
-class HomepageExcerpts(Filter):
+class HomepageFlags(Filter):
     "A Filter that passes excerpts that should be diplayed on the homepage based on their fTagOrderFlags."
 
     def Match(self, excerpt):

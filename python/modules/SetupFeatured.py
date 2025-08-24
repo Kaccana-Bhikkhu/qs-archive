@@ -12,6 +12,7 @@ import Utils, Alert, Build, Filter, Database
 from copy import copy
 import Filter
 import Html2 as Html
+from collections import defaultdict
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
@@ -62,6 +63,15 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
         Alert.error(f"Could not write {filename} due to {err}")
         return False
     
+def SplitPastAndFuture(database: FeaturedDatabase,offset:int = 0) -> tuple[list[str],list[str]]:
+    """Split database["calenar"] into two lists (past,future). If offset == 0, past includes today.
+    if offset > 0, include this many days past today in past as well."""
+    daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
+
+    cutPoint = daysPast + offset + 1
+    cutPoint = max(min(cutPoint,len(database["calendar"]) - 1),0)
+
+    return (database["calendar"][0:cutPoint],database["calendar"][cutPoint:])
 
 def PrintInfo(database: FeaturedDatabase) -> None:
     """Print information about this featured excerpt database."""
@@ -71,7 +81,6 @@ def PrintInfo(database: FeaturedDatabase) -> None:
     daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
 
     Alert.info(f"Calendar length {calendarLength}; {daysPast} days of history; {calendarLength - daysPast - 1} excerpts remaining.")
-    
 
 def ParseNumericalParameter(parameter: str,defaultValue:int = 0) -> int:
     numberStr = re.search(r"[0-9]+",parameter)
@@ -117,9 +126,9 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
 def FeaturedExcerptFilter() -> Filter.Filter:
     """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    teacherFilter = Filter.Teacher("AP")
+    teacherFilter = Filter.FirstTeacher("AP")
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageExcerpts(),kindFilter)
+    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageFlags(),kindFilter)
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
@@ -197,6 +206,33 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
     
     return textMatches,textMismatches,missingEntries
 
+def DemotedExcerpts() -> tuple[list[str],dict[list[str]]]:
+    """Return a list of excerpts that are no longer featured on the homepage.
+    Returns the tuple (demotedExcerpts,when):
+    demotedExcerpts: a list of the demoted excerpt codes.
+    when: a dictionary describing when these excerpts occur in the calendar."""
+
+    demoted = []
+    featuredfilter = FeaturedExcerptFilter()
+    for excerptCode,databaseEntry in gFeaturedDatabase["excerpts"].items():
+        currentExcerpt = Database.FindExcerpt(excerptCode)
+        if not featuredfilter.Match(currentExcerpt):
+            demoted.append(excerptCode)
+    
+    past,future = SplitPastAndFuture(gFeaturedDatabase)
+    when = defaultdict(list)
+    for excerptCode in demoted:
+        if excerptCode in past:
+            if excerptCode in future:
+                when["both"].append(excerptCode)
+            else:
+                when["past"].append(excerptCode)
+        elif excerptCode in future:
+            when["future"].append(excerptCode)
+        else:
+            when["neither"].append(excerptCode)
+
+    return demoted,when
 
 def Check(paramStr: str) -> bool:
     """Checks gFeaturedDatabase to make sure that everything matches the current environment.
@@ -226,6 +262,19 @@ These may require the Fix module if excerpts have moved or the Remove module if 
             Alert.essential(len(textMismatches),"entries texts do not match and might require the Fix module if excerpts have moved.")
             Alert.essential.ShowFirstItems(textMismatches,"text mismatched excerpt")
     
+    demotedExcerpts,demotedWhen = DemotedExcerpts()
+    if demotedExcerpts:
+        if len(demotedWhen) == 1 and "past" in demotedWhen:
+            Alert.notice(len(demotedExcerpts),"excerpts appearing in the past have been demoted from homepage status.")
+        else:
+            Alert.caution(len(demotedExcerpts),"excerpts have been demoted from homepage status.")
+            Alert.essential("Location of demoted excerpts in calendar:",dict(demotedWhen))
+            if demotedWhen["future"] or demotedWhen["both"]:
+                Alert.essential("Demoted excerpts to be featured in the future should be removed with RemakeFuture.")
+            if demotedWhen["neither"]:
+                Alert.essential("Demoted items not appearing in the calendar can be removed by running the Trim module")
+            Alert.essential()
+    
     excerptsInCalendar = set(gFeaturedDatabase["calendar"])
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
     currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
@@ -234,7 +283,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     if missingCalendarItems:
         Alert.error(len(missingCalendarItems),"calendar entries cannot be found in the excerpt list.")
         Alert.essential("Run the fix module to correct this problem.")
-        Alert.essential.ShowFirstItems(missingCalendarItems,"missing entry")
+        Alert.essential.ShowFirstItems(sorted(missingCalendarItems),"missing entry")
         databaseGood = False
 
     if databaseGood:
@@ -244,7 +293,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     if newFeaturedExcerpts:
         Alert.info(len(newFeaturedExcerpts),"new featured excerpts do not appear in the database.")
         Alert.info("Run the remakeFuture module to include them.")
-        Alert.info.ShowFirstItems(newFeaturedExcerpts,"new excerpt")
+        Alert.info.ShowFirstItems(sorted(newFeaturedExcerpts),"new excerpt")
 
     return databaseGood
 
@@ -279,6 +328,53 @@ def Update(paramStr: str) -> bool:
         Alert.info("No changes made to database.")
     return databaseChanged
 
+def RemakeFuture(paramStr: str) -> bool:
+    """Remove any future featured excerpts that are no longer featured, add any newly featured excerpts,
+    and shuffle all future excerpts.
+    paramStr (if given) specifies the number of future excerpts to preserve unchanged."""
+
+    preserveDays = ParseNumericalParameter(paramStr)
+    past,future = SplitPastAndFuture(gFeaturedDatabase,offset=preserveDays)
+
+    demotedExcerpts,_ = DemotedExcerpts()
+    oldLength = len(future)
+    future = [code for code in future if code not in demotedExcerpts]
+    removed = oldLength - len(future)
+
+    excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
+    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+    
+    newFeaturedExcerpts = sorted(currentFeaturedExcerpts - excerptsInDatabase)
+    databaseChanged = bool(removed or newFeaturedExcerpts)
+    if databaseChanged:
+        future += newFeaturedExcerpts
+        random.shuffle(future)
+        gFeaturedDatabase["calendar"] = past + future
+        for newExcerpt in newFeaturedExcerpts:
+            gFeaturedDatabase["excerpts"][newExcerpt] = ExcerptEntry(Database.FindExcerpt(newExcerpt))
+
+        Alert.info("Remake and reshuffle the featured excerpt calendar starting",preserveDays,"days in the future.")
+        Alert.info("Removed",removed,"demoted excerpts; added",len(newFeaturedExcerpts),"new excerpts.")
+
+        Trim("")
+    else:
+        Alert.info("No changes to database.")
+    return databaseChanged
+
+def Trim(paramStr: str) -> bool:
+    """Remove excerpts from the database that appear nowhere in the calendar."""
+
+    excerptsInCalendar = set(gFeaturedDatabase["calendar"])
+    oldLength = len(gFeaturedDatabase["excerpts"])
+    gFeaturedDatabase["excerpts"] = {code:excerpt for code,excerpt in gFeaturedDatabase["excerpts"].items()
+                                     if code in excerptsInCalendar}
+    removedEntries = oldLength - len(gFeaturedDatabase["excerpts"])
+    if removedEntries:
+        Alert.info(removedEntries,"excerpts trimmed from database.")
+    else:
+        Alert.info("No changes made to database.")
+    return bool(removedEntries)
+    
 
 def Write(paramStr: str,goodDatabase:bool = True) -> bool:
     """Write the database to disk if it is good or paramStr contains 'always'."""
@@ -337,7 +433,7 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 gFeaturedDatabase:FeaturedDatabase = {}
-gRepairModules:list[SubmoduleType] = [Update]
+gRepairModules:list[SubmoduleType] = [Update,RemakeFuture,Trim]
 gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules}
 
 def main() -> None:
