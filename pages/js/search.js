@@ -352,8 +352,8 @@ export class SearchQuery {
         if (textMatchItems.length > 0)
             this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})`,"gi");
         else
-            this.boldTextRegex = /^a\ba/ // a RegEx that doesn't match anything
-        debugLog(this.boldTextRegex)
+            this.boldTextRegex = /^a\ba/g; // a RegEx that doesn't match anything
+        debugLog(this.boldTextRegex);
     }
 
     filterItems(items) { // Return an array containing items that match all groups in this query

@@ -3,11 +3,15 @@
 
 
 ## New in the August 2025 release:
+ - Added events at Amaravati:
+     - Questions and Answers about Ajahn Chah
+     - What Luang Por Chah Taught.
  - Color icons represent each key topic.
- - Can be installed as a progressive web app (but has no offline capability).
+ - Can be installed as a progressive web app (but has no offline capability)
+ - [Advanced search features](about:search-instructions#advanced-searching): negation and regular expressions
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 150 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 475 transcribed pages, of which 400 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 160 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 485 transcribed pages, of which 410 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
 The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](about:want-to-help) for details.

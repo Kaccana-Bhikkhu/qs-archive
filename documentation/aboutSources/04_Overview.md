@@ -4,7 +4,7 @@ The Ajahn Pasanno Archive is an attempt to make the recorded oral teachings of A
 
 Transcription also inevitably flattens the nuance and emotional warmth of Ajahn Pasanno’s teachings. Those who have participated in Dhamma discussions with him know that the empathetic chuckle which frequently accompanies his responses is as much a teaching as the answer itself.
 
-The archive tags and partially transcribes questions and discussions such that visitors can find what they are looking for while the bulk of the content remains in audio form. As of July 2024, Ajahn Kaccāna has been the only contributor to the transcribed content of the archive, but [many others](about:Credits) have helped with web design, organizing the tags, and writing documentation.
+The archive tags and partially transcribes questions and discussions such that visitors can find what they are looking for while the bulk of the content remains in audio form. [Many people](about:Credits) have helped with transcription, web design, organizing the tags, and writing documentation.
 
 ## Website
 The website was originally a series of static pages generated from the archive database combined with a floating media player created by Owen L. (@MageOwl). Later releases added a search feature. The June 2025 release features a redesigned home page created by Chris Claudius and works well on most modern devices.

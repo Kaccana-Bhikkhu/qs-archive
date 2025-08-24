@@ -111,3 +111,5 @@
 - 6.1 (July 2025 release) Add auto complete to floating search bar. Add icons to search results and many other pages. Add more sessions to Winter Retreat 2016. More teachers have given permission for Abhayagiri's 20th anniversary event.
 
 - 6.2 (August 2025 release) Color icons represent each key topic. Can be installed as a progressive web app (but has no offline capability).
+
+- 6.2.1 (August 2025 release 2) Added events at Amaravati: Questions and Answers about Ajahn Chah and What Luang Por Chah Taught. Regular expression searches using `` `regexp` ``. `#homepage` finds excerpts featured on homepage. RemakeFuture and Trim submodules in SetupFeatured.py. Fix pydub compatibility with Python 3.13. Fix bugs in homepage timer.
