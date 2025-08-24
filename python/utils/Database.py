@@ -326,6 +326,19 @@ def ItemCode(item:dict|None = None, event:str = "", session:int|None = None, fil
         outputStr += f"_F{fileNumber:02d}"
     return outputStr
 
+def ExcerptNumberCode(excerpt:dict|None = None, event:str = "", session:int|None = None, excerptNumber:float|None = None) -> str:
+    "Return a code for this item as above, but use the excerpt number instead of the file number."
+    "event, session, and excerptNumber are required unless excerpt is specified."
+
+    if excerpt:
+        event = excerpt.get("event",None)
+        session = excerpt.get("sessionNumber",None)
+        excerptNumber = excerpt.get("excerptNumber",None)
+
+    outputStr = event
+    outputStr += f"_S{session:02d}"
+    outputStr += f"_E{excerptNumber:02.1f}".replace(".0","")
+    return outputStr
 
 def ParseItemCode(itemCode:str) -> tuple[str,int|None,int|None]:
     "Parse an item code into (eventCode,session,fileNumber). If parsing fails, return ("",None,None)."

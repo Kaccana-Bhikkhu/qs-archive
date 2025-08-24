@@ -264,13 +264,16 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     
     demotedExcerpts,demotedWhen = DemotedExcerpts()
     if demotedExcerpts:
-        Alert.caution(len(demotedExcerpts),"excerpts have been demoted from homepage status.")
-        Alert.essential("Location of demoted excerpts in calendar:",dict(demotedWhen))
-        if demotedWhen["future"] or demotedWhen["both"]:
-            Alert.essential("Demoted excerpts to be featured in the future should be removed with RemakeFuture.")
-        if demotedWhen["neither"]:
-            Alert.essential("Demoted items not appearing in the calendar can be removed by running the Trim module")
-        Alert.essential()
+        if len(demotedWhen) == 1 and "past" in demotedWhen:
+            Alert.notice(len(demotedExcerpts),"excerpts appearing in the past have been demoted from homepage status.")
+        else:
+            Alert.caution(len(demotedExcerpts),"excerpts have been demoted from homepage status.")
+            Alert.essential("Location of demoted excerpts in calendar:",dict(demotedWhen))
+            if demotedWhen["future"] or demotedWhen["both"]:
+                Alert.essential("Demoted excerpts to be featured in the future should be removed with RemakeFuture.")
+            if demotedWhen["neither"]:
+                Alert.essential("Demoted items not appearing in the calendar can be removed by running the Trim module")
+            Alert.essential()
     
     excerptsInCalendar = set(gFeaturedDatabase["calendar"])
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])

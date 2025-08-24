@@ -58,7 +58,8 @@ def Blobify(items: Iterable[str],alphanumericOnly = False) -> Iterator[str]:
 
         for prefix in gDatabase["prefix"]: # But discard generic titles
             nonSearchableTeachers.discard(RawBlobify(prefix))
-        Alert.debug(len(nonSearchableTeachers),"non-consenting teachers:",nonSearchableTeachers)
+        if gOptions.explainExcludes or gOptions.debug:
+            Alert.essential(len(nonSearchableTeachers),"non-consenting teachers:",nonSearchableTeachers)
 
         if nonSearchableTeachers:
             gNonSearchableTeacherRegex = Utils.RegexMatchAny(nonSearchableTeachers,literal=True)
@@ -111,7 +112,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
         ]
         if item is excerpt:
-            bits.append(Enclose(Blobify([excerpt["event"],f"s{excerpt['sessionNumber']:02d}"]),"@"))
+            bits.append(Enclose(Blobify(Database.ExcerptNumberCode(excerpt).split("_")),"@"))
         
         joined = "".join(bits)
         for fTag in itertools.chain(excerpt["fTags"],excerpt.get("fragmentFTags",())):
