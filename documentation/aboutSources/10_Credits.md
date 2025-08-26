@@ -17,13 +17,13 @@ The Archive relies upon many common open-source and freeware tools. In addition 
 - [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/): Powerful vanilla Javascript auto complete engine
 - [readingfaithfully.org](https://sutta.readingfaithfully.org/): Easy links to free sutta translations
 
-## Photo Credits
+## Photo/image Credits
 
 - Series - Winter Retreats: Dave Getzschman
 - Want to Help?: Somkid
 - Acknowledgements: Jonny Breeze
-- Icons from [Lucide](https://lucide.dev/), [FontAwesome](https://fontawesome.com/v4/icons/), and [ReShot](https://www.reshot.com/)
 - Key topic icons created by Ajahn Kovilo and ChatGPT
+- Other icons from [Lucide](https://lucide.dev/), [FontAwesome](https://fontawesome.com/v4/icons/), and [ReShot](https://www.reshot.com/)
 
 -----
 
