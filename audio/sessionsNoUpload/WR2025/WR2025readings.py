@@ -1,0 +1,74 @@
+"""Download csv files from Google sheet WR2025 readings and parse them into AP QS Archive excerpt format."""
+
+import sys, os, re
+import argparse
+import unicodedata
+from typing import TypedDict,DefaultDict
+from csv import DictReader,writer
+
+scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
+sys.path.append(os.path.join(scriptDir,'../../../python/modules'))
+sys.path.append(os.path.join(scriptDir,'../../../python/utils'))
+import DownloadCSV, Utils
+
+class ConcordanceEntry(TypedDict):
+    "Corresponds to a row in Processed.csv"
+    chapter: int
+    passage: int
+    rawCitation: str
+    editedCitation: str
+    reference: str
+    rawSutta: str
+    sutta: str
+
+def ExcerptLineDict(session:int = 0,kind:str = "",flags:str = "",startTime:str = "",text:str = "",teachers:str = ""):
+    """Return a dict describing the first rows of the AP QS Archive excerpt sheet"""
+    return {
+        "Session #": str(session),
+        "Kind": kind,
+        "Flags": flags,
+        "Start time": startTime,
+        "End time": "",
+        "Text": text,
+        "Teachers": teachers
+    }
+
+def DownloadSheets():
+    DownloadCSV.gOptions = Utils.gOptions = options
+    DownloadCSV.ParseArguments()
+
+    sheets = {
+        "Processed": 21026486,
+        "Sessions": 609110514
+    }
+    DownloadCSV.DownloadSheets(sheets,None)
+
+def ReadConcordance() -> dict[int,dict[int,ConcordanceEntry]]:
+    concordance:dict[int,dict[int,ConcordanceEntry]] = DefaultDict(lambda: DefaultDict(dict))
+    with open("Processed.csv",encoding='utf8') as file:
+        for line in DictReader(file):
+            chapter = line["chapter"] = int(line["chapter"])
+            passage = line["passage"] = int(line["passage"])
+            concordance[chapter][passage] = line
+    return concordance
+
+def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
+    "Write the excerpts.csv file based on the content of Sessions.csv and concordance."
+    with (open("Sessions.csv",encoding='utf8') as sessionFile,
+          open("excerpts.csv","w",encoding='utf8') as outputFile):
+        outputCSV = writer(outputFile)
+        outputCSV.writerow(ExcerptLineDict().keys())
+
+parser = argparse.ArgumentParser(description="""Download csv files from Google sheet WR2025 readings and parse them into AP QS Archive excerpt format.""")
+parser.add_argument('--spreadsheet',type=str, default = 'https://docs.google.com/spreadsheets/d/1ikMYrcw-Ro0NIr3X462ZOr-ZOIrHW9ZJ-Jxf3m26YuY/', help='URL of the WR2025 Google Sheet')
+parser.add_argument('--multithread',**Utils.STORE_TRUE,help="Multithread some operations")
+parser.add_argument('--noDownload',**Utils.STORE_TRUE,help="Skip the download step")
+
+options = parser.parse_args(sys.argv[1:])
+
+if not options.noDownload:
+    DownloadSheets()
+
+concordance = ReadConcordance()
+
+WriteExcerptCSV(concordance)
