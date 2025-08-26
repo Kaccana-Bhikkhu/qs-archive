@@ -359,7 +359,6 @@
   };
   var close = function close(ctx) {
     if (!ctx.isOpen) return;
-    ctx.goTo(0); /* qs-archive: Scroll to the first element when closing */
     (ctx.wrapper || ctx.input).setAttribute(Expand, false);
     ctx.input.setAttribute(Active, "");
     ctx.list.setAttribute("hidden", "");
@@ -427,10 +426,8 @@
         if (ctx.resultsList.tabSelect && ctx.cursor >= 0) select(ctx, event);
         break;
       case 27:
-        /* qs-archive: Commented out to keep search query when floating search bar is closed.
         ctx.input.value = "";
         eventEmitter('clear', ctx);
-        */
         close(ctx);
         break;
     }
