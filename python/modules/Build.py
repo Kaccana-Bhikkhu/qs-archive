@@ -110,6 +110,8 @@ def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",
 
 def HtmlIcon(iconName:str,iconClass:str = "",directoryDepth:int = 1) -> str:
     "Return html code for an icon"
+    if not iconName:
+        return ""
     if "<" in iconName: # Return raw html unchanged
         return iconName
     elif iconName.lower().split(".")[-1] in ("png","svg","jpg","jpeg"):
