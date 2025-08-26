@@ -77,6 +77,17 @@
             "justMyCode": true
         },
         {
+            "name": "BasicBuild",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/QSArchive.py",
+            "args": [
+                "DownloadCSV,Build,SetupSearch,SetupFeatured,SetupAutoComplete"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "BuildAllAbhayagiri",
             "type": "debugpy",
             "request": "launch",
