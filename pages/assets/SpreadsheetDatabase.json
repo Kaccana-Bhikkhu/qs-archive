@@ -112630,6 +112630,743 @@
       "duration": "5:19"
     },
     {
+      "event": "WR2025",
+      "sessionNumber": 2,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading group",
+      "flags": "",
+      "text": "",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reading",
+          "flags": "",
+          "text": "from [The Island](), Chapter 1 pp. 16-30.",
+          "teachers": [
+            "AP",
+            "AA"
+          ],
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Vinaya",
+          "flags": "-",
+          "text": "Mv 1.6.",
+          "tags": [],
+          "indentLevel": 2
+        },
+        {
+          "kind": "Reading",
+          "flags": "",
+          "text": "xxxxx",
+          "teachers": [],
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "54:42"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 3,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 1 pp. 30-35.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Nyanatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 105.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ṭhānissaro Bhikkhu, ‘The Mind Like Fire Unbound,’ p. 2.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "MN 26.13; SN 38.1; AN 10.60; Ud 3.10; AN 3.55; AN 6.55; SN 43.1-44.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Vinaya",
+          "flags": "",
+          "text": "Mv 1.5, SN 6.1, MN 26.19.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "56:21"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 4,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 1 pp. 39-42.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Bhikkhu Bodhi, ‘Introduction to the Majjhima Nikāya,’ pp. 31-2.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "MN 75.19-21.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "53:33"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 5,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 2 pp. 43-48.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Richard Gombrich, ‘Metaphor, Allegory, Satire,’ in ‘How Buddhism Began: The Conditioned Genesis of the Early Teachings,’ p. 65.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ṭhānissaro Bhikkhu, ‘The Wings to Awakening,’ p. 6.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ṭhānissaro Bhikkhu, ‘The Mind Like Fire Unbound,’ p. 41.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Richard Gombrich, ‘Metaphor, Allegory, Satire,’ pp. 65-8.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Roberto Calasso, ‘Ka,’ pp. 369-70.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Gita Mehta, ‘A River Sutra,’ p. 290.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "52:12"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 6,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 2 pp. 48-52.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Vinaya",
+          "flags": "",
+          "text": "SN 35.28, Mv 1.21.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "Iti 93; SN 44.9.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "51:34"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 7,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 2 pp. 52-56.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "Thig 504-6; SN 14.12; Thag 1223-4; Thig 512; Snp 1086-7; Thig 112-16; SN 6.15.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "51:17"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 8,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 3 pp. 58-61.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Buddhadāsa Bhikkhu, unpublished Dhamma talk, 1988.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "A 10.92; Ṭhānissaro Bhikkhu, ‘The Wings to Awakening,’ pp. 10-12.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "51:23"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 9,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 3 pp. 61-63.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "SN 12.20.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "S 12.41, A 10.92 (partly quoted above).",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "49:32"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 10,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 3 pp. 64-67.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "MN 43.11; Ud 1.10; Iti 94.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Master Hsüan Hua, ‘Sixth Patriarch’s Dharma Jewel Platform Sūtra, with Commentary,’ p. 149.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Śhūrangama Sūtra, 1.169.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "48:43"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 11,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 4 pp. 68-70.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "Ud 3.10.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "45:31"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 12,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 4 pp. 70-75.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "H.H. the Dalai Lama, ‘The Four Noble Truths,’ pp. 53-57.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "MN 52.4-14, AN 11.17; SN 22.81; MN 140.20-22.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "50:09"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 13,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "",
+      "text": "from [The Island](), Chapter 4 pp. 80-82.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "49:38"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 14,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 4 pp. 82-86.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ajahn Chah, ‘Convention and Liberation,’ in ‘Food for the Heart,’ p. 307.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "48:29"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 15,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 5 pp. 87-92.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Nyaṇatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 106.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "MN 140.31; Dhp 21; AN 6.49; SN 22.49; SN 1.20; Nid 80.226; MN 144.9.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Vinaya",
+          "flags": "",
+          "text": "SN 22.59, Mv 1.6.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "44:43"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 16,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading group",
+      "flags": "",
+      "text": "",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reading",
+          "flags": "s",
+          "text": "from [The Island](), Chapter 5 pp. 92-96.",
+          "teachers": [
+            "AP",
+            "AA"
+          ],
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s-",
+          "text": "MN 102.23-4; AN 3.32; Ud 6.6; MN 2.7-8; SN 44.10.",
+          "tags": [],
+          "indentLevel": 2
+        },
+        {
+          "kind": "Reading",
+          "flags": "",
+          "text": "xxxxx",
+          "teachers": [],
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "45:32"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 17,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading group",
+      "flags": "",
+      "text": "",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reading",
+          "flags": "s",
+          "text": "from [The Island](), Chapter 5 pp. 96-101.",
+          "teachers": [
+            "AP",
+            "AA"
+          ],
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2-",
+          "text": "M 1.3-194 (abridged).",
+          "tags": [],
+          "indentLevel": 2
+        },
+        {
+          "kind": "Reference",
+          "flags": "2-",
+          "text": "Ṭhānissaro Bhikkhu, ‘Noble Strategy,’ pp. 71-4.",
+          "tags": [],
+          "indentLevel": 2
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s-",
+          "text": "Ud 4.1, AN 9.3; Ud 2.1.",
+          "tags": [],
+          "indentLevel": 2
+        },
+        {
+          "kind": "Reading",
+          "flags": "",
+          "text": "xxxxx",
+          "teachers": [],
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "45:56"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 18,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 5 pp. 101-105.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "Ud 3.10; Iti 58; MN 22.37; MN 22.20; AN 6.101.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ajahn Sucitto, ‘The Dawn of the Dhamma,’ p. 97.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ajahn Chah, ‘No Abiding,’ in ‘Food for the Heart,’ p. 316.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "45:54"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 19,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 5 pp. 105-109.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "MN 75.12; MN 74.2-5; MN 102.12; Iti 49; SN 12.15, SN 22.90.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Vinaya",
+          "flags": "",
+          "text": "Mv 1.6, SN 22.59.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "50:01"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 20,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "s",
+      "text": "from [The Island](), Chapter 5 pp. 109-112.",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "Ācariya Nāgārjuna, Mūlamadhyamaka-kārikā, Ch.15.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "s",
+          "text": "MN 49.27; SN 5.10.",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "2",
+          "text": "‘Spiritual Autobiography,’ Ajahn Chah.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "46:14"
+    },
+    {
       "event": "ChahQA2025",
       "sessionNumber": 1,
       "excerptNumber": 1,
@@ -116233,6 +116970,30 @@
       "description": "Ajahn Pasanno answers questions from monastics during tea time at Wat Pah Nanachat on January 2, 2025.",
       "sessions": 1,
       "excerpts": 13
+    },
+    "WR2025": {
+      "title": "The Island",
+      "subtitle": "Winer Retreat 2025 at Amaravati",
+      "code": "WR2025",
+      "series": [
+        "Abhayagiri Winter Retreats"
+      ],
+      "venue": "Amaravati Buddhist Monastery",
+      "teachers": [
+        "AP",
+        "AA"
+      ],
+      "startDate": "05/01/2025",
+      "endDate": "07/02/2025",
+      "format": "Multiday event",
+      "medium": "In-person",
+      "tags": [
+        "Nibbāna"
+      ],
+      "website": "https://amaravati.org/dhamma-audio-library/?wpv-category=audio&wpv-fpmtp_series=the-island-2025&wpv_aux_current_post_id=29850&wpv_aux_parent_post_id=29850&wpv_view_count=29392",
+      "description": "",
+      "sessions": 19,
+      "excerpts": 0
     },
     "ChahQA2025": {
       "title": "Questions and Answers about Ajahn Chah",
@@ -121112,6 +121873,234 @@
       "tags": []
     },
     {
+      "event": "WR2025",
+      "sessionNumber": 2,
+      "date": "08/01/2025",
+      "filename": "02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3",
+      "duration": "54:42",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 3,
+      "date": "09/01/2025",
+      "filename": "03_-_Chapter_1_-_What_is_it_part_2.mp3",
+      "duration": "56:21",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 4,
+      "date": "12/01/2025",
+      "filename": "04_-_Chapter_1_-_What_is_it_part_3.mp3",
+      "duration": "53:33",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 5,
+      "date": "15/01/2025",
+      "filename": "05_-_Chapter_2_-_Fire__Heat_and_Coolness_part_1.mp3",
+      "duration": "52:12",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 6,
+      "date": "16/01/2025",
+      "filename": "06_-_Chapter_2_-_Fire__Heat_and_Coolness_part_2.mp3",
+      "duration": "51:34",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 7,
+      "date": "17/01/2025",
+      "filename": "07_-_Chapter_2_-_Fire__Heat_and_Coolness_part_3.mp3",
+      "duration": "51:17",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 8,
+      "date": "18/01/2025",
+      "filename": "08_-_Chapter_3_-_This_and_That__and_Other_Things_part_1.mp3",
+      "duration": "51:23",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 9,
+      "date": "19/01/2025",
+      "filename": "09_-_Chapter_3_-_This_and_That__and_Other_Things_part_2.mp3",
+      "duration": "49:32",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 10,
+      "date": "20/01/2025",
+      "filename": "10_-_Chapter_3_-_This_and_That__and_Other_Things_part_3.mp3",
+      "duration": "48:43",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 11,
+      "date": "23/01/2025",
+      "filename": "11_-_Chapter_4_-__All_That_is_Conditioned__part_1.mp3",
+      "duration": "45:31",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 12,
+      "date": "24/01/2025",
+      "filename": "12_-_Chapter_4_-__All_That_is_Conditioned__part_2.mp3",
+      "duration": "50:09",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 13,
+      "date": "26/01/2025",
+      "filename": "13_-_Chapter_4_-__All_That_is_Conditioned__part_3.mp3",
+      "duration": "49:38",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 14,
+      "date": "27/01/2025",
+      "filename": "14_-_Chapter_4_-__All_That_is_Conditioned__part_4.mp3",
+      "duration": "48:29",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 15,
+      "date": "30/01/2025",
+      "filename": "15_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_1.mp3",
+      "duration": "44:43",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 16,
+      "date": "01/02/2025",
+      "filename": "16_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_2.mp3",
+      "duration": "45:32",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 17,
+      "date": "02/02/2025",
+      "filename": "17_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_3.mp3",
+      "duration": "45:56",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 18,
+      "date": "03/02/2025",
+      "filename": "18_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_4.mp3",
+      "duration": "45:54",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 19,
+      "date": "04/02/2025",
+      "filename": "19_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_5.mp3",
+      "duration": "50:01",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 20,
+      "date": "07/02/2025",
+      "filename": "20_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_6.mp3",
+      "duration": "46:14",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "",
+      "tags": []
+    },
+    {
       "event": "ChahQA2025",
       "sessionNumber": 1,
       "date": "17/06/2025",
@@ -123555,6 +124544,120 @@
       "event": "Nanachat2025",
       "url": "https://www.abhayagiri.org/media/audio/2025/Special%20Events%202025/LP%20in%20Thailand%202024-2025/QuestionsAndAnswersAtWPN_LPP_01.02.2025.mp3"
     },
+    "02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3": {
+      "filename": "02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3",
+      "duration": "54:42",
+      "event": "WR2025",
+      "url": ""
+    },
+    "03_-_Chapter_1_-_What_is_it_part_2.mp3": {
+      "filename": "03_-_Chapter_1_-_What_is_it_part_2.mp3",
+      "duration": "56:21",
+      "event": "WR2025",
+      "url": ""
+    },
+    "04_-_Chapter_1_-_What_is_it_part_3.mp3": {
+      "filename": "04_-_Chapter_1_-_What_is_it_part_3.mp3",
+      "duration": "53:33",
+      "event": "WR2025",
+      "url": ""
+    },
+    "05_-_Chapter_2_-_Fire__Heat_and_Coolness_part_1.mp3": {
+      "filename": "05_-_Chapter_2_-_Fire__Heat_and_Coolness_part_1.mp3",
+      "duration": "52:12",
+      "event": "WR2025",
+      "url": ""
+    },
+    "06_-_Chapter_2_-_Fire__Heat_and_Coolness_part_2.mp3": {
+      "filename": "06_-_Chapter_2_-_Fire__Heat_and_Coolness_part_2.mp3",
+      "duration": "51:34",
+      "event": "WR2025",
+      "url": ""
+    },
+    "07_-_Chapter_2_-_Fire__Heat_and_Coolness_part_3.mp3": {
+      "filename": "07_-_Chapter_2_-_Fire__Heat_and_Coolness_part_3.mp3",
+      "duration": "51:17",
+      "event": "WR2025",
+      "url": ""
+    },
+    "08_-_Chapter_3_-_This_and_That__and_Other_Things_part_1.mp3": {
+      "filename": "08_-_Chapter_3_-_This_and_That__and_Other_Things_part_1.mp3",
+      "duration": "51:23",
+      "event": "WR2025",
+      "url": ""
+    },
+    "09_-_Chapter_3_-_This_and_That__and_Other_Things_part_2.mp3": {
+      "filename": "09_-_Chapter_3_-_This_and_That__and_Other_Things_part_2.mp3",
+      "duration": "49:32",
+      "event": "WR2025",
+      "url": ""
+    },
+    "10_-_Chapter_3_-_This_and_That__and_Other_Things_part_3.mp3": {
+      "filename": "10_-_Chapter_3_-_This_and_That__and_Other_Things_part_3.mp3",
+      "duration": "48:43",
+      "event": "WR2025",
+      "url": ""
+    },
+    "11_-_Chapter_4_-__All_That_is_Conditioned__part_1.mp3": {
+      "filename": "11_-_Chapter_4_-__All_That_is_Conditioned__part_1.mp3",
+      "duration": "45:31",
+      "event": "WR2025",
+      "url": ""
+    },
+    "12_-_Chapter_4_-__All_That_is_Conditioned__part_2.mp3": {
+      "filename": "12_-_Chapter_4_-__All_That_is_Conditioned__part_2.mp3",
+      "duration": "50:09",
+      "event": "WR2025",
+      "url": ""
+    },
+    "13_-_Chapter_4_-__All_That_is_Conditioned__part_3.mp3": {
+      "filename": "13_-_Chapter_4_-__All_That_is_Conditioned__part_3.mp3",
+      "duration": "49:38",
+      "event": "WR2025",
+      "url": ""
+    },
+    "14_-_Chapter_4_-__All_That_is_Conditioned__part_4.mp3": {
+      "filename": "14_-_Chapter_4_-__All_That_is_Conditioned__part_4.mp3",
+      "duration": "48:29",
+      "event": "WR2025",
+      "url": ""
+    },
+    "15_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_1.mp3": {
+      "filename": "15_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_1.mp3",
+      "duration": "44:43",
+      "event": "WR2025",
+      "url": ""
+    },
+    "16_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_2.mp3": {
+      "filename": "16_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_2.mp3",
+      "duration": "45:32",
+      "event": "WR2025",
+      "url": ""
+    },
+    "17_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_3.mp3": {
+      "filename": "17_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_3.mp3",
+      "duration": "45:56",
+      "event": "WR2025",
+      "url": ""
+    },
+    "18_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_4.mp3": {
+      "filename": "18_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_4.mp3",
+      "duration": "45:54",
+      "event": "WR2025",
+      "url": ""
+    },
+    "19_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_5.mp3": {
+      "filename": "19_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_5.mp3",
+      "duration": "50:01",
+      "event": "WR2025",
+      "url": ""
+    },
+    "20_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_6.mp3": {
+      "filename": "20_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_6.mp3",
+      "duration": "46:14",
+      "event": "WR2025",
+      "url": ""
+    },
     "Amaravati_2025_0617_Ajahn_Pasanno_-_Questions_and_Answers_on_Ajahn_Chah_s_Life_and_Teaching_p.1-2.mp3": {
       "filename": "Amaravati_2025_0617_Ajahn_Pasanno_-_Questions_and_Answers_on_Ajahn_Chah_s_Life_and_Teaching_p.1-2.mp3",
       "duration": "1:27:39",
@@ -123840,7 +124943,7 @@
       "appendToExcerpt": false,
       "inheritTeachersFrom": "None",
       "form1": "++Reading{s}{colon}++ {text}",
-      "form2": "++Reading{s}{colon}++ {text}",
+      "form2": "{text}",
       "form3": "unimplemented",
       "exclude": false,
       "usageNotes": "{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and \" by {teachers}\" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
@@ -123861,7 +124964,7 @@
       "form2": "unimplemented",
       "form3": "unimplemented",
       "exclude": false,
-      "usageNotes": ""
+      "usageNotes": "A group of readings (often a session excerpt) by a single teacher. The readings should be annotations to this excerpt."
     },
     "Reference": {
       "kind": "Reference",
@@ -123876,7 +124979,7 @@
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
       "form1": "++Reference{s}:++ {text}",
-      "form2": "unimplemented",
+      "form2": "{text}",
       "form3": "unimplemented",
       "exclude": false,
       "usageNotes": ""
@@ -123894,7 +124997,7 @@
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
       "form1": "++Sutta{s}:++ {text}",
-      "form2": "unimplemented",
+      "form2": "{text}",
       "form3": "unimplemented",
       "exclude": false,
       "usageNotes": ""
@@ -123912,7 +125015,7 @@
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
       "form1": "++Vinaya:++ {text}",
-      "form2": "unimplemented",
+      "form2": "{text}",
       "form3": "unimplemented",
       "exclude": false,
       "usageNotes": ""
@@ -124899,9 +126002,9 @@
       "allowTag": true,
       "group": "Monastics",
       "lineage": "Western disciples of Ajahn Chah",
-      "eventCount": 58,
+      "eventCount": 59,
       "sessionCount": 273,
-      "excerptCount": 2137,
+      "excerptCount": 2156,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -124991,9 +126094,9 @@
       "allowTag": true,
       "group": "Monastics",
       "lineage": "Western disciples of Ajahn Chah",
-      "eventCount": 4,
-      "sessionCount": 5,
-      "excerptCount": 79,
+      "eventCount": 5,
+      "sessionCount": 24,
+      "excerptCount": 98,
       "htmlFile": "ajahn-amaro.html"
     },
     "ANyanadhammo": {
@@ -129081,7 +130184,7 @@
         "Nibbāna"
       ],
       "subtopics": [],
-      "eventCount": 1,
+      "eventCount": 2,
       "sessionCount": 1,
       "excerptCount": 49,
       "fTagCount": 4,
@@ -155023,6 +156126,17 @@
       "tagsApplied": 122,
       "invalidTags": 0,
       "duration": "58:29"
+    },
+    "WR2025": {
+      "eventCode": "WR2025",
+      "startDate": "05/01/2025",
+      "teachers": "AP;AA",
+      "sessions": 20,
+      "excerpts": 0,
+      "answersListenedTo": 0,
+      "tagsApplied": 0,
+      "invalidTags": 0,
+      "duration": "16:40:09"
     },
     "ChahQA2025": {
       "eventCode": "ChahQA2025",
