@@ -71126,8 +71126,10 @@
       "fileNumber": 1,
       "kind": "Other",
       "flags": "",
-      "text": "Ajahn Pasanno delights in Ajahn Sumedho's ability to share Dhamma.",
-      "teachers": [],
+      "text": "{teachers} delights in Ajahn Sumedho's ability to share Dhamma.",
+      "teachers": [
+        "AP"
+      ],
       "fTags": [],
       "annotations": [],
       "tags": [
@@ -123843,6 +123845,24 @@
       "exclude": false,
       "usageNotes": "{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and \" by {teachers}\" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
     },
+    "Reading group": {
+      "kind": "Reading group",
+      "category": "Readings",
+      "defaultForm": "1",
+      "canBeExcerpt": true,
+      "canBeAnnotation": false,
+      "takesTimes": false,
+      "takesTeachers": true,
+      "takesTags": false,
+      "ignoreConsent": false,
+      "appendToExcerpt": false,
+      "inheritTeachersFrom": "Excerpt",
+      "form1": "++Readings{colon}++{\" \" + text if text else \"\"}|| by {teachers}.",
+      "form2": "unimplemented",
+      "form3": "unimplemented",
+      "exclude": false,
+      "usageNotes": ""
+    },
     "Reference": {
       "kind": "Reference",
       "category": "References",
@@ -124881,7 +124901,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 58,
       "sessionCount": 273,
-      "excerptCount": 2136,
+      "excerptCount": 2137,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {

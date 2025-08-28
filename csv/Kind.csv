@@ -20,6 +20,7 @@ Guided meditation,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,
 Chanting,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Chanting{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
 ,,,,,,,,,,,,,,,
 Reading,Readings,1,Yes,Yes,Yes,Yes,Yes,Yes,No,None,++Reading{s}{colon}++ {text},++Reading{s}{colon}++ {text},unimplemented,,"{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and "" by {teachers}"" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
+Reading group,Readings,1,Yes,No,No,Yes,No,No,No,Excerpt,"++Readings{colon}++{"" "" + text if text else """"}|| by {teachers}.",unimplemented,unimplemented,,
 ,,,,,,,,,,,,,,,
 Reference,References,1,No,Yes,No,No,Yes,,No,,++Reference{s}:++ {text},unimplemented,unimplemented,,
 Sutta,References,1,No,Yes,No,No,Yes,,No,,++Sutta{s}:++ {text},unimplemented,unimplemented,,
