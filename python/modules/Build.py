@@ -148,9 +148,9 @@ def HtmlTagLink(tag:str, fullTag: bool = False,text:str = "",link = True,showSta
     flag = f'&nbsp{FA_STAR}' if showStar and tagData and tagData.get("fTagCount",0) else ""
 
     if link:
-        splitItalics = text.split("<em>")
+        splitItalics = text.split("<i>")
         if len(splitItalics) > 1:
-            textOutsideLink = " <em>" + splitItalics[1]
+            textOutsideLink = " <i>" + splitItalics[1]
         else:
             textOutsideLink = ""
         return f'<a href = "../tags/{ref}">{splitItalics[0].strip() + flag}</a>{textOutsideLink}'
@@ -618,9 +618,9 @@ def Alphabetize(sortBy: str,html: str) -> _Alphabetize:
     return _Alphabetize(Utils.RemoveDiacritics(sortBy).lower(),html)
 
 def LanguageTag(tagString: str) -> str:
-    "Return lang (lowercase, no diacritics) when tagString matches <em>LANG</em>. Otherwise return an empty string."
+    "Return lang (lowercase, no diacritics) when tagString matches <i>LANG</i>. Otherwise return an empty string."
     tagString = Utils.RemoveDiacritics(tagString).lower()
-    match = re.search(r"<em>([^<]*)</em>$",tagString)
+    match = re.search(r"<i>([^<]*)</i>$",tagString)
     if match:
         return match[1]
     else:
@@ -628,7 +628,7 @@ def LanguageTag(tagString: str) -> str:
 
 def RemoveLanguageTag(tagString: str) -> str:
     "Return tagString with any language tag removed."
-    return re.sub(r"<em>([^<]*)</em>","",tagString).strip()
+    return re.sub(r"<i>([^<]*)</i>","",tagString).strip()
 
 def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted alphabetically."""
@@ -676,7 +676,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
         properNoun = ProperNounTag(tag)
         englishAlso = ParseCSV.TagFlag.ENGLISH_ALSO in tag["flags"]
         hasPali = tag["pali"] and not LanguageTag(tag["fullPali"])
-            # Non-Pāli language full tags end in <em>LANGUAGE</em>
+            # Non-Pāli language full tags end in <i>LANGUAGE</i>
 
         if nonEnglish: # If this tag has no English entry, add it to the appropriate language list and go on to the next tag
             entry = EnglishEntry(tag,tag["fullPali"],fullTag=False)
