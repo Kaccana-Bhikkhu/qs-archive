@@ -288,7 +288,7 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     ApplyToFunction allows us to apply these same operations to other collections of text (e.g. documentation)"""
 
     def RawRefToReadingFaithfully(matchObject: re.Match) -> str:
-        firstPart = matchObject[0].split("-")[0]
+        firstPart = matchObject[0].split("-")[0].split("{")[0]
 
         if firstPart.startswith("Kd"): # For Kd, link to SuttaCentral directly
             chapter = matchObject[2]
@@ -308,7 +308,8 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
         return link
 
     def RefToReadingFaithfully(matchObject: re.Match) -> str:
-        return f'[{matchObject[0]}]({RawRefToReadingFaithfully(matchObject)})'
+        withoutTranslator = matchObject[0].split("{")[0]
+        return f'[{withoutTranslator}]({RawRefToReadingFaithfully(matchObject)})'
 
     def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
         return re.subn(markdownLinkToSutta,RawRefToReadingFaithfully,bodyStr,flags = re.IGNORECASE)
@@ -320,8 +321,14 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
         suttas = json.load(file)
     suttaAbbreviations = [s[0] for s in suttas]
 
-    suttaMatch = r"\b" + Utils.RegexMatchAny(suttaAbbreviations)+ r"\s+([0-9]+)[.:]?([0-9]+)?[.:]?([0-9]+)?[-]?[0-9]*"
-    
+    suttaMatch = r"\b" + Utils.RegexMatchAny(suttaAbbreviations)+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
+    """ Sutta reference pattern: ABBREV N0[.N1[.N2]][-END]{TRANS}
+        Matching groups:
+        1: ABBREV: sutta abbreviation
+        2-4: N0-N2: section numbers
+        5: TRANS: translator code, e.g. bodhi
+    END is ignored for sutta lookup purposes."""
+
     markdownLinkToSutta = r"(?<=\]\()" + suttaMatch + r"(?=\))"
     markdownLinksMatched = ApplyToFunction(SuttasWithinMarkdownLink)
         # Use lookbehind and lookahead assertions to first match suttas links within markdown format, e.g. [Sati](MN 10)

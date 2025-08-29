@@ -112631,6 +112631,219 @@
     },
     {
       "event": "WR2025",
+      "sessionNumber": 1,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Reading",
+      "flags": "",
+      "text": "[The Island](), Introduction by [Ajahn Sumedho](teacher:), pp. [14-16](The Island p. 14).",
+      "teachers": [
+        "ASumedho"
+      ],
+      "fTags": [],
+      "annotations": [],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "58:45"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 1,
+      "excerptNumber": 1,
+      "fileNumber": 1,
+      "kind": "Comment",
+      "flags": "",
+      "text": "on Nibbāna being a mirror instead of a wall where everything ends.",
+      "teachers": [],
+      "fTags": [],
+      "annotations": [],
+      "tags": [
+        "Nibbāna",
+        "Similes"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "6:15",
+          "7:05"
+        ]
+      ],
+      "duration": "0:50"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 1,
+      "excerptNumber": 2,
+      "fileNumber": 2,
+      "kind": "Question",
+      "flags": "",
+      "text": "Is the wall the Island?",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [],
+      "tags": [
+        "Nibbāna",
+        "Similes",
+        "Buddha",
+        "Knowing itself",
+        "Liberation"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "7:13",
+          "8:54"
+        ]
+      ],
+      "duration": "1:41"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 1,
+      "excerptNumber": 3,
+      "fileNumber": 3,
+      "kind": "Question",
+      "flags": "",
+      "text": "When we develop this awareness of the self and the non-self there is sometimes this shock about annihilation and how to avoid that. I think it can be a shock sometimes when we realize that we are not that self and we notice this aversion to the self.",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [],
+      "tags": [
+        "Not-self",
+        "Aversion",
+        "Ajahn Sumedho",
+        "Becoming",
+        "Craving not to become",
+        "Right Effort",
+        "Self-identity view",
+        "Attitude",
+        "Appropriate attention"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "21:08",
+          "27:42"
+        ]
+      ],
+      "duration": "6:34"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 1,
+      "excerptNumber": 4,
+      "fileNumber": 4,
+      "kind": "Question",
+      "flags": "",
+      "text": "Thinking about sensuality and thinking about noticing and cognizing all this stuff. So is noticing just a pure mental exercise or does bodily sensation also have a place?",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Follow-up",
+          "flags": "",
+          "text": "So do we try to find our own way or do we try to balance our attitudes?",
+          "teachers": [
+            "AA"
+          ],
+          "tags": [
+            "Attitude"
+          ],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reference",
+          "flags": "",
+          "text": "[Meditation: A Way of Awakening]().",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [
+        "Insight meditation",
+        "Mindfulness of body",
+        "Discernment",
+        "Personality",
+        "Ajahn Sucitto",
+        "Ajahn Amaro"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "27:44",
+          "35:07"
+        ]
+      ],
+      "duration": "7:23"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 1,
+      "excerptNumber": 5,
+      "fileNumber": 5,
+      "kind": "Question",
+      "flags": "",
+      "text": "I work as a psychotherapist and it seems to be useful to have a more or less stable self, a more or less stable ego, to be able to transcend the ego.",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [
+        "Western psychology"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "E",
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "",
+          "text": "\"[The Wisdom of the Ego](https://www.dhammatalks.org/books/Head%26HeartTogether/Section0012.html)\" in [Head and Heart Together]().",
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "SN 1.25{bodhi}: \"Skillful, knowing the world's parlance, he uses such terms as mere expressions.\"",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [
+        "Western psychology",
+        "Self-identity view",
+        "Liberation",
+        "Mark Epstein",
+        "Virtue",
+        "Happiness",
+        "Conditionality",
+        "Language",
+        "Ajahn Chah",
+        "Conventions"
+      ],
+      "qTagCount": 3,
+      "clips": [
+        [
+          "$",
+          "51:02.5",
+          "58:37"
+        ]
+      ],
+      "duration": "7:34"
+    },
+    {
+      "event": "WR2025",
       "sessionNumber": 2,
       "excerptNumber": 0,
       "fileNumber": 0,
@@ -112644,8 +112857,18 @@
       "annotations": [
         {
           "kind": "Reading",
+          "flags": "",
+          "text": "[The Island](), Introduction by [Ajahn Sumedho](teacher:), pp. [16-18](The Island p. 18).",
+          "teachers": [
+            "ASumedho"
+          ],
+          "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Reading",
           "flags": "2",
-          "text": "[The Island](), Chapter 1, pp. [16-30](The Island p. 16).",
+          "text": "[The Island](), Chapter 1, pp. [28-30](The Island p. 28).",
           "teachers": [
             "AP",
             "AA"
@@ -112659,14 +112882,6 @@
           "text": "Mv 1.6.",
           "tags": [],
           "indentLevel": 2
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "xxxxx",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
         }
       ],
       "tags": [],
@@ -112675,723 +112890,270 @@
     },
     {
       "event": "WR2025",
-      "sessionNumber": 3,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 1, pp. [30-35](The Island p. 30).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Nyanatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 105.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ṭhānissaro Bhikkhu, ‘The Mind Like Fire Unbound,’ p. 2.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "MN 26.13; SN 38.1; AN 10.60; Ud 3.10; AN 3.55; AN 6.55; SN 43.1-44.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Vinaya",
-          "flags": "",
-          "text": "Mv 1.5, SN 6.1, MN 26.19.",
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "56:21"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 4,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 1, pp. [39-42](The Island p. 39).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Bhikkhu Bodhi, ‘Introduction to the Majjhima Nikāya,’ pp. 31-2.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Sutta",
-          "flags": "",
-          "text": "MN 75.19-21.",
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "53:33"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 5,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 2, pp. [43-48](The Island p. 43).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Richard Gombrich, ‘Metaphor, Allegory, Satire,’ in ‘How Buddhism Began: The Conditioned Genesis of the Early Teachings,’ p. 65.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ṭhānissaro Bhikkhu, ‘The Wings to Awakening,’ p. 6.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ṭhānissaro Bhikkhu, ‘The Mind Like Fire Unbound,’ p. 41.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Richard Gombrich, ‘Metaphor, Allegory, Satire,’ pp. 65-8.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Roberto Calasso, ‘Ka,’ pp. 369-70.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Gita Mehta, ‘A River Sutra,’ p. 290.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "52:12"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 6,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 2, pp. [48-52](The Island p. 48).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Vinaya",
-          "flags": "",
-          "text": "SN 35.28, Mv 1.21.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "Iti 93; SN 44.9.",
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "51:34"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 7,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 2, pp. [52-56](The Island p. 52).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "Thig 504-6; SN 14.12; Thag 1223-4; Thig 512; Snp 1086-7; Thig 112-16; SN 6.15.",
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "51:17"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 8,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 3, pp. [58-61](The Island p. 58).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Buddhadāsa Bhikkhu, unpublished Dhamma talk, 1988.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "A 10.92; Ṭhānissaro Bhikkhu, ‘The Wings to Awakening,’ pp. 10-12.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "51:23"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 9,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 3, pp. [61-63](The Island p. 61).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Sutta",
-          "flags": "",
-          "text": "SN 12.20.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "S 12.41, A 10.92 (partly quoted above).",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "49:32"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 10,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 3, pp. [64-67](The Island p. 64).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "MN 43.11; Ud 1.10; Iti 94.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Master Hsüan Hua, ‘Sixth Patriarch’s Dharma Jewel Platform Sūtra, with Commentary,’ p. 149.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Śhūrangama Sūtra, 1.169.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "48:43"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 11,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 4, pp. [68-70](The Island p. 68).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Sutta",
-          "flags": "",
-          "text": "Ud 3.10.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "45:31"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 12,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 4, pp. [70-75](The Island p. 70).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "H.H. the Dalai Lama, ‘The Four Noble Truths,’ pp. 53-57.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "MN 52.4-14, AN 11.17; SN 22.81; MN 140.20-22.",
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "50:09"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 13,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
+      "sessionNumber": 2,
+      "excerptNumber": 1,
+      "fileNumber": 1,
+      "kind": "Comment",
       "flags": "",
-      "text": "from [The Island](), Chapter 4, pp. [80-82](The Island p. 80).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
+      "text": "I was thinking about our obsession to create things. We create our world out of the things that we create. So Nibbāna being no thing-ness seems just right.",
+      "teachers": [],
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "49:38"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 14,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 4, pp. [82-86](The Island p. 82).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ajahn Chah, ‘Convention and Liberation,’ in ‘Food for the Heart,’ p. 307.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "48:29"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 15,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 5, pp. [87-92](The Island p. 87).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Nyaṇatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 106.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "MN 140.31; Dhp 21; AN 6.49; SN 22.49; SN 1.20; Nid 80.226; MN 144.9.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Vinaya",
+          "kind": "Response",
           "flags": "",
-          "text": "SN 22.59, Mv 1.6.",
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "44:43"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 16,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading group",
-      "flags": "",
-      "text": "",
-      "teachers": [
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Reading",
-          "flags": "s2",
-          "text": "[The Island](), Chapter 5, pp. [92-96](The Island p. 92).",
+          "text": "",
           "teachers": [
-            "AP",
             "AA"
           ],
-          "tags": [],
+          "tags": [
+            "Volitional formations",
+            "Conventions",
+            "Impermanence",
+            "Philosophy",
+            "Aggregates",
+            "Insight meditation",
+            "Suffering"
+          ],
           "indentLevel": 1
         },
         {
-          "kind": "Sutta",
-          "flags": "s-",
-          "text": "MN 102.23-4; AN 3.32; Ud 6.6; MN 2.7-8; SN 44.10.",
-          "tags": [],
-          "indentLevel": 2
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "xxxxx",
+          "kind": "Indirect quote",
+          "flags": "-",
+          "text": "The things of this world are merely conventions of our own making...|Ajahn Chah in [Convention and Liberation](Collected Teachings p. 21)",
           "teachers": [],
-          "tags": [],
-          "indentLevel": 1
+          "tags": [
+            "Ajahn Chah",
+            "Conventions"
+          ],
+          "indentLevel": 2
         }
       ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "45:32"
+      "tags": [
+        "Proliferation",
+        "Nibbāna",
+        "Not-made-of-that"
+      ],
+      "qTagCount": 3,
+      "clips": [
+        [
+          "$",
+          "17:08",
+          "20:51"
+        ]
+      ],
+      "duration": "3:43"
     },
     {
       "event": "WR2025",
-      "sessionNumber": 17,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading group",
+      "sessionNumber": 2,
+      "excerptNumber": 2,
+      "fileNumber": 2,
+      "kind": "Question",
       "flags": "",
-      "text": "",
+      "text": "This state of nothingness or no-thing-ness is kind of liberating. Is that something that can be quick or something we attain and is forever?",
       "teachers": [
         "AA"
       ],
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reading",
-          "flags": "s2",
-          "text": "[The Island](), Chapter 5, pp. [96-101](The Island p. 96).",
+          "kind": "Reference",
+          "flags": "",
+          "text": "[Nibbana for Everyone]().",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [
+        "Not-made-of-that",
+        "Liberation",
+        "Insight meditation",
+        "Long-term practice",
+        "Arahant",
+        "Ajahn Chah"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "21:21",
+          "25:08"
+        ]
+      ],
+      "duration": "3:47"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 2,
+      "excerptNumber": 3,
+      "fileNumber": 3,
+      "kind": "Question",
+      "flags": "",
+      "text": "Does it mean that these three stages [of awakening] are still shaky? Like they can still go back to thingness?",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Reference",
+          "flags": "",
+          "text": "_Shurangama Sutra_, Fifty Skandha Demon States.",
+          "tags": [],
+          "indentLevel": 1
+        }
+      ],
+      "tags": [
+        "Stages of awakening",
+        "Arahant",
+        "Stream entry",
+        "Realms of existence",
+        "Impermanence",
+        "Once return",
+        "Sensual desire",
+        "Ill-will",
+        "Non-return",
+        "Fetters",
+        "Ajahn Chah"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "25:10",
+          "33:39"
+        ]
+      ],
+      "duration": "8:29"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 2,
+      "excerptNumber": 4,
+      "fileNumber": 4,
+      "kind": "Question",
+      "flags": "",
+      "text": "In Nonviolent Communication they say that when you talk to people it’s better to tell them exactly what you want them to do than what you don’t want them to do. Why exactly is it like this?",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [],
+      "tags": [
+        "Nonviolent Communication",
+        "Language",
+        "Teaching Dhamma",
+        "Precepts",
+        "Thich Nhat Hahn",
+        "Western psychology",
+        "Buddha/Biography",
+        "Ajahn Sumedho",
+        "Four Noble Truths"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "37:48",
+          "42:16.5"
+        ]
+      ],
+      "duration": "4:28"
+    },
+    {
+      "event": "WR2025",
+      "sessionNumber": 2,
+      "excerptNumber": 5,
+      "fileNumber": 5,
+      "kind": "Question",
+      "flags": "",
+      "text": "During the Buddha’s time do you know anything similar to the precepts or did the precepts come after the Buddha?",
+      "teachers": [
+        "AA"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Follow-up",
+          "flags": "",
+          "text": "People practiced a lot before the Buddha's time. Did they establish something like the precepts?",
           "teachers": [
-            "AP",
             "AA"
           ],
-          "tags": [],
+          "tags": [
+            "Precepts",
+            "Geography/India"
+          ],
           "indentLevel": 1
         },
         {
-          "kind": "Reading",
-          "flags": "2-",
-          "text": "M 1.3-194 (abridged).",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 2
-        },
-        {
-          "kind": "Reading",
-          "flags": "2-",
-          "text": "Ṭhānissaro Bhikkhu, ‘Noble Strategy,’ pp. 71-4.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 2
-        },
-        {
-          "kind": "Sutta",
-          "flags": "s-",
-          "text": "Ud 4.1, AN 9.3; Ud 2.1.",
-          "tags": [],
-          "indentLevel": 2
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "xxxxx",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "45:56"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 18,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 5, pp. [101-105](The Island p. 101).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "Ud 3.10; Iti 58; MN 22.37; MN 22.20; AN 6.101.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ajahn Sucitto, ‘The Dawn of the Dhamma,’ p. 97.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ajahn Chah, ‘No Abiding,’ in ‘Food for the Heart,’ p. 316.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        }
-      ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "45:54"
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 19,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 5, pp. [105-109](The Island p. 105).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
-      "fTags": [],
-      "annotations": [
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "MN 75.12; MN 74.2-5; MN 102.12; Iti 49; SN 12.15, SN 22.90.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Vinaya",
+          "kind": "Comment",
           "flags": "",
-          "text": "Mv 1.6, SN 22.59.",
-          "tags": [],
+          "text": "The Jain movement had quite strong ethical conduct.",
+          "teachers": [],
+          "tags": [
+            "Jainism"
+          ],
           "indentLevel": 1
         }
       ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "50:01"
+      "tags": [
+        "Precepts",
+        "Buddha/Biography",
+        "Tipiṭaka"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "42:16.9",
+          "44:26"
+        ]
+      ],
+      "duration": "2:09"
     },
     {
       "event": "WR2025",
-      "sessionNumber": 20,
-      "excerptNumber": 0,
-      "fileNumber": 0,
-      "kind": "Reading",
-      "flags": "s",
-      "text": "from [The Island](), Chapter 5, pp. [109-112](The Island p. 109).",
+      "sessionNumber": 2,
+      "excerptNumber": 6,
+      "fileNumber": 6,
+      "kind": "Comment",
+      "flags": "",
+      "text": "When we let go of the kilesas it’s not like it’s just the absence of kilesas. There is this brightness and freeing of the heart. So the Buddha was saying there is cloud but when the cloud shifts it’s not that we’re just left with the sky but it opens up the sun. But you can’t create the sun so he says he says move the cloud away and you can’t describe the brightness of the sun is very difficult.",
       "teachers": [
-        "AP",
-        "AA"
+        "RHatha"
       ],
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "Ācariya Nāgārjuna, Mūlamadhyamaka-kārikā, Ch.15.",
-          "teachers": [],
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Sutta",
-          "flags": "s",
-          "text": "MN 49.27; SN 5.10.",
-          "tags": [],
-          "indentLevel": 1
-        },
-        {
-          "kind": "Reading",
-          "flags": "2",
-          "text": "‘Spiritual Autobiography,’ Ajahn Chah.",
-          "teachers": [],
-          "tags": [],
+          "kind": "Response",
+          "flags": "",
+          "text": "",
+          "teachers": [
+            "AA"
+          ],
+          "tags": [
+            "Direct experience"
+          ],
           "indentLevel": 1
         }
       ],
-      "tags": [],
-      "qTagCount": 0,
-      "duration": "46:14"
+      "tags": [
+        "Unwholesome Roots",
+        "Relinquishment",
+        "Liberation",
+        "Similes"
+      ],
+      "qTagCount": 4,
+      "clips": [
+        [
+          "$",
+          "53:17",
+          "54:35"
+        ]
+      ],
+      "duration": "1:18"
     },
     {
       "event": "ChahQA2025",
@@ -117019,8 +116781,8 @@
       ],
       "website": "https://amaravati.org/dhamma-audio-library/?wpv-category=audio&wpv-fpmtp_series=the-island-2025&wpv_aux_current_post_id=29850&wpv_aux_parent_post_id=29850&wpv_view_count=29392",
       "description": "",
-      "sessions": 19,
-      "excerpts": 0
+      "sessions": 2,
+      "excerpts": 11
     },
     "ChahQA2025": {
       "title": "Questions and Answers about Ajahn Chah",
@@ -121901,6 +121663,18 @@
     },
     {
       "event": "WR2025",
+      "sessionNumber": 1,
+      "date": "05/01/2025",
+      "filename": "01_-_Introduction_by_Ajahn_Sumedho.mp3",
+      "duration": "58:45",
+      "teachers": [
+        "AA"
+      ],
+      "sessionTitle": "Introduction by Ajahn Sumedho",
+      "tags": []
+    },
+    {
+      "event": "WR2025",
       "sessionNumber": 2,
       "date": "08/01/2025",
       "filename": "02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3",
@@ -121908,223 +121682,7 @@
       "teachers": [
         "AA"
       ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 3,
-      "date": "09/01/2025",
-      "filename": "03_-_Chapter_1_-_What_is_it_part_2.mp3",
-      "duration": "56:21",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 4,
-      "date": "12/01/2025",
-      "filename": "04_-_Chapter_1_-_What_is_it_part_3.mp3",
-      "duration": "53:33",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 5,
-      "date": "15/01/2025",
-      "filename": "05_-_Chapter_2_-_Fire__Heat_and_Coolness_part_1.mp3",
-      "duration": "52:12",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 6,
-      "date": "16/01/2025",
-      "filename": "06_-_Chapter_2_-_Fire__Heat_and_Coolness_part_2.mp3",
-      "duration": "51:34",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 7,
-      "date": "17/01/2025",
-      "filename": "07_-_Chapter_2_-_Fire__Heat_and_Coolness_part_3.mp3",
-      "duration": "51:17",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 8,
-      "date": "18/01/2025",
-      "filename": "08_-_Chapter_3_-_This_and_That__and_Other_Things_part_1.mp3",
-      "duration": "51:23",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 9,
-      "date": "19/01/2025",
-      "filename": "09_-_Chapter_3_-_This_and_That__and_Other_Things_part_2.mp3",
-      "duration": "49:32",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 10,
-      "date": "20/01/2025",
-      "filename": "10_-_Chapter_3_-_This_and_That__and_Other_Things_part_3.mp3",
-      "duration": "48:43",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 11,
-      "date": "23/01/2025",
-      "filename": "11_-_Chapter_4_-__All_That_is_Conditioned__part_1.mp3",
-      "duration": "45:31",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 12,
-      "date": "24/01/2025",
-      "filename": "12_-_Chapter_4_-__All_That_is_Conditioned__part_2.mp3",
-      "duration": "50:09",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 13,
-      "date": "26/01/2025",
-      "filename": "13_-_Chapter_4_-__All_That_is_Conditioned__part_3.mp3",
-      "duration": "49:38",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 14,
-      "date": "27/01/2025",
-      "filename": "14_-_Chapter_4_-__All_That_is_Conditioned__part_4.mp3",
-      "duration": "48:29",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 15,
-      "date": "30/01/2025",
-      "filename": "15_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_1.mp3",
-      "duration": "44:43",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 16,
-      "date": "01/02/2025",
-      "filename": "16_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_2.mp3",
-      "duration": "45:32",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 17,
-      "date": "02/02/2025",
-      "filename": "17_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_3.mp3",
-      "duration": "45:56",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 18,
-      "date": "03/02/2025",
-      "filename": "18_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_4.mp3",
-      "duration": "45:54",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 19,
-      "date": "04/02/2025",
-      "filename": "19_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_5.mp3",
-      "duration": "50:01",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
-      "tags": []
-    },
-    {
-      "event": "WR2025",
-      "sessionNumber": 20,
-      "date": "07/02/2025",
-      "filename": "20_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_6.mp3",
-      "duration": "46:14",
-      "teachers": [
-        "AA"
-      ],
-      "sessionTitle": "",
+      "sessionTitle": "What Is It? – Part 1",
       "tags": []
     },
     {
@@ -124571,119 +124129,17 @@
       "event": "Nanachat2025",
       "url": "https://www.abhayagiri.org/media/audio/2025/Special%20Events%202025/LP%20in%20Thailand%202024-2025/QuestionsAndAnswersAtWPN_LPP_01.02.2025.mp3"
     },
+    "01_-_Introduction_by_Ajahn_Sumedho.mp3": {
+      "filename": "01_-_Introduction_by_Ajahn_Sumedho.mp3",
+      "duration": "58:45",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/03/09/01_-_Introduction_by_Ajahn_Sumedho.mp3"
+    },
     "02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3": {
       "filename": "02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3",
       "duration": "54:42",
       "event": "WR2025",
-      "url": ""
-    },
-    "03_-_Chapter_1_-_What_is_it_part_2.mp3": {
-      "filename": "03_-_Chapter_1_-_What_is_it_part_2.mp3",
-      "duration": "56:21",
-      "event": "WR2025",
-      "url": ""
-    },
-    "04_-_Chapter_1_-_What_is_it_part_3.mp3": {
-      "filename": "04_-_Chapter_1_-_What_is_it_part_3.mp3",
-      "duration": "53:33",
-      "event": "WR2025",
-      "url": ""
-    },
-    "05_-_Chapter_2_-_Fire__Heat_and_Coolness_part_1.mp3": {
-      "filename": "05_-_Chapter_2_-_Fire__Heat_and_Coolness_part_1.mp3",
-      "duration": "52:12",
-      "event": "WR2025",
-      "url": ""
-    },
-    "06_-_Chapter_2_-_Fire__Heat_and_Coolness_part_2.mp3": {
-      "filename": "06_-_Chapter_2_-_Fire__Heat_and_Coolness_part_2.mp3",
-      "duration": "51:34",
-      "event": "WR2025",
-      "url": ""
-    },
-    "07_-_Chapter_2_-_Fire__Heat_and_Coolness_part_3.mp3": {
-      "filename": "07_-_Chapter_2_-_Fire__Heat_and_Coolness_part_3.mp3",
-      "duration": "51:17",
-      "event": "WR2025",
-      "url": ""
-    },
-    "08_-_Chapter_3_-_This_and_That__and_Other_Things_part_1.mp3": {
-      "filename": "08_-_Chapter_3_-_This_and_That__and_Other_Things_part_1.mp3",
-      "duration": "51:23",
-      "event": "WR2025",
-      "url": ""
-    },
-    "09_-_Chapter_3_-_This_and_That__and_Other_Things_part_2.mp3": {
-      "filename": "09_-_Chapter_3_-_This_and_That__and_Other_Things_part_2.mp3",
-      "duration": "49:32",
-      "event": "WR2025",
-      "url": ""
-    },
-    "10_-_Chapter_3_-_This_and_That__and_Other_Things_part_3.mp3": {
-      "filename": "10_-_Chapter_3_-_This_and_That__and_Other_Things_part_3.mp3",
-      "duration": "48:43",
-      "event": "WR2025",
-      "url": ""
-    },
-    "11_-_Chapter_4_-__All_That_is_Conditioned__part_1.mp3": {
-      "filename": "11_-_Chapter_4_-__All_That_is_Conditioned__part_1.mp3",
-      "duration": "45:31",
-      "event": "WR2025",
-      "url": ""
-    },
-    "12_-_Chapter_4_-__All_That_is_Conditioned__part_2.mp3": {
-      "filename": "12_-_Chapter_4_-__All_That_is_Conditioned__part_2.mp3",
-      "duration": "50:09",
-      "event": "WR2025",
-      "url": ""
-    },
-    "13_-_Chapter_4_-__All_That_is_Conditioned__part_3.mp3": {
-      "filename": "13_-_Chapter_4_-__All_That_is_Conditioned__part_3.mp3",
-      "duration": "49:38",
-      "event": "WR2025",
-      "url": ""
-    },
-    "14_-_Chapter_4_-__All_That_is_Conditioned__part_4.mp3": {
-      "filename": "14_-_Chapter_4_-__All_That_is_Conditioned__part_4.mp3",
-      "duration": "48:29",
-      "event": "WR2025",
-      "url": ""
-    },
-    "15_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_1.mp3": {
-      "filename": "15_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_1.mp3",
-      "duration": "44:43",
-      "event": "WR2025",
-      "url": ""
-    },
-    "16_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_2.mp3": {
-      "filename": "16_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_2.mp3",
-      "duration": "45:32",
-      "event": "WR2025",
-      "url": ""
-    },
-    "17_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_3.mp3": {
-      "filename": "17_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_3.mp3",
-      "duration": "45:56",
-      "event": "WR2025",
-      "url": ""
-    },
-    "18_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_4.mp3": {
-      "filename": "18_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_4.mp3",
-      "duration": "45:54",
-      "event": "WR2025",
-      "url": ""
-    },
-    "19_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_5.mp3": {
-      "filename": "19_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_5.mp3",
-      "duration": "50:01",
-      "event": "WR2025",
-      "url": ""
-    },
-    "20_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_6.mp3": {
-      "filename": "20_-_Chapter_5_-__To_Be__or_Not_to_Be__Is_That_the_Question_part_6.mp3",
-      "duration": "46:14",
-      "event": "WR2025",
-      "url": ""
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/03/09/02_-_Introduction_part_2_and_Chapter_1_-_What_is_it_part_1.mp3"
     },
     "Amaravati_2025_0617_Ajahn_Pasanno_-_Questions_and_Answers_on_Ajahn_Chah_s_Life_and_Teaching_p.1-2.mp3": {
       "filename": "Amaravati_2025_0617_Ajahn_Pasanno_-_Questions_and_Answers_on_Ajahn_Chah_s_Life_and_Teaching_p.1-2.mp3",
@@ -125487,7 +124943,7 @@
       "group": "Monastics",
       "lineage": "Root teachers",
       "sessionCount": 1,
-      "excerptCount": 182,
+      "excerptCount": 183,
       "htmlFile": "ajahn-chah.html"
     },
     "ALee": {
@@ -125999,7 +125455,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 1,
       "sessionCount": 4,
-      "excerptCount": 37,
+      "excerptCount": 39,
       "htmlFile": "ajahn-sumedho.html"
     },
     "AKhemadhammo": {
@@ -126031,7 +125487,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 59,
       "sessionCount": 273,
-      "excerptCount": 2156,
+      "excerptCount": 2138,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -126122,8 +125578,8 @@
       "group": "Monastics",
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 5,
-      "sessionCount": 24,
-      "excerptCount": 98,
+      "sessionCount": 7,
+      "excerptCount": 90,
       "htmlFile": "ajahn-amaro.html"
     },
     "ANyanadhammo": {
@@ -127010,6 +126466,21 @@
       "excerptCount": 3,
       "htmlFile": ""
     },
+    "RHatha": {
+      "teacher": "RHatha",
+      "fullName": "Randula Haththotuwa",
+      "attributionName": "Randula Haththotuwa",
+      "indexExcerpts": true,
+      "indexSessions": false,
+      "searchable": true,
+      "teacherPage": false,
+      "attribute": true,
+      "allowTag": false,
+      "group": "Lay teachers",
+      "lineage": "",
+      "excerptCount": 1,
+      "htmlFile": ""
+    },
     "Anon": {
       "teacher": "Anon",
       "fullName": "anonymous",
@@ -127472,7 +126943,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "nonviolent-communication.html",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "listIndex": 17
     },
     "Right Action": {
@@ -127727,7 +127198,7 @@
         "Right Effort"
       ],
       "subtopics": [],
-      "excerptCount": 107,
+      "excerptCount": 108,
       "fTagCount": 3,
       "listIndex": 28
     },
@@ -127820,7 +127291,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 1,
-      "excerptCount": 103,
+      "excerptCount": 104,
       "fTagCount": 4,
       "listIndex": 35
     },
@@ -128135,7 +127606,7 @@
         "Aggregates"
       ],
       "subtopics": [],
-      "excerptCount": 56,
+      "excerptCount": 57,
       "fTagCount": 2,
       "listIndex": 238
     },
@@ -128224,7 +127695,7 @@
         "Four Noble Truths"
       ],
       "subtopics": [],
-      "excerptCount": 59,
+      "excerptCount": 60,
       "fTagCount": 3,
       "listIndex": 63
     },
@@ -128447,7 +127918,7 @@
       ],
       "subtopics": [],
       "eventCount": 1,
-      "excerptCount": 160,
+      "excerptCount": 161,
       "fTagCount": 5,
       "listIndex": 58
     },
@@ -128714,7 +128185,7 @@
         "Suffering"
       ],
       "subtopics": [],
-      "excerptCount": 226,
+      "excerptCount": 227,
       "fTagCount": 5,
       "listIndex": 270
     },
@@ -128824,7 +128295,7 @@
       "partOfSubtopics": [
         "Becoming"
       ],
-      "excerptCount": 21,
+      "excerptCount": 22,
       "fTagCount": 1,
       "listIndex": 76
     },
@@ -128946,7 +128417,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 197,
+      "excerptCount": 198,
       "fTagCount": 4,
       "listIndex": 148
     },
@@ -129003,7 +128474,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 117,
+      "excerptCount": 121,
       "fTagCount": 2,
       "listIndex": 150
     },
@@ -129246,7 +128717,7 @@
         "Discernment"
       ],
       "subtopics": [],
-      "excerptCount": 162,
+      "excerptCount": 163,
       "fTagCount": 2,
       "listIndex": 103
     },
@@ -129459,7 +128930,7 @@
         "Virtue"
       ],
       "subtopics": [],
-      "excerptCount": 75,
+      "excerptCount": 76,
       "fTagCount": 2,
       "listIndex": 119
     },
@@ -129538,7 +129009,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "tipitaka.html",
-      "excerptCount": 9,
+      "excerptCount": 10,
       "fTagCount": 1,
       "listIndex": 122
     },
@@ -129898,7 +129369,7 @@
         "Stages of awakening"
       ],
       "subtopics": [],
-      "excerptCount": 32,
+      "excerptCount": 33,
       "fTagCount": 2,
       "listIndex": 151
     },
@@ -129924,7 +129395,7 @@
       "partOfSubtopics": [
         "Stages of awakening"
       ],
-      "excerptCount": 30,
+      "excerptCount": 31,
       "fTagCount": 2,
       "listIndex": 152
     },
@@ -130048,7 +129519,7 @@
       "partOfSubtopics": [
         "Discernment"
       ],
-      "excerptCount": 24,
+      "excerptCount": 25,
       "fTagCount": 1,
       "listIndex": 157
     },
@@ -130093,7 +129564,7 @@
       "partOfSubtopics": [
         "Stages of awakening"
       ],
-      "excerptCount": 2,
+      "excerptCount": 3,
       "listIndex": 159
     },
     "Non-return": {
@@ -130116,7 +129587,7 @@
       "partOfSubtopics": [
         "Stages of awakening"
       ],
-      "excerptCount": 4,
+      "excerptCount": 5,
       "listIndex": 160
     },
     "Arahant": {
@@ -130139,7 +129610,7 @@
       "partOfSubtopics": [
         "Stages of awakening"
       ],
-      "excerptCount": 18,
+      "excerptCount": 20,
       "listIndex": 161
     },
     "Bodhisattva": {
@@ -130213,7 +129684,7 @@
       "subtopics": [],
       "eventCount": 2,
       "sessionCount": 1,
-      "excerptCount": 49,
+      "excerptCount": 52,
       "fTagCount": 4,
       "listIndex": 708
     },
@@ -130557,7 +130028,7 @@
         "Unwholesome Roots"
       ],
       "subtopics": [],
-      "excerptCount": 71,
+      "excerptCount": 72,
       "fTagCount": 3,
       "listIndex": 180
     },
@@ -130613,7 +130084,7 @@
         "Aversion"
       ],
       "subtopics": [],
-      "excerptCount": 102,
+      "excerptCount": 103,
       "fTagCount": 4,
       "listIndex": 182
     },
@@ -130725,7 +130196,7 @@
         "Becoming"
       ],
       "subtopics": [],
-      "excerptCount": 32,
+      "excerptCount": 33,
       "fTagCount": 2,
       "listIndex": 265
     },
@@ -130814,7 +130285,7 @@
       ],
       "subtopics": [],
       "sessionCount": 2,
-      "excerptCount": 70,
+      "excerptCount": 71,
       "fTagCount": 4,
       "listIndex": 195
     },
@@ -130844,7 +130315,7 @@
       "partOfSubtopics": [
         "Aversion"
       ],
-      "excerptCount": 20,
+      "excerptCount": 21,
       "fTagCount": 1,
       "listIndex": 196
     },
@@ -130962,7 +130433,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "fetters.html",
-      "excerptCount": 3,
+      "excerptCount": 4,
       "fTagCount": 1,
       "listIndex": 200
     },
@@ -130992,7 +130463,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 177,
+      "excerptCount": 179,
       "fTagCount": 4,
       "listIndex": 201
     },
@@ -131147,7 +130618,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 4,
-      "excerptCount": 127,
+      "excerptCount": 128,
       "fTagCount": 2,
       "listIndex": 213
     },
@@ -131749,7 +131220,7 @@
         "Volitional formations"
       ],
       "subtopics": [],
-      "excerptCount": 42,
+      "excerptCount": 43,
       "fTagCount": 3,
       "listIndex": 242
     },
@@ -131775,7 +131246,7 @@
         "Conditionality"
       ],
       "subtopics": [],
-      "excerptCount": 99,
+      "excerptCount": 100,
       "fTagCount": 2,
       "listIndex": 244
     },
@@ -131958,7 +131429,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 114,
+      "excerptCount": 116,
       "fTagCount": 5,
       "listIndex": 269
     },
@@ -131985,7 +131456,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 2,
-      "excerptCount": 95,
+      "excerptCount": 96,
       "fTagCount": 5,
       "listIndex": 271
     },
@@ -132089,7 +131560,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "not-made-of-that.html",
-      "excerptCount": 4,
+      "excerptCount": 6,
       "listIndex": 277
     },
     "Aspects of Understanding": {
@@ -132247,7 +131718,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "attitude.html",
-      "excerptCount": 2,
+      "excerptCount": 4,
       "listIndex": 284
     },
     "Personality": {
@@ -132270,7 +131741,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "personality.html",
-      "excerptCount": 45,
+      "excerptCount": 46,
       "fTagCount": 2,
       "listIndex": 285
     },
@@ -132458,7 +131929,7 @@
         "Buddha"
       ],
       "subtopics": [],
-      "excerptCount": 55,
+      "excerptCount": 56,
       "fTagCount": 4,
       "listIndex": 293
     },
@@ -132486,7 +131957,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 1,
-      "excerptCount": 53,
+      "excerptCount": 55,
       "fTagCount": 2,
       "listIndex": 713
     },
@@ -133142,7 +132613,7 @@
         "Precepts"
       ],
       "subtopics": [],
-      "excerptCount": 46,
+      "excerptCount": 48,
       "fTagCount": 4,
       "listIndex": 323
     },
@@ -133673,7 +133144,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "insight-meditation.html",
-      "excerptCount": 45,
+      "excerptCount": 48,
       "fTagCount": 4,
       "listIndex": 398
     },
@@ -134206,7 +133677,7 @@
         "Direct experience"
       ],
       "subtopics": [],
-      "excerptCount": 47,
+      "excerptCount": 48,
       "fTagCount": 1,
       "listIndex": 429
     },
@@ -134234,7 +133705,7 @@
         "Knowing itself"
       ],
       "subtopics": [],
-      "excerptCount": 72,
+      "excerptCount": 73,
       "fTagCount": 3,
       "listIndex": 430
     },
@@ -134280,7 +133751,7 @@
         "Long-term practice"
       ],
       "subtopics": [],
-      "excerptCount": 39,
+      "excerptCount": 40,
       "fTagCount": 3,
       "listIndex": 432
     },
@@ -134318,7 +133789,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 170,
+      "excerptCount": 171,
       "fTagCount": 2,
       "listIndex": 433
     },
@@ -134515,7 +133986,7 @@
       "primaries": 0,
       "htmlFile": "similes.html",
       "sessionCount": 1,
-      "excerptCount": 119,
+      "excerptCount": 122,
       "fTagCount": 2,
       "listIndex": 467
     },
@@ -134780,7 +134251,7 @@
       "subtopics": [],
       "eventCount": 6,
       "sessionCount": 41,
-      "excerptCount": 703,
+      "excerptCount": 707,
       "fTagCount": 7,
       "listIndex": 478
     },
@@ -135330,7 +134801,7 @@
       ],
       "subtopics": [],
       "sessionCount": 2,
-      "excerptCount": 116,
+      "excerptCount": 118,
       "fTagCount": 4,
       "listIndex": 502
     },
@@ -135658,7 +135129,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "ajahn-sucitto.html",
-      "excerptCount": 20,
+      "excerptCount": 21,
       "listIndex": 512
     },
     "Ajahn Ñāṇadhammo": {
@@ -135738,7 +135209,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "ajahn-amaro.html",
-      "excerptCount": 79,
+      "excerptCount": 80,
       "fTagCount": 1,
       "listIndex": 515
     },
@@ -139346,7 +138817,7 @@
         "Realms of existence"
       ],
       "subtopics": [],
-      "excerptCount": 13,
+      "excerptCount": 14,
       "fTagCount": 1,
       "listIndex": 692
     },
@@ -140005,7 +139476,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "geographyindia.html",
-      "excerptCount": 1,
+      "excerptCount": 2,
       "listIndex": 724
     },
     "Geography/Thailand": {
@@ -140385,7 +139856,7 @@
         "Language"
       ],
       "subtopics": [],
-      "excerptCount": 52,
+      "excerptCount": 54,
       "fTagCount": 1,
       "listIndex": 740
     },
@@ -140927,7 +140398,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "philosophy.html",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "listIndex": 765
     },
     "Atheism/agnosticism": {
@@ -140967,8 +140438,8 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "western-psychology.html",
-      "excerptCount": 16,
-      "fTagCount": 1,
+      "excerptCount": 18,
+      "fTagCount": 2,
       "listIndex": 767
     },
     "Cults": {
@@ -142387,7 +141858,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "conventions.html",
-      "excerptCount": 22,
+      "excerptCount": 24,
       "listIndex": 865
     },
     "Worldly Conditions": {
@@ -143691,6 +143162,87 @@
       "excerptCount": 4,
       "fTagCount": 1,
       "listIndex": 925
+    },
+    "New unsorted tags": {
+      "tag": "New unsorted tags",
+      "pali": "",
+      "fullTag": "New unsorted tags",
+      "fullPali": "",
+      "number": "",
+      "alternateTranslations": [],
+      "glosses": [],
+      "related": [],
+      "flags": "",
+      "subtags": [
+        "Mark Epstein",
+        "Thich Nhat Hahn",
+        "Jainism"
+      ],
+      "supertags": [],
+      "copies": 1,
+      "primaries": 0,
+      "htmlFile": "new-unsorted-tags.html",
+      "listIndex": 926
+    },
+    "Mark Epstein": {
+      "tag": "Mark Epstein",
+      "pali": "",
+      "fullTag": "Mark Epstein",
+      "fullPali": "",
+      "number": "",
+      "alternateTranslations": [],
+      "glosses": [],
+      "related": [],
+      "flags": "",
+      "subtags": [],
+      "supertags": [
+        "New unsorted tags"
+      ],
+      "copies": 1,
+      "primaries": 0,
+      "htmlFile": "mark-epstein.html",
+      "excerptCount": 1,
+      "listIndex": 927
+    },
+    "Thich Nhat Hahn": {
+      "tag": "Thich Nhat Hahn",
+      "pali": "",
+      "fullTag": "Thich Nhat Hahn",
+      "fullPali": "",
+      "number": "",
+      "alternateTranslations": [],
+      "glosses": [],
+      "related": [],
+      "flags": "",
+      "subtags": [],
+      "supertags": [
+        "New unsorted tags"
+      ],
+      "copies": 1,
+      "primaries": 0,
+      "htmlFile": "thich-nhat-hahn.html",
+      "excerptCount": 1,
+      "listIndex": 928
+    },
+    "Jainism": {
+      "tag": "Jainism",
+      "pali": "",
+      "fullTag": "Jainism",
+      "fullPali": "",
+      "number": "",
+      "alternateTranslations": [],
+      "glosses": [],
+      "related": [],
+      "flags": "",
+      "subtags": [],
+      "supertags": [
+        "New unsorted tags"
+      ],
+      "copies": 1,
+      "primaries": 0,
+      "htmlFile": "jainism.html",
+      "excerptCount": 1,
+      "listIndex": 929
     }
   },
   "series": {
@@ -145006,6 +144558,17 @@
       "author": [
         "AThan"
       ]
+    },
+    "nibbāna for everyone": {
+      "abbreviation": "Nibbāna for Everyone",
+      "title": "_Nibbāna for Everyone_",
+      "attribution": "by Ajahn Buddhadāsa",
+      "pdfPageOffset": 6,
+      "filename": "Buddhadasa-Nibbana-for-everyone.pdf",
+      "remoteUrl": "https://www.suanmokkh.org/system/books/files/000/000/084/original/Buddhadasa-Nibbana-for-everyone.pdf",
+      "author": [
+        "ABuddhadasa"
+      ]
     }
   },
   "tagDisplayList": [
@@ -145020,7 +144583,7 @@
       "text": "Skillful qualities (81) [kusalā dhammā]",
       "tag": "Skillful qualities",
       "subtagCount": 129,
-      "subtagExcerptCount": 2102
+      "subtagExcerptCount": 2113
     },
     {
       "level": 2,
@@ -145044,7 +144607,7 @@
       "text": "Noble Eightfold Path (58) [ariya aṭṭaṅgika magga]",
       "tag": "Eightfold Path",
       "subtagCount": 52,
-      "subtagExcerptCount": 1347
+      "subtagExcerptCount": 1352
     },
     {
       "level": 3,
@@ -145114,7 +144677,7 @@
       "text": "Right Speech (33) [sammā-vācā]",
       "tag": "Right Speech",
       "subtagCount": 8,
-      "subtagExcerptCount": 87
+      "subtagExcerptCount": 88
     },
     {
       "level": 4,
@@ -145211,9 +144774,9 @@
       "flags": "0",
       "name": "Nonviolent Communication",
       "pali": "",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "subsumed": false,
-      "text": "Nonviolent Communication (2)",
+      "text": "Nonviolent Communication (3)",
       "tag": "Nonviolent Communication"
     },
     {
@@ -145337,12 +144900,12 @@
       "flags": "*",
       "name": "Right Effort",
       "pali": "sammā-vāyāma",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": false,
-      "text": "Right Effort (107) [sammā-vāyāma]",
+      "text": "Right Effort (108) [sammā-vāyāma]",
       "tag": "Right Effort",
       "subtagCount": 0,
-      "subtagExcerptCount": 107
+      "subtagExcerptCount": 108
     },
     {
       "level": 4,
@@ -145362,9 +144925,9 @@
       "flags": "h",
       "name": "Non-arising of unarisen evil unskillful qualities",
       "pali": "",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": true,
-      "text": "Non-arising of unarisen evil unskillful qualities see Right Effort (107)",
+      "text": "Non-arising of unarisen evil unskillful qualities see Right Effort (108)",
       "tag": "Right Effort"
     },
     {
@@ -145373,9 +144936,9 @@
       "flags": "h",
       "name": "Abandoning of arisen evil unskillful qualities",
       "pali": "",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": true,
-      "text": "Abandoning of arisen evil unskillful qualities see Right Effort (107)",
+      "text": "Abandoning of arisen evil unskillful qualities see Right Effort (108)",
       "tag": "Right Effort"
     },
     {
@@ -145384,9 +144947,9 @@
       "flags": "h",
       "name": "Arising of unarisen skillful qualities",
       "pali": "",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": true,
-      "text": "Arising of unarisen skillful qualities see Right Effort (107)",
+      "text": "Arising of unarisen skillful qualities see Right Effort (108)",
       "tag": "Right Effort"
     },
     {
@@ -145395,9 +144958,9 @@
       "flags": "h",
       "name": "Fulfillment of arisen skillful qualities",
       "pali": "",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": true,
-      "text": "Fulfillment of arisen skillful qualities see Right Effort (107)",
+      "text": "Fulfillment of arisen skillful qualities see Right Effort (108)",
       "tag": "Right Effort"
     },
     {
@@ -145411,7 +144974,7 @@
       "text": "Right Mindfulness (67) [sammā-sati]",
       "tag": "Right Mindfulness",
       "subtagCount": 17,
-      "subtagExcerptCount": 734
+      "subtagExcerptCount": 737
     },
     {
       "level": 4,
@@ -145419,12 +144982,12 @@
       "flags": "*",
       "name": "Mindfulness of body",
       "pali": "kāyagatā-sati",
-      "excerptCount": 103,
+      "excerptCount": 104,
       "subsumed": false,
-      "text": "Mindfulness of body (103) [kāyagatā-sati]",
+      "text": "Mindfulness of body (104) [kāyagatā-sati]",
       "tag": "Mindfulness of body",
       "subtagCount": 6,
-      "subtagExcerptCount": 409
+      "subtagExcerptCount": 410
     },
     {
       "level": 5,
@@ -145525,7 +145088,7 @@
       "text": "Mindfulness of dhammas (8) [dhammā-sati]",
       "tag": "Mindfulness of dhammas",
       "subtagCount": 5,
-      "subtagExcerptCount": 205
+      "subtagExcerptCount": 207
     },
     {
       "level": 5,
@@ -145544,9 +145107,9 @@
       "flags": "",
       "name": "Five Aggregates",
       "pali": "pañcakkhandhā",
-      "excerptCount": 56,
+      "excerptCount": 57,
       "subsumed": false,
-      "text": "Five Aggregates (56) [pañcakkhandhā]",
+      "text": "Five Aggregates (57) [pañcakkhandhā]",
       "tag": "Aggregates"
     },
     {
@@ -145577,9 +145140,9 @@
       "flags": "",
       "name": "Four Noble Truths",
       "pali": "cattāri ariya-saccāni",
-      "excerptCount": 59,
+      "excerptCount": 60,
       "subsumed": false,
-      "text": "Four Noble Truths (59) [cattāri ariya-saccāni]",
+      "text": "Four Noble Truths (60) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths"
     },
     {
@@ -145626,7 +145189,7 @@
       "text": "Right Concentration (24) [sammā-samādhi]",
       "tag": "Right Concentration",
       "subtagCount": 9,
-      "subtagExcerptCount": 453
+      "subtagExcerptCount": 454
     },
     {
       "level": 4,
@@ -145678,9 +145241,9 @@
       "flags": "*",
       "name": "Happiness",
       "pali": "sukha",
-      "excerptCount": 160,
+      "excerptCount": 161,
       "subsumed": false,
-      "text": "Happiness (160) [sukha]",
+      "text": "Happiness (161) [sukha]",
       "tag": "Happiness"
     },
     {
@@ -145733,12 +145296,12 @@
       "flags": "*",
       "name": "Four Noble Truths",
       "pali": "cattāri ariya-saccāni",
-      "excerptCount": 59,
+      "excerptCount": 60,
       "subsumed": false,
-      "text": "Four Noble Truths (59) [cattāri ariya-saccāni]",
+      "text": "Four Noble Truths (60) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 20,
-      "subtagExcerptCount": 917
+      "subtagExcerptCount": 925
     },
     {
       "level": 3,
@@ -145751,7 +145314,7 @@
       "text": "Noble Truth of Suffering (24) [dukkha ariya-sacca]",
       "tag": "Noble Truth of Suffering",
       "subtagCount": 8,
-      "subtagExcerptCount": 523
+      "subtagExcerptCount": 524
     },
     {
       "level": 4,
@@ -145803,9 +145366,9 @@
       "flags": "",
       "name": "Suffering",
       "pali": "dukkha",
-      "excerptCount": 226,
+      "excerptCount": 227,
       "subsumed": false,
-      "text": "Suffering (226) [dukkha]",
+      "text": "Suffering (227) [dukkha]",
       "tag": "Suffering"
     },
     {
@@ -145836,9 +145399,9 @@
       "flags": "",
       "name": "Five aggregates affected by clinging",
       "pali": "pañcupādānakkhandhā",
-      "excerptCount": 56,
+      "excerptCount": 57,
       "subsumed": true,
-      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (56)",
+      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (57)",
       "tag": "Aggregates"
     },
     {
@@ -145852,7 +145415,7 @@
       "text": "Noble Truth of the Cause of Suffering (39) [dukkha-samudaya ariya-sacca]",
       "tag": "Cause of Suffering",
       "subtagCount": 3,
-      "subtagExcerptCount": 152
+      "subtagExcerptCount": 154
     },
     {
       "level": 4,
@@ -145860,9 +145423,9 @@
       "flags": "",
       "name": "Craving for sensuality",
       "pali": "kāma-taṇhā",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": true,
-      "text": "Craving for sensuality [kāma-taṇhā] see Sensual desire (70)",
+      "text": "Craving for sensuality [kāma-taṇhā] see Sensual desire (71)",
       "tag": "Sensual desire"
     },
     {
@@ -145871,9 +145434,9 @@
       "flags": "",
       "name": "Craving to become",
       "pali": "bhava-taṇhā",
-      "excerptCount": 32,
+      "excerptCount": 33,
       "subsumed": true,
-      "text": "Craving to become [bhava-taṇhā] see Becoming (32)",
+      "text": "Craving to become [bhava-taṇhā] see Becoming (33)",
       "tag": "Becoming"
     },
     {
@@ -145882,9 +145445,9 @@
       "flags": "*",
       "name": "Craving not to become",
       "pali": "vibhava-taṇhā",
-      "excerptCount": 21,
+      "excerptCount": 22,
       "subsumed": false,
-      "text": "Craving not to become (21) [vibhava-taṇhā]",
+      "text": "Craving not to become (22) [vibhava-taṇhā]",
       "tag": "Craving not to become"
     },
     {
@@ -145898,7 +145461,7 @@
       "text": "Noble Truth of the Cessation of Suffering (63) [dukkha-nirodha ariya-saccaṃ]",
       "tag": "Cessation of Suffering",
       "subtagCount": 5,
-      "subtagExcerptCount": 385
+      "subtagExcerptCount": 389
     },
     {
       "level": 4,
@@ -145928,9 +145491,9 @@
       "flags": "",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 197,
+      "excerptCount": 198,
       "subsumed": false,
-      "text": "Relinquishment (197) [paṭinissagga]",
+      "text": "Relinquishment (198) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -145950,9 +145513,9 @@
       "flags": "",
       "name": "Liberation",
       "pali": "vimutti",
-      "excerptCount": 117,
+      "excerptCount": 121,
       "subsumed": false,
-      "text": "Liberation (117) [vimutti]",
+      "text": "Liberation (121) [vimutti]",
       "tag": "Liberation"
     },
     {
@@ -145977,7 +145540,7 @@
       "text": "Aids to Awakening (3) [bodhipakkhiyādhammā]",
       "tag": "Aids to Awakening",
       "subtagCount": 6,
-      "subtagExcerptCount": 234
+      "subtagExcerptCount": 235
     },
     {
       "level": 3,
@@ -145996,9 +145559,9 @@
       "flags": "4",
       "name": "Four Right Efforts",
       "pali": "cattāro sammappadhānā",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": true,
-      "text": "Four Right Efforts [cattāro sammappadhānā] see Right Effort (107)",
+      "text": "Four Right Efforts [cattāro sammappadhānā] see Right Effort (108)",
       "tag": "Right Effort"
     },
     {
@@ -146067,7 +145630,7 @@
       "text": "Four Bases of Success (11) [cattāro iddhipādā]",
       "tag": "Bases of Success",
       "subtagCount": 4,
-      "subtagExcerptCount": 294
+      "subtagExcerptCount": 295
     },
     {
       "level": 3,
@@ -146120,9 +145683,9 @@
       "flags": "",
       "name": "Investigation",
       "pali": "vīmaṃsā",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "subsumed": true,
-      "text": "Investigation [vīmaṃsā] see Discernment (162)",
+      "text": "Investigation [vīmaṃsā] see Discernment (163)",
       "tag": "Discernment"
     },
     {
@@ -146136,7 +145699,7 @@
       "text": "Five Faculties (5) [pañca indriyā]",
       "tag": "Faculties",
       "subtagCount": 5,
-      "subtagExcerptCount": 461
+      "subtagExcerptCount": 462
     },
     {
       "level": 3,
@@ -146188,9 +145751,9 @@
       "flags": "*",
       "name": "Discernment",
       "pali": "paññā",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "subsumed": false,
-      "text": "Discernment (162) [paññā]",
+      "text": "Discernment (163) [paññā]",
       "tag": "Discernment"
     },
     {
@@ -146351,7 +145914,7 @@
       "text": "Seven Treasures (7) [satta dhanā]",
       "tag": "Treasures",
       "subtagCount": 12,
-      "subtagExcerptCount": 632
+      "subtagExcerptCount": 635
     },
     {
       "level": 3,
@@ -146370,9 +145933,9 @@
       "flags": "*",
       "name": "Virtue",
       "pali": "sīla",
-      "excerptCount": 75,
+      "excerptCount": 76,
       "subsumed": false,
-      "text": "Virtue (75) [sīla]",
+      "text": "Virtue (76) [sīla]",
       "tag": "Virtue"
     },
     {
@@ -146397,7 +145960,7 @@
       "text": "Learning (93) [suta]",
       "tag": "Learning",
       "subtagCount": 6,
-      "subtagExcerptCount": 259
+      "subtagExcerptCount": 260
     },
     {
       "level": 4,
@@ -146405,12 +145968,12 @@
       "flags": "g",
       "name": "Tipiṭaka",
       "pali": "Tipiṭaka",
-      "excerptCount": 9,
+      "excerptCount": 10,
       "subsumed": false,
-      "text": "Tipiṭaka (9)",
+      "text": "Tipiṭaka (10)",
       "tag": "Tipiṭaka",
       "subtagCount": 3,
-      "subtagExcerptCount": 164
+      "subtagExcerptCount": 165
     },
     {
       "level": 5,
@@ -146484,9 +146047,9 @@
       "flags": "",
       "name": "Discernment",
       "pali": "paññā",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "subsumed": false,
-      "text": "Discernment (162) [paññā]",
+      "text": "Discernment (163) [paññā]",
       "tag": "Discernment"
     },
     {
@@ -146500,7 +146063,7 @@
       "text": "Ten Perfections (14) [dasa pāramiyo]",
       "tag": "Perfections",
       "subtagCount": 10,
-      "subtagExcerptCount": 626
+      "subtagExcerptCount": 628
     },
     {
       "level": 3,
@@ -146519,9 +146082,9 @@
       "flags": "",
       "name": "Virtue",
       "pali": "sīla",
-      "excerptCount": 75,
+      "excerptCount": 76,
       "subsumed": false,
-      "text": "Virtue (75) [sīla]",
+      "text": "Virtue (76) [sīla]",
       "tag": "Virtue"
     },
     {
@@ -146541,9 +146104,9 @@
       "flags": "",
       "name": "Discernment",
       "pali": "paññā",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "subsumed": false,
-      "text": "Discernment (162) [paññā]",
+      "text": "Discernment (163) [paññā]",
       "tag": "Discernment"
     },
     {
@@ -146623,7 +146186,7 @@
       "text": "Progress of insight (19)",
       "tag": "Progress of insight",
       "subtagCount": 9,
-      "subtagExcerptCount": 480
+      "subtagExcerptCount": 484
     },
     {
       "level": 3,
@@ -146697,9 +146260,9 @@
       "flags": "*",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 197,
+      "excerptCount": 198,
       "subsumed": false,
-      "text": "Relinquishment (197) [paṭinissagga]",
+      "text": "Relinquishment (198) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -146719,9 +146282,9 @@
       "flags": "*",
       "name": "Liberation",
       "pali": "vimutti",
-      "excerptCount": 117,
+      "excerptCount": 121,
       "subsumed": false,
-      "text": "Liberation (117) [vimutti]",
+      "text": "Liberation (121) [vimutti]",
       "tag": "Liberation"
     },
     {
@@ -146730,12 +146293,12 @@
       "flags": "",
       "name": "Stages of awakening",
       "pali": "",
-      "excerptCount": 32,
+      "excerptCount": 33,
       "subsumed": false,
-      "text": "Stages of awakening (32)",
+      "text": "Stages of awakening (33)",
       "tag": "Stages of awakening",
       "subtagCount": 13,
-      "subtagExcerptCount": 239
+      "subtagExcerptCount": 245
     },
     {
       "level": 3,
@@ -146743,12 +146306,12 @@
       "flags": "",
       "name": "Stream entry",
       "pali": "sotāpanna",
-      "excerptCount": 30,
+      "excerptCount": 31,
       "subsumed": false,
-      "text": "Stream entry (30) [sotāpanna]",
+      "text": "Stream entry (31) [sotāpanna]",
       "tag": "Stream entry",
       "subtagCount": 6,
-      "subtagExcerptCount": 155
+      "subtagExcerptCount": 157
     },
     {
       "level": 4,
@@ -146761,7 +146324,7 @@
       "text": "Factors for stream entry (1) [sotāpattiyaṅga]",
       "tag": "Factors for stream entry",
       "subtagCount": 5,
-      "subtagExcerptCount": 129
+      "subtagExcerptCount": 130
     },
     {
       "level": 5,
@@ -146804,9 +146367,9 @@
       "flags": "",
       "name": "Appropriate attention",
       "pali": "yoniso manasikāra",
-      "excerptCount": 24,
+      "excerptCount": 25,
       "subsumed": false,
-      "text": "Appropriate attention (24) [yoniso manasikāra]",
+      "text": "Appropriate attention (25) [yoniso manasikāra]",
       "tag": "Appropriate attention"
     },
     {
@@ -146826,9 +146389,9 @@
       "flags": "",
       "name": "Once return",
       "pali": "sakadāgāmī",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "subsumed": false,
-      "text": "Once return (2) [sakadāgāmī]",
+      "text": "Once return (3) [sakadāgāmī]",
       "tag": "Once return"
     },
     {
@@ -146837,9 +146400,9 @@
       "flags": "",
       "name": "Non-return",
       "pali": "anāgamī",
-      "excerptCount": 4,
+      "excerptCount": 5,
       "subsumed": false,
-      "text": "Non-return (4) [anāgamī]",
+      "text": "Non-return (5) [anāgamī]",
       "tag": "Non-return"
     },
     {
@@ -146848,9 +146411,9 @@
       "flags": "",
       "name": "Arahant",
       "pali": "Arahant",
-      "excerptCount": 18,
+      "excerptCount": 20,
       "subsumed": false,
-      "text": "Arahant (18)",
+      "text": "Arahant (20)",
       "tag": "Arahant"
     },
     {
@@ -146881,9 +146444,9 @@
       "flags": "0C",
       "name": "Nibbāna",
       "pali": "Nibbāna",
-      "excerptCount": 49,
+      "excerptCount": 52,
       "subsumed": false,
-      "text": "Nibbāna (49)",
+      "text": "Nibbāna (52)",
       "tag": "Nibbāna"
     },
     {
@@ -147053,7 +146616,7 @@
       "text": "Unskillful qualities (42) [akusalā dhammā]",
       "tag": "Unskillful qualities",
       "subtagCount": 38,
-      "subtagExcerptCount": 877
+      "subtagExcerptCount": 882
     },
     {
       "level": 2,
@@ -147061,12 +146624,12 @@
       "flags": "",
       "name": "Three Unwholesome Roots",
       "pali": "ti-akusala-mūlā",
-      "excerptCount": 71,
+      "excerptCount": 72,
       "subsumed": false,
-      "text": "Three Unwholesome Roots (71) [ti-akusala-mūlā]",
+      "text": "Three Unwholesome Roots (72) [ti-akusala-mūlā]",
       "tag": "Unwholesome Roots",
       "subtagCount": 3,
-      "subtagExcerptCount": 216
+      "subtagExcerptCount": 218
     },
     {
       "level": 3,
@@ -147085,9 +146648,9 @@
       "flags": "*",
       "name": "Aversion",
       "pali": "dosa",
-      "excerptCount": 102,
+      "excerptCount": 103,
       "subsumed": false,
-      "text": "Aversion (102) [dosa]",
+      "text": "Aversion (103) [dosa]",
       "tag": "Aversion"
     },
     {
@@ -147112,7 +146675,7 @@
       "text": "Four Biases (2) [catarī agatī]",
       "tag": "Biases",
       "subtagCount": 4,
-      "subtagExcerptCount": 277
+      "subtagExcerptCount": 278
     },
     {
       "level": 3,
@@ -147131,9 +146694,9 @@
       "flags": "h",
       "name": "Bias from aversion",
       "pali": "dosāgati",
-      "excerptCount": 102,
+      "excerptCount": 103,
       "subsumed": true,
-      "text": "Bias from aversion [dosāgati] see Aversion (102)",
+      "text": "Bias from aversion [dosāgati] see Aversion (103)",
       "tag": "Aversion"
     },
     {
@@ -147169,7 +146732,7 @@
       "text": "Outflows (6) [āsava]",
       "tag": "Outflows",
       "subtagCount": 4,
-      "subtagExcerptCount": 161
+      "subtagExcerptCount": 163
     },
     {
       "level": 3,
@@ -147177,9 +146740,9 @@
       "flags": "",
       "name": "Sensuality",
       "pali": "kāmāsava",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": true,
-      "text": "Sensuality [kāmāsava] see Sensual desire (70)",
+      "text": "Sensuality [kāmāsava] see Sensual desire (71)",
       "tag": "Sensual desire"
     },
     {
@@ -147188,9 +146751,9 @@
       "flags": "",
       "name": "Becoming",
       "pali": "bhavāsava",
-      "excerptCount": 32,
+      "excerptCount": 33,
       "subsumed": false,
-      "text": "Becoming (32) [bhavāsava]",
+      "text": "Becoming (33) [bhavāsava]",
       "tag": "Becoming"
     },
     {
@@ -147226,7 +146789,7 @@
       "text": "Five Hindrances (53) [pañca nīvaraṇāni]",
       "tag": "Hindrances",
       "subtagCount": 5,
-      "subtagExcerptCount": 250
+      "subtagExcerptCount": 251
     },
     {
       "level": 3,
@@ -147234,9 +146797,9 @@
       "flags": "*",
       "name": "Sensual desire",
       "pali": "kāmacchanda",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": false,
-      "text": "Sensual desire (70) [kāmacchanda]",
+      "text": "Sensual desire (71) [kāmacchanda]",
       "tag": "Sensual desire"
     },
     {
@@ -147245,9 +146808,9 @@
       "flags": "*",
       "name": "Ill-will",
       "pali": "byāpāda",
-      "excerptCount": 20,
+      "excerptCount": 21,
       "subsumed": false,
-      "text": "Ill-will (20) [byāpāda]",
+      "text": "Ill-will (21) [byāpāda]",
       "tag": "Ill-will"
     },
     {
@@ -147289,12 +146852,12 @@
       "flags": "",
       "name": "Ten Fetters",
       "pali": "dasa saṃyojanā",
-      "excerptCount": 3,
+      "excerptCount": 4,
       "subsumed": false,
-      "text": "Ten Fetters (3) [dasa saṃyojanā]",
+      "text": "Ten Fetters (4) [dasa saṃyojanā]",
       "tag": "Fetters",
       "subtagCount": 10,
-      "subtagExcerptCount": 380
+      "subtagExcerptCount": 383
     },
     {
       "level": 3,
@@ -147302,9 +146865,9 @@
       "flags": "*",
       "name": "Self-identity view",
       "pali": "sakkāya-diṭṭhi",
-      "excerptCount": 177,
+      "excerptCount": 179,
       "subsumed": false,
-      "text": "Self-identity view (177) [sakkāya-diṭṭhi]",
+      "text": "Self-identity view (179) [sakkāya-diṭṭhi]",
       "tag": "Self-identity view"
     },
     {
@@ -147335,9 +146898,9 @@
       "flags": "",
       "name": "Sensual desire",
       "pali": "kāmacchanda",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": false,
-      "text": "Sensual desire (70) [kāmacchanda]",
+      "text": "Sensual desire (71) [kāmacchanda]",
       "tag": "Sensual desire"
     },
     {
@@ -147346,9 +146909,9 @@
       "flags": "",
       "name": "Ill-will",
       "pali": "byāpāda",
-      "excerptCount": 20,
+      "excerptCount": 21,
       "subsumed": false,
-      "text": "Ill-will (20) [byāpāda]",
+      "text": "Ill-will (21) [byāpāda]",
       "tag": "Ill-will"
     },
     {
@@ -147423,9 +146986,9 @@
       "flags": "",
       "name": "Defilement",
       "pali": "kilesa",
-      "excerptCount": 71,
+      "excerptCount": 72,
       "subsumed": true,
-      "text": "Defilement [kilesa] see Unwholesome Roots (71)",
+      "text": "Defilement [kilesa] see Unwholesome Roots (72)",
       "tag": "Unwholesome Roots"
     },
     {
@@ -147434,12 +146997,12 @@
       "flags": "",
       "name": "Proliferation",
       "pali": "papañca",
-      "excerptCount": 127,
+      "excerptCount": 128,
       "subsumed": false,
-      "text": "Proliferation (127) [papañca]",
+      "text": "Proliferation (128) [papañca]",
       "tag": "Proliferation",
       "subtagCount": 3,
-      "subtagExcerptCount": 249
+      "subtagExcerptCount": 250
     },
     {
       "level": 3,
@@ -147486,7 +147049,7 @@
       "tag": "",
       "virtualTag": "Conceit-related",
       "subtagCount": 8,
-      "subtagExcerptCount": 275
+      "subtagExcerptCount": 277
     },
     {
       "level": 3,
@@ -147494,9 +147057,9 @@
       "flags": "",
       "name": "Self-identity view",
       "pali": "sakkāya-diṭṭhi",
-      "excerptCount": 177,
+      "excerptCount": 179,
       "subsumed": false,
-      "text": "Self-identity view (177) [sakkāya-diṭṭhi]",
+      "text": "Self-identity view (179) [sakkāya-diṭṭhi]",
       "tag": "Self-identity view"
     },
     {
@@ -147654,7 +147217,7 @@
       "tag": "",
       "virtualTag": "Indeterminate qualities",
       "subtagCount": 48,
-      "subtagExcerptCount": 1131
+      "subtagExcerptCount": 1137
     },
     {
       "level": 2,
@@ -147719,12 +147282,12 @@
       "flags": "*",
       "name": "Five Aggregates",
       "pali": "pañcakkhandhā",
-      "excerptCount": 56,
+      "excerptCount": 57,
       "subsumed": false,
-      "text": "Five Aggregates (56) [pañcakkhandhā]",
+      "text": "Five Aggregates (57) [pañcakkhandhā]",
       "tag": "Aggregates",
       "subtagCount": 5,
-      "subtagExcerptCount": 209
+      "subtagExcerptCount": 210
     },
     {
       "level": 3,
@@ -147765,9 +147328,9 @@
       "flags": "*",
       "name": "Volitional formations",
       "pali": "saṅkhāra",
-      "excerptCount": 42,
+      "excerptCount": 43,
       "subsumed": false,
-      "text": "Volitional formations (42) [saṅkhāra]",
+      "text": "Volitional formations (43) [saṅkhāra]",
       "tag": "Volitional formations"
     },
     {
@@ -147787,9 +147350,9 @@
       "flags": "*",
       "name": "Conditionality",
       "pali": "idappaccayatā",
-      "excerptCount": 99,
+      "excerptCount": 100,
       "subsumed": false,
-      "text": "Conditionality (99) [idappaccayatā]",
+      "text": "Conditionality (100) [idappaccayatā]",
       "tag": "Conditionality"
     },
     {
@@ -147803,7 +147366,7 @@
       "text": "Dependent origination (30) [paticca-samuppāda]",
       "tag": "Dependent origination",
       "subtagCount": 20,
-      "subtagExcerptCount": 749
+      "subtagExcerptCount": 753
     },
     {
       "level": 3,
@@ -147822,9 +147385,9 @@
       "flags": "",
       "name": "Volitional formations",
       "pali": "saṅkhāra",
-      "excerptCount": 42,
+      "excerptCount": 43,
       "subsumed": false,
-      "text": "Volitional formations (42) [saṅkhāra]",
+      "text": "Volitional formations (43) [saṅkhāra]",
       "tag": "Volitional formations"
     },
     {
@@ -147844,9 +147407,9 @@
       "flags": "",
       "name": "Name and form",
       "pali": "nāma-rūpa",
-      "excerptCount": 56,
+      "excerptCount": 57,
       "subsumed": true,
-      "text": "Name and form [nāma-rūpa] see Aggregates (56)",
+      "text": "Name and form [nāma-rūpa] see Aggregates (57)",
       "tag": "Aggregates"
     },
     {
@@ -147882,7 +147445,7 @@
       "text": "Feeling (60) [vedanā]",
       "tag": "Feeling",
       "subtagCount": 3,
-      "subtagExcerptCount": 245
+      "subtagExcerptCount": 246
     },
     {
       "level": 4,
@@ -147890,9 +147453,9 @@
       "flags": "",
       "name": "Pleasant feeling",
       "pali": "sukhā vedanā",
-      "excerptCount": 160,
+      "excerptCount": 161,
       "subsumed": true,
-      "text": "Pleasant feeling [sukhā vedanā] see Happiness (160)",
+      "text": "Pleasant feeling [sukhā vedanā] see Happiness (161)",
       "tag": "Happiness"
     },
     {
@@ -147928,7 +147491,7 @@
       "text": "Craving (63) [taṇhā]",
       "tag": "Craving",
       "subtagCount": 3,
-      "subtagExcerptCount": 168
+      "subtagExcerptCount": 170
     },
     {
       "level": 4,
@@ -147936,9 +147499,9 @@
       "flags": "",
       "name": "Craving for sensuality",
       "pali": "kāma-taṇhā",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": true,
-      "text": "Craving for sensuality [kāma-taṇhā] see Sensual desire (70)",
+      "text": "Craving for sensuality [kāma-taṇhā] see Sensual desire (71)",
       "tag": "Sensual desire"
     },
     {
@@ -147947,9 +147510,9 @@
       "flags": "",
       "name": "Craving to become",
       "pali": "bhava-taṇhā",
-      "excerptCount": 32,
+      "excerptCount": 33,
       "subsumed": true,
-      "text": "Craving to become [bhava-taṇhā] see Becoming (32)",
+      "text": "Craving to become [bhava-taṇhā] see Becoming (33)",
       "tag": "Becoming"
     },
     {
@@ -147958,9 +147521,9 @@
       "flags": "",
       "name": "Craving not to become",
       "pali": "vibhava-taṇhā",
-      "excerptCount": 21,
+      "excerptCount": 22,
       "subsumed": false,
-      "text": "Craving not to become (21) [vibhava-taṇhā]",
+      "text": "Craving not to become (22) [vibhava-taṇhā]",
       "tag": "Craving not to become"
     },
     {
@@ -147974,7 +147537,7 @@
       "text": "Clinging (109) [upādāna]",
       "tag": "Clinging",
       "subtagCount": 4,
-      "subtagExcerptCount": 231
+      "subtagExcerptCount": 232
     },
     {
       "level": 4,
@@ -147982,9 +147545,9 @@
       "flags": "h",
       "name": "Sensuality-clinging",
       "pali": "kāmupādāna",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": true,
-      "text": "Sensuality-clinging [kāmupādāna] see Sensual desire (70)",
+      "text": "Sensuality-clinging [kāmupādāna] see Sensual desire (71)",
       "tag": "Sensual desire"
     },
     {
@@ -148026,9 +147589,9 @@
       "flags": "*",
       "name": "Becoming",
       "pali": "bhava",
-      "excerptCount": 32,
+      "excerptCount": 33,
       "subsumed": false,
-      "text": "Becoming (32) [bhava]",
+      "text": "Becoming (33) [bhava]",
       "tag": "Becoming"
     },
     {
@@ -148048,9 +147611,9 @@
       "flags": "",
       "name": "Suffering",
       "pali": "dukkha",
-      "excerptCount": 226,
+      "excerptCount": 227,
       "subsumed": false,
-      "text": "Suffering (226) [dukkha]",
+      "text": "Suffering (227) [dukkha]",
       "tag": "Suffering"
     },
     {
@@ -148064,7 +147627,7 @@
       "text": "Characteristics of existence (39)",
       "tag": "Characteristics of existence",
       "subtagCount": 9,
-      "subtagExcerptCount": 492
+      "subtagExcerptCount": 497
     },
     {
       "level": 3,
@@ -148072,9 +147635,9 @@
       "flags": "*",
       "name": "Impermanence",
       "pali": "anicca",
-      "excerptCount": 114,
+      "excerptCount": 116,
       "subsumed": false,
-      "text": "Impermanence (114) [anicca]",
+      "text": "Impermanence (116) [anicca]",
       "tag": "Impermanence"
     },
     {
@@ -148083,9 +147646,9 @@
       "flags": "*",
       "name": "Suffering",
       "pali": "dukkha",
-      "excerptCount": 226,
+      "excerptCount": 227,
       "subsumed": false,
-      "text": "Suffering (226) [dukkha]",
+      "text": "Suffering (227) [dukkha]",
       "tag": "Suffering"
     },
     {
@@ -148094,9 +147657,9 @@
       "flags": "*",
       "name": "Not-self",
       "pali": "anattā",
-      "excerptCount": 95,
+      "excerptCount": 96,
       "subsumed": false,
-      "text": "Not-self (95) [anattā]",
+      "text": "Not-self (96) [anattā]",
       "tag": "Not-self"
     },
     {
@@ -148127,9 +147690,9 @@
       "flags": "0",
       "name": "Conditionality",
       "pali": "idapaccayatā",
-      "excerptCount": 99,
+      "excerptCount": 100,
       "subsumed": false,
-      "text": "Conditionality (99) [idapaccayatā]",
+      "text": "Conditionality (100) [idapaccayatā]",
       "tag": "Conditionality"
     },
     {
@@ -148160,9 +147723,9 @@
       "flags": "0",
       "name": "Not-made-of-that",
       "pali": "atammayatā",
-      "excerptCount": 4,
+      "excerptCount": 6,
       "subsumed": false,
-      "text": "Not-made-of-that (4) [atammayatā]",
+      "text": "Not-made-of-that (6) [atammayatā]",
       "tag": "Not-made-of-that"
     },
     {
@@ -148239,9 +147802,9 @@
       "flags": "",
       "name": "Attitude",
       "pali": "",
-      "excerptCount": 2,
+      "excerptCount": 4,
       "subsumed": false,
-      "text": "Attitude (2)",
+      "text": "Attitude (4)",
       "tag": "Attitude"
     },
     {
@@ -148250,12 +147813,12 @@
       "flags": "",
       "name": "Personality",
       "pali": "",
-      "excerptCount": 45,
+      "excerptCount": 46,
       "subsumed": false,
-      "text": "Personality (45)",
+      "text": "Personality (46)",
       "tag": "Personality",
       "subtagCount": 2,
-      "subtagExcerptCount": 118
+      "subtagExcerptCount": 119
     },
     {
       "level": 3,
@@ -148334,7 +147897,7 @@
       "text": "Three Refuges (52) [tisaraṇa]",
       "tag": "Three Refuges",
       "subtagCount": 6,
-      "subtagExcerptCount": 298
+      "subtagExcerptCount": 301
     },
     {
       "level": 2,
@@ -148342,12 +147905,12 @@
       "flags": "CEp",
       "name": "Buddha",
       "pali": "Buddha",
-      "excerptCount": 55,
+      "excerptCount": 56,
       "subsumed": false,
-      "text": "Buddha (55)",
+      "text": "Buddha (56)",
       "tag": "Buddha",
       "subtagCount": 3,
-      "subtagExcerptCount": 137
+      "subtagExcerptCount": 140
     },
     {
       "level": 3,
@@ -148355,9 +147918,9 @@
       "flags": "",
       "name": "Buddha/Biography",
       "pali": "",
-      "excerptCount": 53,
+      "excerptCount": 55,
       "subsumed": false,
-      "text": "Buddha/Biography (53)",
+      "text": "Buddha/Biography (55)",
       "tag": "Buddha/Biography"
     },
     {
@@ -148684,12 +148247,12 @@
       "flags": "",
       "name": "Precepts",
       "pali": "sikkhāpada",
-      "excerptCount": 46,
+      "excerptCount": 48,
       "subsumed": false,
-      "text": "Precepts (46) [sikkhāpada]",
+      "text": "Precepts (48) [sikkhāpada]",
       "tag": "Precepts",
       "subtagCount": 16,
-      "subtagExcerptCount": 218
+      "subtagExcerptCount": 220
     },
     {
       "level": 2,
@@ -148998,7 +148561,7 @@
       "text": "Meditation (85) [bhāvanā]",
       "tag": "Meditation",
       "subtagCount": 69,
-      "subtagExcerptCount": 1385
+      "subtagExcerptCount": 1392
     },
     {
       "level": 2,
@@ -149017,9 +148580,9 @@
       "flags": "",
       "name": "Right Effort",
       "pali": "sammā-vāyāma",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "subsumed": false,
-      "text": "Right Effort (107) [sammā-vāyāma]",
+      "text": "Right Effort (108) [sammā-vāyāma]",
       "tag": "Right Effort"
     },
     {
@@ -149033,7 +148596,7 @@
       "text": "Four Foundations of Mindfulness [cattāro satipaṭṭhānā] see Right Mindfulness (67)",
       "tag": "Right Mindfulness",
       "subtagCount": 12,
-      "subtagExcerptCount": 594
+      "subtagExcerptCount": 595
     },
     {
       "level": 3,
@@ -149041,12 +148604,12 @@
       "flags": "",
       "name": "Mindfulness of body",
       "pali": "kāyagatā-sati",
-      "excerptCount": 103,
+      "excerptCount": 104,
       "subsumed": false,
-      "text": "Mindfulness of body (103) [kāyagatā-sati]",
+      "text": "Mindfulness of body (104) [kāyagatā-sati]",
       "tag": "Mindfulness of body",
       "subtagCount": 6,
-      "subtagExcerptCount": 409
+      "subtagExcerptCount": 410
     },
     {
       "level": 4,
@@ -149191,7 +148754,7 @@
       "text": "Right Concentration (24) [sammā-samādhi]",
       "tag": "Right Concentration",
       "subtagCount": 8,
-      "subtagExcerptCount": 401
+      "subtagExcerptCount": 402
     },
     {
       "level": 3,
@@ -149243,9 +148806,9 @@
       "flags": "",
       "name": "Happiness",
       "pali": "sukha",
-      "excerptCount": 160,
+      "excerptCount": 161,
       "subsumed": false,
-      "text": "Happiness (160) [sukha]",
+      "text": "Happiness (161) [sukha]",
       "tag": "Happiness"
     },
     {
@@ -149535,9 +149098,9 @@
       "flags": "",
       "name": "Insight meditation",
       "pali": "vipassanā",
-      "excerptCount": 45,
+      "excerptCount": 48,
       "subsumed": false,
-      "text": "Insight meditation (45) [vipassanā]",
+      "text": "Insight meditation (48) [vipassanā]",
       "tag": "Insight meditation"
     },
     {
@@ -149551,7 +149114,7 @@
       "text": "Recollection (56) [anusati]",
       "tag": "Recollection",
       "subtagCount": 10,
-      "subtagExcerptCount": 402
+      "subtagExcerptCount": 403
     },
     {
       "level": 3,
@@ -149647,9 +149210,9 @@
       "flags": "",
       "name": "Mindfulness of body",
       "pali": "kāyagatā-sati",
-      "excerptCount": 103,
+      "excerptCount": 104,
       "subsumed": false,
-      "text": "Mindfulness of body (103) [kāyagatā-sati]",
+      "text": "Mindfulness of body (104) [kāyagatā-sati]",
       "tag": "Mindfulness of body"
     },
     {
@@ -149674,7 +149237,7 @@
       "text": "Four Protective Meditations (2) [caturārakkhā bhāvanā]",
       "tag": "Protective Meditations",
       "subtagCount": 4,
-      "subtagExcerptCount": 299
+      "subtagExcerptCount": 300
     },
     {
       "level": 3,
@@ -149682,9 +149245,9 @@
       "flags": "",
       "name": "Mindfulness of body",
       "pali": "",
-      "excerptCount": 103,
+      "excerptCount": 104,
       "subsumed": false,
-      "text": "Mindfulness of body (103)",
+      "text": "Mindfulness of body (104)",
       "tag": "Mindfulness of body"
     },
     {
@@ -149821,7 +149384,7 @@
       "text": "Meditation/Results (10)",
       "tag": "Meditation/Results",
       "subtagCount": 7,
-      "subtagExcerptCount": 247
+      "subtagExcerptCount": 249
     },
     {
       "level": 3,
@@ -149884,9 +149447,9 @@
       "flags": "",
       "name": "Direct experience",
       "pali": "",
-      "excerptCount": 47,
+      "excerptCount": 48,
       "subsumed": false,
-      "text": "Direct experience (47)",
+      "text": "Direct experience (48)",
       "tag": "Direct experience"
     },
     {
@@ -149895,9 +149458,9 @@
       "flags": "",
       "name": "Knowing itself",
       "pali": "",
-      "excerptCount": 72,
+      "excerptCount": 73,
       "subsumed": false,
-      "text": "Knowing itself (72)",
+      "text": "Knowing itself (73)",
       "tag": "Knowing itself"
     },
     {
@@ -149917,9 +149480,9 @@
       "flags": "",
       "name": "Long-term practice",
       "pali": "",
-      "excerptCount": 39,
+      "excerptCount": 40,
       "subsumed": false,
-      "text": "Long-term practice (39)",
+      "text": "Long-term practice (40)",
       "tag": "Long-term practice"
     },
     {
@@ -149928,12 +149491,12 @@
       "flags": "",
       "name": "Teaching Dhamma",
       "pali": "",
-      "excerptCount": 170,
+      "excerptCount": 171,
       "subsumed": false,
-      "text": "Teaching Dhamma (170)",
+      "text": "Teaching Dhamma (171)",
       "tag": "Teaching Dhamma",
       "subtagCount": 38,
-      "subtagExcerptCount": 1239
+      "subtagExcerptCount": 1248
     },
     {
       "level": 2,
@@ -149946,7 +149509,7 @@
       "text": "The Gradual Teaching (18) [anupubbikathā]",
       "tag": "Gradual Teaching",
       "subtagCount": 24,
-      "subtagExcerptCount": 970
+      "subtagExcerptCount": 978
     },
     {
       "level": 3,
@@ -149965,9 +149528,9 @@
       "flags": "",
       "name": "Virtue",
       "pali": "sīla",
-      "excerptCount": 75,
+      "excerptCount": 76,
       "subsumed": false,
-      "text": "Virtue (75) [sīla]",
+      "text": "Virtue (76) [sīla]",
       "tag": "Virtue"
     },
     {
@@ -149987,9 +149550,9 @@
       "flags": "",
       "name": "Danger of sensual pleasure",
       "pali": "kāmānaṃ ādīnava",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": true,
-      "text": "Danger of sensual pleasure [kāmānaṃ ādīnava] see Sensual desire (70)",
+      "text": "Danger of sensual pleasure [kāmānaṃ ādīnava] see Sensual desire (71)",
       "tag": "Sensual desire"
     },
     {
@@ -150009,12 +149572,12 @@
       "flags": "",
       "name": "Four Noble Truths",
       "pali": "cattāri ariya-saccāni",
-      "excerptCount": 59,
+      "excerptCount": 60,
       "subsumed": false,
-      "text": "Four Noble Truths (59) [cattāri ariya-saccāni]",
+      "text": "Four Noble Truths (60) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 19,
-      "subtagExcerptCount": 818
+      "subtagExcerptCount": 826
     },
     {
       "level": 4,
@@ -150027,7 +149590,7 @@
       "text": "Noble Truth of Suffering (24) [dukkha ariya-sacca]",
       "tag": "Noble Truth of Suffering",
       "subtagCount": 7,
-      "subtagExcerptCount": 346
+      "subtagExcerptCount": 347
     },
     {
       "level": 5,
@@ -150101,9 +149664,9 @@
       "flags": "",
       "name": "Five aggregates affected by clinging",
       "pali": "pañcupādānakkhandhā",
-      "excerptCount": 56,
+      "excerptCount": 57,
       "subsumed": true,
-      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (56)",
+      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (57)",
       "tag": "Aggregates"
     },
     {
@@ -150117,7 +149680,7 @@
       "text": "Noble Truth of the Cause of Suffering (39) [dukkha-samudaya ariya-sacca]",
       "tag": "Cause of Suffering",
       "subtagCount": 3,
-      "subtagExcerptCount": 152
+      "subtagExcerptCount": 154
     },
     {
       "level": 5,
@@ -150125,9 +149688,9 @@
       "flags": "",
       "name": "Craving for sensuality",
       "pali": "kāma-taṇhā",
-      "excerptCount": 70,
+      "excerptCount": 71,
       "subsumed": true,
-      "text": "Craving for sensuality [kāma-taṇhā] see Sensual desire (70)",
+      "text": "Craving for sensuality [kāma-taṇhā] see Sensual desire (71)",
       "tag": "Sensual desire"
     },
     {
@@ -150136,9 +149699,9 @@
       "flags": "",
       "name": "Craving to become",
       "pali": "bhava-taṇhā",
-      "excerptCount": 32,
+      "excerptCount": 33,
       "subsumed": true,
-      "text": "Craving to become [bhava-taṇhā] see Becoming (32)",
+      "text": "Craving to become [bhava-taṇhā] see Becoming (33)",
       "tag": "Becoming"
     },
     {
@@ -150147,9 +149710,9 @@
       "flags": "",
       "name": "Craving not to become",
       "pali": "vibhava-taṇhā",
-      "excerptCount": 21,
+      "excerptCount": 22,
       "subsumed": false,
-      "text": "Craving not to become (21) [vibhava-taṇhā]",
+      "text": "Craving not to become (22) [vibhava-taṇhā]",
       "tag": "Craving not to become"
     },
     {
@@ -150163,7 +149726,7 @@
       "text": "Noble Truth of the Cessation of Suffering (63) [dukkha-nirodha ariya-saccaṃ]",
       "tag": "Cessation of Suffering",
       "subtagCount": 5,
-      "subtagExcerptCount": 385
+      "subtagExcerptCount": 389
     },
     {
       "level": 5,
@@ -150193,9 +149756,9 @@
       "flags": "",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 197,
+      "excerptCount": 198,
       "subsumed": false,
-      "text": "Relinquishment (197) [paṭinissagga]",
+      "text": "Relinquishment (198) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -150215,9 +149778,9 @@
       "flags": "",
       "name": "Liberation",
       "pali": "vimutti",
-      "excerptCount": 117,
+      "excerptCount": 121,
       "subsumed": false,
-      "text": "Liberation (117) [vimutti]",
+      "text": "Liberation (121) [vimutti]",
       "tag": "Liberation"
     },
     {
@@ -150314,9 +149877,9 @@
       "flags": "",
       "name": "Similes",
       "pali": "opammā",
-      "excerptCount": 119,
+      "excerptCount": 122,
       "subsumed": false,
-      "text": "Similes (119) [opammā]",
+      "text": "Similes (122) [opammā]",
       "tag": "Similes"
     },
     {
@@ -150387,7 +149950,7 @@
       "text": "Teachers (25)",
       "tag": "Teachers",
       "subtagCount": 157,
-      "subtagExcerptCount": 1322
+      "subtagExcerptCount": 1329
     },
     {
       "level": 2,
@@ -150400,7 +149963,7 @@
       "text": "Monastic teachers (2)",
       "tag": "Monastic teachers",
       "subtagCount": 131,
-      "subtagExcerptCount": 1276
+      "subtagExcerptCount": 1283
     },
     {
       "level": 3,
@@ -150413,7 +149976,7 @@
       "text": "Thai Forest Tradition (91)",
       "tag": "Thai Forest Tradition",
       "subtagCount": 94,
-      "subtagExcerptCount": 1245
+      "subtagExcerptCount": 1252
     },
     {
       "level": 4,
@@ -150443,9 +150006,9 @@
       "flags": "",
       "name": "Ajahn Chah Subhaddo",
       "pali": "",
-      "excerptCount": 703,
+      "excerptCount": 707,
       "subsumed": false,
-      "text": "Ajahn Chah Subhaddo (703)",
+      "text": "Ajahn Chah Subhaddo (707)",
       "tag": "Ajahn Chah"
     },
     {
@@ -150459,7 +150022,7 @@
       "text": "Ajahn Chah lineage (13)",
       "tag": "Ajahn Chah lineage",
       "subtagCount": 56,
-      "subtagExcerptCount": 637
+      "subtagExcerptCount": 640
     },
     {
       "level": 5,
@@ -150705,7 +150268,7 @@
       "text": "Western Ajahn Chah lineage (4)",
       "tag": "Western Ajahn Chah lineage",
       "subtagCount": 34,
-      "subtagExcerptCount": 566
+      "subtagExcerptCount": 569
     },
     {
       "level": 6,
@@ -150713,9 +150276,9 @@
       "flags": "",
       "name": "Ajahn Sumedho",
       "pali": "",
-      "excerptCount": 116,
+      "excerptCount": 118,
       "subsumed": false,
-      "text": "Ajahn Sumedho (116)",
+      "text": "Ajahn Sumedho (118)",
       "tag": "Ajahn Sumedho"
     },
     {
@@ -150823,9 +150386,9 @@
       "flags": "",
       "name": "Ajahn Sucitto",
       "pali": "",
-      "excerptCount": 20,
+      "excerptCount": 21,
       "subsumed": false,
-      "text": "Ajahn Sucitto (20)",
+      "text": "Ajahn Sucitto (21)",
       "tag": "Ajahn Sucitto"
     },
     {
@@ -150856,9 +150419,9 @@
       "flags": "",
       "name": "Ajahn Amaro",
       "pali": "",
-      "excerptCount": 79,
+      "excerptCount": 80,
       "subsumed": false,
-      "text": "Ajahn Amaro (79)",
+      "text": "Ajahn Amaro (80)",
       "tag": "Ajahn Amaro"
     },
     {
@@ -152809,7 +152372,7 @@
       "text": "Nature of the cosmos (12)",
       "tag": "Nature of the cosmos",
       "subtagCount": 22,
-      "subtagExcerptCount": 413
+      "subtagExcerptCount": 417
     },
     {
       "level": 2,
@@ -152850,12 +152413,12 @@
       "flags": "",
       "name": "Realms of existence",
       "pali": "",
-      "excerptCount": 13,
+      "excerptCount": 14,
       "subsumed": false,
-      "text": "Realms of existence (13)",
+      "text": "Realms of existence (14)",
       "tag": "Realms of existence",
       "subtagCount": 5,
-      "subtagExcerptCount": 131
+      "subtagExcerptCount": 132
     },
     {
       "level": 3,
@@ -153033,12 +152596,12 @@
       "flags": "*C",
       "name": "Nibbāna",
       "pali": "Nibbāna",
-      "excerptCount": 49,
+      "excerptCount": 52,
       "subsumed": false,
-      "text": "Nibbāna (49)",
+      "text": "Nibbāna (52)",
       "tag": "Nibbāna",
       "subtagCount": 3,
-      "subtagExcerptCount": 70
+      "subtagExcerptCount": 73
     },
     {
       "level": 3,
@@ -153084,7 +152647,7 @@
       "text": "History (6)",
       "tag": "History",
       "subtagCount": 13,
-      "subtagExcerptCount": 186
+      "subtagExcerptCount": 188
     },
     {
       "level": 2,
@@ -153092,9 +152655,9 @@
       "flags": "*",
       "name": "Buddha/Biography",
       "pali": "",
-      "excerptCount": 53,
+      "excerptCount": 55,
       "subsumed": false,
-      "text": "Buddha/Biography (53)",
+      "text": "Buddha/Biography (55)",
       "tag": "Buddha/Biography"
     },
     {
@@ -153215,9 +152778,9 @@
       "flags": "",
       "name": "Geography/India",
       "pali": "",
-      "excerptCount": 1,
+      "excerptCount": 2,
       "subsumed": false,
-      "text": "Geography/India (1)",
+      "text": "Geography/India (2)",
       "tag": "Geography/India"
     },
     {
@@ -153242,7 +152805,7 @@
       "text": "Cultural context (19)",
       "tag": "Cultural context",
       "subtagCount": 25,
-      "subtagExcerptCount": 581
+      "subtagExcerptCount": 583
     },
     {
       "level": 2,
@@ -153397,12 +152960,12 @@
       "flags": "",
       "name": "Language",
       "pali": "",
-      "excerptCount": 52,
+      "excerptCount": 54,
       "subsumed": false,
-      "text": "Language (52)",
+      "text": "Language (54)",
       "tag": "Language",
       "subtagCount": 7,
-      "subtagExcerptCount": 226
+      "subtagExcerptCount": 228
     },
     {
       "level": 3,
@@ -153540,7 +153103,7 @@
       "text": "Spiritual traditions (12)",
       "tag": "Spiritual traditions",
       "subtagCount": 16,
-      "subtagExcerptCount": 134
+      "subtagExcerptCount": 137
     },
     {
       "level": 2,
@@ -153684,9 +153247,9 @@
       "flags": "",
       "name": "Philosophy",
       "pali": "",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "subsumed": false,
-      "text": "Philosophy (2)",
+      "text": "Philosophy (3)",
       "tag": "Philosophy"
     },
     {
@@ -153706,9 +153269,9 @@
       "flags": "",
       "name": "Western psychology",
       "pali": "",
-      "excerptCount": 16,
+      "excerptCount": 18,
       "subsumed": false,
-      "text": "Western psychology (16)",
+      "text": "Western psychology (18)",
       "tag": "Western psychology"
     },
     {
@@ -153733,7 +153296,7 @@
       "text": "Renunciant practice (2)",
       "tag": "Renunciant practice",
       "subtagCount": 78,
-      "subtagExcerptCount": 1076
+      "subtagExcerptCount": 1077
     },
     {
       "level": 2,
@@ -154032,7 +153595,7 @@
       "text": "Qualities for non-decline (1) [aparihānāya dhammā]",
       "tag": "Qualities for non-decline",
       "subtagCount": 4,
-      "subtagExcerptCount": 124
+      "subtagExcerptCount": 125
     },
     {
       "level": 3,
@@ -154040,9 +153603,9 @@
       "flags": "",
       "name": "Accomplishment in virtue",
       "pali": "sīlasampanno",
-      "excerptCount": 75,
+      "excerptCount": 76,
       "subsumed": true,
-      "text": "Accomplishment in virtue [sīlasampanno] see Virtue (75)",
+      "text": "Accomplishment in virtue [sīlasampanno] see Virtue (76)",
       "tag": "Virtue"
     },
     {
@@ -154089,7 +153652,7 @@
       "text": "Monastic life (203) [brahmacariyā]",
       "tag": "Monastic life",
       "subtagCount": 50,
-      "subtagExcerptCount": 921
+      "subtagExcerptCount": 922
     },
     {
       "level": 3,
@@ -154260,7 +153823,7 @@
       "text": "Saṅgha (70)",
       "tag": "Saṅgha",
       "subtagCount": 11,
-      "subtagExcerptCount": 467
+      "subtagExcerptCount": 468
     },
     {
       "level": 4,
@@ -154295,7 +153858,7 @@
       "text": "Six Principles of Cordiality (10) [cha dhammā sārāṇīyā]",
       "tag": "Principles of Cordiality",
       "subtagCount": 4,
-      "subtagExcerptCount": 340
+      "subtagExcerptCount": 341
     },
     {
       "level": 5,
@@ -154325,9 +153888,9 @@
       "flags": "h",
       "name": "Unbroken virtue",
       "pali": "",
-      "excerptCount": 75,
+      "excerptCount": 76,
       "subsumed": true,
-      "text": "Unbroken virtue see Virtue (75)",
+      "text": "Unbroken virtue see Virtue (76)",
       "tag": "Virtue"
     },
     {
@@ -154679,7 +154242,7 @@
       "text": "Everyday life practice (37)",
       "tag": "Everyday life",
       "subtagCount": 71,
-      "subtagExcerptCount": 838
+      "subtagExcerptCount": 840
     },
     {
       "level": 2,
@@ -154824,9 +154387,9 @@
       "flags": "",
       "name": "Conventions",
       "pali": "",
-      "excerptCount": 22,
+      "excerptCount": 24,
       "subsumed": false,
-      "text": "Conventions (22)",
+      "text": "Conventions (24)",
       "tag": "Conventions"
     },
     {
@@ -154840,7 +154403,7 @@
       "text": "Eight Worldly Conditions (6) [aṭṭha lokadhammā]",
       "tag": "Worldly Conditions",
       "subtagCount": 5,
-      "subtagExcerptCount": 202
+      "subtagExcerptCount": 203
     },
     {
       "level": 3,
@@ -154881,9 +154444,9 @@
       "flags": "",
       "name": "Pleasure",
       "pali": "sukha",
-      "excerptCount": 160,
+      "excerptCount": 161,
       "subsumed": true,
-      "text": "Pleasure [sukha] see Happiness (160)",
+      "text": "Pleasure [sukha] see Happiness (161)",
       "tag": "Happiness"
     },
     {
@@ -155513,6 +155076,52 @@
       "subsumed": false,
       "text": "Social media (4)",
       "tag": "Social media"
+    },
+    {
+      "level": 1,
+      "indexNumber": "",
+      "flags": "",
+      "name": "New unsorted tags",
+      "pali": "",
+      "excerptCount": 0,
+      "subsumed": false,
+      "text": "New unsorted tags",
+      "tag": "New unsorted tags",
+      "subtagCount": 3,
+      "subtagExcerptCount": 3
+    },
+    {
+      "level": 2,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Mark Epstein",
+      "pali": "",
+      "excerptCount": 1,
+      "subsumed": false,
+      "text": "Mark Epstein (1)",
+      "tag": "Mark Epstein"
+    },
+    {
+      "level": 2,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Thich Nhat Hahn",
+      "pali": "",
+      "excerptCount": 1,
+      "subsumed": false,
+      "text": "Thich Nhat Hahn (1)",
+      "tag": "Thich Nhat Hahn"
+    },
+    {
+      "level": 2,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Jainism",
+      "pali": "",
+      "excerptCount": 1,
+      "subsumed": false,
+      "text": "Jainism (1)",
+      "tag": "Jainism"
     }
   ],
   "summary": {
@@ -156161,7 +155770,7 @@
       "sessions": 20,
       "excerpts": 0,
       "answersListenedTo": 0,
-      "tagsApplied": 0,
+      "tagsApplied": 49,
       "invalidTags": 0,
       "duration": "16:40:09"
     },
@@ -159156,7 +158765,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/impermanence.html",
-      "excerptCount": 114,
+      "excerptCount": 116,
       "fTagCount": 5
     },
     "Suffering": {
@@ -159170,7 +158779,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/suffering.html",
-      "excerptCount": 226,
+      "excerptCount": 227,
       "fTagCount": 5
     },
     "Fear": {
@@ -159275,7 +158884,7 @@
         "Buddho mantra": "+"
       },
       "htmlPath": "clusters/buddha.html",
-      "excerptCount": 87,
+      "excerptCount": 88,
       "fTagCount": 5
     },
     "Dhamma": {
@@ -159371,7 +158980,7 @@
         "Recollection/Virtue": "+"
       },
       "htmlPath": "clusters/virtue.html",
-      "excerptCount": 90,
+      "excerptCount": 91,
       "fTagCount": 4
     },
     "Precepts": {
@@ -159392,7 +159001,7 @@
         "Eight Precepts": "+"
       },
       "htmlPath": "clusters/precepts.html",
-      "excerptCount": 70,
+      "excerptCount": 72,
       "fTagCount": 6
     },
     "Renunciation": {
@@ -159420,7 +159029,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/four-noble-truths.html",
-      "excerptCount": 59,
+      "excerptCount": 60,
       "fTagCount": 3
     },
     "Noble Truth of Suffering": {
@@ -159593,7 +159202,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/right-effort.html",
-      "excerptCount": 107,
+      "excerptCount": 108,
       "fTagCount": 3
     },
     "Right Mindfulness": {
@@ -159667,7 +159276,7 @@
         "Body scanning": "+"
       },
       "htmlPath": "clusters/mindfulness-of-body.html",
-      "excerptCount": 161,
+      "excerptCount": 162,
       "fTagCount": 7
     },
     "Mindfulness of breathing": {
@@ -159753,7 +159362,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/direct-experience.html",
-      "excerptCount": 47,
+      "excerptCount": 48,
       "fTagCount": 1
     },
     "Knowing itself": {
@@ -159767,7 +159376,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/knowing-itself.html",
-      "excerptCount": 72,
+      "excerptCount": 73,
       "fTagCount": 3
     },
     "Long-term practice": {
@@ -159781,7 +159390,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/long-term-practice.html",
-      "excerptCount": 39,
+      "excerptCount": 40,
       "fTagCount": 3
     },
     "Skillful qualities": {
@@ -159873,7 +159482,7 @@
         "Appropriate attention": "+"
       },
       "htmlPath": "clusters/discernment.html",
-      "excerptCount": 222,
+      "excerptCount": 224,
       "fTagCount": 5
     },
     "Desire": {
@@ -159915,7 +159524,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/happiness.html",
-      "excerptCount": 160,
+      "excerptCount": 161,
       "fTagCount": 5
     },
     "Gratitude": {
@@ -159973,7 +159582,7 @@
         "Unskillful qualities": "+"
       },
       "htmlPath": "clusters/unwholesome-roots.html",
-      "excerptCount": 109,
+      "excerptCount": 110,
       "fTagCount": 5
     },
     "Hindrances": {
@@ -160003,7 +159612,7 @@
         "Greed": "+"
       },
       "htmlPath": "clusters/sensual-desire.html",
-      "excerptCount": 81,
+      "excerptCount": 82,
       "fTagCount": 4
     },
     "Aversion": {
@@ -160019,7 +159628,7 @@
         "Ill-will": "+"
       },
       "htmlPath": "clusters/aversion.html",
-      "excerptCount": 115,
+      "excerptCount": 117,
       "fTagCount": 5
     },
     "Sloth and torpor": {
@@ -160089,7 +159698,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/proliferation.html",
-      "excerptCount": 127,
+      "excerptCount": 128,
       "fTagCount": 2
     },
     "Views": {
@@ -160117,7 +159726,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/self-identity-view.html",
-      "excerptCount": 177,
+      "excerptCount": 179,
       "fTagCount": 4
     },
     "Conceit": {
@@ -160153,7 +159762,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/conditionality.html",
-      "excerptCount": 99,
+      "excerptCount": 100,
       "fTagCount": 2
     },
     "Kamma": {
@@ -160195,7 +159804,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/not-self.html",
-      "excerptCount": 95,
+      "excerptCount": 96,
       "fTagCount": 5
     },
     "Nature of mind": {
@@ -160231,7 +159840,7 @@
         "Recollection/Devas": "-"
       },
       "htmlPath": "clusters/realms-of-existence.html",
-      "excerptCount": 135,
+      "excerptCount": 136,
       "fTagCount": 5
     },
     "Dependent origination": {
@@ -160273,7 +159882,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/volitional-formations.html",
-      "excerptCount": 42,
+      "excerptCount": 43,
       "fTagCount": 3
     },
     "Consciousness": {
@@ -160301,7 +159910,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/aggregates.html",
-      "excerptCount": 56,
+      "excerptCount": 57,
       "fTagCount": 2
     },
     "Sense bases": {
@@ -160387,7 +159996,7 @@
         "Craving not to become": "+"
       },
       "htmlPath": "clusters/becoming.html",
-      "excerptCount": 51,
+      "excerptCount": 52,
       "fTagCount": 3
     },
     "Dispassion": {
@@ -160420,7 +160029,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/relinquishment.html",
-      "excerptCount": 197,
+      "excerptCount": 198,
       "fTagCount": 4
     },
     "Liberation": {
@@ -160436,7 +160045,7 @@
         "Release": "+"
       },
       "htmlPath": "clusters/liberation.html",
-      "excerptCount": 132,
+      "excerptCount": 136,
       "fTagCount": 2
     },
     "Stages of awakening": {
@@ -160455,7 +160064,7 @@
         "Arahant": "+"
       },
       "htmlPath": "clusters/stages-of-awakening.html",
-      "excerptCount": 72,
+      "excerptCount": 74,
       "fTagCount": 4
     },
     "Nibbāna": {
@@ -160474,7 +160083,7 @@
         "Recollection/Peace": "-"
       },
       "htmlPath": "clusters/nibbana.html",
-      "excerptCount": 71,
+      "excerptCount": 74,
       "fTagCount": 5
     },
     "Teaching Dhamma": {
@@ -160494,7 +160103,7 @@
         "Symbolism": "-"
       },
       "htmlPath": "clusters/teaching-dhamma.html",
-      "excerptCount": 209,
+      "excerptCount": 210,
       "fTagCount": 3
     },
     "Teachers": {
@@ -160526,7 +160135,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/buddhabiography.html",
-      "excerptCount": 53,
+      "excerptCount": 55,
       "fTagCount": 2
     },
     "Ajahn Mun": {
@@ -160554,7 +160163,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/ajahn-chah.html",
-      "excerptCount": 703,
+      "excerptCount": 707,
       "fTagCount": 7
     },
     "Ajahn Sumedho": {
@@ -160568,7 +160177,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/ajahn-sumedho.html",
-      "excerptCount": 116,
+      "excerptCount": 118,
       "fTagCount": 4
     },
     "Ajahn Pasanno": {
@@ -160823,7 +160432,7 @@
         "Translation": "+"
       },
       "htmlPath": "clusters/language.html",
-      "excerptCount": 186,
+      "excerptCount": 188,
       "fTagCount": 3
     },
     "Culture/Thailand": {
@@ -161732,7 +161341,7 @@
         "Death",
         "Grief"
       ],
-      "excerptCount": 568,
+      "excerptCount": 570,
       "fTagCount": 25
     },
     "refuges": {
@@ -161748,7 +161357,7 @@
         "Dhamma",
         "Saṅgha"
       ],
-      "excerptCount": 267,
+      "excerptCount": 268,
       "fTagCount": 14
     },
     "foundations": {
@@ -161766,7 +161375,7 @@
         "Precepts",
         "Renunciation"
       ],
-      "excerptCount": 418,
+      "excerptCount": 421,
       "fTagCount": 20
     },
     "truths": {
@@ -161782,7 +161391,7 @@
         "Cause of Suffering",
         "Cessation of Suffering"
       ],
-      "excerptCount": 164,
+      "excerptCount": 165,
       "fTagCount": 8
     },
     "path": {
@@ -161804,7 +161413,7 @@
         "Right Mindfulness",
         "Right Concentration"
       ],
-      "excerptCount": 751,
+      "excerptCount": 752,
       "fTagCount": 35
     },
     "meditation": {
@@ -161826,7 +161435,7 @@
         "Knowing itself",
         "Long-term practice"
       ],
-      "excerptCount": 692,
+      "excerptCount": 696,
       "fTagCount": 37
     },
     "skillful": {
@@ -161850,7 +161459,7 @@
         "Compassion",
         "Equanimity"
       ],
-      "excerptCount": 909,
+      "excerptCount": 912,
       "fTagCount": 43
     },
     "unskillful": {
@@ -161874,7 +161483,7 @@
         "Self-identity view",
         "Conceit"
       ],
-      "excerptCount": 746,
+      "excerptCount": 751,
       "fTagCount": 41
     },
     "perspectives": {
@@ -161892,7 +161501,7 @@
         "Nature of mind",
         "Realms of existence"
       ],
-      "excerptCount": 439,
+      "excerptCount": 442,
       "fTagCount": 21
     },
     "origination": {
@@ -161915,7 +161524,7 @@
         "Clinging",
         "Becoming"
       ],
-      "excerptCount": 380,
+      "excerptCount": 382,
       "fTagCount": 22
     },
     "fruits": {
@@ -161932,7 +161541,7 @@
         "Stages of awakening",
         "Nibbāna"
       ],
-      "excerptCount": 449,
+      "excerptCount": 456,
       "fTagCount": 18
     },
     "teachers": {
@@ -161951,7 +161560,7 @@
         "Ajahn Sumedho",
         "Ajahn Pasanno"
       ],
-      "excerptCount": 1110,
+      "excerptCount": 1117,
       "fTagCount": 31
     },
     "monastic": {
@@ -162003,7 +161612,7 @@
         "Culture/Thailand",
         "Culture/West"
       ],
-      "excerptCount": 529,
+      "excerptCount": 531,
       "fTagCount": 14
     },
     "everyday": {
