@@ -64,14 +64,18 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     pageHtml = page.RenderWithTemplate(template)
     writer.WriteTextFile(page.info.file,pageHtml)
 
+def DirectoriesToDeleteFrom() -> set[str]:
+    """Return the list of directories which will be scanned by DeleteUnwrittenHtmlFiles."""
+    # Delete files only in directories we have built
+    dirs = gOptions.buildOnly - {"allexcerpts"}
+    if gOptions.buildOnly == gAllSections:
+        dirs.add("indexes")
+    return dirs
+
 def DeleteUnwrittenHtmlFiles(writer: FileRegister.HashWriter) -> None:
     """Remove old html files from previous runs to keep things neat and tidy."""
 
-    # Delete files only in directories we have built
-    dirs = gOptions.buildOnly & {"events","topics","tags","clusters","teachers","drilldown","search"}
-    dirs.update(("about","dispatch"))
-    if gOptions.buildOnly == gAllSections:
-        dirs.add("indexes")
+    dirs = DirectoriesToDeleteFrom()
 
     deletedFiles = 0
     for dir in dirs:
@@ -2662,7 +2666,7 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
 
     xml = Airium()
     with xml.urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"):
-        for pagePath in siteFiles.record:
+        for pagePath in sorted(siteFiles.record):
             WriteSitemapURL(pagePath,xml)
     
     return str(xml)
@@ -2743,7 +2747,12 @@ def WriteIndexPages(writer: FileRegister.HashWriter):
 def WriteRedirectPages(writer: FileRegister.HashWriter):
     hardRedirect = pyratemp.Template(Utils.ReadFile("pages/templates/Redirect.html"))
 
+    dirsToWrite = DirectoriesToDeleteFrom()
     for redirect in gDatabase["redirect"].values():
+        path,fileName = Utils.PosixSplit(redirect["oldPage"])
+        if path not in dirsToWrite:
+            continue
+
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
             cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])
@@ -2784,7 +2793,7 @@ def AddArguments(parser):
     parser.add_argument('--urlList',type=str,default='',help='Write a list of URLs to this file.')
     parser.add_argument('--keepOldHtmlFiles',**Utils.STORE_TRUE,help="Keep old html files from previous runs; otherwise delete them.")
     
-gAllSections = {"topics","tags","clusters","drilldown","events","teachers","search","allexcerpts"}
+gAllSections = {"about","dispatch","topics","tags","clusters","drilldown","events","teachers","search","allexcerpts"}
 def ParseArguments():
     if gOptions.buildOnly == "":
         if gOptions.buildOnlyIndexes:
@@ -2855,15 +2864,19 @@ def main():
     sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
     sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
-    technicalMenu = DocumentationMenu("technical",menuTitle="Technical",
-                                      menuStyle=LONG_SUBMENU_STYLE | dict(menuSection="customSubMenu2"))
-    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",
+    if "about" in gOptions.buildOnly:
+        technicalMenu = DocumentationMenu("technical",menuTitle="Technical",
+                                          menuStyle=LONG_SUBMENU_STYLE | dict(menuSection="customSubMenu2"))
+        sitemapMenu.append(DocumentationMenu("about", menuTitle="About",
                                          menuStyle=LONG_SUBMENU_STYLE,extraItems=[technicalMenu]))
-    sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
+        sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
+    else:
+        sitemapMenu.append([Html.PageInfo("About","about/Introduction.html")])
 
     sitemapMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
     
-    sitemapMenu.append(DispatchPages())
+    if "dispatch" in gOptions.buildOnly:
+        sitemapMenu.append(DispatchPages())
 
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
