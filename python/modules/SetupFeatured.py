@@ -7,7 +7,7 @@ import os, json, datetime, re
 from datetime import timedelta
 import random
 from difflib import SequenceMatcher
-from typing import Callable, TypedDict
+from typing import Callable, TypedDict, NotRequired
 import Utils, Alert, Build, Filter, Database
 from copy import copy
 import Filter
@@ -17,10 +17,12 @@ from collections import defaultdict
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
-      text: str         # Text of the excerpt; used to identify this excerpt when its code changes
-      fTags: list[str]  # The excerpt's fTags
-      shortHtml: str    # Html code to render on the homepage
-      html: str         # Html code to render on the daily featured excerpts page
+      text: str             # Text of the excerpt; used to identify this excerpt when its code changes
+      fTags: list[str]      # The excerpt's fTags
+      oldFTags: NotRequired[list[str]]
+                            # fTags that were applied to this excerpt in the past.
+      shortHtml: str        # Html code to render on the homepage
+      html: str             # Html code to render on the daily featured excerpts page
     
 class FeaturedDatabase(TypedDict):
     made: str                       # Date and time this database was first made in iso format
@@ -196,6 +198,9 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if currentExcerpt:
             currentEntry = ExcerptEntry(currentExcerpt)
+            if "oldFTags" in databaseEntry:
+                currentEntry["oldFTags"] = databaseEntry["oldFTags"]
+                    # Ignore oldFTags in the comparison
             if currentEntry != databaseEntry:
                 if currentEntry["text"] == databaseEntry["text"]:
                     textMatches.append(excerptCode)
@@ -297,6 +302,16 @@ These may require the Fix module if excerpts have moved or the Remove module if 
 
     return databaseGood
 
+def UpdateEntry(entry: ExcerptDict,newEntry: ExcerptDict,excerptCode: str) -> None:
+    """Update entry so that it has the contents of newEntry.
+    If newEntry removes fTags, store them in oldFTags."""
+
+    for fTag in entry["fTags"]:
+        if fTag not in newEntry["fTags"]:
+            entry["oldFTags"] = entry.get("oldFTags",[]) + [fTag]
+            Alert.notice("Removing fTag",repr(fTag),"from",excerptCode)
+    entry.update(newEntry) # Note that newEntry should not have key oldFTags
+
 def Update(paramStr: str) -> bool:
     """Set entries in gFeaturedDatabase equal to the current database if the text string matches closely enough.
     Return True if we modify gFeaturedDatabase."""
@@ -305,7 +320,7 @@ def Update(paramStr: str) -> bool:
     textMatches,textMismatches,missingEntries = DatabaseMismatches()
 
     for code in textMatches:
-        gFeaturedDatabase["excerpts"][code] = ExcerptEntry(Database.FindExcerpt(code))
+        UpdateEntry(gFeaturedDatabase["excerpts"][code],ExcerptEntry(Database.FindExcerpt(code)),code)
         databaseChanged = True
     if textMatches:
         Alert.info("Updated",len(textMatches),"excerpts with identical text strings.")
@@ -316,7 +331,7 @@ def Update(paramStr: str) -> bool:
         ratio = SequenceMatcher(a=entryOnDisk["text"],b=currentEntry["text"]).ratio()
         updated = "does not match; not updated"
         if ratio >= gOptions.updateThreshold:
-            gFeaturedDatabase["excerpts"][code] = currentEntry
+            UpdateEntry(gFeaturedDatabase["excerpts"][code],currentEntry,code)
             updated = "matches; updated"
             databaseChanged = True
         Alert.extra("")
