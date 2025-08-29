@@ -79,12 +79,13 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
             session = SessionEntry.fromDict(session)
             
             indent = ""
+            firstPage = session["pageRange"].split("-")[0]
             islandReading = ExcerptLineDict(
                 session = session["session"],
                 kind = "Reading",
                 flags = "s" if session["lastPassage"] - session["firstPassage"] > 0 else "",
                 startTime = "Session",
-                text = f"from [The Island](), Chapter {session['chapter']} pp. {session['pageRange']}."
+                text = f"[The Island](), Chapter {session['chapter']} pp. [{session['pageRange']}](The Island p. {firstPage})."
             )
 
             if session["extraReading"]:
@@ -96,7 +97,10 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
                     text = ""
                 ).values())
                 islandReading["Start time"] = ""
+                islandReading["Flags"] += "2"
                 indent = "-"
+            else:
+                islandReading["Text"] = "from " + islandReading["Text"]
 
             outputCSV.writerow(islandReading.values())
 
@@ -112,7 +116,7 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
                 if type(kind) == int:
                     outputCSV.writerow(ExcerptLineDict(
                         session = session["session"],
-                        kind = "Reference",
+                        kind = "Reading",
                         flags = "2" + indent,
                         text = texts[0] + "."
                     ).values())
@@ -129,6 +133,7 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
                 outputCSV.writerow(ExcerptLineDict(
                     session = session["session"],
                     kind = "Reading",
+                    flags = "2",
                     text = "xxxxx"
                 ).values())
 

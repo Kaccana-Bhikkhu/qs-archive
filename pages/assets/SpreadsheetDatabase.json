@@ -19433,7 +19433,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Pasanno"
+      ],
+      "fTagOrder": [
+        50
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Indirect quote",
@@ -57930,7 +57936,7 @@
         {
           "kind": "Reading",
           "flags": "",
-          "text": "Introduction to Middle Length Discourses of the Buddha p. 31-32 (quoted in The Island p. 41-42).",
+          "text": "Introduction to Middle Length Discourses of the Buddha p. 31-32 (quoted in The Island p. 40-41).",
           "teachers": [
             "AP",
             "AA"
@@ -65156,13 +65162,7 @@
         "AP"
       ],
       "text": "Can you tell us your story of when you decided to become a monk?",
-      "fTags": [
-        "Ajahn Pasanno"
-      ],
-      "fTagOrder": [
-        50
-      ],
-      "fTagOrderFlags": "E",
+      "fTags": [],
       "annotations": [
         {
           "kind": "Indirect quote",
@@ -72752,7 +72752,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "",
-      "text": "“Attammayata,” The Island pp. 110-122.",
+      "text": "“Attammayata,” The Island pp. 113-124.",
       "teachers": [
         "AP",
         "AA"
@@ -112644,8 +112644,8 @@
       "annotations": [
         {
           "kind": "Reading",
-          "flags": "",
-          "text": "from [The Island](), Chapter 1 pp. 16-30.",
+          "flags": "2",
+          "text": "[The Island](), Chapter 1 pp. [16-30](The Island p. 16).",
           "teachers": [
             "AP",
             "AA"
@@ -112662,7 +112662,7 @@
         },
         {
           "kind": "Reading",
-          "flags": "",
+          "flags": "2",
           "text": "xxxxx",
           "teachers": [],
           "tags": [],
@@ -112680,7 +112680,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 1 pp. 30-35.",
+      "text": "from [The Island](), Chapter 1 pp. [30-35](The Island p. 30).",
       "teachers": [
         "AP",
         "AA"
@@ -112688,16 +112688,18 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Nyanatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 105.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ṭhānissaro Bhikkhu, ‘The Mind Like Fire Unbound,’ p. 2.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
@@ -112727,7 +112729,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 1 pp. 39-42.",
+      "text": "from [The Island](), Chapter 1 pp. [39-42](The Island p. 39).",
       "teachers": [
         "AP",
         "AA"
@@ -112735,9 +112737,10 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Bhikkhu Bodhi, ‘Introduction to the Majjhima Nikāya,’ pp. 31-2.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
@@ -112760,7 +112763,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 2 pp. 43-48.",
+      "text": "from [The Island](), Chapter 2 pp. [43-48](The Island p. 43).",
       "teachers": [
         "AP",
         "AA"
@@ -112768,44 +112771,50 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Richard Gombrich, ‘Metaphor, Allegory, Satire,’ in ‘How Buddhism Began: The Conditioned Genesis of the Early Teachings,’ p. 65.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ṭhānissaro Bhikkhu, ‘The Wings to Awakening,’ p. 6.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ṭhānissaro Bhikkhu, ‘The Mind Like Fire Unbound,’ p. 41.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Richard Gombrich, ‘Metaphor, Allegory, Satire,’ pp. 65-8.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Roberto Calasso, ‘Ka,’ pp. 369-70.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Gita Mehta, ‘A River Sutra,’ p. 290.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -112821,7 +112830,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 2 pp. 48-52.",
+      "text": "from [The Island](), Chapter 2 pp. [48-52](The Island p. 48).",
       "teachers": [
         "AP",
         "AA"
@@ -112854,7 +112863,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 2 pp. 52-56.",
+      "text": "from [The Island](), Chapter 2 pp. [52-56](The Island p. 52).",
       "teachers": [
         "AP",
         "AA"
@@ -112880,7 +112889,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 3 pp. 58-61.",
+      "text": "from [The Island](), Chapter 3 pp. [58-61](The Island p. 58).",
       "teachers": [
         "AP",
         "AA"
@@ -112888,16 +112897,18 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Buddhadāsa Bhikkhu, unpublished Dhamma talk, 1988.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "A 10.92; Ṭhānissaro Bhikkhu, ‘The Wings to Awakening,’ pp. 10-12.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -112913,7 +112924,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 3 pp. 61-63.",
+      "text": "from [The Island](), Chapter 3 pp. [61-63](The Island p. 61).",
       "teachers": [
         "AP",
         "AA"
@@ -112928,9 +112939,10 @@
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "S 12.41, A 10.92 (partly quoted above).",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -112946,7 +112958,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 3 pp. 64-67.",
+      "text": "from [The Island](), Chapter 3 pp. [64-67](The Island p. 64).",
       "teachers": [
         "AP",
         "AA"
@@ -112961,16 +112973,18 @@
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Master Hsüan Hua, ‘Sixth Patriarch’s Dharma Jewel Platform Sūtra, with Commentary,’ p. 149.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Śhūrangama Sūtra, 1.169.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -112986,7 +113000,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 4 pp. 68-70.",
+      "text": "from [The Island](), Chapter 4 pp. [68-70](The Island p. 68).",
       "teachers": [
         "AP",
         "AA"
@@ -113001,9 +113015,10 @@
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -113019,7 +113034,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 4 pp. 70-75.",
+      "text": "from [The Island](), Chapter 4 pp. [70-75](The Island p. 70).",
       "teachers": [
         "AP",
         "AA"
@@ -113027,16 +113042,18 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "H.H. the Dalai Lama, ‘The Four Noble Truths,’ pp. 53-57.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
@@ -113059,7 +113076,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "",
-      "text": "from [The Island](), Chapter 4 pp. 80-82.",
+      "text": "from [The Island](), Chapter 4 pp. [80-82](The Island p. 80).",
       "teachers": [
         "AP",
         "AA"
@@ -113067,9 +113084,10 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -113085,7 +113103,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 4 pp. 82-86.",
+      "text": "from [The Island](), Chapter 4 pp. [82-86](The Island p. 82).",
       "teachers": [
         "AP",
         "AA"
@@ -113093,16 +113111,18 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ajahn Chah, ‘Convention and Liberation,’ in ‘Food for the Heart,’ p. 307.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -113118,7 +113138,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 5 pp. 87-92.",
+      "text": "from [The Island](), Chapter 5 pp. [87-92](The Island p. 87).",
       "teachers": [
         "AP",
         "AA"
@@ -113126,9 +113146,10 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Nyaṇatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 106.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
@@ -113166,8 +113187,8 @@
       "annotations": [
         {
           "kind": "Reading",
-          "flags": "s",
-          "text": "from [The Island](), Chapter 5 pp. 92-96.",
+          "flags": "s2",
+          "text": "[The Island](), Chapter 5 pp. [92-96](The Island p. 92).",
           "teachers": [
             "AP",
             "AA"
@@ -113184,7 +113205,7 @@
         },
         {
           "kind": "Reading",
-          "flags": "",
+          "flags": "2",
           "text": "xxxxx",
           "teachers": [],
           "tags": [],
@@ -113210,8 +113231,8 @@
       "annotations": [
         {
           "kind": "Reading",
-          "flags": "s",
-          "text": "from [The Island](), Chapter 5 pp. 96-101.",
+          "flags": "s2",
+          "text": "[The Island](), Chapter 5 pp. [96-101](The Island p. 96).",
           "teachers": [
             "AP",
             "AA"
@@ -113220,16 +113241,18 @@
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2-",
           "text": "M 1.3-194 (abridged).",
+          "teachers": [],
           "tags": [],
           "indentLevel": 2
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2-",
           "text": "Ṭhānissaro Bhikkhu, ‘Noble Strategy,’ pp. 71-4.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 2
         },
@@ -113242,7 +113265,7 @@
         },
         {
           "kind": "Reading",
-          "flags": "",
+          "flags": "2",
           "text": "xxxxx",
           "teachers": [],
           "tags": [],
@@ -113260,7 +113283,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 5 pp. 101-105.",
+      "text": "from [The Island](), Chapter 5 pp. [101-105](The Island p. 101).",
       "teachers": [
         "AP",
         "AA"
@@ -113275,16 +113298,18 @@
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ajahn Sucitto, ‘The Dawn of the Dhamma,’ p. 97.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ajahn Chah, ‘No Abiding,’ in ‘Food for the Heart,’ p. 316.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -113300,7 +113325,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 5 pp. 105-109.",
+      "text": "from [The Island](), Chapter 5 pp. [105-109](The Island p. 105).",
       "teachers": [
         "AP",
         "AA"
@@ -113333,7 +113358,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s",
-      "text": "from [The Island](), Chapter 5 pp. 109-112.",
+      "text": "from [The Island](), Chapter 5 pp. [109-112](The Island p. 109).",
       "teachers": [
         "AP",
         "AA"
@@ -113341,9 +113366,10 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "Ācariya Nāgārjuna, Mūlamadhyamaka-kārikā, Ch.15.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         },
@@ -113355,9 +113381,10 @@
           "indentLevel": 1
         },
         {
-          "kind": "Reference",
+          "kind": "Reading",
           "flags": "2",
           "text": "‘Spiritual Autobiography,’ Ajahn Chah.",
+          "teachers": [],
           "tags": [],
           "indentLevel": 1
         }
@@ -115645,7 +115672,7 @@
       "subtitle": "Abhayagiri Winter Retreat 2005, part 1",
       "code": "WR2005-1",
       "series": [
-        "Abhayagiri Winter Retreats"
+        "Winter Retreats"
       ],
       "venue": "Abhayagiri Buddhist Monastery",
       "teachers": [
@@ -115905,7 +115932,7 @@
       "subtitle": "Abhayagiri 2014 Winter Retreat",
       "code": "WR2014",
       "series": [
-        "Abhayagiri Winter Retreats"
+        "Winter Retreats"
       ],
       "venue": "Abhayagiri Buddhist Monastery",
       "teachers": [
@@ -116048,7 +116075,7 @@
       "subtitle": "Abhayagiri 2015 Winter Retreat",
       "code": "WR2015",
       "series": [
-        "Abhayagiri Winter Retreats"
+        "Winter Retreats"
       ],
       "venue": "Abhayagiri Buddhist Monastery",
       "teachers": [
@@ -116223,7 +116250,7 @@
       "subtitle": "Abhayagiri Winter Retreat 2016",
       "code": "WR2016",
       "series": [
-        "Abhayagiri Winter Retreats"
+        "Winter Retreats"
       ],
       "venue": "Abhayagiri Buddhist Monastery",
       "teachers": [
@@ -116420,7 +116447,7 @@
       "subtitle": "Eleven interviews with Ajahn Pasanno",
       "code": "WR2018-2",
       "series": [
-        "Abhayagiri Winter Retreats"
+        "Winter Retreats"
       ],
       "venue": "Abhayagiri Buddhist Monastery",
       "teachers": [
@@ -116972,11 +116999,11 @@
       "excerpts": 13
     },
     "WR2025": {
-      "title": "The Island",
-      "subtitle": "Winer Retreat 2025 at Amaravati",
+      "title": "Readings from The Island",
+      "subtitle": "Winter Retreat 2025 at Amaravati",
       "code": "WR2025",
       "series": [
-        "Abhayagiri Winter Retreats"
+        "Winter Retreats"
       ],
       "venue": "Amaravati Buddhist Monastery",
       "teachers": [
@@ -124954,13 +124981,13 @@
       "defaultForm": "1",
       "canBeExcerpt": true,
       "canBeAnnotation": false,
-      "takesTimes": false,
+      "takesTimes": true,
       "takesTeachers": true,
       "takesTags": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
-      "form1": "++Readings{colon}++{\" \" + text if text else \"\"}|| by {teachers}.",
+      "form1": "++Readings{colon}++{\" \" + text if text else \"\"}|| by {teachers}||:",
       "form2": "unimplemented",
       "form3": "unimplemented",
       "exclude": false,
@@ -143672,8 +143699,8 @@
       "abbreviation": "TG",
       "description": "The Abhayagiri Monastic Thanksgiving retreat was traditionally an annual ten-day residential retreat held at the Angela Center in Santa Rosa, California during the week of Thanksgiving. After the Angela Center closed due to fire damage in 2017 and the COVID pandemic began in 2020, the location, date, duration, and format of this retreat have varied significantly. [More...](about:Event-series#thanksgiving-retreats)"
     },
-    "Abhayagiri Winter Retreats": {
-      "series": "Abhayagiri Winter Retreats",
+    "Winter Retreats": {
+      "series": "Winter Retreats",
       "abbreviation": "WR",
       "description": "During the months of January, February, and March, the resident community of Abhayagiri Monastery ceases all non-essential work to practice meditation. There are usually Dhamma readings nearly every day, some of which end with questions and answers regarding the teachings. [More...](about:Event-series#abhayagiri-winter-retreats)"
     },
@@ -144054,7 +144081,7 @@
       "abbreviation": "The Island",
       "title": "_The Island_",
       "attribution": "by Ajahn Pasanno and Ajahn Amaro",
-      "pdfPageOffset": 0,
+      "pdfPageOffset": -1,
       "filename": "The-Island-Web-2020 ed..pdf",
       "remoteUrl": "https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf",
       "author": [
