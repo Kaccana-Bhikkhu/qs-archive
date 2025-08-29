@@ -185,14 +185,25 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
     showAttribution = True
     if container:
         if item["kind"] == "Read by":
-            grandparent = Database.ParentAnnotation(container,Database.ParentAnnotation(container,item))
+            parent = Database.ParentAnnotation(container,item)
+            grandparent = Database.ParentAnnotation(container,parent)
                 # The parent of this Read by annotation is a reading, which has the authors as teachers
                 # Thus the grandparent indicates the default reader(s)
             if grandparent:
-                defaultTeachers = grandparent["teachers"]
+                if grandparent["kind"] == "Reading":
+                    # The default teacher for a Reading within a Reading is the parent's Read by annotation
+                    readBy = [a for a in container["annotations"] 
+                              if a["kind"] == "Read by" and a["indentLevel"] == parent["indentLevel"]]
+                    if readBy:
+                        defaultTeachers = readBy[0]["teachers"]
+                    else:
+                        Alert.caution("Cannot find 'Read by' annotation to",grandparent)
+                        defaultTeachers = ()
+                else:
+                    defaultTeachers = grandparent["teachers"]
             else:
                 defaultTeachers = () # If there is no grandparent (i.e. this is a first-level Read by annotation), then always
-                # attribute it. It will be attached to the excerpt, and the annotation will be hidden if it matches the session teachers.
+                # attribute it. It will be attached to the excerpt, and the attribution will be hidden if it matches the session teachers.
         else:
             parent = Database.ParentAnnotation(container,item)
             if parent:

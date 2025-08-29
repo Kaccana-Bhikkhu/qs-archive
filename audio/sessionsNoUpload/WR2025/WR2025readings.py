@@ -85,7 +85,7 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
                 kind = "Reading",
                 flags = "s" if session["lastPassage"] - session["firstPassage"] > 0 else "",
                 startTime = "Session",
-                text = f"[The Island](), Chapter {session['chapter']} pp. [{session['pageRange']}](The Island p. {firstPage})."
+                text = f"[The Island](), Chapter {session['chapter']}, pp. [{session['pageRange']}](The Island p. {firstPage})."
             )
 
             if session["extraReading"]:
