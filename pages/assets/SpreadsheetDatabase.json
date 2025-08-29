@@ -112857,7 +112857,7 @@
       "annotations": [
         {
           "kind": "Reading",
-          "flags": "",
+          "flags": "2",
           "text": "[The Island](), Introduction by [Ajahn Sumedho](teacher:), pp. [16-18](The Island p. 18).",
           "teachers": [
             "ASumedho"
@@ -112920,7 +112920,7 @@
         {
           "kind": "Indirect quote",
           "flags": "-",
-          "text": "The things of this world are merely conventions of our own making...|Ajahn Chah in [Convention and Liberation](Collected Teachings p. 21)",
+          "text": "The things of this world are merely conventions of our own making....|Ajahn Chah in [Convention and Liberation](Collected Teachings p. 21)",
           "teachers": [],
           "tags": [
             "Ajahn Chah",
@@ -116761,7 +116761,7 @@
       "excerpts": 13
     },
     "WR2025": {
-      "title": "Readings from The Island",
+      "title": "Readings from <i>The Island</i>",
       "subtitle": "Winter Retreat 2025 at Amaravati",
       "code": "WR2025",
       "series": [
@@ -144559,8 +144559,8 @@
         "AThan"
       ]
     },
-    "nibbāna for everyone": {
-      "abbreviation": "Nibbāna for Everyone",
+    "nibbana for everyone": {
+      "abbreviation": "Nibbana for Everyone",
       "title": "_Nibbāna for Everyone_",
       "attribution": "by Ajahn Buddhadāsa",
       "pdfPageOffset": 6,

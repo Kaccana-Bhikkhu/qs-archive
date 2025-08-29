@@ -431,10 +431,10 @@ def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
             
             page = Html.PageDesc(pageInfo._replace(file=Utils.PosixJoin(pageInfo.file,DrilldownPageFile(n))))
             page.AppendContent(HtmlIcon("tags"),section="titleIcon")
-            page.keywords.append(tag["name"])
+            page.keywords.append(Utils.RemoveHtmlTags(tag["name"]))
             page.AppendContent(EvaluateDrilldownTemplate(expandSpecificTags=tagsToExpand))
             page.specialJoinChar["citationTitle"] = ""
-            page.AppendContent(f': {tag["name"]}',section="citationTitle")
+            page.AppendContent(f': {Utils.RemoveHtmlTags(tag["name"])}',section="citationTitle")
             yield page
 
 class StrEnum(str,Enum):
@@ -843,7 +843,7 @@ def PlayerTitle(item:dict) -> str:
         titleItems.append(f"E{excerptNumber}")
     
     lengthSoFar = len(" ".join(titleItems))
-    fullEventTitle = gDatabase['event'][item['event']]['title']
+    fullEventTitle = Utils.RemoveHtmlTags(gDatabase['event'][item['event']]['title'])
     if titleItems:
         fullEventTitle += ","
     titleItems.insert(0,Utils.EllideText(fullEventTitle,gOptions.maxPlayerTitleLength - lengthSoFar - 1))
@@ -1791,15 +1791,16 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a(header)
         a.hr()
         
+        tagWithoutHtml = Utils.RemoveHtmlTags(tagInfo["fullTag"])
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
         pageInfo = Html.PageInfo(tag,Utils.PosixJoin(tagPageDir,tagInfo["htmlFile"]),tagPlusPali)
         basePage = Html.PageDesc(pageInfo)
         basePage.AppendContent(HtmlIcon("tag"),section="titleIcon")
         basePage.AppendContent(str(a))
-        basePage.keywords = ["Tag",tagInfo["fullTag"]]
+        basePage.keywords = ["Tag",tagWithoutHtml]
         if tagInfo["fullPali"]:
-            basePage.keywords.append(tagInfo["fullPali"])
-        basePage.AppendContent(f"Tag: {tagInfo['fullTag']}",section="citationTitle")
+            basePage.keywords.append(Utils.RemoveHtmlTags(tagInfo["fullPali"]))
+        basePage.AppendContent(f"Tag: {tagWithoutHtml}",section="citationTitle")
 
         yield from TagSubsearchPages(tag,relevantExcerpts,basePage)
 
@@ -2105,10 +2106,11 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         if eventInfo["subtitle"]:
             titleInBody += " – " + eventInfo["subtitle"]
 
-        page = Html.PageDesc(Html.PageInfo(eventInfo["title"],Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
+        titleWithoutTags = Utils.RemoveHtmlTags(eventInfo["title"])
+        page = Html.PageDesc(Html.PageInfo(titleWithoutTags,Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
         page.AppendContent(str(a))
-        page.keywords = ["Event",eventInfo["title"]]
-        page.AppendContent(f"Event: {eventInfo['title']}",section="citationTitle")
+        page.keywords = ["Event",titleWithoutTags]
+        page.AppendContent(f"Event: {titleWithoutTags}",section="citationTitle")
         yield page
         
 def ExtractHtmlBody(fileName: str) -> str:
