@@ -1048,6 +1048,10 @@ class Formatter:
             
             bodyWithAttributions = bodyWithAttributions.replace("{"+ attrKey + "}",attribution)
         
+        if ParseCSV.ExcerptFlag.END_COLON in excerpt["flags"]:
+            bodyWithAttributions = re.sub(r"[,:.;]?\s*$",": ",bodyWithAttributions,count=1)
+                # count=1 is required because the regex otherwise matches the text it has just substituted
+
         a(bodyWithAttributions + ' ')
         
         tagStrings = []
@@ -1081,7 +1085,11 @@ class Formatter:
         
         a = Airium(source_minify=True)
 
-        a(annotation["body"] + " ")
+        body = annotation["body"]
+        if ParseCSV.ExcerptFlag.END_COLON in annotation["flags"]:
+            body = re.sub(r"[,:.;]?\s*$",":",body,count=1)
+                # count=1 is required because the regex otherwise matches the text it has just substituted
+        a(body + " ")
         
         tagStrings = []
         for n,tag in enumerate(annotation.get("tags",())):
