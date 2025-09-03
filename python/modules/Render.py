@@ -593,10 +593,12 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
     linkCount = ApplyToFunction(ReplaceSubpageLinks)
     Alert.extra(f"{linkCount} links generated to subpages")
 
-def MarkdownFormat(text: str) -> Tuple[str,int]:
+def MarkdownFormat(text: str,element: dict[str]) -> Tuple[str,int]:
     """Format a single-line string using markdown, and eliminate the <p> tags.
     The second item of the tuple is 1 if the item has changed and zero otherwise"""
 
+    if "]()" in text:
+        Alert.warning("Blank Markdown hyperlink in",element)
     md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = [NewTabRemoteExtension()]), flags=re.IGNORECASE)
     if md != text:
         return md, 1
@@ -636,7 +638,7 @@ def LinkReferences() -> None:
     LinkKnownReferences()
     LinkSuttas()
 
-    markdownChanges = ApplyToBodyText(MarkdownFormat)
+    markdownChanges = ApplyToBodyText(MarkdownFormat,True)
     Alert.extra(f"{markdownChanges} items changed by markdown")
     ApplyToBodyText(RemoveHTMLPassthroughComments)
     

@@ -380,7 +380,7 @@ def ItemRepr(item: dict) -> str:
             kind = "session"
             event = item["event"]
             session = item["sessionNumber"]
-        elif "kind" in item and "sessionNumber" in item:
+        elif "kind" in item and "flags" in item:
             if "annotations" in item:
                 kind = "excerpt"
                 event = item["event"]
@@ -392,6 +392,7 @@ def ItemRepr(item: dict) -> str:
                 if x:
                     event = x["event"]
                     session = x["sessionNumber"]
+                    fileNumber = x["fileNumber"]
             args = [item['kind'],Utils.EllideText(item['text'],maxLength=70)]
         elif "pdfPageOffset" in item:
             kind = "reference"
