@@ -128,9 +128,11 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
 def FeaturedExcerptFilter() -> Filter.Filter:
     """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    teacherFilter = Filter.FirstTeacher("AP")
+    teacherFilter = Filter.Or(Filter.ExcerptMatch(Filter.FirstTeacher("AP")),
+                              Filter.SingleItemMatch(Filter.Teacher("AP"),Filter.Kind("Read by")))
+        # Pass only excerpts where AP is the first teacher in the excerpt or he is reading the excerpt
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageFlags(),kindFilter)
+    return Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter)
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
