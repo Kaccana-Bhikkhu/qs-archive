@@ -24,7 +24,7 @@ Thanksgiving Retreat participants are usually long-term practitioners familiar w
 
 -----
 [Snow covering Abhayagiri Monastery](photo:AbhayagiriWinter.jpg)
-## Winter Retreats (<a id="abhayagiri-winter-retreats" href="../indexes/EventsBySeries.html#abhayagiri-winter-retreats">List</a>)
+## Winter Retreats (<a id="abhayagiri-winter-retreats" href="../indexes/EventsBySeries.html#winter-retreats">List</a>)
 The tradition of Western Ajahn Chah monasteries halting work projects during the winter to engage in intensive meditation practice began in the early years of Chithurst and Amaravati. Abhayagiri’s Winter Retreat occurs during the months of January, February, and March. There are typically roughly five teaching sessions each week. Until recently, all residents attended all sessions (Support team members cooking the day's meal listened via speakers in the kitchen).
 
 The most common format for Winter Retreat teaching sessions is a reading often followed by questions and discussion. The sessions became more interactive as the years went by; Ajahn Pasanno’s 2004 readings on viriya (energy) are followed by many fewer questions than similar sutta readings a decade later. Even when junior monastics selected and read the texts, Ajahn Pasanno usually answered most of the questions when he was abbot.

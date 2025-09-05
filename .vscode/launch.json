@@ -145,7 +145,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "DownloadCSV,SplitMp3,Build",
+                "DownloadCSV,SplitMp3,Build,SetupSearch",
                 "--buildOnly",
                 "events",
                 "--linkCheckLevel",
@@ -160,7 +160,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "Build",
+                "Render",
                 "--buildOnly",
                 "events"
             ],

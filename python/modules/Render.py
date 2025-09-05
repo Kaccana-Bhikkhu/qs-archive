@@ -599,6 +599,10 @@ def MarkdownFormat(text: str,element: dict[str]) -> Tuple[str,int]:
 
     if "]()" in text:
         Alert.warning("Blank Markdown hyperlink in",element)
+    badLink = re.search(r"\]\((\w*:)(?!//)",text)
+    if re.search(r"\]\((\w*:)(?!//)",text):
+        badLink = re.search(r"\]\((\w*:[^)]*)\)",text) 
+        Alert.warning("Unevaluated reference",repr(badLink[1]),"in",element)
     md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = [NewTabRemoteExtension()]), flags=re.IGNORECASE)
     if md != text:
         return md, 1
