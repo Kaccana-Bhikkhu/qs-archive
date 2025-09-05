@@ -50,7 +50,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(37<i class=\"fa fa-star\"></i>)",
+    "suffix": "(41<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -477,6 +477,15 @@
     "excerptCount": 56
   },
   {
+    "short": "Samatha and vipassanā (samatha-vipassanā)",
+    "link": "clusters/calming-meditation.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/Cluster.png\">",
+    "suffix": "",
+    "excerptCount": 74
+  },
+  {
     "short": "Continuity of mindfulness",
     "link": "clusters/continuity-of-mindfulness.html",
     "long": "",
@@ -780,7 +789,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 142
+    "excerptCount": 144
   },
   {
     "short": "Dependent origination (paticca-samuppāda)",
@@ -2808,8 +2817,8 @@
     "excerptCount": 3
   },
   {
-    "short": "Not-made-of-that (atammayatā)",
-    "link": "tags/not-made-of-that.html",
+    "short": "Non-identification (atammayatā)",
+    "link": "tags/non-identification.html",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
@@ -4194,6 +4203,15 @@
     "excerptCount": 10
   },
   {
+    "short": "Ajahn Candasirī",
+    "link": "tags/ajahn-candasiri.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
     "short": "Ajahn Kalyāṇo",
     "link": "tags/ajahn-kalyano.html",
     "long": "",
@@ -4626,6 +4644,15 @@
     "excerptCount": 25
   },
   {
+    "short": "Ajahn Santikaro",
+    "link": "tags/ajahn-santikaro.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
     "short": "Ajahn Piyadhammo",
     "link": "tags/ajahn-piyadhammo.html",
     "long": "",
@@ -4714,6 +4741,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 1
+  },
+  {
+    "short": "Ven. Ananda Maitreya",
+    "link": "tags/ven-ananda-maitreya.html",
+    "long": "Balangoda Ananda Maitreya Thero",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 2
   },
   {
     "short": "Taungpulu Sayadaw",
@@ -4849,6 +4885,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 26
+  },
+  {
+    "short": "Thich Nhat Hahn",
+    "link": "tags/thich-nhat-hahn.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "Dalai Lama",
@@ -5083,6 +5128,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 9
+  },
+  {
+    "short": "Mark Epstein",
+    "link": "tags/mark-epstein.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "Ṭhānissarā",
@@ -5706,6 +5760,24 @@
     "excerptCount": 8
   },
   {
+    "short": "Brahma gods",
+    "link": "tags/brahma-gods.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 3
+  },
+  {
+    "short": "Metteyya Bodhisatva",
+    "link": "tags/metteyya-bodhisatva.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
     "short": "Māra",
     "link": "tags/mara.html",
     "long": "",
@@ -5812,6 +5884,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 6
+  },
+  {
+    "short": "Previous Buddhas",
+    "link": "tags/previous-buddhas.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "Buddha/Biography",
@@ -6039,6 +6120,15 @@
     "excerptCount": 97
   },
   {
+    "short": "Sinhalese",
+    "link": "tags/sinhalese.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
     "short": "Thai",
     "link": "tags/thai.html",
     "long": "Thai language",
@@ -6208,6 +6298,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 5
+  },
+  {
+    "short": "Jainism",
+    "link": "tags/jainism.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "Judaism",
@@ -6546,7 +6645,7 @@
     "short": "Fourfold Assembly",
     "link": "tags/fourfold-assembly.html",
     "long": "",
-    "number": "",
+    "number": "4",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 4
@@ -6573,7 +6672,7 @@
     "short": "Principles of non-decline (aparihānāya dhammā)",
     "link": "tags/principles-of-non-decline.html",
     "long": "Principles of (communal) non-decline (aparihānāya dhammā)",
-    "number": "",
+    "number": "7",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 1
@@ -7335,96 +7434,6 @@
     "excerptCount": 4
   },
   {
-    "short": "Mark Epstein",
-    "link": "tags/mark-epstein.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Thich Nhat Hahn",
-    "link": "tags/thich-nhat-hahn.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Jainism",
-    "link": "tags/jainism.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Sinhalese",
-    "link": "tags/sinhalese.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Ananda Maitreya",
-    "link": "tags/ananda-maitreya.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 2
-  },
-  {
-    "short": "Ajahn Candasirī",
-    "link": "tags/ajahn-candasiri.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Brahma gods",
-    "link": "tags/brahma-gods.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 3
-  },
-  {
-    "short": "Ajahn Santikaro",
-    "link": "tags/ajahn-santikaro.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Previous Buddhas",
-    "link": "tags/previous-buddhas.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Metteyya Bodhisatva",
-    "link": "tags/metteyya-bodhisatva.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
     "short": "Wholesome qualities",
     "link": "tags/skillful-qualities.html",
     "long": "",
@@ -7677,7 +7686,7 @@
     "excerptCount": 0
   },
   {
-    "short": "unshakeability",
+    "short": "Unshakeability",
     "link": "tags/equanimity.html",
     "long": "",
     "number": "",
@@ -7686,7 +7695,7 @@
     "excerptCount": 0
   },
   {
-    "short": "balance",
+    "short": "Balance",
     "link": "tags/equanimity.html",
     "long": "",
     "number": "",
@@ -8028,6 +8037,15 @@
     "excerptCount": 0
   },
   {
+    "short": "kaya",
+    "link": "tags/form.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Form (14)",
+    "excerptCount": 0
+  },
+  {
     "short": "Body",
     "link": "tags/form.html",
     "long": "",
@@ -8106,6 +8124,24 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (117)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Non-fashinioning",
+    "link": "tags/non-identification.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Non-identification (10)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Not-made-of-that",
+    "link": "tags/non-identification.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Non-identification (10)",
     "excerptCount": 0
   },
   {
@@ -8232,6 +8268,15 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Kamma (96)",
+    "excerptCount": 0
+  },
+  {
+    "short": "yakkha",
+    "link": "tags/non-human-beings.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Non-human beings (3)",
     "excerptCount": 0
   },
   {
@@ -9243,8 +9288,8 @@
     "excerptCount": 3
   },
   {
-    "short": "Ñāṇatiloka Mahāthera",
-    "link": "teachers/nanatiloka-mahathera.html",
+    "short": "Venerable Ñāṇatiloka",
+    "link": "teachers/venerable-nanatiloka.html",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
