@@ -14,9 +14,9 @@
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
 
 <style>
   p {font-size: 100%; max-width: none;}
@@ -30,9 +30,8 @@
 
 $!page.RenderNumberedSections()!$
 
-<p id="copyright" class="indent-0">&copy; $!page.gOptions.info.releaseYear!$ Abhayagiri Buddhist Monastery – <a href="../about/License.html">License</a></p>
-<p id="cite-as" class="indent-0"><b>How to cite this page</b> (suggested style): “$!page.section["citationTitle"] if page.HasSection("citationTitle") else page.info.title!$,” The Ajahn Pasanno Archive, $!page.gOptions.info.releaseName!$,
-      $!f'<a href="{page.gOptions.info.citationURL}{page.info.file}">{page.gOptions.info.citationURL}{page.info.file}</a>'!$.</p>
-
+<footer>
+        <p>&copy; $!page.gOptions.info.releaseYear!$ Abhayagiri Buddhist Monastery – <a href="about/License.html">License</a> – <a href="sitemap.html">Site map</a></p>
+  </footer>
 </body>
 </html>

@@ -129820,6 +129820,7 @@
       "subtopics": [],
       "excerptCount": 81,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 0
     },
     "Middle Path": {
@@ -129848,6 +129849,7 @@
       "eventCount": 1,
       "excerptCount": 31,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 1
     },
     "Eightfold Path": {
@@ -129883,6 +129885,7 @@
       "subtopics": [],
       "excerptCount": 59,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 2
     },
     "Right View": {
@@ -129910,6 +129913,7 @@
       "subtopics": [],
       "excerptCount": 44,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 3
     },
     "Right Intention": {
@@ -129968,6 +129972,7 @@
       "subtopics": [],
       "excerptCount": 22,
       "fTagCount": 3,
+      "subtopicFTagCount": 2,
       "listIndex": 5
     },
     "Right Speech": {
@@ -130006,6 +130011,7 @@
       "sessionCount": 1,
       "excerptCount": 33,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 8
     },
     "Abstaining from:": {
@@ -130058,6 +130064,7 @@
       ],
       "excerptCount": 8,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 10
     },
     "Malicious speech": {
@@ -130084,6 +130091,7 @@
       ],
       "excerptCount": 6,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 11
     },
     "Harsh speech": {
@@ -130157,6 +130165,7 @@
       ],
       "excerptCount": 33,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 14
     },
     "Listening": {
@@ -130281,6 +130290,7 @@
       ],
       "excerptCount": 24,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 20
     },
     "Vegetarianism": {
@@ -130411,6 +130421,7 @@
       ],
       "excerptCount": 8,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 26
     },
     "Right Livelihood": {
@@ -130441,6 +130452,7 @@
       "sessionCount": 1,
       "excerptCount": 39,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 27
     },
     "Right Effort": {
@@ -130474,6 +130486,7 @@
       "subtopics": [],
       "excerptCount": 109,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 28
     },
     "Effort for the": {
@@ -130528,6 +130541,7 @@
       "sessionCount": 4,
       "excerptCount": 67,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 34
     },
     "Mindfulness of body": {
@@ -130567,6 +130581,7 @@
       "sessionCount": 1,
       "excerptCount": 104,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 35
     },
     "Mindfulness of breathing": {
@@ -130596,6 +130611,7 @@
       "sessionCount": 12,
       "excerptCount": 185,
       "fTagCount": 7,
+      "subtopicFTagCount": 7,
       "listIndex": 377
     },
     "Postures": {
@@ -130656,6 +130672,7 @@
       ],
       "excerptCount": 75,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 51
     },
     "Unattractiveness": {
@@ -130683,6 +130700,7 @@
       "sessionCount": 3,
       "excerptCount": 42,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 378
     },
     "Elements": {
@@ -130711,6 +130729,7 @@
       "sessionCount": 3,
       "excerptCount": 26,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 379
     },
     "Recollection/Death": {
@@ -130737,6 +130756,7 @@
       "sessionCount": 2,
       "excerptCount": 48,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 407
     },
     "Mindfulness of feeling": {
@@ -130850,6 +130870,7 @@
       "sessionCount": 4,
       "excerptCount": 53,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 194
     },
     "Aggregates": {
@@ -130882,6 +130903,7 @@
       "subtopics": [],
       "excerptCount": 58,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 238
     },
     "Sense bases": {
@@ -130908,6 +130930,7 @@
       "subtopics": [],
       "excerptCount": 44,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 250
     },
     "Factors of Awakening": {
@@ -130971,6 +130994,7 @@
       "subtopics": [],
       "excerptCount": 60,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 63
     },
     "Ardency": {
@@ -130998,6 +131022,7 @@
       ],
       "excerptCount": 43,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 50
     },
     "Mindfulness": {
@@ -131008,7 +131033,9 @@
       "number": "",
       "alternateTranslations": [],
       "glosses": [],
-      "related": [],
+      "related": [
+        "Right Mindfulness"
+      ],
       "flags": "0*",
       "subtags": [],
       "supertags": [
@@ -131026,6 +131053,7 @@
       "subtopics": [],
       "excerptCount": 125,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 52
     },
     "Right Concentration": {
@@ -131087,6 +131115,7 @@
       "sessionCount": 2,
       "excerptCount": 81,
       "fTagCount": 4,
+      "subtopicFTagCount": 3,
       "listIndex": 54
     },
     "Seclusion": {
@@ -131167,6 +131196,7 @@
       ],
       "excerptCount": 38,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 108
     },
     "Happiness": {
@@ -131194,6 +131224,7 @@
       "eventCount": 1,
       "excerptCount": 161,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 58
     },
     "Concentration": {
@@ -131204,7 +131235,9 @@
       "number": "",
       "alternateTranslations": [],
       "glosses": [],
-      "related": [],
+      "related": [
+        "Right Concentration"
+      ],
       "flags": "*",
       "subtags": [],
       "supertags": [
@@ -131223,6 +131256,7 @@
       "sessionCount": 1,
       "excerptCount": 99,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 59
     },
     "Equanimity": {
@@ -131254,6 +131288,7 @@
       "subtopics": [],
       "excerptCount": 61,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 116
     },
     "Unification": {
@@ -131280,6 +131315,7 @@
       ],
       "excerptCount": 17,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 61
     },
     "Formless attainments": {
@@ -131334,6 +131370,7 @@
       "subtopics": [],
       "excerptCount": 24,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 64
     },
     "Birth": {
@@ -131381,6 +131418,7 @@
       "subtopics": [],
       "excerptCount": 37,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 66
     },
     "Sickness": {
@@ -131406,6 +131444,7 @@
       "subtopics": [],
       "excerptCount": 93,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 67
     },
     "Death": {
@@ -131433,6 +131472,7 @@
       "sessionCount": 2,
       "excerptCount": 136,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 68
     },
     "Suffering": {
@@ -131461,6 +131501,7 @@
       "subtopics": [],
       "excerptCount": 230,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 270
     },
     "Pain": {
@@ -131513,6 +131554,7 @@
       "subtopics": [],
       "excerptCount": 41,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 71
     },
     "Cause of Suffering": {
@@ -131544,6 +131586,7 @@
       "subtopics": [],
       "excerptCount": 40,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 73
     },
     "Craving not to become": {
@@ -131571,6 +131614,7 @@
       ],
       "excerptCount": 22,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 76
     },
     "Cessation of Suffering": {
@@ -131605,6 +131649,7 @@
       "sessionCount": 1,
       "excerptCount": 64,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 77
     },
     "Dispassion": {
@@ -131634,6 +131679,7 @@
       "sessionCount": 2,
       "excerptCount": 38,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 146
     },
     "Cessation": {
@@ -131662,6 +131708,7 @@
       "sessionCount": 1,
       "excerptCount": 39,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 147
     },
     "Relinquishment": {
@@ -131693,6 +131740,7 @@
       "sessionCount": 1,
       "excerptCount": 199,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 148
     },
     "Release": {
@@ -131750,6 +131798,7 @@
       "sessionCount": 1,
       "excerptCount": 127,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 150
     },
     "Aids to Awakening": {
@@ -131885,6 +131934,7 @@
       "eventCount": 1,
       "excerptCount": 63,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 94
     },
     "Energy": {
@@ -131913,6 +131963,7 @@
       "subtopics": [],
       "excerptCount": 50,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 100
     },
     "Heart/mind": {
@@ -131964,6 +132015,7 @@
       "subtopics": [],
       "excerptCount": 123,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 99
     },
     "Discernment": {
@@ -131996,6 +132048,7 @@
       "subtopics": [],
       "excerptCount": 164,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 103
     },
     "Investigation of states": {
@@ -132026,6 +132079,7 @@
       ],
       "excerptCount": 47,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 106
     },
     "Tranquility": {
@@ -132038,7 +132092,9 @@
       "glosses": [
         "Peace"
       ],
-      "related": [],
+      "related": [
+        "Calming meditation"
+      ],
       "flags": "",
       "subtags": [],
       "supertags": [
@@ -132111,6 +132167,7 @@
       "eventCount": 2,
       "excerptCount": 152,
       "fTagCount": 3,
+      "subtopicFTagCount": 1,
       "listIndex": 113
     },
     "Compassion": {
@@ -132136,6 +132193,7 @@
       "subtopics": [],
       "excerptCount": 128,
       "fTagCount": 4,
+      "subtopicFTagCount": 3,
       "listIndex": 114
     },
     "Empathetic joy": {
@@ -132211,6 +132269,7 @@
       "subtopics": [],
       "excerptCount": 77,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 119
     },
     "Conscience and prudence": {
@@ -132327,6 +132386,7 @@
       "sessionCount": 1,
       "excerptCount": 93,
       "fTagCount": 5,
+      "subtopicFTagCount": 4,
       "listIndex": 815
     },
     "Sutta": {
@@ -132438,6 +132498,7 @@
       "subtopics": [],
       "excerptCount": 119,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 128
     },
     "Perfections": {
@@ -132494,6 +132555,7 @@
       "subtopics": [],
       "excerptCount": 64,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 136
     },
     "Truth": {
@@ -132650,6 +132712,7 @@
       "subtopics": [],
       "excerptCount": 35,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 151
     },
     "Stream entry": {
@@ -132676,6 +132739,7 @@
       ],
       "excerptCount": 35,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 152
     },
     "Factors for stream entry": {
@@ -132753,6 +132817,7 @@
       "sessionCount": 1,
       "excerptCount": 51,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 155
     },
     "Hearing the true Dhamma": {
@@ -132803,6 +132868,7 @@
       ],
       "excerptCount": 25,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 157
     },
     "Practicing in accordance with Dhamma": {
@@ -132968,6 +133034,7 @@
       "sessionCount": 1,
       "excerptCount": 56,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 715
     },
     "Heedfulness": {
@@ -133059,6 +133126,7 @@
       "subtopics": [],
       "excerptCount": 92,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 169
     },
     "Merit": {
@@ -133283,6 +133351,7 @@
       ],
       "excerptCount": 42,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 179
     },
     "Unwholesome Roots": {
@@ -133312,6 +133381,7 @@
       "subtopics": [],
       "excerptCount": 73,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 180
     },
     "Greed": {
@@ -133368,6 +133438,7 @@
       "subtopics": [],
       "excerptCount": 105,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 182
     },
     "Delusion": {
@@ -133395,6 +133466,7 @@
       "subtopics": [],
       "excerptCount": 58,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 183
     },
     "Biases": {
@@ -133480,6 +133552,7 @@
       "subtopics": [],
       "excerptCount": 35,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 265
     },
     "Ignorance": {
@@ -133509,6 +133582,7 @@
       "subtopics": [],
       "excerptCount": 14,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 246
     },
     "Views": {
@@ -133535,6 +133609,7 @@
       "subtopics": [],
       "excerptCount": 51,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 215
     },
     "Sensual desire": {
@@ -133569,6 +133644,7 @@
       "sessionCount": 2,
       "excerptCount": 71,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 195
     },
     "Ill-will": {
@@ -133599,6 +133675,7 @@
       ],
       "excerptCount": 21,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 196
     },
     "Sloth and torpor": {
@@ -133628,6 +133705,7 @@
       "subtopics": [],
       "excerptCount": 47,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 197
     },
     "Restlessness and worry": {
@@ -133657,6 +133735,7 @@
       "subtopics": [],
       "excerptCount": 65,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 198
     },
     "Doubt": {
@@ -133685,6 +133764,7 @@
       "subtopics": [],
       "excerptCount": 43,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 199
     },
     "Fetters": {
@@ -133748,6 +133828,7 @@
       "sessionCount": 1,
       "excerptCount": 183,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 201
     },
     "Attachment to precepts and practices": {
@@ -133845,6 +133926,7 @@
       "subtopics": [],
       "excerptCount": 31,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 208
     },
     "Heedlessness": {
@@ -133903,6 +133985,7 @@
       "sessionCount": 4,
       "excerptCount": 129,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 213
     },
     "Craving": {
@@ -133937,6 +134020,7 @@
       "sessionCount": 1,
       "excerptCount": 63,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 256
     },
     "Conceit-related": {
@@ -133992,6 +134076,7 @@
       ],
       "excerptCount": 38,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 220
     },
     "Perfectionism": {
@@ -134062,6 +134147,7 @@
       ],
       "excerptCount": 7,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 223
     },
     "Selfishness": {
@@ -134086,6 +134172,7 @@
       ],
       "excerptCount": 8,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 224
     },
     "Guilt/shame/inadequacy": {
@@ -134113,6 +134200,7 @@
       ],
       "excerptCount": 32,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 225
     },
     "Self-pity": {
@@ -134348,6 +134436,7 @@
       "subtopics": [],
       "excerptCount": 19,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 251
     },
     "Volition": {
@@ -134401,6 +134490,7 @@
       "subtopics": [],
       "excerptCount": 35,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 243
     },
     "Form": {
@@ -134458,6 +134548,7 @@
       "sessionCount": 2,
       "excerptCount": 60,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 240
     },
     "Perception": {
@@ -134508,6 +134599,7 @@
       "subtopics": [],
       "excerptCount": 43,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 242
     },
     "Conditionality": {
@@ -134534,6 +134626,7 @@
       "subtopics": [],
       "excerptCount": 103,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 244
     },
     "Dependent origination": {
@@ -134572,6 +134665,7 @@
       "subtopics": [],
       "excerptCount": 32,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 245
     },
     "Neutral feeling": {
@@ -134628,6 +134722,7 @@
       "sessionCount": 1,
       "excerptCount": 109,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 260
     },
     "Doctrine-of-self clinging": {
@@ -134717,6 +134812,7 @@
       "sessionCount": 1,
       "excerptCount": 117,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 269
     },
     "Not-self": {
@@ -134746,6 +134842,7 @@
       "sessionCount": 2,
       "excerptCount": 100,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 271
     },
     "Naturalness": {
@@ -135101,6 +135198,7 @@
       "subtopics": [],
       "excerptCount": 88,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 288
     },
     "Idealism": {
@@ -135189,6 +135287,7 @@
       "subtopics": [],
       "excerptCount": 52,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 292
     },
     "Buddha": {
@@ -135222,6 +135321,7 @@
       "subtopics": [],
       "excerptCount": 59,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 293
     },
     "Buddha/Biography": {
@@ -135250,6 +135350,7 @@
       "sessionCount": 1,
       "excerptCount": 72,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 721
     },
     "Buddha images": {
@@ -135296,6 +135397,7 @@
       ],
       "excerptCount": 17,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 391
     },
     "Dhamma": {
@@ -135325,6 +135427,7 @@
       "sessionCount": 1,
       "excerptCount": 73,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 297
     },
     "Saṅgha": {
@@ -135365,6 +135468,7 @@
       "sessionCount": 2,
       "excerptCount": 72,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 825
     },
     "Devotional practice": {
@@ -135471,6 +135575,7 @@
       "sessionCount": 4,
       "excerptCount": 83,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 302
     },
     "Anumodanā": {
@@ -135905,6 +136010,7 @@
       "subtopics": [],
       "excerptCount": 50,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 323
     },
     "Five Precepts": {
@@ -135936,6 +136042,7 @@
       ],
       "excerptCount": 17,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 324
     },
     "Intoxicants": {
@@ -136101,6 +136208,7 @@
       "sessionCount": 1,
       "excerptCount": 85,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 350
     },
     "Meditation/General advice": {
@@ -136125,6 +136233,7 @@
       ],
       "excerptCount": 25,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 351
     },
     "Meditation/Techniques": {
@@ -136245,6 +136354,7 @@
       ],
       "excerptCount": 11,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 388
     },
     "Noting": {
@@ -136417,6 +136527,7 @@
       "subtopics": [],
       "excerptCount": 42,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 397
     },
     "Insight meditation": {
@@ -136443,6 +136554,7 @@
       ],
       "excerptCount": 52,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 398
     },
     "Recollection": {
@@ -136481,6 +136593,7 @@
       "sessionCount": 2,
       "excerptCount": 56,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 399
     },
     "Recollection/Buddha": {
@@ -136533,6 +136646,7 @@
       ],
       "excerptCount": 18,
       "fTagCount": 3,
+      "subtopicFTagCount": 2,
       "listIndex": 401
     },
     "Recollection/Saṅgha": {
@@ -136559,6 +136673,7 @@
       ],
       "excerptCount": 14,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 402
     },
     "Recollection/Virtue": {
@@ -136585,6 +136700,7 @@
       ],
       "excerptCount": 19,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 403
     },
     "Recollection/Generosity": {
@@ -136730,6 +136846,7 @@
       "subtopics": [],
       "excerptCount": 39,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 417
     },
     "Posture/Lying down": {
@@ -136907,6 +137024,7 @@
       "subtopics": [],
       "excerptCount": 53,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 426
     },
     "Present moment awareness": {
@@ -136931,6 +137049,7 @@
       ],
       "excerptCount": 40,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 427
     },
     "Spaciousness": {
@@ -136976,6 +137095,7 @@
       "subtopics": [],
       "excerptCount": 48,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 429
     },
     "Knowing itself": {
@@ -137004,6 +137124,7 @@
       "subtopics": [],
       "excerptCount": 78,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 430
     },
     "Meditation/Unusual experiences": {
@@ -137050,6 +137171,7 @@
       "subtopics": [],
       "excerptCount": 40,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 432
     },
     "Teaching Dhamma": {
@@ -137088,6 +137210,7 @@
       "sessionCount": 1,
       "excerptCount": 176,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 433
     },
     "Gradual Teaching": {
@@ -137144,6 +137267,7 @@
       ],
       "excerptCount": 24,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 460
     },
     "Dhamma discussion": {
@@ -137192,6 +137316,7 @@
       ],
       "excerptCount": 29,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 814
     },
     "Personal presence": {
@@ -137216,6 +137341,7 @@
       ],
       "excerptCount": 27,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 463
     },
     "Fierce/direct teaching": {
@@ -137240,6 +137366,7 @@
       ],
       "excerptCount": 48,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 465
     },
     "Stories": {
@@ -137419,6 +137546,7 @@
       "subtopics": [],
       "excerptCount": 25,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 473
     },
     "Monastic teachers": {
@@ -137478,6 +137606,7 @@
       "sessionCount": 3,
       "excerptCount": 92,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 475
     },
     "Ajahn Sao": {
@@ -137523,6 +137652,7 @@
       "subtopics": [],
       "excerptCount": 68,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 477
     },
     "Ajahn Chah": {
@@ -137550,6 +137680,7 @@
       "sessionCount": 41,
       "excerptCount": 711,
       "fTagCount": 7,
+      "subtopicFTagCount": 7,
       "listIndex": 478
     },
     "Ajahn Chah lineage": {
@@ -138101,6 +138232,7 @@
       "sessionCount": 2,
       "excerptCount": 123,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 502
     },
     "Ajahn Anando": {
@@ -138168,6 +138300,7 @@
       "sessionCount": 1,
       "excerptCount": 326,
       "fTagCount": 7,
+      "subtopicFTagCount": 7,
       "listIndex": 505
     },
     "Ajahn Viradhammo": {
@@ -141030,6 +141163,7 @@
       "subtopics": [],
       "excerptCount": 117,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 642
     },
     "Wat Tam Saeng Pet": {
@@ -141095,6 +141229,7 @@
       "subtopics": [],
       "excerptCount": 78,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 648
     },
     "Wat Fah Krahm": {
@@ -141498,6 +141633,7 @@
       "sessionCount": 6,
       "excerptCount": 223,
       "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 662
     },
     "Pacific Hermitage": {
@@ -142146,6 +142282,7 @@
       "subtopics": [],
       "excerptCount": 96,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 694
     },
     "Rebirth": {
@@ -142171,6 +142308,7 @@
       "subtopics": [],
       "excerptCount": 55,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 695
     },
     "Saṃsāra": {
@@ -142222,6 +142360,7 @@
       "subtopics": [],
       "excerptCount": 15,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 697
     },
     "Deva": {
@@ -142247,6 +142386,7 @@
       "sessionCount": 1,
       "excerptCount": 31,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 698
     },
     "Human": {
@@ -142273,6 +142413,7 @@
       "sessionCount": 1,
       "excerptCount": 71,
       "fTagCount": 3,
+      "subtopicFTagCount": 2,
       "listIndex": 699
     },
     "Ghost": {
@@ -142297,6 +142438,7 @@
       ],
       "excerptCount": 13,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 700
     },
     "Animal": {
@@ -142321,6 +142463,7 @@
       ],
       "excerptCount": 26,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 701
     },
     "Hell": {
@@ -142509,6 +142652,7 @@
       "subtopics": [],
       "excerptCount": 50,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 709
     },
     "Memory": {
@@ -142668,6 +142812,7 @@
       ],
       "excerptCount": 24,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 718
     },
     "History": {
@@ -142826,6 +142971,7 @@
       ],
       "excerptCount": 49,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 726
     },
     "History/Other Theravāda traditions": {
@@ -143025,6 +143171,7 @@
       "subtopics": [],
       "excerptCount": 50,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 735
     },
     "Culture/Asia": {
@@ -143111,6 +143258,7 @@
       "subtopics": [],
       "excerptCount": 166,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 739
     },
     "Culture/Other Theravāda traditions": {
@@ -143176,6 +143324,7 @@
       "subtopics": [],
       "excerptCount": 155,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 742
     },
     "Women in Buddhism": {
@@ -143228,6 +143377,7 @@
       "subtopics": [],
       "excerptCount": 8,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 857
     },
     "Bhikkhunī": {
@@ -143298,6 +143448,7 @@
       ],
       "excerptCount": 9,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 860
     },
     "Language": {
@@ -143330,6 +143481,7 @@
       "subtopics": [],
       "excerptCount": 58,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 748
     },
     "Pāli": {
@@ -143355,6 +143507,7 @@
       "sessionCount": 1,
       "excerptCount": 97,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 749
     },
     "Sinhalese": {
@@ -143402,6 +143555,7 @@
       ],
       "excerptCount": 51,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 751
     },
     "Question in Thai": {
@@ -143486,6 +143640,7 @@
       ],
       "excerptCount": 84,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 755
     },
     "Etymology": {
@@ -144045,6 +144200,7 @@
       ],
       "excerptCount": 42,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 795
     },
     "Requisites": {
@@ -144075,6 +144231,7 @@
       "subtopics": [],
       "excerptCount": 13,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 797
     },
     "Robes": {
@@ -144099,6 +144256,7 @@
       ],
       "excerptCount": 17,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 798
     },
     "Almsfood": {
@@ -144126,6 +144284,7 @@
       ],
       "excerptCount": 29,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 799
     },
     "Almsbowl": {
@@ -144173,6 +144332,7 @@
       ],
       "excerptCount": 44,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 801
     },
     "Lodging": {
@@ -144201,6 +144361,7 @@
       ],
       "excerptCount": 47,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 802
     },
     "Building projects": {
@@ -144225,6 +144386,7 @@
       ],
       "excerptCount": 17,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 803
     },
     "Medicinal requisites": {
@@ -144249,6 +144411,7 @@
       ],
       "excerptCount": 16,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 804
     },
     "Qualities for non-decline": {
@@ -144344,6 +144507,7 @@
       ],
       "excerptCount": 27,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 809
     },
     "Monastic life": {
@@ -144386,6 +144550,7 @@
       "sessionCount": 9,
       "excerptCount": 206,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 810
     },
     "Monastic life/Motivation": {
@@ -144411,6 +144576,7 @@
       "subtopics": [],
       "excerptCount": 39,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 811
     },
     "Ordination": {
@@ -144437,6 +144603,7 @@
       ],
       "excerptCount": 31,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 812
     },
     "Temporary ordination": {
@@ -144571,6 +144738,7 @@
       ],
       "excerptCount": 39,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 820
     },
     "Protocols": {
@@ -144597,6 +144765,7 @@
       ],
       "excerptCount": 20,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 821
     },
     "Not handling money": {
@@ -144668,6 +144837,7 @@
       "subtopics": [],
       "excerptCount": 48,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 824
     },
     "Fourfold Assembly": {
@@ -144720,6 +144890,7 @@
       "sessionCount": 1,
       "excerptCount": 53,
       "fTagCount": 4,
+      "subtopicFTagCount": 3,
       "listIndex": 827
     },
     "Principles of Cordiality": {
@@ -144839,6 +145010,7 @@
       ],
       "excerptCount": 34,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 836
     },
     "Perception of a samaṇa": {
@@ -144863,6 +145035,7 @@
       ],
       "excerptCount": 14,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 837
     },
     "Respect": {
@@ -144997,6 +145170,7 @@
       ],
       "excerptCount": 13,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 843
     },
     "Ascetic practices": {
@@ -145027,6 +145201,7 @@
       "sessionCount": 1,
       "excerptCount": 29,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 844
     },
     "Tudong": {
@@ -145055,6 +145230,7 @@
       "sessionCount": 4,
       "excerptCount": 78,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 845
     },
     "Fasting": {
@@ -145329,6 +145505,7 @@
       "subtopics": [],
       "excerptCount": 38,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 862
     },
     "Lay life": {
@@ -145354,6 +145531,7 @@
       "eventCount": 1,
       "excerptCount": 61,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 874
     },
     "Conventions": {
@@ -145661,6 +145839,7 @@
       "subtopics": [],
       "excerptCount": 45,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 890
     },
     "Time management": {
@@ -145706,6 +145885,7 @@
       "subtopics": [],
       "excerptCount": 29,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 892
     },
     "Family": {
@@ -145734,6 +145914,7 @@
       "subtopics": [],
       "excerptCount": 74,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 893
     },
     "Parents": {
@@ -145759,6 +145940,7 @@
       "sessionCount": 1,
       "excerptCount": 31,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 894
     },
     "Children": {
@@ -145783,6 +145965,7 @@
       ],
       "excerptCount": 13,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 895
     },
     "Artistic expression": {
@@ -145935,6 +146118,7 @@
       "subtopics": [],
       "excerptCount": 61,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 901
     },
     "Environment": {
@@ -145963,6 +146147,7 @@
       "subtopics": [],
       "excerptCount": 30,
       "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 902
     },
     "Weather": {
@@ -146007,6 +146192,7 @@
       ],
       "excerptCount": 21,
       "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 907
     },
     "Conflict": {
@@ -146031,6 +146217,7 @@
       ],
       "excerptCount": 39,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 908
     },
     "Meditation groups": {
@@ -146107,6 +146294,7 @@
       "sessionCount": 1,
       "excerptCount": 59,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 911
     },
     "Royalty": {
@@ -146174,6 +146362,7 @@
       ],
       "excerptCount": 8,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 914
     },
     "Non-profit organizations": {
@@ -146338,6 +146527,7 @@
       ],
       "excerptCount": 10,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 921
     },
     "Commerce/economics": {
@@ -146367,6 +146557,7 @@
       "subtopics": [],
       "excerptCount": 38,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 922
     },
     "Poverty": {
@@ -146391,6 +146582,7 @@
       ],
       "excerptCount": 12,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 923
     },
     "Health care": {
@@ -146417,6 +146609,7 @@
       ],
       "excerptCount": 53,
       "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 924
     },
     "Pandemic": {
@@ -146511,6 +146704,7 @@
       "subtopics": [],
       "excerptCount": 15,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 928
     },
     "Industry": {
@@ -146558,6 +146752,7 @@
       ],
       "excerptCount": 9,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 930
     },
     "Media": {
@@ -146610,6 +146805,7 @@
       ],
       "excerptCount": 4,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 932
     },
     "Advertizing": {
@@ -146680,6 +146876,7 @@
       ],
       "excerptCount": 4,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 935
     }
   },
@@ -163045,7 +163242,7 @@
     },
     "Calming meditation": {
       "tag": "Calming meditation",
-      "displayAs": "Samatha and vipassanā",
+      "displayAs": "Tranquility and insight",
       "pali": "samatha-vipassanā",
       "related": [],
       "status": "",

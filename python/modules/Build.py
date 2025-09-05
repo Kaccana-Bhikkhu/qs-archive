@@ -551,6 +551,39 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.keywords = ["Tags","Numerical tags"]
     yield page 
 
+def PrintCommonTags(tags: list[dict],countFirst:bool) -> str:
+    """Return a html string listing these tags and details of how many times they are applied as fTags."""
+    a = Airium()
+    with a.p():
+        a("""<b>Bold tags</b>: solo subtopics <i>Italic tags</i>: clustered subtopics <br> 
+Key: (fTags/subtopicFTags:min-max). '/subtopicFTags' is omitted if all featured excerpts are included in all subtopics.""")
+    with a.div(Class="listing"):
+        for tag in tags:
+            with a.p():
+                code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
+                tagLink = HtmlTagLink(tag)
+                fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
+                fTagCountStr = str(fTagCount)
+                if tag in Database.KeyTopicTags():
+                    subtopicFTagCount = gDatabase["tag"][tag].get("subtopicFTagCount",0)
+                    if subtopicFTagCount < fTagCount:
+                        fTagCountStr += f"/{subtopicFTagCount}"
+                
+                minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])
+                
+                tagStyle = Html.Wrapper()
+                if tag in Database.SoloSubtopics():
+                    tagStyle = Html.Tag("b")
+                elif tag in Database.KeyTopicTags():
+                    tagStyle = Html.Tag("i")
+                
+                if countFirst:
+                    a(f"{ExcerptCount(tag)} {code} {tagStyle(tagLink)} ({fTagCountStr}:{minFTag}-{maxFTag})")
+                else:
+                    a(f"{code} {tagStyle(tagLink)} {ExcerptCount(tag)} ({fTagCountStr}:{minFTag}-{maxFTag})")
+    
+    return str(a)
+
 def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted by number of excerpts."""
     
@@ -567,7 +600,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     
     page = Html.PageDesc(info)
 
-    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
+    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html#noframe")})("Printable")
     page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
@@ -579,30 +612,19 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     # Now yield a printable version for tag counting purposes
     tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
                                 key = lambda tag: (-ExcerptCount(tag),tag))
-    a = Airium()
-    with a.p():
-        a("The number of featured excerpts for each tag appears in parentheses.")
-    with a.div(Class="listing"):
-        for tag in tagsSortedByQCount:
-            with a.p():
-                code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
-                tagLink = HtmlTagLink(tag)
-                fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
-                minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])
-                
-                tagStyle = Html.Wrapper()
-                if tag in Database.SoloSubtopics():
-                    tagStyle = Html.Tag("b")
-                elif tag in Database.KeyTopicTags():
-                    # If this tag is part of a subtopic and has no fTags which do not appear in the subtopic
-                    tagStyle = Html.Tag("i")
-
-                a(f"{ExcerptCount(tag)} {code} {tagStyle(tagLink)} ({fTagCount}:{minFTag}-{maxFTag})")
 
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
-    page.AppendContent(str(a))
+    page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=True))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
+    yield page
+
+    # Create another version sorted by name. This will be linked to on the alphabetical page.
+    tagsSortedByQCount = sorted(tagsSortedByQCount)
+    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"AlphabeticalTags_print.html")))
+    page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=False))
+    page.AppendContent("Alphabetized common tags",section="citationTitle")
+    page.keywords = ["Tags","Alphabetized common tags"]
     yield page
 
 def ProperNounTag(tag:dict) -> bool:
@@ -818,6 +840,8 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
         [pageInfo._replace(title = "People/places/traditions"+LenStr(entries["proper"]),file=Utils.PosixJoin(pageDir,"ProperTags.html")),
             str(Html.ListWithHeadings(entries["proper"],TagItem,**args))]
     ]
+    if gOptions.uploadMirror == "preview":
+        subMenu.append([Html.PageInfo("Printable",Utils.PosixJoin(pageDir,"AlphabeticalTags_print.html#noframe"))])
 
     basePage = Html.PageDesc()
     basePage.keywords = ["Tags","Alphabetical"]
@@ -2327,9 +2351,9 @@ def AddTopicButtons(page: Html.PageDesc) -> None:
                                           "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file + "#keep_scroll"),
                                           "class":"noscript-hide"})("Contract all"))
     
-    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html")})("Printable")
+    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html#noframe")})("Printable")
     if gOptions.uploadMirror == "preview":
-        printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html")})("Printable with memos")
+        printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html#noframe")})("Printable with memos")
 
     page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
     page.AppendContent(2*'<br>')

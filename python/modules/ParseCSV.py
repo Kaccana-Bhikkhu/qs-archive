@@ -1570,9 +1570,12 @@ def CountAndVerify(database):
                 if gOptions.draftFTags == "omit" and fTagOrder > 1000:
                     del x["fTagOrder"][index]
                     del x["fTags"][index]
+                    x["fTagOrderFlag"] = x["fTagOrderFlag"][:index] + x["fTagOrderFlag"][index+1:]
                     draftFTagCount += 1
                 else:
                     tagDB[fTag]["fTagCount"] = tagDB[fTag].get("fTagCount",0) + 1
+                    if x["fTagOrderFlags"][index].upper() == FTagOrderFlag.EVERYWHERE and tagDB[fTag].get("partOfSubtopics",()):
+                        tagDB[fTag]["subtopicFTagCount"] = tagDB[fTag].get("subtopicFTagCount",0) + 1
                     if fTagOrder > 1000:
                         draftFTagCount += 1
                     else:
