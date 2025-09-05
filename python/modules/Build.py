@@ -318,7 +318,7 @@ def IndentedHtmlTagList(tagList:list[dict] = [],showSubtagCount = True,showStar 
     return str(a)
 
 @lru_cache(maxsize=None)
-def DrilldownTemplate() -> pyratemp.Template:
+def DrilldownTemplate(showStar:bool = False) -> pyratemp.Template:
     """Return a pyratemp template for an indented list of tags which can be expanded using
     the javascript toggle-view class.
     Variables within the template:
@@ -331,7 +331,7 @@ def DrilldownTemplate() -> pyratemp.Template:
         for index, item in enumerate(tagList):            
             bookmark = Utils.slugify(item["tag"] or item["name"])
             with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
-                itemHtml = HtmlTagListItem(item,showSubtagCount=True,showStar=False)
+                itemHtml = HtmlTagListItem(item,showSubtagCount=True,showStar=showStar)
                 
                 drilldownLink = ""
                 divTag = "" # These are start and end tags for the toggle-view divisions
@@ -366,12 +366,12 @@ def DrilldownTemplate() -> pyratemp.Template:
     
     return pyratemp.Template(str(a))
 
-def EvaluateDrilldownTemplate(expandSpecificTags:set[int] = frozenset()) -> str:
+def EvaluateDrilldownTemplate(expandSpecificTags:set[int] = frozenset(),showStar:bool = False) -> str:
     """Evaluate the drilldown template to expand the given set of tags.
     expandSpecificTags is the set of tag indexes to expand.
     The default is to expand all tags."""
 
-    template = DrilldownTemplate()
+    template = DrilldownTemplate(showStar=showStar)
     evaluated = template(xTagIndexes = expandSpecificTags)
     return str(evaluated)
 
@@ -2526,7 +2526,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
 
     def Pages() -> Generator[Html.PageDesc]:
         printPage = Html.PageDesc(printableItem)
-        tagsExpanded = EvaluateDrilldownTemplate(expandSpecificTags = TagsWithPrimarySubtags())
+        tagsExpanded = EvaluateDrilldownTemplate(expandSpecificTags = TagsWithPrimarySubtags(),showStar=True)
         noToggle = re.sub(r'<i class="[^"]*?toggle[^"]*"[^>]*>*.?</i>',"",tagsExpanded)
         printPage.AppendContent(noToggle)
         yield printPage
@@ -2539,7 +2539,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         basePage.AppendContent(Html.Tag("button",{"type":"button",
                                                   "onclick":Utils.JavascriptLink(contractAllItem.file + "#keep_scroll"),
                                                   })("Contract all"))
-        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
+        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file + "#noframe")})("Printable")))
         basePage.AppendContent(2*'<br>')
         basePage.AppendContent('</div>')
 

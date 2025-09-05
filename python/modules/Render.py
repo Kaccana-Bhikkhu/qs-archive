@@ -376,7 +376,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
     def ProcessLocalReferences(url:str) -> str:
         """Remove the redundant ../pages portion of local references to html pages;
-        add #noscript to the end of local references to non-html pages to break out of frame.js."""
+        add #noframe to the end of local references to non-html pages to break out of frame.js."""
         parsed = urllib.parse.urlparse(url)
         if parsed.netloc:
             return url
@@ -385,7 +385,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if pagesPath in url:
                 return Utils.PosixNorm(url.replace(pagesPath,""))
             else:
-                return url + "#noscript"
+                return url + "#noframe"
 
     def ReferenceForm2Substitution(matchObject: re.Match) -> str:
         try:
