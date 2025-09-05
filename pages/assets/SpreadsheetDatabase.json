@@ -112867,7 +112867,7 @@
         },
         {
           "kind": "Reading",
-          "flags": "2",
+          "flags": "2:",
           "text": "[The Island](), Chapter 1, pp. [28-30](The Island p. 28).",
           "teachers": [
             "AP",
@@ -115745,7 +115745,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "s",
+      "flags": "s:",
       "text": "from [The Island](), Chapter 4, pp. [70-75](The Island p. 70).",
       "teachers": [
         "AP",
@@ -115756,7 +115756,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Ven. P.A. Payutto, ‘Dependent Origination,’ pp. 14-5.",
+          "text": "Ven. P.A. Payutto, _Dependent Origination,_ pp. 14-5.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -115764,7 +115764,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "H.H. the Dalai Lama, ‘The Four Noble Truths,’ pp. 53-57.",
+          "text": "H.H. the Dalai Lama, _The Four Noble Truths,_ pp. 53-57.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -115787,7 +115787,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "",
+      "flags": ":",
       "text": "from [The Island](), Chapter 4, pp. [80-82](The Island p. 80).",
       "teachers": [
         "AP",
@@ -115798,7 +115798,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
+          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in _Food for the Heart,_ pp. 385-9.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -115814,7 +115814,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "s",
+      "flags": "s:",
       "text": "from [The Island](), Chapter 4, pp. [82-86](The Island p. 82).",
       "teachers": [
         "AP",
@@ -115825,7 +115825,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in ‘Food for the Heart, pp. 385-9.",
+          "text": "Ajahn Chah, ‘Toward the Unconditioned,’ in _Food for the Heart,_ pp. 385-9.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -115833,7 +115833,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Ajahn Chah, ‘Convention and Liberation,’ in ‘Food for the Heart,’ p. 307.",
+          "text": "Ajahn Chah, ‘Convention and Liberation,’ in _Food for the Heart,_ p. 307.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -115849,7 +115849,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "s",
+      "flags": "s:",
       "text": "from [The Island](), Chapter 5, pp. [87-92](The Island p. 87).",
       "teachers": [
         "AP",
@@ -115860,7 +115860,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Nyaṇatiloka Bhikkhu, ‘Buddhist Dictionary,’ p. 106.",
+          "text": "Nyaṇatiloka Bhikkhu, _Buddhist Dictionary,_ p. 106.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -115899,7 +115899,7 @@
       "annotations": [
         {
           "kind": "Reading",
-          "flags": "s2",
+          "flags": "s:2",
           "text": "[The Island](), Chapter 5, pp. [92-96](The Island p. 92).",
           "teachers": [
             "AP",
@@ -115943,7 +115943,7 @@
       "annotations": [
         {
           "kind": "Reading",
-          "flags": "s2",
+          "flags": "s:2",
           "text": "[The Island](), Chapter 5, pp. [96-101](The Island p. 96).",
           "teachers": [
             "AP",
@@ -115963,7 +115963,7 @@
         {
           "kind": "Reading",
           "flags": "2-",
-          "text": "Ṭhānissaro Bhikkhu, ‘Noble Strategy,’ pp. 71-4.",
+          "text": "Ṭhānissaro Bhikkhu, _Noble Strategy,_ pp. 71-4.",
           "teachers": [],
           "tags": [],
           "indentLevel": 2
@@ -115994,7 +115994,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "s",
+      "flags": "s:",
       "text": "from [The Island](), Chapter 5, pp. [101-105](The Island p. 101).",
       "teachers": [
         "AP",
@@ -116012,7 +116012,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Ajahn Sucitto, ‘The Dawn of the Dhamma,’ p. 97.",
+          "text": "Ajahn Sucitto, _The Dawn of the Dhamma,_ p. 97.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -116020,7 +116020,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "Ajahn Chah, ‘No Abiding,’ in ‘Food for the Heart,’ p. 316.",
+          "text": "Ajahn Chah, ‘No Abiding,’ in _Food for the Heart,_ p. 316.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -116036,7 +116036,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "s",
+      "flags": "s:",
       "text": "from [The Island](), Chapter 5, pp. [105-109](The Island p. 105).",
       "teachers": [
         "AP",
@@ -116069,7 +116069,7 @@
       "excerptNumber": 0,
       "fileNumber": 0,
       "kind": "Reading",
-      "flags": "s",
+      "flags": "s:",
       "text": "from [The Island](), Chapter 5, pp. [109-112](The Island p. 109).",
       "teachers": [
         "AP",
@@ -116095,7 +116095,7 @@
         {
           "kind": "Reading",
           "flags": "2",
-          "text": "‘Spiritual Autobiography,’ Ajahn Chah.",
+          "text": "_Spiritual Autobiography,_ Ajahn Chah.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1

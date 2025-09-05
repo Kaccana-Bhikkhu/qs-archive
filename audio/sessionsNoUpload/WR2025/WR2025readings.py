@@ -83,7 +83,7 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
             islandReading = ExcerptLineDict(
                 session = session["session"],
                 kind = "Reading",
-                flags = "s" if session["lastPassage"] - session["firstPassage"] > 0 else "",
+                flags = "s:" if session["lastPassage"] - session["firstPassage"] > 0 else ":",
                 startTime = "Session",
                 text = f"[The Island](), Chapter {session['chapter']}, pp. [{session['pageRange']}](The Island p. {firstPage})."
             )
@@ -108,7 +108,9 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
             for passageNumber in range(session["firstPassage"],session["lastPassage"] + 1):
                 passage = concordance[session["chapter"]][passageNumber]
                 if passage["reference"]: # Each reference gets its own line
-                    readings[len(readings)] = [passage["reference"]]
+                    refText = re.sub(r"‘([^’]*)’(?!.*‘)",r"_\1_",passage["reference"])
+                    refText.replace(",_","_,")
+                    readings[len(readings)] = [refText]
                 elif passage["sutta"]: # Concatenate suttas and vinaya texts
                     readings["Vinaya" if "Mv" in passage["sutta"] else "Sutta"].append(passage["sutta"])
             
