@@ -102,6 +102,9 @@ def PrepareTemplates():
             body, attribution = ExtractAttribution(form)
             kind["body"].append(body)
             kind["attribution"].append(attribution)
+    
+    for rule in gDatabase["textLink"].values():
+        rule["link"] = FStringToPyratemp(rule["link"])
 
 def AddImplicitAttributions() -> None:
     "If an excerpt or annotation of kind Reading doesn't have a Read by annotation, attribute it to the session or excerpt teachers"
@@ -283,57 +286,76 @@ def RenderExcerpts() -> None:
                 AppendAnnotationToExcerpt(a,x)
 
 
+def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str = "."):
+    """A utility function that returns strings of the form 'n0.n1.n2'.
+    numbers: the list of numbers to print.
+    printCount: print this many numbers; if omitted, set to len(numbers).
+    filler: if printCount > len(numbers), add filler at the end.
+    separator: the separator character between numbers."""
+
+    if printCount is None:
+        printCount = len(numbers)
+    strings = [str(n) for n in numbers]
+    if len(strings) < printCount:
+        strings += (printCount - len(strings)) * [str(filler)]
+    return separator.join(strings)
+
+def ApplySuttaMatchRules(matchObject: re.Match) -> str:
+    """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
+    Then evaluate the template for that rule and return the link"""
+
+    params = {
+        "fullRef": matchObject[0],
+        "uid": matchObject[1],
+        "n0": matchObject[2],
+        "n1": matchObject[3],
+        "n2": matchObject[4],
+        "translator": matchObject[5]
+    }
+    params["n"] = [params[key] for key in ("n0","n1","n2") if params[key]]
+    params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
+    params["DotRef"] = DotRef
+
+    for rule in gDatabase["textLink"].values():
+        if rule["uid"] and rule["uid"] != params["uid"]:
+            continue
+        link = CompileTemplate(rule["link"])(**params)
+        if link:
+            return link
+    
+    Alert.warning(params["fullRef"],"didn't match any rules.")
+    return ""
+
 def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
-    """Add links to sutta.readingfaithfully.org to the excerpts
-    ApplyToFunction allows us to apply these same operations to other collections of text (e.g. documentation)"""
+    """Use the list of rules in gDatabase["textLink"] to generate hyperlinks for sutta references."""
 
-    def RawRefToReadingFaithfully(matchObject: re.Match) -> str:
-        firstPart = matchObject[0].split("-")[0].split("{")[0]
-
-        if firstPart.startswith("Kd"): # For Kd, link to SuttaCentral directly
-            chapter = matchObject[2]
-
-            if matchObject[3]:
-                if matchObject[4]:
-                    subheading = f"#{matchObject[3]}.{matchObject[4]}.1"
-                else:
-                    subheading = f"#{matchObject[3]}.1.1"
-            else:
-                subheading = ""
-            link = f"https://suttacentral.net/pli-tv-kd{chapter}/en/brahmali?layout=plain&reference=main&notes=asterisk&highlight=false&script=latin{subheading}"
-        else: # All other links go to readingfaithfully.org
-            dashed = re.sub(r'\s','-',firstPart)
-            link = f"https://sutta.readingfaithfully.org/?q={dashed}"
-
-        return link
-
-    def RefToReadingFaithfully(matchObject: re.Match) -> str:
+    def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
         withoutTranslator = matchObject[0].split("{")[0]
-        return f'[{withoutTranslator}]({RawRefToReadingFaithfully(matchObject)})'
+        return f'[{withoutTranslator}]({ApplySuttaMatchRules(matchObject)})'
 
     def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
-        return re.subn(markdownLinkToSutta,RawRefToReadingFaithfully,bodyStr,flags = re.IGNORECASE)
+        return re.subn(markdownLinkToSutta,ApplySuttaMatchRules,bodyStr,flags = re.IGNORECASE)
     
-    def LinkItem(bodyStr: str) -> Tuple[str,int]:
-        return re.subn(suttaMatch,RefToReadingFaithfully,bodyStr,flags = re.IGNORECASE)
+    def SuttasWithinBodyText(bodyStr: str) -> Tuple[str,int]:
+        return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
     
     with open(Utils.PosixJoin(gOptions.pagesDir,'assets/citationHelper/Suttas.json'), 'r', encoding='utf-8') as file: 
         suttas = json.load(file)
-    suttaAbbreviations = [s[0] for s in suttas]
+    suttaUids = [s[0] for s in suttas]
 
-    suttaMatch = r"\b" + Utils.RegexMatchAny(suttaAbbreviations)+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
-    """ Sutta reference pattern: ABBREV N0[.N1[.N2]][-END]{TRANS}
+    suttaMatch = r"\b" + Utils.RegexMatchAny(suttaUids)+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
+    """ Sutta reference pattern: uid n0[.n1[.n2]][-end]{translator}
         Matching groups:
-        1: ABBREV: sutta abbreviation
-        2-4: N0-N2: section numbers
-        5: TRANS: translator code, e.g. bodhi
-    END is ignored for sutta lookup purposes."""
+        1: uid: SuttaCentral text uid
+        2-4: n0-n2: section numbers
+        5: translator: translator code, e.g. bodhi
+    end is ignored for sutta lookup purposes."""
 
     markdownLinkToSutta = r"(?<=\]\()" + suttaMatch + r"(?=\))"
     markdownLinksMatched = ApplyToFunction(SuttasWithinMarkdownLink)
         # Use lookbehind and lookahead assertions to first match suttas links within markdown format, e.g. [Sati](MN 10)
 
-    suttasMatched = ApplyToFunction(LinkItem)
+    suttasMatched = ApplyToFunction(SuttasWithinBodyText)
         # Then match all remaining sutta links
 
     Alert.extra(f"{suttasMatched + markdownLinksMatched} links generated to suttas, {markdownLinksMatched} within markdown links")

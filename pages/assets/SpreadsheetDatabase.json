@@ -164955,6 +164955,220 @@
       "note": "refers to unskillful prejudice. Constrasts with [Discernment](tag:)"
     }
   },
+  "text": {
+    "DN": {
+      "uid": "DN",
+      "name": "Dīgha Nikāya",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "MN": {
+      "uid": "MN",
+      "name": "Majjhima Nikāya",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "SN": {
+      "uid": "SN",
+      "name": "Saṁyutta Nikāya",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "AN": {
+      "uid": "AN",
+      "name": "Aṅguttara Nikāya",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Kp": {
+      "uid": "Kp",
+      "name": "Khuddakapāṭha",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Dhp": {
+      "uid": "Dhp",
+      "name": "Dhammapada",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Ud": {
+      "uid": "Ud",
+      "name": "Udāna",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Iti": {
+      "uid": "Iti",
+      "name": "Itivuttaka",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Snp": {
+      "uid": "Snp",
+      "name": "Sutta Nipāta",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Vv": {
+      "uid": "Vv",
+      "name": "Vimānavatthu",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Pv": {
+      "uid": "Pv",
+      "name": "Petavatthu",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Thag": {
+      "uid": "Thag",
+      "name": "Theragātha",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Thig": {
+      "uid": "Thig",
+      "name": "Therīgāthā",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Ja": {
+      "uid": "Ja",
+      "name": "Jātaka",
+      "pitaka": "Sutta",
+      "readFaith": "Yes"
+    },
+    "Bupj": {
+      "uid": "Bupj",
+      "name": "Bhikkhu Pārājikā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Buss": {
+      "uid": "Buss",
+      "name": "Bhikkhu Saṅghādisesā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Buay": {
+      "uid": "Buay",
+      "name": "Bhikkhu Aniyatā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bunp": {
+      "uid": "Bunp",
+      "name": "Bhikkhu Nissaggiyā-pācittiyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bupc": {
+      "uid": "Bupc",
+      "name": "Bhikkhu Pācittiyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bupd": {
+      "uid": "Bupd",
+      "name": "Bhikkhu Pāṭidesanīyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Busk": {
+      "uid": "Busk",
+      "name": "Bhikkhu Sekhiyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Buas": {
+      "uid": "Buas",
+      "name": "Bhikkhu Adhikarana-samatha",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bipj": {
+      "uid": "Bipj",
+      "name": "Bhikkhuni Pārājikā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Biss": {
+      "uid": "Biss",
+      "name": "Bhikkhuni Saṅghādisesā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Binp": {
+      "uid": "Binp",
+      "name": "Bhikkhuni Nissaggiyā-pācittiyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bipc": {
+      "uid": "Bipc",
+      "name": "Bhikkhuni Pācittiyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bipd": {
+      "uid": "Bipd",
+      "name": "Bhikkhuni Pāṭidesanīyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bisk": {
+      "uid": "Bisk",
+      "name": "Bhikkhuni Sekhiyā",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Bias": {
+      "uid": "Bias",
+      "name": "Bhikkhuni Adhikarana-samatha",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Kd": {
+      "uid": "Kd",
+      "name": "Khandhakas",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    },
+    "Pvr": {
+      "uid": "Pvr",
+      "name": "Parivāra",
+      "pitaka": "Vinaya",
+      "readFaith": "Yes"
+    }
+  },
+  "textLink": {
+    "Kd direct link": {
+      "rule": "Kd direct link",
+      "uid": "Kd",
+      "refCount": "",
+      "translator": "",
+      "alert": "",
+      "link": "https://suttacentral.net/pli-tv-kd{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk&highlight=false&script=latin{\"#\" + DotRef(n[1:],3) if len(n) > 1 else \"\"}"
+    },
+    "Reading Faithfully default": {
+      "rule": "Reading Faithfully default",
+      "uid": "",
+      "refCount": "",
+      "translator": "",
+      "alert": "",
+      "link": "https://sutta.readingfaithfully.org/?q={uid}-{DotRef(n)}"
+    },
+    "Warn if nothing matches": {
+      "rule": "Warn if nothing matches",
+      "uid": "",
+      "refCount": "",
+      "translator": "",
+      "alert": "warning",
+      "link": "{fullRef} does not match any rule in textLink."
+    }
+  },
   "tagSubsumed": {
     "Non-ill-will": {
       "tag": "Non-ill-will",
@@ -165928,6 +166142,7 @@
     "ATag7": "aTag7",
     "Abbreviation": "abbreviation",
     "Address": "address",
+    "Alert": "alert",
     "Allow tag?": "allowTag",
     "Alphabetize": "alphabetize",
     "Alphabetize2": "alphabetize2",
@@ -165999,6 +166214,7 @@
     "PDF page offset": "pdfPageOffset",
     "Pali tag menu": "paliTagMenu",
     "Pali term": "paliTerm",
+    "Pitaka": "pitaka",
     "Prefix": "prefix",
     "Progress memo": "progressMemo",
     "Pāli": "pali",
@@ -166009,12 +166225,14 @@
     "QTag4": "qTag4",
     "RawDuration": "rawDuration",
     "Redirect": "redirect",
+    "Ref count": "refCount",
     "Reference": "reference",
     "Related": "related",
     "Related 2": "related2",
     "Remote URL": "remoteUrl",
     "Remote mp3 URL": "remoteMp3Url",
     "ReviewedTag": "reviewedTag",
+    "Rule": "rule",
     "Searchable?": "searchable",
     "Seconds": "seconds",
     "Series": "series",
@@ -166046,8 +166264,10 @@
     "Teacher page?": "teacherPage",
     "Teachers": "teachers",
     "Text": "text",
+    "TextLink": "textLink",
     "Title": "title",
     "Topic code": "topicCode",
+    "Translator": "translator",
     "Tweak": "tweak",
     "Type": "type",
     "Usage notes": "usageNotes",
@@ -166055,6 +166275,8 @@
     "Venue": "venue",
     "Website": "website",
     "Website link": "websiteLink",
-    "[Ajahn Pasanno's](teacher:) response to his father's death.": "[AjahnPasanno'S]TeacherResponseToHisFather'SDeath"
+    "[Ajahn Pasanno's](teacher:) response to his father's death.": "[AjahnPasanno'S]TeacherResponseToHisFather'SDeath",
+    "readFaith": "readFaith",
+    "uid": "uid"
   }
 }
