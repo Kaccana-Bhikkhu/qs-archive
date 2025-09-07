@@ -10,6 +10,8 @@ Ajahn Ṭhitapañño helped liase with Abhayagiri Monastery and Kirschbaum Devel
 
 Ajahn Thee Sabbajayanto and Janejira Sutanonpaiboon translated the Archive landing page on abhayagiri.org.
 
+Tan Issaro and Mike Adair edited the recordings from [Winter Retreat 2025: Readings from _The Island_](event:WR2025). Benedikt helped transcribe these recordings.
+
 ## Projects
 The Archive relies upon many common open-source and freeware tools. In addition to the python modules listed in [requirements.txt](https://github.com/Kaccana-Bhikkhu/qs-archive/blob/main/requirements.txt), we would like to specifically acknowledge:
 
