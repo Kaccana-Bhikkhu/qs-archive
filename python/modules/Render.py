@@ -409,13 +409,13 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
         return re.subn(markdownLinkToSutta,ApplySuttaMatchRules,bodyStr,flags = re.IGNORECASE)
     
-    def SuttasWithinBodyText(bodyStr: str,item:dict) -> Tuple[str,int]:
+    def SuttasWithinBodyText(bodyStr: str,item:dict=None) -> Tuple[str,int]:
         def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
             withoutTranslator = matchObject[0].split("{")[0]
             textRecord = gDatabase["text"].get(matchObject[1],None)
             if textRecord and textRecord["citeFullName"]:
                 withoutTranslator = withoutTranslator.replace(matchObject[1],textRecord["name"])
-                if "text" in item: # Modify the original item text so that searching finds the full sutta name.
+                if item and "text" in item: # Modify the original item text so that searching finds the full sutta name.
                     item["text"] = item["text"].replace(matchObject[1],textRecord["name"])
 
             return f'[{withoutTranslator}]({ApplySuttaMatchRules(matchObject)})'

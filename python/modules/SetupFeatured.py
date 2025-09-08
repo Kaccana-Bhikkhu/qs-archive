@@ -329,8 +329,8 @@ def Update(paramStr: str) -> bool:
     
     for code in textMismatches:
         currentEntry = ExcerptEntry(Database.FindExcerpt(code))
-        entryOnDisk = gFeaturedDatabase["excerpts"][code]
-        ratio = SequenceMatcher(a=entryOnDisk["text"],b=currentEntry["text"]).ratio()
+        oldText = gFeaturedDatabase["excerpts"][code]["text"]
+        ratio = SequenceMatcher(a=oldText,b=currentEntry["text"]).ratio()
         updated = "does not match; not updated"
         if ratio >= gOptions.updateThreshold:
             UpdateEntry(gFeaturedDatabase["excerpts"][code],currentEntry,code)
@@ -338,7 +338,7 @@ def Update(paramStr: str) -> bool:
             databaseChanged = True
         Alert.extra("")
         Alert.info(f"Excerpt: {code}; ratio:{ratio:.3f}; {updated}.")
-        Alert.extra("Old:",entryOnDisk["text"],indent=6)
+        Alert.extra("Old:",oldText,indent=6)
         Alert.extra("New:",currentEntry["text"],indent=6)
 
     if not databaseChanged:
