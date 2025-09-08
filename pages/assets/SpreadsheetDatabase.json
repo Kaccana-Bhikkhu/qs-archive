@@ -13895,7 +13895,7 @@
         {
           "kind": "Story",
           "flags": "",
-          "text": "The Buddha tells Māra he will found the fourfold assembly (UD 6.1).",
+          "text": "The Buddha tells Māra he will found the fourfold assembly (Ud 6.1).",
           "teachers": [
             "AP"
           ],
@@ -33214,7 +33214,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "Sn 2.4: Maṅgala Sutta ([English chanting translation](Chanting Book p. 46)).",
+          "text": "Snp 2.4: Maṅgala Sutta ([English chanting translation](Chanting Book p. 46)).",
           "tags": [],
           "indentLevel": 1
         },
@@ -53969,7 +53969,7 @@
         {
           "kind": "Reading",
           "flags": "",
-          "text": "Sn 1.4: The Farmer Bhāradvāja.",
+          "text": "Snp 1.4: The Farmer Bhāradvāja.",
           "teachers": [],
           "tags": [],
           "indentLevel": 1
@@ -54062,7 +54062,7 @@
         {
           "kind": "Reference",
           "flags": "",
-          "text": "Sn 1.4: The Farmer Bhāradvāja",
+          "text": "Snp 1.4: The Farmer Bhāradvāja",
           "tags": [],
           "indentLevel": 1
         }
@@ -54097,7 +54097,7 @@
         {
           "kind": "Reference",
           "flags": "",
-          "text": "Sn 1.4: The Farmer Bhāradvāja",
+          "text": "Snp 1.4: The Farmer Bhāradvāja",
           "tags": [],
           "indentLevel": 1
         }
@@ -58730,7 +58730,7 @@
         {
           "kind": "Sutta",
           "flags": "s",
-          "text": "Sn 4.11: Pāsāṇa and DN 21: Sakkapañha Sutta in which papañca precedes thinking.",
+          "text": "Snp 4.11: Kalahavivāda Sutta and DN 21: Sakkapañha Sutta in which papañca precedes thinking.",
           "tags": [],
           "indentLevel": 1
         },
@@ -72822,7 +72822,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "UD 1.10 Bāhiya Sutta: \"In the seen there is only the seen...\"",
+          "text": "Ud 1.10 Bāhiya Sutta: \"In the seen there is only the seen...\"",
           "tags": [
             "Sense bases",
             "Perception",
@@ -103802,7 +103802,7 @@
         {
           "kind": "Vinaya",
           "flags": "",
-          "text": "Conditions for skillful admonishment in the Buddhist Monastic Code's [discussion](BMC 1 p. 198) of [Bhikkhu Saṇghādisesa 8](buss 8).",
+          "text": "Conditions for skillful admonishment in the Buddhist Monastic Code's [discussion](BMC 1 p. 198) of BuSs 8.",
           "tags": [
             "Admonishment/feedback",
             "Right Speech"
@@ -113902,7 +113902,7 @@
         {
           "kind": "Vinaya",
           "flags": "",
-          "text": "Bupj 4.1.2: A harsh rebuke by the Buddha.",
+          "text": "BuPj 4.1.2: A harsh rebuke by the Buddha.",
           "tags": [],
           "indentLevel": 1
         }
@@ -164960,193 +164960,239 @@
       "uid": "DN",
       "name": "Dīgha Nikāya",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "MN": {
       "uid": "MN",
       "name": "Majjhima Nikāya",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "SN": {
       "uid": "SN",
       "name": "Saṁyutta Nikāya",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "AN": {
       "uid": "AN",
       "name": "Aṅguttara Nikāya",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Kp": {
       "uid": "Kp",
       "name": "Khuddakapāṭha",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Dhp": {
       "uid": "Dhp",
       "name": "Dhammapada",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Ud": {
       "uid": "Ud",
       "name": "Udāna",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Iti": {
       "uid": "Iti",
       "name": "Itivuttaka",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Snp": {
       "uid": "Snp",
       "name": "Sutta Nipāta",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Vv": {
       "uid": "Vv",
       "name": "Vimānavatthu",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Pv": {
       "uid": "Pv",
       "name": "Petavatthu",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Thag": {
       "uid": "Thag",
       "name": "Theragātha",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Thig": {
       "uid": "Thig",
       "name": "Therīgāthā",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Ja": {
       "uid": "Ja",
       "name": "Jātaka",
       "pitaka": "Sutta",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
-    "Bupj": {
-      "uid": "Bupj",
+    "BuPj": {
+      "uid": "BuPj",
       "name": "Bhikkhu Pārājikā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Buss": {
-      "uid": "Buss",
+    "BuSs": {
+      "uid": "BuSs",
       "name": "Bhikkhu Saṅghādisesā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Buay": {
-      "uid": "Buay",
+    "BuAy": {
+      "uid": "BuAy",
       "name": "Bhikkhu Aniyatā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bunp": {
-      "uid": "Bunp",
+    "BuNp": {
+      "uid": "BuNp",
       "name": "Bhikkhu Nissaggiyā-pācittiyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bupc": {
-      "uid": "Bupc",
+    "BuPc": {
+      "uid": "BuPc",
       "name": "Bhikkhu Pācittiyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bupd": {
-      "uid": "Bupd",
+    "BuPd": {
+      "uid": "BuPd",
       "name": "Bhikkhu Pāṭidesanīyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Busk": {
-      "uid": "Busk",
+    "BuSk": {
+      "uid": "BuSk",
       "name": "Bhikkhu Sekhiyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Buas": {
-      "uid": "Buas",
+    "BuAs": {
+      "uid": "BuAs",
       "name": "Bhikkhu Adhikarana-samatha",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bipj": {
-      "uid": "Bipj",
+    "BiPj": {
+      "uid": "BiPj",
       "name": "Bhikkhuni Pārājikā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Biss": {
-      "uid": "Biss",
+    "BiSs": {
+      "uid": "BiSs",
       "name": "Bhikkhuni Saṅghādisesā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Binp": {
-      "uid": "Binp",
+    "BiNp": {
+      "uid": "BiNp",
       "name": "Bhikkhuni Nissaggiyā-pācittiyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bipc": {
-      "uid": "Bipc",
+    "BiPc": {
+      "uid": "BiPc",
       "name": "Bhikkhuni Pācittiyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bipd": {
-      "uid": "Bipd",
+    "BiPd": {
+      "uid": "BiPd",
       "name": "Bhikkhuni Pāṭidesanīyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bisk": {
-      "uid": "Bisk",
+    "BiSk": {
+      "uid": "BiSk",
       "name": "Bhikkhuni Sekhiyā",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
-    "Bias": {
-      "uid": "Bias",
+    "BiAs": {
+      "uid": "BiAs",
       "name": "Bhikkhuni Adhikarana-samatha",
       "pitaka": "Vinaya",
+      "citeFullName": true,
       "readFaith": "Yes"
     },
     "Kd": {
       "uid": "Kd",
       "name": "Khandhakas",
       "pitaka": "Vinaya",
+      "citeFullName": false,
       "readFaith": "Yes"
     },
     "Pvr": {
       "uid": "Pvr",
       "name": "Parivāra",
       "pitaka": "Vinaya",
+      "citeFullName": false,
       "readFaith": "Yes"
+    },
+    "Mv": {
+      "uid": "Mv",
+      "name": "Mahāvagga",
+      "pitaka": "Vinaya",
+      "citeFullName": false,
+      "readFaith": ""
     }
   },
   "textLink": {
     "Kd direct link": {
       "rule": "Kd direct link",
       "uid": "Kd",
+      "refCount": "",
+      "translator": "",
+      "alert": "",
+      "link": "https://suttacentral.net/pli-tv-kd{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk&highlight=false&script=latin{\"#\" + DotRef(n[1:],3) if len(n) > 1 else \"\"}"
+    },
+    "Mv direct link": {
+      "rule": "Mv direct link",
+      "uid": "Mv",
       "refCount": "",
       "translator": "",
       "alert": "",
@@ -166158,6 +166204,7 @@
     "Can be annotation?": "canBeAnnotation",
     "Can be excerpt?": "canBeExcerpt",
     "Category": "category",
+    "Cite full name?": "citeFullName",
     "Cluster note": "clusterNote",
     "Code": "code",
     "Date": "date",

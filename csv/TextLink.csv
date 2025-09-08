@@ -1,5 +1,6 @@
 Modified:,2025,,,,
 Rule,uid,Ref count,Translator,Alert,Link
 Kd direct link,Kd,,,,"https://suttacentral.net/pli-tv-kd{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk&highlight=false&script=latin{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}"
+Mv direct link,Mv,,,,"https://suttacentral.net/pli-tv-kd{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk&highlight=false&script=latin{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}"
 Reading Faithfully default,,,,,https://sutta.readingfaithfully.org/?q={uid}-{DotRef(n)}
 Warn if nothing matches,,,,warning,{fullRef} does not match any rule in textLink.

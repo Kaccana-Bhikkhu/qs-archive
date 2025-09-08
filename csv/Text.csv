@@ -1,33 +1,34 @@
-Modified:,2025,,
-uid,Name,Pitaka,readFaith
-DN,Dīgha Nikāya,Sutta,Yes
-MN,Majjhima Nikāya,Sutta,Yes
-SN,Saṁyutta Nikāya,Sutta,Yes
-AN,Aṅguttara Nikāya,Sutta,Yes
-Kp,Khuddakapāṭha,Sutta,Yes
-Dhp,Dhammapada,Sutta,Yes
-Ud,Udāna,Sutta,Yes
-Iti,Itivuttaka,Sutta,Yes
-Snp,Sutta Nipāta,Sutta,Yes
-Vv,Vimānavatthu,Sutta,Yes
-Pv,Petavatthu,Sutta,Yes
-Thag,Theragātha,Sutta,Yes
-Thig,Therīgāthā,Sutta,Yes
-Ja,Jātaka,Sutta,Yes
-Bupj,Bhikkhu Pārājikā,Vinaya,Yes
-Buss,Bhikkhu Saṅghādisesā,Vinaya,Yes
-Buay,Bhikkhu Aniyatā,Vinaya,Yes
-Bunp,Bhikkhu Nissaggiyā-pācittiyā,Vinaya,Yes
-Bupc,Bhikkhu Pācittiyā,Vinaya,Yes
-Bupd,Bhikkhu Pāṭidesanīyā,Vinaya,Yes
-Busk,Bhikkhu Sekhiyā,Vinaya,Yes
-Buas,Bhikkhu Adhikarana-samatha,Vinaya,Yes
-Bipj,Bhikkhuni Pārājikā,Vinaya,Yes
-Biss,Bhikkhuni Saṅghādisesā,Vinaya,Yes
-Binp,Bhikkhuni Nissaggiyā-pācittiyā,Vinaya,Yes
-Bipc,Bhikkhuni Pācittiyā,Vinaya,Yes
-Bipd,Bhikkhuni Pāṭidesanīyā,Vinaya,Yes
-Bisk,Bhikkhuni Sekhiyā,Vinaya,Yes
-Bias,Bhikkhuni Adhikarana-samatha,Vinaya,Yes
-Kd,Khandhakas,Vinaya,Yes
-Pvr,Parivāra,Vinaya,Yes
+Modified:,2025,,,
+uid,Name,Pitaka,Cite full name?,readFaith
+DN,Dīgha Nikāya,Sutta,,Yes
+MN,Majjhima Nikāya,Sutta,,Yes
+SN,Saṁyutta Nikāya,Sutta,,Yes
+AN,Aṅguttara Nikāya,Sutta,,Yes
+Kp,Khuddakapāṭha,Sutta,,Yes
+Dhp,Dhammapada,Sutta,,Yes
+Ud,Udāna,Sutta,,Yes
+Iti,Itivuttaka,Sutta,,Yes
+Snp,Sutta Nipāta,Sutta,,Yes
+Vv,Vimānavatthu,Sutta,,Yes
+Pv,Petavatthu,Sutta,,Yes
+Thag,Theragātha,Sutta,,Yes
+Thig,Therīgāthā,Sutta,,Yes
+Ja,Jātaka,Sutta,,Yes
+BuPj,Bhikkhu Pārājikā,Vinaya,Yes,Yes
+BuSs,Bhikkhu Saṅghādisesā,Vinaya,Yes,Yes
+BuAy,Bhikkhu Aniyatā,Vinaya,Yes,Yes
+BuNp,Bhikkhu Nissaggiyā-pācittiyā,Vinaya,Yes,Yes
+BuPc,Bhikkhu Pācittiyā,Vinaya,Yes,Yes
+BuPd,Bhikkhu Pāṭidesanīyā,Vinaya,Yes,Yes
+BuSk,Bhikkhu Sekhiyā,Vinaya,Yes,Yes
+BuAs,Bhikkhu Adhikarana-samatha,Vinaya,Yes,Yes
+BiPj,Bhikkhuni Pārājikā,Vinaya,Yes,Yes
+BiSs,Bhikkhuni Saṅghādisesā,Vinaya,Yes,Yes
+BiNp,Bhikkhuni Nissaggiyā-pācittiyā,Vinaya,Yes,Yes
+BiPc,Bhikkhuni Pācittiyā,Vinaya,Yes,Yes
+BiPd,Bhikkhuni Pāṭidesanīyā,Vinaya,Yes,Yes
+BiSk,Bhikkhuni Sekhiyā,Vinaya,Yes,Yes
+BiAs,Bhikkhuni Adhikarana-samatha,Vinaya,Yes,Yes
+Kd,Khandhakas,Vinaya,,Yes
+Pvr,Parivāra,Vinaya,,Yes
+Mv,Mahāvagga,Vinaya,,

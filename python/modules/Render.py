@@ -7,10 +7,10 @@ import json, re
 import markdown
 import Database
 from markdown_newtab_remote import NewTabRemoteExtension
-from typing import Tuple, Type, Callable
+from typing import Tuple, Type, Callable, TypedDict, Iterable, Set
 import pyratemp
 from functools import lru_cache
-import ParseCSV, Build, Utils, Alert, Link
+import ParseCSV, Build, Utils, Alert, Link, Filter
 import Html2 as Html
 import urllib.parse
 
@@ -89,7 +89,7 @@ def ExtractAttribution(form: str) -> Tuple[str,str]:
     parts[1] = "{attribution}"
     return "".join(parts), attribution
 
-def PrepareTemplates():
+def PrepareTemplates() -> None:
     ParseCSV.ListifyKey(gDatabase["kind"],"form1",removeBlank=False)
     ParseCSV.ConvertToInteger(gDatabase["kind"],"defaultForm")
 
@@ -102,9 +102,62 @@ def PrepareTemplates():
             body, attribution = ExtractAttribution(form)
             kind["body"].append(body)
             kind["attribution"].append(attribution)
+
+def PrepareTexts() -> None:
+    """Create gDatabase["textGroups"] based on the content of gDatabase["text"]."""
     
     for rule in gDatabase["textLink"].values():
         rule["link"] = FStringToPyratemp(rule["link"])
+
+    #gDatabase["textGroup"] = {"all":}
+    #for textGroup in gDatabase["text"]
+
+
+def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {},allowableValues:set[str] = set()) -> set|Filter.InverseSet:
+    """Evaluate a text expression to a set of strings. If a string literal is found in dictionary, substitute the given set of strings.
+    If not, replace it with a single-item set. String operators are left as-is.
+    Example: EvaluateSetExpression("Mv|Kd") = {"Mv","Kd},
+    If allowableValues is given, then warn if a string literal appears neither in dictionary or allowableValues.
+    If expression is an empty string, return Filter.All, which contains all values"""
+
+    expression = expression.strip()
+    if not expression:
+        return Filter.All
+
+    def ReplaceWithSet(matchObject: re.Match):
+        text = matchObject[0]
+        if text in dictionary:
+            return repr(set(dictionary(text)))
+        else:
+            return f"{{'{text}'}}"
+
+    setExp = re.sub(r"\w+",ReplaceWithSet,expression)
+    return eval(setExp,{"__builtins__": {}})
+
+class TextRuleMatcher(TypedDict):
+    """This is a docstring."""
+    uid: set[str]|Filter.InverseSet                 # The set of uids to match, e.g. {"MN"}
+    refcount: set[str]|Filter.InverseSet            # The set of refCounts to match, e.g. {"1","2"}
+    translator: set[str]|Filter.InverseSet          # The set of translators to match
+    linkTemplate: pyratemp.Template                 # The template to evaluate the link for a sucessful match
+
+    matchFields = ("uid","refCount","translator")   # The fields to match
+
+@lru_cache(maxsize=None)
+def TextRuleMatchers() -> dict[TextRuleMatcher]:
+    """Evaluate the set operations in gDatabase["textLink"] to create Render.gTextRuleMatchers"""
+
+    returnValue = {}
+    for ruleName,rule in gDatabase["textLink"].items():
+        returnValue[ruleName] = TextRuleMatcher(
+            uid = EvaluateSetExpression(rule["uid"]),
+            refCount = EvaluateSetExpression(rule["refCount"]),
+            translator = EvaluateSetExpression(rule["translator"]),
+            linkTemplate = pyratemp.Template(rule["link"])
+        )
+        print(ruleName,returnValue[ruleName])
+
+    return returnValue
 
 def AddImplicitAttributions() -> None:
     "If an excerpt or annotation of kind Reading doesn't have a Read by annotation, attribute it to the session or excerpt teachers"
@@ -312,14 +365,22 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "n2": matchObject[4],
         "translator": matchObject[5]
     }
-    params["n"] = [params[key] for key in ("n0","n1","n2") if params[key]]
+    params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
     params["DotRef"] = DotRef
 
-    for rule in gDatabase["textLink"].values():
-        if rule["uid"] and rule["uid"] != params["uid"]:
+    if params["uid"] not in gDatabase["text"]:
+        Alert.warning(params["fullRef"],"does not match the case of any available texts.")
+        return ""
+
+    ruleMatchers = TextRuleMatchers()
+    for ruleName in ruleMatchers:
+        matcher = ruleMatchers[ruleName]
+        if not all(str(params[which]) in matcher[which] for which in TextRuleMatcher.matchFields):
             continue
-        link = CompileTemplate(rule["link"])(**params)
+        link = matcher["linkTemplate"](**params)
+        if gDatabase["textLink"][ruleName]["alert"]:
+            Alert.notice(Database["textLink"][ruleName]["alert"],link)
         if link:
             return link
     
@@ -331,6 +392,9 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
 
     def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
         withoutTranslator = matchObject[0].split("{")[0]
+        textRecord = gDatabase["text"].get(matchObject[1],None)
+        if textRecord and textRecord["citeFullName"]:
+            withoutTranslator = withoutTranslator.replace(matchObject[1],textRecord["name"])
         return f'[{withoutTranslator}]({ApplySuttaMatchRules(matchObject)})'
 
     def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
@@ -338,12 +402,8 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     
     def SuttasWithinBodyText(bodyStr: str) -> Tuple[str,int]:
         return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
-    
-    with open(Utils.PosixJoin(gOptions.pagesDir,'assets/citationHelper/Suttas.json'), 'r', encoding='utf-8') as file: 
-        suttas = json.load(file)
-    suttaUids = [s[0] for s in suttas]
 
-    suttaMatch = r"\b" + Utils.RegexMatchAny(suttaUids)+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
+    suttaMatch = r"\b" + Utils.RegexMatchAny(gDatabase["text"])+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
     """ Sutta reference pattern: uid n0[.n1[.n2]][-end]{translator}
         Matching groups:
         1: uid: SuttaCentral text uid
@@ -689,6 +749,7 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 def main() -> None:
 
     PrepareTemplates()
+    PrepareTexts()
 
     AddImplicitAttributions()
 
