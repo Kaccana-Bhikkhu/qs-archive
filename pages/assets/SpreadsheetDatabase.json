@@ -29216,7 +29216,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "DN 16.34: The world will not be devoid of awakened beings as long as people are practicing the Eightfold Path.",
+          "text": "DN 16.5.27: The world will not be devoid of awakened beings as long as people are practicing the Eightfold Path.",
           "tags": [
             "Stages of awakening",
             "Eightfold Path"
@@ -55414,7 +55414,7 @@
         {
           "kind": "Reading",
           "flags": "",
-          "text": "[Book of the Discipline Part 1 p. 116-121](Book of Discipline p. 185), Pārājika 3 origin story.",
+          "text": "[Book of the Discipline Part 1 p. 116-121](Book of Discipline p. 185), Pārājikā 3 origin story.",
           "teachers": [
             "IBHorner"
           ],
@@ -115516,7 +115516,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "DN 26.25: The Pāli Nikayas only reference to Metteyya Bodhisattva.",
+          "text": "DN 26.25: The Pāli Nikaya's only reference to Metteyya Bodhisattva.",
           "tags": [
             "Metteyya Bodhisatva"
           ],
@@ -164959,232 +164959,379 @@
     "DN": {
       "uid": "DN",
       "name": "Dīgha Nikāya",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "Yes",
+      "doubleRef": ""
     },
     "MN": {
       "uid": "MN",
       "name": "Majjhima Nikāya",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "Yes",
+      "doubleRef": ""
     },
     "SN": {
       "uid": "SN",
       "name": "Saṁyutta Nikāya",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": "Yes"
     },
     "AN": {
       "uid": "AN",
       "name": "Aṅguttara Nikāya",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": "Yes"
     },
     "Kp": {
       "uid": "Kp",
       "name": "Khuddakapāṭha",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Dhp": {
       "uid": "Dhp",
       "name": "Dhammapada",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Ud": {
       "uid": "Ud",
       "name": "Udāna",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Iti": {
       "uid": "Iti",
       "name": "Itivuttaka",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Snp": {
       "uid": "Snp",
       "name": "Sutta Nipāta",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Vv": {
       "uid": "Vv",
       "name": "Vimānavatthu",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Pv": {
       "uid": "Pv",
       "name": "Petavatthu",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Thag": {
       "uid": "Thag",
       "name": "Theragātha",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Thig": {
       "uid": "Thig",
       "name": "Therīgāthā",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Ja": {
       "uid": "Ja",
       "name": "Jātaka",
-      "pitaka": "Sutta",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "Yes",
+      "vinaya": "",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuPj": {
       "uid": "BuPj",
       "name": "Bhikkhu Pārājikā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuSs": {
       "uid": "BuSs",
       "name": "Bhikkhu Saṅghādisesā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuAy": {
       "uid": "BuAy",
       "name": "Bhikkhu Aniyatā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuNp": {
       "uid": "BuNp",
       "name": "Bhikkhu Nissaggiyā-pācittiyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuPc": {
       "uid": "BuPc",
       "name": "Bhikkhu Pācittiyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuPd": {
       "uid": "BuPd",
       "name": "Bhikkhu Pāṭidesanīyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuSk": {
       "uid": "BuSk",
       "name": "Bhikkhu Sekhiyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BuAs": {
       "uid": "BuAs",
       "name": "Bhikkhu Adhikarana-samatha",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiPj": {
       "uid": "BiPj",
       "name": "Bhikkhuni Pārājikā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiSs": {
       "uid": "BiSs",
       "name": "Bhikkhuni Saṅghādisesā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiNp": {
       "uid": "BiNp",
       "name": "Bhikkhuni Nissaggiyā-pācittiyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiPc": {
       "uid": "BiPc",
       "name": "Bhikkhuni Pācittiyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiPd": {
       "uid": "BiPd",
       "name": "Bhikkhuni Pāṭidesanīyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiSk": {
       "uid": "BiSk",
       "name": "Bhikkhuni Sekhiyā",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "BiAs": {
       "uid": "BiAs",
       "name": "Bhikkhuni Adhikarana-samatha",
-      "pitaka": "Vinaya",
       "citeFullName": true,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Kd": {
       "uid": "Kd",
       "name": "Khandhakas",
-      "pitaka": "Vinaya",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Pvr": {
       "uid": "Pvr",
       "name": "Parivāra",
-      "pitaka": "Vinaya",
       "citeFullName": false,
-      "readFaith": "Yes"
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "Yes",
+      "suttaCentral": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     },
     "Mv": {
       "uid": "Mv",
       "name": "Mahāvagga",
-      "pitaka": "Vinaya",
       "citeFullName": false,
-      "readFaith": ""
+      "sutta": "",
+      "vinaya": "Yes",
+      "readFaith": "",
+      "suttaCentral": "",
+      "singleRef": "",
+      "doubleRef": ""
     }
   },
   "textLink": {
+    "Special DN 16 references": {
+      "rule": "Special DN 16 references",
+      "uid": "DN",
+      "n0": "16",
+      "refCount": "2|3",
+      "translator": "",
+      "alert": "",
+      "link": "https://suttacentral.net/dn16/en/sujato?&layout=plain&reference=main&notes=asterisk{\"#\" + DotRef(n[1:],3)}"
+    },
+    "singleRef inner references": {
+      "rule": "singleRef inner references",
+      "uid": "singleRef & suttaCentral",
+      "n0": "",
+      "refCount": "2|3",
+      "translator": "",
+      "alert": "",
+      "link": "https://suttacentral.net/{uid}{n0}/en/sujato?&layout=plain&reference=main&notes=asterisk{\"#\" + DotRef(n[1:],2)}"
+    },
     "Kd direct link": {
       "rule": "Kd direct link",
       "uid": "Kd",
+      "n0": "",
       "refCount": "",
       "translator": "",
       "alert": "",
@@ -165193,6 +165340,7 @@
     "Mv direct link": {
       "rule": "Mv direct link",
       "uid": "Mv",
+      "n0": "",
       "refCount": "",
       "translator": "",
       "alert": "",
@@ -165200,7 +165348,8 @@
     },
     "Reading Faithfully default": {
       "rule": "Reading Faithfully default",
-      "uid": "",
+      "uid": "readFaith",
+      "n0": "",
       "refCount": "",
       "translator": "",
       "alert": "",
@@ -165209,10 +165358,11 @@
     "Warn if nothing matches": {
       "rule": "Warn if nothing matches",
       "uid": "",
+      "n0": "",
       "refCount": "",
       "translator": "",
       "alert": "warning",
-      "link": "{fullRef} does not match any rule in textLink."
+      "link": "{fullRef} does not match any rule on the TextLink sheet."
     }
   },
   "tagSubsumed": {
@@ -166261,7 +166411,6 @@
     "PDF page offset": "pdfPageOffset",
     "Pali tag menu": "paliTagMenu",
     "Pali term": "paliTerm",
-    "Pitaka": "pitaka",
     "Prefix": "prefix",
     "Progress memo": "progressMemo",
     "Pāli": "pali",
@@ -166323,7 +166472,13 @@
     "Website": "website",
     "Website link": "websiteLink",
     "[Ajahn Pasanno's](teacher:) response to his father's death.": "[AjahnPasanno'S]TeacherResponseToHisFather'SDeath",
+    "doubleRef": "doubleRef",
+    "n0": "n0",
     "readFaith": "readFaith",
-    "uid": "uid"
+    "singleRef": "singleRef",
+    "sutta": "sutta",
+    "suttaCentral": "suttaCentral",
+    "uid": "uid",
+    "vinaya": "vinaya"
   }
 }

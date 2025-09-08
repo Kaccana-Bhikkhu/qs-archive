@@ -7,7 +7,8 @@ import json, re
 import markdown
 import Database
 from markdown_newtab_remote import NewTabRemoteExtension
-from typing import Tuple, Type, Callable, TypedDict, Iterable, Set
+from typing import Tuple, Type, Callable, TypedDict, Iterable
+from inspect import signature
 import pyratemp
 from functools import lru_cache
 import ParseCSV, Build, Utils, Alert, Link, Filter
@@ -20,12 +21,12 @@ def FStringToPyratemp(fString: str) -> str:
     
     return prya
 
-def ApplyToBodyText(transform: Callable[...,Tuple[str,int]],passItemAsSecondArgument: bool = False) -> int:
+def ApplyToBodyText(transform: Callable[...,Tuple[str,int]]) -> int:
     """Apply operation transform on each string considered body text in the database.
-    If passItemAsSecondArgument is True, transform has the form transform(bodyText,item), otherwise transform(bodyText).
+    transform can have the form transform(bodyText,item) or transform(bodyText).
     transform returns a tuple (changedText,changeCount). Return the total number of changes made."""
-    
-    if not passItemAsSecondArgument:
+
+    if len(signature(transform).parameters) == 1:
         twoVariableTransform = lambda bodyStr,_: transform(bodyStr)
     else:
         twoVariableTransform = transform
@@ -109,11 +110,20 @@ def PrepareTexts() -> None:
     for rule in gDatabase["textLink"].values():
         rule["link"] = FStringToPyratemp(rule["link"])
 
-    #gDatabase["textGroup"] = {"all":}
-    #for textGroup in gDatabase["text"]
+    gDatabase["textGroup"] = {}
+    for textGroup in list(next(iter(gDatabase["text"].values()))):
+        if textGroup in ("uid","name","citeFullName"):
+            continue
+        
+        newGroup = []
+        for text in gDatabase["text"].values():
+            if text[textGroup] == "Yes":
+                newGroup.append(text["uid"])
+            del text[textGroup]
 
+        gDatabase["textGroup"][textGroup] = newGroup
 
-def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {},allowableValues:set[str] = set()) -> set|Filter.InverseSet:
+def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {},allowableValues:set[str] = None) -> set|Filter.InverseSet:
     """Evaluate a text expression to a set of strings. If a string literal is found in dictionary, substitute the given set of strings.
     If not, replace it with a single-item set. String operators are left as-is.
     Example: EvaluateSetExpression("Mv|Kd") = {"Mv","Kd},
@@ -123,12 +133,16 @@ def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {}
     expression = expression.strip()
     if not expression:
         return Filter.All
+    if allowableValues is None:
+        allowableValues = Filter.All
 
     def ReplaceWithSet(matchObject: re.Match):
         text = matchObject[0]
         if text in dictionary:
-            return repr(set(dictionary(text)))
+            return repr(set(dictionary[text]))
         else:
+            if text not in allowableValues:
+                Alert.warning("When evaluating the text matching rule",repr(expression) + ":",repr(text),"is not a known text, text group, or translator.")
             return f"{{'{text}'}}"
 
     setExp = re.sub(r"\w+",ReplaceWithSet,expression)
@@ -137,11 +151,12 @@ def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {}
 class TextRuleMatcher(TypedDict):
     """This is a docstring."""
     uid: set[str]|Filter.InverseSet                 # The set of uids to match, e.g. {"MN"}
+    n0: set[str]|Filter.InverseSet                  # The set of primary sutta numbers to match, e.g. {"18"}
     refcount: set[str]|Filter.InverseSet            # The set of refCounts to match, e.g. {"1","2"}
     translator: set[str]|Filter.InverseSet          # The set of translators to match
     linkTemplate: pyratemp.Template                 # The template to evaluate the link for a sucessful match
 
-    matchFields = ("uid","refCount","translator")   # The fields to match
+    matchFields = ("uid","n0","refCount","translator")   # The fields to match
 
 @lru_cache(maxsize=None)
 def TextRuleMatchers() -> dict[TextRuleMatcher]:
@@ -150,12 +165,13 @@ def TextRuleMatchers() -> dict[TextRuleMatcher]:
     returnValue = {}
     for ruleName,rule in gDatabase["textLink"].items():
         returnValue[ruleName] = TextRuleMatcher(
-            uid = EvaluateSetExpression(rule["uid"]),
-            refCount = EvaluateSetExpression(rule["refCount"]),
+            uid = EvaluateSetExpression(rule["uid"],dictionary=gDatabase["textGroup"],allowableValues=gDatabase["text"]),
+            n0 = EvaluateSetExpression(rule["n0"]),
+            refCount = EvaluateSetExpression(rule["refCount"],allowableValues = ("1","2","3")),
             translator = EvaluateSetExpression(rule["translator"]),
             linkTemplate = pyratemp.Template(rule["link"])
         )
-        print(ruleName,returnValue[ruleName])
+        Alert.debug(ruleName,returnValue[ruleName])
 
     return returnValue
 
@@ -380,7 +396,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
             continue
         link = matcher["linkTemplate"](**params)
         if gDatabase["textLink"][ruleName]["alert"]:
-            Alert.notice(Database["textLink"][ruleName]["alert"],link)
+            Alert.notice(gDatabase["textLink"][ruleName]["alert"],link)
         if link:
             return link
     
@@ -390,17 +406,20 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
 def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     """Use the list of rules in gDatabase["textLink"] to generate hyperlinks for sutta references."""
 
-    def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
-        withoutTranslator = matchObject[0].split("{")[0]
-        textRecord = gDatabase["text"].get(matchObject[1],None)
-        if textRecord and textRecord["citeFullName"]:
-            withoutTranslator = withoutTranslator.replace(matchObject[1],textRecord["name"])
-        return f'[{withoutTranslator}]({ApplySuttaMatchRules(matchObject)})'
-
     def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
         return re.subn(markdownLinkToSutta,ApplySuttaMatchRules,bodyStr,flags = re.IGNORECASE)
     
-    def SuttasWithinBodyText(bodyStr: str) -> Tuple[str,int]:
+    def SuttasWithinBodyText(bodyStr: str,item:dict) -> Tuple[str,int]:
+        def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
+            withoutTranslator = matchObject[0].split("{")[0]
+            textRecord = gDatabase["text"].get(matchObject[1],None)
+            if textRecord and textRecord["citeFullName"]:
+                withoutTranslator = withoutTranslator.replace(matchObject[1],textRecord["name"])
+                if "text" in item: # Modify the original item text so that searching finds the full sutta name.
+                    item["text"] = item["text"].replace(matchObject[1],textRecord["name"])
+
+            return f'[{withoutTranslator}]({ApplySuttaMatchRules(matchObject)})'
+    
         return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
 
     suttaMatch = r"\b" + Utils.RegexMatchAny(gDatabase["text"])+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
@@ -724,7 +743,7 @@ def LinkReferences() -> None:
     LinkKnownReferences()
     LinkSuttas()
 
-    markdownChanges = ApplyToBodyText(MarkdownFormat,True)
+    markdownChanges = ApplyToBodyText(MarkdownFormat)
     Alert.extra(f"{markdownChanges} items changed by markdown")
     ApplyToBodyText(RemoveHTMLPassthroughComments)
     
