@@ -394,20 +394,32 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         matcher = ruleMatchers[ruleName]
         if not all(str(params[which]) in matcher[which] for which in TextRuleMatcher.matchFields):
             continue
-        link = matcher["linkTemplate"](**params)
-        if gDatabase["textLink"][ruleName]["alert"]:
-            Alert.notice(gDatabase["textLink"][ruleName]["alert"],link)
-        if link:
+        link = str(matcher["linkTemplate"](**params))
+        if gDatabase["textLink"][ruleName]["alert"] and link:
+            printer = getattr(Alert,gDatabase["textLink"][ruleName]["alert"],None)
+            if not isinstance(printer,Alert.AlertClass):
+                printer = Alert.error
+                Alert.error(gDatabase["textLink"][ruleName]["alert"],"is not the name of an AlertClass object.")
+            printer(link,lineSpacing=0)
+            if printer is Alert.error or printer is Alert.warning:
+                return ""
+        elif link:
             return link
     
-    Alert.warning(params["fullRef"],"didn't match any rules.")
     return ""
 
 def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     """Use the list of rules in gDatabase["textLink"] to generate hyperlinks for sutta references."""
 
-    def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
-        return re.subn(markdownLinkToSutta,ApplySuttaMatchRules,bodyStr,flags = re.IGNORECASE)
+    def SuttasWithinMarkdownLink(bodyStr: str,item:dict=None) -> Tuple[str,int]:
+        def SuttaMatchWrapper(matchObject: re.Match) -> str:
+            link = ApplySuttaMatchRules(matchObject)
+            if not link:
+                print("   in",Database.ItemRepr(item))
+                print()
+            return link
+
+        return re.subn(markdownLinkToSutta,SuttaMatchWrapper,bodyStr,flags = re.IGNORECASE)
     
     def SuttasWithinBodyText(bodyStr: str,item:dict=None) -> Tuple[str,int]:
         def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
@@ -418,7 +430,11 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
                 if item and "text" in item: # Modify the original item text so that searching finds the full sutta name.
                     item["text"] = item["text"].replace(matchObject[1],textRecord["name"])
 
-            return f'[{withoutTranslator}]({ApplySuttaMatchRules(matchObject)})'
+            link = ApplySuttaMatchRules(matchObject)
+            if not link:
+                print("   in",Database.ItemRepr(item))
+                print()
+            return f'[{withoutTranslator}]({link})'
     
         return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
 
