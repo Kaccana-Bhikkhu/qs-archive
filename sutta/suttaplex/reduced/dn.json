@@ -1,0 +1,818 @@
+[
+  {
+    "acronym": "DN 1",
+    "uid": "dn1",
+    "original_title": "Brahmajālasutta",
+    "translated_title": "The Divine Net ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn1_translation-en-sujato",
+        "title": "The Divine Net "
+      },
+      {
+        "author": "Bhikkhu Bodhi",
+        "author_short": "Bodhi",
+        "author_uid": "bodhi",
+        "id": "en_dn1_bodhi",
+        "title": "The All-embracing Net of Views"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 2",
+    "uid": "dn2",
+    "original_title": "Sāmaññaphalasutta",
+    "translated_title": "The Fruits of the Ascetic Life ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn2_translation-en-sujato",
+        "title": "The Fruits of the Ascetic Life "
+      },
+      {
+        "author": "Bhikkhu Bodhi",
+        "author_short": "Bodhi",
+        "author_uid": "bodhi",
+        "id": "en_dn2_bodhi",
+        "title": "The Fruits of Recluseship"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 3",
+    "uid": "dn3",
+    "original_title": "Ambaṭṭhasutta",
+    "translated_title": "With Ambaṭṭha ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn3_translation-en-sujato",
+        "title": "With Ambaṭṭha "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn3_tw_rhysdavids",
+        "title": "To Ambaṭṭha"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 4",
+    "uid": "dn4",
+    "original_title": "Soṇadaṇḍasutta",
+    "translated_title": "With Soṇadaṇḍa ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn4_translation-en-sujato",
+        "title": "With Soṇadaṇḍa "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn4_tw_rhysdavids",
+        "title": "To Soṇadaṇḍa"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 5",
+    "uid": "dn5",
+    "original_title": "Kūṭadantasutta",
+    "translated_title": "With Kūṭadanta ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn5_translation-en-sujato",
+        "title": "With Kūṭadanta "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn5_tw_rhysdavids",
+        "title": "To Kūṭadanta"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 6",
+    "uid": "dn6",
+    "original_title": "Mahālisutta",
+    "translated_title": "With Mahāli ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn6_translation-en-sujato",
+        "title": "With Mahāli "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn6_tw_rhysdavids",
+        "title": "To Mahāli"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 7",
+    "uid": "dn7",
+    "original_title": "Jāliyasutta",
+    "translated_title": "With Jāliya ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn7_translation-en-sujato",
+        "title": "With Jāliya "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn7_tw_rhysdavids",
+        "title": "To Jāliya"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 8",
+    "uid": "dn8",
+    "original_title": "Mahāsīhanādasutta",
+    "translated_title": "The Longer Discourse on the Lion’s Roar ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn8_translation-en-sujato",
+        "title": "The Longer Discourse on the Lion’s Roar "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn8_tw_rhysdavids",
+        "title": "The Lion’s Roar to Kassapa"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 9",
+    "uid": "dn9",
+    "original_title": "Poṭṭhapādasutta",
+    "translated_title": "With Poṭṭhapāda ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn9_translation-en-sujato",
+        "title": "With Poṭṭhapāda "
+      },
+      {
+        "author": "Thanissaro Bhikkhu",
+        "author_short": "Thanissaro",
+        "author_uid": "thanissaro",
+        "id": "en_dn9_thanissaro",
+        "title": "To Poṭṭhapada"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 10",
+    "uid": "dn10",
+    "original_title": "Subhasutta",
+    "translated_title": "With Subha ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn10_translation-en-sujato",
+        "title": "With Subha "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn10_tw_rhysdavids",
+        "title": "To Subha"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 11",
+    "uid": "dn11",
+    "original_title": "Kevaṭṭasutta",
+    "translated_title": "With Kevaddha ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn11_translation-en-sujato",
+        "title": "With Kevaddha "
+      },
+      {
+        "author": "T.W. Rhys Davids, Leigh Brasington",
+        "author_short": "Rhys Davids …",
+        "author_uid": "rhysdavids-brasington",
+        "id": "en_dn11_rhysdavids-brasington",
+        "title": "To Kevaṭṭa"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 12",
+    "uid": "dn12",
+    "original_title": "Lohiccasutta",
+    "translated_title": "With Lohicca ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn12_translation-en-sujato",
+        "title": "With Lohicca "
+      },
+      {
+        "author": "Thanissaro Bhikkhu",
+        "author_short": "Thanissaro",
+        "author_uid": "thanissaro",
+        "id": "en_dn12_thanissaro",
+        "title": "Lohicca"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 13",
+    "uid": "dn13",
+    "original_title": "Tevijjasutta",
+    "translated_title": "The Three Knowledges ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn13_translation-en-sujato",
+        "title": "The Three Knowledges "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn13_tw_rhysdavids",
+        "title": "The Three Knowledges"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 14",
+    "uid": "dn14",
+    "original_title": "Mahāpadānasutta",
+    "translated_title": "The Great Discourse on Traces Left Behind ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn14_translation-en-sujato",
+        "title": "The Great Discourse on Traces Left Behind "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn14_tw-caf_rhysdavids",
+        "title": "The Sublime Story"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 15",
+    "uid": "dn15",
+    "original_title": "Mahānidānasutta",
+    "translated_title": "The Great Discourse on Causation ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn15_translation-en-sujato",
+        "title": "The Great Discourse on Causation "
+      },
+      {
+        "author": "Bhikkhu Bodhi",
+        "author_short": "Bodhi",
+        "author_uid": "bodhi",
+        "id": "en_dn15_bodhi",
+        "title": "The Great Discourse on Causation"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 16",
+    "uid": "dn16",
+    "original_title": "Mahāparinibbānasutta",
+    "translated_title": "The Great Discourse on the Buddha’s Extinguishment ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn16_translation-en-sujato",
+        "title": "The Great Discourse on the Buddha’s Extinguishment "
+      },
+      {
+        "author": "Bhikkhu Ānandajoti",
+        "author_short": "Ānandajoti",
+        "author_uid": "anandajoti",
+        "id": "en_dn16_anandajoti",
+        "title": "The Discourse about the Great Emancipation"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 17",
+    "uid": "dn17",
+    "original_title": "Mahāsudassanasutta",
+    "translated_title": "King Mahāsudassana ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn17_translation-en-sujato",
+        "title": "King Mahāsudassana "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn17_tw_rhysdavids",
+        "title": "The Great King Of Glory"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 18",
+    "uid": "dn18",
+    "original_title": "Janavasabhasutta",
+    "translated_title": "With Janavasabha ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn18_translation-en-sujato",
+        "title": "With Janavasabha "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn18_tw_rhysdavids",
+        "title": "With Janavasabha"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 19",
+    "uid": "dn19",
+    "original_title": "Mahāgovindasutta",
+    "translated_title": "The Great Steward ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn19_translation-en-sujato",
+        "title": "The Great Steward "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn19_tw-caf_rhysdavids",
+        "title": "The Lord High Steward"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 20",
+    "uid": "dn20",
+    "original_title": "Mahāsamayasutta",
+    "translated_title": "The Great Congregation ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn20_translation-en-sujato",
+        "title": "The Great Congregation "
+      },
+      {
+        "author": "Bhikkhu Ānandajoti",
+        "author_short": "Ānandajoti",
+        "author_uid": "anandajoti",
+        "id": "en_dn20_anandajoti",
+        "title": "The Discourse on the Great Convention"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 21",
+    "uid": "dn21",
+    "original_title": "Sakkapañhasutta",
+    "translated_title": "Sakka’s Questions ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn21_translation-en-sujato",
+        "title": "Sakka’s Questions "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn21_tw-caf_rhysdavids",
+        "title": "The Questions of Sakka"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 22",
+    "uid": "dn22",
+    "original_title": "Mahāsatipaṭṭhānasutta",
+    "translated_title": "The Longer Discourse on Mindfulness Meditation ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn22_translation-en-sujato",
+        "title": "The Longer Discourse on Mindfulness Meditation "
+      },
+      {
+        "author": "Bhikkhu Ānandajoti",
+        "author_short": "Ānandajoti",
+        "author_uid": "anandajoti",
+        "id": "en_dn22_anandajoti",
+        "title": "The Long Discourse about the Ways of Attending to Mindfulness"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 23",
+    "uid": "dn23",
+    "original_title": "Pāyāsisutta",
+    "translated_title": "With Pāyāsi ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn23_translation-en-sujato",
+        "title": "With Pāyāsi "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn23_tw-caf_rhysdavids",
+        "title": "To Pāyāsi"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 24",
+    "uid": "dn24",
+    "original_title": "Pāthikasutta",
+    "translated_title": "About Pāṭikaputta ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn24_translation-en-sujato",
+        "title": "About Pāṭikaputta "
+      },
+      {
+        "author": "T.W. Rhys Davids",
+        "author_short": "T.W. Rhys Davids",
+        "author_uid": "tw_rhysdavids",
+        "id": "en_dn24_tw_rhysdavids",
+        "title": "Mystic Wonders and the Origin of Things"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 25",
+    "uid": "dn25",
+    "original_title": "Udumbarikasutta",
+    "translated_title": "The Lion’s Roar at Udumbarikā’s Monastery ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn25_translation-en-sujato",
+        "title": "The Lion’s Roar at Udumbarikā’s Monastery "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn25_tw-caf_rhysdavids",
+        "title": "The Lion’s Roar to the Udumbarikāns"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 26",
+    "uid": "dn26",
+    "original_title": "Cakkavattisutta",
+    "translated_title": "The Wheel-Turning Monarch ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn26_translation-en-sujato",
+        "title": "The Wheel-Turning Monarch "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn26_tw-caf_rhysdavids",
+        "title": "The Lion-roar on the Turning of the Wheel"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 27",
+    "uid": "dn27",
+    "original_title": "Aggaññasutta",
+    "translated_title": "The Origin of the World ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn27_translation-en-sujato",
+        "title": "The Origin of the World "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn27_tw-caf_rhysdavids",
+        "title": "A Book of Genesis"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 28",
+    "uid": "dn28",
+    "original_title": "Sampasādanīyasutta",
+    "translated_title": "Inspiring Confidence ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn28_translation-en-sujato",
+        "title": "Inspiring Confidence "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn28_tw-caf_rhysdavids",
+        "title": "The Faith That Satisfied"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 29",
+    "uid": "dn29",
+    "original_title": "Pāsādikasutta",
+    "translated_title": "An Impressive Discourse ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn29_translation-en-sujato",
+        "title": "An Impressive Discourse "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn29_tw-caf_rhysdavids",
+        "title": "The Delectable Discourse"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 30",
+    "uid": "dn30",
+    "original_title": "Lakkhaṇasutta",
+    "translated_title": "The Marks of a Great Man ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn30_translation-en-sujato",
+        "title": "The Marks of a Great Man "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn30_tw-caf_rhysdavids",
+        "title": "The Marks of the Superman"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 31",
+    "uid": "dn31",
+    "original_title": "Siṅgālasutta",
+    "translated_title": "Advice to Sigālaka ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn31_translation-en-sujato",
+        "title": "Advice to Sigālaka "
+      },
+      {
+        "author": "Kelly, Sawyer, Yareham",
+        "author_short": "Kelly …",
+        "author_uid": "kelly-sawyer-yareham",
+        "id": "en_dn31_kelly-sawyer-yareham",
+        "title": "The Buddha’s Advice to Sigālaka"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 32",
+    "uid": "dn32",
+    "original_title": "Āṭānāṭiyasutta",
+    "translated_title": "The Āṭānāṭiya Protection ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn32_translation-en-sujato",
+        "title": "The Āṭānāṭiya Protection "
+      },
+      {
+        "author": "Bhikkhu Ānandajoti",
+        "author_short": "Ānandajoti",
+        "author_uid": "anandajoti",
+        "id": "en_dn32_anandajoti",
+        "title": "The Āṭānāṭiya Discourse"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 33",
+    "uid": "dn33",
+    "original_title": "Saṅgītisutta",
+    "translated_title": "Reciting in Concert ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn33_translation-en-sujato",
+        "title": "Reciting in Concert "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn33_tw-caf_rhysdavids",
+        "title": "The Recital"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  },
+  {
+    "acronym": "DN 34",
+    "uid": "dn34",
+    "original_title": "Dasuttarasutta",
+    "translated_title": "Up to Ten ",
+    "translations": [
+      {
+        "author": "Bhikkhu Sujato",
+        "author_short": "sujato",
+        "author_uid": "sujato",
+        "id": "dn34_translation-en-sujato",
+        "title": "Up to Ten "
+      },
+      {
+        "author": "T.W. & C.A.F. Rhys Davids",
+        "author_short": "Rhys Davids",
+        "author_uid": "tw-caf_rhysdavids",
+        "id": "en_dn34_tw-caf_rhysdavids",
+        "title": "The Tenfold Series"
+      }
+    ],
+    "priority_author_uid": "sujato",
+    "verseNo": ""
+  }
+]
