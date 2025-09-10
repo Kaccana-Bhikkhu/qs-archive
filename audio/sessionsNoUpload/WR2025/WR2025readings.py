@@ -109,7 +109,7 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
                 passage = concordance[session["chapter"]][passageNumber]
                 if passage["reference"]: # Each reference gets its own line
                     refText = re.sub(r"‘([^’]*)’(?!.*‘)",r"_\1_",passage["reference"])
-                    refText.replace(",_","_,")
+                    refText = refText.replace(",_","_,")
                     readings[len(readings)] = [refText]
                 elif passage["sutta"]: # Concatenate suttas and vinaya texts
                     readings["Vinaya" if "Mv" in passage["sutta"] else "Sutta"].append(passage["sutta"])
