@@ -164,13 +164,20 @@ def TextRuleMatchers() -> dict[TextRuleMatcher]:
 
     returnValue = {}
     for ruleName,rule in gDatabase["textLink"].items():
-        returnValue[ruleName] = TextRuleMatcher(
-            uid = EvaluateSetExpression(rule["uid"],dictionary=gDatabase["textGroup"],allowableValues=gDatabase["text"]),
-            n0 = EvaluateSetExpression(rule["n0"]),
-            refCount = EvaluateSetExpression(rule["refCount"],allowableValues = ("1","2","3")),
-            translator = EvaluateSetExpression(rule["translator"]),
-            linkTemplate = pyratemp.Template(rule["link"])
-        )
+        try:
+            returnValue[ruleName] = TextRuleMatcher(
+                uid = EvaluateSetExpression(rule["uid"],dictionary=gDatabase["textGroup"],allowableValues=gDatabase["text"]),
+                n0 = EvaluateSetExpression(rule["n0"]),
+                refCount = EvaluateSetExpression(rule["refCount"],allowableValues = ("1","2","3")),
+                translator = EvaluateSetExpression(rule["translator"]),
+                linkTemplate = pyratemp.Template(rule["link"])
+            )
+        except Exception as error:
+            Alert.error(str(error),"occured when evaluating text link rule",rule,lineSpacing=0)
+            Alert.essential("will omit this rule.",indent=5,lineSpacing=1)
+            continue
+        
+        returnValue[ruleName] = {key:passSet for key,passSet in returnValue[ruleName].items() if passSet is not Filter.All}
         Alert.debug(ruleName,returnValue[ruleName])
 
     return returnValue
@@ -392,10 +399,13 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     ruleMatchers = TextRuleMatchers()
     for ruleName in ruleMatchers:
         matcher = ruleMatchers[ruleName]
-        if not all(str(params[which]) in matcher[which] for which in TextRuleMatcher.matchFields):
+        if not all(str(params[which]) in matcher[which] for which in matcher if which in params):
             continue
         link = str(matcher["linkTemplate"](**params))
-        if gDatabase["textLink"][ruleName]["alert"] and link:
+        if not link or link == "None" or link == "False":
+            continue # If matcher returns "", None, or False, skip to the next rule
+        
+        if gDatabase["textLink"][ruleName]["alert"]:
             printer = getattr(Alert,gDatabase["textLink"][ruleName]["alert"],None)
             if not isinstance(printer,Alert.AlertClass):
                 printer = Alert.error
@@ -403,7 +413,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
             printer(link,lineSpacing=0)
             if printer is Alert.error or printer is Alert.warning:
                 return ""
-        elif link:
+        else:
             return link
     
     return ""

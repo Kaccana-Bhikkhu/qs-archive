@@ -2,6 +2,7 @@ Modified:,2025,,,,,
 Rule,uid,n0,Ref count,Translator,Alert,Link
 DN 16 inner references,DN,16,2|3,,,"https://suttacentral.net/dn16/en/sujato?&layout=plain&reference=main&notes=asterisk{""#"" + DotRef(n[1:],3)}"
 singleRef inner references,singleRef & suttaCentral,,2|3,,,"https://suttacentral.net/{uid}{n0}/en/sujato?&layout=plain&reference=main&notes=asterisk{""#"" + DotRef(n[1:],2)}"
+doubleRef inner references,doubleRef & suttaCentral,,3,,,"https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/sujato?&layout=plain&reference=main&notes=asterisk{""#"" + DotRef(n[2:],2)}"
 Vinaya rule direct link,vinayaRule,,,,,"https://suttacentral.net/pli-tv-{uid[0:2]}-vb-{uid[2:4]}{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}"
 Mv direct link,Mv,,,,,"https://suttacentral.net/pli-tv-kd{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}"
 Other Vinaya,vinaya & suttaCentral,,,,,"https://suttacentral.net/pli-tv-{uid}{n0}/en/brahmali?layout=plain&reference=main&notes=asterisk{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}"

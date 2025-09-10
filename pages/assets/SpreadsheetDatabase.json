@@ -167395,6 +167395,15 @@
       "alert": "",
       "link": "https://suttacentral.net/{uid}{n0}/en/sujato?&layout=plain&reference=main&notes=asterisk{\"#\" + DotRef(n[1:],2)}"
     },
+    "doubleRef inner references": {
+      "rule": "doubleRef inner references",
+      "uid": "doubleRef & suttaCentral",
+      "n0": "",
+      "refCount": "3",
+      "translator": "",
+      "alert": "",
+      "link": "https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/sujato?&layout=plain&reference=main&notes=asterisk{\"#\" + DotRef(n[2:],2)}"
+    },
     "Vinaya rule direct link": {
       "rule": "Vinaya rule direct link",
       "uid": "vinayaRule",
