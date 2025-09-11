@@ -12,6 +12,7 @@ from inspect import signature
 import pyratemp
 from functools import lru_cache
 import ParseCSV, Build, Utils, Alert, Link, Filter
+import Suttaplex
 import Html2 as Html
 import urllib.parse
 
@@ -377,6 +378,25 @@ def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str
         strings += (printCount - len(strings)) * [str(filler)]
     return separator.join(strings)
 
+def IndexedBookmark(uid:str,bookmark:str) -> tuple[str,str]:
+    """Given a text uid and a bookmark, return the tuple (suttaUid,bookmark).
+    For example IndexedBookmark("thig","vnp112") returns ("thig5.10","vnp112")."""
+    
+    uid = uid.lower()
+    indexedText = Suttaplex.MakeSuttaIndex(uid)
+    if not indexedText:
+        Alert.error("Cannot build index for text uid",uid)
+        return None
+    suttaRef = indexedText.get(bookmark,None)
+    if not suttaRef:
+        Alert.error("Cannot find bookmark",bookmark,"in text uid",uid)
+        return None
+    if "mark" in suttaRef:
+        return suttaRef["uid"],suttaRef["mark"]
+    else:
+        return suttaRef["uid"],bookmark
+
+
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
     Then evaluate the template for that rule and return the link"""
@@ -387,11 +407,12 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "n0": matchObject[2],
         "n1": matchObject[3],
         "n2": matchObject[4],
-        "translator": matchObject[5]
+        "translator": matchObject[5],
+        "DotRef": DotRef,
+        "IndexedBookmark": IndexedBookmark
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
-    params["DotRef"] = DotRef
 
     if params["uid"] not in gDatabase["text"]:
         Alert.warning(params["fullRef"],"does not match the case of any available texts.")

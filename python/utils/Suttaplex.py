@@ -7,6 +7,7 @@ from __future__ import annotations
 import os, sys, json, re
 from collections import Counter
 from typing import TypedDict, NotRequired
+from functools import lru_cache
 
 scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
 sys.path.append(os.path.join(scriptDir,'python/modules'))
@@ -165,9 +166,24 @@ def MakeSnpIndex() -> None:
     with open(destPath, 'w', encoding='utf-8') as file:
         json.dump(SuttaIndex("snp","vnp"),file,ensure_ascii=False,indent=2)
 
+def MakeThigIndex() -> None:
+    indexDir = "sutta/suttaplex/index"
+    os.makedirs(indexDir,exist_ok=True)
+    destPath = Utils.PosixJoin(indexDir,"thig-vnp" + ".json")
+    with open(destPath, 'w', encoding='utf-8') as file:
+        json.dump(SuttaIndex("thig","vnp"),file,ensure_ascii=False,indent=2)
+
+@lru_cache(maxsize=None)
+def MakeSuttaIndex(uid:str) -> dict[str,SuttaIndexEntry]:
+    """Returns an index of this sutta. Returns None on failure"""
+    if (uid in ("dhp","snp","thag","thig")):
+        return SuttaIndex(uid,"vnp")
+    else:
+        return None
+
 if __name__ == "__main__":
     
-    MakeSnpIndex()
+    MakeThigIndex()
 
     # MakeSegmentedSuttaplex("dn")
     # ReduceRawSuttaplexFiles()
