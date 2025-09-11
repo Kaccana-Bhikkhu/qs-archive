@@ -145,6 +145,7 @@ def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {}
                 Alert.warning("When evaluating the text matching rule",repr(expression) + ":",repr(text),"is not a known text, text group, or translator.")
             return f"{{'{text}'}}"
 
+    expression = expression.replace(",","|") # Lists are equivalent to set union operator
     setExp = re.sub(r"\w+",ReplaceWithSet,expression)
     return eval(setExp,{"__builtins__": {}})
 
