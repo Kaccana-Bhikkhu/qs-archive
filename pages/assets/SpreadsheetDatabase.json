@@ -167489,7 +167489,7 @@
       "refCount": "1",
       "translator": "",
       "alert": "",
-      "link": "$! (mark := SCIndex(uid,n0)) and f\"https://suttacentral.net/{mark.uid}/en/sujato?layout=plain&reference=main%2Cpts&notes=asterisk{mark.hash}\" !$"
+      "link": "$! (mark := SCIndex(uid,n0)) and f\"https://suttacentral.net/{mark.uid}/en/{mark.trans}?layout=plain&reference=main%2Cpts&notes=asterisk{mark.hash}\" !$"
     },
     "Vinaya rule direct link": {
       "rule": "Vinaya rule direct link",

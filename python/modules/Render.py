@@ -385,13 +385,14 @@ def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str
 class SCBookmark(NamedTuple):
     uid: str                # Sutta uid, e.g. 'mil6.3.10'
     hash: str               # Bookmark hash code, e.g. '#pts-vp-pli320'
-
+    trans: str              # uid of the translator, e.g. 'tw_rhysdavids'
+    
 def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     """Given a text uid and a bookmark, return the information needed to construct a SuttaCentral link.
     For example IndexedBookmark("mil320","pts-vp-pli320") returns ("mil6.3.10","pts-vp-pli320","tw_rhysdavids")."""
     
     uid = uid.lower()
-    indexedText = Suttaplex.MakeSuttaIndex(uid)
+    indexedText,translator = Suttaplex.SuttaIndex(uid)
     if not indexedText:
         Alert.error("Cannot build index for text uid",uid)
         return None
@@ -406,7 +407,7 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
         Alert.error("Cannot find bookmark",bookmark,"in text uid",uid)
         return None
     
-    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark))
+    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
         # If suttaRef lacks the mark key, then mark is bookmark
 
 

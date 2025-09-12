@@ -40,6 +40,7 @@ def CacheJsonFile(cacheDir: str,indent:None|int = 2) -> Callable[...,dict]:
                     Alert.error(error,"when opening",cachedFilePath,". Will try to regenerate the json file.")
             
             Alert.info("Generating json file:",cachedFilePath)
+            os.makedirs(cacheDir,exist_ok=True)
             returnDict = dictGenerator(*args)
             with open(cachedFilePath, 'w', encoding='utf-8') as file:
                 json.dump(returnDict,file,ensure_ascii=False,indent=indent)
@@ -109,7 +110,7 @@ class SuttaIndexEntry(TypedDict):
     uid: str
     mark: NotRequired[str]
 
-def SuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True) -> dict[str,SuttaIndexEntry]:
+def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True) -> dict[str,SuttaIndexEntry]:
     """Returns an index of references to the suttas in a given text.
         uid: the SuttaCentral text uid.
         indexBy: create an index for all bookmarks that start with this string 
@@ -165,17 +166,30 @@ def MakeThigIndex() -> None:
         json.dump(SuttaIndex("thig","vnp"),file,ensure_ascii=False,indent=2)
 
 @lru_cache(maxsize=None)
-def MakeSuttaIndex(uid:str) -> dict[str,SuttaIndexEntry]:
-    """Returns an index of this sutta. Returns None on failure"""
-    if uid in ("dhp","snp","thag","thig"):
-        return SuttaIndex(uid,"vnp")
-    elif uid == "mil": # https://suttacentral.net/mil6.3.10/en/tw_rhysdavids?lang=en&reference=main/pts&highlight=false#pts-vp-pli320
-        return SuttaIndex(uid,"pts-vp-pli")
+def SuttaIndex(textUid:str) -> dict[str,SuttaIndexEntry]:
+    """Returns an index of this sutta and its primary translator uid. Returns None on failure"""
+    if textUid in ("dhp","snp","thag","thig"):
+        return MakeSuttaIndex(textUid,"vnp"),"sujato"
+    elif textUid == "mil": # https://suttacentral.net/mil6.3.10/en/tw_rhysdavids?lang=en&reference=main/pts&highlight=false#pts-vp-pli320
+        return MakeSuttaIndex(textUid,"pts-vp-pli"),"tw_rhysdavids"
     return None
+
+@CacheJsonFile("sutta/suttaplex/translator")
+@lru_cache(maxsize=None)
+def TranslatorDict(textUid:str) -> dict[str,list[str]]:
+    """Returns the dict {suttaUid:list[translatorUid]} for a given textUid."""
+
+    suttaplex = ReducedSutaplex(textUid)
+    returnDict = {}
+    for sutta in suttaplex:
+        returnDict[sutta["uid"]] = [trans["author_uid"] for trans in sutta["translations"]]
+    
+    return returnDict
 
 if __name__ == "__main__":
     Alert.verbosity = 3
-    print(len(SegmentedSuttaplex("dn")))
+    print(len(TranslatorDict("mn")))
+    # print(len(SegmentedSuttaplex("dn")))
 
     # MakeSegmentedSuttaplex("dn")
     # ReduceRawSuttaplexFiles()
