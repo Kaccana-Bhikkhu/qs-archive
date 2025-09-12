@@ -7,7 +7,7 @@ import json, re
 import markdown
 import Database
 from markdown_newtab_remote import NewTabRemoteExtension
-from typing import Tuple, Type, Callable, TypedDict, Iterable
+from typing import Tuple, Type, Callable, TypedDict, Iterable, NamedTuple
 from inspect import signature
 import pyratemp
 from functools import lru_cache
@@ -18,10 +18,14 @@ import urllib.parse
 
 def FStringToPyratemp(fString: str) -> str:
     """Convert a template in our psuedo-f string notation to a pyratemp template"""
-    prya = fString.replace("{","$!").replace("}","!$")
-    
-    return prya
 
+    if "$!" in fString or "@!" in fString:
+        return fString
+            # Don't change the template if it's already in pryatemp format.
+            # This allows us to use '{' characters within the template itself.
+    
+    return fString.replace("{","$!").replace("}","!$")
+    
 def ApplyToBodyText(transform: Callable[...,Tuple[str,int]]) -> int:
     """Apply operation transform on each string considered body text in the database.
     transform can have the form transform(bodyText,item) or transform(bodyText).
@@ -378,23 +382,32 @@ def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str
         strings += (printCount - len(strings)) * [str(filler)]
     return separator.join(strings)
 
-def IndexedBookmark(uid:str,bookmark:str) -> tuple[str,str]:
-    """Given a text uid and a bookmark, return the tuple (suttaUid,bookmark).
-    For example IndexedBookmark("thig","vnp112") returns ("thig5.10","vnp112")."""
+class SCBookmark(NamedTuple):
+    uid: str                # Sutta uid, e.g. 'mil6.3.10'
+    hash: str               # Bookmark hash code, e.g. '#pts-vp-pli320'
+
+def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
+    """Given a text uid and a bookmark, return the information needed to construct a SuttaCentral link.
+    For example IndexedBookmark("mil320","pts-vp-pli320") returns ("mil6.3.10","pts-vp-pli320","tw_rhysdavids")."""
     
     uid = uid.lower()
     indexedText = Suttaplex.MakeSuttaIndex(uid)
     if not indexedText:
         Alert.error("Cannot build index for text uid",uid)
         return None
+    
+    bookmark = str(bookmark)
+    if re.match(r"[0-9]",bookmark):
+        bookmark = re.match(r"[^0-9]+",next(iter(indexedText)))[0] + bookmark
+            # If the bookmark is only a number, add the (common) text prefix to all bookmarks in the file
+    
     suttaRef = indexedText.get(bookmark,None)
     if not suttaRef:
         Alert.error("Cannot find bookmark",bookmark,"in text uid",uid)
         return None
-    if "mark" in suttaRef:
-        return suttaRef["uid"],suttaRef["mark"]
-    else:
-        return suttaRef["uid"],bookmark
+    
+    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark))
+        # If suttaRef lacks the mark key, then mark is bookmark
 
 
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
@@ -409,7 +422,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "n2": matchObject[4],
         "translator": matchObject[5],
         "DotRef": DotRef,
-        "IndexedBookmark": IndexedBookmark
+        "SCIndex": SCIndex
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
@@ -423,7 +436,15 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         matcher = ruleMatchers[ruleName]
         if not all(str(params[which]) in matcher[which] for which in matcher if which in params):
             continue
-        link = str(matcher["linkTemplate"](**params))
+        try:
+            link = str(matcher["linkTemplate"](**params))
+        except Exception as error:
+            Alert.error(error,"when attempting to evaluate rule",repr(ruleName),
+                        "\n    python expression:",gDatabase["textLink"][ruleName]["link"],
+                        "\n    with dictionary:",{k:v for k,v in params.items() if not callable(v)},
+                        "\n    Continuing to the next rule")
+            continue
+
         if not link or link == "None" or link == "False":
             continue # If matcher returns "", None, or False, skip to the next rule
         

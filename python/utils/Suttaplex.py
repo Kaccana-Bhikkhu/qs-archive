@@ -6,8 +6,9 @@ from __future__ import annotations
 
 import os, sys, json, re
 from collections import Counter
-from typing import TypedDict, NotRequired
+from typing import TypedDict, NotRequired, Callable
 from functools import lru_cache
+import Alert
 
 scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
 sys.path.append(os.path.join(scriptDir,'python/modules'))
@@ -20,18 +21,46 @@ def AllUids(directory = "sutta/suttaplex/raw") -> list[str]:
     return [f.removesuffix(".json") for f in sorted(os.listdir(directory)) if 
                 os.path.isfile(Utils.PosixJoin(directory,f)) and f.endswith(".json")]
 
+def CacheJsonFile(cacheDir: str,indent:None|int = 2) -> Callable[...,dict]:
+    """Implement a json disk cache for function returning a dict"""
+    def InnerWrapper(dictGenerator: Callable[...,dict]):
+        """The dictGenerator function takes a variable number of arguments which can be converted to strings."""
+        def CachedDictGenerator(*args) -> dict:
+            if args:
+                cachedFileName = "_".join(str(arg) for arg in args) + ".json"
+            else:
+                cachedFileName= "_noArgs_.json"
+            cachedFilePath = Utils.PosixJoin(cacheDir,cachedFileName)
+
+            if os.path.isfile(cachedFilePath):
+                try:
+                    with open(cachedFilePath, 'r', encoding='utf-8') as file:
+                        return json.load(file)
+                except Exception as error:
+                    Alert.error(error,"when opening",cachedFilePath,". Will try to regenerate the json file.")
+            
+            Alert.info("Generating json file:",cachedFilePath)
+            returnDict = dictGenerator(*args)
+            with open(cachedFilePath, 'w', encoding='utf-8') as file:
+                json.dump(returnDict,file,ensure_ascii=False,indent=indent)
+            return returnDict
+            
+        return CachedDictGenerator
+    return InnerWrapper
+
+@CacheJsonFile("sutta/suttaplex/raw",indent=None)
+def RawSuttaplex(uid:str) -> dict[str]:
+    """Return and cache raw suttaplex files from SuttaCentral"""
+    suttaplexURL = f"https://suttacentral.net/api/suttaplex/{uid}"
+        
+    with Utils.OpenUrlOrFile(suttaplexURL) as file:
+        return json.load(file)
 
 def ReducedSutaplex(uid:str) -> dict[str]:
     """Read the suttaplex json file uid.json in sutta/suttaplex/raw. Eliminate non-English translations and
     extraneous keys and return the output."""
 
-    rawDir = "sutta/suttaplex/raw"
-    sourcePath = Utils.PosixJoin(rawDir,uid + ".json")
-    if not os.path.isfile(sourcePath) or not sourcePath.endswith(".json"):
-        return None
-
-    with open(sourcePath, 'r', encoding='utf-8') as file:
-        suttaplex = json.load(file)
+    suttaplex = RawSuttaplex(uid)
     
     reduced = [s for s in suttaplex if s.get("translations")]
 
@@ -50,32 +79,8 @@ def ReducedSutaplex(uid:str) -> dict[str]:
 
     return reduced
 
-def ReduceRawSuttaplexFiles():
-    """Read the suttaplex json files in sutta/suttaplex/raw. Eliminate non-English translations and
-    write the output into sutta/suttaplex/reduced."""
-
-    reducedDir = "sutta/suttaplex/reduced"
-    os.makedirs(reducedDir,exist_ok=True)
-    for uid in AllUids():
-        reduced = ReducedSutaplex(uid)
-
-        translationCount = Counter()
-        for sutta in reduced:
-            for translation in sutta["translations"]:
-                translationCount[translation["author_uid"]] += 1
-
-        mostCommon = sorted(translationCount.items(),key = lambda item:-item[1])
-        print("Text:",uid,"Sutta count:",len(reduced),"Translations:",mostCommon)
-
-        hasVerses = reduced[0]["verseNo"]
-        if hasVerses:
-            print("   This text has verse numbers.")
-
-        destPath = Utils.PosixJoin(reducedDir,uid + ".json")
-        with open(destPath, 'w', encoding='utf-8') as file:
-            json.dump(reduced,file,ensure_ascii=False,indent=2)
-
-def MakeSegmentedSuttaplex(uid: str) -> None:
+@CacheJsonFile("sutta/suttaplex/segmented")
+def SegmentedSuttaplex(uid: str) -> None:
     """For a given uid, merge the reduced suttaplex database with verseNo fields downloaded from SuttaCentral."""
     
     segmentedDir = "sutta/suttaplex/segmented"
@@ -90,20 +95,6 @@ def MakeSegmentedSuttaplex(uid: str) -> None:
         
         sutta["verseNo"] = suttaData["suttaplex"]["verseNo"]
 
-    destPath = Utils.PosixJoin(segmentedDir,uid + ".json")
-    with open(destPath, 'w', encoding='utf-8') as file:
-        json.dump(suttaplex,file,ensure_ascii=False,indent=2)
-        
-def SegmentedSuttaplex(uid:str) -> dict[str]:
-    """Return a segmented suttaplex dict for a given uid. Download and cache if necessary."""
-
-    segmentedDir = "sutta/suttaplex/segmented"
-    filepath = Utils.PosixJoin(segmentedDir,uid + ".json")
-    if not os.path.isfile(filepath):
-        MakeSegmentedSuttaplex(uid)
-    
-    with open(filepath, 'r', encoding='utf-8') as file:
-        suttaplex = json.load(file)
     return suttaplex
 
 def DoubleReferenceDNSuttas() -> None:
@@ -176,14 +167,15 @@ def MakeThigIndex() -> None:
 @lru_cache(maxsize=None)
 def MakeSuttaIndex(uid:str) -> dict[str,SuttaIndexEntry]:
     """Returns an index of this sutta. Returns None on failure"""
-    if (uid in ("dhp","snp","thag","thig")):
+    if uid in ("dhp","snp","thag","thig"):
         return SuttaIndex(uid,"vnp")
-    else:
-        return None
+    elif uid == "mil": # https://suttacentral.net/mil6.3.10/en/tw_rhysdavids?lang=en&reference=main/pts&highlight=false#pts-vp-pli320
+        return SuttaIndex(uid,"pts-vp-pli")
+    return None
 
 if __name__ == "__main__":
-    
-    MakeThigIndex()
+    Alert.verbosity = 3
+    print(len(SegmentedSuttaplex("dn")))
 
     # MakeSegmentedSuttaplex("dn")
     # ReduceRawSuttaplexFiles()

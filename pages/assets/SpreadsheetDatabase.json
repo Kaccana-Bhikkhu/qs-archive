@@ -115755,9 +115755,9 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Quote",
+          "kind": "Indirect quote",
           "flags": "",
-          "text": "Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.|Milindapañha 320, E.W. Burligame translation, quoted inThe Island p. 38.",
+          "text": "Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.|Mil 320, quoted in The Island p. 38.",
           "teachers": [
             "AA",
             "AKc"
@@ -167439,6 +167439,19 @@
       "ptsVerses": "",
       "singleRef": "",
       "doubleRef": ""
+    },
+    "Mil": {
+      "uid": "Mil",
+      "name": "Milindapañha",
+      "citeFullName": true,
+      "sutta": "Yes",
+      "vinaya": "",
+      "vinayaRule": "",
+      "readFaith": "",
+      "suttaCentral": "Yes",
+      "ptsVerses": "Yes",
+      "singleRef": "",
+      "doubleRef": ""
     }
   },
   "textLink": {
@@ -167476,7 +167489,7 @@
       "refCount": "1",
       "translator": "",
       "alert": "",
-      "link": "https://suttacentral.net/{(mark := IndexedBookmark(uid,\"vnp\"+n0))[0]}/en/sujato?layout=plain&reference=main%2Cpts&notes=asterisk#{mark[1]}"
+      "link": "$! (mark := SCIndex(uid,n0)) and f\"https://suttacentral.net/{mark.uid}/en/sujato?layout=plain&reference=main%2Cpts&notes=asterisk{mark.hash}\" !$"
     },
     "Vinaya rule direct link": {
       "rule": "Vinaya rule direct link",
