@@ -170,6 +170,8 @@ def TextRuleMatchers() -> dict[TextRuleMatcher]:
 
     returnValue = {}
     for ruleName,rule in gDatabase["textLink"].items():
+        if not rule["link"]:
+            continue
         try:
             returnValue[ruleName] = TextRuleMatcher(
                 uid = EvaluateSetExpression(rule["uid"],dictionary=gDatabase["textGroup"],allowableValues=gDatabase["text"]),
@@ -386,7 +388,7 @@ class SCBookmark(NamedTuple):
     uid: str                # Sutta uid, e.g. 'mil6.3.10'
     hash: str               # Bookmark hash code, e.g. '#pts-vp-pli320'
     trans: str              # uid of the translator, e.g. 'tw_rhysdavids'
-    
+
 def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     """Given a text uid and a bookmark, return the information needed to construct a SuttaCentral link.
     For example IndexedBookmark("mil320","pts-vp-pli320") returns ("mil6.3.10","pts-vp-pli320","tw_rhysdavids")."""
