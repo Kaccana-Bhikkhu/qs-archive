@@ -167536,6 +167536,33 @@
       "alert": "",
       "link": "https://suttacentral.net/pli-tv-{uid}{n0}/en/brahmali?reference=main{\"#\" + DotRef(n[1:],3) if len(n) > 1 else \"\"}"
     },
+    "Link to whole suttas with prefered translator": {
+      "rule": "Link to whole suttas with prefered translator",
+      "uid": "",
+      "n0": "",
+      "refCount": "",
+      "translator": "",
+      "alert": "",
+      "link": ""
+    },
+    "doubleRef section references": {
+      "rule": "doubleRef section references",
+      "uid": "suttaCentral & doubleRef",
+      "n0": "",
+      "refCount": "1",
+      "translator": "",
+      "alert": "notice",
+      "link": "{fullRef}: Section references not yet implemented."
+    },
+    "Whole sutta references": {
+      "rule": "Whole sutta references",
+      "uid": "suttaCentral",
+      "n0": "",
+      "refCount": "",
+      "translator": "",
+      "alert": "",
+      "link": "https://suttacentral.net/{uid}{DotRef(n)}/en/{PreferredTranslator(uid,n)}"
+    },
     "Reading Faithfully default": {
       "rule": "Reading Faithfully default",
       "uid": "readFaith",

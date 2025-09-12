@@ -412,6 +412,20 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
         # If suttaRef lacks the mark key, then mark is bookmark
 
+def PreferredTranslator(textUid:str,refNumbers:list[int]) -> str:
+    """Return the preferred translator for the whole sutta specified by textUid and refNumbers."""
+
+    textUid = textUid.lower()
+    translatorDict = Suttaplex.TranslatorDict(textUid)
+    suttaUid = textUid + DotRef(refNumbers)
+    availableTranslations = translatorDict.get(suttaUid,None)
+
+    if not availableTranslations:
+        return "sujato"
+    elif "bodhi" in availableTranslations:
+        return "bodhi"
+    else:
+        return availableTranslations[0]
 
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
@@ -425,7 +439,8 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "n2": matchObject[4],
         "translator": matchObject[5],
         "DotRef": DotRef,
-        "SCIndex": SCIndex
+        "SCIndex": SCIndex,
+        "PreferredTranslator": PreferredTranslator
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
