@@ -202,9 +202,24 @@ def InterpolatedTranslatorDict(textUid:str) -> dict[str,list[str]]:
     
     return returnDict
 
+def PrintTranslatorCount():
+    """For each text, print the number of suttas each translator has translated."""
+
+    for uid in AllUids():
+        translatorDict = TranslatorDict(uid)
+
+        translationCount = Counter()
+        for translatorList in translatorDict.values():
+            for translator in translatorList:
+                translationCount[translator] += 1
+
+        mostCommon = sorted(translationCount.items(),key = lambda item:-item[1])
+        print("Text:",uid,"Sutta count:",len(translatorDict),"Translations:",mostCommon)
+
+
 if __name__ == "__main__":
     Alert.verbosity = 3
-    print(len(TranslatorDict("mn")))
+    PrintTranslatorCount()
     # print(len(SegmentedSuttaplex("dn")))
 
     # MakeSegmentedSuttaplex("dn")
