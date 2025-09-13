@@ -13,7 +13,7 @@ Other Vinaya,vinaya & suttaCentral,,,,,"https://suttacentral.net/pli-tv-{uid}{n0
 ,,,,,,
 Link to whole suttas with prefered translator,,,,,,
 doubleRef section references,suttaCentral & doubleRef,,1,,notice,{fullRef}: Section references not yet implemented.
-Whole sutta references,suttaCentral,,,,,"https://suttacentral.net/{uid}{DotRef(n)}/en/{PreferredTranslator(uid,n)}"
+Whole sutta references,suttaCentral,,,,,"$! (trans := PreferredTranslator(uid,n)) and f""https://suttacentral.net/{uid}{DotRef(n)}/en/{trans}"" !$"
 ,,,,,,
 ,,,,,,
 Reading Faithfully default,readFaith,,,,,https://sutta.readingfaithfully.org/?q={uid}-{DotRef(n)}

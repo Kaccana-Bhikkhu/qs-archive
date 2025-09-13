@@ -186,6 +186,22 @@ def TranslatorDict(textUid:str) -> dict[str,list[str]]:
     
     return returnDict
 
+@CacheJsonFile("sutta/suttaplex/interpolated")
+@lru_cache(maxsize=None)
+def InterpolatedTranslatorDict(textUid:str) -> dict[str,list[str]]:
+    """Create a translation dict containing interpolated sutta references:
+    e.g. 'an1.1-10' becomes 'an1.1', 'an1.2', ... , 'an1.10'."""
+
+    translatorDict = TranslatorDict(textUid)
+    returnDict = {}
+    for suttaUid,translators in translatorDict.items():
+        m = re.match("(.*?)([0-9]+)-([0-9]+)$",suttaUid)
+        if m:
+            for suttaNumber in range(int(m[2]),int(m[3]) + 1):
+                returnDict[f"{m[1]}{suttaNumber}"] = translators
+    
+    return returnDict
+
 if __name__ == "__main__":
     Alert.verbosity = 3
     print(len(TranslatorDict("mn")))

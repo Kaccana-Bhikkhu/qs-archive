@@ -112195,7 +112195,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "AN 22.26: Assādasutta",
+          "text": "SN 22.26: Assādasutta",
           "tags": [
             "Aspects of Understanding"
           ],
@@ -167561,7 +167561,7 @@
       "refCount": "",
       "translator": "",
       "alert": "",
-      "link": "https://suttacentral.net/{uid}{DotRef(n)}/en/{PreferredTranslator(uid,n)}"
+      "link": "$! (trans := PreferredTranslator(uid,n)) and f\"https://suttacentral.net/{uid}{DotRef(n)}/en/{trans}\" !$"
     },
     "Reading Faithfully default": {
       "rule": "Reading Faithfully default",

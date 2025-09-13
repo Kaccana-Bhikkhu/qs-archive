@@ -421,11 +421,24 @@ def PreferredTranslator(textUid:str,refNumbers:list[int]) -> str:
     availableTranslations = translatorDict.get(suttaUid,None)
 
     if not availableTranslations:
-        return "sujato"
+        interpolatedTranslators = Suttaplex.InterpolatedTranslatorDict(textUid)
+        availableTranslations = interpolatedTranslators.get(suttaUid,None)
+        if availableTranslations:
+            if "sujato" in availableTranslations:
+                return "sujato"
+            else:
+                return availableTranslations[0]
+        else:
+            Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
+            return ""
     elif "bodhi" in availableTranslations:
         return "bodhi"
     else:
         return availableTranslations[0]
+    
+def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
+    """Returns whether this text exists on SuttaCentral."""
+    return bool(PreferredTranslator(textUid,refNumbers))
 
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
@@ -440,7 +453,8 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "translator": matchObject[5],
         "DotRef": DotRef,
         "SCIndex": SCIndex,
-        "PreferredTranslator": PreferredTranslator
+        "PreferredTranslator": PreferredTranslator,
+        "ExistsOnSC": ExistsOnSC
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
@@ -499,7 +513,7 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
             if textRecord and textRecord["citeFullName"]:
                 withoutTranslator = withoutTranslator.replace(matchObject[1],textRecord["name"])
                 if item and "text" in item: # Modify the original item text so that searching finds the full sutta name.
-                    item["text"] = item["text"].replace(matchObject[1],textRecord["name"])
+                    item["text"] = re.sub(r"\b" + matchObject[1] + r" ([1-9])",textRecord["name"] + r" \1",item["text"])
 
             link = ApplySuttaMatchRules(matchObject)
             if not link:
