@@ -117,10 +117,13 @@ def FirstValidValue(inDict,keyList,inDefault = None):
     return inDefault
 
 def BooleanValue(text: str) -> bool:
-    """Returns true if the first three characters of text are 'Yes'.
+    """Returns True if the first three characters of text are 'Yes'.
     This is the standard way of encoding boolean values in the csv files from AP QS Archive main."""
     
-    return text[:3] == 'Yes'
+    return text.startswith('Yes')
+
+def IncludePending(s:str):
+    return s.startswith("Yes") or s.startswith("Pending")
 
 def AppendUnique(ioList,inToAppend):
     "Append values to a list unless they are already in it"
@@ -150,8 +153,10 @@ def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None
             
             if convertBools:
                 for key in row:
-                    if key[-1:] == '?':
-                        row[key] = convertBools(row[key])
+                    if key.endswith('?'):
+                        includePending = gOptions.includePending ^ key.lower().startswith("exclude")
+                            # XOR operation: if key starts with "exclude", invert the meaning of includePending
+                        row[key] = (IncludePending if includePending else BooleanValue)(row[key])
             
             if camelCase:
                 CamelCaseKeys(row)
@@ -1622,7 +1627,7 @@ def AddArguments(parser):
     "Add command-line arguments used by this module"
     
     parser.add_argument('--ignoreTeacherConsent',**Utils.STORE_TRUE,help="Ignore teacher consent flags - debugging only")
-    parser.add_argument('--pendingMeansYes',**Utils.STORE_TRUE,help="Treat teacher consent pending as yes - debugging only")
+    parser.add_argument('--includePending',**Utils.STORE_TRUE,help="Treat teacher consent pending as yes - debugging only")
     parser.add_argument('--ignoreExcludes',**Utils.STORE_TRUE,help="Ignore exclude session and excerpt flags - debugging only")
     parser.add_argument('--parseOnlySpecifiedEvents',**Utils.STORE_TRUE,help="Load only events specified by --events into the database")
     parser.add_argument('--includeTestEvent',**Utils.STORE_TRUE,help="Include event Test1999 in the database.")
@@ -1672,15 +1677,8 @@ def main():
         
         if re.match(".*[0-9]{4}",baseName): # Event files contain a four-digit year and are loaded after all other files
             continue
-        
-        def PendingBoolean(s:str):
-            return s.startswith("Yes") or s.startswith("Pending")
 
-        extraArgs = {}
-        if baseName == "Teacher" and gOptions.pendingMeansYes:
-            extraArgs["convertBools"] = PendingBoolean
-
-        gDatabase[CamelCase(baseName)] = ListToDict(CSVFileToDictList(fullPath,**extraArgs))
+        gDatabase[CamelCase(baseName)] = ListToDict(CSVFileToDictList(fullPath))
     
     LoadTagsFile(gDatabase,os.path.join(gOptions.csvDir,"Tag.csv"))
     PrepareReferences(gDatabase["reference"])
