@@ -1628,7 +1628,7 @@ def LinkToTeacherPage(page: Html.PageDesc) -> Html.PageDesc:
     if teacher:
         link = TeacherLink(teacher)
         if link:
-            page.AppendContent(f'<a href="{link}">Teachings by {gDatabase["teacher"][teacher]["attributionName"]}</a>',"smallTitle")
+            page.AppendContent(f'<a href="{link}">→ Teachings by {gDatabase["teacher"][teacher]["attributionName"]}</a>',"smallTitle")
     
     return page
 
@@ -1841,7 +1841,7 @@ def LinkToTagPage(page: Html.PageDesc) -> Html.PageDesc:
 
     tag = Database.TagLookup(page.info.title)
     if tag:
-        page.AppendContent(HtmlTagLink(tag,text = f'Tag [{tag}]'),"smallTitle")
+        page.AppendContent(HtmlTagLink(tag,text = f'→ Tag [{tag}]'),"smallTitle")
 
     return page
 
