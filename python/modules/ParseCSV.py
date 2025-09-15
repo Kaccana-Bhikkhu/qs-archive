@@ -93,12 +93,6 @@ def CamelCaseKeys(d: dict,reallyChange = True):
             CamelCase(key) # Just log what the change would be in the camel case dictionary
 
 
-def SniffCSVDialect(inFile,scanLength = 4096):
-	inFile.seek(0)
-	dialect = csv.Sniffer().sniff(inFile.read(scanLength))
-	inFile.seek(0)
-	return dialect
-
 def BlankDict(inDict):
     "Returns True if all values are either an empty string or None"
     
@@ -125,13 +119,8 @@ def BooleanValue(text: str) -> bool:
 def IncludePending(s:str):
     return s.startswith("Yes") or s.startswith("Pending")
 
-def AppendUnique(ioList,inToAppend):
-    "Append values to a list unless they are already in it"
-    for item in inToAppend:
-        if not item in ioList:
-            ioList.append(item)
 
-def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None,convertBools = BooleanValue,camelCase = True):
+def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None,convertBools = True,camelCase = True):
     for _ in range(skipLines):
         file.readline()
     
@@ -402,11 +391,11 @@ def LoadTagsFile(database,tagFileName):
             if TagFlag.PRIMARY in rawTag["flags"]:
                 tagDesc["copies"] += tags[tagName]["copies"]
                 tagDesc["primaries"] += tags[tagName]["primaries"]
-                AppendUnique(tagDesc["supertags"],tags[tagName]["supertags"])
+                Utils.ExtendUnique(tagDesc["supertags"],tags[tagName]["supertags"])
             else:
                 tags[tagName]["copies"] += tagDesc["copies"]
                 tags[tagName]["primaries"] += tagDesc["primaries"]
-                AppendUnique(tags[tagName]["supertags"],tagDesc["supertags"])
+                Utils.ExtendUnique(tags[tagName]["supertags"],tagDesc["supertags"])
                 continue
         
         if TagFlag.VIRTUAL in rawTag["flags"] and (rawTagIndex + 1 >= len(rawTagList) or rawTagList[rawTagIndex + 1]["level"] <= rawTag["level"]):
@@ -907,7 +896,7 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
 
         # If the annotation is a reading and the teacher is not specified, make the author the teacher.
         if annotation["kind"] == "Reading" and not annotation["teachers"]:
-            AppendUnique(teacherList,ReferenceAuthors(annotation["text"]))
+            Utils.ExtendUnique(teacherList,ReferenceAuthors(annotation["text"]))
 
         annotation["teachers"] = teacherList
     else:
@@ -941,7 +930,7 @@ def ReferenceAuthors(textToScan: str) -> list[str]:
     for regex in gAuthorRegexList:
         matches = re.findall(regex,textToScan,flags = re.IGNORECASE)
         for match in matches:
-            AppendUnique(authors,gDatabase["reference"][match[0].lower()]["author"])
+            Utils.ExtendUnique(authors,gDatabase["reference"][match[0].lower()]["author"])
 
     return authors
 
@@ -1393,7 +1382,7 @@ def LoadEventFile(database,eventName,directory):
         
         # If the excerpt is a reading and the teacher is not specified, make the author the teacher.
         if x["kind"] == "Reading" and not x["teachers"]:
-            AppendUnique(x["teachers"],ReferenceAuthors(x["text"]))
+            Utils.ExtendUnique(x["teachers"],ReferenceAuthors(x["text"]))
         
         if x["sessionNumber"] != lastSession:
             if lastSession > x["sessionNumber"]:

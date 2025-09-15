@@ -23,14 +23,12 @@ def Contents(container:list|dict) -> list:
     except AttributeError:
         return container
 
-def ExtendUnique(dest: list, source: Iterable) -> list:
+def ExtendUnique(dest: list, source: Iterable) -> None:
     "Append all the items in source to dest, preserving order but eliminating duplicates."
 
-    destSet = set(dest)
     for item in source:
-        if item not in destSet:
+        if not item in dest:
             dest.append(item)
-    return dest
 
 def Duplicates(source: Iterable) -> list:
     "Return a list of the items which appear more than once in source."
