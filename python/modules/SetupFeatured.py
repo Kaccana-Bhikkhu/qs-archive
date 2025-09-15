@@ -96,13 +96,13 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     
     formatter = Build.Formatter()
     formatter.SetHeaderlessFormat()
-    formatter.excerptDefaultTeacher = {"AP"}
     formatter.excerptShowFragmentPlayers = False
     html = formatter.HtmlExcerptList([excerpt])
 
     simpleExcerpt = copy(excerpt)
     simpleExcerpt["annotations"] = ()
     simpleExcerpt["tags"] = ()
+    formatter.excerptDefaultTeacher = {"AP"}
     shortHtml = formatter.FormatExcerpt(simpleExcerpt)
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
