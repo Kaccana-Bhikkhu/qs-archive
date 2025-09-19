@@ -1,11 +1,11 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
-// Both pages rely on ./assets/Homepage.json
+// Both pages rely on ./assets/FeaturedDatabase.json
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase} from './search.js';
 
-const DEBUG = false;
+const DEBUG = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
@@ -488,6 +488,41 @@ function setupAutoComplete() {
     });
 }
 
+function readingFaithfullyLink(baseLink) {
+    // Given a link to suttacentral.net, return a link to the same text on sutta.readingfaithfully.org.
+    // Return null if the link doesn't point to suttacentral.
+
+    const prefix = "https://suttacentral.net/";
+    const suttas = ['dn','mn','sn','an','kp','dhp','ud','iti','snp','vv','pv','thag','thig','ja','bupj','buss','buay','bunp','bupc','bupd','busk','buas','bipj','biss','binp','bipc','bipd','bisk','bias','kd','pvr','mil'];
+    const doubleRefs = ['sn','an','ud','','snp','thag','thig'];
+    if (!baseLink.startsWith(prefix))
+        return null;
+    let suttaRef = baseLink.replace(prefix,"").toLowerCase().split("/")[0];
+    let match = suttaRef.match(/^([^0-9]+)([0-9]+)(.[0-9]+)?/);
+    if (match && suttas.includes(match[1])) {
+        let numbers = match[2];
+        if (match[3] && doubleRefs.includes(match[1]))
+            numbers += match[3];
+        return `https://sutta.readingfaithfully.org/?q=${match[1]}${numbers}`
+    } else
+        return null;
+}
+
+function setupOptionalSuttaRefs() {
+    // Configure event listeners to link suttas to https://sutta.readingfaithfully.org/ when the alt/option key is pressed.
+
+    document.addEventListener("click", function(event) {
+        if (event.altKey && event.target.href) {
+            let newHref = readingFaithfullyLink(event.target.href);
+            debugLog("Alt link:",newHref);
+            if (newHref) {
+                event.preventDefault();
+                window.open(newHref,"_blank");
+            }
+        }
+    });
+}
+
 function displayExcerptCount(itemsFound) {
     // Display the number of excerpts found in the floating search bar
 
@@ -520,6 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("floating-search-input").addEventListener("input",countFoundExcerpts);
 
     setupAutoComplete();
+    setupOptionalSuttaRefs();
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
         document.addEventListener("keydown", function(event) {
