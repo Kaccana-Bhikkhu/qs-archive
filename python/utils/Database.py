@@ -503,15 +503,17 @@ def SubtagIterator(tagOrSubtopic:dict[str]) -> Iterable[str]:
         yield from tagOrSubtopic.get("subtags",())
 
 def FTagAndOrder(excerpt: dict,fTags: Iterable[str]) -> tuple[str,int,str]:
-    """Return the tuple (fTag,fTagOrder,fTagOrderFlag) for the first matching fTag in fTags."""
+    """Return the tuple (fTag,fTagOrder,fTagOrderFlag,fTagOrderAndFlag) for the first matching fTag in fTags."""
     
     for tag in fTags:
         try:
             fTagIndex = excerpt["fTags"].index(tag)
-            return excerpt["fTags"][fTagIndex],excerpt["fTagOrder"][fTagIndex],excerpt["fTagOrderFlags"][fTagIndex]
+            order = excerpt["fTagOrder"][fTagIndex]
+            flag = excerpt["fTagOrderFlags"][fTagIndex]
+            return excerpt["fTags"][fTagIndex],order,flag,str(order) + ("" if flag == ParseCSV.FTagOrderFlag.EVERYWHERE else flag)
         except (ValueError, IndexError):
             pass
-    return "",999,""
+    return "",999,"",""
 
 def FTagOrder(excerpt: dict,fTags: Iterable[str]) -> int:
     """Return fTagOrder of the first matching fTag in fTags."""

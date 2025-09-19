@@ -1044,7 +1044,7 @@ class Formatter:
             else:
                 a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
         if self.showFTagOrder and set(excerpt["fTags"]) & set(self.showFTagOrder):
-            a(" {" + str(Database.FTagOrder(excerpt,self.showFTagOrder)) + "}")
+            a(" {" + str(Database.FTagAndOrder(excerpt,self.showFTagOrder)[3]) + "}")
 
         a(" ")
         if self.excerptPreferStartTime and excerpt['excerptNumber'] and (excerpt["clips"][0].file == "$" or excerpt.get("startTimeInSession",None)):
