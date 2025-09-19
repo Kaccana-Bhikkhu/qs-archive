@@ -601,6 +601,8 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page = Html.PageDesc(info)
 
     printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html#noframe")})("Printable")
+    if gOptions.uploadMirror == "preview":
+        printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/DeficientTags_print.html#noframe")})("Deficient")
     page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
@@ -617,6 +619,14 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=True))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
+    yield page
+
+    # Make a page with only deficient tags
+    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
+    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
+    page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
+    page.AppendContent("Deficient tags",section="citationTitle")
+    page.keywords = ["Tags","Deficient tags"]
     yield page
 
     # Create another version sorted by name. This will be linked to on the alphabetical page.
