@@ -79,10 +79,6 @@ Exclude annotation('Sutta', '???: Unwholesome can condition the wholesome (and a
 
 Exclude annotation('Reference', '_Left, Right & Center_ Podcast.') to excerpt('UD2017-3_S00_F07', 'Comment', "One thing I've gotten from Trump is the equanimity to listen to his...") - exclude flag Yes.
 
-Exclude annotation('Asked by', '') to excerpt('UD2017-4_S02_F02', 'Question', 'How do we deal with the complications that go into the loss of love...') - kind 'Asked by' exclude flag Yes.
-
-Exclude annotation('Asked by', '') to excerpt('UD2017-4_S02_F03', 'Question', 'I heard the word _samatonsin_ all my life, but never knew it means ...') - kind 'Asked by' exclude flag Yes.
-
 Exclude excerpt('WR2018-2_S08_F18', 'Story', "Living in the cramped women's cottage in the early days of Chithurst.") 
 due to excerpt teachers ['Jeed']
 
