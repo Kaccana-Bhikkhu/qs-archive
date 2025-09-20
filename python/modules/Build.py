@@ -622,12 +622,13 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     yield page
 
     # Make a page with only deficient tags
-    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
-    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
-    page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
-    page.AppendContent("Deficient tags",section="citationTitle")
-    page.keywords = ["Tags","Deficient tags"]
-    yield page
+    if gOptions.uploadMirror == "preview":
+        deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
+        page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
+        page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
+        page.AppendContent("Deficient tags",section="citationTitle")
+        page.keywords = ["Tags","Deficient tags"]
+        yield page
 
     # Create another version sorted by name. This will be linked to on the alphabetical page.
     tagsSortedByQCount = sorted(tagsSortedByQCount)

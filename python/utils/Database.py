@@ -337,7 +337,7 @@ def ExcerptNumberCode(excerpt:dict|None = None, event:str = "", session:int|None
 
     outputStr = event
     outputStr += f"_S{session:02d}"
-    outputStr += f"_E{excerptNumber:02.1f}".replace(".0","")
+    outputStr += f"_E{excerptNumber:04.1f}".replace(".0","")
     return outputStr
 
 def ParseItemCode(itemCode:str) -> tuple[str,int|None,int|None]:
