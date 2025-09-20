@@ -161,7 +161,7 @@ export function configureLinks(frame,url) {
 async function changeURL(pUrl,scrollTo = null) {
 	if (!pUrl)
 		pUrl = "homepage.html";
-	pUrl = decodeURIComponent(pUrl);
+	pUrl = decodeURI(pUrl);
 	debugLog("changeURL",pUrl);
 	await fetch("./" + pUrl)
 		.then((r) => pageText(r,pUrl))
