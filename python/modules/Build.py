@@ -327,9 +327,16 @@ def DrilldownTemplate(showStar:bool = False) -> pyratemp.Template:
 
     tagList = gDatabase["tagDisplayList"]
     a = Airium()
+    tagCountSoFar = Counter()
     with a.div(Class="listing"):
-        for index, item in enumerate(tagList):            
+        for index, item in enumerate(tagList):           
             bookmark = Utils.slugify(item["tag"] or item["name"])
+
+            tagCountSoFar[item["tag"]] += 1
+            if item["tag"] and gDatabase["tag"][item["tag"]]["listIndex"] != index:
+                bookmark += f"-{tagCountSoFar[item["tag"]]}"
+                    # If this is not the primary tag, add a unique number to its bookmark.
+
             with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
                 itemHtml = HtmlTagListItem(item,showSubtagCount=True,showStar=showStar)
                 
@@ -430,7 +437,6 @@ def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
                 reverseIndex -= 1
             
             page = Html.PageDesc(pageInfo._replace(file=Utils.PosixJoin(pageInfo.file,DrilldownPageFile(n))))
-            page.AppendContent(HtmlIcon("tags"),section="titleIcon")
             page.keywords.append(Utils.RemoveHtmlTags(tag["name"]))
             page.AppendContent(EvaluateDrilldownTemplate(expandSpecificTags=tagsToExpand))
             page.specialJoinChar["citationTitle"] = ""
