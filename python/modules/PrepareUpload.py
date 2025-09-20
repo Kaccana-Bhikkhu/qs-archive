@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import os, re
-import Utils, Alert, Link
+import Utils, Alert, Link, FileRegister
 from typing import Iterable
 
 def MoveItemsIfNeeded(items: Iterable[dict]) -> tuple[int,int,int]:
@@ -62,6 +62,28 @@ def CheckJavascriptFiles() -> None:
         if re.search(r"DEBUG\s*=\s*true",fileContents):
             Alert.caution(filePath,"contains DEBUG = true; this should be changed to false before uploading.")
 
+def CheckPreviousVersionFiles() -> None:
+    """Read documentation/prevVersion/HashCache.json and compare it to the current HashCache.
+    Print the files that have been added and removed."""
+
+    prevCache = Utils.PosixJoin(gOptions.documentationDir,"prevVersion/HashCache.json")
+    baseDir = gOptions.pagesDir
+    if not os.path.isfile(prevCache):
+        Alert.caution(prevCache,"is not present. Copy pages/assets/HashCache.json from the previous version to this path to display which files have been added and removed.")
+        return
+    
+    with FileRegister.FileRegister(Utils.PosixSplit(prevCache)[0],"HashCache.json") as oldFileRegister:
+        with FileRegister.FileRegister(baseDir,"assets/HashCache.json") as newFileRegister:
+            oldFiles = set(oldFileRegister.record)
+            newFiles = set(newFileRegister.record)
+            added = newFiles - oldFiles
+            removed = oldFiles - newFiles
+            if removed:
+                Alert.caution(len(removed),"file(s) were removed since the previous release. Consider redirecting them:",lineSpacing=0)
+                Alert.structure("\n".join(sorted(removed)),indent=0,lineSpacing=1)
+            if added:
+                Alert.info(len(added),"file(s) were added since the previous release:")
+                Alert.structure("\n".join(sorted(added)),indent=0,lineSpacing=1)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -84,4 +106,5 @@ def main() -> None:
 
     if gOptions.uploadMirror != "preview":
         CheckJavascriptFiles()
+        CheckPreviousVersionFiles()
     
