@@ -161,9 +161,10 @@ export function configureLinks(frame,url) {
 async function changeURL(pUrl,scrollTo = null) {
 	if (!pUrl)
 		pUrl = "homepage.html";
-	pUrl = decodeURI(pUrl);
+	pUrl = decodeURIComponent(pUrl);
 	debugLog("changeURL",pUrl);
-	await fetch("./" + pUrl)
+	let fileName = pUrl.match(/^.*?\.html/i)[0];
+	await fetch("./" + fileName)
 		.then((r) => pageText(r,pUrl))
 		.then((result) => {
 			let [text, resultUrl] = result;
