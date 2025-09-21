@@ -60,7 +60,7 @@ class AudioChip extends HTMLElement {
 		super.setAttribute(key,value);
 		if (key === "src") {
 			this.audio.src = value; // Change playing audio
-			if (this.dataset.duration === null)
+			if (this.dataset.duration === undefined)
 				this.audio.load();
 			this.shadowRoot.querySelector("a").href = value; // Change the file to download
 		}
@@ -69,7 +69,7 @@ class AudioChip extends HTMLElement {
 	connectedCallback() {
 		let src = this.getAttribute("src");
 		this.audio = new Audio(src);
-		let loadAudio = this.dataset.duration === null;
+		let loadAudio = this.dataset.duration === undefined;
 		if (loadAudio)
 			this.audio.load()
 		else
