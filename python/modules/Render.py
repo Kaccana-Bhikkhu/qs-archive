@@ -591,7 +591,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
     
 
-    def ReferenceForm2(bodyStr: str,item: dict) -> tuple[str,int]:
+    def ReferenceForm2(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
 
         def ReferenceForm2Substitution(matchObject: re.Match) -> str:
@@ -646,7 +646,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         """Search for references of the form: [xxxxx](title) or [xxxxx](title page N)"""
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
 
-    def ReferenceForm4(bodyStr: str,item: dict) -> tuple[str,int]:
+    def ReferenceForm4(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: title page N"""
 
         def ReferenceForm4Substitution(matchObject: re.Match) -> str:

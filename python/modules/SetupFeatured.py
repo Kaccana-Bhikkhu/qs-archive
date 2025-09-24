@@ -373,7 +373,7 @@ def RemakeFuture(paramStr: str) -> bool:
         Alert.info("Remake and reshuffle the featured excerpt calendar starting",preserveDays,"days in the future.")
         Alert.info("Removed",removed,"demoted excerpts; added",len(newFeaturedExcerpts),"new excerpts.")
 
-        Trim("")
+        Trim("quiet")
     else:
         Alert.info("No changes to database.")
     return databaseChanged
@@ -388,7 +388,7 @@ def Trim(paramStr: str) -> bool:
     removedEntries = oldLength - len(gFeaturedDatabase["excerpts"])
     if removedEntries:
         Alert.info(removedEntries,"excerpts trimmed from database.")
-    else:
+    elif paramStr != "quiet":
         Alert.info("No changes made to database.")
     return bool(removedEntries)
     

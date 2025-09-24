@@ -70643,7 +70643,7 @@
       "excerptNumber": 3,
       "fileNumber": 3,
       "kind": "Recollection",
-      "flags": "C",
+      "flags": "",
       "text": "Ajahn Pasanno consults the group rather than dictating decisions.",
       "teachers": [
         "AJoti"
@@ -71706,7 +71706,7 @@
       "excerptNumber": 3,
       "fileNumber": 3,
       "kind": "Comment",
-      "flags": "sC",
+      "flags": "s",
       "text": "about self in creative endeavors.",
       "teachers": [
         "AJoti",
@@ -167725,6 +167725,16 @@
     "tags/not-made-of-that.html": {
       "oldPage": "tags/not-made-of-that.html",
       "newPage": "tags/non-identification.html",
+      "type": "Hard"
+    },
+    "tags/ajahn-koon.html": {
+      "oldPage": "tags/ajahn-koon.html",
+      "newPage": "tags/ajahn-koon-na-pho.html",
+      "type": "Hard"
+    },
+    "teachers/ajahn-koon.html": {
+      "oldPage": "teachers/ajahn-koon.html",
+      "newPage": "teachers/ajahn-koon-na-pho.html",
       "type": "Hard"
     }
   },
