@@ -1,5 +1,5 @@
 Modified:,2025,,,,,,,,,,,,,,
-Count,219,925,58,447,184,45,75,,46,95,16,963,409,902,902
+Count,220,929,58,447,187,45,75,,46,95,16,966,409,905,905
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -525,9 +525,10 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Liem Ṭhitadhammo,,,Ajahn Liem,,,,,,,               Ajahn Liem Ṭhitadhammo,,Ajahn Liem,Ajahn Liem
 6,,Ajahn Boon Choo Ṭhitaguṇo,,,Ajahn Boon Choo,,,,,,,               Ajahn Boon Choo Ṭhitaguṇo,,Ajahn Boon Choo,Ajahn Boon Choo
 6,,Ajahn Mahā Amorn Khemacitto,,,Ajahn Mahā Amorn,,,,,,,               Ajahn Mahā Amorn Khemacitto,,Ajahn Mahā Amorn,Ajahn Mahā Amorn
-,,,,,,,,,,,,,,,
+6,,Ajahn BahnKow,,,,,,,,,,               Ajahn BahnKow,,Ajahn BahnKow,Ajahn BahnKow
 6,,Ajahn Anek Yasadinno,,,Ajahn Anek,,,,,,,               Ajahn Anek Yasadinno,,Ajahn Anek,Ajahn Anek
-6,,Ajahn Koon Aggadhammo,,,Ajahn Koon,,,,,,,               Ajahn Koon Aggadhammo,,Ajahn Koon,Ajahn Koon
+6,,Ajahn Koon Aggadhammo,,,Ajahn Koon (Na Pho),,,,,,,               Ajahn Koon Aggadhammo,,Ajahn Koon (Na Pho),Ajahn Koon (Na Pho)
+6,,Ajahn Koon Tikkhavīro,,,Ajahn Koon (Chiang Rai),,,,,,,               Ajahn Koon Tikkhavīro,,Ajahn Koon (Chiang Rai),Ajahn Koon (Chiang Rai)
 6,,Ajahn Toon Cattasallo,,,Ajahn Toon,,,,,,,               Ajahn Toon Cattasallo,,Ajahn Toon,Ajahn Toon
 6,,Ajahn Gunha Sukhagāmo,,,Ajahn Gunha,,,,,,,               Ajahn Gunha Sukhagāmo,,Ajahn Gunha,Ajahn Gunha
 6,,Ajahn Bunjong,,,,,,,,,,               Ajahn Bunjong,,Ajahn Bunjong,Ajahn Bunjong
@@ -610,6 +611,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Lee Dhammadharo,,,,,,,,,,               Ajahn Lee Dhammadharo,,Ajahn Lee Dhammadharo,Ajahn Lee Dhammadharo
 6,,Ajahn Dee,,,,,,,,,,               Ajahn Dee,,Ajahn Dee,Ajahn Dee
 6,,Ajahn Phut,,,,,,,,,,               Ajahn Phut,,Ajahn Phut,Ajahn Phut
+6,,Ajahn Chai Sujīvo,,,Ajahn Chai,,,,,,,               Ajahn Chai Sujīvo,,Ajahn Chai,Ajahn Chai
 6,,Ajahn Gi Dhammuttamo,,,Ajahn Gi,,,,,,,               Ajahn Gi Dhammuttamo,,Ajahn Gi,Ajahn Gi
 6,,Ajahn Puth Thaniyo,,,Ajahn Puth,,,,,,,               Ajahn Puth Thaniyo,,Ajahn Puth,Ajahn Puth
 6,,Ajahn Jia Cundo,,,Ajahn Jia,,,,,,,               Ajahn Jia Cundo,,Ajahn Jia,Ajahn Jia
@@ -665,6 +667,12 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Tan Chao Khun Prayoon Dhammacitto,,,Chao Khun Prayoon,,,,,,,         Tan Chao Khun Prayoon Dhammacitto,,Chao Khun Prayoon,Chao Khun Prayoon
 4,,P. A. Payutto,,,,,,Somdet Phra Buddhaghosacariya,,,,         P. A. Payutto,,P. A. Payutto,P. A. Payutto
 4,,Ajahn Mahā Prasert,,,,,,,,,,         Ajahn Mahā Prasert,,Ajahn Mahā Prasert,Ajahn Mahā Prasert
+3,PS,Early teachers,,,,,,,,,,      Early teachers,,Early teachers,Early teachers
+4,,Venerable Nāgasena,,,Ven. Nāgasena,,,,,,,         Venerable Nāgasena,,Ven. Nāgasena,Ven. Nāgasena
+4,,Acariya Nāgārguna,,,,,,,,,,         Acariya Nāgārguna,,Acariya Nāgārguna,Acariya Nāgārguna
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,PS,Other Theravāda monastics,,,,,,,,,,      Other Theravāda monastics,,Other Theravāda monastics,Other Theravāda monastics
 4,,Mahasi Sayadaw,,,,,,,,,,         Mahasi Sayadaw,,Mahasi Sayadaw,Mahasi Sayadaw
 4,,Venerable Ñāṇatiloka,,,Ven. Ñāṇatiloka,,,,,,,         Venerable Ñāṇatiloka,,Ven. Ñāṇatiloka,Ven. Ñāṇatiloka
@@ -683,6 +691,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 3,PS,Mahāyāna monastics,,,,,,,,,,      Mahāyāna monastics,,Mahāyāna monastics,Mahāyāna monastics
+,,,,,,,,,,,,,,,
 4,,Dōgen,,,,,,,,,,         Dōgen,,Dōgen,Dōgen
 4,,Master Hsu Yun,,,,,,,,,,         Master Hsu Yun,,Master Hsu Yun,Master Hsu Yun
 4,,Master Hsuan Hua,,,,,,,,,,         Master Hsuan Hua,,Master Hsuan Hua,Master Hsuan Hua
@@ -696,6 +705,9 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Thubten Chodron,,,,,,,,,,         Thubten Chodron,,Thubten Chodron,Thubten Chodron
 4,,Master Xuanzang,,,,,,,,,,         Master Xuanzang,,Master Xuanzang,Master Xuanzang
 4,,Thich Nhat Hahn,,,,,,,,,,         Thich Nhat Hahn,,Thich Nhat Hahn,Thich Nhat Hahn
+4,,Tsoknyi Rinpoche,,,,,,,,,,         Tsoknyi Rinpoche,,Tsoknyi Rinpoche,Tsoknyi Rinpoche
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,P,Christian monastics,,,,,,,,,,      Christian monastics,,Christian monastics,Christian monastics
 4,,Father Boniface,,,,,,,,,,         Father Boniface,,Father Boniface,Father Boniface
 4,,Father Damien,,,,,,,,,,         Father Damien,,Father Damien,Father Damien
@@ -704,7 +716,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Mahatma Gandhi,,,,,,,,,,      Mahatma Gandhi,,Mahatma Gandhi,Mahatma Gandhi
 3,,Upasikā Kee Nanayon,,,,,,,,,,      Upasikā Kee Nanayon,,Upasikā Kee Nanayon,Upasikā Kee Nanayon
 3,,S. N. Goenka,,,,,,,,,,      S. N. Goenka,,S. N. Goenka,S. N. Goenka
-,,,,,,,,,,,,,,,
+3,,Jalāl al-Dīn Rūmī,,,,,,,,,,      Jalāl al-Dīn Rūmī,,Jalāl al-Dīn Rūmī,Jalāl al-Dīn Rūmī
 3,,Krishnamurti,,,,,,,,,,      Krishnamurti,,Krishnamurti,Krishnamurti
 3,,Gil Fronsdal,,,,,,,,,,      Gil Fronsdal,,Gil Fronsdal,Gil Fronsdal
 3,,Maurice Walsh,,,,,,,,,,      Maurice Walsh,,Maurice Walsh,Maurice Walsh
@@ -1092,26 +1104,3 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Advertizing,,,,,,,,,,         Advertizing,,Advertizing,Advertizing
 4,,Internet,,,,,,,,,,         Internet,,Internet,Internet
 4,,Social media,,,,,,,,,,         Social media,,Social media,Social media
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-1,,New unsorted tags,,,,,,,,,,New unsorted tags,,New unsorted tags,New unsorted tags
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-2,,Ven. Nāgasena,,,,,,,,,,   Ven. Nāgasena,,Ven. Nāgasena,Ven. Nāgasena
-2,,Acariya Nāgārguna,,,,,,,,,,   Acariya Nāgārguna,,Acariya Nāgārguna,Acariya Nāgārguna
-2,,Jalāl al-Dīn Rūmī,,,,,,,,,,   Jalāl al-Dīn Rūmī,,Jalāl al-Dīn Rūmī,Jalāl al-Dīn Rūmī
-2,,Tsoknyi Rinpoche,,,,,,,,,,   Tsoknyi Rinpoche,,Tsoknyi Rinpoche,Tsoknyi Rinpoche
