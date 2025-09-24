@@ -589,35 +589,41 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             else:
                 return url + "#noframe"
 
-    def ReferenceForm2Substitution(matchObject: re.Match) -> str:
-        try:
-            reference = gDatabase["reference"][matchObject[1].lower()]
-        except KeyError:
-            Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-            return matchObject[1]
-        
-        url = Link.URL(reference,directoryDepth=2)
-        if url:
-            page = ParsePageNumber(matchObject[2])
-            if page:
-                url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
+    
 
-            url = ProcessLocalReferences(url)
-            returnValue = f"[{reference['title']}]({url})"
-        else:
-            returnValue = f"{reference['title']}"
-
-        if reference['attribution']:
-            returnValue += " " + Build.LinkTeachersInText(reference['attribution'],reference['author'])
-        
-        if not url and reference["remoteUrl"]:
-            returnValue += " " + reference["remoteUrl"]
-                # If there's no link, "remoteUrl" key indicates a suffix, typically "(commercial)"
-
-        return returnValue
-
-    def ReferenceForm2(bodyStr: str) -> tuple[str,int]:
+    def ReferenceForm2(bodyStr: str,item: dict) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
+
+        def ReferenceForm2Substitution(matchObject: re.Match) -> str:
+            try:
+                reference = gDatabase["reference"][matchObject[1].lower()]
+            except KeyError:
+                Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
+                return matchObject[1]
+            
+            url = Link.URL(reference,directoryDepth=2)
+            if url:
+                page = ParsePageNumber(matchObject[2])
+                if page:
+                    url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
+
+                url = ProcessLocalReferences(url)
+                returnValue = f"[{reference['title']}]({url})"
+            else:
+                returnValue = f"{reference['title']}"
+
+            if reference['attribution']:
+                returnValue += " " + Build.LinkTeachersInText(reference['attribution'],reference['author'])
+            
+            if not url and reference["remoteUrl"]:
+                returnValue += " " + reference["remoteUrl"]
+                    # If there's no link, "remoteUrl" key indicates a suffix, typically "(commercial)"
+            
+            if item and item.get("text"): # Replace abbreviated title with full title for search purposes
+                item["text"] = re.sub(r"\[" + matchObject[1] + r"\]","[" + reference["title"] +"]",item["text"])
+
+            return returnValue
+
         return re.subn(refForm2,ReferenceForm2Substitution,bodyStr,flags = re.IGNORECASE)
     
     def ReferenceForm3Substitution(matchObject: re.Match) -> str:
@@ -640,26 +646,31 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         """Search for references of the form: [xxxxx](title) or [xxxxx](title page N)"""
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
 
-    def ReferenceForm4Substitution(matchObject: re.Match) -> str:
-        try:
-            reference = gDatabase["reference"][matchObject[1].lower()]
-        except KeyError:
-            Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-            return matchObject[1]
-        
-        url = Link.URL(reference,directoryDepth=2)
-        page = ParsePageNumber(matchObject[2])
-        if page:
-           url +=  f"#page={page + PdfPageOffset(reference)}"
-        url = ProcessLocalReferences(url)
-
-        items = [reference['title'],f", [{matchObject[2]}]({url})"]
-        if reference["attribution"]:
-            items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
-        return "".join(items)
-
-    def ReferenceForm4(bodyStr: str) -> tuple[str,int]:
+    def ReferenceForm4(bodyStr: str,item: dict) -> tuple[str,int]:
         """Search for references of the form: title page N"""
+
+        def ReferenceForm4Substitution(matchObject: re.Match) -> str:
+            try:
+                reference = gDatabase["reference"][matchObject[1].lower()]
+            except KeyError:
+                Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
+                return matchObject[1]
+            
+            url = Link.URL(reference,directoryDepth=2)
+            page = ParsePageNumber(matchObject[2])
+            if page:
+                url +=  f"#page={page + PdfPageOffset(reference)}"
+                url = ProcessLocalReferences(url)
+
+            items = [reference['title'],f", [{matchObject[2]}]({url})"]
+            if reference["attribution"]:
+                items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
+
+            if item and item.get("text"): # Replace abbreviated title with full title for search purposes
+                item["text"] = re.sub(r"\b" + matchObject[1] + r"\b",reference["title"],item["text"])
+
+            return "".join(items)
+    
         return re.subn(refForm4,ReferenceForm4Substitution,bodyStr,flags = re.IGNORECASE)
         
     refForm2, refForm3, refForm4 = ReferenceMatchRegExs(gDatabase["reference"])
