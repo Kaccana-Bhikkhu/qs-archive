@@ -36,6 +36,8 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
  - References do not link to specific pages within the pdf on mobile browsers.
 
 ## Previous releases:
+### November 2023:
+ - First public release of the Ajahn Pasanno Archive on abhayagiri.org.
 ### December 2023:
 - Completed [Winter Retreat 2015](event:WR2015): The Four Foundations of Mindfulness
 - Added five Upāsika Days: [On Pilgrimage and Tudong](event:UD2015-1), [Two Kinds of Thought](event:UD2017-2), [Practice in a Global Context](event:UD2017-3), [Love, Attachment and Friendship](event:UD2019-4), and [Developing Skill in Reflective Meditaton](event:UD2019-5)

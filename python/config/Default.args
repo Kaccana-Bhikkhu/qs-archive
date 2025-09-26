@@ -56,7 +56,7 @@
 // Increase verbosity to maximum
 -vvv
 
---args python/config/BuildAbhayagiri.args
+--args python/config/BuildPreview.args
 --linkCheckLevel 1
 --sheets Changed
 // --linkCheckLevel excerptMp3:local:3 // Use this to update excerpts with changed timestamps. Somewhat slower.
