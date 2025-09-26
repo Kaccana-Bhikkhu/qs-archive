@@ -521,7 +521,7 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
                 print()
             return f'[{withoutTranslator}]({link})'
     
-        return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
+        return re.subn(suttasNotInMarkdownLinks,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
 
     suttaMatch = r"\b" + Utils.RegexMatchAny(gDatabase["text"])+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
     """ Sutta reference pattern: uid n0[.n1[.n2]][-end]{translator}
@@ -535,6 +535,8 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
     markdownLinksMatched = ApplyToFunction(SuttasWithinMarkdownLink)
         # Use lookbehind and lookahead assertions to first match suttas links within markdown format, e.g. [Sati](MN 10)
 
+    suttasNotInMarkdownLinks = suttaMatch + r"(?![^][]*\]\()"
+        # Use lookahead assertion to ignore suttas which explicitly link elsewhere, e.g. [MN 26](https://...)
     suttasMatched = ApplyToFunction(SuttasWithinBodyText)
         # Then match all remaining sutta links
 
@@ -835,7 +837,7 @@ def LinkReferences() -> None:
     2. [title]() or [title](page N) - Titles in Reference sheet; if page N or p. N appears between the parentheses, link to this page in the pdf, but don't display in the html
     3. [xxxxx](title) or [xxxxx](title page N) - Apply hyperlink from title to arbitrary text xxxxx
     4. title page N - Link to specific page for titles in Reference sheet which shows the page number
-    5. SS N.N - Link to Sutta/vinaya SS section N.N at sutta.readingfaithfully.org
+    5. SS N.N - Link to Sutta/vinaya SS section N.N using the algorithm in TextLink sheet 
     6. [reference](SS N.N) - Markdown hyperlink pointing to sutta.
     7. [subpage](pageType:pageName) - Link to a subpage within the QS Archive. Options for pageType are:
         tag - Link to the named tag page - Link to tag subpage and enclose the entire reference in brackets if pageName is ommited
