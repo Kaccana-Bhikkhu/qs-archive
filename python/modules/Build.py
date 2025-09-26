@@ -64,14 +64,18 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     pageHtml = page.RenderWithTemplate(template)
     writer.WriteTextFile(page.info.file,pageHtml)
 
+def DirectoriesToDeleteFrom() -> set[str]:
+    """Return the list of directories which will be scanned by DeleteUnwrittenHtmlFiles."""
+    # Delete files only in directories we have built
+    dirs = gOptions.buildOnly - {"allexcerpts"}
+    if gOptions.buildOnly == gAllSections:
+        dirs.add("indexes")
+    return dirs
+
 def DeleteUnwrittenHtmlFiles(writer: FileRegister.HashWriter) -> None:
     """Remove old html files from previous runs to keep things neat and tidy."""
 
-    # Delete files only in directories we have built
-    dirs = gOptions.buildOnly & {"events","topics","tags","clusters","teachers","drilldown","search"}
-    dirs.update(("about","dispatch"))
-    if gOptions.buildOnly == gAllSections:
-        dirs.add("indexes")
+    dirs = DirectoriesToDeleteFrom()
 
     deletedFiles = 0
     for dir in dirs:
@@ -144,9 +148,9 @@ def HtmlTagLink(tag:str, fullTag: bool = False,text:str = "",link = True,showSta
     flag = f'&nbsp{FA_STAR}' if showStar and tagData and tagData.get("fTagCount",0) else ""
 
     if link:
-        splitItalics = text.split("<em>")
+        splitItalics = text.split("<i>")
         if len(splitItalics) > 1:
-            textOutsideLink = " <em>" + splitItalics[1]
+            textOutsideLink = " <i>" + splitItalics[1]
         else:
             textOutsideLink = ""
         return f'<a href = "../tags/{ref}">{splitItalics[0].strip() + flag}</a>{textOutsideLink}'
@@ -314,7 +318,7 @@ def IndentedHtmlTagList(tagList:list[dict] = [],showSubtagCount = True,showStar 
     return str(a)
 
 @lru_cache(maxsize=None)
-def DrilldownTemplate() -> pyratemp.Template:
+def DrilldownTemplate(showStar:bool = False) -> pyratemp.Template:
     """Return a pyratemp template for an indented list of tags which can be expanded using
     the javascript toggle-view class.
     Variables within the template:
@@ -323,11 +327,18 @@ def DrilldownTemplate() -> pyratemp.Template:
 
     tagList = gDatabase["tagDisplayList"]
     a = Airium()
+    tagCountSoFar = Counter()
     with a.div(Class="listing"):
-        for index, item in enumerate(tagList):            
+        for index, item in enumerate(tagList):           
             bookmark = Utils.slugify(item["tag"] or item["name"])
+
+            tagCountSoFar[item["tag"]] += 1
+            if item["tag"] and gDatabase["tag"][item["tag"]]["listIndex"] != index:
+                bookmark += f"-{tagCountSoFar[item["tag"]]}"
+                    # If this is not the primary tag, add a unique number to its bookmark.
+
             with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
-                itemHtml = HtmlTagListItem(item,showSubtagCount=True,showStar=False)
+                itemHtml = HtmlTagListItem(item,showSubtagCount=True,showStar=showStar)
                 
                 drilldownLink = ""
                 divTag = "" # These are start and end tags for the toggle-view divisions
@@ -362,12 +373,12 @@ def DrilldownTemplate() -> pyratemp.Template:
     
     return pyratemp.Template(str(a))
 
-def EvaluateDrilldownTemplate(expandSpecificTags:set[int] = frozenset()) -> str:
+def EvaluateDrilldownTemplate(expandSpecificTags:set[int] = frozenset(),showStar:bool = False) -> str:
     """Evaluate the drilldown template to expand the given set of tags.
     expandSpecificTags is the set of tag indexes to expand.
     The default is to expand all tags."""
 
-    template = DrilldownTemplate()
+    template = DrilldownTemplate(showStar=showStar)
     evaluated = template(xTagIndexes = expandSpecificTags)
     return str(evaluated)
 
@@ -426,11 +437,10 @@ def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
                 reverseIndex -= 1
             
             page = Html.PageDesc(pageInfo._replace(file=Utils.PosixJoin(pageInfo.file,DrilldownPageFile(n))))
-            page.AppendContent(HtmlIcon("tags"),section="titleIcon")
-            page.keywords.append(tag["name"])
+            page.keywords.append(Utils.RemoveHtmlTags(tag["name"]))
             page.AppendContent(EvaluateDrilldownTemplate(expandSpecificTags=tagsToExpand))
             page.specialJoinChar["citationTitle"] = ""
-            page.AppendContent(f': {tag["name"]}',section="citationTitle")
+            page.AppendContent(f': {Utils.RemoveHtmlTags(tag["name"])}',section="citationTitle")
             yield page
 
 class StrEnum(str,Enum):
@@ -547,6 +557,39 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.keywords = ["Tags","Numerical tags"]
     yield page 
 
+def PrintCommonTags(tags: list[dict],countFirst:bool) -> str:
+    """Return a html string listing these tags and details of how many times they are applied as fTags."""
+    a = Airium()
+    with a.p():
+        a("""<b>Bold tags</b>: solo subtopics <i>Italic tags</i>: clustered subtopics <br> 
+Key: (fTags/subtopicFTags:min-max). '/subtopicFTags' is omitted if all featured excerpts are included in all subtopics.""")
+    with a.div(Class="listing"):
+        for tag in tags:
+            with a.p():
+                code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
+                tagLink = HtmlTagLink(tag)
+                fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
+                fTagCountStr = str(fTagCount)
+                if tag in Database.KeyTopicTags():
+                    subtopicFTagCount = gDatabase["tag"][tag].get("subtopicFTagCount",0)
+                    if subtopicFTagCount < fTagCount:
+                        fTagCountStr += f"/{subtopicFTagCount}"
+                
+                minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])
+                
+                tagStyle = Html.Wrapper()
+                if tag in Database.SoloSubtopics():
+                    tagStyle = Html.Tag("b")
+                elif tag in Database.KeyTopicTags():
+                    tagStyle = Html.Tag("i")
+                
+                if countFirst:
+                    a(f"{ExcerptCount(tag)} {code} {tagStyle(tagLink)} ({fTagCountStr}:{minFTag}-{maxFTag})")
+                else:
+                    a(f"{code} {tagStyle(tagLink)} {ExcerptCount(tag)} ({fTagCountStr}:{minFTag}-{maxFTag})")
+    
+    return str(a)
+
 def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted by number of excerpts."""
     
@@ -563,7 +606,9 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     
     page = Html.PageDesc(info)
 
-    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html")})("Printable")
+    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/SortedTags_print.html#noframe")})("Printable")
+    if gOptions.uploadMirror == "preview":
+        printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/DeficientTags_print.html#noframe")})("Deficient")
     page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
@@ -575,30 +620,28 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     # Now yield a printable version for tag counting purposes
     tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
                                 key = lambda tag: (-ExcerptCount(tag),tag))
-    a = Airium()
-    with a.p():
-        a("The number of featured excerpts for each tag appears in parentheses.")
-    with a.div(Class="listing"):
-        for tag in tagsSortedByQCount:
-            with a.p():
-                code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
-                tagLink = HtmlTagLink(tag)
-                fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
-                minFTag,maxFTag,diffFTag = ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])
-                
-                tagStyle = Html.Wrapper()
-                if tag in Database.SoloSubtopics():
-                    tagStyle = Html.Tag("b")
-                elif tag in Database.KeyTopicTags():
-                    # If this tag is part of a subtopic and has no fTags which do not appear in the subtopic
-                    tagStyle = Html.Tag("i")
-
-                a(f"{ExcerptCount(tag)} {code} {tagStyle(tagLink)} ({fTagCount}:{minFTag}-{maxFTag})")
 
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
-    page.AppendContent(str(a))
+    page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=True))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
+    yield page
+
+    # Make a page with only deficient tags
+    if gOptions.uploadMirror == "preview":
+        deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
+        page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
+        page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
+        page.AppendContent("Deficient tags",section="citationTitle")
+        page.keywords = ["Tags","Deficient tags"]
+        yield page
+
+    # Create another version sorted by name. This will be linked to on the alphabetical page.
+    tagsSortedByQCount = sorted(tagsSortedByQCount)
+    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"AlphabeticalTags_print.html")))
+    page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=False))
+    page.AppendContent("Alphabetized common tags",section="citationTitle")
+    page.keywords = ["Tags","Alphabetized common tags"]
     yield page
 
 def ProperNounTag(tag:dict) -> bool:
@@ -614,9 +657,9 @@ def Alphabetize(sortBy: str,html: str) -> _Alphabetize:
     return _Alphabetize(Utils.RemoveDiacritics(sortBy).lower(),html)
 
 def LanguageTag(tagString: str) -> str:
-    "Return lang (lowercase, no diacritics) when tagString matches <em>LANG</em>. Otherwise return an empty string."
+    "Return lang (lowercase, no diacritics) when tagString matches <i>LANG</i>. Otherwise return an empty string."
     tagString = Utils.RemoveDiacritics(tagString).lower()
-    match = re.search(r"<em>([^<]*)</em>$",tagString)
+    match = re.search(r"<i>([^<]*)</i>$",tagString)
     if match:
         return match[1]
     else:
@@ -624,7 +667,7 @@ def LanguageTag(tagString: str) -> str:
 
 def RemoveLanguageTag(tagString: str) -> str:
     "Return tagString with any language tag removed."
-    return re.sub(r"<em>([^<]*)</em>","",tagString).strip()
+    return re.sub(r"<i>([^<]*)</i>","",tagString).strip()
 
 def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted alphabetically."""
@@ -672,7 +715,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
         properNoun = ProperNounTag(tag)
         englishAlso = ParseCSV.TagFlag.ENGLISH_ALSO in tag["flags"]
         hasPali = tag["pali"] and not LanguageTag(tag["fullPali"])
-            # Non-Pāli language full tags end in <em>LANGUAGE</em>
+            # Non-Pāli language full tags end in <i>LANGUAGE</i>
 
         if nonEnglish: # If this tag has no English entry, add it to the appropriate language list and go on to the next tag
             entry = EnglishEntry(tag,tag["fullPali"],fullTag=False)
@@ -814,6 +857,8 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
         [pageInfo._replace(title = "People/places/traditions"+LenStr(entries["proper"]),file=Utils.PosixJoin(pageDir,"ProperTags.html")),
             str(Html.ListWithHeadings(entries["proper"],TagItem,**args))]
     ]
+    if gOptions.uploadMirror == "preview":
+        subMenu.append([Html.PageInfo("Printable",Utils.PosixJoin(pageDir,"AlphabeticalTags_print.html#noframe"))])
 
     basePage = Html.PageDesc()
     basePage.keywords = ["Tags","Alphabetical"]
@@ -839,7 +884,7 @@ def PlayerTitle(item:dict) -> str:
         titleItems.append(f"E{excerptNumber}")
     
     lengthSoFar = len(" ".join(titleItems))
-    fullEventTitle = gDatabase['event'][item['event']]['title']
+    fullEventTitle = Utils.RemoveHtmlTags(gDatabase['event'][item['event']]['title'])
     if titleItems:
         fullEventTitle += ","
     titleItems.insert(0,Utils.EllideText(fullEventTitle,gOptions.maxPlayerTitleLength - lengthSoFar - 1))
@@ -1016,7 +1061,7 @@ class Formatter:
             else:
                 a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
         if self.showFTagOrder and set(excerpt["fTags"]) & set(self.showFTagOrder):
-            a(" {" + str(Database.FTagOrder(excerpt,self.showFTagOrder)) + "}")
+            a(" {" + str(Database.FTagAndOrder(excerpt,self.showFTagOrder)[3]) + "}")
 
         a(" ")
         if self.excerptPreferStartTime and excerpt['excerptNumber'] and (excerpt["clips"][0].file == "$" or excerpt.get("startTimeInSession",None)):
@@ -1044,6 +1089,10 @@ class Formatter:
             
             bodyWithAttributions = bodyWithAttributions.replace("{"+ attrKey + "}",attribution)
         
+        if ParseCSV.ExcerptFlag.END_COLON in excerpt["flags"]:
+            bodyWithAttributions = re.sub(r"[,:.;]?\s*$",": ",bodyWithAttributions,count=1)
+                # count=1 is required because the regex otherwise matches the text it has just substituted
+
         a(bodyWithAttributions + ' ')
         
         tagStrings = []
@@ -1077,7 +1126,11 @@ class Formatter:
         
         a = Airium(source_minify=True)
 
-        a(annotation["body"] + " ")
+        body = annotation["body"]
+        if ParseCSV.ExcerptFlag.END_COLON in annotation["flags"]:
+            body = re.sub(r"[,:.;]?\s*$",":",body,count=1)
+                # count=1 is required because the regex otherwise matches the text it has just substituted
+        a(body + " ")
         
         tagStrings = []
         for n,tag in enumerate(annotation.get("tags",())):
@@ -1592,7 +1645,7 @@ def LinkToTeacherPage(page: Html.PageDesc) -> Html.PageDesc:
     if teacher:
         link = TeacherLink(teacher)
         if link:
-            page.AppendContent(f'<a href="{link}">Teachings by {gDatabase["teacher"][teacher]["attributionName"]}</a>',"smallTitle")
+            page.AppendContent(f'<a href="{link}">→ Teachings by {gDatabase["teacher"][teacher]["attributionName"]}</a>',"smallTitle")
     
     return page
 
@@ -1787,15 +1840,16 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a(header)
         a.hr()
         
+        tagWithoutHtml = Utils.RemoveHtmlTags(tagInfo["fullTag"])
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
         pageInfo = Html.PageInfo(tag,Utils.PosixJoin(tagPageDir,tagInfo["htmlFile"]),tagPlusPali)
         basePage = Html.PageDesc(pageInfo)
         basePage.AppendContent(HtmlIcon("tag"),section="titleIcon")
         basePage.AppendContent(str(a))
-        basePage.keywords = ["Tag",tagInfo["fullTag"]]
+        basePage.keywords = ["Tag",tagWithoutHtml]
         if tagInfo["fullPali"]:
-            basePage.keywords.append(tagInfo["fullPali"])
-        basePage.AppendContent(f"Tag: {tagInfo['fullTag']}",section="citationTitle")
+            basePage.keywords.append(Utils.RemoveHtmlTags(tagInfo["fullPali"]))
+        basePage.AppendContent(f"Tag: {tagWithoutHtml}",section="citationTitle")
 
         yield from TagSubsearchPages(tag,relevantExcerpts,basePage)
 
@@ -1804,7 +1858,7 @@ def LinkToTagPage(page: Html.PageDesc) -> Html.PageDesc:
 
     tag = Database.TagLookup(page.info.title)
     if tag:
-        page.AppendContent(HtmlTagLink(tag,text = f'Tag [{tag}]'),"smallTitle")
+        page.AppendContent(HtmlTagLink(tag,text = f'→ Tag [{tag}]'),"smallTitle")
 
     return page
 
@@ -2101,10 +2155,11 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         if eventInfo["subtitle"]:
             titleInBody += " – " + eventInfo["subtitle"]
 
-        page = Html.PageDesc(Html.PageInfo(eventInfo["title"],Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
+        titleWithoutTags = Utils.RemoveHtmlTags(eventInfo["title"])
+        page = Html.PageDesc(Html.PageInfo(titleWithoutTags,Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
         page.AppendContent(str(a))
-        page.keywords = ["Event",eventInfo["title"]]
-        page.AppendContent(f"Event: {eventInfo['title']}",section="citationTitle")
+        page.keywords = ["Event",titleWithoutTags]
+        page.AppendContent(f"Event: {titleWithoutTags}",section="citationTitle")
         yield page
         
 def ExtractHtmlBody(fileName: str) -> str:
@@ -2313,9 +2368,9 @@ def AddTopicButtons(page: Html.PageDesc) -> None:
                                           "onclick":Utils.JavascriptLink(page.info.AddQuery("hideAll").file + "#keep_scroll"),
                                           "class":"noscript-hide"})("Contract all"))
     
-    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html")})("Printable")
+    printableLinks = Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicDetail_print.html#noframe")})("Printable")
     if gOptions.uploadMirror == "preview":
-        printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html")})("Printable with memos")
+        printableLinks += "&emsp;" + Html.Tag("a",{"href":Utils.PosixJoin("../indexes/KeyTopicMemos_print.html#noframe")})("Printable with memos")
 
     page.AppendContent(Html.Tag("span",{"class":"floating-menu"})(printableLinks))
     page.AppendContent(2*'<br>')
@@ -2512,7 +2567,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
 
     def Pages() -> Generator[Html.PageDesc]:
         printPage = Html.PageDesc(printableItem)
-        tagsExpanded = EvaluateDrilldownTemplate(expandSpecificTags = TagsWithPrimarySubtags())
+        tagsExpanded = EvaluateDrilldownTemplate(expandSpecificTags = TagsWithPrimarySubtags(),showStar=True)
         noToggle = re.sub(r'<i class="[^"]*?toggle[^"]*"[^>]*>*.?</i>',"",tagsExpanded)
         printPage.AppendContent(noToggle)
         yield printPage
@@ -2525,7 +2580,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         basePage.AppendContent(Html.Tag("button",{"type":"button",
                                                   "onclick":Utils.JavascriptLink(contractAllItem.file + "#keep_scroll"),
                                                   })("Contract all"))
-        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file)})("Printable")))
+        basePage.AppendContent(Html.Tag("span",{"class":"floating-menu"})(Html.Tag("a",{"href":Utils.PosixJoin("../",printableItem.file + "#noframe")})("Printable")))
         basePage.AppendContent(2*'<br>')
         basePage.AppendContent('</div>')
 
@@ -2662,7 +2717,7 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
 
     xml = Airium()
     with xml.urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"):
-        for pagePath in siteFiles.record:
+        for pagePath in sorted(siteFiles.record):
             WriteSitemapURL(pagePath,xml)
     
     return str(xml)
@@ -2743,7 +2798,12 @@ def WriteIndexPages(writer: FileRegister.HashWriter):
 def WriteRedirectPages(writer: FileRegister.HashWriter):
     hardRedirect = pyratemp.Template(Utils.ReadFile("pages/templates/Redirect.html"))
 
+    dirsToWrite = DirectoriesToDeleteFrom()
     for redirect in gDatabase["redirect"].values():
+        path,fileName = Utils.PosixSplit(redirect["oldPage"])
+        if path not in dirsToWrite:
+            continue
+
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
             cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])
@@ -2784,7 +2844,7 @@ def AddArguments(parser):
     parser.add_argument('--urlList',type=str,default='',help='Write a list of URLs to this file.')
     parser.add_argument('--keepOldHtmlFiles',**Utils.STORE_TRUE,help="Keep old html files from previous runs; otherwise delete them.")
     
-gAllSections = {"topics","tags","clusters","drilldown","events","teachers","search","allexcerpts"}
+gAllSections = {"about","dispatch","topics","tags","clusters","drilldown","events","teachers","search","allexcerpts"}
 def ParseArguments():
     if gOptions.buildOnly == "":
         if gOptions.buildOnlyIndexes:
@@ -2855,15 +2915,19 @@ def main():
     sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
     sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
-    technicalMenu = DocumentationMenu("technical",menuTitle="Technical",
-                                      menuStyle=LONG_SUBMENU_STYLE | dict(menuSection="customSubMenu2"))
-    sitemapMenu.append(DocumentationMenu("about", menuTitle="About",
+    if "about" in gOptions.buildOnly:
+        technicalMenu = DocumentationMenu("technical",menuTitle="Technical",
+                                          menuStyle=LONG_SUBMENU_STYLE | dict(menuSection="customSubMenu2"))
+        sitemapMenu.append(DocumentationMenu("about", menuTitle="About",
                                          menuStyle=LONG_SUBMENU_STYLE,extraItems=[technicalMenu]))
-    sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
+        sitemapMenu.append(DocumentationMenu("misc",makeMenu=False))
+    else:
+        sitemapMenu.append([Html.PageInfo("About","about/Introduction.html")])
 
     sitemapMenu.append(YieldAllIf(AllExcerpts(indexDir),"allexcerpts" in gOptions.buildOnly))
     
-    sitemapMenu.append(DispatchPages())
+    if "dispatch" in gOptions.buildOnly:
+        sitemapMenu.append(DispatchPages())
 
     with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):

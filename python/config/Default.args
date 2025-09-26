@@ -18,11 +18,11 @@
 --spreadsheetDatabase pages/assets/SpreadsheetDatabase.json
 
 // DownloadCSV options:
---spreadsheet "https://docs.google.com/spreadsheets/d/1tVb4GzxaoJlnnk59Q4mNal3Y5Fg_KSdaAco-N-p1Gy0/"
+--spreadsheet "https://docs.google.com/spreadsheets/d/1lKDtAgJtfQV6k7HKh_CJnjEacJsxy1biSsMZuvVm034/"
 --summarySheetID 2007732801
 
 // ParseCSV options:
-// --pendingMeansYes
+// --includePending
 // --includeTestEvent
 
 // SplitMp3 options:
@@ -41,8 +41,8 @@
 --renderedDatabase pages/assets/RenderedDatabase.json
 
 // Document options:
---info "releaseName:July 2025 release"
---info "releaseDate:July 10, 2025"
+--info "releaseName:September 2025 release"
+--info "releaseDate:September 26, 2025"
 --info "releaseYear:2025"
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"

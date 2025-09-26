@@ -296,9 +296,8 @@ def FeaturedExcerptSummary(subtopicOrTag: str,header: bool = False,printFTag: bo
     featuredExcerpts = sorted(featuredExcerpts,key=lambda x: Database.FTagOrder(x,tags))
     for x in featuredExcerpts:
         fTagAndOrder = Database.FTagAndOrder(x,tags)
-        flag = "" if fTagAndOrder[2] == ParseCSV.FTagOrderFlag.EVERYWHERE else fTagAndOrder[2]
         items = [
-            str(fTagAndOrder[1]) + flag,
+            fTagAndOrder[3],
             Database.ItemCode(x),
             x["duration"],
             x["kind"],

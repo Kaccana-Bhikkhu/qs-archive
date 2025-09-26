@@ -113,3 +113,5 @@
 - 6.2 (August 2025 release) Color icons represent each key topic. Can be installed as a progressive web app (but has no offline capability).
 
 - 6.2.1 (August 2025 release 2) Added events at Amaravati: Questions and Answers about Ajahn Chah and What Luang Por Chah Taught. Regular expression searches using `` `regexp` ``. `#homepage` finds excerpts featured on homepage. RemakeFuture and Trim submodules in SetupFeatured.py. Fix pydub compatibility with Python 3.13. Fix bugs in homepage timer.
+
+6.3 (September 2025 release) First 20 sessions of Winter Retreat 2025. Winter Retreat 2016 finished except for 4 sessions. Chithurst 2025 Q&A session. Sutta links go to [SuttaCentral](https://suttacentral.net); links to sutta subsections. Alt-clicking a sutta link goes to [readingfaithfully.org](https://sutta.readingfaithfully.org). --pendingMeansYes option changed to --includePending. PrepareUpload cautions about removed pages.

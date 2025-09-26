@@ -15,21 +15,19 @@ function setVisible(element,newVisible,changeURL) {
     if (newVisible === isVisible)
         return;
 
-    if (element.classList.contains("hide-self")) { // Hide ourselves when showing the body
+    if (!isVisible) {
         body.style.display = "";
         for (let n = 1; n <= 4; n++) {
             body.classList.remove(`hide-thin-screen-${n}`); // Remove width-conditional hiding classes
         }
         body.classList.remove("javascript-hide");
-        element.style.display = "none";
-    } else {
-        if (body.style.display === "none") {
-            body.style.display = "";
+        if (element.classList.contains("hide-self")) // Hide ourselves when showing the body
+            element.style.display = "none";
+        else
             element.className = "fa fa-minus-square toggle-view";
-        } else {
-            body.style.display = "none";
-            element.className = "fa fa-plus-square toggle-view";
-        }
+    } else {
+        body.style.display = "none";
+        element.className = "fa fa-plus-square toggle-view";
     }
 
     if (changeURL) {

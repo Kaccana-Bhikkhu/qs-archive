@@ -277,7 +277,7 @@ PrintModuleSeparator("")
 
 if clOptions.ignoreTeacherConsent:
     Alert.warning("Teacher consent has been ignored. This should only be used for testing and debugging purposes.")
-if clOptions.pendingMeansYes:
+if clOptions.includePending:
     Alert.warning("Pending teacher consent has been treated as yes. This should only be used for testing and debugging purposes.")
 if clOptions.ignoreExcludes:
     Alert.warning("Session/excerpt exclusion flags have been ignored. This should only be used for testing and debugging purposes.")

@@ -121,8 +121,8 @@ export function configureLinks(frame,url) {
 			// Don't modify href links of toggle-view togglers
 		let href = el.getAttribute("href");
 		if (!href || href.match(absoluteURLRegex)) return;
-		if (href.endsWith("#noscript")) { // Code to escape javascript
-			el.href = el.href.replace("#noscript","");
+		if (href.endsWith("#noframe")) { // Code to escape javascript frame
+			el.href = el.href.replace("#noframe","");
 			return;
 		}
 
@@ -163,7 +163,8 @@ async function changeURL(pUrl,scrollTo = null) {
 		pUrl = "homepage.html";
 	pUrl = decodeURIComponent(pUrl);
 	debugLog("changeURL",pUrl);
-	await fetch("./" + pUrl)
+	let fileName = pUrl.match(/^.*?\.html/i)[0];
+	await fetch("./" + fileName)
 		.then((r) => pageText(r,pUrl))
 		.then((result) => {
 			let [text, resultUrl] = result;

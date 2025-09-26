@@ -45,6 +45,7 @@ class ExcerptFlag(StrEnum):
     MANUAL_FRAGMENTS = "m"  # Don't automatically extract fragments from this excerpt.
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
+    END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
@@ -92,12 +93,6 @@ def CamelCaseKeys(d: dict,reallyChange = True):
             CamelCase(key) # Just log what the change would be in the camel case dictionary
 
 
-def SniffCSVDialect(inFile,scanLength = 4096):
-	inFile.seek(0)
-	dialect = csv.Sniffer().sniff(inFile.read(scanLength))
-	inFile.seek(0)
-	return dialect
-
 def BlankDict(inDict):
     "Returns True if all values are either an empty string or None"
     
@@ -116,18 +111,16 @@ def FirstValidValue(inDict,keyList,inDefault = None):
     return inDefault
 
 def BooleanValue(text: str) -> bool:
-    """Returns true if the first three characters of text are 'Yes'.
+    """Returns True if the first three characters of text are 'Yes'.
     This is the standard way of encoding boolean values in the csv files from AP QS Archive main."""
     
-    return text[:3] == 'Yes'
+    return text.startswith('Yes')
 
-def AppendUnique(ioList,inToAppend):
-    "Append values to a list unless they are already in it"
-    for item in inToAppend:
-        if not item in ioList:
-            ioList.append(item)
+def IncludePending(s:str):
+    return s.startswith("Yes") or s.startswith("Pending")
 
-def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None,convertBools = BooleanValue,camelCase = True):
+
+def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None,convertBools = True,camelCase = True):
     for _ in range(skipLines):
         file.readline()
     
@@ -149,8 +142,10 @@ def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None
             
             if convertBools:
                 for key in row:
-                    if key[-1:] == '?':
-                        row[key] = convertBools(row[key])
+                    if key.endswith('?'):
+                        includePending = gOptions.includePending ^ key.lower().startswith("exclude")
+                            # XOR operation: if key starts with "exclude", invert the meaning of includePending
+                        row[key] = (IncludePending if includePending else BooleanValue)(row[key])
             
             if camelCase:
                 CamelCaseKeys(row)
@@ -396,11 +391,11 @@ def LoadTagsFile(database,tagFileName):
             if TagFlag.PRIMARY in rawTag["flags"]:
                 tagDesc["copies"] += tags[tagName]["copies"]
                 tagDesc["primaries"] += tags[tagName]["primaries"]
-                AppendUnique(tagDesc["supertags"],tags[tagName]["supertags"])
+                Utils.ExtendUnique(tagDesc["supertags"],tags[tagName]["supertags"])
             else:
                 tags[tagName]["copies"] += tagDesc["copies"]
                 tags[tagName]["primaries"] += tagDesc["primaries"]
-                AppendUnique(tags[tagName]["supertags"],tagDesc["supertags"])
+                Utils.ExtendUnique(tags[tagName]["supertags"],tagDesc["supertags"])
                 continue
         
         if TagFlag.VIRTUAL in rawTag["flags"] and (rawTagIndex + 1 >= len(rawTagList) or rawTagList[rawTagIndex + 1]["level"] <= rawTag["level"]):
@@ -901,7 +896,7 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
 
         # If the annotation is a reading and the teacher is not specified, make the author the teacher.
         if annotation["kind"] == "Reading" and not annotation["teachers"]:
-            AppendUnique(teacherList,ReferenceAuthors(annotation["text"]))
+            Utils.ExtendUnique(teacherList,ReferenceAuthors(annotation["text"]))
 
         annotation["teachers"] = teacherList
     else:
@@ -935,7 +930,7 @@ def ReferenceAuthors(textToScan: str) -> list[str]:
     for regex in gAuthorRegexList:
         matches = re.findall(regex,textToScan,flags = re.IGNORECASE)
         for match in matches:
-            AppendUnique(authors,gDatabase["reference"][match[0].lower()]["author"])
+            Utils.ExtendUnique(authors,gDatabase["reference"][match[0].lower()]["author"])
 
     return authors
 
@@ -1387,7 +1382,7 @@ def LoadEventFile(database,eventName,directory):
         
         # If the excerpt is a reading and the teacher is not specified, make the author the teacher.
         if x["kind"] == "Reading" and not x["teachers"]:
-            AppendUnique(x["teachers"],ReferenceAuthors(x["text"]))
+            Utils.ExtendUnique(x["teachers"],ReferenceAuthors(x["text"]))
         
         if x["sessionNumber"] != lastSession:
             if lastSession > x["sessionNumber"]:
@@ -1569,9 +1564,12 @@ def CountAndVerify(database):
                 if gOptions.draftFTags == "omit" and fTagOrder > 1000:
                     del x["fTagOrder"][index]
                     del x["fTags"][index]
+                    x["fTagOrderFlag"] = x["fTagOrderFlag"][:index] + x["fTagOrderFlag"][index+1:]
                     draftFTagCount += 1
                 else:
                     tagDB[fTag]["fTagCount"] = tagDB[fTag].get("fTagCount",0) + 1
+                    if x["fTagOrderFlags"][index].upper() == FTagOrderFlag.EVERYWHERE and tagDB[fTag].get("partOfSubtopics",()):
+                        tagDB[fTag]["subtopicFTagCount"] = tagDB[fTag].get("subtopicFTagCount",0) + 1
                     if fTagOrder > 1000:
                         draftFTagCount += 1
                     else:
@@ -1618,7 +1616,7 @@ def AddArguments(parser):
     "Add command-line arguments used by this module"
     
     parser.add_argument('--ignoreTeacherConsent',**Utils.STORE_TRUE,help="Ignore teacher consent flags - debugging only")
-    parser.add_argument('--pendingMeansYes',**Utils.STORE_TRUE,help="Treat teacher consent pending as yes - debugging only")
+    parser.add_argument('--includePending',**Utils.STORE_TRUE,help="Treat teacher consent pending as yes - debugging only")
     parser.add_argument('--ignoreExcludes',**Utils.STORE_TRUE,help="Ignore exclude session and excerpt flags - debugging only")
     parser.add_argument('--parseOnlySpecifiedEvents',**Utils.STORE_TRUE,help="Load only events specified by --events into the database")
     parser.add_argument('--includeTestEvent',**Utils.STORE_TRUE,help="Include event Test1999 in the database.")
@@ -1668,15 +1666,8 @@ def main():
         
         if re.match(".*[0-9]{4}",baseName): # Event files contain a four-digit year and are loaded after all other files
             continue
-        
-        def PendingBoolean(s:str):
-            return s.startswith("Yes") or s.startswith("Pending")
 
-        extraArgs = {}
-        if baseName == "Teacher" and gOptions.pendingMeansYes:
-            extraArgs["convertBools"] = PendingBoolean
-
-        gDatabase[CamelCase(baseName)] = ListToDict(CSVFileToDictList(fullPath,**extraArgs))
+        gDatabase[CamelCase(baseName)] = ListToDict(CSVFileToDictList(fullPath))
     
     LoadTagsFile(gDatabase,os.path.join(gOptions.csvDir,"Tag.csv"))
     PrepareReferences(gDatabase["reference"])

@@ -6,7 +6,7 @@
 --sheets All
 
 // ParseCSV options:
---pendingMeansYes
+--includePending
 --draftFTags number
 
 // Link options:

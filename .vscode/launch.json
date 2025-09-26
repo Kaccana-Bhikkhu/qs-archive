@@ -77,6 +77,17 @@
             "justMyCode": true
         },
         {
+            "name": "BasicBuild",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/QSArchive.py",
+            "args": [
+                "DownloadCSV,Build,SetupSearch,SetupFeatured,SetupAutoComplete"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "BuildAllAbhayagiri",
             "type": "debugpy",
             "request": "launch",
@@ -134,7 +145,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "DownloadCSV,SplitMp3,Build",
+                "DownloadCSV,SplitMp3,Build,SetupSearch",
                 "--buildOnly",
                 "events",
                 "--linkCheckLevel",
@@ -149,9 +160,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "SetupFeatured",
-                "--featured",
-                "check,update"
+                "Render",
+                "--buildOnly",
+                "events"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

@@ -2,22 +2,22 @@
 
 
 
-## New in the August 2025 release:
- - Added events at Amaravati:
-     - Questions and Answers about Ajahn Chah
-     - What Luang Por Chah Taught.
- - Color icons represent each key topic.
- - Can be installed as a progressive web app (but has no offline capability)
- - [Advanced search features](about:search-instructions#advanced-searching): negation and regular expressions
+## New in the September 2025 release:
+ - New content:
+     - [2016 Winter Retreat](event:WR2016): All except four sessions are included
+     - [2025 Winter Retreat](event:WR2025): Includes the first 20 sessions
+     - [2025 Q&A at Chithurst Monsastery](event:Chithurst2025)
+ - Sutta links go directly to [SuttaCentral](https://suttacentral.net).
+ - Links to sutta subsections, e.g. MN 26.13.
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 160 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 485 transcribed pages, of which 410 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 170 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 528 transcribed pages, of which 473 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
 The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](about:want-to-help) for details.
 
 ### Winter Retreats
-Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014) and [2015](event:WR2015) Winter Retreats are included in the Archive. The 2013 and 2016 Winter Retreats have been transcribed on paper; some sessions from the [2016 retreat](event:WR2016) are online. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; recordings are being [posted online](https://amaravati.org/dhamma-audio-library/?wpv-category=audio&wpv-fpmtp_series=the-island-2025&wpv_aux_current_post_id=29850&wpv_aux_parent_post_id=29850&wpv_view_count=29392) and will later be included in the Archive.
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014) and [2015](event:WR2015) Winter Retreats are included in the Archive. The [2016 Winter Retreat](event:WR2016) is nearly complete. The 2013 Winter Retreat has been transcribed on paper. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 20 sessions](event:WR2025) are now included in the Archive.
 
 ### Spirit Rock Daylongs
 Six daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
@@ -88,3 +88,10 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
  - Auto complete menu drops down from the floating search bar.
  - Illustrate many pages with icons.
  - More material added to the [2016 Winter Retreat](event:WR2016).
+### August 2025 release:
+ - Added events at Amaravati:
+     - Questions and Answers about Ajahn Chah
+     - What Luang Por Chah Taught.
+ - Color icons represent each key topic.
+ - Can be installed as a progressive web app (but has no offline capability).
+ - [Advanced search features](about:search-instructions#advanced-searching): negation and regular expressions.

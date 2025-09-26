@@ -7,25 +7,31 @@ import json, re
 import markdown
 import Database
 from markdown_newtab_remote import NewTabRemoteExtension
-from typing import Tuple, Type, Callable
+from typing import Tuple, Type, Callable, TypedDict, Iterable, NamedTuple
+from inspect import signature
 import pyratemp
 from functools import lru_cache
-import ParseCSV, Build, Utils, Alert, Link
+import ParseCSV, Build, Utils, Alert, Link, Filter
+import Suttaplex
 import Html2 as Html
 import urllib.parse
 
 def FStringToPyratemp(fString: str) -> str:
     """Convert a template in our psuedo-f string notation to a pyratemp template"""
-    prya = fString.replace("{","$!").replace("}","!$")
-    
-    return prya
 
-def ApplyToBodyText(transform: Callable[...,Tuple[str,int]],passItemAsSecondArgument: bool = False) -> int:
-    """Apply operation transform on each string considered body text in the database.
-    If passItemAsSecondArgument is True, transform has the form transform(bodyText,item), otherwise transform(bodyText).
-    transform returns a tuple (changedText,changeCount). Return the total number of changes made."""
+    if "$!" in fString or "@!" in fString:
+        return fString
+            # Don't change the template if it's already in pryatemp format.
+            # This allows us to use '{' characters within the template itself.
     
-    if not passItemAsSecondArgument:
+    return fString.replace("{","$!").replace("}","!$")
+    
+def ApplyToBodyText(transform: Callable[...,Tuple[str,int]]) -> int:
+    """Apply operation transform on each string considered body text in the database.
+    transform can have the form transform(bodyText,item) or transform(bodyText).
+    transform returns a tuple (changedText,changeCount). Return the total number of changes made."""
+
+    if len(signature(transform).parameters) == 1:
         twoVariableTransform = lambda bodyStr,_: transform(bodyStr)
     else:
         twoVariableTransform = transform
@@ -89,7 +95,7 @@ def ExtractAttribution(form: str) -> Tuple[str,str]:
     parts[1] = "{attribution}"
     return "".join(parts), attribution
 
-def PrepareTemplates():
+def PrepareTemplates() -> None:
     ParseCSV.ListifyKey(gDatabase["kind"],"form1",removeBlank=False)
     ParseCSV.ConvertToInteger(gDatabase["kind"],"defaultForm")
 
@@ -102,6 +108,87 @@ def PrepareTemplates():
             body, attribution = ExtractAttribution(form)
             kind["body"].append(body)
             kind["attribution"].append(attribution)
+
+def PrepareTexts() -> None:
+    """Create gDatabase["textGroups"] based on the content of gDatabase["text"]."""
+    
+    for rule in gDatabase["textLink"].values():
+        rule["link"] = FStringToPyratemp(rule["link"])
+
+    gDatabase["textGroup"] = {}
+    for textGroup in list(next(iter(gDatabase["text"].values()))):
+        if textGroup in ("uid","name","citeFullName"):
+            continue
+        
+        newGroup = []
+        for text in gDatabase["text"].values():
+            if text[textGroup] == "Yes":
+                newGroup.append(text["uid"])
+            del text[textGroup]
+
+        gDatabase["textGroup"][textGroup] = newGroup
+
+def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {},allowableValues:set[str] = None) -> set|Filter.InverseSet:
+    """Evaluate a text expression to a set of strings. If a string literal is found in dictionary, substitute the given set of strings.
+    If not, replace it with a single-item set. String operators are left as-is.
+    Example: EvaluateSetExpression("Mv|Kd") = {"Mv","Kd},
+    If allowableValues is given, then warn if a string literal appears neither in dictionary or allowableValues.
+    If expression is an empty string, return Filter.All, which contains all values"""
+
+    expression = expression.strip()
+    if not expression:
+        return Filter.All
+    if allowableValues is None:
+        allowableValues = Filter.All
+
+    def ReplaceWithSet(matchObject: re.Match):
+        text = matchObject[0]
+        if text in dictionary:
+            return repr(set(dictionary[text]))
+        else:
+            if text not in allowableValues:
+                Alert.warning("When evaluating the text matching rule",repr(expression) + ":",repr(text),"is not a known text, text group, or translator.")
+            return f"{{'{text}'}}"
+
+    expression = expression.replace(",","|") # Lists are equivalent to set union operator
+    setExp = re.sub(r"\w+",ReplaceWithSet,expression)
+    return eval(setExp,{"__builtins__": {}})
+
+class TextRuleMatcher(TypedDict):
+    """This is a docstring."""
+    uid: set[str]|Filter.InverseSet                 # The set of uids to match, e.g. {"MN"}
+    n0: set[str]|Filter.InverseSet                  # The set of primary sutta numbers to match, e.g. {"18"}
+    refcount: set[str]|Filter.InverseSet            # The set of refCounts to match, e.g. {"1","2"}
+    translator: set[str]|Filter.InverseSet          # The set of translators to match
+    linkTemplate: pyratemp.Template                 # The template to evaluate the link for a sucessful match
+
+    matchFields = ("uid","n0","refCount","translator")   # The fields to match
+
+@lru_cache(maxsize=None)
+def TextRuleMatchers() -> dict[TextRuleMatcher]:
+    """Evaluate the set operations in gDatabase["textLink"] to create Render.gTextRuleMatchers"""
+
+    returnValue = {}
+    for ruleName,rule in gDatabase["textLink"].items():
+        if not rule["link"]:
+            continue
+        try:
+            returnValue[ruleName] = TextRuleMatcher(
+                uid = EvaluateSetExpression(rule["uid"],dictionary=gDatabase["textGroup"],allowableValues=gDatabase["text"]),
+                n0 = EvaluateSetExpression(rule["n0"]),
+                refCount = EvaluateSetExpression(rule["refCount"],allowableValues = ("1","2","3")),
+                translator = EvaluateSetExpression(rule["translator"]),
+                linkTemplate = pyratemp.Template(rule["link"])
+            )
+        except Exception as error:
+            Alert.error(str(error),"occured when evaluating text link rule",rule,lineSpacing=0)
+            Alert.essential("will omit this rule.",indent=5,lineSpacing=1)
+            continue
+        
+        returnValue[ruleName] = {key:passSet for key,passSet in returnValue[ruleName].items() if passSet is not Filter.All}
+        Alert.debug(ruleName,returnValue[ruleName])
+
+    return returnValue
 
 def AddImplicitAttributions() -> None:
     "If an excerpt or annotation of kind Reading doesn't have a Read by annotation, attribute it to the session or excerpt teachers"
@@ -185,14 +272,25 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
     showAttribution = True
     if container:
         if item["kind"] == "Read by":
-            grandparent = Database.ParentAnnotation(container,Database.ParentAnnotation(container,item))
+            parent = Database.ParentAnnotation(container,item)
+            grandparent = Database.ParentAnnotation(container,parent)
                 # The parent of this Read by annotation is a reading, which has the authors as teachers
                 # Thus the grandparent indicates the default reader(s)
             if grandparent:
-                defaultTeachers = grandparent["teachers"]
+                if grandparent["kind"] == "Reading":
+                    # The default teacher for a Reading within a Reading is the parent's Read by annotation
+                    readBy = [a for a in container["annotations"] 
+                              if a["kind"] == "Read by" and a["indentLevel"] == parent["indentLevel"]]
+                    if readBy:
+                        defaultTeachers = readBy[0]["teachers"]
+                    else:
+                        Alert.caution("Cannot find 'Read by' annotation to",grandparent)
+                        defaultTeachers = ()
+                else:
+                    defaultTeachers = grandparent["teachers"]
             else:
                 defaultTeachers = () # If there is no grandparent (i.e. this is a first-level Read by annotation), then always
-                # attribute it. It will be attached to the excerpt, and the annotation will be hidden if it matches the session teachers.
+                # attribute it. It will be attached to the excerpt, and the attribution will be hidden if it matches the session teachers.
         else:
             parent = Database.ParentAnnotation(container,item)
             if parent:
@@ -272,50 +370,172 @@ def RenderExcerpts() -> None:
                 AppendAnnotationToExcerpt(a,x)
 
 
-def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
-    """Add links to sutta.readingfaithfully.org to the excerpts
-    ApplyToFunction allows us to apply these same operations to other collections of text (e.g. documentation)"""
+def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str = "."):
+    """A utility function that returns strings of the form 'n0.n1.n2'.
+    numbers: the list of numbers to print.
+    printCount: print this many numbers; if omitted, set to len(numbers).
+    filler: if printCount > len(numbers), add filler at the end.
+    separator: the separator character between numbers."""
 
-    def RawRefToReadingFaithfully(matchObject: re.Match) -> str:
-        firstPart = matchObject[0].split("-")[0]
+    if printCount is None:
+        printCount = len(numbers)
+    strings = [str(n) for n in numbers]
+    if len(strings) < printCount:
+        strings += (printCount - len(strings)) * [str(filler)]
+    return separator.join(strings)
 
-        if firstPart.startswith("Kd"): # For Kd, link to SuttaCentral directly
-            chapter = matchObject[2]
+class SCBookmark(NamedTuple):
+    uid: str                # Sutta uid, e.g. 'mil6.3.10'
+    hash: str               # Bookmark hash code, e.g. '#pts-vp-pli320'
+    trans: str              # uid of the translator, e.g. 'tw_rhysdavids'
 
-            if matchObject[3]:
-                if matchObject[4]:
-                    subheading = f"#{matchObject[3]}.{matchObject[4]}.1"
-                else:
-                    subheading = f"#{matchObject[3]}.1.1"
+def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
+    """Given a text uid and a bookmark, return the information needed to construct a SuttaCentral link.
+    For example IndexedBookmark("mil320","pts-vp-pli320") returns ("mil6.3.10","pts-vp-pli320","tw_rhysdavids")."""
+    
+    uid = uid.lower()
+    indexedText,translator = Suttaplex.SuttaIndex(uid)
+    if not indexedText:
+        Alert.error("Cannot build index for text uid",uid)
+        return None
+    
+    bookmark = str(bookmark)
+    if re.match(r"[0-9]",bookmark):
+        bookmark = re.match(r"[^0-9]+",next(iter(indexedText)))[0] + bookmark
+            # If the bookmark is only a number, add the (common) text prefix to all bookmarks in the file
+    
+    suttaRef = indexedText.get(bookmark,None)
+    if not suttaRef:
+        Alert.error("Cannot find bookmark",bookmark,"in text uid",uid)
+        return None
+    
+    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
+        # If suttaRef lacks the mark key, then mark is bookmark
+
+def PreferredTranslator(textUid:str,refNumbers:list[int]) -> str:
+    """Return the preferred translator for the whole sutta specified by textUid and refNumbers."""
+
+    textUid = textUid.lower()
+    translatorDict = Suttaplex.TranslatorDict(textUid)
+    suttaUid = textUid + DotRef(refNumbers)
+    availableTranslations = translatorDict.get(suttaUid,None)
+
+    if not availableTranslations:
+        interpolatedTranslators = Suttaplex.InterpolatedTranslatorDict(textUid)
+        availableTranslations = interpolatedTranslators.get(suttaUid,None)
+        if availableTranslations:
+            if "sujato" in availableTranslations:
+                return "sujato"
             else:
-                subheading = ""
-            link = f"https://suttacentral.net/pli-tv-kd{chapter}/en/brahmali?layout=plain&reference=main&notes=asterisk&highlight=false&script=latin{subheading}"
-        else: # All other links go to readingfaithfully.org
-            dashed = re.sub(r'\s','-',firstPart)
-            link = f"https://sutta.readingfaithfully.org/?q={dashed}"
-
-        return link
-
-    def RefToReadingFaithfully(matchObject: re.Match) -> str:
-        return f'[{matchObject[0]}]({RawRefToReadingFaithfully(matchObject)})'
-
-    def SuttasWithinMarkdownLink(bodyStr: str) -> Tuple[str,int]:
-        return re.subn(markdownLinkToSutta,RawRefToReadingFaithfully,bodyStr,flags = re.IGNORECASE)
+                return availableTranslations[0]
+        else:
+            Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
+            return ""
+    elif "bodhi" in availableTranslations:
+        return "bodhi"
+    else:
+        return availableTranslations[0]
     
-    def LinkItem(bodyStr: str) -> Tuple[str,int]:
-        return re.subn(suttaMatch,RefToReadingFaithfully,bodyStr,flags = re.IGNORECASE)
-    
-    with open(Utils.PosixJoin(gOptions.pagesDir,'assets/citationHelper/Suttas.json'), 'r', encoding='utf-8') as file: 
-        suttas = json.load(file)
-    suttaAbbreviations = [s[0] for s in suttas]
+def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
+    """Returns whether this text exists on SuttaCentral."""
+    return bool(PreferredTranslator(textUid,refNumbers))
 
-    suttaMatch = r"\b" + Utils.RegexMatchAny(suttaAbbreviations)+ r"\s+([0-9]+)[.:]?([0-9]+)?[.:]?([0-9]+)?[-]?[0-9]*"
+def ApplySuttaMatchRules(matchObject: re.Match) -> str:
+    """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
+    Then evaluate the template for that rule and return the link"""
+
+    params = {
+        "fullRef": matchObject[0],
+        "uid": matchObject[1],
+        "n0": matchObject[2],
+        "n1": matchObject[3],
+        "n2": matchObject[4],
+        "translator": matchObject[5],
+        "DotRef": DotRef,
+        "SCIndex": SCIndex,
+        "PreferredTranslator": PreferredTranslator,
+        "ExistsOnSC": ExistsOnSC
+    }
+    params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
+    params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
+
+    if params["uid"] not in gDatabase["text"]:
+        Alert.warning(params["fullRef"],"does not match the case of any available texts.")
+        return ""
+
+    ruleMatchers = TextRuleMatchers()
+    for ruleName in ruleMatchers:
+        matcher = ruleMatchers[ruleName]
+        if not all(str(params[which]) in matcher[which] for which in matcher if which in params):
+            continue
+        try:
+            link = str(matcher["linkTemplate"](**params))
+        except Exception as error:
+            Alert.error(error,"when attempting to evaluate rule",repr(ruleName),
+                        "\n    python expression:",gDatabase["textLink"][ruleName]["link"],
+                        "\n    with dictionary:",{k:v for k,v in params.items() if not callable(v)},
+                        "\n    Continuing to the next rule")
+            continue
+
+        if not link or link == "None" or link == "False":
+            continue # If matcher returns "", None, or False, skip to the next rule
+        
+        if gDatabase["textLink"][ruleName]["alert"]:
+            printer = getattr(Alert,gDatabase["textLink"][ruleName]["alert"],None)
+            if not isinstance(printer,Alert.AlertClass):
+                printer = Alert.error
+                Alert.error(gDatabase["textLink"][ruleName]["alert"],"is not the name of an AlertClass object.")
+            printer(link,lineSpacing=0)
+            if printer is Alert.error or printer is Alert.warning:
+                return ""
+        else:
+            return link
     
+    return ""
+
+def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
+    """Use the list of rules in gDatabase["textLink"] to generate hyperlinks for sutta references."""
+
+    def SuttasWithinMarkdownLink(bodyStr: str,item:dict=None) -> Tuple[str,int]:
+        def SuttaMatchWrapper(matchObject: re.Match) -> str:
+            link = ApplySuttaMatchRules(matchObject)
+            if not link:
+                print("   in",Database.ItemRepr(item))
+                print()
+            return link
+
+        return re.subn(markdownLinkToSutta,SuttaMatchWrapper,bodyStr,flags = re.IGNORECASE)
+    
+    def SuttasWithinBodyText(bodyStr: str,item:dict=None) -> Tuple[str,int]:
+        def MakeSuttaMarkdownLink(matchObject: re.Match) -> str:
+            withoutTranslator = matchObject[0].split("{")[0]
+            textRecord = gDatabase["text"].get(matchObject[1],None)
+            if textRecord and textRecord["citeFullName"]:
+                withoutTranslator = withoutTranslator.replace(matchObject[1],textRecord["name"])
+                if item and "text" in item: # Modify the original item text so that searching finds the full sutta name.
+                    item["text"] = re.sub(r"\b" + matchObject[1] + r" ([1-9])",textRecord["name"] + r" \1",item["text"])
+
+            link = ApplySuttaMatchRules(matchObject)
+            if not link:
+                print("   in",Database.ItemRepr(item))
+                print()
+            return f'[{withoutTranslator}]({link})'
+    
+        return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
+
+    suttaMatch = r"\b" + Utils.RegexMatchAny(gDatabase["text"])+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
+    """ Sutta reference pattern: uid n0[.n1[.n2]][-end]{translator}
+        Matching groups:
+        1: uid: SuttaCentral text uid
+        2-4: n0-n2: section numbers
+        5: translator: translator code, e.g. bodhi
+    end is ignored for sutta lookup purposes."""
+
     markdownLinkToSutta = r"(?<=\]\()" + suttaMatch + r"(?=\))"
     markdownLinksMatched = ApplyToFunction(SuttasWithinMarkdownLink)
         # Use lookbehind and lookahead assertions to first match suttas links within markdown format, e.g. [Sati](MN 10)
 
-    suttasMatched = ApplyToFunction(LinkItem)
+    suttasMatched = ApplyToFunction(SuttasWithinBodyText)
         # Then match all remaining sutta links
 
     Alert.extra(f"{suttasMatched + markdownLinksMatched} links generated to suttas, {markdownLinksMatched} within markdown links")
@@ -358,7 +578,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
     def ProcessLocalReferences(url:str) -> str:
         """Remove the redundant ../pages portion of local references to html pages;
-        add #noscript to the end of local references to non-html pages to break out of frame.js."""
+        add #noframe to the end of local references to non-html pages to break out of frame.js."""
         parsed = urllib.parse.urlparse(url)
         if parsed.netloc:
             return url
@@ -367,37 +587,43 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if pagesPath in url:
                 return Utils.PosixNorm(url.replace(pagesPath,""))
             else:
-                return url + "#noscript"
+                return url + "#noframe"
 
-    def ReferenceForm2Substitution(matchObject: re.Match) -> str:
-        try:
-            reference = gDatabase["reference"][matchObject[1].lower()]
-        except KeyError:
-            Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-            return matchObject[1]
-        
-        url = Link.URL(reference,directoryDepth=2)
-        if url:
-            page = ParsePageNumber(matchObject[2])
-            if page:
-                url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
+    
 
-            url = ProcessLocalReferences(url)
-            returnValue = f"[{reference['title']}]({url})"
-        else:
-            returnValue = f"{reference['title']}"
-
-        if reference['attribution']:
-            returnValue += " " + Build.LinkTeachersInText(reference['attribution'],reference['author'])
-        
-        if not url and reference["remoteUrl"]:
-            returnValue += " " + reference["remoteUrl"]
-                # If there's no link, "remoteUrl" key indicates a suffix, typically "(commercial)"
-
-        return returnValue
-
-    def ReferenceForm2(bodyStr: str) -> tuple[str,int]:
+    def ReferenceForm2(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
+
+        def ReferenceForm2Substitution(matchObject: re.Match) -> str:
+            try:
+                reference = gDatabase["reference"][matchObject[1].lower()]
+            except KeyError:
+                Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
+                return matchObject[1]
+            
+            url = Link.URL(reference,directoryDepth=2)
+            if url:
+                page = ParsePageNumber(matchObject[2])
+                if page:
+                    url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
+
+                url = ProcessLocalReferences(url)
+                returnValue = f"[{reference['title']}]({url})"
+            else:
+                returnValue = f"{reference['title']}"
+
+            if reference['attribution']:
+                returnValue += " " + Build.LinkTeachersInText(reference['attribution'],reference['author'])
+            
+            if not url and reference["remoteUrl"]:
+                returnValue += " " + reference["remoteUrl"]
+                    # If there's no link, "remoteUrl" key indicates a suffix, typically "(commercial)"
+            
+            if item and item.get("text"): # Replace abbreviated title with full title for search purposes
+                item["text"] = re.sub(r"\[" + matchObject[1] + r"\]","[" + reference["title"] +"]",item["text"])
+
+            return returnValue
+
         return re.subn(refForm2,ReferenceForm2Substitution,bodyStr,flags = re.IGNORECASE)
     
     def ReferenceForm3Substitution(matchObject: re.Match) -> str:
@@ -420,26 +646,31 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         """Search for references of the form: [xxxxx](title) or [xxxxx](title page N)"""
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
 
-    def ReferenceForm4Substitution(matchObject: re.Match) -> str:
-        try:
-            reference = gDatabase["reference"][matchObject[1].lower()]
-        except KeyError:
-            Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-            return matchObject[1]
-        
-        url = Link.URL(reference,directoryDepth=2)
-        page = ParsePageNumber(matchObject[2])
-        if page:
-           url +=  f"#page={page + PdfPageOffset(reference)}"
-        url = ProcessLocalReferences(url)
-
-        items = [reference['title'],f", [{matchObject[2]}]({url})"]
-        if reference["attribution"]:
-            items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
-        return "".join(items)
-
-    def ReferenceForm4(bodyStr: str) -> tuple[str,int]:
+    def ReferenceForm4(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: title page N"""
+
+        def ReferenceForm4Substitution(matchObject: re.Match) -> str:
+            try:
+                reference = gDatabase["reference"][matchObject[1].lower()]
+            except KeyError:
+                Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
+                return matchObject[1]
+            
+            url = Link.URL(reference,directoryDepth=2)
+            page = ParsePageNumber(matchObject[2])
+            if page:
+                url +=  f"#page={page + PdfPageOffset(reference)}"
+                url = ProcessLocalReferences(url)
+
+            items = [reference['title'],f", [{matchObject[2]}]({url})"]
+            if reference["attribution"]:
+                items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
+
+            if item and item.get("text"): # Replace abbreviated title with full title for search purposes
+                item["text"] = re.sub(r"\b" + matchObject[1] + r"\b",reference["title"],item["text"])
+
+            return "".join(items)
+    
         return re.subn(refForm4,ReferenceForm4Substitution,bodyStr,flags = re.IGNORECASE)
         
     refForm2, refForm3, refForm4 = ReferenceMatchRegExs(gDatabase["reference"])
@@ -575,10 +806,16 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
     linkCount = ApplyToFunction(ReplaceSubpageLinks)
     Alert.extra(f"{linkCount} links generated to subpages")
 
-def MarkdownFormat(text: str) -> Tuple[str,int]:
+def MarkdownFormat(text: str,element: dict[str]) -> Tuple[str,int]:
     """Format a single-line string using markdown, and eliminate the <p> tags.
     The second item of the tuple is 1 if the item has changed and zero otherwise"""
 
+    if "]()" in text:
+        Alert.warning("Blank Markdown hyperlink in",element)
+    badLink = re.search(r"\]\((\w*:)(?!//)",text)
+    if re.search(r"\]\((\w*:)(?!//)",text):
+        badLink = re.search(r"\]\((\w*:[^)]*)\)",text) 
+        Alert.warning("Unevaluated reference",repr(badLink[1]),"in",element)
     md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = [NewTabRemoteExtension()]), flags=re.IGNORECASE)
     if md != text:
         return md, 1
@@ -643,6 +880,7 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 def main() -> None:
 
     PrepareTemplates()
+    PrepareTexts()
 
     AddImplicitAttributions()
 

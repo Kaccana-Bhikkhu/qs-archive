@@ -1,0 +1,106 @@
+Exclude session('Chah2001_S27') - exclude flag Yes.
+
+Exclude session('Chah2001_S18') 
+due to teacher consent.
+
+Exclude excerpt('Chah2001_S02_F01', 'Other', 'Introductory remarks by Gil Fronsdal.') 
+due to excerpt teachers ['GFronsdal']
+
+Exclude annotation('Story', 'A yoga teacher interprets an omen from the Blues Brothers.') to excerpt('WR2014_S14_F03', 'Question', "When Luang Ta Mahā Boowa says he's looking for a sign or vision, wh...") - exclude flag Yes.
+
+Exclude excerpt('WR2014_S49_F03', 'Story', 'Working at a refugee camp at Chang Kon.') 
+due to excerpt teachers ['Jeed']
+
+Exclude excerpt('WR2014_S57_F11', 'Question', 'What happened to Mae Somchai?') 
+due to teachers ['AP', 'Jeed'] of annotation('Story', 'Mae Somchai packs up her academic career and comes to the monastery.')
+
+Exclude excerpt('WR2015_S29_F01', 'Question', 'Can you share perspectives on birth from the Thai Forest Tradition?') 
+due to excerpt teachers ['ANy', 'Janejira', 'AShj']
+
+Exclude annotation('Indirect quote', "There's nothing organized about this religion.|Ajahn Siripañño") to excerpt('TG2015_S08_F19', 'Question', 'Who are the most senior monks in the Theravāda/Thai Forest Traditio...') - exclude flag Yes.
+
+Exclude session('WR2016_S01') - exclude flag Yes.
+
+Exclude session('WR2016_S31') - exclude flag Yes.
+
+Exclude session('WR2016_S41') - exclude flag Yes.
+
+Exclude session('WR2016_S48') - exclude flag Yes.
+
+Exclude excerpt('WR2016_S11_F03', 'Question', 'Are breath energy and awareness the same thing?') 
+due to excerpt teachers ['TKon']
+
+Exclude excerpt('WR2016_S22_F04', 'Comment', 'The part of _Where Are You Going?_ where Ajahn Sucitto describes ho...') 
+due to excerpt teachers ['Jeed']
+
+Exclude excerpt('WR2016_S38_F01', 'Question', 'The way Ajahn Paññavaddho describes citta sounds like a soul. Can y...') 
+due to excerpt teachers ['AP', 'TKon', 'AKc']
+
+Exclude excerpt('WR2016_S39_F04', 'Question', 'Would you speak on skillful and unskillful ways to approach restraint?') 
+due to excerpt teachers ['AP', 'TKon']
+
+Exclude excerpt('WR2016_S39_F06', 'Question', 'Regarding the Honeyball Sutta (MN 18), is withdrawal of external co...') 
+due to excerpt teachers ['AP', 'AKc', 'TKon']
+
+Exclude excerpt('WR2016_S42_F04', 'Comment', 'The training is designed to attenuate the conception of name and fo...') 
+due to excerpt teachers ['TKon']
+
+Exclude excerpt('WR2016_S44_F01', 'Question', "Where does the expression 'sad is mad' come from?") 
+due to excerpt teachers ['AJoti', 'TKon']
+
+Exclude excerpt('WR2016_S44_F01', 'Question', "Where does the expression 'sad is mad' come from?") 
+due to teachers ['TSud'] of annotation('Indirect quote', 'Depression is anger without enthusiasm.|Anonymous')
+
+Exclude excerpt('WR2016_S46_F02', 'Question', 'In what ways is neutral feeling delusion?') 
+due to excerpt teachers ['AP', 'TKon', 'AJoti', 'AShj', 'AKc']
+
+Exclude excerpt('WR2016_S46_F03', 'Question', 'What does a delusion type of person look like?') 
+due to excerpt teachers ['AP', 'TJag', 'AKc']
+
+Exclude excerpt('WR2016_S50_F03', 'Question', 'Is divided consciousness the same as divided awareness?') 
+due to excerpt teachers ['AP', 'TKon', 'AShj']
+
+Exclude excerpt('WR2016_S52_F00', 'Reading group', '') 
+due to excerpt teachers ['TGam']
+
+Exclude excerpt('WR2016_S53_F00', 'Reading group', '') 
+due to excerpt teachers ['TKon']
+
+Exclude excerpt('WR2016_S55_F02', 'Question', "Do others who have been to India share Ajahn Sumedho's feeling that...") 
+due to teachers ['Jeed'] of annotation('Comment', 'A French director makes a 7-hour film trying to figure out what Ind...')
+
+Exclude session('Anniversary2016_S03') 
+due to teacher consent.
+
+Exclude session('Anniversary2016_S08') 
+due to teacher consent.
+
+Exclude annotation('Sutta', '???: Unwholesome can condition the wholesome (and all permutations).') to excerpt('TG2016_S02_F13', 'Question', 'What about aversions that have a message, as a signal to understand...') - exclude flag Yes.
+
+Exclude annotation('Reference', '_Left, Right & Center_ Podcast.') to excerpt('UD2017-3_S00_F07', 'Comment', "One thing I've gotten from Trump is the equanimity to listen to his...") - exclude flag Yes.
+
+Exclude excerpt('WR2018-2_S08_F18', 'Story', "Living in the cramped women's cottage in the early days of Chithurst.") 
+due to excerpt teachers ['Jeed']
+
+Exclude annotation('Quote', "I'm not going all the way to England to live with some guy from Sea...") to excerpt('Anniversary2021_S06_F09', 'Recollection', 'My first encounter with the Thai Forest Tradition.') - exclude flag Yes.
+
+Exclude excerpt('WR2025_S02_F06', 'Comment', 'When we let go of the kilesas it’s not like it’s just the absence o...') 
+due to excerpt teachers ['RHatha']
+
+Exclude excerpt('WR2025_S04_F04', 'Comment', 'Exploring the different qualities or expressions of Nibbāna, I was ...') 
+due to excerpt teachers ['RHatha']
+
+Exclude annotation('Reference', "I'm not getting anywhere in my meditation. Amaravati Vault") to excerpt('WR2025_S10_F04', 'Question', "My perception of Theravāda is that it's a lot about striving but th...") - exclude flag Yes.
+
+Exclude annotation('Indirect quote', "You don't need to worry, Dad. Buddhism in Thailand isn't organized....") to excerpt('ChahQA2025_S02_F07', 'Question', 'What were the criteria for founding new branch monasteries at Ajahn...') - exclude flag Yes.
+
+Exclude annotation('Indirect quote', "You don't have to worry, Dad. Buddhism in Thailand isn't organized....") to excerpt('Chithurst2025_S00_F04', 'Question', 'People often say that Amaravati is like an institution. What is a p...') - exclude flag Yes.
+
+Exclude : 20 excerpts and 16 annotations in all.
+
+Exclude : Did not attribute excerpts to the following 4 teachers: {'RCenter': 20, 'AShj': 41, 'MMotaghy': 2, 'AKha': 3}
+
+Exclude : Redacted 13 tags 
+due to teacher consent: ['Ajahn Karuṇiko', 'Ajahn Yatiko', 'Ajahn Kassapo', 'Ajahn Cunda', 'Ajahn Kaccāna', 'Ajahn Ṭhitapañño', 'Ajahn Kovilo', 'Ajahn Sudhīro', 'Ajahn Pesalo', 'Ajahn Candasirī', 'Gil Fronsdal', 'Debbie Stamp', 'Nick Scott']
+
+Exclude : These 10 teachers are excluded from search blobs: ['Ajahn Kassapo', 'Ajahn Kovilo', 'Tan Kondañño', 'Tan Jāgaro', 'Ajahn Suhajjo', 'Ajahn Khantiko', 'Tan Gambhīro', 'Tan Suddhiko', 'Ajahn Candasirī', 'Randula Haththotuwa']

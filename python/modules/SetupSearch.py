@@ -100,9 +100,11 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
         else:
             qTags = []
 
+        text = item["text"]
+        if item.get("teachers") and "{teachers}" in text:
+            text = text.replace("{teachers}",Build.ListLinkedTeachers(item["teachers"],lastJoinStr = " and "))
         bits = [
-            Enclose(Blobify([item["text"].replace("noPlayer","")]),"^"),
-                # remove the "noPlayer" flag text from blobs
+            Enclose(Blobify([text]),"^"),
             Enclose(Blobify(AllNames(item.get("teachers",[]))),"{}"),
             Enclose(Blobify(qTags),"[]") if qTags else "",
             "//",

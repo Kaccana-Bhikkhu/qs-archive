@@ -337,7 +337,7 @@ def ExcerptNumberCode(excerpt:dict|None = None, event:str = "", session:int|None
 
     outputStr = event
     outputStr += f"_S{session:02d}"
-    outputStr += f"_E{excerptNumber:02.1f}".replace(".0","")
+    outputStr += f"_E{excerptNumber:04.1f}".replace(".0","")
     return outputStr
 
 def ParseItemCode(itemCode:str) -> tuple[str,int|None,int|None]:
@@ -380,7 +380,7 @@ def ItemRepr(item: dict) -> str:
             kind = "session"
             event = item["event"]
             session = item["sessionNumber"]
-        elif "kind" in item and "sessionNumber" in item:
+        elif "kind" in item and "flags" in item:
             if "annotations" in item:
                 kind = "excerpt"
                 event = item["event"]
@@ -392,6 +392,7 @@ def ItemRepr(item: dict) -> str:
                 if x:
                     event = x["event"]
                     session = x["sessionNumber"]
+                    fileNumber = x["fileNumber"]
             args = [item['kind'],Utils.EllideText(item['text'],maxLength=70)]
         elif "pdfPageOffset" in item:
             kind = "reference"
@@ -502,15 +503,17 @@ def SubtagIterator(tagOrSubtopic:dict[str]) -> Iterable[str]:
         yield from tagOrSubtopic.get("subtags",())
 
 def FTagAndOrder(excerpt: dict,fTags: Iterable[str]) -> tuple[str,int,str]:
-    """Return the tuple (fTag,fTagOrder,fTagOrderFlag) for the first matching fTag in fTags."""
+    """Return the tuple (fTag,fTagOrder,fTagOrderFlag,fTagOrderAndFlag) for the first matching fTag in fTags."""
     
     for tag in fTags:
         try:
             fTagIndex = excerpt["fTags"].index(tag)
-            return excerpt["fTags"][fTagIndex],excerpt["fTagOrder"][fTagIndex],excerpt["fTagOrderFlags"][fTagIndex]
+            order = excerpt["fTagOrder"][fTagIndex]
+            flag = excerpt["fTagOrderFlags"][fTagIndex]
+            return excerpt["fTags"][fTagIndex],order,flag,str(order) + ("" if flag == ParseCSV.FTagOrderFlag.EVERYWHERE else flag)
         except (ValueError, IndexError):
             pass
-    return "",999,""
+    return "",999,"",""
 
 def FTagOrder(excerpt: dict,fTags: Iterable[str]) -> int:
     """Return fTagOrder of the first matching fTag in fTags."""

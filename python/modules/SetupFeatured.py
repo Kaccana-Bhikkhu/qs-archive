@@ -7,7 +7,7 @@ import os, json, datetime, re
 from datetime import timedelta
 import random
 from difflib import SequenceMatcher
-from typing import Callable, TypedDict
+from typing import Callable, TypedDict, NotRequired
 import Utils, Alert, Build, Filter, Database
 from copy import copy
 import Filter
@@ -17,10 +17,12 @@ from collections import defaultdict
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
-      text: str         # Text of the excerpt; used to identify this excerpt when its code changes
-      fTags: list[str]  # The excerpt's fTags
-      shortHtml: str    # Html code to render on the homepage
-      html: str         # Html code to render on the daily featured excerpts page
+      text: str             # Text of the excerpt; used to identify this excerpt when its code changes
+      fTags: list[str]      # The excerpt's fTags
+      oldFTags: NotRequired[list[str]]
+                            # fTags that were applied to this excerpt in the past.
+      shortHtml: str        # Html code to render on the homepage
+      html: str             # Html code to render on the daily featured excerpts page
     
 class FeaturedDatabase(TypedDict):
     made: str                       # Date and time this database was first made in iso format
@@ -94,13 +96,13 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     
     formatter = Build.Formatter()
     formatter.SetHeaderlessFormat()
-    formatter.excerptDefaultTeacher = {"AP"}
     formatter.excerptShowFragmentPlayers = False
     html = formatter.HtmlExcerptList([excerpt])
 
     simpleExcerpt = copy(excerpt)
     simpleExcerpt["annotations"] = ()
     simpleExcerpt["tags"] = ()
+    formatter.excerptDefaultTeacher = {"AP"}
     shortHtml = formatter.FormatExcerpt(simpleExcerpt)
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
@@ -126,9 +128,11 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
 def FeaturedExcerptFilter() -> Filter.Filter:
     """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
-    teacherFilter = Filter.FirstTeacher("AP")
+    teacherFilter = Filter.Or(Filter.ExcerptMatch(Filter.FirstTeacher("AP")),
+                              Filter.SingleItemMatch(Filter.Teacher("AP"),Filter.Kind("Read by")))
+        # Pass only excerpts where AP is the first teacher in the excerpt or he is reading the excerpt
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    return Filter.And(keyTopicFilter,teacherFilter,Filter.HomepageFlags(),kindFilter)
+    return Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter)
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
@@ -196,6 +200,9 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if currentExcerpt:
             currentEntry = ExcerptEntry(currentExcerpt)
+            if "oldFTags" in databaseEntry:
+                currentEntry["oldFTags"] = databaseEntry["oldFTags"]
+                    # Ignore oldFTags in the comparison
             if currentEntry != databaseEntry:
                 if currentEntry["text"] == databaseEntry["text"]:
                     textMatches.append(excerptCode)
@@ -297,6 +304,16 @@ These may require the Fix module if excerpts have moved or the Remove module if 
 
     return databaseGood
 
+def UpdateEntry(entry: ExcerptDict,newEntry: ExcerptDict,excerptCode: str) -> None:
+    """Update entry so that it has the contents of newEntry.
+    If newEntry removes fTags, store them in oldFTags."""
+
+    for fTag in entry["fTags"]:
+        if fTag not in newEntry["fTags"]:
+            entry["oldFTags"] = entry.get("oldFTags",[]) + [fTag]
+            Alert.notice("Removing fTag",repr(fTag),"from",excerptCode)
+    entry.update(newEntry) # Note that newEntry should not have key oldFTags
+
 def Update(paramStr: str) -> bool:
     """Set entries in gFeaturedDatabase equal to the current database if the text string matches closely enough.
     Return True if we modify gFeaturedDatabase."""
@@ -305,23 +322,23 @@ def Update(paramStr: str) -> bool:
     textMatches,textMismatches,missingEntries = DatabaseMismatches()
 
     for code in textMatches:
-        gFeaturedDatabase["excerpts"][code] = ExcerptEntry(Database.FindExcerpt(code))
+        UpdateEntry(gFeaturedDatabase["excerpts"][code],ExcerptEntry(Database.FindExcerpt(code)),code)
         databaseChanged = True
     if textMatches:
         Alert.info("Updated",len(textMatches),"excerpts with identical text strings.")
     
     for code in textMismatches:
         currentEntry = ExcerptEntry(Database.FindExcerpt(code))
-        entryOnDisk = gFeaturedDatabase["excerpts"][code]
-        ratio = SequenceMatcher(a=entryOnDisk["text"],b=currentEntry["text"]).ratio()
+        oldText = gFeaturedDatabase["excerpts"][code]["text"]
+        ratio = SequenceMatcher(a=oldText,b=currentEntry["text"]).ratio()
         updated = "does not match; not updated"
         if ratio >= gOptions.updateThreshold:
-            gFeaturedDatabase["excerpts"][code] = currentEntry
+            UpdateEntry(gFeaturedDatabase["excerpts"][code],currentEntry,code)
             updated = "matches; updated"
             databaseChanged = True
         Alert.extra("")
         Alert.info(f"Excerpt: {code}; ratio:{ratio:.3f}; {updated}.")
-        Alert.extra("Old:",entryOnDisk["text"],indent=6)
+        Alert.extra("Old:",oldText,indent=6)
         Alert.extra("New:",currentEntry["text"],indent=6)
 
     if not databaseChanged:
@@ -356,7 +373,7 @@ def RemakeFuture(paramStr: str) -> bool:
         Alert.info("Remake and reshuffle the featured excerpt calendar starting",preserveDays,"days in the future.")
         Alert.info("Removed",removed,"demoted excerpts; added",len(newFeaturedExcerpts),"new excerpts.")
 
-        Trim("")
+        Trim("quiet")
     else:
         Alert.info("No changes to database.")
     return databaseChanged
@@ -371,7 +388,7 @@ def Trim(paramStr: str) -> bool:
     removedEntries = oldLength - len(gFeaturedDatabase["excerpts"])
     if removedEntries:
         Alert.info(removedEntries,"excerpts trimmed from database.")
-    else:
+    elif paramStr != "quiet":
         Alert.info("No changes made to database.")
     return bool(removedEntries)
     
