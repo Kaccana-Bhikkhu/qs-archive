@@ -2,7 +2,7 @@
 
 
 
-## New in the August 2025 release:
+## New in the September 2025 release:
  - New content:
      - [2016 Winter Retreat](event:WR2016): All except four sessions are included
      - [2025 Winter Retreat](event:WR2025): Includes the first 20 sessions

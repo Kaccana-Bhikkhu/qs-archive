@@ -110439,7 +110439,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Did you come here to die?|Ajahn Chah's greeting to newcomers.",
+          "text": "Did you come here to die?|Ajahn Chah's greeting to newcomers",
           "teachers": [
             "AP"
           ],
@@ -114312,7 +114312,14 @@
         "ASumedho"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Note",
+          "flags": "",
+          "text": "The first session of the retreat (January 4, _The Island_ pp. 10-14) was not recorded.",
+          "indentLevel": 1
+        }
+      ],
       "tags": [],
       "qTagCount": 0,
       "duration": "58:45"
@@ -115024,6 +115031,12 @@
             "BBodhi"
           ],
           "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Note",
+          "flags": "",
+          "text": "The recording of the January 11 reading (_The Island_ pp. 35-39) was lost.",
           "indentLevel": 1
         }
       ],
@@ -117426,7 +117439,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s:",
-      "text": "from [The Island](), Chapter 4, pp. [70-75](The Island p. 70).",
+      "text": "from [The Island](), Chapter 4, pp. [70-76](The Island p. 70).",
       "teachers": [
         "AP",
         "AA"
@@ -117731,6 +117744,12 @@
             "AChah"
           ],
           "tags": [],
+          "indentLevel": 1
+        },
+        {
+          "kind": "Note",
+          "flags": "",
+          "text": "The recording of the January 25 reading (_The Island_ pp. 77-80) was lost.",
           "indentLevel": 1
         }
       ],
@@ -120089,7 +120108,7 @@
       "fileNumber": 5,
       "kind": "Question",
       "flags": "",
-      "text": "The word toramon is sometimes associated with Ajahn Chah's style of training. Could he be \"intentionally cruel?\"",
+      "text": "The word toramon is sometimes associated with Ajahn Chah's style of training. Could he be 'intentionally cruel?'",
       "teachers": [
         "AP"
       ],
