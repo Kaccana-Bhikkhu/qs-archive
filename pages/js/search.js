@@ -853,6 +853,7 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("g","tag",5),
         new TruncatedSearcher("t","teacher",5),
         new TruncatedSearcher("e","event",3),
+        new TruncatedSearcher("s","session",3),
         new ExcerptSearcher()
     )
 };

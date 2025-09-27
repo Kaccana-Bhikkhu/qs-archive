@@ -289,7 +289,7 @@ def EventBlobs() -> Iterator[dict]:
         if not listedTeachers:
             listedTeachers = event["teachers"]
 
-        tagString = "".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
+        tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
 
         lines = [
             Build.HtmlIcon("calendar") + " " + f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
@@ -298,6 +298,38 @@ def EventBlobs() -> Iterator[dict]:
 
         yield {
             "blobs": [EventBlob(event,listedTeachers)],
+            "html": "<br>".join(lines)
+        } 
+
+def SessionBlob(session: dict[str]) -> str:
+    """Return a search blob for this event."""
+
+    bits = [
+        Enclose(Blobify([session["sessionTitle"]]),"^"),
+        Enclose(Blobify(AllNames(session["teachers"])),"{}"),
+        Enclose(Blobify(session["tags"]),"[]"),
+        "|",
+        Enclose(Blobify([Database.ItemCode(session).replace("_","@")]),"@")
+    ]
+    return "".join(bits)
+
+def SessionBlobs() -> Iterator[dict]:
+    """Return a blob for each event."""
+    for session in gDatabase["sessions"]:
+        tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in session["tags"])
+        if session["teachers"]:
+            teacherList = " – " + Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in session["teachers"]]),lastJoinStr = " and ")
+        else:
+            teacherList = ""
+        title = session["sessionTitle"] or f"Session {session["sessionNumber"] or 1}"
+        title = Html.Tag("a",{"href":Database.EventLink(session["event"],session["sessionNumber"])})(title)
+
+        lines = [
+            Build.HtmlIcon("Cushion-black.png") + f" {title}{teacherList} {tagString}",
+        ]
+
+        yield {
+            "blobs": [SessionBlob(session)],
             "html": "<br>".join(lines)
         } 
 
@@ -340,6 +372,7 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"g","tag",TagBlobs())
     AddSearch(optimizedDB["searches"],"t","teacher",TeacherBlobs())
     AddSearch(optimizedDB["searches"],"e","event",EventBlobs())
+    AddSearch(optimizedDB["searches"],"s","session",SessionBlobs())
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 
