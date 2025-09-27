@@ -302,7 +302,7 @@ def EventBlobs() -> Iterator[dict]:
         } 
 
 def SessionBlob(session: dict[str]) -> str:
-    """Return a search blob for this event."""
+    """Return a search blob for this session."""
 
     bits = [
         Enclose(Blobify([session["sessionTitle"]]),"^"),
@@ -314,7 +314,7 @@ def SessionBlob(session: dict[str]) -> str:
     return "".join(bits)
 
 def SessionBlobs() -> Iterator[dict]:
-    """Return a blob for each event."""
+    """Return a blob for each session."""
     for session in gDatabase["sessions"]:
         tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in session["tags"])
         if session["teachers"]:
@@ -330,8 +330,16 @@ def SessionBlobs() -> Iterator[dict]:
 
         yield {
             "blobs": [SessionBlob(session)],
-            "html": "<br>".join(lines)
+            "html": "<br>".join(lines),
+            "event": session["event"]
         } 
+
+def SessionEventHtml() -> dict[str,str]:
+    """Return a dict of the event information to display after each group of sessions by event."""
+    returnValue = {}
+    for event in gDatabase["event"].values():
+        returnValue[event["code"]] = Html.Tag("p",{"class":"x-cite"})(Database.ItemCitation(event))
+    return returnValue
 
 def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Iterator[dict]) -> None:
     """Add the search (tags, teachers, etc.) to searchList.
@@ -373,6 +381,7 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"t","teacher",TeacherBlobs())
     AddSearch(optimizedDB["searches"],"e","event",EventBlobs())
     AddSearch(optimizedDB["searches"],"s","session",SessionBlobs())
+    optimizedDB["searches"]["s"]["eventHtml"] = SessionEventHtml()
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 

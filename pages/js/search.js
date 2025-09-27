@@ -555,6 +555,7 @@ class TruncatedSearcher extends Searcher {
     // Displays its own header e.g. "Teachers (2):", so it's intended to be used with MultiSearcher.
 
     truncateAt; // Truncate the initial view if there are more than this many items
+        // If truncateAt === 0, always hide the entire list
 
     constructor(code,name,truncateAt) {
         super(code,name);
@@ -569,7 +570,7 @@ class TruncatedSearcher extends Searcher {
 
         let firstItems = "";
         let moreItems = "";
-        if (this.foundItems.length > this.truncateAt) {
+        if (this.truncateAt > 0 && this.foundItems.length > this.truncateAt) {
             firstItems = this.renderItems(0,this.truncateAt - 1);
             let moreItemsBody = this.renderItems(this.truncateAt - 1);
             moreItems = ` 
@@ -582,15 +583,60 @@ class TruncatedSearcher extends Searcher {
             firstItems = this.renderItems();
         }
         
+        let squareSymbol = this.truncateAt > 0 ? "minus" : "plus";
+        let hideCode = this.truncateAt > 0 ? "" : ` style="display:none"`;
+
         return ` 
         <div class="${this.divClass}" id="results-${this.code}">
-        <h3><a><i class="fa fa-minus-square toggle-view" id="${resultsId}"></i></a> ${this.foundItemsHeader()}</h3>
-        <div id="${resultsId}.b">
+        <h3><a><i class="fa fa-${squareSymbol}-square toggle-view" id="${resultsId}"></i></a> ${this.foundItemsHeader()}</h3>
+        <div id="${resultsId}.b"${hideCode}>
         ${firstItems} 
         ${moreItems}
         </div>
         </div>
         `;
+    }
+}
+
+class SessionSearcher extends TruncatedSearcher {
+    // Searcher for sessions. Groups sessions by event and displays the event after each group.
+    code = "s"; // a one-letter code to identify the search.
+    name = "session"; // the name of the search, e.g. "Tag"
+    plural = "sessions"; // the plural name of the search.
+    truncateAt = 4;
+    eventHtml; // The html code to display after each event group
+
+    loadItemsFomDatabase(database) {
+        // Called after SearchDatabase.json is loaded to prepare for searching
+        super.loadItemsFomDatabase(database);
+        this.eventHtml = database.searches[this.code].eventHtml;
+    }
+
+    renderItems(startItem = 0,endItem = null) {
+        if (endItem === null)
+            endItem = undefined;
+        let prevEvent = this.foundItems[startItem].event;
+        let rendered = [];
+        for (let item of this.foundItems.slice(startItem,endItem)) {
+            if (item.event !== prevEvent) {
+                rendered.push(this.eventHtml[prevEvent]);
+                prevEvent = item.event;
+            }
+            rendered.push(this.prefix + this.query.displayMatchesInBold(item.html) + this.suffix);
+        }
+        rendered.push(this.eventHtml[prevEvent]);
+
+        return rendered.join(this.separator);
+    }
+
+    htmlSearchResults() {
+        // If more than truncateAt sessions are found, hide them all.
+        let truncateAtStore = this.truncateAt;
+        if (this.foundItems.length > this.truncateAt)
+            this.truncateAt = 0;
+        let returnValue = super.htmlSearchResults();
+        this.truncateAt = truncateAtStore;
+        return returnValue;
     }
 }
 
@@ -853,7 +899,7 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("g","tag",5),
         new TruncatedSearcher("t","teacher",5),
         new TruncatedSearcher("e","event",3),
-        new TruncatedSearcher("s","session",3),
+        new SessionSearcher(),
         new ExcerptSearcher()
     )
 };
