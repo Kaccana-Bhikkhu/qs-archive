@@ -60,12 +60,6 @@ due to excerpt teachers ['AP', 'TJag', 'AKc']
 Exclude excerpt('WR2016_S50_F03', 'Question', 'Is divided consciousness the same as divided awareness?') 
 due to excerpt teachers ['AP', 'TKon', 'AShj']
 
-Exclude excerpt('WR2016_S52_F00', 'Reading group', '') 
-due to excerpt teachers ['TGam']
-
-Exclude excerpt('WR2016_S53_F00', 'Reading group', '') 
-due to excerpt teachers ['TKon']
-
 Exclude excerpt('WR2016_S55_F02', 'Question', "Do others who have been to India share Ajahn Sumedho's feeling that...") 
 due to teachers ['Jeed'] of annotation('Comment', 'A French director makes a 7-hour film trying to figure out what Ind...')
 
@@ -92,11 +86,13 @@ due to excerpt teachers ['RHatha']
 
 Exclude annotation('Reference', "I'm not getting anywhere in my meditation. Amaravati Vault") to excerpt('WR2025_S10_F04', 'Question', "My perception of Theravāda is that it's a lot about striving but th...") - exclude flag Yes.
 
+Exclude annotation('Sutta', 'There is this which is born; surely there must be an unborn.') to excerpt('WR2025_S21_F01', 'Question', 'Even before the Bodhisattva leaves home, he has a strong sense that...') - exclude flag Yes.
+
 Exclude annotation('Indirect quote', "You don't need to worry, Dad. Buddhism in Thailand isn't organized....") to excerpt('ChahQA2025_S02_F07', 'Question', 'What were the criteria for founding new branch monasteries at Ajahn...') - exclude flag Yes.
 
 Exclude annotation('Indirect quote', "You don't have to worry, Dad. Buddhism in Thailand isn't organized....") to excerpt('Chithurst2025_S00_F04', 'Question', 'People often say that Amaravati is like an institution. What is a p...') - exclude flag Yes.
 
-Exclude : 20 excerpts and 16 annotations in all.
+Exclude : 18 excerpts and 17 annotations in all.
 
 Exclude : Did not attribute excerpts to the following 4 teachers: {'RCenter': 20, 'AShj': 41, 'MMotaghy': 2, 'AKha': 3}
 

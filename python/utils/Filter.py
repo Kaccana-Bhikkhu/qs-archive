@@ -260,6 +260,21 @@ class Category(Filter):
         
         return self.negate
 
+
+class Event(Filter):
+    "A filter that passes items within a particular event."
+
+    def __init__(self,passEvents:str|Iterable[str]) -> None:
+        super().__init__()
+        self.passEvents = FrozenSet(passEvents)
+    
+    def Match(self, item: dict) -> bool:
+        eventCode = item.get("event") or item.get("code")
+        if eventCode in self.passEvents:
+            return not self.negate
+        else:
+            return self.negate
+
 class Flags(Filter):
     """A filter that passes items which contain any of a specified list of flags.
     Does not match flags in annotations."""
