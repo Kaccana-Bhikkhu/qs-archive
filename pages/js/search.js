@@ -555,7 +555,8 @@ class TruncatedSearcher extends Searcher {
     // Displays its own header e.g. "Teachers (2):", so it's intended to be used with MultiSearcher.
 
     truncateAt; // Truncate the initial view if there are more than this many items
-        // If truncateAt === 0, always hide the entire list
+        // If truncateAt === 0, always hide the entire list;
+        // if truncateAt < 0, hide all items if there are more than abs(truncateAt)
 
     constructor(code,name,truncateAt) {
         super(code,name);
@@ -583,8 +584,9 @@ class TruncatedSearcher extends Searcher {
             firstItems = this.renderItems();
         }
         
-        let squareSymbol = this.truncateAt > 0 ? "minus" : "plus";
-        let hideCode = this.truncateAt > 0 ? "" : ` style="display:none"`;
+        let hideAll = this.truncateAt <= 0 && this.foundItems.length > -this.truncateAt;
+        let squareSymbol = hideAll ? "plus" : "minus";
+        let hideCode = hideAll ? ` style="display:none"` : "";
 
         return ` 
         <div class="${this.divClass}" id="results-${this.code}">
@@ -603,7 +605,7 @@ class SessionSearcher extends TruncatedSearcher {
     code = "s"; // a one-letter code to identify the search.
     name = "session"; // the name of the search, e.g. "Tag"
     plural = "sessions"; // the plural name of the search.
-    truncateAt = 4;
+    truncateAt = -4;
     eventHtml; // The html code to display after each event group
 
     loadItemsFomDatabase(database) {
@@ -627,16 +629,6 @@ class SessionSearcher extends TruncatedSearcher {
         rendered.push(this.eventHtml[prevEvent]);
 
         return rendered.join(this.separator);
-    }
-
-    htmlSearchResults() {
-        // If more than truncateAt sessions are found, hide them all.
-        let truncateAtStore = this.truncateAt;
-        if (this.foundItems.length > this.truncateAt)
-            this.truncateAt = 0;
-        let returnValue = super.htmlSearchResults();
-        this.truncateAt = truncateAtStore;
-        return returnValue;
     }
 }
 
