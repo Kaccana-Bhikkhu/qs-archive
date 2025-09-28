@@ -1,50 +1,50 @@
-Modified:,2025,,,,,,,,,,,,,,
-Kind,Category,Default form,Can be excerpt?,Can be annotation?,Takes times?,Takes teachers?,Takes tags?,Ignore consent?,Append to excerpt?,Inherit teachers from:,Form 1,Form 2,Form 3,Exclude?,Usage notes
-Question,Questions,3,Yes,No,Yes,Yes,Yes,No,No,Session,unimplemented,++Question{s}{colon}++ {text}|| answered by {teachers}.,{prefix} “{text}” {suffix}|| Answered by {teachers}.,,
-Response,Questions,1,No,Yes,No,Yes,Yes,No,No,Session,"++Response{s}++|| by {teachers}||{colon}{""."" if not text and teachers else "" "" + text}",unimplemented,unimplemented,,An excerpt of any category which has a response annotation will be found when searching for questions.
-Follow-up,Questions,2,No,Yes,No,Yes,Yes,No,No,Excerpt,unimplemented,++Follow-up{colon}++ “{text}”|| aswered by {teachers}.,unimplemented,,
-,,,,,,,,,,,,,,,
-Story,Stories,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Stor{'ies' if s else 'y'}{colon}++ {text}|| told by {teachers}.,{text}|| ++Stor{'ies' if s else 'y'}{colon}++ told by {teachers}.,,
-Recollection,Stories,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Recollection{s}{colon}++ {text}|| recounted by {teachers}.,{text}|| ++Recollection{s}++ by {teachers}.,,
-,,,,,,,,,,,,,,,
-Teaching,Teachings,3,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Teaching{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Teaching{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Teaching{s}++ by {teachers}.,,
-Reflection,Teachings,1,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Reflection{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Reflection{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Reflection{s}++ by {teachers}.,,
-Simile,Teachings,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Simile{s}++|| from {teachers}||{colon}{""."" if not text else "" "" + text}",++Simile{s}{colon}++ {text}|| — {teachers}.,unimplemented,,
-Dhamma talk,Teachings,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Dhamma talk{s}++|| offered by {teachers}||{colon}{""."" if not text else "" "" + text}",++Dhamma talk{s}{colon}++ {text}|| offered by {teachers}.,{text}|| ++Dhamma talk{s}++ offered by {teachers}.,,
-,,,,,,,,,,,,,,,
-Quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Quote:++ {prefix} “{text}” {suffix}|| — {teachers}.,unimplemented,,A quote from the teacher him/herself.
-Indirect quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Quote:++ {prefix} “{text}”{' — ' if suffix else ''}{suffix}{'.' if suffix else ''}|| Quoted by {teachers}.,unimplemented,,"The teacher quoting someone else. If the person quoted is a teacher, they should get the first tag."
-,,,,,,,,,,,,,,,
-Meditation instruction,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Meditation instruction{s}++|| from {teachers}||{colon}{""."" if not text else "" "" + text}",++Meditation instruction{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
-Guided meditation,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Guided meditation{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
-Chanting,Meditations,2,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Chanting{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
-,,,,,,,,,,,,,,,
-Reading,Readings,1,Yes,Yes,Yes,Yes,Yes,Yes,No,None,++Reading{s}{colon}++ {text},{text},unimplemented,,"{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and "" by {teachers}"" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
-Reading group,Readings,1,Yes,No,Yes,Yes,Yes,Yes,No,Excerpt,"++Readings{colon}++{"" "" + text if text else """"}|| by {teachers}||:",unimplemented,unimplemented,,A group of readings (often a session excerpt) by a single teacher. The readings should be annotations to this excerpt.
-,,,,,,,,,,,,,,,
-Reference,References,1,No,Yes,No,No,Yes,,No,,++Reference{s}:++ {text},{text},unimplemented,,
-Sutta,References,1,No,Yes,No,No,Yes,,No,,++Sutta{s}:++ {text},{text},unimplemented,,
-Vinaya,References,1,No,Yes,No,No,Yes,,No,,++Vinaya:++ {text},{text},unimplemented,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-Comment,Other,1,Yes,Yes,Yes,Yes,Yes,No,No,Anon,"++Comment{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Comment{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Comment{s}++ by {teachers}.,,
-Discussion,Other,2,Yes,Yes,Yes,Yes,Yes,No,No,Anon,"++Discussion{s}++|| led by {teachers}||{colon}{""."" if not text else "" "" + text}",++Discussion{s}{colon}++ {text}|| led by {teachers}.,{text}|| ++Discussion{s}++ led by {teachers}.,,
-Note,Other,1,No,Yes,No,No,No,,No,,++Note{s}:++ {text},unimplemented,unimplemented,,
-Summary,Other,1,Yes,No,Yes,Yes,Yes,No,No,Session,{text},unimplemented,unimplemented,,"Used for session excerpts; can be blank. If the session excerpt has a list of items (e. g. readings), the items should be annotations to a summary excerpt."
-Other,Other,0,Yes,Yes,Yes,Yes,Yes,No,No,None,unimplemented,unimplemented,unimplemented,,
-,,,,,,,,,,,,,,,
-Commentary,References,1,No,Yes,No,No,Yes,,No,,++Commentary:++ {text},unimplemented,unimplemented,,
-,,,,,,,,,,,,,,,
-Read by,Attribution,1,No,Yes,No,Yes,No,Yes,Yes,Session unless text,{'Read by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Read by ' + teachers + '.'},unimplemented,unimplemented,,"If the reader is not a teacher, {teachers} should be empty and {text} specifies the name of the reader."
-Translated by,Attribution,1,No,Yes,No,Yes,No,Yes,Yes,None,{'Translated by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Translated by ' + teachers + '.'},unimplemented,unimplemented,,
-Asked by,Attribution,1,No,Yes,No,Yes,No,No,Yes,None,{'Asked by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Asked by ' + teachers + '.'},unimplemented,unimplemented,Yes,
-,,,,,,,,,,,,,,,
-Extra tags,Other,0,No,Yes,No,No,Yes,,No,,unimplemented,unimplemented,unimplemented,,
-,,,,,,,,,,,,,,,
-Fragment,Fragment,1,No,Yes,Yes,No,No,,,,{'' if text =='noPlayer' else player},unimplemented,unimplemented,,A fragment annotation indicates that the next annotation and its sub-annotations should be duplicated in a separate except following the main excerpt. The Fragment annotation itself is rendered as an audio player to play that excerpt unless text == 'noPlayer'.
-Main fragment,Fragment,1,No,Yes,Yes,No,Yes,,,,,unimplemented,unimplemented,,"A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. If tags are applied to the main fragment annotation, the fragment excerpt tags are replaced by these tags. Main fragments do not display a separate audio player."
-,,,,,,,,,,,,,,,
-Alternate audio,Audio,1,No,Yes,Yes,No,No,,No,,,unimplemented,unimplemented,,Specifes an audio file which is treated as if it were the session audio file for this excerpt. Text has the format: filename.mp3|url. End time specifies the duration of the file.
-Edited audio,Audio,1,No,Yes,Yes,No,No,,No,,,unimplemented,unimplemented,,"Specifes a replacedment audio file for this excerpt, which is otherwise treated as if it were taken from the session audio file. End time specifies the duration of the excerpt; if blank, use the duration specified by the excerpt start and end times."
-Append audio,Audio,1,No,Yes,Yes,No,No,,No,,,unimplemented,unimplemented,,"Append audio after the audio already present in an excerpt. Text specifies the source file and can be one of: <blank>: same source as previous clip; ""$"": session audio file; ""duration|filename|URL"": an audio source within the current event folder. URL [optional] indicates the remote URL to download from. Duration [optional] indicates the file's duration. Start and end time specify times in the source file."
-Cut audio,Audio,1,No,Yes,Yes,No,No,,No,,,unimplemented,unimplemented,,Cut the audio between start and end time.
+Modified:,2025,,,,,,,,,,,,,,,
+Kind,Category,Default form,Can be excerpt?,Can be annotation?,Takes times?,Takes teachers?,Takes tags?,Expects tags?,Ignore consent?,Append to excerpt?,Inherit teachers from:,Form 1,Form 2,Form 3,Exclude?,Usage notes
+Question,Questions,3,Yes,No,Yes,Yes,Yes,Yes,No,No,Session,unimplemented,++Question{s}{colon}++ {text}|| answered by {teachers}.,{prefix} “{text}” {suffix}|| Answered by {teachers}.,,
+Response,Questions,1,No,Yes,No,Yes,Yes,No,No,No,Session,"++Response{s}++|| by {teachers}||{colon}{""."" if not text and teachers else "" "" + text}",unimplemented,unimplemented,,An excerpt of any category which has a response annotation will be found when searching for questions.
+Follow-up,Questions,2,No,Yes,No,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Follow-up{colon}++ “{text}”|| aswered by {teachers}.,unimplemented,,
+,,,,,,,,,,,,,,,,
+Story,Stories,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Stor{'ies' if s else 'y'}{colon}++ {text}|| told by {teachers}.,{text}|| ++Stor{'ies' if s else 'y'}{colon}++ told by {teachers}.,,
+Recollection,Stories,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Recollection{s}{colon}++ {text}|| recounted by {teachers}.,{text}|| ++Recollection{s}++ by {teachers}.,,
+,,,,,,,,,,,,,,,,
+Teaching,Teachings,3,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Teaching{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Teaching{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Teaching{s}++ by {teachers}.,,
+Reflection,Teachings,1,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Reflection{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Reflection{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Reflection{s}++ by {teachers}.,,
+Simile,Teachings,2,Yes,Yes,Yes,Yes,Yes,No,No,No,Excerpt,"++Simile{s}++|| from {teachers}||{colon}{""."" if not text else "" "" + text}",++Simile{s}{colon}++ {text}|| — {teachers}.,unimplemented,,
+Dhamma talk,Teachings,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Dhamma talk{s}++|| offered by {teachers}||{colon}{""."" if not text else "" "" + text}",++Dhamma talk{s}{colon}++ {text}|| offered by {teachers}.,{text}|| ++Dhamma talk{s}++ offered by {teachers}.,,
+,,,,,,,,,,,,,,,,
+Quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Quote:++ {prefix} “{text}” {suffix}|| — {teachers}.,unimplemented,,A quote from the teacher him/herself.
+Indirect quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Quote:++ {prefix} “{text}”{' — ' if suffix else ''}{suffix}{'.' if suffix else ''}|| Quoted by {teachers}.,unimplemented,,"The teacher quoting someone else. If the person quoted is a teacher, they should get the first tag."
+,,,,,,,,,,,,,,,,
+Meditation instruction,Meditations,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,"++Meditation instruction{s}++|| from {teachers}||{colon}{""."" if not text else "" "" + text}",++Meditation instruction{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
+Guided meditation,Meditations,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Guided meditation{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
+Chanting,Meditations,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Chanting{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
+,,,,,,,,,,,,,,,,
+Reading,Readings,1,Yes,Yes,Yes,Yes,Yes,No,Yes,No,None,++Reading{s}{colon}++ {text},{text},unimplemented,,"{teachers} should be the author(s) of the book. Use a Read by annotation to indicate who does the reading. If the book appears in the list of references, {teachers} will be set and "" by {teachers}"" inserted automatically. If not, plug both in manually along with the hyperlink if relevant."
+Reading group,Readings,1,Yes,No,Yes,Yes,Yes,No,Yes,No,Excerpt,"++Readings{colon}++{"" "" + text if text else """"}|| by {teachers}||:",unimplemented,unimplemented,,A group of readings (often a session excerpt) by a single teacher. The readings should be annotations to this excerpt.
+,,,,,,,,,,,,,,,,
+Reference,References,1,No,Yes,No,No,Yes,No,,No,,++Reference{s}:++ {text},{text},unimplemented,,
+Sutta,References,1,No,Yes,No,No,Yes,No,,No,,++Sutta{s}:++ {text},{text},unimplemented,,
+Vinaya,References,1,No,Yes,No,No,Yes,No,,No,,++Vinaya:++ {text},{text},unimplemented,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Comment,Other,1,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Anon,"++Comment{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Comment{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Comment{s}++ by {teachers}.,,
+Discussion,Other,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Anon,"++Discussion{s}++|| led by {teachers}||{colon}{""."" if not text else "" "" + text}",++Discussion{s}{colon}++ {text}|| led by {teachers}.,{text}|| ++Discussion{s}++ led by {teachers}.,,
+Note,Other,1,No,Yes,No,No,No,No,,No,,++Note{s}:++ {text},unimplemented,unimplemented,,
+Summary,Other,1,Yes,No,Yes,Yes,Yes,Yes,No,No,Session,{text},unimplemented,unimplemented,,"Used for session excerpts; can be blank. If the session excerpt has a list of items (e. g. readings), the items should be annotations to a summary excerpt."
+Other,Other,0,Yes,Yes,Yes,Yes,Yes,No,No,No,None,unimplemented,unimplemented,unimplemented,,
+,,,,,,,,,,,,,,,,
+Commentary,References,1,No,Yes,No,No,Yes,No,,No,,++Commentary:++ {text},unimplemented,unimplemented,,
+,,,,,,,,,,,,,,,,
+Read by,Attribution,1,No,Yes,No,Yes,No,No,Yes,Yes,Session unless text,{'Read by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Read by ' + teachers + '.'},unimplemented,unimplemented,,"If the reader is not a teacher, {teachers} should be empty and {text} specifies the name of the reader."
+Translated by,Attribution,1,No,Yes,No,Yes,No,No,Yes,Yes,None,{'Translated by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Translated by ' + teachers + '.'},unimplemented,unimplemented,,
+Asked by,Attribution,1,No,Yes,No,Yes,No,No,No,Yes,None,{'Asked by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Asked by ' + teachers + '.'},unimplemented,unimplemented,Yes,
+,,,,,,,,,,,,,,,,
+Extra tags,Other,0,No,Yes,No,No,Yes,Yes,,No,,unimplemented,unimplemented,unimplemented,,
+,,,,,,,,,,,,,,,,
+Fragment,Fragment,1,No,Yes,Yes,No,No,No,,,,{'' if text =='noPlayer' else player},unimplemented,unimplemented,,A fragment annotation indicates that the next annotation and its sub-annotations should be duplicated in a separate except following the main excerpt. The Fragment annotation itself is rendered as an audio player to play that excerpt unless text == 'noPlayer'.
+Main fragment,Fragment,1,No,Yes,Yes,No,Yes,No,,,,,unimplemented,unimplemented,,"A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. If tags are applied to the main fragment annotation, the fragment excerpt tags are replaced by these tags. Main fragments do not display a separate audio player."
+,,,,,,,,,,,,,,,,
+Alternate audio,Audio,1,No,Yes,Yes,No,No,No,,No,,,unimplemented,unimplemented,,Specifes an audio file which is treated as if it were the session audio file for this excerpt. Text has the format: filename.mp3|url. End time specifies the duration of the file.
+Edited audio,Audio,1,No,Yes,Yes,No,No,No,,No,,,unimplemented,unimplemented,,"Specifes a replacedment audio file for this excerpt, which is otherwise treated as if it were taken from the session audio file. End time specifies the duration of the excerpt; if blank, use the duration specified by the excerpt start and end times."
+Append audio,Audio,1,No,Yes,Yes,No,No,No,,No,,,unimplemented,unimplemented,,"Append audio after the audio already present in an excerpt. Text specifies the source file and can be one of: <blank>: same source as previous clip; ""$"": session audio file; ""duration|filename|URL"": an audio source within the current event folder. URL [optional] indicates the remote URL to download from. Duration [optional] indicates the file's duration. Start and end time specify times in the source file."
+Cut audio,Audio,1,No,Yes,Yes,No,No,No,,No,,,unimplemented,unimplemented,,Cut the audio between start and end time.

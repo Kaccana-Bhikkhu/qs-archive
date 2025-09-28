@@ -264,7 +264,12 @@ def CheckAttributions() -> None:
                 Alert.caution(item,"takes teachers but does not have any.")
 
 def CheckTags() -> None:
-    """Raise a caution if there are unsorted tags."""
+    """Check that all items expecting tags have them. Raise a caution if there are unsorted tags."""
+    for x in gDatabase["excerpts"]:
+        for item in Filter.AllItems(x):
+            if gDatabase["kind"][item["kind"]]["expectsTags"] and not item.get("tags") and ParseCSV.ExcerptFlag.NO_TAGS not in item["flags"]:
+                Alert.notice(item,"expects tags but doesn't have any.")
+
     unsortedTags = gDatabase["tag"].get("New unsorted tags",None)
     if unsortedTags:
         Alert.caution("There are",len(unsortedTags["subtags"]),"unsorted tags:",unsortedTags["subtags"])

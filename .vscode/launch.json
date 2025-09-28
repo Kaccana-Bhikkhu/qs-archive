@@ -160,7 +160,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSArchive.py",
             "args": [
-                "Render",
+                "ReviewDatabase",
                 "--buildOnly",
                 "events"
             ],

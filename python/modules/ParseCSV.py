@@ -46,6 +46,7 @@ class ExcerptFlag(StrEnum):
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
     END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
+    NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
