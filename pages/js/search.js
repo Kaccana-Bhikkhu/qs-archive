@@ -1,4 +1,4 @@
-import {configureLinks,frameSearch,setFrameSearch} from './frame.js';
+import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
 
 const TEXT_DELIMITERS = "][{}<>^";
@@ -82,6 +82,8 @@ export async function loadSearchPage() {
     await loadSearchDatabase();
 
     searchFromURL();
+    if (query) // Set the scroll position after displaying search results.
+        scrollToInitialPosition();
 }
 
 function matchEnclosedText(separators,dontMatchAfterSpace) {

@@ -11,7 +11,7 @@ const errorPage = "./about/Page-Not-Found.html";
 const PATH_PART = /[^#?]*/;
 const SEARCH_PART = /\?[^#]*/;
 
-const DEBUG = false;
+const DEBUG = true;
 if (DEBUG) 
 	globalThis.debugLog = console.log.bind(window.console)
 else 
@@ -189,24 +189,38 @@ async function changeURL(pUrl,scrollTo = null) {
 			loadSearchPage(); // loadSearchPage() and loadHomepage() modify the DOM and are responsible for calling
 			loadHomepage(frame); // configureLinks() and loadToggleView() on any elements they add.
 			if (scrollTo && Object.hasOwn(scrollTo,"scrollX") && Object.hasOwn(scrollTo,"scrollY"))
-				window.scrollTo(scrollTo.scrollX,scrollTo.scrollY)
+				setInitialScroll(scrollTo);
 			else {
 				if (!pUrl.endsWith("#_keep_scroll")) {
 					if (pUrl.includes("#"))
-						delayedScroll(pUrl.split("#")[1])
+						setInitialScroll(pUrl.split("#")[1])
 					else
-						window.scrollTo(0, 0);
+						setInitialScroll({"scrollX":0, "scrollY":0});
 				}
 			}
 		});
 }
 
-function delayedScroll(bookmark) {
-	document.getElementById(bookmark)?.scrollIntoView();
+let gInitialScroll = {"scrollX":0, "scrollY":0};
+export function scrollToInitialPosition() {
+	if (typeof gInitialScroll === "string")
+		document.getElementById(gInitialScroll)?.scrollIntoView();
+	else
+		window.scrollTo(gInitialScroll.scrollX,gInitialScroll.scrollY);
+}
+
+function setInitialScroll(bookmarkOrPoint) {
+	// Attempt to scroll to a given location, wait, then attempt to scroll again if the user hasn't scrolled in the
+	// meantime. This allows time for the page elements to fully load.
+	// bookmarkOrPoint is either a string bookmark or {"scrollX":x, "scrollY":y}.
+
+	gInitialScroll = bookmarkOrPoint;
+	scrollToInitialPosition();
+
 	// If there are many images on a page (about/02_EventSeries.html), then wait for them to load and scroll again.
 	if (document.getElementsByClassName("cover").length > 1) {
 		setTimeout(function(){
-			document.getElementById(bookmark)?.scrollIntoView();
+			scrollToInitialPosition();
 		}, 1000);
 	}
 }
@@ -225,7 +239,7 @@ if (frame) {
 	let url = new URL(location.href)
 	// Skip changeURL for local files and robots loading index.html (url.hash === '')
 	if (url.protocol !== "file:" && (!isBotUserAgent || url.hash)) {
-		changeURL(location.hash.slice(1) || frame.dataset.url);
+		changeURL(location.hash.slice(1) || frame.dataset.url,null,true);
 
 		addEventListener("popstate", (event) => {
 			changeURL(location.hash.slice(1) || frame.dataset.url,event.state);
