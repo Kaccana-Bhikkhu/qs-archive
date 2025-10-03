@@ -72,12 +72,13 @@ setInterval(() => {
 	if (currentlyPlaying != null) {
 		let currentTime = Math.round(currentlyPlaying.currentTime);
 		let duration = Math.round(currentlyPlaying.duration);
+
 		if (!currentlyPlaying.paused) {
 			playBar.value = currentTime;
 			durationTitle.innerText = `${time(currentTime)} / ${time(duration)}`;
 		}
 
-		if (currentTime === duration) {
+		if (currentlyPlaying.ended) {
 			playButton.classList.remove("playing");
 			currentlyPlaying.pause();
 			currentlyPlaying.currentTime = 0;
