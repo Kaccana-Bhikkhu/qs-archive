@@ -1642,7 +1642,7 @@ gRemovedExcerpts = 0 # Count the total number of removed excerpts
 gRemovedAnnotations = 0
 
 # AlertClass for explanations of excluded excerpts. Don't show by default.
-excludeAlert = Alert.AlertClass("Exclude","Exclude",printAtVerbosity=999,logging = False,lineSpacing = 1)
+excludeAlert = Alert.AlertClass("Exclude","Exclude",printAtVerbosity=999,lineSpacing = 1)
 
 def main():
     """ Parse a directory full of csv files into the dictionary database and write it to a .json file.

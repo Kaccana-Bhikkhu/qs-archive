@@ -1,4 +1,4 @@
-"""A module to print and log errors and notifications taking into account verbosity and debug status."""
+"""A module to print errors and notifications taking into account verbosity and debug status."""
 from __future__ import annotations
 from typing import Any, List
 from contextlib import contextmanager
@@ -6,7 +6,7 @@ verbosity = 0
 ObjectPrinter = repr # Call this function to convert items to print into strings
 
 class AlertClass:
-    def __init__(self,name: str,message: str|None = None, plural = None, printAtVerbosity: int = 0, logging:bool = False,indent = 0,lineSpacing = 0):
+    def __init__(self,name: str,message: str|None = None, plural = None, printAtVerbosity: int = 0, indent = 0,lineSpacing = 0):
         "Defines a specific type of alert."
         self.name = name
         self.message = message if message is not None else name + ":"
@@ -17,19 +17,16 @@ class AlertClass:
         else:
             self.plural = self.name
         self.printAtVerbosity = printAtVerbosity
-        self.logging = logging # log these alerts?
-        self.log = {} # A log of printed alerts
         self.count = 0
         self.indent = indent # print this many spaces before the message
         self.lineSpacing = lineSpacing # print this many blank lines after the alert
 
     def Show(self,*items,indent:int|None = None,lineSpacing:int|None = None) -> None:
         """Generate an alert from a list of items to print.
-        Print it if verbosity is high enough.
-        Log it if we are logging."""
+        Print it if verbosity is high enough."""
         if items:
             self.count += 1
-        if verbosity >= self.printAtVerbosity or self.logging:
+        if verbosity >= self.printAtVerbosity:
             if indent is None:
                 indent = self.indent
             strings = []
@@ -85,10 +82,10 @@ class AlertClass:
         yield None
         self.printAtVerbosity = saveVerbosity
 
-error = AlertClass("Error","ERROR:",printAtVerbosity=-2,logging=True,lineSpacing = 1)
-warning = AlertClass("Warning","WARNING:",printAtVerbosity = -1,logging = True,lineSpacing = 1)
-caution = AlertClass("Caution",printAtVerbosity = 0, logging = True,lineSpacing = 1)
-notice = AlertClass("Notice",printAtVerbosity = 1,logging=True,lineSpacing = 1)
+error = AlertClass("Error","ERROR:",printAtVerbosity=-2,lineSpacing = 1)
+warning = AlertClass("Warning","WARNING:",printAtVerbosity = -1,lineSpacing = 1)
+caution = AlertClass("Caution",printAtVerbosity = 0,lineSpacing = 1)
+notice = AlertClass("Notice",printAtVerbosity = 1,lineSpacing = 1)
 
 essential = AlertClass("Essential","",printAtVerbosity = -1,indent = 3)
 structure = AlertClass("Structure","",printAtVerbosity = 0)
@@ -96,12 +93,10 @@ status = AlertClass("Status","",printAtVerbosity = 0,indent = 3)
 info = AlertClass("Information","",printAtVerbosity = 1,indent = 3)
 extra = AlertClass("Extra","",printAtVerbosity = 2,indent = 3)
 
-debug = AlertClass("Debug","DEBUG:",printAtVerbosity=999,logging = False)
+debug = AlertClass("Debug","DEBUG:",printAtVerbosity=999)
 
 def Debugging(flag: bool):
     if flag:
         debug.printAtVerbosity = -999
-        debug.logging = True
     else:
         debug.printAtVerbosity = 999
-        debug.logging = False
