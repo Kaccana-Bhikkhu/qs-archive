@@ -493,14 +493,35 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     
     return ""
 
-def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
+def AddTextReference(item:dict,matchObject: re.Match) -> None:
+    """Add a text (sutta or vinaya) reference to this item.
+    item: an excerpt, annotation, or event.
+    matchObject: the Match object returned from the suttaMatch regex."""
+
+    if "kind" not in item and "endDate" not in item:
+        return # Exclude items which are not excerpts, annotations, or events
+    
+    if matchObject[2]:
+        numbers = (n for n in (matchObject[2],matchObject[3],matchObject[4]) if n)
+        referenceText = f"{matchObject[1]} {'.'.join(numbers)}"
+    else:
+        referenceText = matchObject[1]
+    
+    if "texts" in item:
+        item["texts"].append(referenceText)
+    else:
+        item["texts"] = [referenceText]
+
+def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Use the list of rules in gDatabase["textLink"] to generate hyperlinks for sutta references."""
 
     def SuttasWithinMarkdownLink(bodyStr: str,item:dict=None) -> Tuple[str,int]:
         def SuttaMatchWrapper(matchObject: re.Match) -> str:
             link = ApplySuttaMatchRules(matchObject)
-            if not link:
-                print("   in",Database.ItemRepr(item))
+            if link:
+                AddTextReference(item,matchObject)
+            else:
+                print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
             return link
 
@@ -516,8 +537,10 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
                     item["text"] = re.sub(r"\b" + matchObject[1] + r" ([1-9])",textRecord["name"] + r" \1",item["text"])
 
             link = ApplySuttaMatchRules(matchObject)
-            if not link:
-                print("   in",Database.ItemRepr(item))
+            if link:
+                AddTextReference(item,matchObject)
+            else:
+                print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
             return f'[{withoutTranslator}]({link})'
     
@@ -860,7 +883,21 @@ def LinkReferences() -> None:
     markdownChanges = ApplyToBodyText(MarkdownFormat)
     Alert.extra(f"{markdownChanges} items changed by markdown")
     ApplyToBodyText(RemoveHTMLPassthroughComments)
-    
+
+def AccumulateReferences() -> None:
+    """Combine text references in annotations with their parent excerpt;
+    remove text references from fragments."""
+
+    for excerpt in gDatabase["excerpts"]:
+        accumulatedTexts = []
+        for item in Filter.AllItems(excerpt):
+            accumulatedTexts += item.get("texts") or []
+            item.pop("texts",None)
+        
+        if accumulatedTexts and ParseCSV.ExcerptFlag.FRAGMENT not in excerpt["flags"]:
+            item["texts"] = accumulatedTexts
+
+
 def SmartQuotes(text: str) -> tuple[str,int]:
     newText = Utils.SmartQuotes(text)
     changeCount = 0 if text == newText else 1
@@ -889,6 +926,7 @@ def main() -> None:
     RenderExcerpts()
 
     LinkReferences()
+    AccumulateReferences()
 
     ApplyToBodyText(SmartQuotes)
 
