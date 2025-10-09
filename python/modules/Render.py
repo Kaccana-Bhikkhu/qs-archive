@@ -498,7 +498,7 @@ def AddTextReference(item:dict,matchObject: re.Match) -> None:
     item: an excerpt, annotation, or event.
     matchObject: the Match object returned from the suttaMatch regex."""
 
-    if "kind" not in item and "endDate" not in item:
+    if not item or ("kind" not in item and "endDate" not in item):
         return # Exclude items which are not excerpts, annotations, or events
     
     if matchObject[2]:
@@ -895,7 +895,7 @@ def AccumulateReferences() -> None:
             item.pop("texts",None)
         
         if accumulatedTexts and ParseCSV.ExcerptFlag.FRAGMENT not in excerpt["flags"]:
-            item["texts"] = accumulatedTexts
+            excerpt["texts"] = accumulatedTexts
 
 
 def SmartQuotes(text: str) -> tuple[str,int]:

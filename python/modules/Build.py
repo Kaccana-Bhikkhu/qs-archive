@@ -7,7 +7,7 @@ from typing import List, Iterator, Iterable, Tuple, Callable
 from airium import Airium
 import Mp3DirectCut
 import Database, ReviewDatabase
-import Utils, Alert, Filter, ParseCSV, Document, Render, SetupFeatured
+import Utils, Alert, Filter, ParseCSV, Document, Render, SetupFeatured, BuildReferences
 import Html2 as Html
 from datetime import timedelta
 import re, copy, itertools
@@ -2943,6 +2943,7 @@ def main():
     sitemapMenu.append(YieldAllIf(TagMenu(indexDir),{"tags","drilldown"} | gOptions.buildOnly))
     sitemapMenu.append(YieldAllIf(EventsMenu(indexDir),"events" in gOptions.buildOnly))
     sitemapMenu.append(YieldAllIf(TeacherMenu("teachers"),"teachers" in gOptions.buildOnly))
+    sitemapMenu.append(BuildReferences.ReferencesMenu())
     sitemapMenu.append(YieldAllIf(SearchMenu("search"),"search" in gOptions.buildOnly))
     
     if "about" in gOptions.buildOnly:
