@@ -295,9 +295,9 @@ class PageDesc(Renderable):
             return section
         
         canMerge = type(existingSection) == str and type(content) == str
-        if canMerge:
-            if joinChar is None:
-                joinChar = self.specialJoinChar.get(section,self.defaultJoinChar)
+        if joinChar is None:
+            joinChar = self.specialJoinChar.get(section,self.defaultJoinChar)
+        if canMerge and joinChar != self.defaultJoinChar:
             self.section[section] = joinChar.join([existingSection,content])
             return section
         elif type(section) == int:

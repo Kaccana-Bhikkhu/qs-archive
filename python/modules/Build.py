@@ -52,7 +52,6 @@ def WriteIndentedTagDisplayList(fileName):
             
             print(''.join([indent,indexStr,item['text'],reference]),file = file)
 
-gMaxSectionCount = 0
 def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     """Write an html file for page using the global template"""
     page.gOptions = gOptions
@@ -65,10 +64,6 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     pageHtml = page.RenderWithTemplate(template)
     writer.WriteTextFile(page.info.file,pageHtml)
 
-    global gMaxSectionCount
-    if len(page.section) > gMaxSectionCount:
-        gMaxSectionCount = len(page.section)
-        Alert.info(page.info.file,"has",len(page.section),"sections.")
 
 def DirectoriesToDeleteFrom() -> set[str]:
     """Return the list of directories which will be scanned by DeleteUnwrittenHtmlFiles."""
