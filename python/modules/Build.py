@@ -2874,7 +2874,7 @@ def AddArguments(parser):
     parser.add_argument('--urlList',type=str,default='',help='Write a list of URLs to this file.')
     parser.add_argument('--keepOldHtmlFiles',**Utils.STORE_TRUE,help="Keep old html files from previous runs; otherwise delete them.")
     
-gAllSections = {"about","dispatch","topics","tags","clusters","drilldown","events","teachers","search","allexcerpts"}
+gAllSections = {"about","dispatch","topics","tags","clusters","drilldown","events","teachers","texts","search","allexcerpts"}
 def ParseArguments():
     if gOptions.buildOnly == "":
         if gOptions.buildOnlyIndexes:

@@ -1,11 +1,12 @@
 """Functions that build pages/texts and pages/references.
 These could logically be included within Build.py, but this file is already unweildy due to length."""
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator
 from collections import defaultdict
 from typing import NamedTuple
 from dataclasses import dataclass
-from itertools import groupby
+from itertools import chain, groupby
+from airium import Airium
 import json, re, itertools
 import Html2 as Html
 import Utils
@@ -24,6 +25,11 @@ gDatabase:dict[str] = {} # These will be set later by QSarchive.py
 def TextSortOrder() -> dict[str,int]:
     """Return the sort order of the texts."""
     return {text:n for n,text in enumerate(gDatabase["text"])}
+
+@lru_cache(maxsize=None)
+def TextGroupSet(which: str) -> set[str]:
+    """Return a set of the texts in this group."""
+    return set(gDatabase["textGroup"][which])
 
 class TextReference(NamedTuple):
     text: str           # The name of the text, e.g. 'Dhp'
@@ -44,6 +50,11 @@ class TextReference(NamedTuple):
         text = "Kd" if matchObject[1] == "Mv" else matchObject[1] # Mv is equivalent to Kd
         return TextReference(text,*numbers)
 
+    def Truncate(self,level) -> "TextReference":
+        """Replace all elements with index >= level with 0 or ''."""
+        keep = self[0:level]
+        return TextReference(*keep,*[0 if type(self[index]) == int else "" for index in range(level,len(self))])
+
     def Numbers(self) -> tuple[int,int,int]:
         """Return a tuple of the reference numbers"""
         return tuple(int(n) for n in self[1:] if n)
@@ -52,8 +63,14 @@ class TextReference(NamedTuple):
         """Return a tuple to sort these texts by."""
         return (TextSortOrder()[self.text],) + self.Numbers()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}"
+    
+    def FullName(self) -> str:
+        """Return the full text name of this reference."""
+        numbers = self.Numbers()
+        fullName = gDatabase["text"][self.text]["name"]
+        return f"{fullName} {'.'.join(map(str,numbers))}"
     
 Reference = TextReference
 
@@ -62,6 +79,17 @@ class LinkedReference():
     reference: Reference            # The refererence itself
     items: list[dict[str]]          # A list of events and excerpts that reference it
 
+
+def GroupBySutta(references: Iterable[TextReference]) -> Iterable[list[LinkedReference]]:
+    """Group references by sutta and yield a list of each group."""
+
+    for key,group1 in groupby(references,key = lambda ref:ref[0:2]):
+        group1 = list(group1)
+        if group1[0].text in TextGroupSet("doubleRef"):
+            for key,group2 in groupby(group1,key = lambda ref:ref[0:3]):
+                yield list(group2)
+        else:
+            yield group1
 
 def CollateReferences(referenceKind: str) -> list[LinkedReference]:
     """Read the references stored in gDatabase and return a sorted list of LinkedReference objects.
@@ -73,8 +101,12 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
         for ref in event.get(referenceKind,()):
             referenceDict[TextReference.FromString(ref)].append(event)
     for excerpt in gDatabase["excerpts"]:
-        for ref in excerpt.get(referenceKind,()):
-            referenceDict[TextReference.FromString(ref)].append(excerpt)
+        references = [TextReference.FromString(ref) for ref in excerpt.get(referenceKind,())]
+        if not references:
+            continue
+        references.sort(key=TextReference.SortKey)
+        for group in GroupBySutta(references): # Only one excerpt per sutta
+            referenceDict[group[0]].append(excerpt)
 
     collated:list[LinkedReference] = []
     for ref,items in referenceDict.items():
@@ -91,30 +123,103 @@ def WriteReferences(references:list[LinkedReference],filename:str) -> None:
             for item in ref.items:
                 print("   ",Database.ItemRepr(item),file=file)
 
-def HierarchicalReferencePages(references:list[LinkedReference]) -> Html.PageDescriptorMenuItem:
-    """Return a series of pages that link references to where they occur in the Archive."""
+def ExcerptListPage(references: list[LinkedReference],level: int) -> Iterator[Html.PageDesc]:
+    """Write a list of excerpts that these references refer to."""
 
-    return "This is a placeholder."
+    a = Airium()
+    formatter = Build.Formatter()
+    formatter.SetHeaderlessFormat()
+    firstLoop = True
+    for reference in references:
+        events,excerpts = Utils.Partition(reference.items,lambda item: "endDate" in item)
+        if not firstLoop:
+            a.hr()
+        firstLoop = False
+        a(formatter.HtmlExcerptList(excerpts))
+    
+    page = Html.PageDesc(ReferencePageInfo(references,level))
+    page.AppendContent(str(a))
+    yield page
+
+def PlainHeadingPage(references: list[LinkedReference],level: int) -> Iterator[Html.PageDesc]:
+    """Split references into groups by level: (level 0 means DN, MN,...; level 1 means DN 1, DN 2,...).
+    Then yield one page with headings for this level plus any pages required for sublevels."""
+
+    a = Airium()
+    with a.div(Class="listing"):
+        for key,referenceGroup in groupby(references,lambda r:r.reference[0:level + 1]):
+            referenceGroup = list(referenceGroup)
+            subPageInfo = ReferencePageInfo(referenceGroup,level + 1)
+            with a.p():
+                with a.a(href = Utils.PosixJoin("../",subPageInfo.file)):
+                    a(referenceGroup[0].reference.Truncate(level + 1).FullName())
+                a(f" ({len(referenceGroup)})")
+            
+            yield from ReferencePageDispatch(referenceGroup,level + 1)
+
+    mainPage = Html.PageDesc(ReferencePageInfo(references,level))
+    mainPage.AppendContent(str(a))
+    yield mainPage
+        
+
+def ReferencePageInfo(references: list[LinkedReference],level: int) -> Html.PageInfo:
+    """Return the page information for a given page of references."""
+
+    firstRef = references[0]
+    text = firstRef.reference.text
+    if level == 0:
+        if text in TextGroupSet("vinaya"):
+            return Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
+        else:
+            return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
+    
+    referenceGroup = firstRef.reference.Truncate(level)
+    directory = "texts/"
+    strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
+    return Html.PageInfo(
+        referenceGroup.FullName(),
+        f"{directory}{text}{strNumbers}.html"
+    )
+
+def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Html.PageDescriptorMenuItem:
+    """Return a series of pages that link references to where they occur in the Archive.
+    Apply logic to determine whether to call PlainHeadingPage or ExcerptListPage.
+    level 0 means DN, MN,...; level 1 means DN 1, DN 2,...)"""
+
+    if level == 0:
+        yield ReferencePageInfo(references,level)
+        yield from PlainHeadingPage(references,level)
+        return
+    elif len(references) < gOptions.minSubsearchExcerpts:
+        yield from ExcerptListPage(references,level)
+        return
+    
+    text = references[0].reference.text
+    singleRef = text in TextGroupSet("singleRef")
+    doubleRef = text in TextGroupSet("doubleRef")
+    
+    if (singleRef and level <= 1) or (doubleRef and level <= 2):
+        yield from PlainHeadingPage(references,level)
+    else:
+        yield from ExcerptListPage(references,level)
 
 def TextMenu() -> Html.PageDescriptorMenuItem:
     """Return a list containing the sutta and vinaya reference pages."""
 
     textReferences = CollateReferences("texts")
-    WriteReferences(textReferences,"TextReferences.txt")
-
-    suttaInfo = Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
-    vinayaInfo = Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
+    vinayaRefs,suttaRefs = Utils.Partition(textReferences,lambda r:r.reference.text in TextGroupSet("vinaya"))
+    WriteReferences(vinayaRefs,"TextReferences.txt")
 
     return [
-        [suttaInfo,HierarchicalReferencePages([])],
-        [vinayaInfo,HierarchicalReferencePages([])]
+        Build.YieldAllIf(ReferencePageDispatch(suttaRefs,0),"texts" in gOptions.buildOnly),
+        Build.YieldAllIf(ReferencePageDispatch(vinayaRefs,0),"texts" in gOptions.buildOnly)
     ]
 
 def ReferencesMenu() -> Html.PageDescriptorMenuItem:
     """Create the References menu item and its associated submenus."""
 
     referencesMenu = TextMenu()
-    yield referencesMenu[0][0]._replace(title="References")
+    yield Html.PageInfo("References","texts/Sutta.html")
 
     baseTagPage = Html.PageDesc()
     yield from baseTagPage.AddMenuAndYieldPages(referencesMenu,**Build.SUBMENU_STYLE)

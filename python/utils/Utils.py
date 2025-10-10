@@ -5,11 +5,11 @@ from __future__ import annotations
 from datetime import timedelta, datetime
 import copy
 import re, os,argparse
-from typing import BinaryIO
+from typing import BinaryIO, TypeVar
 import Alert
 import pathlib, posixpath
 from collections import Counter
-from collections.abc import Iterable
+from collections.abc import Iterable, Callable
 from urllib.parse import urljoin,urlparse,quote,urlunparse,unquote
 import urllib.request, urllib.error
 from DjangoTextUtils import slugify, RemoveDiacritics
@@ -42,6 +42,18 @@ def SingleItemIterator(source: Iterable,itemNumber: int) -> Iterable:
     for _ in range(itemNumber):
         next(iterator)
     return (next(iterator),)
+
+T = TypeVar("T")
+def Partition(items:Iterable[T],keyFunc: Callable[[T],bool]) -> tuple[list[T],list[T]]:
+    "Split items into two lists depending on the filter function."
+
+    trueList = []
+    falseList = []
+
+    for item in items:
+        (trueList if keyFunc(item) else falseList).append(item)
+    
+    return trueList,falseList
 
 def PosixToNative(path:str) -> str:
     return str(pathlib.PurePath(pathlib.PurePosixPath(path)))
