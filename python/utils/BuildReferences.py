@@ -7,14 +7,11 @@ from typing import NamedTuple
 from dataclasses import dataclass
 from itertools import chain, groupby
 from airium import Airium
-import json, re, itertools
+import re
 import Html2 as Html
+import Suttaplex
 import Utils
 import Database
-import Alert
-import Filter
-import ParseCSV
-import Link
 import Build
 from functools import lru_cache
 
@@ -66,6 +63,13 @@ class TextReference(NamedTuple):
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}"
     
+    def BaseUid(self) -> str:
+        return self.text.lower()
+    
+    def Uid(self) -> str:
+        """Return a good guess for the SuttaCentral uid"""
+        return f"{self.text.lower()}{'.'.join(map(str,self.Numbers()))}"
+
     def FullName(self) -> str:
         """Return the full text name of this reference."""
         numbers = self.Numbers()
@@ -150,10 +154,17 @@ def PlainHeadingPage(references: list[LinkedReference],level: int) -> Iterator[H
         for key,referenceGroup in groupby(references,lambda r:r.reference[0:level + 1]):
             referenceGroup = list(referenceGroup)
             subPageInfo = ReferencePageInfo(referenceGroup,level + 1)
+            thisReference = referenceGroup[0].reference.Truncate(level + 1)
+            link = Html.Tag("a",{"href":Utils.PosixJoin("../",subPageInfo.file)})
+            if level == 0:
+                name = link(thisReference.FullName())
+            else:
+                name = link(str(thisReference))
+                traslatedTitle = Suttaplex.Title(thisReference.Uid())
+                if traslatedTitle:
+                    name += f": {traslatedTitle}"
             with a.p():
-                with a.a(href = Utils.PosixJoin("../",subPageInfo.file)):
-                    a(referenceGroup[0].reference.Truncate(level + 1).FullName())
-                a(f" ({len(referenceGroup)})")
+                a(f"{name} ({len(referenceGroup)})")
             
             yield from ReferencePageDispatch(referenceGroup,level + 1)
 
@@ -176,8 +187,15 @@ def ReferencePageInfo(references: list[LinkedReference],level: int) -> Html.Page
     referenceGroup = firstRef.reference.Truncate(level)
     directory = "texts/"
     strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
+    if level > 1:
+        title = f"References – {str(referenceGroup)}"
+        translatedTitle = Suttaplex.Title(referenceGroup.Uid())
+        if translatedTitle:
+            title += f": {translatedTitle}"
+    else:
+        title = f"References – {referenceGroup.FullName()}"
     return Html.PageInfo(
-        referenceGroup.FullName(),
+        title,
         f"{directory}{text}{strNumbers}.html"
     )
 

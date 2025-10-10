@@ -186,6 +186,35 @@ def TranslatorDict(textUid:str) -> dict[str,list[str]]:
     
     return returnDict
 
+class SuttaTitle(TypedDict):
+    original_title: str
+    translated_title: str
+
+@CacheJsonFile("sutta/suttaplex/title")
+@lru_cache(maxsize=None)
+def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
+    """Return the dict {suttaUid:SuttaTitle} for a given textUid."""
+    suttaplex = RawSuttaplex(textUid)
+    returnDict:dict[str,SuttaTitle] = {}
+
+    for sutta in suttaplex:
+        if sutta.get("original_title") and sutta.get("translated_title"):
+            returnDict[sutta["uid"]] = SuttaTitle(original_title=sutta["original_title"].strip(),translated_title=sutta["translated_title"].strip())
+    
+    return returnDict
+
+def Title(suttaUid:str,translated:bool = True) -> str:
+    """Return the translated title of this sutta. Return '' if it cannot be found."""
+    baseUid = re.match(r"[a-z]*",suttaUid)[0]
+    if not baseUid:
+        return ""
+    
+    titles = TitleDict(baseUid).get(suttaUid)
+    if titles:
+        return titles['translated_title'] if translated else titles['original_title']
+    else:
+        return ""
+
 @CacheJsonFile("sutta/suttaplex/interpolated")
 @lru_cache(maxsize=None)
 def InterpolatedTranslatorDict(textUid:str) -> dict[str,list[str]]:
