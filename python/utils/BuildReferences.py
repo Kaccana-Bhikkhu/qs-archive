@@ -12,6 +12,7 @@ import Html2 as Html
 import Suttaplex
 import Utils
 import Database
+import Render
 import Build
 from functools import lru_cache
 
@@ -43,8 +44,18 @@ class TextReference(NamedTuple):
             1: uid: SuttaCentral text uid
             2-4: n0-n2: section numbers"""
         matchObject = re.match(suttaMatch,reference)
-        numbers = (int(n) for n in (matchObject[2],matchObject[3],matchObject[4]) if n)
+        numbers = [int(n) for n in (matchObject[2],matchObject[3],matchObject[4]) if n]
         text = "Kd" if matchObject[1] == "Mv" else matchObject[1] # Mv is equivalent to Kd
+
+        # For texts referenced by PTS verse, convert 
+        if len(numbers) == 1 and text in ("Snp","Thag","Thig"):
+            pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
+            newNumbers = re.search("[0-9.]+",pageUid)[0]
+            if newNumbers:
+                newNumbers = newNumbers.split(".")
+                numbers = (newNumbers + [numbers[0]])[0:3]
+                numbers = [int(n) for n in numbers]
+
         return TextReference(text,*numbers)
 
     def Truncate(self,level) -> "TextReference":
@@ -64,11 +75,18 @@ class TextReference(NamedTuple):
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}"
     
     def BaseUid(self) -> str:
-        return self.text.lower()
+        if self.text == "Kd":
+            return "pli-tv-kd"
+        elif self.text.startswith("Bu"):
+            return f"pli-tv-bu-vb-{self.text[2:4].lower()}"
+        elif self.text.startswith("Bi"):
+            return f"pli-tv-bi-vb-{self.text[2:4].lower()}"
+        else:
+            return self.text.lower()
     
     def Uid(self) -> str:
         """Return a good guess for the SuttaCentral uid"""
-        return f"{self.text.lower()}{'.'.join(map(str,self.Numbers()))}"
+        return f"{self.BaseUid()}{'.'.join(map(str,self.Numbers()))}"
 
     def FullName(self) -> str:
         """Return the full text name of this reference."""

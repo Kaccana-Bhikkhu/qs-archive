@@ -205,7 +205,7 @@ def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
 
 def Title(suttaUid:str,translated:bool = True) -> str:
     """Return the translated title of this sutta. Return '' if it cannot be found."""
-    baseUid = re.match(r"[a-z]*",suttaUid)[0]
+    baseUid = re.match(r"[a-z-]*",suttaUid)[0]
     if not baseUid:
         return ""
     
