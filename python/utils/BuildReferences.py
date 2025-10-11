@@ -145,6 +145,26 @@ def WriteReferences(references:list[LinkedReference],filename:str) -> None:
             for item in ref.items:
                 print("   ",Database.ItemRepr(item),file=file)
 
+def BoldfaceTextReferences(html: str,text: TextReference) -> str:
+    """Return html with each reference to text in boldface."""
+
+    textDB = gDatabase["text"]
+    if text.text == "Kd":
+        textName = f"({textDB["Kd"]["name"]}|{textDB["Mv"]["name"]})" # Kd also matches Mv
+    else:
+        textName = textDB[text.text]["name"] if textDB[text.text]["citeFullName"] else text.text
+    
+    numbers = text.Numbers()
+    if numbers:
+        nonOptional = "[.:]".join(str(n) for n in numbers)
+    else:
+        nonOptional = "[0-9]+"
+    optional = (3 - min(len(numbers),1)) * "(?:[.:][0-9]+)?"
+    fullRegex = r"\b" + textName + r"\s+" + f"{nonOptional}{optional}(?:-[0-9]+)?"
+
+    return Html.BoldfaceMatches(html,fullRegex)
+    
+
 def ExcerptListPage(references: list[LinkedReference],level: int) -> Iterator[Html.PageDesc]:
     """Write a list of excerpts that these references refer to."""
 
@@ -158,9 +178,10 @@ def ExcerptListPage(references: list[LinkedReference],level: int) -> Iterator[Ht
             a.hr()
         firstLoop = False
         a(formatter.HtmlExcerptList(excerpts))
-    
+
     page = Html.PageDesc(ReferencePageInfo(references,level))
-    page.AppendContent(str(a))
+    html = BoldfaceTextReferences(str(a),references[0].reference.Truncate(level))
+    page.AppendContent(html)
     yield page
 
 def PlainHeadingPage(references: list[LinkedReference],level: int) -> Iterator[Html.PageDesc]:
@@ -181,8 +202,9 @@ def PlainHeadingPage(references: list[LinkedReference],level: int) -> Iterator[H
                 traslatedTitle = Suttaplex.Title(thisReference.Uid())
                 if traslatedTitle:
                     name += f": {traslatedTitle}"
+            totalTexts = sum(len(group.items) for group in referenceGroup)
             with a.p():
-                a(f"{name} ({len(referenceGroup)})")
+                a(f"{name} ({totalTexts})")
             
             yield from ReferencePageDispatch(referenceGroup,level + 1)
 

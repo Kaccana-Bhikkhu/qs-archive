@@ -618,3 +618,17 @@ def TruncateHtmlText(htmlText:str,alwaysShow:int = 1,truncateAfter:int = None,mo
             separatedText[index] += "<br>"
 
         return TruncatedList(separatedText,alwaysShow=alwaysShow,truncateAfter=0,morePrompt=morePrompt,hideWidth=hideWidth,blockID=blockID)
+    
+def BoldfaceMatches(html: str,searchRegex: str) -> str:
+    """Wrap text in html matching searchRegex with <b></b> tags."""
+
+    def BoldText(match: re.Match):
+        """Boldface text matching searchRegex, but only outside html tags."""
+        text = match[0]
+        if text.startswith("<"):
+            return text
+        else:
+            return re.sub(searchRegex,r"<b>\g<0></b>",text,flags=re.IGNORECASE)
+
+    return re.sub(r"<b>[^>]*</b>|<[^>]*>|[^<>]*",BoldText,html)
+    
