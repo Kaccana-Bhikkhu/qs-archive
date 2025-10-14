@@ -145,6 +145,59 @@ def WriteReferences(references:list[LinkedReference],filename:str) -> None:
             for item in ref.items:
                 print("   ",Database.ItemRepr(item),file=file)
 
+
+class ReferencePageMaker:
+    """A class to create html pages from lists of LinkedReference."""
+
+    level: int                          # The reference level we are working at
+    references: list[LinkedReference]   # The list of references to render
+    page: Html.PageDesc                 # The page we have rendered so far
+
+    def __init__(self,level: int,references: list[LinkedReference] = None):
+        self.level = level
+        self.page = Html.PageDesc()
+        if references:
+            self.references = references
+            self.SetPageInfo(references[0].reference)
+        else:
+            self.references = []
+
+    def SetPageInfo(self,fromReference: Reference) -> None:
+        """Set the page information for this object; usually fromReference is the first reference in the list.
+        Calls the general dispatch function below."""
+        self.page.info = ReferencePageInfo(fromReference,self.level)
+
+    def AppendReferences(self,references: Iterable[LinkedReference]) -> None:
+        """Append these references to the list waiting to be rendered."""
+        if not self.references:
+            self.SetPageInfo(references[0].reference)
+        self.references.extend(references)
+
+    def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
+        """Append the html description of self.references to the page under construction.
+        Yield PageDesc objects describing any subpages created in the process.
+        Then clear the reference list and page to start anew."""
+        self.references = [] # Base class implementation simply clears the reference list
+        return ()
+    
+    def FinishPage(self) -> Html.PageDesc:
+        """Return the page generated so far and clear the page for future use."""
+        returnValue = self.page
+        self.page = Html.PageDesc(self.page.info)
+        return returnValue
+
+    def AllPages(self) -> Iterator[Html.PageDesc]:
+        """Yield all pages and subpages."""
+        yield from self.RenderAndYieldSubpages()
+        yield self.FinishPage()
+    
+    def YieldHtml(self) -> str:
+        """Return the html generated so far and clear the in-progress page."""
+        html = str(self.page)
+        self.page = Html.PageDesc(self.page.info)
+        return html
+
+
 def BoldfaceTextReferences(html: str,text: TextReference) -> str:
     """Return html with each reference to text in boldface."""
 
@@ -160,71 +213,71 @@ def BoldfaceTextReferences(html: str,text: TextReference) -> str:
     else:
         nonOptional = "[0-9]+"
     optional = (3 - min(len(numbers),1)) * "(?:[.:][0-9]+)?"
-    fullRegex = r"\b" + textName + r"\s+" + f"{nonOptional}{optional}(?:-[0-9]+)?"
+    fullRegex = r"\b" + textName + r"\s+" + f"{nonOptional}(?![0-9]){optional}(?:-[0-9]+)?"
 
     return Html.BoldfaceMatches(html,fullRegex)
-    
 
-def ExcerptListPage(references: list[LinkedReference],level: int) -> Iterator[Html.PageDesc]:
-    """Write a list of excerpts that these references refer to."""
+class ExcerptListPage(ReferencePageMaker):
+    """Generate a page containing the list of specified excerpts."""
 
-    a = Airium()
-    formatter = Build.Formatter()
-    formatter.SetHeaderlessFormat()
-    firstLoop = True
-    for reference in references:
-        events,excerpts = Utils.Partition(reference.items,lambda item: "endDate" in item)
-        if not firstLoop:
-            a.hr()
-        firstLoop = False
-        a(formatter.HtmlExcerptList(excerpts))
+    def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
+        a = Airium()
+        formatter = Build.Formatter()
+        formatter.SetHeaderlessFormat()
+        firstLoop = True
+        for reference in self.references:
+            events,excerpts = Utils.Partition(reference.items,lambda item: "endDate" in item)
+            if not firstLoop:
+                a.hr()
+            firstLoop = False
+            a(formatter.HtmlExcerptList(excerpts))
 
-    page = Html.PageDesc(ReferencePageInfo(references,level))
-    html = BoldfaceTextReferences(str(a),references[0].reference.Truncate(level))
-    page.AppendContent(html)
-    yield page
+        html = BoldfaceTextReferences(str(a),self.references[0].reference.Truncate(self.level))
+        self.page.AppendContent(html)
+        yield from super().RenderAndYieldSubpages()
 
-def PlainHeadingPage(references: list[LinkedReference],level: int) -> Iterator[Html.PageDesc]:
+
+class PlainHeadingPage(ReferencePageMaker):
     """Split references into groups by level: (level 0 means DN, MN,...; level 1 means DN 1, DN 2,...).
-    Then yield one page with headings for this level plus any pages required for sublevels."""
+    Then generate one page with headings for this level plus any pages required for sublevels."""
 
-    a = Airium()
-    with a.div(Class="listing"):
-        for key,referenceGroup in groupby(references,lambda r:r.reference[0:level + 1]):
-            referenceGroup = list(referenceGroup)
-            subPageInfo = ReferencePageInfo(referenceGroup,level + 1)
-            thisReference = referenceGroup[0].reference.Truncate(level + 1)
-            link = Html.Tag("a",{"href":Utils.PosixJoin("../",subPageInfo.file)})
-            if level == 0:
-                name = link(thisReference.FullName())
-            else:
-                name = link(str(thisReference))
-                traslatedTitle = Suttaplex.Title(thisReference.Uid())
-                if traslatedTitle:
-                    name += f": {traslatedTitle}"
-            totalTexts = sum(len(group.items) for group in referenceGroup)
-            with a.p():
-                a(f"{name} ({totalTexts})")
-            
-            yield from ReferencePageDispatch(referenceGroup,level + 1)
+    def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
+        a = Airium()
+        with a.div(Class="listing"):
+            for key,referenceGroup in groupby(self.references,lambda r:r.reference[0:self.level + 1]):
+                referenceGroup = list(referenceGroup)
+                subPageInfo = ReferencePageInfo(referenceGroup[0].reference,self.level + 1)
+                thisReference = referenceGroup[0].reference.Truncate(self.level + 1)
+                link = Html.Tag("a",{"href":Utils.PosixJoin("../",subPageInfo.file)})
+                if self.level == 0:
+                    name = link(thisReference.FullName())
+                else:
+                    name = link(str(thisReference))
+                    traslatedTitle = Suttaplex.Title(thisReference.Uid())
+                    if traslatedTitle:
+                        name += f": {traslatedTitle}"
+                totalTexts = sum(len(group.items) for group in referenceGroup)
+                with a.p():
+                    a(f"{name} ({totalTexts})")
+                
+                pageGenerator = ReferencePageDispatch(referenceGroup,self.level + 1)
+                yield from pageGenerator.AllPages()
 
-    mainPage = Html.PageDesc(ReferencePageInfo(references,level))
-    mainPage.AppendContent(str(a))
-    yield mainPage
+        self.page.AppendContent(str(a))
+        yield from super().RenderAndYieldSubpages()
         
 
-def ReferencePageInfo(references: list[LinkedReference],level: int) -> Html.PageInfo:
+def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
     """Return the page information for a given page of references."""
 
-    firstRef = references[0]
-    text = firstRef.reference.text
+    text = firstRef.text
     if level == 0:
         if text in TextGroupSet("vinaya"):
             return Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
         else:
             return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
     
-    referenceGroup = firstRef.reference.Truncate(level)
+    referenceGroup = firstRef.Truncate(level)
     directory = "texts/"
     strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
     if level > 1:
@@ -239,27 +292,31 @@ def ReferencePageInfo(references: list[LinkedReference],level: int) -> Html.Page
         f"{directory}{text}{strNumbers}.html"
     )
 
-def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Html.PageDescriptorMenuItem:
+def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:
     """Return a series of pages that link references to where they occur in the Archive.
     Apply logic to determine whether to call PlainHeadingPage or ExcerptListPage.
     level 0 means DN, MN,...; level 1 means DN 1, DN 2,...)"""
 
     if level == 0:
-        yield ReferencePageInfo(references,level)
-        yield from PlainHeadingPage(references,level)
-        return
+        return PlainHeadingPage(level,references)
     elif len(references) < gOptions.minSubsearchExcerpts:
-        yield from ExcerptListPage(references,level)
-        return
+        return ExcerptListPage(level,references)
     
     text = references[0].reference.text
     singleRef = text in TextGroupSet("singleRef")
     doubleRef = text in TextGroupSet("doubleRef")
     
     if (singleRef and level <= 1) or (doubleRef and level <= 2):
-        yield from PlainHeadingPage(references,level)
+        return PlainHeadingPage(level,references)
     else:
-        yield from ExcerptListPage(references,level)
+        return ExcerptListPage(level,references)
+
+def FirstLevelMenu(references: list[LinkedReference]) -> Html.PageDescriptorMenuItem:
+    """Return the menu item and pages corresponding to references."""
+
+    yield ReferencePageInfo(references[0].reference,0)
+    pageGenerator = ReferencePageDispatch(references,0)
+    yield from pageGenerator.AllPages()
 
 def TextMenu() -> Html.PageDescriptorMenuItem:
     """Return a list containing the sutta and vinaya reference pages."""
@@ -269,8 +326,8 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
     WriteReferences(vinayaRefs,"TextReferences.txt")
 
     return [
-        Build.YieldAllIf(ReferencePageDispatch(suttaRefs,0),"texts" in gOptions.buildOnly),
-        Build.YieldAllIf(ReferencePageDispatch(vinayaRefs,0),"texts" in gOptions.buildOnly)
+        Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
+        Build.YieldAllIf(FirstLevelMenu(vinayaRefs),"texts" in gOptions.buildOnly)
     ]
 
 def ReferencesMenu() -> Html.PageDescriptorMenuItem:
