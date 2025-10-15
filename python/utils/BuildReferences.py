@@ -58,7 +58,7 @@ class TextReference(NamedTuple):
 
         return TextReference(text,*numbers)
 
-    def Truncate(self,level) -> "TextReference":
+    def Truncate(self,level:int) -> "TextReference":
         """Replace all elements with index >= level with 0 or ''."""
         keep = self[0:level]
         return TextReference(*keep,*[0 if type(self[index]) == int else "" for index in range(level,len(self))])
@@ -88,11 +88,42 @@ class TextReference(NamedTuple):
         """Return a good guess for the SuttaCentral uid"""
         return f"{self.BaseUid()}{'.'.join(map(str,self.Numbers()))}"
 
+    def SuttaCentralLink(self) -> str:
+        """Return the SuttaCentral link for this text."""
+        if self.n0 == 0:
+            if self.text:
+                return f"https://suttacentral.net/{self.BaseUid()}"
+            else:
+                return ""
+        mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [""]
+            # ApplySuttaMatchRules usually takes a match, but anything with indices will do.
+        return Render.ApplySuttaMatchRules(mockMatch)
+    
+    def ReadingFaithfullyLink(self) -> str:
+        """Return the ReadingFaithfully link for this text."""
+        query = self.text + ".".join(str(n) for n in self.Numbers())
+        return f"https://sutta.readingfaithfully.org/?q={query}"
+
     def FullName(self) -> str:
         """Return the full text name of this reference."""
         numbers = self.Numbers()
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
+    
+    def BreadCrumbs(self) -> str:
+        """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages."""
+
+        if not self.text:
+            return ""
+        numbers = self.Numbers()
+        pageInfo = [ReferencePageInfo(self,level) for level in range(0,len(numbers) + 2)]
+        bits = [info.title for info in pageInfo[0:2]]
+        bits.extend(str(self.Truncate(level)) + ": " + 
+                    Suttaplex.Title(self.Truncate(level).Uid(),translated=False) for level in range(2,len(numbers) + 2))
+        for level in range(len(numbers) + 1):
+            bits[level] = Html.Tag("a",{"href":f"../{pageInfo[level].file}"})(bits[level])
+        
+        return " / ".join(bits)
     
 Reference = TextReference
 
@@ -147,18 +178,26 @@ def WriteReferences(references:list[LinkedReference],filename:str) -> None:
 
 
 class ReferencePageMaker:
-    """A class to create html pages from lists of LinkedReference."""
+    """A class to create html pages from lists of LinkedReference.
+    Can be used in two ways:
+    1) Whole page mode - Call __init__ with a list of references and call FinishPage to return a PageDesc object.
+    2) Subpage mode - Call __init__without references, then call AppendReferences and YieldHtml repeatedly to produce subpage content."""
 
+    wholePage: bool = False             # Are we rendering a whole page?
     level: int                          # The reference level we are working at
     references: list[LinkedReference]   # The list of references to render
     page: Html.PageDesc                 # The page we have rendered so far
+    footerHtml: str = ""                # Store html that will go at the end of the page
 
     def __init__(self,level: int,references: list[LinkedReference] = None):
         self.level = level
         self.page = Html.PageDesc()
         if references:
             self.references = references
+            self.wholePage = True
             self.SetPageInfo(references[0].reference)
+            self.page.AppendContent(self.HeaderHtml())
+            self.footerHtml = self.FooterHtml()
         else:
             self.references = []
 
@@ -167,11 +206,27 @@ class ReferencePageMaker:
         Calls the general dispatch function below."""
         self.page.info = ReferencePageInfo(fromReference,self.level)
 
-    def AppendReferences(self,references: Iterable[LinkedReference]) -> None:
-        """Append these references to the list waiting to be rendered."""
-        if not self.references:
-            self.SetPageInfo(references[0].reference)
-        self.references.extend(references)
+    def HeaderHtml(self) -> str:
+        """Returns html that goes a the top of the page in whole page mode."""
+        if self.level > 0:
+            reference = self.references[0].reference.Truncate(self.level)
+            bits = [reference.BreadCrumbs()]
+            scLink = reference.SuttaCentralLink()
+            if scLink:
+                bits.append("&nbsp;" + Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
+                            (Build.HtmlIcon("SuttaCentral.png","small-icon")))
+            rfLink = reference.ReadingFaithfullyLink()
+            if scLink:
+                bits.append("&nbsp;" + Html.Tag("a",{"href":rfLink,"title":"Browse translations on Reading Faithfully","target":"_blank"})
+                            (Build.HtmlIcon("ReadingFaithfully.png","small-icon")))
+            bits.append("<hr>")
+            return "\n".join(bits)
+        else:
+            return self.page.info.title + "\n<hr>"
+    
+    def FooterHtml(self) -> str:
+        """Returns html that goes a the bottom of the page in whole page mode."""
+        return ""
 
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         """Append the html description of self.references to the page under construction.
@@ -182,6 +237,7 @@ class ReferencePageMaker:
     
     def FinishPage(self) -> Html.PageDesc:
         """Return the page generated so far and clear the page for future use."""
+        self.page.AppendContent(self.footerHtml)
         returnValue = self.page
         self.page = Html.PageDesc(self.page.info)
         return returnValue
@@ -191,6 +247,12 @@ class ReferencePageMaker:
         yield from self.RenderAndYieldSubpages()
         yield self.FinishPage()
     
+    def AppendReferences(self,references: Iterable[LinkedReference]) -> None:
+        """Append these references to the list waiting to be rendered."""
+        if not self.references:
+            self.SetPageInfo(references[0].reference)
+        self.references.extend(references)
+
     def YieldHtml(self) -> str:
         """Return the html generated so far and clear the in-progress page."""
         html = str(self.page)
@@ -236,7 +298,6 @@ class ExcerptListPage(ReferencePageMaker):
         self.page.AppendContent(html)
         yield from super().RenderAndYieldSubpages()
 
-
 class PlainHeadingPage(ReferencePageMaker):
     """Split references into groups by level: (level 0 means DN, MN,...; level 1 means DN 1, DN 2,...).
     Then generate one page with headings for this level plus any pages required for sublevels."""
@@ -281,15 +342,16 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
     directory = "texts/"
     strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
     if level > 1:
-        title = f"References – {str(referenceGroup)}"
+        title = str(referenceGroup)
         translatedTitle = Suttaplex.Title(referenceGroup.Uid())
         if translatedTitle:
             title += f": {translatedTitle}"
     else:
-        title = f"References – {referenceGroup.FullName()}"
+        title = referenceGroup.FullName()
     return Html.PageInfo(
         title,
-        f"{directory}{text}{strNumbers}.html"
+        f"{directory}{text}{strNumbers}.html",
+        f"References – {title}"
     )
 
 def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:
