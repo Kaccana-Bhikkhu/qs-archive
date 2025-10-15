@@ -1,7 +1,7 @@
 """Functions that build pages/texts and pages/references.
 These could logically be included within Build.py, but this file is already unweildy due to length."""
 
-from collections.abc import Iterable, Iterator
+from collections.abc import Iterable, Iterator, Hashable
 from collections import defaultdict
 from typing import NamedTuple
 from dataclasses import dataclass
@@ -259,6 +259,17 @@ class ReferencePageMaker:
         self.page = Html.PageDesc(self.page.info)
         return html
 
+class YieldSubpages(ReferencePageMaker):
+    """Generate no body html, but link to the page indicated by the references.
+    Should be used only in subpage mode."""
+
+    def __init__(self, level):
+        super().__init__(level)
+    
+    def RenderAndYieldSubpages(self):
+        pageGenerator = ReferencePageDispatch(self.references,self.level + 1)
+        yield from pageGenerator.AllPages()
+        yield from super().RenderAndYieldSubpages()
 
 def BoldfaceTextReferences(html: str,text: TextReference) -> str:
     """Return html with each reference to text in boldface."""
@@ -298,31 +309,84 @@ class ExcerptListPage(ReferencePageMaker):
         self.page.AppendContent(html)
         yield from super().RenderAndYieldSubpages()
 
-class PlainHeadingPage(ReferencePageMaker):
+
+HeadingGroupCode = Hashable
+"""A code to group references together by; can be any hashable type."""
+class Heading:
+    """A class that groups references under headings."""
+    groupCode: HeadingGroupCode             # The current heading group we are iterating over
+    groupReferences: list[LinkedReference]  # The current group of references
+
+    def HeadingCode(self,reference: Reference) -> HeadingGroupCode:
+        """Return the HeadingGroupCode of this reference."""
+        raise NotImplementedError("Heading subclasses must implement this.")
+    
+    def GroupedReferences(self,references: Iterable[LinkedReference]) -> Iterator[list[LinkedReference]]:
+        """Iterate over these references grouped by heading code.
+        Update the Heading's members to reflect the current header."""
+        for code,groupedRefs in groupby(references,lambda ref:self.HeadingCode(ref.reference)):
+            self.groupCode = code
+            self.groupReferences = list(groupedRefs)
+            yield self.groupReferences
+    
+    def Html(self,headingCode: HeadingGroupCode = None) -> str | Html.Wrapper:
+        """Return an html string or wrapper that renders this heading code."""
+        return Html.Tag("span",{"id",self.Bookmark(headingCode or self.groupCode)})
+    
+    def Bookmark(self,headingCode: HeadingGroupCode = None) -> str:
+        """Returns the bookmark corresponding to this heading code."""
+        return Utils.slugify(str(headingCode or self.groupCode))
+    
+
+class SingleLevelHeading(Heading):
+    """A class that groups references under headings. 
+    The base class takes a level parameter and groups all references in this level."""
+
+    level: int  # The heading level; level 0 groups by sutta (all MN together)
+                # level 1 groups by sutta and the first number (all MN 2 together)
+
+    def __init__(self,level):
+        self.level = level
+
+    def HeadingCode(self,reference: Reference) -> Reference:
+        """The heading code is simply the truncated reference."""
+        return reference.Truncate(self.level + 1)
+    
+    def Html(self, headingCode:Reference = None) -> Html.Wrapper:
+        headingCode = headingCode or self.groupCode
+        subPageInfo = ReferencePageInfo(headingCode,self.level + 1)
+        thisReference = headingCode.Truncate(self.level + 1)
+        link = Html.Tag("a",{"href":Utils.PosixJoin("../",subPageInfo.file)})
+        if self.level == 0:
+            name = link(thisReference.FullName())
+        else:
+            name = link(str(thisReference))
+            traslatedTitle = Suttaplex.Title(thisReference.Uid())
+            if traslatedTitle:
+                name += f": {traslatedTitle}"
+        totalTexts = sum(len(group.items) for group in self.groupReferences)
+        return Html.Tag("p")(f"{name} ({totalTexts})")
+    
+
+class PageWithHeadings(ReferencePageMaker):
     """Split references into groups by level: (level 0 means DN, MN,...; level 1 means DN 1, DN 2,...).
     Then generate one page with headings for this level plus any pages required for sublevels."""
+    
+    heading: Heading                     # The heading generator for this object
+    content: ReferencePageMaker          # Generates content within each heading
+
+    def __init__(self,heading: Heading,content: ReferencePageMaker,references: list[LinkedReference]):
+        super().__init__(content.level,references)
+        self.heading = heading
+        self.content = content
 
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         a = Airium()
         with a.div(Class="listing"):
-            for key,referenceGroup in groupby(self.references,lambda r:r.reference[0:self.level + 1]):
-                referenceGroup = list(referenceGroup)
-                subPageInfo = ReferencePageInfo(referenceGroup[0].reference,self.level + 1)
-                thisReference = referenceGroup[0].reference.Truncate(self.level + 1)
-                link = Html.Tag("a",{"href":Utils.PosixJoin("../",subPageInfo.file)})
-                if self.level == 0:
-                    name = link(thisReference.FullName())
-                else:
-                    name = link(str(thisReference))
-                    traslatedTitle = Suttaplex.Title(thisReference.Uid())
-                    if traslatedTitle:
-                        name += f": {traslatedTitle}"
-                totalTexts = sum(len(group.items) for group in referenceGroup)
-                with a.p():
-                    a(f"{name} ({totalTexts})")
-                
-                pageGenerator = ReferencePageDispatch(referenceGroup,self.level + 1)
-                yield from pageGenerator.AllPages()
+            for referenceGroup in self.heading.GroupedReferences(self.references):
+                a(self.heading.Html())
+                self.content.AppendReferences(referenceGroup)
+                yield from self.content.RenderAndYieldSubpages()
 
         self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
@@ -360,7 +424,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
     level 0 means DN, MN,...; level 1 means DN 1, DN 2,...)"""
 
     if level == 0:
-        return PlainHeadingPage(level,references)
+        return PageWithHeadings(SingleLevelHeading(level),YieldSubpages(level),references)
     elif len(references) < gOptions.minSubsearchExcerpts:
         return ExcerptListPage(level,references)
     
@@ -369,7 +433,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
     doubleRef = text in TextGroupSet("doubleRef")
     
     if (singleRef and level <= 1) or (doubleRef and level <= 2):
-        return PlainHeadingPage(level,references)
+        return PageWithHeadings(SingleLevelHeading(level),YieldSubpages(level),references)
     else:
         return ExcerptListPage(level,references)
 
