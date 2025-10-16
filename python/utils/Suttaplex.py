@@ -197,9 +197,15 @@ def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
     suttaplex = RawSuttaplex(textUid)
     returnDict:dict[str,SuttaTitle] = {}
 
+    def ProcessTitle(title: str) -> str:
+        title = title.strip()
+        title = re.sub("^[0-9]+\.?","",title)
+        return title.strip()
+
     for sutta in suttaplex:
         if sutta.get("original_title") and sutta.get("translated_title"):
-            returnDict[sutta["uid"]] = SuttaTitle(original_title=sutta["original_title"].strip(),translated_title=sutta["translated_title"].strip())
+            returnDict[sutta["uid"]] = SuttaTitle(original_title=ProcessTitle(sutta["original_title"]),
+                                                  translated_title=ProcessTitle(sutta["translated_title"]))
     
     return returnDict
 

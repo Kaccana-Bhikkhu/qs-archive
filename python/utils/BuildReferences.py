@@ -7,6 +7,7 @@ from typing import NamedTuple
 from dataclasses import dataclass
 from itertools import chain, groupby
 from airium import Airium
+from enum import Enum
 import re
 import Html2 as Html
 import Suttaplex
@@ -14,6 +15,7 @@ import Utils
 import Database
 import Render
 import Build
+import Alert
 from functools import lru_cache
 
 gOptions = None
@@ -101,6 +103,8 @@ class TextReference(NamedTuple):
     
     def ReadingFaithfullyLink(self) -> str:
         """Return the ReadingFaithfully link for this text."""
+        if self.text not in TextGroupSet("readFaith"):
+            return ""
         query = self.text + ".".join(str(n) for n in self.Numbers())
         return f"https://sutta.readingfaithfully.org/?q={query}"
 
@@ -132,6 +136,9 @@ class LinkedReference():
     reference: Reference            # The refererence itself
     items: list[dict[str]]          # A list of events and excerpts that reference it
 
+def TotalItems(references: Iterable[LinkedReference]) -> int:
+    """Return the nubmer of items in references."""
+    return sum(len(group.items) for group in references)
 
 def GroupBySutta(references: Iterable[TextReference]) -> Iterable[list[LinkedReference]]:
     """Group references by sutta and yield a list of each group."""
@@ -316,6 +323,7 @@ class Heading:
     """A class that groups references under headings."""
     groupCode: HeadingGroupCode             # The current heading group we are iterating over
     groupReferences: list[LinkedReference]  # The current group of references
+    enclosingClass: str = ""                # Enclose the entire list headers in a div of this class
 
     def HeadingCode(self,reference: Reference) -> HeadingGroupCode:
         """Return the HeadingGroupCode of this reference."""
@@ -338,9 +346,9 @@ class Heading:
         return Utils.slugify(str(headingCode or self.groupCode))
     
 
-class SingleLevelHeading(Heading):
-    """A class that groups references under headings. 
-    The base class takes a level parameter and groups all references in this level."""
+class SingleLevelHeadings(Heading):
+    """A class that groups references at a specific level. 
+    The base class generates headers with the name of each level."""
 
     level: int  # The heading level; level 0 groups by sutta (all MN together)
                 # level 1 groups by sutta and the first number (all MN 2 together)
@@ -352,7 +360,19 @@ class SingleLevelHeading(Heading):
         """The heading code is simply the truncated reference."""
         return reference.Truncate(self.level + 1)
     
-    def Html(self, headingCode:Reference = None) -> Html.Wrapper:
+    def Html(self, headingCode:Reference = None) -> str:
+        headingCode = headingCode or self.groupCode
+        name = headingCode.FullName()
+        traslatedTitle = Suttaplex.Title(headingCode.Uid())
+        if traslatedTitle:
+            name += f": {traslatedTitle}"
+        return Html.Tag("div",{"class":"title","id":self.Bookmark()})(name)
+
+class LinkedHeadings(SingleLevelHeadings):
+    """Generates a list of links to subpages."""
+    enclosingClass = "listing"
+
+    def Html(self, headingCode:Reference = None) -> str:
         headingCode = headingCode or self.groupCode
         subPageInfo = ReferencePageInfo(headingCode,self.level + 1)
         thisReference = headingCode.Truncate(self.level + 1)
@@ -364,16 +384,15 @@ class SingleLevelHeading(Heading):
             traslatedTitle = Suttaplex.Title(thisReference.Uid())
             if traslatedTitle:
                 name += f": {traslatedTitle}"
-        totalTexts = sum(len(group.items) for group in self.groupReferences)
-        return Html.Tag("p")(f"{name} ({totalTexts})")
-    
+        totalTexts = TotalItems(self.groupReferences)
+        return Html.Tag("p",{"id":self.Bookmark()})(f"{name} ({totalTexts})")
 
 class PageWithHeadings(ReferencePageMaker):
     """Split references into groups by level: (level 0 means DN, MN,...; level 1 means DN 1, DN 2,...).
     Then generate one page with headings for this level plus any pages required for sublevels."""
     
-    heading: Heading                     # The heading generator for this object
-    content: ReferencePageMaker          # Generates content within each heading
+    heading: Heading                    # The heading generator for this object
+    content: ReferencePageMaker         # Generates content within each heading
 
     def __init__(self,heading: Heading,content: ReferencePageMaker,references: list[LinkedReference]):
         super().__init__(content.level,references)
@@ -382,11 +401,12 @@ class PageWithHeadings(ReferencePageMaker):
 
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         a = Airium()
-        with a.div(Class="listing"):
+        with a.div(Class=self.heading.enclosingClass):
             for referenceGroup in self.heading.GroupedReferences(self.references):
                 a(self.heading.Html())
                 self.content.AppendReferences(referenceGroup)
                 yield from self.content.RenderAndYieldSubpages()
+                a(self.content.YieldHtml())
 
         self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
@@ -423,19 +443,37 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
     Apply logic to determine whether to call PlainHeadingPage or ExcerptListPage.
     level 0 means DN, MN,...; level 1 means DN 1, DN 2,...)"""
 
-    if level == 0:
-        return PageWithHeadings(SingleLevelHeading(level),YieldSubpages(level),references)
-    elif len(references) < gOptions.minSubsearchExcerpts:
-        return ExcerptListPage(level,references)
+    class PageType(Enum):
+        LINKED_HEADINGS = 1
+        EXCERPTS_WITH_HEADINGS = 2
+        EXCERPTS_ONLY = 3
+
+    def Dispatch() -> PageType:
+        if level == 0:
+            return PageType.LINKED_HEADINGS
+        
+        text = references[0].reference.text
+        textLevel = 2 if text in TextGroupSet("singleRef") else 3 if text in TextGroupSet("doubleRef") else 1
+
+        if textLevel == 1:
+            return PageType.EXCERPTS_WITH_HEADINGS
+
+        if level < textLevel and TotalItems(references) >= gOptions.minSubsearchExcerpts:
+            return PageType.LINKED_HEADINGS
+        else:
+            if level < textLevel:
+                return PageType.EXCERPTS_WITH_HEADINGS
+            else:
+                return PageType.EXCERPTS_ONLY
     
-    text = references[0].reference.text
-    singleRef = text in TextGroupSet("singleRef")
-    doubleRef = text in TextGroupSet("doubleRef")
-    
-    if (singleRef and level <= 1) or (doubleRef and level <= 2):
-        return PageWithHeadings(SingleLevelHeading(level),YieldSubpages(level),references)
-    else:
+    pageType = Dispatch()
+    if pageType == PageType.LINKED_HEADINGS:
+        return PageWithHeadings(LinkedHeadings(level),YieldSubpages(level),references)
+    elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
+        return PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references)
+    elif pageType == PageType.EXCERPTS_ONLY:
         return ExcerptListPage(level,references)
+    Alert.error("Unknown page type",pageType)
 
 def FirstLevelMenu(references: list[LinkedReference]) -> Html.PageDescriptorMenuItem:
     """Return the menu item and pages corresponding to references."""
@@ -449,7 +487,7 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
     textReferences = CollateReferences("texts")
     vinayaRefs,suttaRefs = Utils.Partition(textReferences,lambda r:r.reference.text in TextGroupSet("vinaya"))
-    WriteReferences(vinayaRefs,"TextReferences.txt")
+    # WriteReferences(vinayaRefs,"TextReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
