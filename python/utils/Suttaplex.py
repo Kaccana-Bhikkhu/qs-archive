@@ -223,17 +223,17 @@ def Title(suttaUid:str,translated:bool = True) -> str:
 
 @CacheJsonFile("sutta/suttaplex/interpolated")
 @lru_cache(maxsize=None)
-def InterpolatedTranslatorDict(textUid:str) -> dict[str,list[str]]:
-    """Create a translation dict containing interpolated sutta references:
+def InterpolatedSuttaDict(textUid:str) -> dict[str,list[str]]:
+    """Create a dict containing interpolated sutta references:
     e.g. 'an1.1-10' becomes 'an1.1', 'an1.2', ... , 'an1.10'."""
 
     translatorDict = TranslatorDict(textUid)
     returnDict = {}
-    for suttaUid,translators in translatorDict.items():
+    for suttaUid in translatorDict:
         m = re.match("(.*?)([0-9]+)-([0-9]+)$",suttaUid)
         if m:
             for suttaNumber in range(int(m[2]),int(m[3]) + 1):
-                returnDict[f"{m[1]}{suttaNumber}"] = translators
+                returnDict[f"{m[1]}{suttaNumber}"] = suttaUid
     
     return returnDict
 

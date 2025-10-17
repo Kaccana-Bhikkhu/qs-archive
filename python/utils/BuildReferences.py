@@ -90,6 +90,14 @@ class TextReference(NamedTuple):
         """Return a good guess for the SuttaCentral uid"""
         return f"{self.BaseUid()}{'.'.join(map(str,self.Numbers()))}"
 
+    def GroupUid(self) -> str:
+        """Return the uid of the sutta group this belongs to, e.g. an1.1-10.
+        Returns '' if the sutta doesn't belong to a group."""
+        return "" # Currently not implemented
+        if self.text not in ("SN","AN"):
+            return ""
+        return Suttaplex.InterpolatedSuttaDict(self.BaseUid()).get(self.Uid(),"")
+
     def SuttaCentralLink(self) -> str:
         """Return the SuttaCentral link for this text."""
         if self.n0 == 0:
@@ -358,7 +366,14 @@ class SingleLevelHeadings(Heading):
 
     def HeadingCode(self,reference: Reference) -> Reference:
         """The heading code is simply the truncated reference."""
-        return reference.Truncate(self.level + 1)
+        header = reference.Truncate(self.level + 1)
+        group = header.GroupUid()
+        if group:
+            startingNumber = int(re.search(r"([0-9])+-[0-9]+$",group)[1])
+            numbers = list(header.Numbers())
+            numbers[-1] = startingNumber
+            header = TextReference(header.text,*numbers)
+        return header
     
     def Html(self, headingCode:Reference = None) -> str:
         headingCode = headingCode or self.groupCode
@@ -381,9 +396,13 @@ class LinkedHeadings(SingleLevelHeadings):
             name = link(thisReference.FullName())
         else:
             name = link(str(thisReference))
-            traslatedTitle = Suttaplex.Title(thisReference.Uid())
-            if traslatedTitle:
-                name += f": {traslatedTitle}"
+            group = thisReference.GroupUid()
+            if group:
+                translatedTitle = Suttaplex.Title(group)
+            else:
+                translatedTitle = Suttaplex.Title(thisReference.Uid())
+            if translatedTitle:
+                name += f": {translatedTitle}"
         totalTexts = TotalItems(self.groupReferences)
         return Html.Tag("p",{"id":self.Bookmark()})(f"{name} ({totalTexts})")
 

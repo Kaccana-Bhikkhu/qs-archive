@@ -421,8 +421,9 @@ def PreferredTranslator(textUid:str,refNumbers:list[int]) -> str:
     availableTranslations = translatorDict.get(suttaUid,None)
 
     if not availableTranslations:
-        interpolatedTranslators = Suttaplex.InterpolatedTranslatorDict(textUid)
-        availableTranslations = interpolatedTranslators.get(suttaUid,None)
+        spanUid = Suttaplex.InterpolatedSuttaDict(textUid).get(suttaUid)
+        if spanUid:
+            availableTranslations = translatorDict.get(spanUid,None)
         if availableTranslations:
             if "sujato" in availableTranslations:
                 return "sujato"
