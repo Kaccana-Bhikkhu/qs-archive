@@ -116,6 +116,20 @@ class TextReference(NamedTuple):
         query = self.text + ".".join(str(n) for n in self.Numbers())
         return f"https://sutta.readingfaithfully.org/?q={query}"
 
+    def LinkIcons(self) -> list[str]:
+        """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
+        returnValue = []
+        scLink = self.SuttaCentralLink()
+        if scLink:
+            returnValue.append(Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
+                        (Build.HtmlIcon("SuttaCentral.png","small-icon")))
+        rfLink = self.ReadingFaithfullyLink()
+        if rfLink:
+            returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse translations on Reading Faithfully","target":"_blank"})
+                        (Build.HtmlIcon("ReadingFaithfully.png","small-icon")))
+        return returnValue
+
+
     def FullName(self) -> str:
         """Return the full text name of this reference."""
         numbers = self.Numbers()
@@ -159,7 +173,7 @@ class BookReference(NamedTuple):
         if author:
             author = author[0]
         else:
-            author = ""
+            author = "various"
         page = int(parts[1]) if len(parts) > 1 else 0
         return BookReference(author,abbreviation,page)
     
@@ -186,24 +200,46 @@ class BookReference(NamedTuple):
     def __str__(self) -> str:
         return f"{self.author}, {self.abbreviation}, p. {self.page}"
     
+    def TextTitle(self) -> str:
+        """Return the book title without markdown formatting."""
+        markdown = gDatabase["reference"][self.abbreviation]["title"]
+        markdown = re.sub(r"\[([^]]*)\]\([^)]*\)",r"\1",markdown) # Extract text from Markdown hyperlinks
+        html,_ = Render.MarkdownFormat(markdown,self)
+        return Utils.RemoveHtmlTags(html)
+
     def FullName(self) -> str:
         """Return the full text name of this reference."""
         if self.author and not self.abbreviation:
-            return gDatabase["teacher"][self.author]["attributionName"]
+            return AlphabetizedTeachers()[self.author][1]
         if self.abbreviation:
             book = gDatabase["reference"][self.abbreviation]
             bits = [book["title"],book["attribution"]]
             if self.page:
                 bits.append(f"p. {self.page}")
-            return " ".join(bits)
+            markdown = " ".join(bits)
+            markdown = re.sub(r"\[([^]]*)\]\([^)]*\)",r"\1",markdown) # Extract text from Markdown hyperlinks
+            text,_ = Render.MarkdownFormat(markdown,book)
+            return text
         else:
             return ""
 
     def BreadCrumbs(self) -> str:
-        return ""
+        """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
+        bits = []
+        pageInfo = None
+        for level in range(3):
+            if level >= 1 and not self[level - 1]:
+                break
+            if pageInfo:
+                bits[level - 1] = Html.Tag("a",{"href":"../" + pageInfo.file})(bits[level - 1])
+            pageInfo = ReferencePageInfo(self,level)
+            bits.append(pageInfo.title)
+        
+        return " / ".join(bits)
     
-    SuttaCentralLink = ReadingFaithfullyLink = BreadCrumbs
-    
+    def LinkIcons(self) -> list[str]:
+        return []
+        
 Reference = TextReference | BookReference
 
 @dataclass
@@ -298,14 +334,7 @@ class ReferencePageMaker:
         if self.level > 0:
             reference = self.references[0].reference.Truncate(self.level)
             bits = [reference.BreadCrumbs()]
-            scLink = reference.SuttaCentralLink()
-            if scLink:
-                bits.append("&nbsp;" + Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
-                            (Build.HtmlIcon("SuttaCentral.png","small-icon")))
-            rfLink = reference.ReadingFaithfullyLink()
-            if scLink:
-                bits.append("&nbsp;" + Html.Tag("a",{"href":rfLink,"title":"Browse translations on Reading Faithfully","target":"_blank"})
-                            (Build.HtmlIcon("ReadingFaithfully.png","small-icon")))
+            bits.extend("&nbsp;" + icon for icon in reference.LinkIcons())
             bits.append("<hr>")
             return "\n".join(bits)
         else:
@@ -453,9 +482,10 @@ class SingleLevelHeadings(Heading):
     def Html(self, headingCode:Reference = None) -> str:
         headingCode = headingCode or self.groupCode
         name = headingCode.FullName()
-        traslatedTitle = Suttaplex.Title(headingCode.Uid())
-        if traslatedTitle:
-            name += f": {traslatedTitle}"
+        if isinstance(headingCode,TextReference):
+            traslatedTitle = Suttaplex.Title(headingCode.Uid())
+            if traslatedTitle:
+                name += f": {traslatedTitle}"
         return Html.Tag("div",{"class":"title","id":self.Bookmark()})(name)
 
 class LinkedHeadings(SingleLevelHeadings):
@@ -467,7 +497,7 @@ class LinkedHeadings(SingleLevelHeadings):
         subPageInfo = ReferencePageInfo(headingCode,self.level + 1)
         thisReference = headingCode.Truncate(self.level + 1)
         link = Html.Tag("a",{"href":Utils.PosixJoin("../",subPageInfo.file)})
-        if self.level == 0:
+        if self.level == 0 or isinstance(headingCode,BookReference):
             name = link(thisReference.FullName())
         else:
             name = link(str(thisReference))
@@ -549,9 +579,9 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
                 f"References – {authorName}"
             )
         elif level == 2: # A book page
-            title = firstRef.FullName()
+            title = firstRef.Truncate(level).FullName()
             return Html.PageInfo(
-                title,
+                Utils.RemoveHtmlTags(title),
                 f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
                 f"References – {title}"
             )
@@ -588,7 +618,10 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         if level == 0:
             return PageType.LINKED_HEADINGS
         elif level == 1:
-            return PageType.LINKED_HEADINGS
+            if TotalItems(references) < gOptions.minSubsearchExcerpts:
+                return PageType.EXCERPTS_WITH_HEADINGS
+            else:
+                return PageType.LINKED_HEADINGS
         else:
             return PageType.EXCERPTS_ONLY
 

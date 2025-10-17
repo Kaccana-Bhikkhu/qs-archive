@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="$!default('''page.section['citationTitle']''',page.info.title)!$ – The Ajahn Pasanno Archive">
+<meta name="description" content="$!default('''page.section['citationTitle']''',RemoveHtml(page.info.title))!$ – The Ajahn Pasanno Archive">
 <meta name="keywords" content="$!', '.join(page.keywords)!$">
 <meta name="author" content="Abhayagiri Buddhist Monastery">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$!page.info.title!$</title>
+<title>$!RemoveHtml(page.info.title)!$</title>
 <!--(if page.gOptions.blockRobots)-->
   <meta name="robots" content="noindex, nofollow" />
 <!--(end)-->

@@ -375,7 +375,7 @@ class PageDesc(Renderable):
         with open(templateFile,encoding='utf-8') as file:
             temp = file.read()
 
-        pageHtml = pyratemp.Template(temp)(page = self)
+        pageHtml = pyratemp.Template(temp)(page = self,RemoveHtml = Utils.RemoveHtmlTags)
         
         directoryDepth = len(Path(self.info.file).parents) - 1
         # All relative file paths in the template, menus, and sections are written as if the page is at directory depth 1.
