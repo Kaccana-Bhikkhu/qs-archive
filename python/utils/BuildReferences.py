@@ -136,8 +136,75 @@ class TextReference(NamedTuple):
             bits[level] = Html.Tag("a",{"href":f"../{pageInfo[level].file}"})(bits[level])
         
         return " / ".join(bits)
+
+@lru_cache(maxsize=None)
+def AlphabetizedTeachers() -> dict[str,tuple[int,str]]:
+    """Return a dict of alphabetized teachers.
+    keys: teacher code
+    values: the tuple (sort order, alphabetized name)"""
+
+    rawAlphabetized = Build.AlphabetizedTeachers(gDatabase["teacher"].values())
+    return {t["teacher"]:(n,alphaName) for n,(alphaName,t) in enumerate(rawAlphabetized)}
+class BookReference(NamedTuple):
+    author: str                  # Teacher code; e.g. 'AP
+    abbreviation: str = ""       # Title abbreviation; e.g. 'bmc 1'
+    page: int = 0                # Page number; 0 means the whole book   
+
+    @staticmethod
+    def FromString(reference: str) -> "BookReference":
+        """Create this object from a string of form 'Title|page'."""
+        parts = reference.split("|")
+        abbreviation = parts[0].lower()
+        author = gDatabase["reference"][abbreviation]["author"]
+        if author:
+            author = author[0]
+        else:
+            author = ""
+        page = int(parts[1]) if len(parts) > 1 else 0
+        return BookReference(author,abbreviation,page)
     
-Reference = TextReference
+    def Truncate(self,level:int) -> "BookReference":
+        """Replace all elements with index >= level with 0 or ''."""
+        keep = self[0:level]
+        return BookReference(*keep,*[0 if type(self[index]) == int else "" for index in range(level,len(self))])
+
+    def Numbers(self) -> tuple[int,int,int]:
+        """Return a tuple of the reference numbers"""
+        if self.page:
+            return (self.page,)
+        else:
+            return ()
+
+    def SortKey(self) -> tuple:
+        """Return a tuple to sort these texts by."""
+        sortTitle = gDatabase["reference"][self.abbreviation]["title"].strip('_“')
+        if self.author:
+            return (AlphabetizedTeachers()[self.author][0],sortTitle,self.page)
+        else:
+            return (9999,sortTitle,self.page)
+
+    def __str__(self) -> str:
+        return f"{self.author}, {self.abbreviation}, p. {self.page}"
+    
+    def FullName(self) -> str:
+        """Return the full text name of this reference."""
+        if self.author and not self.abbreviation:
+            return gDatabase["teacher"][self.author]["attributionName"]
+        if self.abbreviation:
+            book = gDatabase["reference"][self.abbreviation]
+            bits = [book["title"],book["attribution"]]
+            if self.page:
+                bits.append(f"p. {self.page}")
+            return " ".join(bits)
+        else:
+            return ""
+
+    def BreadCrumbs(self) -> str:
+        return ""
+    
+    SuttaCentralLink = ReadingFaithfullyLink = BreadCrumbs
+    
+Reference = TextReference | BookReference
 
 @dataclass
 class LinkedReference():
@@ -164,17 +231,22 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
     referenceKind is either 'texts' or 'books'."""
 
     referenceDict:dict[Reference,list[dict[str]]] = defaultdict(list)
+    referenceClass = TextReference if referenceKind == "texts" else BookReference
 
     for event in gDatabase["event"].values():
         for ref in event.get(referenceKind,()):
-            referenceDict[TextReference.FromString(ref)].append(event)
+            referenceDict[referenceClass.FromString(ref)].append(event)
     for excerpt in gDatabase["excerpts"]:
-        references = [TextReference.FromString(ref) for ref in excerpt.get(referenceKind,())]
+        references = [referenceClass.FromString(ref) for ref in excerpt.get(referenceKind,())]
         if not references:
             continue
-        references.sort(key=TextReference.SortKey)
-        for group in GroupBySutta(references): # Only one excerpt per sutta
-            referenceDict[group[0]].append(excerpt)
+        references.sort(key=referenceClass.SortKey)
+        if referenceKind == "texts":
+            for group in GroupBySutta(references): # Only one excerpt per sutta
+                referenceDict[group[0]].append(excerpt)
+        else:
+            for ref in references:
+                referenceDict[ref].append(excerpt)
 
     collated:list[LinkedReference] = []
     for ref,items in referenceDict.items():
@@ -289,21 +361,24 @@ class YieldSubpages(ReferencePageMaker):
 def BoldfaceTextReferences(html: str,text: TextReference) -> str:
     """Return html with each reference to text in boldface."""
 
-    textDB = gDatabase["text"]
-    if text.text == "Kd":
-        textName = f"({textDB["Kd"]["name"]}|{textDB["Mv"]["name"]})" # Kd also matches Mv
-    else:
-        textName = textDB[text.text]["name"] if textDB[text.text]["citeFullName"] else text.text
-    
-    numbers = text.Numbers()
-    if numbers:
-        nonOptional = "[.:]".join(str(n) for n in numbers)
-    else:
-        nonOptional = "[0-9]+"
-    optional = (3 - min(len(numbers),1)) * "(?:[.:][0-9]+)?"
-    fullRegex = r"\b" + textName + r"\s+" + f"{nonOptional}(?![0-9]){optional}(?:-[0-9]+)?"
+    if isinstance(text,TextReference):
+        textDB = gDatabase["text"]
+        if text.text == "Kd":
+            textName = f"({textDB["Kd"]["name"]}|{textDB["Mv"]["name"]})" # Kd also matches Mv
+        else:
+            textName = textDB[text.text]["name"] if textDB[text.text]["citeFullName"] else text.text
+        
+        numbers = text.Numbers()
+        if numbers:
+            nonOptional = "[.:]".join(str(n) for n in numbers)
+        else:
+            nonOptional = "[0-9]+"
+        optional = (3 - min(len(numbers),1)) * "(?:[.:][0-9]+)?"
+        fullRegex = r"\b" + textName + r"\s+" + f"{nonOptional}(?![0-9]){optional}(?:-[0-9]+)?"
 
-    return Html.BoldfaceMatches(html,fullRegex)
+        return Html.BoldfaceMatches(html,fullRegex)
+    else:
+        return html
 
 class ExcerptListPage(ReferencePageMaker):
     """Generate a page containing the list of specified excerpts."""
@@ -367,7 +442,7 @@ class SingleLevelHeadings(Heading):
     def HeadingCode(self,reference: Reference) -> Reference:
         """The heading code is simply the truncated reference."""
         header = reference.Truncate(self.level + 1)
-        group = header.GroupUid()
+        group = "" # header.GroupUid()
         if group:
             startingNumber = int(re.search(r"([0-9])+-[0-9]+$",group)[1])
             numbers = list(header.Numbers())
@@ -396,13 +471,14 @@ class LinkedHeadings(SingleLevelHeadings):
             name = link(thisReference.FullName())
         else:
             name = link(str(thisReference))
-            group = thisReference.GroupUid()
-            if group:
-                translatedTitle = Suttaplex.Title(group)
-            else:
-                translatedTitle = Suttaplex.Title(thisReference.Uid())
-            if translatedTitle:
-                name += f": {translatedTitle}"
+            if isinstance(thisReference,TextReference):
+                group = thisReference.GroupUid()
+                if group:
+                    translatedTitle = Suttaplex.Title(group)
+                else:
+                    translatedTitle = Suttaplex.Title(thisReference.Uid())
+                if translatedTitle:
+                    name += f": {translatedTitle}"
         totalTexts = TotalItems(self.groupReferences)
         return Html.Tag("p",{"id":self.Bookmark()})(f"{name} ({totalTexts})")
 
@@ -434,28 +510,51 @@ class PageWithHeadings(ReferencePageMaker):
 def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
     """Return the page information for a given page of references."""
 
-    text = firstRef.text
-    if level == 0:
-        if text in TextGroupSet("vinaya"):
-            return Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
+    if isinstance(firstRef,TextReference):
+        text = firstRef.text
+        if level == 0:
+            if text in TextGroupSet("vinaya"):
+                return Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
+            else:
+                return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
+        
+        referenceGroup = firstRef.Truncate(level)
+        directory = "texts/"
+        strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
+        if level > 1:
+            title = str(referenceGroup)
+            translatedTitle = Suttaplex.Title(referenceGroup.Uid())
+            if translatedTitle:
+                title += f": {translatedTitle}"
         else:
-            return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
-    
-    referenceGroup = firstRef.Truncate(level)
-    directory = "texts/"
-    strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
-    if level > 1:
-        title = str(referenceGroup)
-        translatedTitle = Suttaplex.Title(referenceGroup.Uid())
-        if translatedTitle:
-            title += f": {translatedTitle}"
+            title = referenceGroup.FullName()
+        return Html.PageInfo(
+            title,
+            f"{directory}{text}{strNumbers}.html",
+            f"References – {title}"
+        )
     else:
-        title = referenceGroup.FullName()
-    return Html.PageInfo(
-        title,
-        f"{directory}{text}{strNumbers}.html",
-        f"References – {title}"
-    )
+        directory = "books/"
+        if level == 0:
+            return Html.PageInfo("Modern","books/Modern.html","References – Modern Authors")
+        elif level == 1: # An author page
+            author = firstRef.author
+            if not author:
+                author = "various"
+            authorName = gDatabase["teacher"][author]["attributionName"]
+
+            return Html.PageInfo(
+                authorName,
+                f"{directory}{author}.html",
+                f"References – {authorName}"
+            )
+        elif level == 2: # A book page
+            title = firstRef.FullName()
+            return Html.PageInfo(
+                title,
+                f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
+                f"References – {title}"
+            )
 
 def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:
     """Return a series of pages that link references to where they occur in the Archive.
@@ -467,7 +566,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         EXCERPTS_WITH_HEADINGS = 2
         EXCERPTS_ONLY = 3
 
-    def Dispatch() -> PageType:
+    def TextDispatch() -> PageType:
         if level == 0:
             return PageType.LINKED_HEADINGS
         
@@ -485,7 +584,15 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
             else:
                 return PageType.EXCERPTS_ONLY
     
-    pageType = Dispatch()
+    def BookDispatch() -> PageType:
+        if level == 0:
+            return PageType.LINKED_HEADINGS
+        elif level == 1:
+            return PageType.LINKED_HEADINGS
+        else:
+            return PageType.EXCERPTS_ONLY
+
+    pageType = TextDispatch() if isinstance(references[0].reference,TextReference) else BookDispatch()
     if pageType == PageType.LINKED_HEADINGS:
         return PageWithHeadings(LinkedHeadings(level),YieldSubpages(level),references)
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
@@ -506,11 +613,14 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
     textReferences = CollateReferences("texts")
     vinayaRefs,suttaRefs = Utils.Partition(textReferences,lambda r:r.reference.text in TextGroupSet("vinaya"))
-    # WriteReferences(vinayaRefs,"TextReferences.txt")
+
+    bookReferences = CollateReferences("books")
+    WriteReferences(bookReferences,"BookReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
-        Build.YieldAllIf(FirstLevelMenu(vinayaRefs),"texts" in gOptions.buildOnly)
+        Build.YieldAllIf(FirstLevelMenu(vinayaRefs),"texts" in gOptions.buildOnly),
+        Build.YieldAllIf(FirstLevelMenu(bookReferences),"books" in gOptions.buildOnly)
     ]
 
 def ReferencesMenu() -> Html.PageDescriptorMenuItem:

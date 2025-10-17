@@ -578,6 +578,23 @@ def ReferenceMatchRegExs(referenceDB: dict[dict]) -> tuple[str]:
 
     return refForm2, refForm3, refForm4
 
+def AddBookReference(item:dict,book: dict[str],page: int = 0) -> None:
+    """Add a book reference to this item.
+    item: an excerpt, annotation, or event.
+    book: the reference record stored in gDatabase."""
+
+    if not item or ("kind" not in item and "endDate" not in item):
+        return # Exclude items which are not excerpts, annotations, or events
+    
+    bookReference = book["abbreviation"]
+    if page:
+        bookReference += f"|{page}"
+    
+    if "books" in item:
+        item["books"].append(bookReference)
+    else:
+        item["books"] = [bookReference]
+
 def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Search for references of the form [abbreviation]() OR abbreviation page|p. N, add author and link information.
     ApplyToFunction allows us to apply these same operations to other collections of text (e.g. documentation)"""
@@ -615,8 +632,6 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             else:
                 return url + "#noframe"
 
-    
-
     def ReferenceForm2(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
 
@@ -628,6 +643,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 return matchObject[1]
             
             url = Link.URL(reference,directoryDepth=2)
+            page = None
             if url:
                 page = ParsePageNumber(matchObject[2])
                 if page:
@@ -648,28 +664,32 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if item and item.get("text"): # Replace abbreviated title with full title for search purposes
                 item["text"] = re.sub(r"\[" + matchObject[1] + r"\]","[" + reference["title"] +"]",item["text"])
 
+            AddBookReference(item,reference,page)
+
             return returnValue
 
         return re.subn(refForm2,ReferenceForm2Substitution,bodyStr,flags = re.IGNORECASE)
-    
-    def ReferenceForm3Substitution(matchObject: re.Match) -> str:
-        try:
-            reference = gDatabase["reference"][matchObject[1].lower()]
-        except KeyError:
-            Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-            return matchObject[1]
-        
-        url = Link.URL(reference,directoryDepth=2)
-        
-        page = ParsePageNumber(matchObject[2])
-        if page:
-           url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
-        
-        url = ProcessLocalReferences(url)
-        return f"]({url})"
 
-    def ReferenceForm3(bodyStr: str) -> tuple[str,int]:
+    def ReferenceForm3(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [xxxxx](title) or [xxxxx](title page N)"""
+
+        def ReferenceForm3Substitution(matchObject: re.Match) -> str:
+            try:
+                reference = gDatabase["reference"][matchObject[1].lower()]
+            except KeyError:
+                Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
+                return matchObject[1]
+            
+            url = Link.URL(reference,directoryDepth=2)
+            
+            page = ParsePageNumber(matchObject[2])
+            if page:
+                url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
+            AddBookReference(item,reference,page)
+
+            url = ProcessLocalReferences(url)
+            return f"]({url})"
+
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
 
     def ReferenceForm4(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
@@ -694,6 +714,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
             if item and item.get("text"): # Replace abbreviated title with full title for search purposes
                 item["text"] = re.sub(r"\b" + matchObject[1] + r"\b",reference["title"],item["text"])
+            AddBookReference(item,reference,page)
 
             return "".join(items)
     
@@ -889,14 +910,15 @@ def AccumulateReferences() -> None:
     """Combine text references in annotations with their parent excerpt;
     remove text references from fragments."""
 
-    for excerpt in gDatabase["excerpts"]:
-        accumulatedTexts = []
-        for item in Filter.AllItems(excerpt):
-            accumulatedTexts += item.get("texts") or []
-            item.pop("texts",None)
-        
-        if accumulatedTexts and ParseCSV.ExcerptFlag.FRAGMENT not in excerpt["flags"]:
-            excerpt["texts"] = accumulatedTexts
+    for refKind in ("texts","books"):
+        for excerpt in gDatabase["excerpts"]:
+            accumulatedTexts = []
+            for item in Filter.AllItems(excerpt):
+                accumulatedTexts += item.get(refKind) or []
+                item.pop(refKind,None)
+            
+            if accumulatedTexts and ParseCSV.ExcerptFlag.FRAGMENT not in excerpt["flags"]:
+                excerpt[refKind] = accumulatedTexts
 
 
 def SmartQuotes(text: str) -> tuple[str,int]:
