@@ -205,6 +205,11 @@ def SmartQuotes(s: str):
     s = re.sub(r'=‘(.*?)’', r"='\1'", s)
     return s
 
+def CapitalizeFirst(s: str) -> str:
+    """Capitalize the first letter of str without any other changes."""
+
+    return s[0:1].upper() + s[1:]
+
 def ParseDate(dateStr:str) -> datetime.date:
     "Read a date formated as DD/MM/YYYY and return datetime.date."
     

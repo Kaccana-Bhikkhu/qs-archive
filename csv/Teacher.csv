@@ -1,8 +1,8 @@
 Modified:,2025,2023,,,,,,,,
 Teacher,Full name,Attribution name,Index excerpts?,Index sessions?,Searchable?,Teacher page?,Attribute?,Allow tag?,Group,Lineage
-AbhSangha,Abhayagiri Saṅgha,,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
-AmSangha,Amaravati Saṅgha,,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
-WPNSangha,Wat Pah Nanachat Saṅgha,,Yes,Yes,Yes,No,Yes,Yes,Communities,Western disciples of Ajahn Chah
+AbhSangha,Abhayagiri Saṅgha,the Abhayagiri Saṅgha,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
+AmSangha,Amaravati Saṅgha,the Amaravati Saṅgha,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
+WPNSangha,Wat Pah Nanachat Saṅgha,the Wat Pah Nanachat Saṅgha,Yes,Yes,Yes,No,Yes,Yes,Communities,Western disciples of Ajahn Chah
 ACSangha,Ajahn Chah Saṅgha,,Yes,Yes,Yes,No,Yes,Yes,Communities,Disciples of Ajahn Chah
 various,various authors,,Yes,Yes,Yes,No,Yes,No,Communities,Other
 ,,,,,,,,,,
@@ -64,6 +64,7 @@ AA,Ajahn Amaro,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Cha
 ANyanadhammo,Ajahn Ñāṇadhammo,,Pending,Pending,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AJaya,Ajahn Jayasaro,,Pending,Pending,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AKaruniko,Ajahn Karuṇiko,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
+AChandako,Ajahn Chandako,,No,No,Yes,No,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 ASd,Ajahn Sudanto,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AY,Ajahn Yatiko,,Yes,Yes,Yes,Yes,Yes,Pending,Monastics,Western disciples of Ajahn Chah
 AKd,Ajahn Karuṇadhammo,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
@@ -143,7 +144,7 @@ SHanna,Sol Hanna,,Yes,No,Yes,No,Yes,No,Lay teachers,
 ,,,,,,,,,,
 RHatha,Randula Haththotuwa,,Pending,No,Pending,No,Pending,No,Lay teachers,
 ,,,,,,,,,,
-,,,,,,,,,,
+KGjellerup,Karl Gjellerup,,No,No,Yes,No,Yes,Yes,Lay teachers,
 ,,,,,,,,,,
 ,,,,,,,,,,
 Anon,anonymous,,Yes,Yes,Yes,No,No,No,,

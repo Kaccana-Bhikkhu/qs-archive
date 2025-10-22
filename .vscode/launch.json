@@ -162,7 +162,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "books"
+                "events"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

@@ -84,7 +84,7 @@ def DeleteUnwrittenHtmlFiles(writer: FileRegister.HashWriter) -> None:
     if deletedFiles:
         Alert.extra(deletedFiles,"html file(s) deleted.")
 
-def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None):
+def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None, capitalize = False):
     """Format a list of items"""
     
     if lastJoinStr is None:
@@ -93,10 +93,13 @@ def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None):
     if not items:
         return ""
     if len(items) == 1:
-        return items[0]
+        return Utils.CapitalizeFirst(items[0]) if capitalize else items[0]
     
     firstItems = joinStr.join(items[:-1])
-    return lastJoinStr.join([firstItems,items[-1]])
+    returnValue = lastJoinStr.join([firstItems,items[-1]])
+    if capitalize:
+        returnValue = Utils.CapitalizeFirst(returnValue)
+    return returnValue
 
 def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",lastJoinStr:str = None,titleEnd:str = ": ",endStr:str = "<br>") -> str:
     """Format a list of items with a title as a single line in html code."""
@@ -242,7 +245,7 @@ def LinkTeachersInText(text: str,specificTeachers:Iterable[str]|None = None) -> 
         htmlFile = TeacherLink(teacher)
         return f'<a href="{htmlFile}">{matchObject[1]}</a>'
 
-    return re.sub(teacherRegex,HtmlTeacherLink,text)
+    return re.sub(teacherRegex,HtmlTeacherLink,text,flags=re.RegexFlag.IGNORECASE)
 
 
 def ListLinkedTeachers(teachers:List[str],*args,**kwargs) -> str:
@@ -252,6 +255,7 @@ def ListLinkedTeachers(teachers:List[str],*args,**kwargs) -> str:
     fullNameList = [gDatabase["teacher"][t]["attributionName"] for t in teachers]
     
     return LinkTeachersInText(ItemList(fullNameList,*args,**kwargs))
+
 
 def ExcerptCount(tag:str) -> int:
     return gDatabase["tag"][tag].get("excerptCount",0)
@@ -1535,7 +1539,7 @@ def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
             with a.a(href = Database.EventLink(eventCode)):
                 a(e["title"])            
         with a.p():
-            a(f'{ListLinkedTeachers(e["teachers"],lastJoinStr = " and ")}')
+            a(f'{ListLinkedTeachers(e["teachers"],lastJoinStr = " and ",capitalize = True)}')
             a.br()
             if showTags and e["tags"]:
                 bits = list(f"[{HtmlTagLink(t)}]" for t in e["tags"])
@@ -2140,7 +2144,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a = Airium()
         
         with a.strong():
-            a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and "))
+            a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
         a.br()
 
         a(EventSeriesAndDateStr(eventInfo))
