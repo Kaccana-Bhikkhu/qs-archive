@@ -192,10 +192,15 @@ class BookReference(NamedTuple):
     def SortKey(self) -> tuple:
         """Return a tuple to sort these texts by."""
         sortTitle = gDatabase["reference"][self.abbreviation]["title"].strip('_“')
+        year = gDatabase["reference"][self.abbreviation]["year"]
+        try:
+            year = int(year)
+        except ValueError:
+            year = 9999
         if self.author:
-            return (AlphabetizedTeachers()[self.author][0],sortTitle,self.page)
+            return (AlphabetizedTeachers()[self.author][0],year,sortTitle,self.page)
         else:
-            return (9999,sortTitle,self.page)
+            return (9999,year,sortTitle,self.page)
 
     def __str__(self) -> str:
         return f"{self.author}, {self.abbreviation}, p. {self.page}"
@@ -213,9 +218,11 @@ class BookReference(NamedTuple):
             return AlphabetizedTeachers()[self.author][1]
         if self.abbreviation:
             book = gDatabase["reference"][self.abbreviation]
-            bits = [book["title"],book["attribution"]]
+            bits = [book["title"]]
             if self.page:
                 bits.append(f"p. {self.page}")
+            if book["year"]:
+                bits.append(f"({book['year']})")
             markdown = " ".join(bits)
             markdown = re.sub(r"\[([^]]*)\]\([^)]*\)",r"\1",markdown) # Extract text from Markdown hyperlinks
             text,_ = Render.MarkdownFormat(markdown,book)
@@ -462,8 +469,9 @@ class SingleLevelHeadings(Heading):
     """A class that groups references at a specific level. 
     The base class generates headers with the name of each level."""
 
-    level: int  # The heading level; level 0 groups by sutta (all MN together)
-                # level 1 groups by sutta and the first number (all MN 2 together)
+    level: int              # The heading level; level 0 groups by sutta (all MN together)
+                            # level 1 groups by sutta and the first number (all MN 2 together)
+    topOfPage: bool = True  # Flag to mark the top of the page
 
     def __init__(self,level):
         self.level = level
@@ -486,12 +494,14 @@ class SingleLevelHeadings(Heading):
             traslatedTitle = Suttaplex.Title(headingCode.Uid())
             if traslatedTitle:
                 name += f": {traslatedTitle}"
-        return Html.Tag("div",{"class":"title","id":self.Bookmark()})(name)
+        prefix = "" if self.topOfPage else "<hr>\n"
+        self.topOfPage = False
+        return prefix + Html.Tag("div",{"class":"title","id":self.Bookmark()})(name)
 
 class LinkedHeadings(SingleLevelHeadings):
     """Generates a list of links to subpages."""
     enclosingClass = "listing"
-
+    
     def Html(self, headingCode:Reference = None) -> str:
         headingCode = headingCode or self.groupCode
         subPageInfo = ReferencePageInfo(headingCode,self.level + 1)
