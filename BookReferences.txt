@@ -66,6 +66,7 @@ AmSangha, chanting book, p. 46
     excerpt('ChahQA2025_S01_F04', 'Question', 'What advice would you give to future abbots and teachers of Wat Pah...')
 AmSangha, chanting book, p. 49
     excerpt('WR2016_S38_F01', 'Question', 'The way Ajahn Paññavaddho describes citta sounds like a soul. Can y...')
+    excerpt('Sunday2025-2_S00_F11', 'Question', 'Is Nibbāna unconditioned? Can Nibbāna make a connection with you, o...')
 AmSangha, chanting book, p. 50
     excerpt('Metta2008_S04_F08', 'Question', 'Please explain in English the Pali chant you give as a blessing at ...')
     excerpt('SRD2010_S06_F01', 'Teaching', 'Explanation of the meal blessing chant.')
@@ -126,6 +127,8 @@ AmSangha, chanting book v2, p. 3
     excerpt('UD2013-3_S01_F02', 'Question', 'You said that starting with chanting can help focus the mind. But I...')
 AmSangha, chanting book v2, p. 10
     excerpt('WR2025_S06_F10', 'Question', 'There are people who tend to teach a lot about the deva realm. One ...')
+AmSangha, chanting book v2, p. 12
+    excerpt('WR2025_S36_F02', 'Question', 'If sakkāyadiṭṭhi is seen or penetrated, then do doubt and the other...')
 AmSangha, chanting book v2, p. 14
     excerpt('WR2016_S38_F04', 'Question', 'How was "atta" defined in the Buddha\'s time?')
     excerpt('WR2025_S05_F03', 'Question', 'Using the words passion and greed as if they are interchangeable se...')
@@ -221,6 +224,8 @@ ACSangha, gratitude, p. 53
     excerpt('WR2016_S12_F00', 'Reading', '“Cultivating _Gratitude_” by [Ajahn Pasanno](teacher:) in _Gratitud...')
 ACSangha, seeing the way v2, p. 11
     excerpt('WR2016_S17_F02', 'Reading', '“Invincibility” by [Ajahn Khemadhammo](teacher:) from _Seeing the W...')
+AChah, still forest pool, p. 0
+    excerpt('WR2025_S35_F00', 'Reading group', '')
 AChah, being dharma, p. 0
     excerpt('Chah2001_S28_F01', 'Other', '[Ajahn Amaro](teacher:) introduces Kittisaro, Ṭhānissarā, and Paul ...')
     excerpt('WR2014_S21_F02', 'Reading', '“Kondañña Knows” from [_Being Dharma_]() pp. 151-168.')
@@ -613,6 +618,17 @@ AP, the island, p. 0
     excerpt('WR2025_S34_F00', 'Reading group', '')
     excerpt('WR2025_S35_F00', 'Reading group', '')
     excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
+    excerpt('WR2025_S37_F00', 'Reading group', '')
+    excerpt('WR2025_S37_F00', 'Reading group', '')
+    excerpt('WR2025_S38_F00', 'Reading', 'from [_The Island_](), Chapter 7, pp. [126-132](The Island p. 126).')
+    excerpt('WR2025_S39_F00', 'Reading group', '')
+    excerpt('WR2025_S40_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [137-140](The Island p. 137).')
+    excerpt('WR2025_S41_F00', 'Reading group', '')
+    excerpt('WR2025_S42_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [143-146](The Island p. 143).')
+    excerpt('WR2025_S43_F00', 'Reading group', '')
+    excerpt('WR2025_S44_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [151-154](The Island p. 151).')
+    excerpt('WR2025_S45_F00', 'Reading group', '')
+    excerpt('WR2025_S46_F00', 'Reading group', '')
 AP, the island, p. 1
     event('WR2025')
 AP, the island, p. 8
@@ -687,6 +703,30 @@ AP, the island, p. 117
     excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
 AP, the island, p. 118
     excerpt('WR2025_S08_F02', 'Question', 'I understand that the Dhamma is beyond duality. But does the distin...')
+AP, the island, p. 123
+    excerpt('WR2025_S37_F00', 'Reading group', '')
+AP, the island, p. 125
+    excerpt('WR2025_S37_F00', 'Reading group', '')
+AP, the island, p. 126
+    excerpt('WR2025_S38_F00', 'Reading', 'from [_The Island_](), Chapter 7, pp. [126-132](The Island p. 126).')
+AP, the island, p. 133
+    excerpt('WR2025_S39_F00', 'Reading group', '')
+AP, the island, p. 137
+    excerpt('WR2025_S40_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [137-140](The Island p. 137).')
+AP, the island, p. 141
+    excerpt('WR2025_S41_F00', 'Reading group', '')
+AP, the island, p. 143
+    excerpt('WR2025_S42_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [143-146](The Island p. 143).')
+AP, the island, p. 146
+    excerpt('WR2025_S43_F00', 'Reading group', '')
+AP, the island, p. 151
+    excerpt('WR2025_S44_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [151-154](The Island p. 151).')
+AP, the island, p. 154
+    excerpt('WR2025_S45_F00', 'Reading group', '')
+AP, the island, p. 158
+    excerpt('WR2025_S46_F00', 'Reading group', '')
+AP, the island, p. 172
+    excerpt('WR2025_S36_F04', 'Question', 'I’m super perplexed and baffled with defining or understanding the ...')
 AP, the island, p. 224
     excerpt('WR2015_S43_F00', 'Reading group', '')
     excerpt('WR2025_S22_F00', 'Reading group', '')
@@ -825,6 +865,10 @@ ASundara, friends on the path, p. 13
     excerpt('WR2016_S09_F03', 'Discussion', 'Further ++discussion++ about the role of desire in practice. Led by...')
 ASuwat, fistful of sand, p. 48
     excerpt('WR2014_S43_F02', 'Reading', '“Straightening Out Your Views” from _Fistful of Sand & The Light of...')
+AThoon, thoon autobiography, p. 350
+    excerpt('WR2025_S34_F04', 'Question', "I'm reading the autobiography of Luang Por Thoon. He's speaking at ...")
+AThoon, thoon autobiography v2, p. 24
+    excerpt('WR2025_S34_F04', 'Question', "I'm reading the autobiography of Luang Por Thoon. He's speaking at ...")
 ATiradhammo, working with the five hindrances, p. 27
     excerpt('WR2016_S47_F01', 'Question', 'What are your thoughts about developing wholesome qualities when th...')
 ATiradhammo, working with the five hindrances, p. 28
@@ -880,6 +924,12 @@ Nyanamoli, path of purification, p. 533
     excerpt('WR2025_S15_F01', 'Question', 'For those who accept only the three-lifetime interpretation of Depe...')
 Nyanamoli, path of purification, p. 631
     excerpt('UD2012-3_S01_F01', 'Question', 'Could you expand about the layers of understanding of thought, perc...')
+Nyanananda, magic of the mind, p. 0
+    excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
+Nyanananda, magic of the mind, p. 54
+    excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
+Nyanananda, magic of the mind, p. 57
+    excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
 Nyanatiloka, word of the buddha, p. 0
     excerpt('TG2014_S06_F23', 'Question', 'I would like to add studying to my practice. I’d like to learn more...')
     excerpt('WR2016_S13_F03', 'Question', 'Can you recommend a book of koans for inspiration?')
