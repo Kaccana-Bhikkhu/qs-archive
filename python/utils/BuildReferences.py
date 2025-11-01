@@ -73,6 +73,9 @@ class TextReference(NamedTuple):
         """Return a tuple to sort these texts by."""
         return (TextSortOrder()[self.text],) + self.Numbers()
 
+    def IsCommentary(self) -> bool:
+        return False
+        
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}"
     
@@ -202,6 +205,10 @@ class BookReference(NamedTuple):
         else:
             return (9999,year,sortTitle,self.page)
 
+    def IsCommentary(self) -> bool:
+        """Return True if this reference refers to a commentarial work."""
+        return self.abbreviation and gDatabase["reference"][self.abbreviation]["commentary"]
+
     def __str__(self) -> str:
         return f"{self.author}, {self.abbreviation}, p. {self.page}"
     
@@ -221,7 +228,7 @@ class BookReference(NamedTuple):
             bits = [book["title"]]
             if self.page:
                 bits.append(f"p. {self.page}")
-            if book["year"]:
+            if book["year"] and not self.IsCommentary():
                 bits.append(f"({book['year']})")
             markdown = " ".join(bits)
             markdown = re.sub(r"\[([^]]*)\]\([^)]*\)",r"\1",markdown) # Extract text from Markdown hyperlinks
@@ -237,8 +244,10 @@ class BookReference(NamedTuple):
         for level in range(3):
             if level >= 1 and not self[level - 1]:
                 break
+            if self.IsCommentary() and level == 1:
+                continue # Skip the author name for commentarial works
             if pageInfo:
-                bits[level - 1] = Html.Tag("a",{"href":"../" + pageInfo.file})(bits[level - 1])
+                bits[-1] = Html.Tag("a",{"href":"../" + pageInfo.file})(bits[-1])
             pageInfo = ReferencePageInfo(self,level)
             bits.append(pageInfo.title)
         
@@ -336,10 +345,12 @@ class ReferencePageMaker:
         Calls the general dispatch function below."""
         self.page.info = ReferencePageInfo(fromReference,self.level)
 
-    def HeaderHtml(self) -> str:
+    def HeaderHtml(self,level = None) -> str:
         """Returns html that goes a the top of the page in whole page mode."""
-        if self.level > 0:
-            reference = self.references[0].reference.Truncate(self.level)
+        if level is None:
+            level = self.level
+        if level > 0:
+            reference = self.references[0].reference.Truncate(level)
             bits = [reference.BreadCrumbs()]
             bits.extend("&nbsp;" + icon for icon in reference.LinkIcons())
             bits.append("<hr>")
@@ -576,7 +587,10 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
     else:
         directory = "books/"
         if level == 0:
-            return Html.PageInfo("Modern","books/Modern.html","References – Modern Authors")
+            if firstRef.IsCommentary():
+                return Html.PageInfo("Commentary","books/Commentary.html","References – Commentary")
+            else:
+                return Html.PageInfo("Modern","books/Modern.html","References – Modern Authors")
         elif level == 1: # An author page
             author = firstRef.author
             if not author:
@@ -606,6 +620,8 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         EXCERPTS_WITH_HEADINGS = 2
         EXCERPTS_ONLY = 3
 
+    skipLevel = False
+
     def TextDispatch() -> PageType:
         if level == 0:
             return PageType.LINKED_HEADINGS
@@ -625,7 +641,10 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
                 return PageType.EXCERPTS_ONLY
     
     def BookDispatch() -> PageType:
+        nonlocal skipLevel
         if level == 0:
+            if references[0].reference.IsCommentary():
+                skipLevel = True # Skip the list of authors for commentarial works.
             return PageType.LINKED_HEADINGS
         elif level == 1:
             if TotalItems(references) < gOptions.minSubsearchExcerpts:
@@ -637,7 +656,13 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
 
     pageType = TextDispatch() if isinstance(references[0].reference,TextReference) else BookDispatch()
     if pageType == PageType.LINKED_HEADINGS:
-        return PageWithHeadings(LinkedHeadings(level),YieldSubpages(level),references)
+        if skipLevel:
+            level += 1
+        pageMaker = PageWithHeadings(LinkedHeadings(level),YieldSubpages(level),references)
+        if skipLevel: # If we skip a level of headings, manually remake the page header
+            pageMaker.page = Html.PageDesc(ReferencePageInfo(references[0].reference,level - 1))
+            pageMaker.page.AppendContent(pageMaker.HeaderHtml(level - 1))
+        return pageMaker
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
         return PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references)
     elif pageType == PageType.EXCERPTS_ONLY:
@@ -658,12 +683,14 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
     vinayaRefs,suttaRefs = Utils.Partition(textReferences,lambda r:r.reference.text in TextGroupSet("vinaya"))
 
     bookReferences = CollateReferences("books")
-    WriteReferences(bookReferences,"BookReferences.txt")
+    commentaryRefs,modernRefs = Utils.Partition(bookReferences,lambda r:r.reference.IsCommentary())
+    WriteReferences(commentaryRefs,"BookReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
         Build.YieldAllIf(FirstLevelMenu(vinayaRefs),"texts" in gOptions.buildOnly),
-        Build.YieldAllIf(FirstLevelMenu(bookReferences),"books" in gOptions.buildOnly)
+        Build.YieldAllIf(FirstLevelMenu(commentaryRefs),"books" in gOptions.buildOnly),
+        Build.YieldAllIf(FirstLevelMenu(modernRefs),"books" in gOptions.buildOnly)
     ]
 
 def ReferencesMenu() -> Html.PageDescriptorMenuItem:
