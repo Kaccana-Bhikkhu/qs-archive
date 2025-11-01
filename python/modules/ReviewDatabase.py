@@ -399,6 +399,22 @@ def NeedsAudioEditing() -> None:
             print(f"   Break points: {', '.join(['start'] + splitPoints[1:] + ['end'])}.")
         print()
 
+def CheckReferences():
+    """Check for problems with the references."""
+    authorDict = defaultdict(list)
+
+    for book in gDatabase["reference"].values():
+        for author in book["author"]:
+            authorDict[author].append(book)
+    
+    for author,books in authorDict.items():
+        if len(books) < 2:
+            continue
+        dateless = [b["abbreviation"] for b in books if not b["year"]]
+        if dateless:
+            Alert.caution("The following books by",author,"need dates for proper sorting:",dateless)
+
+
 def DumpCSV(directory:str) -> None:
     "Write a summary of gDatabase to csv files in directory."
 
@@ -439,6 +455,7 @@ def main() -> None:
     CheckFTagOrder()
     LogReviewedFTags()
     NeedsAudioEditing()
+    CheckReferences()
 
     if gOptions.dumpCSV:
         DumpCSV(gOptions.dumpCSV)

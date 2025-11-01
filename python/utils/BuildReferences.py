@@ -180,6 +180,15 @@ class BookReference(NamedTuple):
         page = int(parts[1]) if len(parts) > 1 else 0
         return BookReference(author,abbreviation,page)
     
+    def MultipleAuthors(self) -> list["BookReference"]:
+        """Return a list of references specifying each author separately."""
+        returnValue = [self]
+        if not self.abbreviation:
+            return returnValue
+        for otherAuthor in gDatabase["reference"][self.abbreviation]["author"][1:]:
+            returnValue.append(self._replace(author = otherAuthor))
+        return returnValue
+
     def Truncate(self,level:int) -> "BookReference":
         """Replace all elements with index >= level with 0 or ''."""
         keep = self[0:level]
@@ -200,6 +209,8 @@ class BookReference(NamedTuple):
             year = int(year)
         except ValueError:
             year = 9999
+        if self.IsCommentary(): # Sort commentarial texts only by year
+            return (year,year,sortTitle,self.page)
         if self.author:
             return (AlphabetizedTeachers()[self.author][0],year,sortTitle,self.page)
         else:
@@ -298,7 +309,8 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
                 referenceDict[group[0]].append(excerpt)
         else:
             for ref in references:
-                referenceDict[ref].append(excerpt)
+                for authorRef in ref.MultipleAuthors():
+                    referenceDict[authorRef].append(excerpt)
 
     collated:list[LinkedReference] = []
     for ref,items in referenceDict.items():
