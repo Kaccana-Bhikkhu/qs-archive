@@ -60,6 +60,10 @@ class TextReference(NamedTuple):
 
         return TextReference(text,*numbers)
 
+    def TextLevel(self) -> int:
+        """Return the number of numbers it takes to specify a specific sutta."""
+        return 1 if self.text in TextGroupSet("singleRef") else 2 if self.text in TextGroupSet("doubleRef") else 0
+
     def Truncate(self,level:int) -> "TextReference":
         """Replace all elements with index >= level with 0 or ''."""
         keep = self[0:level]
@@ -75,6 +79,10 @@ class TextReference(NamedTuple):
 
     def IsCommentary(self) -> bool:
         return False
+    
+    def IsSubreference(self) -> bool:
+        """Return true if the reference specifies a subsection within a sutta."""
+        return self[self.TextLevel() + 1] != 0
         
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}"
@@ -220,6 +228,10 @@ class BookReference(NamedTuple):
         """Return True if this reference refers to a commentarial work."""
         return self.abbreviation and gDatabase["reference"][self.abbreviation]["commentary"]
 
+    def IsSubreference(self) -> bool:
+        """Return true if the reference specifies a page number."""
+        return self.page != 0
+
     def __str__(self) -> str:
         return f"{self.author}, {self.abbreviation}, p. {self.page}"
     
@@ -278,12 +290,12 @@ def TotalItems(references: Iterable[LinkedReference]) -> int:
     """Return the nubmer of items in references."""
     return sum(len(group.items) for group in references)
 
-def GroupBySutta(references: Iterable[TextReference]) -> Iterable[list[LinkedReference]]:
-    """Group references by sutta and yield a list of each group."""
+def GroupByBook(references: Iterable[Reference]) -> Iterable[list[LinkedReference]]:
+    """Group references by sutta or book and yield a list of each group."""
 
     for key,group1 in groupby(references,key = lambda ref:ref[0:2]):
         group1 = list(group1)
-        if group1[0].text in TextGroupSet("doubleRef"):
+        if isinstance(group1[0],TextReference) and group1[0].text in TextGroupSet("doubleRef"):
             for key,group2 in groupby(group1,key = lambda ref:ref[0:3]):
                 yield list(group2)
         else:
@@ -297,19 +309,27 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
     referenceClass = TextReference if referenceKind == "texts" else BookReference
 
     for event in gDatabase["event"].values():
-        for ref in event.get(referenceKind,()):
-            referenceDict[referenceClass.FromString(ref)].append(event)
+        references = [referenceClass.FromString(ref) for ref in event.get(referenceKind,())]
+        if not references:
+            continue
+        references.sort(key = lambda r:r.SortKey())
+        for group in GroupByBook(references):
+            referenceDict[group[0]].append(event) # Append only the first reference to an event.
+    
     for excerpt in gDatabase["excerpts"]:
         references = [referenceClass.FromString(ref) for ref in excerpt.get(referenceKind,())]
         if not references:
             continue
         references.sort(key=referenceClass.SortKey)
-        if referenceKind == "texts":
-            for group in GroupBySutta(references): # Only one excerpt per sutta
-                referenceDict[group[0]].append(excerpt)
-        else:
-            for ref in references:
-                for authorRef in ref.MultipleAuthors():
+        for group in GroupByBook(references): # Only one excerpt per book
+            if len(group) > 1 and not group[0].IsSubreference():
+                mainRef = group[1]
+            else:
+                mainRef = group[0]
+            if isinstance(mainRef,TextReference):
+                referenceDict[mainRef].append(excerpt)
+            else:
+                for authorRef in mainRef.MultipleAuthors():
                     referenceDict[authorRef].append(excerpt)
 
     collated:list[LinkedReference] = []
@@ -449,10 +469,16 @@ class ExcerptListPage(ReferencePageMaker):
         firstLoop = True
         for reference in self.references:
             events,excerpts = Utils.Partition(reference.items,lambda item: "endDate" in item)
-            if not firstLoop:
-                a.hr()
-            firstLoop = False
-            a(formatter.HtmlExcerptList(excerpts))
+            for event in events:
+                if not firstLoop:
+                    a.hr()
+                firstLoop = False
+                a(Build.EventDescription(event,showMonth=True).replace("<p>","<p><b>Event</b>: "))
+            if excerpts:
+                if not firstLoop:
+                    a.hr()
+                firstLoop = False
+                a(formatter.HtmlExcerptList(excerpts))
 
         html = BoldfaceTextReferences(str(a),self.references[0].reference.Truncate(self.level))
         self.page.AppendContent(html)
@@ -638,8 +664,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         if level == 0:
             return PageType.LINKED_HEADINGS
         
-        text = references[0].reference.text
-        textLevel = 2 if text in TextGroupSet("singleRef") else 3 if text in TextGroupSet("doubleRef") else 1
+        textLevel = references[0].reference.TextLevel() + 1
 
         if textLevel == 1:
             return PageType.EXCERPTS_WITH_HEADINGS
@@ -696,7 +721,7 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
     bookReferences = CollateReferences("books")
     commentaryRefs,modernRefs = Utils.Partition(bookReferences,lambda r:r.reference.IsCommentary())
-    WriteReferences(commentaryRefs,"BookReferences.txt")
+    WriteReferences(bookReferences,"BookReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
