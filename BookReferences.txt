@@ -66,6 +66,7 @@ AmSangha, chanting book, p. 46
     excerpt('ChahQA2025_S01_F04', 'Question', 'What advice would you give to future abbots and teachers of Wat Pah...')
 AmSangha, chanting book, p. 49
     excerpt('WR2016_S38_F01', 'Question', 'The way Ajahn Paññavaddho describes citta sounds like a soul. Can y...')
+    excerpt('WR2025_S46_F07', 'Comment', 'The translation of the Nibbāna Sutta (Ud 8.3) in _[The Island](The ...')
     excerpt('Sunday2025-2_S00_F11', 'Question', 'Is Nibbāna unconditioned? Can Nibbāna make a connection with you, o...')
 AmSangha, chanting book, p. 50
     excerpt('Metta2008_S04_F08', 'Question', 'Please explain in English the Pali chant you give as a blessing at ...')
@@ -122,6 +123,7 @@ AmSangha, chanting book v2, p. 2
     excerpt('TG2016_S06_F04', 'Question', 'Where is the middle way taught in the suttas? and how might that he...')
     excerpt('Rishikesh2023_S04_F01', 'Question', 'What is the translation of sabbaṃ dukkhaṃ? The way you translate it...')
     excerpt('WR2025_S05_F03', 'Question', 'Using the words passion and greed as if they are interchangeable se...')
+    excerpt('WR2025_S40_F04', 'Question', 'Is [SN 12.15] specifically what the middle way refers to?')
 AmSangha, chanting book v2, p. 3
     excerpt('UD2013-3_S01_F02', 'Question', 'You said that starting with chanting can help focus the mind. But I...')
 AmSangha, chanting book v2, p. 10
@@ -160,7 +162,7 @@ AA, feed the mice, p. 0
 AA, inner listening, p. 0
     excerpt('TG2016_S06_F01', 'Question', 'Thank you for additional information on the Sound of Silence. I’ve ...')
 AA, just one more, p. 16
-    excerpt('WR2025_S12_F02', 'Reading', 'Reading from _Just One More_ p. 16 quoting _The House at Pooh Corne...')
+    excerpt('WR2025_S12_F02', 'Reading', 'from _Just One More_ p. 16 quoting _The House at Pooh Corner_ by A....')
 AA, pilgrim kamanita, p. 119
     excerpt('WR2025_S05_F02', 'Question', 'So Luang Por Sumhedo’s talk the other day where he said that our co...')
 AA, the island, p. 0
@@ -197,6 +199,8 @@ AA, the island, p. 61
     excerpt('WR2025_S09_F00', 'Reading', 'from [_The Island_](), Chapter 3, pp. [61-63](The Island p. 61).')
 AA, the island, p. 64
     excerpt('WR2025_S10_F00', 'Reading', 'from [_The Island_](), Chapter 3, pp. [64-67](The Island p. 64).')
+AA, the island, p. 65
+    excerpt('WR2025_S46_F00', 'Reading group', '')
 AA, the island, p. 68
     excerpt('WR2025_S11_F00', 'Reading', 'from [_The Island_](), Chapter 4, pp. [68-70](The Island p. 68).')
     excerpt('WR2025_S11_F01', 'Reflection', 'Addiction to becoming is the core source of suffering.')
@@ -238,8 +242,11 @@ AA, the island, p. 126
     excerpt('WR2025_S38_F00', 'Reading', 'from [_The Island_](), Chapter 7, pp. [126-132](The Island p. 126).')
 AA, the island, p. 133
     excerpt('WR2025_S39_F00', 'Reading group', '')
+    excerpt('WR2025_S43_F07', 'Question', 'What is the difference between unsupported and unsupportive [consci...')
 AA, the island, p. 137
     excerpt('WR2025_S40_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [137-140](The Island p. 137).')
+AA, the island, p. 140
+    excerpt('WR2025_S40_F04', 'Question', 'Is [SN 12.15] specifically what the middle way refers to?')
 AA, the island, p. 141
     excerpt('WR2025_S41_F00', 'Reading group', '')
 AA, the island, p. 143
@@ -249,9 +256,15 @@ AA, the island, p. 146
 AA, the island, p. 151
     excerpt('WR2025_S44_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [151-154](The Island p. 151).')
 AA, the island, p. 154
-    excerpt('WR2025_S45_F00', 'Reading group', '')
+    excerpt('WR2025_S45_F01', 'Reading', 'from [_The Island_](), Chapter 8, pp. [154-156](The Island p. 154).')
+AA, the island, p. 157
+    excerpt('WR2025_S45_F06', 'Reading', 'from [_The Island_](), Chapter 9, pp. [157-158](The Island p. 157).')
 AA, the island, p. 158
-    excerpt('WR2025_S46_F00', 'Reading group', '')
+    excerpt('WR2025_S46_F06', 'Question', "Can you explain what Ajahn Mahā Boowa means by 'the essence of a le...")
+AA, the island, p. 159
+    excerpt('WR2025_S46_F07', 'Comment', 'The translation of the Nibbāna Sutta (Ud 8.3) in _[The Island](The ...')
+AA, the island, p. 164
+    excerpt('WR2025_S46_F08', 'Reflection', "{teachers} recollects and reflects on the receipt of Ajahn Chah's o...")
 AA, the island, p. 172
     excerpt('WR2025_S36_F04', 'Question', 'I’m super perplexed and baffled with defining or understanding the ...')
 AA, the island, p. 224
@@ -365,6 +378,8 @@ AChah, collected teachings, p. 291
     excerpt('WR2014_S10_F00', 'Reading', '“Detachment Within Activity” from _Collected Teachings of [Ajahn Ch...')
 AChah, collected teachings, p. 332
     excerpt('UD2015-4_S03_F04', 'Question', 'Does jhāna arise only in seated meditation?')
+AChah, collected teachings, p. 339
+    excerpt('WR2025_S46_F08', 'Reflection', "{teachers} recollects and reflects on the receipt of Ajahn Chah's o...")
 AChah, collected teachings, p. 373
     excerpt('WR2025_S13_F02', 'Question', 'If the Unconditioned is above distinctions of right and wrong, how ...')
 AChah, collected teachings, p. 383
@@ -381,6 +396,10 @@ AChah, collected teachings, p. 467
     excerpt('SRD2010_S04_F02', 'Teaching', 'Skillful effort in meditation.')
 AChah, collected teachings, p. 475
     excerpt('WR2025_S38_F03', 'Question', 'Would you say that way of reflecting using non conceptual thought i...')
+    excerpt('WR2025_S46_F00', 'Reading group', '')
+    excerpt('WR2025_S46_F01', 'Other', 'Background of "[What is Contemplation?](Collected Teachings p. 475)"')
+    excerpt('WR2025_S46_F02', 'Comment', 'Ajahn Ṭhānissaro has made a more literal translation of "[What is C...')
+    excerpt('WR2025_S46_F04', 'Question', 'Are mindfulness of mind and contemplating a subject such as imperma...')
 AChah, collected teachings, p. 478
     excerpt('UD2014-2_S03_F05', 'Question', 'In an earlier reading, Ajahn Mun mentioned the primal mind. Is that...')
 AChah, collected teachings, p. 489
@@ -405,6 +424,8 @@ AChah, simple terms, p. 41
     excerpt('UD2013-3_S02_F03', 'Question', 'In the suttas, if you recognize a defilement like ill-will, you nee...')
 AChah, still flowing water, p. 0
     excerpt('WR2014_S27_F00', 'Reading', '“In the Shape of a Circle,” [_Still, Flowing Water_]() p 77.')
+AChah, still flowing water, p. 96
+    excerpt('WR2025_S46_F02', 'Comment', 'Ajahn Ṭhānissaro has made a more literal translation of "[What is C...')
 AChandako, krooba ajahn, p. 0
     excerpt('WR2014_S18_F01', 'Reading', '“The Spirit of a Warrior,” unpublished talk by [Ajahn Dtun](teacher...')
     excerpt('WR2014_S33_F00', 'Reading', '“From the Darkness to the Light,” unpublished talk by [Ajahn Liem](...')
@@ -439,6 +460,10 @@ ASilaratano, uncommon wisdom, p. 235
     excerpt('WR2016_S23_F02', 'Question', 'Can you say anything about the "voice of dhamma" Ajahn Paññāvaḍḍho ...')
 ASilaratano, uncommon wisdom, p. 246
     excerpt('WR2016_S38_F00', 'Reading', '“Citta,” _Uncommon Wisdom: The Life and Teachings of Ajahn Paññāvaḍ...')
+ADune, atulo, p. 0
+    excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
+    excerpt('WR2025_S42_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [143-146](The Island p. 143).')
+    excerpt('WR2025_S43_F00', 'Reading group', '')
 ADune, gifts he left behind, p. -7
     excerpt('WR2014_S24_F02', 'Reading', '[_Gifts He Left Behind_](): [Introduction](Gifts He Left Behind p. ...')
 ADune, gifts he left behind, p. 0
@@ -520,6 +545,9 @@ AJaya, stillness flowing, p. 81
     excerpt('WR2014_S45_F06', 'Question', 'Did Ajahn Chah use asubha practice during his battle with lust?')
 AJaya, stillness flowing, p. 89
     excerpt('SRD2010_S07_F06', 'Reading', 'from the [draft biography](): Ajahn Chah leaves his companions and ...')
+AJaya, stillness flowing, p. 90
+    excerpt('WR2025_S41_F00', 'Reading group', '')
+    excerpt('WR2025_S42_F01', 'Comment', 'The separation between the mind and the sense/mind objects can be h...')
 AJaya, stillness flowing, p. 137
     excerpt('SRD2010_S11_F06', 'Reading', 'from the [draft biography](): Ajahn Chah in the early years: spare,...')
 AJaya, stillness flowing, p. 189
@@ -609,6 +637,11 @@ AMahaB, straight from the heart, p. 55
     excerpt('WR2014_S08_F00', 'Reading', '“Birth and Death” from _Straight from the Heart_ pp. 55-71.')
 AMahaB, straight from the heart, p. 129
     excerpt('WR2014_S26_F00', 'Reading', '“The Principle of the Present,” _Straight from the Heart_ pp. 129-149.')
+AMahaB, straight from the heart, p. 228
+    excerpt('WR2025_S45_F06', 'Reading', 'from [_The Island_](), Chapter 9, pp. [157-158](The Island p. 157).')
+    excerpt('WR2025_S46_F06', 'Question', "Can you explain what Ajahn Mahā Boowa means by 'the essence of a le...")
+AMahaB, wisdom develops samadhi, p. 0
+    excerpt('WR2025_S43_F07', 'Question', 'What is the difference between unsupported and unsupportive [consci...')
 AMahaB, arahattamagga arahattaphala, p. 9
     excerpt('WR2014_S11_F00', 'Reading', '“The Direct Route to the End of All Suffering” from _Arahattamagga ...')
 AMahaB, ajahn mun biography, p. 0
@@ -632,6 +665,8 @@ AMun, khandhavimutti and samangidhamma, p. 29
 AMun, a heart released, p. 37
     excerpt('WR2014_S13_F00', 'Reading', '_Khandhavimutti and Samangidhamma_ p. 29-40.')
     excerpt('UD2014-2_S01_F10', 'Reading', '"The Ballad of Liberation from the Khandas," from _A Heart Released...')
+AMun, a heart released, p. 51
+    excerpt('WR2025_S41_F04', 'Question', 'about associating with and clinging to wholesome and conducive envi...')
 AMunindo, unexpected freedom, p. 151
     excerpt('WR2016_S31_F03', 'Discussion', 'about loneliness, aloneness, and solitude in the practice.')
 AMunindo, we are all translators, p. 0
@@ -648,6 +683,7 @@ AP, don't hold back, p. 0
     excerpt('TG2016_S04_F05', 'Question', 'I was struck by the suggestion you shared about orienting oneself t...')
 AP, abundant, exalted, immeasurable, p. 0
     excerpt('TG2015_S08_F12', 'Question', 'Have you ever put a publication together on the retreat questions? ...')
+    excerpt('WR2025_S42_F09', 'Comment', 'Practicing the Four Brahmavihāras is a relation practice that is ve...')
 AP, the island, p. 0
     event('WR2025')
     excerpt('TG2014_S04_F06', 'Question', 'What is a stream enterer? Can a stream enterer go back? Are there l...')
@@ -683,6 +719,8 @@ AP, the island, p. 61
     excerpt('WR2025_S09_F00', 'Reading', 'from [_The Island_](), Chapter 3, pp. [61-63](The Island p. 61).')
 AP, the island, p. 64
     excerpt('WR2025_S10_F00', 'Reading', 'from [_The Island_](), Chapter 3, pp. [64-67](The Island p. 64).')
+AP, the island, p. 65
+    excerpt('WR2025_S46_F00', 'Reading group', '')
 AP, the island, p. 68
     excerpt('WR2025_S11_F00', 'Reading', 'from [_The Island_](), Chapter 4, pp. [68-70](The Island p. 68).')
     excerpt('WR2025_S11_F01', 'Reflection', 'Addiction to becoming is the core source of suffering.')
@@ -724,8 +762,11 @@ AP, the island, p. 126
     excerpt('WR2025_S38_F00', 'Reading', 'from [_The Island_](), Chapter 7, pp. [126-132](The Island p. 126).')
 AP, the island, p. 133
     excerpt('WR2025_S39_F00', 'Reading group', '')
+    excerpt('WR2025_S43_F07', 'Question', 'What is the difference between unsupported and unsupportive [consci...')
 AP, the island, p. 137
     excerpt('WR2025_S40_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [137-140](The Island p. 137).')
+AP, the island, p. 140
+    excerpt('WR2025_S40_F04', 'Question', 'Is [SN 12.15] specifically what the middle way refers to?')
 AP, the island, p. 141
     excerpt('WR2025_S41_F00', 'Reading group', '')
 AP, the island, p. 143
@@ -735,9 +776,15 @@ AP, the island, p. 146
 AP, the island, p. 151
     excerpt('WR2025_S44_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [151-154](The Island p. 151).')
 AP, the island, p. 154
-    excerpt('WR2025_S45_F00', 'Reading group', '')
+    excerpt('WR2025_S45_F01', 'Reading', 'from [_The Island_](), Chapter 8, pp. [154-156](The Island p. 154).')
+AP, the island, p. 157
+    excerpt('WR2025_S45_F06', 'Reading', 'from [_The Island_](), Chapter 9, pp. [157-158](The Island p. 157).')
 AP, the island, p. 158
-    excerpt('WR2025_S46_F00', 'Reading group', '')
+    excerpt('WR2025_S46_F06', 'Question', "Can you explain what Ajahn Mahā Boowa means by 'the essence of a le...")
+AP, the island, p. 159
+    excerpt('WR2025_S46_F07', 'Comment', 'The translation of the Nibbāna Sutta (Ud 8.3) in _[The Island](The ...')
+AP, the island, p. 164
+    excerpt('WR2025_S46_F08', 'Reflection', "{teachers} recollects and reflects on the receipt of Ajahn Chah's o...")
 AP, the island, p. 172
     excerpt('WR2025_S36_F04', 'Question', 'I’m super perplexed and baffled with defining or understanding the ...')
 AP, the island, p. 224
@@ -770,6 +817,8 @@ Payutto, buddhist economics, p. 0
     event('UD2013-1')
 Payutto, buddhist economics, p. 19
     excerpt('UD2013-1_S01_F01', 'Reading', '_Buddhist Economics: A Middle Way for the Market Place_ p. 19; _Bud...')
+Payutto, dependent origination, p. 118
+    excerpt('WR2025_S40_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [137-140](The Island p. 137).')
 Payutto, constitution for living, p. 0
     event('UD2013-1')
 Payutto, constitution for living, p. 7
@@ -893,8 +942,13 @@ ANyanadhammo, walking meditation, p. 0
 Nyanananda, concept and reality, p. 0
     excerpt('WR2015_S48_F01', 'Discussion', 'of the meaning of papañca in AN 8.30 and various other suttas.')
     excerpt('WR2016_S39_F06', 'Question', 'Regarding the Honeyball Sutta (MN 18), is withdrawal of external co...')
+Nyanananda, concept and reality, p. 41
+    excerpt('WR2025_S40_F00', 'Reading', 'from [_The Island_](), Chapter 8, pp. [137-140](The Island p. 137).')
+    excerpt('WR2025_S40_F04', 'Question', 'Is [SN 12.15] specifically what the middle way refers to?')
 Nyanananda, magic of the mind, p. 54
     excerpt('WR2025_S36_F00', 'Reading', 'from [_The Island_](), Chapter 6, pp. [117-123](The Island p. 117).')
+Nyanananda, magic of the mind, p. 58
+    excerpt('WR2025_S46_F00', 'Reading group', '')
 Nyanatiloka, word of the buddha, p. 0
     excerpt('TG2014_S06_F23', 'Question', 'I would like to add studying to my practice. I’d like to learn more...')
     excerpt('WR2016_S13_F03', 'Question', 'Can you recommend a book of koans for inspiration?')
