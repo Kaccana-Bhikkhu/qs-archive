@@ -224,6 +224,12 @@ class BookReference(NamedTuple):
         for otherAuthor in gDatabase["reference"][self.abbreviation]["author"][1:]:
             returnValue.append(self._replace(author = otherAuthor))
         return returnValue
+    
+    def FirstAuthor(self) -> "BookReference":
+        """Return this reference substituting the first author of the book."""
+        if not self.abbreviation or len(gDatabase["reference"][self.abbreviation]["author"]) <= 1:
+            return self
+        return self._replace(author = gDatabase["reference"][self.abbreviation]["author"][0])
 
     def Truncate(self,level:int) -> "BookReference":
         """Replace all elements with index >= level with 0 or ''."""
@@ -290,16 +296,17 @@ class BookReference(NamedTuple):
 
     def BreadCrumbs(self) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
+        firstAuthor = self.FirstAuthor()
         bits = []
         pageInfo = None
         for level in range(3):
-            if level >= 1 and not self[level - 1]:
+            if level >= 1 and not firstAuthor[level - 1]:
                 break
-            if self.IsCommentary() and level == 1:
+            if firstAuthor.IsCommentary() and level == 1:
                 continue # Skip the author name for commentarial works
             if pageInfo:
                 bits[-1] = Html.Tag("a",{"href":"../" + pageInfo.file})(bits[-1])
-            pageInfo = ReferencePageInfo(self,level)
+            pageInfo = ReferencePageInfo(firstAuthor,level)
             bits.append(pageInfo.title)
         
         return " / ".join(bits)
@@ -342,7 +349,11 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
             continue
         references.sort(key = lambda r:r.SortKey())
         for group in GroupByBook(references):
-            referenceDict[group[0]].append(event) # Append only the first reference to an event.
+            if isinstance(group[0],TextReference):
+                referenceDict[group[0]].append(event) # Append only the first reference to an event.
+            else:
+                for authorRef in group[0].MultipleAuthors():
+                    referenceDict[authorRef].append(event)
     
     for excerpt in gDatabase["excerpts"]:
         references = [referenceClass.FromString(ref) for ref in excerpt.get(referenceKind,())]
