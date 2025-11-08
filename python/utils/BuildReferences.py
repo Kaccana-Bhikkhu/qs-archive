@@ -1,9 +1,9 @@
 """Functions that build pages/texts and pages/references.
-These could logically be included within Build.py, but this file is already unweildy due to length."""
+These could logically be included within Build.py, but this file is already unwieldy due to length."""
 
 from collections.abc import Iterable, Iterator, Hashable
 from collections import defaultdict
-from typing import NamedTuple
+from typing import NamedTuple, Optional
 from dataclasses import dataclass
 from itertools import chain, groupby
 from airium import Airium
@@ -66,6 +66,8 @@ class TextReference(NamedTuple):
 
     def Truncate(self,level:int) -> "TextReference":
         """Replace all elements with index >= level with 0 or ''."""
+        if all(not self[n] for n in range(level,4)):
+            return self # Return self if nothing changes
         keep = self[0:level]
         return TextReference(*keep,*[0 if type(self[index]) == int else "" for index in range(level,len(self))])
 
@@ -100,14 +102,6 @@ class TextReference(NamedTuple):
     def Uid(self) -> str:
         """Return a good guess for the SuttaCentral uid"""
         return f"{self.BaseUid()}{'.'.join(map(str,self.Numbers()))}"
-
-    def GroupUid(self) -> str:
-        """Return the uid of the sutta group this belongs to, e.g. an1.1-10.
-        Returns '' if the sutta doesn't belong to a group."""
-        return "" # Currently not implemented
-        if self.text not in ("SN","AN"):
-            return ""
-        return Suttaplex.InterpolatedSuttaDict(self.BaseUid()).get(self.Uid(),"")
 
     def SuttaCentralLink(self) -> str:
         """Return the SuttaCentral link for this text."""
@@ -161,6 +155,40 @@ class TextReference(NamedTuple):
             bits[level] = Html.Tag("a",{"href":f"../{pageInfo[level].file}"})(bits[level])
         
         return " / ".join(bits)
+
+class ConsecutiveTexts(TextReference):
+    """A reference to a consecutive group of texts, e.g. SN 12.72-81."""
+
+    @staticmethod
+    def FromReference(reference: TextReference) -> Optional["ConsecutiveTexts"]:
+        """Returns the group that reference belongs to; returns None if the sutta is not grouped."""
+        if reference.text not in ("SN","AN"):
+            return None
+        groupUid = Suttaplex.InterpolatedSuttaDict(reference.BaseUid()).get(reference.Uid(),"")
+        if groupUid:
+            startingNumber = int(re.search(r"([0-9]+)-[0-9]+$",groupUid)[1])
+            numbers = list(reference.Numbers())
+            numbers[-1] = startingNumber
+            return ConsecutiveTexts(reference.text,*numbers)
+        else:
+            return None
+
+    def Uid(self) -> str:
+        """Return the SuttaCentral uid"""
+        return Suttaplex.InterpolatedSuttaDict(self.BaseUid()).get(super().Uid())
+
+    def RangeEnd(self) -> int:
+        """Return the end of the range, eg. 81 for SN 12.72-81."""
+        uid = self.Uid()
+        m = re.search(r"[0-9]+$",uid)
+        return int(m[0])
+
+    def __str__(self) -> str:
+        return f"{super().__str__()}-{self.RangeEnd()}"
+    
+    def FullName(self) -> str:
+        return f"{super().FullName()}-{self.RangeEnd()}"
+
 
 @lru_cache(maxsize=None)
 def AlphabetizedTeachers() -> dict[str,tuple[int,str]]:
@@ -528,13 +556,8 @@ class SingleLevelHeadings(Heading):
     def HeadingCode(self,reference: Reference) -> Reference:
         """The heading code is simply the truncated reference."""
         header = reference.Truncate(self.level + 1)
-        group = "" # header.GroupUid()
-        if group:
-            startingNumber = int(re.search(r"([0-9])+-[0-9]+$",group)[1])
-            numbers = list(header.Numbers())
-            numbers[-1] = startingNumber
-            header = TextReference(header.text,*numbers)
-        return header
+        groupHeader = ConsecutiveTexts.FromReference(header)
+        return groupHeader or header
     
     def Html(self, headingCode:Reference = None) -> str:
         headingCode = headingCode or self.groupCode
@@ -561,11 +584,7 @@ class LinkedHeadings(SingleLevelHeadings):
         else:
             name = link(str(thisReference))
             if isinstance(thisReference,TextReference):
-                group = thisReference.GroupUid()
-                if group:
-                    translatedTitle = Suttaplex.Title(group)
-                else:
-                    translatedTitle = Suttaplex.Title(thisReference.Uid())
+                translatedTitle = Suttaplex.Title(thisReference.Uid())
                 if translatedTitle:
                     name += f": {translatedTitle}"
         totalTexts = TotalItems(self.groupReferences)
@@ -608,6 +627,8 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
                 return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
         
         referenceGroup = firstRef.Truncate(level)
+        referenceGroup = ConsecutiveTexts.FromReference(referenceGroup) or referenceGroup
+            # Check to see if this reference falls into a group of consecutive texts
         directory = "texts/"
         strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
         if level > 1:
