@@ -162,7 +162,7 @@ class ConsecutiveTexts(TextReference):
     @staticmethod
     def FromReference(reference: TextReference) -> Optional["ConsecutiveTexts"]:
         """Returns the group that reference belongs to; returns None if the sutta is not grouped."""
-        if reference.text not in ("SN","AN"):
+        if not isinstance(reference,TextReference) or reference.text not in ("SN","AN"):
             return None
         groupUid = Suttaplex.InterpolatedSuttaDict(reference.BaseUid()).get(reference.Uid(),"")
         if groupUid:
@@ -386,7 +386,6 @@ class ReferencePageMaker:
     level: int                          # The reference level we are working at
     references: list[LinkedReference]   # The list of references to render
     page: Html.PageDesc                 # The page we have rendered so far
-    footerHtml: str = ""                # Store html that will go at the end of the page
 
     def __init__(self,level: int,references: list[LinkedReference] = None):
         self.level = level
@@ -396,7 +395,6 @@ class ReferencePageMaker:
             self.wholePage = True
             self.SetPageInfo(references[0].reference)
             self.page.AppendContent(self.HeaderHtml())
-            self.footerHtml = self.FooterHtml()
         else:
             self.references = []
 
@@ -431,7 +429,7 @@ class ReferencePageMaker:
     
     def FinishPage(self) -> Html.PageDesc:
         """Return the page generated so far and clear the page for future use."""
-        self.page.AppendContent(self.footerHtml)
+        self.page.AppendContent(self.FooterHtml())
         returnValue = self.page
         self.page = Html.PageDesc(self.page.info)
         return returnValue
@@ -539,7 +537,11 @@ class Heading:
     
     def Bookmark(self,headingCode: HeadingGroupCode = None) -> str:
         """Returns the bookmark corresponding to this heading code."""
-        return Utils.slugify(str(headingCode or self.groupCode))
+        return Utils.slugify(str(headingCode or self.groupCode).replace(".","-"))
+    
+    def BookmarkText(self,headingCode: HeadingGroupCode = None) -> str:
+        """Returns the text in the bookmark menu at the top of the page which links to this heading code."""
+        return str(headingCode or self.groupCode)
     
 
 class SingleLevelHeadings(Heading):
@@ -569,6 +571,11 @@ class SingleLevelHeadings(Heading):
         prefix = "" if self.topOfPage else "<hr>\n"
         self.topOfPage = False
         return prefix + Html.Tag("div",{"class":"title","id":self.Bookmark()})(name)
+    
+    def BookmarkText(self, headingCode = None):
+        headingCode = headingCode or self.groupCode
+        headingCode = headingCode.Truncate(self.level + 1)
+        return headingCode.TextTitle()
 
 class LinkedHeadings(SingleLevelHeadings):
     """Generates a list of links to subpages."""
@@ -596,11 +603,18 @@ class PageWithHeadings(ReferencePageMaker):
     
     heading: Heading                    # The heading generator for this object
     content: ReferencePageMaker         # Generates content within each heading
+    bookmarkMenu: Html.Menu|None         # The bookmark menu at the top of the page
 
-    def __init__(self,heading: Heading,content: ReferencePageMaker,references: list[LinkedReference]):
+    def __init__(self,heading: Heading,content: ReferencePageMaker,references: list[LinkedReference],bookmarkLinks: bool = False):
+        """If bookmarks is True, add bookmarks at the top of the page that link to the headings below."""
         super().__init__(content.level,references)
         self.heading = heading
         self.content = content
+        if bookmarkLinks:
+            self.bookmarkMenu = Html.Menu([],wrapper = Html.Wrapper("","<hr>"))
+            self.page.AppendContent(self.bookmarkMenu)
+        else:
+            self.bookmarkMenu = None
 
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         a = Airium()
@@ -611,8 +625,20 @@ class PageWithHeadings(ReferencePageMaker):
                 yield from self.content.RenderAndYieldSubpages()
                 a(self.content.YieldHtml())
 
+                if self.bookmarkMenu:
+                    self.bookmarkMenu.items.append(Html.PageInfo(
+                        self.heading.BookmarkText(),
+                        "#" + self.heading.Bookmark()
+                    ))
+
         self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
+    
+    def FinishPage(self):
+        if self.bookmarkMenu and len(self.bookmarkMenu.items) < 2:
+            self.bookmarkMenu.items = []    # Remove the bookmark menu if there is only one item in it.
+            self.bookmarkMenu.menu_wrapper = Html.Wrapper()
+        return super().FinishPage()
         
 
 def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
@@ -657,14 +683,14 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
             authorName = gDatabase["teacher"][author]["attributionName"]
 
             return Html.PageInfo(
-                authorName,
+                Utils.CapitalizeFirst(authorName),
                 f"{directory}{author}.html",
                 f"References – {authorName}"
             )
         elif level == 2: # A book page
             title = firstRef.Truncate(level).FullName()
             return Html.PageInfo(
-                Utils.RemoveHtmlTags(title),
+                Utils.CapitalizeFirst(Utils.RemoveHtmlTags(title)),
                 f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
                 f"References – {title}"
             )
@@ -680,6 +706,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         EXCERPTS_ONLY = 3
 
     skipLevel = False
+    bookmarkLinks = False
 
     def TextDispatch() -> PageType:
         if level == 0:
@@ -699,13 +726,14 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
                 return PageType.EXCERPTS_ONLY
     
     def BookDispatch() -> PageType:
-        nonlocal skipLevel
+        nonlocal skipLevel,bookmarkLinks
         if level == 0:
             if references[0].reference.IsCommentary():
                 skipLevel = True # Skip the list of authors for commentarial works.
             return PageType.LINKED_HEADINGS
         elif level == 1:
             if TotalItems(references) < gOptions.minSubsearchExcerpts:
+                bookmarkLinks = True
                 return PageType.EXCERPTS_WITH_HEADINGS
             else:
                 return PageType.LINKED_HEADINGS
@@ -722,7 +750,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
             pageMaker.page.AppendContent(pageMaker.HeaderHtml(level - 1))
         return pageMaker
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
-        return PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references)
+        return PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references,bookmarkLinks)
     elif pageType == PageType.EXCERPTS_ONLY:
         return ExcerptListPage(level,references)
     Alert.error("Unknown page type",pageType)
