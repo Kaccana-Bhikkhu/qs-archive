@@ -818,7 +818,9 @@ def FinalizeExcerptTags(x: dict) -> None:
     x["tags"] = x["qTag"] + x["aTag"]
     x["qTagCount"] = len(x["qTag"])
     if len(x["fTagOrder"]) != len(x["fTags"]):
-        Alert.caution(x,f"has {len(x['fTags'])} fTags but specifies {len(x['fTagOrder'])} fTagOrder numbers.")
+        Alert.warning(x,f"has {len(x['fTags'])} fTags but specifies {len(x['fTagOrder'])} fTagOrder numbers. Will fill with 1001E.")
+        x["fTagOrder"] = x["fTagOrder"][:len(x["fTags"])] + ([1001] * (len(x["fTags"]) - len(x["fTagOrder"])))
+        x["fTagOrderFlags"] = x["fTagOrderFlags"][:len(x["fTags"])] + ("E" * (len(x["fTags"]) - len(x["fTagOrderFlags"])))
 
     if not gOptions.jsonNoClean:
         del x["qTag"]
