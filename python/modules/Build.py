@@ -1982,7 +1982,8 @@ def AlphabetizedTeachers(teachers: list[dict]) -> list[str,dict]:
         else:
             return string
 
-    alphabetized = sorted((AlphabetizeName(t["fullName"]),t) for t in teachers)
+    alphabetized = [(AlphabetizeName(t["fullName"]),t) for t in teachers]
+    alphabetized.sort(key = lambda a:Utils.RemoveDiacritics(a[0]))
     return alphabetized
 
 def ListTeachersAlphabetical(teachers: list[dict]) -> str:
