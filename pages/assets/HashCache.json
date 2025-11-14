@@ -12,76 +12,76 @@
     "_modified": "2025-11-14 14:40:23.990624"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "0d73affc7f61fbbf7a7fb07531b36389",
-    "_modified": "2025-11-14 14:40:24.002624"
+    "md5": "b0e148091fe035012539867128ee8727",
+    "_modified": "2025-11-14 17:45:17.408377"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "9903ee6e8be51dbde6dedf28c2a2a943",
-    "_modified": "2025-11-14 14:40:24.006624"
+    "md5": "b77b94a30f561ec9ed19674212c42a34",
+    "_modified": "2025-11-14 17:45:17.412377"
   },
   "indexes/Tags_print.html": {
-    "md5": "84b77170934e4f166333a77a5ae4a525",
-    "_modified": "2025-11-14 14:40:24.358629"
+    "md5": "08588a0a93a8b6aaa2b37a3cd5350045",
+    "_modified": "2025-11-14 17:45:17.760382"
   },
   "drilldown/root.html": {
-    "md5": "725fa41f8806a1b7e3f1b309ea9a9951",
-    "_modified": "2025-11-14 14:40:24.686634"
+    "md5": "baffe92746bf8d7e5dd0631946500744",
+    "_modified": "2025-11-14 17:45:18.088387"
   },
   "indexes/NumericalTags.html": {
-    "md5": "958fe490d572ff510f257d3f73d3034c",
-    "_modified": "2025-11-14 14:40:24.742635"
+    "md5": "4ac5d407491bc6784980388c1bc97ef5",
+    "_modified": "2025-11-14 17:45:18.148388"
   },
   "indexes/SortedTags.html": {
-    "md5": "e8cfb0385bcccff8c96338f80835691b",
-    "_modified": "2025-11-14 14:40:24.906637"
+    "md5": "f432fe7c66d210ebae5729ae7634416e",
+    "_modified": "2025-11-14 17:45:18.312390"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "a4032e559b2bba987be7343472f109e1",
-    "_modified": "2025-11-14 14:40:24.974638"
+    "md5": "ec1bd17a5d1c0c7a45f2b7b93886ac79",
+    "_modified": "2025-11-14 17:45:18.380391"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "a3562d1dd03249bf18fc6d766069f0ea",
-    "_modified": "2025-11-14 14:40:25.002639"
+    "md5": "5f488f0bda79d6b4fa42dc912fd25603",
+    "_modified": "2025-11-14 17:45:18.412392"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "15ea1141228b9332d8085c5eab77bf0b",
-    "_modified": "2025-11-14 14:40:25.066640"
+    "md5": "9be3dea33f7fd57e2636da2329291cea",
+    "_modified": "2025-11-14 17:45:18.488393"
   },
   "indexes/AlphabeticalTags.html": {
-    "md5": "2da61d6e249ac3ce5e34439c6f752a0a",
-    "_modified": "2025-11-14 14:40:25.258642"
+    "md5": "31e10bbac0db5f2cd9b5db6a72e38b39",
+    "_modified": "2025-11-14 17:45:18.688396"
   },
   "indexes/EnglishTags.html": {
-    "md5": "ef6bcadd56a0b64db3a552a52b94546d",
-    "_modified": "2025-11-14 14:40:25.266643"
+    "md5": "e3dcfe1d560df42113c5f2ac9f6238d3",
+    "_modified": "2025-11-14 17:45:18.696396"
   },
   "indexes/PaliTags.html": {
-    "md5": "0a7ad1b6bf32e466e83e9e38886f39cf",
-    "_modified": "2025-11-14 14:40:25.274643"
+    "md5": "0367e8286f17abf3d4b98d455549cbbc",
+    "_modified": "2025-11-14 17:45:18.704396"
   },
   "indexes/OtherTags.html": {
-    "md5": "6586ab242e53b5cee7152c4500267bbb",
-    "_modified": "2025-11-14 14:40:25.282643"
+    "md5": "7cdfba498bb7149b1b9d21336b04e6da",
+    "_modified": "2025-11-14 17:28:34.593743"
   },
   "indexes/ProperTags.html": {
-    "md5": "f0de8a7658ebf78575273e9dd6becf8c",
-    "_modified": "2025-11-14 14:40:25.290643"
+    "md5": "dc1439cb1ebbe0549a0133fc751b3756",
+    "_modified": "2025-11-14 17:45:18.720396"
   },
   "indexes/EventsBySeries.html": {
-    "md5": "b0f855c152c5c253670ec0fbb5a9adf6",
-    "_modified": "2025-11-14 15:48:45.086359"
+    "md5": "abb4c1a8c721e8728bdaeab657e724ab",
+    "_modified": "2025-11-14 17:45:19.348406"
   },
   "indexes/EventsBySubject.html": {
     "md5": "df5099d46ba4a7dd57bac5bc10fd0653",
     "_modified": "2025-11-14 15:48:45.094359"
   },
   "indexes/EventsChronological.html": {
-    "md5": "7e2cacd84db2b481948bd739ff7e1963",
-    "_modified": "2025-11-14 15:48:45.106359"
+    "md5": "868e815c5c4c5a0951289dbcebdce65c",
+    "_modified": "2025-11-14 17:45:19.360406"
   },
   "indexes/EventDetails.html": {
-    "md5": "195559dc48ee40af5a9d9b1b2d1a374a",
-    "_modified": "2025-11-14 15:48:45.114359"
+    "md5": "1806b9023708408fb027ed9f492350d4",
+    "_modified": "2025-11-14 17:45:19.364406"
   },
   "events/Chah2001.html": {
     "md5": "9cf86b207db0375be01be906eda64db6",
@@ -132,8 +132,8 @@
     "_modified": "2025-11-14 15:48:46.466379"
   },
   "events/WR2014.html": {
-    "md5": "c662c344eaf15df3aa15f54edcdeef57",
-    "_modified": "2025-11-14 15:48:47.410393"
+    "md5": "01c15adb4d451beb9635752bee41eb54",
+    "_modified": "2025-11-14 17:28:36.413769"
   },
   "events/UD2014-1.html": {
     "md5": "a329f1bf224d2ffa462ece06a3faaf9e",
@@ -184,8 +184,8 @@
     "_modified": "2025-11-14 15:48:49.398422"
   },
   "events/WR2016.html": {
-    "md5": "c892e0bb6dfac8462b5338fe4c89a489",
-    "_modified": "2025-11-14 15:48:49.870429"
+    "md5": "c32984f55cc12fe14ff8269f74e20527",
+    "_modified": "2025-11-14 17:45:22.300449"
   },
   "events/Anniversary2016.html": {
     "md5": "df512381c5ac5242fe43f3e532eec9be",
@@ -300,8 +300,8 @@
     "_modified": "2025-11-14 15:48:52.462467"
   },
   "events/SRD2024.html": {
-    "md5": "ca4adecf92941e182d4d75eb59220714",
-    "_modified": "2025-11-14 15:48:52.530468"
+    "md5": "2864b2b65ced732be7a162cb900688ed",
+    "_modified": "2025-11-14 17:28:39.565815"
   },
   "events/Appamada2024.html": {
     "md5": "46d70e7d290c1023528b1d52388ca132",
