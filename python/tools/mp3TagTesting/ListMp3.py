@@ -32,4 +32,5 @@ for fileName in sorted(os.listdir(options.directory)):
     if fileName.endswith(".mp3"):
         file = MP3(os.path.join(options.directory,fileName))
         duration = timedelta(seconds=file.info.length)
-        print('\t'.join((fileName,TimeDeltaToStr(duration))))
+        bitRate = f"{file.info.bitrate / 1000} kbps"
+        print('\t'.join((fileName,TimeDeltaToStr(duration),bitRate)))

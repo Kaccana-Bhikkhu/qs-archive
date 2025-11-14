@@ -6,12 +6,31 @@ import os, shutil, platform
 import copy
 from datetime import time,timedelta
 from typing import List, Union, NamedTuple, Iterator, Iterable, TextIO
+from enum import Enum
+
+class StrEnum(str,Enum):
+    pass
+
+class SplitMethod(StrEnum):
+    MP3_DIRECT_CUT = "mp3DirectCut"
+    MP3_SPLT = "mp3splt"
+    FF_CUE_SPLITTER = "FFCueSplitter" # Not yet implemented
+
+class JoinMethod(StrEnum):
+    CONCATENATE = "concatenate"
+    PYDUB = "pydub"
+    FFMPEG = "ffmpeg" # Not yet implemented
+
+# Store information about the last split/join operation
+lastSplitMethod:SplitMethod = None
+lastJoinMethod:JoinMethod = None
+lastBitRate:str = ""
 
 executable = 'mp3DirectCut.exe'
 executableDir = 'mp3DirectCut'
 
-joinUsingPydub = False
-pydubBitrate = "64k"
+defaultJoin = JoinMethod.CONCATENATE
+joinBitrate = "64k"
 
 mp3spltCommand = "mp3splt -Q -f"
 class Mp3CutError(Exception):
@@ -246,11 +265,15 @@ def RawSplit(file:str,splitPoints: list[timedelta],deleteCueFile:bool = True) ->
     Return a list of file names of the resulting mp3 files, equal in length to splitPoints.
     Dispatch function for RawMp3DirectCut and RawMp3Splt."""
 
+    global lastSplitMethod
     try:
         programName = ConfigureMp3DirectCut()
-        return RawMp3DirectCut(programName,file,splitPoints,deleteCueFile)
+        returnValue = RawMp3DirectCut(programName,file,splitPoints,deleteCueFile)
+        lastSplitMethod = SplitMethod.MP3_DIRECT_CUT
     except ExecutableNotFound as error:
-        return RawMp3splt(file,splitPoints)
+        returnValue = RawMp3splt(file,splitPoints)
+        lastSplitMethod = SplitMethod.MP3_SPLT
+    return returnValue
 
 def SinglePassSplit(file:str, clips:list[ClipTD],outputDir:str = None,deleteCueFile:bool = True) -> None:
     """Run Mp3DirectCut once to split an mp3 file into tracks.
@@ -458,20 +481,25 @@ def Join(fileList: List[str],outputFile: str,heal = True) -> None:
     heal: Use Mp3DirectCut to clean up the output file. Usually a good idea.
     This operation fails with mp3 files with different sample rates."""
 
-    if len(fileList) > 1 and joinUsingPydub:
+    global lastJoinMethod,lastBitRate
+    if len(fileList) > 1 and defaultJoin == JoinMethod.PYDUB:
         try:
             from pydub import AudioSegment
 
             joined = AudioSegment.empty()
             for file in fileList:
                 joined += AudioSegment.from_mp3(file)
-            joined.export(outputFile,format="mp3",id3v2_version="4",bitrate=pydubBitrate)
+            joined.export(outputFile,format="mp3",id3v2_version="4",bitrate=joinBitrate)
+            lastJoinMethod = JoinMethod.PYDUB
+            lastBitRate = joinBitrate
             return
         except (OSError,ModuleNotFoundError) as error:
             print(error.args[0]," occured when attempting to join ",fileList," with pydub. Will join using Mp3DirectCut.")
 
     if len(fileList) == 1:
         heal = False # In this case, we're just copying the file
+    else:
+        lastJoinMethod = JoinMethod.CONCATENATE
 
     name, ext = os.path.splitext(outputFile)
     tempFile = name + "_temp" + ext

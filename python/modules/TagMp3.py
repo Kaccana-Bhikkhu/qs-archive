@@ -142,7 +142,7 @@ def CompareTags(tagsToWrite:dict, existingTags:EasyID3) -> bool:
 
     return tagsToWriteCompare != existingTags
 
-def TagMp3WithClips(mp3File: str,clips: list[Clip]):
+def TagMp3WithClips(mp3File: str,clips: list[Clip],splitMethod: dict[str,str]):
     """Add an ID3 clips tag containing the contents of clips to mp3File."""
     try:
         fileTags = EasyID3(mp3File)
@@ -151,6 +151,7 @@ def TagMp3WithClips(mp3File: str,clips: list[Clip]):
         fileTags.add_tags()
 
     fileTags["clips"] = json.dumps(clips)
+    fileTags["splitmethod"] = json.dumps(splitMethod)
     fileTags.save(v1=2,v2_version=gOptions.ID3version)
 
 def AddArguments(parser) -> None:
@@ -174,6 +175,12 @@ class CLIP(mutagen.id3.TextFrame):
 mutagen.id3.Frames["CLIP"] = CLIP
 EasyID3.RegisterTextKey("clips","CLIP")
 
+class SPLT(mutagen.id3.TextFrame):
+    "Dict describing how this clip was split"
+
+mutagen.id3.Frames["SPLT"] = SPLT
+EasyID3.RegisterTextKey("splitmethod","SPLT")
+
 def main() -> None:
     changeCount = sameCount = 0
     localMirrors = {"local",gOptions.uploadMirror}
@@ -195,6 +202,9 @@ def main() -> None:
 
         if "clips" in fileTags: 
             tags["clips"] = fileTags["clips"]
+            # The clips tag describes the audio source and is created by TagMp3.py; just let it pass through
+        if "splitmethod" in fileTags: 
+            tags["splitmethod"] = fileTags["splitmethod"]
             # The clips tag describes the audio source and is created by TagMp3.py; just let it pass through
         writeTags = CompareTags(tags,fileTags)
 

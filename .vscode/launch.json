@@ -17,7 +17,7 @@
             "name": "AllSheets",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "All",
                 "-vvv",
@@ -31,7 +31,7 @@
             "name": "AllEvents",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "All",
                 "-vvv"
@@ -43,7 +43,7 @@
             "name": "ParseCSV",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "ParseCSV",
                 "-vvv"
@@ -55,7 +55,7 @@
             "name": "ParseCSVOnly",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "ParseCSV",
                 "--explainExcludes"
@@ -67,7 +67,7 @@
             "name": "Build",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "Build",
                 "--buildOnly",
@@ -80,7 +80,7 @@
             "name": "BasicBuild",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "DownloadCSV,Build,SetupSearch,SetupFeatured,SetupAutoComplete"
             ],
@@ -91,7 +91,7 @@
             "name": "BuildAllAbhayagiri",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "All",
                 "--args",
@@ -104,7 +104,7 @@
             "name": "BuildAllPreview",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "All",
                 "--args",
@@ -117,7 +117,7 @@
             "name": "BuildAllGithub",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "All",
                 "--args",
@@ -130,7 +130,7 @@
             "name": "BuildAllArchival",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "All",
                 "--args",
@@ -143,7 +143,7 @@
             "name": "QuickBuild",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "DownloadCSV,SplitMp3,Build,SetupSearch",
                 "--buildOnly",
@@ -158,11 +158,11 @@
             "name": "Testing",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/QSArchive.py",
+            "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Build",
-                "--buildOnly",
-                "books"
+                "TagMp3",
+                "--events",
+                "WR2016"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
