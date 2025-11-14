@@ -480,7 +480,7 @@ def BoldfaceTextReferences(html: str,text: TextReference) -> str:
     if isinstance(text,TextReference):
         textDB = gDatabase["text"]
         if text.text == "Kd":
-            textName = f"({textDB["Kd"]["name"]}|{textDB["Mv"]["name"]})" # Kd also matches Mv
+            textName = f'({textDB["Kd"]["name"]}|{textDB["Mv"]["name"]})' # Kd also matches Mv
         else:
             textName = textDB[text.text]["name"] if textDB[text.text]["citeFullName"] else text.text
         

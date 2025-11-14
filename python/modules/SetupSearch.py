@@ -201,7 +201,7 @@ def SubtopicBlobs() -> Iterator[dict]:
         htmlParts = [
             Build.HtmlIcon("Cluster.png"),
             Build.HtmlSubtopicLink(subtopic),
-            f"({s["excerptCount"]})"
+            f"({s['excerptCount']})"
         ]
         if s["pali"]:
             htmlParts.insert(2,f"({s['pali']})")
@@ -321,7 +321,7 @@ def SessionBlobs() -> Iterator[dict]:
             teacherList = " – " + Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in session["teachers"]]),lastJoinStr = " and ")
         else:
             teacherList = ""
-        title = session["sessionTitle"] or f"Session {session["sessionNumber"] or 1}"
+        title = session["sessionTitle"] or f"Session {session['sessionNumber'] or 1}"
         title = Html.Tag("a",{"href":Database.EventLink(session["event"],session["sessionNumber"])})(title)
 
         lines = [

@@ -1655,7 +1655,7 @@ def main():
     LoadSummary(gDatabase,os.path.join(gOptions.csvDir,"Summary.csv"))
    
     specialFiles = {'Summary','Tag','EventTemplate'}
-    for fileName in os.listdir(gOptions.csvDir):
+    for fileName in sorted(os.listdir(gOptions.csvDir)):
         fullPath = os.path.join(gOptions.csvDir,fileName)
         if not os.path.isfile(fullPath):
             continue

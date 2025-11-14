@@ -324,7 +324,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
             if a["kind"] in ("Fragment","Main fragment"):
                 fragmentFileNumber += 1 # count fragments before this one
 
-        renderDict["player"] = f"[](player:{Database.ItemCode(event=container["event"],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
+        renderDict["player"] = f"[](player:{Database.ItemCode(event=container['event'],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
 
     item["body"] = bodyTemplate(**renderDict)
 

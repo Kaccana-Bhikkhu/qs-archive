@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import os, sys, json, re
 from collections import Counter
-from typing import TypedDict, NotRequired, Callable
+from typing import TypedDict, Callable
 from functools import lru_cache
 import Alert
 
@@ -108,7 +108,7 @@ def DoubleReferenceDNSuttas() -> None:
 
 class SuttaIndexEntry(TypedDict):
     uid: str
-    mark: NotRequired[str]
+    mark: str
 
 def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True) -> dict[str,SuttaIndexEntry]:
     """Returns an index of references to the suttas in a given text.

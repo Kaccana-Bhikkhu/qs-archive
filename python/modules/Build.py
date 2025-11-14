@@ -339,7 +339,7 @@ def DrilldownTemplate(showStar:bool = False) -> pyratemp.Template:
 
             tagCountSoFar[item["tag"]] += 1
             if item["tag"] and gDatabase["tag"][item["tag"]]["listIndex"] != index:
-                bookmark += f"-{tagCountSoFar[item["tag"]]}"
+                bookmark += f"-{tagCountSoFar[item['tag']]}"
                     # If this is not the primary tag, add a unique number to its bookmark.
 
             with a.p(id = bookmark,Class = f"indent-{item['level']-1}"):
