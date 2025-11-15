@@ -160,9 +160,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "TagMp3",
-                "--events",
-                "WR2016"
+                "Build",
+                "--buildOnly",
+                "texts,books"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

@@ -2993,4 +2993,7 @@ def main():
                 Alert.extra("stale files:",writer.FilesWithStatus(FileRegister.Status.STALE))
             if not gOptions.keepOldHtmlFiles:
                 DeleteUnwrittenHtmlFiles(writer)
+        
+    if "texts" in gOptions.buildOnly and "books" in gOptions.buildOnly:
+        BuildReferences.WriteReferenceDatabase()
     

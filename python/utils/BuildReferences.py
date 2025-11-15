@@ -3,12 +3,12 @@ These could logically be included within Build.py, but this file is already unwi
 
 from collections.abc import Iterable, Iterator, Hashable
 from collections import defaultdict
-from typing import NamedTuple, Optional
+from typing import NamedTuple, Optional, TypedDict, Literal
 from dataclasses import dataclass
 from itertools import chain, groupby
 from airium import Airium
 from enum import Enum
-import re
+import re, json
 import Html2 as Html
 import Suttaplex
 import Utils
@@ -20,6 +20,34 @@ from functools import lru_cache
 
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
+
+class ReferenceLinkDatabase(TypedDict):
+    """Stores links to reference pages. All dictionary values are filenames relative to
+    pages/, e.g. books/being-dharma.html."""
+    text: dict[str,str] = {}        # Keys of the form 'SN 12.15'
+    author: dict[str,str] = {}      # Keys given by teacher code, e.g. 'AP'
+    book: dict[str,str] ={}         # Keys match those in gDatabase["reference"],
+                                    # e.g. 'being dharma'
+
+"""
+We only know where to link a reference to after BuildReferences has run.
+However, we need to know reference links in the Render module.
+Thus we use two different dictionaries to track references.
+"""
+gSavedReferences: ReferenceLinkDatabase = None  # References read from disk
+gNewReferences: ReferenceLinkDatabase = None    # References we are in the process of building
+
+def WriteReferenceDatabase() -> None:
+    """Write pages/assets/ReferenceDatabase.json"""
+    global gSavedReferences, gNewReferences
+    if not gNewReferences:
+        return
+
+    with open("pages/assets/ReferenceDatabase.json", 'w', encoding='utf-8') as file:
+        json.dump(gNewReferences, file, ensure_ascii=False, indent=2)
+    
+    gSavedReferences = gNewReferences
+    gNewReferences = None
 
 @lru_cache(maxsize=None)
 def TextSortOrder() -> dict[str,int]:
@@ -87,7 +115,7 @@ class TextReference(NamedTuple):
         return self[self.TextLevel() + 1] != 0
         
     def __str__(self) -> str:
-        return f"{self.text} {'.'.join(map(str,self.Numbers()))}"
+        return f"{self.text} {'.'.join(map(str,self.Numbers()))}".strip()
     
     def BaseUid(self) -> str:
         if self.text == "Kd":
@@ -102,6 +130,14 @@ class TextReference(NamedTuple):
     def Uid(self) -> str:
         """Return a good guess for the SuttaCentral uid"""
         return f"{self.BaseUid()}{'.'.join(map(str,self.Numbers()))}"
+
+    def Kind(self) -> str:
+        """Returns the kind in the ReferenceLinkDatabase."""
+        return "text"
+    
+    def Key(self) -> str:
+        """Returns the key in the ReferenceLinkDatabase."""
+        return str(self)
 
     def SuttaCentralLink(self) -> str:
         """Return the SuttaCentral link for this text."""
@@ -206,6 +242,8 @@ def AlphabetizedTeachers() -> dict[str,tuple[int,str]]:
 
     rawAlphabetized = Build.AlphabetizedTeachers(gDatabase["teacher"].values())
     return {t["teacher"]:(n,alphaName) for n,(alphaName,t) in enumerate(rawAlphabetized)}
+
+
 class BookReference(NamedTuple):
     author: str                  # Teacher code; e.g. 'AP
     abbreviation: str = ""       # Title abbreviation; e.g. 'bmc 1'
@@ -275,7 +313,12 @@ class BookReference(NamedTuple):
         return self.page != 0
 
     def __str__(self) -> str:
-        return f"{self.author}, {self.abbreviation}, p. {self.page}"
+        bits = [self.author]
+        if self.abbreviation:
+            bits.append(self.abbreviation)
+            if self.page:
+                bits.append(f"p. {self.page}")
+        return ", ".join(bits)
     
     def TextTitle(self) -> str:
         """Return the book title without markdown formatting."""
@@ -301,6 +344,14 @@ class BookReference(NamedTuple):
             return text
         else:
             return ""
+
+    def Kind(self) -> str:
+        """Returns the kind in the ReferenceLinkDatabase."""
+        return "book" if self.abbreviation else "author"
+    
+    def Key(self) -> str:
+        """Returns the key in the ReferenceLinkDatabase."""
+        return self.abbreviation or self.author
 
     def BreadCrumbs(self) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
@@ -358,6 +409,17 @@ class BookReference(NamedTuple):
         return returnValue
         
 Reference = TextReference | BookReference
+
+def RegisterReference(reference: Reference,link: str) -> None:
+    """Register link as a reference page.
+    reference:  The reference to register
+    link:       The link (possibly including a bookmark) relative to pages/"""
+
+    global gNewReferences
+    if gNewReferences is None:
+        gNewReferences = ReferenceLinkDatabase(text={},author={},book={})
+    
+    gNewReferences[reference.Kind()][reference.Key()] = link
 
 @dataclass
 class LinkedReference():
@@ -569,7 +631,10 @@ class ExcerptListPage(ReferencePageMaker):
                 firstLoop = False
                 a(formatter.HtmlExcerptList(excerpts))
 
-        html = BoldfaceTextReferences(str(a),self.references[0].reference.Truncate(self.level))
+        truncated = self.references[0].reference.Truncate(self.level)
+        RegisterReference(truncated,self.page.info.file)
+
+        html = BoldfaceTextReferences(str(a),truncated)
         self.page.AppendContent(html)
         yield from super().RenderAndYieldSubpages()
 
@@ -605,6 +670,10 @@ class Heading:
     def BookmarkText(self,headingCode: HeadingGroupCode = None) -> str:
         """Returns the text in the bookmark menu at the top of the page which links to this heading code."""
         return str(headingCode or self.groupCode)
+    
+    def RegisteredReferences(self) -> list[Reference]:
+        """Returns the reference(s) to register."""
+        return []
     
 
 class SingleLevelHeadings(Heading):
@@ -642,6 +711,12 @@ class SingleLevelHeadings(Heading):
         headingCode = headingCode or self.groupCode
         headingCode = headingCode.Truncate(self.level + 1)
         return headingCode.TextTitle()
+    
+    def RegisteredReferences(self):
+        if isinstance(self.groupCode,ConsecutiveTexts):
+            return []
+        else:
+            return [self.groupCode]
 
 class LinkedHeadings(SingleLevelHeadings):
     """Generates a list of links to subpages."""
@@ -669,7 +744,8 @@ class PageWithHeadings(ReferencePageMaker):
     
     heading: Heading                    # The heading generator for this object
     content: ReferencePageMaker         # Generates content within each heading
-    bookmarkMenu: Html.Menu|None         # The bookmark menu at the top of the page
+    bookmarkMenu: Html.Menu|None        # The bookmark menu at the top of the page
+    innerReferenceLinks: bool = False   # Generate reference links to headings within this page?
 
     def __init__(self,heading: Heading,content: ReferencePageMaker,references: list[LinkedReference],bookmarkLinks: bool = False):
         """If bookmarks is True, add bookmarks at the top of the page that link to the headings below."""
@@ -691,10 +767,15 @@ class PageWithHeadings(ReferencePageMaker):
                 yield from self.content.RenderAndYieldSubpages()
                 a(self.content.YieldHtml())
 
+                bookmark = "#" + self.heading.Bookmark()
+                if self.innerReferenceLinks:
+                    for ref in self.heading.RegisteredReferences():
+                        RegisterReference(ref,self.page.info.file + bookmark)
+
                 if self.bookmarkMenu:
                     self.bookmarkMenu.items.append(Html.PageInfo(
                         self.heading.BookmarkText(),
-                        "#" + self.heading.Bookmark()
+                        bookmark
                     ))
 
         self.page.AppendContent(str(a))
@@ -793,7 +874,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
                 return PageType.EXCERPTS_ONLY
     
     def BookDispatch() -> PageType:
-        nonlocal skipLevel,bookmarkLinks
+        nonlocal skipLevel, bookmarkLinks
         if level == 0:
             if firstReference.IsCommentary():
                 skipLevel = True # Skip the list of authors for commentarial works.
@@ -818,7 +899,9 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
             pageMaker.page.AppendContent(pageMaker.HeaderHtml(level - 1))
         return pageMaker
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
-        return PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references,bookmarkLinks)
+        pageMaker = PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references,bookmarkLinks)
+        pageMaker.innerReferenceLinks = True
+        return pageMaker
     elif pageType == PageType.EXCERPTS_ONLY:
         return ExcerptListPage(level,references)
     Alert.error("Unknown page type",pageType)
