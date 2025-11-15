@@ -155,6 +155,14 @@ class TextReference(NamedTuple):
             bits[level] = Html.Tag("a",{"href":f"../{pageInfo[level].file}"})(bits[level])
         
         return " / ".join(bits)
+    
+    def Citation(self) -> str:
+        """Returns the citation information string for this page."""
+        return ""
+    
+    def Keywords(self) -> list[str]:
+        """Returns the a list of keywords for this page."""
+        return []
 
 class ConsecutiveTexts(TextReference):
     """A reference to a consecutive group of texts, e.g. SN 12.72-81."""
@@ -311,8 +319,28 @@ class BookReference(NamedTuple):
         
         return " / ".join(bits)
     
-    def LinkIcons(self) -> list[str]:
+    def Citation(self) -> str:
+        """Returns the citation information string for this page."""
+        return ""
+    
+    def Keywords(self) -> list[str]:
+        """Returns the a list of keywords for this page."""
         return []
+
+    def LinkIcons(self) -> list[str]:
+        """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
+        if not self.abbreviation:
+            return []
+        returnValue = []
+        pdfLink = gDatabase["reference"][self.abbreviation]["remoteUrl"]
+        if pdfLink:
+            returnValue.append(Html.Tag("a",{"href":pdfLink,"title":"Read pdf","target":"_blank"})
+                        (Build.HtmlIcon("file-pdf.png","small-icon")))
+        otherLink = gDatabase["reference"][self.abbreviation]["otherUrl"]
+        if otherLink:
+            returnValue.append(Html.Tag("a",{"href":otherLink,"title":"Browse other formats","target":"_blank"})
+                        (Build.HtmlIcon("file-other.png","small-icon")))
+        return returnValue
         
 Reference = TextReference | BookReference
 
@@ -404,8 +432,18 @@ class ReferencePageMaker:
         if references:
             self.references = references
             self.wholePage = True
-            self.SetPageInfo(references[0].reference)
+            firstReference = references[0].reference
+            self.SetPageInfo(firstReference)
             self.page.AppendContent(self.HeaderHtml())
+            self.page.AppendContent(Build.HtmlIcon("book-open" if isinstance(firstReference,BookReference) else "DhammaWheel.png")
+                                    ,section="titleIcon")
+            
+            truncated = firstReference.Truncate(self.level)
+            icons = truncated.LinkIcons()
+            if icons:
+                self.page.AppendContent("&emsp;" + "&ensp;".join(icons),section="rightTitleIcon")
+            self.page.AppendContent(truncated.Citation(),section="citationTitle")
+            self.page.keywords = truncated.Keywords()
         else:
             self.references = []
 
@@ -421,7 +459,6 @@ class ReferencePageMaker:
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
             bits = [reference.BreadCrumbs()]
-            bits.extend("&nbsp;" + icon for icon in reference.LinkIcons())
             bits.append("<hr>")
             return "\n".join(bits)
         else:
@@ -576,9 +613,12 @@ class SingleLevelHeadings(Heading):
         headingCode = headingCode or self.groupCode
         name = headingCode.FullName()
         if isinstance(headingCode,TextReference):
-            traslatedTitle = Suttaplex.Title(headingCode.Uid())
-            if traslatedTitle:
-                name += f": {traslatedTitle}"
+            translatedTitle = Suttaplex.Title(headingCode.Uid())
+            if translatedTitle:
+                name += f": {translatedTitle}"
+        icons = headingCode.LinkIcons()
+        if icons:
+            name += "&emsp;" + "&ensp;".join(icons)
         prefix = "" if self.topOfPage else "<hr>\n"
         self.topOfPage = False
         return prefix + Html.Tag("div",{"class":"title","id":self.Bookmark()})(name)
@@ -718,12 +758,13 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
 
     skipLevel = False
     bookmarkLinks = False
+    firstReference = references[0].reference
 
     def TextDispatch() -> PageType:
         if level == 0:
             return PageType.LINKED_HEADINGS
         
-        textLevel = references[0].reference.TextLevel() + 1
+        textLevel = firstReference.TextLevel() + 1
 
         if textLevel == 1:
             return PageType.EXCERPTS_WITH_HEADINGS
@@ -739,25 +780,26 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
     def BookDispatch() -> PageType:
         nonlocal skipLevel,bookmarkLinks
         if level == 0:
-            if references[0].reference.IsCommentary():
+            if firstReference.IsCommentary():
                 skipLevel = True # Skip the list of authors for commentarial works.
             return PageType.LINKED_HEADINGS
         elif level == 1:
-            if TotalItems(references) < gOptions.minSubsearchExcerpts:
-                bookmarkLinks = True
+            onlyOneTitle = isinstance(firstReference,BookReference) and all(r.reference.abbreviation == firstReference.abbreviation for r in references)
+            if TotalItems(references) < gOptions.minSubsearchExcerpts or onlyOneTitle:
+                bookmarkLinks = not onlyOneTitle
                 return PageType.EXCERPTS_WITH_HEADINGS
             else:
                 return PageType.LINKED_HEADINGS
         else:
             return PageType.EXCERPTS_ONLY
 
-    pageType = TextDispatch() if isinstance(references[0].reference,TextReference) else BookDispatch()
+    pageType = TextDispatch() if isinstance(firstReference,TextReference) else BookDispatch()
     if pageType == PageType.LINKED_HEADINGS:
         if skipLevel:
             level += 1
         pageMaker = PageWithHeadings(LinkedHeadings(level),YieldSubpages(level),references)
         if skipLevel: # If we skip a level of headings, manually remake the page header
-            pageMaker.page = Html.PageDesc(ReferencePageInfo(references[0].reference,level - 1))
+            pageMaker.page = Html.PageDesc(ReferencePageInfo(firstReference,level - 1))
             pageMaker.page.AppendContent(pageMaker.HeaderHtml(level - 1))
         return pageMaker
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
