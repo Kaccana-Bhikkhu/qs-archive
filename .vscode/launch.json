@@ -162,7 +162,8 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "texts,books"
+                "teachers",
+                "--quickBuild"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
