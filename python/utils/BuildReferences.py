@@ -49,16 +49,44 @@ def ReadReferenceDatabase() -> None:
         Alert.error(error, "When reading pages/assets/ReferenceDatabase.json. Will use a blank database.")
         gSavedReferences = ReferenceLinkDatabase(text={},author={},book={})
 
-def WriteReferenceDatabase() -> None:
-    """Write pages/assets/ReferenceDatabase.json"""
-    global gSavedReferences
-    if not gNewReferences:
-        return
+def CompareDicts(oldDict:dict[str,str],newDict:dict[str,str],name: str) -> bool:
+    """Print messages comparing oldDict and newDict.
+    Return True if the dicts are identical."""
 
+    oldKeys = set(oldDict)
+    newKeys = set(newDict)
+    
+    removed = len(oldKeys - newKeys)
+    added = len(newKeys - oldKeys)
+    sharedKeys = oldKeys & newKeys
+    changed = sum(1 for key in sharedKeys if oldDict[key] != newDict[key])
+
+    if removed or added or changed:
+        Alert.info(f"Changes to {name}: {removed} removed, {added} added, {changed} changed.")
+        return False
+    else:
+        return True
+
+def WriteReferenceDatabase() -> bool:
+    """Write pages/assets/ReferenceDatabase.json if needed.
+    Return True if changes were made."""
+    global gSavedReferences
+    ReadReferenceDatabase()
+    if not gNewReferences:
+        return False
+    
+    changed = False
+    for kind in ["text","author","book"]:
+        if not CompareDicts(gSavedReferences[kind],gNewReferences[kind],f"{kind} reference database"):
+            changed = True
+    if not changed:
+        return False
+    
     with open("pages/assets/ReferenceDatabase.json", 'w', encoding='utf-8') as file:
         json.dump(gNewReferences, file, ensure_ascii=False, indent=2)
     
     gSavedReferences = gNewReferences
+    return True
 
 def ReferenceLink(kind: Literal["text","author","book"],key: str) -> str:
     """Return the link for a given reference. Return '' if none.
@@ -67,7 +95,11 @@ def ReferenceLink(kind: Literal["text","author","book"],key: str) -> str:
 
     if not gSavedReferences:
         ReadReferenceDatabase()
-    return gSavedReferences[kind].get(key,"")
+    ref = gSavedReferences[kind].get(key,"")
+    if ref:
+        return "../" + ref
+    else:
+        return ""
 
 @lru_cache(maxsize=None)
 def TextSortOrder() -> dict[str,int]:
@@ -439,7 +471,9 @@ def RegisterReference(reference: Reference,link: str) -> None:
     if gNewReferences is None:
         gNewReferences = ReferenceLinkDatabase(text={},author={},book={})
     
-    gNewReferences[reference.Kind()][reference.Key()] = link
+    key = reference.Key()
+    if key:
+        gNewReferences[reference.Kind()][key] = link
 
 @dataclass
 class LinkedReference():
@@ -765,6 +799,7 @@ class PageWithHeadings(ReferencePageMaker):
     heading: Heading                    # The heading generator for this object
     content: ReferencePageMaker         # Generates content within each heading
     bookmarkMenu: Html.Menu|None        # The bookmark menu at the top of the page
+    pageReferenceLink: bool = False     # Generate a reference link to the page itself
     innerReferenceLinks: bool = False   # Generate reference links to headings within this page?
 
     def __init__(self,heading: Heading,content: ReferencePageMaker,references: list[LinkedReference],bookmarkLinks: bool = False):
@@ -779,6 +814,9 @@ class PageWithHeadings(ReferencePageMaker):
             self.bookmarkMenu = None
 
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
+        if self.pageReferenceLink:
+            truncated = self.references[0].reference.Truncate(self.level)
+            RegisterReference(truncated,self.page.info.file)
         a = Airium()
         with a.div(Class=self.heading.enclosingClass):
             for referenceGroup in self.heading.GroupedReferences(self.references):
@@ -917,6 +955,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         if skipLevel: # If we skip a level of headings, manually remake the page header
             pageMaker.page = Html.PageDesc(ReferencePageInfo(firstReference,level - 1))
             pageMaker.page.AppendContent(pageMaker.HeaderHtml(level - 1))
+        pageMaker.pageReferenceLink = True
         return pageMaker
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
         pageMaker = PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references,bookmarkLinks)
@@ -931,7 +970,10 @@ def FirstLevelMenu(references: list[LinkedReference]) -> Html.PageDescriptorMenu
 
     yield ReferencePageInfo(references[0].reference,0)
     pageGenerator = ReferencePageDispatch(references,0)
-    yield from pageGenerator.AllPages()
+    if isinstance(references[0].reference,BookReference):
+        yield from map(Build.LinkToPeoplePages,pageGenerator.AllPages())
+    else:
+        yield from pageGenerator.AllPages()
 
 def TextMenu() -> Html.PageDescriptorMenuItem:
     """Return a list containing the sutta and vinaya reference pages."""

@@ -1672,6 +1672,39 @@ def EventsMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
             page.keywords = ["Events",subSection]
         yield page
 
+def LinkToPeoplePages(page: Html.PageDesc) -> Html.PageDesc:
+    "Add links to corresponding teacher, tag, and author pages of this page."
+
+    directory = Utils.PosixSplit(page.info.file)[0]
+    outputLinks = []
+
+    teacher = Database.TeacherLookup(page.info.title)
+    if teacher:
+        link = TeacherLink(teacher)
+        if link and directory != "teachers":
+            outputLinks.append(Html.Tag("a",{"href":link})(f'→ Teachings by {gDatabase["teacher"][teacher]["attributionName"]}'))
+        
+        link = BuildReferences.ReferenceLink("author",teacher)
+        if link and directory != "books":
+            outputLinks.append(Html.Tag("a",{"href":link})(f'→ Books by {gDatabase["teacher"][teacher]["attributionName"]}'))
+        
+    tag = Database.TagLookup(page.info.title)
+    if tag and directory != "tags":
+        outputLinks.append(HtmlTagLink(tag,text = f'→ Tag [{tag}]'))
+
+    if outputLinks:
+        page.AppendContent("&emsp;".join(outputLinks),"smallTitle")
+    return page
+
+def LinkToTagPage(page: Html.PageDesc) -> Html.PageDesc:
+    "Link to the tag page if this teacher has a tag."
+
+    tag = Database.TagLookup(page.info.title)
+    if tag:
+        page.AppendContent(HtmlTagLink(tag,text = f'→ Tag [{tag}]'),"smallTitle")
+
+    return page
+
 def LinkToTeacherPage(page: Html.PageDesc) -> Html.PageDesc:
     "Link to the teacher page if this tag represents a teacher."
 
@@ -1777,11 +1810,11 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE)
             if gOptions.skipSubsearchPages: # Write only the main page if this is the case
                 pageIterator = Utils.SingleItemIterator(pageIterator,1 if hasEventsPage else 0)
-            yield from map(LinkToTeacherPage,pageIterator)
+            yield from map(LinkToPeoplePages,pageIterator)
             return
     
     basePage.AppendContent("",newSection=True)
-    yield from map(LinkToTeacherPage,HoistFTags(MultiPageExcerptList(basePage,tagExcerpts,formatter),tagExcerpts,tags,skipSections=1))
+    yield from map(LinkToPeoplePages,HoistFTags(MultiPageExcerptList(basePage,tagExcerpts,formatter),tagExcerpts,tags,skipSections=1))
 
 def TagBreadCrumbs(tagInfo: dict) -> tuple[str,list[str]]:
     "Return a hyperlinked string of the form: 'grandparent / parent / tag'"
@@ -1887,14 +1920,6 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
 
         yield from TagSubsearchPages(tag,relevantExcerpts,basePage)
 
-def LinkToTagPage(page: Html.PageDesc) -> Html.PageDesc:
-    "Link to the tag page if this teacher has a tag."
-
-    tag = Database.TagLookup(page.info.title)
-    if tag:
-        page.AppendContent(HtmlTagLink(tag,text = f'→ Tag [{tag}]'),"smallTitle")
-
-    return page
 
 def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
     """Yield a page for each individual teacher"""
@@ -1955,9 +1980,9 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
             pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE)
             if gOptions.skipSubsearchPages:
                 pageIterator = Utils.SingleItemIterator(pageIterator,0)
-            yield from map(LinkToTagPage,pageIterator)
+            yield from map(LinkToPeoplePages,pageIterator)
         else:
-            yield from map(LinkToTagPage,MultiPageExcerptList(basePage,relevantExcerpts,formatter))
+            yield from map(LinkToPeoplePages,MultiPageExcerptList(basePage,relevantExcerpts,formatter))
 
 def TeacherDescription(teacher: dict,nameStr: str = "") -> str:
     href = Html.Tag("a",{"href":TeacherLink(teacher['teacher'])})
