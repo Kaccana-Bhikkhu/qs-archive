@@ -317,7 +317,8 @@ class BookReference(NamedTuple):
             pageInfo = ReferencePageInfo(firstAuthor,level)
             bits.append(pageInfo.title)
         
-        return " / ".join(bits)
+        returnValue = " / ".join(bits)
+        return returnValue
     
     def Citation(self) -> str:
         """Returns the citation information string for this page."""
@@ -328,15 +329,29 @@ class BookReference(NamedTuple):
         return []
 
     def LinkIcons(self) -> list[str]:
-        """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
+        """Returns a list of html icons linking to this text."""
         if not self.abbreviation:
             return []
         returnValue = []
-        pdfLink = gDatabase["reference"][self.abbreviation]["remoteUrl"]
-        if pdfLink:
-            returnValue.append(Html.Tag("a",{"href":pdfLink,"title":"Read pdf","target":"_blank"})
-                        (Build.HtmlIcon("file-pdf.png","small-icon")))
-        otherLink = gDatabase["reference"][self.abbreviation]["otherUrl"]
+        info = gDatabase["reference"][self.abbreviation]
+        
+        # If the filename links to a local page, add a "more information" link.
+        if info["filename"].startswith("../"):
+            link = info["filename"].replace("../pages","../")
+            return [Html.Tag("a",{"href":link,"style":"font-size:65%;"})("more information...")]
+
+        if info["filename"]:
+            fileLink = info["remoteUrl"]
+            suffix = info["filename"].split(".")[-1].lower()
+            kind = ""
+            if suffix == "pdf":
+                kind = "pdf"
+            elif suffix in ("html","htm"):
+                kind = "html"
+            if fileLink and suffix:
+                returnValue.append(Html.Tag("a",{"href":fileLink,"title":f"Read {kind}","target":"_blank"})
+                            (Build.HtmlIcon(f"file-{kind}.png","small-icon")))
+        otherLink = info["otherUrl"]
         if otherLink:
             returnValue.append(Html.Tag("a",{"href":otherLink,"title":"Browse other formats","target":"_blank"})
                         (Build.HtmlIcon("file-other.png","small-icon")))
@@ -743,7 +758,7 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
             return Html.PageInfo(
                 Utils.CapitalizeFirst(Utils.RemoveHtmlTags(title)),
                 f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
-                f"References – {title}"
+                f"References – {Utils.CapitalizeFirst(title)}"
             )
 
 def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:
