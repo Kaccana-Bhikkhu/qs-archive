@@ -24,10 +24,10 @@ gDatabase:dict[str] = {} # These will be set later by QSarchive.py
 class ReferenceLinkDatabase(TypedDict):
     """Stores links to reference pages. All dictionary values are filenames relative to
     pages/, e.g. books/being-dharma.html."""
-    text: dict[str,str] = {}        # Keys of the form 'SN 12.15'
-    author: dict[str,str] = {}      # Keys given by teacher code, e.g. 'AP'
-    book: dict[str,str] ={}         # Keys match those in gDatabase["reference"],
-                                    # e.g. 'being dharma'
+    text: dict[str,str]         # Keys of the form 'SN 12.15'
+    author: dict[str,str]       # Keys given by teacher code, e.g. 'AP'
+    book: dict[str,str]         # Keys match those in gDatabase["reference"],
+                                # e.g. 'being dharma'
 
 """
 We only know where to link a reference to after BuildReferences has run.
@@ -37,9 +37,21 @@ Thus we use two different dictionaries to track references.
 gSavedReferences: ReferenceLinkDatabase = None  # References read from disk
 gNewReferences: ReferenceLinkDatabase = None    # References we are in the process of building
 
+def ReadReferenceDatabase() -> None:
+    """Read pages/assets/ReferenceDatabase.json"""
+    global gSavedReferences
+    if gSavedReferences:
+        return
+    try:
+        with open("pages/assets/ReferenceDatabase.json", 'r', encoding='utf-8') as file:
+            gSavedReferences = json.load(file)
+    except OSError as error:
+        Alert.error(error, "When reading pages/assets/ReferenceDatabase.json. Will use a blank database.")
+        gSavedReferences = ReferenceLinkDatabase(text={},author={},book={})
+
 def WriteReferenceDatabase() -> None:
     """Write pages/assets/ReferenceDatabase.json"""
-    global gSavedReferences, gNewReferences
+    global gSavedReferences
     if not gNewReferences:
         return
 
@@ -47,7 +59,15 @@ def WriteReferenceDatabase() -> None:
         json.dump(gNewReferences, file, ensure_ascii=False, indent=2)
     
     gSavedReferences = gNewReferences
-    gNewReferences = None
+
+def ReferenceLink(kind: Literal["text","author","book"],key: str) -> str:
+    """Return the link for a given reference. Return '' if none.
+    kind:       The refrence kind.
+    key:        The reference's key."""
+
+    if not gSavedReferences:
+        ReadReferenceDatabase()
+    return gSavedReferences[kind].get(key,"")
 
 @lru_cache(maxsize=None)
 def TextSortOrder() -> dict[str,int]:
