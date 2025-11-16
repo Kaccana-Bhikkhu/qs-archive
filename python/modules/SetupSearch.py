@@ -343,7 +343,6 @@ def SessionEventHtml() -> dict[str,str]:
 
 def TextBlobs() -> Iterator[dict]:
     """Return a blob for each text (sutta or vinaya reference)."""
-
     BuildReferences.ReadReferenceDatabase()
     for text,link in BuildReferences.gSavedReferences["text"].items():
         reference = BuildReferences.TextReference.FromString(text)
@@ -362,6 +361,37 @@ def TextBlobs() -> Iterator[dict]:
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^")],
             "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
+        }
+
+def BookBlobs() -> Iterator[dict]:
+    """Return a blob for each book."""
+    BuildReferences.ReadReferenceDatabase()
+    for bookName,link in BuildReferences.gSavedReferences["book"].items():
+        reference = BuildReferences.BookReference.FromString(bookName)
+        book = gDatabase["reference"][bookName]
+        textSearches = [book["title"]]
+        if not reference.IsCommentary() and book["year"]:
+            textSearches.append(book["year"])
+        
+        displayName = reference.FullName()
+        htmlLink = Html.Tag("a",{"href":"../" + link})(displayName)
+        yield {
+            "blobs": [Enclose(Blobify(textSearches),"^") + 
+                      Enclose(Blobify(AllNames(book["author"])),"{}")],
+            "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
+        }
+
+def AuthorBlobs() -> Iterator[dict]:
+    """Return a blob for each author (teacher credited with books)."""
+    BuildReferences.ReadReferenceDatabase()
+    for author,link in BuildReferences.gSavedReferences["author"].items():
+
+        displayName = gDatabase["teacher"][author]["fullName"]
+        htmlLink = Html.Tag("a",{"href":"../" + link})(displayName)
+        yield {
+            "blobs": [Enclose(Blobify(AllNames([author])),"{}")],
+            "html": Build.HtmlIcon("user") + " " + htmlLink
+                # Remove the paragraph markers added by TeacherDescription
         }
 
 def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Iterator[dict]) -> None:
@@ -406,6 +436,8 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"s","session",SessionBlobs())
     optimizedDB["searches"]["s"]["eventHtml"] = SessionEventHtml()
     AddSearch(optimizedDB["searches"],"p","text",TextBlobs()) # p for Pali
+    AddSearch(optimizedDB["searches"],"o","book",BookBlobs()) # only letter available
+    AddSearch(optimizedDB["searches"],"a","author",AuthorBlobs())
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 

@@ -903,5 +903,7 @@ export let gSearchers = { // A dictionary of searchers by item code
     ),
     "ref": new MultiSearcher("ref",
         gTextSearcher,
+        new TruncatedSearcher("o","book",8),
+        new TruncatedSearcher("a","author",4),
     ),
 };
