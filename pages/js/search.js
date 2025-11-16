@@ -445,6 +445,8 @@ class Searcher {
     code; // a one-letter code to identify the search.
     name; // the name of the search, e.g. "Tag"
     plural; // the plural name of the search.
+    nameInResults = ""; // A longer plural name to display in the search results
+                        // e.g. "Sutta and Vinaya texts"
     prefix = "<p>"; // html prefix of each search result.
     suffix = "</p>"; // hmtl suffix of each search result.
     separator = ""; // the html code to separate each displayed search result.
@@ -521,7 +523,7 @@ class Searcher {
         // Returns "" if no items were found.
 
         if (this.foundItems.length > 0)
-            return `${capitalizeFirstLetter(this.plural)} (${this.foundItems.length}):`;
+            return `${capitalizeFirstLetter(this.nameInResults || this.plural)} (${this.foundItems.length}):`;
         else
             return "";
     }
@@ -878,6 +880,9 @@ function searchButtonClick(searchKind) {
 }
 
 let gSearchDatabase = null; // The global search database, loaded from assets/SearchDatabase.json
+
+let gTextSearcher = new TruncatedSearcher("p","text",8);
+gTextSearcher.nameInResults = "Sutta and Vinaya texts";
 export let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",
@@ -895,5 +900,8 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("e","event",3),
         new SessionSearcher(),
         new ExcerptSearcher()
-    )
+    ),
+    "ref": new MultiSearcher("ref",
+        gTextSearcher,
+    ),
 };

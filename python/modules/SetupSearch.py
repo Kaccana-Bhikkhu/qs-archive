@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import os, json, re
-import Database, SetupFeatured
+import Database, BuildReferences, Suttaplex
 import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
@@ -341,6 +341,29 @@ def SessionEventHtml() -> dict[str,str]:
         returnValue[event["code"]] = Html.Tag("p",{"class":"x-cite"})(Database.ItemCitation(event))
     return returnValue
 
+def TextBlobs() -> Iterator[dict]:
+    """Return a blob for each text (sutta or vinaya reference)."""
+
+    BuildReferences.ReadReferenceDatabase()
+    for text,link in BuildReferences.gSavedReferences["text"].items():
+        reference = BuildReferences.TextReference.FromString(text)
+        uid = reference.Uid()
+        paliTitle = Suttaplex.Title(uid,False)
+        title = Suttaplex.Title(uid)
+        textName = Suttaplex.Title(reference.Truncate(1).Uid(),False)
+        textSearches = [text,paliTitle,title]
+        
+        if reference.n0:
+            displayName = f"{text}: {paliTitle}, {title}"
+            textSearches.append(textName)
+        else:
+            displayName = f"{textName}: {title}"
+        htmlLink = Html.Tag("a",{"href":"../" + link})(displayName)
+        yield {
+            "blobs": [Enclose(Blobify(textSearches),"^")],
+            "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
+        }
+
 def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Iterator[dict]) -> None:
     """Add the search (tags, teachers, etc.) to searchList.
     code: a one-letter code to identify the search.
@@ -382,6 +405,7 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"e","event",EventBlobs())
     AddSearch(optimizedDB["searches"],"s","session",SessionBlobs())
     optimizedDB["searches"]["s"]["eventHtml"] = SessionEventHtml()
+    AddSearch(optimizedDB["searches"],"p","text",TextBlobs()) # p for Pali
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 

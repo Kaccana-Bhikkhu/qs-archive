@@ -120,7 +120,7 @@ class TextReference(NamedTuple):
     @staticmethod
     def FromString(reference: str) -> "TextReference":
         """Create this object from a sutta reference string."""
-        suttaMatch = r"(\w+)\s+([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?"
+        suttaMatch = r"(\w+)\s*([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?"
         """ Sutta reference pattern: uid [n0[.n1[.n2]]]
             Matching groups:
             1: uid: SuttaCentral text uid

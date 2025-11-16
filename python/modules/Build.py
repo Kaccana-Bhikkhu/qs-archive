@@ -1696,25 +1696,6 @@ def LinkToPeoplePages(page: Html.PageDesc) -> Html.PageDesc:
         page.AppendContent("&emsp;".join(outputLinks),"smallTitle")
     return page
 
-def LinkToTagPage(page: Html.PageDesc) -> Html.PageDesc:
-    "Link to the tag page if this teacher has a tag."
-
-    tag = Database.TagLookup(page.info.title)
-    if tag:
-        page.AppendContent(HtmlTagLink(tag,text = f'→ Tag [{tag}]'),"smallTitle")
-
-    return page
-
-def LinkToTeacherPage(page: Html.PageDesc) -> Html.PageDesc:
-    "Link to the teacher page if this tag represents a teacher."
-
-    teacher = Database.TeacherLookup(page.info.title)
-    if teacher:
-        link = TeacherLink(teacher)
-        if link:
-            page.AppendContent(f'<a href="{link}">→ Teachings by {gDatabase["teacher"][teacher]["attributionName"]}</a>',"smallTitle")
-    
-    return page
 
 def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: Html.PageDesc,cluster:str = "") -> Iterator[Html.PageAugmentorType]:
     """Generate a list of pages obtained by running a series of tag subsearches.
@@ -2100,7 +2081,7 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     featuredPage = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
 
     searchMenu = [
-        (pageInfo._replace(title="Text search"), searchPage),
+        (pageInfo, searchPage),
         (featuredExcerptPageInfo,featuredPage)
     ]
     
