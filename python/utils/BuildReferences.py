@@ -21,13 +21,18 @@ from functools import lru_cache
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
 
+class ReferenceItem(TypedDict):
+    """Stores the link to a single refernce."""
+    link: str       # Link to the reference, e.g. books/AA.html
+    count: int      # The number of excerpts
+
 class ReferenceLinkDatabase(TypedDict):
     """Stores links to reference pages. All dictionary values are filenames relative to
     pages/, e.g. books/being-dharma.html."""
-    text: dict[str,str]         # Keys of the form 'SN 12.15'
-    author: dict[str,str]       # Keys given by teacher code, e.g. 'AP'
-    book: dict[str,str]         # Keys match those in gDatabase["reference"],
-                                # e.g. 'being dharma'
+    text: dict[str,ReferenceItem]     # Keys of the form 'SN 12.15'
+    author: dict[str,ReferenceItem]   # Keys given by teacher code, e.g. 'AP'
+    book: dict[str,ReferenceItem]     # Keys match those in gDatabase["reference"],
+                                      # e.g. 'being dharma'
 
 """
 We only know where to link a reference to after BuildReferences has run.
@@ -97,7 +102,7 @@ def ReferenceLink(kind: Literal["text","author","book"],key: str) -> str:
         ReadReferenceDatabase()
     ref = gSavedReferences[kind].get(key,"")
     if ref:
-        return "../" + ref
+        return "../" + ref["link"]
     else:
         return ""
 
@@ -379,17 +384,20 @@ class BookReference(NamedTuple):
         html,_ = Render.MarkdownFormat(markdown,self)
         return Utils.RemoveHtmlTags(html)
 
-    def FullName(self) -> str:
+    def FullName(self,showAuthors = False,showYear = True) -> str:
         """Return the full text name of this reference."""
         if self.author and not self.abbreviation:
             return AlphabetizedTeachers()[self.author][1]
         if self.abbreviation:
             book = gDatabase["reference"][self.abbreviation]
             bits = [book["title"]]
+            if showAuthors and book["author"]:
+                authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
+                bits.append(f"by {Build.ItemList(authorNames,lastJoinStr = 'and')}")
+            if showYear and book["year"] and not self.IsCommentary():
+                bits.append(f"({book['year']})")
             if self.page:
                 bits.append(f"p. {self.page}")
-            if book["year"] and not self.IsCommentary():
-                bits.append(f"({book['year']})")
             markdown = " ".join(bits)
             markdown = re.sub(r"\[([^]]*)\]\([^)]*\)",r"\1",markdown) # Extract text from Markdown hyperlinks
             text,_ = Render.MarkdownFormat(markdown,book)
@@ -462,10 +470,11 @@ class BookReference(NamedTuple):
         
 Reference = TextReference | BookReference
 
-def RegisterReference(reference: Reference,link: str) -> None:
+def RegisterReference(reference: Reference,link: str,count: int) -> None:
     """Register link as a reference page.
     reference:  The reference to register
-    link:       The link (possibly including a bookmark) relative to pages/"""
+    link:       The link (possibly including a bookmark) relative to pages/
+    count:      The number of excerpts referenced"""
 
     global gNewReferences
     if gNewReferences is None:
@@ -473,7 +482,7 @@ def RegisterReference(reference: Reference,link: str) -> None:
     
     key = reference.Key()
     if key:
-        gNewReferences[reference.Kind()][key] = link
+        gNewReferences[reference.Kind()][key] = ReferenceItem(link=link,count=count)
 
 @dataclass
 class LinkedReference():
@@ -686,7 +695,7 @@ class ExcerptListPage(ReferencePageMaker):
                 a(formatter.HtmlExcerptList(excerpts))
 
         truncated = self.references[0].reference.Truncate(self.level)
-        RegisterReference(truncated,self.page.info.file)
+        RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
 
         html = BoldfaceTextReferences(str(a),truncated)
         self.page.AppendContent(html)
@@ -816,7 +825,7 @@ class PageWithHeadings(ReferencePageMaker):
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         if self.pageReferenceLink:
             truncated = self.references[0].reference.Truncate(self.level)
-            RegisterReference(truncated,self.page.info.file)
+            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
         a = Airium()
         with a.div(Class=self.heading.enclosingClass):
             for referenceGroup in self.heading.GroupedReferences(self.references):
@@ -828,7 +837,7 @@ class PageWithHeadings(ReferencePageMaker):
                 bookmark = "#" + self.heading.Bookmark()
                 if self.innerReferenceLinks:
                     for ref in self.heading.RegisteredReferences():
-                        RegisterReference(ref,self.page.info.file + bookmark)
+                        RegisterReference(ref,self.page.info.file + bookmark,TotalItems(referenceGroup))
 
                 if self.bookmarkMenu:
                     self.bookmarkMenu.items.append(Html.PageInfo(

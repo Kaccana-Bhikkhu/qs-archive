@@ -344,7 +344,7 @@ def SessionEventHtml() -> dict[str,str]:
 def TextBlobs() -> Iterator[dict]:
     """Return a blob for each text (sutta or vinaya reference)."""
     BuildReferences.ReadReferenceDatabase()
-    for text,link in BuildReferences.gSavedReferences["text"].items():
+    for text,linkInfo in BuildReferences.gSavedReferences["text"].items():
         reference = BuildReferences.TextReference.FromString(text)
         uid = reference.Uid()
         paliTitle = Suttaplex.Title(uid,False)
@@ -353,11 +353,14 @@ def TextBlobs() -> Iterator[dict]:
         textSearches = [text,paliTitle,title]
         
         if reference.n0:
-            displayName = f"{text}: {paliTitle}, {title}"
+            linkedPart = f"{text}: {paliTitle}"
+            suffix = f", {title}"
             textSearches.append(textName)
         else:
-            displayName = f"{textName}: {title}"
-        htmlLink = Html.Tag("a",{"href":"../" + link})(displayName)
+            linkedPart = f"{textName}"
+            suffix = f": {title}"
+        suffix += f" ({linkInfo['count']})"
+        htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^")],
             "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
@@ -366,28 +369,32 @@ def TextBlobs() -> Iterator[dict]:
 def BookBlobs() -> Iterator[dict]:
     """Return a blob for each book."""
     BuildReferences.ReadReferenceDatabase()
-    for bookName,link in BuildReferences.gSavedReferences["book"].items():
+    for bookName,linkInfo in BuildReferences.gSavedReferences["book"].items():
         reference = BuildReferences.BookReference.FromString(bookName)
         book = gDatabase["reference"][bookName]
         textSearches = [book["title"]]
         if not reference.IsCommentary() and book["year"]:
             textSearches.append(book["year"])
         
-        displayName = reference.FullName()
-        htmlLink = Html.Tag("a",{"href":"../" + link})(displayName)
+        linkedPart = reference.FullName(showYear = False)
+        suffix = f" ({linkInfo['count']})"
+        if book["author"]:
+            authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
+            suffix = f" by {Build.ItemList(authorNames,lastJoinStr = 'and')}" + suffix
+            
+        htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^") + 
                       Enclose(Blobify(AllNames(book["author"])),"{}")],
-            "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
+            "html": Build.HtmlIcon("open-book") + " " + htmlLink
         }
 
 def AuthorBlobs() -> Iterator[dict]:
     """Return a blob for each author (teacher credited with books)."""
     BuildReferences.ReadReferenceDatabase()
-    for author,link in BuildReferences.gSavedReferences["author"].items():
-
+    for author,linkInfo in BuildReferences.gSavedReferences["author"].items():
         displayName = gDatabase["teacher"][author]["fullName"]
-        htmlLink = Html.Tag("a",{"href":"../" + link})(displayName)
+        htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(displayName)
         yield {
             "blobs": [Enclose(Blobify(AllNames([author])),"{}")],
             "html": Build.HtmlIcon("user") + " " + htmlLink
