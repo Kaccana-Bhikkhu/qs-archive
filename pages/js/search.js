@@ -198,7 +198,8 @@ class SearchTerm extends SearchBase {
             // Replace quote marks at beginning and end with word boundary markers '$' 
             let unwrapped = searchElement.replace(/^"+/,'$').replace(/"+$/,'$');
             // Remove $ boundary markers if the first/last character is not a word character
-            unwrapped = unwrapped .replace(/^\$(?=\W)/,"").replace(/(?<=\W)\$$/,"");
+            unwrapped = unwrapped.replace(/^\$(?=\W)/,"");
+            unwrapped = unwrapped.replace(/(\W)\$$/,"$1");
             // Replace inner * and $ with appropriate operators.
             escaped = substituteWildcards(unwrapped);
             
