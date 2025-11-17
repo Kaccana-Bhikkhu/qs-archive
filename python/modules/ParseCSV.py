@@ -1121,7 +1121,8 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
                 session = Database.FindSession(sessions,x["event"],x["sessionNumber"])
                 x["duration"] = session["duration"]
                 if not x["duration"]:
-                    Alert.error("Deleting session excerpt",x,"since the session has no duration.")
+                    if not x["exclude"]:
+                        Alert.error("Deleting session excerpt",x,"since the session has no duration.")
                     deletedExcerptIDs.add(id(x))
                 continue
             

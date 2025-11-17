@@ -160,7 +160,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "SetupSearch",
+                "ParseCSV",
                 "--buildOnly",
                 "teachers",
                 "--quickBuild"
