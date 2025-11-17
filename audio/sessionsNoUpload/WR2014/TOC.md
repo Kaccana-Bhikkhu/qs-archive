@@ -1,0 +1,440 @@
+<p>
+  <span style="text-decoration:underline">
+    Readings from or about
+  </span>
+  (ordered roughly by date)
+</p>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="CKUpali"></i>
+  </a>
+  Tan Chao Khun Upāli Guṇūpamājahn
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="CKUpali.b">
+  <p>
+    <a href="#WR2014_S40">Session 40</a>:
+    The Natural Character of Awakening
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AMun"></i>
+  </a>
+  Ajahn Mun Bhūridatto
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="AMun.b">
+  <p>
+    <a href="#WR2014_S13">Session 13</a>:
+    Khandavimutti and Samangidhamma
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ADune"></i>
+  </a>
+  Ajahn Dune Atulo
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="ADune.b">
+  <p>
+    <a href="#WR2014_S24">Session 24</a>:
+    Gifts He Left Behind
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AThate"></i>
+  </a>
+  Ajahn Thate Desaransi
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="AThate.b">
+  <p>
+    <a href="#WR2014_S22">Session 22</a>:
+    Steps Along the Path
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ABuddhadasa"></i>
+  </a>
+  Ajahn Buddhadāsa Indapañño
+  (3)
+</h3>
+<div class="listing" style="display:none;" id="ABuddhadasa.b">
+  <p>
+    <a href="#WR2014_S23">Session 23</a>:
+    Looking Within
+  </p>
+  <p>
+    <a href="#WR2014_S37">Session 37</a>:
+    Paticca-Samuppada: Practical Dependent Origination
+  </p>
+  <p>
+    <a href="#WR2014_S42">Session 42</a>:
+    The Dhamma-Truth of Samatha-Vipassana for the Nuclear Age
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ALee"></i>
+  </a>
+  Ajahn Lee Dhammadharo
+  (2)
+</h3>
+<div class="listing" style="display:none;" id="ALee.b">
+  <p>
+    <a href="#WR2014_S05">Session 5</a>:
+    Keeping the Breath in Mind and Lessons in Samādhi
+  </p>
+  <p>
+    <a href="#WR2014_S34">Session 34</a>:
+    The Skill of Release
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ASim"></i>
+  </a>
+  Ajahn Sim Buddhacaro
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="ASim.b">
+  <p>
+    <a href="#WR2014_S57">Session 57</a>:
+    Source and Stream
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AMahaB"></i>
+  </a>
+  Ajahn Mahā Boowa Ñāṇasampanno
+  (6)
+</h3>
+<div class="listing" style="display:none;" id="AMahaB.b">
+  <p>
+    <a href="#WR2014_S08">Session 8</a>:
+    Birth and Death
+  </p>
+  <p>
+    <a href="#WR2014_S11">Session 11</a>:
+    Direct Route to the End of All Suffering
+  </p>
+  <p>
+    <a href="#WR2014_S14">Session 14</a>:
+    Visions of a Samaṇa
+  </p>
+  <p>
+    <a href="#WR2014_S26">Session 26</a>:
+    The Principle of the Present
+  </p>
+  <p>
+    <a href="#WR2014_S36">Session 36</a>:
+    The Middleness of the Middle Way
+  </p>
+  <p>
+    <a href="#WR2014_S56">Session 56</a>:
+    The Beauty Comes from Within
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="MaeCheeKaew"></i>
+  </a>
+  Mae Chee Kaew
+  (2)
+</h3>
+<div class="listing" style="display:none;" id="MaeCheeKaew.b">
+  <p>
+    <a href="#WR2014_S17">Session 17</a>:
+    Fearless Warrior Spirit and Blessing of a Lifetime
+  </p>
+  <p>
+    <a href="#WR2014_S35">Session 35</a>:
+    River and Ocean and Collected Teachings
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AChah"></i>
+  </a>
+  Ajahn Chah Subhaddo
+  (18)
+</h3>
+<div class="listing" style="display:none;" id="AChah.b">
+  <p>
+    <a href="#WR2014_S02">Session 2</a>:
+    The Training of the Heart
+  </p>
+  <p>
+    <a href="#WR2014_S06">Session 6</a>:
+    The Peace Beyond
+  </p>
+  <p>
+    <a href="#WR2014_S09">Session 9</a>:
+    Not Sure
+  </p>
+  <p>
+    <a href="#WR2014_S10">Session 10</a>:
+    Detachment within Activity
+  </p>
+  <p>
+    <a href="#WR2014_S12">Session 12</a>:
+    Unshakeable Peace
+  </p>
+  <p>
+    <a href="#WR2014_S15">Session 15</a>:
+    Unshakeable Peace
+  </p>
+  <p>
+    <a href="#WR2014_S21">Session 21</a>:
+    Kondañña Knows
+  </p>
+  <p>
+    <a href="#WR2014_S27">Session 27</a>:
+    In the Shape of a Circle
+  </p>
+  <p>
+    <a href="#WR2014_S29">Session 29</a>:
+    Reflections about Wat Pah Pong
+  </p>
+  <p>
+    <a href="#WR2014_S32">Session 32</a>:
+    Venerable Father
+  </p>
+  <p>
+    <a href="#WR2014_S39">Session 39</a>:
+    Interview with Luang Por Koon
+  </p>
+  <p>
+    <a href="#WR2014_S41">Session 41</a>:
+    Steady Practice
+  </p>
+  <p>
+    <a href="#WR2014_S44">Session 44</a>:
+    Ajahn Chah: The Tudong Years
+  </p>
+  <p>
+    <a href="#WR2014_S45">Session 45</a>:
+    Ajahn Chah: A Simple Monk
+  </p>
+  <p>
+    <a href="#WR2014_S47">Session 47</a>:
+    Meeting Ajahn Chah
+  </p>
+  <p>
+    <a href="#WR2014_S52">Session 52</a>:
+    Toilets on the Path Part 1
+  </p>
+  <p>
+    <a href="#WR2014_S53">Session 53</a>:
+    Toilets on the Path Part 2
+  </p>
+  <p>
+    <a href="#WR2014_S55">Session 55</a>:
+    Training under Ajahn Chah
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ASuwat"></i>
+  </a>
+  Ajahn Suwat Suvaco
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="ASuwat.b">
+  <p>
+    <a href="#WR2014_S43">Session 43</a>:
+    Straightening Out Your Views
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="UKee"></i>
+  </a>
+  Upasikā Kee Nanayon
+  (3)
+</h3>
+<div class="listing" style="display:none;" id="UKee.b">
+  <p>
+    <a href="#WR2014_S19">Session 19</a>:
+    Pure and Simple
+  </p>
+  <p>
+    <a href="#WR2014_S31">Session 31</a>:
+    Breath Meditation Condensed
+  </p>
+  <p>
+    <a href="#WR2014_S58">Session 58</a>:
+    Discernment versus Self-Deception and Awareness Right at Awareness
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AGi"></i>
+  </a>
+  Ajahn Gi Dhammuttamo
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="AGi.b">
+  <p>
+    <a href="#WR2014_S50">Session 50</a>:
+    The Customs of the Noble Ones
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ABaen"></i>
+  </a>
+  Ajahn Baen Dhanākaro
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="ABaen.b">
+  <p>
+    <a href="#WR2014_S18">Session 18</a>:
+    The Spirit of a Warrior and Kor Patipada
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="APlien"></i>
+  </a>
+  Ajahn Plien Paññapatipo
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="APlien.b">
+  <p>
+    <a href="#WR2014_S28">Session 28</a>:
+    Mindfulness of Death
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ATeean"></i>
+  </a>
+  Ajahn Teean Cittasubho
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="ATeean.b">
+  <p>
+    <a href="#WR2014_S49">Session 49</a>:
+    The Singular Quality of an Ordinary Monk
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ALiem"></i>
+  </a>
+  Ajahn Liem Ṭhitadhammo
+  (6)
+</h3>
+<div class="listing" style="display:none;" id="ALiem.b">
+  <p>
+    <a href="#WR2014_S03">Session 3</a>:
+    Watch Your Mind and Escape Mara's Snare Part 1
+  </p>
+  <p>
+    <a href="#WR2014_S04">Session 4</a>:
+    Watch Your Mind and Escape Mara's Snare Part 2
+  </p>
+  <p>
+    <a href="#WR2014_S30">Session 30</a>:
+    Ordination: Going Forth
+  </p>
+  <p>
+    <a href="#WR2014_S33">Session 33</a>:
+    From the Darkness to the Light
+  </p>
+  <p>
+    <a href="#WR2014_S38">Session 38</a>:
+    Following the Footsteps of Enlightened Beings
+  </p>
+  <p>
+    <a href="#WR2014_S56">Session 56</a>:
+    The Beauty Comes from Within
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AWanchai"></i>
+  </a>
+  Ajahn Wanchai Vicitto
+  (2)
+</h3>
+<div class="listing" style="display:none;" id="AWanchai.b">
+  <p>
+    <a href="#WR2014_S16">Session 16</a>:
+    A Higher Training
+  </p>
+  <p>
+    <a href="#WR2014_S51">Session 51</a>:
+    Conversations with Ajahn Wanchai
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="APiak"></i>
+  </a>
+  Ajahn Piak Kantasīlo
+  (2)
+</h3>
+<div class="listing" style="display:none;" id="APiak.b">
+  <p>
+    <a href="#WR2014_S36">Session 36</a>:
+    The Middleness of the Middle Way
+  </p>
+  <p>
+    <a href="#WR2014_S48">Session 48</a>:
+    Conversations with Ajahn Piak
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AAnan"></i>
+  </a>
+  Ajahn Anan Akiñcano
+  (2)
+</h3>
+<div class="listing" style="display:none;" id="AAnan.b">
+  <p>
+    <a href="#WR2014_S46">Session 46</a>:
+    Maraṇussati: Keeping the End in Mind
+  </p>
+  <p>
+    <a href="#WR2014_S54">Session 54</a>:
+    Sotāpattimagga
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="AThan"></i>
+  </a>
+  Ajahn Ṭhānissaro
+  (1)
+</h3>
+<div class="listing" style="display:none;" id="AThan.b">
+  <p>
+    <a href="#WR2014_S50">Session 50</a>:
+    The Customs of the Noble Ones
+  </p>
+</div>
+<h3>
+  <a href="#">
+    <i class="fa fa-plus-square toggle-view noscript-hide" id="ADtun"></i>
+  </a>
+  Ajahn Dtun Thiracitto
+  (2)
+</h3>
+<div class="listing" style="display:none;" id="ADtun.b">
+  <p>
+    <a href="#WR2014_S18">Session 18</a>:
+    The Spirit of a Warrior and Kor Patipada
+  </p>
+  <p>
+    <a href="#WR2014_S20">Session 20</a>:
+    Ajahn Dtun Questions and Answers
+  </p>
+</div>

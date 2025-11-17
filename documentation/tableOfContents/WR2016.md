@@ -1,5 +1,8 @@
-<p style="text-decoration:underline">
-  Readings from or about
+<p>
+  <span style="text-decoration:underline">
+    Readings from or about
+  </span>
+  (ordered roughly by date)
 </p>
 <h3>
   <a href="#">

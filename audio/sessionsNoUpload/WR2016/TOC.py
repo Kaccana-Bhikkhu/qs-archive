@@ -44,8 +44,10 @@ sessionName = {s["sessionNumber"]:s["sessionTitle"] for s in database["sessions"
 
 with open("audio/sessionsNoUpload/WR2016/TOC.md", 'w', encoding='utf-8') as mdFile:
     a = Airium()
-    with a.p(style="text-decoration:underline"):
-        a("Readings from or about")
+    with a.p():
+        with a.span(style="text-decoration:underline"):
+            a("Readings from or about")
+        a("(ordered roughly by date)")
 
     for teacher in sortedTeachers:
         teacherLink = teacherDB[teacher].get("htmlFile")
