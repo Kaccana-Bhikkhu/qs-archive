@@ -1,6 +1,8 @@
 """Create the table of contents for WR2016."""
 
 import json
+from airium import Airium
+from contextlib import nullcontext
 from collections import defaultdict
 
 def LoadDatabase() -> dict:
@@ -38,20 +40,32 @@ def TeacherDate(teacher: str) -> float:
 
 sortedTeachers = sorted(byTeacher,key=TeacherDate)
 
-for teacher in sortedTeachers:
-    print(teacher,TeacherDate(teacher))
+sessionName = {s["sessionNumber"]:s["sessionTitle"] for s in database["sessions"] if s["event"] == "WR2016"}
 
 with open("audio/sessionsNoUpload/WR2016/TOC.md", 'w', encoding='utf-8') as mdFile:
-    print("Readings from or about (session numbers in parentheses):",file=mdFile)
-    print(file=mdFile)
+    a = Airium()
+    with a.p(style="text-decoration:underline"):
+        a("Readings from or about")
 
     for teacher in sortedTeachers:
-        teacherName = teacherDB[teacher]["fullName"]
-        if teacherDB[teacher].get("htmlFile"):
-            teacherName = f"[{teacherName}]({teacherDB[teacher]['htmlFile']})"
+        teacherLink = teacherDB[teacher].get("htmlFile")
 
         sessionList = sorted(set(r["sessionNumber"] for r in byTeacher[teacher]))
         linkedSessions = [f"[{s}](#WR2016_S{s:02d})" for s in sessionList]
 
-        print(teacherName,f"({', '.join(linkedSessions)})",file=mdFile)
-        print(file=mdFile)
+        with a.h3():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id=f"{teacher}")
+            # with a.a(href="../teachers/" + teacherLink) if teacherLink else nullcontext():
+            a(teacherDB[teacher]["fullName"])
+            a(f"({len(sessionList)})")
+        
+        with a.div(Class="listing",style="display:none;",id=f"{teacher}.b"):
+            for sessionNumber in sessionList:
+                with a.p():
+                    a(f'<a href="#WR2016_S{sessionNumber:02d}">Session {sessionNumber}</a>:')
+                    a(sessionName[sessionNumber])
+
+        # print(teacherName,f"({', '.join(linkedSessions)})",file=mdFile)
+        # print(file=mdFile)
+    
+    print(str(a),file=mdFile)
