@@ -9,6 +9,7 @@ import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
+from collections import Counter
 from SetupFeatured import FeaturedExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
@@ -369,7 +370,14 @@ def TextBlobs() -> Iterator[dict]:
 def BookBlobs() -> Iterator[dict]:
     """Return a blob for each book."""
     BuildReferences.ReadReferenceDatabase()
-    for bookName,linkInfo in BuildReferences.gSavedReferences["book"].items():
+
+    def SortTitle(bookName: str) -> str:
+        """Return the title string to sort this book by."""
+        return RawBlobify(gDatabase["reference"][bookName]["title"]).replace("'","")
+
+    bookRefs = sorted(BuildReferences.gSavedReferences["book"].items(),
+                      key = lambda item:SortTitle(item[0]))
+    for bookName,linkInfo in bookRefs:
         reference = BuildReferences.BookReference.FromString(bookName)
         book = gDatabase["reference"][bookName]
         textSearches = [book["title"]]
@@ -380,25 +388,33 @@ def BookBlobs() -> Iterator[dict]:
         suffix = f" ({linkInfo['count']})"
         if book["author"]:
             authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
-            suffix = f" by {Build.ItemList(authorNames,lastJoinStr = 'and')}" + suffix
+            suffix = f" by {Build.ItemList(authorNames,lastJoinStr = ' and ')}" + suffix
             
         htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^") + 
                       Enclose(Blobify(AllNames(book["author"])),"{}")],
-            "html": Build.HtmlIcon("open-book") + " " + htmlLink
+            "html": Build.HtmlIcon("book-open") + " " + htmlLink
         }
 
 def AuthorBlobs() -> Iterator[dict]:
     """Return a blob for each author (teacher credited with books)."""
     BuildReferences.ReadReferenceDatabase()
-    for author,linkInfo in BuildReferences.gSavedReferences["author"].items():
-        displayName = gDatabase["teacher"][author]["fullName"]
-        htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(displayName)
+
+    bookCount = Counter()
+    for book in BuildReferences.gSavedReferences["book"]:
+        for author in gDatabase["reference"][book]["author"]:
+            bookCount[author] += 1
+
+    authorRecords = [gDatabase["teacher"][a] for a in BuildReferences.gSavedReferences["author"]]
+    alphabetizedAuthors = Build.AlphabetizedTeachers(authorRecords)
+
+    for name,authorInfo in alphabetizedAuthors:
+        author = authorInfo["teacher"]
+        htmlLink = Html.Tag("a",{"href":BuildReferences.ReferenceLink("author",author)})(name)
         yield {
             "blobs": [Enclose(Blobify(AllNames([author])),"{}")],
-            "html": Build.HtmlIcon("user") + " " + htmlLink
-                # Remove the paragraph markers added by TeacherDescription
+            "html": Build.HtmlIcon("user") + " " + htmlLink + f" ({bookCount[author]})"
         }
 
 def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Iterator[dict]) -> None:

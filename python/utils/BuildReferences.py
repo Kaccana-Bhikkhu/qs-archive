@@ -390,7 +390,7 @@ class BookReference(NamedTuple):
             return AlphabetizedTeachers()[self.author][1]
         if self.abbreviation:
             book = gDatabase["reference"][self.abbreviation]
-            bits = [book["title"]]
+            bits = [Utils.CapitalizeFirst(book["title"])]
             if showAuthors and book["author"]:
                 authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
                 bits.append(f"by {Build.ItemList(authorNames,lastJoinStr = 'and')}")
@@ -904,9 +904,9 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
         elif level == 2: # A book page
             title = firstRef.Truncate(level).FullName()
             return Html.PageInfo(
-                Utils.CapitalizeFirst(Utils.RemoveHtmlTags(title)),
+                Utils.RemoveHtmlTags(title),
                 f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
-                f"References – {Utils.CapitalizeFirst(title)}"
+                f"References – {title}"
             )
 
 def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:
