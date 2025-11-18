@@ -199,7 +199,7 @@ def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
 
     def ProcessTitle(title: str) -> str:
         title = title.strip()
-        title = re.sub("^[0-9]+\.?","",title)
+        title = re.sub(r"^[0-9]+\.?","",title)
         return title.strip()
 
     for sutta in suttaplex:

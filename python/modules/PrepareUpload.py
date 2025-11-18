@@ -6,6 +6,7 @@ from __future__ import annotations
 import os, re
 import Utils, Alert, Link, FileRegister
 from typing import Iterable
+import BuildReferences
 
 def MoveItemsIfNeeded(items: Iterable[dict]) -> tuple[int,int,int]:
     """Move items to/from the xxxNoUpload directories as needed. 
@@ -107,4 +108,7 @@ def main() -> None:
     if gOptions.uploadMirror != "preview":
         CheckJavascriptFiles()
         CheckPreviousVersionFiles()
+    
+    if BuildReferences.gReferencesChanged:
+        Alert.warning("References have changed. Run Render again before uploading.")
     

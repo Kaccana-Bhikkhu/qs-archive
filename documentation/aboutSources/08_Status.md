@@ -92,8 +92,8 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
  - More material added to the [2016 Winter Retreat](event:WR2016).
 ### August 2025 release:
  - Added events at Amaravati:
-     - Questions and Answers about Ajahn Chah
-     - What Luang Por Chah Taught.
+     - [Questions and Answers about Ajahn Chah](event:ChahQA2025).
+     - [What Luang Por Chah Taught](event:Sunday2025-1).
  - Color icons represent each key topic.
  - Can be installed as a progressive web app (but has no offline capability).
  - [Advanced search features](about:search-instructions#advanced-searching): negation and regular expressions.

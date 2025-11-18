@@ -41,6 +41,8 @@ Thus we use two different dictionaries to track references.
 """
 gSavedReferences: ReferenceLinkDatabase = None  # References read from disk
 gNewReferences: ReferenceLinkDatabase = None    # References we are in the process of building
+gReferencesChanged: bool = False                # Have the references been changed?
+                                                # If so, we should run Render again before uploading.
 
 def ReadReferenceDatabase() -> None:
     """Read pages/assets/ReferenceDatabase.json"""
@@ -75,7 +77,7 @@ def CompareDicts(oldDict:dict[str,str],newDict:dict[str,str],name: str) -> bool:
 def WriteReferenceDatabase() -> bool:
     """Write pages/assets/ReferenceDatabase.json if needed.
     Return True if changes were made."""
-    global gSavedReferences
+    global gSavedReferences, gReferencesChanged
     ReadReferenceDatabase()
     if not gNewReferences:
         return False
@@ -91,6 +93,7 @@ def WriteReferenceDatabase() -> bool:
         json.dump(gNewReferences, file, ensure_ascii=False, indent=2)
     
     gSavedReferences = gNewReferences
+    gReferencesChanged = True
     return True
 
 def ReferenceLink(kind: Literal["text","author","book"],key: str) -> str:
