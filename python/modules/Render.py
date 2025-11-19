@@ -15,6 +15,7 @@ import ParseCSV, Build, Utils, Alert, Link, Filter
 import Suttaplex
 import Html2 as Html
 import urllib.parse
+import BuildReferences
 
 def FStringToPyratemp(fString: str) -> str:
     """Convert a template in our psuedo-f string notation to a pyratemp template"""
@@ -497,10 +498,19 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             link = ApplySuttaMatchRules(matchObject)
             if link:
                 AddTextReference(item,matchObject)
+                refStr = f"{matchObject[0]} {'.'.join(matchObject[n] for n in range(2,4) if matchObject[n])}"
+                reference = BuildReferences.TextReference.FromString(refStr)
+                reference = reference.Truncate(reference.TextLevel() + 1)
+                textPageLink = BuildReferences.ReferenceLink("text",str(reference))
+
+                linkData = {"href":link,"target":"_blank"}
+                if textPageLink:
+                    linkData["data-alt-href"] = textPageLink
+                return Html.Tag("a",linkData)(withoutTranslator)
             else:
                 print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
-            return f'[{withoutTranslator}]({link})'
+                return matchObject[0] # Make no changes
     
         return re.subn(suttasNotInMarkdownLinks,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
 

@@ -518,11 +518,13 @@ function setupOptionalSuttaRefs() {
                 hyperlink = hyperlink.parentElement;
             }
             if (hyperlink) {
-                let newHref = readingFaithfullyLink(hyperlink.href);
-                debugLog("Alt link:",newHref);
-                if (newHref) {
+                let suttaPage = hyperlink.dataset.altHref;
+                if (suttaPage) {
+                    suttaPage = suttaPage.replace("../","");
+                    debugLog("Opening sutta page:",suttaPage);
+                    let parts = suttaPage.split("#");
+                    openLocalPage(parts[0],"",parts.length > 1 ? parts[1] : "");
                     event.preventDefault();
-                    window.open(newHref,"_blank");
                 }
             }
         }
