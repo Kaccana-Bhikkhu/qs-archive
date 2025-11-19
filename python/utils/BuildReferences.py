@@ -964,9 +964,9 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         if skipLevel:
             level += 1
         pageMaker = PageWithHeadings(LinkedHeadings(level),YieldSubpages(level),references)
-        if skipLevel: # If we skip a level of headings, manually remake the page header
-            pageMaker.page = Html.PageDesc(ReferencePageInfo(firstReference,level - 1))
-            pageMaker.page.AppendContent(pageMaker.HeaderHtml(level - 1))
+        if skipLevel: # If we skip a level of headings, manually remake the page header to match the previous level
+            scratchPage = PageWithHeadings(LinkedHeadings(level - 1),YieldSubpages(level - 1),references)
+            pageMaker.page = scratchPage.page
         pageMaker.pageReferenceLink = True
         return pageMaker
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
