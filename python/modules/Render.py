@@ -370,20 +370,6 @@ def RenderExcerpts() -> None:
                 AppendAnnotationToExcerpt(a,x)
 
 
-def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str = "."):
-    """A utility function that returns strings of the form 'n0.n1.n2'.
-    numbers: the list of numbers to print.
-    printCount: print this many numbers; if omitted, set to len(numbers).
-    filler: if printCount > len(numbers), add filler at the end.
-    separator: the separator character between numbers."""
-
-    if printCount is None:
-        printCount = len(numbers)
-    strings = [str(n) for n in numbers]
-    if len(strings) < printCount:
-        strings += (printCount - len(strings)) * [str(filler)]
-    return separator.join(strings)
-
 class SCBookmark(NamedTuple):
     uid: str                # Sutta uid, e.g. 'mil6.3.10'
     hash: str               # Bookmark hash code, e.g. '#pts-vp-pli320'
@@ -412,35 +398,6 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
         # If suttaRef lacks the mark key, then mark is bookmark
 
-def PreferredTranslator(textUid:str,refNumbers:list[int]) -> str:
-    """Return the preferred translator for the whole sutta specified by textUid and refNumbers."""
-
-    textUid = textUid.lower()
-    translatorDict = Suttaplex.TranslatorDict(textUid)
-    suttaUid = textUid + DotRef(refNumbers)
-    availableTranslations = translatorDict.get(suttaUid,None)
-
-    if not availableTranslations:
-        spanUid = Suttaplex.InterpolatedSuttaDict(textUid).get(suttaUid)
-        if spanUid:
-            availableTranslations = translatorDict.get(spanUid,None)
-        if availableTranslations:
-            if "sujato" in availableTranslations:
-                return "sujato"
-            else:
-                return availableTranslations[0]
-        else:
-            Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
-            return ""
-    elif "bodhi" in availableTranslations:
-        return "bodhi"
-    else:
-        return availableTranslations[0]
-    
-def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
-    """Returns whether this text exists on SuttaCentral."""
-    return bool(PreferredTranslator(textUid,refNumbers))
-
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
     Then evaluate the template for that rule and return the link"""
@@ -452,10 +409,10 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "n1": matchObject[3],
         "n2": matchObject[4],
         "translator": matchObject[5],
-        "DotRef": DotRef,
+        "DotRef": Suttaplex.DotRef,
         "SCIndex": SCIndex,
-        "PreferredTranslator": PreferredTranslator,
-        "ExistsOnSC": ExistsOnSC
+        "PreferredTranslator": Suttaplex.PreferredTranslator,
+        "ExistsOnSC": Suttaplex.ExistsOnSC
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
