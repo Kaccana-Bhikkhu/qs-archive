@@ -263,7 +263,8 @@ def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
                 if translation.get("author_uid") == prefTrans and "title" in translation:
                     returnDict[sutta["uid"]] = SuttaTitle(original_title=ProcessTitle(sutta["original_title"]),
                                                   translated_title=ProcessTitle(translation["title"]))
-        elif sutta.get("original_title") and sutta.get("translated_title"):
+                    break
+        if sutta["uid"] not in returnDict and sutta.get("original_title") and sutta.get("translated_title"):
             returnDict[sutta["uid"]] = SuttaTitle(original_title=ProcessTitle(sutta["original_title"]),
                                                   translated_title=ProcessTitle(sutta["translated_title"]))
     

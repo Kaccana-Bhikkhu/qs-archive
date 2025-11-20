@@ -436,7 +436,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
                         "\n    Continuing to the next rule")
             continue
 
-        if not link or link == "None" or link == "False":
+        if link in ("","None","False"):
             continue # If matcher returns "", None, or False, skip to the next rule
         
         if gDatabase["textLink"][ruleName]["alert"]:
@@ -451,6 +451,18 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
             return link
     
     return ""
+
+def SuttaLinkWrapper(link: str,referenceString: str) -> Html.Wrapper:
+    """Given a sutta link (from ApplySuttaMatch rules) and the sutta reference itself, return
+    a link to the sutta, including the alt-href attribute."""
+    reference = BuildReferences.TextReference.FromString(referenceString)
+    reference = reference.Truncate(reference.TextLevel() + 1)
+    textPageLink = BuildReferences.ReferenceLink("text",str(reference))
+
+    linkData = {"href":link,"target":"_blank"}
+    if textPageLink:
+        linkData["data-alt-href"] = textPageLink
+    return Html.Tag("a",linkData)
 
 def AddTextReference(item:dict,matchObject: re.Match) -> None:
     """Add a text (sutta or vinaya) reference to this item.
@@ -476,13 +488,16 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
     def SuttasWithinMarkdownLink(bodyStr: str,item:dict=None) -> Tuple[str,int]:
         def SuttaMatchWrapper(matchObject: re.Match) -> str:
+            hyperlinkText = re.match(r"\[([^]\]]+)\]",matchObject[0])[1]
             link = ApplySuttaMatchRules(matchObject)
             if link:
                 AddTextReference(item,matchObject)
+                suttaReference = re.search(r"\(([^\)]+)\)",matchObject[0])[1]
+                return SuttaLinkWrapper(link,suttaReference)(hyperlinkText)
             else:
                 print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
-            return link
+                return hyperlinkText
 
         return re.subn(markdownLinkToSutta,SuttaMatchWrapper,bodyStr,flags = re.IGNORECASE)
     
@@ -498,15 +513,7 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             link = ApplySuttaMatchRules(matchObject)
             if link:
                 AddTextReference(item,matchObject)
-                refStr = f"{matchObject[0]} {'.'.join(matchObject[n] for n in range(2,4) if matchObject[n])}"
-                reference = BuildReferences.TextReference.FromString(refStr)
-                reference = reference.Truncate(reference.TextLevel() + 1)
-                textPageLink = BuildReferences.ReferenceLink("text",str(reference))
-
-                linkData = {"href":link,"target":"_blank"}
-                if textPageLink:
-                    linkData["data-alt-href"] = textPageLink
-                return Html.Tag("a",linkData)(withoutTranslator)
+                return SuttaLinkWrapper(link,matchObject[0])(withoutTranslator)
             else:
                 print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
@@ -522,9 +529,9 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         5: translator: translator code, e.g. bodhi
     end is ignored for sutta lookup purposes."""
 
-    markdownLinkToSutta = r"(?<=\]\()" + suttaMatch + r"(?=\))"
+    markdownLinkToSutta = r"\[[^]\]]+\]\(" + suttaMatch + r"\)"
     markdownLinksMatched = ApplyToFunction(SuttasWithinMarkdownLink)
-        # Use lookbehind and lookahead assertions to first match suttas links within markdown format, e.g. [Sati](MN 10)
+        # First match suttas links within markdown format, e.g. [Sati](MN 10)
 
     suttasNotInMarkdownLinks = suttaMatch + r"(?![^][]*\]\()"
         # Use lookahead assertion to ignore suttas which explicitly link elsewhere, e.g. [MN 26](https://...)
@@ -539,7 +546,7 @@ def ReferenceMatchRegExs(referenceDB: dict[dict]) -> tuple[str]:
     pageReference = r'(?:pages?|pp?\.)\s+-?[0-9]+(?:[-–][0-9]+)?' 
 
     refForm2 = r'\[' + titleRegex + r'\]\((' + pageReference + r')?\)'
-    refForm3 = r'\]\(' + titleRegex + r'(\s+' + pageReference + r')?\)'
+    refForm3 = r'\[[^[\]]*\]\(' + titleRegex + r'(\s+' + pageReference + r')?\)'
 
     refForm4 = titleRegex + r'\s+(' + pageReference + ')'
 
@@ -561,6 +568,16 @@ def AddBookReference(item:dict,book: dict[str],page: int = 0) -> None:
         item["books"].append(bookReference)
     else:
         item["books"] = [bookReference]
+
+def BookLinkWrapper(url: str,book: str,altLink: bool = True) -> Html.Wrapper:
+    """Given the url to a book and the name of the book, build a link including the alt-href attribute."""
+    textPageLink = BuildReferences.ReferenceLink("book",book.lower())
+    linkData = {"href":url}
+    if Utils.RemoteURL(url) or not url.endswith(".html"):
+        linkData["target"] = "_blank"
+    if textPageLink and altLink:
+        linkData["data-alt-href"] = textPageLink
+    return Html.Tag("a",linkData)
 
 def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Search for references of the form [abbreviation]() OR abbreviation page|p. N, add author and link information.
@@ -617,7 +634,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                     url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
 
                 url = ProcessLocalReferences(url)
-                returnValue = f"[{reference['title']}]({url})"
+                returnValue = BookLinkWrapper(url,reference["abbreviation"])(reference['title'])
             else:
                 returnValue = f"{reference['title']}"
 
@@ -641,11 +658,12 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
         """Search for references of the form: [xxxxx](title) or [xxxxx](title page N)"""
 
         def ReferenceForm3Substitution(matchObject: re.Match) -> str:
+            hyperlinkText = re.match(r"\[([^\]]+)\]",matchObject[0])[1]
             try:
                 reference = gDatabase["reference"][matchObject[1].lower()]
             except KeyError:
                 Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-                return matchObject[1]
+                return hyperlinkText
             
             url = Link.URL(reference,directoryDepth=2)
             
@@ -655,7 +673,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             AddBookReference(item,reference,page)
 
             url = ProcessLocalReferences(url)
-            return f"]({url})"
+            return BookLinkWrapper(url,reference["abbreviation"])(hyperlinkText)
 
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
 
@@ -675,7 +693,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 url +=  f"#page={page + PdfPageOffset(reference)}"
                 url = ProcessLocalReferences(url)
 
-            items = [reference['title'],f", [{matchObject[2]}]({url})"]
+            items = [reference['title'],", " + BookLinkWrapper(url,reference["abbreviation"])(matchObject[2])]
             if reference["attribution"]:
                 items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
 
