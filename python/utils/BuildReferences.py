@@ -690,7 +690,7 @@ class ExcerptListPage(ReferencePageMaker):
                 if not firstLoop:
                     a.hr()
                 firstLoop = False
-                a(Build.EventDescription(event,showMonth=True).replace("<p>","<p><b>Event</b>: "))
+                a(Build.EventDescription(event,showMonth=True,excerptCount=False).replace("<p>","<p><b>Event</b>: "))
             if excerpts:
                 if not firstLoop:
                     a.hr()

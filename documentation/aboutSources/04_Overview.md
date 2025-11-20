@@ -38,13 +38,16 @@ The October 2024 release also introduces a [list of 16 key topics](../indexes/Ke
 
 The key topics begin with the Buddha's description of [the human dilemma](topic:human) followed by an overview of his [prescribed resolution](topic:truths). Next come topics related to [meditation practice](topic:meditation), [qualities of the mind](topic:skillful), and [results of the practice](topic:fruits). The key topics conclude with applications of Dhamma practice in [monastic](topic:monastic) and [lay life](topic:everyday). Each key topic links to a page showing the featured excerpts of all tags within that topic.
 
+### Sutta links
+Ajahn Pasanno frequently mentions teachings from the Pāli Canon in his teachings, and the archive gives the sutta name and number when possible. The September 2025 release links these sutta references to [SuttaCentral](https://suttacentral.net). Since Ajahn Pasanno reads most frequently from Bhikkhu Bodhi's sutta translations, the links point to Bhikkhu Bodhi's translations when available.
+
+### Reference pages
+The November 2025 release adds reference pages which collect excerpts which refer to the same [suttas](../texts/Sutta.html), [vinaya texts](../texts/Vinaya.html), and [books](../books/Modern.html). Holding down the alt or option key when clicking links brings you to these pages rather than SuttaCentral translations or pdf book content. For some reason, Chrome frequently requires two alt-clicks before this works. Sutta titles in the reference pages come from SuttaCentral using Bhikkhu Bodhi's titles when possible.
+
 ## Searching the Archive
 [The search page](../search/Text-search.html) is the best way to search the archive. The June 2025 release added a floating search bar to the main menu which can be accessed anywhere by pressing '/'.
 
 The static pages accessible through the main menu and [site map](../sitemap.html) allow the user to browse the tags, events, and teachers contained in the archive in a variety of ways. Tag, event, and teacher pages list each relevant excerpt. Event pages list each excerpt in each of the event sessions. The tag and teacher pages group excerpts by event and session and additionally allow the user to narrow the search by excerpt kind. (Pages containing fewer than 10 excerpts don’t have this feature.)
-
-## Sutta links
-Ajahn Pasanno frequently mentions teachings from the Pāli Canon in his teachings, and the archive gives the sutta name and number when possible. The September 2025 release links these sutta references to [SuttaCentral](https://suttacentral.net). Since Ajahn Pasanno reads most frequently from Bhikkhu Bodhi's sutta translations, the links point to Bhikkhu Bodhi's translations when available. They point to Bhante Sujato's translations when these are not available. Holding down the alt or option key when clicking a sutta link takes one to [Reading Faithfully](https://sutta.readingfaithfully.org/), which was the default behaivor in earlier releases. For some reason, Chrome frequently requires two alt-clicks before this works.
 
 ## Scope
 The project focuses on Q&A sessions and discussions led by Ajahn Pasanno. Events including particularly valuable stories are annotated in greater detail. The audio sources are abhayagiri.org, Abhayagiri’s YouTube channel, and Abhayagiri's audio archive (with consultation and permission). Recordings from Ajahn Pasanno's 2025 stay at Amaravati come from their website. Perhaps others might create a website to index Q&A sessions from other teachers (see [License](about:License)). An [index of Ajahn Sona YouTube Q&A sessions](http://birken.ca/qaa/qaa.php) already exists. [Dhammakatha.org](https://dhammakatha.org/) compiles Ajahn Munindo's audio answers to Dhamma questions submitted by students.

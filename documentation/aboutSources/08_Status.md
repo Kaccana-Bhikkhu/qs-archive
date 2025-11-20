@@ -1,17 +1,15 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-
-
-## New in the September 2025 release:
+## New in the November 2025 release:
  - New content:
-     - [2016 Winter Retreat](event:WR2016): All except four sessions are included
-     - [2025 Winter Retreat](event:WR2025): Includes the first 20 sessions
-     - [2025 Q&A at Chithurst Monsastery](event:Chithurst2025)
- - Sutta links go directly to [SuttaCentral](https://suttacentral.net).
- - Links to sutta subsections, e.g. MN 26.13.
+     - [2025 Winter Retreat](event:WR2025): The first 46 sessions are now available.
+     - [Even the Sāsana Will Pass Away](event:Sunday2025-2).
+     - [Kathina Q&A with the Chithurst Community](event:Chithurst2025-2)
+ - [Sutta](../texts/Sutta.html), [vinaya](../texts/Vinaya.html), and [book](../books/Modern.html) reference pages list excerpts that refer to these sources.
+ - Alt-clicking on sutta, vinaya, or book references takes one to the relevant reference page.
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 170 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 528 transcribed pages, of which 473 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 180 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 547 transcribed pages, of which 510 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
 The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](about:want-to-help) for details.
@@ -97,3 +95,10 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
  - Color icons represent each key topic.
  - Can be installed as a progressive web app (but has no offline capability).
  - [Advanced search features](about:search-instructions#advanced-searching): negation and regular expressions.
+### September 2025 release:
+ - New content:
+     - [2016 Winter Retreat](event:WR2016): All except four sessions are included
+     - [2025 Winter Retreat](event:WR2025): Includes the first 20 sessions
+     - [2025 Q&A at Chithurst Monsastery](event:Chithurst2025)
+ - Sutta links go directly to [SuttaCentral](https://suttacentral.net).
+ - Links to sutta subsections, e.g. MN 26.13.
