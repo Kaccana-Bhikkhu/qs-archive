@@ -178,18 +178,22 @@ def AboutEntries() -> Iterable[AutoCompleteEntry]:
 def TextEntries() -> Iterable[AutoCompleteEntry]:
     "Yield an entry for each about text (Sutta or Vinaya) referenced."
     
+    yield Entry("Sutta references","texts/Sutta.html",icon="DhammaWheel.png")
+    yield Entry("Vinaya references","texts/Vinaya.html",icon="DhammaWheel.png")
     BuildReferences.ReadReferenceDatabase()
     for text,textData in BuildReferences.gSavedReferences["text"].items():
         if re.search(r"[0-9]$",text): # Remove root text links
             uid = BuildReferences.TextReference.FromString(text).Uid()
             paliTitle = Suttaplex.Title(uid,translated=False)
             title = Suttaplex.Title(uid)
-            combinedTitle = f"{paliTitle}: {title}" if (paliTitle and title) else paliTitle or title or ""
-            yield Entry(text,textData["link"],icon="DhammaWheel.png",excerptCount=textData["count"],suffix=combinedTitle)
+            combinedTitle = f"{text}: {paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
+            yield Entry(combinedTitle,textData["link"],icon="DhammaWheel.png",excerptCount=textData["count"])
 
 def BookEntries() -> Iterable[AutoCompleteEntry]:
     "Yield an entry for each about book referenced."
     
+    yield Entry("Commentary references","books/Commentary.html",icon="book-open")
+    yield Entry("Modern book references","books/Modern.html",icon="book-open")
     BuildReferences.ReadReferenceDatabase()
     for book,bookData in BuildReferences.gSavedReferences["book"].items():
         reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])

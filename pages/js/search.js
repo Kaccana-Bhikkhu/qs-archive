@@ -884,6 +884,8 @@ let gSearchDatabase = null; // The global search database, loaded from assets/Se
 
 let gTextSearcher = new TruncatedSearcher("p","text",8);
 gTextSearcher.nameInResults = "Sutta and Vinaya texts";
+let gAllTextSearcher = new TruncatedSearcher("p","text",-2);
+gAllTextSearcher.nameInResults = "Sutta and Vinaya texts";
 export let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",
@@ -900,7 +902,9 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("t","teacher",5),
         new TruncatedSearcher("e","event",3),
         new SessionSearcher(),
-        new ExcerptSearcher()
+        gAllTextSearcher,
+        new TruncatedSearcher("o","book",-2),
+        new ExcerptSearcher(),
     ),
     "ref": new MultiSearcher("ref",
         gTextSearcher,
