@@ -1297,6 +1297,7 @@ def LoadEventFile(database,eventName,directory):
         Utils.ReorderKeys(s,["event","sessionNumber"])
         RemoveUnknownTeachers(s["teachers"],s)
 
+    originalSessionCount = len(sessions)
     if not gOptions.ignoreExcludes:
         sessions = FilterAndExplain(sessions,lambda s: not s["exclude"],excludeAlert,"- exclude flag Yes.")
         # Remove excluded sessions
@@ -1308,6 +1309,9 @@ def LoadEventFile(database,eventName,directory):
     sessions = FilterAndExplain(sessions,lambda s: TeacherConsent(database["teacher"],s["teachers"],"indexSessions",singleConsentOK=True),excludeAlert,"due to teacher consent.")
         # Remove sessions if none of the session teachers have given consent
     database["sessions"] += sessions
+
+    global gRemovedSessions
+    gRemovedSessions += originalSessionCount - len(sessions)
 
     # Convert ? characters to numbers indicating draft fTags
     for x in rawExcerpts:
@@ -1641,6 +1645,7 @@ def Initialize() -> None:
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
+gRemovedSessions = 0
 gRemovedExcerpts = 0 # Count the total number of removed excerpts
 gRemovedAnnotations = 0
 
@@ -1693,7 +1698,7 @@ def main():
             if not event.startswith("Test") or gOptions.includeTestEvent:
                 LoadEventFile(gDatabase,event,gOptions.csvDir)
     ListifyKey(gDatabase["event"],"series")
-    excludeAlert(f": {gRemovedExcerpts} excerpts and {gRemovedAnnotations} annotations in all.")
+    excludeAlert(f": {gRemovedSessions} sessions, {gRemovedExcerpts} excerpts, and {gRemovedAnnotations} annotations in all.")
     gUnattributedTeachers.pop("Anon",None)
     if gUnattributedTeachers:
         excludeAlert(f": Did not attribute excerpts to the following {len(gUnattributedTeachers)} teachers:",dict(gUnattributedTeachers))
