@@ -97,7 +97,7 @@ def ExcerptTags(excerpt: dict) -> dict:
         "title": f"{event['title']}{sessionStr}, Excerpt {excerpt['excerptNumber']}",
         "albumartist": [gDatabase["teacher"][t]["attributionName"] for t in session["teachers"]],
         "artist": [gDatabase["teacher"][t]["attributionName"] for t in Filter.AllTeachers(excerpt)],
-        "album": event["title"], # + sessionStr,
+        "album": Utils.RemoveHtmlTags(event["title"]), 
         "tracknumber": str(excerpt["excerptNumber"]),
         "date": str(Utils.ParseDate(session["date"]).year),
         "comment": ExcerptComment(excerpt,session,event),
