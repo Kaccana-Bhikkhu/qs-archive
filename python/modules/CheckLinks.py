@@ -10,6 +10,7 @@ from typing import NamedTuple, Iterable
 from bs4 import BeautifulSoup
 import urllib.error, urllib.parse
 from collections import defaultdict
+import itertools
 
 class UrlInfo(NamedTuple):
     """Information about a given URL."""
@@ -35,8 +36,11 @@ def ScanPageForLinks(url: str) -> list[str]:
 
         linkItems = soup.find_all("a")
         srcItems = soup.find_all(src=True)
-        urls = [linkItem.get("href") for linkItem in linkItems] + [srcItem.get("src") for srcItem in srcItems]
-        for link in urls:
+        for link in itertools.chain(
+            (linkItem.get("href") for linkItem in linkItems),
+            (linkItem.get("data-alt-href") for linkItem in linkItems if "data-alt-href" in linkItem.attrs),
+            (srcItem.get("src") for srcItem in srcItems)
+        ):
             if link.startswith(uploadMirrorUrl):
                 urlsToCheck.add(link.replace(uploadMirrorUrl,gOptions.mirrorUrl["local"]))
                 continue
@@ -91,7 +95,7 @@ def CheckUrl(linkTo:str,linkFrom: list[str],bookmarksToPage: list[str]) -> UrlIn
                 result = UrlInfo(good=True)
             else:
                 result = UrlInfo(good=True)
-            # Alert.info("Successfully opended",url)
+            Alert.debug("Successfully opended",linkTo)
     except (OSError,urllib.error.HTTPError) as error:
         Alert.warning("Error",error,"when trying to access",linkTo,"; linked from",linkFrom)
         result = UrlInfo(good=False)
@@ -123,7 +127,6 @@ def CheckUrls(urls: dict[str,list[str]]) -> None:
         linkTo = urllib.parse.urlunparse(parsed._replace(fragment=""))
         urlsWithBookmarks[linkTo].Append(linkFrom,bookmark)
 
-    linkTo = urllib.parse.urlunparse(parsed._replace(fragment=""))
     with Utils.ConditionalThreader() as pool:
         for linkTo,linkInfo in urlsWithBookmarks.items():
             pool.submit(CheckUrl,linkTo,linkInfo.linkFrom,linkInfo.bookmarks)
@@ -162,6 +165,14 @@ def main() -> None:
     dispatchUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"dispatch")) if filename.lower().endswith(".html")]
     dispatchUrls = [Utils.PosixJoin(gOptions.pagesDir,"dispatch",filename) for filename in dispatchUrls]
     CheckLinksInPages(dispatchUrls)
+
+    Alert.info("Checking extra book links...")
+    bookUrls = defaultdict(list)
+    for book in gDatabase["reference"].values():
+        if book["otherUrl"]:
+            bookUrls[book["otherUrl"]].append(book["abbreviation"])
+    Alert.info(len(bookUrls),"urls to check.")
+    CheckUrls(bookUrls)
 
     Alert.info("Checking event pages...")
     CheckLinksInPages(GetEventLinks())

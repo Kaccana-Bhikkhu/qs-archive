@@ -2845,6 +2845,8 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
         if path not in dirsToWrite:
             continue
 
+        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"])):
+            Alert.error("Redirect",redirect,"points to non-existant file",redirect["newPage"])
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
             cannonicalURL = Utils.PosixJoin(gOptions.info.cannonicalURL,gOptions.pagesDir,redirect["newPage"])

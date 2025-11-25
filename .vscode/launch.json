@@ -160,10 +160,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Render",
+                "PrepareUpload",
                 "--buildOnly",
-                "teachers",
-                "--quickBuild"
+                "about",
+                "--minifyDatabases"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
