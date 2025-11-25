@@ -512,12 +512,20 @@ function setupOptionalSuttaRefs() {
     // Configure event listeners to link suttas to https://sutta.readingfaithfully.org/ when the alt/option key is pressed.
 
     document.addEventListener("click", function(event) {
-        if (event.altKey && event.target.href) {
-            let newHref = readingFaithfullyLink(event.target.href);
-            debugLog("Alt link:",newHref);
-            if (newHref) {
-                event.preventDefault();
-                window.open(newHref,"_blank");
+        if (event.altKey) {
+            let hyperlink = event.target;
+            while (hyperlink && !hyperlink.href) {
+                hyperlink = hyperlink.parentElement;
+            }
+            if (hyperlink) {
+                let suttaPage = hyperlink.dataset.altHref;
+                if (suttaPage) {
+                    suttaPage = suttaPage.replace("../","");
+                    debugLog("Opening sutta page:",suttaPage);
+                    let parts = suttaPage.split("#");
+                    openLocalPage(parts[0],"",parts.length > 1 ? parts[1] : "");
+                    event.preventDefault();
+                }
             }
         }
     });

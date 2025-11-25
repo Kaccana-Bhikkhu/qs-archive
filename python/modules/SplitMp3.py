@@ -51,7 +51,7 @@ def main():
         else:        
             Alert.notice(f"Cannot find Mp3DirectCut executable. Will use {Mp3DirectCut.mp3spltCommand}.")
     
-    Mp3DirectCut.joinUsingPydub = gOptions.joinUsingPydub
+    Mp3DirectCut.defaultJoin = Mp3DirectCut.JoinMethod.PYDUB if gOptions.joinUsingPydub else Mp3DirectCut.JoinMethod.CONCATENATE
 
     # Step 1: Determine which excerpt mp3 files need to be created
     eventExcerptClipsDict:dict[str,dict[str,list[Mp3DirectCut.Clip]]] = {}
@@ -140,7 +140,13 @@ def main():
             
             for filename in clipsDict:
                 filePath = Utils.PosixJoin(outputDir,filename)
-                TagMp3.TagMp3WithClips(filePath,excerptsByFilename[filename]["clips"])
+                clips = excerptsByFilename[filename]["clips"]
+                splitMethod = {"split":Mp3DirectCut.lastSplitMethod}
+                if len(clips) > 1:
+                    splitMethod["join"] = Mp3DirectCut.lastJoinMethod
+                    if splitMethod["join"] != Mp3DirectCut.JoinMethod.CONCATENATE:
+                        splitMethod["bitrate"] = Mp3DirectCut.lastBitRate
+                TagMp3.TagMp3WithClips(filePath,clips,splitMethod)
             
             splitCount += 1
             sources = set(os.path.split(source)[1] for source in sources)

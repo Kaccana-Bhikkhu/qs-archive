@@ -1,4 +1,4 @@
-import {configureLinks,frameSearch,setFrameSearch} from './frame.js';
+import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
 
 const TEXT_DELIMITERS = "][{}<>^";
@@ -82,6 +82,8 @@ export async function loadSearchPage() {
     await loadSearchDatabase();
 
     searchFromURL();
+    if (query) // Set the scroll position after displaying search results.
+        scrollToInitialPosition();
 }
 
 function matchEnclosedText(separators,dontMatchAfterSpace) {
@@ -196,7 +198,8 @@ class SearchTerm extends SearchBase {
             // Replace quote marks at beginning and end with word boundary markers '$' 
             let unwrapped = searchElement.replace(/^"+/,'$').replace(/"+$/,'$');
             // Remove $ boundary markers if the first/last character is not a word character
-            unwrapped = unwrapped .replace(/^\$(?=\W)/,"").replace(/(?<=\W)\$$/,"");
+            unwrapped = unwrapped.replace(/^\$(?=\W)/,"");
+            unwrapped = unwrapped.replace(/(\W)\$$/,"$1");
             // Replace inner * and $ with appropriate operators.
             escaped = substituteWildcards(unwrapped);
             
@@ -443,6 +446,8 @@ class Searcher {
     code; // a one-letter code to identify the search.
     name; // the name of the search, e.g. "Tag"
     plural; // the plural name of the search.
+    nameInResults = ""; // A longer plural name to display in the search results
+                        // e.g. "Sutta and Vinaya texts"
     prefix = "<p>"; // html prefix of each search result.
     suffix = "</p>"; // hmtl suffix of each search result.
     separator = ""; // the html code to separate each displayed search result.
@@ -519,7 +524,7 @@ class Searcher {
         // Returns "" if no items were found.
 
         if (this.foundItems.length > 0)
-            return `${capitalizeFirstLetter(this.plural)} (${this.foundItems.length}):`;
+            return `${capitalizeFirstLetter(this.nameInResults || this.plural)} (${this.foundItems.length}):`;
         else
             return "";
     }
@@ -555,6 +560,8 @@ class TruncatedSearcher extends Searcher {
     // Displays its own header e.g. "Teachers (2):", so it's intended to be used with MultiSearcher.
 
     truncateAt; // Truncate the initial view if there are more than this many items
+        // If truncateAt === 0, always hide the entire list;
+        // if truncateAt < 0, hide all items if there are more than abs(truncateAt)
 
     constructor(code,name,truncateAt) {
         super(code,name);
@@ -569,7 +576,7 @@ class TruncatedSearcher extends Searcher {
 
         let firstItems = "";
         let moreItems = "";
-        if (this.foundItems.length > this.truncateAt) {
+        if (this.truncateAt > 0 && this.foundItems.length > this.truncateAt) {
             firstItems = this.renderItems(0,this.truncateAt - 1);
             let moreItemsBody = this.renderItems(this.truncateAt - 1);
             moreItems = ` 
@@ -582,15 +589,51 @@ class TruncatedSearcher extends Searcher {
             firstItems = this.renderItems();
         }
         
+        let hideAll = this.truncateAt <= 0 && this.foundItems.length > -this.truncateAt;
+        let squareSymbol = hideAll ? "plus" : "minus";
+        let hideCode = hideAll ? ` style="display:none"` : "";
+
         return ` 
         <div class="${this.divClass}" id="results-${this.code}">
-        <h3><a><i class="fa fa-minus-square toggle-view" id="${resultsId}"></i></a> ${this.foundItemsHeader()}</h3>
-        <div id="${resultsId}.b">
+        <h3><a><i class="fa fa-${squareSymbol}-square toggle-view" id="${resultsId}"></i></a> ${this.foundItemsHeader()}</h3>
+        <div id="${resultsId}.b"${hideCode}>
         ${firstItems} 
         ${moreItems}
         </div>
         </div>
         `;
+    }
+}
+
+class SessionSearcher extends TruncatedSearcher {
+    // Searcher for sessions. Groups sessions by event and displays the event after each group.
+    code = "s"; // a one-letter code to identify the search.
+    name = "session"; // the name of the search, e.g. "Tag"
+    plural = "sessions"; // the plural name of the search.
+    truncateAt = -4;
+    eventHtml; // The html code to display after each event group
+
+    loadItemsFomDatabase(database) {
+        // Called after SearchDatabase.json is loaded to prepare for searching
+        super.loadItemsFomDatabase(database);
+        this.eventHtml = database.searches[this.code].eventHtml;
+    }
+
+    renderItems(startItem = 0,endItem = null) {
+        if (endItem === null)
+            endItem = undefined;
+        let prevEvent = this.foundItems[startItem].event;
+        let rendered = [];
+        for (let item of this.foundItems.slice(startItem,endItem)) {
+            if (item.event !== prevEvent) {
+                rendered.push(this.eventHtml[prevEvent]);
+                prevEvent = item.event;
+            }
+            rendered.push(this.prefix + this.query.displayMatchesInBold(item.html) + this.suffix);
+        }
+        rendered.push(this.eventHtml[prevEvent]);
+
+        return rendered.join(this.separator);
     }
 }
 
@@ -838,6 +881,11 @@ function searchButtonClick(searchKind) {
 }
 
 let gSearchDatabase = null; // The global search database, loaded from assets/SearchDatabase.json
+
+let gTextSearcher = new TruncatedSearcher("p","text",8);
+gTextSearcher.nameInResults = "Sutta and Vinaya texts";
+let gAllTextSearcher = new TruncatedSearcher("p","text",-2);
+gAllTextSearcher.nameInResults = "Sutta and Vinaya texts";
 export let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",
@@ -853,6 +901,14 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("g","tag",5),
         new TruncatedSearcher("t","teacher",5),
         new TruncatedSearcher("e","event",3),
-        new ExcerptSearcher()
-    )
+        new SessionSearcher(),
+        gAllTextSearcher,
+        new TruncatedSearcher("o","book",-2),
+        new ExcerptSearcher(),
+    ),
+    "ref": new MultiSearcher("ref",
+        gTextSearcher,
+        new TruncatedSearcher("o","book",8),
+        new TruncatedSearcher("a","author",4),
+    ),
 };

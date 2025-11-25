@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
-import os, re
+import os, re, argparse, json
 import Utils, Alert, Link, FileRegister
 from typing import Iterable
+import BuildReferences
 
 def MoveItemsIfNeeded(items: Iterable[dict]) -> tuple[int,int,int]:
     """Move items to/from the xxxNoUpload directories as needed. 
@@ -53,6 +54,16 @@ def MoveItemsIn(items: list[dict]|dict[dict],name: str) -> None:
     if movedToDir or movedToNoUpload or otherFilesMoved:
         Alert.extra(f"Moved {movedToDir} {name}(s) to usual directory; moved {movedToNoUpload} {name}(s) and {otherFilesMoved} other file(s) to NoUpload directory.")
 
+def MinifyDatabases(minify: bool) -> None:
+    """Remove spacing from databases read by Javascript. minify = False restores default spacing."""
+    for databaseFile in ["SearchDatabase.json","AutoCompleteDatabase.json","FeaturedDatabase.json"]:
+        databaseFile = Utils.PosixJoin("pages/assets",databaseFile)
+
+        with open(databaseFile, 'r', encoding='utf-8') as file:
+            database = json.load(file)
+        with open(databaseFile, 'w', encoding='utf-8') as file:
+            json.dump(database,file,ensure_ascii=False,indent = None if minify else 2)
+
 def CheckJavascriptFiles() -> None:
     "Print cautions if debug flags are set in .js files."
 
@@ -87,6 +98,7 @@ def CheckPreviousVersionFiles() -> None:
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
+    parser.add_argument('--minifyDatabases',action=argparse.BooleanOptionalAction,help="Remove spaces from database files.")
     pass
 
 def ParseArguments() -> None:
@@ -104,7 +116,13 @@ def main() -> None:
     MoveItemsIn(gDatabase["excerpts"],"excerpt mp3")
     MoveItemsIn(gDatabase["reference"],"reference")
 
+    if gOptions.minifyDatabases is not None:
+        MinifyDatabases(gOptions.minifyDatabases)
+
     if gOptions.uploadMirror != "preview":
         CheckJavascriptFiles()
         CheckPreviousVersionFiles()
+    
+    if BuildReferences.gReferencesChanged:
+        Alert.warning("References have changed. Run Render again before uploading.")
     

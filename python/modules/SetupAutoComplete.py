@@ -8,6 +8,7 @@ import Utils, Alert, Database
 from typing import TypedDict, Iterable
 from Build import FA_STAR, RemoveLanguageTag, HtmlIcon
 from ParseCSV import TagFlag
+import BuildReferences, Suttaplex
 from bs4 import BeautifulSoup
 
 
@@ -173,6 +174,31 @@ def AboutEntries() -> Iterable[AutoCompleteEntry]:
         text = option.get_text().strip()
         if text != "Technical":
             yield Entry("About: " + text,filePath,icon="text")
+
+def TextEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield an entry for each about text (Sutta or Vinaya) referenced."
+    
+    yield Entry("Sutta references","texts/Sutta.html",icon="DhammaWheel.png")
+    yield Entry("Vinaya references","texts/Vinaya.html",icon="DhammaWheel.png")
+    BuildReferences.ReadReferenceDatabase()
+    for text,textData in BuildReferences.gSavedReferences["text"].items():
+        if re.search(r"[0-9]$",text): # Remove root text links
+            uid = BuildReferences.TextReference.FromString(text).Uid()
+            paliTitle = Suttaplex.Title(uid,translated=False)
+            title = Suttaplex.Title(uid)
+            combinedTitle = f"{text}: {paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
+            yield Entry(combinedTitle,textData["link"],icon="DhammaWheel.png",excerptCount=textData["count"])
+
+def BookEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield an entry for each about book referenced."
+    
+    yield Entry("Commentary references","books/Commentary.html",icon="book-open")
+    yield Entry("Modern book references","books/Modern.html",icon="book-open")
+    BuildReferences.ReadReferenceDatabase()
+    for book,bookData in BuildReferences.gSavedReferences["book"].items():
+        reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
+        title = re.sub(r'["“”]',"",reference.TextTitle())
+        yield Entry(title,bookData["link"],icon="book-open",excerptCount=bookData["count"])
     
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -190,7 +216,7 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 
 def main() -> None:
     entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),
-                    EventEntries(),TeacherEntries(),CategoryEntries(),AboutEntries()]
+                    EventEntries(),TeacherEntries(),CategoryEntries(),AboutEntries(),TextEntries(),BookEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     characters = set()

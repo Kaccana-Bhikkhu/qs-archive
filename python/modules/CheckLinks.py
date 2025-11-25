@@ -9,11 +9,12 @@ import Utils, Alert, Link
 from typing import NamedTuple, Iterable
 from bs4 import BeautifulSoup
 import urllib.error, urllib.parse
+from collections import defaultdict
+import itertools
 
 class UrlInfo(NamedTuple):
     """Information about a given URL."""
     good: bool              # Can we read the URL?
-    bookmarks: list[str]    # A list of linkable items
 
 gCheckedUrl:dict[str,UrlInfo] = {}
 """Dictionary of urls we have checked already."""
@@ -35,8 +36,11 @@ def ScanPageForLinks(url: str) -> list[str]:
 
         linkItems = soup.find_all("a")
         srcItems = soup.find_all(src=True)
-        urls = [linkItem.get("href") for linkItem in linkItems] + [srcItem.get("src") for srcItem in srcItems]
-        for link in urls:
+        for link in itertools.chain(
+            (linkItem.get("href") for linkItem in linkItems),
+            (linkItem.get("data-alt-href") for linkItem in linkItems if "data-alt-href" in linkItem.attrs),
+            (srcItem.get("src") for srcItem in srcItems)
+        ):
             if link.startswith(uploadMirrorUrl):
                 urlsToCheck.add(link.replace(uploadMirrorUrl,gOptions.mirrorUrl["local"]))
                 continue
@@ -69,44 +73,72 @@ def CheckFileCase(posixPath: str):
             print("disk:",r)
             return
 
-def CheckUrl(url:str) -> UrlInfo:
+def CheckUrl(linkTo:str,linkFrom: list[str],bookmarksToPage: list[str]) -> UrlInfo:
     """Check a URL if we haven't already done so."""
-    if url in gCheckedUrl:
-        return gCheckedUrl[url]
+    if linkTo in gCheckedUrl:
+        return gCheckedUrl[linkTo]
     
-    parsed = urllib.parse.urlparse(url)
+    parsed = urllib.parse.urlparse(linkTo)
     htmlFile = parsed.path.lower().endswith(".html")
-    fragmentToCheck = parsed.fragment
-    if fragmentToCheck == "_keep_scroll":
-        fragmentToCheck = ""
-    url = urllib.parse.urlunparse(parsed._replace(fragment=""))
 
     try:
-        if not Utils.RemoteURL(url):
-            CheckFileCase(url)
-        with Utils.OpenUrlOrFile(url) as page:
-            if htmlFile and fragmentToCheck:
+        if not Utils.RemoteURL(linkTo):
+            CheckFileCase(linkTo)
+        with Utils.OpenUrlOrFile(linkTo) as page:
+            if htmlFile and bookmarksToPage:
                 soup = BeautifulSoup(page,"html.parser")
                 idItems = soup.find_all(id=True)
                 bookmarks = set(item.get("id") for item in idItems)
-                if fragmentToCheck not in bookmarks:
-                    Alert.warning("Cannot find bookmark","#" + fragmentToCheck,"in",url)
-                result = UrlInfo(good=True,bookmarks=bookmarks)
+                for bookmarkToCheck in bookmarksToPage:
+                    if bookmarkToCheck not in bookmarks:
+                        Alert.warning("Cannot find bookmark","#" + bookmarkToCheck,"in",linkTo,"; linked from",linkFrom)
+                result = UrlInfo(good=True)
             else:
-                result = UrlInfo(good=True,bookmarks=[])
-            # Alert.info("Successfully opended",url)
+                result = UrlInfo(good=True)
+            Alert.debug("Successfully opended",linkTo)
     except (OSError,urllib.error.HTTPError) as error:
-        Alert.warning("Error",error,"when trying to access",url)
-        result = UrlInfo(good=False,bookmarks=[])
+        Alert.warning("Error",error,"when trying to access",linkTo,"; linked from",linkFrom)
+        result = UrlInfo(good=False)
     
-    gCheckedUrl[url] = result
+    gCheckedUrl[linkTo] = result
     return result
 
-def CheckUrls(urls: Iterable[str]) -> None:
+class LinkInfo:
+    linkFrom: list[str]
+    bookmarks: list[str]
+
+    def __init__(self):
+        self.linkFrom = []
+        self.bookmarks = []
+
+    def Append(self,linkFrom: str,bookmark: str) -> None:
+        Utils.ExtendUnique(self.linkFrom,linkFrom)
+        if bookmark and bookmark not in self.bookmarks:
+            self.bookmarks.append(bookmark)
+
+def CheckUrls(urls: dict[str,list[str]]) -> None:
     """Check a list of urls to see if they are valid."""
+    urlsWithBookmarks = defaultdict(LinkInfo)
+    for linkTo,linkFrom in urls.items():
+        parsed = urllib.parse.urlparse(linkTo)
+        bookmark = parsed.fragment
+        if bookmark == "_keep_scroll":
+            bookmark = ""
+        linkTo = urllib.parse.urlunparse(parsed._replace(fragment=""))
+        urlsWithBookmarks[linkTo].Append(linkFrom,bookmark)
+
     with Utils.ConditionalThreader() as pool:
-        for url in urls:
-            pool.submit(CheckUrl,url)
+        for linkTo,linkInfo in urlsWithBookmarks.items():
+            pool.submit(CheckUrl,linkTo,linkInfo.linkFrom,linkInfo.bookmarks)
+
+def CheckLinksInPages(pages: Iterable[str]) -> None:
+    urlsToCheck = defaultdict(list)
+    for page in pages:
+        for link in ScanPageForLinks(page):
+            urlsToCheck[link].append(page)
+    
+    Alert.info(len(urlsToCheck),"urls to check.")
+    CheckUrls(urlsToCheck)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
@@ -127,29 +159,21 @@ def main() -> None:
     aboutUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"about")) if filename.lower().endswith(".html")]
     aboutUrls = [Utils.PosixJoin(gOptions.pagesDir,"homepage.html")] + \
         [Utils.PosixJoin(gOptions.pagesDir,"about",filename) for filename in aboutUrls]
-    urlsToCheck = set()
-    for url in aboutUrls:
-        urlsToCheck.update(ScanPageForLinks(url))
-    
-    Alert.info(len(urlsToCheck),"urls to check.")
-    CheckUrls(urlsToCheck)
+    CheckLinksInPages(aboutUrls)
 
     Alert.info("Checking dispatch pages...")
     dispatchUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"dispatch")) if filename.lower().endswith(".html")]
     dispatchUrls = [Utils.PosixJoin(gOptions.pagesDir,"dispatch",filename) for filename in dispatchUrls]
-    urlsToCheck = set()
-    for url in dispatchUrls:
-        urlsToCheck.update(ScanPageForLinks(url))
-    
-    Alert.info(len(urlsToCheck),"urls to check.")
-    CheckUrls(urlsToCheck)
+    CheckLinksInPages(dispatchUrls)
+
+    Alert.info("Checking extra book links...")
+    bookUrls = defaultdict(list)
+    for book in gDatabase["reference"].values():
+        if book["otherUrl"]:
+            bookUrls[book["otherUrl"]].append(book["abbreviation"])
+    Alert.info(len(bookUrls),"urls to check.")
+    CheckUrls(bookUrls)
 
     Alert.info("Checking event pages...")
-    eventUrls = GetEventLinks()
-    urlsToCheck = set()
-    for url in eventUrls:
-        urlsToCheck.update(ScanPageForLinks(url))
-    
-    Alert.info(len(urlsToCheck),"urls to check.")
-    CheckUrls(urlsToCheck)
+    CheckLinksInPages(GetEventLinks())
     

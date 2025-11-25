@@ -5,7 +5,6 @@ let durationTitle = audioTitle.querySelector("span");
 const playBar = audioPlayer.querySelector("input[type=range]");
 /** @type {HTMLAudioElement} */
 let currentlyPlaying = null;
-let actionScheduled = false;
 let playerTimeout;
 
 globalThis.playlist = [];
@@ -38,7 +37,7 @@ const playAudio = (title, audio, onPlaylist = false) => {
 		currentlyPlaying.currentTime = 0;
 	}
 	currentlyPlaying = audio;
-	if (playerTimeout !== null) clearTimeout(playerTimeout)
+	if (playerTimeout !== null) clearTimeout(playerTimeout);
 	audio.play();
 
 	playBar.max = duration;
@@ -55,7 +54,7 @@ const closePlayer = () => {
 };
 
 playBar.addEventListener("change", () => {
-	actionScheduled = false;
+	clearTimeout(playerTimeout);
 	currentlyPlaying.currentTime = playBar.value;
 	if (currentlyPlaying.wasPlaying)
 		currentlyPlaying.play();
@@ -65,7 +64,7 @@ playBar.addEventListener("change", () => {
 	)}`;
 });
 playBar.addEventListener("input", () => {
-	actionScheduled = false;
+	clearTimeout(playerTimeout);
 	if (currentlyPlaying.wasPlaying === undefined)
 		currentlyPlaying.wasPlaying = !currentlyPlaying.paused;
 	currentlyPlaying.pause();
@@ -75,7 +74,7 @@ playBar.addEventListener("input", () => {
 });
 
 playButton.addEventListener("click", () => {
-	actionScheduled = false;
+	clearTimeout(playerTimeout);
 	playButton.classList.toggle("playing");
 	currentlyPlaying.paused ? currentlyPlaying.play() : currentlyPlaying.pause();
 });
@@ -84,12 +83,13 @@ setInterval(() => {
 	if (currentlyPlaying !== null) {
 		let currentTime = Math.round(currentlyPlaying.currentTime);
 		let duration = Math.round(currentlyPlaying.duration);
+
 		if (!currentlyPlaying.paused) {
 			playBar.value = currentTime;
 			durationTitle.innerText = `${time(currentTime)} / ${time(duration)}`;
 		}
 
-		if (currentTime === duration) {
+		if (currentlyPlaying.ended) {
 			playButton.classList.remove("playing");
 			currentlyPlaying.pause();
 			currentlyPlaying.currentTime = 0;
@@ -97,17 +97,13 @@ setInterval(() => {
 
 			debugLog("player finished.", playlist);
 			if (playlist.length === 0) {
-				actionScheduled = true;
-				playerTimeout = setTimeout(() => {
-					if (actionScheduled) closePlayer();
-				}, 10_000);
+				playerTimeout = setTimeout(closePlayer,10_000);
 			} else {
 				debugLog("going to next on playlist");
-				actionScheduled = true;
-				setTimeout(
+				playerTimeout = setTimeout(
 					() => {
-						if (actionScheduled) playlist.shift()?.play(true);
-          },
+						playlist.shift()?.play(true);
+          			},
 					1_000,
 				);
 			}

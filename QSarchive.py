@@ -14,7 +14,7 @@ scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
 sys.path.append(os.path.join(scriptDir,'python/modules')) # Look for modules in these subdirectories of the directory containing QAarchive.py
 sys.path.append(os.path.join(scriptDir,'python/utils'))
 
-import Utils, Alert, Filter, Database, Document
+import Utils, Alert, Filter, Database, Document, BuildReferences
 Alert.ObjectPrinter = Database.ItemRepr
 
 def PrintModuleSeparator(moduleName:str) -> None:
@@ -211,7 +211,7 @@ Alert.Debugging(clOptions.debug)
 for mod in modules.values():
     mod.gOptions = clOptions
         # Let each module access all arguments
-utilityModules = [Utils,Database,Document,Filter]
+utilityModules = [Utils,Database,Document,Filter,BuildReferences]
 for mod in utilityModules:
     mod.gOptions = clOptions
 

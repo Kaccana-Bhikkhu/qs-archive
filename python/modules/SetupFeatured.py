@@ -7,7 +7,7 @@ import os, json, datetime, re
 from datetime import timedelta
 import random
 from difflib import SequenceMatcher
-from typing import Callable, TypedDict, NotRequired
+from typing import Callable, TypedDict
 import Utils, Alert, Build, Filter, Database
 from copy import copy
 import Filter
@@ -19,7 +19,7 @@ SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
       text: str             # Text of the excerpt; used to identify this excerpt when its code changes
       fTags: list[str]      # The excerpt's fTags
-      oldFTags: NotRequired[list[str]]
+      oldFTags: list[str]
                             # fTags that were applied to this excerpt in the past.
       shortHtml: str        # Html code to render on the homepage
       html: str             # Html code to render on the daily featured excerpts page

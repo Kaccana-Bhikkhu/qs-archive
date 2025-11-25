@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import os, sys, json, re
 from collections import Counter
-from typing import TypedDict, NotRequired, Callable
+from typing import TypedDict, Callable
 from functools import lru_cache
 import Alert
 
@@ -108,7 +108,7 @@ def DoubleReferenceDNSuttas() -> None:
 
 class SuttaIndexEntry(TypedDict):
     uid: str
-    mark: NotRequired[str]
+    mark: str
 
 def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True) -> dict[str,SuttaIndexEntry]:
     """Returns an index of references to the suttas in a given text.
@@ -186,19 +186,115 @@ def TranslatorDict(textUid:str) -> dict[str,list[str]]:
     
     return returnDict
 
+def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str = "."):
+    """A utility function that returns strings of the form 'n0.n1.n2'.
+    numbers: the list of numbers to print.
+    printCount: print this many numbers; if omitted, set to len(numbers).
+    filler: if printCount > len(numbers), add filler at the end.
+    separator: the separator character between numbers."""
+
+    if printCount is None:
+        printCount = len(numbers)
+    strings = [str(n) for n in numbers]
+    if len(strings) < printCount:
+        strings += (printCount - len(strings)) * [str(filler)]
+    return separator.join(strings)
+
+def PreferredTranslator(textUid:str,refNumbers:list[int],silentFail = False) -> str:
+    """Return the preferred translator for the whole sutta specified by textUid and refNumbers."""
+
+    textUid = textUid.lower()
+    translatorDict = TranslatorDict(textUid)
+    suttaUid = textUid + DotRef(refNumbers)
+    availableTranslations = translatorDict.get(suttaUid,None)
+
+    if not availableTranslations:
+        spanUid = InterpolatedSuttaDict(textUid).get(suttaUid)
+        if spanUid:
+            availableTranslations = translatorDict.get(spanUid,None)
+        if availableTranslations:
+            if "sujato" in availableTranslations:
+                return "sujato"
+            else:
+                return availableTranslations[0]
+        else:
+            if not silentFail:
+                Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
+            return ""
+    elif "bodhi" in availableTranslations:
+        return "bodhi"
+    else:
+        return availableTranslations[0]
+    
+def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
+    """Returns whether this text exists on SuttaCentral."""
+    return bool(PreferredTranslator(textUid,refNumbers))
+class SuttaTitle(TypedDict):
+    original_title: str
+    translated_title: str
+
+def ParseUid(uid: str) -> tuple[str,tuple[int,int]]:
+    """Parse a uid into its text and number(s)."""
+
+    match = re.match(r"([a-zA-Z]+)([0-9]+)?(?:[.:]([0-9]+))?",uid)
+    if match:
+        numbers = tuple(int(match[n]) for n in range(2,4) if match[n])
+        return match[1],numbers
+    else:
+        return "",()
+
+@CacheJsonFile("sutta/suttaplex/title")
+@lru_cache(maxsize=None)
+def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
+    """Return the dict {suttaUid:SuttaTitle} for a given textUid."""
+    suttaplex = RawSuttaplex(textUid)
+    returnDict:dict[str,SuttaTitle] = {}
+
+    def ProcessTitle(title: str) -> str:
+        title = title.strip()
+        title = re.sub(r"^[0-9]+\.?","",title)
+        return title.strip()
+
+    for sutta in suttaplex:
+        textUid,numbers = ParseUid(sutta["uid"])
+        prefTrans = numbers and PreferredTranslator(textUid,numbers,silentFail=True)
+        if prefTrans and prefTrans != "sujato":
+            for translation in sutta.get("translations",()):
+                if translation.get("author_uid") == prefTrans and "title" in translation:
+                    returnDict[sutta["uid"]] = SuttaTitle(original_title=ProcessTitle(sutta["original_title"]),
+                                                  translated_title=ProcessTitle(translation["title"]))
+                    break
+        if sutta["uid"] not in returnDict and sutta.get("original_title") and sutta.get("translated_title"):
+            returnDict[sutta["uid"]] = SuttaTitle(original_title=ProcessTitle(sutta["original_title"]),
+                                                  translated_title=ProcessTitle(sutta["translated_title"]))
+    
+    return returnDict
+
+def Title(suttaUid:str,translated:bool = True) -> str:
+    """Return the title of this sutta. Return '' if it cannot be found."""
+    baseUid = re.match(r"[a-z-]*",suttaUid)[0]
+    if not baseUid:
+        return ""
+    
+    titles = TitleDict(baseUid).get(suttaUid)
+    if titles:
+        return titles['translated_title'] if translated else titles['original_title']
+    else:
+        return ""
+
 @CacheJsonFile("sutta/suttaplex/interpolated")
 @lru_cache(maxsize=None)
-def InterpolatedTranslatorDict(textUid:str) -> dict[str,list[str]]:
-    """Create a translation dict containing interpolated sutta references:
+def InterpolatedSuttaDict(textUid:str) -> dict[str,list[str]]:
+    """Create a dict containing interpolated sutta references:
     e.g. 'an1.1-10' becomes 'an1.1', 'an1.2', ... , 'an1.10'."""
 
     translatorDict = TranslatorDict(textUid)
     returnDict = {}
-    for suttaUid,translators in translatorDict.items():
+    for suttaUid in translatorDict:
         m = re.match("(.*?)([0-9]+)-([0-9]+)$",suttaUid)
         if m:
             for suttaNumber in range(int(m[2]),int(m[3]) + 1):
-                returnDict[f"{m[1]}{suttaNumber}"] = translators
+                returnDict[f"{m[1]}{suttaNumber}"] = suttaUid
     
     return returnDict
 

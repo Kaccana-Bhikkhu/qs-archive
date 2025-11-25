@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Vinaya – The Ajahn Pasanno Archive">
+<meta name="keywords" content="">
+<meta name="author" content="Abhayagiri Buddhist Monastery">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinaya</title>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+
+<style id="noscript-style-block">
+    .noscript-show {
+        display: block !important;
+    }
+    .noscript-hide {
+        display: none !important;
+    }
+    .hide-self {
+        display: none !important;
+    }
+</style>
+</head>
+<body>
+  <script>
+    const agent = window.navigator.userAgent;
+    const botUsers = ['googlebot','bingbot','linkedinbot','duckduckbot','mediapartners-google','lighthouse','insights'];
+    let isBotUserAgent = false;
+    for (bot of botUsers){
+      if (agent.toLowerCase().indexOf(bot.toLowerCase()) !== -1){
+        isBotUserAgent = true;
+        break;
+      }
+    }
+
+    url = new URL(location.href)
+    if (url.protocol != "file:" && !isBotUserAgent) {
+      location.replace("../index.html#texts/Vinaya.html" + url.search + url.hash);
+    }
+  </script>
+
+    <div class="sublink hide-thin-screen-1 noscript-show">
+      <a href="../texts/Sutta.html#_keep_scroll">Sutta</a>
+      <a href="../texts/Vinaya.html#_keep_scroll" class="active">Vinaya</a>
+      <a href="../books/Commentary.html#_keep_scroll">Commentary</a>
+      <a href="../books/Modern.html#_keep_scroll">Modern</a>
+    </div>
+
+    <div class="title" id="page-title"><img src="../images/icons/DhammaWheel.png"> References – Vinaya
+    </div>
+
+  <div class="main">
+  Vinaya
+<hr>
+<div class="listing">
+  <p id="bupj"><a href="../texts/BuPj.html">Bhikkhu Pārājikā </a> (2)</p>
+  
+  <p id="buss"><a href="../texts/BuSs.html">Bhikkhu Saṅghādisesā </a> (2)</p>
+  
+  <p id="kd"><a href="../texts/Kd.html">Khandhaka </a> (26)</p>
+  
+</div>
+  </div>
+
+</body>
+</html>

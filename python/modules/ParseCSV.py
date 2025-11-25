@@ -46,6 +46,7 @@ class ExcerptFlag(StrEnum):
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
     END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
+    NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
@@ -817,7 +818,9 @@ def FinalizeExcerptTags(x: dict) -> None:
     x["tags"] = x["qTag"] + x["aTag"]
     x["qTagCount"] = len(x["qTag"])
     if len(x["fTagOrder"]) != len(x["fTags"]):
-        Alert.caution(x,f"has {len(x['fTags'])} fTags but specifies {len(x['fTagOrder'])} fTagOrder numbers.")
+        Alert.warning(x,f"has {len(x['fTags'])} fTags but specifies {len(x['fTagOrder'])} fTagOrder numbers. Will fill with 1001E.")
+        x["fTagOrder"] = x["fTagOrder"][:len(x["fTags"])] + ([1001] * (len(x["fTags"]) - len(x["fTagOrder"])))
+        x["fTagOrderFlags"] = x["fTagOrderFlags"][:len(x["fTags"])] + ("E" * (len(x["fTags"]) - len(x["fTagOrderFlags"])))
 
     if not gOptions.jsonNoClean:
         del x["qTag"]
@@ -1118,7 +1121,8 @@ def CreateClips(excerpts: list[dict], sessions: list[dict], database: dict) -> N
                 session = Database.FindSession(sessions,x["event"],x["sessionNumber"])
                 x["duration"] = session["duration"]
                 if not x["duration"]:
-                    Alert.error("Deleting session excerpt",x,"since the session has no duration.")
+                    if not x["exclude"]:
+                        Alert.error("Deleting session excerpt",x,"since the session has no duration.")
                     deletedExcerptIDs.add(id(x))
                 continue
             
@@ -1293,6 +1297,7 @@ def LoadEventFile(database,eventName,directory):
         Utils.ReorderKeys(s,["event","sessionNumber"])
         RemoveUnknownTeachers(s["teachers"],s)
 
+    originalSessionCount = len(sessions)
     if not gOptions.ignoreExcludes:
         sessions = FilterAndExplain(sessions,lambda s: not s["exclude"],excludeAlert,"- exclude flag Yes.")
         # Remove excluded sessions
@@ -1304,6 +1309,9 @@ def LoadEventFile(database,eventName,directory):
     sessions = FilterAndExplain(sessions,lambda s: TeacherConsent(database["teacher"],s["teachers"],"indexSessions",singleConsentOK=True),excludeAlert,"due to teacher consent.")
         # Remove sessions if none of the session teachers have given consent
     database["sessions"] += sessions
+
+    global gRemovedSessions
+    gRemovedSessions += originalSessionCount - len(sessions)
 
     # Convert ? characters to numbers indicating draft fTags
     for x in rawExcerpts:
@@ -1637,11 +1645,12 @@ def Initialize() -> None:
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
+gRemovedSessions = 0
 gRemovedExcerpts = 0 # Count the total number of removed excerpts
 gRemovedAnnotations = 0
 
 # AlertClass for explanations of excluded excerpts. Don't show by default.
-excludeAlert = Alert.AlertClass("Exclude","Exclude",printAtVerbosity=999,logging = False,lineSpacing = 1)
+excludeAlert = Alert.AlertClass("Exclude","Exclude",printAtVerbosity=999,lineSpacing = 1)
 
 def main():
     """ Parse a directory full of csv files into the dictionary database and write it to a .json file.
@@ -1652,7 +1661,7 @@ def main():
     LoadSummary(gDatabase,os.path.join(gOptions.csvDir,"Summary.csv"))
    
     specialFiles = {'Summary','Tag','EventTemplate'}
-    for fileName in os.listdir(gOptions.csvDir):
+    for fileName in sorted(os.listdir(gOptions.csvDir)):
         fullPath = os.path.join(gOptions.csvDir,fileName)
         if not os.path.isfile(fullPath):
             continue
@@ -1689,7 +1698,7 @@ def main():
             if not event.startswith("Test") or gOptions.includeTestEvent:
                 LoadEventFile(gDatabase,event,gOptions.csvDir)
     ListifyKey(gDatabase["event"],"series")
-    excludeAlert(f": {gRemovedExcerpts} excerpts and {gRemovedAnnotations} annotations in all.")
+    excludeAlert(f": {gRemovedSessions} sessions, {gRemovedExcerpts} excerpts, and {gRemovedAnnotations} annotations in all.")
     gUnattributedTeachers.pop("Anon",None)
     if gUnattributedTeachers:
         excludeAlert(f": Did not attribute excerpts to the following {len(gUnattributedTeachers)} teachers:",dict(gUnattributedTeachers))

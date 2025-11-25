@@ -264,7 +264,12 @@ def CheckAttributions() -> None:
                 Alert.caution(item,"takes teachers but does not have any.")
 
 def CheckTags() -> None:
-    """Raise a caution if there are unsorted tags."""
+    """Check that all items expecting tags have them. Raise a caution if there are unsorted tags."""
+    for x in gDatabase["excerpts"]:
+        for item in Filter.AllItems(x):
+            if gDatabase["kind"][item["kind"]]["expectsTags"] and not item.get("tags") and ParseCSV.ExcerptFlag.NO_TAGS not in item["flags"]:
+                Alert.notice(item,"expects tags but doesn't have any.")
+
     unsortedTags = gDatabase["tag"].get("New unsorted tags",None)
     if unsortedTags:
         Alert.caution("There are",len(unsortedTags["subtags"]),"unsorted tags:",unsortedTags["subtags"])
@@ -394,6 +399,22 @@ def NeedsAudioEditing() -> None:
             print(f"   Break points: {', '.join(['start'] + splitPoints[1:] + ['end'])}.")
         print()
 
+def CheckReferences():
+    """Check for problems with the references."""
+    authorDict = defaultdict(list)
+
+    for book in gDatabase["reference"].values():
+        for author in book["author"]:
+            authorDict[author].append(book)
+    
+    for author,books in authorDict.items():
+        if len(books) < 2:
+            continue
+        dateless = [b["abbreviation"] for b in books if not b["year"]]
+        if dateless:
+            Alert.caution("The following books by",author,"need dates for proper sorting:",dateless)
+
+
 def DumpCSV(directory:str) -> None:
     "Write a summary of gDatabase to csv files in directory."
 
@@ -434,6 +455,7 @@ def main() -> None:
     CheckFTagOrder()
     LogReviewedFTags()
     NeedsAudioEditing()
+    CheckReferences()
 
     if gOptions.dumpCSV:
         DumpCSV(gOptions.dumpCSV)

@@ -4,11 +4,12 @@
 from __future__ import annotations
 
 import os, json, re
-import Database, SetupFeatured
+import Database, BuildReferences, Suttaplex
 import Utils, Alert, ParseCSV, Build, Filter
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
+from collections import Counter
 from SetupFeatured import FeaturedExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
@@ -201,7 +202,7 @@ def SubtopicBlobs() -> Iterator[dict]:
         htmlParts = [
             Build.HtmlIcon("Cluster.png"),
             Build.HtmlSubtopicLink(subtopic),
-            f"({s["excerptCount"]})"
+            f"({s['excerptCount']})"
         ]
         if s["pali"]:
             htmlParts.insert(2,f"({s['pali']})")
@@ -289,7 +290,7 @@ def EventBlobs() -> Iterator[dict]:
         if not listedTeachers:
             listedTeachers = event["teachers"]
 
-        tagString = "".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
+        tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
 
         lines = [
             Build.HtmlIcon("calendar") + " " + f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
@@ -300,6 +301,121 @@ def EventBlobs() -> Iterator[dict]:
             "blobs": [EventBlob(event,listedTeachers)],
             "html": "<br>".join(lines)
         } 
+
+def SessionBlob(session: dict[str]) -> str:
+    """Return a search blob for this session."""
+
+    bits = [
+        Enclose(Blobify([session["sessionTitle"]]),"^"),
+        Enclose(Blobify(AllNames(session["teachers"])),"{}"),
+        Enclose(Blobify(session["tags"]),"[]"),
+        "|",
+        Enclose(Blobify([Database.ItemCode(session).replace("_","@")]),"@")
+    ]
+    return "".join(bits)
+
+def SessionBlobs() -> Iterator[dict]:
+    """Return a blob for each session."""
+    for session in gDatabase["sessions"]:
+        tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in session["tags"])
+        if session["teachers"]:
+            teacherList = " – " + Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in session["teachers"]]),lastJoinStr = " and ")
+        else:
+            teacherList = ""
+        title = session["sessionTitle"] or f"Session {session['sessionNumber'] or 1}"
+        title = Html.Tag("a",{"href":Database.EventLink(session["event"],session["sessionNumber"])})(title)
+
+        lines = [
+            Build.HtmlIcon("Cushion-black.png") + f" {title}{teacherList} {tagString}",
+        ]
+
+        yield {
+            "blobs": [SessionBlob(session)],
+            "html": "<br>".join(lines),
+            "event": session["event"]
+        } 
+
+def SessionEventHtml() -> dict[str,str]:
+    """Return a dict of the event information to display after each group of sessions by event."""
+    returnValue = {}
+    for event in gDatabase["event"].values():
+        returnValue[event["code"]] = Html.Tag("p",{"class":"x-cite"})(Database.ItemCitation(event))
+    return returnValue
+
+def TextBlobs() -> Iterator[dict]:
+    """Return a blob for each text (sutta or vinaya reference)."""
+    BuildReferences.ReadReferenceDatabase()
+    for text,linkInfo in BuildReferences.gSavedReferences["text"].items():
+        reference = BuildReferences.TextReference.FromString(text)
+        uid = reference.Uid()
+        paliTitle = Suttaplex.Title(uid,False)
+        title = Suttaplex.Title(uid)
+        textName = Suttaplex.Title(reference.Truncate(1).Uid(),False)
+        textSearches = [text,paliTitle,title]
+        
+        if reference.n0:
+            linkedPart = f"{text}: {paliTitle}"
+            suffix = f", {title}"
+            textSearches.append(textName)
+        else:
+            linkedPart = f"{textName}"
+            suffix = f": {title}"
+        suffix += f" ({linkInfo['count']})"
+        htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
+        yield {
+            "blobs": [Enclose(Blobify(textSearches),"^")],
+            "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
+        }
+
+def BookBlobs() -> Iterator[dict]:
+    """Return a blob for each book."""
+    BuildReferences.ReadReferenceDatabase()
+
+    def SortTitle(bookName: str) -> str:
+        """Return the title string to sort this book by."""
+        return RawBlobify(gDatabase["reference"][bookName]["title"]).replace("'","")
+
+    bookRefs = sorted(BuildReferences.gSavedReferences["book"].items(),
+                      key = lambda item:SortTitle(item[0]))
+    for bookName,linkInfo in bookRefs:
+        reference = BuildReferences.BookReference.FromString(bookName)
+        book = gDatabase["reference"][bookName]
+        textSearches = [book["title"]]
+        if not reference.IsCommentary() and book["year"]:
+            textSearches.append(book["year"])
+        
+        linkedPart = reference.FullName(showYear = False)
+        suffix = f" ({linkInfo['count']})"
+        if book["author"]:
+            authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
+            suffix = f" by {Build.ItemList(authorNames,lastJoinStr = ' and ')}" + suffix
+            
+        htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
+        yield {
+            "blobs": [Enclose(Blobify(textSearches),"^") + 
+                      Enclose(Blobify(AllNames(book["author"])),"{}")],
+            "html": Build.HtmlIcon("book-open") + " " + htmlLink
+        }
+
+def AuthorBlobs() -> Iterator[dict]:
+    """Return a blob for each author (teacher credited with books)."""
+    BuildReferences.ReadReferenceDatabase()
+
+    bookCount = Counter()
+    for book in BuildReferences.gSavedReferences["book"]:
+        for author in gDatabase["reference"][book]["author"]:
+            bookCount[author] += 1
+
+    authorRecords = [gDatabase["teacher"][a] for a in BuildReferences.gSavedReferences["author"]]
+    alphabetizedAuthors = Build.AlphabetizedTeachers(authorRecords)
+
+    for name,authorInfo in alphabetizedAuthors:
+        author = authorInfo["teacher"]
+        htmlLink = Html.Tag("a",{"href":BuildReferences.ReferenceLink("author",author)})(name)
+        yield {
+            "blobs": [Enclose(Blobify(AllNames([author])),"{}")],
+            "html": Build.HtmlIcon("user") + " " + htmlLink + f" ({bookCount[author]})"
+        }
 
 def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Iterator[dict]) -> None:
     """Add the search (tags, teachers, etc.) to searchList.
@@ -340,6 +456,11 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"g","tag",TagBlobs())
     AddSearch(optimizedDB["searches"],"t","teacher",TeacherBlobs())
     AddSearch(optimizedDB["searches"],"e","event",EventBlobs())
+    AddSearch(optimizedDB["searches"],"s","session",SessionBlobs())
+    optimizedDB["searches"]["s"]["eventHtml"] = SessionEventHtml()
+    AddSearch(optimizedDB["searches"],"p","text",TextBlobs()) # p for Pali
+    AddSearch(optimizedDB["searches"],"o","book",BookBlobs()) # only letter available
+    AddSearch(optimizedDB["searches"],"a","author",AuthorBlobs())
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 

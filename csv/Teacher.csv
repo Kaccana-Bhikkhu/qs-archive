@@ -1,12 +1,13 @@
 Modified:,2025,2023,,,,,,,,
 Teacher,Full name,Attribution name,Index excerpts?,Index sessions?,Searchable?,Teacher page?,Attribute?,Allow tag?,Group,Lineage
-AbhSangha,Abhayagiri Saṅgha,,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
-AmSangha,Amaravati Saṅgha,,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
-WPNSangha,Wat Pah Nanachat Saṅgha,,Yes,Yes,Yes,No,Yes,Yes,Communities,Western disciples of Ajahn Chah
+AbhSangha,Abhayagiri Saṅgha,the Abhayagiri Saṅgha,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
+AmSangha,Amaravati Saṅgha,the Amaravati Saṅgha,Yes,Yes,Yes,Yes,Yes,Yes,Communities,Western disciples of Ajahn Chah
+WPNSangha,Wat Pah Nanachat Saṅgha,the Wat Pah Nanachat Saṅgha,Yes,Yes,Yes,No,Yes,Yes,Communities,Western disciples of Ajahn Chah
 ACSangha,Ajahn Chah Saṅgha,,Yes,Yes,Yes,No,Yes,Yes,Communities,Disciples of Ajahn Chah
 various,various authors,,Yes,Yes,Yes,No,Yes,No,Communities,Other
 ,,,,,,,,,,
 AMun,Ajahn Mun Bhūridatto,Ajahn Mun,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Root teachers
+AThate,Ajahn Thate Desaransi,Ajahn Thate,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Thai Forest teachers
 AChah,Ajahn Chah Subhaddo,Ajahn Chah,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Root teachers
 ALee,Ajahn Lee Dhammadharo,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Thai Forest teachers
 AMahaB,Ajahn Mahā Boowa Ñāṇasampanno,Ajahn Mahā Boowa,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Thai Forest teachers
@@ -16,13 +17,14 @@ CKUpali,Tan Chao Khun Upāli Guṇūpamājahn,Chao Khun Upāli,Yes,Yes,Yes,Yes,Y
 ADune,Ajahn Dune Atulo,Ajahn Dune,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Thai Forest teachers
 AGi,Ajahn Gi Dhammuttamo,Ajahn Gi,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Thai Forest teachers
 AJumnien,Ajahn Jumnien Sīlaseṭṭho,Ajahn Jumnien,Yes,Yes,Yes,No,Yes,Yes,Monastics,Other Thai Forest teachers
-,,,,,,,,,,
+AThoon,Ajahn Thoon Khippapañño,Ajahn Thoon,Yes,Yes,Yes,No,Yes,Yes,Monastics,Other Thai Forest teachers
 APannavaddho,Ajahn Paññāvaḍḍho,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Thai Forest teachers
 ,,,,,,,,,,
 ,,,,,,,,,,
 ,,,,,,,,,,
 Nyanatiloka,Venerable Ñāṇatiloka,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Theravāda teachers
 Nyanamoli,Bhikkhu Ñāṇamoli,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Theravāda teachers
+Nyanananda,Bhikkhu Ñāṇananda,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Theravāda teachers
 Nyanatusita,Bhikkhu Ñāṇatusita,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Other Theravāda teachers
 BBodhi,Bhikkhu Bodhi,,Pending,Pending,Yes,No,Yes,Yes,Monastics,Other Theravāda teachers
 UKee,Upasikā Kee Nanayon,,Yes,Yes,Yes,Yes,Yes,Yes,Lay teachers,
@@ -64,6 +66,7 @@ AA,Ajahn Amaro,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Cha
 ANyanadhammo,Ajahn Ñāṇadhammo,,Pending,Pending,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AJaya,Ajahn Jayasaro,,Pending,Pending,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AKaruniko,Ajahn Karuṇiko,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
+AChandako,Ajahn Chandako,,No,No,Yes,No,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 ASd,Ajahn Sudanto,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 AY,Ajahn Yatiko,,Yes,Yes,Yes,Yes,Yes,Pending,Monastics,Western disciples of Ajahn Chah
 AKd,Ajahn Karuṇadhammo,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
@@ -77,8 +80,8 @@ AKc,Ajahn Kaccāna,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Ch
 AThp,Ajahn Ṭhitapañño,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
 AKov,Ajahn Kovilo,,Yes,Pending,Pending,No,Yes,Pending,Monastics,Western disciples of Ajahn Chah
 APes,Ajahn Pesalo,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
-TKon,Tan Kondañño,,Pending,Pending,Pending,No,Yes,Pending,Monastics,Western disciples of Ajahn Chah
-TJag,Tan Jāgaro,,Pending,Pending,Pending,No,Yes,Pending,Monastics,Western disciples of Ajahn Chah
+TKon,Kondannyo Bhikkhu,,Yes,Yes,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
+TJag,Tan Jāgaro,,Yes,Yes,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
 AShj,Ajahn Suhajjo,,Yes,No,No,No,No,No,Monastics,Western disciples of Ajahn Chah
 AKha,Ajahn Khantiko,,Yes,No,No,No,No,No,Monastics,Western disciples of Ajahn Chah
 TGam,Tan Gambhīro,,Pending,No,Pending,No,Yes,No,Monastics,Western disciples of Ajahn Chah
@@ -91,9 +94,13 @@ TCandasaro,Tan Candasaro,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Aj
 ,,,,,,,,,,
 AJitindriya,Ajahn Jitindriyā,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 ASundara,Ajahn Sundarā,,Yes,Yes,Yes,Yes,Yes,Yes,Monastics,Western disciples of Ajahn Chah
-ACandasiri,Ajahn Candasirī,,Pending,No,Pending,No,Yes,Pending,Monastics,Western disciples of Ajahn Chah
+ACandasiri,Ajahn Candasirī,,Pending,No,Yes,No,Yes,Yes,Monastics,Western disciples of Ajahn Chah
 ACittapala,Ajahn Cittapālā,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
 SNanasiri,Sister Ñāṇasirī,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
+,,,,,,,,,,
+AnDeepa,Anagārikā Deepa,,Yes,No,Yes,No,Yes,No,Monastics,Western disciples of Ajahn Chah
+,,,,,,,,,,
+,,,,,,,,,,
 ,,,,,,,,,,
 AMahaprasert,Ajahn Mahā Prasert,,Pending,Pending,Yes,Pending,Yes,Yes,Monastics,Other Thai teachers
 ,,,,,,,,,,
@@ -128,7 +135,7 @@ NMeister,Nan Meister,,Yes,No,Yes,No,Yes,No,Lay supporters,
 ,,,,,,,,,,
 Sanghapala,Saṅghapāla board members,,Yes,Yes,Yes,No,Yes,Yes,Lay supporters,
 MLieberman,Marc Lieberman,,Yes,Yes,Yes,No,Yes,No,Lay supporters,
-SBarber,Susan Barber,,Pending,Pending,Yes,No,Pending,Pending,Lay supporters,
+SBarber,Susan Barber,,Yes,Yes,Yes,No,Yes,No,Lay supporters,
 FKral,Fred Kral,,Yes,Yes,Yes,No,Yes,No,Lay supporters,
 NBrewer,Noel Brewer,,Yes,Yes,Yes,No,Yes,No,Lay supporters,
 PMayland,Peter Mayland,,Yes,Yes,Yes,No,Yes,No,Lay supporters,
@@ -139,7 +146,7 @@ SHanna,Sol Hanna,,Yes,No,Yes,No,Yes,No,Lay teachers,
 ,,,,,,,,,,
 RHatha,Randula Haththotuwa,,Pending,No,Pending,No,Pending,No,Lay teachers,
 ,,,,,,,,,,
-,,,,,,,,,,
+KGjellerup,Karl Gjellerup,,No,No,Yes,No,Yes,Yes,Lay teachers,
 ,,,,,,,,,,
 ,,,,,,,,,,
 Anon,anonymous,,Yes,Yes,Yes,No,No,No,,

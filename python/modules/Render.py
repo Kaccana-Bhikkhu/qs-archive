@@ -15,6 +15,7 @@ import ParseCSV, Build, Utils, Alert, Link, Filter
 import Suttaplex
 import Html2 as Html
 import urllib.parse
+import BuildReferences
 
 def FStringToPyratemp(fString: str) -> str:
     """Convert a template in our psuedo-f string notation to a pyratemp template"""
@@ -324,7 +325,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
             if a["kind"] in ("Fragment","Main fragment"):
                 fragmentFileNumber += 1 # count fragments before this one
 
-        renderDict["player"] = f"[](player:{Database.ItemCode(event=container["event"],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
+        renderDict["player"] = f"[](player:{Database.ItemCode(event=container['event'],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
 
     item["body"] = bodyTemplate(**renderDict)
 
@@ -370,20 +371,6 @@ def RenderExcerpts() -> None:
                 AppendAnnotationToExcerpt(a,x)
 
 
-def DotRef(numbers: list[int],printCount:int = None,filler:int = 1,separator:str = "."):
-    """A utility function that returns strings of the form 'n0.n1.n2'.
-    numbers: the list of numbers to print.
-    printCount: print this many numbers; if omitted, set to len(numbers).
-    filler: if printCount > len(numbers), add filler at the end.
-    separator: the separator character between numbers."""
-
-    if printCount is None:
-        printCount = len(numbers)
-    strings = [str(n) for n in numbers]
-    if len(strings) < printCount:
-        strings += (printCount - len(strings)) * [str(filler)]
-    return separator.join(strings)
-
 class SCBookmark(NamedTuple):
     uid: str                # Sutta uid, e.g. 'mil6.3.10'
     hash: str               # Bookmark hash code, e.g. '#pts-vp-pli320'
@@ -412,34 +399,6 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
         # If suttaRef lacks the mark key, then mark is bookmark
 
-def PreferredTranslator(textUid:str,refNumbers:list[int]) -> str:
-    """Return the preferred translator for the whole sutta specified by textUid and refNumbers."""
-
-    textUid = textUid.lower()
-    translatorDict = Suttaplex.TranslatorDict(textUid)
-    suttaUid = textUid + DotRef(refNumbers)
-    availableTranslations = translatorDict.get(suttaUid,None)
-
-    if not availableTranslations:
-        interpolatedTranslators = Suttaplex.InterpolatedTranslatorDict(textUid)
-        availableTranslations = interpolatedTranslators.get(suttaUid,None)
-        if availableTranslations:
-            if "sujato" in availableTranslations:
-                return "sujato"
-            else:
-                return availableTranslations[0]
-        else:
-            Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
-            return ""
-    elif "bodhi" in availableTranslations:
-        return "bodhi"
-    else:
-        return availableTranslations[0]
-    
-def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
-    """Returns whether this text exists on SuttaCentral."""
-    return bool(PreferredTranslator(textUid,refNumbers))
-
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
     Then evaluate the template for that rule and return the link"""
@@ -451,10 +410,10 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
         "n1": matchObject[3],
         "n2": matchObject[4],
         "translator": matchObject[5],
-        "DotRef": DotRef,
+        "DotRef": Suttaplex.DotRef,
         "SCIndex": SCIndex,
-        "PreferredTranslator": PreferredTranslator,
-        "ExistsOnSC": ExistsOnSC
+        "PreferredTranslator": Suttaplex.PreferredTranslator,
+        "ExistsOnSC": Suttaplex.ExistsOnSC
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
@@ -477,7 +436,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
                         "\n    Continuing to the next rule")
             continue
 
-        if not link or link == "None" or link == "False":
+        if link in ("","None","False"):
             continue # If matcher returns "", None, or False, skip to the next rule
         
         if gDatabase["textLink"][ruleName]["alert"]:
@@ -493,16 +452,52 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     
     return ""
 
-def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
+def SuttaLinkWrapper(link: str,referenceString: str) -> Html.Wrapper:
+    """Given a sutta link (from ApplySuttaMatch rules) and the sutta reference itself, return
+    a link to the sutta, including the alt-href attribute."""
+    reference = BuildReferences.TextReference.FromString(referenceString)
+    reference = reference.Truncate(reference.TextLevel() + 1)
+    textPageLink = BuildReferences.ReferenceLink("text",str(reference))
+
+    linkData = {"href":link,"target":"_blank"}
+    if textPageLink:
+        linkData["data-alt-href"] = textPageLink
+    return Html.Tag("a",linkData)
+
+def AddTextReference(item:dict,matchObject: re.Match) -> None:
+    """Add a text (sutta or vinaya) reference to this item.
+    item: an excerpt, annotation, or event.
+    matchObject: the Match object returned from the suttaMatch regex."""
+
+    if not item or ("kind" not in item and "endDate" not in item):
+        return # Exclude items which are not excerpts, annotations, or events
+    
+    if matchObject[2]:
+        numbers = (n for n in (matchObject[2],matchObject[3],matchObject[4]) if n)
+        referenceText = f"{matchObject[1]} {'.'.join(numbers)}"
+    else:
+        referenceText = matchObject[1]
+    
+    if "texts" in item:
+        item["texts"].append(referenceText)
+    else:
+        item["texts"] = [referenceText]
+
+def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Use the list of rules in gDatabase["textLink"] to generate hyperlinks for sutta references."""
 
     def SuttasWithinMarkdownLink(bodyStr: str,item:dict=None) -> Tuple[str,int]:
         def SuttaMatchWrapper(matchObject: re.Match) -> str:
+            hyperlinkText = re.match(r"\[([^]\]]+)\]",matchObject[0])[1]
             link = ApplySuttaMatchRules(matchObject)
-            if not link:
-                print("   in",Database.ItemRepr(item))
+            if link:
+                AddTextReference(item,matchObject)
+                suttaReference = re.search(r"\(([^\)]+)\)",matchObject[0])[1]
+                return SuttaLinkWrapper(link,suttaReference)(hyperlinkText)
+            else:
+                print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
-            return link
+                return hyperlinkText
 
         return re.subn(markdownLinkToSutta,SuttaMatchWrapper,bodyStr,flags = re.IGNORECASE)
     
@@ -516,12 +511,15 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
                     item["text"] = re.sub(r"\b" + matchObject[1] + r" ([1-9])",textRecord["name"] + r" \1",item["text"])
 
             link = ApplySuttaMatchRules(matchObject)
-            if not link:
-                print("   in",Database.ItemRepr(item))
+            if link:
+                AddTextReference(item,matchObject)
+                return SuttaLinkWrapper(link,matchObject[0])(withoutTranslator)
+            else:
+                print("   in",Database.ItemRepr(item)) # Append the source of the error to the error message
                 print()
-            return f'[{withoutTranslator}]({link})'
+                return matchObject[0] # Make no changes
     
-        return re.subn(suttaMatch,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
+        return re.subn(suttasNotInMarkdownLinks,MakeSuttaMarkdownLink,bodyStr,flags = re.IGNORECASE)
 
     suttaMatch = r"\b" + Utils.RegexMatchAny(gDatabase["text"])+ r"\s+([0-9]+)(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:-[0-9]+)?(?:\{([a-z]+)\})?"
     """ Sutta reference pattern: uid n0[.n1[.n2]][-end]{translator}
@@ -531,10 +529,12 @@ def LinkSuttas(ApplyToFunction:Callable = ApplyToBodyText):
         5: translator: translator code, e.g. bodhi
     end is ignored for sutta lookup purposes."""
 
-    markdownLinkToSutta = r"(?<=\]\()" + suttaMatch + r"(?=\))"
+    markdownLinkToSutta = r"\[[^]\]]+\]\(" + suttaMatch + r"\)"
     markdownLinksMatched = ApplyToFunction(SuttasWithinMarkdownLink)
-        # Use lookbehind and lookahead assertions to first match suttas links within markdown format, e.g. [Sati](MN 10)
+        # First match suttas links within markdown format, e.g. [Sati](MN 10)
 
+    suttasNotInMarkdownLinks = suttaMatch + r"(?![^][]*\]\()"
+        # Use lookahead assertion to ignore suttas which explicitly link elsewhere, e.g. [MN 26](https://...)
     suttasMatched = ApplyToFunction(SuttasWithinBodyText)
         # Then match all remaining sutta links
 
@@ -546,11 +546,38 @@ def ReferenceMatchRegExs(referenceDB: dict[dict]) -> tuple[str]:
     pageReference = r'(?:pages?|pp?\.)\s+-?[0-9]+(?:[-–][0-9]+)?' 
 
     refForm2 = r'\[' + titleRegex + r'\]\((' + pageReference + r')?\)'
-    refForm3 = r'\]\(' + titleRegex + r'(\s+' + pageReference + r')?\)'
+    refForm3 = r'\[[^[\]]*\]\(' + titleRegex + r'(\s+' + pageReference + r')?\)'
 
     refForm4 = titleRegex + r'\s+(' + pageReference + ')'
 
     return refForm2, refForm3, refForm4
+
+def AddBookReference(item:dict,book: dict[str],page: int = 0) -> None:
+    """Add a book reference to this item.
+    item: an excerpt, annotation, or event.
+    book: the reference record stored in gDatabase."""
+
+    if not item or ("kind" not in item and "endDate" not in item):
+        return # Exclude items which are not excerpts, annotations, or events
+    
+    bookReference = book["abbreviation"]
+    if page:
+        bookReference += f"|{page}"
+    
+    if "books" in item:
+        item["books"].append(bookReference)
+    else:
+        item["books"] = [bookReference]
+
+def BookLinkWrapper(url: str,book: str,altLink: bool = True) -> Html.Wrapper:
+    """Given the url to a book and the name of the book, build a link including the alt-href attribute."""
+    textPageLink = BuildReferences.ReferenceLink("book",book.lower())
+    linkData = {"href":url}
+    if Utils.RemoteURL(url) or not url.endswith(".html"):
+        linkData["target"] = "_blank"
+    if textPageLink and altLink:
+        linkData["data-alt-href"] = textPageLink
+    return Html.Tag("a",linkData)
 
 def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Search for references of the form [abbreviation]() OR abbreviation page|p. N, add author and link information.
@@ -589,8 +616,6 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             else:
                 return url + "#noframe"
 
-    
-
     def ReferenceForm2(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
 
@@ -602,13 +627,14 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 return matchObject[1]
             
             url = Link.URL(reference,directoryDepth=2)
+            page = None
             if url:
                 page = ParsePageNumber(matchObject[2])
                 if page:
                     url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
 
                 url = ProcessLocalReferences(url)
-                returnValue = f"[{reference['title']}]({url})"
+                returnValue = BookLinkWrapper(url,reference["abbreviation"])(reference['title'])
             else:
                 returnValue = f"{reference['title']}"
 
@@ -622,28 +648,33 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if item and item.get("text"): # Replace abbreviated title with full title for search purposes
                 item["text"] = re.sub(r"\[" + matchObject[1] + r"\]","[" + reference["title"] +"]",item["text"])
 
+            AddBookReference(item,reference,page)
+
             return returnValue
 
         return re.subn(refForm2,ReferenceForm2Substitution,bodyStr,flags = re.IGNORECASE)
-    
-    def ReferenceForm3Substitution(matchObject: re.Match) -> str:
-        try:
-            reference = gDatabase["reference"][matchObject[1].lower()]
-        except KeyError:
-            Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
-            return matchObject[1]
-        
-        url = Link.URL(reference,directoryDepth=2)
-        
-        page = ParsePageNumber(matchObject[2])
-        if page:
-           url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
-        
-        url = ProcessLocalReferences(url)
-        return f"]({url})"
 
-    def ReferenceForm3(bodyStr: str) -> tuple[str,int]:
+    def ReferenceForm3(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [xxxxx](title) or [xxxxx](title page N)"""
+
+        def ReferenceForm3Substitution(matchObject: re.Match) -> str:
+            hyperlinkText = re.match(r"\[([^\]]+)\]",matchObject[0])[1]
+            try:
+                reference = gDatabase["reference"][matchObject[1].lower()]
+            except KeyError:
+                Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
+                return hyperlinkText
+            
+            url = Link.URL(reference,directoryDepth=2)
+            
+            page = ParsePageNumber(matchObject[2])
+            if page:
+                url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
+            AddBookReference(item,reference,page)
+
+            url = ProcessLocalReferences(url)
+            return BookLinkWrapper(url,reference["abbreviation"])(hyperlinkText)
+
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
 
     def ReferenceForm4(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
@@ -662,12 +693,13 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 url +=  f"#page={page + PdfPageOffset(reference)}"
                 url = ProcessLocalReferences(url)
 
-            items = [reference['title'],f", [{matchObject[2]}]({url})"]
+            items = [reference['title'],", " + BookLinkWrapper(url,reference["abbreviation"])(matchObject[2])]
             if reference["attribution"]:
                 items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
 
             if item and item.get("text"): # Replace abbreviated title with full title for search purposes
                 item["text"] = re.sub(r"\b" + matchObject[1] + r"\b",reference["title"],item["text"])
+            AddBookReference(item,reference,page)
 
             return "".join(items)
     
@@ -835,7 +867,7 @@ def LinkReferences() -> None:
     2. [title]() or [title](page N) - Titles in Reference sheet; if page N or p. N appears between the parentheses, link to this page in the pdf, but don't display in the html
     3. [xxxxx](title) or [xxxxx](title page N) - Apply hyperlink from title to arbitrary text xxxxx
     4. title page N - Link to specific page for titles in Reference sheet which shows the page number
-    5. SS N.N - Link to Sutta/vinaya SS section N.N at sutta.readingfaithfully.org
+    5. SS N.N - Link to Sutta/vinaya SS section N.N using the algorithm in TextLink sheet 
     6. [reference](SS N.N) - Markdown hyperlink pointing to sutta.
     7. [subpage](pageType:pageName) - Link to a subpage within the QS Archive. Options for pageType are:
         tag - Link to the named tag page - Link to tag subpage and enclose the entire reference in brackets if pageName is ommited
@@ -858,7 +890,22 @@ def LinkReferences() -> None:
     markdownChanges = ApplyToBodyText(MarkdownFormat)
     Alert.extra(f"{markdownChanges} items changed by markdown")
     ApplyToBodyText(RemoveHTMLPassthroughComments)
-    
+
+def AccumulateReferences() -> None:
+    """Combine text references in annotations with their parent excerpt;
+    remove text references from fragments."""
+
+    for refKind in ("texts","books"):
+        for excerpt in gDatabase["excerpts"]:
+            accumulatedTexts = []
+            for item in Filter.AllItems(excerpt):
+                accumulatedTexts += item.get(refKind) or []
+                item.pop(refKind,None)
+            
+            if accumulatedTexts and ParseCSV.ExcerptFlag.FRAGMENT not in excerpt["flags"]:
+                excerpt[refKind] = accumulatedTexts
+
+
 def SmartQuotes(text: str) -> tuple[str,int]:
     newText = Utils.SmartQuotes(text)
     changeCount = 0 if text == newText else 1
@@ -887,6 +934,7 @@ def main() -> None:
     RenderExcerpts()
 
     LinkReferences()
+    AccumulateReferences()
 
     ApplyToBodyText(SmartQuotes)
 
