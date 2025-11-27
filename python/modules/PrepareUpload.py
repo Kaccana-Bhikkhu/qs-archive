@@ -112,7 +112,11 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    MoveItemsIn(gDatabase["audioSource"],"session mp3")
+    # We need only upload audio sources which correspond to sessions; other audio sources are not linked to.
+    sessionFiles = {session["filename"] for session in gDatabase["sessions"] if session["filename"]}
+    sessionSources = {filename:record for filename,record in gDatabase["audioSource"].items() if filename in sessionFiles}
+    MoveItemsIn(sessionSources,"session mp3")
+
     MoveItemsIn(gDatabase["excerpts"],"excerpt mp3")
     MoveItemsIn(gDatabase["reference"],"reference")
 

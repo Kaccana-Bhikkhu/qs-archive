@@ -18,9 +18,10 @@ from concurrent.futures import ThreadPoolExecutor
 gOptions = None
 
 def Contents(container:list|dict) -> list:
-    try:
+    "If container is a mapping, return an iterable of its values; otherwise return container itself"
+    if getattr(container,"values",None):
         return container.values()
-    except AttributeError:
+    else:
         return container
 
 def ExtendUnique(dest: list, source: Iterable) -> None:
