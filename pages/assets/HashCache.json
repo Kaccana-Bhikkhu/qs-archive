@@ -4,20 +4,20 @@
     "_modified": "2025-11-27 11:55:52.000000"
   },
   "indexes/KeyTopics.html": {
-    "md5": "28b14befc9a40fd9d0081a577dcb011b",
-    "_modified": "2025-11-27 11:55:52.000000"
+    "md5": "13ed4a75d8a6bb169c2d313bb6e88003",
+    "_modified": "2025-11-27 13:18:26.000000"
   },
   "indexes/KeyTopicDetail.html": {
-    "md5": "fde2b9905308b6ea168823755a9e8feb",
-    "_modified": "2025-11-27 11:55:52.000000"
+    "md5": "5e608b70f35436cf0e764c8ae8f1a927",
+    "_modified": "2025-11-27 13:18:26.000000"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "67e8fefe93ccc6445c303d7f4aaf621d",
-    "_modified": "2025-11-27 11:55:52.000000"
+    "md5": "b791b12c2e7d4f836e367f9ca1cf31a0",
+    "_modified": "2025-11-27 13:18:26.000000"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "00e79c0ea203506b3d9ebcb1a10ea06c",
-    "_modified": "2025-11-27 11:55:52.000000"
+    "md5": "e67b77d4f196eaf780916cbc43aba82f",
+    "_modified": "2025-11-27 13:18:26.000000"
   },
   "indexes/Tags_print.html": {
     "md5": "b678b1198c195646c8d5849f4a6a92c0",
@@ -36,12 +36,12 @@
     "_modified": "2025-11-27 11:56:08.000000"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "5fcc99c219066dac1071706c394c0895",
-    "_modified": "2025-11-27 11:56:08.000000"
+    "md5": "8499d83d0e33e923f6c392774b62a07b",
+    "_modified": "2025-11-27 13:42:42.000000"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "492a10a2fd3b6085a82aebe2dd820b31",
-    "_modified": "2025-11-27 11:56:08.000000"
+    "md5": "6c75b367d6ba39fceedbaa6a3c2722bf",
+    "_modified": "2025-11-27 13:42:42.000000"
   },
   "indexes/AlphabeticalTags.html": {
     "md5": "8c44072cb31b37eac971bb533b328d7e",
@@ -844,40 +844,40 @@
     "_modified": "2025-11-27 11:55:58.000000"
   },
   "clusters/meditation-events.html": {
-    "md5": "b215767a02b18af1ec47729101d4ef66",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "603938381c2d9528946dd3b71e548b0f",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation.html": {
-    "md5": "b8ea3df1628f5a88b55cd282452f3082",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "63d792236a2517dfdebd9ec8f92fe792",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-2.html": {
-    "md5": "96204a38d626a24134b5b714b0e2ea0c",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "657db7cfc672001ba7c7855abe7e2dec",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-relevant.html": {
-    "md5": "3530deca0e2e7b860a5cfa9e0e7b4ce9",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "9b130eeb8c348e997ff355a2707452e2",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-qtag.html": {
-    "md5": "e6f0c1738d0b3e344c51d749f2478d2e",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "544db47de313bcf6bfaeee7691819778",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-atag.html": {
-    "md5": "00c1ceffa0895ebb398645b08f7ee1aa",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "8a7d306f577f681a091951cb7db3fee5",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-story.html": {
-    "md5": "de760efe65b4d76d4ebc8d7b20442a7c",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "9b59fbdf8a5e4b9ed530ff2c31a46c06",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-quote.html": {
-    "md5": "18b774760337c37b4987eb0626d651c7",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "76b3653ef13ffe64d2244e930bb1e819",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/meditation-reading.html": {
-    "md5": "63e62bfa1e938521fdfce8077e734f8b",
-    "_modified": "2025-11-27 11:55:58.000000"
+    "md5": "9ca23df89baa33fcabcb093c8cc650bc",
+    "_modified": "2025-11-27 13:18:30.000000"
   },
   "clusters/mindfulness-of-body-events.html": {
     "md5": "32293cbb57c035671cac996daa72c12a",
@@ -1500,8 +1500,8 @@
     "_modified": "2025-11-27 11:56:02.000000"
   },
   "clusters/monastic-life.html": {
-    "md5": "f15454f5361be9a14d242d288b792167",
-    "_modified": "2025-11-27 11:56:02.000000"
+    "md5": "5fa2975ee082e26b3d304a8007431c2a",
+    "_modified": "2025-11-27 13:18:34.000000"
   },
   "clusters/monastic-life-2.html": {
     "md5": "16aff9e83743ef1c1ce8a50a8dcf2eb2",
@@ -5784,32 +5784,32 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/gratitude.html": {
-    "md5": "20f1732d7ec27a28a8f7a354207bfc10",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "84bed556df2371822fc8f51fd7a85815",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/gratitude-relevant.html": {
-    "md5": "d20f3f69133697d59307b7cc8c4c2850",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "56b7ad8d7e545cbc295649d37b9ad891",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/gratitude-qtag.html": {
-    "md5": "e73b2748d0f54c48f5b1aae55b48a786",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "72ddb0d4dec8094c9f668bf0d8fb405a",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/gratitude-atag.html": {
-    "md5": "3ae6c5235ac854f97ec910519ece1ee4",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "e41215150f03f6514d802a36e865353a",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/gratitude-story.html": {
-    "md5": "b4a27121de6f8dc7298c75afba87c1fd",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "add7fa578189e38d7a78206c09023211",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/gratitude-quote.html": {
-    "md5": "b4d50b593162dac6567b7735ed29c828",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "229da6e30ed50cd13894cd8056e3882d",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/gratitude-reading.html": {
-    "md5": "3061da0199f2265282fb1e77a7a5e408",
-    "_modified": "2025-11-27 11:56:20.000000"
+    "md5": "30208eb21549c0592609d78e46a4ecf5",
+    "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/merit.html": {
     "md5": "e59660e78d8e1de925a3ed703ca272f2",
@@ -8572,24 +8572,24 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/meditationresults.html": {
-    "md5": "613bd1745ef3d89abe381bc86bf2745c",
-    "_modified": "2025-11-27 11:56:30.000000"
+    "md5": "d690a6122e983bcc2eaee74edcaa583f",
+    "_modified": "2025-11-27 13:19:02.000000"
   },
   "tags/meditationresults-relevant.html": {
-    "md5": "529f458e2e22034bf92afd186235d331",
-    "_modified": "2025-11-27 11:56:30.000000"
+    "md5": "d701d4037d9618af769fb3f50e2ebd85",
+    "_modified": "2025-11-27 13:19:02.000000"
   },
   "tags/meditationresults-qtag.html": {
-    "md5": "0343ca02358b068fafa26afc764c37f7",
-    "_modified": "2025-11-27 11:56:30.000000"
+    "md5": "ef1e848fc7c8bd471ffa56cbf0aa5a21",
+    "_modified": "2025-11-27 13:19:02.000000"
   },
   "tags/meditationresults-atag.html": {
-    "md5": "ff1aa986baf22365a887de7dae06e899",
-    "_modified": "2025-11-27 11:56:30.000000"
+    "md5": "e52172cdc75636acba330711f0378365",
+    "_modified": "2025-11-27 13:19:02.000000"
   },
   "tags/meditationresults-story.html": {
-    "md5": "e9107108e249335b4a1e7d1d7dd9d108",
-    "_modified": "2025-11-27 11:56:30.000000"
+    "md5": "edf1f2ea44305b2eaf2f8ff5a77405bb",
+    "_modified": "2025-11-27 13:19:02.000000"
   },
   "tags/wrong-concentration.html": {
     "md5": "6e24538a7cef41e47551a9035d58466e",
@@ -9184,8 +9184,8 @@
     "_modified": "2025-11-27 11:56:34.000000"
   },
   "tags/ajahn-chah.html": {
-    "md5": "5daa8feb16a6938627330e20104bfc8c",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "cd097cdbd1594bf09e61a1af39fbab81",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-chah-2.html": {
     "md5": "be5517f91712e5f0d372a7ba7bcac684",
@@ -9216,8 +9216,8 @@
     "_modified": "2025-11-27 11:56:34.000000"
   },
   "tags/ajahn-chah-relevant.html": {
-    "md5": "fbc7a87ce55d7befad774d075f774d26",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "30a2b0d8ffd0e8facfcd6497eae33e62",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-chah-relevant-2.html": {
     "md5": "9e2a62056e4233ce163f6c85e000a670",
@@ -9332,40 +9332,40 @@
     "_modified": "2025-11-27 11:56:34.000000"
   },
   "tags/ajahn-liem-events.html": {
-    "md5": "9e933ccbe4bb042897af0f4bc885ea2a",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "1fe4de681cc358c0d6fe615a1ec00619",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem.html": {
-    "md5": "de1bff57c93b865823054a0fbf99606a",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "4bbbed124f8a4a03a27266dab2f84ef0",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-relevant.html": {
-    "md5": "7b34b32edbb60e982c9ac19ec93dc454",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "b0092f6fbde9743d585ffba7212b9406",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-qtag.html": {
-    "md5": "08008bcdc195e65d167634dc7ccd96ab",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "4d75ef0b1c56f72fe6875b12ac6b5b55",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-atag.html": {
-    "md5": "784bff003595f72bf874792dce21b1f5",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "8540ef02439e6ef80b5ba93fb90f7011",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-story.html": {
-    "md5": "b2b5ed15d5d2b46d4099985ce6b069cc",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "5f07334a89eb5b4bdfe5f0319147c9a0",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-quote.html": {
-    "md5": "a7d6e6f5c845ba98f390ef64e47af417",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "6cb6340e12d644af0210b9c82ba886f9",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-reading.html": {
-    "md5": "bba211ebf998f2a6c1a882222df5863a",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "db87d26a66fadff11c0d3cab93e30ba5",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-liem-reference.html": {
-    "md5": "8b770f779ee77d6e68c0f3eacf08d974",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "c120ff28b124576de7159f51a540b973",
+    "_modified": "2025-11-27 13:19:06.000000"
   },
   "tags/ajahn-boon-choo.html": {
     "md5": "e2dbb070217c5f6f71b613c3654eeb93",
@@ -10448,28 +10448,28 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/paul-breiter.html": {
-    "md5": "817738ec2117cabd16ad0b8594cb55d7",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "2204be527b5c038260be0afe38697cca",
+    "_modified": "2025-11-27 13:19:12.000000"
   },
   "tags/paul-breiter-relevant.html": {
-    "md5": "eeccfa88ddd783890dc5a2a8d0cd19b2",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "14fe74699b21bc31bc03725b87a8c56a",
+    "_modified": "2025-11-27 13:19:12.000000"
   },
   "tags/paul-breiter-qtag.html": {
-    "md5": "fa30ba966034e4003eaaa6f73b325a14",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "67ebd1ba988af9278d3b683f6d4a85f3",
+    "_modified": "2025-11-27 13:19:12.000000"
   },
   "tags/paul-breiter-atag.html": {
-    "md5": "20f9f8c5ef234bff398609ef02cc713b",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "cce536dd213b952f887d09fe5987ef90",
+    "_modified": "2025-11-27 13:19:12.000000"
   },
   "tags/paul-breiter-story.html": {
-    "md5": "8b9adba4b3c76813f48bf9a81165ea27",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "abd9530f950cd28c7767a28d466a0684",
+    "_modified": "2025-11-27 13:19:12.000000"
   },
   "tags/paul-breiter-quote.html": {
-    "md5": "2b9444501423c1f5470e0f2f3ea72bde",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "6687c2d607dd691024f48e54d6d6a2da",
+    "_modified": "2025-11-27 13:19:12.000000"
   },
   "tags/joseph-kappel.html": {
     "md5": "b42ea42a18ac14adfc2df09338b34949",
@@ -12520,56 +12520,56 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/monastic-life-events.html": {
-    "md5": "93f03f95ee569e06ab095cad3de80d0b",
-    "_modified": "2025-11-27 11:56:46.000000"
+    "md5": "c9787c1e5e03d04fad0b5618a6f1657f",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life.html": {
-    "md5": "4ad389b9e25266b155baf7eebecb877d",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "1db7a81228199f6fc5fb4e8800fcc1b2",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-2.html": {
-    "md5": "9d5238e07392a9d06b45356f576c11e0",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "4953fd5f62cf382095ff86eea8f6e56a",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-3.html": {
-    "md5": "a7de7fa805d2984f146eafdc8501b8f0",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "bcbfc29fcd564d5547f355a1770839b8",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-relevant.html": {
-    "md5": "4789ca04bb405c30d896c424f0e405bf",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "7c81719a5e3138399a7935ea0889029d",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-relevant-2.html": {
-    "md5": "2484e3b53d8ae09bc168d69d2d318d1c",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "dfdfc77b7cbb05ecf63d96461b9aa7e3",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-qtag.html": {
-    "md5": "d703a28cb32382971e0fd0ccb15c5bb0",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "5ecf7bd2643e942a5a18d3c4b5ae4738",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-qtag-2.html": {
-    "md5": "8709d67ab01b90caf73d0bf771390315",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "4f8f83b52d59545b5d1bf8c1c32d31b1",
+    "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life-atag.html": {
-    "md5": "2c1ab042584c7fc3df3147b798607f74",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "b703047a37438cc3dafef24ac73e25d8",
+    "_modified": "2025-11-27 13:19:20.000000"
   },
   "tags/monastic-life-story.html": {
-    "md5": "b98b4e58ee247cb36e76a7753865a8a4",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "c5e9177017b60408829afc9fade9b42a",
+    "_modified": "2025-11-27 13:19:20.000000"
   },
   "tags/monastic-life-quote.html": {
-    "md5": "9d69a249412120957da38e30277e6f3a",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "db8e51f53999cad04eaca57799883870",
+    "_modified": "2025-11-27 13:19:20.000000"
   },
   "tags/monastic-life-reading.html": {
-    "md5": "105b8bdb964b4a123c82650e7059808d",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "1b5e12e53c0fa37407f631afa067372a",
+    "_modified": "2025-11-27 13:19:20.000000"
   },
   "tags/monastic-life-text.html": {
-    "md5": "e7b9b99d2c54d8ae4e82a759447821dc",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "8051f36410735c3f4bd4775148c272e4",
+    "_modified": "2025-11-27 13:19:20.000000"
   },
   "tags/monastic-lifemotivation.html": {
     "md5": "c469ab27e7763a04b63b3015a0e6b6ef",
@@ -17788,8 +17788,8 @@
     "_modified": "2025-11-25 13:17:36.000000"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "285c7226e136331e66d2869c44e11ca7",
-    "_modified": "2025-11-27 11:56:08.000000"
+    "md5": "18850cfe4e2e856b96991f41ec216d78",
+    "_modified": "2025-11-27 13:42:42.000000"
   },
   "tags/relics-relevant.html": {
     "md5": "5da1f0c61d541935f41e4029276541b4",
@@ -17918,5 +17918,9 @@
   "teachers/ajahn-maha-prasert.html": {
     "md5": "69a29ce840dc75b06ffa47e9f339d7e1",
     "_modified": "2025-11-27 11:56:58.000000"
+  },
+  "clusters/meditation-relevant-2.html": {
+    "md5": "efd26b6ee8fda4fe5ba3a93b15c52c2a",
+    "_modified": "2025-11-27 13:18:30.000000"
   }
 }

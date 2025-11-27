@@ -572,6 +572,10 @@ Key: (fTags/subtopicFTags:min-max). '/subtopicFTags' is omitted if all featured 
         for tag in tags:
             with a.p():
                 code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
+                if code in "∅⊟": # Indicate whether the subtopics this tag is part of are also deficient
+                    code = "/".join([code] + [ReviewDatabase.FTagStatusCode(gDatabase["subtopic"][subtopic])
+                                              for subtopic in gDatabase["tag"][tag].get("partOfSubtopics",())
+                                              if gDatabase["subtopic"][subtopic]["subtags"]])
                 tagLink = HtmlTagLink(tag)
                 fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
                 fTagCountStr = str(fTagCount)
