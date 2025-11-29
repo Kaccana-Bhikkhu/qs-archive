@@ -4,11 +4,12 @@
 from __future__ import annotations
 
 import os, json, datetime, re
-from datetime import timedelta
+from datetime import timedelta, date
 import random
 from difflib import SequenceMatcher
 from typing import Callable, TypedDict
-import Utils, Alert, Build, Filter, Database
+from dataclasses import dataclass
+import Utils, Alert, Build, Database
 from copy import copy
 import Filter
 import Html2 as Html
@@ -21,7 +22,11 @@ class ExcerptDict(TypedDict):
       fTags: list[str]  # The excerpt's fTags
       shortHtml: str    # Html code to render on the homepage
       html: str         # Html code to render on the daily featured excerpts page
-    
+
+class HolidayDisplay(TypedDict):
+    """Information about a particular anniversary stored in the database."""
+    date: str       # The date in iso format
+    text: str       # The text string to display
 class FeaturedDatabase(TypedDict):
     made: str                       # Date and time this database was first made in iso format
     updated: str                    # Date and time this database was last changed
@@ -36,6 +41,36 @@ class FeaturedDatabase(TypedDict):
 
     startDate: str                  # The date to display the first exerpt in calendar in iso format
     calendar: list[str]             # The list of excerpt codes to display on each date
+
+    holidays: list[HolidayDisplay]     # Information about the given holidays
+
+@dataclass
+class Holiday:
+    """Information about an anniversary."""
+    name: str                    # Name of the holiday, e.g. "Ajahn Chah's Death Anniversary"
+    date: date                   # Date of the birth or death
+    filter: Filter.Filter        # Feature an excerpt which passes this filter
+
+    def Display(self) -> HolidayDisplay:
+        """Return the ditionary needed to display this holiday on the website."""
+        return HolidayDisplay(
+            date = self.date.isoformat(),
+            text = f"{self.name} – NN years"
+        )
+
+def Holidays() -> list[Holiday]:
+    "Return a list of all anniversaries."
+    return [
+        Holiday("Ajahn Chah Death Anniversary",date(1992,1,16),Filter.FTag("Ajahn Chah")),
+        Holiday("Ajahn Chah's Birthday",date(1918,6,17),Filter.FTag("Ajahn Chah")),
+        Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
+        Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
+        Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
+        Holiday("Somebody else's birthday",date(1976,11,29),Filter.FTag("Something"))
+    ]
+
+def HolidayRecords() -> list[HolidayDisplay]:
+    return [holiday.Display() for holiday in Holidays()]
 
 def ReadDatabase(backupNumber:int = 0) -> bool:
     """Read the featured excerpt database from disk.
@@ -70,7 +105,7 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
 def SplitPastAndFuture(database: FeaturedDatabase,offset:int = 0) -> tuple[list[str],list[str]]:
     """Split database["calenar"] into two lists (past,future). If offset == 0, past includes today.
     if offset > 0, include this many days past today in past as well."""
-    daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
+    daysPast = (date.today() - date.fromisoformat(database["startDate"])).days
 
     cutPoint = daysPast + offset + 1
     cutPoint = max(min(cutPoint,len(database["calendar"]) - 1),0)
@@ -82,7 +117,7 @@ def PrintInfo(database: FeaturedDatabase) -> None:
     Alert.info("Featured excerpt database contains",len(database["excerpts"]),"excerpts.")
 
     calendarLength = len(database['calendar'])
-    daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
+    daysPast = (date.today() - date.fromisoformat(database["startDate"])).days
 
     Alert.info(f"Calendar length {calendarLength}; {daysPast} days of history; {calendarLength - daysPast - 1} excerpts remaining.")
 
@@ -174,9 +209,15 @@ def Remake(paramStr: str) -> bool:
     random.shuffle(calendar)
 
     historyDays = ParseNumericalParameter(paramStr)
-    startDate = (datetime.date.today() - timedelta(days=historyDays)).isoformat()
+    startDate = (date.today() - timedelta(days=historyDays)).isoformat()
     
-    gFeaturedDatabase = dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar,oldFTags={})
+    gFeaturedDatabase = FeaturedDatabase(
+        **Header(),
+        startDate=startDate,
+        excerpts=entries,
+        calendar=calendar,
+        oldFTags={},
+        holidays=HolidayRecords())
 
     Alert.info("Generated new featured excerpt database with",len(gFeaturedDatabase["excerpts"]),"entries")
     if historyDays:
@@ -476,6 +517,12 @@ def main() -> None:
     goodDatabase = RunSubmodule(Check)
 
     databaseRepaired = any(RunSubmodule(m) for m in gRepairModules)
+
+    newHolidayRecords = HolidayRecords()
+    if newHolidayRecords != gFeaturedDatabase.get("holidays"):
+        gFeaturedDatabase["holidays"] = newHolidayRecords
+        databaseRepaired = True
+
     if databaseRepaired:
         UpdateHeader(gFeaturedDatabase)
 

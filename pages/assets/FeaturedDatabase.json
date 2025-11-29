@@ -1,6 +1,6 @@
 {
   "made": "2025-06-12T17:40:06.295835",
-  "updated": "2025-11-29T13:58:05.602573",
+  "updated": "2025-11-29T15:23:10.541560",
   "mirrors": {
     "local": "./",
     "abhayagiri": "https://www.abhayagiri.org/media/discs/questions/",
@@ -3316,5 +3316,31 @@
     "TG2015_S02_F07": [
       "Ajahn Pasanno"
     ]
-  }
+  },
+  "holidays": [
+    {
+      "date": "1992-01-16",
+      "text": "Ajahn Chah Death Anniversary – NN years"
+    },
+    {
+      "date": "1918-06-17",
+      "text": "Ajahn Chah's Birthday – NN years"
+    },
+    {
+      "date": "1949-07-26",
+      "text": "Ajahn Pasanno's Birthday – NN years"
+    },
+    {
+      "date": "1934-07-27",
+      "text": "Ajahn Sumedho's Birthday – NN years"
+    },
+    {
+      "date": "1941-11-05",
+      "text": "Ajahn Liem's Birthday – NN years"
+    },
+    {
+      "date": "1976-11-29",
+      "text": "Somebody else's birthday – NN years"
+    }
+  ]
 }

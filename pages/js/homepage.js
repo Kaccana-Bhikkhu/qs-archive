@@ -11,6 +11,7 @@ let gFeaturedDatabase = null; // The global database, loaded from assets/Feature
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
+let gTodaysHolidayHtml = ""; // The html text to display for today's holiday
 let gSearchFeaturedOffset = 0; // The featured excerpt currently displayed on search/Featured.html
 let gRandomExcerpts = []; // The random excerpts we have generated this session.
 
@@ -19,6 +20,18 @@ function calendarModulus(index) {
 
     let excerptCount = gFeaturedDatabase.calendar.length;
     return ((index % excerptCount) + excerptCount) % excerptCount;
+}
+
+function holidayHtml(date) {
+    // Return the holiday html (if any) for a given Date object
+    for (let holiday of gFeaturedDatabase.holidays) {
+        let holidayDate = new Date(holiday.date)
+        if ((holidayDate.getDate() === date.getDate()) && (holidayDate.getMonth() === date.getMonth())) {
+            let yearsAgo = date.getFullYear() - holidayDate.getFullYear();
+            return gTodaysHolidayHtml = `<p class = "holiday-banner">${holiday.text.replace("NN",String(yearsAgo))}</p>`;
+        }
+    }
+    return ""
 }
 
 let gDebugDateOffset = 0;
@@ -33,6 +46,8 @@ function initializeTodaysExcerpt(todaysDate) {
     debugLog("Days since start:",todaysDate,calendarStartDate,daysSinceStart);
     gTodaysExcerpt = calendarModulus(daysSinceStart);
     gSearchFeaturedOffset = 0;
+
+    gTodaysHolidayHtml = holidayHtml(todaysDate);
 }
 
 function displayFeaturedExcerpt() {
@@ -40,7 +55,8 @@ function displayFeaturedExcerpt() {
 
     let excerptToDisplay = gFeaturedDatabase.calendar[calendarModulus(gTodaysExcerpt + gSearchFeaturedOffset)];
     
-    let title = "Today's featured excerpt"
+    let title = "Today's featured excerpt";
+    let prefix = "";
     if (gSearchFeaturedOffset > 0) {
         let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
         while (gRandomExcerpts.length < gSearchFeaturedOffset) {
@@ -49,15 +65,18 @@ function displayFeaturedExcerpt() {
         }
         excerptToDisplay = gRandomExcerpts[gSearchFeaturedOffset - 1];
         title = `Random excerpt (${gSearchFeaturedOffset})`;
-    } else if (gSearchFeaturedOffset < 0) {
+    } else {
         let pastDate = new Date();
         pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
-        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        title = `Excerpt featured on ${pastDate.toLocaleDateString("en-us",options)}`;
+        prefix = holidayHtml(pastDate);
+        if (gSearchFeaturedOffset < 0) {
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            title = `Excerpt featured on ${pastDate.toLocaleDateString("en-us",options)}`;
+        }
     }
 
     let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = gFeaturedDatabase.excerpts[excerptToDisplay].html;
+    displayArea.innerHTML = prefix + gFeaturedDatabase.excerpts[excerptToDisplay].html;
     configureLinks(displayArea,"search/homepage.html");
 
     let titleArea = document.getElementById("page-title");
@@ -233,7 +252,7 @@ function initializeHomepage() {
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
-    featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+    featuredExcerptContainer.innerHTML = holidayHtml(new Date()) + gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
     configureLinks(featuredExcerptContainer,"search/homepage.html");
         // links in excerpts are relative to depth 1 pages
 
@@ -578,7 +597,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 initializeTodaysExcerpt(debugDate);
                 let featuredExcerptContainer = document.getElementById("todays-excerpt");
                 if (featuredExcerptContainer) {
-                    featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                    featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
+                        gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
                     configureLinks(featuredExcerptContainer,"search/homepage.html");
                     updateDate(debugDate);
                 }

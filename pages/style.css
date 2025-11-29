@@ -790,6 +790,19 @@ main.main-content p {
 	width: 100%;
 }
 
+.holiday-banner {
+	text-decoration: underline;
+	margin-bottom: 1rem;
+}
+
+#random-excerpt .holiday-banner {
+	font-size: 1.3rem;
+	font-weight: 450;
+	line-height: 1.3;
+    letter-spacing: 0.5px;
+    color: var(--color-primary);
+}
+
 /* Meditation Timer Styles */
 .meditation-timer {
     background: rgba(255, 255, 255, 0.8);
