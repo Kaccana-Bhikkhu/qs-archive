@@ -6,6 +6,7 @@ from __future__ import annotations
 import os, json, datetime, re
 from datetime import timedelta, date
 import random
+import itertools
 from difflib import SequenceMatcher
 from typing import Callable, TypedDict
 from dataclasses import dataclass
@@ -58,19 +59,18 @@ class Holiday:
             text = f"{self.name} – NN years"
         )
 
-def Holidays() -> list[Holiday]:
-    "Return a list of all anniversaries."
+def AllHolidays() -> list[Holiday]:
+    "Return a list of all anniversaries, sorted by month and day."
     return [
         Holiday("Ajahn Chah Death Anniversary",date(1992,1,16),Filter.FTag("Ajahn Chah")),
         Holiday("Ajahn Chah's Birthday",date(1918,6,17),Filter.FTag("Ajahn Chah")),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
         Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
-        Holiday("Somebody else's birthday",date(1976,11,29),Filter.FTag("Something"))
     ]
 
 def HolidayRecords() -> list[HolidayDisplay]:
-    return [holiday.Display() for holiday in Holidays()]
+    return [holiday.Display() for holiday in AllHolidays()]
 
 def ReadDatabase(backupNumber:int = 0) -> bool:
     """Read the featured excerpt database from disk.
@@ -441,6 +441,91 @@ def Trim(paramStr: str) -> bool:
         Alert.info("No changes made to database.")
     return bool(removedEntries)
     
+def Extend(paramStr: str,goodDatabase:bool = True) -> bool:
+    """Extend the calendar by adding the shuffled contents of the database."""    
+    entries = FeaturedExcerptEntries()
+    calendar = list(entries)
+    random.shuffle(calendar)
+
+    oldExcerptCount = len(gFeaturedDatabase["excerpts"])
+    for code,entry in entries.items():
+        if code not in gFeaturedDatabase["excerpts"]:
+            gFeaturedDatabase["excerpts"][code] = entry
+
+    gFeaturedDatabase["calendar"] += calendar
+
+    Alert.info("Extended the featured calendar by",len(calendar),"entries")
+    if addedExcerpts := len(gFeaturedDatabase["excerpts"]) - oldExcerptCount:
+        Alert.info("Added",addedExcerpts,"new excerpt(s) to the database.")
+    return True
+
+def Extend(paramStr: str) -> bool:
+    """Extend the calendar by adding the shuffled contents of the database."""    
+    entries = FeaturedExcerptEntries()
+    calendar = list(entries)
+    random.shuffle(calendar)
+
+    oldExcerptCount = len(gFeaturedDatabase["excerpts"])
+    for code,entry in entries.items():
+        if code not in gFeaturedDatabase["excerpts"]:
+            gFeaturedDatabase["excerpts"][code] = entry
+
+    gFeaturedDatabase["calendar"] += calendar
+
+    Alert.info("Extended the featured calendar by",len(calendar),"entries")
+    if addedExcerpts := len(gFeaturedDatabase["excerpts"]) - oldExcerptCount:
+        Alert.info("Added",addedExcerpts,"new excerpt(s) to the database.")
+    return True
+
+def Holidays(paramStr: str) -> bool:
+    """Swap future calendar entries so that holidays feature relevant excerpts."""    
+    past,future = SplitPastAndFuture(gFeaturedDatabase)
+    futureBaseDate = date.today() + timedelta(days=1)
+
+    # First build a database of holidays and years
+    holidayIndexes:dict[int:tuple(Holiday,int)] = {}
+    holidays = AllHolidays()
+    for year in range(futureBaseDate.year,futureBaseDate.year + 10):
+        for holiday in holidays:
+            thisYearsDate = date(year,holiday.date.month,holiday.date.day)
+            index = (thisYearsDate - futureBaseDate).days
+            if index < 0:
+                continue # The holiday is in the past
+            if index >= len(future):
+                break   # We have run past the last excerpt in the calendar
+            holidayIndexes[index] = (holiday,year)
+        if index >= len(future):
+            break
+
+    changeCount = 0
+    # Then check if each holiday has an excerpt that matches the filter
+    for index,(holiday,year) in holidayIndexes.items():
+        if holiday.filter.Match(gFeaturedDatabase["excerpts"][future[index]]):
+            continue
+
+        swapIndex = None
+        # Loop over all indices of future in the sequence:
+        # index - 1, index + 1, index - 2, index + 2, ...
+        for scanIndex in itertools.chain.from_iterable(itertools.zip_longest(reversed(range(index)),range(index + 1,len(future)))):
+            if scanIndex is not None and holiday.filter.Match(gFeaturedDatabase["excerpts"][future[scanIndex]]):
+                if scanIndex not in holidayIndexes: # Don't swap with another holiday
+                    swapIndex = scanIndex
+                    break
+        
+        if swapIndex is not None:
+            future[index],future[swapIndex] = future[swapIndex],future[index]
+            Alert.info("Featuring",Database.FindExcerpt(future[index]),"for",holiday.name,"in",year)
+            changeCount += 1
+        else:
+            Alert.warning("Unable to find a suitable excerpt for",holiday.name,"in",year)
+
+    if changeCount:
+        gFeaturedDatabase["calendar"] = past + future
+        Alert.info()
+        Alert.info("Moved",changeCount,"relevant excerpts to holidays.")
+    else:
+        Alert.info("All future holidays feature relevant excerpts.")
+    return bool(changeCount)
 
 def Write(paramStr: str,goodDatabase:bool = True) -> bool:
     """Write the database to disk if it is good or paramStr contains 'always'."""
@@ -500,7 +585,8 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 
 gFeaturedDatabase:FeaturedDatabase = {}
 gRepairModules:list[SubmoduleType] = [Update,RemakeFuture,Trim]
-gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules}
+gEnhanceModules:list[SubmoduleType] = [Extend,Holidays]
+gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules + gEnhanceModules}
 
 def main() -> None:
     global gFeaturedDatabase
@@ -530,6 +616,15 @@ def main() -> None:
     
     if not goodDatabase or databaseChanged:
         goodDatabase = RunSubmodule(Check,alwaysRun=True)
+
+    if goodDatabase:
+        databaseEnhanced = any(RunSubmodule(m) for m in gEnhanceModules)
+        if databaseEnhanced:
+            goodDatabase = RunSubmodule(Check,alwaysRun=True)
+        databaseChanged = databaseChanged or databaseEnhanced
+    elif set(op.__name__.lower() for op in gEnhanceModules) & set(gOptions.featured):
+        Alert.warning("Cannot run additional module(s)",[op.__name__ for op in gEnhanceModules],"due to database errors.")
+
 
     if databaseChanged:
         RunSubmodule(Write,alwaysRun=True,goodDatabase=goodDatabase)
