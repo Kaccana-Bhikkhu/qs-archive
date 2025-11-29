@@ -17,12 +17,10 @@ from collections import defaultdict
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
-      text: str             # Text of the excerpt; used to identify this excerpt when its code changes
-      fTags: list[str]      # The excerpt's fTags
-      oldFTags: list[str]
-                            # fTags that were applied to this excerpt in the past.
-      shortHtml: str        # Html code to render on the homepage
-      html: str             # Html code to render on the daily featured excerpts page
+      text: str         # Text of the excerpt; used to identify this excerpt when its code changes
+      fTags: list[str]  # The excerpt's fTags
+      shortHtml: str    # Html code to render on the homepage
+      html: str         # Html code to render on the daily featured excerpts page
     
 class FeaturedDatabase(TypedDict):
     made: str                       # Date and time this database was first made in iso format
@@ -33,6 +31,8 @@ class FeaturedDatabase(TypedDict):
         # The above two items are important because the html must be re-rendered when the excerpt mirror changes
     
     excerpts: dict[str,ExcerptDict] # Details about the excerpts; keys are given by the excerpt codes
+    oldFTags: dict[str,list[str]]   # Excerpts from which fTags have been removed
+                                    # Keys are excerpt codes; values are the removed fTags
 
     startDate: str                  # The date to display the first exerpt in calendar in iso format
     calendar: list[str]             # The list of excerpt codes to display on each date
@@ -47,6 +47,8 @@ def ReadDatabase(backupNumber:int = 0) -> bool:
         with open(filename, 'r', encoding='utf-8') as file: # Otherwise read the database from disk
             gFeaturedDatabase = json.load(file)
         Alert.info(f"Read featured excerpt DB from {filename} with {len(gFeaturedDatabase['calendar'])} calendar entries.")
+        if "oldFTags" not in gFeaturedDatabase:
+            gFeaturedDatabase["oldFTags"] = {}
         return True
     except OSError as err:
         Alert.error(f"Could not read {gOptions.featuredDatabase} due to {err}")
@@ -107,7 +109,12 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
 
-    if topicTags: # Since we select only featured excerpts from key topic tags, this should always be true
+    oldFTags = None
+    if not topicTags: # If there are no current fTags, check for previous fTags
+        oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt),[])
+        topicTags = [tag for tag in oldFTags if tag in keyTopicTags]
+
+    if topicTags: # Since we select only featured excerpts from key topic tags, this true unless the excerpt has been demoted
         tag = topicTags[0]
         subtopic = gDatabase["subtopic"][gDatabase["tag"][tag]["partOfSubtopics"][0]]
         isCluster = subtopic["subtags"] # A cluster has subtags; a regular tag doesn't
@@ -116,7 +123,7 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
         else:
             tagDescription = f"tag {Build.HtmlTagLink(tag)}"
 
-        html += f"<hr><p>Featured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
+        html += f"<hr><p>{'Formerly f' if oldFTags else 'F'}eatured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
 
     return {
         "text": excerpt["text"],
@@ -140,7 +147,7 @@ def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     featuredExcerpts =  [x for x in FeaturedExcerptFilter()(gDatabase["excerpts"])]
     return {Database.ItemCode(x):ExcerptEntry(x) for x in featuredExcerpts}
 
-def Header() -> dict[str]:
+def Header() -> FeaturedDatabase:
     """Return a dict describing the conditions under which the random excerpts were built."""
 
     now = datetime.datetime.now().isoformat()
@@ -169,7 +176,7 @@ def Remake(paramStr: str) -> bool:
     historyDays = ParseNumericalParameter(paramStr)
     startDate = (datetime.date.today() - timedelta(days=historyDays)).isoformat()
     
-    gFeaturedDatabase = dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar)
+    gFeaturedDatabase = dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar,oldFTags={})
 
     Alert.info("Generated new featured excerpt database with",len(gFeaturedDatabase["excerpts"]),"entries")
     if historyDays:
@@ -200,9 +207,6 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if currentExcerpt:
             currentEntry = ExcerptEntry(currentExcerpt)
-            if "oldFTags" in databaseEntry:
-                currentEntry["oldFTags"] = databaseEntry["oldFTags"]
-                    # Ignore oldFTags in the comparison
             if currentEntry != databaseEntry:
                 if currentEntry["text"] == databaseEntry["text"]:
                     textMatches.append(excerptCode)
@@ -306,13 +310,16 @@ These may require the Fix module if excerpts have moved or the Remove module if 
 
 def UpdateEntry(entry: ExcerptDict,newEntry: ExcerptDict,excerptCode: str) -> None:
     """Update entry so that it has the contents of newEntry.
-    If newEntry removes fTags, store them in oldFTags."""
+    If newEntry removes fTags, store them in gFeaturedDatabase["oldFTags"]."""
 
     for fTag in entry["fTags"]:
         if fTag not in newEntry["fTags"]:
-            entry["oldFTags"] = entry.get("oldFTags",[]) + [fTag]
+            gFeaturedDatabase["oldFTags"][excerptCode] = gFeaturedDatabase["oldFTags"].get("excerptCode",[])
+            gFeaturedDatabase["oldFTags"][excerptCode].append(fTag)
             Alert.notice("Removing fTag",repr(fTag),"from",excerptCode)
-    entry.update(newEntry) # Note that newEntry should not have key oldFTags
+            newEntry = ExcerptEntry(Database.FindExcerpt(excerptCode))
+                # The entry html depends on gFeaturedDatabase["oldFTags"], so newEntry needs to be updated again
+    entry.update(newEntry)
 
 def Update(paramStr: str) -> bool:
     """Set entries in gFeaturedDatabase equal to the current database if the text string matches closely enough.
@@ -320,6 +327,7 @@ def Update(paramStr: str) -> bool:
 
     databaseChanged = False
     textMatches,textMismatches,missingEntries = DatabaseMismatches()
+
 
     for code in textMatches:
         UpdateEntry(gFeaturedDatabase["excerpts"][code],ExcerptEntry(Database.FindExcerpt(code)),code)

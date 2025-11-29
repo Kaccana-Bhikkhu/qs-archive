@@ -160,7 +160,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "PrepareUpload",
+                "SetupFeatured",
                 "--buildOnly",
                 "about",
                 "--minifyDatabases"

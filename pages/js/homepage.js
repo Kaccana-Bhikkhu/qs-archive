@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase} from './search.js';
 
-const DEBUG = false;
+const DEBUG = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
@@ -568,10 +568,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
         document.addEventListener("keydown", function(event) {
             if ((event.key === "ArrowLeft") || (event.key === "ArrowRight")) {
+                let offset = event.shiftKey ? 30 : 1;
                 if (event.key === "ArrowLeft")
-                    gDebugDateOffset -= 1
+                    gDebugDateOffset -= offset;
                 else
-                    gDebugDateOffset += 1
+                    gDebugDateOffset += offset;
                 let debugDate = new Date();
                 debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
                 initializeTodaysExcerpt(debugDate);
