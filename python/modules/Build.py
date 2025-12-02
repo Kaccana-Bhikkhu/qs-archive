@@ -213,9 +213,18 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 
     return ", ".join(bits)
 
+def EncodeSearchQuery(query: str) -> str:
+    """Encode special URL characters (?=#&:) as other characters to make URL decoding more robust."""
+
+    print(query)
+    charsToEncode = "?=#&:/%"
+    encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
+    return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
+
 def SearchLink(query:str,searchType:str = "x") -> str:
     """Returns a link to the search page with a specifed search string."""
 
+    query = EncodeSearchQuery(query)
     htmlQuery = urllib.parse.urlencode({"q":query,"search":searchType},doseq=True,quote_via=urllib.parse.quote)
     return f"../search/Text-search.html?{htmlQuery}"
 

@@ -62,7 +62,7 @@ class Holiday:
 def AllHolidays() -> list[Holiday]:
     "Return a list of all anniversaries, sorted by month and day."
     return [
-        Holiday("Ajahn Chah Death Anniversary",date(1992,1,16),Filter.FTag("Ajahn Chah")),
+        Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),Filter.FTag("Ajahn Chah")),
         Holiday("Ajahn Chah's Birthday",date(1918,6,17),Filter.FTag("Ajahn Chah")),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),

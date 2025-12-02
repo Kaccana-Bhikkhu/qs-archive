@@ -3,7 +3,7 @@
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
-import {SearchQuery,gSearchers,loadSearchDatabase} from './search.js';
+import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
 const DEBUG = true;
 
@@ -377,7 +377,7 @@ function setupNavMenuTriggers() {
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
         let inputBox = document.getElementById('floating-search-input');
         inputBox.blur();
-        let searchQuery = encodeURIComponent(inputBox.value);
+        let searchQuery = encodeURIComponent(encodeSearchQuery(inputBox.value));
         inputBox.value = "";
         gQuery = "";
         debugLog('Search bar search for',searchQuery);

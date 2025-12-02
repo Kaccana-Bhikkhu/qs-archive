@@ -33,6 +33,26 @@ function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
+const encodedSearchChars = ["?","=","#","&",":","/","%"];
+export function encodeSearchQuery(query) {
+    let encodeDict = {};
+    for (let n = 0; n < encodedSearchChars.length; n++) {
+        encodeDict[encodedSearchChars[n]] = String.fromCharCode(0xA4 + n);
+    }
+    let encodeRegExp = new RegExp(`[${encodedSearchChars.join("")}]`,"g")
+    return query.replaceAll(encodeRegExp,(c) => encodeDict[c])
+} 
+
+function decodeSearchQuery(query) {
+    let decodeDict = {};
+    for (let n = 0; n < encodedSearchChars.length; n++) {
+        decodeDict[String.fromCharCode(0xA4 + n)] = encodedSearchChars[n];
+    }
+    let decodeRegExp = new RegExp(`[${encodeSearchQuery(encodedSearchChars.join(""))}]`,"g")
+    return query.replaceAll(decodeRegExp,(c) => decodeDict[c])
+}
+
+
 function nbsp(count) {
     return "&nbsp;".repeat(count);
 }
@@ -848,7 +868,7 @@ function searchFromURL() {
     }
 
     let params = frameSearch();
-    let query = params.has("q") ? decodeURIComponent(params.get("q")) : "";
+    let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
     let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
 
     debugLog("Called searchFromURL. Query:",query);
@@ -873,7 +893,7 @@ function searchButtonClick(searchKind) {
     let query = searchInput.value;
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
-    let search = new URLSearchParams({q : encodeURIComponent(query),search : searchKind});
+    let search = new URLSearchParams({q : encodeURIComponent(encodeSearchQuery(query)),search : searchKind});
     history.pushState({},"",location.href); // First push a new history frame
     setFrameSearch(search); // Then replace the history with the search query
 
