@@ -64,20 +64,20 @@
     "_modified": "2025-11-27 11:56:08.000000"
   },
   "indexes/EventsBySeries.html": {
-    "md5": "d1f9a09bb1d1ba0db00510710c405361",
-    "_modified": "2025-11-27 13:57:52.000000"
+    "md5": "2e7d52dcd4d2267816289a95bb0e3917",
+    "_modified": "2025-12-02 16:04:14.000000"
   },
   "indexes/EventsBySubject.html": {
-    "md5": "df5099d46ba4a7dd57bac5bc10fd0653",
-    "_modified": "2025-11-27 11:56:52.000000"
+    "md5": "022d8056480d68e332c7eba5de16ca23",
+    "_modified": "2025-12-02 16:04:14.000000"
   },
   "indexes/EventsChronological.html": {
-    "md5": "d322e63a6bace785eb24bc4108a2c9a5",
-    "_modified": "2025-11-27 13:57:52.000000"
+    "md5": "2c050ed16023716f201443ce5765ffce",
+    "_modified": "2025-12-02 16:04:14.000000"
   },
   "indexes/EventDetails.html": {
-    "md5": "488f6236de7cd53e81568be6089fd437",
-    "_modified": "2025-11-27 14:07:38.000000"
+    "md5": "551d02b0e9e7d75e5f17a9766335dffe",
+    "_modified": "2025-12-02 16:09:50.000000"
   },
   "events/Chah2001.html": {
     "md5": "88dd230aa29914874be9e3b3cc9e711c",
@@ -152,8 +152,8 @@
     "_modified": "2025-11-27 11:56:52.000000"
   },
   "events/WR2015.html": {
-    "md5": "7b4c5ca518937e0e0e550e209cdf1147",
-    "_modified": "2025-11-27 11:56:52.000000"
+    "md5": "542e6bf3c2cf8a2cb3ecf8ae5f0d37b6",
+    "_modified": "2025-12-02 16:46:38.000000"
   },
   "events/UD2015-1.html": {
     "md5": "bc0ae126fcafa8c2610f8b69584163dc",
@@ -324,8 +324,8 @@
     "_modified": "2025-11-27 11:56:54.000000"
   },
   "sitemap.xml": {
-    "md5": "ba3ad9f3e24062c79f91192144d3526d",
-    "_modified": "2025-12-02 12:56:18.000000"
+    "md5": "991adf78b82966db9b1ff0a9c6e0d150",
+    "_modified": "2025-12-02 16:40:58.000000"
   },
   "index.html": {
     "md5": "75cbddfede0a6ccbe228d994b1f18ccc",
@@ -17926,5 +17926,9 @@
   "indexes/AllExcerpts-question-22.html": {
     "md5": "6a63ea0093e0e40cae39645500d4fc99",
     "_modified": "2025-11-27 14:17:32.000000"
+  },
+  "events/WR2013.html": {
+    "md5": "11d7a2a5964fc2dc35215301ded72f5c",
+    "_modified": "2025-12-02 16:35:50.000000"
   }
 }

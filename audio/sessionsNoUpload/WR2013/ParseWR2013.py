@@ -42,6 +42,7 @@ with open("Sessions.csv","w",encoding='utf-8',newline="") as sFile, open("Excerp
             sessionCsv.writerow([sessionNumber,date.strftime("%d/%m/%Y"),filename,"",teacherDict[teacher],sessionTitle,remoteMp3])
             print(sessionNumber,sessionTitle,teacher,date)
 
+        sessionExcerptWritten = False
         sibling = session.next_sibling
         while sibling and (isinstance(sibling,str) or "talk-titles-western" not in sibling.get("class",())):
             if not isinstance(sibling,str):
@@ -49,13 +50,24 @@ with open("Sessions.csv","w",encoding='utf-8',newline="") as sFile, open("Excerp
                     talkDescription = NormalizeWS(sibling.text)
                     excerptCsv.writerow([sessionNumber,"Teaching","","Session","",talkDescription,""])
                     print(talkDescription)
+                elif "indent-western" in sibling.get("class",()): # A reading source, e.g. "From _The Five Aggregates_ by ..."
+                    readingSource = NormalizeWS(sibling.text)
+                    readingSource = readingSource[0].lower() + readingSource[1:]
+                    excerptCsv.writerow([sessionNumber,"Reading group","","Session","",readingSource,""])
+                    sessionExcerptWritten = True
                 elif sibling.name == "ul": # A list of readings
                     readings = sibling.find_all("p")
                     if len(readings) > 1:
-                        excerptCsv.writerow([sessionNumber,"Reading group","","Session","","",""])
-                        for reading in sibling.find_all("p"):
+                        if not sessionExcerptWritten:
+                            excerptCsv.writerow([sessionNumber,"Reading group","","Session","","",""])
+                        for reading in readings:
                             readingText = NormalizeWS(reading.text)
-                            excerptCsv.writerow([sessionNumber,"Reading","-","","",readingText,""])
+
+                            isSutta = re.search(r"DN|MN|SN|AN",readingText) and not readingText.startswith("§")
+                            if isSutta:
+                                excerptCsv.writerow([sessionNumber,"Sutta","","","",readingText,""])
+                            else:
+                                excerptCsv.writerow([sessionNumber,"Reading","2","","",readingText,""])
                             print("  -",readingText)
                     else:
                         excerptCsv.writerow([sessionNumber,"Reading","","Session","",NormalizeWS(readings[0].text),""])

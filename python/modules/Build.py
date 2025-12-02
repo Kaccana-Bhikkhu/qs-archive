@@ -216,7 +216,6 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 def EncodeSearchQuery(query: str) -> str:
     """Encode special URL characters (?=#&:) as other characters to make URL decoding more robust."""
 
-    print(query)
     charsToEncode = "?=#&:/%"
     encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
     return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
