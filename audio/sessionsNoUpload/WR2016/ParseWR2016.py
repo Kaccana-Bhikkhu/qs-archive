@@ -4,7 +4,7 @@ from urllib.parse import unquote
 import os
 import re
 
-os.chdir("audio/sessions/WR2016")
+os.chdir("audio/sessionsNoUpload/WR2016")
 
 def NormalizeWS(text: str) -> str:
     return re.sub(r"\s+"," ",text)
@@ -12,7 +12,7 @@ def NormalizeWS(text: str) -> str:
 with open("WR2016 index simplified.html",encoding="utf-8") as file:
     soup = BeautifulSoup(file,"html.parser")
 
-with open("Sessions.csv","w") as sFile, open("Excerpts.csv","w") as xFile:
+with open("Sessions.csv","w",encoding='utf-8',newline="") as sFile, open("Excerpts.csv","w",encoding='utf-8',newline="") as xFile:
     sessionCsv = csv.writer(sFile,delimiter="\t")
     sessionCsv.writerow(["Session #","Date","Filename","Duration","Teachers","Session title","Remote mp3 URL"])
     excerptCsv = csv.writer(xFile,delimiter="\t")
