@@ -161,12 +161,7 @@ export function configureLinks(frame,url) {
 async function changeURL(pUrl,scrollTo = null) {
 	if (!pUrl)
 		pUrl = "homepage.html";
-	// There is ambiguity between # (encoded as %23) used as a search operator in ?q= search queries
-	// and # used as bookmarks. We resolve this by detecting the search page: 
-	if (pUrl.toLowerCase().includes("search/text-search.html"))
-		pUrl = decodeURI(pUrl) // Search links rarely use internal bookmarks, so don't convert %23 to #
-	else
-		pUrl = decodeURIComponent(pUrl); // Other pages don't use # in search queries
+	pUrl = decodeURIComponent(pUrl); // Other pages don't use # in search queries
 	debugLog("changeURL",pUrl);
 	let fileName = pUrl.match(/^.*?\.html/i)[0];
 	await fetch("./" + fileName)
