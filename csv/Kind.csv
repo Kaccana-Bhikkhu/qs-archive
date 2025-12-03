@@ -2,7 +2,7 @@ Modified:,2025,,,,,,,,,,,,,,,
 Kind,Category,Default form,Can be excerpt?,Can be annotation?,Takes times?,Takes teachers?,Takes tags?,Expects tags?,Ignore consent?,Append to excerpt?,Inherit teachers from:,Form 1,Form 2,Form 3,Exclude?,Usage notes
 Question,Questions,3,Yes,No,Yes,Yes,Yes,Yes,No,No,Session,unimplemented,++Question{s}{colon}++ {text}|| answered by {teachers}.,{prefix} “{text}” {suffix}|| Answered by {teachers}.,,
 Response,Questions,1,No,Yes,No,Yes,Yes,No,No,No,Session,"++Response{s}++ by {teachers}{colon}{""."" if not text and teachers else "" "" + text}",unimplemented,unimplemented,,An excerpt of any category which has a response annotation will be found when searching for questions. Response always attributes the teachers.
-Follow-up,Questions,2,No,Yes,No,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Follow-up{colon}++ “{text}”|| aswered by {teachers}.,unimplemented,,
+Follow-up,Questions,2,No,Yes,No,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Follow-up{colon}++ “{text}”|| answered by {teachers}.,unimplemented,,
 ,,,,,,,,,,,,,,,,
 Story,Stories,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Stor{'ies' if s else 'y'}{colon}++ {text}|| told by {teachers}.,{text}|| ++Stor{'ies' if s else 'y'}{colon}++ told by {teachers}.,,
 Recollection,Stories,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,unimplemented,++Recollection{s}{colon}++ {text}|| recounted by {teachers}.,{text}|| ++Recollection{s}++ by {teachers}.,,

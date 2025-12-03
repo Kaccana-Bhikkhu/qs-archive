@@ -11,6 +11,8 @@ sys.path.append(os.path.join(scriptDir,'../../../python/modules'))
 sys.path.append(os.path.join(scriptDir,'../../../python/utils'))
 import DownloadCSV, Utils
 
+os.chdir("audio/sessionsNoUpload/WR2025")
+
 class ConcordanceEntry(TypedDict):
     "Corresponds to a row in Processed.csv"
     chapter: int

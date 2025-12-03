@@ -995,7 +995,7 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
     bookReferences = CollateReferences("books")
     commentaryRefs,modernRefs = Utils.Partition(bookReferences,lambda r:r.reference.IsCommentary())
-    WriteReferences(bookReferences,"BookReferences.txt")
+    # WriteReferences(bookReferences,"BookReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
