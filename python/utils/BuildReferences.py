@@ -226,7 +226,7 @@ class TextReference(NamedTuple):
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
-            returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse translations on Reading Faithfully","target":"_blank"})
+            returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse more translations online","target":"_blank"})
                         (Build.HtmlIcon("ReadingFaithfully.png","small-icon")))
         return returnValue
 
