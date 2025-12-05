@@ -161,9 +161,8 @@
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
                 "SetupFeatured",
-                "--buildOnly",
-                "about",
-                "--minifyDatabases"
+                "--featured",
+                "holidays",
             ],
             "console": "integratedTerminal",
             "justMyCode": true

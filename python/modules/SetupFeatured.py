@@ -61,9 +61,10 @@ class Holiday:
 
 def AllHolidays() -> list[Holiday]:
     "Return a list of all anniversaries, sorted by month and day."
+    chahFilter = Filter.And(Filter.Teacher("AChah"),Filter.Flags("!"))
     return [
-        Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),Filter.FTag("Ajahn Chah")),
-        Holiday("Ajahn Chah's Birthday",date(1918,6,17),Filter.FTag("Ajahn Chah")),
+        Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),chahFilter),
+        Holiday("Ajahn Chah's Birthday",date(1918,6,17),chahFilter),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
         Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
@@ -71,6 +72,23 @@ def AllHolidays() -> list[Holiday]:
 
 def HolidayRecords() -> list[HolidayDisplay]:
     return [holiday.Display() for holiday in AllHolidays()]
+
+def FutureHolidayIndices(offsetFromPresent: int = 0) -> dict[int:tuple(Holiday,int)]:
+    """Return a dict of holiday indices of the form: holidayIndices[index] = (Holiday,year).
+    offsetFromPresent has the same meaning as in SplitPastAndFuture."""
+
+    holidayIndices:dict[int:tuple(Holiday,int)] = {}
+    holidays = AllHolidays()
+    futureBaseDate = date.today() + timedelta(days=1 + offsetFromPresent)
+    for year in range(futureBaseDate.year,futureBaseDate.year + 5): # Four years in the future is more than enough
+        for holiday in holidays:
+            thisYearsDate = date(year,holiday.date.month,holiday.date.day)
+            index = (thisYearsDate - futureBaseDate).days
+            if index < 0:
+                continue # The holiday is in the past
+            holidayIndices[index] = (holiday,year)
+
+    return holidayIndices
 
 def ReadDatabase(backupNumber:int = 0) -> bool:
     """Read the featured excerpt database from disk.
@@ -102,12 +120,12 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
         Alert.error(f"Could not write {filename} due to {err}")
         return False
     
-def SplitPastAndFuture(database: FeaturedDatabase,offset:int = 0) -> tuple[list[str],list[str]]:
+def SplitPastAndFuture(database: FeaturedDatabase,offsetFromPresent:int = 0) -> tuple[list[str],list[str]]:
     """Split database["calenar"] into two lists (past,future). If offset == 0, past includes today.
-    if offset > 0, include this many days past today in past as well."""
+    if offsetFromPresent > 0, include this many days past today in past as well."""
     daysPast = (date.today() - date.fromisoformat(database["startDate"])).days
 
-    cutPoint = daysPast + offset + 1
+    cutPoint = daysPast + offsetFromPresent + 1
     cutPoint = max(min(cutPoint,len(database["calendar"]) - 1),0)
 
     return (database["calendar"][0:cutPoint],database["calendar"][cutPoint:])
@@ -174,7 +192,10 @@ def FeaturedExcerptFilter() -> Filter.Filter:
                               Filter.SingleItemMatch(Filter.Teacher("AP"),Filter.Kind("Read by")))
         # Pass only excerpts where AP is the first teacher in the excerpt or he is reading the excerpt
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    return Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter)
+    return Filter.Or(
+        Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter),
+        Filter.Flags("!"))
+
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
@@ -258,7 +279,7 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
     
     return textMatches,textMismatches,missingEntries
 
-def DemotedExcerpts() -> tuple[list[str],dict[list[str]]]:
+def DemotedExcerpts() -> tuple[list[str],dict[str,list[str]]]:
     """Return a list of excerpts that are no longer featured on the homepage.
     Returns the tuple (demotedExcerpts,when):
     demotedExcerpts: a list of the demoted excerpt codes.
@@ -395,32 +416,48 @@ def Update(paramStr: str) -> bool:
     return databaseChanged
 
 def RemakeFuture(paramStr: str) -> bool:
-    """Remove any future featured excerpts that are no longer featured, add any newly featured excerpts,
-    and shuffle all future excerpts.
+    """Remove any future featured excerpts that are no longer featured and add any newly featured excerpts.
+    Swap calendar entries to minimize the changes needed to do this.
     paramStr (if given) specifies the number of future excerpts to preserve unchanged."""
 
     preserveDays = ParseNumericalParameter(paramStr)
-    past,future = SplitPastAndFuture(gFeaturedDatabase,offset=preserveDays)
+    past,future = SplitPastAndFuture(gFeaturedDatabase,offsetFromPresent=preserveDays)
+    holidayIndices = FutureHolidayIndices(offsetFromPresent=preserveDays)
 
     demotedExcerpts,_ = DemotedExcerpts()
-    oldLength = len(future)
-    future = [code for code in future if code not in demotedExcerpts]
-    removed = oldLength - len(future)
+    demotedExcerptSet = set(demotedExcerpts)
+    excerptsRemoved = sorted(demotedExcerptSet & set(future))
 
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
     currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+    newExcerpts = sorted(currentFeaturedExcerpts - excerptsInDatabase)
     
-    newFeaturedExcerpts = sorted(currentFeaturedExcerpts - excerptsInDatabase)
-    databaseChanged = bool(removed or newFeaturedExcerpts)
+    databaseChanged = bool(excerptsRemoved or newExcerpts)
     if databaseChanged:
-        future += newFeaturedExcerpts
-        random.shuffle(future)
+        shuffled = list(newExcerpts)
+        random.shuffle(shuffled)
+        newExcerptIterator = iter(shuffled)
+
+        for futureIndex in range(len(future)):
+            if futureIndex < len(future) and future[futureIndex] in demotedExcerptSet:
+                replacementExcerpt = next(newExcerptIterator,None)
+                if replacementExcerpt: # Replace with a new featured excerpt if available
+                    future[futureIndex] = replacementExcerpt
+                else: # Otherwise replace with the last element of future
+                    future[futureIndex] = future.pop()
+        
+        for newExcerpt in newExcerptIterator:
+            while (swapIndex := random.randint(0,len(future) - 1)) in holidayIndices:
+                pass
+            future.append(future[swapIndex])
+            future[swapIndex] = newExcerpt
+        
         gFeaturedDatabase["calendar"] = past + future
-        for newExcerpt in newFeaturedExcerpts:
+        for newExcerpt in newExcerpts:
             gFeaturedDatabase["excerpts"][newExcerpt] = ExcerptEntry(Database.FindExcerpt(newExcerpt))
 
         Alert.info("Remake and reshuffle the featured excerpt calendar starting",preserveDays,"days in the future.")
-        Alert.info("Removed",removed,"demoted excerpts; added",len(newFeaturedExcerpts),"new excerpts.")
+        Alert.info("Removed",len(excerptsRemoved),"demoted excerpts:",excerptsRemoved,"; added",len(newExcerpts),"new excerpts.")
 
         Trim("quiet")
     else:
@@ -480,35 +517,22 @@ def Extend(paramStr: str) -> bool:
 def Holidays(paramStr: str) -> bool:
     """Swap future calendar entries so that holidays feature relevant excerpts."""    
     past,future = SplitPastAndFuture(gFeaturedDatabase)
-    futureBaseDate = date.today() + timedelta(days=1)
-
-    # First build a database of holidays and years
-    holidayIndexes:dict[int:tuple(Holiday,int)] = {}
-    holidays = AllHolidays()
-    for year in range(futureBaseDate.year,futureBaseDate.year + 10):
-        for holiday in holidays:
-            thisYearsDate = date(year,holiday.date.month,holiday.date.day)
-            index = (thisYearsDate - futureBaseDate).days
-            if index < 0:
-                continue # The holiday is in the past
-            if index >= len(future):
-                break   # We have run past the last excerpt in the calendar
-            holidayIndexes[index] = (holiday,year)
-        if index >= len(future):
-            break
+    holidayIndices = FutureHolidayIndices()
 
     changeCount = 0
     # Then check if each holiday has an excerpt that matches the filter
-    for index,(holiday,year) in holidayIndexes.items():
-        if holiday.filter.Match(gFeaturedDatabase["excerpts"][future[index]]):
+    for index,(holiday,year) in holidayIndices.items():
+        if index >= len(future):
+            break
+        if holiday.filter.Match(Database.FindExcerpt(future[index])):
             continue
 
         swapIndex = None
         # Loop over all indices of future in the sequence:
         # index - 1, index + 1, index - 2, index + 2, ...
         for scanIndex in itertools.chain.from_iterable(itertools.zip_longest(reversed(range(index)),range(index + 1,len(future)))):
-            if scanIndex is not None and holiday.filter.Match(gFeaturedDatabase["excerpts"][future[scanIndex]]):
-                if scanIndex not in holidayIndexes: # Don't swap with another holiday
+            if scanIndex is not None and holiday.filter.Match(Database.FindExcerpt(future[scanIndex])):
+                if scanIndex not in holidayIndices: # Don't swap with another holiday
                     swapIndex = scanIndex
                     break
         
