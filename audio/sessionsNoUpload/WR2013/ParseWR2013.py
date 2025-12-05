@@ -62,6 +62,10 @@ with open("Sessions.csv","w",encoding='utf-8',newline="") as sFile, open("Excerp
                             excerptCsv.writerow([sessionNumber,"Reading group","","Session","","",""])
                         for reading in readings:
                             readingText = NormalizeWS(reading.text)
+                            if readingText.endswith('”'):
+                                readingText = readingText[:-1] + '.”'
+                            elif not readingText.endswith("."):
+                                readingText += '.'
 
                             isSutta = re.search(r"DN|MN|SN|AN",readingText) and not readingText.startswith("§")
                             if isSutta:
