@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import os, json, re
 import Database, BuildReferences, Suttaplex
-import Utils, Alert, ParseCSV, Build, Filter
+import Utils, Alert, ParseCSV, Build, Filter, Mp3DirectCut
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
 from collections import Counter
+from datetime import timedelta
+from bisect import bisect_right
 from SetupFeatured import FeaturedExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
@@ -88,6 +90,9 @@ def AllNames(teachers:Iterable[str]) -> Iterator[str]:
         if teacherDB[t]["attributionName"] != teacherDB[t]["fullName"]:
             yield teacherDB[t]["attributionName"]
 
+DURATION_BOUNDARIES = tuple(timedelta(minutes = n) for n in (1,2,5,10))
+DURATION_NAMES = ("veryshort","short","medium","long","verylong")
+
 def ExcerptBlobs(excerpt: dict) -> list[str]:
     """Create a list of search strings corresponding to the items in excerpt."""
     returnValue = []
@@ -104,6 +109,9 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
         text = item["text"]
         if item.get("teachers") and "{teachers}" in text:
             text = text.replace("{teachers}",Build.ListLinkedTeachers(item["teachers"],lastJoinStr = " and "))
+        kindList = [item["kind"]]
+        if item.get("duration"):
+            kindList.append(DURATION_NAMES[bisect_right(DURATION_BOUNDARIES,Mp3DirectCut.ToTimeDelta(item["duration"]))])
         bits = [
             Enclose(Blobify([text]),"^"),
             Enclose(Blobify(AllNames(item.get("teachers",[]))),"{}"),
@@ -111,7 +119,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             "//",
             Enclose(Blobify(aTags),"[]"),
             "|",
-            Enclose(Blobify([item["kind"]],alphanumericOnly=True),"#"),
+            Enclose(Blobify(kindList,alphanumericOnly=True),"#"),
             Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
         ]
         if item is excerpt:

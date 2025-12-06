@@ -97,19 +97,21 @@ To go beyond the recipies above, it is necessary to understand the search engine
 
 is converted into these five blobs:
 
-1. `^could you please explain about the death process...how quickly does rebirth occur?^{ajahn pasanno}[death]+[rebirth]//[recollection/death][delusion][self-identity view][recollection][impermanence][not-self][theravada][history/early buddhism][sutta][vajrayana][clinging][culture/thailand][chanting][goodwill][relinquishment][ceremony/ritual][kamma]|#homepage#question#&questions&@metta2008@s01@e3@`
+1. `^could you please explain about the death process...how quickly does rebirth occur?^{ajahn pasanno}[death]+[rebirth]//[recollection/death][delusion][self-identity view][recollection][impermanence][not-self][theravada][history/early buddhism][sutta][vajrayana][clinging][culture/thailand][chanting][goodwill][relinquishment][ceremony/ritual][kamma]|#question#verylong#&questions&@metta2008@s01@e3@`
 2. `^chanting book p 55: five recollections; chanting book p 12: the body is impermanent...^{}//[similes][craving][rebirth]|#reference#&references&`
 3. `^fire blown by the wind (mn-72: aggivacchagotta sutta)^{ajahn pasanno}//[]|#simile#&teachings&`
 4. `^a former monk asks ajahn chah about working with dying people to give them the opportunity for wholesome rebirth.^{ajahn pasanno}//[ajahn chah][death]+[teachers][rebirth][fierce/direct teaching]|#story#&stories&`
 5. `^i practice dying. the dalai lama^{ajahn pasanno}//[dalai lama][recollection/death]|#indirectquote#&quotes&`
 
-The format of each blob can be informally represented as: `^text^{teachers}[qTags]//[aTags]|#kind#&category&@eventCode@sNN@xNN@`.
+The format of each blob can be informally represented as: `^text^{teachers}[qTags]//[aTags]|#kind#duration#&category&@eventCode@sNN@xNN@`.
 
-`sNN` is the zero-padded session number, so Session 1 is `s01`; `xNN` is the zero-padded excerpt number. `[qTags]` and `@eventCode@sNN@` do not appear in annotations. Text-only searches match text on the left of the `|` separator symbol. To match `kind`, `category`, and `eventCode`, the query must include the symbols `#`, `&`, or `@`.
+`sNN` is the zero-padded session number, so Session 1 is `s01`; `xNN` is the zero-padded excerpt number. `[qTags]` and `@eventCode@sNN@` do not appear in annotations. Text-only searches match text on the left of the `|` separator symbol. To match `kind`, `duration`, `category`, and `eventCode`, the query must include the symbols `#`, `&`, or `@`.
 
 Tags for which this excerpt is featured are marked `+`, e.g. `[death]+`.
 
 Excerpts which are elligible to be featured on the homepage include `#homepage#` immediately after the separator symbol.
+
+Duration is one of the following: `veryshort`, `short`, `medium`, `long`, `verylong`.
 
 Search queries are broken into individual strings separated by spaces. If all search strings can be found within an excerpts' blobs, then the excerpt is considered to be found.
 

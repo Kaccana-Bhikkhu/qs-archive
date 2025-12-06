@@ -162,16 +162,17 @@
 <p><img alt="Example Excerpt" src="../images/ExampleExcerpt.png" /></p>
 <p>is converted into these five blobs:</p>
 <ol>
-<li><code>^could you please explain about the death process...how quickly does rebirth occur?^{ajahn pasanno}[death]+[rebirth]//[recollection/death][delusion][self-identity view][recollection][impermanence][not-self][theravada][history/early buddhism][sutta][vajrayana][clinging][culture/thailand][chanting][goodwill][relinquishment][ceremony/ritual][kamma]|#homepage#question#&amp;questions&amp;@metta2008@s01@e3@</code></li>
+<li><code>^could you please explain about the death process...how quickly does rebirth occur?^{ajahn pasanno}[death]+[rebirth]//[recollection/death][delusion][self-identity view][recollection][impermanence][not-self][theravada][history/early buddhism][sutta][vajrayana][clinging][culture/thailand][chanting][goodwill][relinquishment][ceremony/ritual][kamma]|#question#verylong#&amp;questions&amp;@metta2008@s01@e3@</code></li>
 <li><code>^chanting book p 55: five recollections; chanting book p 12: the body is impermanent...^{}//[similes][craving][rebirth]|#reference#&amp;references&amp;</code></li>
 <li><code>^fire blown by the wind (mn-72: aggivacchagotta sutta)^{ajahn pasanno}//[]|#simile#&amp;teachings&amp;</code></li>
 <li><code>^a former monk asks ajahn chah about working with dying people to give them the opportunity for wholesome rebirth.^{ajahn pasanno}//[ajahn chah][death]+[teachers][rebirth][fierce/direct teaching]|#story#&amp;stories&amp;</code></li>
 <li><code>^i practice dying. the dalai lama^{ajahn pasanno}//[dalai lama][recollection/death]|#indirectquote#&amp;quotes&amp;</code></li>
 </ol>
-<p>The format of each blob can be informally represented as: <code>^text^{teachers}[qTags]//[aTags]|#kind#&amp;category&amp;@eventCode@sNN@xNN@</code>.</p>
-<p><code>sNN</code> is the zero-padded session number, so Session 1 is <code>s01</code>; <code>xNN</code> is the zero-padded excerpt number. <code>[qTags]</code> and <code>@eventCode@sNN@</code> do not appear in annotations. Text-only searches match text on the left of the <code>|</code> separator symbol. To match <code>kind</code>, <code>category</code>, and <code>eventCode</code>, the query must include the symbols <code>#</code>, <code>&amp;</code>, or <code>@</code>.</p>
+<p>The format of each blob can be informally represented as: <code>^text^{teachers}[qTags]//[aTags]|#kind#duration#&amp;category&amp;@eventCode@sNN@xNN@</code>.</p>
+<p><code>sNN</code> is the zero-padded session number, so Session 1 is <code>s01</code>; <code>xNN</code> is the zero-padded excerpt number. <code>[qTags]</code> and <code>@eventCode@sNN@</code> do not appear in annotations. Text-only searches match text on the left of the <code>|</code> separator symbol. To match <code>kind</code>, <code>duration</code>, <code>category</code>, and <code>eventCode</code>, the query must include the symbols <code>#</code>, <code>&amp;</code>, or <code>@</code>.</p>
 <p>Tags for which this excerpt is featured are marked <code>+</code>, e.g. <code>[death]+</code>.</p>
 <p>Excerpts which are elligible to be featured on the homepage include <code>#homepage#</code> immediately after the separator symbol.</p>
+<p>Duration is one of the following: <code>veryshort</code>, <code>short</code>, <code>medium</code>, <code>long</code>, <code>verylong</code>.</p>
 <p>Search queries are broken into individual strings separated by spaces. If all search strings can be found within an excerpts' blobs, then the excerpt is considered to be found.</p>
 <p>The search engine implements the following wildcard characters:</p>
 <p><code>_</code> matches any single character except those with special meaning in the blobs: <code>^|#&amp;@[]{}&lt;&gt;()</code></p>
