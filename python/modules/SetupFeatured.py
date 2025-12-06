@@ -14,7 +14,7 @@ import Utils, Alert, Build, Database
 from copy import copy
 import Filter
 import Html2 as Html
-from collections import defaultdict
+from collections import defaultdict, Counter, deque
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
@@ -499,17 +499,36 @@ def Extend(paramStr: str,goodDatabase:bool = True) -> bool:
 def Extend(paramStr: str) -> bool:
     """Extend the calendar by adding the shuffled contents of the database."""    
     entries = FeaturedExcerptEntries()
-    calendar = list(entries)
-    random.shuffle(calendar)
+    newEntries = list(entries)
+    random.shuffle(newEntries)
 
     oldExcerptCount = len(gFeaturedDatabase["excerpts"])
     for code,entry in entries.items():
         if code not in gFeaturedDatabase["excerpts"]:
             gFeaturedDatabase["excerpts"][code] = entry
 
-    gFeaturedDatabase["calendar"] += calendar
+    # Algorithm to avoid immediate repetition of excerpts:
+    # 1. Make a list of excerpts at the end of the calendar and a dict that counts them.
+    # The length of the list is is 2/3 len(newEntries).
+    recentExcerpts = gFeaturedDatabase["calendar"][len(gFeaturedDatabase["calendar"]) - max(len(newEntries) * 2 // 3,50):]
+    recentExcerptCount = Counter()
+    for code in recentExcerpts:
+        recentExcerptCount[code] += 1
+    
+    # 2. Add the excerpts in newEntries only if they do not appear in the previous 2/3 len(newExcepts) featured excepts.
+    stillToAdd = deque(newEntries)
+    remainingRecentExcerpts = iter(recentExcerpts)
+    while (stillToAdd):
+        toAdd = stillToAdd.popleft()
+        if recentExcerptCount[toAdd]: # If the excerpt appeared too recently, put it back for future use
+            stillToAdd.append(toAdd) 
+        else: # Otherwise add this excerpt to the calendar and remove the oldest excerpt from recentExcerptCount
+            gFeaturedDatabase["calendar"].append(toAdd)
+            oldestRecentExcerpt = next(remainingRecentExcerpts,None)
+            if oldestRecentExcerpt:
+                recentExcerptCount[oldestRecentExcerpt] -= 1
 
-    Alert.info("Extended the featured calendar by",len(calendar),"entries")
+    Alert.info("Extended the featured calendar by",len(newEntries),"entries")
     if addedExcerpts := len(gFeaturedDatabase["excerpts"]) - oldExcerptCount:
         Alert.info("Added",addedExcerpts,"new excerpt(s) to the database.")
     return True
@@ -655,4 +674,3 @@ def main() -> None:
     else:
         AnnounceSubmodule(None)
         Alert.info("No changes need to be written to disk.")
-    
