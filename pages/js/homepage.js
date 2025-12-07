@@ -588,6 +588,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
         document.addEventListener("keydown", function(event) {
+            let featuredExcerptContainer = document.getElementById("todays-excerpt");
+            if (!featuredExcerptContainer)
+                return;
             if ((event.key === "ArrowLeft") || (event.key === "ArrowRight")) {
                 let offset = event.shiftKey ? 30 : 1;
                 if (event.key === "ArrowLeft")
@@ -597,13 +600,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 let debugDate = new Date();
                 debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
                 initializeTodaysExcerpt(debugDate);
-                let featuredExcerptContainer = document.getElementById("todays-excerpt");
-                if (featuredExcerptContainer) {
-                    featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
-                        gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
-                    configureLinks(featuredExcerptContainer,"search/homepage.html");
-                    updateDate(debugDate);
-                }
+                featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
+                    gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                configureLinks(featuredExcerptContainer,"search/homepage.html");
+                updateDate(debugDate);
             }
         });
     }

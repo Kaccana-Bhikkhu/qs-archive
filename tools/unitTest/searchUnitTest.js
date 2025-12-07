@@ -48,20 +48,13 @@ function unitTest(queryString,expectedResultCount,description) {
     if (gSearcher.foundItems.length === expectedResultCount) {
         output = `<b>${gTestsCompleted}. Passed.</b> ${description}: expected and found ${gSearcher.foundItems.length} excerpts.`
     } else {
-        let queryStrings = [];
-        for (const group of searchGroups.groups) {
-            queryStrings.push("(");
-            for (const item of group.terms) {
-                queryStrings.push(item.matcher.source + " ");
-            }
-            queryStrings.push(") ")
-        }
+        let processedQuery = String(searchGroups.searcher);
         output = `<b style="color:red;">${gTestsCompleted}. Failed.</b> ${description}: expected ${expectedResultCount} excerpts but found ${gSearcher.foundItems.length}.<br>`
-        output += `Query text: ${queryString}<br>Regular expressions: ${queryStrings.join("")}<br>`
+        output += `Query text: ${queryString}<br>Processed query: ${processedQuery}<br>`
         output += gSearcher.renderItems();
         gFailures++;
     }
-    showStatus(`${gTestsCompleted} tests completed. ${gFailures} failures.`);
+    showStatus(`${gTestsCompleted} tests completed. ${gFailures} failure(s).`);
     return output;
 }
 
@@ -101,7 +94,7 @@ function runUnitTests() {
         ['@UD2014-1 "*2*"',6,'All excerpts containing any digit 2'],
         ['Search for fTags'],
         ['[Renunciation]+',3,'All [Renunciation] featured excerpts'],
-        ['[Renunciation] +',8,'All featured excerpts with tag [Renunciation]'],
+        ['[Renunciation] +',9,'All featured excerpts with tag [Renunciation]'],
         ['Search for qTags and aTags'],
         ['@UD2014-1 [Merit]',9,'All excerpts with tag [Merit]'],
         ['@UD2014-1 [Merit]//',6,'All excerpts with qTag [Merit]'],
@@ -113,6 +106,18 @@ function runUnitTests() {
         ['Raw regular expressions'],
         ['@UD2014-1 `[0-9]{3}`',7,'All excerpts containing 3 digits in a row'],
         ['@UD2014-1 `a\\WB``',4,'All excerpts containing a followed by a non-word character followed by b'],
+        ['Basic search groups'],
+        ['@UD2014-1 |(Abhayagiri deceased)',5,'All excerpts containing "Abhayagiri" or "deceased"'],
+        ['@UD2014-1 &(Abhayagiri deceased)',2,'All excerpts containing "Abhayagiri" and "deceased"'],
+        ['@UD2014-1 ~(Abhayagiri deceased)',1,'All excerpts with a single item containing both "Abhayagiri" and "deceased"'],
+        ['@UD2014-1 |(Abhayagiri deceased',5,'End parenthesis optional'],
+        ['@UD2014-1 |(Abhayagiri deceased) west',3,'All excerpts containing "Abhayagiri" or "deceased" and "west"'],
+        ['Negated search groups'],
+        ['@UD2014-1 !(Abhayagiri deceased)',41,'All excerpts not containing "Abhayagiri" and "deceased"'],
+        ['Complex search groups'],
+        ['@UD2014-1 |(#verylong |(#veryshort father))',14,'Very short, very long, or contains "father"'],
+        ['@UD2014-1 |(#verylong !&(death))',6,'Very long or does not contain "death"'],
+        ['@UD2014-1 |(#verylong!&(death))',6,'Lookahead check for upcoming groups'],
     ];
 
     let results = ["All results are from searching UD2014-1 and tag [Renunciation].<br><br>"];

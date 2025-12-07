@@ -20,7 +20,7 @@ Object.keys(PALI_DIACRITICS).forEach((letter) => {
     PALI_DIACRITIC_MATCH_ALL[letter] = `[${letter}${PALI_DIACRITICS[letter]}]`;
 });
 
-const DEBUG = false;
+const DEBUG = true;
 
 export function regExpEscape(literal_string) {
     return literal_string.replace(/[-[\]{}()*+!<>=:?.\/\\^$|#\s,]/g, '\\$&');
@@ -155,7 +155,7 @@ class SearchBase {
     negate = false; // This flag negates the search
 
     matchesBlob(blob) { // Does this search term match a given blob?
-        return negate; 
+        return false;
     }
 
     matchesItem(item) { // Does this search group match an item?
@@ -259,11 +259,16 @@ class SearchTerm extends SearchBase {
         }
         return this.matcher.test(blob);
     }
+
+    toString() {
+        return (this.negate ? "!`" : "`") + this.matcher.source +"`"
+    }
 }
 
 class SearchGroup extends SearchBase {
     // An array of searchTerms. Subclasses define different operations (and, or, single item match)
     terms = []; // An array of searchBase items
+    prefixChar = ""; // The prefix character for this search type
 
     constructor() {
         super()
@@ -274,27 +279,44 @@ class SearchGroup extends SearchBase {
     }
 
     matchesItem(item) { // Does this search group match an item?
-        for (const blob of item.blobs) {
-            let allTermsMatch = true;
-            for (const term of this.terms) {
-                if (!term.matchesBlob(blob))
-                    allTermsMatch = false;
-            }
-            if (allTermsMatch)
-                return true;
-        }
-        return false;
+        return this.negate; // Subclasses must implement this for functionality
+    }
+
+    get boldTextMatcher() {
+        // Join the regular expressions of our terms with "|" to match any of them
+        let boldRegExps = this.terms.map((term) => term.boldTextMatcher).filter((regExp) => regExp);
+        return boldRegExps.join("|");
+    }
+
+    toString() {
+        console.log(this)
+        return `${this.negate ? "!" : ""}${this.prefixChar}(${this.terms.map((term) => String(term)).join(" ")})`;
     }
 }
 
 class SearchAnd extends SearchGroup {
     // This class matches an item only if all of its terms match the item.
+    prefixChar = "&";
+
     matchesItem(item) { // Does this search group match an item?
         for (const term of this.terms) {
             if (!term.matchesItem(item))
-                return self.negate;
+                return this.negate;
         }
-        return !self.negate;
+        return !this.negate;
+    }
+}
+
+class SearchOr extends SearchGroup {
+    // This class matches an item if any of its terms match the item.
+    prefixChar = "|";
+
+    matchesItem(item) { // Does this search group match an item?
+        for (const term of this.terms) {
+            if (term.matchesItem(item))
+                return !this.negate;
+        }
+        return this.negate;
     }
 }
 
@@ -302,6 +324,8 @@ class SingleItemSearch extends SearchGroup {
     // This class matches an item only if all of its terms match a single blob within that item.
     // This can be used to match excerpts containing stories with tag [Animal]
     // as distinct from excerpts containing a story annotation and the tag [Animal] applied elsewhere.
+    prefixChar = "~";
+
     matchesItem(item) { // Does this search group match an item?
         for (const blob of item.blobs) {
             let allTermsMatch = true;
@@ -310,15 +334,15 @@ class SingleItemSearch extends SearchGroup {
                     allTermsMatch = false;
             }
             if (allTermsMatch)
-                return true;
+                return !this.negate;
         }
-        return false;
+        return this.negate;
     }
 }
 
 export class SearchQuery {
     // An array of searchGroups that describes an entire search query
-    groups = []; // An array of searchGroups representing the query
+    searcher; // A searchGroup representing the query
     boldTextRegex; // A regular expression matching found texts which should be displayed in bold
 
     constructor(queryText) {
@@ -335,7 +359,17 @@ export class SearchQuery {
         queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
     
         // 1. Build a regex to parse queryText into items
+        let regularTextParts = [
+            "[^()&|~! ]",        // Any character that can't be the start or end of a group
+            "[!](?![&|~]?[(])",  // Any "!" that doesn't begin a group
+            "[&|~](?![(])"       // Any "&", "|", or "~" that doesn't begin a group
+        ]
         let parts = [
+            "[&|~]?\\(",
+                // Match the beginning of a search group:
+                // & (or blank): AND - Match if all RegExps in this group match a blob in the item
+                // |: OR - Match if any RegExp in this group matches a blob in the item
+                // ~: Single blob AND: Match if all RegExps match the same blob in the item
             matchQuotes('"'),
                 // Match text enclosed in quotes
             matchQuotes('`'),
@@ -345,43 +379,66 @@ export class SearchQuery {
             "/*" + matchEnclosedText('[]',SPECIAL_SEARCH_CHARS) + "\\+?/*",
                 // Match tags enclosed in brackets
                 // Match the forms: [tag]// (qTag only), //[tag] (aTag only), [tag]+ (fTag only)
-            "[^ ]+"
-                // Match everything else until we encounter a space
+            `(?:${regularTextParts.join("|")})+`
+                // Match everything else until we encounter a space or the beginning or end of a group
         ];
         // parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
-        let partsSearch = `\\s*(!?)(${parts.join("|")})`
+        let partsSearch = `\\s*\\)|\\s*(!?)(${parts.join("|")})`
         debugLog(partsSearch);
         partsSearch = new RegExp(partsSearch,"g");
     
         // 2. Create items and groups from the found parts
+        let currentGroup = new SearchAnd();
+        let groupStack = [currentGroup];
         for (let match of queryText.matchAll(partsSearch)) {
-            let group = new SearchAnd();
-            group.addTerm(match[2].trim());
-            if (match[1]) { // Negate expressions preceeded by '!'
-                group.terms[group.terms.length - 1].negate = true;
+            if (match[0].trim() == ")") { // ")" ends a group
+                if (groupStack.length >= 2) {
+                    groupStack.pop();
+                    currentGroup = groupStack[groupStack.length - 1];
+                }
+            } else if (match[2].endsWith("(")) { // "(" begins a new group
+                switch(match[2][0]) {
+                    case "&":
+                    case "(":
+                        currentGroup = new SearchAnd();
+                        break;
+                    case "|":
+                        currentGroup = new SearchOr();
+                        break;
+                    case "~":
+                        currentGroup = new SingleItemSearch();
+                        break;
+                    default:
+                        console.assert(0,"Unknown search type",match[2][0]);
+                }
+                if (match[1])
+                    currentGroup.negate = true;
+
+                // Add the new group as an item in the previous group and make it current
+                groupStack[groupStack.length - 1].terms.push(currentGroup);
+                groupStack.push(currentGroup);
+            } else {
+                currentGroup.addTerm(match[2].trim());
+                if (match[1]) { // Negate expressions preceeded by '!'
+                    currentGroup.terms[currentGroup.terms.length - 1].negate = true;
+                }
             }
-            this.groups.push(group);
         }
+        this.searcher = groupStack[0];
 
         // 3. Construct the regex to match bold text.
-        let textMatchItems = [];
-        for (const group of this.groups) {
-            for (const term of group.terms) {
-                if (term.boldTextMatcher)
-                    textMatchItems.push(term.boldTextMatcher);
-            }
-        }
+        let textMatchItems = this.searcher.boldTextMatcher;        
         debugLog("textMatchItems",textMatchItems);
-        if (textMatchItems.length > 0)
-            this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})`,"gi");
+        if (textMatchItems)
+            this.boldTextRegex = new RegExp(textMatchItems,"gi");
         else
-            this.boldTextRegex = /^a\ba/g; // a RegEx that doesn't match anything
+            this.boldTextRegex = /^a\ba/g; // a RegExp that doesn't match anything
         debugLog(this.boldTextRegex);
     }
 
     filterItems(items) { // Return an array containing items that match all groups in this query
         let found = items;
-        for (const group of this.groups) {
+        for (const group of this.searcher.terms) {
             found = group.filterItems(found);
         }
         return found;
@@ -705,6 +762,9 @@ class PagedSearcher extends Searcher {
         // Display the results of this search in the main window.
         // message is an optional message to display.
         
+        if (DEBUG)
+            message += `Processed query: ${String(this.query.searcher)}<br>`
+
         if (this.foundItems.length > 0) {
             message += `Found ${this.foundItemsString()}:`;
             displaySearchResults(message,this.htmlSearchResults());
