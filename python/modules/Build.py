@@ -1700,9 +1700,9 @@ def LinkToPeoplePages(page: Html.PageDesc) -> Html.PageDesc:
         if link and directory != "books":
             outputLinks.append(Html.Tag("a",{"href":link})(f'→ Books by {gDatabase["teacher"][teacher]["attributionName"]}'))
         
-    tag = Database.TagLookup(page.info.title)
-    if tag and directory != "tags":
-        outputLinks.append(HtmlTagLink(tag,text = f'→ Tag [{tag}]'))
+        tag = Database.TagLookup(page.info.title)
+        if tag and directory not in ("tags","clusters"):
+            outputLinks.append(HtmlTagLink(tag,text = f'→ Tag [{tag}]'))
 
     if outputLinks:
         page.AppendContent("&emsp;".join(outputLinks),"smallTitle")
