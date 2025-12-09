@@ -110,7 +110,7 @@ function matchEnclosedText(separators,dontMatchAfterSpace) {
     // Return a regex string that matches the contents between separators.
     // Separators is a 2-character string like '{}'
     // Match all characters excerpt the end character until a space is encountered.
-    // If any characters in dontMatchAfterSpace are encountered, match only up until the space.
+    // After a space if any characters in dontMatchAfterSpace are encountered, don't match the text.
     // If the end character is encountered, match it.
 
     let escapedStart = regExpEscape(separators[0]);
@@ -348,9 +348,10 @@ export class SearchQuery {
     constructor(queryText) {
         // Construct a search query by parsing queryText into search groups containing search terms.
         // Search groups are specified by enclosure within parenthesis.
-        // Each excerpt must match all search groups.
-        // Search keys within a search group must be matched within the same blob.
-        // So (#Read Pasanno}) matches only kind 'Reading' or 'Read by' with teacher ending with Pasanno
+        // The types of search group are "&": AND, "|": OR, and "~": SINGLE ITEM AND
+        // SINGLE ITEM AND requires all search terms within the group to match in a single blob
+        // So ~(#Quote Pasanno}) matches only kind 'Quote' with teacher ending with Pasanno.
+        // It does not match excerpts which include Ajahn Pasanno as a teacher and have quotes by someone else.
         
         // 0. Convert query to lowercase and remove diacritics
         queryText = queryText.replaceAll(/\\.|[^\\]+/g,(s) => s.startsWith("\\") ? s : s.toLowerCase());
@@ -382,8 +383,8 @@ export class SearchQuery {
             `(?:${regularTextParts.join("|")})+`
                 // Match everything else until we encounter a space or the beginning or end of a group
         ];
-        // parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
         let partsSearch = `\\s*\\)|\\s*(!?)(${parts.join("|")})`
+        // The final RegExp matches ")" or the optional negation operator "!" followed by any of parts
         debugLog(partsSearch);
         partsSearch = new RegExp(partsSearch,"g");
     

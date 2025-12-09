@@ -50,7 +50,7 @@ def ReadReferenceDatabase() -> None:
     if gSavedReferences:
         return
     try:
-        with open("pages/assets/ReferenceDatabase.json", 'r', encoding='utf-8') as file:
+        with open(Utils.PosixJoin(gOptions.pagesDir,"assets/ReferenceDatabase.json"), 'r', encoding='utf-8') as file:
             gSavedReferences = json.load(file)
     except OSError as error:
         Alert.error(error, "When reading pages/assets/ReferenceDatabase.json. Will use a blank database.")
@@ -89,7 +89,7 @@ def WriteReferenceDatabase() -> bool:
     if not changed:
         return False
     
-    with open("pages/assets/ReferenceDatabase.json", 'w', encoding='utf-8') as file:
+    with open(Utils.PosixJoin(gOptions.pagesDir,"assets/ReferenceDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(gNewReferences, file, ensure_ascii=False, indent=2)
     
     gSavedReferences = gNewReferences
@@ -451,7 +451,7 @@ class BookReference(NamedTuple):
         
         # If the filename links to a local page, add a "more information" link.
         if info["filename"].startswith("../"):
-            link = info["filename"].replace("../pages","../")
+            link = info["filename"].replace(Utils.PosixJoin("../",gOptions.pagesDir),"../")
             return [Html.Tag("a",{"href":link,"style":"font-size:65%;"})("more information...")]
 
         if info["filename"]:

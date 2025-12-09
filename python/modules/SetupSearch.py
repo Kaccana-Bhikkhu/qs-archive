@@ -42,7 +42,6 @@ def RawBlobify(item: str) -> str:
     output = re.sub(r"\s+"," ",output.strip()) # normalize whitespace
     return output
 
-gBlobDict = {}
 gInputChars:set[str] = set()
 gOutputChars:set[str] = set()
 gNonSearchableTeacherRegex = None
@@ -77,8 +76,6 @@ def Blobify(items: Iterable[str],alphanumericOnly = False) -> Iterator[str]:
         if alphanumericOnly:
             blob = re.sub(r"\W","",blob.strip()) # Remove all non-alphanumeric characters
         gOutputChars.update(blob)
-        if gOptions.debug:
-            gBlobDict[item] = blob
         if blob:
             yield blob
 
@@ -442,6 +439,13 @@ def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Itera
         "items": [b for b in blobsAndHtml],
     }
 
+def AllBlobs(database:dict[str]) -> Iterable[str]:
+    """Yield all blobs in database"""
+
+    for search in database["searches"].values():
+        for item in search["items"]:
+            yield from item["blobs"]
+    
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     pass
@@ -472,10 +476,22 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
 
-    optimizedDB["blobDict"] = list(gBlobDict.values())
+    if gOptions.debug:        
+        Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))
+        Alert.debug("Characters remaining in blob texts:                  ","".join(sorted(gOutputChars)))
 
-    Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))
-    Alert.debug("Characters remaining in blobs:","".join(sorted(gOutputChars)))
+        allBlobChars = set()
+        teacherBlobChars = set()
+        tagBlobChars = set()
+        for blob in AllBlobs(optimizedDB):
+            allBlobChars.update(blob)
+            for teacherMatch in re.findall(r"\{(.*?)\}",blob):
+                teacherBlobChars.update(teacherMatch)
+            for tagMatch in re.findall(r"\[(.*?)\]",blob):
+                tagBlobChars.update(tagMatch)
+        Alert.debug("Characters remaining in blobs (including separators):","".join(sorted(allBlobChars)))
+        Alert.debug("Characters remaining in teacher blobs               :","".join(sorted(teacherBlobChars)))
+        Alert.debug("Characters remaining in tag blobs                   :","".join(sorted(tagBlobChars)))
 
     with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(optimizedDB, file, ensure_ascii=False, indent=2)
