@@ -727,9 +727,8 @@ class PagedSearcher extends Searcher {
             return super.htmlSearchResults();
         }
 
-        let heading = this.header;
-        if (this.multiSearchHeading)
-            heading += `\n<h3>${this.foundItemsHeader()}</h3>`;
+        let heading = this.multiSearchHeading ? `\n<h3>${this.foundItemsHeader()}</h3>` : "";
+        heading += this.header;
 
         const pageNumberParam = `${this.code}Page`;
         let params = frameSearch(location.hash);

@@ -190,8 +190,9 @@ p.x-cite {
 }
 
 p.checkboxes {
+	margin-left: 10px;
 	padding-top: 0;
-	padding-bottom: 0;
+	padding-bottom: 5px;
 }
 
 .indent-0 {
