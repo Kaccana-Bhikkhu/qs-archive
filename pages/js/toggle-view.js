@@ -1,4 +1,7 @@
-import {frameSearch, setFrameSearch} from './frame.js';
+// Implements the toggle-view and query-checkbox utility classes.
+// toggle-view: A simple show/hide toggle box; uses 
+// query-checkbox: A checkbox whose id updates the frame search
+import {frameSearch, setFrameSearch, framePage, openLocalPage} from './frame.js';
 
 function setVisible(element,newVisible,changeURL) {
     // Set the visibility of this toggle-view element
@@ -46,9 +49,18 @@ function setVisible(element,newVisible,changeURL) {
     }
 }
 
-function clickListener(event) {
+function toggleClickListener(event) {
     event.preventDefault();
     setVisible(this,"toggle",true);
+}
+
+function checkboxClickListener(event) {
+    let params = frameSearch();
+    if (this.checked)
+        params.set(this.id,"")
+    else
+        params.delete(this.id);
+    openLocalPage(framePage(),String(params),"keep_scroll");
 }
 
 export function loadToggleView(frame) {
@@ -69,7 +81,12 @@ export function loadToggleView(frame) {
             setVisible(t,"toggle");
         else
             setVisible(t,!initView);
-        // t.removeEventListener("click", clickListener); // Remove the listener first so we don't add it twice.
-        t.addEventListener("click", clickListener);
+        t.addEventListener("click", toggleClickListener);
+    }
+
+    let checkboxes = frame.getElementsByClassName("query-checkbox");
+    for (let c of checkboxes) {
+        c.checked = params.has(c.id);
+        c.addEventListener("click",checkboxClickListener)
     }
 }

@@ -189,6 +189,11 @@ p.x-cite {
 	padding-bottom: 0;
 }
 
+p.checkboxes {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 .indent-0 {
 	margin-left: 0em;
 }
@@ -438,10 +443,14 @@ p#cite-as {
 	font-size: 1em;
 }
 
-input {
+input[type=text] {
 	font: 16px system-ui;
 	padding: 6px 10px;
 	width: 100%;
+}
+
+input[type=checkbox] {
+	margin: 0px 3px 0px 6px;
 }
 
 button {

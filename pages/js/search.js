@@ -159,9 +159,6 @@ class SearchBase {
     }
 
     matchesItem(item) { // Does this search group match an item?
-        if (this.negate) {
-            debugLog("negate")
-        }
         for (const blob of item.blobs) {
             if (this.matchesBlob(blob))
                 return !this.negate;
@@ -345,7 +342,7 @@ export class SearchQuery {
     searcher; // A searchGroup representing the query
     boldTextRegex; // A regular expression matching found texts which should be displayed in bold
 
-    constructor(queryText) {
+    constructor(queryText,strict=false) {
         // Construct a search query by parsing queryText into search groups containing search terms.
         // Search groups are specified by enclosure within parenthesis.
         // The types of search group are "&": AND, "|": OR, and "~": SINGLE ITEM AND
@@ -389,10 +386,10 @@ export class SearchQuery {
         partsSearch = new RegExp(partsSearch,"g");
     
         // 2. Create items and groups from the found parts
-        let currentGroup = new SearchAnd();
+        let currentGroup = strict ? new SingleItemSearch() : new SearchAnd();
         let groupStack = [currentGroup];
         for (let match of queryText.matchAll(partsSearch)) {
-            if (match[0].trim() == ")") { // ")" ends a group
+            if (match[0].trim() === ")") { // ")" ends a group
                 if (groupStack.length >= 2) {
                     groupStack.pop();
                     currentGroup = groupStack[groupStack.length - 1];
@@ -438,11 +435,7 @@ export class SearchQuery {
     }
 
     filterItems(items) { // Return an array containing items that match all groups in this query
-        let found = items;
-        for (const group of this.searcher.terms) {
-            found = group.filterItems(found);
-        }
-        return found;
+        return this.searcher.filterItems(items);
     }
 
     displayMatchesInBold(string) { // Add <b> and </b> tags to string to display matches in bold
@@ -526,6 +519,7 @@ class Searcher {
     plural; // the plural name of the search.
     nameInResults = ""; // A longer plural name to display in the search results
                         // e.g. "Sutta and Vinaya texts"
+    header = ""; // html header just before the first search result 
     prefix = "<p>"; // html prefix of each search result.
     suffix = "</p>"; // hmtl suffix of each search result.
     separator = ""; // the html code to separate each displayed search result.
@@ -578,10 +572,10 @@ class Searcher {
         // Returns an empty string if the search didn't find anything.
         if (this.foundItems.length > 0) {
             let items = this.renderItems(0,this.itemsPerPage);
-            let heading = "";
+            let heading = this.header;
             if (this.multiSearchHeading) { // Match the formatting of TruncatedSearcher
                 heading = `\n<h3>${this.foundItemsHeader()}</h3>`;
-                items = `<div id="results-${this.code}.b">\n` + items + `\n</div>`
+                items = `<div id="results-${this.code}.b">\n` + this.header + items + `\n</div>`
             }
             return `<div class="${this.divClass}" id="results-${this.code}">${heading}\n${items}\n</div>`;
         } else
@@ -589,7 +583,7 @@ class Searcher {
     }
 
     foundItemsString() {
-        // Returns a string describing the found items in th form "27 tags"
+        // Returns a string describing the found items in the form "27 tags"
         // Returns "" if no items were found.
         if (this.foundItems.length > 0)
             return `${this.foundItems.length} ${this.foundItems.length > 1 ? this.plural : this.name}`;
@@ -652,10 +646,10 @@ class TruncatedSearcher extends Searcher {
 
         let resultsId = `results-${this.code}`;
 
-        let firstItems = "";
+        let firstItems = this.header;
         let moreItems = "";
         if (this.truncateAt > 0 && this.foundItems.length > this.truncateAt) {
-            firstItems = this.renderItems(0,this.truncateAt - 1);
+            firstItems += this.renderItems(0,this.truncateAt - 1);
             let moreItemsBody = this.renderItems(this.truncateAt - 1);
             moreItems = ` 
             <a class="toggle-view hide-self" id="${resultsId}-more" href="#"><i>Show all ${this.foundItems.length}...</i></a>
@@ -664,7 +658,7 @@ class TruncatedSearcher extends Searcher {
             </div>
             `;
         } else {
-            firstItems = this.renderItems();
+            firstItems += this.renderItems();
         }
         
         let hideAll = this.truncateAt <= 0 && this.foundItems.length > -this.truncateAt;
@@ -733,9 +727,9 @@ class PagedSearcher extends Searcher {
             return super.htmlSearchResults();
         }
 
-        let heading = "";
+        let heading = this.header;
         if (this.multiSearchHeading)
-            heading = `\n<h3>${this.foundItemsHeader()}</h3>`;
+            heading += `\n<h3>${this.foundItemsHeader()}</h3>`;
 
         const pageNumberParam = `${this.code}Page`;
         let params = frameSearch(location.hash);
@@ -803,11 +797,23 @@ class PagedSearcher extends Searcher {
     }
 }
 
+const EXCERPT_SEARCH_OPTIONS = `
+<p class="checkboxes">
+    <input type="checkbox" class="query-checkbox" id="strict">
+    <label for="strict"> Strict search</label>&emsp;
+</p>`
+const UNIMPLEMENTED_OPTIONS = `
+    <input type="checkbox" class="query-checkbox" id="featured">
+    <label for="featured"> Featured excerpts first</label>&emsp;
+    <input type="checkbox" class="query-checkbox" id="relevant">
+    <label for="relevant"> Sort by relevance</label>
+`
 export class ExcerptSearcher extends PagedSearcher {
     // Specialised search object for excerpts
     code = "x"; // a one-letter code to identify the search.
     name = "excerpt"; // the name of the search, e.g. "Tag"
     plural = "excerpts"; // the plural name of the search.
+    header = EXCERPT_SEARCH_OPTIONS;
     prefix = ""; // html prefix of each search result.
     suffix = ""; // hmtl suffix of each search result.
     separator = "<hr>"; // the html code to separate each displayed search result.
@@ -940,7 +946,7 @@ function searchFromURL() {
         return;
     }
 
-    let searchGroups = new SearchQuery(query);
+    let searchGroups = new SearchQuery(query,params.has("strict"));
     debugLog(searchGroups);
 
     gSearchers[searchKind].search(searchGroups);

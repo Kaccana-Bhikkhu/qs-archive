@@ -397,7 +397,7 @@ function setupNavMenuTriggers() {
         // '/' key opens the search bar if it's not open already.
         // Don't open the search bar if an input box has focus.
         if ((event.key === "/") && !gNavBar.querySelector('.floating-search.active')
-                && document.activeElement.nodeName != "INPUT") {
+                && document.activeElement.nodeName !== "INPUT") {
             event.preventDefault();
             document.getElementById("nav-search-icon").click();
         }

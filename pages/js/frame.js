@@ -73,7 +73,7 @@ export function openLocalPage(path,query,bookmark) {
 	let newFullUrl = new URL(location);
 	newFullUrl.hash = `#${path}` + (query ? `?${query}` :"") + (bookmark ? `#${bookmark}` :"");
 
-	history.pushState({}, "", newFullUrl);
+	history.pushState({}, "", String(newFullUrl).replace(/#keep_scroll$/,""));
 	changeURL(newFullUrl.hash.slice(1));
 }
 
