@@ -139,7 +139,8 @@ def OptimizedExcerpts() -> list[dict]:
         x = fragmentGroup[0]
         xDict = {"session": Database.ItemCode(event=x["event"],session=x["sessionNumber"]),
                  "blobs": ExcerptBlobs(x),
-                 "html": formatter.HtmlExcerptList([x])}
+                 "html": formatter.HtmlExcerptList([x]),
+                 "uniqueTeachers": len(Filter.AllTeachers(x))}
         if featuredFilter(fragmentGroup):
             xDict["blobs"][0] = xDict["blobs"][0].replace("|#","|#homepage#")
         returnValue.append(xDict)

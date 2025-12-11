@@ -40,7 +40,7 @@ function showSearchItems() {
         htmlBits.push(item.blobs.map(String).join("<hr>"));
         htmlBits.push("<hr>");
         for (let b in item.sortBlob) {
-            htmlBits.push(`${b} (${item.sortBlob[b].count}): ${item.sortBlob[b].blob}`);
+            htmlBits.push(`${b} (${item.sortBlob[b].count}): ${item.sortBlob[b].blob} <br>`);
         }
         htmlBits.push("<hr>");
     }

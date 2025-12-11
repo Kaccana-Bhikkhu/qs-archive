@@ -817,20 +817,38 @@ class PagedSearcher extends Searcher {
     }
 }
 
-function concatenateUniqueMatches(regExp,stringList) {
-    // Given a regular expression (with /g flag) and a list of strings, return the an object with two properties:
-    // blob: The unordered concatenation of all unique matches
-    // count: How many unique matches there are
-    
+function uniqueMatches(regExp,stringList) {
+    // Given a regular expression (with /g flag) and a list of strings, return the Set of unique matches
+    // Each match must include at least one letter.
     let bits = [];
     for (let s of stringList) {
         regExp.lastIndex = 0;
         for (let match of s.matchAll(regExp)) {
-            bits.push(match);
+            if (/[a-z]/.test(match))
+                bits.push(match);
         }
     }
-    bits = [...new Set(bits.map(b => b[0]))];
+    return new Set(bits.map(b => b[0]));
+}
+
+function countedMatches(matchSet) {
+    // Given a set of matches, return an object with two properties:
+    // blob: The unordered concatenation of all unique matches (matches must contain at least one letter)
+    // count: How many unique matches there are
+    
+    let bits = [...matchSet];
     return {"blob":bits.join(""), "count": bits.length};
+}
+
+function countedText(matchObject) {
+    // Given a RegExp match object, return an object with two properties:
+    // blob: The matched text itself
+    // count: The length of the string divided by 50 characters; minimum 1.0
+
+    if (matchObject)
+        return {"blob":matchObject[0], "count": Math.max(matchObject[0].length / 50.0,1.0)}
+    else
+        return {"blob":"", "count": 0};
 }
 
 const EXCERPT_SEARCH_OPTIONS = `
@@ -839,11 +857,10 @@ const EXCERPT_SEARCH_OPTIONS = `
     <label for="strict"> Strict search</label>&emsp;
     <input type="checkbox" class="query-checkbox" id="featured">
     <label for="featured"> Featured excerpts first</label>&emsp;
-</p>`;
-const UNIMPLEMENTED_OPTIONS = `
     <input type="checkbox" class="query-checkbox" id="relevant">
     <label for="relevant"> Sort by relevance</label>
-`;
+</p>`;
+
 const FEATURED_BLOCK = `<div class="title" id="featured">Featured excerpts (NN) — Play all <button id="playFeatured"></button></div>`;
 const OTHER_EXCERPT_BLOCK = `<div class="title" id="featured">Other excerpts</div>`
 export class ExcerptSearcher extends PagedSearcher {
@@ -868,25 +885,42 @@ export class ExcerptSearcher extends PagedSearcher {
         
         // Generate blobs for search weighting
         for (let excerpt of this.items) {
+            let qTags = uniqueMatches(/\[[^\]]*?\]/g,[excerpt.blobs[0].split("//")[0]]);
+            let aTags = uniqueMatches(/\[[^\]]*?\]/g,excerpt.blobs);
+            qTags.forEach((tag) => aTags.delete(tag));
             excerpt.sortBlob = {
-                "fTag": concatenateUniqueMatches(/\[[^\]]*?\]\+/g,excerpt.blobs),
+                "fTag": countedMatches(uniqueMatches(/\[[^\]]*?\]\+/g,excerpt.blobs)),
+                "qTag": countedMatches(qTags),
+                "aTag": countedMatches(aTags),
+                "teacher": countedMatches(uniqueMatches(/\{[^\}]*?\}/g,excerpt.blobs)),
+                "xText": countedText(excerpt.blobs[0].match(/\^[^\^]*?\^/)),
+                // "aText": countedText([...excerpt.blobs.slice(1,).map((s) => s.match(/\^[^\^]*?\^/)[0])].join("")),
+                "aText": countedMatches(uniqueMatches(/\^[^\^]*?\^/g,excerpt.blobs.slice(1,)))
             }
-
             for (let b in excerpt.sortBlob) {
                 if (!excerpt.sortBlob[b].count)
                     delete excerpt.sortBlob[b];
             }
+
+            // Minor adjustments: aTag divisor should include all tags
+            if (excerpt.sortBlob.aTag && excerpt.sortBlob.qTag)
+                excerpt.sortBlob.aTag.count += excerpt.sortBlob.qTag.count;
+            if (excerpt.sortBlob.aText && excerpt.sortBlob.xText)
+                excerpt.sortBlob.aText.count = excerpt.sortBlob.xText.count + Math.max(excerpt.sortBlob.aText.blob.length / 50.0,1);
+            // Don't count teachers with multiple names twice
+            if (excerpt.sortBlob.teacher)
+                excerpt.sortBlob.teacher.count = excerpt.uniqueTeachers;
         }
     }
 
     search(searchQuery) {
         // Sort the results after searching
         super.search(searchQuery);
-
-        let searchWeights = {};
         let params = frameSearch();
         if (!(params.has("featured") || params.has("relevant")))
             return;
+
+        let searchParts = searchQuery.searcher.regExpBits();
         for (let item of this.foundItems) {
             item.searchWeight = 0;
         }
@@ -897,9 +931,6 @@ export class ExcerptSearcher extends PagedSearcher {
                 "otherFTag": 100
             };
 
-            searchWeights = fTagWeights;
-            let searchParts = searchQuery.searcher.regExpBits();
-
             for (let item of this.foundItems) {
                 if (!item.sortBlob.fTag)
                     continue;
@@ -908,7 +939,31 @@ export class ExcerptSearcher extends PagedSearcher {
                         item.searchWeight += fTagWeights["searchedFTag"]
                     }
                 }
-                item.searchWeight += item.sortBlob.fTag.count * fTagWeights["otherFTag"];
+                // If we are sorting by featured only or a search term matches one of the fTags,
+                // prioritize excerpts which have more fTags.
+                if (!params.has("relevant") || item.searchWeight)
+                    item.searchWeight += item.sortBlob.fTag.count * fTagWeights["otherFTag"];
+            }
+        }
+        if (params.has("relevant")) {
+            let searchWeights = {
+                "qTag": 7.0,
+                "aTag": 2.0,
+                "teacher": 0.5,
+                "xText": 1.5,
+                "aText": 1.0
+            };
+
+            for (let item of this.foundItems) {
+                for (let blobKind in searchWeights) {
+                    if (!item.sortBlob[blobKind])
+                        continue;
+                    for (let term of searchParts) {
+                        if (term.test(item.sortBlob[blobKind].blob)) {
+                            item.searchWeight += searchWeights[blobKind] * (1 + 0.5 / item.sortBlob[blobKind].count);
+                        }
+                    }
+                }
             }
         }
 
@@ -965,7 +1020,7 @@ export class ExcerptSearcher extends PagedSearcher {
                 excerptHtml = excerptHtml.replace(/<p class="x-cite">.*?<\/p>/s,"")
             }
             if (DEBUG && headerlessFormat)
-                bits.push(String(x.searchWeight));
+                bits.push(x.searchWeight.toFixed(2));
             bits.push(this.query.displayMatchesInBold(excerptHtml));
             bits.push(this.separator);
         }
