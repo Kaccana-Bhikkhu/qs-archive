@@ -132,9 +132,8 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
 def OptimizedExcerpts() -> list[dict]:
     returnValue = []
     formatter = Build.Formatter()
-    formatter.excerptOmitSessionTags = False
-    formatter.showHeading = False
-    formatter.headingShowTeacher = False
+    formatter.SetHeaderlessFormat()
+    formatter.excerptNumbers = True
     featuredFilter = FeaturedExcerptFilter()
     for fragmentGroup in Database.GroupFragments(gDatabase["excerpts"]):
         x = fragmentGroup[0]

@@ -60,6 +60,7 @@ function checkboxClickListener(event) {
         params.set(this.id,"")
     else
         params.delete(this.id);
+    params.delete("xPage"); // Go back to the first search page - only relevant on search pages
     openLocalPage(framePage(),String(params),"keep_scroll");
 }
 

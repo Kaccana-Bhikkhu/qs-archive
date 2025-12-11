@@ -174,6 +174,13 @@ class SearchBase {
         }
         return result;
     }
+
+    regExpBits() { 
+        // Return a list of regular expressions included in the search.
+        // Used to sort the search results.
+
+        return [];
+    }
 }
 
 // A class to parse and match a single term in a search query
@@ -257,6 +264,10 @@ class SearchTerm extends SearchBase {
         return this.matcher.test(blob);
     }
 
+    regExpBits() {
+        return this.negate ? [] : [this.matcher];
+    }
+
     toString() {
         return (this.negate ? "!`" : "`") + this.matcher.source +"`"
     }
@@ -283,6 +294,16 @@ class SearchGroup extends SearchBase {
         // Join the regular expressions of our terms with "|" to match any of them
         let boldRegExps = this.terms.map((term) => term.boldTextMatcher).filter((regExp) => regExp);
         return boldRegExps.join("|");
+    }
+
+    regExpBits() {
+        if (this.negate)
+            return [];
+        let bits = [];
+        for (let term of this.terms) {
+            bits = bits.concat(term.regExpBits());
+        }
+        return bits;
     }
 
     toString() {
@@ -796,17 +817,35 @@ class PagedSearcher extends Searcher {
     }
 }
 
+function concatenateUniqueMatches(regExp,stringList) {
+    // Given a regular expression (with /g flag) and a list of strings, return the an object with two properties:
+    // blob: The unordered concatenation of all unique matches
+    // count: How many unique matches there are
+    
+    let bits = [];
+    for (let s of stringList) {
+        regExp.lastIndex = 0;
+        for (let match of s.matchAll(regExp)) {
+            bits.push(match);
+        }
+    }
+    bits = [...new Set(bits.map(b => b[0]))];
+    return {"blob":bits.join(""), "count": bits.length};
+}
+
 const EXCERPT_SEARCH_OPTIONS = `
 <p class="checkboxes">
     <input type="checkbox" class="query-checkbox" id="strict">
     <label for="strict"> Strict search</label>&emsp;
-</p>`
-const UNIMPLEMENTED_OPTIONS = `
     <input type="checkbox" class="query-checkbox" id="featured">
     <label for="featured"> Featured excerpts first</label>&emsp;
+</p>`;
+const UNIMPLEMENTED_OPTIONS = `
     <input type="checkbox" class="query-checkbox" id="relevant">
     <label for="relevant"> Sort by relevance</label>
-`
+`;
+const FEATURED_BLOCK = `<div class="title" id="featured">Featured excerpts (NN) — Play all <button id="playFeatured"></button></div>`;
+const OTHER_EXCERPT_BLOCK = `<div class="title" id="featured">Other excerpts</div>`
 export class ExcerptSearcher extends PagedSearcher {
     // Specialised search object for excerpts
     code = "x"; // a one-letter code to identify the search.
@@ -826,6 +865,55 @@ export class ExcerptSearcher extends PagedSearcher {
         // Called after SearchDatabase.json is loaded to prepare for searching
         super.loadItemsFomDatabase(database);
         this.sessionHeader = database.searches[this.code].sessionHeader;
+        
+        // Generate blobs for search weighting
+        for (let excerpt of this.items) {
+            excerpt.sortBlob = {
+                "fTag": concatenateUniqueMatches(/\[[^\]]*?\]\+/g,excerpt.blobs),
+            }
+
+            for (let b in excerpt.sortBlob) {
+                if (!excerpt.sortBlob[b].count)
+                    delete excerpt.sortBlob[b];
+            }
+        }
+    }
+
+    search(searchQuery) {
+        // Sort the results after searching
+        super.search(searchQuery);
+
+        let searchWeights = {};
+        let params = frameSearch();
+        if (!(params.has("featured") || params.has("relevant")))
+            return;
+        for (let item of this.foundItems) {
+            item.searchWeight = 0;
+        }
+
+        if (params.has("featured")) {
+            let fTagWeights = {
+                "searchedFTag": 900,
+                "otherFTag": 100
+            };
+
+            searchWeights = fTagWeights;
+            let searchParts = searchQuery.searcher.regExpBits();
+
+            for (let item of this.foundItems) {
+                if (!item.sortBlob.fTag)
+                    continue;
+                for (let term of searchParts) {
+                    if (term.test(item.sortBlob.fTag.blob)) {
+                        item.searchWeight += fTagWeights["searchedFTag"]
+                    }
+                }
+                item.searchWeight += item.sortBlob.fTag.count * fTagWeights["otherFTag"];
+            }
+        }
+
+        // b - a sorts in descending order
+        this.foundItems.sort((a,b) => b.searchWeight - a.searchWeight);
     }
 
     renderItems(startItem = 0,endItem = null) {
@@ -839,17 +927,50 @@ export class ExcerptSearcher extends PagedSearcher {
         let bits = [];
         let lastSession = null;
 
-        if (this.multiSearchHeading && (this.foundItems.length <= this.itemsPerPage))
+        let params = frameSearch();
+        let headerlessFormat = params.has("featured") || params.has("relevant");
+        let featuredOnlySort = params.has("featured") && !params.has("relevant");
+
+        if (headerlessFormat)
+            bits.push("<hr>")
+        else if (this.multiSearchHeading && (this.foundItems.length <= this.itemsPerPage))
             bits.push("<br/>");
 
+        let insideFeaturedBlock = false;
+        if (featuredOnlySort && this.foundItems[startItem].sortBlob.fTag) {
+            let featuredCount = this.foundItems.slice(startItem,endItem).filter(
+                (x) => x.sortBlob.fTag
+            ).length;
+
+            bits.push('<div class="featured">');
+            bits.push(FEATURED_BLOCK.replace("NN",String(featuredCount)));
+            insideFeaturedBlock = true;
+        }
         for (const x of this.foundItems.slice(startItem,endItem)) {
-            if (x.session !== lastSession) {
+            if ((x.session !== lastSession) && !headerlessFormat) {
                 bits.push(this.sessionHeader[x.session]);
                 lastSession = x.session;
             }
-            bits.push(this.query.displayMatchesInBold(x.html));
+            if (insideFeaturedBlock && !x.sortBlob.fTag) {
+                bits.pop();
+                bits.push("</div>");
+                bits.push(this.separator);
+                bits.push(OTHER_EXCERPT_BLOCK);
+                insideFeaturedBlock = false;
+            }
+            let excerptHtml = x.html;
+            if (headerlessFormat) {
+                excerptHtml = excerptHtml.replace(/<span class="excerpt-number">.*?<\/span>/s,"")
+            } else {
+                excerptHtml = excerptHtml.replace(/<p class="x-cite">.*?<\/p>/s,"")
+            }
+            if (DEBUG && headerlessFormat)
+                bits.push(String(x.searchWeight));
+            bits.push(this.query.displayMatchesInBold(excerptHtml));
             bits.push(this.separator);
         }
+        if (insideFeaturedBlock)
+            bits.push("</div>");
         return bits.join("\n");
     }
 }
@@ -959,7 +1080,13 @@ function searchButtonClick(searchKind) {
     let query = searchInput.value;
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
-    let search = new URLSearchParams({q : encodeURIComponent(encodeSearchQuery(query)),search : searchKind});
+    let params = frameSearch();
+    let newSearch = {q : encodeURIComponent(encodeSearchQuery(query)),search : searchKind};
+    if (params.has("featured"))
+        newSearch.featured = "";
+    if (params.has("relevant"))
+        newSearch.relevant = "";
+    let search = new URLSearchParams(newSearch);
     history.pushState({},"",location.href); // First push a new history frame
     setFrameSearch(search); // Then replace the history with the search query
 
