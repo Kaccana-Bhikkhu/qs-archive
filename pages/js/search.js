@@ -348,7 +348,8 @@ class SingleItemSearch extends SearchGroup {
         for (const blob of item.blobs) {
             let allTermsMatch = true;
             for (const term of this.terms) {
-                if (!term.matchesBlob(blob))
+                // term.matchesBlob doesn't depend on term.negate, so we need to include it here
+                if (!(term.matchesBlob(blob) ^ term.negate))
                     allTermsMatch = false;
             }
             if (allTermsMatch)
@@ -361,6 +362,7 @@ class SingleItemSearch extends SearchGroup {
 export class SearchQuery {
     // An array of searchGroups that describes an entire search query
     searcher; // A searchGroup representing the query
+    queryText; // The text of the query
     boldTextRegex; // A regular expression matching found texts which should be displayed in bold
 
     constructor(queryText,strict=false) {
@@ -376,7 +378,8 @@ export class SearchQuery {
             // Regular expressions may include character classes with capital letters such as \W
             // Blobs do not contain the character "\", so a non-RegExp query containing "\" won't match anything anyway. 
         queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
-    
+        this.queryText = queryText;
+
         // 1. Build a regex to parse queryText into items
         let regularTextParts = [
             "[^()&|~! ]",        // Any character that can't be the start or end of a group
@@ -851,6 +854,56 @@ function countedText(matchObject) {
         return {"blob":"", "count": 0};
 }
 
+class RelevanceWeighter {
+    // A class to match blobs against terms of the search query, which returns a weighted sum
+    // of the number of terms that match the blob.
+    query;                  // The SearchQuery object
+    searchParts;            // A list of regular expressions to use for weighting
+    fullWordParts;          // Same as searchParts, but matches only word boundaries
+    entireSearchQuery;      // A dict of RegExp objects that matches the entire search query
+                            // entireSearchQuery[firstChar] is used to match blobs that begin with firstChar
+
+    constructor(query) {
+        // query: the SearchQuery object representing the search
+        this.query = query;
+        this.searchParts = query.searcher.regExpBits();
+        this.fullWordParts = this.searchParts.map((regExp) => new RegExp("\\b" + regExp.source + "\\b"));
+        
+        // If the query doesn't use special characters, then make regular expressions
+        // that match entire text, tag, and teacher blobs
+        this.entireSearchQuery = {};
+        let specialCharacters = new RegExp(`["\`${ESCAPED_HTML_CHARS}]`);
+        if (!specialCharacters.test(query.queryText)) {
+            let fullQuerySearch = new SearchQuery(`"${query.queryText}"`);
+            let baseQuery = fullQuerySearch.searcher.regExpBits()[0];
+
+            this.entireSearchQuery["^"] = baseQuery;
+            this.entireSearchQuery["["] = new RegExp(`\\[${baseQuery.source}\\]`);
+            this.entireSearchQuery["{"] = new RegExp(`\\{${baseQuery.source}\\}`);
+        }
+    }
+
+    weightedMatch(blob) {
+        // Returns a weighted count of the number of query terms that match this blob
+        const fullWordMultiplier = 3;
+        const fullQueryMultiplier = 3;
+
+        let weightedMatchCount = 0;
+        let fullQueryMatch = this.entireSearchQuery[blob.slice(0,1)];
+        if (fullQueryMatch && fullQueryMatch.test(blob))
+            weightedMatchCount += fullQueryMultiplier;
+        this.searchParts.forEach((term,index) => {
+            if (term.test(blob)) {
+                if (this.fullWordParts[index].test(blob))
+                    weightedMatchCount += fullWordMultiplier
+                else
+                    weightedMatchCount += 1;
+            }
+        });
+        return weightedMatchCount;
+    }
+}
+
 const EXCERPT_SEARCH_OPTIONS = `
 <p class="checkboxes">
     <input type="checkbox" class="query-checkbox" id="strict">
@@ -923,9 +976,7 @@ export class ExcerptSearcher extends PagedSearcher {
         if (!(params.has("featured") || params.has("relevant")))
             return;
 
-        let searchParts = searchQuery.searcher.regExpBits();
-        let fullWordParts = searchParts.map((regExp) => new RegExp("\\b" + regExp.source + "\\b"));
-        let fullWordMultiplier = 3.0; // Matching a full word gives extra weight.
+        let matcher = new RelevanceWeighter(searchQuery)
 
         for (let item of this.foundItems) {
             item.searchWeight = 0;
@@ -940,14 +991,7 @@ export class ExcerptSearcher extends PagedSearcher {
             for (let item of this.foundItems) {
                 if (!item.sortBlob.fTag)
                     continue;
-                searchParts.forEach((term,index) => {
-                    if (term.test(item.sortBlob.fTag.blob)) {
-                        if (fullWordParts[index].test(item.sortBlob.fTag.blob))
-                            item.searchWeight += fullWordMultiplier * fTagWeights["searchedFTag"]
-                        else
-                            item.searchWeight += fTagWeights["searchedFTag"];
-                    }
-                });
+                item.searchWeight += fTagWeights["searchedFTag"] * matcher.weightedMatch(item.sortBlob.fTag.blob)
                 // If we are sorting by featured only or a search term matches one of the fTags,
                 // prioritize excerpts which have more fTags.
                 if (!params.has("relevant") || item.searchWeight)
@@ -967,14 +1011,10 @@ export class ExcerptSearcher extends PagedSearcher {
                 for (let blobKind in searchWeights) {
                     if (!item.sortBlob[blobKind])
                         continue;
-                    searchParts.forEach((term,index) =>  {
-                        if (term.test(item.sortBlob[blobKind].blob)) {
-                            let weight = searchWeights[blobKind] || searchWeights.aText;
-                            if (fullWordParts[index].test(item.sortBlob[blobKind].blob))
-                                weight *= fullWordMultiplier;
-                            item.searchWeight += weight * (1 + 0.5 / item.sortBlob[blobKind].count);
-                        }
-                    });
+                    let matchCount = matcher.weightedMatch(item.sortBlob[blobKind].blob);
+                    if (matchCount)
+                        item.searchWeight += matchCount * (searchWeights[blobKind] || searchWeights.aText)
+                            * (1 + 0.5 / item.sortBlob[blobKind].count);
                 }
             }
         }
