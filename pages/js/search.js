@@ -237,7 +237,13 @@ class SearchTerm extends SearchBase {
             }
             debugLog("searchElement:",searchElement,finalRegEx);
         }
-        this.matcher = new RegExp(finalRegEx);
+        try {
+            this.matcher = new RegExp(finalRegEx);
+        } catch (err) {
+            console.error(err);
+            throw new Error(`Invalid ${this.rawRegExp ? "regular expression" : "search term"}: ${searchElement}`);
+        }
+        
 
         if (this.matchesMetadata)
             return; // Don't apply boldface to metadata searches or negated character classes
@@ -1177,11 +1183,18 @@ function searchFromURL() {
         return;
     }
 
-    let searchGroups = new SearchQuery(query,params.has("strict"));
-    debugLog(searchGroups);
-
-    gSearchers[searchKind].search(searchGroups);
-    gSearchers[searchKind].showResults();
+    try {
+        let searchGroups = new SearchQuery(query,params.has("strict"));
+        debugLog(searchGroups);
+    
+        gSearchers[searchKind].search(searchGroups);
+        gSearchers[searchKind].showResults();
+    } catch (err) {
+        if (err.message.startsWith("Invalid regular expression")) {
+            clearSearchResults(err.message);
+        } else
+            throw err;
+    }
 }
 
 export function readSearchBar() {
