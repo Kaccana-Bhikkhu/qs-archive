@@ -220,11 +220,16 @@ def EncodeSearchQuery(query: str) -> str:
     encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
     return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
 
-def SearchLink(query:str,searchType:str = "x") -> str:
+def SearchLink(query:str,searchType:str = "x",featured:bool = True,relevant: bool = True) -> str:
     """Returns a link to the search page with a specifed search string."""
 
     query = EncodeSearchQuery(query)
-    htmlQuery = urllib.parse.urlencode({"q":query,"search":searchType},doseq=True,quote_via=urllib.parse.quote)
+    queryDict = {"q":query,"search":searchType}
+    if featured:
+        queryDict["featured"] = ""
+    if relevant:
+        queryDict["relevant"] = ""
+    htmlQuery = urllib.parse.urlencode(queryDict,doseq=True,quote_via=urllib.parse.quote)
     return f"../search/Text-search.html?{htmlQuery}"
 
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
@@ -2083,18 +2088,23 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
 
     searchPageName = "Text-search.html"
     searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",searchPageName)
-    searchPage = Utils.ReadFile(searchTemplate)
+    searchHtml = Utils.ReadFile(searchTemplate)
     
     pageInfo = Html.PageInfo("Search",Utils.PosixJoin(searchDir,searchPageName),titleIB="Search")
-    yield pageInfo
+    yield pageInfo.AddQuery("featured=&relevant=")
+
+    searchPage = Html.PageDesc(pageInfo)
+    searchPage.AppendContent(searchHtml)
 
     featuredPageName = "Featured.html"
     featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
-    featuredPage = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
+    featuredHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
+    featuredPage = Html.PageDesc(featuredExcerptPageInfo)
+    featuredPage.AppendContent(featuredHtml)
 
     searchMenu = [
-        (pageInfo, searchPage),
-        (featuredExcerptPageInfo,featuredPage)
+        (pageInfo.AddQuery("_keep_query"), searchPage),
+        (featuredExcerptPageInfo.AddQuery("_keep_query"),featuredPage)
     ]
     
     basePage = Html.PageDesc()
@@ -2178,7 +2188,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a.br()
 
         if featuredExcerpts:
-            with a.a(href=SearchLink(f"@{eventCode} +")):
+            with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
                 a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
             a(f"({len(featuredExcerpts)})")
             a.br()

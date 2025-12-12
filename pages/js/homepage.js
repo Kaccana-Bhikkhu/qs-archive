@@ -64,7 +64,7 @@ function displayFeaturedExcerpt() {
             gRandomExcerpts.push(excerptCodes[randomIndex]);
         }
         excerptToDisplay = gRandomExcerpts[gSearchFeaturedOffset - 1];
-        title = `Random excerpt (${gSearchFeaturedOffset})`;
+        title = `Random featured excerpt (${gSearchFeaturedOffset})`;
     } else {
         let pastDate = new Date();
         pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
@@ -382,7 +382,7 @@ function setupNavMenuTriggers() {
         gQuery = "";
         debugLog('Search bar search for',searchQuery);
         event.preventDefault();
-        openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all`);
+        openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all&featured&relevant`);
     });
 
     /* Uncomment this code to begin working on #113: Grid menu matching abhayagiri.org
