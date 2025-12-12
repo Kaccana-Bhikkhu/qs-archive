@@ -846,7 +846,7 @@ function countedText(matchObject) {
     // count: The length of the string divided by 50 characters; minimum 1.0
 
     if (matchObject)
-        return {"blob":matchObject[0], "count": Math.max(matchObject[0].length / 50.0,1.0)}
+        return {"blob":matchObject[0], "count": Math.max(matchObject[0].length / 60.0,1.0)}
     else
         return {"blob":"", "count": 0};
 }
@@ -893,20 +893,23 @@ export class ExcerptSearcher extends PagedSearcher {
                 "qTag": countedMatches(qTags),
                 "aTag": countedMatches(aTags),
                 "teacher": countedMatches(uniqueMatches(/\{[^\}]*?\}/g,excerpt.blobs)),
-                "xText": countedText(excerpt.blobs[0].match(/\^[^\^]*?\^/)),
-                // "aText": countedText([...excerpt.blobs.slice(1,).map((s) => s.match(/\^[^\^]*?\^/)[0])].join("")),
-                "aText": countedMatches(uniqueMatches(/\^[^\^]*?\^/g,excerpt.blobs.slice(1,)))
             }
+            let totalTextBlobWeight = 0.0;
+            excerpt.blobs.forEach((blob,index) => {
+                let key = "text" + String(index);
+                excerpt.sortBlob[key] = countedText(blob.match(/\^[^\^]*?\^/));
+                totalTextBlobWeight += excerpt.sortBlob[key].count;
+            });
             for (let b in excerpt.sortBlob) {
                 if (!excerpt.sortBlob[b].count)
-                    delete excerpt.sortBlob[b];
+                    delete excerpt.sortBlob[b]
+                else if (/text(?!0)/.test(b)) // The weight of all annotations is the sum of all text blobs
+                    excerpt.sortBlob[b].count = totalTextBlobWeight;
             }
 
             // Minor adjustments: aTag divisor should include all tags
             if (excerpt.sortBlob.aTag && excerpt.sortBlob.qTag)
                 excerpt.sortBlob.aTag.count += excerpt.sortBlob.qTag.count;
-            if (excerpt.sortBlob.aText && excerpt.sortBlob.xText)
-                excerpt.sortBlob.aText.count = excerpt.sortBlob.xText.count + Math.max(excerpt.sortBlob.aText.blob.length / 50.0,1);
             // Don't count teachers with multiple names twice
             if (excerpt.sortBlob.teacher)
                 excerpt.sortBlob.teacher.count = excerpt.uniqueTeachers;
@@ -921,6 +924,9 @@ export class ExcerptSearcher extends PagedSearcher {
             return;
 
         let searchParts = searchQuery.searcher.regExpBits();
+        let fullWordParts = searchParts.map((regExp) => new RegExp("\\b" + regExp.source + "\\b"));
+        let fullWordMultiplier = 3.0; // Matching a full word gives extra weight.
+
         for (let item of this.foundItems) {
             item.searchWeight = 0;
         }
@@ -934,11 +940,14 @@ export class ExcerptSearcher extends PagedSearcher {
             for (let item of this.foundItems) {
                 if (!item.sortBlob.fTag)
                     continue;
-                for (let term of searchParts) {
+                searchParts.forEach((term,index) => {
                     if (term.test(item.sortBlob.fTag.blob)) {
-                        item.searchWeight += fTagWeights["searchedFTag"]
+                        if (fullWordParts[index].test(item.sortBlob.fTag.blob))
+                            item.searchWeight += fullWordMultiplier * fTagWeights["searchedFTag"]
+                        else
+                            item.searchWeight += fTagWeights["searchedFTag"];
                     }
-                }
+                });
                 // If we are sorting by featured only or a search term matches one of the fTags,
                 // prioritize excerpts which have more fTags.
                 if (!params.has("relevant") || item.searchWeight)
@@ -950,7 +959,7 @@ export class ExcerptSearcher extends PagedSearcher {
                 "qTag": 7.0,
                 "aTag": 2.0,
                 "teacher": 0.5,
-                "xText": 1.5,
+                "text0": 3.0,
                 "aText": 1.0
             };
 
@@ -958,11 +967,14 @@ export class ExcerptSearcher extends PagedSearcher {
                 for (let blobKind in searchWeights) {
                     if (!item.sortBlob[blobKind])
                         continue;
-                    for (let term of searchParts) {
+                    searchParts.forEach((term,index) =>  {
                         if (term.test(item.sortBlob[blobKind].blob)) {
-                            item.searchWeight += searchWeights[blobKind] * (1 + 0.5 / item.sortBlob[blobKind].count);
+                            let weight = searchWeights[blobKind] || searchWeights.aText;
+                            if (fullWordParts[index].test(item.sortBlob[blobKind].blob))
+                                weight *= fullWordMultiplier;
+                            item.searchWeight += weight * (1 + 0.5 / item.sortBlob[blobKind].count);
                         }
-                    }
+                    });
                 }
             }
         }
@@ -984,24 +996,24 @@ export class ExcerptSearcher extends PagedSearcher {
 
         let params = frameSearch();
         let headerlessFormat = params.has("featured") || params.has("relevant");
-        let featuredOnlySort = params.has("featured") && !params.has("relevant");
 
         if (headerlessFormat)
             bits.push("<hr>")
         else if (this.multiSearchHeading && (this.foundItems.length <= this.itemsPerPage))
             bits.push("<br/>");
 
+        let displayItems = this.foundItems.slice(startItem,endItem);
         let insideFeaturedBlock = false;
-        if (featuredOnlySort && this.foundItems[startItem].sortBlob.fTag) {
-            let featuredCount = this.foundItems.slice(startItem,endItem).filter(
-                (x) => x.sortBlob.fTag
-            ).length;
-
+        if (params.has("featured") && this.foundItems[startItem].sortBlob.fTag) {
+            let featuredCount = 0;
+            while ((featuredCount < displayItems.length) && displayItems[featuredCount].sortBlob.fTag) {
+                featuredCount += 1;
+            }
             bits.push('<div class="featured">');
             bits.push(FEATURED_BLOCK.replace("NN",String(featuredCount)));
             insideFeaturedBlock = true;
         }
-        for (const x of this.foundItems.slice(startItem,endItem)) {
+        for (const x of displayItems) {
             if ((x.session !== lastSession) && !headerlessFormat) {
                 bits.push(this.sessionHeader[x.session]);
                 lastSession = x.session;
