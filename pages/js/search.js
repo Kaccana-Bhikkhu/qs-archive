@@ -872,12 +872,15 @@ class RelevanceWeighter {
         // If the query doesn't use special characters, then make regular expressions
         // that match entire text, tag, and teacher blobs
         this.entireSearchQuery = {};
-        let specialCharacters = new RegExp(`["\`${ESCAPED_HTML_CHARS}]`);
+        let specialCharacters = new RegExp(`["\`!${ESCAPED_HTML_CHARS}]`);
         if (!specialCharacters.test(query.queryText)) {
             let fullQuerySearch = new SearchQuery(`"${query.queryText}"`);
             let baseQuery = fullQuerySearch.searcher.regExpBits()[0];
 
-            this.entireSearchQuery["^"] = baseQuery;
+            if (query.queryText.includes(" ")) // Only add additional weight to full text strings if the query contains multiple words
+                this.entireSearchQuery["^"] = baseQuery
+            else
+                this.entireSearchQuery["^"] = /^a\bc/; // Matches nothing
             this.entireSearchQuery["["] = new RegExp(`\\[${baseQuery.source}\\]`);
             this.entireSearchQuery["{"] = new RegExp(`\\{${baseQuery.source}\\}`);
         }
@@ -1002,15 +1005,13 @@ export class ExcerptSearcher extends PagedSearcher {
             let searchWeights = {
                 "qTag": 7.0,
                 "aTag": 2.0,
-                "teacher": 0.5,
+                "teacher": 2.0,
                 "text0": 3.0,
                 "aText": 1.0
             };
 
             for (let item of this.foundItems) {
-                for (let blobKind in searchWeights) {
-                    if (!item.sortBlob[blobKind])
-                        continue;
+                for (let blobKind in item.sortBlob) {
                     let matchCount = matcher.weightedMatch(item.sortBlob[blobKind].blob);
                     if (matchCount)
                         item.searchWeight += matchCount * (searchWeights[blobKind] || searchWeights.aText)
@@ -1050,7 +1051,10 @@ export class ExcerptSearcher extends PagedSearcher {
                 featuredCount += 1;
             }
             bits.push('<div class="featured">');
-            bits.push(FEATURED_BLOCK.replace("NN",String(featuredCount)));
+            let featuredBlock = FEATURED_BLOCK.replace("NN",String(featuredCount));
+            if (featuredCount === 1)
+                featuredBlock = featuredBlock.replace("excerpts","excerpt");
+            bits.push(featuredBlock);
             insideFeaturedBlock = true;
         }
         for (const x of displayItems) {
@@ -1180,15 +1184,23 @@ function searchFromURL() {
     gSearchers[searchKind].showResults();
 }
 
+export function readSearchBar() {
+    // Returns the query string corresponding to what's in the search bar right now.
+
+    let searchInput = frame.querySelector('#search-text');
+    let query = searchInput.value;
+    return encodeURIComponent(encodeSearchQuery(query));
+}
+
 function searchButtonClick(searchKind) {
     // Read the search bar text, push the updated URL to history, and run a search.
     let searchInput = frame.querySelector('#search-text');
     searchInput.blur();
-    let query = searchInput.value;
+    let query = readSearchBar();
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
     let params = frameSearch();
-    let newSearch = {q : encodeURIComponent(encodeSearchQuery(query)),search : searchKind};
+    let newSearch = {q : query,search : searchKind};
     if (params.has("featured"))
         newSearch.featured = "";
     if (params.has("relevant"))

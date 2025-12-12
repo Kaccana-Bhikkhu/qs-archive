@@ -2,6 +2,7 @@
 // toggle-view: A simple show/hide toggle box; uses 
 // query-checkbox: A checkbox whose id updates the frame search
 import {frameSearch, setFrameSearch, framePage, openLocalPage} from './frame.js';
+import { readSearchBar } from './search.js';
 
 function setVisible(element,newVisible,changeURL) {
     // Set the visibility of this toggle-view element
@@ -61,7 +62,10 @@ function checkboxClickListener(event) {
     else
         params.delete(this.id);
     params.delete("xPage"); // Go back to the first search page - only relevant on search pages
-    openLocalPage(framePage(),String(params),"keep_scroll");
+
+    let currentQuery = readSearchBar();
+    params.set("q",currentQuery);
+    openLocalPage(framePage(),String(params),"keep_scroll")
 }
 
 export function loadToggleView(frame) {
