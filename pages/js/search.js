@@ -867,12 +867,14 @@ function countedText(matchObject) {
         return {"blob":"", "count": 0};
 }
 
+let gCommonWordBlob = ""; // This is loaded by ExcerptSearcher
 class RelevanceWeighter {
     // A class to match blobs against terms of the search query, which returns a weighted sum
     // of the number of terms that match the blob.
     query;                  // The SearchQuery object
     searchParts;            // A list of regular expressions to use for weighting
     fullWordParts;          // Same as searchParts, but matches only word boundaries
+    matchesCommonWords;     // A list of booleans indicating whether each element of searchParts matches common words
     entireSearchQuery;      // A dict of RegExp objects that matches the entire search query
                             // entireSearchQuery[firstChar] is used to match blobs that begin with firstChar
     explanation = "";       // A string explaining the last call to weightedMatch
@@ -882,6 +884,7 @@ class RelevanceWeighter {
         this.query = query;
         this.searchParts = query.searcher.regExpBits();
         this.fullWordParts = this.searchParts.map((regExp) => new RegExp("\\b" + regExp.source + "\\b"));
+        this.matchesCommonWords = this.searchParts.map((regExp) => regExp.test(gCommonWordBlob));
         
         // If the query doesn't use special characters, then make regular expressions
         // that match entire text, tag, and teacher blobs
@@ -892,15 +895,13 @@ class RelevanceWeighter {
             let baseQuery = fullQuerySearch.searcher.regExpBits()[0];
 
             if (query.queryText.includes(" ")) // Only add additional weight to full text strings if the query contains multiple words
-                this.entireSearchQuery["^"] = baseQuery
-            else
-                this.entireSearchQuery["^"] = /^a\bc/; // Matches nothing
+                this.entireSearchQuery["^"] = baseQuery;
             this.entireSearchQuery["["] = new RegExp(`\\[${baseQuery.source}\\]`);
             this.entireSearchQuery["{"] = new RegExp(`\\{${baseQuery.source}\\}`);
         }
     }
 
-    weightedMatch(blob) {
+    weightedMatch(blob,commonWordWeight = 0.5) {
         // Returns a weighted count of the number of query terms that match this blob
         const fullWordMultiplier = 3;
         const fullQueryMultiplier = 3;
@@ -914,10 +915,11 @@ class RelevanceWeighter {
         }
         this.searchParts.forEach((term,index) => {
             if (term.test(blob)) {
+                let weight = this.matchesCommonWords[index] ? commonWordWeight : 1;
                 if (this.fullWordParts[index].test(blob))
-                    fullWords += 1
+                    fullWords += weight
                 else
-                    partialWords += 1;
+                    partialWords += weight;
             }
         });
         if (DEBUG) {
@@ -968,6 +970,7 @@ export class ExcerptSearcher extends PagedSearcher {
         // Called after SearchDatabase.json is loaded to prepare for searching
         super.loadItemsFomDatabase(database);
         this.sessionHeader = database.searches[this.code].sessionHeader;
+        gCommonWordBlob = database.searches[this.code].commonWordBlob;
         
         // Generate blobs for search weighting
         for (let excerpt of this.items) {
@@ -1010,7 +1013,6 @@ export class ExcerptSearcher extends PagedSearcher {
             return;
 
         let matcher = new RelevanceWeighter(searchQuery)
-
         for (let item of this.foundItems) {
             item.searchWeight = 0;
             item.searchExplanation = "";
@@ -1021,12 +1023,12 @@ export class ExcerptSearcher extends PagedSearcher {
                 "searchedFTag": 900,
                 "otherFTag": 100
             };
-
             for (let item of this.foundItems) {
                 if (!item.sortBlob.fTag)
                     continue;
                 let explanationBits = [];
-                item.searchWeight += fTagWeights["searchedFTag"] * matcher.weightedMatch(item.sortBlob.fTag.blob);
+                let commonWordWeight = params.has("relevant") ? 0 : 0.5;
+                item.searchWeight += fTagWeights["searchedFTag"] * matcher.weightedMatch(item.sortBlob.fTag.blob,commonWordWeight);
                 if (matcher.explanation && DEBUG)
                     explanationBits.push(`(${matcher.explanation})*${fTagWeights.searchedFTag}`);
                 // If we are sorting by featured only or a search term matches one of the fTags,

@@ -414,6 +414,16 @@ def CheckReferences():
         if dateless:
             Alert.caution("The following books by",author,"need dates for proper sorting:",dateless)
 
+def PrintTagBits():
+    """Print the set of words which appear in the tags."""
+    words = set()
+    for tag in gDatabase["tag"].values():
+        words.update(tag["fullTag"].split(" "))
+
+    lowerCase,upperCase = Utils.Partition(words,lambda w:w[0] == w[0].lower())
+    for group in (lowerCase,upperCase):
+        sortedWords = sorted(group,key = lambda w:(len(w),w))
+        print(" ".join(sortedWords))
 
 def DumpCSV(directory:str) -> None:
     "Write a summary of gDatabase to csv files in directory."
@@ -456,6 +466,9 @@ def main() -> None:
     LogReviewedFTags()
     NeedsAudioEditing()
     CheckReferences()
+
+    if gOptions.debug:
+        PrintTagBits()
 
     if gOptions.dumpCSV:
         DumpCSV(gOptions.dumpCSV)

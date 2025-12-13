@@ -158,6 +158,12 @@ def SessionHeader() -> dict[str,str]:
     
     return returnValue
 
+def CommonWordBlob() -> str:
+    """Return a blob of common words; search terms matching it are less important."""
+    commonWords = "a in of on to and for not the with after from".split(" ")
+    commonWords.extend(p for p in gDatabase["prefix"] if not p.endswith("/"))
+    return "|".join(map(RawBlobify,commonWords))
+
 def AlphabetizeName(string: str) -> str:
     return Utils.RemoveDiacritics(string).lower()
 
@@ -475,6 +481,7 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"a","author",AuthorBlobs())
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
+    optimizedDB["searches"]["x"]["commonWordBlob"] = CommonWordBlob()
 
     if gOptions.debug:        
         Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))
