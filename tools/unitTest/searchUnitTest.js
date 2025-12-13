@@ -118,6 +118,8 @@ function runUnitTests() {
         ['@UD2014-1 |(#verylong |(#veryshort father))',14,'Very short, very long, or contains "father"'],
         ['@UD2014-1 |(#verylong !&(death))',6,'Very long or does not contain "death"'],
         ['@UD2014-1 |(#verylong!&(death))',6,'Lookahead check for upcoming groups'],
+        ['@UD2014-1 ~(death !dying)',32,'One item contains "death" but not "dying"'],
+        ['@UD2014-1 ~((death) !(dying))',32,'Same as above, but seach terms in groups'],
     ];
 
     let results = ["All results are from searching UD2014-1 and tag [Renunciation].<br><br>"];

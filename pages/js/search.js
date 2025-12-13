@@ -154,15 +154,7 @@ class SearchBase {
     // Abstract search class; matches either nothing or everything depending on negate
     negate = false; // This flag negates the search
 
-    matchesBlob(blob) { // Does this search term match a given blob?
-        return false;
-    }
-
     matchesItem(item) { // Does this search group match an item?
-        for (const blob of item.blobs) {
-            if (this.matchesBlob(blob))
-                return !this.negate;
-        }
         return this.negate;
     }
 
@@ -270,6 +262,14 @@ class SearchTerm extends SearchBase {
         return this.matcher.test(blob);
     }
 
+    matchesItem(item) { // Does this search group match an item?
+        for (const blob of item.blobs) {
+            if (this.matchesBlob(blob))
+                return !this.negate;
+        }
+        return this.negate;
+    }
+
     regExpBits() {
         return this.negate ? [] : [this.matcher];
     }
@@ -353,9 +353,9 @@ class SingleItemSearch extends SearchGroup {
     matchesItem(item) { // Does this search group match an item?
         for (const blob of item.blobs) {
             let allTermsMatch = true;
+            let singleBlobItem = {"blobs":[blob]};
             for (const term of this.terms) {
-                // term.matchesBlob doesn't depend on term.negate, so we need to include it here
-                if (!(term.matchesBlob(blob) ^ term.negate))
+                if (!term.matchesItem(singleBlobItem))
                     allTermsMatch = false;
             }
             if (allTermsMatch)
@@ -462,6 +462,13 @@ export class SearchQuery {
         else
             this.boldTextRegex = /^a\ba/g; // a RegExp that doesn't match anything
         debugLog(this.boldTextRegex);
+    }
+
+    setStrict(strict) {
+        // Set the strict mode after this object has been constructed.
+        let newSearcher = strict ? new SingleItemSearch() : new SearchAnd();
+        newSearcher.terms = this.searcher.terms;
+        this.searcher = newSearcher;
     }
 
     filterItems(items) { // Return an array containing items that match all groups in this query
