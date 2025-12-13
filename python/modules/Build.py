@@ -2095,12 +2095,14 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
 
     searchPage = Html.PageDesc(pageInfo)
     searchPage.AppendContent(searchHtml)
+    gSitemap.RegisterPageQuery(pageInfo.file,"featured=&relevant=")
 
     featuredPageName = "Featured.html"
     featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
     featuredHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
     featuredPage = Html.PageDesc(featuredExcerptPageInfo)
     featuredPage.AppendContent(featuredHtml)
+    gSitemap.RegisterPageQuery(featuredExcerptPageInfo.file,"")
 
     searchMenu = [
         (pageInfo.AddQuery("_keep_query"), searchPage),
@@ -2445,6 +2447,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     "Yield a page listing all topic headings."
 
     menuItem = Html.PageInfo("Compact",Utils.PosixJoin(indexDir,"KeyTopics.html"),"Key topics")
+    gSitemap.RegisterPageQuery(menuItem.file,"hideAll")
     yield menuItem.AddQuery("hideAll")
 
     a = Airium()
@@ -2485,6 +2488,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
     "Yield a page listing all topic headings."
 
     menuItem = Html.PageInfo("In detail",Utils.PosixJoin(indexDir,"KeyTopicDetail.html"),"Key topics")
+    gSitemap.RegisterPageQuery(menuItem.file,"hideAll")
     yield menuItem.AddQuery("hideAll")
 
     a = Airium()
@@ -2787,11 +2791,28 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
 
 class HtmlSiteMap:
     """Builds an html site map based on the menus of the pages that we pass it."""
-    pageHtml:Airium = Airium() # Html of the page we have built so far
-    menusAdded:set[str] = set() # The main menu items we have already added to the site map
+    pageHtml:Airium = Airium()      # Html of the page we have built so far
+    menusAdded:set[str] = set()     # The main menu items we have already added to the site map
+    pageQuery:dict[str,str] = {}    # URL queries for pages that override those extracted from menu html code
 
     def __init__(self):
         pass
+
+    def RegisterPageQuery(self,pageFilename:str,query:str) -> None:
+        """Register a special URL query for a page.
+        pageFileName: filename relative to pages/ directory.
+        query: the query string, e.g. 'features=&relevant='."""
+
+        self.pageQuery[pageFilename] = query
+
+    def ReplaceQuery(self,pageInfo: Html.PageInfo) -> Html.PageInfo:
+        """Replace the query in pageInfo.file if the filename has been registered."""
+
+        parsed = urllib.parse.urlparse(pageInfo.file)
+        if parsed.path in self.pageQuery:
+            return pageInfo.AddQuery(self.pageQuery[parsed.path])
+        else:
+            return pageInfo
 
     def RegisterPage(self,page: Html.PageDesc) -> None:
         """Read the menus of this page in order to (possibly) add it to the site map."""
@@ -2802,6 +2823,7 @@ class HtmlSiteMap:
         if highlightedItem.title in self.menusAdded:
             return # Exit if we have already seen this item
         
+        highlightedItem = self.ReplaceQuery(highlightedItem)
         self.menusAdded.add(highlightedItem.title)
 
         otherMenus = []
@@ -2814,6 +2836,7 @@ class HtmlSiteMap:
                 with self.pageHtml.b():
                     self.pageHtml(highlightedItem.title)
                 for item in otherMenus[0].items:
+                    item = self.ReplaceQuery(item)
                     with self.pageHtml.p(Class="indent-1").a(href=item.file):
                         self.pageHtml(item.title)
         else:
@@ -2943,6 +2966,7 @@ def Initialize() -> None:
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
+gSitemap = HtmlSiteMap() # Make the site map accessible to page-building functions
 
 def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
     "Yield all of iterator if yieldAll, otherwise yield only the first element."
@@ -3000,16 +3024,15 @@ def main():
         
         startTime = time.perf_counter()
         pageWriteTime = 0.0
-        sitemap = HtmlSiteMap()
         for newPage in basePage.AddMenuAndYieldPages(sitemapMenu,**MAIN_MENU_STYLE):
             pageWriteStart = time.perf_counter()
             WritePage(newPage,writer)
-            sitemap.RegisterPage(newPage)
+            gSitemap.RegisterPage(newPage)
             pageWriteTime += time.perf_counter() - pageWriteStart
             print(f"{gOptions.info.cannonicalURL}{newPage.info.file}",file=urlListFile)
 
         if gOptions.buildOnly == gAllSections:
-            WritePage(sitemap.Build(),writer) # The site map is only complete when all pages are built
+            WritePage(gSitemap.Build(),writer) # The site map is only complete when all pages are built
 
         Alert.extra(f"Build main loop took {time.perf_counter() - startTime:.3f} seconds.")
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")
