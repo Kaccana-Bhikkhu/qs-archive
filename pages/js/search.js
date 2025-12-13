@@ -875,6 +875,7 @@ class RelevanceWeighter {
     fullWordParts;          // Same as searchParts, but matches only word boundaries
     entireSearchQuery;      // A dict of RegExp objects that matches the entire search query
                             // entireSearchQuery[firstChar] is used to match blobs that begin with firstChar
+    explanation = "";       // A string explaining the last call to weightedMatch
 
     constructor(query) {
         // query: the SearchQuery object representing the search
@@ -904,19 +905,33 @@ class RelevanceWeighter {
         const fullWordMultiplier = 3;
         const fullQueryMultiplier = 3;
 
-        let weightedMatchCount = 0;
+        let fullQuery = 0;
+        let fullWords = 0;
+        let partialWords = 0;
         let fullQueryMatch = this.entireSearchQuery[blob.slice(0,1)];
-        if (fullQueryMatch && fullQueryMatch.test(blob))
-            weightedMatchCount += fullQueryMultiplier;
+        if (fullQueryMatch && fullQueryMatch.test(blob)) {
+            fullQuery = 1;
+        }
         this.searchParts.forEach((term,index) => {
             if (term.test(blob)) {
                 if (this.fullWordParts[index].test(blob))
-                    weightedMatchCount += fullWordMultiplier
+                    fullWords += 1
                 else
-                    weightedMatchCount += 1;
+                    partialWords += 1;
             }
         });
-        return weightedMatchCount;
+        if (DEBUG) {
+            let explanationBits = [];
+            if (fullQuery)
+                explanationBits.push(`${fullQueryMultiplier}Q`);
+            if (fullWords)
+                explanationBits.push(`${fullWords}*${fullWordMultiplier}W`);
+            if (partialWords)
+                explanationBits.push(String(partialWords));
+            this.explanation = explanationBits.join("+");
+        }
+        
+        return fullQueryMultiplier*fullQuery + fullQueryMultiplier*fullWords + partialWords;
     }
 }
 
@@ -998,6 +1013,7 @@ export class ExcerptSearcher extends PagedSearcher {
 
         for (let item of this.foundItems) {
             item.searchWeight = 0;
+            item.searchExplanation = "";
         }
 
         if (params.has("featured")) {
@@ -1009,11 +1025,19 @@ export class ExcerptSearcher extends PagedSearcher {
             for (let item of this.foundItems) {
                 if (!item.sortBlob.fTag)
                     continue;
-                item.searchWeight += fTagWeights["searchedFTag"] * matcher.weightedMatch(item.sortBlob.fTag.blob)
+                let explanationBits = [];
+                item.searchWeight += fTagWeights["searchedFTag"] * matcher.weightedMatch(item.sortBlob.fTag.blob);
+                if (matcher.explanation && DEBUG)
+                    explanationBits.push(`(${matcher.explanation})*${fTagWeights.searchedFTag}`);
                 // If we are sorting by featured only or a search term matches one of the fTags,
                 // prioritize excerpts which have more fTags.
-                if (!params.has("relevant") || item.searchWeight)
+                if ((!params.has("relevant") || item.searchWeight)) {
                     item.searchWeight += item.sortBlob.fTag.count * fTagWeights["otherFTag"];
+                    if (matcher.explanation && DEBUG)
+                        explanationBits.push(`${item.sortBlob.fTag.count}O*${fTagWeights["otherFTag"]}`)
+                }
+                if (explanationBits.length > 0)
+                    item.searchExplanation = `fTag:[${explanationBits.join(" + ")}]`;
             }
         }
         if (params.has("relevant")) {
@@ -1026,12 +1050,20 @@ export class ExcerptSearcher extends PagedSearcher {
             };
 
             for (let item of this.foundItems) {
+                let explanationBits = item.searchExplanation ? [item.searchExplanation] : [];
                 for (let blobKind in item.sortBlob) {
+                    if (blobKind == "fTag")
+                        continue; // fTags are weighted above
                     let matchCount = matcher.weightedMatch(item.sortBlob[blobKind].blob);
-                    if (matchCount)
-                        item.searchWeight += matchCount * (searchWeights[blobKind] || searchWeights.aText)
-                            * (1 + 0.5 / item.sortBlob[blobKind].count);
+                    if (matchCount) {
+                        let weight = (searchWeights[blobKind] || searchWeights.aText);
+                        item.searchWeight += matchCount * weight * (1 + 0.5 / item.sortBlob[blobKind].count);
+                        if (DEBUG)
+                            explanationBits.push(`${blobKind}:[(${matcher.explanation})(${weight}*/${item.sortBlob[blobKind].count.toFixed(1)})]`);
+                    }
                 }
+                if (DEBUG)
+                    item.searchExplanation = explanationBits.join(" + ");
             }
         }
 
@@ -1091,7 +1123,7 @@ export class ExcerptSearcher extends PagedSearcher {
                 excerptHtml = excerptHtml.replace(/<p class="x-cite">.*?<\/p>/s,"")
             }
             if (DEBUG && headerlessFormat)
-                bits.push(x.searchWeight.toFixed(2));
+                bits.push(`${x.searchExplanation} = ${x.searchWeight.toFixed(2)}`);
             bits.push(this.query.displayMatchesInBold(excerptHtml));
             bits.push(this.separator);
         }
