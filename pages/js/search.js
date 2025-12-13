@@ -920,10 +920,12 @@ class RelevanceWeighter {
     }
 }
 
-const EXCERPT_SEARCH_OPTIONS = `
-<p class="checkboxes">
+const UNUSED_OPTIONS = `
     <input type="checkbox" class="query-checkbox" id="strict">
     <label for="strict"> Strict search</label>&emsp;
+`;
+const EXCERPT_SEARCH_OPTIONS = `
+<p class="checkboxes">
     <input type="checkbox" class="query-checkbox" id="featured">
     <label for="featured"> Featured excerpts first</label>&emsp;
     <input type="checkbox" class="query-checkbox" id="relevant">
