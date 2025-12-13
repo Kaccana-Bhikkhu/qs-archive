@@ -381,7 +381,7 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     For example IndexedBookmark("mil320","pts-vp-pli320") returns ("mil6.3.10","pts-vp-pli320","tw_rhysdavids")."""
     
     uid = uid.lower()
-    indexedText,translator = Suttaplex.SuttaIndex(uid)
+    indexedText = Suttaplex.SuttaIndex(uid)
     if not indexedText:
         Alert.error("Cannot build index for text uid",uid)
         return None
@@ -396,7 +396,7 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
         Alert.error("Cannot find bookmark",bookmark,"in text uid",uid)
         return None
     
-    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
+    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),suttaRef["translator"])
         # If suttaRef lacks the mark key, then mark is bookmark
 
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:

@@ -109,15 +109,16 @@ def DoubleReferenceDNSuttas() -> None:
 class SuttaIndexEntry(TypedDict):
     uid: str
     mark: str
+    translator: str
 
-def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True) -> dict[str,SuttaIndexEntry]:
+def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True,preferredTranslators:list[str] = ()) -> dict[str,SuttaIndexEntry]:
     """Returns an index of references to the suttas in a given text.
         uid: the SuttaCentral text uid.
         indexBy: create an index for all bookmarks that start with this string 
         bookmarkWith: bookmark the text using this bookmark
         indexByComesFirst: if True, equate each indexBy bookmark with the next bookmarkWith bookmark; if False equate with the previous.
         MakeSuttaIndex("snp","vnp","vns") returns a dict with keys "vnp1", "vnp2",...
-        and values {"suttaUid":"snp1","bookmark":"vns1"}, {"suttaUid":"snp1","bookmark":"vns2"},...
+        and values {"uid":"snp1","mark":"vns1","translator":"sujato"}, {"uid":"snp1","mark":"vns2","translator":"sujato"},...
         If bookmarkWith is not given, omit the bookmark key."""
     
     suttaplex = SegmentedSuttaplex(uid)
@@ -130,11 +131,19 @@ def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst =
         bookmarks = [b.strip() for b in bookmarks]
         bookmarks = [b for b in bookmarks if b.startswith(indexBy) or (bookmarkWith and b.startswith(bookmarkWith))]
 
+        translator = sutta["priority_author_uid"]
+        if preferredTranslators:
+            availableTranslations = set(t["author_uid"] for t in sutta["translations"])
+            for trans in preferredTranslators:
+                if trans in availableTranslations:
+                    translator = trans
+                    break
+
         prevBookmarkWith = None
         for n,b in enumerate(bookmarks):
             if b.startswith(indexBy):
                 if bookmarkWith == indexBy:
-                    index[b] = SuttaIndexEntry(uid=sutta["uid"])
+                    index[b] = SuttaIndexEntry(uid=sutta["uid"],translator=translator)
                 elif indexByComesFirst:
                     newBookmark = None
                     for lookaheadIndex in range(n,len(bookmarks)):
@@ -143,9 +152,9 @@ def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst =
                             continue
                     if not newBookmark:
                         newBookmark = prevBookmarkWith
-                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=newBookmark)
+                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=newBookmark,translator=translator)
                 else:
-                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=prevBookmarkWith)
+                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=prevBookmarkWith,translator=translator)
             else:
                 prevBookmarkWith = b
     
@@ -167,11 +176,11 @@ def MakeThigIndex() -> None:
 
 @lru_cache(maxsize=None)
 def SuttaIndex(textUid:str) -> dict[str,SuttaIndexEntry]:
-    """Returns an index of this sutta and its primary translator uid. Returns None on failure"""
+    """Returns an index of this sutta. Returns None on failure"""
     if textUid in ("dhp","snp","thag","thig"):
-        return MakeSuttaIndex(textUid,"vnp"),"sujato"
+        return MakeSuttaIndex(textUid,"vnp")
     elif textUid == "mil": # https://suttacentral.net/mil6.3.10/en/tw_rhysdavids?lang=en&reference=main/pts&highlight=false#pts-vp-pli320
-        return MakeSuttaIndex(textUid,"pts-vp-pli"),"tw_rhysdavids"
+        return MakeSuttaIndex(textUid,"pts-vp-pli",preferredTranslators=["kelly","tw_rhysdavids"])
     return None
 
 @CacheJsonFile("sutta/suttaplex/translator")
@@ -208,23 +217,26 @@ def PreferredTranslator(textUid:str,refNumbers:list[int],silentFail = False) -> 
     suttaUid = textUid + DotRef(refNumbers)
     availableTranslations = translatorDict.get(suttaUid,None)
 
+    def ChooseTranslator(available:list[str]) -> str:
+        "Pick the preferred translator from those available."
+        priorityTranslator = ("bodhi","kelly","sujato")
+        for t in priorityTranslator:
+            if t in available:
+                return t
+        return available[0]
+
     if not availableTranslations:
         spanUid = InterpolatedSuttaDict(textUid).get(suttaUid)
         if spanUid:
             availableTranslations = translatorDict.get(spanUid,None)
         if availableTranslations:
-            if "sujato" in availableTranslations:
-                return "sujato"
-            else:
-                return availableTranslations[0]
+            return ChooseTranslator(availableTranslations)
         else:
             if not silentFail:
                 Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
             return ""
-    elif "bodhi" in availableTranslations:
-        return "bodhi"
     else:
-        return availableTranslations[0]
+        return ChooseTranslator(availableTranslations)
     
 def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
     """Returns whether this text exists on SuttaCentral."""
