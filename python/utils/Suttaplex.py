@@ -160,6 +160,14 @@ def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst =
     
     return index
 
+def RenameIndexBookmarks(index: dict[str,SuttaIndexEntry],newBookmark: str) -> None:
+    """Rename the bookmarks in a sutta index returned by MakeSuttaIndex."""
+
+    for uid,indexEntry in index.items():
+        oldBookmark = indexEntry.get("mark") or uid
+        number = re.search(r"[0-9]+$",oldBookmark)[0]
+        indexEntry["mark"] = newBookmark + number
+
 def MakeSnpIndex() -> None:
     indexDir = "sutta/suttaplex/index"
     os.makedirs(indexDir,exist_ok=True)
@@ -177,8 +185,12 @@ def MakeThigIndex() -> None:
 @lru_cache(maxsize=None)
 def SuttaIndex(textUid:str) -> dict[str,SuttaIndexEntry]:
     """Returns an index of this sutta. Returns None on failure"""
-    if textUid in ("dhp","snp","thag","thig"):
+    if textUid in ("snp","thag","thig"):
         return MakeSuttaIndex(textUid,"vnp")
+    elif textUid == "dhp":
+        dhpIndex = MakeSuttaIndex(textUid,"vnp",preferredTranslators=["buddharakkhita"])
+        RenameIndexBookmarks(dhpIndex,"sc")
+        return dhpIndex
     elif textUid == "mil": # https://suttacentral.net/mil6.3.10/en/tw_rhysdavids?lang=en&reference=main/pts&highlight=false#pts-vp-pli320
         return MakeSuttaIndex(textUid,"pts-vp-pli",preferredTranslators=["kelly","tw_rhysdavids"])
     return None
@@ -219,7 +231,7 @@ def PreferredTranslator(textUid:str,refNumbers:list[int],silentFail = False) -> 
 
     def ChooseTranslator(available:list[str]) -> str:
         "Pick the preferred translator from those available."
-        priorityTranslator = ("bodhi","kelly","sujato")
+        priorityTranslator = ("bodhi","ireland","buddharakkhita","kelly","sujato")
         for t in priorityTranslator:
             if t in available:
                 return t
