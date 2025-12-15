@@ -7,6 +7,7 @@ import json, re, os
 import Database
 import Utils, Alert, Filter, Link, Build
 from typing import Tuple, Type, Callable
+import Mp3DirectCut
 from Mp3DirectCut import Clip
 import mutagen
 import mutagen.id3
@@ -102,8 +103,8 @@ def ExcerptTags(excerpt: dict) -> dict:
         "date": str(Utils.ParseDate(session["date"]).year),
         "comment": ExcerptComment(excerpt,session,event),
         "genre": gDatabase["kind"][excerpt["kind"]]["category"],
-        "copyright": f"© {gOptions.info.releaseYear} Abhayagiri Monastery; not for distribution outside the APQS Archive",
-        "organization": "The Ajahn Pasanno Question and Story Achive",
+        "copyright": f"© {gOptions.info.releaseYear} Abhayagiri Monastery; not for distribution outside the Ajahn Pasanno Archive",
+        "organization": "The Ajahn Pasanno Achive",
         "website": f"https://abhayagiri.org/questions/events/{excerpt['event']}.html#{Database.ItemCode(excerpt)}",
     }
 
@@ -141,6 +142,15 @@ def CompareTags(tagsToWrite:dict, existingTags:EasyID3) -> bool:
             tagsToWriteCompare[key] = sorted(tagsToWriteCompare[key]) 
 
     return tagsToWriteCompare != existingTags
+
+def SplitMethodDict(splitMethod:str,joinMethod: str="", bitRate: str="") -> dict[str,str]:
+    """Construct a dictionary for the 'splitmethod' ID3 tag."""
+    splitMethod = {"split":splitMethod}
+    if joinMethod:
+        splitMethod["join"] = joinMethod
+        if joinMethod != Mp3DirectCut.JoinMethod.CONCATENATE:
+            splitMethod["bitrate"] = bitRate
+    return splitMethod
 
 def TagMp3WithClips(mp3File: str,clips: list[Clip],splitMethod: dict[str,str]):
     """Add an ID3 clips tag containing the contents of clips to mp3File."""

@@ -10,6 +10,7 @@ from datetime import timedelta
 from io import BytesIO
 import Database
 import Mp3DirectCut
+import TagMp3
 import Utils, Alert
 from urllib.parse import urljoin,urlparse,quote,urlunparse
 import urllib.request, urllib.error
@@ -172,7 +173,18 @@ class Mp3ClipChecker(RemoteURLChecker):
         
         excerptClipsStr = json.dumps(item["clips"])
         oldClipStr = tags.get("clips",[None])[0]
-        return oldClipStr == excerptClipsStr
+        if oldClipStr != excerptClipsStr:
+            return False
+        if gOptions.validateSplitMethod:
+            excerptSplitStr = json.dumps(TagMp3.SplitMethodDict(
+                splitMethod = Mp3DirectCut.SplitMethod.MP3_DIRECT_CUT,
+                joinMethod = "" if len(item["clips"]) == 1 else (Mp3DirectCut.JoinMethod.PYDUB if gOptions.joinUsingPydub else Mp3DirectCut.JoinMethod.CONCATENATE),
+                bitRate = gOptions.joinBitRate
+            ))
+            oldSplitMethod = tags.get("splitmethod",[None])[0]
+            return excerptSplitStr == oldSplitMethod
+        else:
+            return True
 
 class Mp3LengthChecker(RemoteURLChecker):
     """Verify that the length of mp3 files is what we expect it to be."""
@@ -552,6 +564,7 @@ def AddArguments(parser) -> None:
     parser.add_argument("--referenceDir",type=str,default="references",help="Directory for reference pdfs; Default: references")
 
     parser.add_argument("--linkCheckLevel",type=str,action="append",default=["1"],help="Integer link check level. [ItemType]:[mirror]:LEVEL")
+    parser.add_argument('--validateSplitMethod',**Utils.STORE_TRUE,help="Should mp3 metadata validator check the split method?")
 
     """Link check levels are interpreted as follows:
         0: No link checking whatsoever (NoValidation)

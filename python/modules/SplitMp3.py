@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import os
 import subprocess
+import math
 import Database
 import Utils, Alert, Link, TagMp3, PrepareUpload
 import Mp3DirectCut
 from Mp3DirectCut import Clip, ClipTD
 from typing import List, Union, NamedTuple
 from datetime import timedelta
+from mutagen.mp3 import MP3
 
 Mp3DirectCut.SetExecutable(Utils.PosixToNative(Utils.PosixJoin('tools','Mp3DirectCut')))
 
@@ -22,11 +24,14 @@ def NativeFilePaths(clipsDict: dict[str,list[Clip]]) -> dict[str,list[Clip]]:
         returnValue[outputFile] = newClipList
     return returnValue
 
+AUTO_BIT_RATE = "auto"
+
 def AddArguments(parser):
     "Add command-line arguments used by this module"
     parser.add_argument('--overwriteMp3',**Utils.STORE_TRUE,help="Overwrite existing excerpt mp3 files; otherwise leave existing files untouched")
     parser.add_argument('--redoJoinMp3',**Utils.STORE_TRUE,help="Overwrite mp3 files for excerpts that join clips together")
     parser.add_argument('--joinUsingPydub',**Utils.STORE_TRUE,help="Use pydub to smoothly join audio clips (requires pydub and ffmpeg)")
+    parser.add_argument('--joinBitRate',type=str,default=AUTO_BIT_RATE,help='pydub output bit rate; Default: auto (calculated from source files)')
 
 def ParseArguments() -> None:
     pass
@@ -52,6 +57,7 @@ def main():
             Alert.notice(f"Cannot find Mp3DirectCut executable. Will use {Mp3DirectCut.mp3spltCommand}.")
     
     Mp3DirectCut.defaultJoin = Mp3DirectCut.JoinMethod.PYDUB if gOptions.joinUsingPydub else Mp3DirectCut.JoinMethod.CONCATENATE
+    Mp3DirectCut.joinBitrate = "64k" if gOptions.joinBitRate == AUTO_BIT_RATE else gOptions.joinBitRate
 
     # Step 1: Determine which excerpt mp3 files need to be created
     eventExcerptClipsDict:dict[str,dict[str,list[Mp3DirectCut.Clip]]] = {}
@@ -67,7 +73,7 @@ def main():
         excerptClipsDict:dict[str,list[Mp3DirectCut.Clip]] = {}
 
         if gOptions.overwriteMp3:
-            excerptsNeedingSplit = eventExcerpts
+            excerptsNeedingSplit = [x for x in eventExcerpts if x["excerptNumber"]]
         else:
             excerptsNeedingSplit = [x for x in eventExcerpts if (gOptions.redoJoinMp3 and len(x.get("clips",())) > 1) or Link.LocalItemNeeded(x)]
         if not excerptsNeedingSplit:
@@ -124,6 +130,17 @@ def main():
         # Group clips by sources and call MultiFileSplitJoin multiple times.
         # If there is an error, this lets us continue to split the remaining files.
         for sources,clipsDict in Mp3DirectCut.GroupBySourceFiles(excerptClipsDict):
+            # Calculate the required bit rate
+            maxClipCount = max(len(clipList) for clipList in clipsDict.values())
+            if maxClipCount > 1 and gOptions.joinUsingPydub and gOptions.joinBitRate == AUTO_BIT_RATE:
+                maxBitRate = 64
+                for source in sources:
+                    mp3File = MP3(source)
+                    maxBitRate = max(mp3File.info.bitrate / 1000,maxBitRate)
+                roundedBitRate = min(16 * math.ceil(0.95 * maxBitRate / 16),128)
+                Alert.info("Pydub join bit rate:",roundedBitRate,"k")
+                Mp3DirectCut.joinBitrate = str(roundedBitRate) + "k"
+
             # Invoke Mp3DirectCut on each group of clips:
             try:
                 nativeClipsDict = NativeFilePaths(clipsDict)
@@ -141,11 +158,11 @@ def main():
             for filename in clipsDict:
                 filePath = Utils.PosixJoin(outputDir,filename)
                 clips = excerptsByFilename[filename]["clips"]
-                splitMethod = {"split":Mp3DirectCut.lastSplitMethod}
-                if len(clips) > 1:
-                    splitMethod["join"] = Mp3DirectCut.lastJoinMethod
-                    if splitMethod["join"] != Mp3DirectCut.JoinMethod.CONCATENATE:
-                        splitMethod["bitrate"] = Mp3DirectCut.lastBitRate
+                splitMethod = TagMp3.SplitMethodDict(
+                    splitMethod = Mp3DirectCut.lastSplitMethod,
+                    joinMethod = "" if len(clips) == 1 else Mp3DirectCut.lastJoinMethod,
+                    bitRate = AUTO_BIT_RATE if gOptions.joinBitRate == AUTO_BIT_RATE else Mp3DirectCut.lastBitRate
+                )
                 TagMp3.TagMp3WithClips(filePath,clips,splitMethod)
             
             splitCount += 1
