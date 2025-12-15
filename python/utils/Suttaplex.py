@@ -231,7 +231,9 @@ def PreferredTranslator(textUid:str,refNumbers:list[int],silentFail = False) -> 
 
     def ChooseTranslator(available:list[str]) -> str:
         "Pick the preferred translator from those available."
-        priorityTranslator = ("bodhi","ireland","buddharakkhita","kelly","sujato")
+        priorityTranslator = ("bodhi","ireland","kelly","sujato")
+        if textUid.startswith("dhp"): # Use Buddharakkhita's translation for dhp only
+            priorityTranslator = ("buddharakkhita",) + priorityTranslator
         for t in priorityTranslator:
             if t in available:
                 return t

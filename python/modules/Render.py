@@ -456,7 +456,7 @@ def SuttaLinkWrapper(link: str,referenceString: str) -> Html.Wrapper:
     """Given a sutta link (from ApplySuttaMatch rules) and the sutta reference itself, return
     a link to the sutta, including the alt-href attribute."""
     reference = BuildReferences.TextReference.FromString(referenceString)
-    reference = reference.Truncate(reference.TextLevel() + 1)
+    reference = reference.Truncate(max(reference.TextLevel() + 1,2))
     textPageLink = BuildReferences.ReferenceLink("text",str(reference))
 
     linkData = {"href":link,"target":"_blank"}

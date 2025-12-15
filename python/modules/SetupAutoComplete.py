@@ -186,7 +186,11 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
             uid = BuildReferences.TextReference.FromString(text).Uid()
             paliTitle = Suttaplex.Title(uid,translated=False)
             title = Suttaplex.Title(uid)
-            combinedTitle = f"{text}: {paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
+            combinedTitle = f"{paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
+            if combinedTitle:
+                combinedTitle = f"{text}: " + combinedTitle
+            else:
+                combinedTitle = text
             yield Entry(combinedTitle,textData["link"],icon="DhammaWheel.png",excerptCount=textData["count"])
 
 def BookEntries() -> Iterable[AutoCompleteEntry]:

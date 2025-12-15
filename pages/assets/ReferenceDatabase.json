@@ -2,11 +2,11 @@
   "text": {
     "DN": {
       "link": "texts/DN.html",
-      "count": 41
+      "count": 42
     },
     "DN 1": {
       "link": "texts/DN1.html",
-      "count": 2
+      "count": 3
     },
     "DN 2": {
       "link": "texts/DN2.html",
@@ -70,7 +70,7 @@
     },
     "MN": {
       "link": "texts/MN.html",
-      "count": 346
+      "count": 363
     },
     "MN 1": {
       "link": "texts/MN1.html",
@@ -134,7 +134,7 @@
     },
     "MN 23": {
       "link": "texts/MN23.html",
-      "count": 1
+      "count": 2
     },
     "MN 24": {
       "link": "texts/MN24.html",
@@ -174,7 +174,7 @@
     },
     "MN 39": {
       "link": "texts/MN39.html",
-      "count": 8
+      "count": 10
     },
     "MN 41": {
       "link": "texts/MN41.html",
@@ -186,7 +186,7 @@
     },
     "MN 44": {
       "link": "texts/MN44.html",
-      "count": 12
+      "count": 15
     },
     "MN 47": {
       "link": "texts/MN47.html",
@@ -238,7 +238,7 @@
     },
     "MN 64": {
       "link": "texts/MN64.html",
-      "count": 2
+      "count": 4
     },
     "MN 66": {
       "link": "texts/MN66.html",
@@ -266,7 +266,7 @@
     },
     "MN 75": {
       "link": "texts/MN75.html",
-      "count": 12
+      "count": 14
     },
     "MN 80": {
       "link": "texts/MN80.html",
@@ -296,21 +296,17 @@
       "link": "texts/MN102.html",
       "count": 2
     },
-    "MN 105": {
-      "link": "texts/MN105.html",
-      "count": 1
-    },
     "MN 107": {
       "link": "texts/MN107.html",
       "count": 5
     },
     "MN 108": {
       "link": "texts/MN108.html",
-      "count": 1
+      "count": 2
     },
     "MN 109": {
       "link": "texts/MN109.html",
-      "count": 3
+      "count": 7
     },
     "MN 111": {
       "link": "texts/MN111.html",
@@ -326,7 +322,7 @@
     },
     "MN 118": {
       "link": "texts/MN118.html",
-      "count": 37
+      "count": 39
     },
     "MN 119": {
       "link": "texts/MN119.html",
@@ -360,6 +356,10 @@
       "link": "texts/MN140.html",
       "count": 6
     },
+    "MN 141": {
+      "link": "texts/MN141.html",
+      "count": 1
+    },
     "MN 143": {
       "link": "texts/MN143.html",
       "count": 1
@@ -370,7 +370,7 @@
     },
     "SN": {
       "link": "texts/SN.html",
-      "count": 300
+      "count": 322
     },
     "SN 1": {
       "link": "texts/SN1.html",
@@ -442,7 +442,7 @@
     },
     "SN 5": {
       "link": "texts/SN5.html",
-      "count": 3
+      "count": 4
     },
     "SN 5.1": {
       "link": "texts/SN5.html#sn-5-1",
@@ -454,7 +454,7 @@
     },
     "SN 5.10": {
       "link": "texts/SN5.html#sn-5-10",
-      "count": 3
+      "count": 4
     },
     "SN 6": {
       "link": "texts/SN6.html",
@@ -486,7 +486,7 @@
     },
     "SN 12": {
       "link": "texts/SN12.html",
-      "count": 22
+      "count": 23
     },
     "SN 12.15": {
       "link": "texts/SN12_15.html",
@@ -534,7 +534,7 @@
     },
     "SN 12.67": {
       "link": "texts/SN12_67.html",
-      "count": 1
+      "count": 2
     },
     "SN 14": {
       "link": "texts/SN14.html",
@@ -574,7 +574,7 @@
     },
     "SN 22": {
       "link": "texts/SN22.html",
-      "count": 52
+      "count": 67
     },
     "SN 22.1": {
       "link": "texts/SN22_1.html",
@@ -582,11 +582,11 @@
     },
     "SN 22.2": {
       "link": "texts/SN22_2.html",
-      "count": 1
+      "count": 4
     },
     "SN 22.3": {
       "link": "texts/SN22_3.html",
-      "count": 1
+      "count": 2
     },
     "SN 22.5": {
       "link": "texts/SN22_5.html",
@@ -598,7 +598,7 @@
     },
     "SN 22.22": {
       "link": "texts/SN22_22.html",
-      "count": 2
+      "count": 3
     },
     "SN 22.26": {
       "link": "texts/SN22_26.html",
@@ -622,7 +622,7 @@
     },
     "SN 22.48": {
       "link": "texts/SN22_48.html",
-      "count": 1
+      "count": 2
     },
     "SN 22.49": {
       "link": "texts/SN22_49.html",
@@ -642,11 +642,11 @@
     },
     "SN 22.59": {
       "link": "texts/SN22_59.html",
-      "count": 8
+      "count": 12
     },
     "SN 22.79": {
       "link": "texts/SN22_79.html",
-      "count": 3
+      "count": 6
     },
     "SN 22.80": {
       "link": "texts/SN22_80.html",
@@ -658,7 +658,7 @@
     },
     "SN 22.85": {
       "link": "texts/SN22_85.html",
-      "count": 1
+      "count": 2
     },
     "SN 22.86": {
       "link": "texts/SN22_86.html",
@@ -694,7 +694,7 @@
     },
     "SN 22.100": {
       "link": "texts/SN22_100.html",
-      "count": 2
+      "count": 3
     },
     "SN 22.102": {
       "link": "texts/SN22_102.html",
@@ -890,7 +890,7 @@
     },
     "SN 42": {
       "link": "texts/SN42.html",
-      "count": 1
+      "count": 4
     },
     "SN 42.8": {
       "link": "texts/SN42.html#sn-42-8",
@@ -898,7 +898,7 @@
     },
     "SN 42.13": {
       "link": "texts/SN42.html#sn-42-13",
-      "count": 1
+      "count": 4
     },
     "SN 43": {
       "link": "texts/SN43.html",
@@ -938,7 +938,7 @@
     },
     "SN 45.159": {
       "link": "texts/SN45.html#sn-45-159",
-      "count": 1
+      "count": 2
     },
     "SN 45.165": {
       "link": "texts/SN45.html#sn-45-165",
@@ -946,7 +946,7 @@
     },
     "SN 46": {
       "link": "texts/SN46.html",
-      "count": 35
+      "count": 36
     },
     "SN 46.1": {
       "link": "texts/SN46_1.html",
@@ -1026,7 +1026,7 @@
     },
     "SN 46.55": {
       "link": "texts/SN46_55.html",
-      "count": 3
+      "count": 4
     },
     "SN 46.57": {
       "link": "texts/SN46_57.html",
@@ -1190,11 +1190,11 @@
     },
     "AN": {
       "link": "texts/AN.html",
-      "count": 210
+      "count": 221
     },
     "AN 1": {
       "link": "texts/AN1.html",
-      "count": 11
+      "count": 12
     },
     "AN 1.49": {
       "link": "texts/AN1_41.html",
@@ -1230,7 +1230,7 @@
     },
     "AN 1.616": {
       "link": "texts/AN1_616.html",
-      "count": 1
+      "count": 2
     },
     "AN 2": {
       "link": "texts/AN2.html",
@@ -1238,7 +1238,7 @@
     },
     "AN 3": {
       "link": "texts/AN3.html",
-      "count": 24
+      "count": 25
     },
     "AN 3.7": {
       "link": "texts/AN3_7.html",
@@ -1278,7 +1278,7 @@
     },
     "AN 3.65": {
       "link": "texts/AN3_65.html",
-      "count": 2
+      "count": 3
     },
     "AN 3.86": {
       "link": "texts/AN3_86.html",
@@ -1310,7 +1310,7 @@
     },
     "AN 4": {
       "link": "texts/AN4.html",
-      "count": 33
+      "count": 34
     },
     "AN 4.17": {
       "link": "texts/AN4_17.html",
@@ -1342,7 +1342,7 @@
     },
     "AN 4.61": {
       "link": "texts/AN4_61.html",
-      "count": 1
+      "count": 2
     },
     "AN 4.77": {
       "link": "texts/AN4_77.html",
@@ -1394,11 +1394,11 @@
     },
     "AN 5": {
       "link": "texts/AN5.html",
-      "count": 21
+      "count": 25
     },
     "AN 5.23": {
       "link": "texts/AN5_23.html",
-      "count": 1
+      "count": 2
     },
     "AN 5.29": {
       "link": "texts/AN5_29.html",
@@ -1418,7 +1418,7 @@
     },
     "AN 5.161": {
       "link": "texts/AN5_161.html",
-      "count": 2
+      "count": 5
     },
     "AN 5.162": {
       "link": "texts/AN5_162.html",
@@ -1478,7 +1478,7 @@
     },
     "AN 7": {
       "link": "texts/AN7.html",
-      "count": 16
+      "count": 18
     },
     "AN 7.6": {
       "link": "texts/AN7_6.html",
@@ -1514,7 +1514,7 @@
     },
     "AN 7.61": {
       "link": "texts/AN7_61.html",
-      "count": 5
+      "count": 7
     },
     "AN 7.64": {
       "link": "texts/AN7_64.html",
@@ -1602,7 +1602,7 @@
     },
     "AN 10": {
       "link": "texts/AN10.html",
-      "count": 40
+      "count": 42
     },
     "AN 10.2": {
       "link": "texts/AN10_2.html",
@@ -1634,7 +1634,7 @@
     },
     "AN 10.61": {
       "link": "texts/AN10_61.html",
-      "count": 4
+      "count": 6
     },
     "AN 10.67": {
       "link": "texts/AN10_67.html",
@@ -1750,7 +1750,7 @@
     },
     "Ud": {
       "link": "texts/Ud.html",
-      "count": 44
+      "count": 45
     },
     "Ud 1": {
       "link": "texts/Ud1.html",
@@ -1794,7 +1794,7 @@
     },
     "Ud 4": {
       "link": "texts/Ud4.html",
-      "count": 1
+      "count": 2
     },
     "Ud 4.1": {
       "link": "texts/Ud4.html#ud-4-1",
@@ -1802,7 +1802,7 @@
     },
     "Ud 4.4": {
       "link": "texts/Ud4.html#ud-4-4",
-      "count": 1
+      "count": 2
     },
     "Ud 5": {
       "link": "texts/Ud5.html",
@@ -1906,11 +1906,11 @@
     },
     "Snp": {
       "link": "texts/Snp.html",
-      "count": 33
+      "count": 36
     },
     "Snp 1": {
       "link": "texts/Snp1.html",
-      "count": 2
+      "count": 3
     },
     "Snp 1.4": {
       "link": "texts/Snp1.html#snp-1-4",
@@ -1918,7 +1918,7 @@
     },
     "Snp 1.8": {
       "link": "texts/Snp1.html#snp-1-8",
-      "count": 2
+      "count": 3
     },
     "Snp 2": {
       "link": "texts/Snp2.html",
@@ -1942,7 +1942,7 @@
     },
     "Snp 4": {
       "link": "texts/Snp4.html",
-      "count": 11
+      "count": 13
     },
     "Snp 4.4": {
       "link": "texts/Snp4_4.html",
@@ -1958,7 +1958,7 @@
     },
     "Snp 4.9": {
       "link": "texts/Snp4_9.html",
-      "count": 1
+      "count": 3
     },
     "Snp 4.11": {
       "link": "texts/Snp4_11.html",
@@ -2031,6 +2031,10 @@
     "Mil": {
       "link": "texts/Mil.html",
       "count": 1
+    },
+    "Mil 25": {
+      "link": "texts/Mil.html#mil-25",
+      "count": 2
     },
     "Mil 320": {
       "link": "texts/Mil.html#mil-320",
@@ -2108,11 +2112,11 @@
   "author": {
     "Nyanamoli": {
       "link": "books/Commentary.html",
-      "count": 19
+      "count": 20
     },
     "AbhSangha": {
       "link": "books/AbhSangha.html",
-      "count": 1
+      "count": 10
     },
     "ACSangha": {
       "link": "books/ACSangha.html",
@@ -2120,7 +2124,7 @@
     },
     "AmSangha": {
       "link": "books/AmSangha.html",
-      "count": 101
+      "count": 109
     },
     "AA": {
       "link": "books/AA.html",
@@ -2128,7 +2132,7 @@
     },
     "Analayo": {
       "link": "books/Analayo.html",
-      "count": 5
+      "count": 7
     },
     "AAnan": {
       "link": "books/AAnan.html",
@@ -2276,7 +2280,7 @@
     },
     "AThan": {
       "link": "books/AThan.html",
-      "count": 55
+      "count": 57
     },
     "AThoon": {
       "link": "books/AThoon.html",
@@ -2298,7 +2302,7 @@
   "book": {
     "path of purification": {
       "link": "books/path-of-purification.html",
-      "count": 16
+      "count": 17
     },
     "path to freedom": {
       "link": "books/path-to-freedom.html",
@@ -2313,15 +2317,15 @@
       "count": 1
     },
     "abhayagiri chanting book": {
-      "link": "books/AbhSangha.html#abhsangha-abhayagiri-chanting-book",
-      "count": 5
+      "link": "books/abhayagiri-chanting-book.html",
+      "count": 6
     },
     "beginning our day v1": {
-      "link": "books/AbhSangha.html#abhsangha-beginning-our-day-v1",
+      "link": "books/beginning-our-day-v1.html",
       "count": 3
     },
     "beginning our day v2": {
-      "link": "books/AbhSangha.html#abhsangha-beginning-our-day-v2",
+      "link": "books/beginning-our-day-v2.html",
       "count": 1
     },
     "gratitude": {
@@ -2338,11 +2342,11 @@
     },
     "chanting book": {
       "link": "books/chanting-book.html",
-      "count": 75
+      "count": 79
     },
     "chanting book v2": {
       "link": "books/chanting-book-v2.html",
-      "count": 23
+      "count": 27
     },
     "bhikkhu manual": {
       "link": "books/bhikkhu-manual.html",
@@ -2386,7 +2390,7 @@
     },
     "satipatthana": {
       "link": "books/Analayo.html#analayo-satipatthana",
-      "count": 5
+      "count": 7
     },
     "sotapattimagga": {
       "link": "books/AAnan.html#aanan-sotapattimagga",
@@ -2414,6 +2418,10 @@
     },
     "key to natural truth": {
       "link": "books/ABuddhadasa.html#abuddhadasa-key-to-natural-truth",
+      "count": 1
+    },
+    "mindfulness with breathing": {
+      "link": "books/ABuddhadasa.html#abuddhadasa-mindfulness-with-breathing",
       "count": 1
     },
     "nibbana for everyone": {
@@ -2703,6 +2711,10 @@
     "customs of the noble ones": {
       "link": "books/customs-of-the-noble-ones.html",
       "count": 1
+    },
+    "burden off the mind": {
+      "link": "books/burden-off-the-mind.html",
+      "count": 2
     },
     "body contemplation": {
       "link": "books/body-contemplation.html",
