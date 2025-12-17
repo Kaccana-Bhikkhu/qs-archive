@@ -178,12 +178,15 @@ def Singular(noun: str) -> str:
     else:
         return noun.rstrip("s")
 
-def EllideText(s: str,maxLength = 50) -> str:
+def EllideText(s: str,maxLength = 50,endAtWordBoundary = False) -> str:
     "Truncate a string to keep the number of characters under maxLength."
     if len(s) <= maxLength:
         return s
-    else:
-        return s[:maxLength - 3] + "..."
+    elif endAtWordBoundary:
+        wordBoundaryMatch = re.match(f".{{1,{maxLength - 2}}}\\b",s)
+        if wordBoundaryMatch:
+            return wordBoundaryMatch[0].strip() + "..."
+    return s[:maxLength - 3] + "..."
 
 def SmartQuotes(s: str):
     """Takes a string and returns it with dumb quotes, single and double,

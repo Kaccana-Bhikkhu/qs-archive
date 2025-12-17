@@ -180,15 +180,21 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
     
     yield Entry("Sutta references","texts/Sutta.html",icon="DhammaWheel.png")
     yield Entry("Vinaya references","texts/Vinaya.html",icon="DhammaWheel.png")
+
+    with open("sutta/dhammapada/Dhammapada.json", 'r', encoding='utf-8') as file:
+        dhammapada = json.load(file)
     BuildReferences.ReadReferenceDatabase()
     for text,textData in BuildReferences.gSavedReferences["text"].items():
         if re.search(r"[0-9]$",text): # Remove root text links
-            uid = BuildReferences.TextReference.FromString(text).Uid()
+            ref = BuildReferences.TextReference.FromString(text)
+            uid = ref.Uid()
             paliTitle = Suttaplex.Title(uid,translated=False)
             title = Suttaplex.Title(uid)
             combinedTitle = f"{paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
             if combinedTitle:
                 combinedTitle = f"{text}: " + combinedTitle
+            elif ref.text == "Dhp" and ref.n0:
+                combinedTitle = f'{text}: “{Utils.EllideText(dhammapada[str(ref.n0)],60,endAtWordBoundary=True)}”'
             else:
                 combinedTitle = text
             yield Entry(combinedTitle,textData["link"],icon="DhammaWheel.png",excerptCount=textData["count"])
