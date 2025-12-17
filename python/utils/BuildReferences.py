@@ -394,9 +394,8 @@ class BookReference(NamedTuple):
         if self.abbreviation:
             book = gDatabase["reference"][self.abbreviation]
             bits = [Utils.CapitalizeFirst(book["title"])]
-            if showAuthors and book["author"]:
-                authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
-                bits.append(f"by {Build.ItemList(authorNames,lastJoinStr = 'and')}")
+            if showAuthors and book["author"] and book["attribution"]:
+                bits.append(book["attribution"])
             if showYear and book["year"] and not self.IsCommentary():
                 bits.append(f"({book['year']})")
             if self.page:

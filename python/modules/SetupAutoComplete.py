@@ -201,8 +201,8 @@ def BookEntries() -> Iterable[AutoCompleteEntry]:
     BuildReferences.ReadReferenceDatabase()
     for book,bookData in BuildReferences.gSavedReferences["book"].items():
         reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
-        title = re.sub(r'["“”]',"",reference.TextTitle())
-        yield Entry(title,bookData["link"],icon="book-open",excerptCount=bookData["count"])
+        entry = re.sub(r'["“”]',"",Utils.RemoveHtmlTags(reference.FullName(showAuthors=True,showYear=False)))
+        yield Entry(entry,bookData["link"],icon="book-open",excerptCount=bookData["count"])
     
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
