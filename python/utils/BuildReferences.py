@@ -124,9 +124,9 @@ def SCToExpress(scLink: str) -> str:
 
     if scLink.startswith("https://suttacentral.net/"):
         # SuttaCentral Express currently doesn't handle suttas within AN groups, so don't change these links
-        if anSutta := re.match(r"https://suttacentral.net/(an[0-9]+\.[0-9]+)",scLink):
+        if anSutta := re.match(r"https://suttacentral.net/([as]n[0-9]+\.[0-9]+)",scLink):
             suttaRef = anSutta[1]
-            if suttaRef in Suttaplex.InterpolatedSuttaDict("an"):
+            if suttaRef in Suttaplex.InterpolatedSuttaDict(suttaRef[0:2]):
                 return scLink
 
         return scLink.replace("//suttacentral.net/","//suttacentral.express/")
@@ -240,7 +240,7 @@ class TextReference(NamedTuple):
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
             expressLink = SCToExpress(scLink)
             if expressLink != scLink:
-                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Lightweight SuttaCentral Express","target":"_blank"})
+                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Lightweight SuttaCentral Express","class":"express","target":"_blank"})
                                    (Build.HtmlIcon("SuttaCentralExpress.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
