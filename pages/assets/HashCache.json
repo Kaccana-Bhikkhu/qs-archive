@@ -8,80 +8,80 @@
     "_modified": "2025-12-13 15:55:22.000000"
   },
   "indexes/KeyTopicDetail.html": {
-    "md5": "ac969056da96ffeb42aec4df98d6fa1e",
-    "_modified": "2025-12-20 13:52:38.000000"
+    "md5": "38402ea8fa57fa621959c4a4f8e1c125",
+    "_modified": "2025-12-20 15:10:32.000000"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "a8b84843e229bc9e0d2bf43c4cd8591a",
-    "_modified": "2025-12-20 13:54:46.000000"
+    "md5": "d41c35bd2fe9590a82cc4cefff9f8417",
+    "_modified": "2025-12-20 15:10:32.000000"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "49e35b6cc426192365ecaaa39a0f42da",
-    "_modified": "2025-12-20 13:54:46.000000"
+    "md5": "f028a457fdb091847b870eeaf05300d6",
+    "_modified": "2025-12-20 15:10:32.000000"
   },
   "indexes/Tags_print.html": {
-    "md5": "096bbd7b29891bd7fc8c7d8cd1272be9",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "7f7d34652f10627a99bdf55f926b370e",
+    "_modified": "2025-12-20 15:10:34.000000"
   },
   "drilldown/root.html": {
-    "md5": "6c4ca4fbf8aa04f3f630e4ddef00109e",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "0f531792d71ac55022350bc4858d814d",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "indexes/NumericalTags.html": {
-    "md5": "746115e701a3920d468594bc49be58ef",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "c950fa21c47136c146056bafe569ab20",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "indexes/SortedTags.html": {
-    "md5": "5915755bb25d373c50199ca0dabfcdda",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "6d6fe4329ebf88c0577db8c23cfa024e",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "044d2392bc05b8efb4861b5f93d6c980",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "b2991d46b8b2530230f6ecb27a6e3b15",
+    "_modified": "2025-12-20 15:10:34.000000"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "8a97cf1684c99dde178eb7ce193c4c59",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "2f78f57c314c7612e2debba8000a2c55",
+    "_modified": "2025-12-20 15:10:34.000000"
   },
   "indexes/AlphabeticalTags.html": {
-    "md5": "b2ee3b2a59cf41d9d5b9876523af728c",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "576f8ec6fd845d90660d42ae3a96cc8d",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "indexes/EnglishTags.html": {
-    "md5": "9ea028c066823949c939d455c10fd278",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "b5d76a8842a8e98fe738b624a5e58bc3",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "indexes/PaliTags.html": {
-    "md5": "915fefcd118f067d96e3de174007892e",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "b4ad69a120bb1455bc55be0a1b0e2606",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "indexes/OtherTags.html": {
-    "md5": "b48fa715a399f822a250aa41f894bf10",
-    "_modified": "2025-12-13 15:55:22.000000"
+    "md5": "589907e5005bb728d7d94158913e0101",
+    "_modified": "2025-12-20 14:04:18.000000"
   },
   "indexes/ProperTags.html": {
-    "md5": "3cfdf9604617cf98cb18c8e2c8ca1cb6",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "c4455067a8421b4d2ae824a79b375dc6",
+    "_modified": "2025-12-20 14:27:42.000000"
   },
   "indexes/EventsBySeries.html": {
-    "md5": "87b738ed1719519253af91fcff56356f",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "fc9e340c00ef194f8dec8096b41b8b59",
+    "_modified": "2025-12-20 14:04:18.000000"
   },
   "indexes/EventsBySubject.html": {
-    "md5": "022d8056480d68e332c7eba5de16ca23",
-    "_modified": "2025-12-13 15:55:24.000000"
+    "md5": "309ee01a34bd2787b2402c6e80101391",
+    "_modified": "2025-12-20 14:04:18.000000"
   },
   "indexes/EventsChronological.html": {
-    "md5": "9be152cd914ef997ac776fcd7e2974ea",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "35de855c17ae3e3895683ba0f49e1cf2",
+    "_modified": "2025-12-20 14:04:18.000000"
   },
   "indexes/EventDetails.html": {
-    "md5": "537bd2fbdc763c895a2893921c018b2c",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "279211eb42ae1751f13810ae8bdb1175",
+    "_modified": "2025-12-20 14:44:08.000000"
   },
   "events/Chah2001.html": {
-    "md5": "d85f1c4b85a4fa134e5657ecc9bc1908",
-    "_modified": "2025-12-13 15:55:24.000000"
+    "md5": "8cad266e150176e236158513873c42fb",
+    "_modified": "2025-12-20 14:04:18.000000"
   },
   "events/WR2005-1.html": {
     "md5": "b6b1d416240493b4433b376bae4c3806",
@@ -120,8 +120,8 @@
     "_modified": "2025-12-13 15:55:24.000000"
   },
   "events/TG2013.html": {
-    "md5": "f87f241be2914c82c4e153ef97901c47",
-    "_modified": "2025-12-13 15:55:24.000000"
+    "md5": "175ed78d168b4956dd39c9e76cdbdbf8",
+    "_modified": "2025-12-20 15:10:34.000000"
   },
   "events/BIA2013.html": {
     "md5": "0c2119fc7bdfbe399aba8e3a78cdbc38",
@@ -148,12 +148,12 @@
     "_modified": "2025-12-13 15:55:24.000000"
   },
   "events/TG2014.html": {
-    "md5": "e44d7d60eaac8c73368bdc07587c190f",
-    "_modified": "2025-12-13 15:55:24.000000"
+    "md5": "89899e427346da2b7d5963cd878b8771",
+    "_modified": "2025-12-20 14:44:10.000000"
   },
   "events/WR2015.html": {
-    "md5": "f2319a9afd3c3a43740faaf711ebfc3b",
-    "_modified": "2025-12-17 15:21:28.000000"
+    "md5": "f47ccd0681fac4b460da27393db4c336",
+    "_modified": "2025-12-20 14:04:20.000000"
   },
   "events/UD2015-1.html": {
     "md5": "6615169425a349186d9edde478af0592",
@@ -176,16 +176,16 @@
     "_modified": "2025-12-13 15:55:24.000000"
   },
   "events/TG2015.html": {
-    "md5": "1ec588c9f90e47c34e19afb408e5338d",
-    "_modified": "2025-12-13 15:55:24.000000"
+    "md5": "207af64c56d2874c83f2e5061d96bbfd",
+    "_modified": "2025-12-20 14:44:10.000000"
   },
   "events/WR2016.html": {
     "md5": "79c82e7839ec9c86ab2c8d5a50faf747",
     "_modified": "2025-12-17 15:21:28.000000"
   },
   "events/Anniversary2016.html": {
-    "md5": "a35ca48ace23ddc1f907d507f808be92",
-    "_modified": "2025-12-13 15:55:24.000000"
+    "md5": "b723e5dd9dd9c9c5f95dee01f0118087",
+    "_modified": "2025-12-20 14:27:44.000000"
   },
   "events/UD2016-2.html": {
     "md5": "9a76f18bb1b54baf41434c1bfa320247",
@@ -284,8 +284,8 @@
     "_modified": "2025-12-17 15:21:28.000000"
   },
   "events/Rishikesh2023.html": {
-    "md5": "51df00c7d922badd9b432d927dc19c9f",
-    "_modified": "2025-12-13 15:55:26.000000"
+    "md5": "6f781ef53793d4313ae44de1c4e9ed5a",
+    "_modified": "2025-12-20 14:44:10.000000"
   },
   "events/Anniversary2024.html": {
     "md5": "21c99a8409aca98911c1146b6e859559",
@@ -296,8 +296,8 @@
     "_modified": "2025-12-13 15:55:26.000000"
   },
   "events/SRD2024.html": {
-    "md5": "4c88c9a7554ac61c20f6b07c9ce4411d",
-    "_modified": "2025-12-13 15:55:26.000000"
+    "md5": "a0e199bc3863977a3a4f93dde32a679e",
+    "_modified": "2025-12-20 14:44:10.000000"
   },
   "events/Appamada2024.html": {
     "md5": "46d70e7d290c1023528b1d52388ca132",
@@ -308,8 +308,8 @@
     "_modified": "2025-12-13 15:55:26.000000"
   },
   "events/WR2025.html": {
-    "md5": "f6433275e7ef80596fbe0747c3aa41e7",
-    "_modified": "2025-12-17 15:21:30.000000"
+    "md5": "76e585bb0267ba9ed40a570feb24a0e9",
+    "_modified": "2025-12-20 14:04:20.000000"
   },
   "events/ChahQA2025.html": {
     "md5": "52849df8152a7b664ff7f1ca32a1aae5",
@@ -324,8 +324,8 @@
     "_modified": "2025-12-13 15:55:26.000000"
   },
   "sitemap.xml": {
-    "md5": "2ed376839ed6e830068190276295d50b",
-    "_modified": "2025-12-17 15:44:12.000000"
+    "md5": "7f17ab08eb69fb035f469fc241c2e293",
+    "_modified": "2025-12-20 15:10:36.000000"
   },
   "index.html": {
     "md5": "a43c073934ea50bfef6f2f266873bab2",
@@ -2828,8 +2828,8 @@
     "_modified": "2025-12-09 12:50:32.000000"
   },
   "tags/skillful-qualities.html": {
-    "md5": "1a0ef24ecb6af55dcca7710c3c5d3014",
-    "_modified": "2025-12-09 12:50:32.000000"
+    "md5": "430b38c1327d9568f58a8fd839a0c905",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/skillful-qualities-relevant.html": {
     "md5": "64afcdae06653316e185381111cac11c",
@@ -2860,8 +2860,8 @@
     "_modified": "2025-11-27 11:56:08.000000"
   },
   "tags/middle-path.html": {
-    "md5": "bf40a0177b0d3b03604c3ad58516c14d",
-    "_modified": "2025-12-09 12:50:32.000000"
+    "md5": "6a36d08915e0e9e5e199388920b9ff70",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/middle-path-relevant.html": {
     "md5": "125177a2b89ec2f1e4dca1c5eb5420f2",
@@ -2884,8 +2884,8 @@
     "_modified": "2025-12-09 12:50:32.000000"
   },
   "tags/eightfold-path.html": {
-    "md5": "a4655eed2d0192ce10e96c11aeb96442",
-    "_modified": "2025-12-09 12:50:32.000000"
+    "md5": "866655bf891c1bdbee28aac6700c088e",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/eightfold-path-relevant.html": {
     "md5": "a57491d66d725d8ee3d4f347fd0050d4",
@@ -2916,8 +2916,8 @@
     "_modified": "2025-12-09 12:50:32.000000"
   },
   "tags/right-view.html": {
-    "md5": "56b57c047ddaa6e4ebfdf6452212fbfd",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "f912aea62190872cd19232d7b80ca544",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/right-view-relevant.html": {
     "md5": "69ab75b541470a6d3588cbac798e3a52",
@@ -2964,8 +2964,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/renunciation.html": {
-    "md5": "88eec7eac77a1e79b1cda4a7a97b8b63",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "5752354c5d771d4c476d306a8fa67cdd",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/renunciation-relevant.html": {
     "md5": "a3f2e69a96588fa548ed68ce96a30af4",
@@ -2996,8 +2996,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/right-speech.html": {
-    "md5": "95af9472410bdd6c7147969255201f04",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "7dbdd6e9f24fa0f7b1e163a2b263a3d6",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/right-speech-relevant.html": {
     "md5": "dc96b488a313643f4f2cba07ed531fbf",
@@ -3032,8 +3032,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/harsh-speech.html": {
-    "md5": "9949e9e90c1dd08e5947188bf18be500",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "183806de7eee0640496f39c5d420c12c",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/idle-chatter.html": {
     "md5": "817bfc1c3b2927fc0f01b53410c3681d",
@@ -3056,8 +3056,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/admonishmentfeedback.html": {
-    "md5": "65a3c6b9c1ed62f467bb4a5d421dbff0",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "50b2c31dbd181ab7d7ce4055e274293e",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/admonishmentfeedback-relevant.html": {
     "md5": "6c4725428750b2a34b8febac33a82d68",
@@ -3108,8 +3108,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/blame-and-praise.html": {
-    "md5": "e96790e4136c97921d2d365f590d5264",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "94f8ef437e06843a8df5adedff49926e",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/nonviolent-communication.html": {
     "md5": "4fa9e253976ac072690353d6713f4f64",
@@ -3120,8 +3120,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/killing.html": {
-    "md5": "9980b9cc391ec242d50ddde51b03887b",
-    "_modified": "2025-11-27 11:56:10.000000"
+    "md5": "0a09dcb240d28fcd98a566c0b895a67d",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/killing-relevant.html": {
     "md5": "39de7a42effb0bdce958b79c35397e1b",
@@ -3156,8 +3156,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/stealing.html": {
-    "md5": "08994c468ccec52eb03d9ab1f90dfa32",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "944f1bc42b7d64790148bf6c6943dca5",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/sexual-misconduct.html": {
     "md5": "c9539702373798acdac90b51f1a8e9fb",
@@ -3196,8 +3196,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/right-effort.html": {
-    "md5": "1c1d2e52d3caa242206c2bc3ef46e749",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "7734357f94b1493a626f59fce3ff3944",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/right-effort-2.html": {
     "md5": "6ab916f0f318fbf391ed310fa71be1c1",
@@ -3232,8 +3232,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/right-mindfulness.html": {
-    "md5": "6992384770e453dfd70eb4ba1ee9eab5",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "9d637a4002932c6480b719724e4334a9",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/right-mindfulness-relevant.html": {
     "md5": "37face89c7d6125205d71b38f2de7154",
@@ -3264,8 +3264,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/mindfulness-of-body.html": {
-    "md5": "7bce05d825993d4fb5c441cb08dd7411",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "774742d9490fb9837c2ff83461992884",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/mindfulness-of-body-2.html": {
     "md5": "5236b59ee0970a49e59f9087103be272",
@@ -3304,8 +3304,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/mindfulness-of-breathing.html": {
-    "md5": "9c3bb470cedcecc6216c078bd1784f50",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "a2ba38f24b3ad492060d45a9f4729834",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/mindfulness-of-breathing-2.html": {
     "md5": "0c7f9265bbbfcdca49b7f4acd0247602",
@@ -3344,8 +3344,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/postures.html": {
-    "md5": "c55471c759109ac2e46b451e44b7bc20",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "1c0e6c6516d2bee7a3dff3fca04b8d37",
+    "_modified": "2025-12-20 14:28:50.000000"
   },
   "tags/postures-relevant.html": {
     "md5": "8dd89f34266d7d35d141873c0037bd8b",
@@ -3364,8 +3364,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/clear-comprehension.html": {
-    "md5": "fdfd64334f308385420ff8511669abae",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "25ce969636a07ba06c853e2333ef3803",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/clear-comprehension-relevant.html": {
     "md5": "e59dc15284c5ca64554b62561a74480c",
@@ -3400,8 +3400,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/unattractiveness.html": {
-    "md5": "4d8ed9172e1c731b8e68f9018bab40ff",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "2bec8069db220e4b709c77559fe4da95",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/unattractiveness-relevant.html": {
     "md5": "259bb7480711d21143b9a5170bcce1e2",
@@ -3436,8 +3436,8 @@
     "_modified": "2025-11-27 11:56:10.000000"
   },
   "tags/elements.html": {
-    "md5": "7a73b3cb7352028966e838a2b6aa0c47",
-    "_modified": "2025-12-09 12:50:34.000000"
+    "md5": "1bec7d0e4f4439d4267de8d165aa0ad4",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/elements-relevant.html": {
     "md5": "baf1262f5f4445adc6dd6500ddb1bff8",
@@ -3504,8 +3504,8 @@
     "_modified": "2025-12-09 12:50:34.000000"
   },
   "tags/mindfulness-of-feeling.html": {
-    "md5": "0fdc31d7aea104178ee80c494431ca59",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "06ee9bf37eb4de504b163b3b27e5df89",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/mindfulness-of-feeling-relevant.html": {
     "md5": "0c9939c4f97c256a547f3d3952b371b0",
@@ -3532,8 +3532,8 @@
     "_modified": "2025-11-27 11:56:12.000000"
   },
   "tags/mindfulness-of-mind.html": {
-    "md5": "f6fccc81dfb10a3f5f11684c893ef9e1",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "dc182f45861881df0a7a67c88d58c4ac",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/mindfulness-of-mind-relevant.html": {
     "md5": "fd96cc148269a4e8fe8c15407a09b777",
@@ -3564,16 +3564,16 @@
     "_modified": "2025-11-27 11:56:12.000000"
   },
   "tags/mindfulness-of-dhammas.html": {
-    "md5": "9ef3712df9b80cb861fa1b20330e86c3",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "e1b070301722ac3019ccf9917932c7c4",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/hindrances-events.html": {
     "md5": "8f8f22bc7bb2bf151642b5f81aae3a94",
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/hindrances.html": {
-    "md5": "f487af1a49cc1ca07137963096e78e38",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "361dd270025d82701d4b15ce400328ac",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/hindrances-relevant.html": {
     "md5": "af60f1f622f9cf679211ae82b648457d",
@@ -3596,8 +3596,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/aggregates.html": {
-    "md5": "0dc222bdab6523e2f600882fa89103a0",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "ef90b6465ecc12c770b8527bf257c9be",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/aggregates-relevant.html": {
     "md5": "ed7a0bee28c657f2b031cdfa2bc9afce",
@@ -3620,8 +3620,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/sense-bases.html": {
-    "md5": "9092a04e4207b10310ecc8e49b001f0e",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "a7562071a0d249352453b6810e17dded",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/sense-bases-relevant.html": {
     "md5": "a7a532520b17f8f1af6e40e1a482b2e6",
@@ -3672,8 +3672,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/four-noble-truths.html": {
-    "md5": "de8fa4f78a272c9556517abc03afe389",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "2b36c36b29211d7cc0e98e2fc864b586",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/four-noble-truths-relevant.html": {
     "md5": "28752315739ae4ac7f1dc3278416070a",
@@ -3700,8 +3700,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/ardency.html": {
-    "md5": "1b4e6c415e0f80e5f392261fbe9a39ad",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "8e1fe0c5d72b39248980731be3f34529",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/ardency-relevant.html": {
     "md5": "32a32cbf58999d38276a45683feadb42",
@@ -3732,8 +3732,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/mindfulness.html": {
-    "md5": "ec30b3e389913c7d02dbd59c4d6493fe",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "6dedc5db107eb617082def4678f77f82",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/mindfulness-2.html": {
     "md5": "e28c5c61c52a88c227bc3f569223e7c5",
@@ -3768,8 +3768,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/right-concentration.html": {
-    "md5": "57140b7de4fc642be7976a47ccc4c0d9",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "ce97461de6f6ec2f3e729fb6a3840ec7",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/right-concentration-relevant.html": {
     "md5": "0e8f9b39588294a176bbaa67f7c4c892",
@@ -3800,8 +3800,8 @@
     "_modified": "2025-11-27 11:56:12.000000"
   },
   "tags/jhana.html": {
-    "md5": "f54607bde1edda818a6c01dcee3d8d57",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "4e3930ea0ad1b64393b8a872c17ef00b",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/jhana-relevant.html": {
     "md5": "eacf4a54e494dfa7b067a1ae2d73e0d1",
@@ -3832,8 +3832,8 @@
     "_modified": "2025-11-27 11:56:12.000000"
   },
   "tags/seclusion.html": {
-    "md5": "4a2aedbfda1313234e0f31231591a56f",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "1920a6c664f2634f1558a3ec5c25a6df",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/seclusion-relevant.html": {
     "md5": "89a449a38b0b77ab65dabcb7f4890c2a",
@@ -3864,8 +3864,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/directed-thought-and-evaluation.html": {
-    "md5": "96e9deaac4c5c1965aa574b3d1389bd1",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "0eadfe84d52b570b103a23b08f41b584",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/directed-thought-and-evaluation-relevant.html": {
     "md5": "9cbd2cefbb8faf0f2cba314d9a2ca8aa",
@@ -3924,8 +3924,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/happiness.html": {
-    "md5": "4c4494b5ba8cd9590bf0586a3af8016e",
-    "_modified": "2025-12-09 12:50:36.000000"
+    "md5": "6949fd020f170464c91f49cd39c711f8",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/happiness-2.html": {
     "md5": "d41bba2c121bd2bbcb0fb898dfccbc13",
@@ -3960,8 +3960,8 @@
     "_modified": "2025-12-09 12:50:36.000000"
   },
   "tags/concentration.html": {
-    "md5": "77a7ec6b57ab6305419668ee21841114",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "6d625548816ff228e264ff9fad0842cd",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/concentration-2.html": {
     "md5": "fbbe30c24228142940066eb901cce63b",
@@ -3996,8 +3996,8 @@
     "_modified": "2025-12-09 12:50:38.000000"
   },
   "tags/equanimity.html": {
-    "md5": "a5059d2120c004d6c6ad1b55f8b2a3dd",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "2d3fa7a8c99c360312ec90768c0b44e2",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/equanimity-relevant.html": {
     "md5": "877b54928d1ec0fa07cdfd78b2b1e6b6",
@@ -4044,16 +4044,16 @@
     "_modified": "2025-12-09 12:50:38.000000"
   },
   "tags/formless-attainments.html": {
-    "md5": "140754f93b8a4b0bba3f6212bfdca6ea",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "403b28627d2a4e31ab61718b5ac8d556",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/noble-truth-of-suffering-events.html": {
     "md5": "f95fa6458f4e5b84b99f5c64b23929f6",
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/noble-truth-of-suffering.html": {
-    "md5": "07931bb09f41c755394c5b72d5e65fe9",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "8a47ba4860d9332f591059c3c8d12c92",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/noble-truth-of-suffering-relevant.html": {
     "md5": "9e0a1d65ab3b1f41479d17d41d8334ec",
@@ -4080,8 +4080,8 @@
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/birth.html": {
-    "md5": "c6d35af485c42289b8f68c29bb20a850",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "af76bbb6bff34de43492acc16e291336",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/birth-relevant.html": {
     "md5": "b9aa01131ca5c28932feaed2504d1e37",
@@ -4104,8 +4104,8 @@
     "_modified": "2025-12-09 12:50:38.000000"
   },
   "tags/ageing.html": {
-    "md5": "ca7a1e954e8c0d11751e68a1488970c7",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "2e8a65f94c53bc13bf1d7cc00290dd12",
+    "_modified": "2025-12-20 14:28:52.000000"
   },
   "tags/ageing-relevant.html": {
     "md5": "4ab1e800bd55171840b9c30e112eff14",
@@ -4136,8 +4136,8 @@
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/sickness.html": {
-    "md5": "d3b40b97c980295db5ac7bfd704d0634",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "e2fc44214b591b59d38c4f0e02690610",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/sickness-relevant.html": {
     "md5": "1df7f58ce5d6c1c4001ed00f4b91008d",
@@ -4176,8 +4176,8 @@
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/death.html": {
-    "md5": "445617d1c3842400485d013b9c4c533b",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "6d7c771760a917b6ad38b7be4707e167",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/death-2.html": {
     "md5": "aa3e2707627cf34893978cffbdd76f3c",
@@ -4216,8 +4216,8 @@
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/suffering.html": {
-    "md5": "c647f9a147ec7a7c03ae9389ba8e6165",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "5bd110a33e3828b23ff0c26836704f59",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/suffering-2.html": {
     "md5": "fb93023ec3f2f9ae669196e64f75ff1f",
@@ -4264,8 +4264,8 @@
     "_modified": "2025-12-09 12:50:38.000000"
   },
   "tags/pain.html": {
-    "md5": "1769d3a721e1fb738ee0a67c163d8baf",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "7101c0af0cb3c46730639f46a014a167",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/pain-relevant.html": {
     "md5": "7c1d8c2be52e7b0cc15f91a8d6fc301c",
@@ -4288,8 +4288,8 @@
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/grief.html": {
-    "md5": "beac1c198acd326563990750463611b9",
-    "_modified": "2025-11-27 11:56:14.000000"
+    "md5": "6b3f8b47c4ff66d8b3c21d226cf57324",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/grief-relevant.html": {
     "md5": "8ffd5d41cb801bcd1fad329e22b417c4",
@@ -4348,8 +4348,8 @@
     "_modified": "2025-11-27 11:56:14.000000"
   },
   "tags/craving-not-to-become.html": {
-    "md5": "041453c0e07687db96566d2b48d53b4b",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "d751f51102679848150b0d2388552600",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/craving-not-to-become-relevant.html": {
     "md5": "248a4bd2f13fb268d59cb32f02fb97bf",
@@ -4372,8 +4372,8 @@
     "_modified": "2025-11-27 14:16:18.000000"
   },
   "tags/cessation-of-suffering.html": {
-    "md5": "481fc0350b204d1348aa982a5d47ce49",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "12cf304c04e9165a78ea25c11bfdfd9d",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/cessation-of-suffering-relevant.html": {
     "md5": "f180e609e92b97c083c80b94b12cfdc8",
@@ -4396,8 +4396,8 @@
     "_modified": "2025-12-09 12:50:38.000000"
   },
   "tags/dispassion.html": {
-    "md5": "2123158ee0ceb81dc2d9681d4c100b94",
-    "_modified": "2025-12-09 12:50:38.000000"
+    "md5": "802fa596a0b597fab60050ba0af6eddd",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/dispassion-relevant.html": {
     "md5": "f4f5b010e7740951bd48fe071be0b9af",
@@ -4428,8 +4428,8 @@
     "_modified": "2025-11-27 14:16:18.000000"
   },
   "tags/cessation.html": {
-    "md5": "cb1e08befce5e3f240339368fd31c328",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "7edd065fbbea96c901794f25b4a21723",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/cessation-relevant.html": {
     "md5": "d42fee0d09cf56605b8520746813d380",
@@ -4464,8 +4464,8 @@
     "_modified": "2025-12-09 12:50:40.000000"
   },
   "tags/relinquishment.html": {
-    "md5": "cde55e1439988af1bca3b749177a1fd7",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "c2c0ce76ce0d2fffc6e464ea86ffa18a",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/relinquishment-2.html": {
     "md5": "94e1f88ab41e405193bf759c2069716b",
@@ -4532,8 +4532,8 @@
     "_modified": "2025-12-09 12:50:40.000000"
   },
   "tags/liberation.html": {
-    "md5": "a6959bdd34e49d8644a44f9c1dbc90dc",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "c17a82c39dd8205d233bb1cf5e0f8f2e",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/liberation-2.html": {
     "md5": "63d9bf34f00fc1796336dc6054c7f8f7",
@@ -4572,8 +4572,8 @@
     "_modified": "2025-11-27 11:56:16.000000"
   },
   "tags/bases-of-success.html": {
-    "md5": "1335817a5f0756f5a807ed8f2f6eeed2",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "3e8a1d3cb899e0cc09060ca5b1c4ea65",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/bases-of-success-relevant.html": {
     "md5": "e726bab549d7839554ca1172f2e6c4bf",
@@ -4600,8 +4600,8 @@
     "_modified": "2025-11-27 11:56:16.000000"
   },
   "tags/desire.html": {
-    "md5": "8d1af90ec33c8a4a293aacb84c0490ba",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "d1a6539ca99284e65aa08c51dee5e435",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/desire-relevant.html": {
     "md5": "2512af7e0461e78a41958a1b9475a4e3",
@@ -4632,8 +4632,8 @@
     "_modified": "2025-11-27 11:56:16.000000"
   },
   "tags/energy.html": {
-    "md5": "db5dbf7f98479d7529fa0b6e72efef58",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "e5ccb678543ae9931d6d3ca8cf201c06",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/energy-relevant.html": {
     "md5": "88190654bb83a42683b52a8d9433e075",
@@ -4660,8 +4660,8 @@
     "_modified": "2025-11-27 11:56:16.000000"
   },
   "tags/heartmind.html": {
-    "md5": "0f8503ce635dabc80dd33a11d75a91d1",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "12fa7766a7d47f360e45244f0bd007ca",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/heartmind-relevant.html": {
     "md5": "dc6799af022d72e3a1bbac281de6eb2e",
@@ -4684,8 +4684,8 @@
     "_modified": "2025-11-27 11:56:16.000000"
   },
   "tags/faith.html": {
-    "md5": "7f2b0cbf067f0b1d634887110dffacf6",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "d069f1fa8c8f02e64c729cf5ab77f460",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/faith-2.html": {
     "md5": "94af33a04a8418f6c3133b0f3cb01c3d",
@@ -4720,8 +4720,8 @@
     "_modified": "2025-12-09 12:50:40.000000"
   },
   "tags/discernment.html": {
-    "md5": "61e3e1018e19176d9f29fb2c491ee835",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "117d43cb672ce4b3b7633f6e5cf9c72b",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/discernment-2.html": {
     "md5": "b1af784ec0e53054737d1481189f27ab",
@@ -4764,8 +4764,8 @@
     "_modified": "2025-11-27 11:56:16.000000"
   },
   "tags/investigation-of-states.html": {
-    "md5": "0ea9eb3f2067bebaf0d85b561dc0ecef",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "b50b6a62e44f5cb4d15f836aad9a7e3c",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/investigation-of-states-relevant.html": {
     "md5": "9aed0271555425b6a32b19310fb3715a",
@@ -4792,8 +4792,8 @@
     "_modified": "2025-12-09 12:50:40.000000"
   },
   "tags/tranquility.html": {
-    "md5": "f96e9b9114dd507a2d182552d238a96a",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "31382fc4899b41d6b81ee3df2b8c4ae3",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/tranquility-2.html": {
     "md5": "f276ab6ffd6416eadab14c655a64ba2d",
@@ -4820,8 +4820,8 @@
     "_modified": "2025-12-09 12:50:40.000000"
   },
   "tags/divine-abidings.html": {
-    "md5": "0781972a9562f093ed9701b4c74891d6",
-    "_modified": "2025-12-09 12:50:40.000000"
+    "md5": "799a83a3426b2b8403b337ba6be948c8",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/divine-abidings-relevant.html": {
     "md5": "017c96e6c6aa9727034a699438bbdedd",
@@ -4856,8 +4856,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/goodwill.html": {
-    "md5": "739d455bb0c70d9172be1585517e71e7",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "41ef6626d9e58bc132511c63a0bceeba",
+    "_modified": "2025-12-20 14:28:54.000000"
   },
   "tags/goodwill-2.html": {
     "md5": "6f3b6831dd1c035c000ed94dfb0da8d3",
@@ -4892,8 +4892,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/compassion.html": {
-    "md5": "53411daf69573ef66e18fddcd363c5a6",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "a370e32cd8a0d8290815876ec4b755c9",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/compassion-2.html": {
     "md5": "3e43b3a31502661e235d655be72b75f8",
@@ -4952,8 +4952,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/virtue.html": {
-    "md5": "747ecff2171ab8355f9471de6d30c6f0",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "f7a94a83c7db815303634582286d8ad9",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/virtue-relevant.html": {
     "md5": "158ead260384021feb9ee2f07f505122",
@@ -4984,8 +4984,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/conscience-and-prudence.html": {
-    "md5": "4daab8720797b3d481eacc3acc0812e3",
-    "_modified": "2025-11-27 11:56:18.000000"
+    "md5": "b1d3aef667748807023bf5581d944a02",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/conscience-and-prudence-relevant.html": {
     "md5": "83678891e9ba08f85da03c380419ff42",
@@ -5044,8 +5044,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/tipitaka.html": {
-    "md5": "51eec84752e8d40a7122cedddc4ead94",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "4f43ae6cfd0a4ff1cc471d14f71fb21d",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/tipitaka-relevant.html": {
     "md5": "60005ae9c45d609e0e5f3909953b8a44",
@@ -5108,8 +5108,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/sutta.html": {
-    "md5": "74d7363281f75cc58b8f612ee0eb39c3",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "4975a99334243a1049ce32195638a7e2",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/sutta-relevant.html": {
     "md5": "6e70bb8017762264b5162820ca1d9b16",
@@ -5160,8 +5160,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/commentaries.html": {
-    "md5": "1d10b1a2fae8472aa4e3938eed3af12a",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "16f72bf3f4e70e11fadee3b427a7d232",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/commentaries-relevant.html": {
     "md5": "7ae00a56e42a898d30e6a0d3cadbcb9f",
@@ -5188,8 +5188,8 @@
     "_modified": "2025-11-27 11:56:18.000000"
   },
   "tags/generosity.html": {
-    "md5": "28fd3c9b4bd001ea2280b51331b2e0a1",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "16b1fe3dac58f455c7dd7758c249e955",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/generosity-2.html": {
     "md5": "ec42ab4627795ad7a5269b5417ecf521",
@@ -5224,8 +5224,8 @@
     "_modified": "2025-12-09 12:50:42.000000"
   },
   "tags/perfections.html": {
-    "md5": "9a120d78e87c68b2824ab0b80045a28c",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "cd9adaf8754fdbcdb9ad26f8aaa185c1",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/perfections-relevant.html": {
     "md5": "cbcd7ce187867e7c6583ee1074a98011",
@@ -5244,8 +5244,8 @@
     "_modified": "2025-11-27 11:56:18.000000"
   },
   "tags/patience.html": {
-    "md5": "784e0119182af8d395da68f138a6a122",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "5aba358901e7f874ce0a8bd01d1ffb31",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/patience-relevant.html": {
     "md5": "2c1aa61f2c7299eae8f38619f42f7a97",
@@ -5272,8 +5272,8 @@
     "_modified": "2025-11-27 11:56:18.000000"
   },
   "tags/truth.html": {
-    "md5": "6aa80dce508b7a3c98085f62b1f4042a",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "ee7ce98567b30abf7f3b9c5d1d4d5bdb",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/truth-relevant.html": {
     "md5": "70f1f4eef98ef9b8c0a4439ee66862e7",
@@ -5300,8 +5300,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/determination.html": {
-    "md5": "edb0e2d7431eeb4e145cc27df3bcf70b",
-    "_modified": "2025-12-09 12:50:42.000000"
+    "md5": "d624f866e670b89ff9f6e5369ca90ab5",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/determination-relevant.html": {
     "md5": "d10a17e4d50be53a62396c5a852af0ef",
@@ -5352,8 +5352,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/knowledge-and-vision.html": {
-    "md5": "c588398407dc178c91c17b455961e19f",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "da0e77c6d53f0bf7d201d055ea2d115b",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/knowledge-and-vision-relevant.html": {
     "md5": "3c1672975b1d2bfe0e31b64a44745aeb",
@@ -5424,8 +5424,8 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/stream-entry.html": {
-    "md5": "e9087ddcbf434fb4ac96843e0e4f45b4",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "ffce644d501e28b73da5c5bcd6b99f6a",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/stream-entry-relevant.html": {
     "md5": "c16e0d8a4de1dbaae776f4442693238a",
@@ -5480,8 +5480,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/spiritual-friendship.html": {
-    "md5": "12b18eec2c67865c430e8853dbdc8b47",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "b1dde4c88d0c95f97a7215c093dc6645",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/spiritual-friendship-relevant.html": {
     "md5": "7d9940efcf2e9b8503140ffea7807af4",
@@ -5512,8 +5512,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/hearing-the-true-dhamma.html": {
-    "md5": "4cb3d4dfd8593ff8edc21e19a8ff7d3c",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "6073b1b73e9d642cb42aab877159fe3a",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/hearing-the-true-dhamma-relevant.html": {
     "md5": "863216958115c4bfd99024ba506ab5ff",
@@ -5564,8 +5564,8 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/practicing-in-accordance-with-dhamma.html": {
-    "md5": "ac63e37f68c8bdcbb1cbb56fb72965ed",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "16d74e5ed536fd3b1a5206e69af67f3f",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/practicing-in-accordance-with-dhamma-relevant.html": {
     "md5": "de526ba5ce9402226f1110954dce6362",
@@ -5620,8 +5620,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/arahant.html": {
-    "md5": "81ebdf7d010b2be5b5703ed55f464299",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "05e3e8ba01d3479148c5d05947f47f52",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/arahant-relevant.html": {
     "md5": "b5183ada4a6a23b9ed49bf1bddba911a",
@@ -5648,8 +5648,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/bodhisattva.html": {
-    "md5": "62a8b79ea4a41e2e401f83bf162db81b",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "902d136550379268e6910811fda38bb5",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/bodhisattva-relevant.html": {
     "md5": "42c13e21cb0bb5fee63fa7b526099a4e",
@@ -5680,8 +5680,8 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/nibbana.html": {
-    "md5": "e36b807f8d0e6b6384575256a65f85b0",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "8aee8ae77e6b55dbeb3595f50923b11c",
+    "_modified": "2025-12-20 14:28:56.000000"
   },
   "tags/nibbana-relevant.html": {
     "md5": "df3113a96b2474379a54301cff0145ba",
@@ -5712,8 +5712,8 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/heedfulness.html": {
-    "md5": "9e2f29cc9ed86ca8b34bfb7fa238bd00",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "fb9656ff82cc19cb9d630b648f19bbd1",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/heedfulness-relevant.html": {
     "md5": "28490c2be032b9fd5a9157bf9bb1fbec",
@@ -5784,8 +5784,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/gratitude.html": {
-    "md5": "2be5a01f09fa55a5c212ecbf65279844",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "26b77872386ce468f8e1fd93974a5432",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/gratitude-relevant.html": {
     "md5": "7202044cb7cc8e1f759d7825f6b8a045",
@@ -5812,8 +5812,8 @@
     "_modified": "2025-11-27 13:18:50.000000"
   },
   "tags/merit.html": {
-    "md5": "d3f4267b3d7a573d3c1d1552c1771585",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "0bbca41f8bb0950c8fab5767ad5203e3",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/merit-relevant.html": {
     "md5": "708cd07db63da586debe6d2aacf157b5",
@@ -5872,8 +5872,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/contentment.html": {
-    "md5": "1d30b8e6e16e3dd1f8d124ffff22d47d",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "904484b9ccedf166039b667658ebb43d",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/contentment-relevant.html": {
     "md5": "d15593c2d3a3ab2bf05a1dba88040f97",
@@ -5904,8 +5904,8 @@
     "_modified": "2025-11-27 11:56:20.000000"
   },
   "tags/trust.html": {
-    "md5": "9b85cc36a0d10c6a30bbb9cc2d276b23",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "518cb62a7136b27374b4ae867a7abb24",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/trust-relevant.html": {
     "md5": "4c966e2a568bea7bef5aff4ed07d730d",
@@ -5932,8 +5932,8 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/humility.html": {
-    "md5": "fe87552ff50ee6fa1b3575071a6c0935",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "8d536aa79214a165d54f1c3526f7279e",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/humility-relevant.html": {
     "md5": "76954487cefe6a9bae21a32f59ed9b92",
@@ -5960,12 +5960,12 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/non-contention.html": {
-    "md5": "b88dae0244ee6395dafe130f5e762238",
-    "_modified": "2025-11-27 11:56:22.000000"
+    "md5": "4364e922ce250197736827d268d02e12",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/self-reliance.html": {
-    "md5": "89200b36ed3a73a4bd1c8771654733df",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "f2984e754db8d8892147c3c938d3b6fc",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/self-reliance-relevant.html": {
     "md5": "96de1ce121aa38761a36c39516192fd6",
@@ -5988,8 +5988,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/unskillful-qualities.html": {
-    "md5": "cfaa9cde37c17ab3c7dae00e17471c0b",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "32b6cb47537ac7c2824dfa3ccea9a30b",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/unskillful-qualities-relevant.html": {
     "md5": "c10a5967505539eaab5131979b9a897a",
@@ -6012,8 +6012,8 @@
     "_modified": "2025-12-09 12:50:44.000000"
   },
   "tags/unwholesome-roots.html": {
-    "md5": "0c59ea5c5f08acbe7b99c895d59bb70b",
-    "_modified": "2025-12-09 12:50:44.000000"
+    "md5": "b964539c4aed5660a61b50753d216504",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/unwholesome-roots-relevant.html": {
     "md5": "03c0654b60c73c8686e70d6e19e268d1",
@@ -6068,8 +6068,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/aversion.html": {
-    "md5": "3287cb28808c5b68109377722c6d99cd",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "6a0b7bec5efbf92eb04ead9fa3d16361",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/aversion-2.html": {
     "md5": "30572c58744fb42faec29b84cc8d2863",
@@ -6100,8 +6100,8 @@
     "_modified": "2025-11-27 14:16:30.000000"
   },
   "tags/delusion.html": {
-    "md5": "fd004d2cd9a71c080b35539a983fc052",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "38c128872f88a43df51f7198ac49c15c",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/delusion-relevant.html": {
     "md5": "9871feb12ba13eb4f9cf803e8fa98c9e",
@@ -6136,8 +6136,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/becoming.html": {
-    "md5": "6378192157a7a4665e2298a43c45792b",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "8a77890234c951b6c8cb673b5c8b1643",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/becoming-relevant.html": {
     "md5": "12415dc20ffa475ec693d0263becca4c",
@@ -6164,8 +6164,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/ignorance.html": {
-    "md5": "7fa0d2d430c43c017c7f6403b1807468",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "a2e76fbeffd406a2d4cd9b2975430dcf",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/ignorance-relevant.html": {
     "md5": "202dc818b289bc6dede8310d48f90f20",
@@ -6184,8 +6184,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/views.html": {
-    "md5": "1392ae1ce9747a56b5f600dd23d73d9f",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "a9eab251b2823da89fb41ceb2078a3c2",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/views-relevant.html": {
     "md5": "966959fdb9b5a634e31c4571f7bf9961",
@@ -6220,8 +6220,8 @@
     "_modified": "2025-12-09 12:50:46.000000"
   },
   "tags/sensual-desire.html": {
-    "md5": "3ec2a92374c8538aa0856223ef25d533",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "fef5797bce9b45c9bb12c77ee434a946",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/sensual-desire-relevant.html": {
     "md5": "8657cae27ec000b39dc417c40fe0598a",
@@ -6252,8 +6252,8 @@
     "_modified": "2025-12-09 12:50:46.000000"
   },
   "tags/ill-will.html": {
-    "md5": "4044b707cb437fdc73007aabc98aa676",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "1e4905981f0cc5c1e45b7d7957cfac30",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/ill-will-relevant.html": {
     "md5": "f517fa7b39db5328d3d4692cf0a67463",
@@ -6276,8 +6276,8 @@
     "_modified": "2025-12-09 12:50:46.000000"
   },
   "tags/sloth-and-torpor.html": {
-    "md5": "5329d960b0eb530b3b6079dcf6bd3495",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "0a004ea07ba16e39f317dbec35f266e3",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/sloth-and-torpor-relevant.html": {
     "md5": "e88c0b70ea527d4e7973560ff0cb7c4c",
@@ -6308,8 +6308,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/restlessness-and-worry.html": {
-    "md5": "0abe40704e87c56e688be5417fe00426",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "1eddf1b4c4a78eb627718f8b2f87db00",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/restlessness-and-worry-relevant.html": {
     "md5": "e8140bae5e57dcae932563090cdf21c9",
@@ -6336,8 +6336,8 @@
     "_modified": "2025-11-27 11:56:22.000000"
   },
   "tags/doubt.html": {
-    "md5": "6cd0a184aed2d57617e05d571da14cfa",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "e18cb3f0417a045ea574dc7039cd2125",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/doubt-relevant.html": {
     "md5": "71fbbc457536417cec378d0815f6dbb2",
@@ -6364,16 +6364,16 @@
     "_modified": "2025-12-09 12:50:46.000000"
   },
   "tags/fetters.html": {
-    "md5": "ea84d50d59c19f93e8700c4094e4b798",
-    "_modified": "2025-11-27 11:56:22.000000"
+    "md5": "458a4feb8786df4ba5f116fa9987063c",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/self-identity-view-events.html": {
     "md5": "fe3c9613458ef2b0d560db4c03f428ae",
     "_modified": "2025-12-09 12:50:46.000000"
   },
   "tags/self-identity-view.html": {
-    "md5": "87ec0497d3f868d5357a80877cd214cf",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "a33b41e9811fe8390054e0231a08acda",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/self-identity-view-2.html": {
     "md5": "4c0065c3b8928fb97450abe0459afdae",
@@ -6412,8 +6412,8 @@
     "_modified": "2025-12-09 12:50:46.000000"
   },
   "tags/attachment-to-precepts-and-practices.html": {
-    "md5": "d291493fc407686dbc00c259d8a75dee",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "c56be6b215cf58a2da2e89f36177ebf0",
+    "_modified": "2025-12-20 14:28:58.000000"
   },
   "tags/attachment-to-precepts-and-practices-relevant.html": {
     "md5": "8ac42cc1d9a9d8e0023a5cc0b9df930e",
@@ -6448,8 +6448,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/conceit.html": {
-    "md5": "3847080a10a7139ff14e8ee69e8f8474",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "69b075c43adbc2bf2ea8ed8879a500d8",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/conceit-relevant.html": {
     "md5": "62210f1f7362086b3d364da967b45742",
@@ -6484,8 +6484,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/proliferation.html": {
-    "md5": "4632ea345a1e14d0e427d011e81efec4",
-    "_modified": "2025-12-09 12:50:46.000000"
+    "md5": "05192952038487db9fe4b7d02408c389",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/proliferation-2.html": {
     "md5": "e64076dbde23e3c28e5cef3fff2b9b9c",
@@ -6520,8 +6520,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/craving.html": {
-    "md5": "786d4b79a8a152b05162286141883791",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "723a37182a5c53592c2bc3e4e77ac5e7",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/craving-relevant.html": {
     "md5": "cb832a3e3f1b53756982653c86411029",
@@ -6560,8 +6560,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/judgementalism.html": {
-    "md5": "bc163cdc457020cdf1f10ce6a70af111",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "685fcc6e1f15783be03084d447453269",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/judgementalism-relevant.html": {
     "md5": "1a64f834d6ec11404b2c916680f54c5d",
@@ -6624,8 +6624,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/guiltshameinadequacy.html": {
-    "md5": "304e255720055dc422878b932d4effdb",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "02327c9bb5a50806d81adc3be99f7395",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/guiltshameinadequacy-relevant.html": {
     "md5": "96c883e3ce97a616c1d6465731292c2f",
@@ -6652,8 +6652,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/depression.html": {
-    "md5": "bd6758a8e064e5baf8f4e286826e65a7",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "75c526bdb8576fd9984fc80794eb398d",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/depression-relevant.html": {
     "md5": "b4671edd91fa26ef5c4f154fa9308b35",
@@ -6680,8 +6680,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/abuseviolence.html": {
-    "md5": "9f310b03e8a807456837c289d9adeb49",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "cce81bb8892ed8d880e6f381fa2f0e90",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/abuseviolence-relevant.html": {
     "md5": "e900f59b59aad99c4c21f3056e9ad49e",
@@ -6712,12 +6712,12 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/nutriment.html": {
-    "md5": "f457c1b13e377c23da2290434a375557",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "13015871c773453cfadb476abfd727be",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/food.html": {
-    "md5": "073ffe2f79a9a59bd4da4a31455d49e8",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "30a61823ec33bdb4994b2476a4d40eac",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/food-relevant.html": {
     "md5": "5978ff6eefa5e25c0756f917b045c488",
@@ -6748,8 +6748,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/contact.html": {
-    "md5": "b878dc4e5d697168a0b5918c47199bad",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "9726fdebe11182388b386d94932e14d5",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/contact-relevant.html": {
     "md5": "749ad1ee1d729c94468717b2331d4005",
@@ -6772,8 +6772,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/volition.html": {
-    "md5": "5e05f2a7d885da85aef0d08319921dea",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "6edda0814f5ca52d244055fc86da134e",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/volition-relevant.html": {
     "md5": "566ce22984c1ba14f41007c187816c5e",
@@ -6796,8 +6796,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/consciousness.html": {
-    "md5": "1df7d545af22861a062c7447c121ec7f",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "129f7df36729e24f745a5340aa76e892",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/consciousness-relevant.html": {
     "md5": "4d97f36ed25a172fb51ebe170cae090c",
@@ -6824,8 +6824,8 @@
     "_modified": "2025-11-27 11:56:24.000000"
   },
   "tags/bodyform.html": {
-    "md5": "d3eb92391d52fc3b1cc92ec4b13dc514",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "2775869313f6c03888c220dec6feea27",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/bodyform-relevant.html": {
     "md5": "fb64f7d73f4e9170afb375295384d92a",
@@ -6844,8 +6844,8 @@
     "_modified": "2025-11-27 14:16:34.000000"
   },
   "tags/feeling.html": {
-    "md5": "ee4f144c470075654cb3512c788265e0",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "7c8e3772e0bfc3f271a5c0a28f9c744b",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/feeling-relevant.html": {
     "md5": "54982c13975ab489ad54acc59d1ebeda",
@@ -6880,8 +6880,8 @@
     "_modified": "2025-11-27 14:16:34.000000"
   },
   "tags/perception.html": {
-    "md5": "7bb62418cda032bf97587901483737cf",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "d58ce81c7c362add087daa304ad3391e",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/perception-relevant.html": {
     "md5": "39588e30c2c3e2864e14d2a22a873381",
@@ -6912,8 +6912,8 @@
     "_modified": "2025-11-27 14:16:34.000000"
   },
   "tags/volitional-formations.html": {
-    "md5": "630a2e27d178d69aa35156a122b6cb3c",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "bd524a985c3f21f5b3a04df1fabe1f4a",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/volitional-formations-relevant.html": {
     "md5": "36b56dd098a92762556df3dca6a5e597",
@@ -6944,8 +6944,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/conditionality.html": {
-    "md5": "b316f834f23a0ab2aee2133d881078fa",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "f5cbdc54392aea3c7b1dd00d14ad7304",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/conditionality-2.html": {
     "md5": "ea0faf594991976ee44723af60e012c5",
@@ -6980,8 +6980,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/dependent-origination.html": {
-    "md5": "efcb0611ea8d23dd70607747648520ec",
-    "_modified": "2025-11-27 11:56:26.000000"
+    "md5": "8c7f578b9d0dfa1dd614f9f30cad4717",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/dependent-origination-relevant.html": {
     "md5": "4ea801886b9c234b4916adaedcf52596",
@@ -7004,8 +7004,8 @@
     "_modified": "2025-11-27 11:56:26.000000"
   },
   "tags/neutral-feeling.html": {
-    "md5": "f557eb84e283dd1c263315a20bc836e4",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "f2be701254647695179792c9e9875a23",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/neutral-feeling-relevant.html": {
     "md5": "478dcc01a6520c309ad7f2c5cec5dee0",
@@ -7024,8 +7024,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/clinging.html": {
-    "md5": "f695deae55303699bc8c7cd47088c487",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "b91599bb4dd2b8662311f6f2c6931102",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/clinging-2.html": {
     "md5": "22fa2247bf188b67c3258e399e3ed789",
@@ -7056,8 +7056,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/doctrine-of-self-clinging.html": {
-    "md5": "44be9f32eed9455d98fbfb0a565b87d0",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "ee07bdc50b63b8882654810a71876a81",
+    "_modified": "2025-12-20 14:29:00.000000"
   },
   "tags/doctrine-of-self-clinging-relevant.html": {
     "md5": "f36707e500c8da9ade0dd252e7c0b651",
@@ -7076,8 +7076,8 @@
     "_modified": "2025-12-09 12:50:48.000000"
   },
   "tags/characteristics-of-existence.html": {
-    "md5": "529855e27f7eea8fae67fa6d4a2ccadf",
-    "_modified": "2025-12-09 12:50:48.000000"
+    "md5": "7d2627567fa423d5451e57583bbd017d",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/characteristics-of-existence-relevant.html": {
     "md5": "5ee0481c28f53d8a6ca91ab322c1f697",
@@ -7116,8 +7116,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/impermanence.html": {
-    "md5": "1f108e63648e74cd7e0aae5c7c46ceeb",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "98ea95fb96d8b75bfc04533c73ab244a",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/impermanence-2.html": {
     "md5": "58447a2be8e22628634993fd2b097b3b",
@@ -7156,8 +7156,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/not-self.html": {
-    "md5": "4da074b2725f6cb468a025399d0fe72e",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "4afd27fd835f67c9f9db615db471eb88",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/not-self-2.html": {
     "md5": "a072d2993ffef7adad7df3c0d7d33fae",
@@ -7188,8 +7188,8 @@
     "_modified": "2025-11-27 11:56:26.000000"
   },
   "tags/naturalness.html": {
-    "md5": "8b66cc72d5d71b4811b2527a517ed30a",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "384db2c0ffb430035f08ad1d7c0046e4",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/naturalness-relevant.html": {
     "md5": "e42279ebf3e75dc97b786f15eccff4a4",
@@ -7216,8 +7216,8 @@
     "_modified": "2025-11-27 11:56:26.000000"
   },
   "tags/lawfulness.html": {
-    "md5": "f3dbc1d5cfe9a8fac9cd04ce113b29bf",
-    "_modified": "2025-11-27 11:56:26.000000"
+    "md5": "bd6fadb52c3734d2e436d142474f8857",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/emptiness.html": {
     "md5": "e912e75f5bee9f7f420794c6407c97a8",
@@ -7252,12 +7252,12 @@
     "_modified": "2025-11-27 11:56:26.000000"
   },
   "tags/suchness.html": {
-    "md5": "8231b0d5d52e0a7e0a3e67473ce44b6a",
-    "_modified": "2025-11-27 11:56:26.000000"
+    "md5": "f16ad5d37b4e2ad3a4e2f2307d33f667",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/non-identification.html": {
-    "md5": "e078ff58ea38c8e078f81a192961f77a",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "54fac6b8af09cde29e7426beefc696b6",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/non-identification-relevant.html": {
     "md5": "1cf5882c6c242a1c0597e6ab69e9857a",
@@ -7284,8 +7284,8 @@
     "_modified": "2025-11-27 14:16:36.000000"
   },
   "tags/aspects-of-understanding.html": {
-    "md5": "2c3d0392d3d80eabc3aa5598323efee0",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "12d40c0ed96ff5364c051ccfd04a3929",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/gratification.html": {
     "md5": "48ad5f65b49a8a04a38eef3f8d0d7d6b",
@@ -7332,8 +7332,8 @@
     "_modified": "2025-11-27 11:56:26.000000"
   },
   "tags/personality.html": {
-    "md5": "697a12ab3b4527cbe53a2ffdd34c48d3",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "4d7a78ebec32f858847aa31ff7b25650",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/personality-relevant.html": {
     "md5": "65ed5f4466e5dbaa151d6ca44b3bf117",
@@ -7364,8 +7364,8 @@
     "_modified": "2025-11-27 11:56:26.000000"
   },
   "tags/habits.html": {
-    "md5": "d24c8a969f5cca82c96fbddaa977b846",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "57d12986df6a5e8b31c07a75ef9d8201",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/habits-relevant.html": {
     "md5": "bbe8a9459f88956b615c65dcdbbcfde6",
@@ -7412,8 +7412,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/fear.html": {
-    "md5": "232ad33052e34ba0dbaf0cc31b8ad293",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "060cef7e620184f79e6f74f532ded82a",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/fear-relevant.html": {
     "md5": "a40d2334efacc3f6522ac5037646942b",
@@ -7440,8 +7440,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/idealism.html": {
-    "md5": "322a9f04ef17265f7048431174debf88",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "5204dc32083216c50e2840f49e954e5f",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/idealism-relevant.html": {
     "md5": "0ee380c1d992551d51fb60120903b837",
@@ -7472,8 +7472,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/three-refuges.html": {
-    "md5": "69f58475d23bd8f12d81525d43b009f6",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "51f2809693bc57029a34aa111b6c6ede",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/three-refuges-relevant.html": {
     "md5": "bbb2bcaf1611e6021892699d666038cb",
@@ -7504,8 +7504,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/buddha.html": {
-    "md5": "f4b36f68574896b0770e9d876d002b7a",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "e812db921568b93604ee5a258e26b969",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/buddha-relevant.html": {
     "md5": "59f5fec56ee10c6c44df7b4cdf5a3e4f",
@@ -7536,8 +7536,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/buddhabiography.html": {
-    "md5": "1c75e9e36411a36622d79f0f3253ae79",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "8863e1eb3ab15631046e8240b12f5b1d",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/buddhabiography-relevant.html": {
     "md5": "87f6be7fc88f549bea9576e7077c1f44",
@@ -7560,8 +7560,8 @@
     "_modified": "2025-12-09 12:50:50.000000"
   },
   "tags/buddha-images.html": {
-    "md5": "9e624a36a78837245ec669b84b494dd9",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "432478f4d3b36fdf69cfad527dcb463d",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/buddha-images-relevant.html": {
     "md5": "67d7aeae14561711070bd307e106829a",
@@ -7584,8 +7584,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/buddho-mantra.html": {
-    "md5": "8f22d2b1c4f4522be1d7919a94691ec0",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "feb58815d7cddb10a13066c9009dcf7f",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/buddho-mantra-relevant.html": {
     "md5": "9f0331ad4594eb81c917e152197a775d",
@@ -7616,8 +7616,8 @@
     "_modified": "2025-11-27 14:16:38.000000"
   },
   "tags/dhamma.html": {
-    "md5": "23801216f49fbd1389eedd86e847aa5a",
-    "_modified": "2025-12-09 12:50:50.000000"
+    "md5": "11aa8b20c8cfe9ead79ee9ea07832002",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/dhamma-relevant.html": {
     "md5": "95b9a99e78555046510de098a1db73db",
@@ -7652,8 +7652,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/sangha.html": {
-    "md5": "92276c3a2b5dbebbea785440c26e5524",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "490d4c8ab66f07bb69d544ba20227da8",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/sangha-relevant.html": {
     "md5": "b3f710ef271503c821adc3391c2fc22c",
@@ -7676,8 +7676,8 @@
     "_modified": "2025-12-09 12:50:52.000000"
   },
   "tags/devotional-practice.html": {
-    "md5": "c702b9c412970e223f4eb3f2e57e155b",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "77729c8543ae7ac50c5780f4d6419d63",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/devotional-practice-relevant.html": {
     "md5": "f8b40ceea66d772b253746f1f0ae0e62",
@@ -7700,8 +7700,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/ceremonyritual.html": {
-    "md5": "109c29d5300c1e60c02a4cd7f8f5b8af",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "414ec1a22907c23473d000762655614d",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/ceremonyritual-relevant.html": {
     "md5": "3fa9f433860d2600c9571922390fb306",
@@ -7720,8 +7720,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/puja.html": {
-    "md5": "29ce6689d680430e5428784c83e35ed5",
-    "_modified": "2025-11-27 11:56:28.000000"
+    "md5": "475151b9023c1044bd750ea374b7955e",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/puja-relevant.html": {
     "md5": "ea823b319d4702d5c2c095b2d1db51d2",
@@ -7744,8 +7744,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/chanting.html": {
-    "md5": "ce13c22fc94de9139ef96797f5411d9b",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "85cec26c5d46e9a162d8ac89668ca09b",
+    "_modified": "2025-12-20 14:29:02.000000"
   },
   "tags/chanting-relevant.html": {
     "md5": "0a16e31702457bcbe3351f92a57c3330",
@@ -7784,8 +7784,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/protective-chants.html": {
-    "md5": "11c63ce7f88421a5db672f5e4c5af249",
-    "_modified": "2025-11-27 11:56:28.000000"
+    "md5": "8af96d7f6a5e11ae2f3d31ac27dc5873",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/protective-chants-relevant.html": {
     "md5": "7f4e7635fb2991a62a089dbdeebc6eef",
@@ -7812,8 +7812,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/bowing.html": {
-    "md5": "28d644a0bba305044796a72be1fed465",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "9f6a11d9b1531d6b9f2d555120817305",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/bowing-relevant.html": {
     "md5": "bb555ed05fd4b469f9a67cc4786fb606",
@@ -7876,8 +7876,8 @@
     "_modified": "2025-12-09 12:50:52.000000"
   },
   "tags/ajahn-chah-remembrance-day.html": {
-    "md5": "1e8ce0096299053e39c7725cde8b97d4",
-    "_modified": "2025-11-27 11:56:28.000000"
+    "md5": "5ae1e70a1d4c3f557ce61edd3a54bc8a",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/visiting-holy-sites-events.html": {
     "md5": "618e8aec9f7925bcc6d33e95796b7a61",
@@ -7916,8 +7916,8 @@
     "_modified": "2025-11-27 11:56:28.000000"
   },
   "tags/stupasmonuments.html": {
-    "md5": "1d7fcd4cc461781de09002664e0230be",
-    "_modified": "2025-11-27 11:56:28.000000"
+    "md5": "1f12b28c6c02fddb8eff2d0074baa65b",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/bodhi-tree.html": {
     "md5": "c6b2fc7acde7e6a1e15f3a2ffa146c15",
@@ -7960,8 +7960,8 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/precepts.html": {
-    "md5": "7ee7f33a859bcff1a7a31c77fb81246f",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "26d54135057bc6b05e81d4802ae8b357",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/precepts-relevant.html": {
     "md5": "8091c66d7bc7aba84fe00251a40ed7be",
@@ -8020,8 +8020,8 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/intoxicants.html": {
-    "md5": "9c674199d6fa759599a5b6d6d9af53ce",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "8898d8b876cdc97c1c5819b35d38af48",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/intoxicants-relevant.html": {
     "md5": "e1cc6d3cd8abd4af49f13b07ca504788",
@@ -8088,8 +8088,8 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/meditation.html": {
-    "md5": "8583913aaa98edab977a38d8210a9f7a",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "1917110f6b35445972113f282af5aa1c",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/meditation-relevant.html": {
     "md5": "c85d48702ed7f9cd4c8638a0d2060baf",
@@ -8160,8 +8160,8 @@
     "_modified": "2025-12-09 12:50:52.000000"
   },
   "tags/perception-of-light.html": {
-    "md5": "8484b9b28d126e48e3851a889023df62",
-    "_modified": "2025-12-09 12:50:52.000000"
+    "md5": "02ba6222fadbd581386708057a9e0a4b",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/kasina.html": {
     "md5": "40b700b43df8be0272aac6b5d2e857b4",
@@ -8208,16 +8208,16 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/noting.html": {
-    "md5": "9e8cd3fb4e5a36fa10a54f0674492106",
-    "_modified": "2025-11-27 11:56:30.000000"
+    "md5": "7de7d6047c458f9d99e79038594727c1",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/mantra.html": {
     "md5": "ac743f6c283208213fcbf1ca5caa44e2",
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/koan.html": {
-    "md5": "7f7b3d86c6c76464833014fe6d11d149",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "e3154d020ee3b495a5d6e833ab59b612",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/hua-tou.html": {
     "md5": "19963a2e7d48899d1d2733098dd3815c",
@@ -8260,8 +8260,8 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/calming-meditation.html": {
-    "md5": "07c1548323c368386d27e222660521ce",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "321b050d8119ce586c15d85493de4cae",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/calming-meditation-relevant.html": {
     "md5": "e9451db8c0cc56004ff36ea87ed23a59",
@@ -8280,8 +8280,8 @@
     "_modified": "2025-12-09 12:50:54.000000"
   },
   "tags/insight-meditation.html": {
-    "md5": "30afc431f0eba96cc3be27c3bcf95693",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "7d3be8d0c5919690c4166b1bc9359a44",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/insight-meditation-relevant.html": {
     "md5": "fcf9cb674b6017c6cf4f5114985d7589",
@@ -8308,8 +8308,8 @@
     "_modified": "2025-11-27 14:16:40.000000"
   },
   "tags/recollection.html": {
-    "md5": "56c84d57353b536da596b1e50a16540e",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "f85b321c4f2f7b0729b97a19b31546ff",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/recollection-relevant.html": {
     "md5": "308917fe3923bfcdc9de0defc8ea0a5c",
@@ -8340,8 +8340,8 @@
     "_modified": "2025-11-27 14:16:40.000000"
   },
   "tags/recollectionbuddha.html": {
-    "md5": "3f465a3afd1d635851fe6bb3da9a2b00",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "88b53938e1feca1b2f72d1dc8f41afea",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/recollectionbuddha-relevant.html": {
     "md5": "971ad72073606892432c8d3b2e4003e3",
@@ -8364,8 +8364,8 @@
     "_modified": "2025-12-09 12:50:54.000000"
   },
   "tags/recollectiondhamma.html": {
-    "md5": "61f2e08f207f93a1b5e3674788f930d0",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "b8fd5c98dd859e7fb0fb491748a90493",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/recollectiondhamma-relevant.html": {
     "md5": "85c1e9eeecb54f6243cd55d3cd866980",
@@ -8416,8 +8416,8 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/recollectionvirtue.html": {
-    "md5": "d6c436a88abfbc9561051079208840f7",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "5ff5f3ce64b973d07b61920686831cc7",
+    "_modified": "2025-12-20 14:29:04.000000"
   },
   "tags/recollectionvirtue-relevant.html": {
     "md5": "4ce7b22592fc727e3da9ca8cc14a59b8",
@@ -8444,8 +8444,8 @@
     "_modified": "2025-11-27 11:56:30.000000"
   },
   "tags/recollectiondevas.html": {
-    "md5": "be8f3ac80e032bfd8115d72be4dd27b5",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "d93403401881f45a59e08e066766612b",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/recollectiondevas-relevant.html": {
     "md5": "c2a8225ba1be7b8e96659d598feca668",
@@ -8544,8 +8544,8 @@
     "_modified": "2025-12-09 12:50:54.000000"
   },
   "tags/meditation-retreats.html": {
-    "md5": "411a0f8f633906e3dd52f2210c97fd56",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "3396cf441864ea37287519c8a9ef2765",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/meditation-retreats-relevant.html": {
     "md5": "1ae25aea41391c61716df283a932aaf6",
@@ -8636,8 +8636,8 @@
     "_modified": "2025-11-27 11:56:32.000000"
   },
   "tags/present-moment-awareness.html": {
-    "md5": "efbd00ffa643fa01d5d4883c99f0c394",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "fc5747c6efb360700a255ffb02d74a2e",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/present-moment-awareness-relevant.html": {
     "md5": "7fa1a1d37c79e8241d3b305c405d8818",
@@ -8664,8 +8664,8 @@
     "_modified": "2025-11-27 11:56:32.000000"
   },
   "tags/spaciousness.html": {
-    "md5": "07ccae0d839cd2826292c2f07c98c594",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "296b46c96c3359951d962d029689e9da",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/spaciousness-relevant.html": {
     "md5": "5223bc98156ddefbc69be17b9fc50a7f",
@@ -8688,8 +8688,8 @@
     "_modified": "2025-11-27 14:16:42.000000"
   },
   "tags/direct-experience.html": {
-    "md5": "078456c1941ec6f6615179241dd41791",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "6bf457d2ad5b43bf139e2381b3372e19",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/direct-experience-relevant.html": {
     "md5": "871faeee0399fe5d5171907908e24c57",
@@ -8712,8 +8712,8 @@
     "_modified": "2025-12-09 12:50:54.000000"
   },
   "tags/knowing-itself.html": {
-    "md5": "37f038d90f4d546c1f3b85e7a723ba8d",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "77abe3226f5fc568f7e47b34d3bd3dc2",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/knowing-itself-relevant.html": {
     "md5": "28ecc3fc05beb2dd32f5e067569d92d8",
@@ -8756,8 +8756,8 @@
     "_modified": "2025-11-27 11:56:32.000000"
   },
   "tags/long-term-practice.html": {
-    "md5": "ed7ede0d35d970c86bb2bea69ed16234",
-    "_modified": "2025-12-09 12:50:54.000000"
+    "md5": "e44e510f4313ad53c338cbf9acfdaad3",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/long-term-practice-relevant.html": {
     "md5": "c2c4c70130e611c515c18c85ce1eacb9",
@@ -8784,8 +8784,8 @@
     "_modified": "2025-12-09 12:50:54.000000"
   },
   "tags/teaching-dhamma.html": {
-    "md5": "91b641ab32406fad5f045e88ef2adfbd",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "7b920330dc877285ea0295c55efc1630",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/teaching-dhamma-2.html": {
     "md5": "85d083dbe395a0c5c3205c362988f0db",
@@ -8848,8 +8848,8 @@
     "_modified": "2025-11-27 11:56:32.000000"
   },
   "tags/questions.html": {
-    "md5": "dbcae7f62fac86c2fd37ff594d48c372",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "a5cc71190cc961156724613e31bf1b45",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/questions-relevant.html": {
     "md5": "5ae77b12bdb9a83ecda35c783e7278d6",
@@ -8968,20 +8968,20 @@
     "_modified": "2025-11-27 11:56:32.000000"
   },
   "tags/stories.html": {
-    "md5": "d98f7105b56208a98ec9e9eeeba8138b",
-    "_modified": "2025-11-27 11:56:32.000000"
+    "md5": "fd8d3341c31bd581bea0e625b61ca4ed",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/jataka-tales.html": {
-    "md5": "c11d10ea8f04b11768462b5fad68944e",
-    "_modified": "2025-11-27 11:56:32.000000"
+    "md5": "ac87372eff3899b4d66d26f79cd2728d",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/similes-events.html": {
     "md5": "cf78797452dcc033989e2a86f958b2f5",
     "_modified": "2025-12-09 12:50:56.000000"
   },
   "tags/similes.html": {
-    "md5": "e27daa018904da6c8d80496e57052c1b",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "b6a43cd7d6b8821868f41548cc46a817",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/similes-2.html": {
     "md5": "50b8b52d4d9684d42fd1c73a483a1292",
@@ -9020,8 +9020,8 @@
     "_modified": "2025-12-09 12:50:56.000000"
   },
   "tags/symbolism.html": {
-    "md5": "7c1516484e9675698eaa63c6018d7b84",
-    "_modified": "2025-11-27 11:56:32.000000"
+    "md5": "74474d9c43f81c7ceb055f86639440a1",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/dhamma-books.html": {
     "md5": "7cd9ce2f712da520435af172ec355534",
@@ -9060,8 +9060,8 @@
     "_modified": "2025-12-09 12:50:56.000000"
   },
   "tags/dhamma-online.html": {
-    "md5": "616d157c1c2718a5bb1f566c8da2b5b4",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "71db1b03963d3e74fda706378718cb95",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/dhamma-online-relevant.html": {
     "md5": "1bc9f4c6ab7a362fe93603a54149eb87",
@@ -9080,8 +9080,8 @@
     "_modified": "2025-11-27 11:56:32.000000"
   },
   "tags/teachers.html": {
-    "md5": "2fe32ac650e79481f2e1ba71fe958959",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "f9589dd5bb672a480c4796040d2b5c69",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/teachers-relevant.html": {
     "md5": "0244d8d3449178f0648b5a9609efb5d1",
@@ -9116,8 +9116,8 @@
     "_modified": "2025-11-27 11:56:34.000000"
   },
   "tags/thai-forest-tradition.html": {
-    "md5": "20c201f40a9dc724fa20ca5f592c7e62",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "eb3e774aabc50a90a241ca42ddf199d1",
+    "_modified": "2025-12-20 14:29:06.000000"
   },
   "tags/thai-forest-tradition-relevant.html": {
     "md5": "6c0d0afd1405f63e876f1ff00b50ca60",
@@ -9152,8 +9152,8 @@
     "_modified": "2025-11-27 11:56:34.000000"
   },
   "tags/ajahn-mun.html": {
-    "md5": "e6107b73cb461071edd2d9ff972d7c46",
-    "_modified": "2025-12-09 12:50:56.000000"
+    "md5": "2501f99f0d42a96b8b76701dfa8f40a9",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-mun-relevant.html": {
     "md5": "0b6cd53b398cc1ef537a36317e7108a6",
@@ -9184,8 +9184,8 @@
     "_modified": "2025-12-09 12:50:56.000000"
   },
   "tags/ajahn-chah.html": {
-    "md5": "6d94affb08dd5cccb61fe5c9d544d201",
-    "_modified": "2025-12-09 12:50:58.000000"
+    "md5": "57caad51d68ca278edaad0958db86ca0",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-chah-2.html": {
     "md5": "992e8e0f222953500b2450162b329709",
@@ -9296,8 +9296,8 @@
     "_modified": "2025-12-09 12:50:58.000000"
   },
   "tags/ajahn-chah-lineage.html": {
-    "md5": "d24cc9e364dd26d141d0e018a6a81d1a",
-    "_modified": "2025-11-27 11:56:34.000000"
+    "md5": "2725c16220b0eee9550d764917a5c924",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-chah-lineage-relevant.html": {
     "md5": "e8e7ecdf772416fda040563317968671",
@@ -9488,8 +9488,8 @@
     "_modified": "2025-11-27 11:56:36.000000"
   },
   "tags/ajahn-sumedho.html": {
-    "md5": "d93716a58bd7e7c38e2997494cbc90d1",
-    "_modified": "2025-12-09 12:50:58.000000"
+    "md5": "bd34267de1e8b8087da2529bba6a9d2b",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-sumedho-2.html": {
     "md5": "cac8c0c807e1c654fb229c4b727b0ce6",
@@ -9536,8 +9536,8 @@
     "_modified": "2025-11-27 14:16:48.000000"
   },
   "tags/ajahn-pasanno.html": {
-    "md5": "5fbaa1f95e9a0f262c71fe490b381ea2",
-    "_modified": "2025-12-09 12:50:58.000000"
+    "md5": "883f2ee113c99963daea1b3774c35fac",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-pasanno-2.html": {
     "md5": "b77013f80d2faf11c32aea53c2817da9",
@@ -9608,8 +9608,8 @@
     "_modified": "2025-11-27 11:56:36.000000"
   },
   "tags/ajahn-jagaro.html": {
-    "md5": "83eb4e9774ac05e749b7b45fc69b5055",
-    "_modified": "2025-11-27 11:56:36.000000"
+    "md5": "88b13a056ad0bddf25f6d5f68c8115d5",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-brahmavamso.html": {
     "md5": "79ccb9b45fcf20664c9504c335b35ca0",
@@ -9644,8 +9644,8 @@
     "_modified": "2025-12-09 12:51:00.000000"
   },
   "tags/ajahn-sucitto.html": {
-    "md5": "6c42213adaa5c53138108b70f5664442",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "188954f6deec57f6da63188eea852a7c",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-sucitto-relevant.html": {
     "md5": "9dd1b5896b4fc59a9f9ca3642b305b48",
@@ -9680,8 +9680,8 @@
     "_modified": "2025-11-27 11:56:36.000000"
   },
   "tags/ajahn-amaro.html": {
-    "md5": "2774189cd7807033c7c0988cebd51653",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "67c57e258edaa16bce51b054a636c6d4",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-amaro-relevant.html": {
     "md5": "1e8f85abff1f2652235b489d27c681eb",
@@ -9740,8 +9740,8 @@
     "_modified": "2025-11-27 11:56:36.000000"
   },
   "tags/ajahn-achalo.html": {
-    "md5": "0e891d00c33bbcec7d780f0621bb76c0",
-    "_modified": "2025-11-27 11:56:36.000000"
+    "md5": "91d1eb57f5c090572bb0afd5cbfaefac",
+    "_modified": "2025-12-20 14:29:08.000000"
   },
   "tags/ajahn-sudanto.html": {
     "md5": "fa026499f6fb2050156d4a63a8b7af1e",
@@ -9760,8 +9760,8 @@
     "_modified": "2025-12-09 12:51:00.000000"
   },
   "tags/ajahn-karunadhammo.html": {
-    "md5": "0c0c1ecc352a194a3c37736aa7716947",
-    "_modified": "2025-11-27 11:56:36.000000"
+    "md5": "1b85c06711863f24800e90926964ae88",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/ajahn-karunadhammo-relevant.html": {
     "md5": "02f22458b1073c826937dc5282985521",
@@ -9964,8 +9964,8 @@
     "_modified": "2025-11-27 11:56:36.000000"
   },
   "tags/ajahn-dune.html": {
-    "md5": "6e21d9e3ae2fc8d33ba2649988d29e59",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "def311b88f182efa6b6eadc2412d6ff0",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/ajahn-utane.html": {
     "md5": "5a3cf5bfa7124e9bd5acda0ccfc13c62",
@@ -9976,8 +9976,8 @@
     "_modified": "2025-11-27 11:56:36.000000"
   },
   "tags/ajahn-maha-boowa.html": {
-    "md5": "09033436a896a53b3b6bfbca49eedb8b",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "ce9723db3970a5d18e39494b5866877f",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/ajahn-maha-boowa-relevant.html": {
     "md5": "93d4b9aee8978d021f457764bb1386d2",
@@ -10020,16 +10020,16 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/ajahn-khao.html": {
-    "md5": "462e43974bae1d315f5cd64e9c18b281",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "276820dd01d7e0e29fa50cc245d8f481",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/ajahn-maha-chatchai.html": {
     "md5": "71c04059e842137e599fb2c3f43fa437",
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/ajahn-buddhadasa.html": {
-    "md5": "e4775c57c7265bf79501572027cd4658",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "18adb18c32126932f0805a1511d87c33",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/ajahn-buddhadasa-relevant.html": {
     "md5": "6c1e0079127ece38e4d2665cf4a06814",
@@ -10104,8 +10104,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/ajahn-thanissaro.html": {
-    "md5": "57108c3e175f32f748518bee3995fe72",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "ec18b0943f49bdb9123900b9f9c6cba8",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/ajahn-thanissaro-relevant.html": {
     "md5": "05cc12943c874afe7f2d51f00f637857",
@@ -10180,16 +10180,16 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/ven-nagasena.html": {
-    "md5": "c2200f562f467ac406feeb627d494b73",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "5816506af9f458483b5822555340bdcb",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/acariya-nagarguna.html": {
     "md5": "b9a2c6302e6335b1f41a2a283babb750",
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/other-theravada-monastics.html": {
-    "md5": "be9b063800ca3121dfbad5bcc5c9159e",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "79e9e361770e24b738b806b1515582ee",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/mahasi-sayadaw.html": {
     "md5": "d6ec81100a56b350829eb282e7052d5a",
@@ -10200,8 +10200,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/pa-auk-sayadaw.html": {
-    "md5": "b715c87565f2e540d15d19864d6b677d",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "2b907370c0763980fdd5365cf2a309cc",
+    "_modified": "2025-12-20 14:29:10.000000"
   },
   "tags/preah-mahaghosananda.html": {
     "md5": "57575d37d49ee08f4d2d32650ebaceae",
@@ -10212,8 +10212,8 @@
     "_modified": "2025-12-09 12:51:00.000000"
   },
   "tags/bhikkhu-bodhi.html": {
-    "md5": "b0b2f83e521b701363d74d52671c14b0",
-    "_modified": "2025-12-09 12:51:00.000000"
+    "md5": "503f983e2306c13d5c889e2f5b1f7539",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/bhikkhu-bodhi-relevant.html": {
     "md5": "8f7da17ef3f478d2f4a2d8aba60a851f",
@@ -10228,8 +10228,8 @@
     "_modified": "2025-12-09 12:51:00.000000"
   },
   "tags/ven-analayo.html": {
-    "md5": "4051b75b85be7347ba8aa09d94fc5f68",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "466cbb75e55c9d6f70f149b8c26bb541",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/ayya-tathaloka.html": {
     "md5": "d3672e120b95ef09688907a5a0df4958",
@@ -10260,8 +10260,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/master-hsu-yun.html": {
-    "md5": "7beee0a2ca0ba29410451a7009d477ae",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "6a867492ffa994ed41f6c5a349cdfd8b",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/master-hsuan-hua.html": {
     "md5": "708ecf499db837616dfcb2a605a72836",
@@ -10428,8 +10428,8 @@
     "_modified": "2025-12-09 12:51:02.000000"
   },
   "tags/jack-kornfield.html": {
-    "md5": "e95272308d16b62ad13a94b1c3d158d6",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "a8db2fd0ff4c9ef76ed5e27db0b22882",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/jack-kornfield-relevant.html": {
     "md5": "13ef67ca997671da1b3a903c54f456c2",
@@ -10520,8 +10520,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/lay-supporters.html": {
-    "md5": "eddaaff1e5a84401481777f345cdc5fe",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "699a6f04c75765f073615fa68fe4e770",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/lay-supporters-relevant.html": {
     "md5": "20665e55eac40b6f7211d407e70e2a73",
@@ -10540,8 +10540,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/king-rama-ix.html": {
-    "md5": "50fbcc3e73111e18ae349edd90fda47e",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "0cccca619663ed0581ffca7c36214105",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/george-sharp.html": {
     "md5": "774fa60abfdb45d9de6eeb5977bbe25b",
@@ -10576,8 +10576,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/monasteries.html": {
-    "md5": "de71bea8ca9c9c5610612091c2a1d3ba",
-    "_modified": "2025-12-09 12:51:02.000000"
+    "md5": "7383d93435e58ae0b70d1973652bad5b",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/monasteries-relevant.html": {
     "md5": "2c60db5528b37cedd2b920e6de0d9355",
@@ -10628,8 +10628,8 @@
     "_modified": "2025-11-27 11:56:38.000000"
   },
   "tags/wat-pah-pong.html": {
-    "md5": "3f2408cff1918026ddffcae83ca8e10b",
-    "_modified": "2025-12-09 12:51:02.000000"
+    "md5": "d352f3271ec13a03133d97417d95dcde",
+    "_modified": "2025-12-20 14:29:14.000000"
   },
   "tags/wat-pah-pong-2.html": {
     "md5": "4c6652a558ae90a494394baf3fbe3274",
@@ -10688,8 +10688,8 @@
     "_modified": "2025-11-27 11:56:40.000000"
   },
   "tags/wat-pah-nanachat.html": {
-    "md5": "bfc78dab48fc3ed11717e188763e928e",
-    "_modified": "2025-12-09 12:51:02.000000"
+    "md5": "873f765a80fde3f7beb6e9eac41ec17f",
+    "_modified": "2025-12-20 14:29:14.000000"
   },
   "tags/wat-pah-nanachat-relevant.html": {
     "md5": "d7677dd82ee3323efaf15dfb30ac947f",
@@ -10844,8 +10844,8 @@
     "_modified": "2025-11-27 11:56:40.000000"
   },
   "tags/abhayagiri.html": {
-    "md5": "e590d7e5bb73e235dc760f3ed0869814",
-    "_modified": "2025-12-09 12:51:02.000000"
+    "md5": "bb0423c4fefacb1501b10e17d103a99c",
+    "_modified": "2025-12-20 14:29:14.000000"
   },
   "tags/abhayagiri-2.html": {
     "md5": "ab1f07a154c47598d828f983aa12519d",
@@ -10912,8 +10912,8 @@
     "_modified": "2025-11-27 11:56:40.000000"
   },
   "tags/wat-burapha.html": {
-    "md5": "247e0e3d433f39c511f3a04daede126a",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "4b17462f33881d7f5b7b93ce2bddab15",
+    "_modified": "2025-12-20 14:29:14.000000"
   },
   "tags/thai-forest-monasteries-in-the-west.html": {
     "md5": "91bd618ec050a496909d9113f7a76004",
@@ -11060,8 +11060,8 @@
     "_modified": "2025-11-27 11:56:40.000000"
   },
   "tags/kamma.html": {
-    "md5": "67e3ada44ed7c8edb6eb46a5b7e8a933",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "f2fdc3da7859b34c8c1797746a598969",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/kamma-relevant.html": {
     "md5": "be2d9b514208713df097ad76354cdef6",
@@ -11096,8 +11096,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/rebirth.html": {
-    "md5": "ed1f403bae06214654c966225cd76ecc",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "5883d5389a06d038b5ee9bb2787da05c",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/rebirth-relevant.html": {
     "md5": "bc2f75e88c80b7652953415704217ad4",
@@ -11128,8 +11128,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/samsara.html": {
-    "md5": "2998e0c07362b68e9900e7679c0b0899",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "5cd33144f277a8fc3ff44526f425581a",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/samsara-relevant.html": {
     "md5": "f7a343f0f70e01c7745a51f16269e07d",
@@ -11156,8 +11156,8 @@
     "_modified": "2025-11-27 11:56:40.000000"
   },
   "tags/realms-of-existence.html": {
-    "md5": "05a0cca8505cf9243977383cf333a6ad",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "1ff7f64bd983a547195a7f4843702b36",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/realms-of-existence-relevant.html": {
     "md5": "4c52453e4e3341a6bf6a0a48c8c243b2",
@@ -11180,8 +11180,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/deva.html": {
-    "md5": "e6e378e3c7f4be1332d82ac0bc133245",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "e45a6d8cd8eb2559772e9e28e5db764f",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/deva-relevant.html": {
     "md5": "6ab594cd3b2a93e810945325531bc050",
@@ -11216,8 +11216,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/human.html": {
-    "md5": "d224a803717673efbf6eee08f4dfbda9",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "745ba9b1e70ffe369ce617fcb7d4e6bc",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/human-relevant.html": {
     "md5": "cbada02a0df8909f2997f068e1ea6c5e",
@@ -11264,8 +11264,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/animal.html": {
-    "md5": "d699edbf22c04b1b2d2a109477151d19",
-    "_modified": "2025-11-27 11:56:42.000000"
+    "md5": "70114a64ff0c7bf50d774d9529db5e97",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/animal-relevant.html": {
     "md5": "98ba6607e50829149bf80dd09dceb28e",
@@ -11304,8 +11304,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/brahma-gods.html": {
-    "md5": "2fc1f8b175df76827ed74f15a8c9cc2a",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "59ed8d8fb127b6b917fa6ceaaac318cc",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/metteyya-bodhisatva.html": {
     "md5": "27d1c5edfe40ec0882e0ed853d24bc5a",
@@ -11336,12 +11336,12 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/non-human-beings.html": {
-    "md5": "b5722a99eb79701eccae157817d53a4b",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "0ad72ac42e953335b5cddac070fd82b8",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/nature-of-mind.html": {
-    "md5": "cc0dbc5b4e77ab416b947ceda3581977",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "2d33d8a27e09383c9f24a6986241fa75",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/nature-of-mind-relevant.html": {
     "md5": "5ad0e9af0fd49ecfff2c9b158162ac3d",
@@ -11372,8 +11372,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/memory.html": {
-    "md5": "256b9e523fc041c1198793b9884036ea",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "31043ffda9afcfe2c4d4fedbb777358a",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/memory-relevant.html": {
     "md5": "7d932a9390948e1c83d3c35b47d0b61d",
@@ -11404,8 +11404,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/psychic-powers.html": {
-    "md5": "f122c552f95f19aec1628ddea5629694",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "4c5f93d15aed33326157218383486c09",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/psychic-powers-relevant.html": {
     "md5": "de660d4653b2b67a2d055f3abf02df00",
@@ -11452,8 +11452,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/unconditioned.html": {
-    "md5": "ad0c9de993d64abd94e24f3905ed3b51",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "6b85ec31b88f617faa579794baa5791a",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/unconditioned-relevant.html": {
     "md5": "4aca15083df51da0c02ea8e913c4cefe",
@@ -11484,12 +11484,12 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/previous-buddhas.html": {
-    "md5": "18da18b5a5508d55c5dca6b73bc23487",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "7d0fea341af81c9862fa32cc05dfcdba",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/great-disciples.html": {
-    "md5": "f0837ae8ad72a00e87d4675819870e46",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "39e7e63198e34818d545878e9824635c",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/great-disciples-relevant.html": {
     "md5": "db230c7ab2a13b9ac3fe04940cf9c857",
@@ -11520,8 +11520,8 @@
     "_modified": "2025-12-09 12:51:04.000000"
   },
   "tags/historyearly-buddhism.html": {
-    "md5": "210eebf8b0b17d90c6c3b00037b799be",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "a8108b42c47474f191d046313a36bd09",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/historyearly-buddhism-relevant.html": {
     "md5": "d15d3a2f7d3513106fba18cf5196f1d5",
@@ -11536,8 +11536,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/historyindian-buddhism.html": {
-    "md5": "f5c8ddbab2d2ab176e27111a4004385e",
-    "_modified": "2025-12-09 12:51:04.000000"
+    "md5": "036d5e3f9447758eb66b5a3f16615d3f",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/historysri-lankan-buddhism.html": {
     "md5": "7aafba5b9b2499e97186190633366798",
@@ -11560,8 +11560,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/historythai-buddhism.html": {
-    "md5": "dd295ab6a05d39cff7f68be319e590b1",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "faeefd1005e571e0e4c6b0dc56f8473c",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/historythai-buddhism-relevant.html": {
     "md5": "e34c949db16af01280e380ab5a514df4",
@@ -11624,8 +11624,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/geographyindia.html": {
-    "md5": "cde242135039af0d990718412ce9aba6",
-    "_modified": "2025-11-27 11:56:42.000000"
+    "md5": "8ed8687658910e529a6109627dc9367c",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/geographythailand.html": {
     "md5": "10a9c641fbe6eed6d2bc352e3438b44f",
@@ -11648,8 +11648,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/cultural-context.html": {
-    "md5": "55a8123b4f3117cfd2845d898c0d5a48",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "cacc8e427a315da89d38fe1cb833f6c8",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/cultural-context-relevant.html": {
     "md5": "9f676ddd03ab9ab45a31efea8ca72ba3",
@@ -11668,8 +11668,8 @@
     "_modified": "2025-12-09 12:51:06.000000"
   },
   "tags/culturenatural-environment.html": {
-    "md5": "6bd8dd0415b26b886dc94cf498b2ed75",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "970aa07e9bb3044d5d65b461b6b0215e",
+    "_modified": "2025-12-20 14:29:16.000000"
   },
   "tags/culturenatural-environment-relevant.html": {
     "md5": "54b4bc823558d1a7ddfc3320fe9757e9",
@@ -11704,8 +11704,8 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/cultureindia.html": {
-    "md5": "4f08f109ba2145872ebbb99d614b09a8",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "f570b2430b94486c65ad6573bb26c856",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/cultureindia-relevant.html": {
     "md5": "02419e0d9380931a65f2ce4e8c7ef9d3",
@@ -11728,12 +11728,12 @@
     "_modified": "2025-11-27 11:56:42.000000"
   },
   "tags/culturesri-lanka.html": {
-    "md5": "908482e9d28abeb54464ae6ec5aebbd2",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "545ac3c777ee5c2d0518431f1c5983ae",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/culturethailand.html": {
-    "md5": "594ff87be6ab8b0d0c8d80dca0d6834c",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "19e08db942160dcc0b0b14b4c2b75676",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/culturethailand-2.html": {
     "md5": "f2938ad43008c5ff0fd5bac9dec157dc",
@@ -11772,8 +11772,8 @@
     "_modified": "2025-11-27 11:56:44.000000"
   },
   "tags/culturewest.html": {
-    "md5": "b942ecebe1fd2a43a3c120dda9019c4e",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "7bf0698c994a06b791ab3969c1f00c9b",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/culturewest-2.html": {
     "md5": "bfb8494b580f831c843c78ad7801d58e",
@@ -11836,8 +11836,8 @@
     "_modified": "2025-11-27 11:56:44.000000"
   },
   "tags/language.html": {
-    "md5": "dec1705e4199b3b23f9718000dd92583",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "4c8adf3cf6e5219d194c9786b75db4f5",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/language-relevant.html": {
     "md5": "0e0cb57bd21316551385c2491ab35893",
@@ -11864,8 +11864,8 @@
     "_modified": "2025-12-09 12:51:06.000000"
   },
   "tags/pali.html": {
-    "md5": "0b3b49f54eb85506570ed64934620f85",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "4d9352e2a276a1278be880a821a9e34c",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/pali-2.html": {
     "md5": "72b96f476ffe48cde72d9e0382644af5",
@@ -11892,8 +11892,8 @@
     "_modified": "2025-12-09 12:51:06.000000"
   },
   "tags/thai.html": {
-    "md5": "11877dfae4657a8a6472c97b3e544c6f",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "46754bca53c3674b1d3f972952086203",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/thai-relevant.html": {
     "md5": "3f0fe252f5a3b2ce41cc6a048d9b974f",
@@ -11928,8 +11928,8 @@
     "_modified": "2025-11-27 11:56:44.000000"
   },
   "tags/translation.html": {
-    "md5": "618aa44fa0783caeabdf886e37e3fa52",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "06b014d93864c74978c017e0fe9b2854",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/translation-relevant.html": {
     "md5": "24c99c4aeb5c53c3c8621708d1635841",
@@ -11956,8 +11956,8 @@
     "_modified": "2025-12-09 12:51:06.000000"
   },
   "tags/etymology.html": {
-    "md5": "7ae7ce4f75c9a5ab415ece169a71ffd8",
-    "_modified": "2025-12-09 12:51:06.000000"
+    "md5": "92574d2e1b625e7a4d6124abc3e500fd",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/etymology-relevant.html": {
     "md5": "fe2f11abda167b6ef7927d9c4bc70e69",
@@ -12020,8 +12020,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/spiritual-traditions.html": {
-    "md5": "acfae72364d89ec4606ceb6dc9e168ac",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "9055f55c1b9ebb5998736f1f0ab9b634",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/spiritual-traditions-relevant.html": {
     "md5": "043c5fd3617793cc62bb49d2dbd528f3",
@@ -12044,8 +12044,8 @@
     "_modified": "2025-12-09 12:51:08.000000"
   },
   "tags/theravada.html": {
-    "md5": "8798d1c05e1f077448e1597591d91d39",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "70e743e6eb3b5aff198979e8930a1bd4",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/theravada-relevant.html": {
     "md5": "cf863271b06e13a92fedc4dd21a23c81",
@@ -12068,8 +12068,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/mahayana.html": {
-    "md5": "73c31d4885b7d45057ee336e55378278",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "751908bc6fd02c6380efd7633af5cd5b",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/mahayana-relevant.html": {
     "md5": "65b3460d30a7a627776ffe081f4a11d6",
@@ -12092,8 +12092,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/zen.html": {
-    "md5": "7cc6785939716dc2f3cedf200277401d",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "f88010bc025f5d9729022d9cce9b444f",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/zen-relevant.html": {
     "md5": "cb63d5ffbf847d567d5303e615030e23",
@@ -12120,8 +12120,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/vajrayana.html": {
-    "md5": "f0f8c459bf391e9c71dad94f2b38b5fa",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "0d14c05688258219129938fd33b4be18",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/vajrayana-relevant.html": {
     "md5": "c35233dae59d92106d8d2ef111b8f76e",
@@ -12148,8 +12148,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/hinduism.html": {
-    "md5": "adf4bc03a1748eb9564f2080ff5519ff",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "b98336c569074d0ba13c689d444c1a6f",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/hinduism-relevant.html": {
     "md5": "49afb85702b0b98050e744854ea40c3a",
@@ -12184,8 +12184,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/christianity.html": {
-    "md5": "ee197289eca5f1951bba7ef9923421d8",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "0d3e0048cc32dd0deaadc6118fa3a6a2",
+    "_modified": "2025-12-20 14:29:18.000000"
   },
   "tags/christianity-relevant.html": {
     "md5": "5eaef0e25f17b63a7887f916d92171c0",
@@ -12376,8 +12376,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/almsround.html": {
-    "md5": "2d6b41ee2295e9cfc0009a3c9e48daa6",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "0b2e0a3069ea8258ccefae7f0807bc38",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/almsround-relevant.html": {
     "md5": "da33e89c0dc0a52259526ce864b16dc1",
@@ -12500,8 +12500,8 @@
     "_modified": "2025-11-27 11:56:46.000000"
   },
   "tags/devotion-to-wakefulness.html": {
-    "md5": "8b84d6c61314031b01cd3c03a6d13e14",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "a327fe4689711666989b63442cf81c68",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/devotion-to-wakefulness-relevant.html": {
     "md5": "b7d06967db41449dc8d261679fd146bd",
@@ -12524,8 +12524,8 @@
     "_modified": "2025-11-27 13:19:18.000000"
   },
   "tags/monastic-life.html": {
-    "md5": "4dc2bdc285a50de9b7d1e3ec2d0290e5",
-    "_modified": "2025-12-09 12:51:08.000000"
+    "md5": "fb029ab1bcf213e3112626a8f668e23d",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/monastic-life-2.html": {
     "md5": "e72c56c6147727f6c5d781f786216630",
@@ -12764,8 +12764,8 @@
     "_modified": "2025-12-09 12:51:10.000000"
   },
   "tags/rains-retreat.html": {
-    "md5": "2c6766bfeb21f87998b3d12ed52cc848",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "f96f30eb6a9e4f0322827dd01b624a86",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/rains-retreat-relevant.html": {
     "md5": "503bac1ca296873eb59979aa82e632cf",
@@ -12820,8 +12820,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/communal-harmony.html": {
-    "md5": "a707f27cdbc640638889901c6f38e192",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "f0fc135cc4d7d3b62e2672d9e8153ec7",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/communal-harmony-relevant.html": {
     "md5": "69dd6c3006c0f05d99582964bfd7f5cc",
@@ -12872,8 +12872,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/sangha-decision-making.html": {
-    "md5": "061b6166e3523c00fe3ab310aa3cdce1",
-    "_modified": "2025-11-27 11:56:48.000000"
+    "md5": "d516bc9d3b2a06f57f5c628e257ffbcf",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/sangha-decision-making-relevant.html": {
     "md5": "f3705a2f27de3102f49729fd45789f1e",
@@ -12896,8 +12896,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/abbot.html": {
-    "md5": "d787cdbe8a7f12c887baff3fb2c65fed",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "f9ce1d40fdda57db442aa0a4b6537d94",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/abbot-relevant.html": {
     "md5": "7f0dade2b49e90355ad1a020822ac48c",
@@ -12920,8 +12920,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/perception-of-a-samana.html": {
-    "md5": "e2aa874e32d3367da9430efa0b756086",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "417b7693b68ddafce062fa04ea86c4b7",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/perception-of-a-samana-relevant.html": {
     "md5": "a8db7b1824949ebaf58bcb3cadc31639",
@@ -12944,8 +12944,8 @@
     "_modified": "2025-12-09 12:51:10.000000"
   },
   "tags/respect.html": {
-    "md5": "c6f08ac74f81672795b3768fe234daf2",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "51fe6707ccab4ebb2eaf7fc692018e0b",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/respect-relevant.html": {
     "md5": "a8b19bd0362708c520ed483bca71dbc0",
@@ -12988,8 +12988,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/respect-for-elders.html": {
-    "md5": "c00918e6b08d1ab29fb2ec52f5c45f64",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "aa388a665a520b5b5062757ca2fb9e22",
+    "_modified": "2025-12-20 14:29:20.000000"
   },
   "tags/respect-for-elders-relevant.html": {
     "md5": "2adf6d4323a3dc54c89e99c4a3cd6867",
@@ -13016,8 +13016,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/upatakh.html": {
-    "md5": "654ebbd5475c7704cd6d0feb92c38a7e",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "e8a0cc7e657c424d44528d74f11bd8e5",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/upatakh-relevant.html": {
     "md5": "1e7b4c1d01da0a85d8a4fd793740d8d6",
@@ -13072,8 +13072,8 @@
     "_modified": "2025-12-09 12:51:10.000000"
   },
   "tags/ascetic-practices.html": {
-    "md5": "b7ee32397ffcdffc118709ce9eb71b8b",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "597b9eb13841146276463a239cc0340c",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/ascetic-practices-relevant.html": {
     "md5": "f0ccd7a45a55ea841a9f373b144ad05e",
@@ -13108,8 +13108,8 @@
     "_modified": "2025-11-27 11:56:48.000000"
   },
   "tags/tudong.html": {
-    "md5": "33625d1c2c50f4fdc5deb01adbf5ecd2",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "ebf2d1e7838b240b433691834234221b",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/tudong-relevant.html": {
     "md5": "8dc6fa6d3fc40df44fb2c66da80b0564",
@@ -13184,8 +13184,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/study-monks.html": {
-    "md5": "9a217e4ce2f2b7601079434fa207c86a",
-    "_modified": "2025-11-27 11:56:50.000000"
+    "md5": "5a300a9b3246e06988d47d1f29d71047",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/study-monks-relevant.html": {
     "md5": "af47826dd74c1006f825959953da5748",
@@ -13260,8 +13260,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/postulants.html": {
-    "md5": "2b48821cd5d7241cf2ef5a2fbd8b1d00",
-    "_modified": "2025-11-27 11:56:50.000000"
+    "md5": "8c28f8c35ad19629b2df20488b762f88",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/postulants-relevant.html": {
     "md5": "e2d89cc8c4e5963d986a1fb125a9f102",
@@ -13304,8 +13304,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/everyday-life.html": {
-    "md5": "3efea250796c5c35c37394c5a769e92b",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "35c8a0430dad3769b2df135ea8be6195",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/everyday-life-relevant.html": {
     "md5": "ada6146c1ef46afe4650c243a3d2411a",
@@ -13336,8 +13336,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/lay-life.html": {
-    "md5": "f52582406565a36503d816c6425c8dec",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "cc3109c237d0c3b3b84d8759906c18c3",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/lay-life-relevant.html": {
     "md5": "2eaab8ed4b42fcddf2df4d5e73d82523",
@@ -13364,8 +13364,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/conventions.html": {
-    "md5": "30e296ec5694c145e2be24d325b41475",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "f760d12e53ee1ca292e650d842b739f1",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/conventions-relevant.html": {
     "md5": "1e5fcdbdc17c09a1e00e76a7feda643b",
@@ -13392,8 +13392,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/worldly-conditions.html": {
-    "md5": "33d9ff0c8499f09a1d3ab50e034bb3d5",
-    "_modified": "2025-12-09 12:51:10.000000"
+    "md5": "e0dca5342b8b947c10d6e33b27f474b3",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/gain-and-loss.html": {
     "md5": "8ee2bad489a69444ee48bdb29c7dc310",
@@ -13472,8 +13472,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/cleanliness.html": {
-    "md5": "85ac1440887e068b81a5fe85eee3fb07",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "0fd9589d7f30928f305e72a31cb1d516",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/cleanliness-relevant.html": {
     "md5": "271973c05f7b7952400f616c78fa464b",
@@ -13600,8 +13600,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/parents.html": {
-    "md5": "acf28b2090bfc64bbc97b6d3c7de230c",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "78993f1b4f95eb3bc1bbd16107e7eb86",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/parents-relevant.html": {
     "md5": "8942584b97e812c43b5c86e2c439496f",
@@ -13632,8 +13632,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/children.html": {
-    "md5": "0fd9d280a16b8786164bfa6ce493819f",
-    "_modified": "2025-11-27 11:56:50.000000"
+    "md5": "f9ec0f01a3f8e7618f131c61384f17d0",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/children-relevant.html": {
     "md5": "fdff8f214c94438b0db017dca89229b9",
@@ -13656,8 +13656,8 @@
     "_modified": "2025-11-27 11:56:50.000000"
   },
   "tags/artistic-expression.html": {
-    "md5": "a8bf57b4009ab298dc8447b01ae9e87e",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "4e1a2201274c4a00ade0072299db6564",
+    "_modified": "2025-12-20 14:29:22.000000"
   },
   "tags/artistic-expression-relevant.html": {
     "md5": "49d180e19e14a970d2626d2e7d85b651",
@@ -13836,8 +13836,8 @@
     "_modified": "2025-11-27 11:56:52.000000"
   },
   "tags/conflict.html": {
-    "md5": "3bd74e494b4b395620c73417c3608849",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "d87eebc4082abc0adc250097f7287ef5",
+    "_modified": "2025-12-20 14:29:24.000000"
   },
   "tags/conflict-relevant.html": {
     "md5": "299cf4a70e647e3ae946a41db1c058f4",
@@ -13876,8 +13876,8 @@
     "_modified": "2025-11-27 11:56:52.000000"
   },
   "tags/politics-and-society.html": {
-    "md5": "fca939e1785bcb9f34af88d9dc4de9b0",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "fdf6e3a671ae709b4a8aaf1e16d69f21",
+    "_modified": "2025-12-20 14:29:24.000000"
   },
   "tags/politics-and-society-relevant.html": {
     "md5": "bc2aacdaccaf32e7734096bbd14461e6",
@@ -13924,8 +13924,8 @@
     "_modified": "2025-12-09 12:51:12.000000"
   },
   "tags/crime.html": {
-    "md5": "d6b9fa8b560045b701c970e47ca7ac7c",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "d4ecf8e9c45ba421c6681d0989d042f2",
+    "_modified": "2025-12-20 14:29:24.000000"
   },
   "tags/prisons.html": {
     "md5": "2af5335bbef1594e8271e15c09b2cedf",
@@ -14160,8 +14160,8 @@
     "_modified": "2025-11-27 11:56:52.000000"
   },
   "tags/media.html": {
-    "md5": "676cf73f476422ff4e31d55de9e57262",
-    "_modified": "2025-12-09 12:51:12.000000"
+    "md5": "b08e9c1d1086f02c16c2456a537853a6",
+    "_modified": "2025-12-20 14:29:24.000000"
   },
   "tags/media-relevant.html": {
     "md5": "215703d8aedef4ba9d8340b26aeb42be",
@@ -17780,8 +17780,8 @@
     "_modified": "2025-11-25 13:17:36.000000"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "053bbe5f01511db88c223fb39bf6aee5",
-    "_modified": "2025-12-20 13:47:44.000000"
+    "md5": "2fb0e124a4096c3a62cd5a9db7d22778",
+    "_modified": "2025-12-20 15:10:34.000000"
   },
   "tags/relics-relevant.html": {
     "md5": "5da1f0c61d541935f41e4029276541b4",
@@ -17816,8 +17816,8 @@
     "_modified": "2025-12-09 12:51:00.000000"
   },
   "tags/debbie-stamp.html": {
-    "md5": "a6e85ffdba9d234d0fc9e69c03c09055",
-    "_modified": "2025-11-27 11:56:38.000000"
+    "md5": "6875f6f3233d1a5c4be28db9cdfe5ea9",
+    "_modified": "2025-12-20 14:29:12.000000"
   },
   "tags/debbie-stamp-relevant.html": {
     "md5": "d770c26fff58744cb0718a1e2913927f",
@@ -17920,8 +17920,8 @@
     "_modified": "2025-12-09 12:51:38.000000"
   },
   "events/WR2013.html": {
-    "md5": "264a3bb478760e7b545a198df803fb92",
-    "_modified": "2025-12-17 15:21:26.000000"
+    "md5": "4dcf7a8858d570d5447670df61c81e01",
+    "_modified": "2025-12-20 15:10:34.000000"
   },
   "texts/DN33.html": {
     "md5": "b91290de64891af4e629ef61ae531c5e",
@@ -18326,5 +18326,13 @@
   "books/burden-off-the-mind.html": {
     "md5": "3e785433fb50f80c48ff82a2cd9f4e42",
     "_modified": "2025-12-15 12:48:48.000000"
+  },
+  "events/UD2017-1.html": {
+    "md5": "878695bee76306c97ead8aebf3d5a824",
+    "_modified": "2025-12-20 14:27:44.000000"
+  },
+  "tags/dr-saddhatissa.html": {
+    "md5": "8a58493583e1c24d67e25616560aeb43",
+    "_modified": "2025-12-20 14:29:12.000000"
   }
 }
