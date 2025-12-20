@@ -120,7 +120,15 @@ export function configureLinks(frame,url) {
 		if (el.firstChild?.classList?.contains("toggle-view")) return;
 			// Don't modify href links of toggle-view togglers
 		let href = el.getAttribute("href");
-		if (!href || href.match(absoluteURLRegex)) return;
+		if (!href)
+			return;
+		if (href.match(absoluteURLRegex)) {
+			// Switch links back to suttacentral.net if Javascript is running.
+			if (href.startsWith("https://suttacentral.express/")) {
+				el.href = href.replace("//suttacentral.express/","//suttacentral.net/")
+			}
+			return;
+		}
 		if (href.endsWith("#noframe")) { // Code to escape javascript frame
 			el.href = el.href.replace("#noframe","");
 			return;

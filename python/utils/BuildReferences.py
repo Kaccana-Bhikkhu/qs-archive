@@ -119,6 +119,20 @@ def TextGroupSet(which: str) -> set[str]:
     """Return a set of the texts in this group."""
     return set(gDatabase["textGroup"][which])
 
+def SCToExpress(scLink: str) -> str:
+    """Convert a link from SuttaCentral to SuttaCentral Express."""
+
+    if scLink.startswith("https://suttacentral.net/"):
+        # SuttaCentral Express currently doesn't handle suttas within AN groups, so don't change these links
+        if anSutta := re.match(r"https://suttacentral.net/(an[0-9]+\.[0-9]+)",scLink):
+            suttaRef = anSutta[1]
+            if suttaRef in Suttaplex.InterpolatedSuttaDict("an"):
+                return scLink
+
+        return scLink.replace("//suttacentral.net/","//suttacentral.express/")
+    else:
+        return scLink
+
 class TextReference(NamedTuple):
     text: str           # The name of the text, e.g. 'Dhp'
     n0: int = 0         # The three possible index numbers; 0 means an index is omitted
@@ -224,6 +238,10 @@ class TextReference(NamedTuple):
         if scLink:
             returnValue.append(Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
+            expressLink = SCToExpress(scLink)
+            if expressLink != scLink:
+                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Lightweight SuttaCentral Express","target":"_blank"})
+                                   (Build.HtmlIcon("SuttaCentralExpress.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
             returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse more translations online","target":"_blank"})

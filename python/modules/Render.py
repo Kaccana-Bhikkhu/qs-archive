@@ -448,6 +448,8 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
             if printer is Alert.error or printer is Alert.warning:
                 return ""
         else:
+            if link.startswith("https://suttacentral.net/"):
+                link = link.lower() # SuttaCentral Express requires lowercase names, so it's easiest to work in all lowercase
             return link
     
     return ""
@@ -458,6 +460,9 @@ def SuttaLinkWrapper(link: str,referenceString: str) -> Html.Wrapper:
     reference = BuildReferences.TextReference.FromString(referenceString)
     reference = reference.Truncate(max(reference.TextLevel() + 1,2))
     textPageLink = BuildReferences.ReferenceLink("text",str(reference))
+
+    # Switch to SuttaCentral Express links; if Javascript is running, frame.js will revert these to SuttaCentral
+    link = BuildReferences.SCToExpress(link)
 
     linkData = {"href":link,"target":"_blank"}
     if textPageLink:
