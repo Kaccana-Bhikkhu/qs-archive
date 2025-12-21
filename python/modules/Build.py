@@ -632,7 +632,7 @@ def DeficientTagCount(deficientTags: list[dict[str,str]]) -> str:
 
     return f"""Deficient: {len(deficientTags)}, not part of a sufficient subtopic: {len(notInSufficientSubtopic)}<br>
 <b>Doubly deficient</b> ({len(doublyDeficient)}): {', '.join(doublyDeficient)}<br>
-<b>Single subtopics</b> ({len(singleTopics)}): {', '.join(singleTopics)}"""
+<b>Deficient single subtopics</b> ({len(singleTopics)}): {', '.join(singleTopics)}"""
 
 def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted by number of excerpts."""
@@ -664,15 +664,17 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     # Now yield a printable version for tag counting purposes
     tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
                                 key = lambda tag: (-ExcerptCount(tag),tag))
+    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
 
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
+    if gOptions.uploadMirror == "preview":
+        page.AppendContent(Html.Tag("p")(f"Total tags: {len(gDatabase["tag"])}, Featured tags: {len(tagsSortedByQCount)}, " + DeficientTagCount(deficientTags)))
     page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=True))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
     yield page
 
     # Make a page with only deficient tags
-    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
     page.AppendContent(Html.Tag("p")(DeficientTagCount(deficientTags)))
     page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
@@ -683,6 +685,8 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     # Create another version sorted by name. This will be linked to on the alphabetical page.
     tagsSortedByQCount = sorted(tagsSortedByQCount)
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"AlphabeticalTags_print.html")))
+    if gOptions.uploadMirror == "preview":
+        page.AppendContent(Html.Tag("p")(f"Total tags: {len(gDatabase["tag"])}, Featured tags: {len(tagsSortedByQCount)}, " + DeficientTagCount(deficientTags)))
     page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=False))
     page.AppendContent("Alphabetized common tags",section="citationTitle")
     page.keywords = ["Tags","Alphabetized common tags"]
@@ -2515,7 +2519,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
 
     a = Airium()
     a("Number of featured excerpts for each topic appears in parentheses.")
-    if printPage:
+    if printPage and gOptions.uploadMirror == "preview":
         deficient = [subtopic["tag"] for subtopic in gDatabase["subtopic"].values() if ReviewDatabase.OptimalFTagCount(subtopic)[2] < 0]
         a(f"<br><b>Deficient subtopics</b> ({len(deficient)}): {", ".join(deficient)}")
     a("<br><br>")
