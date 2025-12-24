@@ -124,7 +124,8 @@ export function configureLinks(frame,url) {
 			return;
 		if (href.match(absoluteURLRegex)) {
 			// Switch links back to suttacentral.net if Javascript is running.
-			if (href.startsWith("https://suttacentral.express/") && !el.classList.contains("express")) {
+			if (/suttacentral\.express\/./.test(href) && !el.classList.contains("express")) {
+				// Don't switch the vanilla sc express site or specially flagged links.
 				el.href = href.replace("//suttacentral.express/","//suttacentral.net/")
 			}
 			return;

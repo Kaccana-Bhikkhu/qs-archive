@@ -479,9 +479,9 @@ export class SearchQuery {
         let boldRegExp = this.boldTextRegex;
         function boldText(text) {
             // Apply <b> tag to text matches but not html tags
-            return text.startsWith("<") ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
+            return /^[<&]/.test(text) ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
         }
-        return string.replaceAll(/<b>[^>]*<\/b>|<[^>]*>|[^<>]*/g,boldText).replaceAll("</b><b>","");
+        return string.replaceAll(/<b>[^>]*<\/b>|<[^>]*>|&[^;]*;|[^<>&]*/g,boldText).replaceAll("</b><b>","");
             // Remove redundant </b> tags
     }
 }
