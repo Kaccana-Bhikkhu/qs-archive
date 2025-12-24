@@ -6,6 +6,7 @@ import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
 const DEBUG = true;
+const PEEK_FUTURE = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
@@ -57,7 +58,7 @@ function displayFeaturedExcerpt() {
     
     let title = "Today's featured excerpt";
     let prefix = "";
-    if (gSearchFeaturedOffset > 0) {
+    if (gSearchFeaturedOffset > 0 && !(DEBUG && PEEK_FUTURE)) {
         let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
         while (gRandomExcerpts.length < gSearchFeaturedOffset) {
             let randomIndex = Math.floor(Math.random() * excerptCodes.length);
@@ -69,7 +70,7 @@ function displayFeaturedExcerpt() {
         let pastDate = new Date();
         pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
         prefix = holidayHtml(pastDate);
-        if (gSearchFeaturedOffset < 0) {
+        if (gSearchFeaturedOffset != 0) {
             let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             title = `Excerpt featured on ${pastDate.toLocaleDateString("en-us",options)}`;
         }
@@ -264,8 +265,13 @@ function initializeSearchFeatured() {
     let prevButton = document.getElementById("random-prev");
     let nextButton = document.getElementById("random-next");
     if (prevButton || nextButton) {
-        prevButton.onclick = () => { displayNextFeaturedExcerpt(-1); };
-        nextButton.onclick = () => { displayNextFeaturedExcerpt(1); };
+        prevButton.addEventListener("click", function(event) {
+            displayNextFeaturedExcerpt(event.shiftKey ? -30: -1);
+        });
+        nextButton.addEventListener("click", function(event) {
+            displayNextFeaturedExcerpt(event.shiftKey ? 30: 1);
+        });
+        initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);
     }
 }
@@ -507,26 +513,6 @@ function setupAutoComplete() {
             highlight: true,
         }
     });
-}
-
-function readingFaithfullyLink(baseLink) {
-    // Given a link to suttacentral.net, return a link to the same text on sutta.readingfaithfully.org.
-    // Return null if the link doesn't point to suttacentral.
-
-    const prefix = "https://suttacentral.net/";
-    const suttas = ['dn','mn','sn','an','kp','dhp','ud','iti','snp','vv','pv','thag','thig','ja','bupj','buss','buay','bunp','bupc','bupd','busk','buas','bipj','biss','binp','bipc','bipd','bisk','bias','kd','pvr','mil'];
-    const doubleRefs = ['sn','an','ud','','snp','thag','thig'];
-    if (!baseLink.startsWith(prefix))
-        return null;
-    let suttaRef = baseLink.replace(prefix,"").toLowerCase().split("/")[0];
-    let match = suttaRef.match(/^([^0-9]+)([0-9]+)(.[0-9]+)?/);
-    if (match && suttas.includes(match[1])) {
-        let numbers = match[2];
-        if (match[3] && doubleRefs.includes(match[1]))
-            numbers += match[3];
-        return `https://sutta.readingfaithfully.org/?q=${match[1]}${numbers}`
-    } else
-        return null;
 }
 
 function setupOptionalSuttaRefs() {
