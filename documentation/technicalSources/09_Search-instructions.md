@@ -15,6 +15,10 @@ By default the search finds text within words. To find whole words only, enclose
 
 For example, searching for `Thai` finds both Thai and Thailand, but searching for `"Thai"` finds only Thai.
 
+## Sorting by relevance
+
+The December 2025 release attempts to prioritize the most useful search results. It does this by moving featured excerpts and excerpts which match text search terms in the most relevant places to the top of the results page. These features can be turned off by deselecting the appropriate check boxes on the search page. If neither check box is selected, excerpts are listed in chronological order.
+
 ## Searching for tags
 
 Use brackets to search for excerpts tagged with specific tags:
@@ -89,6 +93,18 @@ Search for Upāsikā Days: `@UD`
 
 Search for events from the year 2015: `@*2015`
 
+## Boolean search operations
+
+Boolean search operations can be used by grouping terms in operator-prefix notation: `X(term1 term2 term3 ...)`, where the operator `X` is one of the following:
+
+__`|`__ Or: Only one term must match. <br>
+__`&`__ And: All terms must match. <br>
+__`~`__ Like And, but all terms must match in the same search blob (see [Advanced searching](#advanced-searching) below).
+
+Thus `|([Mindfulness] [Right Mindfulness])` finds excerpts matching either of these tags and `~(#Comment# {Ajahn Pasanno})` finds comments made by Ajahn Pasanno but not excerpts in which Ajahn Pasanno responds to a comment made by someone else.
+
+Search terms or groups preceeded by `!` are negated, e.g. `!Thai` finds all excerpts not containing the characters `Thai`, and `!|({Ajahn Pasanno} {Ajahn Amaro} {Ajahn Karunadhammo})` finds excerpts to which none of these teachers contributed.
+
 ## Advanced searching
 
 To go beyond the recipies above, it is necessary to understand the search engine in  detail. The search engine converts excerpts and annotations into a series of blobs in which special characters are used to indicate tags, teachers, kinds, and events. For example, this excerpt:
@@ -125,6 +141,16 @@ The search engine implements the following wildcard characters:
 
 Spaces divide individual search strings except for groups of characters enclosed in double quotes. Characters enclosed in double quotes only match word boundaries, but this can be changed using `*`. For example, `"Thai*"` and `$Thai` are equivalent queries.
 
-Search terms preceeded by `!` are negated, e.g. `!Thai` finds all excerpts not containing the characters `Thai`.
-
 Search terms enclosed in backticks are raw regular expressions, e.g. `` `@.*200[0-9]` `` finds all excerpts from events in the decade starting in 2000. [regexr.com](https://regexr.com/) is a good reference and playground for building regular expressions.
+
+With a bit of ingenuity, complex searches can be built up out of simpler components. For example, suppose you want to find all excerpts where someone other than Ajahn Pasanno contributed. This search can be constructed as follows:
+
+1. `!{Ajahn Pasanno}` finds all excerpts with a blob without Ajahn Pasanno as a teacher.
+
+2. But some of these blobs have no teachers at all. Blobs with no teacher contain `{}`, so these can be eliminated by adding a term to the search to get `!{Ajahn Pasanno} !{}`.
+
+3. But we would also like to find excerpts in which both Ajahn Pasanno and another teacher contribute. `"{*}{*}"` finds excerpts that have blobs with at least two teachers. If one of these is Ajahn Pasanno, the other must be someone else. Thus `{Ajahn Pasanno} "{*}{*}"` finds all excerpts with two-teacher blobs in which Ajahn Pasanno contributes.
+
+4. Finally, combining these with the or operator yields the desired result: `|(&(!{Ajahn Pasanno} !{}) &({Ajahn Pasanno} "{*}{*}"))`.
+
+5. You can test this search [here](search:'|(&(!{Ajahn Pasanno} !{})  &({Ajahn Pasanno} "{*}{*}"))'). Try adding @TG to find the six Thanksgiving Retreat exceprts where another teacher contributed.

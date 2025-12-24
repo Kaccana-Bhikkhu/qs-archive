@@ -112,6 +112,8 @@
 <p>To search for text, tags, or teachers, simply type the text into the search bar.</p>
 <p>By default the search finds text within words. To find whole words only, enclose the word in double quotes. To find a phrase, enclose the phrase in double quotes.</p>
 <p>For example, searching for <code>Thai</code> finds both Thai and Thailand, but searching for <code>"Thai"</code> finds only Thai.</p>
+<h2 id="sorting-by-relevance">Sorting by relevance</h2>
+<p>The December 2025 release attempts to prioritize the most useful search results. It does this by moving featured excerpts and excerpts which match text search terms in the most relevant places to the top of the results page. These features can be turned off by deselecting the appropriate check boxes on the search page. If neither check box is selected, excerpts are listed in chronological order.</p>
 <h2 id="searching-for-tags">Searching for tags</h2>
 <p>Use brackets to search for excerpts tagged with specific tags:</p>
 <p>Search for a single tag: <code>[Happiness]</code></p>
@@ -157,6 +159,13 @@
 <p>Search for Spirit Rock Daylongs: <code>@SRD</code></p>
 <p>Search for Upāsikā Days: <code>@UD</code></p>
 <p>Search for events from the year 2015: <code>@*2015</code></p>
+<h2 id="boolean-search-operations">Boolean search operations</h2>
+<p>Boolean search operations can be used by grouping terms in operator-prefix notation: <code>X(term1 term2 term3 ...)</code>, where the operator <code>X</code> is one of the following:</p>
+<p><strong><code>|</code></strong> Or: Only one term must match. <br>
+<strong><code>&amp;</code></strong> And: All terms must match. <br>
+<strong><code>~</code></strong> Like And, but all terms must match in the same search blob (see <a href="#advanced-searching">Advanced searching</a> below).</p>
+<p>Thus <code>|([Mindfulness] [Right Mindfulness])</code> finds excerpts matching either of these tags and <code>~(#Comment# {Ajahn Pasanno})</code> finds comments made by Ajahn Pasanno but not excerpts in which Ajahn Pasanno responds to a comment made by someone else.</p>
+<p>Search terms or groups preceeded by <code>!</code> are negated, e.g. <code>!Thai</code> finds all excerpts not containing the characters <code>Thai</code>, and <code>!|({Ajahn Pasanno} {Ajahn Amaro} {Ajahn Karunadhammo})</code> finds excerpts to which none of these teachers contributed.</p>
 <h2 id="advanced-searching">Advanced searching</h2>
 <p>To go beyond the recipies above, it is necessary to understand the search engine in  detail. The search engine converts excerpts and annotations into a series of blobs in which special characters are used to indicate tags, teachers, kinds, and events. For example, this excerpt:</p>
 <p><img alt="Example Excerpt" src="../images/ExampleExcerpt.png" /></p>
@@ -179,8 +188,25 @@
 <p><code>*</code> matches any number of characters except those with special meaning</p>
 <p><code>$</code> matches a word boundary</p>
 <p>Spaces divide individual search strings except for groups of characters enclosed in double quotes. Characters enclosed in double quotes only match word boundaries, but this can be changed using <code>*</code>. For example, <code>"Thai*"</code> and <code>$Thai</code> are equivalent queries.</p>
-<p>Search terms preceeded by <code>!</code> are negated, e.g. <code>!Thai</code> finds all excerpts not containing the characters <code>Thai</code>.</p>
 <p>Search terms enclosed in backticks are raw regular expressions, e.g. <code>`@.*200[0-9]`</code> finds all excerpts from events in the decade starting in 2000. <a href="https://regexr.com/" target="_blank">regexr.com</a> is a good reference and playground for building regular expressions.</p>
+<p>With a bit of ingenuity, complex searches can be built up out of simpler components. For example, suppose you want to find all excerpts where someone other than Ajahn Pasanno contributed. This search can be constructed as follows:</p>
+<ol>
+<li>
+<p><code>!{Ajahn Pasanno}</code> finds all excerpts with a blob without Ajahn Pasanno as a teacher.</p>
+</li>
+<li>
+<p>But some of these blobs have no teachers at all. Blobs with no teacher contain <code>{}</code>, so these can be eliminated by adding a term to the search to get <code>!{Ajahn Pasanno} !{}</code>.</p>
+</li>
+<li>
+<p>But we would also like to find excerpts in which both Ajahn Pasanno and another teacher contribute. <code>"{*}{*}"</code> finds excerpts that have blobs with at least two teachers. If one of these is Ajahn Pasanno, the other must be someone else. Thus <code>{Ajahn Pasanno} "{*}{*}"</code> finds all excerpts with two-teacher blobs in which Ajahn Pasanno contributes.</p>
+</li>
+<li>
+<p>Finally, combining these with the or operator yields the desired result: <code>|(&amp;(!{Ajahn Pasanno} !{}) &amp;({Ajahn Pasanno} "{*}{*}"))</code>.</p>
+</li>
+<li>
+<p>You can test this search <a href="../search/Text-search.html?q=%7C%28%C2%A7%28%21%7BAjahn%20Pasanno%7D%20%21%7B%7D%29%20%20%C2%A7%28%7BAjahn%20Pasanno%7D%20%22%7B%2A%7D%7B%2A%7D%22%29%29&amp;search=x&amp;featured=&amp;relevant=">here</a>. Try adding @TG to find the six Thanksgiving Retreat exceprts where another teacher contributed.</p>
+</li>
+</ol>
   </div>
 
 </body>
