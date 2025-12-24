@@ -338,6 +338,12 @@ def PrintTranslatorCount():
         mostCommon = sorted(translationCount.items(),key = lambda item:-item[1])
         print("Text:",uid,"Sutta count:",len(translatorDict),"Translations:",mostCommon)
 
+def DhammapadaVerses() -> dict[int,str]:
+    """Return a dict of Dhammapada verses."""
+    with open("sutta/dhammapada/Dhammapada.json", 'r', encoding='utf-8') as file:
+        dhammapada = json.load(file)
+
+    return {int(n):verse for n,verse in dhammapada.items() if re.match(r"[0-9]",n)}
 
 if __name__ == "__main__":
     Alert.verbosity = 3

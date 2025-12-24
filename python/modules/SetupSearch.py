@@ -355,8 +355,7 @@ def SessionEventHtml() -> dict[str,str]:
 
 def TextBlobs() -> Iterator[dict]:
     """Return a blob for each text (sutta or vinaya reference)."""
-    with open("sutta/dhammapada/Dhammapada.json", 'r', encoding='utf-8') as file:
-        dhammapada = json.load(file)
+    dhammapada = Suttaplex.DhammapadaVerses()
     BuildReferences.ReadReferenceDatabase()
     for text,linkInfo in BuildReferences.gSavedReferences["text"].items():
         reference = BuildReferences.TextReference.FromString(text)
@@ -369,7 +368,7 @@ def TextBlobs() -> Iterator[dict]:
         if reference.n0:
             if reference.text == "Dhp":
                 linkedPart = f"{text}"
-                suffix = f': “{Utils.EllideText(dhammapada[str(reference.n0)],60,endAtWordBoundary=True)}”'
+                suffix = f': “{Utils.EllideText(dhammapada[reference.n0],40,endAtWordBoundary=True)}”'
             else:
                 parts = [t for t in textSearches if t]
                 linkedPart = parts[0] if len(parts) == 1 else f"{parts[0]}: {parts[1]}"

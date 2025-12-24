@@ -20,6 +20,7 @@ from functools import lru_cache
 
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
+gDhammapada:dict[int:str] = None # Loaded later on
 
 class ReferenceItem(TypedDict):
     """Stores the link to a single refernce."""
@@ -780,7 +781,10 @@ class SingleLevelHeadings(Heading):
         headingCode = headingCode or self.groupCode
         name = headingCode.FullName()
         if isinstance(headingCode,TextReference):
-            translatedTitle = Suttaplex.Title(headingCode.Uid())
+            if headingCode.text == "Dhp":
+                translatedTitle = f'“{Utils.EllideText(gDhammapada[headingCode.n0],40,endAtWordBoundary=True)}”'
+            else:
+                translatedTitle = Suttaplex.Title(headingCode.Uid())
             if translatedTitle:
                 name += f": {translatedTitle}"
         icons = headingCode.LinkIcons()
@@ -1023,10 +1027,14 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
 def ReferencesMenu() -> Html.PageDescriptorMenuItem:
     """Create the References menu item and its associated submenus."""
+    global gDhammapada
+    gDhammapada = Suttaplex.DhammapadaVerses()
 
     referencesMenu = TextMenu()
     yield Html.PageInfo("References","texts/Sutta.html")
 
     baseTagPage = Html.PageDesc()
     yield from baseTagPage.AddMenuAndYieldPages(referencesMenu,**Build.SUBMENU_STYLE)
+
+    gDhammapada = None # Clear storage space
     
