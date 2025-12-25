@@ -456,7 +456,7 @@ def RemakeFuture(paramStr: str) -> bool:
         for newExcerpt in newExcerpts:
             gFeaturedDatabase["excerpts"][newExcerpt] = ExcerptEntry(Database.FindExcerpt(newExcerpt))
 
-        Alert.info("Remake and reshuffle the featured excerpt calendar starting",preserveDays,"days in the future.")
+        Alert.info("Remake the featured excerpt calendar starting",preserveDays,"days in the future.")
         Alert.info("Removed",len(excerptsRemoved),"demoted excerpts:",excerptsRemoved,"; added",len(newExcerpts),"new excerpts.")
 
         Trim("quiet")
@@ -477,24 +477,6 @@ def Trim(paramStr: str) -> bool:
     elif paramStr != "quiet":
         Alert.info("No changes made to database.")
     return bool(removedEntries)
-    
-def Extend(paramStr: str,goodDatabase:bool = True) -> bool:
-    """Extend the calendar by adding the shuffled contents of the database."""    
-    entries = FeaturedExcerptEntries()
-    calendar = list(entries)
-    random.shuffle(calendar)
-
-    oldExcerptCount = len(gFeaturedDatabase["excerpts"])
-    for code,entry in entries.items():
-        if code not in gFeaturedDatabase["excerpts"]:
-            gFeaturedDatabase["excerpts"][code] = entry
-
-    gFeaturedDatabase["calendar"] += calendar
-
-    Alert.info("Extended the featured calendar by",len(calendar),"entries")
-    if addedExcerpts := len(gFeaturedDatabase["excerpts"]) - oldExcerptCount:
-        Alert.info("Added",addedExcerpts,"new excerpt(s) to the database.")
-    return True
 
 def Extend(paramStr: str) -> bool:
     """Extend the calendar by adding the shuffled contents of the database."""    

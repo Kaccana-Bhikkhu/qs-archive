@@ -800,17 +800,30 @@ main.main-content p {
 	width: 100%;
 }
 
-.holiday-banner {
+#todays-excerpt p.holiday-banner {
 	text-decoration: underline;
+	font-size: 1.2rem;
+	font-weight: 500;
+	text-align: center;
 	margin-bottom: 1rem;
+	color: var(--color-primary);
+	background-color: #f5b95f;
+	padding: 1rem 1rem;
+	border-radius: 0.4rem;
+	box-shadow: 0px 1px 1px #b5a26c;
 }
 
-#random-excerpt .holiday-banner {
+#random-excerpt p.holiday-banner {
+	text-decoration: underline;
 	font-size: 1.3rem;
-	font-weight: 450;
-	line-height: 1.3;
-    letter-spacing: 0.5px;
-    color: var(--color-primary);
+	font-weight: 500;
+	margin-bottom: 1rem;
+	color: var(--color-primary);
+	background-color: #f5b95f;
+	padding: 1.3rem 2.2rem;
+	border-radius: 0.4rem;
+	box-shadow: 0px 1px 1px #b5a26c;
+	line-height: 1.8;
 }
 
 /* Meditation Timer Styles */
