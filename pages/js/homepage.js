@@ -516,22 +516,28 @@ function setupAutoComplete() {
 }
 
 function setupOptionalSuttaRefs() {
-    // Configure event listeners to link suttas to https://sutta.readingfaithfully.org/ when the alt/option key is pressed.
+    // Link suttas to local pages when the alt/option key is pressed
+    // and to https://suttacentral.express/ when the shift key is pressed.
 
     document.addEventListener("click", function(event) {
-        if (event.altKey) {
+        if (event.altKey || event.ctrlKey) {
             let hyperlink = event.target;
             while (hyperlink && !hyperlink.href) {
                 hyperlink = hyperlink.parentElement;
             }
             if (hyperlink) {
-                let suttaPage = hyperlink.dataset.altHref;
-                if (suttaPage) {
-                    suttaPage = suttaPage.replace("../","");
-                    debugLog("Opening sutta page:",suttaPage);
-                    let parts = suttaPage.split("#");
-                    openLocalPage(parts[0],"",parts.length > 1 ? parts[1] : "");
+                if (event.altKey) {
+                    let suttaPage = hyperlink.dataset.altHref;
+                    if (suttaPage) {
+                        event.preventDefault();
+                        suttaPage = suttaPage.replace("../","");
+                        debugLog("Opening sutta page:",suttaPage);
+                        let parts = suttaPage.split("#");
+                        openLocalPage(parts[0],"",parts.length > 1 ? parts[1] : "");
+                    }
+                } else {
                     event.preventDefault();
+                    window.open(hyperlink.href.replace("https://suttacentral.net/","https://suttacentral.express/"),"_blank");
                 }
             }
         }

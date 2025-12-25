@@ -5,12 +5,14 @@ from __future__ import annotations
 
 import os
 import re
+from enum import Enum
 import Utils, Alert, Link
 from typing import NamedTuple, Iterable
 from bs4 import BeautifulSoup
 import urllib.error, urllib.parse
 from collections import defaultdict
 import itertools
+import BuildReferences
 
 class UrlInfo(NamedTuple):
     """Information about a given URL."""
@@ -140,13 +142,32 @@ def CheckLinksInPages(pages: Iterable[str]) -> None:
     Alert.info(len(urlsToCheck),"urls to check.")
     CheckUrls(urlsToCheck)
 
+class StrEnum(str,Enum):
+    pass
+class LinkType(StrEnum):
+    ABOUT = "about"
+    DISPATCH = "dispatch"
+    BOOKS = "books"
+    TEXTS = "texts"
+    EVENTS = "events"
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument("--linkCheckMirror",type=str,default="local",help="Check links in this mirror; default: local")
+    parser.add_argument("--linkCheck",type=str,default="all",help="Check links of these type; default: all")
+    parser.add_argument('--linkCheckSCExpress',**Utils.STORE_TRUE,help="Check suttacentral.express instead of regular SC links")
 
 def ParseArguments() -> None:
     gOptions.linkCheckMirror = Link.CheckMirrorName(Link.ItemType.EXCERPT,gOptions.linkCheckMirror)
-    
+    gOptions.linkCheck = [op.lower() for op in gOptions.linkCheck.split(',')]
+
+    if "all" in gOptions.linkCheck:
+        gOptions.linkCheck = LinkType
+    else:
+        unrecognized = [op for op in gOptions.linkCheck if op not in LinkType]
+        if unrecognized:
+            Alert.warning("--checkLink specifies unknown link type(s)",unrecognized,". Available link types are:",", ".join(LinkType))
+        
 
 def Initialize() -> None:
     pass
@@ -155,25 +176,45 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    Alert.info("Checking about pages...")
-    aboutUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"about")) if filename.lower().endswith(".html")]
-    aboutUrls = [Utils.PosixJoin(gOptions.pagesDir,"homepage.html")] + \
-        [Utils.PosixJoin(gOptions.pagesDir,"about",filename) for filename in aboutUrls]
-    CheckLinksInPages(aboutUrls)
+    if (LinkType.ABOUT in gOptions.linkCheck):
+        Alert.info("Checking about pages...")
+        aboutUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"about")) if filename.lower().endswith(".html")]
+        aboutUrls = [Utils.PosixJoin(gOptions.pagesDir,"homepage.html")] + \
+            [Utils.PosixJoin(gOptions.pagesDir,"about",filename) for filename in aboutUrls]
+        CheckLinksInPages(aboutUrls)
 
-    Alert.info("Checking dispatch pages...")
-    dispatchUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"dispatch")) if filename.lower().endswith(".html")]
-    dispatchUrls = [Utils.PosixJoin(gOptions.pagesDir,"dispatch",filename) for filename in dispatchUrls]
-    CheckLinksInPages(dispatchUrls)
+    if (LinkType.DISPATCH in gOptions.linkCheck):
+        Alert.info("Checking dispatch pages...")
+        dispatchUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"dispatch")) if filename.lower().endswith(".html")]
+        dispatchUrls = [Utils.PosixJoin(gOptions.pagesDir,"dispatch",filename) for filename in dispatchUrls]
+        CheckLinksInPages(dispatchUrls)
 
-    Alert.info("Checking extra book links...")
-    bookUrls = defaultdict(list)
-    for book in gDatabase["reference"].values():
-        if book["otherUrl"]:
-            bookUrls[book["otherUrl"]].append(book["abbreviation"])
-    Alert.info(len(bookUrls),"urls to check.")
-    CheckUrls(bookUrls)
+    if (LinkType.BOOKS in gOptions.linkCheck):
+        Alert.info("Checking extra book links...")
+        bookUrls = defaultdict(list)
+        for book in gDatabase["reference"].values():
+            if book["otherUrl"]:
+                bookUrls[book["otherUrl"]].append(book["abbreviation"])
+        Alert.info(len(bookUrls),"urls to check.")
+        CheckUrls(bookUrls)
 
-    Alert.info("Checking event pages...")
-    CheckLinksInPages(GetEventLinks())
+    if (LinkType.EVENTS in gOptions.linkCheck):
+        Alert.info("Checking event pages...")
+        CheckLinksInPages(GetEventLinks())
     
+    if (LinkType.TEXTS in gOptions.linkCheck):
+        Alert.info("Checking sutta links...")
+        BuildReferences.ReadReferenceDatabase()
+        textUrls:dict[str,list[str]] = {}
+        for text in BuildReferences.gSavedReferences["text"]:
+            ref = BuildReferences.TextReference.FromString(text)
+            link = ref.SuttaCentralLink()
+            if link:
+                if gOptions.linkCheckSCExpress:
+                    link = link.replace("https://suttacentral.net/","https://suttacentral.express/")
+                textUrls[link] = [text]
+            else:
+                Alert.info(text,"has no SuttaCentral link.")
+        Alert.info(len(textUrls),"urls to check.")
+        CheckUrls(textUrls)
+        

@@ -6,7 +6,8 @@
      - [Upāsakā Day 2017: Becoming the Buddha](event:UD2017-1).
  - Search results are [sorted by relevance](about:search-instructions#sorting-by-relevance).
  - Display special excerpts on the homepage on significant anniversaries.
- - Link to Bhante Buddharakkhita's tranlsation of the Dhammapada and John D. Ireland's translation of the Itivuttaka.
+ - Link to Bhante Buddharakkhita's tranlsation of the [Dhammapada](../texts/Dhp.html) and John D. Ireland's translation of the [Itivuttaka](../texts/Iti.html).
+ - Ctrl-click on suttas to link to [SuttaCentral Express](https://suttacentral.express).
  - [Boolean search operators](about:search-instructions#boolean-search-operations).
 
 ## Content
