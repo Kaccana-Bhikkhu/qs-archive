@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
-const DEBUG = true;
+const DEBUG = false;
 const PEEK_FUTURE = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json

@@ -2919,7 +2919,10 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
         path,fileName = Utils.PosixSplit(redirect["oldPage"])
         if path not in dirsToWrite:
             continue
-
+        
+        if writer.IsRegistered(redirect["oldPage"]):
+            Alert.error("Redirect",redirect,"attempts to redirect a file that already exits. Ignoring this redirect.")
+            continue
         if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"])):
             Alert.error("Redirect",redirect,"points to non-existant file",redirect["newPage"])
         if redirect["type"] == "Soft":
