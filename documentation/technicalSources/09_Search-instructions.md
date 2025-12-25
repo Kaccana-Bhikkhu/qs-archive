@@ -1,7 +1,7 @@
 [Abhayagiri library](photo:Abhayagiri library.jpg)
 
 
-The [search page](../search/Text-search.html) allows one to search excerpts for text, tags, and teachers. One can narrow the search to specific kinds of teaching or events. Simple queries are easy, but more complex searches require an understanding of how the search engine works. Read this page only as far as you need to and then start searching.
+The [search page](../search/Text-search.html?featured=&relevant=) allows one to search excerpts for text, tags, and teachers. One can narrow the search to specific kinds of teaching or events. Simple queries are easy, but more complex searches require an understanding of how the search engine works. Read this page only as far as you need to and then start searching.
 
 The December 2024 release adds a "Search all" button which simultaneously searches key topics, subtopics, tags, teachers, events, and excerpts. Most of the documentation below still applies.
 

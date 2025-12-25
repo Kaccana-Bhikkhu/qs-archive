@@ -1,6 +1,6 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-## New in the November 2025 release:
+## New in the December 2025 release:
  - New content:
      - [2013 Winter Retreat](event:WR2013): The first 27 sessions are now available.
      - [Upāsakā Day 2017: Becoming the Buddha](event:UD2017-1).
@@ -46,7 +46,7 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - Various bugs and glitches fixed.
 ### January 2024:
 - Completed [Winter Retreat 2014](event:WR2014): Our Roots in the Thai Forest Tradition
-- [Text search feature](../search/Text-search.html)
+- [Text search feature](../search/Text-search.html?featured=&relevant=)
 ### July 2024:
 - Added much material from the [2001 Ajahn Chah Weekend](event:Chah2001). Some sessions have been omitted pending obtaining teacher consent.
 - Finalized the [license details](about:license).
@@ -55,7 +55,7 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - October 2017 Upāsikā Day: [Can We Function Without Attachement?](event:UD2017-4)
 - Two Q&A sessions with Ajahn Pasanno from [Abhayagiri's 25th Anniversary Retreat](event:Anniversary2021).
 - Almost all excerpts from the [2001 Ajahn Chah Weekend](event:Chah2001) are now available. 
-- [Search for tags](../search/Text-search.html)
+- [Search for tags](../search/Text-search.html?featured=&relevant=)
 ### October 2024:
 - Featured excerpts marked <i class="fa fa-star" style="color: #9b7030;"></i> highlight the best material in the Archive. Look for them at the top of any tag page or [see them all together](../indexes/AllExcerpts-featured.html).
 - [Key topics](../indexes/KeyTopics.html?hideAll) group tags and featured excerpts into a thematic progression.
@@ -71,8 +71,8 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - Fragment annotations allow the Archive to feature only the best part of an excerpt.
 - Audio splicing allows joining non-contiguous audio clips and removing silence.
 ### December 2024:
-- [Search all](../search/Text-search.html) allows searching key topics, tags, teachers, events, and excerpts at the same time.
-- [Random featured excerpts](../search/Text-search.html?q=&search=random)
+- [Search all](../search/Text-search.html?featured=&relevant=) allows searching key topics, tags, teachers, events, and excerpts at the same time.
+- [Random featured excerpts](../search/Featured.html)
 - Material from Abhayagiri's [20th](event:Anniversary2016), [25th](event:Anniversary2021), and [28th](event:Anniversary2024) anniversaries
 - [Practice and Study Day 2023](event:PSD2023): Mindfulness of Breathing
 - More featured excerpts including [Ajahn Chah's teaching to Marjorie](excerpt:Chah2001_S02_F03)
