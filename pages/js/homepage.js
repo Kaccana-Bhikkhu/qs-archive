@@ -266,10 +266,10 @@ function initializeSearchFeatured() {
     let nextButton = document.getElementById("random-next");
     if (prevButton || nextButton) {
         prevButton.addEventListener("click", function(event) {
-            displayNextFeaturedExcerpt(event.shiftKey ? -30: -1);
+            displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? -30: -1);
         });
         nextButton.addEventListener("click", function(event) {
-            displayNextFeaturedExcerpt(event.shiftKey ? 30: 1);
+            displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? 30: 1);
         });
         initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);

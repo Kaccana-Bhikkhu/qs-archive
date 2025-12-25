@@ -57,12 +57,12 @@ def RawSuttaplex(uid:str) -> dict[str]:
     with Utils.OpenUrlOrFile(suttaplexURL) as file:
         suttaplex = json.load(file)
     
-    if uid == "ud": # Convert named Udana sections to numbers
-        udanaSection = 1
+    if uid in ("ud","snp"): # Convert named sections to numbers
+        section = 1
         for sutta in suttaplex:
-            if sutta["uid"].startswith("ud-"):
-                sutta["uid"] = f"ud{udanaSection}"
-                udanaSection += 1
+            if sutta["uid"].startswith(f"{uid}-"):
+                sutta["uid"] = f"{uid}{section}"
+                section += 1
 
     return suttaplex
 

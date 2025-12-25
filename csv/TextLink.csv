@@ -5,6 +5,9 @@ Vinaya rule direct link,vinayaRule,,,,,"$! (ruleUid := f'pli-tv-{uid[0:2]}-vb-{u
 Mv direct link,Mv,,,,,"$! ExistsOnSC(""pli-tv-kd"",n[0:1]) and f'https://suttacentral.net/pli-tv-kd{n0}/en/brahmali?reference=main{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}' !$"
 Other Vinaya,vinaya & suttaCentral,,,,,"$! ExistsOnSC(f'pli-tv-{uid}',n[0:1]) and f'https://suttacentral.net/pli-tv-{uid}{n0}/en/brahmali?reference=main{""#"" + DotRef(n[1:],3) if len(n) > 1 else """"}' !$"
 ,,,,,,
+Link to named sections,,,,,,
+Sutta Nipāta named sections,Snp,,1,section,,"https://suttacentral.net/snp-{('', 'uragavagga', 'culavagga', 'mahavagga', 'atthakavagga', 'parayanavagga')[n[0]]}"
+Udana named sections,Ud,,1,,,"https://suttacentral.net/ud-{('', 'bodhivagga', 'mucalindavagga', 'nandavagga', 'meghiyavagga', 'sonavagga', 'jaccandhavagga', 'culavagga', 'pataligamiyavagga')[n[0]]}"
 ,,,,,,
 Link to bookmarks within suttas,,,,,,
 Links to PTS verse number,ptsVerses & suttaCentral,,1,,,"$! (mark := SCIndex(uid,n0)) and f'https://suttacentral.net/{mark.uid}/en/{mark.trans}?reference=main%2Cpts{mark.hash}' !$"
@@ -13,7 +16,6 @@ singleRef inner references,singleRef & suttaCentral,,2|3,,,"$! ExistsOnSC(uid,n[
 doubleRef inner references,doubleRef & suttaCentral,,3,,,"$! ExistsOnSC(uid,n[0:2]) and f'https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/sujato?reference=main{""#"" + DotRef(n[2:],2)}' !$"
 ,,,,,,
 Link to whole suttas with prefered translator,,,,,,
-Udana named section links,Ud,,1,,,"https://suttacentral.net/ud-{('', 'bodhivagga', 'mucalindavagga', 'nandavagga', 'meghiyavagga', 'sonavagga', 'jaccandhavagga', 'culavagga', 'pataligamiyavagga')[n[0]]}"
 doubleRef section references,suttaCentral & doubleRef,,1,,,https://suttacentral.net/{uid}{n0}
 Whole sutta references,suttaCentral,,,,,"$! (trans := PreferredTranslator(uid,n)) and f'https://suttacentral.net/{uid}{DotRef(n)}/en/{trans}' !$"
 ,,,,,,

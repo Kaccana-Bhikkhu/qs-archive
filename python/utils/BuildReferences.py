@@ -220,14 +220,14 @@ class TextReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return str(self)
 
-    def SuttaCentralLink(self) -> str:
+    def SuttaCentralLink(self,translator:str = "") -> str:
         """Return the SuttaCentral link for this text."""
         if self.n0 == 0:
             if self.text:
                 return f"https://suttacentral.net/{self.BaseUid()}"
             else:
                 return ""
-        mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [""]
+        mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [translator]
             # ApplySuttaMatchRules usually takes a match, but anything with indices will do.
         return Render.ApplySuttaMatchRules(mockMatch)
     
@@ -241,7 +241,7 @@ class TextReference(NamedTuple):
     def LinkIcons(self) -> list[str]:
         """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
         returnValue = []
-        scLink = self.SuttaCentralLink()
+        scLink = self.SuttaCentralLink(translator="section")
         if scLink:
             returnValue.append(Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
