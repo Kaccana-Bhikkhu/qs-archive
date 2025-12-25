@@ -124,9 +124,15 @@ def SCToExpress(scLink: str) -> str:
     """Convert a link from SuttaCentral to SuttaCentral Express."""
 
     if scLink.startswith("https://suttacentral.net/"):
-        # SuttaCentral Express currently doesn't handle suttas within AN groups, so don't change these links
-        if anSutta := re.match(r"https://suttacentral.net/([asmd]n[0-9]+\.[0-9]+)",scLink):
-            suttaRef = anSutta[1]
+        # Some whole-book links are broken on SC Express, so don't change these links
+        if sutta := re.match(r"https://suttacentral.net/(.*)",scLink):
+            suttaRef = sutta[1]
+            if suttaRef in ("sn","an","thag","thig","mil"):
+                return scLink
+
+        # SuttaCentral Express currently doesn't handle suttas within groups, so don't change these links
+        if sutta := re.match(r"https://suttacentral.net/([asmd]n[0-9]+\.[0-9]+)",scLink):
+            suttaRef = sutta[1]
             if suttaRef in Suttaplex.InterpolatedSuttaDict(suttaRef[0:2]):
                 return scLink
 

@@ -55,7 +55,16 @@ def RawSuttaplex(uid:str) -> dict[str]:
     suttaplexURL = f"https://suttacentral.net/api/suttaplex/{uid}"
         
     with Utils.OpenUrlOrFile(suttaplexURL) as file:
-        return json.load(file)
+        suttaplex = json.load(file)
+    
+    if uid == "ud": # Convert named Udana sections to numbers
+        udanaSection = 1
+        for sutta in suttaplex:
+            if sutta["uid"].startswith("ud-"):
+                sutta["uid"] = f"ud{udanaSection}"
+                udanaSection += 1
+
+    return suttaplex
 
 def ReducedSutaplex(uid:str) -> dict[str]:
     """Read the suttaplex json file uid.json in sutta/suttaplex/raw. Eliminate non-English translations and
