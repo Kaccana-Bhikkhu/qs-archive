@@ -496,17 +496,8 @@ def LinkableItem(item: dict) -> bool:
     
     return True
 
-def LinkItems() -> None:
-    """Find a valid mirror for all items that haven't already been linked to."""
-
-    with Utils.ConditionalThreader() as pool:
-        for itemType,items in gItemLists.items():
-            for item in Utils.Contents(items):
-                if not LinkableItem(item):
-                    continue
-
-                pool.submit(lambda itemType,item: gLinker[itemType].LinkItem(item),itemType,item)
-
+def PrintLinkedItems() -> None:
+    """Print a summary of the newly linked items."""
     for itemType,items in gItemLists.items():
         unlinked = []
         mirrorCount = Counter()
@@ -522,6 +513,47 @@ def LinkItems() -> None:
             Alert.warning(len(unlinked),f"unlinked {itemType} items{'' if len(unlinked) <= 10 else '. The first 10 are'}:",*unlinked[:10])
                           
         Alert.info(itemType + " mirror links:",dict(mirrorCount))
+
+def LinkItems() -> None:
+    """Find a valid mirror for all items that haven't already been linked to."""
+
+    with Utils.ConditionalThreader() as pool:
+        for itemType,items in gItemLists.items():
+            for item in Utils.Contents(items):
+                if not LinkableItem(item):
+                    continue
+
+                pool.submit(lambda itemType,item: gLinker[itemType].LinkItem(item),itemType,item)
+
+    PrintLinkedItems()
+
+def LinkToOldMirrors() -> bool:
+    """Read RenderedDatabase.json and copy the mirrors used by each item to the current items.
+    Returns False if there are errors or any items are not in RenderedDatabase.json."""
+
+    try:
+        oldDatabase = Database.LoadDatabase(gOptions.renderedDatabase)
+    except OSError as error:
+        Alert.error("Unable to load",gOptions.renderedDatabase)
+        return False
+
+    def ExcerptInfo(excerpt: dict) -> tuple[str,int,float,int]:
+        return excerpt["event"],excerpt["sessionNumber"],excerpt["excerptNumber"],excerpt["fileNumber"]
+
+    if not (len(oldDatabase["excerpts"]) == len(gItemLists[ItemType.EXCERPT]) 
+                and all(ExcerptInfo(old) == ExcerptInfo(new) for old,new in zip(oldDatabase["excerpts"],gItemLists[ItemType.EXCERPT]))
+                and set(oldDatabase["audioSource"]) == set(gItemLists[ItemType.AUDIO_SOURCE])
+                and set(oldDatabase["reference"]) == set(gItemLists[ItemType.REFERENCE])):
+        Alert.warning("Database items have changed; unable to copy old mirrors.")
+        return False
+        
+    for oldItems,newItems in zip((oldDatabase["excerpts"],oldDatabase["audioSource"],oldDatabase["reference"]),gItemLists.values()):
+        for old,new in zip(Utils.Contents(oldItems),Utils.Contents(newItems)):
+            if LinkableItem(new):
+                new["mirror"] = old.get("mirror","")
+    Alert.info("Sucessfuly copied old item mirrors from",gOptions.renderedDatabase)
+    PrintLinkedItems()
+    return True
 
 def CheckMirrorName(itemType:str,mirrorName: str) -> str:
     "Check if mirrorName is a valid mirror reference and turn numbers into names."
@@ -565,6 +597,7 @@ def AddArguments(parser) -> None:
 
     parser.add_argument("--linkCheckLevel",type=str,action="append",default=["1"],help="Integer link check level. [ItemType]:[mirror]:LEVEL")
     parser.add_argument('--validateSplitMethod',**Utils.STORE_TRUE,help="Should mp3 metadata validator check the split method?")
+    parser.add_argument('--linkOldMirrors',**Utils.STORE_TRUE,help="Skip the linking step; use mirrors from the existing RenderedDatabase.json file")
 
     """Link check levels are interpreted as follows:
         0: No link checking whatsoever (NoValidation)
@@ -679,4 +712,7 @@ def main() -> None:
         ItemType.REFERENCE: gDatabase["reference"]
     }
     
+    if gOptions.linkOldMirrors and LinkToOldMirrors():
+        return
+
     LinkItems()
