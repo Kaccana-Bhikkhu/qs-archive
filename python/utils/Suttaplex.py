@@ -9,6 +9,7 @@ from collections import Counter
 from typing import TypedDict, Callable
 from functools import lru_cache
 import Alert
+import BuildReferences
 
 scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
 sys.path.append(os.path.join(scriptDir,'python/modules'))
@@ -57,12 +58,23 @@ def RawSuttaplex(uid:str) -> dict[str]:
     with Utils.OpenUrlOrFile(suttaplexURL) as file:
         suttaplex = json.load(file)
     
-    if uid in ("ud","snp"): # Convert named sections to numbers
-        section = 1
+    if uid in BuildReferences.UIDGroupSet("namedVaggas"): # Convert named sections to numbers for these texts
+        vaggaCandidate = None # A sutta record that might be a vagga
+        vaggaCandidateUID = "" # The uid of this candidate
+        previousSection = 0
         for sutta in suttaplex:
-            if sutta["uid"].startswith(f"{uid}-"):
-                sutta["uid"] = f"{uid}{section}"
-                section += 1
+            # Match uids of the form "thag-ekakanipata" but not "thag-ekakanipata-pathamavagga"
+            if (match := re.match(r"([a-z]+)-([a-z]+)$",sutta["uid"])):
+                vaggaCandidate = sutta
+                vaggaCandidateUID = f"{uid}{previousSection + 1}"
+            if (match := re.match(r"([a-z]+)([0-9]+)",sutta["uid"])):
+                # Only vagga candidates which are immediately followed by an increase in number are real vaggas
+                if int(match[2]) > previousSection:
+                    if vaggaCandidate:
+                        vaggaCandidate["uid"] = vaggaCandidateUID
+                        previousSection += 1
+                else:
+                    vaggaCandidate = None
 
     return suttaplex
 

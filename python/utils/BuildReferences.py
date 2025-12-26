@@ -120,6 +120,11 @@ def TextGroupSet(which: str) -> set[str]:
     """Return a set of the texts in this group."""
     return set(gDatabase["textGroup"][which])
 
+@lru_cache(maxsize=None)
+def UIDGroupSet(which: str) -> set[str]:
+    """Return a set of the uids in this group."""
+    return set(t.lower() for t in TextGroupSet(which))
+
 def SCToExpress(scLink: str) -> str:
     """Convert a link from SuttaCentral to SuttaCentral Express."""
 
@@ -149,23 +154,28 @@ class TextReference(NamedTuple):
     @staticmethod
     def FromString(reference: str) -> "TextReference":
         """Create this object from a sutta reference string."""
-        suttaMatch = r"(\w+)\s*([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?"
+        suttaMatch = r"(\w+)\s*([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:\{([a-z]+)\})?"
         """ Sutta reference pattern: uid [n0[.n1[.n2]]]
             Matching groups:
             1: uid: SuttaCentral text uid
-            2-4: n0-n2: section numbers"""
+            2-4: n0-n2: section numbers
+            5: translator"""
         matchObject = re.match(suttaMatch,reference)
         numbers = [int(n) for n in (matchObject[2],matchObject[3],matchObject[4]) if n]
         text = "Kd" if matchObject[1] == "Mv" else matchObject[1] # Mv is equivalent to Kd
 
         # For texts referenced by PTS verse, convert 
         if len(numbers) == 1 and text in ("Snp","Thag","Thig"):
-            pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
-            newNumbers = re.search("[0-9.]+",pageUid)[0]
-            if newNumbers:
-                newNumbers = newNumbers.split(".")
-                numbers = (newNumbers + [numbers[0]])[0:3]
-                numbers = [int(n) for n in numbers]
+            if matchObject[5] == "section":
+                if text in TextGroupSet("doubleRef"):
+                    numbers.append(1) # Add a second number to sections of double reference texts
+            else:
+                pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
+                newNumbers = re.search("[0-9.]+",pageUid)[0]
+                if newNumbers:
+                    newNumbers = newNumbers.split(".")
+                    numbers = (newNumbers + [numbers[0]])[0:3]
+                    numbers = [int(n) for n in numbers]
 
         return TextReference(text,*numbers)
 
@@ -1022,7 +1032,7 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
     bookReferences = CollateReferences("books")
     commentaryRefs,modernRefs = Utils.Partition(bookReferences,lambda r:r.reference.IsCommentary())
-    # WriteReferences(bookReferences,"BookReferences.txt")
+    # WriteReferences(textReferences,"BookReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),

@@ -399,6 +399,17 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),suttaRef["translator"])
         # If suttaRef lacks the mark key, then mark is bookmark
 
+@lru_cache(maxsize=None)
+def VaggaUIDs(text: str) -> dict[int,str]:
+    """Return a list of the vagga uids for this text."""
+
+    returnValue = {}
+    for uid,title in Suttaplex.TitleDict(text.lower()).items():
+        if match := re.match(r"[a-z]+([0-9]+)$",uid): # Match uids like snp4
+            returnValue[int(match[1])] = Utils.slugify(title["original_title"])
+
+    return returnValue
+
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
     Then evaluate the template for that rule and return the link"""
@@ -417,6 +428,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
+    params["vaggaUIDs"] = VaggaUIDs(params["uid"]) if params["uid"] in BuildReferences.TextGroupSet("namedVaggas") else []
 
     if params["uid"] not in gDatabase["text"]:
         Alert.warning(params["fullRef"],"does not match the case of any available texts.")
@@ -482,6 +494,8 @@ def AddTextReference(item:dict,matchObject: re.Match) -> None:
         referenceText = f"{matchObject[1]} {'.'.join(numbers)}"
     else:
         referenceText = matchObject[1]
+    if matchObject[5]:
+        referenceText += "{" + matchObject[5] + "}"
     
     if "texts" in item:
         item["texts"].append(referenceText)
