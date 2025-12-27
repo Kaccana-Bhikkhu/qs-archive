@@ -4,4 +4,4 @@ This archive is an attempt to make the oral teachings of Ajahn Pasanno more acce
 
 The current public release is [abhayagiri.org/questions](https://abhayagiri.org/questions). The [github pages site](https://kaccana-bhikkhu.github.io/qs-archive/) points to a prerelease version which may contain broken links.
 
-The documentation can be found on the [main page](https://www.abhayagiri.org/questions/index.html).
+The documentation can be found on the website [about page](https://www.abhayagiri.org/questions/about/Introduction.html).
