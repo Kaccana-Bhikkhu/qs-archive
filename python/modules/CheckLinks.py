@@ -155,7 +155,6 @@ def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument("--linkCheckMirror",type=str,default="local",help="Check links in this mirror; default: local")
     parser.add_argument("--linkCheck",type=str,default="all",help="Check links of these type; default: all")
-    parser.add_argument('--linkCheckSCExpress',**Utils.STORE_TRUE,help="Check suttacentral.express instead of regular SC links")
 
 def ParseArguments() -> None:
     gOptions.linkCheckMirror = Link.CheckMirrorName(Link.ItemType.EXCERPT,gOptions.linkCheckMirror)
@@ -210,8 +209,7 @@ def main() -> None:
             ref = BuildReferences.TextReference.FromString(text)
             link = ref.SuttaCentralLink()
             if link:
-                if gOptions.linkCheckSCExpress:
-                    link = link.replace("https://suttacentral.net/","https://suttacentral.express/")
+                link = link.replace("https://suttacentral.net/","https://suttacentral.express/")
                 textUrls[link] = [text]
             else:
                 Alert.info(text,"has no SuttaCentral link.")
