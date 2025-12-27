@@ -73,7 +73,7 @@ export function openLocalPage(path,query,bookmark) {
 	let newFullUrl = new URL(location);
 	newFullUrl.hash = `#${path}` + (query ? `?${query}` :"") + (bookmark ? `#${bookmark}` :"");
 
-	history.pushState({}, "", newFullUrl);
+	history.pushState({}, "", String(newFullUrl).replace(/#keep_scroll$/,""));
 	changeURL(newFullUrl.hash.slice(1));
 }
 
@@ -120,7 +120,16 @@ export function configureLinks(frame,url) {
 		if (el.firstChild?.classList?.contains("toggle-view")) return;
 			// Don't modify href links of toggle-view togglers
 		let href = el.getAttribute("href");
-		if (!href || href.match(absoluteURLRegex)) return;
+		if (!href)
+			return;
+		if (href.match(absoluteURLRegex)) {
+			// Switch links back to suttacentral.net if Javascript is running.
+			if (/suttacentral\.express\/./.test(href) && !el.classList.contains("express")) {
+				// Don't switch the vanilla sc express site or specially flagged links.
+				el.href = href.replace("//suttacentral.express/","//suttacentral.net/")
+			}
+			return;
+		}
 		if (href.endsWith("#noframe")) { // Code to escape javascript frame
 			el.href = el.href.replace("#noframe","");
 			return;
@@ -161,7 +170,7 @@ export function configureLinks(frame,url) {
 async function changeURL(pUrl,scrollTo = null) {
 	if (!pUrl)
 		pUrl = "homepage.html";
-	pUrl = decodeURIComponent(pUrl);
+	pUrl = decodeURIComponent(pUrl); // Other pages don't use # in search queries
 	debugLog("changeURL",pUrl);
 	let fileName = pUrl.match(/^.*?\.html/i)[0];
 	await fetch("./" + fileName)

@@ -33,6 +33,26 @@ function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
+const encodedSearchChars = ["?","=","#","&",":","/","%"];
+export function encodeSearchQuery(query) {
+    let encodeDict = {};
+    for (let n = 0; n < encodedSearchChars.length; n++) {
+        encodeDict[encodedSearchChars[n]] = String.fromCharCode(0xA4 + n);
+    }
+    let encodeRegExp = new RegExp(`[${encodedSearchChars.join("")}]`,"g")
+    return query.replaceAll(encodeRegExp,(c) => encodeDict[c])
+} 
+
+function decodeSearchQuery(query) {
+    let decodeDict = {};
+    for (let n = 0; n < encodedSearchChars.length; n++) {
+        decodeDict[String.fromCharCode(0xA4 + n)] = encodedSearchChars[n];
+    }
+    let decodeRegExp = new RegExp(`[${encodeSearchQuery(encodedSearchChars.join(""))}]`,"g")
+    return query.replaceAll(decodeRegExp,(c) => decodeDict[c])
+}
+
+
 function nbsp(count) {
     return "&nbsp;".repeat(count);
 }
@@ -90,7 +110,7 @@ function matchEnclosedText(separators,dontMatchAfterSpace) {
     // Return a regex string that matches the contents between separators.
     // Separators is a 2-character string like '{}'
     // Match all characters excerpt the end character until a space is encountered.
-    // If any characters in dontMatchAfterSpace are encountered, match only up until the space.
+    // After a space if any characters in dontMatchAfterSpace are encountered, don't match the text.
     // If the end character is encountered, match it.
 
     let escapedStart = regExpEscape(separators[0]);
@@ -134,18 +154,7 @@ class SearchBase {
     // Abstract search class; matches either nothing or everything depending on negate
     negate = false; // This flag negates the search
 
-    matchesBlob(blob) { // Does this search term match a given blob?
-        return negate; 
-    }
-
     matchesItem(item) { // Does this search group match an item?
-        if (this.negate) {
-            debugLog("negate")
-        }
-        for (const blob of item.blobs) {
-            if (this.matchesBlob(blob))
-                return !this.negate;
-        }
         return this.negate;
     }
 
@@ -156,6 +165,13 @@ class SearchBase {
                 result.push(item)
         }
         return result;
+    }
+
+    regExpBits() { 
+        // Return a list of regular expressions included in the search.
+        // Used to sort the search results.
+
+        return [];
     }
 }
 
@@ -213,7 +229,13 @@ class SearchTerm extends SearchBase {
             }
             debugLog("searchElement:",searchElement,finalRegEx);
         }
-        this.matcher = new RegExp(finalRegEx);
+        try {
+            this.matcher = new RegExp(finalRegEx);
+        } catch (err) {
+            console.error(err);
+            throw new Error(`Invalid ${this.rawRegExp ? "regular expression" : "search term"}: ${searchElement}`);
+        }
+        
 
         if (this.matchesMetadata)
             return; // Don't apply boldface to metadata searches or negated character classes
@@ -239,11 +261,28 @@ class SearchTerm extends SearchBase {
         }
         return this.matcher.test(blob);
     }
+
+    matchesItem(item) { // Does this search group match an item?
+        for (const blob of item.blobs) {
+            if (this.matchesBlob(blob))
+                return !this.negate;
+        }
+        return this.negate;
+    }
+
+    regExpBits() {
+        return this.negate ? [] : [this.matcher];
+    }
+
+    toString() {
+        return (this.negate ? "!`" : "`") + this.matcher.source +"`"
+    }
 }
 
 class SearchGroup extends SearchBase {
     // An array of searchTerms. Subclasses define different operations (and, or, single item match)
     terms = []; // An array of searchBase items
+    prefixChar = ""; // The prefix character for this search type
 
     constructor() {
         super()
@@ -254,27 +293,54 @@ class SearchGroup extends SearchBase {
     }
 
     matchesItem(item) { // Does this search group match an item?
-        for (const blob of item.blobs) {
-            let allTermsMatch = true;
-            for (const term of this.terms) {
-                if (!term.matchesBlob(blob))
-                    allTermsMatch = false;
-            }
-            if (allTermsMatch)
-                return true;
+        return this.negate; // Subclasses must implement this for functionality
+    }
+
+    get boldTextMatcher() {
+        // Join the regular expressions of our terms with "|" to match any of them
+        let boldRegExps = this.terms.map((term) => term.boldTextMatcher).filter((regExp) => regExp);
+        return boldRegExps.join("|");
+    }
+
+    regExpBits() {
+        if (this.negate)
+            return [];
+        let bits = [];
+        for (let term of this.terms) {
+            bits = bits.concat(term.regExpBits());
         }
-        return false;
+        return bits;
+    }
+
+    toString() {
+        console.log(this)
+        return `${this.negate ? "!" : ""}${this.prefixChar}(${this.terms.map((term) => String(term)).join(" ")})`;
     }
 }
 
 class SearchAnd extends SearchGroup {
     // This class matches an item only if all of its terms match the item.
+    prefixChar = "&";
+
     matchesItem(item) { // Does this search group match an item?
         for (const term of this.terms) {
             if (!term.matchesItem(item))
-                return self.negate;
+                return this.negate;
         }
-        return !self.negate;
+        return !this.negate;
+    }
+}
+
+class SearchOr extends SearchGroup {
+    // This class matches an item if any of its terms match the item.
+    prefixChar = "|";
+
+    matchesItem(item) { // Does this search group match an item?
+        for (const term of this.terms) {
+            if (term.matchesItem(item))
+                return !this.negate;
+        }
+        return this.negate;
     }
 }
 
@@ -282,40 +348,56 @@ class SingleItemSearch extends SearchGroup {
     // This class matches an item only if all of its terms match a single blob within that item.
     // This can be used to match excerpts containing stories with tag [Animal]
     // as distinct from excerpts containing a story annotation and the tag [Animal] applied elsewhere.
+    prefixChar = "~";
+
     matchesItem(item) { // Does this search group match an item?
         for (const blob of item.blobs) {
             let allTermsMatch = true;
+            let singleBlobItem = {"blobs":[blob]};
             for (const term of this.terms) {
-                if (!term.matchesBlob(blob))
+                if (!term.matchesItem(singleBlobItem))
                     allTermsMatch = false;
             }
             if (allTermsMatch)
-                return true;
+                return !this.negate;
         }
-        return false;
+        return this.negate;
     }
 }
 
 export class SearchQuery {
     // An array of searchGroups that describes an entire search query
-    groups = []; // An array of searchGroups representing the query
+    searcher; // A searchGroup representing the query
+    queryText; // The text of the query
     boldTextRegex; // A regular expression matching found texts which should be displayed in bold
 
-    constructor(queryText) {
+    constructor(queryText,strict=false) {
         // Construct a search query by parsing queryText into search groups containing search terms.
         // Search groups are specified by enclosure within parenthesis.
-        // Each excerpt must match all search groups.
-        // Search keys within a search group must be matched within the same blob.
-        // So (#Read Pasanno}) matches only kind 'Reading' or 'Read by' with teacher ending with Pasanno
+        // The types of search group are "&": AND, "|": OR, and "~": SINGLE ITEM AND
+        // SINGLE ITEM AND requires all search terms within the group to match in a single blob
+        // So ~(#Quote Pasanno}) matches only kind 'Quote' with teacher ending with Pasanno.
+        // It does not match excerpts which include Ajahn Pasanno as a teacher and have quotes by someone else.
         
         // 0. Convert query to lowercase and remove diacritics
         queryText = queryText.replaceAll(/\\.|[^\\]+/g,(s) => s.startsWith("\\") ? s : s.toLowerCase());
             // Regular expressions may include character classes with capital letters such as \W
             // Blobs do not contain the character "\", so a non-RegExp query containing "\" won't match anything anyway. 
         queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
-    
+        this.queryText = queryText;
+
         // 1. Build a regex to parse queryText into items
+        let regularTextParts = [
+            "[^()&|~! ]",        // Any character that can't be the start or end of a group
+            "[!](?![&|~]?[(])",  // Any "!" that doesn't begin a group
+            "[&|~](?![(])"       // Any "&", "|", or "~" that doesn't begin a group
+        ]
         let parts = [
+            "[&|~]?\\(",
+                // Match the beginning of a search group:
+                // & (or blank): AND - Match if all RegExps in this group match a blob in the item
+                // |: OR - Match if any RegExp in this group matches a blob in the item
+                // ~: Single blob AND: Match if all RegExps match the same blob in the item
             matchQuotes('"'),
                 // Match text enclosed in quotes
             matchQuotes('`'),
@@ -325,55 +407,81 @@ export class SearchQuery {
             "/*" + matchEnclosedText('[]',SPECIAL_SEARCH_CHARS) + "\\+?/*",
                 // Match tags enclosed in brackets
                 // Match the forms: [tag]// (qTag only), //[tag] (aTag only), [tag]+ (fTag only)
-            "[^ ]+"
-                // Match everything else until we encounter a space
+            `(?:${regularTextParts.join("|")})+`
+                // Match everything else until we encounter a space or the beginning or end of a group
         ];
-        // parts = parts.map((s) => "!?" + s); // Add an optional ! (negation) to these parts
-        let partsSearch = `\\s*(!?)(${parts.join("|")})`
+        let partsSearch = `\\s*\\)|\\s*(!?)(${parts.join("|")})`
+        // The final RegExp matches ")" or the optional negation operator "!" followed by any of parts
         debugLog(partsSearch);
         partsSearch = new RegExp(partsSearch,"g");
     
         // 2. Create items and groups from the found parts
+        let currentGroup = strict ? new SingleItemSearch() : new SearchAnd();
+        let groupStack = [currentGroup];
         for (let match of queryText.matchAll(partsSearch)) {
-            let group = new SearchAnd();
-            group.addTerm(match[2].trim());
-            if (match[1]) { // Negate expressions preceeded by '!'
-                group.terms[group.terms.length - 1].negate = true;
+            if (match[0].trim() === ")") { // ")" ends a group
+                if (groupStack.length >= 2) {
+                    groupStack.pop();
+                    currentGroup = groupStack[groupStack.length - 1];
+                }
+            } else if (match[2].endsWith("(")) { // "(" begins a new group
+                switch(match[2][0]) {
+                    case "&":
+                    case "(":
+                        currentGroup = new SearchAnd();
+                        break;
+                    case "|":
+                        currentGroup = new SearchOr();
+                        break;
+                    case "~":
+                        currentGroup = new SingleItemSearch();
+                        break;
+                    default:
+                        console.assert(0,"Unknown search type",match[2][0]);
+                }
+                if (match[1])
+                    currentGroup.negate = true;
+
+                // Add the new group as an item in the previous group and make it current
+                groupStack[groupStack.length - 1].terms.push(currentGroup);
+                groupStack.push(currentGroup);
+            } else {
+                currentGroup.addTerm(match[2].trim());
+                if (match[1]) { // Negate expressions preceeded by '!'
+                    currentGroup.terms[currentGroup.terms.length - 1].negate = true;
+                }
             }
-            this.groups.push(group);
         }
+        this.searcher = groupStack[0];
 
         // 3. Construct the regex to match bold text.
-        let textMatchItems = [];
-        for (const group of this.groups) {
-            for (const term of group.terms) {
-                if (term.boldTextMatcher)
-                    textMatchItems.push(term.boldTextMatcher);
-            }
-        }
+        let textMatchItems = this.searcher.boldTextMatcher;        
         debugLog("textMatchItems",textMatchItems);
-        if (textMatchItems.length > 0)
-            this.boldTextRegex = new RegExp(`(${textMatchItems.join("|")})`,"gi");
+        if (textMatchItems)
+            this.boldTextRegex = new RegExp(textMatchItems,"gi");
         else
-            this.boldTextRegex = /^a\ba/g; // a RegEx that doesn't match anything
+            this.boldTextRegex = /^a\ba/g; // a RegExp that doesn't match anything
         debugLog(this.boldTextRegex);
     }
 
+    setStrict(strict) {
+        // Set the strict mode after this object has been constructed.
+        let newSearcher = strict ? new SingleItemSearch() : new SearchAnd();
+        newSearcher.terms = this.searcher.terms;
+        this.searcher = newSearcher;
+    }
+
     filterItems(items) { // Return an array containing items that match all groups in this query
-        let found = items;
-        for (const group of this.groups) {
-            found = group.filterItems(found);
-        }
-        return found;
+        return this.searcher.filterItems(items);
     }
 
     displayMatchesInBold(string) { // Add <b> and </b> tags to string to display matches in bold
         let boldRegExp = this.boldTextRegex;
         function boldText(text) {
             // Apply <b> tag to text matches but not html tags
-            return text.startsWith("<") ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
+            return /^[<&]/.test(text) ? text : text.replaceAll(boldRegExp,"<b>$&</b>");
         }
-        return string.replaceAll(/<b>[^>]*<\/b>|<[^>]*>|[^<>]*/g,boldText).replaceAll("</b><b>","");
+        return string.replaceAll(/<b>[^>]*<\/b>|<[^>]*>|&[^;]*;|[^<>&]*/g,boldText).replaceAll("</b><b>","");
             // Remove redundant </b> tags
     }
 }
@@ -448,6 +556,7 @@ class Searcher {
     plural; // the plural name of the search.
     nameInResults = ""; // A longer plural name to display in the search results
                         // e.g. "Sutta and Vinaya texts"
+    header = ""; // html header just before the first search result 
     prefix = "<p>"; // html prefix of each search result.
     suffix = "</p>"; // hmtl suffix of each search result.
     separator = ""; // the html code to separate each displayed search result.
@@ -500,10 +609,10 @@ class Searcher {
         // Returns an empty string if the search didn't find anything.
         if (this.foundItems.length > 0) {
             let items = this.renderItems(0,this.itemsPerPage);
-            let heading = "";
+            let heading = this.header;
             if (this.multiSearchHeading) { // Match the formatting of TruncatedSearcher
                 heading = `\n<h3>${this.foundItemsHeader()}</h3>`;
-                items = `<div id="results-${this.code}.b">\n` + items + `\n</div>`
+                items = `<div id="results-${this.code}.b">\n` + this.header + items + `\n</div>`
             }
             return `<div class="${this.divClass}" id="results-${this.code}">${heading}\n${items}\n</div>`;
         } else
@@ -511,7 +620,7 @@ class Searcher {
     }
 
     foundItemsString() {
-        // Returns a string describing the found items in th form "27 tags"
+        // Returns a string describing the found items in the form "27 tags"
         // Returns "" if no items were found.
         if (this.foundItems.length > 0)
             return `${this.foundItems.length} ${this.foundItems.length > 1 ? this.plural : this.name}`;
@@ -574,10 +683,10 @@ class TruncatedSearcher extends Searcher {
 
         let resultsId = `results-${this.code}`;
 
-        let firstItems = "";
+        let firstItems = this.header;
         let moreItems = "";
         if (this.truncateAt > 0 && this.foundItems.length > this.truncateAt) {
-            firstItems = this.renderItems(0,this.truncateAt - 1);
+            firstItems += this.renderItems(0,this.truncateAt - 1);
             let moreItemsBody = this.renderItems(this.truncateAt - 1);
             moreItems = ` 
             <a class="toggle-view hide-self" id="${resultsId}-more" href="#"><i>Show all ${this.foundItems.length}...</i></a>
@@ -586,7 +695,7 @@ class TruncatedSearcher extends Searcher {
             </div>
             `;
         } else {
-            firstItems = this.renderItems();
+            firstItems += this.renderItems();
         }
         
         let hideAll = this.truncateAt <= 0 && this.foundItems.length > -this.truncateAt;
@@ -655,9 +764,8 @@ class PagedSearcher extends Searcher {
             return super.htmlSearchResults();
         }
 
-        let heading = "";
-        if (this.multiSearchHeading)
-            heading = `\n<h3>${this.foundItemsHeader()}</h3>`;
+        let heading = this.multiSearchHeading ? `\n<h3>${this.foundItemsHeader()}</h3>` : "";
+        heading += this.header;
 
         const pageNumberParam = `${this.code}Page`;
         let params = frameSearch(location.hash);
@@ -685,6 +793,9 @@ class PagedSearcher extends Searcher {
         // Display the results of this search in the main window.
         // message is an optional message to display.
         
+        if (DEBUG)
+            message += `Processed query: ${String(this.query.searcher)}<br>`
+
         if (this.foundItems.length > 0) {
             message += `Found ${this.foundItemsString()}:`;
             displaySearchResults(message,this.htmlSearchResults());
@@ -722,11 +833,130 @@ class PagedSearcher extends Searcher {
     }
 }
 
+function uniqueMatches(regExp,stringList) {
+    // Given a regular expression (with /g flag) and a list of strings, return the Set of unique matches
+    // Each match must include at least one letter.
+    let bits = [];
+    for (let s of stringList) {
+        regExp.lastIndex = 0;
+        for (let match of s.matchAll(regExp)) {
+            if (/[a-z]/.test(match))
+                bits.push(match);
+        }
+    }
+    return new Set(bits.map(b => b[0]));
+}
+
+function countedMatches(matchSet) {
+    // Given a set of matches, return an object with two properties:
+    // blob: The unordered concatenation of all unique matches (matches must contain at least one letter)
+    // count: How many unique matches there are
+    
+    let bits = [...matchSet];
+    return {"blob":bits.join(""), "count": bits.length};
+}
+
+function countedText(matchObject) {
+    // Given a RegExp match object, return an object with two properties:
+    // blob: The matched text itself
+    // count: The length of the string divided by 50 characters; minimum 1.0
+
+    if (matchObject)
+        return {"blob":matchObject[0], "count": Math.max(matchObject[0].length / 60.0,1.0)}
+    else
+        return {"blob":"", "count": 0};
+}
+
+let gCommonWordBlob = ""; // This is loaded by ExcerptSearcher
+class RelevanceWeighter {
+    // A class to match blobs against terms of the search query, which returns a weighted sum
+    // of the number of terms that match the blob.
+    query;                  // The SearchQuery object
+    searchParts;            // A list of regular expressions to use for weighting
+    fullWordParts;          // Same as searchParts, but matches only word boundaries
+    matchesCommonWords;     // A list of booleans indicating whether each element of searchParts matches common words
+    entireSearchQuery;      // A dict of RegExp objects that matches the entire search query
+                            // entireSearchQuery[firstChar] is used to match blobs that begin with firstChar
+    explanation = "";       // A string explaining the last call to weightedMatch
+
+    constructor(query) {
+        // query: the SearchQuery object representing the search
+        this.query = query;
+        this.searchParts = query.searcher.regExpBits();
+        this.fullWordParts = this.searchParts.map((regExp) => new RegExp("\\b" + regExp.source + "\\b"));
+        this.matchesCommonWords = this.searchParts.map((regExp) => regExp.test(gCommonWordBlob));
+        
+        // If the query doesn't use special characters, then make regular expressions
+        // that match entire text, tag, and teacher blobs
+        this.entireSearchQuery = {};
+        let specialCharacters = new RegExp(`["\`!${ESCAPED_HTML_CHARS}]`);
+        if (!specialCharacters.test(query.queryText)) {
+            let fullQuerySearch = new SearchQuery(`"${query.queryText}"`);
+            let baseQuery = fullQuerySearch.searcher.regExpBits()[0];
+
+            if (query.queryText.includes(" ")) // Only add additional weight to full text strings if the query contains multiple words
+                this.entireSearchQuery["^"] = baseQuery;
+            this.entireSearchQuery["["] = new RegExp(`\\[${baseQuery.source}\\]`);
+            this.entireSearchQuery["{"] = new RegExp(`\\{${baseQuery.source}\\}`);
+        }
+    }
+
+    weightedMatch(blob,commonWordWeight = 0.5) {
+        // Returns a weighted count of the number of query terms that match this blob
+        const fullWordMultiplier = 3;
+        const fullQueryMultiplier = 3;
+
+        let fullQuery = 0;
+        let fullWords = 0;
+        let partialWords = 0;
+        let fullQueryMatch = this.entireSearchQuery[blob.slice(0,1)];
+        if (fullQueryMatch && fullQueryMatch.test(blob)) {
+            fullQuery = 1;
+        }
+        this.searchParts.forEach((term,index) => {
+            if (term.test(blob)) {
+                let weight = this.matchesCommonWords[index] ? commonWordWeight : 1;
+                if (this.fullWordParts[index].test(blob))
+                    fullWords += weight
+                else
+                    partialWords += weight;
+            }
+        });
+        if (DEBUG) {
+            let explanationBits = [];
+            if (fullQuery)
+                explanationBits.push(`${fullQueryMultiplier}Q`);
+            if (fullWords)
+                explanationBits.push(`${fullWords}*${fullWordMultiplier}W`);
+            if (partialWords)
+                explanationBits.push(String(partialWords));
+            this.explanation = explanationBits.join("+");
+        }
+        
+        return fullQueryMultiplier*fullQuery + fullQueryMultiplier*fullWords + partialWords;
+    }
+}
+
+const UNUSED_OPTIONS = `
+    <input type="checkbox" class="query-checkbox" id="strict">
+    <label for="strict"> Strict search</label>&emsp;
+`;
+const EXCERPT_SEARCH_OPTIONS = `
+<p class="checkboxes">
+    <input type="checkbox" class="query-checkbox" id="featured">
+    <label for="featured"> Featured excerpts first</label>&emsp;
+    <input type="checkbox" class="query-checkbox" id="relevant">
+    <label for="relevant"> Sort by relevance</label>
+</p>`;
+
+const FEATURED_BLOCK = `<div class="title" id="featured">Featured excerpts (NN) — Play all <button id="playFeatured"></button></div>`;
+const OTHER_EXCERPT_BLOCK = `<div class="title" id="featured">Other excerpts</div>`
 export class ExcerptSearcher extends PagedSearcher {
     // Specialised search object for excerpts
     code = "x"; // a one-letter code to identify the search.
     name = "excerpt"; // the name of the search, e.g. "Tag"
     plural = "excerpts"; // the plural name of the search.
+    header = EXCERPT_SEARCH_OPTIONS;
     prefix = ""; // html prefix of each search result.
     suffix = ""; // hmtl suffix of each search result.
     separator = "<hr>"; // the html code to separate each displayed search result.
@@ -740,6 +970,107 @@ export class ExcerptSearcher extends PagedSearcher {
         // Called after SearchDatabase.json is loaded to prepare for searching
         super.loadItemsFomDatabase(database);
         this.sessionHeader = database.searches[this.code].sessionHeader;
+        gCommonWordBlob = database.searches[this.code].commonWordBlob;
+        
+        // Generate blobs for search weighting
+        for (let excerpt of this.items) {
+            let qTags = uniqueMatches(/\[[^\]]*?\]/g,[excerpt.blobs[0].split("//")[0]]);
+            let aTags = uniqueMatches(/\[[^\]]*?\]/g,excerpt.blobs);
+            qTags.forEach((tag) => aTags.delete(tag));
+            excerpt.sortBlob = {
+                "fTag": countedMatches(uniqueMatches(/\[[^\]]*?\]\+/g,excerpt.blobs)),
+                "qTag": countedMatches(qTags),
+                "aTag": countedMatches(aTags),
+                "teacher": countedMatches(uniqueMatches(/\{[^\}]*?\}/g,excerpt.blobs)),
+            }
+            let totalTextBlobWeight = 0.0;
+            excerpt.blobs.forEach((blob,index) => {
+                let key = "text" + String(index);
+                excerpt.sortBlob[key] = countedText(blob.match(/\^[^\^]*?\^/));
+                totalTextBlobWeight += excerpt.sortBlob[key].count;
+            });
+            for (let b in excerpt.sortBlob) {
+                if (!excerpt.sortBlob[b].count)
+                    delete excerpt.sortBlob[b]
+                else if (/text(?!0)/.test(b)) // The weight of all annotations is the sum of all text blobs
+                    excerpt.sortBlob[b].count = totalTextBlobWeight;
+            }
+
+            // Minor adjustments: aTag divisor should include all tags
+            if (excerpt.sortBlob.aTag && excerpt.sortBlob.qTag)
+                excerpt.sortBlob.aTag.count += excerpt.sortBlob.qTag.count;
+            // Don't count teachers with multiple names twice
+            if (excerpt.sortBlob.teacher)
+                excerpt.sortBlob.teacher.count = excerpt.uniqueTeachers;
+        }
+    }
+
+    search(searchQuery) {
+        // Sort the results after searching
+        super.search(searchQuery);
+        let params = frameSearch();
+        if (!(params.has("featured") || params.has("relevant")))
+            return;
+
+        let matcher = new RelevanceWeighter(searchQuery)
+        for (let item of this.foundItems) {
+            item.searchWeight = 0;
+            item.searchExplanation = "";
+        }
+
+        if (params.has("featured")) {
+            let fTagWeights = {
+                "searchedFTag": 900,
+                "otherFTag": 100
+            };
+            for (let item of this.foundItems) {
+                if (!item.sortBlob.fTag)
+                    continue;
+                let explanationBits = [];
+                let commonWordWeight = params.has("relevant") ? 0 : 0.5;
+                item.searchWeight += fTagWeights["searchedFTag"] * matcher.weightedMatch(item.sortBlob.fTag.blob,commonWordWeight);
+                if (matcher.explanation && DEBUG)
+                    explanationBits.push(`(${matcher.explanation})*${fTagWeights.searchedFTag}`);
+                // If we are sorting by featured only or a search term matches one of the fTags,
+                // prioritize excerpts which have more fTags.
+                if ((!params.has("relevant") || item.searchWeight)) {
+                    item.searchWeight += item.sortBlob.fTag.count * fTagWeights["otherFTag"];
+                    if (matcher.explanation && DEBUG)
+                        explanationBits.push(`${item.sortBlob.fTag.count}O*${fTagWeights["otherFTag"]}`)
+                }
+                if (explanationBits.length > 0)
+                    item.searchExplanation = `fTag:[${explanationBits.join(" + ")}]`;
+            }
+        }
+        if (params.has("relevant")) {
+            let searchWeights = {
+                "qTag": 7.0,
+                "aTag": 2.0,
+                "teacher": 2.0,
+                "text0": 3.0,
+                "aText": 1.0
+            };
+
+            for (let item of this.foundItems) {
+                let explanationBits = item.searchExplanation ? [item.searchExplanation] : [];
+                for (let blobKind in item.sortBlob) {
+                    if (blobKind == "fTag")
+                        continue; // fTags are weighted above
+                    let matchCount = matcher.weightedMatch(item.sortBlob[blobKind].blob);
+                    if (matchCount) {
+                        let weight = (searchWeights[blobKind] || searchWeights.aText);
+                        item.searchWeight += matchCount * weight * (1 + 0.5 / item.sortBlob[blobKind].count);
+                        if (DEBUG)
+                            explanationBits.push(`${blobKind}:[(${matcher.explanation})(${weight}*/${item.sortBlob[blobKind].count.toFixed(1)})]`);
+                    }
+                }
+                if (DEBUG)
+                    item.searchExplanation = explanationBits.join(" + ");
+            }
+        }
+
+        // b - a sorts in descending order
+        this.foundItems.sort((a,b) => b.searchWeight - a.searchWeight);
     }
 
     renderItems(startItem = 0,endItem = null) {
@@ -753,17 +1084,53 @@ export class ExcerptSearcher extends PagedSearcher {
         let bits = [];
         let lastSession = null;
 
-        if (this.multiSearchHeading && (this.foundItems.length <= this.itemsPerPage))
+        let params = frameSearch();
+        let headerlessFormat = params.has("featured") || params.has("relevant");
+
+        if (headerlessFormat)
+            bits.push("<hr>")
+        else if (this.multiSearchHeading && (this.foundItems.length <= this.itemsPerPage))
             bits.push("<br/>");
 
-        for (const x of this.foundItems.slice(startItem,endItem)) {
-            if (x.session !== lastSession) {
+        let displayItems = this.foundItems.slice(startItem,endItem);
+        let insideFeaturedBlock = false;
+        if (params.has("featured") && this.foundItems[startItem].sortBlob.fTag) {
+            let featuredCount = 0;
+            while ((featuredCount < displayItems.length) && displayItems[featuredCount].sortBlob.fTag) {
+                featuredCount += 1;
+            }
+            bits.push('<div class="featured">');
+            let featuredBlock = FEATURED_BLOCK.replace("NN",String(featuredCount));
+            if (featuredCount === 1)
+                featuredBlock = featuredBlock.replace("excerpts","excerpt");
+            bits.push(featuredBlock);
+            insideFeaturedBlock = true;
+        }
+        for (const x of displayItems) {
+            if ((x.session !== lastSession) && !headerlessFormat) {
                 bits.push(this.sessionHeader[x.session]);
                 lastSession = x.session;
             }
-            bits.push(this.query.displayMatchesInBold(x.html));
+            if (insideFeaturedBlock && !x.sortBlob.fTag) {
+                bits.pop();
+                bits.push("</div>");
+                bits.push(this.separator);
+                bits.push(OTHER_EXCERPT_BLOCK);
+                insideFeaturedBlock = false;
+            }
+            let excerptHtml = x.html;
+            if (headerlessFormat) {
+                excerptHtml = excerptHtml.replace(/<span class="excerpt-number">.*?<\/span>/s,"")
+            } else {
+                excerptHtml = excerptHtml.replace(/<p class="x-cite">.*?<\/p>/s,"")
+            }
+            if (DEBUG && headerlessFormat)
+                bits.push(`${x.searchExplanation} = ${x.searchWeight.toFixed(2)}`);
+            bits.push(this.query.displayMatchesInBold(excerptHtml));
             bits.push(this.separator);
         }
+        if (insideFeaturedBlock)
+            bits.push("</div>");
         return bits.join("\n");
     }
 }
@@ -848,7 +1215,7 @@ function searchFromURL() {
     }
 
     let params = frameSearch();
-    let query = params.has("q") ? decodeURIComponent(params.get("q")) : "";
+    let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
     let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
 
     debugLog("Called searchFromURL. Query:",query);
@@ -859,21 +1226,42 @@ function searchFromURL() {
         return;
     }
 
-    let searchGroups = new SearchQuery(query);
-    debugLog(searchGroups);
+    try {
+        let searchGroups = new SearchQuery(query,params.has("strict"));
+        debugLog(searchGroups);
+    
+        gSearchers[searchKind].search(searchGroups);
+        gSearchers[searchKind].showResults();
+    } catch (err) {
+        if (err.message.startsWith("Invalid regular expression")) {
+            clearSearchResults(err.message);
+        } else
+            throw err;
+    }
+}
 
-    gSearchers[searchKind].search(searchGroups);
-    gSearchers[searchKind].showResults();
+export function readSearchBar() {
+    // Returns the query string corresponding to what's in the search bar right now.
+
+    let searchInput = frame.querySelector('#search-text');
+    let query = searchInput.value;
+    return encodeURIComponent(encodeSearchQuery(query));
 }
 
 function searchButtonClick(searchKind) {
     // Read the search bar text, push the updated URL to history, and run a search.
     let searchInput = frame.querySelector('#search-text');
     searchInput.blur();
-    let query = searchInput.value;
+    let query = readSearchBar();
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
-    let search = new URLSearchParams({q : encodeURIComponent(query),search : searchKind});
+    let params = frameSearch();
+    let newSearch = {q : query,search : searchKind};
+    if (params.has("featured"))
+        newSearch.featured = "";
+    if (params.has("relevant"))
+        newSearch.relevant = "";
+    let search = new URLSearchParams(newSearch);
     history.pushState({},"",location.href); // First push a new history frame
     setFrameSearch(search); // Then replace the history with the search query
 

@@ -213,10 +213,23 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 
     return ", ".join(bits)
 
-def SearchLink(query:str,searchType:str = "x") -> str:
+def EncodeSearchQuery(query: str) -> str:
+    """Encode special URL characters (?=#&:) as other characters to make URL decoding more robust."""
+
+    charsToEncode = "?=#&:/%"
+    encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
+    return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
+
+def SearchLink(query:str,searchType:str = "x",featured:bool = True,relevant: bool = True) -> str:
     """Returns a link to the search page with a specifed search string."""
 
-    htmlQuery = urllib.parse.urlencode({"q":query,"search":searchType},doseq=True,quote_via=urllib.parse.quote)
+    query = EncodeSearchQuery(query)
+    queryDict = {"q":query,"search":searchType}
+    if featured:
+        queryDict["featured"] = ""
+    if relevant:
+        queryDict["relevant"] = ""
+    htmlQuery = urllib.parse.urlencode(queryDict,doseq=True,quote_via=urllib.parse.quote)
     return f"../search/Text-search.html?{htmlQuery}"
 
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
@@ -572,6 +585,10 @@ Key: (fTags/subtopicFTags:min-max). '/subtopicFTags' is omitted if all featured 
         for tag in tags:
             with a.p():
                 code = ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag])
+                if code in "∅⊟": # Indicate whether the subtopics this tag is part of are also deficient
+                    code = "/".join([code] + [ReviewDatabase.FTagStatusCode(gDatabase["subtopic"][subtopic])
+                                              for subtopic in gDatabase["tag"][tag].get("partOfSubtopics",())
+                                              if gDatabase["subtopic"][subtopic]["subtags"]])
                 tagLink = HtmlTagLink(tag)
                 fTagCount = gDatabase["tag"][tag].get("fTagCount",0)
                 fTagCountStr = str(fTagCount)
@@ -594,6 +611,28 @@ Key: (fTags/subtopicFTags:min-max). '/subtopicFTags' is omitted if all featured 
                     a(f"{code} {tagStyle(tagLink)} {ExcerptCount(tag)} ({fTagCountStr}:{minFTag}-{maxFTag})")
     
     return str(a)
+
+def DeficientTagCount(deficientTags: list[dict[str,str]]) -> str:
+    """Return a string describing the number of deficient tags in the list and other statisticcs."""
+    
+    notInSufficientSubtopic = []
+    for tag in deficientTags:
+        subtopics = gDatabase["tag"][tag].get("partOfSubtopics",())
+        if subtopics:
+            allSubtopicsSufficient = all(ReviewDatabase.OptimalFTagCount(gDatabase["subtopic"][subtopics])[2] >= 0
+                                         for subtopics in subtopics)
+        else:
+            allSubtopicsSufficient = False
+        if not allSubtopicsSufficient:
+            notInSufficientSubtopic.append(tag)
+
+    doublyDeficient = [t for t in deficientTags if ReviewDatabase.OptimalFTagCount(gDatabase["tag"][t])[2] <= -2]
+    singleTopics = [t for t in deficientTags
+                    if any(not gDatabase["subtopic"][topic]["subtags"] for topic in gDatabase["tag"][t].get("partOfSubtopics",()))]
+
+    return f"""Deficient: {len(deficientTags)}, not part of a sufficient subtopic: {len(notInSufficientSubtopic)}<br>
+<b>Doubly deficient</b> ({len(doublyDeficient)}): {', '.join(doublyDeficient)}<br>
+<b>Deficient single subtopics</b> ({len(singleTopics)}): {', '.join(singleTopics)}"""
 
 def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted by number of excerpts."""
@@ -625,25 +664,29 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     # Now yield a printable version for tag counting purposes
     tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
                                 key = lambda tag: (-ExcerptCount(tag),tag))
+    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
 
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
+    if gOptions.uploadMirror == "preview":
+        page.AppendContent(Html.Tag("p")(f"Total tags: {len(gDatabase["tag"])}, Featured tags: {len(tagsSortedByQCount)}, " + DeficientTagCount(deficientTags)))
     page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=True))
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
     yield page
 
     # Make a page with only deficient tags
-    if gOptions.uploadMirror == "preview":
-        deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
-        page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
-        page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
-        page.AppendContent("Deficient tags",section="citationTitle")
-        page.keywords = ["Tags","Deficient tags"]
-        yield page
+    page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
+    page.AppendContent(Html.Tag("p")(DeficientTagCount(deficientTags)))
+    page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
+    page.AppendContent("Deficient tags",section="citationTitle")
+    page.keywords = ["Tags","Deficient tags"]
+    yield page
 
     # Create another version sorted by name. This will be linked to on the alphabetical page.
     tagsSortedByQCount = sorted(tagsSortedByQCount)
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"AlphabeticalTags_print.html")))
+    if gOptions.uploadMirror == "preview":
+        page.AppendContent(Html.Tag("p")(f"Total tags: {len(gDatabase["tag"])}, Featured tags: {len(tagsSortedByQCount)}, " + DeficientTagCount(deficientTags)))
     page.AppendContent(PrintCommonTags(tagsSortedByQCount,countFirst=False))
     page.AppendContent("Alphabetized common tags",section="citationTitle")
     page.keywords = ["Tags","Alphabetized common tags"]
@@ -1688,9 +1731,9 @@ def LinkToPeoplePages(page: Html.PageDesc) -> Html.PageDesc:
         if link and directory != "books":
             outputLinks.append(Html.Tag("a",{"href":link})(f'→ Books by {gDatabase["teacher"][teacher]["attributionName"]}'))
         
-    tag = Database.TagLookup(page.info.title)
-    if tag and directory != "tags":
-        outputLinks.append(HtmlTagLink(tag,text = f'→ Tag [{tag}]'))
+        tag = Database.TagLookup(page.info.title)
+        if tag and directory not in ("tags","clusters"):
+            outputLinks.append(HtmlTagLink(tag,text = f'→ Tag [{tag}]'))
 
     if outputLinks:
         page.AppendContent("&emsp;".join(outputLinks),"smallTitle")
@@ -2071,18 +2114,25 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
 
     searchPageName = "Text-search.html"
     searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",searchPageName)
-    searchPage = Utils.ReadFile(searchTemplate)
+    searchHtml = Utils.ReadFile(searchTemplate)
     
     pageInfo = Html.PageInfo("Search",Utils.PosixJoin(searchDir,searchPageName),titleIB="Search")
-    yield pageInfo
+    yield pageInfo.AddQuery("featured=&relevant=")
+
+    searchPage = Html.PageDesc(pageInfo)
+    searchPage.AppendContent(searchHtml)
+    gSitemap.RegisterPageQuery(pageInfo.file,"featured=&relevant=")
 
     featuredPageName = "Featured.html"
     featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
-    featuredPage = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
+    featuredHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
+    featuredPage = Html.PageDesc(featuredExcerptPageInfo)
+    featuredPage.AppendContent(featuredHtml)
+    gSitemap.RegisterPageQuery(featuredExcerptPageInfo.file,"")
 
     searchMenu = [
-        (pageInfo, searchPage),
-        (featuredExcerptPageInfo,featuredPage)
+        (pageInfo.AddQuery("_keep_query"), searchPage),
+        (featuredExcerptPageInfo.AddQuery("_keep_query"),featuredPage)
     ]
     
     basePage = Html.PageDesc()
@@ -2166,7 +2216,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a.br()
 
         if featuredExcerpts:
-            with a.a(href=SearchLink(f"@{eventCode} +")):
+            with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
                 a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
             a(f"({len(featuredExcerpts)})")
             a.br()
@@ -2423,6 +2473,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
     "Yield a page listing all topic headings."
 
     menuItem = Html.PageInfo("Compact",Utils.PosixJoin(indexDir,"KeyTopics.html"),"Key topics")
+    gSitemap.RegisterPageQuery(menuItem.file,"hideAll")
     yield menuItem.AddQuery("hideAll")
 
     a = Airium()
@@ -2463,10 +2514,15 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
     "Yield a page listing all topic headings."
 
     menuItem = Html.PageInfo("In detail",Utils.PosixJoin(indexDir,"KeyTopicDetail.html"),"Key topics")
+    gSitemap.RegisterPageQuery(menuItem.file,"hideAll")
     yield menuItem.AddQuery("hideAll")
 
     a = Airium()
-    a("Number of featured excerpts for each topic appears in parentheses.<br><br>")
+    a("Number of featured excerpts for each topic appears in parentheses.")
+    if printPage and gOptions.uploadMirror == "preview":
+        deficient = [subtopic["tag"] for subtopic in gDatabase["subtopic"].values() if ReviewDatabase.OptimalFTagCount(subtopic)[2] < 0]
+        a(f"<br><b>Deficient subtopics</b> ({len(deficient)}): {", ".join(deficient)}")
+    a("<br><br>")
     with a.div(Class="listing"):
         for topicCode,topic in gDatabase["keyTopic"].items():
             with a.p(id=topicCode):
@@ -2765,11 +2821,28 @@ def XmlSitemap(siteFiles: FileRegister.HashWriter) -> str:
 
 class HtmlSiteMap:
     """Builds an html site map based on the menus of the pages that we pass it."""
-    pageHtml:Airium = Airium() # Html of the page we have built so far
-    menusAdded:set[str] = set() # The main menu items we have already added to the site map
+    pageHtml:Airium = Airium()      # Html of the page we have built so far
+    menusAdded:set[str] = set()     # The main menu items we have already added to the site map
+    pageQuery:dict[str,str] = {}    # URL queries for pages that override those extracted from menu html code
 
     def __init__(self):
         pass
+
+    def RegisterPageQuery(self,pageFilename:str,query:str) -> None:
+        """Register a special URL query for a page.
+        pageFileName: filename relative to pages/ directory.
+        query: the query string, e.g. 'features=&relevant='."""
+
+        self.pageQuery[pageFilename] = query
+
+    def ReplaceQuery(self,pageInfo: Html.PageInfo) -> Html.PageInfo:
+        """Replace the query in pageInfo.file if the filename has been registered."""
+
+        parsed = urllib.parse.urlparse(pageInfo.file)
+        if parsed.path in self.pageQuery:
+            return pageInfo.AddQuery(self.pageQuery[parsed.path])
+        else:
+            return pageInfo
 
     def RegisterPage(self,page: Html.PageDesc) -> None:
         """Read the menus of this page in order to (possibly) add it to the site map."""
@@ -2780,6 +2853,7 @@ class HtmlSiteMap:
         if highlightedItem.title in self.menusAdded:
             return # Exit if we have already seen this item
         
+        highlightedItem = self.ReplaceQuery(highlightedItem)
         self.menusAdded.add(highlightedItem.title)
 
         otherMenus = []
@@ -2792,6 +2866,7 @@ class HtmlSiteMap:
                 with self.pageHtml.b():
                     self.pageHtml(highlightedItem.title)
                 for item in otherMenus[0].items:
+                    item = self.ReplaceQuery(item)
                     with self.pageHtml.p(Class="indent-1").a(href=item.file):
                         self.pageHtml(item.title)
         else:
@@ -2844,7 +2919,10 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
         path,fileName = Utils.PosixSplit(redirect["oldPage"])
         if path not in dirsToWrite:
             continue
-
+        
+        if writer.IsRegistered(redirect["oldPage"]):
+            Alert.error("Redirect",redirect,"attempts to redirect a file that already exits. Ignoring this redirect.")
+            continue
         if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"])):
             Alert.error("Redirect",redirect,"points to non-existant file",redirect["newPage"])
         if redirect["type"] == "Soft":
@@ -2921,6 +2999,7 @@ def Initialize() -> None:
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
+gSitemap = HtmlSiteMap() # Make the site map accessible to page-building functions
 
 def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
     "Yield all of iterator if yieldAll, otherwise yield only the first element."
@@ -2978,16 +3057,15 @@ def main():
         
         startTime = time.perf_counter()
         pageWriteTime = 0.0
-        sitemap = HtmlSiteMap()
         for newPage in basePage.AddMenuAndYieldPages(sitemapMenu,**MAIN_MENU_STYLE):
             pageWriteStart = time.perf_counter()
             WritePage(newPage,writer)
-            sitemap.RegisterPage(newPage)
+            gSitemap.RegisterPage(newPage)
             pageWriteTime += time.perf_counter() - pageWriteStart
             print(f"{gOptions.info.cannonicalURL}{newPage.info.file}",file=urlListFile)
 
         if gOptions.buildOnly == gAllSections:
-            WritePage(sitemap.Build(),writer) # The site map is only complete when all pages are built
+            WritePage(gSitemap.Build(),writer) # The site map is only complete when all pages are built
 
         Alert.extra(f"Build main loop took {time.perf_counter() - startTime:.3f} seconds.")
         Alert.extra(f"File writing time: {pageWriteTime:.3f} seconds.")

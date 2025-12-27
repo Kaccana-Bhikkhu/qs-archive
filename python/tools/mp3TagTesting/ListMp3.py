@@ -4,7 +4,22 @@ from __future__ import annotations
 
 import os,sys,argparse
 from datetime import timedelta
+import mutagen
 from mutagen.mp3 import MP3
+from mutagen.easyid3 import EasyID3
+from mutagen.id3 import ID3
+
+class CLIP(mutagen.id3.TextFrame):
+    "List of clips"
+
+mutagen.id3.Frames["CLIP"] = CLIP
+EasyID3.RegisterTextKey("clips","CLIP")
+
+class SPLT(mutagen.id3.TextFrame):
+    "Dict describing how this clip was split"
+
+mutagen.id3.Frames["SPLT"] = SPLT
+EasyID3.RegisterTextKey("splitmethod","SPLT")
 
 def TimeDeltaToStr(time: timedelta,decimal:bool = False) -> str:
     """Convert a timedelta object to the form [HH:]MM:SS or [HH:]MM:SS[.sss] if decimal is True."""
@@ -30,7 +45,12 @@ options = parser.parse_args(sys.argv[1:])
 for fileName in sorted(os.listdir(options.directory)):
     path = os.path.join(options.directory,fileName)
     if fileName.endswith(".mp3"):
-        file = MP3(os.path.join(options.directory,fileName))
-        duration = timedelta(seconds=file.info.length)
-        bitRate = f"{file.info.bitrate / 1000} kbps"
-        print('\t'.join((fileName,TimeDeltaToStr(duration),bitRate)))
+        print(os.path.join(options.directory,fileName))
+        mp3File = MP3(os.path.join(options.directory,fileName))
+        duration = timedelta(seconds=mp3File.info.length)
+        bitRate = f"{mp3File.info.bitrate / 1000} kbps"
+
+        id3Tags = EasyID3(os.path.join(options.directory,fileName))
+        clips = str(id3Tags.get("clips"))
+        splitMethod = str(id3Tags.get("splitmethod"))
+        print('\t'.join((fileName,TimeDeltaToStr(duration),bitRate,clips,splitMethod)))

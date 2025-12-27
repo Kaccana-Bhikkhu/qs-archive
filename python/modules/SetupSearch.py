@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import os, json, re
 import Database, BuildReferences, Suttaplex
-import Utils, Alert, ParseCSV, Build, Filter
+import Utils, Alert, ParseCSV, Build, Filter, Mp3DirectCut
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
 from collections import Counter
+from datetime import timedelta
+from bisect import bisect_right
 from SetupFeatured import FeaturedExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
@@ -40,7 +42,6 @@ def RawBlobify(item: str) -> str:
     output = re.sub(r"\s+"," ",output.strip()) # normalize whitespace
     return output
 
-gBlobDict = {}
 gInputChars:set[str] = set()
 gOutputChars:set[str] = set()
 gNonSearchableTeacherRegex = None
@@ -75,8 +76,6 @@ def Blobify(items: Iterable[str],alphanumericOnly = False) -> Iterator[str]:
         if alphanumericOnly:
             blob = re.sub(r"\W","",blob.strip()) # Remove all non-alphanumeric characters
         gOutputChars.update(blob)
-        if gOptions.debug:
-            gBlobDict[item] = blob
         if blob:
             yield blob
 
@@ -87,6 +86,9 @@ def AllNames(teachers:Iterable[str]) -> Iterator[str]:
         yield teacherDB[t]["fullName"]
         if teacherDB[t]["attributionName"] != teacherDB[t]["fullName"]:
             yield teacherDB[t]["attributionName"]
+
+DURATION_BOUNDARIES = tuple(timedelta(minutes = n) for n in (1,2,5,10))
+DURATION_NAMES = ("veryshort","short","medium","long","verylong")
 
 def ExcerptBlobs(excerpt: dict) -> list[str]:
     """Create a list of search strings corresponding to the items in excerpt."""
@@ -104,6 +106,9 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
         text = item["text"]
         if item.get("teachers") and "{teachers}" in text:
             text = text.replace("{teachers}",Build.ListLinkedTeachers(item["teachers"],lastJoinStr = " and "))
+        kindList = [item["kind"]]
+        if item.get("duration"):
+            kindList.append(DURATION_NAMES[bisect_right(DURATION_BOUNDARIES,Mp3DirectCut.ToTimeDelta(item["duration"]))])
         bits = [
             Enclose(Blobify([text]),"^"),
             Enclose(Blobify(AllNames(item.get("teachers",[]))),"{}"),
@@ -111,7 +116,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             "//",
             Enclose(Blobify(aTags),"[]"),
             "|",
-            Enclose(Blobify([item["kind"]],alphanumericOnly=True),"#"),
+            Enclose(Blobify(kindList,alphanumericOnly=True),"#"),
             Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
         ]
         if item is excerpt:
@@ -127,15 +132,15 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
 def OptimizedExcerpts() -> list[dict]:
     returnValue = []
     formatter = Build.Formatter()
-    formatter.excerptOmitSessionTags = False
-    formatter.showHeading = False
-    formatter.headingShowTeacher = False
+    formatter.SetHeaderlessFormat()
+    formatter.excerptNumbers = True
     featuredFilter = FeaturedExcerptFilter()
     for fragmentGroup in Database.GroupFragments(gDatabase["excerpts"]):
         x = fragmentGroup[0]
         xDict = {"session": Database.ItemCode(event=x["event"],session=x["sessionNumber"]),
                  "blobs": ExcerptBlobs(x),
-                 "html": formatter.HtmlExcerptList([x])}
+                 "html": formatter.HtmlExcerptList([x]),
+                 "uniqueTeachers": len(Filter.AllTeachers(x))}
         if featuredFilter(fragmentGroup):
             xDict["blobs"][0] = xDict["blobs"][0].replace("|#","|#homepage#")
         returnValue.append(xDict)
@@ -152,6 +157,12 @@ def SessionHeader() -> dict[str,str]:
         returnValue[Database.ItemCode(s)] = formatter.FormatSessionHeading(s,horizontalRule=False)
     
     return returnValue
+
+def CommonWordBlob() -> str:
+    """Return a blob of common words; search terms matching it are less important."""
+    commonWords = "a in of on to and for not the with after from".split(" ")
+    commonWords.extend(p for p in gDatabase["prefix"] if not p.endswith("/"))
+    return "|".join(map(RawBlobify,commonWords))
 
 def AlphabetizeName(string: str) -> str:
     return Utils.RemoveDiacritics(string).lower()
@@ -344,6 +355,7 @@ def SessionEventHtml() -> dict[str,str]:
 
 def TextBlobs() -> Iterator[dict]:
     """Return a blob for each text (sutta or vinaya reference)."""
+    dhammapada = Suttaplex.DhammapadaVerses()
     BuildReferences.ReadReferenceDatabase()
     for text,linkInfo in BuildReferences.gSavedReferences["text"].items():
         reference = BuildReferences.TextReference.FromString(text)
@@ -354,8 +366,13 @@ def TextBlobs() -> Iterator[dict]:
         textSearches = [text,paliTitle,title]
         
         if reference.n0:
-            linkedPart = f"{text}: {paliTitle}"
-            suffix = f", {title}"
+            if reference.text == "Dhp":
+                linkedPart = f"{text}"
+                suffix = f': “{Utils.EllideText(dhammapada[reference.n0],40,endAtWordBoundary=True)}”'
+            else:
+                parts = [t for t in textSearches if t]
+                linkedPart = parts[0] if len(parts) == 1 else f"{parts[0]}: {parts[1]}"
+                suffix = f", {parts[2]}" if len(parts) == 3 else ""
             textSearches.append(textName)
         else:
             linkedPart = f"{textName}"
@@ -434,6 +451,13 @@ def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Itera
         "items": [b for b in blobsAndHtml],
     }
 
+def AllBlobs(database:dict[str]) -> Iterable[str]:
+    """Yield all blobs in database"""
+
+    for search in database["searches"].values():
+        for item in search["items"]:
+            yield from item["blobs"]
+    
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     pass
@@ -463,11 +487,24 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"a","author",AuthorBlobs())
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
+    optimizedDB["searches"]["x"]["commonWordBlob"] = CommonWordBlob()
 
-    optimizedDB["blobDict"] = list(gBlobDict.values())
+    if gOptions.debug:        
+        Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))
+        Alert.debug("Characters remaining in blob texts:                  ","".join(sorted(gOutputChars)))
 
-    Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))
-    Alert.debug("Characters remaining in blobs:","".join(sorted(gOutputChars)))
+        allBlobChars = set()
+        teacherBlobChars = set()
+        tagBlobChars = set()
+        for blob in AllBlobs(optimizedDB):
+            allBlobChars.update(blob)
+            for teacherMatch in re.findall(r"\{(.*?)\}",blob):
+                teacherBlobChars.update(teacherMatch)
+            for tagMatch in re.findall(r"\[(.*?)\]",blob):
+                tagBlobChars.update(tagMatch)
+        Alert.debug("Characters remaining in blobs (including separators):","".join(sorted(allBlobChars)))
+        Alert.debug("Characters remaining in teacher blobs               :","".join(sorted(teacherBlobChars)))
+        Alert.debug("Characters remaining in tag blobs                   :","".join(sorted(tagBlobChars)))
 
     with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(optimizedDB, file, ensure_ascii=False, indent=2)

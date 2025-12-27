@@ -45,8 +45,9 @@ class ExcerptFlag(StrEnum):
     MANUAL_FRAGMENTS = "m"  # Don't automatically extract fragments from this excerpt.
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
-    END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
     NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
+    END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
+    HOMEPAGE_FEATURE = "!"  # Feature this excerpt on the homepage (even if it's not from AP)
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
@@ -1455,10 +1456,12 @@ def LoadEventFile(database,eventName,directory):
         s["teachers"] = [teacher for teacher in s["teachers"] if TeacherConsent(database["teacher"],[teacher],"attribute")]
 
     global gRemovedExcerpts
+    global gEmptySessions
     gRemovedExcerpts += originalCount - len(excerpts)
     sessionsWithExcerpts = set(x["sessionNumber"] for x in excerpts)
     for unusedSession in includedSessions - sessionsWithExcerpts:
         del gDatabase["sessions"][Utils.SessionIndex(gDatabase["sessions"],eventName,unusedSession)]
+        gEmptySessions += 1
         # Remove sessions with no excerpts
 
     # Renumber the excerpts after removing excluded excerpts
@@ -1646,6 +1649,7 @@ def Initialize() -> None:
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 gRemovedSessions = 0
+gEmptySessions = 0
 gRemovedExcerpts = 0 # Count the total number of removed excerpts
 gRemovedAnnotations = 0
 
@@ -1699,6 +1703,7 @@ def main():
                 LoadEventFile(gDatabase,event,gOptions.csvDir)
     ListifyKey(gDatabase["event"],"series")
     excludeAlert(f": {gRemovedSessions} sessions, {gRemovedExcerpts} excerpts, and {gRemovedAnnotations} annotations in all.")
+    excludeAlert(f": {gEmptySessions} sessions do not appear because they have no excerpts.")
     gUnattributedTeachers.pop("Anon",None)
     if gUnattributedTeachers:
         excludeAlert(f": Did not attribute excerpts to the following {len(gUnattributedTeachers)} teachers:",dict(gUnattributedTeachers))

@@ -189,6 +189,12 @@ p.x-cite {
 	padding-bottom: 0;
 }
 
+p.checkboxes {
+	margin-left: 10px;
+	padding-top: 0;
+	padding-bottom: 5px;
+}
+
 .indent-0 {
 	margin-left: 0em;
 }
@@ -438,10 +444,14 @@ p#cite-as {
 	font-size: 1em;
 }
 
-input {
+input[type=text] {
 	font: 16px system-ui;
 	padding: 6px 10px;
 	width: 100%;
+}
+
+input[type=checkbox] {
+	margin: 0px 3px 0px 6px;
 }
 
 button {
@@ -788,6 +798,32 @@ main.main-content p {
 
 .featured-excerpt {
 	width: 100%;
+}
+
+#todays-excerpt p.holiday-banner {
+	text-decoration: underline;
+	font-size: 1.2rem;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 1rem;
+	color: var(--color-primary);
+	background-color: #f5b95f;
+	padding: 1rem 1rem;
+	border-radius: 0.4rem;
+	box-shadow: 0px 1px 1px #b5a26c;
+}
+
+#random-excerpt p.holiday-banner {
+	text-decoration: underline;
+	font-size: 1.3rem;
+	font-weight: 500;
+	margin-bottom: 1rem;
+	color: var(--color-primary);
+	background-color: #f5b95f;
+	padding: 1.3rem 2.2rem;
+	border-radius: 0.4rem;
+	box-shadow: 0px 1px 1px #b5a26c;
+	line-height: 1.8;
 }
 
 /* Meditation Timer Styles */

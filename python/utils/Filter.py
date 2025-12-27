@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Callable, Iterator
+from collections import ChainMap
 from typing import Any, Tuple
-import Utils, ParseCSV
+from datetime import timedelta
+import Utils, ParseCSV, Mp3DirectCut
 import copy
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
@@ -47,9 +49,7 @@ def AllSingularItems(excerpt: dict) -> Iterator[dict]:
     """Same as AllItems, but yield the excerpt alone without its annotations, followed by the annotations."""
 
     if excerpt.get("annotations",None):
-        temp = copy.copy(excerpt)
-        temp["annotations"] = ()
-        yield temp
+        yield ChainMap({"annotations":()},excerpt)
         yield from excerpt["annotations"]
     else:
         yield excerpt
@@ -298,6 +298,26 @@ class HomepageFlags(Filter):
             return not self.negate
     
         return self.negate
+
+class Duration(Filter):
+    """A filter that passes items which have a duration that falls within a specified range.
+    Does not pass items without a duration."""
+
+    def __init__(self, minDuration:timedelta = None, maxDuration:timedelta = None) -> None:
+        super().__init__()
+        self.minDuration = minDuration
+        self.maxDuration = maxDuration
+    
+    def Match(self, item:dict[str]):
+        if "duration" in item:
+            duration = Mp3DirectCut.ToTimeDelta(item["duration"])
+            if self.minDuration and duration < self.minDuration:
+                return self.negate
+            if self.maxDuration and duration > self.maxDuration:
+                return self.negate
+            return not self.negate
+        else:
+            return self.negate
 
 class FilterGroup(Filter):
     """A group of filters to operate on items using boolean operations.

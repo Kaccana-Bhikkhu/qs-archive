@@ -4,26 +4,30 @@
 from __future__ import annotations
 
 import os, json, datetime, re
-from datetime import timedelta
+from datetime import timedelta, date
 import random
+import itertools
 from difflib import SequenceMatcher
 from typing import Callable, TypedDict
-import Utils, Alert, Build, Filter, Database
+from dataclasses import dataclass
+import Utils, Alert, Build, Database
 from copy import copy
 import Filter
 import Html2 as Html
-from collections import defaultdict
+from collections import defaultdict, Counter, deque
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
 class ExcerptDict(TypedDict):
-      text: str             # Text of the excerpt; used to identify this excerpt when its code changes
-      fTags: list[str]      # The excerpt's fTags
-      oldFTags: list[str]
-                            # fTags that were applied to this excerpt in the past.
-      shortHtml: str        # Html code to render on the homepage
-      html: str             # Html code to render on the daily featured excerpts page
-    
+      text: str         # Text of the excerpt; used to identify this excerpt when its code changes
+      fTags: list[str]  # The excerpt's fTags
+      shortHtml: str    # Html code to render on the homepage
+      html: str         # Html code to render on the daily featured excerpts page
+
+class HolidayDisplay(TypedDict):
+    """Information about a particular anniversary stored in the database."""
+    date: str       # The date in iso format
+    text: str       # The text string to display
 class FeaturedDatabase(TypedDict):
     made: str                       # Date and time this database was first made in iso format
     updated: str                    # Date and time this database was last changed
@@ -33,9 +37,58 @@ class FeaturedDatabase(TypedDict):
         # The above two items are important because the html must be re-rendered when the excerpt mirror changes
     
     excerpts: dict[str,ExcerptDict] # Details about the excerpts; keys are given by the excerpt codes
+    oldFTags: dict[str,list[str]]   # Excerpts from which fTags have been removed
+                                    # Keys are excerpt codes; values are the removed fTags
 
     startDate: str                  # The date to display the first exerpt in calendar in iso format
     calendar: list[str]             # The list of excerpt codes to display on each date
+
+    holidays: list[HolidayDisplay]     # Information about the given holidays
+
+@dataclass
+class Holiday:
+    """Information about an anniversary."""
+    name: str                    # Name of the holiday, e.g. "Ajahn Chah's Death Anniversary"
+    date: date                   # Date of the birth or death
+    filter: Filter.Filter        # Feature an excerpt which passes this filter
+
+    def Display(self) -> HolidayDisplay:
+        """Return the ditionary needed to display this holiday on the website."""
+        return HolidayDisplay(
+            date = self.date.isoformat(),
+            text = f"{self.name} – NN years"
+        )
+
+def AllHolidays() -> list[Holiday]:
+    "Return a list of all anniversaries, sorted by month and day."
+    chahFilter = Filter.And(Filter.Teacher("AChah"),Filter.Flags("!"))
+    return [
+        Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),chahFilter),
+        Holiday("Ajahn Chah's Birthday",date(1918,6,17),chahFilter),
+        Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
+        Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
+        Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
+    ]
+
+def HolidayRecords() -> list[HolidayDisplay]:
+    return [holiday.Display() for holiday in AllHolidays()]
+
+def FutureHolidayIndices(offsetFromPresent: int = 0) -> dict[int:tuple(Holiday,int)]:
+    """Return a dict of holiday indices of the form: holidayIndices[index] = (Holiday,year).
+    offsetFromPresent has the same meaning as in SplitPastAndFuture."""
+
+    holidayIndices:dict[int:tuple(Holiday,int)] = {}
+    holidays = AllHolidays()
+    futureBaseDate = date.today() + timedelta(days=1 + offsetFromPresent)
+    for year in range(futureBaseDate.year,futureBaseDate.year + 5): # Four years in the future is more than enough
+        for holiday in holidays:
+            thisYearsDate = date(year,holiday.date.month,holiday.date.day)
+            index = (thisYearsDate - futureBaseDate).days
+            if index < 0:
+                continue # The holiday is in the past
+            holidayIndices[index] = (holiday,year)
+
+    return holidayIndices
 
 def ReadDatabase(backupNumber:int = 0) -> bool:
     """Read the featured excerpt database from disk.
@@ -47,6 +100,8 @@ def ReadDatabase(backupNumber:int = 0) -> bool:
         with open(filename, 'r', encoding='utf-8') as file: # Otherwise read the database from disk
             gFeaturedDatabase = json.load(file)
         Alert.info(f"Read featured excerpt DB from {filename} with {len(gFeaturedDatabase['calendar'])} calendar entries.")
+        if "oldFTags" not in gFeaturedDatabase:
+            gFeaturedDatabase["oldFTags"] = {}
         return True
     except OSError as err:
         Alert.error(f"Could not read {gOptions.featuredDatabase} due to {err}")
@@ -65,12 +120,12 @@ def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
         Alert.error(f"Could not write {filename} due to {err}")
         return False
     
-def SplitPastAndFuture(database: FeaturedDatabase,offset:int = 0) -> tuple[list[str],list[str]]:
+def SplitPastAndFuture(database: FeaturedDatabase,offsetFromPresent:int = 0) -> tuple[list[str],list[str]]:
     """Split database["calenar"] into two lists (past,future). If offset == 0, past includes today.
-    if offset > 0, include this many days past today in past as well."""
-    daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
+    if offsetFromPresent > 0, include this many days past today in past as well."""
+    daysPast = (date.today() - date.fromisoformat(database["startDate"])).days
 
-    cutPoint = daysPast + offset + 1
+    cutPoint = daysPast + offsetFromPresent + 1
     cutPoint = max(min(cutPoint,len(database["calendar"]) - 1),0)
 
     return (database["calendar"][0:cutPoint],database["calendar"][cutPoint:])
@@ -80,7 +135,7 @@ def PrintInfo(database: FeaturedDatabase) -> None:
     Alert.info("Featured excerpt database contains",len(database["excerpts"]),"excerpts.")
 
     calendarLength = len(database['calendar'])
-    daysPast = (datetime.date.today() - datetime.date.fromisoformat(database["startDate"])).days
+    daysPast = (date.today() - date.fromisoformat(database["startDate"])).days
 
     Alert.info(f"Calendar length {calendarLength}; {daysPast} days of history; {calendarLength - daysPast - 1} excerpts remaining.")
 
@@ -107,7 +162,12 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
 
-    if topicTags: # Since we select only featured excerpts from key topic tags, this should always be true
+    oldFTags = None
+    if not topicTags: # If there are no current fTags, check for previous fTags
+        oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt),[])
+        topicTags = [tag for tag in oldFTags if tag in keyTopicTags]
+
+    if topicTags: # Since we select only featured excerpts from key topic tags, this true unless the excerpt has been demoted
         tag = topicTags[0]
         subtopic = gDatabase["subtopic"][gDatabase["tag"][tag]["partOfSubtopics"][0]]
         isCluster = subtopic["subtags"] # A cluster has subtags; a regular tag doesn't
@@ -116,7 +176,7 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
         else:
             tagDescription = f"tag {Build.HtmlTagLink(tag)}"
 
-        html += f"<hr><p>Featured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
+        html += f"<hr><p>{'Formerly f' if oldFTags else 'F'}eatured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
 
     return {
         "text": excerpt["text"],
@@ -132,7 +192,10 @@ def FeaturedExcerptFilter() -> Filter.Filter:
                               Filter.SingleItemMatch(Filter.Teacher("AP"),Filter.Kind("Read by")))
         # Pass only excerpts where AP is the first teacher in the excerpt or he is reading the excerpt
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
-    return Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter)
+    return Filter.Or(
+        Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter),
+        Filter.Flags("!"))
+
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
@@ -140,7 +203,7 @@ def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     featuredExcerpts =  [x for x in FeaturedExcerptFilter()(gDatabase["excerpts"])]
     return {Database.ItemCode(x):ExcerptEntry(x) for x in featuredExcerpts}
 
-def Header() -> dict[str]:
+def Header() -> FeaturedDatabase:
     """Return a dict describing the conditions under which the random excerpts were built."""
 
     now = datetime.datetime.now().isoformat()
@@ -167,9 +230,15 @@ def Remake(paramStr: str) -> bool:
     random.shuffle(calendar)
 
     historyDays = ParseNumericalParameter(paramStr)
-    startDate = (datetime.date.today() - timedelta(days=historyDays)).isoformat()
+    startDate = (date.today() - timedelta(days=historyDays)).isoformat()
     
-    gFeaturedDatabase = dict(**Header(),startDate=startDate,excerpts=entries,calendar=calendar)
+    gFeaturedDatabase = FeaturedDatabase(
+        **Header(),
+        startDate=startDate,
+        excerpts=entries,
+        calendar=calendar,
+        oldFTags={},
+        holidays=HolidayRecords())
 
     Alert.info("Generated new featured excerpt database with",len(gFeaturedDatabase["excerpts"]),"entries")
     if historyDays:
@@ -200,9 +269,6 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if currentExcerpt:
             currentEntry = ExcerptEntry(currentExcerpt)
-            if "oldFTags" in databaseEntry:
-                currentEntry["oldFTags"] = databaseEntry["oldFTags"]
-                    # Ignore oldFTags in the comparison
             if currentEntry != databaseEntry:
                 if currentEntry["text"] == databaseEntry["text"]:
                     textMatches.append(excerptCode)
@@ -213,7 +279,7 @@ def DatabaseMismatches() -> tuple[list[ExcerptDict],list[ExcerptDict],list[Excer
     
     return textMatches,textMismatches,missingEntries
 
-def DemotedExcerpts() -> tuple[list[str],dict[list[str]]]:
+def DemotedExcerpts() -> tuple[list[str],dict[str,list[str]]]:
     """Return a list of excerpts that are no longer featured on the homepage.
     Returns the tuple (demotedExcerpts,when):
     demotedExcerpts: a list of the demoted excerpt codes.
@@ -306,13 +372,16 @@ These may require the Fix module if excerpts have moved or the Remove module if 
 
 def UpdateEntry(entry: ExcerptDict,newEntry: ExcerptDict,excerptCode: str) -> None:
     """Update entry so that it has the contents of newEntry.
-    If newEntry removes fTags, store them in oldFTags."""
+    If newEntry removes fTags, store them in gFeaturedDatabase["oldFTags"]."""
 
     for fTag in entry["fTags"]:
         if fTag not in newEntry["fTags"]:
-            entry["oldFTags"] = entry.get("oldFTags",[]) + [fTag]
+            gFeaturedDatabase["oldFTags"][excerptCode] = gFeaturedDatabase["oldFTags"].get("excerptCode",[])
+            gFeaturedDatabase["oldFTags"][excerptCode].append(fTag)
             Alert.notice("Removing fTag",repr(fTag),"from",excerptCode)
-    entry.update(newEntry) # Note that newEntry should not have key oldFTags
+            newEntry = ExcerptEntry(Database.FindExcerpt(excerptCode))
+                # The entry html depends on gFeaturedDatabase["oldFTags"], so newEntry needs to be updated again
+    entry.update(newEntry)
 
 def Update(paramStr: str) -> bool:
     """Set entries in gFeaturedDatabase equal to the current database if the text string matches closely enough.
@@ -320,6 +389,7 @@ def Update(paramStr: str) -> bool:
 
     databaseChanged = False
     textMatches,textMismatches,missingEntries = DatabaseMismatches()
+
 
     for code in textMatches:
         UpdateEntry(gFeaturedDatabase["excerpts"][code],ExcerptEntry(Database.FindExcerpt(code)),code)
@@ -346,32 +416,48 @@ def Update(paramStr: str) -> bool:
     return databaseChanged
 
 def RemakeFuture(paramStr: str) -> bool:
-    """Remove any future featured excerpts that are no longer featured, add any newly featured excerpts,
-    and shuffle all future excerpts.
+    """Remove any future featured excerpts that are no longer featured and add any newly featured excerpts.
+    Swap calendar entries to minimize the changes needed to do this.
     paramStr (if given) specifies the number of future excerpts to preserve unchanged."""
 
     preserveDays = ParseNumericalParameter(paramStr)
-    past,future = SplitPastAndFuture(gFeaturedDatabase,offset=preserveDays)
+    past,future = SplitPastAndFuture(gFeaturedDatabase,offsetFromPresent=preserveDays)
+    holidayIndices = FutureHolidayIndices(offsetFromPresent=preserveDays)
 
     demotedExcerpts,_ = DemotedExcerpts()
-    oldLength = len(future)
-    future = [code for code in future if code not in demotedExcerpts]
-    removed = oldLength - len(future)
+    demotedExcerptSet = set(demotedExcerpts)
+    excerptsRemoved = sorted(demotedExcerptSet & set(future))
 
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
     currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+    newExcerpts = sorted(currentFeaturedExcerpts - excerptsInDatabase)
     
-    newFeaturedExcerpts = sorted(currentFeaturedExcerpts - excerptsInDatabase)
-    databaseChanged = bool(removed or newFeaturedExcerpts)
+    databaseChanged = bool(excerptsRemoved or newExcerpts)
     if databaseChanged:
-        future += newFeaturedExcerpts
-        random.shuffle(future)
+        shuffled = list(newExcerpts)
+        random.shuffle(shuffled)
+        newExcerptIterator = iter(shuffled)
+
+        for futureIndex in range(len(future)):
+            if futureIndex < len(future) and future[futureIndex] in demotedExcerptSet:
+                replacementExcerpt = next(newExcerptIterator,None)
+                if replacementExcerpt: # Replace with a new featured excerpt if available
+                    future[futureIndex] = replacementExcerpt
+                else: # Otherwise replace with the last element of future
+                    future[futureIndex] = future.pop()
+        
+        for newExcerpt in newExcerptIterator:
+            while (swapIndex := random.randint(0,len(future) - 1)) in holidayIndices:
+                pass
+            future.append(future[swapIndex])
+            future[swapIndex] = newExcerpt
+        
         gFeaturedDatabase["calendar"] = past + future
-        for newExcerpt in newFeaturedExcerpts:
+        for newExcerpt in newExcerpts:
             gFeaturedDatabase["excerpts"][newExcerpt] = ExcerptEntry(Database.FindExcerpt(newExcerpt))
 
-        Alert.info("Remake and reshuffle the featured excerpt calendar starting",preserveDays,"days in the future.")
-        Alert.info("Removed",removed,"demoted excerpts; added",len(newFeaturedExcerpts),"new excerpts.")
+        Alert.info("Remake the featured excerpt calendar starting",preserveDays,"days in the future.")
+        Alert.info("Removed",len(excerptsRemoved),"demoted excerpts:",excerptsRemoved,"; added",len(newExcerpts),"new excerpts.")
 
         Trim("quiet")
     else:
@@ -391,7 +477,80 @@ def Trim(paramStr: str) -> bool:
     elif paramStr != "quiet":
         Alert.info("No changes made to database.")
     return bool(removedEntries)
+
+def Extend(paramStr: str) -> bool:
+    """Extend the calendar by adding the shuffled contents of the database."""    
+    entries = FeaturedExcerptEntries()
+    newEntries = list(entries)
+    random.shuffle(newEntries)
+
+    oldExcerptCount = len(gFeaturedDatabase["excerpts"])
+    for code,entry in entries.items():
+        if code not in gFeaturedDatabase["excerpts"]:
+            gFeaturedDatabase["excerpts"][code] = entry
+
+    # Algorithm to avoid immediate repetition of excerpts:
+    # 1. Make a list of excerpts at the end of the calendar and a dict that counts them.
+    # The length of the list is is 2/3 len(newEntries).
+    recentExcerpts = gFeaturedDatabase["calendar"][len(gFeaturedDatabase["calendar"]) - max(len(newEntries) * 2 // 3,50):]
+    recentExcerptCount = Counter()
+    for code in recentExcerpts:
+        recentExcerptCount[code] += 1
     
+    # 2. Add the excerpts in newEntries only if they do not appear in the previous 2/3 len(newExcepts) featured excepts.
+    stillToAdd = deque(newEntries)
+    remainingRecentExcerpts = iter(recentExcerpts)
+    while (stillToAdd):
+        toAdd = stillToAdd.popleft()
+        if recentExcerptCount[toAdd]: # If the excerpt appeared too recently, put it back for future use
+            stillToAdd.append(toAdd) 
+        else: # Otherwise add this excerpt to the calendar and remove the oldest excerpt from recentExcerptCount
+            gFeaturedDatabase["calendar"].append(toAdd)
+            oldestRecentExcerpt = next(remainingRecentExcerpts,None)
+            if oldestRecentExcerpt:
+                recentExcerptCount[oldestRecentExcerpt] -= 1
+
+    Alert.info("Extended the featured calendar by",len(newEntries),"entries")
+    if addedExcerpts := len(gFeaturedDatabase["excerpts"]) - oldExcerptCount:
+        Alert.info("Added",addedExcerpts,"new excerpt(s) to the database.")
+    return True
+
+def Holidays(paramStr: str) -> bool:
+    """Swap future calendar entries so that holidays feature relevant excerpts."""    
+    past,future = SplitPastAndFuture(gFeaturedDatabase)
+    holidayIndices = FutureHolidayIndices()
+
+    changeCount = 0
+    # Then check if each holiday has an excerpt that matches the filter
+    for index,(holiday,year) in holidayIndices.items():
+        if index >= len(future):
+            break
+        if holiday.filter.Match(Database.FindExcerpt(future[index])):
+            continue
+
+        swapIndex = None
+        # Loop over all indices of future in the sequence:
+        # index - 1, index + 1, index - 2, index + 2, ...
+        for scanIndex in itertools.chain.from_iterable(itertools.zip_longest(reversed(range(index)),range(index + 1,len(future)))):
+            if scanIndex is not None and holiday.filter.Match(Database.FindExcerpt(future[scanIndex])):
+                if scanIndex not in holidayIndices: # Don't swap with another holiday
+                    swapIndex = scanIndex
+                    break
+        
+        if swapIndex is not None:
+            future[index],future[swapIndex] = future[swapIndex],future[index]
+            Alert.info("Featuring",Database.FindExcerpt(future[index]),"for",holiday.name,"in",year)
+            changeCount += 1
+        else:
+            Alert.warning("Unable to find a suitable excerpt for",holiday.name,"in",year)
+
+    if changeCount:
+        gFeaturedDatabase["calendar"] = past + future
+        Alert.info()
+        Alert.info("Moved",changeCount,"relevant excerpts to holidays.")
+    else:
+        Alert.info("All future holidays feature relevant excerpts.")
+    return bool(changeCount)
 
 def Write(paramStr: str,goodDatabase:bool = True) -> bool:
     """Write the database to disk if it is good or paramStr contains 'always'."""
@@ -451,7 +610,8 @@ gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we
 
 gFeaturedDatabase:FeaturedDatabase = {}
 gRepairModules:list[SubmoduleType] = [Update,RemakeFuture,Trim]
-gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules}
+gEnhanceModules:list[SubmoduleType] = [Extend,Holidays]
+gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules + gEnhanceModules}
 
 def main() -> None:
     global gFeaturedDatabase
@@ -468,6 +628,12 @@ def main() -> None:
     goodDatabase = RunSubmodule(Check)
 
     databaseRepaired = any(RunSubmodule(m) for m in gRepairModules)
+
+    newHolidayRecords = HolidayRecords()
+    if newHolidayRecords != gFeaturedDatabase.get("holidays"):
+        gFeaturedDatabase["holidays"] = newHolidayRecords
+        databaseRepaired = True
+
     if databaseRepaired:
         UpdateHeader(gFeaturedDatabase)
 
@@ -476,9 +642,17 @@ def main() -> None:
     if not goodDatabase or databaseChanged:
         goodDatabase = RunSubmodule(Check,alwaysRun=True)
 
+    if goodDatabase:
+        databaseEnhanced = any(RunSubmodule(m) for m in gEnhanceModules)
+        if databaseEnhanced:
+            goodDatabase = RunSubmodule(Check,alwaysRun=True)
+        databaseChanged = databaseChanged or databaseEnhanced
+    elif set(op.__name__.lower() for op in gEnhanceModules) & set(gOptions.featured):
+        Alert.warning("Cannot run additional module(s)",[op.__name__ for op in gEnhanceModules],"due to database errors.")
+
+
     if databaseChanged:
         RunSubmodule(Write,alwaysRun=True,goodDatabase=goodDatabase)
     else:
         AnnounceSubmodule(None)
         Alert.info("No changes need to be written to disk.")
-    

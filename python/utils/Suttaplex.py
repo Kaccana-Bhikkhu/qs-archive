@@ -9,6 +9,7 @@ from collections import Counter
 from typing import TypedDict, Callable
 from functools import lru_cache
 import Alert
+import BuildReferences
 
 scriptDir,_ = os.path.split(os.path.abspath(sys.argv[0]))
 sys.path.append(os.path.join(scriptDir,'python/modules'))
@@ -55,7 +56,27 @@ def RawSuttaplex(uid:str) -> dict[str]:
     suttaplexURL = f"https://suttacentral.net/api/suttaplex/{uid}"
         
     with Utils.OpenUrlOrFile(suttaplexURL) as file:
-        return json.load(file)
+        suttaplex = json.load(file)
+    
+    if uid in BuildReferences.UIDGroupSet("namedVaggas"): # Convert named sections to numbers for these texts
+        vaggaCandidate = None # A sutta record that might be a vagga
+        vaggaCandidateUID = "" # The uid of this candidate
+        previousSection = 0
+        for sutta in suttaplex:
+            # Match uids of the form "thag-ekakanipata" but not "thag-ekakanipata-pathamavagga"
+            if (match := re.match(r"([a-z]+)-([a-z]+)$",sutta["uid"])):
+                vaggaCandidate = sutta
+                vaggaCandidateUID = f"{uid}{previousSection + 1}"
+            if (match := re.match(r"([a-z]+)([0-9]+)",sutta["uid"])):
+                # Only vagga candidates which are immediately followed by an increase in number are real vaggas
+                if int(match[2]) > previousSection:
+                    if vaggaCandidate:
+                        vaggaCandidate["uid"] = vaggaCandidateUID
+                        previousSection += 1
+                else:
+                    vaggaCandidate = None
+
+    return suttaplex
 
 def ReducedSutaplex(uid:str) -> dict[str]:
     """Read the suttaplex json file uid.json in sutta/suttaplex/raw. Eliminate non-English translations and
@@ -109,15 +130,16 @@ def DoubleReferenceDNSuttas() -> None:
 class SuttaIndexEntry(TypedDict):
     uid: str
     mark: str
+    translator: str
 
-def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True) -> dict[str,SuttaIndexEntry]:
+def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst = True,preferredTranslators:list[str] = ()) -> dict[str,SuttaIndexEntry]:
     """Returns an index of references to the suttas in a given text.
         uid: the SuttaCentral text uid.
         indexBy: create an index for all bookmarks that start with this string 
         bookmarkWith: bookmark the text using this bookmark
         indexByComesFirst: if True, equate each indexBy bookmark with the next bookmarkWith bookmark; if False equate with the previous.
         MakeSuttaIndex("snp","vnp","vns") returns a dict with keys "vnp1", "vnp2",...
-        and values {"suttaUid":"snp1","bookmark":"vns1"}, {"suttaUid":"snp1","bookmark":"vns2"},...
+        and values {"uid":"snp1","mark":"vns1","translator":"sujato"}, {"uid":"snp1","mark":"vns2","translator":"sujato"},...
         If bookmarkWith is not given, omit the bookmark key."""
     
     suttaplex = SegmentedSuttaplex(uid)
@@ -130,11 +152,19 @@ def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst =
         bookmarks = [b.strip() for b in bookmarks]
         bookmarks = [b for b in bookmarks if b.startswith(indexBy) or (bookmarkWith and b.startswith(bookmarkWith))]
 
+        translator = sutta["priority_author_uid"]
+        if preferredTranslators:
+            availableTranslations = set(t["author_uid"] for t in sutta["translations"])
+            for trans in preferredTranslators:
+                if trans in availableTranslations:
+                    translator = trans
+                    break
+
         prevBookmarkWith = None
         for n,b in enumerate(bookmarks):
             if b.startswith(indexBy):
                 if bookmarkWith == indexBy:
-                    index[b] = SuttaIndexEntry(uid=sutta["uid"])
+                    index[b] = SuttaIndexEntry(uid=sutta["uid"],translator=translator)
                 elif indexByComesFirst:
                     newBookmark = None
                     for lookaheadIndex in range(n,len(bookmarks)):
@@ -143,13 +173,21 @@ def MakeSuttaIndex(uid:str,indexBy:str,bookmarkWith:str = "",indexByComesFirst =
                             continue
                     if not newBookmark:
                         newBookmark = prevBookmarkWith
-                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=newBookmark)
+                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=newBookmark,translator=translator)
                 else:
-                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=prevBookmarkWith)
+                    index[b] = SuttaIndexEntry(uid=sutta["uid"],mark=prevBookmarkWith,translator=translator)
             else:
                 prevBookmarkWith = b
     
     return index
+
+def RenameIndexBookmarks(index: dict[str,SuttaIndexEntry],newBookmark: str) -> None:
+    """Rename the bookmarks in a sutta index returned by MakeSuttaIndex."""
+
+    for uid,indexEntry in index.items():
+        oldBookmark = indexEntry.get("mark") or uid
+        number = re.search(r"[0-9]+$",oldBookmark)[0]
+        indexEntry["mark"] = newBookmark + number
 
 def MakeSnpIndex() -> None:
     indexDir = "sutta/suttaplex/index"
@@ -167,11 +205,15 @@ def MakeThigIndex() -> None:
 
 @lru_cache(maxsize=None)
 def SuttaIndex(textUid:str) -> dict[str,SuttaIndexEntry]:
-    """Returns an index of this sutta and its primary translator uid. Returns None on failure"""
-    if textUid in ("dhp","snp","thag","thig"):
-        return MakeSuttaIndex(textUid,"vnp"),"sujato"
+    """Returns an index of this sutta. Returns None on failure"""
+    if textUid in ("snp","thag","thig"):
+        return MakeSuttaIndex(textUid,"vnp")
+    elif textUid == "dhp":
+        dhpIndex = MakeSuttaIndex(textUid,"vnp",preferredTranslators=["buddharakkhita"])
+        RenameIndexBookmarks(dhpIndex,"sc")
+        return dhpIndex
     elif textUid == "mil": # https://suttacentral.net/mil6.3.10/en/tw_rhysdavids?lang=en&reference=main/pts&highlight=false#pts-vp-pli320
-        return MakeSuttaIndex(textUid,"pts-vp-pli"),"tw_rhysdavids"
+        return MakeSuttaIndex(textUid,"pts-vp-pli",preferredTranslators=["kelly","tw_rhysdavids"])
     return None
 
 @CacheJsonFile("sutta/suttaplex/translator")
@@ -208,23 +250,28 @@ def PreferredTranslator(textUid:str,refNumbers:list[int],silentFail = False) -> 
     suttaUid = textUid + DotRef(refNumbers)
     availableTranslations = translatorDict.get(suttaUid,None)
 
+    def ChooseTranslator(available:list[str]) -> str:
+        "Pick the preferred translator from those available."
+        priorityTranslator = ("bodhi","ireland","kelly","sujato")
+        if textUid.startswith("dhp"): # Use Buddharakkhita's translation for dhp only
+            priorityTranslator = ("buddharakkhita",) + priorityTranslator
+        for t in priorityTranslator:
+            if t in available:
+                return t
+        return available[0]
+
     if not availableTranslations:
         spanUid = InterpolatedSuttaDict(textUid).get(suttaUid)
         if spanUid:
             availableTranslations = translatorDict.get(spanUid,None)
         if availableTranslations:
-            if "sujato" in availableTranslations:
-                return "sujato"
-            else:
-                return availableTranslations[0]
+            return ChooseTranslator(availableTranslations)
         else:
             if not silentFail:
                 Alert.warning("Cannot find",suttaUid,"on SuttaCentral.")
             return ""
-    elif "bodhi" in availableTranslations:
-        return "bodhi"
     else:
-        return availableTranslations[0]
+        return ChooseTranslator(availableTranslations)
     
 def ExistsOnSC(textUid:str,refNumbers:list[int]) -> bool:
     """Returns whether this text exists on SuttaCentral."""
@@ -312,6 +359,12 @@ def PrintTranslatorCount():
         mostCommon = sorted(translationCount.items(),key = lambda item:-item[1])
         print("Text:",uid,"Sutta count:",len(translatorDict),"Translations:",mostCommon)
 
+def DhammapadaVerses() -> dict[int,str]:
+    """Return a dict of Dhammapada verses."""
+    with open("sutta/dhammapada/Dhammapada.json", 'r', encoding='utf-8') as file:
+        dhammapada = json.load(file)
+
+    return {int(n):verse for n,verse in dhammapada.items() if re.match(r"[0-9]",n)}
 
 if __name__ == "__main__":
     Alert.verbosity = 3

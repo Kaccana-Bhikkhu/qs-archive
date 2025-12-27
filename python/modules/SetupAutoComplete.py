@@ -180,13 +180,22 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
     
     yield Entry("Sutta references","texts/Sutta.html",icon="DhammaWheel.png")
     yield Entry("Vinaya references","texts/Vinaya.html",icon="DhammaWheel.png")
+
+    dhammapada = Suttaplex.DhammapadaVerses()
     BuildReferences.ReadReferenceDatabase()
     for text,textData in BuildReferences.gSavedReferences["text"].items():
         if re.search(r"[0-9]$",text): # Remove root text links
-            uid = BuildReferences.TextReference.FromString(text).Uid()
+            ref = BuildReferences.TextReference.FromString(text)
+            uid = ref.Uid()
             paliTitle = Suttaplex.Title(uid,translated=False)
             title = Suttaplex.Title(uid)
-            combinedTitle = f"{text}: {paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
+            combinedTitle = f"{paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
+            if combinedTitle:
+                combinedTitle = f"{text}: " + combinedTitle
+            elif ref.text == "Dhp" and ref.n0:
+                combinedTitle = f'{text}: “{Utils.EllideText(dhammapada[ref.n0],40,endAtWordBoundary=True)}”'
+            else:
+                combinedTitle = text
             yield Entry(combinedTitle,textData["link"],icon="DhammaWheel.png",excerptCount=textData["count"])
 
 def BookEntries() -> Iterable[AutoCompleteEntry]:
@@ -197,8 +206,8 @@ def BookEntries() -> Iterable[AutoCompleteEntry]:
     BuildReferences.ReadReferenceDatabase()
     for book,bookData in BuildReferences.gSavedReferences["book"].items():
         reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
-        title = re.sub(r'["“”]',"",reference.TextTitle())
-        yield Entry(title,bookData["link"],icon="book-open",excerptCount=bookData["count"])
+        entry = re.sub(r'["“”]',"",Utils.RemoveHtmlTags(reference.FullName(showAuthors=True,showYear=False)))
+        yield Entry(entry,bookData["link"],icon="book-open",excerptCount=bookData["count"])
     
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"

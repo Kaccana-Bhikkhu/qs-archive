@@ -381,7 +381,7 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
     For example IndexedBookmark("mil320","pts-vp-pli320") returns ("mil6.3.10","pts-vp-pli320","tw_rhysdavids")."""
     
     uid = uid.lower()
-    indexedText,translator = Suttaplex.SuttaIndex(uid)
+    indexedText = Suttaplex.SuttaIndex(uid)
     if not indexedText:
         Alert.error("Cannot build index for text uid",uid)
         return None
@@ -396,8 +396,19 @@ def SCIndex(uid:str,bookmark:int|str) -> SCBookmark:
         Alert.error("Cannot find bookmark",bookmark,"in text uid",uid)
         return None
     
-    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),translator)
+    return SCBookmark(suttaRef["uid"],"#" + (suttaRef.get("mark",None) or bookmark),suttaRef["translator"])
         # If suttaRef lacks the mark key, then mark is bookmark
+
+@lru_cache(maxsize=None)
+def VaggaUIDs(text: str) -> dict[int,str]:
+    """Return a list of the vagga uids for this text."""
+
+    returnValue = {}
+    for uid,title in Suttaplex.TitleDict(text.lower()).items():
+        if match := re.match(r"[a-z]+([0-9]+)$",uid): # Match uids like snp4
+            returnValue[int(match[1])] = Utils.slugify(title["original_title"])
+
+    return returnValue
 
 def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     """Go through the rules in gDatabase["textLink"] sequentially until we find one that matches this reference's uid, refCount, and translator.
@@ -417,6 +428,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     }
     params["n"] = [int(params[key]) for key in ("n0","n1","n2") if params[key]]
     params["refCount"] = len(params["n"]) # refCount is the number of numbers specified
+    params["vaggaUIDs"] = VaggaUIDs(params["uid"]) if params["uid"] in BuildReferences.TextGroupSet("namedVaggas") else []
 
     if params["uid"] not in gDatabase["text"]:
         Alert.warning(params["fullRef"],"does not match the case of any available texts.")
@@ -448,6 +460,8 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
             if printer is Alert.error or printer is Alert.warning:
                 return ""
         else:
+            if link.startswith("https://suttacentral.net/"):
+                link = link.lower() # SuttaCentral Express requires lowercase names, so it's easiest to work in all lowercase
             return link
     
     return ""
@@ -456,8 +470,11 @@ def SuttaLinkWrapper(link: str,referenceString: str) -> Html.Wrapper:
     """Given a sutta link (from ApplySuttaMatch rules) and the sutta reference itself, return
     a link to the sutta, including the alt-href attribute."""
     reference = BuildReferences.TextReference.FromString(referenceString)
-    reference = reference.Truncate(reference.TextLevel() + 1)
+    reference = reference.Truncate(max(reference.TextLevel() + 1,2))
     textPageLink = BuildReferences.ReferenceLink("text",str(reference))
+
+    # Switch to SuttaCentral Express links; if Javascript is running, frame.js will revert these to SuttaCentral
+    link = BuildReferences.SCToExpress(link)
 
     linkData = {"href":link,"target":"_blank"}
     if textPageLink:
@@ -477,6 +494,8 @@ def AddTextReference(item:dict,matchObject: re.Match) -> None:
         referenceText = f"{matchObject[1]} {'.'.join(numbers)}"
     else:
         referenceText = matchObject[1]
+    if matchObject[5]:
+        referenceText += "{" + matchObject[5] + "}"
     
     if "texts" in item:
         item["texts"].append(referenceText)

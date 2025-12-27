@@ -3,14 +3,16 @@
 
 import {configureLinks, openLocalPage, framePage} from './frame.js';
 import './autoComplete.js';
-import {SearchQuery,gSearchers,loadSearchDatabase} from './search.js';
+import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
 const DEBUG = false;
+const PEEK_FUTURE = true;
 
 let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
+let gTodaysHolidayHtml = ""; // The html text to display for today's holiday
 let gSearchFeaturedOffset = 0; // The featured excerpt currently displayed on search/Featured.html
 let gRandomExcerpts = []; // The random excerpts we have generated this session.
 
@@ -19,6 +21,18 @@ function calendarModulus(index) {
 
     let excerptCount = gFeaturedDatabase.calendar.length;
     return ((index % excerptCount) + excerptCount) % excerptCount;
+}
+
+function holidayHtml(date) {
+    // Return the holiday html (if any) for a given Date object
+    for (let holiday of gFeaturedDatabase.holidays) {
+        let holidayDate = new Date(holiday.date)
+        if ((holidayDate.getDate() === date.getDate()) && (holidayDate.getMonth() === date.getMonth())) {
+            let yearsAgo = date.getFullYear() - holidayDate.getFullYear();
+            return gTodaysHolidayHtml = `<p class = "holiday-banner">${holiday.text.replace("NN",String(yearsAgo))}</p>`;
+        }
+    }
+    return ""
 }
 
 let gDebugDateOffset = 0;
@@ -33,6 +47,8 @@ function initializeTodaysExcerpt(todaysDate) {
     debugLog("Days since start:",todaysDate,calendarStartDate,daysSinceStart);
     gTodaysExcerpt = calendarModulus(daysSinceStart);
     gSearchFeaturedOffset = 0;
+
+    gTodaysHolidayHtml = holidayHtml(todaysDate);
 }
 
 function displayFeaturedExcerpt() {
@@ -40,24 +56,28 @@ function displayFeaturedExcerpt() {
 
     let excerptToDisplay = gFeaturedDatabase.calendar[calendarModulus(gTodaysExcerpt + gSearchFeaturedOffset)];
     
-    let title = "Today's featured excerpt"
-    if (gSearchFeaturedOffset > 0) {
+    let title = "Today's featured excerpt";
+    let prefix = "";
+    if (gSearchFeaturedOffset > 0 && !(DEBUG && PEEK_FUTURE)) {
         let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
         while (gRandomExcerpts.length < gSearchFeaturedOffset) {
             let randomIndex = Math.floor(Math.random() * excerptCodes.length);
             gRandomExcerpts.push(excerptCodes[randomIndex]);
         }
         excerptToDisplay = gRandomExcerpts[gSearchFeaturedOffset - 1];
-        title = `Random excerpt (${gSearchFeaturedOffset})`;
-    } else if (gSearchFeaturedOffset < 0) {
+        title = `Random featured excerpt (${gSearchFeaturedOffset})`;
+    } else {
         let pastDate = new Date();
         pastDate.setDate(pastDate.getDate() + gSearchFeaturedOffset);
-        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        title = `Excerpt featured on ${pastDate.toLocaleDateString("en-us",options)}`;
+        prefix = holidayHtml(pastDate);
+        if (gSearchFeaturedOffset != 0) {
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            title = `Excerpt featured on ${pastDate.toLocaleDateString("en-us",options)}`;
+        }
     }
 
     let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = gFeaturedDatabase.excerpts[excerptToDisplay].html;
+    displayArea.innerHTML = prefix + gFeaturedDatabase.excerpts[excerptToDisplay].html;
     configureLinks(displayArea,"search/homepage.html");
 
     let titleArea = document.getElementById("page-title");
@@ -233,7 +253,7 @@ function initializeHomepage() {
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
-    featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+    featuredExcerptContainer.innerHTML = holidayHtml(new Date()) + gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
     configureLinks(featuredExcerptContainer,"search/homepage.html");
         // links in excerpts are relative to depth 1 pages
 
@@ -245,8 +265,13 @@ function initializeSearchFeatured() {
     let prevButton = document.getElementById("random-prev");
     let nextButton = document.getElementById("random-next");
     if (prevButton || nextButton) {
-        prevButton.onclick = () => { displayNextFeaturedExcerpt(-1); };
-        nextButton.onclick = () => { displayNextFeaturedExcerpt(1); };
+        prevButton.addEventListener("click", function(event) {
+            displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? -30: -1);
+        });
+        nextButton.addEventListener("click", function(event) {
+            displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? 30: 1);
+        });
+        initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);
     }
 }
@@ -358,12 +383,12 @@ function setupNavMenuTriggers() {
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
         let inputBox = document.getElementById('floating-search-input');
         inputBox.blur();
-        let searchQuery = encodeURIComponent(inputBox.value);
+        let searchQuery = encodeURIComponent(encodeSearchQuery(inputBox.value));
         inputBox.value = "";
         gQuery = "";
         debugLog('Search bar search for',searchQuery);
         event.preventDefault();
-        openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all`);
+        openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all&featured&relevant`);
     });
 
     /* Uncomment this code to begin working on #113: Grid menu matching abhayagiri.org
@@ -375,8 +400,10 @@ function setupNavMenuTriggers() {
 
     // Keyboard shortcuts
     document.addEventListener("keydown", function(event) {
-        // '/' key opens the search bar if it's not open already
-        if ((event.key === "/") && !gNavBar.querySelector('.floating-search.active')) {
+        // '/' key opens the search bar if it's not open already.
+        // Don't open the search bar if an input box has focus.
+        if ((event.key === "/") && !gNavBar.querySelector('.floating-search.active')
+                && document.activeElement.nodeName !== "INPUT") {
             event.preventDefault();
             document.getElementById("nav-search-icon").click();
         }
@@ -488,43 +515,29 @@ function setupAutoComplete() {
     });
 }
 
-function readingFaithfullyLink(baseLink) {
-    // Given a link to suttacentral.net, return a link to the same text on sutta.readingfaithfully.org.
-    // Return null if the link doesn't point to suttacentral.
-
-    const prefix = "https://suttacentral.net/";
-    const suttas = ['dn','mn','sn','an','kp','dhp','ud','iti','snp','vv','pv','thag','thig','ja','bupj','buss','buay','bunp','bupc','bupd','busk','buas','bipj','biss','binp','bipc','bipd','bisk','bias','kd','pvr','mil'];
-    const doubleRefs = ['sn','an','ud','','snp','thag','thig'];
-    if (!baseLink.startsWith(prefix))
-        return null;
-    let suttaRef = baseLink.replace(prefix,"").toLowerCase().split("/")[0];
-    let match = suttaRef.match(/^([^0-9]+)([0-9]+)(.[0-9]+)?/);
-    if (match && suttas.includes(match[1])) {
-        let numbers = match[2];
-        if (match[3] && doubleRefs.includes(match[1]))
-            numbers += match[3];
-        return `https://sutta.readingfaithfully.org/?q=${match[1]}${numbers}`
-    } else
-        return null;
-}
-
 function setupOptionalSuttaRefs() {
-    // Configure event listeners to link suttas to https://sutta.readingfaithfully.org/ when the alt/option key is pressed.
+    // Link suttas to local pages when the alt/option key is pressed
+    // and to https://suttacentral.express/ when the shift key is pressed.
 
     document.addEventListener("click", function(event) {
-        if (event.altKey) {
+        if (event.altKey || event.ctrlKey) {
             let hyperlink = event.target;
             while (hyperlink && !hyperlink.href) {
                 hyperlink = hyperlink.parentElement;
             }
             if (hyperlink) {
-                let suttaPage = hyperlink.dataset.altHref;
-                if (suttaPage) {
-                    suttaPage = suttaPage.replace("../","");
-                    debugLog("Opening sutta page:",suttaPage);
-                    let parts = suttaPage.split("#");
-                    openLocalPage(parts[0],"",parts.length > 1 ? parts[1] : "");
+                if (event.altKey) {
+                    let suttaPage = hyperlink.dataset.altHref;
+                    if (suttaPage) {
+                        event.preventDefault();
+                        suttaPage = suttaPage.replace("../","");
+                        debugLog("Opening sutta page:",suttaPage);
+                        let parts = suttaPage.split("#");
+                        openLocalPage(parts[0],"",parts.length > 1 ? parts[1] : "");
+                    }
+                } else {
                     event.preventDefault();
+                    window.open(hyperlink.href.replace("https://suttacentral.net/","https://suttacentral.express/"),"_blank");
                 }
             }
         }
@@ -567,20 +580,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
         document.addEventListener("keydown", function(event) {
+            let featuredExcerptContainer = document.getElementById("todays-excerpt");
+            if (!featuredExcerptContainer)
+                return;
             if ((event.key === "ArrowLeft") || (event.key === "ArrowRight")) {
+                let offset = event.shiftKey ? 30 : 1;
                 if (event.key === "ArrowLeft")
-                    gDebugDateOffset -= 1
+                    gDebugDateOffset -= offset;
                 else
-                    gDebugDateOffset += 1
+                    gDebugDateOffset += offset;
                 let debugDate = new Date();
                 debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
                 initializeTodaysExcerpt(debugDate);
-                let featuredExcerptContainer = document.getElementById("todays-excerpt");
-                if (featuredExcerptContainer) {
-                    featuredExcerptContainer.innerHTML = gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
-                    configureLinks(featuredExcerptContainer,"search/homepage.html");
-                    updateDate(debugDate);
-                }
+                featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
+                    gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                configureLinks(featuredExcerptContainer,"search/homepage.html");
+                updateDate(debugDate);
             }
         });
     }

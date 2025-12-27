@@ -20,6 +20,7 @@ from functools import lru_cache
 
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
+gDhammapada:dict[int:str] = None # Loaded later on
 
 class ReferenceItem(TypedDict):
     """Stores the link to a single refernce."""
@@ -50,7 +51,7 @@ def ReadReferenceDatabase() -> None:
     if gSavedReferences:
         return
     try:
-        with open("pages/assets/ReferenceDatabase.json", 'r', encoding='utf-8') as file:
+        with open(Utils.PosixJoin(gOptions.pagesDir,"assets/ReferenceDatabase.json"), 'r', encoding='utf-8') as file:
             gSavedReferences = json.load(file)
     except OSError as error:
         Alert.error(error, "When reading pages/assets/ReferenceDatabase.json. Will use a blank database.")
@@ -89,7 +90,7 @@ def WriteReferenceDatabase() -> bool:
     if not changed:
         return False
     
-    with open("pages/assets/ReferenceDatabase.json", 'w', encoding='utf-8') as file:
+    with open(Utils.PosixJoin(gOptions.pagesDir,"assets/ReferenceDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(gNewReferences, file, ensure_ascii=False, indent=2)
     
     gSavedReferences = gNewReferences
@@ -119,6 +120,31 @@ def TextGroupSet(which: str) -> set[str]:
     """Return a set of the texts in this group."""
     return set(gDatabase["textGroup"][which])
 
+@lru_cache(maxsize=None)
+def UIDGroupSet(which: str) -> set[str]:
+    """Return a set of the uids in this group."""
+    return set(t.lower() for t in TextGroupSet(which))
+
+def SCToExpress(scLink: str) -> str:
+    """Convert a link from SuttaCentral to SuttaCentral Express."""
+
+    if scLink.startswith("https://suttacentral.net/"):
+        # Some whole-book links are broken on SC Express, so don't change these links
+        if sutta := re.match(r"https://suttacentral.net/(.*)",scLink):
+            suttaRef = sutta[1]
+            if suttaRef in ("sn","an","thag","thig","mil"):
+                return scLink
+
+        # SuttaCentral Express currently doesn't handle suttas within groups, so don't change these links
+        if sutta := re.match(r"https://suttacentral.net/([asmd]n[0-9]+\.[0-9]+)",scLink):
+            suttaRef = sutta[1]
+            if suttaRef in Suttaplex.InterpolatedSuttaDict(suttaRef[0:2]):
+                return scLink
+
+        return scLink.replace("//suttacentral.net/","//suttacentral.express/")
+    else:
+        return scLink
+
 class TextReference(NamedTuple):
     text: str           # The name of the text, e.g. 'Dhp'
     n0: int = 0         # The three possible index numbers; 0 means an index is omitted
@@ -128,17 +154,18 @@ class TextReference(NamedTuple):
     @staticmethod
     def FromString(reference: str) -> "TextReference":
         """Create this object from a sutta reference string."""
-        suttaMatch = r"(\w+)\s*([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?"
+        suttaMatch = r"(\w+)\s*([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:\{([a-z]+)\})?"
         """ Sutta reference pattern: uid [n0[.n1[.n2]]]
             Matching groups:
             1: uid: SuttaCentral text uid
-            2-4: n0-n2: section numbers"""
+            2-4: n0-n2: section numbers
+            5: translator"""
         matchObject = re.match(suttaMatch,reference)
         numbers = [int(n) for n in (matchObject[2],matchObject[3],matchObject[4]) if n]
         text = "Kd" if matchObject[1] == "Mv" else matchObject[1] # Mv is equivalent to Kd
 
-        # For texts referenced by PTS verse, convert 
-        if len(numbers) == 1 and text in ("Snp","Thag","Thig"):
+        # For texts referenced by PTS verse, convert verse numbers to sections
+        if len(numbers) == 1 and text in TextGroupSet("ptsVerses") and text in TextGroupSet("doubleRef") and matchObject[5] != "section":
             pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
             newNumbers = re.search("[0-9.]+",pageUid)[0]
             if newNumbers:
@@ -159,9 +186,13 @@ class TextReference(NamedTuple):
         keep = self[0:level]
         return TextReference(*keep,*[0 if type(self[index]) == int else "" for index in range(level,len(self))])
 
-    def Numbers(self) -> tuple[int,int,int]:
-        """Return a tuple of the reference numbers"""
-        return tuple(int(n) for n in self[1:] if n)
+    def Numbers(self,minLength:int = 0) -> tuple[int,int,int]:
+        """Return a tuple of the reference numbers.
+        If minLevel is specified, append zeros as needed to reach this length."""
+        returnValue = tuple(int(n) for n in self[1:] if n)
+        if minLength:
+            returnValue += (minLength - len(returnValue))* (0,)
+        return returnValue
 
     def SortKey(self) -> tuple:
         """Return a tuple to sort these texts by."""
@@ -199,14 +230,14 @@ class TextReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return str(self)
 
-    def SuttaCentralLink(self) -> str:
+    def SuttaCentralLink(self,translator:str = "") -> str:
         """Return the SuttaCentral link for this text."""
         if self.n0 == 0:
             if self.text:
                 return f"https://suttacentral.net/{self.BaseUid()}"
             else:
                 return ""
-        mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [""]
+        mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [translator]
             # ApplySuttaMatchRules usually takes a match, but anything with indices will do.
         return Render.ApplySuttaMatchRules(mockMatch)
     
@@ -220,13 +251,17 @@ class TextReference(NamedTuple):
     def LinkIcons(self) -> list[str]:
         """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
         returnValue = []
-        scLink = self.SuttaCentralLink()
+        scLink = self.SuttaCentralLink(translator="section")
         if scLink:
             returnValue.append(Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
+            expressLink = SCToExpress(scLink)
+            if expressLink != scLink:
+                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Read faster on suttacentral.express","class":"express","target":"_blank"})
+                                   (Build.HtmlIcon("SuttaCentralExpress.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
-            returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse translations on Reading Faithfully","target":"_blank"})
+            returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse more translations online","target":"_blank"})
                         (Build.HtmlIcon("ReadingFaithfully.png","small-icon")))
         return returnValue
 
@@ -237,18 +272,19 @@ class TextReference(NamedTuple):
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
     
-    def BreadCrumbs(self) -> str:
-        """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages."""
+    def BreadCrumbs(self,minLevel:int = 0) -> str:
+        """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages.
+        level specifies the text level; SN 2.4 is level 3"""
 
         if not self.text:
             return ""
-        numbers = self.Numbers()
+        numbers = self.Numbers(minLength=minLevel - 1)
         pageInfo = [ReferencePageInfo(self,level) for level in range(0,len(numbers) + 2)]
         bits = [info.title for info in pageInfo[0:2]]
         bits.extend(str(self.Truncate(level)) + ": " + 
                     Suttaplex.Title(self.Truncate(level).Uid(),translated=False) for level in range(2,len(numbers) + 2))
-        for level in range(len(numbers) + 1):
-            bits[level] = Html.Tag("a",{"href":f"../{pageInfo[level].file}"})(bits[level])
+        for minLevel in range(len(numbers) + 1):
+            bits[minLevel] = Html.Tag("a",{"href":f"../{pageInfo[minLevel].file}"})(bits[minLevel])
         
         return " / ".join(bits)
     
@@ -394,9 +430,8 @@ class BookReference(NamedTuple):
         if self.abbreviation:
             book = gDatabase["reference"][self.abbreviation]
             bits = [Utils.CapitalizeFirst(book["title"])]
-            if showAuthors and book["author"]:
-                authorNames = [gDatabase["teacher"][a]["attributionName"] for a in book["author"]]
-                bits.append(f"by {Build.ItemList(authorNames,lastJoinStr = 'and')}")
+            if showAuthors and book["author"] and book["attribution"]:
+                bits.append(book["attribution"])
             if showYear and book["year"] and not self.IsCommentary():
                 bits.append(f"({book['year']})")
             if self.page:
@@ -416,7 +451,7 @@ class BookReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return self.abbreviation or self.author
 
-    def BreadCrumbs(self) -> str:
+    def BreadCrumbs(self,minLevel:int = 0) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
         firstAuthor = self.FirstAuthor()
         bits = []
@@ -451,7 +486,7 @@ class BookReference(NamedTuple):
         
         # If the filename links to a local page, add a "more information" link.
         if info["filename"].startswith("../"):
-            link = info["filename"].replace("../pages","../")
+            link = info["filename"].replace(Utils.PosixJoin("../",gOptions.pagesDir),"../")
             return [Html.Tag("a",{"href":link,"style":"font-size:65%;"})("more information...")]
 
         if info["filename"]:
@@ -601,7 +636,7 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            bits = [reference.BreadCrumbs()]
+            bits = [reference.BreadCrumbs(level)]
             bits.append("<hr>")
             return "\n".join(bits)
         else:
@@ -698,7 +733,9 @@ class ExcerptListPage(ReferencePageMaker):
                 a(formatter.HtmlExcerptList(excerpts))
 
         truncated = self.references[0].reference.Truncate(self.level)
-        RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
+        # Don't register references of the form Snp 4.0; the link should go to Snp 4
+        if self.level < 1 or truncated[self.level - 1] != 0:
+            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
 
         html = BoldfaceTextReferences(str(a),truncated)
         self.page.AppendContent(html)
@@ -763,7 +800,10 @@ class SingleLevelHeadings(Heading):
         headingCode = headingCode or self.groupCode
         name = headingCode.FullName()
         if isinstance(headingCode,TextReference):
-            translatedTitle = Suttaplex.Title(headingCode.Uid())
+            if headingCode.text == "Dhp":
+                translatedTitle = f'“{Utils.EllideText(gDhammapada[headingCode.n0],40,endAtWordBoundary=True)}”'
+            else:
+                translatedTitle = Suttaplex.Title(headingCode.Uid())
             if translatedTitle:
                 name += f": {translatedTitle}"
         icons = headingCode.LinkIcons()
@@ -873,7 +913,7 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
         referenceGroup = ConsecutiveTexts.FromReference(referenceGroup) or referenceGroup
             # Check to see if this reference falls into a group of consecutive texts
         directory = "texts/"
-        strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
+        strNumbers = '_'.join(map(str,referenceGroup.Numbers(minLength=level - 1)))
         if level > 1:
             title = str(referenceGroup)
             translatedTitle = Suttaplex.Title(referenceGroup.Uid())
@@ -995,7 +1035,7 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
     bookReferences = CollateReferences("books")
     commentaryRefs,modernRefs = Utils.Partition(bookReferences,lambda r:r.reference.IsCommentary())
-    WriteReferences(bookReferences,"BookReferences.txt")
+    # WriteReferences(textReferences,"BookReferences.txt")
 
     return [
         Build.YieldAllIf(FirstLevelMenu(suttaRefs),"texts" in gOptions.buildOnly),
@@ -1006,10 +1046,14 @@ def TextMenu() -> Html.PageDescriptorMenuItem:
 
 def ReferencesMenu() -> Html.PageDescriptorMenuItem:
     """Create the References menu item and its associated submenus."""
+    global gDhammapada
+    gDhammapada = Suttaplex.DhammapadaVerses()
 
     referencesMenu = TextMenu()
     yield Html.PageInfo("References","texts/Sutta.html")
 
     baseTagPage = Html.PageDesc()
     yield from baseTagPage.AddMenuAndYieldPages(referencesMenu,**Build.SUBMENU_STYLE)
+
+    gDhammapada = None # Clear storage space
     

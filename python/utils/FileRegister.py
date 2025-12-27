@@ -65,6 +65,10 @@ class FileRegister():
         else:
             return Status.NOT_FOUND
 
+    def IsRegistered(self,fileName: str) -> bool:
+        "Return True if fileName has been registered."
+        return self.GetStatus(fileName) in (Status.UNCHANGED,Status.UPDATED,Status.NEW,Status.BLOCKED)
+
     def SetStatus(self,fileName: str,status: Status) -> bool:
         """Set the status of an already-registered file.
         Returns False if the record doesn't exist."""

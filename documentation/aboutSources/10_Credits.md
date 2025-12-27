@@ -18,7 +18,14 @@ The Archive relies upon many common open-source and freeware tools. In addition 
 - [mp3DirectCut](https://mpesch3.de/): Fast, lossless audio splitting
 - [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/): Powerful vanilla Javascript auto complete engine
 - [Sutta Central](https://suttacentral.net/): Free, well-organized translations of most of the Pāli Canon
+- [Sutta Central Express](https://suttacentral.express/): A faster version of Sutta Central
 - [Reading Faithfully](https://sutta.readingfaithfully.org/): Easy links to free sutta translations
+
+## Texts
+
+The first few words of cited Dhammapada verses come from _The Dhammapada: The Buddha’s Path of Wisdom_, translated from the Pāli by Acharya Buddharakkhita, with an Introduction by Bhikkhu Bodhi (Kandy: Buddhist Publication Society, ©1985 Buddhist Publication Society). Transcribed from the print edition in 1996 by a volunteer under the auspices of the DharmaNet Transcription Project, with the kind permission of the BPS. Used under the following license:
+
+__Terms of use__: You may copy, reformat, reprint, republish, and redistribute this work in any medium whatsoever, provided that: (1) you only make such copies, etc. available free of charge and, in the case of reprinting, only in quantities of no more than 50 copies; (2) you clearly indicate that any derivatives of this work (including translations) are derived from this source document; and (3) you include the full text of this license in any copies or derivatives of this work. Otherwise, all rights reserved. For additional information about this license, see the [FAQ on accesstoinsight.org](https://www.accesstoinsight.org/faq.html).
 
 ## Photo/image Credits
 

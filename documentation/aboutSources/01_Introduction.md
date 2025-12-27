@@ -13,7 +13,7 @@ This archive is an attempt to make the oral teachings of Ajahn Pasanno more acce
 ## Where to Begin
 The Archive contains so much material that it can be difficult to know where to start. Here are my suggestions:
 
-If you have a question about a specific topic, try looking for it on the [search page](../search/Text-search.html).
+If you have a question about a specific topic, try looking for it on the [search page](../search/Text-search.html?featured=&relevant=).
 
 If you are less certain what you're looking for, the [key topics page](../indexes/KeyTopics.html?hideAll) lists broad Dhamma themes and subtopics within these.  
 

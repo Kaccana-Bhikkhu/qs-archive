@@ -37,21 +37,21 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 2,Append audio,,5:41,6:28,,,,,,,,,,,,,,,
 2,Append audio,,8:50,11:00,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
-2,Teaching,f,10:16,11:02,Maintain mindfulness throughout the day and night.,AChah,Continuity of mindfulness,,,,Mindfulness,Postures,Clear comprehension,Discernment,,,,Continuity of mindfulness,70
+2,Teaching,1f!,10:16,11:02,Maintain mindfulness throughout the day and night.,AChah,Continuity of mindfulness,,,,Mindfulness,Postures,Clear comprehension,Discernment,,,,Continuity of mindfulness,70
 2,Read by,,,,,Kittisaro,,,,,,,,,,,,,
-2,Quote,f,14:13,15:46,There's just suffering arising and passing away.,AChah,Suffering,Impermanence,,,Mindfulness,Clear comprehension,Discernment,Birth,Death,,,Impermanence,80
+2,Quote,f!,14:13,15:46,There's just suffering arising and passing away.,AChah,Suffering,Impermanence,,,Mindfulness,Clear comprehension,Discernment,Birth,Death,,,Impermanence,80
 2,Extra tags,,,,,,,,,,Continuity of mindfulness,,,,,,,,
 2,Read by,,,,,Kittisaro,,,,,,,,,,,,,
-2,Quote,f,16:48,18:01.5,You'll want to make an end of things.,AChah,Dispassion,Cessation,,,Impermanence,Relinquishment,Direct experience,Self-identity view,,,,Dispassion,80
+2,Quote,f!,16:48,18:01.5,You'll want to make an end of things.,AChah,Dispassion,Cessation,,,Impermanence,Relinquishment,Direct experience,Self-identity view,,,,Dispassion,80
 2,Extra tags,,,,,,,,,,,,,,,,,Cessation,80
 2,Read by,,,,,Kittisaro,,,,,,,,,,,,,
-2,Quote,f,1:36.2,3:21,"This is the nature of enlightenment. It's the extinguishing of fire, the cooling of that which was hot. This is peace. This is the end of saṃsāra, the cycle of birth and death.",AChah,Liberation,Nibbāna,Similes,Cessation,Dispassion,Discernment,Relinquishment,Delusion,Unwholesome Roots,,,Nibbāna,70
+2,Quote,f!,1:36.2,3:21,"This is the nature of enlightenment. It's the extinguishing of fire, the cooling of that which was hot. This is peace. This is the end of saṃsāra, the cycle of birth and death.",AChah,Liberation,Nibbāna,Similes,Cessation,Dispassion,Discernment,Relinquishment,Delusion,Unwholesome Roots,,,Nibbāna,70
 2,Extra tags,,,,,,Saṃsāra,,,,Happiness,Unconditioned,,,,,,Liberation,70
 2,Read by,,,,,Kittisaro,,,,,,,,,,,,,
 2,Alternate audio,,,,Ajahn Chah Weekend - 13 - Teachings to Marjorie - Ajahn Chah.mp3,,,,,,,,,,,,,,
 2,Append audio,,4:09,4:46,,,,,,,,,,,,,,,
 2,Append audio,,5:41,6:28,,,,,,,,,,,,,,,
-2,Quote,f,8:50,11:00,"If the tears don't come, we don't really accept truth.",AChah,Suffering,Truth,,,Compassion,Wat Pah Pong,Cessation of Suffering,,,,,Suffering,80
+2,Quote,f!,8:50,11:00,"If the tears don't come, we don't really accept truth.",AChah,Suffering,Truth,,,Compassion,Wat Pah Pong,Cessation of Suffering,,,,,Suffering,80
 2,Read by,,,,,Kittisaro,,,,,,,,,,,,,
 2,Alternate audio,,,,Ajahn Chah Weekend - 13 - Teachings to Marjorie - Ajahn Chah.mp3,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
@@ -80,7 +80,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 3,Quote,,10:49,,"I never lived with him, so I never got the chance to get disillusioned with him.",,Discernment,Teachers,,,Teaching Dhamma,Clinging,,,,,,,
 3,Story,,11:57,,Ajahn Sumedho wants Ajahn Chah to affirm whether he had attained a degree of insight.,,Ajahn Sumedho,Stages of awakening,,,Impermanence,Liberation,Bowing,Becoming,,,,,
 3,Reference,,,,Collected Teachings p. 606,,,,,,,,,,,,,,
-3,Indirect quote,,,,"We talk about things to develop and thigs to give up, but there's really nothing to develop and nothing to give up.|Ajahn Chah",,Ajahn Chah,Right Effort,Relinquishment,Emptiness,Dispassion,,,,,,,,
+3,Indirect quote,,,,"We talk about things to develop and things to give up, but there's really nothing to develop and nothing to give up.|Ajahn Chah",,Ajahn Chah,Right Effort,Relinquishment,Emptiness,Dispassion,,,,,,,,
 3,Reference,-,,,Collected Teachings p. 102,,,,,,,,,,,,,,
 3,Recollection,3,14:59,,The way Ajahn Chah trained was phenomenal.,,Ardency,Courage,Right Effort,,,,,,,,,,
 3,Quote,,15:48,17:47,I feel incredibly indebted to Ajahn Chah.,,Gratitude,Respect for elders,,,Cultural context,Language,Teaching Dhamma,Goodwill,Perfectionism,,,,
@@ -199,7 +199,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 14,Other,,2:31,,[Ajahn Amaro](teacher:) introduces Paul Breiter.,AA,Paul Breiter,,,,,,,,,,,,
 14,Quote,,,,There will probably be a book of Varapañño stories.,,Paul Breiter,,,,,,,,,,,,
 14,Reference,-s,,,[Venerable Father]() and [One Monk](),,,,,,,,,,,,,,
-14,Reflection,,3:08,,A profound sense of gratitude.,,Gratitude,,,,Monastic life,,,,,,,,
+14,Reflection,,3:09,,A profound sense of gratitude.,,Gratitude,,,,Monastic life,,,,,,,,
 14,Story,,4:47,,When I met Ajahn Chah.,,Ṭhānissarā,,,,Meditation retreats,Ajahn Sumedho,Personal presence,Hearing the true Dhamma,Liberation,,,,
 14,Extra tags,,,,,,,,,,Happiness,,,,,,,,
 14,Story,,,,"Ajahn Chah bows to a small, neglected Buddha image in a secular meditation center and inspires Ṭhānissarā's faith.",,Ajahn Chah,Bowing,Buddha images,Perception of a samaṇa,Human,Ṭhānissarā,Faith,,,,,,
@@ -240,7 +240,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 16,Quote,,,,"To want something that's not present, something you don't have, is suffering.",,Craving,Suffering,Cause of Suffering,,Culture/Natural environment,Saṅgha,Mutual lay/Saṅgha support,Culture/West,,,,,
 16,Reflection,3,18:27,19:26.5,"""It wasn't just suffering that Luang Por [Chah] was pointing to, but also non-suffering.""",,Suffering,Cessation of Suffering,,,Relinquishment,Clinging,Knowing itself,,,,,Cessation of Suffering,70
 16,Quote,o,19:25,,"When I saw Luang Por Chah when he had his stroke, I felt an almost unbearable sense of grief and loss. Then I remembered, 'This is the way it is.'",,Sickness,Grief,Equanimity,,Faith,Aversion,Relinquishment,,,,,,
-17,Other,,0:08,2:20,[Ajahn Amaro](teacher:) introduces Ajahn Mahaprasert and Ajahn Sundarā.,AA,Ajahn Mahā Prasert,Ajahn Sundarā,,,Wat Pah Pong,Wat Tam Saeng Pet,Learning,Abhayagiri,Spirit Rock,,,,
+17,Other,,0:08,2:20,[Ajahn Amaro](teacher:) introduces Ajahn Maha Prasert and Ajahn Sundarā.,AA,Ajahn Mahā Prasert,Ajahn Sundarā,,,Wat Pah Pong,Wat Tam Saeng Pet,Learning,Abhayagiri,Spirit Rock,,,,
 17,Reflection,3,2:51,,"""My life has been hugely impacted by Ajahn Chah, his teachings, and the spiritual family he introduced me to.""",,Gratitude,Teaching Dhamma,Saṅgha,,Happiness,Teachers,Learning,Respect for elders,Meditation retreats,,,,
 17,Extra tags,,,,,,,,,,Body scanning,Conceit,Ajahn Sumedho,Goodwill,Humility,,,,
 17,Extra tags,,,,,,,,,,Mentoring,,,,,,,,
@@ -345,7 +345,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 26,Indirect quote,,,,The desire mind is like children.|Ajahn Chah,,Ajahn Chah,Desire,Similes,,,,,,,,,,
 26,Story,,,,"""Scary ride, wasn't it?""",,Jack Kornfield,Thai Ajahn Chah monasteries,Fear,Ajahn Chah,Death,,,,,,,,
 26,Reflection,3,52:36,,The compassion that came because he didn't want anything from anybody.,,Compassion,Dispassion,,,Relinquishment,Tranquility,Teaching Dhamma,,,,,,
-26,Indirect quote,,52:59,54:18,What is the Buddha?|Ajahn Chah,,Ajahn Chah,Buddha,,,Three Refuges,Knowledge and vision,Unconditioned,Recollection/Dhamma,Liberation,,,Buddha,100
+26,Indirect quote,,52:59,54:18,What is the Buddha?|Ajahn Chah,,Ajahn Chah,Buddha,,,Three Refuges,Knowledge and vision,Unconditioned,Recollection/Dhamma,Liberation,,,,
 26,Reflection,3,54:23,,Ajahn Chah changed my life.,,Jack Kornfield,Gratitude,,,Human,Happiness,Liberation,,,,,,
 26,Indirect quote,,55:37,,"The mind, the heart, will become still in any surroundings, like a clear forest pool...|Ajahn Chah",,Ajahn Chah,Heart/mind,Tranquility,Similes,Mindfulness,Naturalness,Knowledge and vision,Happiness,Buddha,,,,
 28,Other,,0:08,4:20,"[Ajahn Amaro](teacher:) introduces Kittisaro, Ṭhānissarā, and Paul Breiter.",AA,Kittisaro,Ṭhānissarā,Paul Breiter,,Sutta,Ajahn Amaro,Recreation/leisure/sport,Learning,Ajahn Sumedho,,,,
@@ -371,7 +371,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 29,Indirect quote,,,,I'm going to disrobe. I want you to find me a nice girl.|Ajahn Chah,,Ajahn Chah,Ajahn Sinuan,Respect for elders,Wat Pah Pong,Thai Ajahn Chah monasteries,Humor,Unwholesome Roots,,,,,,
 29,Reflection,,17:35,,Ajahn Chah was unique in his way of taking care of people.,,Compassion,Monastic life,Mentoring,,,,,,,,,,
 30,Reflection,3,0:09,,How much Ajahn Chah affected our lives.,,,,,,Culture/West,,,,,,,,
-30,Reflection,3,0:41,,"I was the first Westerner, so he gave me an enormous amout of attention for the first two or three years.",,History/Western Buddhist monasticism,Ajahn Sumedho,Mentoring,,Ajahn Mahā Amorn,Other Thai Forest teachers,Pāṭimokkha,Conceit,Paul Breiter,,,,
+30,Reflection,3,0:41,,"I was the first Westerner, so he gave me an enormous amount of attention for the first two or three years.",,History/Western Buddhist monasticism,Ajahn Sumedho,Mentoring,,Ajahn Mahā Amorn,Other Thai Forest teachers,Pāṭimokkha,Conceit,Paul Breiter,,,,
 30,Extra tags,,,,,,,,,,Truth,Compassion,Humor,,,,,,
 30,Story,,,,Venerable Varapañño chants the Pāṭimokkha better than Ajahn Sumedho.,,Paul Breiter,Pāṭimokkha,Ajahn Sumedho,Ajahn Chah,Competitiveness,Conceit,Jealousy,,,,,,
 30,Note,,,,The story that Ajahn Sumedho didn't tell is probably told in Stillness Flowing p. 189.,,,,,,,,,,,,,,
@@ -392,11 +392,11 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 31,Extra tags,,,,,,,,,,Liberation,Culture/West,,,,,,,
 31,Story,,,,A doctor ordains later in life.,AA,Health care,Ordination,Older monks,Relationships,,,,,,,,,
 31,Story,,10:28,11:32,A hit man hired to kill Ajahn Chah ordains instead.,AA,Crime,Killing,Ordination,,Older monks,,,,,,,,
-31,Recollection,3,12:07,12:30,Teachings hanging in the trees at Wat Pay Pong.,AA,Wat Pah Pong,Culture/Natural environment,Teaching Dhamma,,,,,,,Yes,,,
+31,Recollection,3,12:07,12:30,Teachings hanging in the trees at Wat Pah Pong.,AA,Wat Pah Pong,Culture/Natural environment,Teaching Dhamma,,,,,,,Yes,,,
 32,Indirect quote,,1:40,3:03,"Don't you say that so lightly–old age, sickness, and death.|Ajahn Chah",JKornfield,Ajahn Chah,Sickness,Ageing,Death,Health care,,,,,,,Ageing,80
 32,Story,,3:20,8:33,Ajahn Chah visits Seattle.,JKappel,,,,,Joseph Kappel,Family,Paul Breiter,,,,,,
 32,Story,,,,Venerable Pabakkaro's grandmother hugs him at the airport.,,Joseph Kappel,Family,Monastic life,Vinaya,Ajahn Chah,,,,,,,,
-32,Story,,,,Ajahn Chah visits Mount Ranier.,,Ajahn Chah,Culture/Natural environment,,,,,,,,,,,
+32,Story,,,,Ajahn Chah visits Mount Rainier.,,Ajahn Chah,Culture/Natural environment,,,,,,,,,,,
 32,Reflection,3,8:41,18:55,Ajahn Chah's illness: his last teaching.,PBreiter,Sickness,Teaching Dhamma,,,Paul Breiter,Health care,Grief,Ajahn Pasanno,Respect for elders,,,,
 32,Extra tags,,,,,,,,,,Monastic life,Saṅgha,Upatakh,Almsfood,Mutual lay/Saṅgha support,,,,
 32,Story,,18:58,21:59,Ajahn Anando tries to heal Ajahn Chah.,AA,Ajahn Anando,Health care,,,Ajahn Sumedho,Sickness,Fierce/direct teaching,,,,,,
@@ -415,7 +415,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 33,Story,,0:08,10:57,My experiences with Ajahn Chah.,NMeister,Gratitude,Faith,,,Ajahn Liem,Suffering,Commerce/economics,Spiritual urgency,Joseph Kappel,,,,
 33,Extra tags,,,,,,,,,,Bowing,Wat Pah Pong,Mae Chee Kumfah,Ajahn Pasanno,Wat Pah Nanachat,,,,
 33,Extra tags,,,,,,,,,,Mae Chee,Ghost,Conceit,Fierce/direct teaching,,,,,
-33,Story,,11:11,12:28,Ajahn Chah's trip to Mount Ranier.,GKappel,,,,,Recreation/leisure/sport,Humor,,,,,,,
+33,Story,,11:11,12:28,Ajahn Chah's trip to Mount Rainier.,GKappel,,,,,Recreation/leisure/sport,Humor,,,,,,,
 33,Append audio,,13:42,13:58,,,,,,,,,,,,,,,
 33,Indirect quote,,,,The sawdust of water.|Ajahn Chah,GKappel,Ajahn Chah,,,,,,,,,,,,
 33,Story,o,12:33,,Ajahn Chah's presence.,GKappel,Personal presence,,,,Joseph Kappel,,,,,,,,
@@ -426,9 +426,9 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 33,Quote,,,,It was a hell of a life in the beginning.,,Monastic life,,,,,,,,,,,,
 33,Story,,18:30,20:07,"Paul Breiter expounds the spiritual potential of hospice work. In response, Ajahn Chah presses his cane into Paul's chest.",JKappel,Paul Breiter,Health care,Death,Fierce/direct teaching,Joseph Kappel,,,,,,,,
 33,Indirect quote,,20:10,22:13,You're strong. Now you need to make your heart as strong as your body.|Ajahn Chah,JKappel,Ajahn Chah,Heart/mind,,,Joseph Kappel,Humility,Family,Culture/Natural environment,,,,,
-34,Other,,0:07,1:04,[Ajahn Amaro](teacher:) introduces Jospeh Kappel and Ajahn Pasanno.,AA,Joseph Kappel,Ajahn Pasanno,,,Health care,Funerals,,,,,,,
+34,Other,,0:07,1:04,[Ajahn Amaro](teacher:) introduces Joseph Kappel and Ajahn Pasanno.,AA,Joseph Kappel,Ajahn Pasanno,,,Health care,Funerals,,,,,,,
 34,Story,,1:21,,Venerable Pabakkaro (Joseph Kappel) spends time in solitude.,JKappel,Joseph Kappel,Seclusion,,,Ajahn Sumedho,,,,,,,,
-34,Story,,3:12,,Ajahn Chah's failing heath and Rains Retreat at Tam Saeng Pet.,JKappel,Sickness,Health care,Rains retreat,Wat Tam Saeng Pet,Wat Pah Pong,Lodging,Seclusion,Generosity,Joseph Kappel,,,,
+34,Story,,3:12,,Ajahn Chah's failing health and Rains Retreat at Tam Saeng Pet.,JKappel,Sickness,Health care,Rains retreat,Wat Tam Saeng Pet,Wat Pah Pong,Lodging,Seclusion,Generosity,Joseph Kappel,,,,
 34,Story,,,,"""Pabakkaro, make me a Communist.""",,Ajahn Chah,Joseph Kappel,Culture/Natural environment,Medicinal requisites,Contentment,Sensual desire,,,,,,,
 34,Story,,,,Venerable Pabakkaro attends to Ajahn Chah.,,Upatakh,Ajahn Chah,Joseph Kappel,Humility,,,,,,,,,
 34,Story,,,,Ajahn Chah visits the branch monasteries for the last time.,,Ajahn Chah,Thai Ajahn Chah monasteries,Joseph Kappel,Upatakh,Vinaya,Saṅgha,,,,,,,
@@ -444,7 +444,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 34,Reflection,3,,,Ajahn Chah's emphasis on Saṅgha was unique.,,Ajahn Chah,Saṅgha,Thai Ajahn Chah monasteries,Teachers,Conflict,Personal presence,Three Refuges,,,,,,
 34,Indirect quote,,,,People in the world are attached to status. People in the religion are attached to their views.|Thai saying,Anon,Monastic life,Views,,,,,,,,,,,
 34,Reflection,3o,30:39,31:39,The sea of faith: Ajahn Chah's funeral.,AP,Faith,Funerals,,,Meditation,Chanting,Almsfood,,,,,,
-34,Reflection,3,31:41,32:40,"Surrender, dignity, honesty: Qualites of Ajahn Chah.",AP,Relinquishment,Dignity,Truth,,Saṅgha,Funerals,,,,,,,
+34,Reflection,3,31:41,32:40,"Surrender, dignity, honesty: Qualities of Ajahn Chah.",AP,Relinquishment,Dignity,Truth,,Saṅgha,Funerals,,,,,,,
 34,Reflection,3,32:55,,Presence and emptiness.,JKornfield,Gratitude,Emptiness,,,,,,,,,,,
 34,Indirect quote,,33:35,36:40,You're living off the karma of the Buddha.|Ajahn Chah,JKornfield,Ajahn Chah,Almsround,Kamma,Buddha,Liberation,Compassion,Culture/Thailand,Gratitude,Monastic life,,,,
 34,Extra tags,,,,,,Jack Kornfield,,,,Ajahn Chah lineage,,,,,,,,
