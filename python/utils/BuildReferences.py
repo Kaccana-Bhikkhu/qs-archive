@@ -164,18 +164,14 @@ class TextReference(NamedTuple):
         numbers = [int(n) for n in (matchObject[2],matchObject[3],matchObject[4]) if n]
         text = "Kd" if matchObject[1] == "Mv" else matchObject[1] # Mv is equivalent to Kd
 
-        # For texts referenced by PTS verse, convert 
-        if len(numbers) == 1 and text in ("Snp","Thag","Thig"):
-            if matchObject[5] == "section":
-                if text in TextGroupSet("doubleRef"):
-                    numbers.append(1) # Add a second number to sections of double reference texts
-            else:
-                pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
-                newNumbers = re.search("[0-9.]+",pageUid)[0]
-                if newNumbers:
-                    newNumbers = newNumbers.split(".")
-                    numbers = (newNumbers + [numbers[0]])[0:3]
-                    numbers = [int(n) for n in numbers]
+        # For texts referenced by PTS verse, convert verse numbers to sections
+        if len(numbers) == 1 and text in TextGroupSet("ptsVerses") and text in TextGroupSet("doubleRef") and matchObject[5] != "section":
+            pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
+            newNumbers = re.search("[0-9.]+",pageUid)[0]
+            if newNumbers:
+                newNumbers = newNumbers.split(".")
+                numbers = (newNumbers + [numbers[0]])[0:3]
+                numbers = [int(n) for n in numbers]
 
         return TextReference(text,*numbers)
 
@@ -190,9 +186,13 @@ class TextReference(NamedTuple):
         keep = self[0:level]
         return TextReference(*keep,*[0 if type(self[index]) == int else "" for index in range(level,len(self))])
 
-    def Numbers(self) -> tuple[int,int,int]:
-        """Return a tuple of the reference numbers"""
-        return tuple(int(n) for n in self[1:] if n)
+    def Numbers(self,minLength:int = 0) -> tuple[int,int,int]:
+        """Return a tuple of the reference numbers.
+        If minLevel is specified, append zeros as needed to reach this length."""
+        returnValue = tuple(int(n) for n in self[1:] if n)
+        if minLength:
+            returnValue += (minLength - len(returnValue))* (0,)
+        return returnValue
 
     def SortKey(self) -> tuple:
         """Return a tuple to sort these texts by."""
@@ -272,18 +272,19 @@ class TextReference(NamedTuple):
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
     
-    def BreadCrumbs(self) -> str:
-        """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages."""
+    def BreadCrumbs(self,minLevel:int = 0) -> str:
+        """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages.
+        level specifies the text level; SN 2.4 is level 3"""
 
         if not self.text:
             return ""
-        numbers = self.Numbers()
+        numbers = self.Numbers(minLength=minLevel - 1)
         pageInfo = [ReferencePageInfo(self,level) for level in range(0,len(numbers) + 2)]
         bits = [info.title for info in pageInfo[0:2]]
         bits.extend(str(self.Truncate(level)) + ": " + 
                     Suttaplex.Title(self.Truncate(level).Uid(),translated=False) for level in range(2,len(numbers) + 2))
-        for level in range(len(numbers) + 1):
-            bits[level] = Html.Tag("a",{"href":f"../{pageInfo[level].file}"})(bits[level])
+        for minLevel in range(len(numbers) + 1):
+            bits[minLevel] = Html.Tag("a",{"href":f"../{pageInfo[minLevel].file}"})(bits[minLevel])
         
         return " / ".join(bits)
     
@@ -450,7 +451,7 @@ class BookReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return self.abbreviation or self.author
 
-    def BreadCrumbs(self) -> str:
+    def BreadCrumbs(self,minLevel:int = 0) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
         firstAuthor = self.FirstAuthor()
         bits = []
@@ -635,7 +636,7 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            bits = [reference.BreadCrumbs()]
+            bits = [reference.BreadCrumbs(level)]
             bits.append("<hr>")
             return "\n".join(bits)
         else:
@@ -732,7 +733,9 @@ class ExcerptListPage(ReferencePageMaker):
                 a(formatter.HtmlExcerptList(excerpts))
 
         truncated = self.references[0].reference.Truncate(self.level)
-        RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
+        # Don't register references of the form Snp 4.0; the link should go to Snp 4
+        if self.level < 1 or truncated[self.level - 1] != 0:
+            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
 
         html = BoldfaceTextReferences(str(a),truncated)
         self.page.AppendContent(html)
@@ -910,7 +913,7 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
         referenceGroup = ConsecutiveTexts.FromReference(referenceGroup) or referenceGroup
             # Check to see if this reference falls into a group of consecutive texts
         directory = "texts/"
-        strNumbers = '_'.join(map(str,referenceGroup.Numbers()))
+        strNumbers = '_'.join(map(str,referenceGroup.Numbers(minLength=level - 1)))
         if level > 1:
             title = str(referenceGroup)
             translatedTitle = Suttaplex.Title(referenceGroup.Uid())

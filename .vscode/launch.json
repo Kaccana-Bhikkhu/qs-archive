@@ -160,9 +160,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Render",
-                "--featured",
-                "holidays"
+                "Build",
+                "--buildOnly",
+                "texts"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
