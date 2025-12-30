@@ -1,4 +1,4 @@
-import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition} from './frame.js';
+import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
 
 const TEXT_DELIMITERS = "][{}<>^";
@@ -63,8 +63,7 @@ function modulus(numerator,denominator) {
 
 export async function loadSearchDatabase() {
     if (!gSearchDatabase) {
-        await fetch('./assets/SearchDatabase.json')
-        .then((response) => response.json())
+        await loadDatabase('SearchDatabase.json')
         .then((json) => {
             gSearchDatabase = json; 
             debugLog("Loaded search database.");

@@ -1,7 +1,7 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
 // Both pages rely on ./assets/FeaturedDatabase.json
 
-import {configureLinks, openLocalPage, framePage} from './frame.js';
+import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
@@ -243,12 +243,21 @@ function configurePopupMenus(loadedFrame) {
     }
 }
 
-function initializeHomepage() {
+async function initializeHomepage() {
     // This code to configure the homepage runs only for homepage.html
     let featuredExcerptContainer = document.getElementById("todays-excerpt");
     if (!featuredExcerptContainer)
         return;
     
+    if (!gFeaturedDatabase) {
+        await loadDatabase('FeaturedDatabase.json')
+        .then((json) => {
+            gFeaturedDatabase = json; 
+            debugLog("Loaded homepage database.");
+        });
+        initializeTodaysExcerpt()
+    }
+
     gMeditationTimer.reloadPage();
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
@@ -260,7 +269,7 @@ function initializeHomepage() {
     updateDate();
 }
 
-function initializeSearchFeatured() {
+async function initializeSearchFeatured() {
     // This initialization code runs only for search/Featured.html
     let prevButton = document.getElementById("random-prev");
     let nextButton = document.getElementById("random-next");
@@ -270,6 +279,11 @@ function initializeSearchFeatured() {
         });
         nextButton.addEventListener("click", function(event) {
             displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? 30: 1);
+        });
+        await loadDatabase('FeaturedDatabase.json')
+        .then((json) => {
+            gFeaturedDatabase = json; 
+            debugLog("Loaded homepage database.");
         });
         initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);
@@ -282,16 +296,6 @@ export async function loadHomepage(loadedFrame) {
 
     dropdownMenuClick(null); // Close all dropdown menus
     gNavBar.querySelector('.main-nav').classList.remove("active");
-    
-    if (!gFeaturedDatabase) {
-        await fetch('./assets/FeaturedDatabase.json')
-        .then((response) => response.json())
-        .then((json) => {
-            gFeaturedDatabase = json; 
-            debugLog("Loaded homepage database.");
-        });
-        initializeTodaysExcerpt()
-    }
 
     highlightNavMenuItem();
     configurePopupMenus(loadedFrame);
@@ -377,7 +381,9 @@ function setupNavMenuTriggers() {
 
     // Clicking the search button toggles the floating search bar
     document.getElementById('nav-search-icon').addEventListener('click', function() {
-        dropdownMenuClick(this); // Close all dropdown menus
+        if (!gAutoComplete)
+            setupAutoComplete();
+        dropdownMenuClick(this);
     });
     // Handle clicking the search button
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
@@ -431,9 +437,7 @@ function setupAutoComplete() {
             src: async () => {
                 try {
                     // Fetch External Data Source
-                    const source = await fetch("assets/AutoCompleteDatabase.json");
-                    gAutoCompleteDatabase = await source.json();
-                    // Returns Fetched data
+                    gAutoCompleteDatabase = loadDatabase("AutoCompleteDatabase.json")
                     return gAutoCompleteDatabase;
                 } catch (error) {
                     return error;
@@ -575,7 +579,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display the number of excerpts found with this search
     document.getElementById("floating-search-input").addEventListener("input",countFoundExcerpts);
 
-    setupAutoComplete();
     setupOptionalSuttaRefs();
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
