@@ -83,7 +83,6 @@ export function preloadDatabase(fileName) {
 	if (gDatabases[fileName])
 		return;
 	gDatabases[fileName] = fetch(`assets/${fileName}`);
-	
 }
 
 export async function loadDatabase(fileName) {
@@ -94,7 +93,8 @@ export async function loadDatabase(fileName) {
 		return gDatabases[fileName];
 
 	const source = await gDatabases[fileName];
-	return await source.json();
+	gDatabases[fileName] = await source.json();
+	return gDatabases[fileName];
 }
 
 export function getDatabase(fileName,canFail = false) {

@@ -508,3 +508,5 @@ def main() -> None:
 
     with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(optimizedDB, file, ensure_ascii=False, indent=2)
+    with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase_.json"), 'w', encoding='utf-8') as file:
+        json.dump(optimizedDB, file, ensure_ascii=False, indent=None)

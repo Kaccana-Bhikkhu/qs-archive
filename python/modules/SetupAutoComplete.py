@@ -240,6 +240,8 @@ def main() -> None:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
         Alert.info(f"Wrote {len(newDatabase)} auto complete entries to {filename}.")
+        with open(Utils.AppendToFilename(filename,"_"), 'w', encoding='utf-8') as file:
+            json.dump(newDatabase, file, ensure_ascii=False, indent=None)
         return True
     except OSError as err:
         Alert.error(f"Could not write {filename} due to {err}")

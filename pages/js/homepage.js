@@ -8,7 +8,9 @@ import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './sea
 const DEBUG = false;
 const PEEK_FUTURE = true;
 
-let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
+let gHomepageDatabase = null; // Featured excerpt html to display on the homepage, loaded from assets/FeaturedDatabase1_.json
+let gHistoryDatabase = null; // Html to display on the history page, loaded from assets/FeaturedDatabase2_.json
+let gFeaturedDatabase = null; // Used to access other properties of the history database, loaded from either version of FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
@@ -59,7 +61,7 @@ function displayFeaturedExcerpt() {
     let title = "Today's featured excerpt";
     let prefix = "";
     if (gSearchFeaturedOffset > 0 && !(DEBUG && PEEK_FUTURE)) {
-        let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
+        let excerptCodes = Object.keys(gHistoryDatabase.excerpts);
         while (gRandomExcerpts.length < gSearchFeaturedOffset) {
             let randomIndex = Math.floor(Math.random() * excerptCodes.length);
             gRandomExcerpts.push(excerptCodes[randomIndex]);
@@ -77,7 +79,7 @@ function displayFeaturedExcerpt() {
     }
 
     let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = prefix + gFeaturedDatabase.excerpts[excerptToDisplay].html;
+    displayArea.innerHTML = prefix + gHistoryDatabase.excerpts[excerptToDisplay];
     configureLinks(displayArea,"search/homepage.html");
 
     let titleArea = document.getElementById("page-title");
@@ -249,9 +251,10 @@ async function initializeHomepage() {
     if (!featuredExcerptContainer)
         return;
     
-    if (!gFeaturedDatabase) {
-        await loadDatabase('FeaturedDatabase.json')
+    if (!gHomepageDatabase) {
+        await loadDatabase('FeaturedDatabase1_.json')
         .then((json) => {
+            gHomepageDatabase = json;
             gFeaturedDatabase = json; 
             debugLog("Loaded homepage database.");
         });
@@ -262,7 +265,7 @@ async function initializeHomepage() {
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
-    featuredExcerptContainer.innerHTML = holidayHtml(new Date()) + gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+    featuredExcerptContainer.innerHTML = holidayHtml(new Date()) + gHomepageDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]];
     configureLinks(featuredExcerptContainer,"search/homepage.html");
         // links in excerpts are relative to depth 1 pages
 
@@ -280,10 +283,11 @@ async function initializeSearchFeatured() {
         nextButton.addEventListener("click", function(event) {
             displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? 30: 1);
         });
-        await loadDatabase('FeaturedDatabase.json')
+        await loadDatabase('FeaturedDatabase2_.json')
         .then((json) => {
+            gHistoryDatabase = json;
             gFeaturedDatabase = json; 
-            debugLog("Loaded homepage database.");
+            debugLog("Loaded history page database.");
         });
         initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);
@@ -437,7 +441,7 @@ function setupAutoComplete() {
             src: async () => {
                 try {
                     // Fetch External Data Source
-                    gAutoCompleteDatabase = loadDatabase("AutoCompleteDatabase.json")
+                    gAutoCompleteDatabase = loadDatabase("AutoCompleteDatabase_.json")
                     return gAutoCompleteDatabase;
                 } catch (error) {
                     return error;
@@ -596,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
                 initializeTodaysExcerpt(debugDate);
                 featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
-                    gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                    gHomepageDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
                 configureLinks(featuredExcerptContainer,"search/homepage.html");
                 updateDate(debugDate);
             }

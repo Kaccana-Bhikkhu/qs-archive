@@ -63,7 +63,7 @@ function modulus(numerator,denominator) {
 
 export async function loadSearchDatabase() {
     if (!gSearchDatabase) {
-        await loadDatabase('SearchDatabase.json')
+        await loadDatabase('SearchDatabase_.json')
         .then((json) => {
             gSearchDatabase = json; 
             debugLog("Loaded search database.");

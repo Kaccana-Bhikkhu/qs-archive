@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os, json, datetime, re
 from datetime import timedelta, date
+from base64 import b64encode
 import random
 import itertools
 from difflib import SequenceMatcher
@@ -106,15 +107,39 @@ def ReadDatabase(backupNumber:int = 0) -> bool:
     except OSError as err:
         Alert.error(f"Could not read {gOptions.featuredDatabase} due to {err}")
         return False
-    
+
+def CompressExcerptKeys(db: FeaturedDatabase) -> None:
+    """Convert excerpt keys like 'Chah2001_S05_F05' to shorter base64 encodings."""
+    pass
+
+def HomepageDatabase(db: FeaturedDatabase) -> dict[str]:
+    """Return a condensed database containing only what is needed to display the home page."""
+
+    returnValue = {key:db[key] for key in ("startDate","calendar","holidays")}
+    returnValue["excerpts"] = {x:db["excerpts"][x]["shortHtml"] for x in db["excerpts"]}
+    return returnValue
+
+def HistoryDatabase(db: FeaturedDatabase) -> dict[str]:
+    """Return a condensed database containing only what is needed to display the home page."""
+
+    returnValue = {key:db[key] for key in ("startDate","calendar","holidays")}
+    returnValue["excerpts"] = {x:db["excerpts"][x]["html"] for x in db["excerpts"]}
+    return returnValue
 
 def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
     """Write newDatabase to the random excerpt .json file"""
     filename = gOptions.featuredDatabase
+    homepageFilename = Utils.AppendToFilename(gOptions.featuredDatabase,"1_")
+    historyFilename = Utils.AppendToFilename(gOptions.featuredDatabase,"2_")
     try:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
         Alert.info(f"Wrote featured excerpt database to {filename}.")
+        CompressExcerptKeys(newDatabase)
+        with open(homepageFilename, 'w', encoding='utf-8') as file:
+            json.dump(HomepageDatabase(newDatabase), file, ensure_ascii=False, indent=None)
+        with open(historyFilename, 'w', encoding='utf-8') as file:
+            json.dump(HistoryDatabase(newDatabase), file, ensure_ascii=False, indent=None)
         return True
     except OSError as err:
         Alert.error(f"Could not write {filename} due to {err}")
@@ -651,7 +676,7 @@ def main() -> None:
         Alert.warning("Cannot run additional module(s)",[op.__name__ for op in gEnhanceModules],"due to database errors.")
 
 
-    if databaseChanged:
+    if databaseChanged or "write" in gOptions.featured:
         RunSubmodule(Write,alwaysRun=True,goodDatabase=goodDatabase)
     else:
         AnnounceSubmodule(None)
