@@ -18,7 +18,7 @@
 --spreadsheetDatabase pages/assets/SpreadsheetDatabase.json
 
 // DownloadCSV options:
---spreadsheet "https://docs.google.com/spreadsheets/d/1SKpwHQMFfWdCBARNbknrWIkpcfTDrP0AStWrHR0v-g8/"
+--spreadsheet "https://docs.google.com/spreadsheets/d/1NtPNB0AX3hXf66bwvbA0OjAb7OuO00yI_KpAgEVdRp8/"
 --summarySheetID 2007732801
 
 // ParseCSV options:
@@ -56,7 +56,7 @@
 // Increase verbosity to maximum
 -vvv
 
---args python/config/BuildAbhayagiri.args
+--args python/config/BuildPreview.args
 --linkCheckLevel 1
 --validateSplitMethod
 --sheets Changed
