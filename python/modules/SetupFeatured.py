@@ -110,7 +110,12 @@ def ReadDatabase(backupNumber:int = 0) -> bool:
 
 def CompressExcerptKeys(db: FeaturedDatabase) -> None:
     """Convert excerpt keys like 'Chah2001_S05_F05' to shorter base64 encodings."""
-    pass
+    excerpts = db["excerpts"]
+    codeBook = {key:b64encode(n.to_bytes(2)).decode().strip("=") for n,key in enumerate(excerpts)}
+    for key,encoded in codeBook.items():
+        excerpts[encoded] = excerpts[key]
+        del excerpts[key]
+    db["calendar"] = [codeBook[key] for key in db["calendar"]]
 
 def HomepageDatabase(db: FeaturedDatabase) -> dict[str]:
     """Return a condensed database containing only what is needed to display the home page."""
