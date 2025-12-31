@@ -13,6 +13,7 @@ import urllib.error, urllib.parse
 from collections import defaultdict
 import itertools
 import BuildReferences
+import Render
 
 class UrlInfo(NamedTuple):
     """Information about a given URL."""
@@ -207,11 +208,22 @@ def main() -> None:
         textUrls:dict[str,list[str]] = {}
         for text in BuildReferences.gSavedReferences["text"]:
             ref = BuildReferences.TextReference.FromString(text)
-            link = ref.SuttaCentralLink()
-            if link:
+            translators = [""]
+            if len(ref.Numbers()) == 1 and ref.text in BuildReferences.TextGroupSet("namedVaggas"):
+                couldBeVagga = ref.n0 <= len(Render.VaggaUIDs(ref.text))
+                ptsVerses = ref.text in BuildReferences.TextGroupSet("ptsVerses")
+                if couldBeVagga:
+                    translators.append("section")
+                    if not ptsVerses:
+                        translators.remove("")
+                elif not ptsVerses:
+                    Alert.warning(ref,"can be neither a vagga nor a pts verse.")
+
+            links = filter(None,[ref.SuttaCentralLink(t) for t in translators])
+            for link in links:
                 link = link.replace("https://suttacentral.net/","https://suttacentral.express/")
                 textUrls[link] = [text]
-            else:
+            if not links:
                 Alert.info(text,"has no SuttaCentral link.")
         Alert.info(len(textUrls),"urls to check.")
         CheckUrls(textUrls)
