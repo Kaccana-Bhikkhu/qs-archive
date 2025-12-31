@@ -111,7 +111,7 @@ def ReadDatabase(backupNumber:int = 0) -> bool:
 def CompressExcerptKeys(db: FeaturedDatabase) -> None:
     """Convert excerpt keys like 'Chah2001_S05_F05' to shorter base64 encodings."""
     excerpts = db["excerpts"]
-    codeBook = {key:b64encode(n.to_bytes(2)).decode().strip("=") for n,key in enumerate(excerpts)}
+    codeBook = {key:str(n) for n,key in enumerate(excerpts)}
     for key,encoded in codeBook.items():
         excerpts[encoded] = excerpts[key]
         del excerpts[key]

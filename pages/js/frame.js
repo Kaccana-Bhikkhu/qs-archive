@@ -82,7 +82,9 @@ export function preloadDatabase(fileName) {
 	// Begin loading a .json database from the assets directory and return immediately.
 	if (gDatabases[fileName])
 		return;
-	gDatabases[fileName] = fetch(`assets/${fileName}`);
+	gDatabases[fileName] = fetch(`assets/${fileName}`)
+	.then((source) => source.json())
+	.then((json) => {gDatabases[fileName] = json});
 }
 
 export async function loadDatabase(fileName) {
@@ -92,19 +94,18 @@ export async function loadDatabase(fileName) {
 	else if (!(gDatabases[fileName] instanceof Promise))
 		return gDatabases[fileName];
 
-	const source = await gDatabases[fileName];
-	gDatabases[fileName] = await source.json();
+	await gDatabases[fileName];
 	return gDatabases[fileName];
 }
 
 export function getDatabase(fileName,canFail = false) {
-	// Return an already-loaded database or null if the database isn't loaded.
+	// Return an already-loaded database or undefined if the database isn't loaded.
 	// Log a console error if canFail is false and the database isn't loaded.
 
-	if (!gDatabases[fileName] || gDatabases[fileName] instanceof Promise) {
+	if (gDatabases[fileName] instanceof Promise) {
 		if (!canFail)
 			console.error(`assets/${fileName} is not yet loaded.`);
-		return null;
+		return undefined;
 	}
 	return gDatabases[fileName];
 }

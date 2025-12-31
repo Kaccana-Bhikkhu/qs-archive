@@ -123,7 +123,6 @@ class MeditationTimer {
         this.timeLeft = this.duration * 60;
         this.isActive = false;
         this.interval = null;
-        this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         
         this.reloadPage();
     }
@@ -157,6 +156,8 @@ class MeditationTimer {
     }
 
     startTimer() {
+        if (!this.bell)
+            this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         this.interval = setInterval(() => {
             this.timeLeft--;
             this.updateDisplay();
@@ -203,7 +204,8 @@ class MeditationTimer {
     handleTimerComplete() {
         this.isActive = false;
         this.resetTimer();
-        this.bell.play().catch(error => console.log('Error playing bell:', error));
+        if (this.bell)
+            this.bell.play().catch(error => console.log('Error playing bell:', error));
     }
 }
 
