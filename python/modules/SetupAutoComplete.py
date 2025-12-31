@@ -208,7 +208,18 @@ def BookEntries() -> Iterable[AutoCompleteEntry]:
         reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
         entry = re.sub(r'["“”]',"",Utils.RemoveHtmlTags(reference.FullName(showAuthors=True,showYear=False)))
         yield Entry(entry,bookData["link"],icon="book-open",excerptCount=bookData["count"])
-    
+
+def CompressDatabase(database) -> None:
+    """Compress the database before writing AutoCompleteDatabase_.json."""
+
+    shortKeys = {"long":"l","short":"s","number":"n","link":"k","icon":"i","suffix":"f","excerptCount":"x"}
+    for entry in database:
+        for key,shortKey in shortKeys.items():
+            if entry[key] != "":
+                entry[shortKey] = entry.pop(key,"")
+            else:
+                entry.pop(key,None)
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--autoCompleteDatabase',type=str,default="pages/assets/AutoCompleteDatabase.json",help="AutoComplete database filename.")
@@ -240,6 +251,7 @@ def main() -> None:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
         Alert.info(f"Wrote {len(newDatabase)} auto complete entries to {filename}.")
+        CompressDatabase(newDatabase)
         with open(Utils.AppendToFilename(filename,"_"), 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=None)
         return True

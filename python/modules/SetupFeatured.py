@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import os, json, datetime, re
 from datetime import timedelta, date
-from base64 import b64encode
 import random
 import itertools
 from difflib import SequenceMatcher
@@ -14,7 +13,6 @@ from dataclasses import dataclass
 import Utils, Alert, Build, Database
 from copy import copy
 import Filter
-import Html2 as Html
 from collections import defaultdict, Counter, deque
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
