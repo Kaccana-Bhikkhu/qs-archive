@@ -428,9 +428,9 @@ function setupNavMenuTriggers() {
     });
 }
 
+let gAutoCompleteDatabase = {};
 let gQuery = "";
 let gAutoComplete = null;
-const SHORT_KEYS = {"l":"long","s":"short","n":"number","k":"link","i":"icon","f":"suffix","x":"excerptCount"};
 
 function setupAutoComplete() {
     // Code to configure floating menu autocomplete functionality
@@ -443,16 +443,8 @@ function setupAutoComplete() {
             src: async () => {
                 try {
                     // Fetch External Data Source
-                    return loadDatabase("AutoCompleteDatabase_.json")
-                    .then(db => {
-                        for (let item of db) { // Reconstitute the shortened keys
-                            for (let shortKey in SHORT_KEYS) {
-                                item[SHORT_KEYS[shortKey]] = (item[shortKey] === undefined) ? "" : item[shortKey];
-                                delete item[shortKey];
-                            }
-                        }
-                        return db;
-                    });
+                    gAutoCompleteDatabase = loadDatabase("AutoCompleteDatabase_.json")
+                    return gAutoCompleteDatabase;
                 } catch (error) {
                     return error;
                 }
