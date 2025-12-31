@@ -9960,7 +9960,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 3452
+    "excerptCount": 3492
   },
   {
     "short": "All featured excerpts",
@@ -9978,7 +9978,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 2264
+    "excerptCount": 2285
   },
   {
     "short": "All stories",
@@ -9987,7 +9987,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 623
+    "excerptCount": 625
   },
   {
     "short": "All quotes",
@@ -10014,7 +10014,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 341
+    "excerptCount": 347
   },
   {
     "short": "All readings",
@@ -10023,7 +10023,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 310
+    "excerptCount": 318
   },
   {
     "short": "All texts",
@@ -10032,7 +10032,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 475
+    "excerptCount": 489
   },
   {
     "short": "All references",
@@ -10041,7 +10041,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 210
+    "excerptCount": 211
   },
   {
     "short": "About: Introduction",
@@ -10521,6 +10521,15 @@
     "excerptCount": 1
   },
   {
+    "short": "MN 35: Cūḷasaccakasutta, The Shorter Discourse With Saccaka",
+    "link": "texts/MN35.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 3
+  },
+  {
     "short": "MN 36: Mahāsaccakasutta, The Greater Discourse to Saccaka",
     "link": "texts/MN36.html",
     "long": "",
@@ -10536,7 +10545,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 3
+    "excerptCount": 4
   },
   {
     "short": "MN 39: Mahāassapurasutta, The Longer Discourse at Assapura",
@@ -10725,7 +10734,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 4
+    "excerptCount": 3
   },
   {
     "short": "MN 73: Mahāvacchasutta, The Longer Discourse With Vacchagotta",
@@ -11238,7 +11247,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 21
+    "excerptCount": 22
   },
   {
     "short": "SN 12.15: Kaccānagottasutta, Kaccanagotta",
@@ -11247,7 +11256,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 4
+    "excerptCount": 5
   },
   {
     "short": "SN 12.18: Timbarukasutta, Timbaruka",
@@ -11436,7 +11445,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 50
+    "excerptCount": 85
   },
   {
     "short": "SN 22.1: Nakulapitusutta, Nakulapita",
@@ -11499,11 +11508,38 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 5
+  },
+  {
+    "short": "SN 22.27: Dutiyaassādasutta, Gratification (2)",
+    "link": "texts/SN22_27.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "SN 22.28: Tatiyaassādasutta, Gratification (3)",
+    "link": "texts/SN22_28.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "SN 22.29: Abhinandanasutta, Delight",
     "link": "texts/SN22_29.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "SN 22.33: Natumhākasutta, Not Yours (1)",
+    "link": "texts/SN22_33.html",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
@@ -11526,7 +11562,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 3
   },
   {
     "short": "SN 22.53: Upayasutta, Engagement",
@@ -11553,7 +11589,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 12
+    "excerptCount": 14
   },
   {
     "short": "SN 22.79: Khajjanīyasutta, Being Devoured",
@@ -11589,7 +11625,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 4
   },
   {
     "short": "SN 22.86: Anurādhasutta, Anuradha",
@@ -11598,7 +11634,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 5
   },
   {
     "short": "SN 22.87: Vakkalisutta, Vakkali",
@@ -11607,7 +11643,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 4
   },
   {
     "short": "SN 22.89: Khemakasutta, Khemaka",
@@ -11616,11 +11652,38 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 6
   },
   {
     "short": "SN 22.90: Channasutta, Channa",
     "link": "texts/SN22_90.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 5
+  },
+  {
+    "short": "SN 22.95: Pheṇapiṇḍūpamasutta, A Lump of Foam",
+    "link": "texts/SN22_95.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 2
+  },
+  {
+    "short": "SN 22.96: Gomayapiṇḍasutta, A Lump of Cowdung",
+    "link": "texts/SN22_96.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 4
+  },
+  {
+    "short": "SN 22.99: Gaddulabaddhasutta, The Leash (1)",
+    "link": "texts/SN22_99.html",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
@@ -11635,6 +11698,15 @@
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
     "excerptCount": 3
+  },
+  {
+    "short": "SN 22.102: Aniccasaññāsutta, Perception of Impermanence",
+    "link": "texts/SN22_102.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "SN 35: Saḷāyatanasaṁyutta, Linked Discourses on the Six Sense Fields",
@@ -11904,7 +11976,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 4
   },
   {
     "short": "SN 44.10: Ānandasutta, Ānanda Is There a Self?",
@@ -12633,7 +12705,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 33
+    "excerptCount": 34
   },
   {
     "short": "AN 4.17: Paṭhamaagatisutta, Wrong Courses (1)",
@@ -12660,7 +12732,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 2
   },
   {
     "short": "AN 4.41: Samādhibhāvanāsutta, Ways of Developing Immersion Further",
@@ -12822,7 +12894,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 25
+    "excerptCount": 27
   },
   {
     "short": "AN 5.23: Upakkilesasutta, Defilements",
@@ -12832,6 +12904,15 @@
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
     "excerptCount": 2
+  },
+  {
+    "short": "AN 5.26: Vimuttāyatanasutta, Liberation",
+    "link": "texts/AN5_26.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "AN 5.29: Caṅkamasutta, Walking Meditation",
@@ -12867,7 +12948,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 3
+    "excerptCount": 4
   },
   {
     "short": "AN 5.161: Paṭhamaāghātapaṭivinayasutta, Getting Rid of Resentment (1st)",
@@ -12912,7 +12993,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 17
+    "excerptCount": 18
   },
   {
     "short": "AN 6.10: Mahānāmasutta, With Mahānāma",
@@ -12993,7 +13074,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 3
   },
   {
     "short": "AN 6.101: Nibbānasutta, Extinguished",
@@ -14289,6 +14370,24 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
+    "excerptCount": 2
+  },
+  {
+    "short": "BuPc 12: Aññavādaka, Speaking evasively",
+    "link": "texts/BuPc.html#bupc-12",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "BuPc 71: Sahadhammika, Not accepting legitimate correction",
+    "link": "texts/BuPc.html#bupc-71",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
     "excerptCount": 1
   },
   {
@@ -14478,7 +14577,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 84
+    "excerptCount": 85
   },
   {
     "short": "Amaravati Chanting Book Volume 2",
@@ -14487,7 +14586,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 28
+    "excerptCount": 30
   },
   {
     "short": "Bhikkhu Manual",
@@ -15360,7 +15459,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 3
+    "excerptCount": 4
   },
   {
     "short": "The Mind Like Fire Unbound by Ajahn Ṭhānissaro",
@@ -15414,7 +15513,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 2
   },
   {
     "short": "Buddhist Monastic Code Vol. 2",

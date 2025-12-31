@@ -2174,7 +2174,8 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
             with a.div(Class="listing"):
                 lines = []
                 for s in sessions:
-                    titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(str(s['sessionTitle']))
+                    sessionWithoutLinks = re.sub(r"(<a[^>]*?>)|</a[^>]*?>","",str(s['sessionTitle']))
+                    titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(sessionWithoutLinks)
                     lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}"))
 
                 a(Html.TruncatedList(lines,alwaysShow=3,morePrompt="Show all sessions"))
