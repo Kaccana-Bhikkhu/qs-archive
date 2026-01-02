@@ -114,7 +114,7 @@ class LinkInfo:
         self.linkFrom = []
         self.bookmarks = []
 
-    def Append(self,linkFrom: str,bookmark: str) -> None:
+    def Append(self,linkFrom: list[str],bookmark: str) -> None:
         Utils.ExtendUnique(self.linkFrom,linkFrom)
         if bookmark and bookmark not in self.bookmarks:
             self.bookmarks.append(bookmark)
@@ -217,7 +217,7 @@ def main() -> None:
                     if not ptsVerses:
                         translators.remove("")
                 elif not ptsVerses:
-                    Alert.warning(ref,"can be neither a vagga nor a pts verse.")
+                    Alert.warning(text,"can be neither a vagga nor a pts verse.")
 
             links = filter(None,[ref.SuttaCentralLink(t) for t in translators])
             for link in links:

@@ -1554,8 +1554,6 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
         FilteredItem(Filter.Category("Meditations"),"Meditations"),
         FilteredItem(Filter.Category("Teachings"),"Teachings"),
         FilteredItem(Filter.Category("Readings"),"Readings"),
-        FilteredItem(Filter.Kind({"Sutta","Vinaya","Commentary"}),"Texts"),
-        FilteredItem(Filter.Kind("Reference"),"References")
     ]
 
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
