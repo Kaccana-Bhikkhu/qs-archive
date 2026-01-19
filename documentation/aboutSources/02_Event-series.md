@@ -55,7 +55,7 @@ Occasional Practice and Study Days replaced the Upāsikā Program in 2023. The d
 -----
 [Abhayagiri's 20th Anniversary in the unfinished Reception Hall](photo:05 Father Damien.jpg)
 ## Abhayagiri Anniversary Events (<a id="abhayagiri-anniversary-events" href="../indexes/EventsBySeries.html#abhayagiri-anniversary-events">List</a>)
-Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 4, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
+Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 1, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
 
 -----
 [Interreligious Retreat-Seminar on Dhamma and Non-duality, Rishikesh, India](photo:Rishikesh2023.jpg)
