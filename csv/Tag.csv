@@ -1,5 +1,5 @@
-Modified:,2025,,,,,,,,,,,,,,
-Count,220,932,58,447,185,45,76,,45,96,16,969,409,908,908
+Modified:,2026,,,,,,,,,,,,,,
+Count,220,933,58,448,185,46,76,,45,98,16,971,409,910,910
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -69,7 +69,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,*,Noble Truth of Suffering,,dukkha ariya-sacca,,,,,,,,      Noble Truth of Suffering,dukkha ariya-sacca,Noble Truth of Suffering,Noble Truth of Suffering [dukkha ariya-sacca]
 4,*,Birth,,jāti,,,,,,,,         Birth,jāti,Birth,Birth [jāti]
 4,*,Ageing,,jarā,,,,,,,,         Ageing,jarā,Ageing,Ageing [jarā]
-4,*,Sickness,,byādhi,,,,,,,,         Sickness,byādhi,Sickness,Sickness [byādhi]
+4,*,Sickness,,byādhi,,,,,,Health,,         Sickness,byādhi,Sickness,Sickness [byādhi]
 4,*,Death,,maraṇa,,,,,,,,         Death,maraṇa,Death,Death [maraṇa]
 4,,Suffering,,dukkha,,,Stress,,,,,         Suffering,dukkha,Suffering,Suffering [dukkha]
 4,*,Pain,,dukkha,,,Stress,,,,,         Pain,dukkha,Pain,Pain [dukkha]
@@ -479,7 +479,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Noble Truth of Suffering,,dukkha ariya-sacca,,,,,,,,         Noble Truth of Suffering,dukkha ariya-sacca,Noble Truth of Suffering,Noble Truth of Suffering [dukkha ariya-sacca]
 5,,Birth,,jāti,,,,,,,,            Birth,jāti,Birth,Birth [jāti]
 5,,Ageing,,jarā,,,,,,,,            Ageing,jarā,Ageing,Ageing [jarā]
-5,,Sickness,,byādhi,,,,,,,,            Sickness,byādhi,Sickness,Sickness [byādhi]
+5,,Sickness,,byādhi,,,,,,Health,,            Sickness,byādhi,Sickness,Sickness [byādhi]
 5,,Death,,maraṇa,,,,,,,,            Death,maraṇa,Death,Death [maraṇa]
 5,,Pain,,dukkha,,,Stress,,,,,            Pain,dukkha,Pain,Pain [dukkha]
 5,,Grief,,domanassa,,,Distress,,,,,            Grief,domanassa,Grief,Grief [domanassa]
@@ -505,7 +505,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,,Stories,,,,,,,,,,   Stories,,Stories,Stories
 3,,Jātaka Tales,,,,,,,,,,      Jātaka Tales,,Jātaka Tales,Jātaka Tales
 2,,Similes,,opammā,,,,,,,,   Similes,opammā,Similes,Similes [opammā]
-2,,Symbolism,,,,,,,,,,   Symbolism,,Symbolism,Symbolism
+2,,Symbolism/metaphor,,,,,,,,,,   Symbolism/metaphor,,Symbolism/metaphor,Symbolism/metaphor
 2,,Dhamma books,,,,,,,,Learning,,   Dhamma books,,Dhamma books,Dhamma books
 3,,Free distribution,,,,,,,,,,      Free distribution,,Free distribution,Free distribution
 2,,Dhamma recordings,,,,,,,,,,   Dhamma recordings,,Dhamma recordings,Dhamma recordings
@@ -999,6 +999,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Perception of a samaṇa,,samaṇa saññā,,,,,,,,      Perception of a samaṇa,samaṇa saññā,Perception of a samaṇa,Perception of a samaṇa [samaṇa saññā]
 3,,Respect,,,,,,,,,,      Respect,,Respect,Respect
 4,,Monastic titles,,,,,,,,,,         Monastic titles,,Monastic titles,Monastic titles
+5,,,,Chao Khun title <i>Thai</i>,,Chao Khun,,,,,,            Chao Khun title <i>Thai</i>,,Chao Khun,Chao Khun
 4,,Respect for elders,,,,,,,,,,         Respect for elders,,Respect for elders,Respect for elders
 4,g,,,Upatakh <i>Thai</i>,,Upatakh,,attendant to senior monks,,,,         Upatakh <i>Thai</i>,,Upatakh,Upatakh
 4,,Hospitality,,,,,,,,,,         Hospitality,,Hospitality,Hospitality
@@ -1046,6 +1047,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Pain,,dukkha,,,,,,,,      Pain,dukkha,Pain,Pain [dukkha]
 2,.,Personal,,,,,,,,,,   Personal,,,
 3,,Health,,,,,,,,,,      Health,,Health,Health
+4,,Healing,,,,,,,,,,         Healing,,Healing,Healing
 4,,Exercise,,,,,,,,,,         Exercise,,Exercise,Exercise
 4,,Chi Gong,,,,,,,,,,         Chi Gong,,Chi Gong,Chi Gong
 4,,Smoking,,,,,,,,,,         Smoking,,Smoking,Smoking

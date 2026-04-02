@@ -59,7 +59,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(50<i class=\"fa fa-star\"></i>)",
+    "suffix": "(51<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -150,7 +150,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 146
+    "excerptCount": 147
   },
   {
     "short": "Suffering (dukkha)",
@@ -594,6 +594,15 @@
     "excerptCount": 71
   },
   {
+    "short": "Contentment (santuṭṭhi)",
+    "link": "tags/contentment.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 30
+  },
+  {
     "short": "Happiness (sukha)",
     "link": "tags/happiness.html",
     "long": "",
@@ -942,7 +951,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 256
+    "excerptCount": 258
   },
   {
     "short": "Teachers",
@@ -2778,7 +2787,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 146
+    "excerptCount": 147
   },
   {
     "short": "Suffering (dukkha)",
@@ -3768,16 +3777,16 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 150
+    "excerptCount": 149
   },
   {
-    "short": "Symbolism",
-    "link": "tags/symbolism.html",
+    "short": "Symbolism/metaphor",
+    "link": "tags/symbolismmetaphor.html",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 9
+    "excerptCount": 11
   },
   {
     "short": "Dhamma books",
@@ -5208,7 +5217,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 2
   },
   {
     "short": "Joseph Goldstein",
@@ -6936,7 +6945,16 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 13
+    "excerptCount": 5
+  },
+  {
+    "short": "Chao Khun",
+    "link": "tags/chao-khun.html",
+    "long": "Chao Khun title",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 9
   },
   {
     "short": "Respect for elders",
@@ -7206,7 +7224,16 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 26
+    "excerptCount": 22
+  },
+  {
+    "short": "Healing",
+    "link": "tags/healing.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 7
   },
   {
     "short": "Exercise",
@@ -7548,7 +7575,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 57
+    "excerptCount": 56
   },
   {
     "short": "Pandemic",
@@ -8312,7 +8339,7 @@
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (146)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (147)",
     "excerptCount": 0
   },
   {
@@ -8321,7 +8348,7 @@
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (146)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (147)",
     "excerptCount": 0
   },
   {
@@ -8330,7 +8357,7 @@
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (146)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (147)",
     "excerptCount": 0
   },
   {
@@ -8339,7 +8366,7 @@
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (146)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Impermanence (147)",
     "excerptCount": 0
   },
   {
@@ -9483,7 +9510,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 216
+    "excerptCount": 217
   },
   {
     "short": "Ajahn Lee Dhammadharo",
@@ -9753,7 +9780,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 2533
+    "excerptCount": 2534
   },
   {
     "short": "Ajahn Viradhammo",
@@ -9969,7 +9996,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 597
+    "excerptCount": 599
   },
   {
     "short": "All questions",
@@ -10869,7 +10896,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 38
+    "excerptCount": 39
   },
   {
     "short": "MN 119: Kāyagatāsatisutta, Mindfulness of the Body",
@@ -13104,15 +13131,6 @@
     "excerptCount": 1
   },
   {
-    "short": "AN 7.49: Dutiyasaññāsutta, Perceptions in Detail",
-    "link": "texts/AN7_49.html",
-    "long": "",
-    "number": "",
-    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
     "short": "AN 7.50: Methunasutta, Sex",
     "link": "texts/AN7_50.html",
     "long": "",
@@ -13128,7 +13146,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 2
   },
   {
     "short": "AN 7.55: Purisagatisutta, Places People Are Reborn",

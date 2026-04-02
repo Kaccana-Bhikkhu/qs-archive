@@ -7115,10 +7115,11 @@
         "Protective chants",
         "Ajahn Chah",
         "Teaching Dhamma",
+        "Healing",
         "Wat Pah Pong",
         "Truth"
       ],
-      "qTagCount": 6,
+      "qTagCount": 7,
       "clips": [
         [
           "$",
@@ -8695,7 +8696,7 @@
         "Ordination",
         "Ajahn Chah",
         "History/Thai Buddhism",
-        "Monastic titles",
+        "Chao Khun",
         "Ajahn Sumedho",
         "Saṅgha"
       ],
@@ -9049,7 +9050,7 @@
       "annotations": [],
       "tags": [
         "Ajahn Anando",
-        "Health care",
+        "Healing",
         "Ajahn Chah",
         "Ajahn Sumedho",
         "Sickness",
@@ -12293,7 +12294,7 @@
       "fileNumber": 1,
       "kind": "Indirect quote",
       "flags": "",
-      "text": "One who is lost in the world is lost in their moods. One who is lost in their moods is lost in the world.",
+      "text": "One who is lost in the world is lost in their moods. One who is lost in their moods is lost in the world.|Ajahn Chah",
       "teachers": [
         "AP"
       ],
@@ -12314,7 +12315,7 @@
       ],
       "duration": "0:52",
       "mirror": "local",
-      "body": "<b>Quote:</b>  “One who is lost in the world is lost in their moods. One who is lost in their moods is lost in the world.”{attribution}",
+      "body": "<b>Quote:</b>  “One who is lost in the world is lost in their moods. One who is lost in their moods is lost in the world.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>.{attribution}",
       "attribution": " Quoted by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -14515,7 +14516,6 @@
           "flags": "s",
           "text": "_Amaravati Chanting Book_ p. 55: Five Recollections; _Amaravati Chanting Book_ p. 12: The body is impermanent...",
           "tags": [
-            "Similes",
             "Craving",
             "Rebirth"
           ],
@@ -14529,7 +14529,9 @@
           "teachers": [
             "AP"
           ],
-          "tags": [],
+          "tags": [
+            "Similes"
+          ],
           "indentLevel": 1,
           "body": "<b>Simile:</b> Fire blown by the wind (<a href=\"https://suttacentral.express/sn44.9/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN44.html#sn-44-9\">SN 44.9</a>: Kutūhalasālā Sutta)"
         },
@@ -22237,18 +22239,19 @@
           "body": "<b>Quote:</b> <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> to biographer: “If you don’t put that in the book, don’t bother printing it.”"
         },
         {
-          "kind": "Quote",
+          "kind": "Indirect quote",
           "flags": "",
-          "text": "If you ordain as a monk, your defilements ordain with you.",
+          "text": "If you ordain as a monk, your defilements ordain with you.|Ajahn Chah",
           "teachers": [
             "AP"
           ],
           "tags": [
+            "Ajahn Chah",
             "Monastic life",
             "Unwholesome Roots"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “If you ordain as a monk, your defilements ordain with you.” "
+          "body": "<b>Quote:</b>  “If you ordain as a monk, your defilements ordain with you.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
         }
       ],
       "tags": [
@@ -26736,7 +26739,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Symbolism",
+        "Symbolism/metaphor",
         "Sensual desire",
         "Hindrances",
         "Thai",
@@ -28620,7 +28623,7 @@
       "tags": [
         "Great disciples",
         "Teaching Dhamma",
-        "Symbolism",
+        "Symbolism/metaphor",
         "Commentaries",
         "Aggregates",
         "Sense bases",
@@ -29354,8 +29357,10 @@
           "body": "<b>Follow-up:</b> “What’s ‘individual existence’ in Pāli?”"
         }
       ],
-      "tags": [],
-      "qTagCount": 0,
+      "tags": [
+        "Impermanence"
+      ],
+      "qTagCount": 1,
       "clips": [
         [
           "$",
@@ -32830,7 +32835,7 @@
       "fileNumber": 2,
       "kind": "Question",
       "flags": "",
-      "text": "[When talking about the qualities for developing the Eightfold Path, seclusion, cessation, and dispassion.]|Could you distinguish between cessation and dispassion?|",
+      "text": "[When talking about the qualities for developing the Eightfold Path: seclusion, cessation, and dispassion.]|Could you distinguish between cessation and dispassion?|",
       "teachers": [
         "AP"
       ],
@@ -32854,7 +32859,7 @@
       ],
       "duration": "1:46",
       "mirror": "local",
-      "body": "[When talking about the qualities for developing the Eightfold Path, seclusion, cessation, and dispassion.] “Could you distinguish between cessation and dispassion?” {attribution}",
+      "body": "[When talking about the qualities for developing the Eightfold Path: seclusion, cessation, and dispassion.] “Could you distinguish between cessation and dispassion?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -34976,14 +34981,14 @@
           "teachers": [
             "AP"
           ],
-          "text": "Practicing Dhamma is like taking a screwdriver and unscrewing something rather than putting the screwdriver in and tightening it up.",
+          "text": "Practicing Dhamma is like taking a screwdriver and unscrewing something rather than putting the screwdriver in and tightening it up.|Ajahn Chah",
           "tags": [
             "Ajahn Chah",
             "Practicing in accordance with Dhamma",
             "Similes"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Practicing Dhamma is like taking a screwdriver and unscrewing something rather than putting the screwdriver in and tightening it up.”"
+          "body": "<b>Quote:</b>  “Practicing Dhamma is like taking a screwdriver and unscrewing something rather than putting the screwdriver in and tightening it up.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
         }
       ],
       "tags": [
@@ -36854,7 +36859,7 @@
       "teachers": [
         "AP"
       ],
-      "text": "In the article 'Consciousnesses' by Ajahn Lee, he talks about beings that inhabit the mind and body...What are your thoughts on this? When seeing unusual phenomena that can be interpreted in this way, what is a good course of action?",
+      "text": "In the article '[Consciousnesses](https://www.dhammatalks.org/books/InnerStrength/Section0026.html)' by Ajahn Lee, he talks about beings that inhabit the mind and body....What are your thoughts on this? When seeing unusual phenomena that can be interpreted in this way, what is a good course of action?",
       "fTags": [],
       "annotations": [],
       "tags": [
@@ -36872,7 +36877,7 @@
       ],
       "duration": "3:23",
       "mirror": "local",
-      "body": "“In the article ‘Consciousnesses’ by Ajahn Lee, he talks about beings that inhabit the mind and body...What are your thoughts on this? When seeing unusual phenomena that can be interpreted in this way, what is a good course of action?” {attribution}",
+      "body": "“In the article ‘<a href=\"https://www.dhammatalks.org/books/InnerStrength/Section0026.html\" target=\"_blank\">Consciousnesses</a>’ by Ajahn Lee, he talks about beings that inhabit the mind and body....What are your thoughts on this? When seeing unusual phenomena that can be interpreted in this way, what is a good course of action?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -42989,7 +42994,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "In the morning, a healthy friend. In the evening, a wisp of cremation smoke.|unnamed Chan master.",
+          "text": "In the morning, a healthy friend. In the evening, a wisp of cremation smoke.|unnamed Chan master",
           "teachers": [
             "BSteff"
           ],
@@ -42998,7 +43003,7 @@
             "Recollection/Death"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “In the morning, a healthy friend. In the evening, a wisp of cremation smoke.” — unnamed Chan master.."
+          "body": "<b>Quote:</b>  “In the morning, a healthy friend. In the evening, a wisp of cremation smoke.” — unnamed Chan master."
         }
       ],
       "tags": [
@@ -47448,10 +47453,11 @@
       "tags": [
         "History/Thai Buddhism",
         "Monastic titles",
+        "Chao Khun",
         "Ajahn Sumedho",
         "Ajahn Liem"
       ],
-      "qTagCount": 2,
+      "qTagCount": 3,
       "clips": [
         [
           "$",
@@ -47571,7 +47577,7 @@
       "tags": [
         "Wat Keuan",
         "Ajahn Chah",
-        "Monastic titles",
+        "Chao Khun",
         "Environment",
         "Ajahn Puriso",
         "Military",
@@ -51457,7 +51463,7 @@
         {
           "kind": "Indirect quote",
           "flags": "-",
-          "text": "Gold wrapped in a dirty rag.|Ajahn Mahā Boowa describing Ajahn Jia.",
+          "text": "Gold wrapped in a dirty rag.|Ajahn Mahā Boowa describing Ajahn Jia",
           "teachers": [],
           "tags": [
             "Ajahn Mahā Boowa",
@@ -51465,7 +51471,7 @@
             "Similes"
           ],
           "indentLevel": 2,
-          "body": "<b>Quote:</b>  “Gold wrapped in a dirty rag.” — <a href=\"../teachers/ajahn-maha-boowa.html\">Ajahn Mahā Boowa</a> describing Ajahn Jia.."
+          "body": "<b>Quote:</b>  “Gold wrapped in a dirty rag.” — <a href=\"../teachers/ajahn-maha-boowa.html\">Ajahn Mahā Boowa</a> describing Ajahn Jia."
         },
         {
           "kind": "Recollection",
@@ -52953,7 +52959,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Do you give up?|Ajahn Chah to Ajahn Pasanno.",
+          "text": "Do you give up?|Ajahn Chah to Ajahn Pasanno",
           "teachers": [
             "AP"
           ],
@@ -52965,7 +52971,7 @@
             "Relinquishment"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Do you give up?” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> to Ajahn Pasanno.."
+          "body": "<b>Quote:</b>  “Do you give up?” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> to Ajahn Pasanno."
         }
       ],
       "tags": [
@@ -53074,7 +53080,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Thank you. That was the most delicious meal I've had here.|Ajahn Chah to an anxious English donor.",
+          "text": "Thank you. That was the most delicious meal I've had here.|Ajahn Chah to an anxious English donor",
           "teachers": [
             "AP"
           ],
@@ -53086,7 +53092,7 @@
             "Culture/Thailand"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Thank you. That was the most delicious meal I’ve had here.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> to an anxious English donor.."
+          "body": "<b>Quote:</b>  “Thank you. That was the most delicious meal I’ve had here.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> to an anxious English donor."
         }
       ],
       "tags": [
@@ -55828,7 +55834,7 @@
       ],
       "tags": [
         "Relinquishment",
-        "Similes",
+        "Symbolism/metaphor",
         "Death"
       ],
       "qTagCount": 3,
@@ -68225,7 +68231,6 @@
           "flags": "",
           "text": "SN 47.8: Simile of the skillful cook.",
           "tags": [
-            "Similes",
             "Similes"
           ],
           "indentLevel": 1,
@@ -74240,7 +74245,7 @@
         "Devotional practice",
         "History/Early Buddhism",
         "History/Indian Buddhism",
-        "Symbolism",
+        "Symbolism/metaphor",
         "Tipiṭaka"
       ],
       "qTagCount": 3,
@@ -74952,7 +74957,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Symbolism",
+        "Symbolism/metaphor",
         "Clinging",
         "Suffering",
         "Relinquishment",
@@ -75623,16 +75628,17 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "We only rent this house. We don't own it.",
+          "text": "We only rent this house. We don't own it.|Ajahn Chah",
           "teachers": [
             "AP"
           ],
           "tags": [
+            "Ajahn Chah",
             "Similes",
             "Not-self"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “We only rent this house. We don’t own it.”"
+          "body": "<b>Quote:</b>  “We only rent this house. We don’t own it.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
         },
         {
           "kind": "Reference",
@@ -75644,7 +75650,7 @@
         }
       ],
       "tags": [
-        "Similes",
+        "Symbolism/metaphor",
         "Not-self",
         "Ajahn Chah"
       ],
@@ -80212,7 +80218,7 @@
         },
         {
           "kind": "Teaching",
-          "flags": "",
+          "flags": "1",
           "teachers": [
             "AP"
           ],
@@ -80223,7 +80229,7 @@
             "Emotion"
           ],
           "indentLevel": 1,
-          "body": "The difference between pīti and sukha."
+          "body": "<b>Teaching</b>: The difference between pīti and sukha."
         },
         {
           "kind": "Commentary",
@@ -80287,7 +80293,7 @@
         }
       ],
       "kind": "Teaching",
-      "flags": "f",
+      "flags": "1f",
       "teachers": [
         "AP"
       ],
@@ -80316,8 +80322,8 @@
       ],
       "duration": "3:24",
       "mirror": "local",
-      "body": "The difference between pīti and sukha.{attribution}",
-      "attribution": " <b>Teaching</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+      "body": "<b>Teaching</b>{attribution}: The difference between pīti and sukha.",
+      "attribution": " by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>"
     },
     {
       "event": "TG2015",
@@ -83999,7 +84005,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Monastic titles",
+        "Chao Khun",
         "Ajahn Pasanno",
         "Abhayagiri"
       ],
@@ -84834,7 +84840,7 @@
       "tags": [
         "History/Thai Buddhism",
         "Saṅgha decision making",
-        "Monastic titles",
+        "Chao Khun",
         "Ajahn Pasanno",
         "Ajahn Amaro",
         "Ajahn Chah",
@@ -85287,7 +85293,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Monastic titles",
+        "Chao Khun",
         "Ajahn Pasanno"
       ],
       "qTagCount": 2,
@@ -85612,7 +85618,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Monastic titles",
+        "Chao Khun",
         "Ajahn Pasanno"
       ],
       "qTagCount": 2,
@@ -88320,7 +88326,7 @@
       "tags": [
         "Ajahn Khemadhammo",
         "Prisons",
-        "Monastic titles",
+        "Chao Khun",
         "Service"
       ],
       "qTagCount": 2,
@@ -94085,7 +94091,7 @@
       ],
       "tags": [
         "Prayer",
-        "Health",
+        "Healing",
         "God",
         "Culture/Sri Lanka"
       ],
@@ -94483,14 +94489,18 @@
       "kind": "Question",
       "flags": "",
       "text": "Could you comment on the issue of feeling that there need to be certain conditions in place for me to practice?",
-      "teachers": [],
+      "teachers": [
+        "AP"
+      ],
       "fTags": [],
       "annotations": [
         {
           "kind": "Indirect quote",
           "flags": "",
           "text": "You can go off to the forest and be happy on your own or you can stay here and I can teach you how to be happy all the time.|Ajahn Chah to Ajahn BahnKow",
-          "teachers": [],
+          "teachers": [
+            "AP"
+          ],
           "tags": [
             "Ajahn Chah",
             "Ajahn BahnKow",
@@ -94520,8 +94530,8 @@
       ],
       "duration": "4:07",
       "mirror": "local",
-      "body": "“Could you comment on the issue of feeling that there need to be certain conditions in place for me to practice?” ",
-      "attribution": ""
+      "body": "“Could you comment on the issue of feeling that there need to be certain conditions in place for me to practice?” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
       "event": "WR2016",
@@ -96287,7 +96297,7 @@
       ],
       "tags": [
         "Happiness",
-        "Monastic titles",
+        "Chao Khun",
         "Ajahn Pasanno",
         "Ajahn Amaro",
         "Similes",
@@ -98563,7 +98573,7 @@
       "tags": [
         "Meditation",
         "Sickness",
-        "Health",
+        "Healing",
         "Happiness",
         "Medicinal requisites"
       ],
@@ -101375,13 +101385,14 @@
         "Health care",
         "Medicinal requisites",
         "Culture/Thailand",
+        "Healing",
         "Thai Forest Tradition",
         "History/Thai Buddhism",
         "Vinaya",
         "Right Livelihood",
         "Almsfood"
       ],
-      "qTagCount": 4,
+      "qTagCount": 5,
       "clips": [
         [
           "$",
@@ -102379,10 +102390,10 @@
         [
           "$",
           "34:32",
-          "40:35"
+          "40:11"
         ]
       ],
-      "duration": "6:03",
+      "duration": "5:39",
       "mirror": "local",
       "body": "“I believed this to be a “silent meditation retreat”. Please reiterate that to my thinking mind. It’s not listening!” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -105266,7 +105277,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Whether you've got a well or don't have a well, there's water in the ground.",
+          "text": "Whether you've got a well or don't have a well, there's water in the ground.|Ajahn Chah",
           "teachers": [
             "AP"
           ],
@@ -105275,7 +105286,7 @@
             "Similes"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Whether you’ve got a well or don’t have a well, there’s water in the ground.”"
+          "body": "<b>Quote:</b>  “Whether you’ve got a well or don’t have a well, there’s water in the ground.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
         }
       ],
       "tags": [
@@ -105511,7 +105522,7 @@
       ],
       "tags": [
         "Deva",
-        "Symbolism",
+        "Symbolism/metaphor",
         "Realms of existence",
         "Ajahn Pasanno",
         "Recollection/Devas",
@@ -105822,7 +105833,7 @@
         "Buddha/Biography",
         "Teaching Dhamma",
         "Compassion",
-        "Symbolism"
+        "Symbolism/metaphor"
       ],
       "qTagCount": 4,
       "clips": [
@@ -108015,7 +108026,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "-",
           "text": "Just that much.|Ajahn Chah",
           "teachers": [],
           "tags": [
@@ -108023,7 +108034,7 @@
             "Disenchantment",
             "Directed thought and evaluation"
           ],
-          "indentLevel": 1,
+          "indentLevel": 2,
           "body": "<b>Quote:</b>  “Just that much.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
         }
       ],
@@ -111380,10 +111391,10 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "AN 7.50 Sexual Intercourse",
+          "text": "AN 7.50: Sexual Intercourse.",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/an7.50/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/AN7_50.html\">AN 7.50</a> Sexual Intercourse"
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/an7.50/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/AN7_50.html\">AN 7.50</a>: Sexual Intercourse."
         }
       ],
       "tags": [
@@ -116762,7 +116773,7 @@
         "Prayer",
         "Christianity",
         "Family",
-        "Health",
+        "Healing",
         "Chanting",
         "Skillful qualities",
         "Compassion",
@@ -116807,7 +116818,7 @@
       "annotations": [],
       "tags": [
         "Pain",
-        "Health",
+        "Healing",
         "Chanting",
         "Tranquility",
         "Concentration",
@@ -119988,7 +119999,7 @@
       "fileNumber": 4,
       "kind": "Question",
       "flags": "",
-      "text": "There are teachings about different levels of generosity (e.g. AN 7.49). Are there similar teachings about love or attachment?",
+      "text": "There are teachings about different levels of generosity (e.g. AN 7.52). Are there similar teachings about love or attachment?",
       "teachers": [
         "AP",
         "AKd"
@@ -120017,10 +120028,10 @@
       ],
       "duration": "6:19",
       "mirror": "local",
-      "body": "“There are teachings about different levels of generosity (e.g. <a href=\"https://suttacentral.express/an7.49/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/AN7_49.html\">AN 7.49</a>). Are there similar teachings about love or attachment?” {attribution}",
+      "body": "“There are teachings about different levels of generosity (e.g. <a href=\"https://suttacentral.express/an7.52/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/AN7_52.html\">AN 7.52</a>). Are there similar teachings about love or attachment?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>.",
       "texts": [
-        "AN 7.49"
+        "AN 7.52"
       ]
     },
     {
@@ -127472,15 +127483,16 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "People who commit suicide leave their skeletons in other people's closets.|Steven Levine",
+          "text": "People who commit suicide leave their skeletons in other people's closets.|Stephen Levine",
           "teachers": [
             "AKd"
           ],
           "tags": [
+            "Stephen Levine",
             "Suicide"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “People who commit suicide leave their skeletons in other people’s closets.” — Steven Levine."
+          "body": "<b>Quote:</b>  “People who commit suicide leave their skeletons in other people’s closets.” — Stephen Levine."
         }
       ],
       "tags": [
@@ -129584,7 +129596,7 @@
         "Ceremony/ritual",
         "Abhayagiri",
         "Kaṭhina",
-        "Symbolism",
+        "Symbolism/metaphor",
         "Dhamma"
       ],
       "qTagCount": 2,
@@ -135264,7 +135276,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn't be a time when you bowed without bursting into tears of gratitude and devotion.",
+          "text": "If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn't be a time when you bowed without bursting into tears of gratitude and devotion.|Ajahn Chah",
           "teachers": [
             "AP"
           ],
@@ -135276,7 +135288,7 @@
             "Ajahn Jayasaro"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn’t be a time when you bowed without bursting into tears of gratitude and devotion.”"
+          "body": "<b>Quote:</b>  “If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn’t be a time when you bowed without bursting into tears of gratitude and devotion.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
         }
       ],
       "tags": [
@@ -135315,7 +135327,7 @@
       "teachers": [
         "AP"
       ],
-      "text": "If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn't be a time when you bowed without bursting into tears of gratitude and devotion.",
+      "text": "If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn't be a time when you bowed without bursting into tears of gratitude and devotion.|Ajahn Chah",
       "fTags": [
         "Bowing",
         "Gratitude"
@@ -135342,7 +135354,7 @@
       ],
       "duration": "1:37",
       "mirror": "local",
-      "body": "<b>Quote:</b>  “If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn’t be a time when you bowed without bursting into tears of gratitude and devotion.”{attribution}",
+      "body": "<b>Quote:</b>  “If you really understood refuge in Buddha, Dhamma, and Saṅgha, there wouldn’t be a time when you bowed without bursting into tears of gratitude and devotion.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>.{attribution}",
       "attribution": " Quoted by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -136280,7 +136292,13 @@
       "teachers": [
         "AKd"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Karuṇadhammo"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Ajahn Karuṇadhammo",
@@ -136315,7 +136333,13 @@
       "teachers": [
         "AKd"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Karuṇadhammo"
+      ],
+      "fTagOrder": [
+        110
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Abhayagiri",
@@ -142306,7 +142330,7 @@
             "AA"
           ],
           "tags": [
-            "Symbolism"
+            "Symbolism/metaphor"
           ],
           "indentLevel": 1,
           "body": "<b>Follow-up:</b> “The usage of symbols sometimes helps as well....”"
@@ -143548,7 +143572,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.|Milindapañha 320, quoted in _The Island_ p. 38.",
+          "text": "Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.|Milindapañha 320, quoted in _The Island_ p. 38",
           "teachers": [
             "AA",
             "AKc"
@@ -143557,7 +143581,7 @@
             "Nibbāna"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.” — <a href=\"https://suttacentral.express/mil6.3.10/en/tw_rhysdavids?reference=main%2cpts#pts-vp-pli320\" target=\"_blank\" data-alt-href=\"../texts/Mil.html#mil-320\">Milindapañha 320</a>, quoted in <em>The Island</em> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>, <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf#page=37\" target=\"_blank\" data-alt-href=\"../books/the-island.html\">p. 38</a>.."
+          "body": "<b>Quote:</b>  “Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.” — <a href=\"https://suttacentral.express/mil6.3.10/en/tw_rhysdavids?reference=main%2cpts#pts-vp-pli320\" target=\"_blank\" data-alt-href=\"../texts/Mil.html#mil-320\">Milindapañha 320</a>, quoted in <em>The Island</em> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>, <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf#page=37\" target=\"_blank\" data-alt-href=\"../books/the-island.html\">p. 38</a>."
         },
         {
           "kind": "Follow-up",
@@ -144139,14 +144163,14 @@
         {
           "kind": "Comment",
           "flags": "",
-          "text": "In Viet Nam, native peasants needed less morphine than Americans paying for health care.",
+          "text": "In Vietnam, native peasants needed less morphine than Americans paying for health care.",
           "teachers": [],
           "tags": [
             "Pain",
             "Health care"
           ],
           "indentLevel": 1,
-          "body": "<b>Comment</b>: In Viet Nam, native peasants needed less morphine than Americans paying for health care."
+          "body": "<b>Comment</b>: In Vietnam, native peasants needed less morphine than Americans paying for health care."
         },
         {
           "kind": "Response",
@@ -144847,7 +144871,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "I don't deny that the Buddha speaks about past life and present life and future life, but in most circumstances that's irrelevant.|Ajahn Buddhadāsa|answering a sincere inquiry about rebirth.",
+          "text": "I don't deny that the Buddha speaks about past life and present life and future life, but in most circumstances that's irrelevant.|Ajahn Buddhadāsa|answering a sincere inquiry about rebirth",
           "teachers": [
             "AA"
           ],
@@ -144857,7 +144881,7 @@
             "Tipiṭaka"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b> I don’t deny that the Buddha speaks about past life and present life and future life, but in most circumstances that’s irrelevant. “<a href=\"../teachers/ajahn-buddhadasa.html\">Ajahn Buddhadāsa</a>” — answering a sincere inquiry about rebirth.."
+          "body": "<b>Quote:</b> I don’t deny that the Buddha speaks about past life and present life and future life, but in most circumstances that’s irrelevant. “<a href=\"../teachers/ajahn-buddhadasa.html\">Ajahn Buddhadāsa</a>” — answering a sincere inquiry about rebirth."
         }
       ],
       "tags": [
@@ -152048,7 +152072,7 @@
             "AA"
           ],
           "tags": [
-            "Symbolism",
+            "Symbolism/metaphor",
             "Similes"
           ],
           "indentLevel": 1,
@@ -152578,7 +152602,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Just a few more things for you to let go of.|Ajahn Chah's response to Jack Kornfield's description of his travels and meditation experiences.",
+          "text": "Just a few more things for you to let go of.|Ajahn Chah's response to Jack Kornfield's description of his travels and meditation experiences",
           "teachers": [
             "AA"
           ],
@@ -152591,7 +152615,7 @@
             "Restlessness and worry"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Just a few more things for you to let go of.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>’s response to Jack Kornfield’s description of his travels and meditation experiences.."
+          "body": "<b>Quote:</b>  “Just a few more things for you to let go of.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>’s response to Jack Kornfield’s description of his travels and meditation experiences."
         }
       ],
       "tags": [
@@ -153870,7 +153894,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "This pithy utterance of the Buddha may well be the most profound proposition in the history of human thought...|Bhikkhu Bodhi's footnote to the above passage",
+          "text": "This pithy utterance of the Buddha may well be the most profound proposition in the history of human thought....|Bhikkhu Bodhi's footnote to the above passage",
           "teachers": [
             "AA"
           ],
@@ -153879,7 +153903,7 @@
             "Philosophy"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “This pithy utterance of the Buddha may well be the most profound proposition in the history of human thought...” — Bhikkhu Bodhi’s footnote to the above passage."
+          "body": "<b>Quote:</b>  “This pithy utterance of the Buddha may well be the most profound proposition in the history of human thought....” — Bhikkhu Bodhi’s footnote to the above passage."
         },
         {
           "kind": "Sutta",
@@ -154508,7 +154532,7 @@
           "flags": "-",
           "text": "The Five Khandhas exist, but they aren't real. The Dhamma is real, but it doesn't exist.|Ajahn Paññavaḍḍho",
           "teachers": [
-            "AKc"
+            "AA"
           ],
           "tags": [
             "Ajahn Paññāvaḍḍho",
@@ -154517,7 +154541,7 @@
             "Etymology"
           ],
           "indentLevel": 2,
-          "body": "<b>Quote:</b>  “The Five Khandhas exist, but they aren’t real. The Dhamma is real, but it doesn’t exist.” — Ajahn Paññavaḍḍho. Quoted by Ajahn Kaccāna."
+          "body": "<b>Quote:</b>  “The Five Khandhas exist, but they aren’t real. The Dhamma is real, but it doesn’t exist.” — Ajahn Paññavaḍḍho."
         },
         {
           "kind": "Response",
@@ -157418,7 +157442,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Oh, Chah, you've come.|Ajahn Tongrat's first words to Ajahn Chah.",
+          "text": "Oh, Chah, you've come.|Ajahn Tongrat's first words to Ajahn Chah",
           "teachers": [
             "AP"
           ],
@@ -157427,7 +157451,7 @@
             "Ajahn Chah"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “Oh, Chah, you’ve come.” — Ajahn Tongrat’s first words to Ajahn Chah.."
+          "body": "<b>Quote:</b>  “Oh, Chah, you’ve come.” — Ajahn Tongrat’s first words to Ajahn Chah."
         },
         {
           "kind": "Story",
@@ -162216,7 +162240,7 @@
         "Spiritual friendship"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/6/46-friendship-a-daylong-by-ajahn-pasanno",
-      "description": "",
+      "description": "Questions and answers from a daylong retreat on the theme of spiritual friendship.",
       "sessions": 3,
       "excerpts": 20
     },
@@ -162241,7 +162265,7 @@
         "Meditation"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/8/66-calming-the-busy-mind-upasika-day-2013#",
-      "description": "",
+      "description": "Two question and answer sessions from an Upāsikā Day on the theme of meditation.",
       "sessions": 2,
       "excerpts": 12
     },
@@ -162286,7 +162310,7 @@
       "medium": "In-person",
       "tags": [],
       "website": "https://www.abhayagiri.org/talks/collections/6/20-new-year-new-life-2013",
-      "description": "",
+      "description": "Two question and answer sessions from a daylong event at the Buddhadasa Indapanno Archives in Thailand.",
       "sessions": 2,
       "excerpts": 8
     },
@@ -162360,7 +162384,7 @@
         "Thai Forest Tradition"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/8/63-the-thai-forest-tradition-upasika-day-2014",
-      "description": "Stories and readings about the origins and characteristics of the Thai Forest tradion.",
+      "description": "Stories and readings about the origins and characteristics of the Thai Forest tradition.",
       "sessions": 3,
       "excerpts": 42
     },
@@ -162405,7 +162429,7 @@
       "medium": "In-person",
       "tags": [],
       "website": "https://www.abhayagiri.org/talks/6265-questions-answers-with-the-dharma-realm-buddhist-university",
-      "description": "A small group from the Dharma Realm Buddhist University (DRBU) located at the City of Ten Thousand Buddhas (CTTB) spent the morning at Abhayagiri. The group included two bhikkshunis as well as a number of resident volunteers at the CTTB. The students are in DRBU’s Masters of Arts in Buddhist Classics program. This semester the students have been reading various spiritual biographies including the biographies of the Thai Forest masters Ajahn Mun, Ajahn Tate and Ajahn Lee Dhammadharo. The audio is from their question and answer session with Ajahn Pasanno.",
+      "description": "A small group from the Dharma Realm Buddhist University (DRBU) located at the City of Ten Thousand Buddhas (CTTB) spent the morning at Abhayagiri. The group included two bhikshunis as well as a number of resident volunteers at the CTTB. The students are in DRBU’s Masters of Arts in Buddhist Classics program. This semester the students have been reading various spiritual biographies including the biographies of the Thai Forest masters Ajahn Mun, Ajahn Tate and Ajahn Lee Dhammadharo. The audio is from their question and answer session with Ajahn Pasanno.",
       "sessions": 1,
       "excerpts": 27
     },
@@ -162457,7 +162481,7 @@
         "Mindfulness of mind"
       ],
       "website": "https://www.abhayagiri.org/media/discs/2015WinterRetreat/Index.html",
-      "description": "Ajahn Pasanno, Ajahn Karuṇadhammo, and Ajahn Ñāṇiko take turns reading suttas and teachings regarding the Four Foundations of Mindfulness. The structure often follows  <em>Right Mindfulness</em> by Ajahn Ṭhānissaro. There are noteworth <a href=\"#WR2015_S07\">slideshows</a> illustrating the 32 parts of the body.",
+      "description": "Ajahn Pasanno, Ajahn Karuṇadhammo, and Ajahn Ñāṇiko take turns reading suttas and teachings regarding the Four Foundations of Mindfulness. The structure often follows  <em>Right Mindfulness</em> by Ajahn Ṭhānissaro. There are noteworthy <a href=\"#WR2015_S07\">slideshows</a> illustrating the 32 parts of the body.",
       "sessions": 53,
       "excerpts": 141
     },
@@ -162907,7 +162931,7 @@
         "Chanting"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/8/111-chanting",
-      "description": "",
+      "description": "Three Abhayagiri ajahns describe different aspects of chanting as Dhamma practice in the Ajahn Chah Tradition.",
       "sessions": 3,
       "excerpts": 30
     },
@@ -162982,7 +163006,7 @@
         "Meditation"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/8/126-developing-skill-in-reflective-meditation-upasika-day-2019",
-      "description": "Luang Por Pasanno, Ajahn Karunadhammo and Ajahn Nyaniko lead an exploration of the Buddha’s teachings on bringing a specific theme into the mind for reflection during meditation, including choosing and developing fruitful themes and the benefits of this skill.",
+      "description": "Luang Por Pasanno, Ajahn Karuṇadhammo, and Ajahn Ñāṇiko lead an exploration of the Buddha’s teachings on bringing a specific theme into the mind for reflection during meditation, including choosing and developing fruitful themes and the benefits of this skill.",
       "sessions": 2,
       "excerpts": 20
     },
@@ -163027,7 +163051,7 @@
         "Politics and society"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/8/130-changing-society-dealing-with-fear-stress-and-worry-and-cultivating-kindness-patient-endurance-and-harmony-upasika-day-2020",
-      "description": "",
+      "description": "Held online in the midst of the coronavirus pandemic, this Upāsikā Day addresses coping with societal stress of all forms.",
       "sessions": 1,
       "excerpts": 13
     },
@@ -163193,7 +163217,7 @@
       "medium": "In-person",
       "tags": [],
       "website": "",
-      "description": "",
+      "description": "Questions and answers after a Dhamma talk hosted by Dharma Realm Buddhist University.",
       "sessions": 1,
       "excerpts": 9
     },
@@ -163242,9 +163266,12 @@
         "Meditation"
       ],
       "website": "https://www.youtube.com/watch?v=SYe6Tqysor4&list=PLoNO26iBjavaUpUah-YVeKOUZGAX7VfnR&index=28",
-      "description": "",
+      "description": "A daylong event consisting of guided meditations interspersed with teachings from the Ānāpānasati Sutta (<a href=\"https://suttacentral.express/mn118/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/MN118.html\">MN 118</a>).",
       "sessions": 3,
-      "excerpts": 11
+      "excerpts": 11,
+      "texts": [
+        "MN 118"
+      ]
     },
     "Madison2023": {
       "title": "Madison Insight Retreat 2023",
@@ -168358,7 +168385,7 @@
         "AKd",
         "AP"
       ],
-      "sessionTitle": "Pronunciation and Rythym",
+      "sessionTitle": "Pronunciation and Rhythm",
       "tags": [
         "Chanting",
         "Pāli"
@@ -174530,7 +174557,7 @@
       "group": "Monastics",
       "lineage": "Root teachers",
       "sessionCount": 1,
-      "excerptCount": 216,
+      "excerptCount": 217,
       "htmlFile": "ajahn-chah.html"
     },
     "ALee": {
@@ -175104,7 +175131,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 64,
       "sessionCount": 329,
-      "excerptCount": 2533,
+      "excerptCount": 2534,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -176687,7 +176714,7 @@
       "primaries": 1,
       "htmlFile": "blame-and-praise.html",
       "excerptCount": 9,
-      "listIndex": 899
+      "listIndex": 900
     },
     "Nonviolent Communication": {
       "tag": "Nonviolent Communication",
@@ -177914,7 +177941,9 @@
       "number": "",
       "alternateTranslations": [],
       "glosses": [],
-      "related": [],
+      "related": [
+        "Health"
+      ],
       "flags": "*",
       "subtags": [],
       "supertags": [
@@ -179681,9 +179710,14 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "contentment.html",
+      "partOfSubtopics": [
+        "Contentment"
+      ],
+      "subtopics": [],
       "sessionCount": 1,
       "excerptCount": 30,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 172
     },
     "Trust": {
@@ -181310,7 +181344,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 2,
-      "excerptCount": 146,
+      "excerptCount": 147,
       "fTagCount": 5,
       "subtopicFTagCount": 5,
       "listIndex": 269
@@ -183710,7 +183744,7 @@
         "Fierce/direct teaching",
         "Stories",
         "Similes",
-        "Symbolism",
+        "Symbolism/metaphor",
         "Dhamma books",
         "Dhamma recordings",
         "Dhamma online"
@@ -183948,14 +183982,14 @@
       "primaries": 0,
       "htmlFile": "similes.html",
       "sessionCount": 1,
-      "excerptCount": 150,
+      "excerptCount": 149,
       "fTagCount": 3,
       "listIndex": 468
     },
-    "Symbolism": {
-      "tag": "Symbolism",
+    "Symbolism/metaphor": {
+      "tag": "Symbolism/metaphor",
       "pali": "",
-      "fullTag": "Symbolism",
+      "fullTag": "Symbolism/metaphor",
       "fullPali": "",
       "number": "",
       "alternateTranslations": [],
@@ -183968,11 +184002,11 @@
       ],
       "copies": 1,
       "primaries": 0,
-      "htmlFile": "symbolism.html",
+      "htmlFile": "symbolismmetaphor.html",
       "partOfSubtopics": [
         "Teaching Dhamma"
       ],
-      "excerptCount": 9,
+      "excerptCount": 11,
       "listIndex": 469
     },
     "Dhamma books": {
@@ -185370,6 +185404,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-karunadhammo.html",
       "excerptCount": 31,
+      "fTagCount": 2,
       "listIndex": 535
     },
     "Ajahn Jotipālo": {
@@ -187663,7 +187698,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "stephen-levine.html",
-      "excerptCount": 1,
+      "excerptCount": 2,
       "listIndex": 635
     },
     "Mark Epstein": {
@@ -190288,7 +190323,7 @@
       "excerptCount": 8,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 877
+      "listIndex": 878
     },
     "Bhikkhunī": {
       "tag": "Bhikkhunī",
@@ -190311,7 +190346,7 @@
         "Women's monastic forms"
       ],
       "excerptCount": 7,
-      "listIndex": 878
+      "listIndex": 879
     },
     "Sīladharā": {
       "tag": "Sīladharā",
@@ -190334,7 +190369,7 @@
         "Women's monastic forms"
       ],
       "excerptCount": 9,
-      "listIndex": 879
+      "listIndex": 880
     },
     "Mae Chee": {
       "tag": "Mae Chee",
@@ -190359,7 +190394,7 @@
       "excerptCount": 9,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 880
+      "listIndex": 881
     },
     "Language": {
       "tag": "Language",
@@ -191598,7 +191633,7 @@
       "primaries": 1,
       "htmlFile": "temporary-ordination.html",
       "excerptCount": 17,
-      "listIndex": 873
+      "listIndex": 874
     },
     "Pāṭimokkha": {
       "tag": "Pāṭimokkha",
@@ -192048,15 +192083,37 @@
       "glosses": [],
       "related": [],
       "flags": "",
-      "subtags": [],
+      "subtags": [
+        "Chao Khun"
+      ],
       "supertags": [
         "Respect"
       ],
       "copies": 1,
       "primaries": 0,
       "htmlFile": "monastic-titles.html",
-      "excerptCount": 13,
+      "excerptCount": 5,
       "listIndex": 859
+    },
+    "Chao Khun": {
+      "tag": "Chao Khun",
+      "pali": "Chao Khun",
+      "fullTag": "Chao Khun title <i>Thai</i>",
+      "fullPali": "Chao Khun title <i>Thai</i>",
+      "number": "",
+      "alternateTranslations": [],
+      "glosses": [],
+      "related": [],
+      "flags": "",
+      "subtags": [],
+      "supertags": [
+        "Monastic titles"
+      ],
+      "copies": 1,
+      "primaries": 0,
+      "htmlFile": "chao-khun.html",
+      "excerptCount": 9,
+      "listIndex": 860
     },
     "Respect for elders": {
       "tag": "Respect for elders",
@@ -192077,7 +192134,7 @@
       "htmlFile": "respect-for-elders.html",
       "excerptCount": 26,
       "fTagCount": 1,
-      "listIndex": 860
+      "listIndex": 861
     },
     "Upatakh": {
       "tag": "Upatakh",
@@ -192100,7 +192157,7 @@
       "htmlFile": "upatakh.html",
       "excerptCount": 22,
       "fTagCount": 2,
-      "listIndex": 861
+      "listIndex": 862
     },
     "Hospitality": {
       "tag": "Hospitality",
@@ -192120,7 +192177,7 @@
       "primaries": 0,
       "htmlFile": "hospitality.html",
       "excerptCount": 2,
-      "listIndex": 862
+      "listIndex": 863
     },
     "Monastic routine": {
       "tag": "Monastic routine",
@@ -192145,7 +192202,7 @@
       "excerptCount": 14,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 863
+      "listIndex": 864
     },
     "Ascetic practices": {
       "tag": "Ascetic practices",
@@ -192176,7 +192233,7 @@
       "excerptCount": 31,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 864
+      "listIndex": 865
     },
     "Tudong": {
       "tag": "Tudong",
@@ -192205,7 +192262,7 @@
       "excerptCount": 88,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 865
+      "listIndex": 866
     },
     "Fasting": {
       "tag": "Fasting",
@@ -192228,7 +192285,7 @@
         "Ascetic practices"
       ],
       "excerptCount": 4,
-      "listIndex": 866
+      "listIndex": 867
     },
     "Sitter's practice": {
       "tag": "Sitter's practice",
@@ -192253,7 +192310,7 @@
         "Ascetic practices"
       ],
       "excerptCount": 4,
-      "listIndex": 867
+      "listIndex": 868
     },
     "Monastic crafts": {
       "tag": "Monastic crafts",
@@ -192276,7 +192333,7 @@
         "Requisites"
       ],
       "excerptCount": 5,
-      "listIndex": 868
+      "listIndex": 869
     },
     "Types of monks": {
       "tag": "Types of monks",
@@ -192304,7 +192361,7 @@
       "primaries": 0,
       "htmlFile": "types-of-monks.html",
       "excerptCount": 7,
-      "listIndex": 869
+      "listIndex": 870
     },
     "Forest versus city monks": {
       "tag": "Forest versus city monks",
@@ -192324,7 +192381,7 @@
       "primaries": 0,
       "htmlFile": "forest-versus-city-monks.html",
       "excerptCount": 13,
-      "listIndex": 870
+      "listIndex": 871
     },
     "Study monks": {
       "tag": "Study monks",
@@ -192345,7 +192402,7 @@
       "htmlFile": "study-monks.html",
       "excerptCount": 11,
       "fTagCount": 1,
-      "listIndex": 871
+      "listIndex": 872
     },
     "Older monks": {
       "tag": "Older monks",
@@ -192365,7 +192422,7 @@
       "primaries": 0,
       "htmlFile": "older-monks.html",
       "excerptCount": 8,
-      "listIndex": 872
+      "listIndex": 873
     },
     "Thai sects": {
       "tag": "Thai sects",
@@ -192386,7 +192443,7 @@
       "htmlFile": "thai-sects.html",
       "excerptCount": 23,
       "fTagCount": 1,
-      "listIndex": 874
+      "listIndex": 875
     },
     "Novices": {
       "tag": "Novices",
@@ -192406,7 +192463,7 @@
       "primaries": 0,
       "htmlFile": "novices.html",
       "excerptCount": 14,
-      "listIndex": 875
+      "listIndex": 876
     },
     "Postulants": {
       "tag": "Postulants",
@@ -192428,7 +192485,7 @@
       "primaries": 0,
       "htmlFile": "postulants.html",
       "excerptCount": 14,
-      "listIndex": 876
+      "listIndex": 877
     },
     "Disrobing": {
       "tag": "Disrobing",
@@ -192449,7 +192506,7 @@
       "htmlFile": "disrobing.html",
       "excerptCount": 19,
       "fTagCount": 1,
-      "listIndex": 881
+      "listIndex": 882
     },
     "Everyday life": {
       "tag": "Everyday life",
@@ -192480,7 +192537,7 @@
       "excerptCount": 41,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 882
+      "listIndex": 883
     },
     "Lay life": {
       "tag": "Lay life",
@@ -192506,7 +192563,7 @@
       "excerptCount": 68,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 894
+      "listIndex": 895
     },
     "Conventions": {
       "tag": "Conventions",
@@ -192529,7 +192586,7 @@
       "htmlFile": "conventions.html",
       "excerptCount": 35,
       "fTagCount": 1,
-      "listIndex": 895
+      "listIndex": 896
     },
     "Worldly Conditions": {
       "tag": "Worldly Conditions",
@@ -192557,7 +192614,7 @@
       "primaries": 0,
       "htmlFile": "worldly-conditions.html",
       "excerptCount": 8,
-      "listIndex": 896
+      "listIndex": 897
     },
     "Gain and loss": {
       "tag": "Gain and loss",
@@ -192577,7 +192634,7 @@
       "primaries": 0,
       "htmlFile": "gain-and-loss.html",
       "excerptCount": 2,
-      "listIndex": 897
+      "listIndex": 898
     },
     "Fame and disrepute": {
       "tag": "Fame and disrepute",
@@ -192597,7 +192654,7 @@
       "primaries": 0,
       "htmlFile": "fame-and-disrepute.html",
       "excerptCount": 2,
-      "listIndex": 898
+      "listIndex": 899
     },
     "Personal": {
       "tag": "Personal",
@@ -192629,7 +192686,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "personal.html",
-      "listIndex": 902
+      "listIndex": 903
     },
     "Health": {
       "tag": "Health",
@@ -192642,6 +192699,7 @@
       "related": [],
       "flags": "",
       "subtags": [
+        "Healing",
         "Exercise",
         "Chi Gong",
         "Smoking",
@@ -192657,8 +192715,31 @@
         "Health"
       ],
       "subtopics": [],
-      "excerptCount": 26,
-      "listIndex": 903
+      "excerptCount": 22,
+      "listIndex": 904
+    },
+    "Healing": {
+      "tag": "Healing",
+      "pali": "",
+      "fullTag": "Healing",
+      "fullPali": "",
+      "number": "",
+      "alternateTranslations": [],
+      "glosses": [],
+      "related": [],
+      "flags": "",
+      "subtags": [],
+      "supertags": [
+        "Health"
+      ],
+      "copies": 1,
+      "primaries": 0,
+      "htmlFile": "healing.html",
+      "partOfSubtopics": [
+        "Health"
+      ],
+      "excerptCount": 7,
+      "listIndex": 905
     },
     "Exercise": {
       "tag": "Exercise",
@@ -192681,7 +192762,7 @@
         "Health"
       ],
       "excerptCount": 6,
-      "listIndex": 904
+      "listIndex": 906
     },
     "Chi Gong": {
       "tag": "Chi Gong",
@@ -192701,7 +192782,7 @@
       "primaries": 0,
       "htmlFile": "chi-gong.html",
       "excerptCount": 2,
-      "listIndex": 905
+      "listIndex": 907
     },
     "Smoking": {
       "tag": "Smoking",
@@ -192724,7 +192805,7 @@
         "Health"
       ],
       "excerptCount": 2,
-      "listIndex": 906
+      "listIndex": 908
     },
     "Mental illness": {
       "tag": "Mental illness",
@@ -192747,7 +192828,7 @@
         "Health"
       ],
       "excerptCount": 5,
-      "listIndex": 907
+      "listIndex": 909
     },
     "Purpose/meaning": {
       "tag": "Purpose/meaning",
@@ -192770,7 +192851,7 @@
       "htmlFile": "purposemeaning.html",
       "excerptCount": 14,
       "fTagCount": 1,
-      "listIndex": 908
+      "listIndex": 910
     },
     "Cleanliness": {
       "tag": "Cleanliness",
@@ -192790,7 +192871,7 @@
       "primaries": 0,
       "htmlFile": "cleanliness.html",
       "excerptCount": 19,
-      "listIndex": 909
+      "listIndex": 911
     },
     "Work": {
       "tag": "Work",
@@ -192818,7 +192899,7 @@
       "excerptCount": 48,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 910
+      "listIndex": 912
     },
     "Time management": {
       "tag": "Time management",
@@ -192838,7 +192919,7 @@
       "primaries": 0,
       "htmlFile": "time-management.html",
       "excerptCount": 7,
-      "listIndex": 911
+      "listIndex": 913
     },
     "Relationships": {
       "tag": "Relationships",
@@ -192864,7 +192945,7 @@
       "excerptCount": 30,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 912
+      "listIndex": 914
     },
     "Family": {
       "tag": "Family",
@@ -192893,7 +192974,7 @@
       "excerptCount": 76,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 913
+      "listIndex": 915
     },
     "Parents": {
       "tag": "Parents",
@@ -192919,7 +193000,7 @@
       "excerptCount": 36,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 914
+      "listIndex": 916
     },
     "Children": {
       "tag": "Children",
@@ -192944,7 +193025,7 @@
       "excerptCount": 15,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 915
+      "listIndex": 917
     },
     "Artistic expression": {
       "tag": "Artistic expression",
@@ -192965,7 +193046,7 @@
       "htmlFile": "artistic-expression.html",
       "excerptCount": 22,
       "fTagCount": 2,
-      "listIndex": 916
+      "listIndex": 918
     },
     "Recreation/leisure/sport": {
       "tag": "Recreation/leisure/sport",
@@ -192988,7 +193069,7 @@
       "primaries": 0,
       "htmlFile": "recreationleisuresport.html",
       "excerptCount": 11,
-      "listIndex": 917
+      "listIndex": 919
     },
     "Travel": {
       "tag": "Travel",
@@ -193008,7 +193089,7 @@
       "primaries": 0,
       "htmlFile": "travel.html",
       "excerptCount": 11,
-      "listIndex": 918
+      "listIndex": 920
     },
     "Pace of life": {
       "tag": "Pace of life",
@@ -193031,7 +193112,7 @@
       "htmlFile": "pace-of-life.html",
       "excerptCount": 15,
       "fTagCount": 1,
-      "listIndex": 919
+      "listIndex": 921
     },
     "Retirement": {
       "tag": "Retirement",
@@ -193054,7 +193135,7 @@
         "Work"
       ],
       "excerptCount": 3,
-      "listIndex": 920
+      "listIndex": 922
     },
     "Community": {
       "tag": "Community",
@@ -193097,7 +193178,7 @@
       "excerptCount": 66,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 921
+      "listIndex": 923
     },
     "Environment": {
       "tag": "Environment",
@@ -193126,7 +193207,7 @@
       "excerptCount": 32,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 922
+      "listIndex": 924
     },
     "Weather": {
       "tag": "Weather",
@@ -193146,7 +193227,7 @@
       "primaries": 0,
       "htmlFile": "weather.html",
       "excerptCount": 7,
-      "listIndex": 923
+      "listIndex": 925
     },
     "Leadership": {
       "tag": "Leadership",
@@ -193170,7 +193251,7 @@
       ],
       "excerptCount": 23,
       "fTagCount": 2,
-      "listIndex": 927
+      "listIndex": 929
     },
     "Conflict": {
       "tag": "Conflict",
@@ -193195,7 +193276,7 @@
       "excerptCount": 40,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 928
+      "listIndex": 930
     },
     "Meditation groups": {
       "tag": "Meditation groups",
@@ -193215,7 +193296,7 @@
       "primaries": 0,
       "htmlFile": "meditation-groups.html",
       "excerptCount": 2,
-      "listIndex": 929
+      "listIndex": 931
     },
     "Sharing circles": {
       "tag": "Sharing circles",
@@ -193235,7 +193316,7 @@
       "primaries": 0,
       "htmlFile": "sharing-circles.html",
       "excerptCount": 3,
-      "listIndex": 930
+      "listIndex": 932
     },
     "Politics and society": {
       "tag": "Politics and society",
@@ -193272,7 +193353,7 @@
       "excerptCount": 59,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 931
+      "listIndex": 933
     },
     "Royalty": {
       "tag": "Royalty",
@@ -193292,7 +193373,7 @@
       "primaries": 0,
       "htmlFile": "royalty.html",
       "excerptCount": 6,
-      "listIndex": 932
+      "listIndex": 934
     },
     "Service": {
       "tag": "Service",
@@ -193315,7 +193396,7 @@
         "Politics and society"
       ],
       "excerptCount": 6,
-      "listIndex": 933
+      "listIndex": 935
     },
     "Activism": {
       "tag": "Activism",
@@ -193340,7 +193421,7 @@
       "excerptCount": 8,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 934
+      "listIndex": 936
     },
     "Non-profit organizations": {
       "tag": "Non-profit organizations",
@@ -193363,7 +193444,7 @@
         "Politics and society"
       ],
       "excerptCount": 3,
-      "listIndex": 935
+      "listIndex": 937
     },
     "Corruption": {
       "tag": "Corruption",
@@ -193386,7 +193467,7 @@
         "Politics and society"
       ],
       "excerptCount": 3,
-      "listIndex": 936
+      "listIndex": 938
     },
     "Crime": {
       "tag": "Crime",
@@ -193411,7 +193492,7 @@
         "Politics and society"
       ],
       "excerptCount": 9,
-      "listIndex": 937
+      "listIndex": 939
     },
     "Prisons": {
       "tag": "Prisons",
@@ -193431,7 +193512,7 @@
       "primaries": 0,
       "htmlFile": "prisons.html",
       "excerptCount": 4,
-      "listIndex": 938
+      "listIndex": 940
     },
     "Discrimination": {
       "tag": "Discrimination",
@@ -193450,12 +193531,12 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "discrimination.html",
-      "note": "refers to unskillful prejudice. Constrasts with [<a href=\"../tags/discernment.html\">Discernment</a>]",
+      "note": "refers to unskillful prejudice. Contrasts with [<a href=\"../tags/discernment.html\">Discernment</a>]",
       "partOfSubtopics": [
         "Politics and society"
       ],
       "excerptCount": 3,
-      "listIndex": 939
+      "listIndex": 941
     },
     "Military": {
       "tag": "Military",
@@ -193478,7 +193559,7 @@
         "Politics and society"
       ],
       "excerptCount": 17,
-      "listIndex": 940
+      "listIndex": 942
     },
     "Education": {
       "tag": "Education",
@@ -193505,7 +193586,7 @@
       "excerptCount": 10,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 941
+      "listIndex": 943
     },
     "Commerce/economics": {
       "tag": "Commerce/economics",
@@ -193535,7 +193616,7 @@
       "excerptCount": 39,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 942
+      "listIndex": 944
     },
     "Poverty": {
       "tag": "Poverty",
@@ -193560,7 +193641,7 @@
       "excerptCount": 13,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 943
+      "listIndex": 945
     },
     "Health care": {
       "tag": "Health care",
@@ -193584,10 +193665,10 @@
       "partOfSubtopics": [
         "Health"
       ],
-      "excerptCount": 57,
+      "excerptCount": 56,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 944
+      "listIndex": 946
     },
     "Pandemic": {
       "tag": "Pandemic",
@@ -193610,7 +193691,7 @@
         "Health"
       ],
       "excerptCount": 11,
-      "listIndex": 945
+      "listIndex": 947
     },
     "Disasters": {
       "tag": "Disasters",
@@ -193630,7 +193711,7 @@
       "primaries": 0,
       "htmlFile": "disasters.html",
       "excerptCount": 5,
-      "listIndex": 946
+      "listIndex": 948
     },
     "Science": {
       "tag": "Science",
@@ -193653,7 +193734,7 @@
         "Technology"
       ],
       "excerptCount": 14,
-      "listIndex": 947
+      "listIndex": 949
     },
     "Technology": {
       "tag": "Technology",
@@ -193682,7 +193763,7 @@
       "excerptCount": 15,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 948
+      "listIndex": 950
     },
     "Industry": {
       "tag": "Industry",
@@ -193705,7 +193786,7 @@
         "Technology"
       ],
       "excerptCount": 3,
-      "listIndex": 949
+      "listIndex": 951
     },
     "Online community": {
       "tag": "Online community",
@@ -193730,7 +193811,7 @@
       "excerptCount": 9,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 950
+      "listIndex": 952
     },
     "Media": {
       "tag": "Media",
@@ -193758,7 +193839,7 @@
         "Technology"
       ],
       "excerptCount": 13,
-      "listIndex": 951
+      "listIndex": 953
     },
     "News": {
       "tag": "News",
@@ -193783,7 +193864,7 @@
       "excerptCount": 5,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 952
+      "listIndex": 954
     },
     "Advertizing": {
       "tag": "Advertizing",
@@ -193806,7 +193887,7 @@
         "Technology"
       ],
       "excerptCount": 4,
-      "listIndex": 953
+      "listIndex": 955
     },
     "Internet": {
       "tag": "Internet",
@@ -193829,7 +193910,7 @@
         "Technology"
       ],
       "excerptCount": 6,
-      "listIndex": 954
+      "listIndex": 956
     },
     "Social media": {
       "tag": "Social media",
@@ -193854,7 +193935,7 @@
       "excerptCount": 4,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 955
+      "listIndex": 957
     }
   },
   "series": {
@@ -193886,7 +193967,7 @@
     "Abhayagiri Anniversary events": {
       "series": "Abhayagiri Anniversary events",
       "abbreviation": "Anniversary",
-      "description": "Commemorations of the founding of Abhayagiri Monastery on June 4, 1996."
+      "description": "Commemorations of the founding of Abhayagiri Monastery on June 1, 1996."
     },
     "Amaravati Sunday Talks": {
       "series": "Amaravati Sunday Talks",
@@ -195945,6 +196026,21 @@
       "otherUrl": "http://www.dhammatalks.net/Books3/Bhikkhu_Buddhadasa_Anapanasati_Mindfulness_with_Breathing.htm",
       "author": [
         "ABuddhadasa"
+      ],
+      "mirror": "remote"
+    },
+    "dhammapada contemplation": {
+      "abbreviation": "Dhammapada Contemplation",
+      "title": "_A Dhammapada for Contemplation_",
+      "attribution": "by Ajahn Munindo",
+      "pdfPageOffset": 18,
+      "year": "2016",
+      "commentary": false,
+      "filename": "dhammapada-for-contemplation-5th-LARGE-WEB-2017-02-05.pdf",
+      "remoteUrl": "https://www.abhayagiri.org/media/books/dhammapada-for-contemplation-5th-LARGE-WEB-2017-02-05.pdf",
+      "otherUrl": "https://www.abhayagiri.org/books/614-a-dhammapada-for-contemplation",
+      "author": [
+        "AMunindo"
       ],
       "mirror": "remote"
     }
@@ -199005,7 +199101,7 @@
       "text": "Characteristics of existence (52)",
       "tag": "Characteristics of existence",
       "subtagCount": 9,
-      "subtagExcerptCount": 632
+      "subtagExcerptCount": 633
     },
     {
       "level": 3,
@@ -199013,9 +199109,9 @@
       "flags": "*",
       "name": "Impermanence",
       "pali": "anicca",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "subsumed": false,
-      "text": "Impermanence (146) [anicca]",
+      "text": "Impermanence (147) [anicca]",
       "tag": "Impermanence"
     },
     {
@@ -201268,21 +201364,21 @@
       "flags": "",
       "name": "Similes",
       "pali": "opammā",
-      "excerptCount": 150,
+      "excerptCount": 149,
       "subsumed": false,
-      "text": "Similes (150) [opammā]",
+      "text": "Similes (149) [opammā]",
       "tag": "Similes"
     },
     {
       "level": 2,
       "indexNumber": "",
       "flags": "",
-      "name": "Symbolism",
+      "name": "Symbolism/metaphor",
       "pali": "",
-      "excerptCount": 9,
+      "excerptCount": 11,
       "subsumed": false,
-      "text": "Symbolism (9)",
-      "tag": "Symbolism"
+      "text": "Symbolism/metaphor (11)",
+      "tag": "Symbolism/metaphor"
     },
     {
       "level": 2,
@@ -201341,7 +201437,7 @@
       "text": "Teachers (26)",
       "tag": "Teachers",
       "subtagCount": 174,
-      "subtagExcerptCount": 1518
+      "subtagExcerptCount": 1519
     },
     {
       "level": 2,
@@ -203033,7 +203129,7 @@
       "text": "Lay teachers (5)",
       "tag": "Lay teachers",
       "subtagCount": 21,
-      "subtagExcerptCount": 147
+      "subtagExcerptCount": 148
     },
     {
       "level": 3,
@@ -203140,9 +203236,9 @@
       "flags": "",
       "name": "Stephen Levine",
       "pali": "",
-      "excerptCount": 1,
+      "excerptCount": 2,
       "subsumed": false,
-      "text": "Stephen Levine (1)",
+      "text": "Stephen Levine (2)",
       "tag": "Stephen Levine"
     },
     {
@@ -205019,7 +205115,7 @@
       "subsumed": false,
       "text": "Renunciant practice (2)",
       "tag": "Renunciant practice",
-      "subtagCount": 78,
+      "subtagCount": 79,
       "subtagExcerptCount": 1193
     },
     {
@@ -205364,7 +205460,7 @@
       "subsumed": false,
       "text": "Monastic life (217) [brahmacariyā]",
       "tag": "Monastic life",
-      "subtagCount": 50,
+      "subtagCount": 51,
       "subtagExcerptCount": 1020
     },
     {
@@ -205682,7 +205778,7 @@
       "subsumed": false,
       "text": "Respect (32)",
       "tag": "Respect",
-      "subtagCount": 4,
+      "subtagCount": 5,
       "subtagExcerptCount": 88
     },
     {
@@ -205691,10 +205787,23 @@
       "flags": "",
       "name": "Monastic titles",
       "pali": "",
-      "excerptCount": 13,
+      "excerptCount": 5,
       "subsumed": false,
-      "text": "Monastic titles (13)",
-      "tag": "Monastic titles"
+      "text": "Monastic titles (5)",
+      "tag": "Monastic titles",
+      "subtagCount": 1,
+      "subtagExcerptCount": 13
+    },
+    {
+      "level": 5,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Chao Khun title <i>Thai</i>",
+      "pali": "Chao Khun title <i>Thai</i>",
+      "excerptCount": 9,
+      "subsumed": false,
+      "text": "Chao Khun title <i>Thai</i> (9)",
+      "tag": "Chao Khun"
     },
     {
       "level": 4,
@@ -205954,7 +206063,7 @@
       "subsumed": false,
       "text": "Everyday life practice (41)",
       "tag": "Everyday life",
-      "subtagCount": 71,
+      "subtagCount": 72,
       "subtagExcerptCount": 939
     },
     {
@@ -206184,8 +206293,8 @@
       "text": "Personal",
       "tag": "",
       "virtualTag": "Personal",
-      "subtagCount": 17,
-      "subtagExcerptCount": 295
+      "subtagCount": 18,
+      "subtagExcerptCount": 297
     },
     {
       "level": 3,
@@ -206193,12 +206302,23 @@
       "flags": "",
       "name": "Health",
       "pali": "",
-      "excerptCount": 26,
+      "excerptCount": 22,
       "subsumed": false,
-      "text": "Health (26)",
+      "text": "Health (22)",
       "tag": "Health",
-      "subtagCount": 4,
-      "subtagExcerptCount": 39
+      "subtagCount": 5,
+      "subtagExcerptCount": 41
+    },
+    {
+      "level": 4,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Healing",
+      "pali": "",
+      "excerptCount": 7,
+      "subsumed": false,
+      "text": "Healing (7)",
+      "tag": "Healing"
     },
     {
       "level": 4,
@@ -206400,7 +206520,7 @@
       "text": "Community (66)",
       "tag": "Community",
       "subtagCount": 34,
-      "subtagExcerptCount": 387
+      "subtagExcerptCount": 386
     },
     {
       "level": 3,
@@ -206658,12 +206778,12 @@
       "flags": "",
       "name": "Health care",
       "pali": "",
-      "excerptCount": 57,
+      "excerptCount": 56,
       "subsumed": false,
-      "text": "Health care (57)",
+      "text": "Health care (56)",
       "tag": "Health care",
       "subtagCount": 1,
-      "subtagExcerptCount": 68
+      "subtagExcerptCount": 67
     },
     {
       "level": 4,
@@ -210194,7 +210314,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/impermanence.html",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "fTagCount": 5
     },
     "Suffering": {
@@ -210959,6 +211079,20 @@
       "excerptCount": 71,
       "fTagCount": 4
     },
+    "Contentment": {
+      "tag": "Contentment",
+      "displayAs": "Contentment",
+      "pali": "santuṭṭhi",
+      "related": [],
+      "status": "",
+      "autoComplete": "",
+      "topicCode": "skillful",
+      "progressMemo": "",
+      "subtags": {},
+      "htmlPath": "tags/contentment.html",
+      "excerptCount": 30,
+      "fTagCount": 1
+    },
     "Happiness": {
       "tag": "Happiness",
       "displayAs": "Happiness",
@@ -211549,10 +211683,10 @@
         "Questions": "+",
         "Dhamma discussion": "-",
         "Stories": "-",
-        "Symbolism": "-"
+        "Symbolism/metaphor": "-"
       },
       "htmlPath": "clusters/teaching-dhamma.html",
-      "excerptCount": 256,
+      "excerptCount": 258,
       "fTagCount": 3
     },
     "Teachers": {
@@ -211949,12 +212083,15 @@
       "tag": "Health",
       "displayAs": "Health",
       "pali": "",
-      "related": [],
+      "related": [
+        "Sickness"
+      ],
       "status": "",
       "autoComplete": "",
       "topicCode": "everyday",
       "progressMemo": "",
       "subtags": {
+        "Healing": "+",
         "Exercise": "-",
         "Smoking": "-",
         "Mental illness": "-",
@@ -212160,7 +212297,7 @@
     },
     "Discrimination": {
       "tag": "Discrimination",
-      "note": "refers to unskillful prejudice. Constrasts with [Discernment](tag:)"
+      "note": "refers to unskillful prejudice. Contrasts with [Discernment](tag:)"
     },
     "Bodhisattva": {
       "tag": "Bodhisattva",
@@ -213092,7 +213229,7 @@
         "Death",
         "Grief"
       ],
-      "excerptCount": 661,
+      "excerptCount": 662,
       "fTagCount": 30
     },
     "refuges": {
@@ -213206,13 +213343,14 @@
         "Discernment",
         "Desire",
         "Patience",
+        "Contentment",
         "Happiness",
         "Gratitude",
         "Compassion",
         "Equanimity"
       ],
-      "excerptCount": 1048,
-      "fTagCount": 50
+      "excerptCount": 1062,
+      "fTagCount": 51
     },
     "unskillful": {
       "code": "unskillful",
@@ -213313,7 +213451,7 @@
         "Ajahn Sumedho",
         "Ajahn Pasanno"
       ],
-      "excerptCount": 1323,
+      "excerptCount": 1324,
       "fTagCount": 35
     },
     "monastic": {

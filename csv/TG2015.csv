@@ -1,4 +1,4 @@
-Modified:,2025,,,,,,,,,,,,,,,,,,,
+Modified:,2026,,,,,,,,,,,,,,,,,,,
 Key,Value,,,,,,,,,,,,,,,,,,,
 Title,2015 Thanksgiving Monastic Retreat,,,,,,,,,,,,,,,,,,,
 Subtitle,Mindfulness of Feeling,,,,,,,,,,,,,,,,,,,
@@ -16,7 +16,7 @@ Description,A classic ten-day Thanksgiving Retreat held at the Angela Center bef
 Sessions,8,,,,,,,,,,,,,,,,,,,
 Excerpts,230,,,,,,,,,,,,,,,,,,,
 Answers listened to,95,,,,,,,,,,,,,,,,,,,
-Tags applied,594,,,TRUE,,,,,,,,,,,,,,,,
+Tags applied,594,,,,,,,,,,,,,,,,,,,
 Invalid tags,0,,,,,,,,,,,,,,,,,,,
 Duration,8:38:19,,,,,,,,,,,,,,,,,,,
 <---->,,,,,,,,,,,,,,,,,,,,
@@ -40,7 +40,7 @@ Session #,Kind,Flags,Start time,End time,Teachers,Text,QTag1,QTag2,QTag3,QTag4,A
 1,,n,15:36,,,Could you please repeat the name of the sutta you mentioned this morning that laid out the ‘whole spiritual path’ in a conversation with the devas?,,,,,,,,,,,,,,
 1,,,16:28,21:57,,What is the difference between piti and sukha? Also equanimity and emptiness as a felt sense?,Rapture,Happiness,Equanimity,Emptiness,Self-identity view,Theravāda,Relinquishment,,,,Yes,,Emptiness,100
 1,Fragment,,18:33,21:57,,,,,,,,,,,,,Yes,,,
-1,Teaching,,,,,The difference between pīti and sukha.,Rapture,Happiness,,,Emotion,,,,,,,,Happiness,160
+1,Teaching,1,,,,The difference between pīti and sukha.,Rapture,Happiness,,,Emotion,,,,,,,,Happiness,160
 1,Extra tags,,,,,,,,,,,,,,,,,,Rapture,130
 1,Commentary,-,,,,Path of Purification p. 139: Similes for pīti and sukha.,Similes,Rapture,Happiness,,,,,,,,,,,
 1,,,22:03,33:59,,"I volunteer in hospice and was in attendance for the passing of my parents. I notice vast differences in the way people experience their passage. What can we do, while still alive, to prepare for a peaceful and ‘wakeful’ passing? Other than ‘being present,’ is there anything that can be of benefit to others?",Death,,,,Recollection/Death,Equanimity,Impermanence,Sickness,Idealism,Compassion,Yes,,,
@@ -191,7 +191,7 @@ Session #,Kind,Flags,Start time,End time,Teachers,Text,QTag1,QTag2,QTag3,QTag4,A
 6,,,50:41,,,How can I continue to deepen my practice in the absence of a living teacher?,Long-term practice,Teachers,,,,,,,,,,,,
 6,,,55:40,,,Is it useful to investigate how we can only experience one conscious moment at a time?,Consciousness,Investigation of states,,,,,,,,,,,,
 7,,,0:12,,,I was just reading a talk of Ajahn Chah's. He mentions ‘vipassanu.’ Could you explain this more?,Ajahn Chah,Insight meditation,,,,,,,,,,,,
-7,,,1:00,,,"An Ajahn visiting Abhayagiri spoke of you receiving an honor. Would you elaborate on what it was, who bestows it, and what it means for you and the community?",Monastic titles,Ajahn Pasanno,Abhayagiri,,,,,,,,,,,
+7,,,1:00,,,"An Ajahn visiting Abhayagiri spoke of you receiving an honor. Would you elaborate on what it was, who bestows it, and what it means for you and the community?",Chao Khun,Ajahn Pasanno,Abhayagiri,,,,,,,,,,,
 7,,,7:40,13:27,,Could you talk a bit about the kilesas? How to see them clearly and work with them skillfully without falling into discouragement and self-judgment?,Unwholesome Roots,Right Effort,Guilt/shame/inadequacy,,Mindfulness,Discernment,Recollection/Virtue,Perception,,,Yes,,Unwholesome Roots,100
 7,,,13:29,,,Can you repeat the Thai words for ‘Is it worth it?’ that you mentioned this morning? I'd like to use it as a mantra.,Thai,,,,,,,,,,,,,
 7,,,14:08,15:09,,Are there any suttas in the Majjhima Nikaya that you recommend that lay people study?,Sutta,Learning,Lay life,,,,,,,,Yes,,Learning,70
@@ -222,7 +222,7 @@ Session #,Kind,Flags,Start time,End time,Teachers,Text,QTag1,QTag2,QTag3,QTag4,A
 8,,,5:15,9:39,,Can you please speak about faith? How to develop it? How to maintain it through the ups and downs of practice? How have you maintained your faith over forty years of practice?,Faith,Long-term practice,Ajahn Pasanno,,Language,Ajahn Chah,Patience,Mindfulness,,,Yes,,Faith,100
 8,,,9:42,20:51,,"I was wondering if the merit we have done for meditation practice can be dedicated to the people (dead or alive) we pray for? How do we know it? Also, I have heard that the merit from practicing meditation will accumulate and stay with ones who have practiced that, which also carries over throughout the life or the subsequent incarnations. Can you clarify this?",Merit,Prayer,Rebirth,,Theravāda,Mahāyāna,Vajrayāna,Science,Faith,Selfishness,Yes,,,
 8,Story,s,,,,told by Ajahn Paññānanda about dedication of merit.,Ajahn Paññānanda,Culture/Thailand,Superstition,Merit,Death,,,,,,,,,
-8,,,21:12,25:32,,I understand that there is a council of Theravada elders who are a ‘decision making panel’ guiding the tradition. Who exactly is part of this council and who or what determines their eligibility? Will the honor being bestowed upon you and Ajahn Amaro next month make you eligible? Are there other monks in modern times who have received this honor?,History/Thai Buddhism,Saṅgha decision making,Monastic titles,Ajahn Pasanno,Politics and society,Ajahn Buddhadāsa,Ajahn Mahā Boowa,Ajahn Sumedho,P. A. Payutto,CALM Group,Yes,,,
+8,,,21:12,25:32,,I understand that there is a council of Theravada elders who are a ‘decision making panel’ guiding the tradition. Who exactly is part of this council and who or what determines their eligibility? Will the honor being bestowed upon you and Ajahn Amaro next month make you eligible? Are there other monks in modern times who have received this honor?,History/Thai Buddhism,Saṅgha decision making,Chao Khun,Ajahn Pasanno,Politics and society,Ajahn Buddhadāsa,Ajahn Mahā Boowa,Ajahn Sumedho,P. A. Payutto,CALM Group,Yes,,,
 8,Extra tags,,,,,,Ajahn Amaro,Ajahn Chah,,,,,,,,,,,,
 8,,,26:16,30:41,,"If I remember correctly, you said with practice what can be realized is not so much the abandonment of the self but the misperception of a self given there has never been a self to be abandoned, correct?",Not-self,,,,Clinging,Doctrine-of-self clinging,Self-identity view,Aggregates,,,Yes,,,
 8,Sutta,,,,,MN 72.15: I-making and my-making (aṅkārama-maṅkāra).,Self-identity view,Conceit,,,,,,,,,,,,
@@ -241,7 +241,7 @@ Session #,Kind,Flags,Start time,End time,Teachers,Text,QTag1,QTag2,QTag3,QTag4,A
 8,,,55:53,57:19,,"Is it possible to meditate on forgiveness for someone who died many years ago? Does forgiveness reach that person on some level, or is it more a matter of showing compassion towards myself?",Forgiveness,Compassion,,,Kamma,,,,,,Yes,,,
 8,,,57:24,59:06,,Could you explain what your ordination names mean and how they were chosen?,Ordination,Monastic titles,,,Ajahn Karuṇadhammo,Ajahn Ñāṇiko,Ajahn Pasanno,,,,Yes,,,
 8,Cut audio,,57:31,57:43,,,,,,,,,,,,,Yes,,,
-8,,,59:08,,,How does the process work to get a title as you do? Is this title only for monks? Will you be the only one in the USA?,Monastic titles,Ajahn Pasanno,,,,,,,,,,,,
+8,,,59:08,,,How does the process work to get a title as you do? Is this title only for monks? Will you be the only one in the USA?,Chao Khun,Ajahn Pasanno,,,,,,,,,,,,
 8,,,60:52,62:56,,"I understand that our genetic disposition can't be changed, but epigenetics say that their expression can be modified by changing lifestyle. In a similar way, our kamma is given but your teachings say the expression and effects can be changed by practice. Please comment.",Science,Health,Kamma,,,,,,,,Yes,,,
 8,,,62:59,69:35,,"I often feel overwhelmed with the greed, hatred, ill-will, and delusion that the corporate world exerts over the masses to the benefit of only themselves and that is destroying the planet's ability to renew itself. Could you speak about Buddhist involvement in social change movements?",Politics and society,Activism,Unwholesome Roots,Commerce/economics,Truth,Ajahn Pasanno,Non-profit organizations,,,,Yes,,,
 8,Extra tags,,,,,,Selfishness,Environment,,,,,,,,,,,,
@@ -255,7 +255,7 @@ Session #,Kind,Flags,Start time,End time,Teachers,Text,QTag1,QTag2,QTag3,QTag4,A
 8,Quote,,,,,The holding on is way more painful than the relinquishing.,Clinging,Relinquishment,Suffering,,,,,,,,,,,
 8,,,77:21,,,"In the Ānāpānasati Sutta, what is meant by ‘breathing in/out tranquilizing the mental formation?’",Mindfulness of breathing,Volitional formations,,,,,,,,,,,,
 8,,,78:23,79:47,,Can you recommend a reflection or phrase to use immediately upon awakening in the morning or the last thing before sleep?,Recollection,,,,Buddho mantra,Recollection/Buddha,Ajahn Chah,,,,Yes,,Buddho mantra,110
-8,,,79:56,,,I'm curious about the ceremony to bestow the honorific title. What does it entail? What is the new title? Does it change the appropriate way for us to address or refer to you?,Monastic titles,Ajahn Pasanno,,,,,,,,,,,,
+8,,,79:56,,,I'm curious about the ceremony to bestow the honorific title. What does it entail? What is the new title? Does it change the appropriate way for us to address or refer to you?,Chao Khun,Ajahn Pasanno,,,,,,,,,,,,
 8,,,82:55,1:24:49,,"If one were to choose a life partner who was not practicing the Dhamma as we know it but had some spirited lightness about them, what are some qualities we should look for in them that would make them a good partner?",Relationships,,,,Faith,Virtue,Generosity,Discernment,,,Yes,,,
 8,Cut audio,,1:23:20,1:23:26,,,,,,,,,,,,,Yes,,,
 8,,,1:24:52,1:26:20,,What did you plan to say [on this retreat]?,Teaching Dhamma,Meditation retreats,,,Ajahn Chah,,,,,,Yes,,,

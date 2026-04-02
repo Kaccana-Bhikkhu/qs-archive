@@ -1,4 +1,4 @@
-Modified:,2025,,,,,,,,,,,,,,,
+Modified:,2026,,,,,,,,,,,,,,,
 Kind,Category,Default form,Can be excerpt?,Can be annotation?,Takes times?,Takes teachers?,Takes tags?,Expects tags?,Ignore consent?,Append to excerpt?,Inherit teachers from:,Form 1,Form 2,Form 3,Exclude?,Usage notes
 Question,Questions,3,Yes,No,Yes,Yes,Yes,Yes,No,No,Session,unimplemented,++Question{s}{colon}++ {text}|| answered by {teachers}.,{prefix} “{text}” {suffix}|| Answered by {teachers}.,,
 Response,Questions,1,No,Yes,No,Yes,Yes,No,No,No,Session,"++Response{s}++ by {teachers}{colon}{""."" if not text and teachers else "" "" + text}",unimplemented,unimplemented,,An excerpt of any category which has a response annotation will be found when searching for questions. Response always attributes the teachers.
