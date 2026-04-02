@@ -130,8 +130,10 @@ def VerifyListCounts() -> None:
 
     # Check for duplicate excerpt tags
     for x in gDatabase["excerpts"]:
-        if len(set(x["tags"])) != len(x["tags"]):
-            Alert.caution(f"Duplicate tags in {x['event']} S{x['sessionNumber']} Q{x['excerptNumber']} {x['tags']}")
+        for item in Filter.AllItems(x):
+            tags = item.get("tags")
+            if tags and (len(set(tags)) != len(tags)):
+                Alert.caution("Duplicate tags in",item)
 
 def AuditNames() -> None:
     """Write assets/NameAudit.csv summarizing the information in the Tag, Teacher, and Name sheets.
