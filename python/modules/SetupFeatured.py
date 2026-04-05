@@ -63,6 +63,7 @@ def AllHolidays() -> list[Holiday]:
     chahFilter = Filter.And(Filter.Teacher("AChah"),Filter.Flags("!"))
     return [
         Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),chahFilter),
+        Holiday("Abhayagiri's Anniversary",date(1996,6,1),Filter.FTag("Abhayagiri")),
         Holiday("Ajahn Chah's Birthday",date(1918,6,17),chahFilter),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
@@ -549,6 +550,7 @@ def Holidays(paramStr: str) -> bool:
     holidayIndices = FutureHolidayIndices()
 
     changeCount = 0
+    errorCount = 0
     # Then check if each holiday has an excerpt that matches the filter
     for index,(holiday,year) in holidayIndices.items():
         if index >= len(future):
@@ -571,11 +573,14 @@ def Holidays(paramStr: str) -> bool:
             changeCount += 1
         else:
             Alert.warning("Unable to find a suitable excerpt for",holiday.name,"in",year)
+            errorCount += 1
 
     if changeCount:
         gFeaturedDatabase["calendar"] = past + future
         Alert.info()
         Alert.info("Moved",changeCount,"relevant excerpts to holidays.")
+    if errorCount:
+        Alert.info("Could not find suitable excerpts for",errorCount,"holiday(s).")
     else:
         Alert.info("All future holidays feature relevant excerpts.")
     return bool(changeCount)

@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} fro
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
-const DEBUG = false;
+const DEBUG = true;
 const PEEK_FUTURE = true;
 
 let gHomepageDatabase = null; // Featured excerpt html to display on the homepage, loaded from assets/FeaturedDatabase1_.json
@@ -602,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
                 initializeTodaysExcerpt(debugDate);
                 featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
-                    gHomepageDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                    gHomepageDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]];
                 configureLinks(featuredExcerptContainer,"search/homepage.html");
                 updateDate(debugDate);
             }
