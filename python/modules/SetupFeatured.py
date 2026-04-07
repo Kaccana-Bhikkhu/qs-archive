@@ -394,7 +394,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     newFeaturedExcerpts = currentFeaturedExcerpts - excerptsInDatabase
     if newFeaturedExcerpts:
         Alert.info(len(newFeaturedExcerpts),"new featured excerpts do not appear in the database.")
-        Alert.info("Run the remakeFuture module to include them.")
+        Alert.info("Run the RemakeFuture module to include them.")
         Alert.info.ShowFirstItems(sorted(newFeaturedExcerpts),"new excerpt")
 
     return databaseGood

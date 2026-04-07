@@ -6669,7 +6669,7 @@
       "fileNumber": 19,
       "kind": "Teaching",
       "flags": "0",
-      "text": "Taking the one seat—meditation teachings from Ajahn Chah.||Recollected by {teachers}.",
+      "text": "Taking the one seat—meditation teachings from Ajahn Chah.|| Recollected by {teachers}.",
       "teachers": [
         "JKornfield"
       ],
@@ -19605,7 +19605,21 @@
         "AP"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Main fragment",
+          "flags": "r",
+          "startTime": "0:54",
+          "endTime": "",
+          "text": "",
+          "tags": [
+            "Monasteries",
+            "Abhayagiri",
+            "Mutual lay/Saṅgha support"
+          ],
+          "indentLevel": 1
+        }
+      ],
       "tags": [
         "Gratitude",
         "Monasteries",
@@ -19625,8 +19639,39 @@
     {
       "event": "SRD2011",
       "sessionNumber": 2,
-      "excerptNumber": 16,
+      "excerptNumber": 15.1,
       "fileNumber": 16,
+      "annotations": [],
+      "kind": "Question",
+      "flags": "f",
+      "teachers": [
+        "AP"
+      ],
+      "text": "Is it possible to visit the monastery?",
+      "fTags": [],
+      "tags": [
+        "Monasteries",
+        "Abhayagiri",
+        "Mutual lay/Saṅgha support"
+      ],
+      "qTagCount": 2,
+      "homepageOnlyTags": [
+        "Abhayagiri"
+      ],
+      "clips": [
+        [
+          "$",
+          "1:06:05",
+          "1:08:30"
+        ]
+      ],
+      "duration": "2:25"
+    },
+    {
+      "event": "SRD2011",
+      "sessionNumber": 2,
+      "excerptNumber": 16,
+      "fileNumber": 17,
       "kind": "Meditation instruction",
       "flags": "s",
       "text": "Walking meditation.",
@@ -28488,14 +28533,18 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [
-        "Monastic routine"
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Main fragment",
+          "flags": "!",
+          "startTime": "0:10",
+          "endTime": "",
+          "text": "",
+          "tags": [],
+          "indentLevel": 1
+        }
       ],
-      "fTagOrder": [
-        80
-      ],
-      "fTagOrderFlags": "E",
-      "annotations": [],
       "tags": [
         "Monastic routine",
         "Abhayagiri"
@@ -28508,13 +28557,49 @@
           "2:42"
         ]
       ],
-      "duration": "2:42"
+      "duration": "2:42",
+      "fragmentFTags": [
+        "Monastic routine"
+      ]
+    },
+    {
+      "event": "SRD2013",
+      "sessionNumber": 3,
+      "excerptNumber": 1.1,
+      "fileNumber": 2,
+      "annotations": [],
+      "kind": "Question",
+      "flags": "f",
+      "teachers": [
+        "AP"
+      ],
+      "text": "What do we do at the monastery? What happens on a daily basis?",
+      "fTags": [
+        "Monastic routine"
+      ],
+      "fTagOrder": [
+        80
+      ],
+      "fTagOrderFlags": "E",
+      "tags": [
+        "Monastic routine",
+        "Abhayagiri"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "0:10",
+          "2:42"
+        ]
+      ],
+      "duration": "2:32"
     },
     {
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 2,
-      "fileNumber": 2,
+      "fileNumber": 3,
       "kind": "Comment",
       "flags": "",
       "text": "The more we become like monks and nuns, the more we will be helping the climate change situation.",
@@ -28555,7 +28640,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 3,
-      "fileNumber": 3,
+      "fileNumber": 4,
       "kind": "Question",
       "flags": "",
       "text": "Can you give some suggestions on dealing with betrayal in relationships?",
@@ -28598,7 +28683,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 4,
-      "fileNumber": 4,
+      "fileNumber": 5,
       "kind": "Question",
       "flags": "",
       "text": "Can you say more about the practice of awareness of arising and ceasing in relation to discernment and right view?",
@@ -28664,7 +28749,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 5,
-      "fileNumber": 5,
+      "fileNumber": 6,
       "kind": "Question",
       "flags": "",
       "text": "What is the role of emotion in our practice?",
@@ -28697,7 +28782,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 6,
-      "fileNumber": 6,
+      "fileNumber": 7,
       "kind": "Comment",
       "flags": "",
       "text": "I find that the experience of uncertainty and loss can give rise to compassion.",
@@ -28739,7 +28824,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 7,
-      "fileNumber": 7,
+      "fileNumber": 8,
       "kind": "Question",
       "flags": "",
       "text": "Given the situation in Burma with Buddhist monks fomenting violence against Muslims, how do you determine whether to respond to that vocally or publically?",
@@ -28772,7 +28857,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 8,
-      "fileNumber": 8,
+      "fileNumber": 9,
       "kind": "Question",
       "flags": "",
       "text": "I appreciate your emphasis on clarity, stability, and spaciousness. How does concentration relate to these?",
@@ -28855,7 +28940,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 9,
-      "fileNumber": 9,
+      "fileNumber": 10,
       "kind": "Question",
       "flags": "",
       "text": "For me, the practice starts with concentration to get to a place of well-being. Is there a missing piece here?",
@@ -28902,7 +28987,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 10,
-      "fileNumber": 10,
+      "fileNumber": 11,
       "kind": "Question",
       "flags": "",
       "text": "When we say right Eightfold Path, is there any general rule to tell what is right, what is wrong?",
@@ -28931,7 +29016,7 @@
       "event": "SRD2013",
       "sessionNumber": 3,
       "excerptNumber": 11,
-      "fileNumber": 11,
+      "fileNumber": 12,
       "kind": "Question",
       "flags": "",
       "text": "How is the path like a traffic circle?",
@@ -108574,6 +108659,9 @@
         "Abuse/violence"
       ],
       "qTagCount": 2,
+      "homepageOnlyTags": [
+        "Abhayagiri"
+      ],
       "clips": [
         [
           "$",
@@ -114816,6 +114904,9 @@
         "Vinaya"
       ],
       "qTagCount": 3,
+      "homepageOnlyTags": [
+        "Abhayagiri"
+      ],
       "clips": [
         [
           "$",
@@ -121760,9 +121851,13 @@
         "Monasteries",
         "Fear",
         "Culture/Natural environment",
+        "Culture/West",
         "Community"
       ],
       "qTagCount": 3,
+      "homepageOnlyTags": [
+        "Abhayagiri"
+      ],
       "clips": [
         [
           "$",
@@ -168191,7 +168286,7 @@
         "Culture/West"
       ],
       "subtopics": [],
-      "excerptCount": 167,
+      "excerptCount": 168,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
       "listIndex": 760
@@ -182459,9 +182554,9 @@
       "flags": "p",
       "name": "Culture/West",
       "pali": "",
-      "excerptCount": 167,
+      "excerptCount": 168,
       "subsumed": false,
-      "text": "Culture/West (167)",
+      "text": "Culture/West (168)",
       "tag": "Culture/West"
     },
     {
@@ -184776,9 +184871,9 @@
       "startDate": "02/06/2011",
       "teachers": "AP",
       "sessions": 3,
-      "excerpts": 36,
-      "answersListenedTo": 36,
-      "tagsApplied": 291,
+      "excerpts": 37,
+      "answersListenedTo": 37,
+      "tagsApplied": 294,
       "invalidTags": 0,
       "duration": "2:48:24"
     },
@@ -184831,8 +184926,8 @@
       "startDate": "22/06/2013",
       "teachers": "AP",
       "sessions": 3,
-      "excerpts": 20,
-      "answersListenedTo": 20,
+      "excerpts": 21,
+      "answersListenedTo": 21,
       "tagsApplied": 141,
       "invalidTags": 0,
       "duration": "1:01:14"
@@ -185361,7 +185456,7 @@
       "sessions": 1,
       "excerpts": 4,
       "answersListenedTo": 4,
-      "tagsApplied": 25,
+      "tagsApplied": 26,
       "invalidTags": 0,
       "duration": "1:14:01"
     },
@@ -190592,7 +190687,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/culturewest.html",
-      "excerptCount": 167,
+      "excerptCount": 168,
       "fTagCount": 4
     },
     "Everyday life": {

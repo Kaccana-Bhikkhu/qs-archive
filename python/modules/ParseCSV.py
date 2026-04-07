@@ -59,7 +59,8 @@ class FTagOrderFlag(StrEnum):
     TAG_ONLY = "T"          # Display only on tag pages (no subtopic pages)
     PRIMARY_SUBTOPIC = "P"  # Display on tag pages and when this tag appears in a subtopic
                             # not followed by an apostrophe
-    # Lowercase versions of these flags indicate not to feature the excerpt on the front page
+    HOMEPAGE_ONLY = "H"     # Display this excerpt on the homepage only
+    # Lowercase versions of these flags indicate not to feature the excerpt on the homepage
     
 
 gCamelCaseTranslation = {}
@@ -818,7 +819,13 @@ def FinalizeExcerptTags(x: dict) -> None:
     """Combine qTags and aTags into a single list, but keep track of how many qTags there are."""
     x["tags"] = x["qTag"] + x["aTag"]
     x["qTagCount"] = len(x["qTag"])
-    if len(x["fTagOrder"]) != len(x["fTags"]):
+    if x["fTagOrderFlags"] and FTagOrderFlag.HOMEPAGE_ONLY in x["fTagOrderFlags"]:
+        print(x)
+        x["homepageOnlyTags"] = x["fTags"]
+        x["fTags"] = []
+        if not re.match(FTagOrderFlag.HOMEPAGE_ONLY + "+$",x["fTagOrderFlags"]):
+            Alert.warning(x,"mixes H with other fTag order flags. The other flags will be ignored.")
+    elif len(x["fTagOrder"]) != len(x["fTags"]):
         Alert.warning(x,f"has {len(x['fTags'])} fTags but specifies {len(x['fTagOrder'])} fTagOrder numbers. Will fill with 1001E.")
         x["fTagOrder"] = x["fTagOrder"][:len(x["fTags"])] + ([1001] * (len(x["fTags"]) - len(x["fTagOrder"])))
         x["fTagOrderFlags"] = x["fTagOrderFlags"][:len(x["fTags"])] + ("E" * (len(x["fTags"]) - len(x["fTagOrderFlags"])))
