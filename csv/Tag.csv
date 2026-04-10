@@ -1,5 +1,5 @@
 Modified:,2026,,,,,,,,,,,,,,
-Count,220,933,58,448,185,46,76,,45,98,16,971,409,910,910
+Count,221,933,59,448,185,46,76,,45,98,16,971,409,910,910
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -266,7 +266,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Volitional formations,,saṅkhāra,,,,,,,,      Volitional formations,saṅkhāra,Volitional formations,Volitional formations [saṅkhāra]
 3,,Consciousness,,viññāṇa,,,,,,,,      Consciousness,viññāṇa,Consciousness,Consciousness [viññāṇa]
 3,,Name and form,,nāma-rūpa,,,,,Aggregates,,,      Name and form,nāma-rūpa,,
-3,*,Six Sense Bases,,saḷ-āyatana,Sense bases,āyatana,,,,,,      Six Sense Bases,āyatana,Sense bases,Sense bases [āyatana]
+3,*,Six Sense Bases,6,saḷ-āyatana,Sense bases,āyatana,,,,,,      Six Sense Bases,āyatana,Sense bases,Sense bases [āyatana]
 3,*,Contact,,phassa,,,,,,,,      Contact,phassa,Contact,Contact [phassa]
 3,,Feeling,,vedanā,,,,,,,,      Feeling,vedanā,Feeling,Feeling [vedanā]
 4,,Pleasant feeling,,sukhā vedanā,,,,,Happiness,,,         Pleasant feeling,sukhā vedanā,,
@@ -912,8 +912,8 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 1,P,Spiritual traditions,,,,,,,,,,Spiritual traditions,,Spiritual traditions,Spiritual traditions
 2,,Theravāda,,,,,,,,,,   Theravāda,,Theravāda,Theravāda
-2,,Mahāyāna,,,,,,,,,,   Mahāyāna,,Mahāyāna,Mahāyāna
-3,p,Zen,,,,,,,,,,      Zen,,Zen,Zen
+2,P,Mahāyāna,,,,,,,,,,   Mahāyāna,,Mahāyāna,Mahāyāna
+3,,Zen,,,,,,,,,,      Zen,,Zen,Zen
 3,,Pure Land,,,,,,,,,,      Pure Land,,Pure Land,Pure Land
 3,,Nichiren Buddhism,,,,,,,,,,      Nichiren Buddhism,,Nichiren Buddhism,Nichiren Buddhism
 ,,,,,,,,,,,,,,,
@@ -921,7 +921,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 2,,Secular Buddhism,,,,,,,,,,   Secular Buddhism,,Secular Buddhism,Secular Buddhism
 2,,Hinduism,,,,,,,,,,   Hinduism,,Hinduism,Hinduism
-3,,Advaita Vedanta,,,,,,,,,,      Advaita Vedanta,,Advaita Vedanta,Advaita Vedanta
+3,p,Advaita Vedanta,,,,,,,,,,      Advaita Vedanta,,Advaita Vedanta,Advaita Vedanta
 2,,Jainism,,,,,,,,,,   Jainism,,Jainism,Jainism
 ,,,,,,,,,,,,,,,
 2,,Taoism,,,,,,,,,,   Taoism,,Taoism,Taoism

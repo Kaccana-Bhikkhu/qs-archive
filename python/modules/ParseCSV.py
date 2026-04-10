@@ -820,7 +820,6 @@ def FinalizeExcerptTags(x: dict) -> None:
     x["tags"] = x["qTag"] + x["aTag"]
     x["qTagCount"] = len(x["qTag"])
     if x["fTagOrderFlags"] and FTagOrderFlag.HOMEPAGE_ONLY in x["fTagOrderFlags"]:
-        print(x)
         x["homepageOnlyTags"] = x["fTags"]
         x["fTags"] = []
         if not re.match(FTagOrderFlag.HOMEPAGE_ONLY + "+$",x["fTagOrderFlags"]):

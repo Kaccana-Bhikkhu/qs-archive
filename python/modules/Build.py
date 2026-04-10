@@ -647,9 +647,11 @@ def DetailedFeaturedTagCount() -> str:
         if diff == 0:
             fTagCountBelowMax[maxF - tag.get("fTagCount",0)] += 1
     
+    countedTags = fTagCountDiff.total()
+
     def PercentStr(value: int) -> str:
         "Return a string containing value as a number and as a percentage."
-        return f"{value} ({round(100 * value / fTagCountDiff.total())}%)"
+        return f"{value} ({round(100 * value / countedTags)}%)"
 
     def DetailStr(diff: int) -> str:
         "Return a string containing a detailed breakdown of the optimal tags."
@@ -659,7 +661,7 @@ def DetailedFeaturedTagCount() -> str:
             return ""
         
 
-    return f"""{fTagCountDiff.total()}/{len(gDatabase["tag"])} tags have or should have featured excerpts.<br>
+    return f"""{countedTags}/{len(gDatabase["tag"])} ({round(100 * countedTags / len(gDatabase["tag"]))}%) tags have or should have featured excerpts.<br>
 <span style="text-decoration:underline;">Deficient/excess fTag counts:</span><br>
 {"<br>".join(f"{d}: {PercentStr(fTagCountDiff[d])}{DetailStr(d)}" for d in sorted(fTagCountDiff))}"""
 

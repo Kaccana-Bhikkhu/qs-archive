@@ -87620,7 +87620,7 @@
       "fTagOrder": [
         120
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Aversion",
@@ -104408,13 +104408,7 @@
       "flags": "",
       "text": "Coming out of a long-term relationship where someone was killed in an accident after 42 years, the way you presented the disadvantages and advantages of a conventional loving relationship was perhaps a little light on the advantages.",
       "teachers": [],
-      "fTags": [
-        "Relationships"
-      ],
-      "fTagOrder": [
-        200
-      ],
-      "fTagOrderFlags": "E",
+      "fTags": [],
       "annotations": [
         {
           "kind": "Response",
@@ -116689,7 +116683,7 @@
         "Children"
       ],
       "fTagOrder": [
-        120
+        300
       ],
       "fTagOrderFlags": "E",
       "annotations": [
@@ -126453,12 +126447,14 @@
         "AA"
       ],
       "fTags": [
-        "Unconditioned"
+        "Science",
+        "Language"
       ],
       "fTagOrder": [
-        110
+        250,
+        250
       ],
-      "fTagOrderFlags": "T",
+      "fTagOrderFlags": "TE",
       "annotations": [
         {
           "kind": "Sutta",
@@ -133349,7 +133345,7 @@
       ],
       "tags": [],
       "qTagCount": 0,
-      "duration": "55:27"
+      "duration": "1:08:41"
     },
     {
       "event": "WR2025",
@@ -133362,7 +133358,13 @@
       "teachers": [
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Tipiṭaka"
+      ],
+      "fTagOrder": [
+        250
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Vinaya",
@@ -133384,11 +133386,11 @@
       "clips": [
         [
           "$",
-          "11:38",
-          "15:05.5"
+          "14:51",
+          "19:26"
         ]
       ],
-      "duration": "3:27"
+      "duration": "4:35"
     },
     {
       "event": "WR2025",
@@ -133412,11 +133414,11 @@
       "clips": [
         [
           "$",
-          "24:24",
-          "25:24"
+          "30:14",
+          "31:33"
         ]
       ],
-      "duration": "1:00"
+      "duration": "1:19"
     },
     {
       "event": "WR2025",
@@ -133432,6 +133434,14 @@
       ],
       "fTags": [],
       "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "1:19",
+          "text": "WR2025_S39_F03.mp3",
+          "indentLevel": 1
+        },
         {
           "kind": "Sutta",
           "flags": "",
@@ -133451,11 +133461,12 @@
       "qTagCount": 2,
       "clips": [
         [
-          "$",
-          "38:51.5",
-          "40:11.3"
+          "WR2025_S39_F03.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "47:07",
       "duration": "1:19"
     },
     {
@@ -133471,7 +133482,16 @@
         "AP"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "4:59",
+          "text": "WR2025_S39_F04.mp3",
+          "indentLevel": 1
+        }
+      ],
       "tags": [
         "Heart/mind",
         "Nature of mind",
@@ -133487,11 +133507,12 @@
       "qTagCount": 4,
       "clips": [
         [
-          "$",
-          "40:11.3",
-          "45:11"
+          "WR2025_S39_F04.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "48:58",
       "duration": "4:59"
     },
     {
@@ -133538,11 +133559,11 @@
       "clips": [
         [
           "$",
-          "45:11.5",
-          "48:24.3"
+          "56:05",
+          "1:00:08.5"
         ]
       ],
-      "duration": "3:12"
+      "duration": "4:03"
     },
     {
       "event": "WR2025",
@@ -133567,11 +133588,11 @@
       "clips": [
         [
           "$",
-          "48:24.5",
-          "49:14"
+          "1:00:8.5",
+          "1:01:11"
         ]
       ],
-      "duration": "0:49"
+      "duration": "1:02"
     },
     {
       "event": "WR2025",
@@ -133608,11 +133629,11 @@
       "clips": [
         [
           "$",
-          "49:14",
-          "50:10"
+          "1:01:12",
+          "1:02:19"
         ]
       ],
-      "duration": "0:56"
+      "duration": "1:07"
     },
     {
       "event": "WR2025",
@@ -133656,11 +133677,11 @@
       "clips": [
         [
           "$",
-          "50:10",
-          "55:20.2"
+          "1:02:24",
+          "1:08:35"
         ]
       ],
-      "duration": "5:10"
+      "duration": "6:11"
     },
     {
       "event": "WR2025",
@@ -133706,7 +133727,7 @@
       ],
       "tags": [],
       "qTagCount": 0,
-      "duration": "50:05"
+      "duration": "1:00:40"
     },
     {
       "event": "WR2025",
@@ -133728,11 +133749,11 @@
       "clips": [
         [
           "$",
-          "7:09",
-          "7:35"
+          "8:08",
+          "8:44"
         ]
       ],
-      "duration": "0:26"
+      "duration": "0:36"
     },
     {
       "event": "WR2025",
@@ -133761,11 +133782,11 @@
       "clips": [
         [
           "$",
-          "15:46",
-          "19:17"
+          "17:48",
+          "22:14"
         ]
       ],
-      "duration": "3:31"
+      "duration": "4:26"
     },
     {
       "event": "WR2025",
@@ -133791,11 +133812,11 @@
       "clips": [
         [
           "$",
-          "22:23",
-          "23:50"
+          "26:04",
+          "27:49"
         ]
       ],
-      "duration": "1:27"
+      "duration": "1:45"
     },
     {
       "event": "WR2025",
@@ -133850,11 +133871,11 @@
       "clips": [
         [
           "$",
-          "26:49.5",
-          "30:55"
+          "31:38",
+          "36:39"
         ]
       ],
-      "duration": "4:05"
+      "duration": "5:01"
     },
     {
       "event": "WR2025",
@@ -133878,11 +133899,11 @@
       "clips": [
         [
           "$",
-          "30:59",
-          "32:28"
+          "36:46.5",
+          "38:49"
         ]
       ],
-      "duration": "1:29"
+      "duration": "2:02"
     },
     {
       "event": "WR2025",
@@ -133946,11 +133967,11 @@
       "clips": [
         [
           "$",
-          "32:36",
-          "42:24"
+          "38:57.5",
+          "51:14"
         ]
       ],
-      "duration": "9:48"
+      "duration": "12:16"
     },
     {
       "event": "WR2025",
@@ -133961,15 +133982,23 @@
       "flags": "0",
       "text": "\"It is, friend, in just this fathom-high carcass endowed with perception and mind that I make known the world, the origin of the world, the cessation of the world, and the way leading to the cessation of the world.\" — SN 2.26.5 [Bhikkhu Bodhi translation].",
       "teachers": [
+        "AP",
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Nature of the cosmos"
+      ],
+      "fTagOrder": [
+        90
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Indirect quote",
           "flags": "",
           "text": "This pithy utterance of the Buddha may well be the most profound proposition in the history of human thought....|Bhikkhu Bodhi's footnote to the above passage",
           "teachers": [
+            "AP",
             "AA"
           ],
           "tags": [
@@ -133994,11 +134023,11 @@
       "clips": [
         [
           "$",
-          "48:35",
-          "50:01"
+          "58:52",
+          "1:00:34"
         ]
       ],
-      "duration": "1:26"
+      "duration": "1:42"
     },
     {
       "event": "WR2025",
@@ -134051,7 +134080,7 @@
       ],
       "tags": [],
       "qTagCount": 0,
-      "duration": "50:10"
+      "duration": "1:00:35"
     },
     {
       "event": "WR2025",
@@ -134084,11 +134113,11 @@
       "clips": [
         [
           "$",
-          "17:36",
-          "20:45"
+          "21:07",
+          "24:44"
         ]
       ],
-      "duration": "3:09"
+      "duration": "3:37"
     },
     {
       "event": "WR2025",
@@ -134145,11 +134174,11 @@
       "clips": [
         [
           "$",
-          "26:12",
-          "30:41"
+          "31:23",
+          "36:49"
         ]
       ],
-      "duration": "4:29"
+      "duration": "5:26"
     },
     {
       "event": "WR2025",
@@ -134209,11 +134238,11 @@
       "clips": [
         [
           "$",
-          "30:41",
-          "36:43"
+          "36:49",
+          "44:03"
         ]
       ],
-      "duration": "6:02"
+      "duration": "7:14"
     },
     {
       "event": "WR2025",
@@ -134299,11 +134328,11 @@
       "clips": [
         [
           "$",
-          "36:43",
-          "43:41"
+          "44:05.5",
+          "52:21"
         ]
       ],
-      "duration": "6:58"
+      "duration": "8:15"
     },
     {
       "event": "WR2025",
@@ -134340,11 +134369,11 @@
       "clips": [
         [
           "$",
-          "43:48",
-          "47:18.5"
+          "52:30",
+          "56:50"
         ]
       ],
-      "duration": "3:30"
+      "duration": "4:20"
     },
     {
       "event": "WR2025",
@@ -134365,6 +134394,14 @@
       ],
       "fTagOrderFlags": "E",
       "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "2:36",
+          "text": "WR2025_S41_F06.mp3",
+          "indentLevel": 1
+        },
         {
           "kind": "Sutta",
           "flags": "",
@@ -134390,11 +134427,12 @@
       "qTagCount": 2,
       "clips": [
         [
-          "$",
-          "47:26.5",
-          "50:03"
+          "WR2025_S41_F06.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "56:57",
       "duration": "2:36"
     },
     {
@@ -148484,8 +148522,8 @@
       "event": "WR2025",
       "sessionNumber": 39,
       "date": "05/03/2025",
-      "filename": "2025_0305.mp3",
-      "duration": "55:27",
+      "filename": "39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3",
+      "duration": "1:08:41",
       "teachers": [
         "AA"
       ],
@@ -148496,8 +148534,8 @@
       "event": "WR2025",
       "sessionNumber": 40,
       "date": "08/03/2025",
-      "filename": "2025_0308.mp3",
-      "duration": "50:05",
+      "filename": "40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3",
+      "duration": "1:00:40",
       "teachers": [
         "AA"
       ],
@@ -148508,8 +148546,8 @@
       "event": "WR2025",
       "sessionNumber": 41,
       "date": "09/03/2025",
-      "filename": "2025_0309.mp3",
-      "duration": "50:10",
+      "filename": "41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3",
+      "duration": "1:00:35",
       "teachers": [
         "AA"
       ],
@@ -151652,21 +151690,39 @@
       "event": "WR2025",
       "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/14/38_-_Chapter_7_-_Attending_to_the_Deathless_part_2.mp3"
     },
-    "2025_0305.mp3": {
-      "filename": "2025_0305.mp3",
-      "duration": "55:27",
+    "39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3": {
+      "filename": "39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3",
+      "duration": "1:08:41",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/08/39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3"
+    },
+    "WR2025_S39_F03.mp3": {
+      "filename": "WR2025_S39_F03.mp3",
+      "duration": "1:19",
       "event": "WR2025",
       "url": ""
     },
-    "2025_0308.mp3": {
-      "filename": "2025_0308.mp3",
-      "duration": "50:05",
+    "WR2025_S39_F04.mp3": {
+      "filename": "WR2025_S39_F04.mp3",
+      "duration": "4:59",
       "event": "WR2025",
       "url": ""
     },
-    "2025_0309.mp3": {
-      "filename": "2025_0309.mp3",
-      "duration": "50:10",
+    "40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3": {
+      "filename": "40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3",
+      "duration": "1:00:40",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/08/40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3"
+    },
+    "41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3": {
+      "filename": "41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3",
+      "duration": "1:00:35",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/08/41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3"
+    },
+    "WR2025_S41_F06.mp3": {
+      "filename": "WR2025_S41_F06.mp3",
+      "duration": "2:36",
       "event": "WR2025",
       "url": ""
     },
@@ -151754,6 +151810,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Session",
@@ -151773,6 +151830,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Session",
@@ -151792,6 +151850,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151811,12 +151870,33 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
       "form1": "unimplemented",
       "form2": "++Stor{'ies' if s else 'y'}{colon}++ {text}|| told by {teachers}.",
       "form3": "{text}|| ++Stor{'ies' if s else 'y'}{colon}++ told by {teachers}.",
+      "exclude": false,
+      "usageNotes": ""
+    },
+    "Story from": {
+      "kind": "Story from",
+      "category": "Stories",
+      "defaultForm": "1",
+      "canBeExcerpt": false,
+      "canBeAnnotation": true,
+      "takesTimes": true,
+      "takesTeachers": true,
+      "takesTags": true,
+      "expectsTags": true,
+      "indirectSpeech": true,
+      "ignoreConsent": false,
+      "appendToExcerpt": false,
+      "inheritTeachersFrom": "Excerpt",
+      "form1": "++Stor{'ies' if s else 'y'}{colon if not suffix}++{'from ' + suffix + colon if suffix else ''} {text}|| told by {teachers}.",
+      "form2": "unimplemented",
+      "form3": "unimplemented",
       "exclude": false,
       "usageNotes": ""
     },
@@ -151830,6 +151910,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151849,6 +151930,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151868,6 +151950,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151887,6 +151970,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151906,6 +151990,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151925,6 +152010,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151944,6 +152030,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": true,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151963,6 +152050,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -151982,6 +152070,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -152001,6 +152090,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -152020,6 +152110,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "None",
@@ -152039,6 +152130,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -152058,6 +152150,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152077,6 +152170,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152096,6 +152190,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152115,6 +152210,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Anon",
@@ -152134,6 +152230,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Anon",
@@ -152153,6 +152250,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152172,6 +152270,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Session",
@@ -152191,6 +152290,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "None",
@@ -152210,6 +152310,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152229,6 +152330,7 @@
       "takesTeachers": true,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": true,
       "inheritTeachersFrom": "Session unless text",
@@ -152248,6 +152350,7 @@
       "takesTeachers": true,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": true,
       "inheritTeachersFrom": "None",
@@ -152267,6 +152370,7 @@
       "takesTeachers": true,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": true,
       "inheritTeachersFrom": "None",
@@ -152286,6 +152390,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152305,6 +152410,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152324,6 +152430,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152343,6 +152450,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152362,6 +152470,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152381,6 +152490,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -152400,6 +152510,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -153150,7 +153261,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 64,
       "sessionCount": 329,
-      "excerptCount": 2534,
+      "excerptCount": 2535,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -155444,7 +155555,7 @@
       "pali": "āyatana",
       "fullTag": "Six Sense Bases",
       "fullPali": "saḷ-āyatana",
-      "number": "",
+      "number": "6",
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
@@ -156882,7 +156993,7 @@
       "primaries": 0,
       "htmlFile": "tipitaka.html",
       "excerptCount": 22,
-      "fTagCount": 1,
+      "fTagCount": 2,
       "listIndex": 122
     },
     "Vinaya": {
@@ -157985,7 +158096,7 @@
       "subtopics": [],
       "excerptCount": 117,
       "fTagCount": 4,
-      "subtopicFTagCount": 4,
+      "subtopicFTagCount": 3,
       "listIndex": 182
     },
     "Delusion": {
@@ -167193,6 +167304,7 @@
       "primaries": 0,
       "htmlFile": "nature-of-the-cosmos.html",
       "excerptCount": 13,
+      "fTagCount": 1,
       "listIndex": 710
     },
     "Time": {
@@ -167774,7 +167886,7 @@
         "Nibbāna"
       ],
       "excerptCount": 30,
-      "fTagCount": 3,
+      "fTagCount": 2,
       "subtopicFTagCount": 2,
       "listIndex": 736
     },
@@ -168444,8 +168556,8 @@
       ],
       "subtopics": [],
       "excerptCount": 82,
-      "fTagCount": 1,
-      "subtopicFTagCount": 1,
+      "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 766
     },
     "Pāli": {
@@ -168818,7 +168930,7 @@
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
-      "flags": "",
+      "flags": "P",
       "subtags": [
         "Zen",
         "Pure Land",
@@ -168842,7 +168954,7 @@
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
-      "flags": "p",
+      "flags": "",
       "subtags": [],
       "supertags": [
         "Mahāyāna"
@@ -168965,7 +169077,7 @@
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
-      "flags": "",
+      "flags": "p",
       "subtags": [],
       "supertags": [
         "Hinduism"
@@ -170962,8 +171074,8 @@
       ],
       "subtopics": [],
       "excerptCount": 30,
-      "fTagCount": 3,
-      "subtopicFTagCount": 3,
+      "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 914
     },
     "Family": {
@@ -171753,6 +171865,7 @@
         "Technology"
       ],
       "excerptCount": 14,
+      "fTagCount": 1,
       "listIndex": 949
     },
     "Technology": {
@@ -182816,7 +182929,7 @@
     {
       "level": 2,
       "indexNumber": "",
-      "flags": "",
+      "flags": "P",
       "name": "Mahāyāna",
       "pali": "",
       "excerptCount": 19,
@@ -182829,7 +182942,7 @@
     {
       "level": 3,
       "indexNumber": "",
-      "flags": "p",
+      "flags": "",
       "name": "Zen",
       "pali": "",
       "excerptCount": 20,
@@ -182897,7 +183010,7 @@
     {
       "level": 3,
       "indexNumber": "",
-      "flags": "",
+      "flags": "p",
       "name": "Advaita Vedanta",
       "pali": "",
       "excerptCount": 5,
@@ -185480,7 +185593,7 @@
       "answersListenedTo": 0,
       "tagsApplied": 1704,
       "invalidTags": 0,
-      "duration": "38:57:10"
+      "duration": "39:31:24"
     },
     "ChahQA2025": {
       "eventCode": "ChahQA2025",
@@ -189836,7 +189949,7 @@
       },
       "htmlPath": "clusters/aversion.html",
       "excerptCount": 137,
-      "fTagCount": 5
+      "fTagCount": 4
     },
     "Sloth and torpor": {
       "tag": "Sloth and torpor",
@@ -190657,7 +190770,7 @@
       },
       "htmlPath": "clusters/language.html",
       "excerptCount": 266,
-      "fTagCount": 3
+      "fTagCount": 4
     },
     "Culture/Thailand": {
       "tag": "Culture/Thailand",
@@ -190758,7 +190871,7 @@
       "subtags": {},
       "htmlPath": "tags/relationships.html",
       "excerptCount": 30,
-      "fTagCount": 3
+      "fTagCount": 2
     },
     "Community": {
       "tag": "Community",
@@ -192308,7 +192421,7 @@
         "Conceit"
       ],
       "excerptCount": 916,
-      "fTagCount": 45
+      "fTagCount": 44
     },
     "perspectives": {
       "code": "perspectives",
@@ -192438,7 +192551,7 @@
         "Culture/West"
       ],
       "excerptCount": 634,
-      "fTagCount": 15
+      "fTagCount": 16
     },
     "everyday": {
       "code": "everyday",
@@ -192460,7 +192573,7 @@
         "Technology"
       ],
       "excerptCount": 592,
-      "fTagCount": 41
+      "fTagCount": 40
     }
   },
   "tagRemoved": [
@@ -192536,6 +192649,7 @@
     "Indented tags": "indentedTags",
     "Index excerpts?": "indexExcerpts",
     "Index sessions?": "indexSessions",
+    "Indirect speech?": "indirectSpeech",
     "Inherit teachers from:": "inheritTeachersFrom",
     "Invalid tags": "invalidTags",
     "Key": "key",

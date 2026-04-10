@@ -22146,7 +22146,7 @@
         ]
       ],
       "duration": "2:33",
-      "mirror": "",
+      "mirror": "local",
       "body": "<b>Meditation instructions:</b> Walking meditation.{attribution}",
       "attribution": " Offered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
@@ -100607,7 +100607,7 @@
       "fTagOrder": [
         120
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Aversion",
@@ -119533,13 +119533,7 @@
       "flags": "",
       "text": "Coming out of a long-term relationship where someone was killed in an accident after 42 years, the way you presented the disadvantages and advantages of a conventional loving relationship was perhaps a little light on the advantages.",
       "teachers": [],
-      "fTags": [
-        "Relationships"
-      ],
-      "fTagOrder": [
-        200
-      ],
-      "fTagOrderFlags": "E",
+      "fTags": [],
       "annotations": [
         {
           "kind": "Response",
@@ -133143,7 +133137,7 @@
         "Children"
       ],
       "fTagOrder": [
-        120
+        300
       ],
       "fTagOrderFlags": "E",
       "annotations": [
@@ -144575,12 +144569,14 @@
         "AA"
       ],
       "fTags": [
-        "Unconditioned"
+        "Science",
+        "Language"
       ],
       "fTagOrder": [
-        110
+        250,
+        250
       ],
-      "fTagOrderFlags": "T",
+      "fTagOrderFlags": "TE",
       "annotations": [
         {
           "kind": "Sutta",
@@ -153229,7 +153225,7 @@
       ],
       "tags": [],
       "qTagCount": 0,
-      "duration": "55:27",
+      "duration": "1:08:41",
       "body": "<b>Readings</b>{attribution}:",
       "attribution": " by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>",
       "texts": [
@@ -153252,7 +153248,13 @@
       "teachers": [
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Tipiṭaka"
+      ],
+      "fTagOrder": [
+        250
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Vinaya",
@@ -153275,11 +153277,11 @@
       "clips": [
         [
           "$",
-          "11:38",
-          "15:05.5"
+          "14:51",
+          "19:26"
         ]
       ],
-      "duration": "3:27",
+      "duration": "4:35",
       "mirror": "local",
       "body": "“<a href=\"https://suttacentral.express/mn49/en/sujato?reference=main#26.1\" target=\"_blank\" data-alt-href=\"../texts/MN49.html\">MN 49.26</a> says that the Buddha made himself invisible. Are the suttas always to be taken literally?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>.",
@@ -153310,11 +153312,11 @@
       "clips": [
         [
           "$",
-          "24:24",
-          "25:24"
+          "30:14",
+          "31:33"
         ]
       ],
-      "duration": "1:00",
+      "duration": "1:19",
       "mirror": "local",
       "body": "“In the passage you read out [<a href=\"https://suttacentral.express/dn11/en/sujato?reference=main#85.1\" target=\"_blank\" data-alt-href=\"../texts/DN11.html\">DN 11.85</a>], on the one hand it’s referring to consciousness that is infinite and radiant and non-manifestative, but then it went on to say that consciousness ceases. Do you have any thoughts about this?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>.",
@@ -153337,6 +153339,15 @@
       "fTags": [],
       "annotations": [
         {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "1:19",
+          "text": "WR2025_S39_F03.mp3",
+          "indentLevel": 1,
+          "body": ""
+        },
+        {
           "kind": "Sutta",
           "flags": "",
           "text": "SN 22.59 Anattalakkhaṇa Sutta: Their hearts (citta) were liberated... ([Chanting book translation](Chanting Book V2 p. 22)).",
@@ -153356,11 +153367,12 @@
       "qTagCount": 2,
       "clips": [
         [
-          "$",
-          "38:51.5",
-          "40:11.3"
+          "WR2025_S39_F03.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "47:07",
       "duration": "1:19",
       "mirror": "local",
       "body": "“What about different definitions of the mind? Sometimes the Pāli is citta…” {attribution}",
@@ -153385,7 +153397,17 @@
         "AP"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "4:59",
+          "text": "WR2025_S39_F04.mp3",
+          "indentLevel": 1,
+          "body": ""
+        }
+      ],
       "tags": [
         "Heart/mind",
         "Nature of mind",
@@ -153401,11 +153423,12 @@
       "qTagCount": 4,
       "clips": [
         [
-          "$",
-          "40:11.3",
-          "45:11"
+          "WR2025_S39_F04.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "48:58",
       "duration": "4:59",
       "mirror": "local",
       "body": "“We often speak of the mind, and we associate it with the mental mind, and we often feel that it’s in the area of the head. Then, when we feel the heart, we often feel like it’s in the area of the heart chakra. I see that in meditation, we can actually expand our field of awareness, maybe to the whole body or even more. Are there different approaches or degrees to this? How does it relate to consciousness?” {attribution}",
@@ -153457,11 +153480,11 @@
       "clips": [
         [
           "$",
-          "45:11.5",
-          "48:24.3"
+          "56:05",
+          "1:00:08.5"
         ]
       ],
-      "duration": "3:12",
+      "duration": "4:03",
       "mirror": "local",
       "body": "<b>Comment</b>: In the <a href=\"https://suttacentral.express/dhp1-20/en/buddharakkhita?reference=main%2cpts#sc1\" target=\"_blank\" data-alt-href=\"../texts/Dhp.html#dhp-1\">first Dhammapada verse</a>, mano seems to be used not as a sense gate but sort of a leading part of consciousness.",
       "attribution": "",
@@ -153493,11 +153516,11 @@
       "clips": [
         [
           "$",
-          "48:24.5",
-          "49:14"
+          "1:00:8.5",
+          "1:01:11"
         ]
       ],
-      "duration": "0:49",
+      "duration": "1:02",
       "mirror": "local",
       "body": "“Did the Buddha use viññāṇa to describe the mind as the sixth sense gate sometimes?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -153538,11 +153561,11 @@
       "clips": [
         [
           "$",
-          "49:14",
-          "50:10"
+          "1:01:12",
+          "1:02:19"
         ]
       ],
-      "duration": "0:56",
+      "duration": "1:07",
       "mirror": "local",
       "body": "<b>Comment:</b> The quality that the Dhammapada describes (<a href=\"https://suttacentral.express/dhp1-20/en/buddharakkhita?reference=main%2cpts#sc1\" target=\"_blank\" data-alt-href=\"../texts/Dhp.html#dhp-1\">Dhp 1</a>) seems like it has the quality of the beginning of the formations, like saṅkhāra, with its quality of intention. To me this seems like a mano kind of quality as opposed to the broader citta quality. So that kind of mind, mano, is the forerunner of stuff that gets produced.{attribution}",
       "attribution": " Contributed by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>.",
@@ -153593,11 +153616,11 @@
       "clips": [
         [
           "$",
-          "50:10",
-          "55:20.2"
+          "1:02:24",
+          "1:08:35"
         ]
       ],
-      "duration": "5:10",
+      "duration": "6:11",
       "mirror": "local",
       "body": "<b>Comments</b> about the everyday use of the words corresponding to mano and dukkha in Indian languages.{attribution}",
       "attribution": " Contributed by Anagārikā Deepa."
@@ -153679,7 +153702,7 @@
       ],
       "tags": [],
       "qTagCount": 0,
-      "duration": "50:05",
+      "duration": "1:00:40",
       "body": "<b>Readings</b> from <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf\" target=\"_blank\" data-alt-href=\"../books/the-island.html\"><em>The Island</em></a> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>, Chapter 8, pp. <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf#page=136\" target=\"_blank\" data-alt-href=\"../books/the-island.html\">137-140</a>. {attribution2}",
       "attribution": "",
       "attribution2": "Read by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>.",
@@ -153717,11 +153740,11 @@
       "clips": [
         [
           "$",
-          "7:09",
-          "7:35"
+          "8:08",
+          "8:44"
         ]
       ],
-      "duration": "0:26",
+      "duration": "0:36",
       "mirror": "local",
       "body": "“What does the word volition mean?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>."
@@ -153753,11 +153776,11 @@
       "clips": [
         [
           "$",
-          "15:46",
-          "19:17"
+          "17:48",
+          "22:14"
         ]
       ],
-      "duration": "3:31",
+      "duration": "4:26",
       "mirror": "local",
       "body": "“Are [the links of Dependent Origination] from the perspective of the mind or is it also from the perspective of the jhānas where you have the cessation of appearances altogether? Or is it strictly on the level of volition?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -153786,11 +153809,11 @@
       "clips": [
         [
           "$",
-          "22:23",
-          "23:50"
+          "26:04",
+          "27:49"
         ]
       ],
-      "duration": "1:27",
+      "duration": "1:45",
       "mirror": "local",
       "body": "<b>Recollection:</b> Abhayagiri’s contact with Gomde California.{attribution}",
       "attribution": " Recounted by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -153852,11 +153875,11 @@
       "clips": [
         [
           "$",
-          "26:49.5",
-          "30:55"
+          "31:38",
+          "36:39"
         ]
       ],
-      "duration": "4:05",
+      "duration": "5:01",
       "mirror": "local",
       "body": "“Is [<a href=\"https://suttacentral.express/sn12.15/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN12_15.html\">SN 12.15</a>] specifically what the middle way refers to?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>.",
@@ -153894,11 +153917,11 @@
       "clips": [
         [
           "$",
-          "30:59",
-          "32:28"
+          "36:46.5",
+          "38:49"
         ]
       ],
-      "duration": "1:29",
+      "duration": "2:02",
       "mirror": "local",
       "body": "“Is conceptual proliferation an aspect of Dependent Origination?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>."
@@ -153968,11 +153991,11 @@
       "clips": [
         [
           "$",
-          "32:36",
-          "42:24"
+          "38:57.5",
+          "51:14"
         ]
       ],
-      "duration": "9:48",
+      "duration": "12:16",
       "mirror": "local",
       "body": "“You mentioned [existentialism/eternalism] and nihilism as familiar Western philosophical ideas. I understand that Buddhism’s approach is not one or the other. How do other Western philosophical ideas like solipsism or materialism sit?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
@@ -153990,15 +154013,23 @@
       "flags": "0",
       "text": "\"It is, friend, in just this fathom-high carcass endowed with perception and mind that I make known the world, the origin of the world, the cessation of the world, and the way leading to the cessation of the world.\" — SN 2.26.5 [Bhikkhu Bodhi translation].",
       "teachers": [
+        "AP",
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Nature of the cosmos"
+      ],
+      "fTagOrder": [
+        90
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Indirect quote",
           "flags": "",
           "text": "This pithy utterance of the Buddha may well be the most profound proposition in the history of human thought....|Bhikkhu Bodhi's footnote to the above passage",
           "teachers": [
+            "AP",
             "AA"
           ],
           "tags": [
@@ -154025,11 +154056,11 @@
       "clips": [
         [
           "$",
-          "48:35",
-          "50:01"
+          "58:52",
+          "1:00:34"
         ]
       ],
-      "duration": "1:26",
+      "duration": "1:42",
       "mirror": "local",
       "body": "“It is, friend, in just this fathom-high carcass endowed with perception and mind that I make known the world, the origin of the world, the cessation of the world, and the way leading to the cessation of the world.” — <a href=\"https://suttacentral.express/sn2.26/en/sujato?reference=main#5.1\" target=\"_blank\" data-alt-href=\"../texts/SN2.html#sn-2-26\">SN 2.26.5</a> [Bhikkhu Bodhi translation].",
       "attribution": "",
@@ -154113,7 +154144,7 @@
       ],
       "tags": [],
       "qTagCount": 0,
-      "duration": "50:10",
+      "duration": "1:00:35",
       "body": "<b>Readings</b>{attribution}:",
       "attribution": " by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>",
       "texts": [
@@ -154159,11 +154190,11 @@
       "clips": [
         [
           "$",
-          "17:36",
-          "20:45"
+          "21:07",
+          "24:44"
         ]
       ],
-      "duration": "3:09",
+      "duration": "3:37",
       "mirror": "local",
       "body": "<b>Discussion</b> comparing the modern scientific project and Rohitassa the skywalker’s attempt to reach the end of the world (<a href=\"https://suttacentral.express/sn2.26/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/SN2.html#sn-2-26\">SN 2.26</a>).",
       "attribution": "",
@@ -154228,11 +154259,11 @@
       "clips": [
         [
           "$",
-          "26:12",
-          "30:41"
+          "31:23",
+          "36:49"
         ]
       ],
-      "duration": "4:29",
+      "duration": "5:26",
       "mirror": "local",
       "body": "“Could you clarify what you said about the mind and objects of awareness and how freedom from attachments is possible?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -154297,11 +154328,11 @@
       "clips": [
         [
           "$",
-          "30:41",
-          "36:43"
+          "36:49",
+          "44:03"
         ]
       ],
-      "duration": "6:02",
+      "duration": "7:14",
       "mirror": "local",
       "body": "<b>Story:</b> Ajahn Amaro’s insight his first day at Wat Pah Nanachat: “I didn’t get the pineapple and nothing is missing!”{attribution}",
       "attribution": " Told by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>."
@@ -154394,11 +154425,11 @@
       "clips": [
         [
           "$",
-          "36:43",
-          "43:41"
+          "44:05.5",
+          "52:21"
         ]
       ],
-      "duration": "6:58",
+      "duration": "8:15",
       "mirror": "local",
       "body": "<b>Question</b> about associating with and clinging to wholesome and conducive environments.{attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
@@ -154442,11 +154473,11 @@
       "clips": [
         [
           "$",
-          "43:48",
-          "47:18.5"
+          "52:30",
+          "56:50"
         ]
       ],
-      "duration": "3:30",
+      "duration": "4:20",
       "mirror": "local",
       "body": "<b>Comment</b>: I have high energy naturally, but people interpret my fast speaking and walking as anxiety.",
       "attribution": ""
@@ -154470,6 +154501,15 @@
       ],
       "fTagOrderFlags": "E",
       "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "2:36",
+          "text": "WR2025_S41_F06.mp3",
+          "indentLevel": 1,
+          "body": ""
+        },
         {
           "kind": "Sutta",
           "flags": "",
@@ -154497,11 +154537,12 @@
       "qTagCount": 2,
       "clips": [
         [
-          "$",
-          "47:26.5",
-          "50:03"
+          "WR2025_S41_F06.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "56:57",
       "duration": "2:36",
       "mirror": "local",
       "body": "“If worldly experiences are based on previous conditions, how is it possible to reach the world beyond our experience?” {attribution}",
@@ -169636,8 +169677,8 @@
       "event": "WR2025",
       "sessionNumber": 39,
       "date": "05/03/2025",
-      "filename": "2025_0305.mp3",
-      "duration": "55:27",
+      "filename": "39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3",
+      "duration": "1:08:41",
       "teachers": [
         "AA"
       ],
@@ -169648,8 +169689,8 @@
       "event": "WR2025",
       "sessionNumber": 40,
       "date": "08/03/2025",
-      "filename": "2025_0308.mp3",
-      "duration": "50:05",
+      "filename": "40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3",
+      "duration": "1:00:40",
       "teachers": [
         "AA"
       ],
@@ -169660,8 +169701,8 @@
       "event": "WR2025",
       "sessionNumber": 41,
       "date": "09/03/2025",
-      "filename": "2025_0309.mp3",
-      "duration": "50:10",
+      "filename": "41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3",
+      "duration": "1:00:35",
       "teachers": [
         "AA"
       ],
@@ -173301,23 +173342,44 @@
       "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/14/38_-_Chapter_7_-_Attending_to_the_Deathless_part_2.mp3",
       "mirror": "remote"
     },
-    "2025_0305.mp3": {
-      "filename": "2025_0305.mp3",
-      "duration": "55:27",
+    "39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3": {
+      "filename": "39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3",
+      "duration": "1:08:41",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/08/39_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_1.mp3",
+      "mirror": "remote"
+    },
+    "WR2025_S39_F03.mp3": {
+      "filename": "WR2025_S39_F03.mp3",
+      "duration": "1:19",
       "event": "WR2025",
       "url": "",
       "mirror": "local"
     },
-    "2025_0308.mp3": {
-      "filename": "2025_0308.mp3",
-      "duration": "50:05",
+    "WR2025_S39_F04.mp3": {
+      "filename": "WR2025_S39_F04.mp3",
+      "duration": "4:59",
       "event": "WR2025",
       "url": "",
       "mirror": "local"
     },
-    "2025_0309.mp3": {
-      "filename": "2025_0309.mp3",
-      "duration": "50:10",
+    "40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3": {
+      "filename": "40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3",
+      "duration": "1:00:40",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/08/40_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_2.mp3",
+      "mirror": "remote"
+    },
+    "41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3": {
+      "filename": "41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3",
+      "duration": "1:00:35",
+      "event": "WR2025",
+      "url": "https://cdn.amaravati.org/wp-content/uploads/2025/08/08/41_-_Chapter_8_-_Unsupported_and_Unsupportive_Consciousness_part_3.mp3",
+      "mirror": "remote"
+    },
+    "WR2025_S41_F06.mp3": {
+      "filename": "WR2025_S41_F06.mp3",
+      "duration": "2:36",
       "event": "WR2025",
       "url": "",
       "mirror": "local"
@@ -173418,6 +173480,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Session",
@@ -173449,6 +173512,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Session",
@@ -173480,6 +173544,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173511,6 +173576,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173532,6 +173598,38 @@
         " <b>Stor$!'ies' if s else 'y'!$$!colon!$</b> told by $!teachers!$."
       ]
     },
+    "Story from": {
+      "kind": "Story from",
+      "category": "Stories",
+      "defaultForm": 1,
+      "canBeExcerpt": false,
+      "canBeAnnotation": true,
+      "takesTimes": true,
+      "takesTeachers": true,
+      "takesTags": true,
+      "expectsTags": true,
+      "indirectSpeech": true,
+      "ignoreConsent": false,
+      "appendToExcerpt": false,
+      "inheritTeachersFrom": "Excerpt",
+      "exclude": false,
+      "usageNotes": "",
+      "form": [
+        "++Stor$!'ies' if s else 'y'!$$!colon if not suffix!$++$!'from ' + suffix + colon if suffix else ''!$ $!text!$|| told by $!teachers!$.",
+        "unimplemented",
+        "unimplemented"
+      ],
+      "body": [
+        "<b>Stor$!'ies' if s else 'y'!$$!colon if not suffix!$</b>$!'from ' + suffix + colon if suffix else ''!$ $!text!${attribution}",
+        "unimplemented",
+        "unimplemented"
+      ],
+      "attribution": [
+        " told by $!teachers!$.",
+        "",
+        ""
+      ]
+    },
     "Recollection": {
       "kind": "Recollection",
       "category": "Stories",
@@ -173542,6 +173640,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173573,6 +173672,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173604,6 +173704,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173635,6 +173736,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173666,6 +173768,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173697,6 +173800,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173728,6 +173832,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": true,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173759,6 +173864,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173790,6 +173896,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173821,6 +173928,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173852,6 +173960,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "None",
@@ -173883,6 +173992,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Excerpt",
@@ -173914,6 +174024,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -173945,6 +174056,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -173976,6 +174088,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174007,6 +174120,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Anon",
@@ -174038,6 +174152,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Anon",
@@ -174069,6 +174184,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174100,6 +174216,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "Session",
@@ -174131,6 +174248,7 @@
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "None",
@@ -174162,6 +174280,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174193,6 +174312,7 @@
       "takesTeachers": true,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": true,
       "inheritTeachersFrom": "Session unless text",
@@ -174224,6 +174344,7 @@
       "takesTeachers": true,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": true,
       "appendToExcerpt": true,
       "inheritTeachersFrom": "None",
@@ -174255,6 +174376,7 @@
       "takesTeachers": true,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": true,
       "inheritTeachersFrom": "None",
@@ -174286,6 +174408,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": true,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174317,6 +174440,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174348,6 +174472,7 @@
       "takesTeachers": false,
       "takesTags": true,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174379,6 +174504,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174410,6 +174536,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174441,6 +174568,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -174472,6 +174600,7 @@
       "takesTeachers": false,
       "takesTags": false,
       "expectsTags": false,
+      "indirectSpeech": false,
       "ignoreConsent": false,
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
@@ -175234,7 +175363,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 64,
       "sessionCount": 329,
-      "excerptCount": 2534,
+      "excerptCount": 2535,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -177528,7 +177657,7 @@
       "pali": "āyatana",
       "fullTag": "Six Sense Bases",
       "fullPali": "saḷ-āyatana",
-      "number": "",
+      "number": "6",
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
@@ -178966,7 +179095,7 @@
       "primaries": 0,
       "htmlFile": "tipitaka.html",
       "excerptCount": 22,
-      "fTagCount": 1,
+      "fTagCount": 2,
       "listIndex": 122
     },
     "Vinaya": {
@@ -180069,7 +180198,7 @@
       "subtopics": [],
       "excerptCount": 117,
       "fTagCount": 4,
-      "subtopicFTagCount": 4,
+      "subtopicFTagCount": 3,
       "listIndex": 182
     },
     "Delusion": {
@@ -189277,6 +189406,7 @@
       "primaries": 0,
       "htmlFile": "nature-of-the-cosmos.html",
       "excerptCount": 13,
+      "fTagCount": 1,
       "listIndex": 710
     },
     "Time": {
@@ -189858,7 +189988,7 @@
         "Nibbāna"
       ],
       "excerptCount": 30,
-      "fTagCount": 3,
+      "fTagCount": 2,
       "subtopicFTagCount": 2,
       "listIndex": 736
     },
@@ -190528,8 +190658,8 @@
       ],
       "subtopics": [],
       "excerptCount": 82,
-      "fTagCount": 1,
-      "subtopicFTagCount": 1,
+      "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 766
     },
     "Pāli": {
@@ -190902,7 +191032,7 @@
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
-      "flags": "",
+      "flags": "P",
       "subtags": [
         "Zen",
         "Pure Land",
@@ -190926,7 +191056,7 @@
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
-      "flags": "p",
+      "flags": "",
       "subtags": [],
       "supertags": [
         "Mahāyāna"
@@ -191049,7 +191179,7 @@
       "alternateTranslations": [],
       "glosses": [],
       "related": [],
-      "flags": "",
+      "flags": "p",
       "subtags": [],
       "supertags": [
         "Hinduism"
@@ -193046,8 +193176,8 @@
       ],
       "subtopics": [],
       "excerptCount": 30,
-      "fTagCount": 3,
-      "subtopicFTagCount": 3,
+      "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 914
     },
     "Family": {
@@ -193837,6 +193967,7 @@
         "Technology"
       ],
       "excerptCount": 14,
+      "fTagCount": 1,
       "listIndex": 949
     },
     "Technology": {
@@ -205020,7 +205151,7 @@
     {
       "level": 2,
       "indexNumber": "",
-      "flags": "",
+      "flags": "P",
       "name": "Mahāyāna",
       "pali": "",
       "excerptCount": 19,
@@ -205033,7 +205164,7 @@
     {
       "level": 3,
       "indexNumber": "",
-      "flags": "p",
+      "flags": "",
       "name": "Zen",
       "pali": "",
       "excerptCount": 20,
@@ -205101,7 +205232,7 @@
     {
       "level": 3,
       "indexNumber": "",
-      "flags": "",
+      "flags": "p",
       "name": "Advaita Vedanta",
       "pali": "",
       "excerptCount": 5,
@@ -211312,7 +211443,7 @@
       },
       "htmlPath": "clusters/aversion.html",
       "excerptCount": 137,
-      "fTagCount": 5
+      "fTagCount": 4
     },
     "Sloth and torpor": {
       "tag": "Sloth and torpor",
@@ -212133,7 +212264,7 @@
       },
       "htmlPath": "clusters/language.html",
       "excerptCount": 266,
-      "fTagCount": 3
+      "fTagCount": 4
     },
     "Culture/Thailand": {
       "tag": "Culture/Thailand",
@@ -212234,7 +212365,7 @@
       "subtags": {},
       "htmlPath": "tags/relationships.html",
       "excerptCount": 30,
-      "fTagCount": 3
+      "fTagCount": 2
     },
     "Community": {
       "tag": "Community",
@@ -213477,7 +213608,7 @@
         "Conceit"
       ],
       "excerptCount": 916,
-      "fTagCount": 45
+      "fTagCount": 44
     },
     "perspectives": {
       "code": "perspectives",
@@ -213607,7 +213738,7 @@
         "Culture/West"
       ],
       "excerptCount": 634,
-      "fTagCount": 15
+      "fTagCount": 16
     },
     "everyday": {
       "code": "everyday",
@@ -213629,7 +213760,7 @@
         "Technology"
       ],
       "excerptCount": 592,
-      "fTagCount": 41
+      "fTagCount": 40
     }
   },
   "textGroup": {
