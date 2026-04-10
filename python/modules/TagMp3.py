@@ -94,11 +94,12 @@ def ExcerptTags(excerpt: dict) -> dict:
     session = Database.FindSession(gDatabase["sessions"],excerpt["event"],excerpt["sessionNumber"])
 
     sessionStr = f", Session {excerpt['sessionNumber']}" if excerpt['sessionNumber'] else ""
+    textTitle = Utils.RemoveHtmlTags(event["title"])
     returnValue = {
-        "title": f"{event['title']}{sessionStr}, Excerpt {excerpt['excerptNumber']}",
+        "title": f"{textTitle}{sessionStr}, Excerpt {excerpt['excerptNumber']}",
         "albumartist": [gDatabase["teacher"][t]["attributionName"] for t in session["teachers"]],
         "artist": [gDatabase["teacher"][t]["attributionName"] for t in Filter.AllTeachers(excerpt)],
-        "album": Utils.RemoveHtmlTags(event["title"]), 
+        "album": textTitle, 
         "tracknumber": str(excerpt["excerptNumber"]),
         "date": str(Utils.ParseDate(session["date"]).year),
         "comment": ExcerptComment(excerpt,session,event),
