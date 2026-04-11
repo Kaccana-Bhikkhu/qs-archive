@@ -877,19 +877,32 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
         return
     
     kind = database["kind"][annotation["kind"]]
-    
     keysToRemove = ["sessionNumber","offTopic","aListen","exclude"]
+
+    annotation["indentLevel"] = len(annotation["flags"].split(ExcerptFlag.INDENT))
+    if len(excerpt["annotations"]):
+        prevAnnotationLevel = excerpt["annotations"][-1]["indentLevel"]
+    else:
+        prevAnnotationLevel = 0
+    if annotation["indentLevel"] - 1 > prevAnnotationLevel and not excerpt["exclude"]:
+        Alert.warning("Annotation",annotation,"to",excerpt,": Cannot increase indentation level by more than one.")
+    
+    excerpt["annotations"].append(annotation) # Append the annotation to the excerpt so ParentAnnotation works properly
     
     if kind["takesTeachers"]:
         if not annotation["teachers"]:
             defaultTeacher = kind["inheritTeachersFrom"]
             if defaultTeacher == "Anon": # Check if the default teacher is anonymous
                 annotation["teachers"] = ["Anon"]
-            elif defaultTeacher == "Excerpt":
-                annotation["teachers"] = excerpt["teachers"]
+            elif defaultTeacher == "Excerpt": # "Excerpt" means parent; "Session" means grandparent
+                annotation["teachers"] = Database.ParentAnnotation(excerpt,annotation)["teachers"]
             elif defaultTeacher == "Session" or (defaultTeacher == "Session unless text" and not annotation["text"]):
-                ourSession = Database.FindSession(database["sessions"],excerpt["event"],excerpt["sessionNumber"])
-                annotation["teachers"] = ourSession["teachers"]
+                grandparent = Database.ParentAnnotation(excerpt,annotation,parentLevel=2)
+                if grandparent:
+                    annotation["teachers"] = grandparent["teachers"]
+                else:
+                    ourSession = Database.FindSession(database["sessions"],excerpt["event"],excerpt["sessionNumber"])
+                    annotation["teachers"] = ourSession["teachers"]
         
         if not (TeacherConsent(database["teacher"],annotation["teachers"],"indexExcerpts") or database["kind"][annotation["kind"]]["ignoreConsent"]):
             # If a teacher of one of the annotations hasn't given consent, we redact the excerpt itself
@@ -920,16 +933,9 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
     
     for key in keysToRemove:
         annotation.pop(key,None)    # Remove keys that aren't relevant for annotations
-    
-    annotation["indentLevel"] = len(annotation["flags"].split(ExcerptFlag.INDENT))
-    if len(excerpt["annotations"]):
-        prevAnnotationLevel = excerpt["annotations"][-1]["indentLevel"]
-    else:
-        prevAnnotationLevel = 0
-    if annotation["indentLevel"] - 1 > prevAnnotationLevel and not excerpt["exclude"]:
-        Alert.warning("Annotation",annotation,"to",excerpt,": Cannot increase indentation level by more than one.")
-    
-    excerpt["annotations"].append(annotation)
+
+    if "tags" in annotation:
+        Utils.ReorderKeys(annotation,(),("tags","indentLevel"))
 
 gAuthorRegexList = None
 def ReferenceAuthors(textToScan: str) -> list[str]:

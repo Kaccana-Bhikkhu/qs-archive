@@ -57903,7 +57903,10 @@
           "kind": "Indirect quote",
           "flags": "-",
           "text": "Gold wrapped in a dirty rag.|Ajahn Mahā Boowa describing Ajahn Jia",
-          "teachers": [],
+          "teachers": [
+            "AP",
+            "ACu"
+          ],
           "tags": [
             "Ajahn Mahā Boowa",
             "Ajahn Jia",
@@ -57916,13 +57919,15 @@
           "kind": "Recollection",
           "flags": "-",
           "text": "Ajahn Chah was always the center of attention.",
-          "teachers": [],
+          "teachers": [
+            "AP"
+          ],
           "tags": [
             "Ajahn Chah",
             "Personal presence"
           ],
           "indentLevel": 2,
-          "body": "<b>Recollection:</b> Ajahn Chah was always the center of attention."
+          "body": "<b>Recollection:</b> Ajahn Chah was always the center of attention. Recounted by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
         },
         {
           "kind": "Story",
@@ -58424,7 +58429,9 @@
           "kind": "Recollection",
           "flags": "-",
           "text": "Ajahn Chah used the branch monasteries as part of the training of senior monks.",
-          "teachers": [],
+          "teachers": [
+            "AP"
+          ],
           "tags": [
             "Ajahn Chah",
             "Thai Ajahn Chah monasteries",
@@ -114467,7 +114474,9 @@
           "kind": "Indirect quote",
           "flags": "-",
           "text": "Just that much.|Ajahn Chah",
-          "teachers": [],
+          "teachers": [
+            "AP"
+          ],
           "tags": [
             "Ajahn Chah",
             "Disenchantment",
@@ -146390,7 +146399,9 @@
           "kind": "Indirect quote",
           "flags": "-",
           "text": "The things of this world are merely conventions of our own making....|Ajahn Chah in [Convention and Liberation](Collected Teachings p. 21)",
-          "teachers": [],
+          "teachers": [
+            "AA"
+          ],
           "tags": [
             "Ajahn Chah",
             "Conventions"
@@ -147052,7 +147063,9 @@
           "kind": "Indirect quote",
           "flags": "-",
           "text": "Nibbāna is totally cool. Meditate and chill out.|Ajahn Kusalo",
-          "teachers": [],
+          "teachers": [
+            "AA"
+          ],
           "tags": [
             "Ajahn Kusalo",
             "Nibbāna",

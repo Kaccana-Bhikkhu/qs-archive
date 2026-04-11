@@ -468,24 +468,29 @@ def SubAnnotations(excerpt: dict,annotation: dict|None = None) -> list[dict]:
     return subs
 
 
-def ParentAnnotation(excerpt: dict,annotation: dict) -> dict|None:
-    """Return this annotation's parent."""
+def ParentAnnotation(excerpt: dict,annotation: dict,parentLevel: int = 1) -> dict|None:
+    """Return this annotation's parent; parentLevel = 2 means grandparent, etc."""
+
     if not annotation or annotation is excerpt:
+        searchLevel = -parentLevel
+    else:
+        searchLevel = annotation["indentLevel"] - parentLevel
+    if searchLevel < 0:
         return None
-    if annotation["indentLevel"] == 1:
+    elif searchLevel == 0:
         return excerpt
-    searchForLevel = 0
-    found = False
+
+    encounteredChild = False
     for searchAnnotation in reversed(excerpt["annotations"]):
-        if searchAnnotation["indentLevel"] <= searchForLevel:
-            if searchAnnotation["indentLevel"] < searchForLevel:
-                Alert.error("Annotation",annotation,f"doesn't have a parent at level {searchForLevel}. Returning prior annotation at level {searchAnnotation['indentLevel']}.")
-            return searchAnnotation
         if searchAnnotation is annotation:
-            searchForLevel = annotation["indentLevel"] - 1
-    if not found:
-        Alert.error("Annotation",annotation,"doesn't have a proper parent.")
-        return None
+            encounteredChild = True
+        if encounteredChild and searchAnnotation["indentLevel"] <= searchLevel:
+            if searchAnnotation["indentLevel"] < searchLevel:
+                Alert.error("Annotation",annotation,f"doesn't have a parent at level {searchLevel}. Returning prior annotation at level {searchAnnotation['indentLevel']}.")
+            return searchAnnotation
+    
+    Alert.error("Annotation",annotation,"doesn't have a proper parent.")
+    return None
 
 
 def SubsumesTags() -> dict:
