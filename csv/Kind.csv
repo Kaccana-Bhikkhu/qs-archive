@@ -5,7 +5,7 @@ Response,Questions,1,No,Yes,No,Yes,Yes,No,No,No,No,Session,"++Response{s}++ by {
 Follow-up,Questions,2,No,Yes,No,Yes,Yes,Yes,No,No,No,Excerpt,unimplemented,++Follow-up{colon}++ “{text}”|| answered by {teachers}.,unimplemented,,
 ,,,,,,,,,,,,,,,,,
 Story,Stories,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Excerpt,unimplemented,++Stor{'ies' if s else 'y'}{colon}++ {text}|| told by {teachers}.,{text}|| ++Stor{'ies' if s else 'y'}{colon}++ told by {teachers}.,,
-Story from,Stories,1,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,++Stor{'ies' if s else 'y'}{colon if not suffix}++{'from ' + suffix + colon if suffix else ''} {text}|| told by {teachers}.,unimplemented,unimplemented,,
+Story from,Stories,1,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Excerpt,++Stor{'ies' if s else 'y'}{colon if not suffix else ''}++{' from ' + suffix + colon if suffix else ''} {text}|| told by {teachers}.,unimplemented,unimplemented,,
 Recollection,Stories,2,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Excerpt,unimplemented,++Recollection{s}{colon}++ {text}|| recounted by {teachers}.,{text}|| ++Recollection{s}++ by {teachers}.,,
 ,,,,,,,,,,,,,,,,,
 Teaching,Teachings,3,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Excerpt,"++Teaching{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Teaching{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Teaching{s}++ by {teachers}.,,
