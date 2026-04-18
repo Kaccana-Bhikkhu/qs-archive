@@ -184,9 +184,11 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
     dhammapada = Suttaplex.DhammapadaVerses()
     BuildReferences.ReadReferenceDatabase()
     for text,textData in BuildReferences.gSavedReferences["text"].items():
-        if re.search(r"[0-9]$",text): # Remove root text links
+        if re.search(r"[0-9]$",text): # Don't link to whole texts links
             ref = BuildReferences.TextReference.FromString(text)
             uid = ref.Uid()
+            if gDatabase["text"][ref.text]["citeFullName"]:
+                text = text.replace(ref.text,gDatabase["text"][ref.text]["name"])
             paliTitle = Suttaplex.Title(uid,translated=False)
             title = Suttaplex.Title(uid)
             combinedTitle = f"{paliTitle}, {title}" if (paliTitle and title) else paliTitle or title or ""
