@@ -32,6 +32,7 @@ def RawBlobify(item: str) -> str:
     remove html tags, ++Kind++ markers, and Markdown hyperlinks, and normalize whitespace."""
     output = re.sub(r'[‘’"“”]',"'",item) # Convert all quotes to single quotes
     output = output.replace("–","-").replace("—","-") # Conert all dashes to hypens
+    output = re.sub(r"--+","-",output) # Condense multiple hyphens
     output = Utils.RemoveDiacritics(output.lower())
     output = re.sub(r"\<[^>]*\>","",output) # Remove html tags
     output = re.sub(r"\{[^>]*\}","",output) # Remove template evaluation expressions, e.g. {teachers}
