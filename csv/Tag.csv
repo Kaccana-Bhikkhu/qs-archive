@@ -1,11 +1,11 @@
 Modified:,2026,,,,,,,,,,,,,,
-Count,221,936,59,448,185,46,76,,45,98,16,975,409,914,914
+Count,221,945,59,451,186,46,80,,48,100,18,983,412,919,919
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
 2,*,Noble Eightfold Path,8,ariya aṭṭaṅgika magga,Eightfold Path,aṭṭaṅgika magga,,,,,,   Noble Eightfold Path,aṭṭaṅgika magga,Eightfold Path,Eightfold Path [aṭṭaṅgika magga]
 3,,Right View,,sammā-diṭṭhi,,,,,,Four Noble Truths,,      Right View,sammā-diṭṭhi,Right View,Right View [sammā-diṭṭhi]
-3,,Right Intention,3,sammā-saṅkappa,,,Right Resolve,,,,,      Right Intention,sammā-saṅkappa,Right Intention,Right Intention [sammā-saṅkappa]
+3,,Right Intention,3,sammā-saṅkappa,,,Right Resolve;Right Thought,,,,,      Right Intention,sammā-saṅkappa,Right Intention,Right Intention [sammā-saṅkappa]
 4,*,Renunciation,,nekkhamma,,,,,,,,         Renunciation,nekkhamma,Renunciation,Renunciation [nekkhamma]
 4,,Non-ill-will,,abyāpāda,,,,,Goodwill,,,         Non-ill-will,abyāpāda,,
 4,,Non-cruelty,,avihiṃsā,,,Harmlessness,,Compassion,,,         Non-cruelty,avihiṃsā,,
@@ -96,7 +96,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,8,Noble Eightfold Path,8,ariya aṭṭaṅgika magga,Eightfold Path,aṭṭaṅgika magga,,,,,,      Noble Eightfold Path,aṭṭaṅgika magga,Eightfold Path,Eightfold Path [aṭṭaṅgika magga]
 2,*,Four Bases of Success,4,cattāro iddhipādā,Bases of Success,iddhipādā,Four Bases of Spiritual Power,,,,,   Four Bases of Success,iddhipādā,Bases of Success,Bases of Success [iddhipādā]
 3,.,Concentration based on exertion and,,sa­mā­dhi­­p­padhāna­saṅkhā­rasa­ma­n­nāga­taṁ,,,,,,,,      Concentration based on exertion and,sa­mā­dhi­­p­padhāna­saṅkhā­rasa­ma­n­nāga­taṁ,,
-3,,Desire,,chanda,,,Interest;Motivation,,,,,      Desire,chanda,Desire,Desire [chanda]
+3,,Desire,,chanda,,,Interest;Motivation;Zeal,,,,,      Desire,chanda,Desire,Desire [chanda]
 3,,Energy,,viriya,,,,,,,,      Energy,viriya,Energy,Energy [viriya]
 3,,Heart/mind,,citta,,,,Mind,,,,      Heart/mind,citta,Heart/mind,Heart/mind [citta]
 3,,Investigation,,vīmaṃsā,,,Inquiry,,Discernment,,,      Investigation,vīmaṃsā,,
@@ -120,10 +120,10 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Concentration,,samādhi,,,,,,,,      Concentration,samādhi,Concentration,Concentration [samādhi]
 3,,Equanimity,,upekkhā,,,,,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
 2,*,Divine Abidings,4,brahmavihārā,,,Mature emotions,,,,,   Divine Abidings,brahmavihārā,Divine Abidings,Divine Abidings [brahmavihārā]
-3,*,Goodwill,,mettā,,,Well-wishing,,,,,      Goodwill,mettā,Goodwill,Goodwill [mettā]
+3,*,Goodwill,,mettā,,,Lovingkindness;Well-wishing,,,,,      Goodwill,mettā,Goodwill,Goodwill [mettā]
 3,*,Compassion,,karuṇā,,,,,,,,      Compassion,karuṇā,Compassion,Compassion [karuṇā]
-3,*,Empathetic joy,,muditā,,,,,,,,      Empathetic joy,muditā,Empathetic joy,Empathetic joy [muditā]
-3,*,Equanimity,,upekkhā,,,,Unshakeability;Balance,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
+3,*,Empathetic joy,,muditā,,,Sympathetic joy;Gladness,,,,,      Empathetic joy,muditā,Empathetic joy,Empathetic joy [muditā]
+3,*,Equanimity,,upekkhā,,,Serenity,Unshakeability;Balance,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
 2,,Seven Treasures,7,satta dhanā,Treasures,dhana,,,,,,   Seven Treasures,dhana,Treasures,Treasures [dhana]
 3,,Faith,,saddhā,,,,,,,,      Faith,saddhā,Faith,Faith [saddhā]
 3,*,Virtue,,sīla,,,,,,,,      Virtue,sīla,Virtue,Virtue [sīla]
@@ -159,7 +159,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,*,Cessation,,nirodha,,,Non-arising,,,,,      Cessation,nirodha,Cessation,Cessation [nirodha]
 3,*,Relinquishment,,paṭinissagga,,,,Letting go,,Release,,      Relinquishment,paṭinissagga,Relinquishment,Relinquishment [paṭinissagga]
 3,*,Release,,vossagga,,,Relinquishment,,,Relinquishment,,      Release,vossagga,Release,Release [vossagga]
-3,*,Liberation,,vimutti,,,Freedom,,,,,      Liberation,vimutti,Liberation,Liberation [vimutti]
+3,*,Liberation,,vimutti,,,Freedom,Enlightenment,,,,      Liberation,vimutti,Liberation,Liberation [vimutti]
 ,,,,,,,,,,,,,,,
 2,,Stages of awakening,4,,,,,,,,,   Stages of awakening,,Stages of awakening,Stages of awakening
 3,,Stream entry,,sotāpanna,,,,,,,,      Stream entry,sotāpanna,Stream entry,Stream entry [sotāpanna]
@@ -167,7 +167,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 5,,Association with people of integrity,,sappurisasaṁseva,,,,,,,,            Association with people of integrity,sappurisasaṁseva,Association with people of integrity,Association with people of integrity [sappurisasaṁseva]
 6,,Spiritual friendship,,kalyāṇa-mittatā,,,,,,,,               Spiritual friendship,kalyāṇa-mittatā,Spiritual friendship,Spiritual friendship [kalyāṇa-mittatā]
 5,,Hearing the true Dhamma,,saddhammassavana,,,,,,,,            Hearing the true Dhamma,saddhammassavana,Hearing the true Dhamma,Hearing the true Dhamma [saddhammassavana]
-5,,Appropriate attention,,yoniso manasikāra,,,Wise attention,,,Discernment,Investigation of states,            Appropriate attention,yoniso manasikāra,Appropriate attention,Appropriate attention [yoniso manasikāra]
+5,,Appropriate attention,,yoniso manasikāra,,,Wise attention;Wise reflection,,,Discernment,Investigation of states,            Appropriate attention,yoniso manasikāra,Appropriate attention,Appropriate attention [yoniso manasikāra]
 5,,Practicing in accordance with Dhamma,,dhammā­nu­dhamma­p­paṭipatti,,,,,,,,            Practicing in accordance with Dhamma,dhammā­nu­dhamma­p­paṭipatti,Practicing in accordance with Dhamma,Practicing in accordance with Dhamma [dhammā­nu­dhamma­p­paṭipatti]
 3,,Once return,,sakadāgāmī,,,,,,,,      Once return,sakadāgāmī,Once return,Once return [sakadāgāmī]
 3,,Non-return,,anāgamī,,,,,,,,      Non-return,anāgamī,Non-return,Non-return [anāgamī]
@@ -217,7 +217,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,,Ten Fetters,10,dasa saṃyojanā,Fetters,dasa samyojana,,,,,,   Ten Fetters,dasa samyojana,Fetters,Fetters [dasa samyojana]
 3,*,Self-identity view,,sakkāya-diṭṭhi,,,,,,Doctrine-of-self clinging,Conceit;Not-self,      Self-identity view,sakkāya-diṭṭhi,Self-identity view,Self-identity view [sakkāya-diṭṭhi]
 3,,Doubt,,vicikicchā,,,,,,,,      Doubt,vicikicchā,Doubt,Doubt [vicikicchā]
-3,,Attachment to precepts and practices,,sīlabbata-parāmāsa,,,Attachment to precepts and practices,,,,,      Attachment to precepts and practices,sīlabbata-parāmāsa,Attachment to precepts and practices,Attachment to precepts and practices [sīlabbata-parāmāsa]
+3,,Attachment to precepts and practices,,sīlabbata-parāmāsa,,,Attachment to rites and rituals,,,,,      Attachment to precepts and practices,sīlabbata-parāmāsa,Attachment to precepts and practices,Attachment to precepts and practices [sīlabbata-parāmāsa]
 3,,Sensual desire,,kāmacchanda,,,,,,,,      Sensual desire,kāmacchanda,Sensual desire,Sensual desire [kāmacchanda]
 3,,Ill-will,,byāpāda,,,,,,,,      Ill-will,byāpāda,Ill-will,Ill-will [byāpāda]
 3,,Craving for material existence,,rūparāga,,,,,,Deva,,      Craving for material existence,rūparāga,Craving for material existence,Craving for material existence [rūparāga]
@@ -227,6 +227,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Ignorance,,avijjā,,,,,,,,      Ignorance,avijjā,Ignorance,Ignorance [avijjā]
 2,,Heedlessness,,pamāda,,,,,,,,   Heedlessness,pamāda,Heedlessness,Heedlessness [pamāda]
 2,,Defilement,,kilesa,,,,,Unwholesome Roots,,,   Defilement,kilesa,,
+2,,Wrong view,,micchā-diṭṭhi,,,,,Views,,,   Wrong view,micchā-diṭṭhi,,
 2,,Proliferation,,papañca,,,Objectification,Thinking (unskillful),,Directed thought and evaluation,,   Proliferation,papañca,Proliferation,Proliferation [papañca]
 3,,Craving,,taṇhā,,,,,,,,      Craving,taṇhā,Craving,Craving [taṇhā]
 3,*,Views,,diṭṭhī,,,,,,,,      Views,diṭṭhī,Views,Views [diṭṭhī]
@@ -241,11 +242,12 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Selfishness,,,,,,,,,,      Selfishness,,Selfishness,Selfishness
 3,,Guilt/shame/inadequacy,,,,,,Shame;Inadequacy,,,,      Guilt/shame/inadequacy,,Guilt/shame/inadequacy,Guilt/shame/inadequacy
 3,,Self-pity,,,,,,,,,,      Self-pity,,Self-pity,Self-pity
+2,,Selfish love,,piya,,,,,Clinging,,,   Selfish love,piya,,
 2,,Depression,,,,,,Despair,,,,   Depression,,Depression,Depression
 2,,Loneliness,,,,,,,,,,   Loneliness,,Loneliness,Loneliness
 2,,Abuse/violence,,,,,,Violence,,,,   Abuse/violence,,Abuse/violence,Abuse/violence
 2,,Addiction,,,,,,,,,,   Addiction,,Addiction,Addiction
-2,,Dogmatism,,,,,,,,,,   Dogmatism,,Dogmatism,Dogmatism
+2,,Dogmatism,,,,,,Fundamentalism,,,,   Dogmatism,,Dogmatism,Dogmatism
 2,,Spiritual bypass,,,,,,,,,,   Spiritual bypass,,Spiritual bypass,Spiritual bypass
 ,,,,,,,,,,,,,,,
 1,.,Indeterminate qualities,,abyākatā dhammā,,,,,,,,Indeterminate qualities,abyākatā dhammā,,
@@ -258,7 +260,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,*,Body/form,,rūpa,,,Body,kaya <i>Pāli</i>,,,,      Body/form,rūpa,Body/form,Body/form [rūpa]
 3,*,Feeling,,vedanā,,,,,,Contact,,      Feeling,vedanā,Feeling,Feeling [vedanā]
 3,*,Perception,,saññā,,,,,,,,      Perception,saññā,Perception,Perception [saññā]
-3,*,Volitional formations,,saṅkhāra,,,,,,Volition,,      Volitional formations,saṅkhāra,Volitional formations,Volitional formations [saṅkhāra]
+3,*,Volitional formations,,saṅkhārā,,,Mental formations;Fabrications;Conditioned things,,,Volition,,      Volitional formations,saṅkhārā,Volitional formations,Volitional formations [saṅkhārā]
 3,*,Consciousness,,viññāṇa,,,,,,Sense bases,Unestablished consciousness,      Consciousness,viññāṇa,Consciousness,Consciousness [viññāṇa]
 2,*,Conditionality,,idappaccayatā,,,,,,,,   Conditionality,idappaccayatā,Conditionality,Conditionality [idappaccayatā]
 2,,Dependent origination,12,paticca-samuppāda,,,,,,,,   Dependent origination,paticca-samuppāda,Dependent origination,Dependent origination [paticca-samuppāda]
@@ -276,7 +278,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Craving for sensuality,,kāma-taṇhā,,,,,Sensual desire,,,         Craving for sensuality,kāma-taṇhā,,
 4,,Craving to become,,bhava-taṇhā,,,,,Becoming,,,         Craving to become,bhava-taṇhā,,
 4,,Craving not to become,,vibhava-taṇhā,,,,,,,,         Craving not to become,vibhava-taṇhā,Craving not to become,Craving not to become [vibhava-taṇhā]
-3,,Clinging,,upādāna,,,Attachment;Grasping;Sustanence,,,,,      Clinging,upādāna,Clinging,Clinging [upādāna]
+3,,Clinging,,upādāna,,,Attachment;Grasping;Sustanence;Fuel,,,,,      Clinging,upādāna,Clinging,Clinging [upādāna]
 4,h,Sensuality-clinging,,kāmupādāna,,,,,Sensual desire,,,         Sensuality-clinging,kāmupādāna,,
 4,h,View-clinging,,diṭṭhupādāna,,,,,Views,,,         View-clinging,diṭṭhupādāna,,
 4,h,Precepts-and-practices clinging,,sīlabbatupādāna,,,,,Attachment to precepts and practices,,,         Precepts-and-practices clinging,sīlabbatupādāna,,
@@ -295,7 +297,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,0,Suchness,,tathatā,,,,,,,,      Suchness,tathatā,Suchness,Suchness [tathatā]
 3,0,Non-identification,,atammayatā,,,Non-fashinioning;Not-made-of-that,,,,,      Non-identification,atammayatā,Non-identification,Non-identification [atammayatā]
 2,,Three Aspects of Understanding,3,,Aspects of Understanding,,,,,,,   Three Aspects of Understanding,,Aspects of Understanding,Aspects of Understanding
-3,,Gratification,,assāda,,,Benefit,,,Sensual desire,,      Gratification,assāda,Gratification,Gratification [assāda]
+3,,Benefit,,assāda,,,Gratification,,,Sensual desire,,      Benefit,assāda,Benefit,Benefit [assāda]
 3,,Drawbacks,,ādīnava,,,Danger,,,Spiritual urgency,,      Drawbacks,ādīnava,Drawbacks,Drawbacks [ādīnava]
 3,,Escape,,nissaraṇa,,,,,,Progress of insight,,      Escape,nissaraṇa,Escape,Escape [nissaraṇa]
 ,,,,,,,,,,,,,,,
@@ -339,6 +341,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,,Objects of veneration,,,,,,,,,,   Objects of veneration,,Objects of veneration,Objects of veneration
 3,,Relics,,sarīra,,,,,,,,      Relics,sarīra,Relics,Relics [sarīra]
 3,,Stupas/monuments,,thūpaṃ,,,,Monuments,,,,      Stupas/monuments,thūpaṃ,Stupas/monuments,Stupas/monuments [thūpaṃ]
+4,,Ajahn Chah Stupa,,,,,,,,,,         Ajahn Chah Stupa,,Ajahn Chah Stupa,Ajahn Chah Stupa
 3,,Bodhi Tree,,,,,,,,,,      Bodhi Tree,,Bodhi Tree,Bodhi Tree
 3,*,Buddha images,,,,,,,,,,      Buddha images,,Buddha images,Buddha images
 3,,Malas,,,,,,,,,,      Malas,,Malas,Malas
@@ -376,7 +379,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,*,High and luxurious beds,,uccāsayana-mahāsayanā,,,,,,Devotion to wakefulness,Energy,      High and luxurious beds,uccāsayana-mahāsayanā,High and luxurious beds,High and luxurious beds [uccāsayana-mahāsayanā]
 2,,Monastic precepts,,,,,,,Vinaya,,,   Monastic precepts,,,
 ,,,,,,,,,,,,,,,
-1,,Meditation,,bhāvanā,,,,,,,,Meditation,bhāvanā,Meditation,Meditation [bhāvanā]
+1,,Meditation,,bhāvanā,,,Cultivation;Development,,,,,Meditation,bhāvanā,Meditation,Meditation [bhāvanā]
 2,,Meditation/General advice,,,,,,,,,,   Meditation/General advice,,Meditation/General advice,Meditation/General advice
 2,,Right Effort,4,sammā-vāyāma,,,,,,,,   Right Effort,sammā-vāyāma,Right Effort,Right Effort [sammā-vāyāma]
 2,*,Four Foundations of Mindfulness,4,cattāro satipaṭṭhānā,Foundations of Mindfulness,satipaṭṭhānā,,,Right Mindfulness,,,   Four Foundations of Mindfulness,satipaṭṭhānā,,
@@ -430,7 +433,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,,Gladdening the mind,,abhippamodaya citta,,,,,,,,   Gladdening the mind,abhippamodaya citta,Gladdening the mind,Gladdening the mind [abhippamodaya citta]
 2,,Calming meditation,,samatha,,,,,,Tranquility,,   Calming meditation,samatha,Calming meditation,Calming meditation [samatha]
 2,,Insight meditation,,vipassanā,,,,,,Investigation of states,,   Insight meditation,vipassanā,Insight meditation,Insight meditation [vipassanā]
-2,,Recollection,10,anusati,,,,,,,,   Recollection,anusati,Recollection,Recollection [anusati]
+2,,Recollection,10,anusati,,,,Reflection;Contemplation,,,,   Recollection,anusati,Recollection,Recollection [anusati]
 3,*,Recollection/Buddha,,buddhānussati,,,,,,Buddha,,      Recollection/Buddha,buddhānussati,Recollection/Buddha,Recollection/Buddha [buddhānussati]
 3,,Recollection/Dhamma,,dhammānussati,,,,,,Dhamma,,      Recollection/Dhamma,dhammānussati,Recollection/Dhamma,Recollection/Dhamma [dhammānussati]
 3,,Recollection/Saṅgha,,saṅghānussati,,,,,,Saṅgha,,      Recollection/Saṅgha,saṅghānussati,Recollection/Saṅgha,Recollection/Saṅgha [saṅghānussati]
@@ -450,13 +453,14 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,*,Four Postures,4,,Postures,,,,,,,   Four Postures,,Postures,Postures
 3,,Posture/Sitting,,nisinna,,,,,,,,      Posture/Sitting,nisinna,Posture/Sitting,Posture/Sitting [nisinna]
 3,,Posture/Walking,,caranta,,,,,,,,      Posture/Walking,caranta,Posture/Walking,Posture/Walking [caranta]
-3,,Posture/Lying down,,sayāna,,,,,,,,      Posture/Lying down,sayāna,Posture/Lying down,Posture/Lying down [sayāna]
+3,,Posture/Lying down,,sayāna,,,,,,Devotion to wakefulness,,      Posture/Lying down,sayāna,Posture/Lying down,Posture/Lying down [sayāna]
 3,,Posture/Standing,,tiṭṭhanta,,,,,,,,      Posture/Standing,tiṭṭhanta,Posture/Standing,Posture/Standing [tiṭṭhanta]
 3,0*,Bowing,,,,,,,,,,      Bowing,,Bowing,Bowing
 3,0g,,,Mudra <i>Sanskrit</i>,,Mudra,,Hand posture,,,,      Mudra <i>Sanskrit</i>,,Mudra,Mudra
 2,,Meditation retreats,,,,,,,,,,   Meditation retreats,,Meditation retreats,Meditation retreats
 2,,Meditation/Results,,,,,,,,,,   Meditation/Results,,Meditation/Results,Meditation/Results
 3,,Wrong concentration,,micchā-samādhi,,,,,,,,      Wrong concentration,micchā-samādhi,Wrong concentration,Wrong concentration [micchā-samādhi]
+3,,Defilements of insight,,vipassanā upakkilesa,,,,,,,,      Defilements of insight,vipassanā upakkilesa,Defilements of insight,Defilements of insight [vipassanā upakkilesa]
 3,,,,Nimitta,,,,,,,,      Nimitta,,Nimitta,Nimitta
 3,,Continuity of mindfulness,,,,,,,,,,      Continuity of mindfulness,,Continuity of mindfulness,Continuity of mindfulness
 3,,Present moment awareness,,,,,,,,,,      Present moment awareness,,Present moment awareness,Present moment awareness
@@ -660,6 +664,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 3,PS,Other Thai monastics,,,,,,,,,,      Other Thai monastics,,Other Thai monastics,Other Thai monastics
+4,,Somdet Toh Brahmaramsi,,,Somdet Toh,,,,,,,         Somdet Toh Brahmaramsi,,Somdet Toh,Somdet Toh
 4,,Ajahn Vajirayan Vajirañāno,,,Ajahn Vajirayan,,,King Mongut (Rama IV),,,,         Ajahn Vajirayan Vajirañāno,,Ajahn Vajirayan,Ajahn Vajirayan
 4,,Somdet Phra Vajirañāṇavarorasa,,,Somdet Vajirañāṇavarorasa,,,,,,,         Somdet Phra Vajirañāṇavarorasa,,Somdet Vajirañāṇavarorasa,Somdet Vajirañāṇavarorasa
 4,,Tan Chao Khun Upāli Guṇūpamājahn,,,Chao Khun Upāli,,,,,,,         Tan Chao Khun Upāli Guṇūpamājahn,,Chao Khun Upāli,Chao Khun Upāli
@@ -735,6 +740,14 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Ṭhānissarā,,,,,,,,,,      Ṭhānissarā,,Ṭhānissarā,Ṭhānissarā
 3,,Debbie Stamp,,,,,,,,,,      Debbie Stamp,,Debbie Stamp,Debbie Stamp
 3,,Nick Scott,,,,,,,,,,      Nick Scott,,Nick Scott,Nick Scott
+3,,James Baraz,,,,,,,,,,      James Baraz,,James Baraz,James Baraz
+3,,Stephen Batchelor,,,,,,,,,,      Stephen Batchelor,,Stephen Batchelor,Stephen Batchelor
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 2,PS,Lay supporters,,,,,,,,,,   Lay supporters,,Lay supporters,Lay supporters
 3,,King Bhumibol Adulyadej (Rama IX),,,King Rama IX,,,,,,,      King Bhumibol Adulyadej (Rama IX),,King Rama IX,King Rama IX
 3,,George Sharp,,,,,,,,,,      George Sharp,,George Sharp,George Sharp
@@ -768,6 +781,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 3,PS,Western Ajahn Chah monasteries,,,,,,,,,,      Western Ajahn Chah monasteries,,Western Ajahn Chah monasteries,Western Ajahn Chah monasteries
+4,,Hampstead Vihara,,,,,,,,,,         Hampstead Vihara,,Hampstead Vihara,Hampstead Vihara
 4,PS,Elders' Council monasteries,,,Elders' Council,,,,,,,         Elders' Council monasteries,,Elders' Council,Elders' Council
 5,,Cittaviveka Monastery,,,Chithurst,,,,,,,            Cittaviveka Monastery,,Chithurst,Chithurst
 5,,Amaravati Monastery,,,Amaravati,,,,,,,            Amaravati Monastery,,Amaravati,Amaravati
@@ -810,7 +824,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Dhammadharini Monastery,,,,,,,,,,      Dhammadharini Monastery,,Dhammadharini Monastery,Dhammadharini Monastery
 3,,Aranya Bodhi Hermitage,,,,,,,,,,      Aranya Bodhi Hermitage,,Aranya Bodhi Hermitage,Aranya Bodhi Hermitage
 3,,Karuna Buddhist Vihara,,,,,,,,,,      Karuna Buddhist Vihara,,Karuna Buddhist Vihara,Karuna Buddhist Vihara
-,,,,,,,,,,,,,,,
+3,,Aloka Vihara,,,,,,,,,,      Aloka Vihara,,Aloka Vihara,Aloka Vihara
 2,P,Christian monasteries,,,,,,,,,,   Christian monasteries,,Christian monasteries,Christian monasteries
 3,,Holy Transfiguration Monastery,,,,,,Mount Tabor Monastery,,,,      Holy Transfiguration Monastery,,Holy Transfiguration Monastery,Holy Transfiguration Monastery
 ,,,,,,,,,,,,,,,
@@ -844,9 +858,10 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,Cp,,,Metteyya Bodhisatva,,,,,,,,      Metteyya Bodhisatva,,Metteyya Bodhisatva,Metteyya Bodhisatva
 3,Cp,,,Māra,,,,,,,,      Māra,,Māra,Māra
 3,,Non-human beings,,amanussa,,,,yakkha <i>Pāli</i>,,,,      Non-human beings,amanussa,Non-human beings,Non-human beings [amanussa]
-2,,Nature of mind,,,,,,,,Heart/mind,,   Nature of mind,,Nature of mind,Nature of mind
+2,,Nature of mind,,,,,,,,Heart/mind,Knowing itself,   Nature of mind,,Nature of mind,Nature of mind
 3,,Memory,,sati,,,,,,,,      Memory,sati,Memory,Memory [sati]
 3,,Moods of the mind,,Arom kong git <i>Thai</i>,,,,,,,,      Moods of the mind,Arom kong git <i>Thai</i>,Moods of the mind,Moods of the mind [Arom kong git <i>Thai</i>]
+3,,Sleep,,,,,,,Devotion to wakefulness,,,      Sleep,,,
 3,,Dreams,,supinā,,,,,,,,      Dreams,supinā,Dreams,Dreams [supinā]
 3,,Psychic powers,,iddhi,,,,,,,,      Psychic powers,iddhi,Psychic powers,Psychic powers [iddhi]
 2,,Supernatural,,,,,,,,,,   Supernatural,,Supernatural,Supernatural
@@ -919,7 +934,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 2,,Vajrayāna,,,,,,,,,,   Vajrayāna,,Vajrayāna,Vajrayāna
 ,,,,,,,,,,,,,,,
-2,,Secular Buddhism,,,,,,,,,,   Secular Buddhism,,Secular Buddhism,Secular Buddhism
+2,,Secular Buddhism,,,,,,Mindfulness movement,,,,   Secular Buddhism,,Secular Buddhism,Secular Buddhism
 2,,Hinduism,,,,,,,,,,   Hinduism,,Hinduism,Hinduism
 3,p,Advaita Vedanta,,,,,,,,,,      Advaita Vedanta,,Advaita Vedanta,Advaita Vedanta
 2,,Jainism,,,,,,,,,,   Jainism,,Jainism,Jainism
@@ -962,7 +977,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 2,,Incontrovertible practices,3,apaṇṇaka dhammā,,,,,,,,   Incontrovertible practices,apaṇṇaka dhammā,Incontrovertible practices,Incontrovertible practices [apaṇṇaka dhammā]
 3,,Sense restraint,,indriyesu guttadvāro,,,,Restraint,,,,      Sense restraint,indriyesu guttadvāro,Sense restraint,Sense restraint [indriyesu guttadvāro]
 3,,Moderation in eating,,bhojane mattaññū,,,,,,Food,,      Moderation in eating,bhojane mattaññū,Moderation in eating,Moderation in eating [bhojane mattaññū]
-3,,Devotion to wakefulness,,jāgariyaṁ anuyutto,,,,,,Energy,,      Devotion to wakefulness,jāgariyaṁ anuyutto,Devotion to wakefulness,Devotion to wakefulness [jāgariyaṁ anuyutto]
+3,,Devotion to wakefulness,,jāgariyaṁ anuyutto,,,,,,Energy,Posture/lying down,      Devotion to wakefulness,jāgariyaṁ anuyutto,Devotion to wakefulness,Devotion to wakefulness [jāgariyaṁ anuyutto]
 ,,,,,,,,,,,,,,,
 2,,Monastic life,,brahmacariyā,,,,,,,,   Monastic life,brahmacariyā,Monastic life,Monastic life [brahmacariyā]
 3,,Monastic life/Motivation,,,,,,,,,,      Monastic life/Motivation,,Monastic life/Motivation,Monastic life/Motivation
@@ -1046,15 +1061,17 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Pleasure,,sukha,,,,,Happiness,,,      Pleasure,sukha,,
 3,,Pain,,dukkha,,,,,,,,      Pain,dukkha,Pain,Pain [dukkha]
 2,.,Personal,,,,,,,,,,   Personal,,,
-3,,Health,,,,,,,,,,      Health,,Health,Health
+3,,Health,,,,,,,,Sickness,,      Health,,Health,Health
 4,,Healing,,,,,,,,,,         Healing,,Healing,Healing
 4,,Exercise,,,,,,,,,,         Exercise,,Exercise,Exercise
 4,,Chi Gong,,,,,,,,,,         Chi Gong,,Chi Gong,Chi Gong
 4,,Smoking,,,,,,,,,,         Smoking,,Smoking,Smoking
 4,,Mental illness,,,,,,,,,,         Mental illness,,Mental illness,Mental illness
+4,,Gender,,,,,,,,,,         Gender,,Gender,Gender
 3,,Purpose/meaning,,,,,,Meaning,,,,      Purpose/meaning,,Purpose/meaning,Purpose/meaning
 3,,Cleanliness,,,,,,,,,,      Cleanliness,,Cleanliness,Cleanliness
 3,,Work,,,,,,,,Right Livelihood,,      Work,,Work,Work
+4,,Agriculture,,,,,,,,,,         Agriculture,,Agriculture,Agriculture
 3,,Time management,,,,,,,,,,      Time management,,Time management,Time management
 3,,Relationships,,,,,,,,,,      Relationships,,Relationships,Relationships
 3,,Family,,,,,,,,,,      Family,,Family,Family
@@ -1084,7 +1101,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Corruption,,,,,,,,,,         Corruption,,Corruption,Corruption
 4,,Crime,,,,,,,,,,         Crime,,Crime,Crime
 5,,Prisons,,,,,,,,,,            Prisons,,Prisons,Prisons
-4,,Discrimination,,,,,,,,,,         Discrimination,,Discrimination,Discrimination
+4,,Discrimination,,,,,,Caste system,,,,         Discrimination,,Discrimination,Discrimination
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -1105,34 +1122,3 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Advertizing,,,,,,,,,,         Advertizing,,Advertizing,Advertizing
 4,,Internet,,,,,,,,,,         Internet,,Internet,Internet
 4,,Social media,,,,,,,,,,         Social media,,Social media,Social media
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-1,,New unsorted tags,,,,,,,,,,New unsorted tags,,New unsorted tags,New unsorted tags
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-2,,James Baraz,,,,,,,,,,   James Baraz,,James Baraz,James Baraz
-2,,Stephen Batchelor,,,,,,,,,,   Stephen Batchelor,,Stephen Batchelor,Stephen Batchelor
-2,,Defilements of insight,,,,,,,,,,   Defilements of insight,,Defilements of insight,Defilements of insight

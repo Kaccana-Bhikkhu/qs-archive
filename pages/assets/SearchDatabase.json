@@ -198,7 +198,7 @@
         },
         {
           "blobs": [
-            "[clinging]<upadana>^attachment^^grasping^^sustanence^"
+            "[clinging]<upadana>^attachment^^grasping^^sustanence^^fuel^[selfish love]<piya>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/clinging.html\">Clinging</a> (upādāna) (137)"
         },
@@ -342,7 +342,7 @@
         },
         {
           "blobs": [
-            "[equanimity]<upekkha>^unshakeability^^balance^"
+            "[equanimity]<upekkha>^serenity^^unshakeability^^balance^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/equanimity.html\">Equanimity</a> (upekkhā) (73)"
         },
@@ -390,7 +390,7 @@
         },
         {
           "blobs": [
-            "[goodwill]<metta>^well-wishing^[non-ill-will]<abyapada>^^[acts of goodwill by body, speech, and mind]<>^^"
+            "[goodwill]<metta>^lovingkindness^^well-wishing^[non-ill-will]<abyapada>^^[acts of goodwill by body, speech, and mind]<>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/goodwill.html\">Goodwill</a> (mettā) (165)"
         },
@@ -582,7 +582,7 @@
         },
         {
           "blobs": [
-            "[recollection]<anusati>^^^10^"
+            "[recollection]<anusati>^reflection^^contemplation^^10^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/recollection.html\">Recollection</a> (anusati) (64)"
         },
@@ -690,7 +690,7 @@
         },
         {
           "blobs": [
-            "[desire]<chanda>^interest^^motivation^[bias from desire]<chandagati>^^^skillful desire^"
+            "[desire]<chanda>^interest^^motivation^^zeal^[bias from desire]<chandagati>^^^skillful desire^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/desire.html\">Skillful desire</a> (chanda) (75)"
         },
@@ -786,7 +786,7 @@
         },
         {
           "blobs": [
-            "[views]<ditthi>^^[view-clinging]<ditthupadana>^^"
+            "[views]<ditthi>^^[wrong view]<miccha-ditthi>^^[view-clinging]<ditthupadana>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/views.html\">Views</a> (diṭṭhī) (74)"
         },
@@ -804,9 +804,9 @@
         },
         {
           "blobs": [
-            "[volitional formations]<sankhara>^^"
+            "[volitional formations]<sankhara>^mental formations^^fabrications^^conditioned things^"
           ],
-          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/volitional-formations.html\">Volitional formations</a> (saṅkhāra) (65)"
+          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/volitional-formations.html\">Volitional formations</a> (saṅkhārā) (65)"
         },
         {
           "blobs": [
@@ -1524,7 +1524,7 @@
         },
         {
           "blobs": [
-            "[appropriate attention]<yoniso manasikara>^wise attention^"
+            "[appropriate attention]<yoniso manasikara>^wise attention^^wise reflection^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/appropriate-attention.html\">Appropriate attention</a> (yoniso manasikāra) (32)"
         },
@@ -1590,7 +1590,7 @@
         },
         {
           "blobs": [
-            "[attachment to precepts and practices]<silabbata-paramasa>^attachment to precepts and practices^[precepts-and-practices clinging]<silabbatupadana>^^"
+            "[attachment to precepts and practices]<silabbata-paramasa>^attachment to rites and rituals^[precepts-and-practices clinging]<silabbatupadana>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/attachment-to-precepts-and-practices.html\">Attachment to precepts and practices</a> (sīlabbata-parāmāsa) (26)"
         },
@@ -1629,6 +1629,12 @@
             "[becoming]<bhava>^^[craving to become]<bhava-tanha>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/becoming.html\">Becoming</a> (bhava) (45)"
+        },
+        {
+          "blobs": [
+            "[benefit]<assada>^gratification^"
+          ],
+          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/benefit.html\">Benefit</a> (assāda) (7)"
         },
         {
           "blobs": [
@@ -2040,9 +2046,9 @@
         },
         {
           "blobs": [
-            "[defilements of insight]<>^^"
+            "[defilements of insight]<vipassana upakkilesa>^^"
           ],
-          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/defilements-of-insight.html\">Defilements of insight</a> (1)"
+          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/defilements-of-insight.html\">Defilements of insight</a> (vipassanā upakkilesa) (1)"
         },
         {
           "blobs": [
@@ -2070,7 +2076,7 @@
         },
         {
           "blobs": [
-            "[devotion to wakefulness]<jagariyam anuyutto>^^"
+            "[devotion to wakefulness]<jagariyam anuyutto>^^[sleep]<>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/devotion-to-wakefulness.html\">Devotion to wakefulness</a> (jāgariyaṁ anuyutto) (32)"
         },
@@ -2154,7 +2160,7 @@
         },
         {
           "blobs": [
-            "[discrimination]<>^^"
+            "[discrimination]<>^caste system^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/discrimination.html\">Discrimination</a> (4)"
         },
@@ -2268,7 +2274,7 @@
         },
         {
           "blobs": [
-            "[empathetic joy]<mudita>^^"
+            "[empathetic joy]<mudita>^sympathetic joy^^gladness^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/empathetic-joy.html\">Empathetic joy</a> (muditā) (12)"
         },
@@ -2523,12 +2529,6 @@
             "[gomde california]<>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/gomde-california.html\">Gomde California</a> (1)"
-        },
-        {
-          "blobs": [
-            "[gratification]<assada>^benefit^"
-          ],
-          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/gratification.html\">Gratification</a> (assāda) (7)"
         },
         {
           "blobs": [
@@ -2994,7 +2994,7 @@
         },
         {
           "blobs": [
-            "[liberation]<vimutti>^freedom^"
+            "[liberation]<vimutti>^freedom^^enlightenment^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/liberation.html\">Liberation</a> (vimutti) (158)"
         },
@@ -3150,7 +3150,7 @@
         },
         {
           "blobs": [
-            "[meditation]<bhavana>^^"
+            "[meditation]<bhavana>^cultivation^^development^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/meditation.html\">Meditation</a> (bhāvanā) (94)"
         },
@@ -3345,12 +3345,6 @@
             "[neither-painful-nor-pleasant feeling][neutral feeling]<adukkhamasukha vedana>^^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/neutral-feeling.html\">Neither-painful-nor-pleasant feeling</a> (adukkhamasukhā vedanā) (16)"
-        },
-        {
-          "blobs": [
-            "[new unsorted tags]<>^^"
-          ],
-          "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/new-unsorted-tags.html\">New unsorted tags</a>"
         },
         {
           "blobs": [
@@ -3930,7 +3924,7 @@
         },
         {
           "blobs": [
-            "[right intention]<samma-sankappa>^right resolve^^3^"
+            "[right intention]<samma-sankappa>^right resolve^^right thought^^3^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/right-intention.html\">Right Intention</a> (sammā-saṅkappa) (26)"
         },
@@ -4020,7 +4014,7 @@
         },
         {
           "blobs": [
-            "[secular buddhism]<>^^"
+            "[secular buddhism]<>^mindfulness movement^"
           ],
           "html": "<i data-lucide=\"tag\"></i> <a href = \"../tags/secular-buddhism.html\">Secular Buddhism</a> (4)"
         },
@@ -19689,9 +19683,9 @@
         {
           "session": "WR2013_S28",
           "blobs": [
-            "^gratification, danger, and escape in regard to the five aggregates.^{ajahn karunadhammo}[aggregates][aspects of understanding][gratification][drawbacks][escape]//[]|#teaching#short#&teachings&@wr2013@s28@e01@"
+            "^gratification, danger, and escape in regard to the five aggregates.^{ajahn karunadhammo}[aggregates][aspects of understanding][benefit][drawbacks][escape]//[]|#teaching#short#&teachings&@wr2013@s28@e01@"
           ],
-          "html": "<p id=\"WR2013_S28_F01\">\n  <audio-chip src=\"../../audio/excerpts/WR2013/WR2013_S28_F01.mp3\" title=\"The Fourth Foundation of Mindfulness, S28 E1\" data-title-link=\"events/WR2013.html#WR2013_S28_F01\" data-duration=\"95\"><a href=\"../../audio/excerpts/WR2013/WR2013_S28_F01.mp3\" download=\"The Fourth Foundation of Mindfulness, S28 E1.mp3\">Download audio</a> (1:35)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> Gratification, danger, and escape in regard to the Five Aggregates. <b>Teaching</b> by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>. [<a href = \"../tags/aggregates.html\">Aggregates</a>] [<a href = \"../tags/aspects-of-understanding.html\">Aspects of Understanding</a>] [<a href = \"../tags/gratification.html\">Gratification</a>] [<a href = \"../tags/drawbacks.html\">Drawbacks</a>] [<a href = \"../tags/escape.html\">Escape</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2013.html\">The Fourth Foundation of Mindfulness [2013]</a>, <a href=\"../events/WR2013.html#WR2013_S28\">Session 28</a>, <a href=\"../events/WR2013.html#WR2013_S28_F01\">Excerpt 1</a>\n</p>",
+          "html": "<p id=\"WR2013_S28_F01\">\n  <audio-chip src=\"../../audio/excerpts/WR2013/WR2013_S28_F01.mp3\" title=\"The Fourth Foundation of Mindfulness, S28 E1\" data-title-link=\"events/WR2013.html#WR2013_S28_F01\" data-duration=\"95\"><a href=\"../../audio/excerpts/WR2013/WR2013_S28_F01.mp3\" download=\"The Fourth Foundation of Mindfulness, S28 E1.mp3\">Download audio</a> (1:35)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> Gratification, danger, and escape in regard to the Five Aggregates. <b>Teaching</b> by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>. [<a href = \"../tags/aggregates.html\">Aggregates</a>] [<a href = \"../tags/aspects-of-understanding.html\">Aspects of Understanding</a>] [<a href = \"../tags/benefit.html\">Benefit</a>] [<a href = \"../tags/drawbacks.html\">Drawbacks</a>] [<a href = \"../tags/escape.html\">Escape</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2013.html\">The Fourth Foundation of Mindfulness [2013]</a>, <a href=\"../events/WR2013.html#WR2013_S28\">Session 28</a>, <a href=\"../events/WR2013.html#WR2013_S28_F01\">Excerpt 1</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
@@ -19752,9 +19746,9 @@
         {
           "session": "WR2013_S29",
           "blobs": [
-            "^can you clarify the simile of the khandhas as a murderer in sn 22.85?^{ajahn karunadhammo}{ajahn pasanno}{abhayagiri sangha}{the abhayagiri sangha}[similes][drawbacks][aggregates]//[gratification][self-identity view][commentaries][clinging][dependent origination]|#question#long#&questions&@wr2013@s29@e01@"
+            "^can you clarify the simile of the khandhas as a murderer in sn 22.85?^{ajahn karunadhammo}{ajahn pasanno}{abhayagiri sangha}{the abhayagiri sangha}[similes][drawbacks][aggregates]//[benefit][self-identity view][commentaries][clinging][dependent origination]|#question#long#&questions&@wr2013@s29@e01@"
           ],
-          "html": "<p id=\"WR2013_S29_F01\">\n  <audio-chip src=\"../../audio/excerpts/WR2013/WR2013_S29_F01.mp3\" title=\"The Fourth Foundation of Mindfulness, S29 E1\" data-title-link=\"events/WR2013.html#WR2013_S29_F01\" data-duration=\"363\"><a href=\"../../audio/excerpts/WR2013/WR2013_S29_F01.mp3\" download=\"The Fourth Foundation of Mindfulness, S29 E1.mp3\">Download audio</a> (6:03)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> “Can you clarify the simile of the khandhas as a murderer in <a href=\"https://suttacentral.express/sn22.85/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN22_85.html\">SN 22.85</a>?”  Answered by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>, <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/the-abhayagiri-sangha.html\">the Abhayagiri Saṅgha</a>. [<a href = \"../tags/similes.html\">Similes</a>] [<a href = \"../tags/drawbacks.html\">Drawbacks</a>] [<a href = \"../tags/aggregates.html\">Aggregates</a>] // [<a href = \"../tags/gratification.html\">Gratification</a>] [<a href = \"../tags/self-identity-view.html\">Self-identity view</a>] [<a href = \"../tags/commentaries.html\">Commentaries</a>] [<a href = \"../tags/clinging.html\">Clinging</a>] [<a href = \"../tags/dependent-origination.html\">Dependent origination</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2013.html\">The Fourth Foundation of Mindfulness [2013]</a>, <a href=\"../events/WR2013.html#WR2013_S29\">Session 29</a>, <a href=\"../events/WR2013.html#WR2013_S29_F01\">Excerpt 1</a>\n</p>",
+          "html": "<p id=\"WR2013_S29_F01\">\n  <audio-chip src=\"../../audio/excerpts/WR2013/WR2013_S29_F01.mp3\" title=\"The Fourth Foundation of Mindfulness, S29 E1\" data-title-link=\"events/WR2013.html#WR2013_S29_F01\" data-duration=\"363\"><a href=\"../../audio/excerpts/WR2013/WR2013_S29_F01.mp3\" download=\"The Fourth Foundation of Mindfulness, S29 E1.mp3\">Download audio</a> (6:03)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> “Can you clarify the simile of the khandhas as a murderer in <a href=\"https://suttacentral.express/sn22.85/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN22_85.html\">SN 22.85</a>?”  Answered by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>, <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/the-abhayagiri-sangha.html\">the Abhayagiri Saṅgha</a>. [<a href = \"../tags/similes.html\">Similes</a>] [<a href = \"../tags/drawbacks.html\">Drawbacks</a>] [<a href = \"../tags/aggregates.html\">Aggregates</a>] // [<a href = \"../tags/benefit.html\">Benefit</a>] [<a href = \"../tags/self-identity-view.html\">Self-identity view</a>] [<a href = \"../tags/commentaries.html\">Commentaries</a>] [<a href = \"../tags/clinging.html\">Clinging</a>] [<a href = \"../tags/dependent-origination.html\">Dependent origination</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2013.html\">The Fourth Foundation of Mindfulness [2013]</a>, <a href=\"../events/WR2013.html#WR2013_S29\">Session 29</a>, <a href=\"../events/WR2013.html#WR2013_S29_F01\">Excerpt 1</a>\n</p>",
           "uniqueTeachers": 3
         },
         {
@@ -26733,18 +26727,18 @@
           "session": "TG2014_S06",
           "blobs": [
             "^can you define / explain sankharas-mental formations? for example, what phenomena does it include? how can one evaluate what is or is not a sankhara? how does it differ from the hindi / yogic samskara? thank you.^{ajahn pasanno}[volitional formations]+[hinduism]//[pali][nature of the cosmos][nibbana][aggregates][abhidhamma][emotion][directed thought and evaluation]|#homepage#question#medium#&questions&@tg2014@s06@e05@",
-            "^amaravati chanting book p. 23^{}//[]|#reference#&references&"
+            "^amaravati chanting book p. 13: sabbe sankhara anicca.^{}//[]|#reference#&references&"
           ],
-          "html": "<p id=\"TG2014_S06_F06\">\n  <audio-chip src=\"../../audio/excerpts/TG2014/TG2014_S06_F06.mp3\" title=\"2014 Thanksgiving Monastic Retreat, S6 E5\" data-title-link=\"events/TG2014.html#TG2014_S06_F06\" data-duration=\"278\"><a href=\"../../audio/excerpts/TG2014/TG2014_S06_F06.mp3\" download=\"2014 Thanksgiving Monastic Retreat, S6 E5.mp3\">Download audio</a> (4:38)</audio-chip><br /> <span class=\"excerpt-number\">5.</span> “Can you define / explain saṅkhāras—mental formations? For example, what phenomena does it include? How can one evaluate what is or is not a saṅkhāra? How does it differ from the hindi / yogic samskara? Thank you.”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/volitional-formations.html\">Volitional formations&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/hinduism.html\">Hinduism</a>] // [<a href = \"../tags/pali.html\">Pāli</a>] [<a href = \"../tags/nature-of-the-cosmos.html\">Nature of the cosmos</a>] [<a href = \"../tags/nibbana.html\">Nibbāna</a>] [<a href = \"../tags/aggregates.html\">Aggregates</a>] [<a href = \"../tags/abhidhamma.html\">Abhidhamma</a>] [<a href = \"../tags/emotion.html\">Emotion</a>] [<a href = \"../tags/directed-thought-and-evaluation.html\">Directed thought and evaluation</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Reference:</b> <em>Amaravati Chanting Book</em>, <a href=\"https://www.abhayagiri.org/media/books/Chanting-Book-Vol-1-Web.pdf#page=32\" target=\"_blank\" data-alt-href=\"../books/chanting-book.html\">p. 23</a> \n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2014.html\">2014 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2014.html#TG2014_S06\">Session 6</a>, <a href=\"../events/TG2014.html#TG2014_S06_F06\">Excerpt 5</a>\n</p>",
+          "html": "<p id=\"TG2014_S06_F06\">\n  <audio-chip src=\"../../audio/excerpts/TG2014/TG2014_S06_F06.mp3\" title=\"2014 Thanksgiving Monastic Retreat, S6 E5\" data-title-link=\"events/TG2014.html#TG2014_S06_F06\" data-duration=\"278\"><a href=\"../../audio/excerpts/TG2014/TG2014_S06_F06.mp3\" download=\"2014 Thanksgiving Monastic Retreat, S6 E5.mp3\">Download audio</a> (4:38)</audio-chip><br /> <span class=\"excerpt-number\">5.</span> “Can you define / explain saṅkhāras—mental formations? For example, what phenomena does it include? How can one evaluate what is or is not a saṅkhāra? How does it differ from the hindi / yogic samskara? Thank you.”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/volitional-formations.html\">Volitional formations&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/hinduism.html\">Hinduism</a>] // [<a href = \"../tags/pali.html\">Pāli</a>] [<a href = \"../tags/nature-of-the-cosmos.html\">Nature of the cosmos</a>] [<a href = \"../tags/nibbana.html\">Nibbāna</a>] [<a href = \"../tags/aggregates.html\">Aggregates</a>] [<a href = \"../tags/abhidhamma.html\">Abhidhamma</a>] [<a href = \"../tags/emotion.html\">Emotion</a>] [<a href = \"../tags/directed-thought-and-evaluation.html\">Directed thought and evaluation</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Reference:</b> <em>Amaravati Chanting Book</em>, <a href=\"https://www.abhayagiri.org/media/books/Chanting-Book-Vol-1-Web.pdf#page=22\" target=\"_blank\" data-alt-href=\"../books/chanting-book.html\">p. 13</a>: Sabbe saṅkhārā aniccā. \n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2014.html\">2014 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2014.html#TG2014_S06\">Session 6</a>, <a href=\"../events/TG2014.html#TG2014_S06_F06\">Excerpt 5</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
           "session": "TG2014_S06",
           "blobs": [
             "^i'm wondering why the chanting says, 'for me there is no other refuge, the buddha is my excellent refuge,' and the same for the dhamma and the sangha when all three are refuges. also, why are the dhamma and the sangha referred to as 'lord?' thank you.^{ajahn pasanno}[chanting][three refuges]//[]|#question#medium#&questions&@tg2014@s06@e06@",
-            "^amaravati chanting book p. 13: sabbe sankhara anicca^{}//[volitional formations][impermanence]|#reference#&references&"
+            "^amaravati chanting book p. 23.^{}//[volitional formations][impermanence]|#reference#&references&"
           ],
-          "html": "<p id=\"TG2014_S06_F07\">\n  <audio-chip src=\"../../audio/excerpts/TG2014/TG2014_S06_F07.mp3\" title=\"2014 Thanksgiving Monastic Retreat, S6 E6\" data-title-link=\"events/TG2014.html#TG2014_S06_F07\" data-duration=\"159\"><a href=\"../../audio/excerpts/TG2014/TG2014_S06_F07.mp3\" download=\"2014 Thanksgiving Monastic Retreat, S6 E6.mp3\">Download audio</a> (2:39)</audio-chip><br /> <span class=\"excerpt-number\">6.</span> “I’m wondering why the chanting says, ‘for me there is no other refuge, the Buddha is my excellent refuge,’ and the same for the Dhamma and the Sangha when all three are refuges. Also, why are the Dhamma and the Sangha referred to as ‘Lord?’ Thank you.”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/chanting.html\">Chanting</a>] [<a href = \"../tags/three-refuges.html\">Three Refuges</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Reference:</b> <em>Amaravati Chanting Book</em>, <a href=\"https://www.abhayagiri.org/media/books/Chanting-Book-Vol-1-Web.pdf#page=22\" target=\"_blank\" data-alt-href=\"../books/chanting-book.html\">p. 13</a>: Sabbe saṅkhārā aniccā [<a href = \"../tags/volitional-formations.html\">Volitional formations</a>] [<a href = \"../tags/impermanence.html\">Impermanence</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2014.html\">2014 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2014.html#TG2014_S06\">Session 6</a>, <a href=\"../events/TG2014.html#TG2014_S06_F07\">Excerpt 6</a>\n</p>",
+          "html": "<p id=\"TG2014_S06_F07\">\n  <audio-chip src=\"../../audio/excerpts/TG2014/TG2014_S06_F07.mp3\" title=\"2014 Thanksgiving Monastic Retreat, S6 E6\" data-title-link=\"events/TG2014.html#TG2014_S06_F07\" data-duration=\"159\"><a href=\"../../audio/excerpts/TG2014/TG2014_S06_F07.mp3\" download=\"2014 Thanksgiving Monastic Retreat, S6 E6.mp3\">Download audio</a> (2:39)</audio-chip><br /> <span class=\"excerpt-number\">6.</span> “I’m wondering why the chanting says, ‘for me there is no other refuge, the Buddha is my excellent refuge,’ and the same for the Dhamma and the Sangha when all three are refuges. Also, why are the Dhamma and the Sangha referred to as ‘Lord?’ Thank you.”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/chanting.html\">Chanting</a>] [<a href = \"../tags/three-refuges.html\">Three Refuges</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Reference:</b> <em>Amaravati Chanting Book</em>, <a href=\"https://www.abhayagiri.org/media/books/Chanting-Book-Vol-1-Web.pdf#page=32\" target=\"_blank\" data-alt-href=\"../books/chanting-book.html\">p. 23</a>. [<a href = \"../tags/volitional-formations.html\">Volitional formations</a>] [<a href = \"../tags/impermanence.html\">Impermanence</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2014.html\">2014 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2014.html#TG2014_S06\">Session 6</a>, <a href=\"../events/TG2014.html#TG2014_S06_F07\">Excerpt 6</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
@@ -30197,9 +30191,9 @@
         {
           "session": "TG2015_S03",
           "blobs": [
-            "^i am doing well when sitting or walking - my container of mindfulness is filling. however, it seems to be leaking during every other activity. walking to the meal, in my room, going to the bathroom, eating. help! i seem to be defeating my own efforts.^{ajahn pasanno}[continuity of mindfulness]+[meditation retreats]//[mindfulness of body][gratification][investigation of states][self-identity view]|#homepage#question#long#&questions&@tg2015@s03@e04@"
+            "^i am doing well when sitting or walking - my container of mindfulness is filling. however, it seems to be leaking during every other activity. walking to the meal, in my room, going to the bathroom, eating. help! i seem to be defeating my own efforts.^{ajahn pasanno}[continuity of mindfulness]+[meditation retreats]//[mindfulness of body][benefit][investigation of states][self-identity view]|#homepage#question#long#&questions&@tg2015@s03@e04@"
           ],
-          "html": "<p id=\"TG2015_S03_F04\">\n  <audio-chip src=\"../../audio/excerpts/TG2015/TG2015_S03_F04.mp3\" title=\"2015 Thanksgiving Monastic Retreat, S3 E4\" data-title-link=\"events/TG2015.html#TG2015_S03_F04\" data-duration=\"324\"><a href=\"../../audio/excerpts/TG2015/TG2015_S03_F04.mp3\" download=\"2015 Thanksgiving Monastic Retreat, S3 E4.mp3\">Download audio</a> (5:24)</audio-chip><br /> <span class=\"excerpt-number\">4.</span> “I am doing well when sitting or walking – my container of mindfulness is filling. However, it seems to be leaking during every other activity. Walking to the meal, in my room, going to the bathroom, eating. Help! I seem to be defeating my own efforts.”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/continuity-of-mindfulness.html\">Continuity of mindfulness&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/meditation-retreats.html\">Meditation retreats</a>] // [<a href = \"../tags/mindfulness-of-body.html\">Mindfulness of body</a>] [<a href = \"../tags/gratification.html\">Gratification</a>] [<a href = \"../tags/investigation-of-states.html\">Investigation of states</a>] [<a href = \"../tags/self-identity-view.html\">Self-identity view</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2015.html\">2015 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2015.html#TG2015_S03\">Session 3</a>, <a href=\"../events/TG2015.html#TG2015_S03_F04\">Excerpt 4</a>\n</p>",
+          "html": "<p id=\"TG2015_S03_F04\">\n  <audio-chip src=\"../../audio/excerpts/TG2015/TG2015_S03_F04.mp3\" title=\"2015 Thanksgiving Monastic Retreat, S3 E4\" data-title-link=\"events/TG2015.html#TG2015_S03_F04\" data-duration=\"324\"><a href=\"../../audio/excerpts/TG2015/TG2015_S03_F04.mp3\" download=\"2015 Thanksgiving Monastic Retreat, S3 E4.mp3\">Download audio</a> (5:24)</audio-chip><br /> <span class=\"excerpt-number\">4.</span> “I am doing well when sitting or walking – my container of mindfulness is filling. However, it seems to be leaking during every other activity. Walking to the meal, in my room, going to the bathroom, eating. Help! I seem to be defeating my own efforts.”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/continuity-of-mindfulness.html\">Continuity of mindfulness&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/meditation-retreats.html\">Meditation retreats</a>] // [<a href = \"../tags/mindfulness-of-body.html\">Mindfulness of body</a>] [<a href = \"../tags/benefit.html\">Benefit</a>] [<a href = \"../tags/investigation-of-states.html\">Investigation of states</a>] [<a href = \"../tags/self-identity-view.html\">Self-identity view</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2015.html\">2015 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2015.html#TG2015_S03\">Session 3</a>, <a href=\"../events/TG2015.html#TG2015_S03_F04\">Excerpt 4</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
@@ -30870,9 +30864,9 @@
         {
           "session": "TG2015_S08",
           "blobs": [
-            "^i'm having a hard time with alcohol not here!. not heavy or even daily use; a glass of wine with dinner a few nights a week or at social events. i would like to stop but have a hard time sustaining for more than a month or so. any words of encouragement?^{ajahn pasanno}[intoxicants]+//[determination][sense restraint][gratification]|#question#medium#&questions&@tg2015@s08@e01@"
+            "^i'm having a hard time with alcohol not here!. not heavy or even daily use; a glass of wine with dinner a few nights a week or at social events. i would like to stop but have a hard time sustaining for more than a month or so. any words of encouragement?^{ajahn pasanno}[intoxicants]+//[determination][sense restraint][benefit]|#question#medium#&questions&@tg2015@s08@e01@"
           ],
-          "html": "<p id=\"TG2015_S08_F01\">\n  <audio-chip src=\"../../audio/excerpts/TG2015/TG2015_S08_F01.mp3\" title=\"2015 Thanksgiving Monastic Retreat, S8 E1\" data-title-link=\"events/TG2015.html#TG2015_S08_F01\" data-duration=\"171\"><a href=\"../../audio/excerpts/TG2015/TG2015_S08_F01.mp3\" download=\"2015 Thanksgiving Monastic Retreat, S8 E1.mp3\">Download audio</a> (2:51)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> “I’m having a hard time with alcohol (not here!). Not heavy or even daily use; a glass of wine with dinner a few nights a week or at social events. I would like to stop but have a hard time sustaining for more than a month or so. Any words of encouragement?”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/intoxicants.html\">Intoxicants&nbsp;<i class=\"fa fa-star\"></i></a>] // [<a href = \"../tags/determination.html\">Determination</a>] [<a href = \"../tags/sense-restraint.html\">Sense restraint</a>] [<a href = \"../tags/gratification.html\">Gratification</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2015.html\">2015 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2015.html#TG2015_S08\">Session 8</a>, <a href=\"../events/TG2015.html#TG2015_S08_F01\">Excerpt 1</a>\n</p>",
+          "html": "<p id=\"TG2015_S08_F01\">\n  <audio-chip src=\"../../audio/excerpts/TG2015/TG2015_S08_F01.mp3\" title=\"2015 Thanksgiving Monastic Retreat, S8 E1\" data-title-link=\"events/TG2015.html#TG2015_S08_F01\" data-duration=\"171\"><a href=\"../../audio/excerpts/TG2015/TG2015_S08_F01.mp3\" download=\"2015 Thanksgiving Monastic Retreat, S8 E1.mp3\">Download audio</a> (2:51)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> “I’m having a hard time with alcohol (not here!). Not heavy or even daily use; a glass of wine with dinner a few nights a week or at social events. I would like to stop but have a hard time sustaining for more than a month or so. Any words of encouragement?”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/intoxicants.html\">Intoxicants&nbsp;<i class=\"fa fa-star\"></i></a>] // [<a href = \"../tags/determination.html\">Determination</a>] [<a href = \"../tags/sense-restraint.html\">Sense restraint</a>] [<a href = \"../tags/benefit.html\">Benefit</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/TG2015.html\">2015 Thanksgiving Monastic Retreat</a>, <a href=\"../events/TG2015.html#TG2015_S08\">Session 8</a>, <a href=\"../events/TG2015.html#TG2015_S08_F01\">Excerpt 1</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
@@ -40279,10 +40273,10 @@
         {
           "session": "Madison2023_S02",
           "blobs": [
-            "^by moving to lovingkindness meditation, i may be missing some of the deeper insights and wisdom that are present in feelings of anger, ill-will, and resentment. i think this is what is referred to as spiritual bypassing. can you speak to this distinction or provide suggestions for accessing the wisdom that may be present within or underneath the hindrances?^{ajahn pasanno}[goodwill][aversion][ill-will][spiritual bypass]+[discernment][hindrances]//[truth][suffering][gratification]|#question#medium#&questions&@madison2023@s02@e01@",
+            "^by moving to lovingkindness meditation, i may be missing some of the deeper insights and wisdom that are present in feelings of anger, ill-will, and resentment. i think this is what is referred to as spiritual bypassing. can you speak to this distinction or provide suggestions for accessing the wisdom that may be present within or underneath the hindrances?^{ajahn pasanno}[goodwill][aversion][ill-will][spiritual bypass]+[discernment][hindrances]//[truth][suffering][benefit]|#question#medium#&questions&@madison2023@s02@e01@",
             "^sensual desire is just trying to get a relief from suffering. even anger and ill-will...and the same with all the rest of the hindrances. they are looking for some relief from suffering in some way, shape, or form.^{ajahn pasanno}//[sensual desire][suffering][hindrances]|#quote#&quotes&"
           ],
-          "html": "<p id=\"Madison2023_S02_F01\">\n  <audio-chip src=\"../../audio/excerpts/Madison2023/Madison2023_S02_F01.mp3\" title=\"Madison Insight Retreat 2023, S2 E1\" data-title-link=\"events/Madison2023.html#Madison2023_S02_F01\" data-duration=\"261\"><a href=\"../../audio/excerpts/Madison2023/Madison2023_S02_F01.mp3\" download=\"Madison Insight Retreat 2023, S2 E1.mp3\">Download audio</a> (4:21)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> “By moving to lovingkindness [meditation], I may be missing some of the deeper insights and wisdom that are present in feelings of anger, ill-will, and resentment. I think this is what is referred to as spiritual bypassing. Can you speak to this distinction or provide suggestions for accessing the wisdom that may be present within or underneath the hindrances?”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/goodwill.html\">Goodwill</a>] [<a href = \"../tags/aversion.html\">Aversion</a>] [<a href = \"../tags/ill-will.html\">Ill-will</a>] [<a href = \"../tags/spiritual-bypass.html\">Spiritual bypass&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/discernment.html\">Discernment</a>] [<a href = \"../tags/hindrances.html\">Hindrances</a>] // [<a href = \"../tags/truth.html\">Truth</a>] [<a href = \"../tags/suffering.html\">Suffering</a>] [<a href = \"../tags/gratification.html\">Gratification</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Quote:</b>  “Sensual desire is just trying to get a relief from suffering. Even anger and ill-will...and the same with all the rest of the hindrances. They are looking for some relief from suffering in some way, shape, or form.”  [<a href = \"../tags/sensual-desire.html\">Sensual desire</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/Madison2023.html\">Madison Insight Retreat 2023</a>, <a href=\"../events/Madison2023.html#Madison2023_S02\">Session 2</a>, <a href=\"../events/Madison2023.html#Madison2023_S02_F01\">Excerpt 1</a>\n</p>",
+          "html": "<p id=\"Madison2023_S02_F01\">\n  <audio-chip src=\"../../audio/excerpts/Madison2023/Madison2023_S02_F01.mp3\" title=\"Madison Insight Retreat 2023, S2 E1\" data-title-link=\"events/Madison2023.html#Madison2023_S02_F01\" data-duration=\"261\"><a href=\"../../audio/excerpts/Madison2023/Madison2023_S02_F01.mp3\" download=\"Madison Insight Retreat 2023, S2 E1.mp3\">Download audio</a> (4:21)</audio-chip><br /> <span class=\"excerpt-number\">1.</span> “By moving to lovingkindness [meditation], I may be missing some of the deeper insights and wisdom that are present in feelings of anger, ill-will, and resentment. I think this is what is referred to as spiritual bypassing. Can you speak to this distinction or provide suggestions for accessing the wisdom that may be present within or underneath the hindrances?”  Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/goodwill.html\">Goodwill</a>] [<a href = \"../tags/aversion.html\">Aversion</a>] [<a href = \"../tags/ill-will.html\">Ill-will</a>] [<a href = \"../tags/spiritual-bypass.html\">Spiritual bypass&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/discernment.html\">Discernment</a>] [<a href = \"../tags/hindrances.html\">Hindrances</a>] // [<a href = \"../tags/truth.html\">Truth</a>] [<a href = \"../tags/suffering.html\">Suffering</a>] [<a href = \"../tags/benefit.html\">Benefit</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Quote:</b>  “Sensual desire is just trying to get a relief from suffering. Even anger and ill-will...and the same with all the rest of the hindrances. They are looking for some relief from suffering in some way, shape, or form.”  [<a href = \"../tags/sensual-desire.html\">Sensual desire</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/Madison2023.html\">Madison Insight Retreat 2023</a>, <a href=\"../events/Madison2023.html#Madison2023_S02\">Session 2</a>, <a href=\"../events/Madison2023.html#Madison2023_S02_F01\">Excerpt 1</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
@@ -41531,10 +41525,10 @@
         {
           "session": "WR2025_S03",
           "blobs": [
-            "^the urge to become-is it just inherent in us as a species or is it inherent everywhere in life?^{ajahn amaro}[becoming][human]//[animal][gratification][buddha/biography]|#question#medium#&questions&@wr2025@s03@e04@",
+            "^the urge to become-is it just inherent in us as a species or is it inherent everywhere in life?^{ajahn amaro}[becoming][human]//[animal][benefit][buddha/biography]|#question#medium#&questions&@wr2025@s03@e04@",
             "^mn 26.19.^{}//[]|#sutta#&references&"
           ],
-          "html": "<p id=\"WR2025_S03_F04\">\n  <audio-chip src=\"../../audio/excerpts/WR2025/WR2025_S03_F04.mp3\" title=\"Readings from The Island, S3 E4\" data-title-link=\"events/WR2025.html#WR2025_S03_F04\" data-duration=\"196\"><a href=\"../../audio/excerpts/WR2025/WR2025_S03_F04.mp3\" download=\"Readings from The Island, S3 E4.mp3\">Download audio</a> (3:16)</audio-chip><br /> <span class=\"excerpt-number\">4.</span> “The urge to become—is it just inherent in us as a species or is it inherent everywhere in life?”  Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>. [<a href = \"../tags/becoming.html\">Becoming</a>] [<a href = \"../tags/human.html\">Human</a>] // [<a href = \"../tags/animal.html\">Animal</a>] [<a href = \"../tags/gratification.html\">Gratification</a>] [<a href = \"../tags/buddhabiography.html\">Buddha/Biography</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Sutta:</b> <a href=\"https://suttacentral.express/mn26/en/sujato?reference=main#19.1\" target=\"_blank\" data-alt-href=\"../texts/MN26.html\">MN 26.19</a>. \n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2025.html\">Readings from <i>The Island</i> [2025]</a>, <a href=\"../events/WR2025.html#WR2025_S03\">Session 3</a>, <a href=\"../events/WR2025.html#WR2025_S03_F04\">Excerpt 4</a>\n</p>",
+          "html": "<p id=\"WR2025_S03_F04\">\n  <audio-chip src=\"../../audio/excerpts/WR2025/WR2025_S03_F04.mp3\" title=\"Readings from The Island, S3 E4\" data-title-link=\"events/WR2025.html#WR2025_S03_F04\" data-duration=\"196\"><a href=\"../../audio/excerpts/WR2025/WR2025_S03_F04.mp3\" download=\"Readings from The Island, S3 E4.mp3\">Download audio</a> (3:16)</audio-chip><br /> <span class=\"excerpt-number\">4.</span> “The urge to become—is it just inherent in us as a species or is it inherent everywhere in life?”  Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>. [<a href = \"../tags/becoming.html\">Becoming</a>] [<a href = \"../tags/human.html\">Human</a>] // [<a href = \"../tags/animal.html\">Animal</a>] [<a href = \"../tags/benefit.html\">Benefit</a>] [<a href = \"../tags/buddhabiography.html\">Buddha/Biography</a>]\n</p>\n<p class=\"indent-1\">\n  <b>Sutta:</b> <a href=\"https://suttacentral.express/mn26/en/sujato?reference=main#19.1\" target=\"_blank\" data-alt-href=\"../texts/MN26.html\">MN 26.19</a>. \n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2025.html\">Readings from <i>The Island</i> [2025]</a>, <a href=\"../events/WR2025.html#WR2025_S03\">Session 3</a>, <a href=\"../events/WR2025.html#WR2025_S03_F04\">Excerpt 4</a>\n</p>",
           "uniqueTeachers": 1
         },
         {
@@ -44227,9 +44221,9 @@
         {
           "session": "WR2025_S44",
           "blobs": [
-            "^how does piti relate to the fulfillment of desire?^{ajahn amaro}{ajahn pasanno}[rapture]+[gratification][happiness]//[unification][jhana][craving][relinquishment][addiction]|#question#long#&questions&@wr2025@s44@e05@"
+            "^how does piti relate to the fulfillment of desire?^{ajahn amaro}{ajahn pasanno}[rapture]+[benefit][happiness]//[unification][jhana][craving][relinquishment][addiction]|#question#long#&questions&@wr2025@s44@e05@"
           ],
-          "html": "<p id=\"WR2025_S44_F05\">\n  <audio-chip src=\"../../audio/excerpts/WR2025/WR2025_S44_F05.mp3\" title=\"Readings from The Island, S44 E5\" data-title-link=\"events/WR2025.html#WR2025_S44_F05\" data-duration=\"348\"><a href=\"../../audio/excerpts/WR2025/WR2025_S44_F05.mp3\" download=\"Readings from The Island, S44 E5.mp3\">Download audio</a> (5:48)</audio-chip><br /> <span class=\"excerpt-number\">5.</span> “How does pīti relate to the fulfillment of desire?”  Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/rapture.html\">Rapture&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/gratification.html\">Gratification</a>] [<a href = \"../tags/happiness.html\">Happiness</a>] // [<a href = \"../tags/unification.html\">Unification</a>] [<a href = \"../tags/jhana.html\">Jhāna</a>] [<a href = \"../tags/craving.html\">Craving</a>] [<a href = \"../tags/relinquishment.html\">Relinquishment</a>] [<a href = \"../tags/addiction.html\">Addiction</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2025.html\">Readings from <i>The Island</i> [2025]</a>, <a href=\"../events/WR2025.html#WR2025_S44\">Session 44</a>, <a href=\"../events/WR2025.html#WR2025_S44_F05\">Excerpt 5</a>\n</p>",
+          "html": "<p id=\"WR2025_S44_F05\">\n  <audio-chip src=\"../../audio/excerpts/WR2025/WR2025_S44_F05.mp3\" title=\"Readings from The Island, S44 E5\" data-title-link=\"events/WR2025.html#WR2025_S44_F05\" data-duration=\"348\"><a href=\"../../audio/excerpts/WR2025/WR2025_S44_F05.mp3\" download=\"Readings from The Island, S44 E5.mp3\">Download audio</a> (5:48)</audio-chip><br /> <span class=\"excerpt-number\">5.</span> “How does pīti relate to the fulfillment of desire?”  Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a> and <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>. [<a href = \"../tags/rapture.html\">Rapture&nbsp;<i class=\"fa fa-star\"></i></a>] [<a href = \"../tags/benefit.html\">Benefit</a>] [<a href = \"../tags/happiness.html\">Happiness</a>] // [<a href = \"../tags/unification.html\">Unification</a>] [<a href = \"../tags/jhana.html\">Jhāna</a>] [<a href = \"../tags/craving.html\">Craving</a>] [<a href = \"../tags/relinquishment.html\">Relinquishment</a>] [<a href = \"../tags/addiction.html\">Addiction</a>]\n</p>\n<p class=\"x-cite\">\n  <a href=\"../events/WR2025.html\">Readings from <i>The Island</i> [2025]</a>, <a href=\"../events/WR2025.html#WR2025_S44\">Session 44</a>, <a href=\"../events/WR2025.html#WR2025_S44_F05\">Excerpt 5</a>\n</p>",
           "uniqueTeachers": 2
         },
         {

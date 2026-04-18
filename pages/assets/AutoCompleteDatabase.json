@@ -819,7 +819,7 @@
     "excerptCount": 25
   },
   {
-    "short": "Volitional formations (saṅkhāra)",
+    "short": "Volitional formations (saṅkhārā)",
     "link": "tags/volitional-formations.html",
     "long": "",
     "number": "",
@@ -2664,7 +2664,7 @@
     "excerptCount": 78
   },
   {
-    "short": "Volitional formations (saṅkhāra)",
+    "short": "Volitional formations (saṅkhārā)",
     "link": "tags/volitional-formations.html",
     "long": "",
     "number": "",
@@ -2862,8 +2862,8 @@
     "excerptCount": 6
   },
   {
-    "short": "Gratification (assāda)",
-    "link": "tags/gratification.html",
+    "short": "Benefit (assāda)",
+    "link": "tags/benefit.html",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
@@ -3625,6 +3625,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 4
+  },
+  {
+    "short": "Defilements of insight (vipassanā upakkilesa)",
+    "link": "tags/defilements-of-insight.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "Nimitta",
@@ -5281,6 +5290,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 9
+  },
+  {
+    "short": "Stephen Batchelor",
+    "link": "tags/stephen-batchelor.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "Mark Epstein",
@@ -7677,24 +7695,6 @@
     "excerptCount": 4
   },
   {
-    "short": "Stephen Batchelor",
-    "link": "tags/stephen-batchelor.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Defilements of insight",
-    "link": "tags/defilements-of-insight.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
     "short": "Wholesome qualities",
     "link": "tags/skillful-qualities.html",
     "long": "",
@@ -7714,6 +7714,15 @@
   },
   {
     "short": "Right Resolve",
+    "link": "tags/right-intention.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Right Intention (26)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Right Thought",
     "link": "tags/right-intention.html",
     "long": "",
     "number": "",
@@ -7884,6 +7893,15 @@
     "excerptCount": 0
   },
   {
+    "short": "Zeal",
+    "link": "tags/desire.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Desire (75)",
+    "excerptCount": 0
+  },
+  {
     "short": "Mind",
     "link": "tags/heartmind.html",
     "long": "",
@@ -7938,12 +7956,39 @@
     "excerptCount": 0
   },
   {
+    "short": "Lovingkindness",
+    "link": "tags/goodwill.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Goodwill (165)",
+    "excerptCount": 0
+  },
+  {
     "short": "Well-wishing",
     "link": "tags/goodwill.html",
     "long": "",
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Goodwill (165)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Sympathetic joy",
+    "link": "tags/empathetic-joy.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Empathetic joy (12)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Gladness",
+    "link": "tags/empathetic-joy.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Empathetic joy (12)",
     "excerptCount": 0
   },
   {
@@ -7957,6 +8002,15 @@
   },
   {
     "short": "Balance",
+    "link": "tags/equanimity.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Equanimity (73)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Serenity",
     "link": "tags/equanimity.html",
     "long": "",
     "number": "",
@@ -8064,6 +8118,15 @@
     "excerptCount": 0
   },
   {
+    "short": "Enlightenment",
+    "link": "tags/liberation.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Liberation (158)",
+    "excerptCount": 0
+  },
+  {
     "short": "Freedom",
     "link": "tags/liberation.html",
     "long": "",
@@ -8074,6 +8137,15 @@
   },
   {
     "short": "Wise attention",
+    "link": "tags/appropriate-attention.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Appropriate attention (32)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Wise reflection",
     "link": "tags/appropriate-attention.html",
     "long": "",
     "number": "",
@@ -8208,7 +8280,7 @@
     "excerptCount": 0
   },
   {
-    "short": "Attachment to precepts and practices",
+    "short": "Attachment to rites and rituals",
     "link": "tags/attachment-to-precepts-and-practices.html",
     "long": "",
     "number": "",
@@ -8316,6 +8388,33 @@
     "excerptCount": 0
   },
   {
+    "short": "Mental formations",
+    "link": "tags/volitional-formations.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Volitional formations (65)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Fabrications",
+    "link": "tags/volitional-formations.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Volitional formations (65)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Conditioned things",
+    "link": "tags/volitional-formations.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Volitional formations (65)",
+    "excerptCount": 0
+  },
+  {
     "short": "Attachment",
     "link": "tags/clinging.html",
     "long": "",
@@ -8335,6 +8434,15 @@
   },
   {
     "short": "Sustanence",
+    "link": "tags/clinging.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Clinging (137)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Fuel",
     "link": "tags/clinging.html",
     "long": "",
     "number": "",
@@ -8406,12 +8514,12 @@
     "excerptCount": 0
   },
   {
-    "short": "Benefit",
-    "link": "tags/gratification.html",
+    "short": "Gratification",
+    "link": "tags/benefit.html",
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Gratification (7)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Benefit (7)",
     "excerptCount": 0
   },
   {
@@ -8469,12 +8577,48 @@
     "excerptCount": 0
   },
   {
+    "short": "Cultivation",
+    "link": "tags/meditation.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Meditation (94)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Development",
+    "link": "tags/meditation.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Meditation (94)",
+    "excerptCount": 0
+  },
+  {
     "short": "Properties",
     "link": "tags/elements.html",
     "long": "",
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Elements (30)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Reflection",
+    "link": "tags/recollection.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Recollection (64)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Contemplation",
+    "link": "tags/recollection.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Recollection (64)",
     "excerptCount": 0
   },
   {
@@ -8583,6 +8727,15 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Unconditioned (31)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Mindfulness movement",
+    "link": "tags/secular-buddhism.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Secular Buddhism (4)",
     "excerptCount": 0
   },
   {
@@ -8700,6 +8853,15 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Pace of life (15)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Caste system",
+    "link": "tags/discrimination.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Discrimination (4)",
     "excerptCount": 0
   },
   {
@@ -8838,6 +9000,24 @@
     "excerptCount": 84
   },
   {
+    "short": "Wrong view (micchā-diṭṭhi)",
+    "link": "tags/views.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Views",
+    "excerptCount": 74
+  },
+  {
+    "short": "Selfish love (piya)",
+    "link": "tags/clinging.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Clinging",
+    "excerptCount": 137
+  },
+  {
     "short": "Name and form (nāma-rūpa)",
     "link": "tags/aggregates.html",
     "long": "",
@@ -8899,6 +9079,15 @@
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Sensual desire",
     "excerptCount": 88
+  },
+  {
+    "short": "Sleep",
+    "link": "tags/devotion-to-wakefulness.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Devotion to wakefulness",
+    "excerptCount": 32
   },
   {
     "short": "Pleasure (sukha)",
