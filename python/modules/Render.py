@@ -121,7 +121,7 @@ def PrepareTexts() -> None:
 
     gDatabase["textGroup"] = {}
     for textGroup in list(next(iter(gDatabase["text"].values()))):
-        if textGroup in ("uid","name","citeFullName"):
+        if textGroup in ("uid","name","citeFullName","wholeTextLink"):
             continue
         
         newGroup = []

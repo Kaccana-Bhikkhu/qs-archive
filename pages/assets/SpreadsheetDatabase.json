@@ -13607,7 +13607,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Empathetic joy"
+      ],
+      "fTagOrder": [
+        120
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Empathetic joy",
@@ -94189,7 +94195,7 @@
         95,
         150
       ],
-      "fTagOrderFlags": "EE",
+      "fTagOrderFlags": "TE",
       "annotations": [
         {
           "kind": "Recollection",
@@ -162677,6 +162683,7 @@
       "primaries": 1,
       "htmlFile": "empathetic-joy.html",
       "excerptCount": 12,
+      "fTagCount": 1,
       "listIndex": 115
     },
     "Treasures": {
@@ -167589,7 +167596,6 @@
       ],
       "excerptCount": 47,
       "fTagCount": 1,
-      "subtopicFTagCount": 1,
       "listIndex": 430
     },
     "Spaciousness": {
@@ -195685,7 +195691,7 @@
       },
       "htmlPath": "clusters/continuity-of-mindfulness.html",
       "excerptCount": 106,
-      "fTagCount": 5
+      "fTagCount": 4
     },
     "Direct experience": {
       "tag": "Direct experience",
@@ -197090,6 +197096,7 @@
     "DN": {
       "uid": "DN",
       "name": "Dīgha Nikāya",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197104,6 +197111,7 @@
     "MN": {
       "uid": "MN",
       "name": "Majjhima Nikāya",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197118,6 +197126,7 @@
     "SN": {
       "uid": "SN",
       "name": "Saṁyutta Nikāya",
+      "wholeTextLink": "https://suttacentral.net/pitaka/sutta/linked/sn",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197132,6 +197141,7 @@
     "AN": {
       "uid": "AN",
       "name": "Aṅguttara Nikāya",
+      "wholeTextLink": "https://suttacentral.net/pitaka/sutta/numbered/an",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197146,6 +197156,7 @@
     "Kp": {
       "uid": "Kp",
       "name": "Khuddakapāṭha",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197160,6 +197171,7 @@
     "Dhp": {
       "uid": "Dhp",
       "name": "Dhammapada",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197174,6 +197186,7 @@
     "Ud": {
       "uid": "Ud",
       "name": "Udāna",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197188,6 +197201,7 @@
     "Iti": {
       "uid": "Iti",
       "name": "Itivuttaka",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197202,6 +197216,7 @@
     "Snp": {
       "uid": "Snp",
       "name": "Sutta Nipāta",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197216,6 +197231,7 @@
     "Vv": {
       "uid": "Vv",
       "name": "Vimānavatthu",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197230,6 +197246,7 @@
     "Pv": {
       "uid": "Pv",
       "name": "Petavatthu",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197244,6 +197261,7 @@
     "Thag": {
       "uid": "Thag",
       "name": "Theragātha",
+      "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/thag",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197258,6 +197276,7 @@
     "Thig": {
       "uid": "Thig",
       "name": "Therīgāthā",
+      "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/thig",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197272,6 +197291,7 @@
     "Ja": {
       "uid": "Ja",
       "name": "Jātaka",
+      "wholeTextLink": "",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -197286,6 +197306,7 @@
     "Mil": {
       "uid": "Mil",
       "name": "Milindapañha",
+      "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/mil?lang=en",
       "citeFullName": true,
       "sutta": "Yes",
       "vinaya": "",
@@ -197300,6 +197321,7 @@
     "BuPj": {
       "uid": "BuPj",
       "name": "Bhikkhu Pārājikā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197314,6 +197336,7 @@
     "BuSs": {
       "uid": "BuSs",
       "name": "Bhikkhu Saṅghādisesā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197328,6 +197351,7 @@
     "BuAy": {
       "uid": "BuAy",
       "name": "Bhikkhu Aniyatā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197342,6 +197366,7 @@
     "BuNp": {
       "uid": "BuNp",
       "name": "Bhikkhu Nissaggiyā-pācittiyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197356,6 +197381,7 @@
     "BuPc": {
       "uid": "BuPc",
       "name": "Bhikkhu Pācittiyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197370,6 +197396,7 @@
     "BuPd": {
       "uid": "BuPd",
       "name": "Bhikkhu Pāṭidesanīyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197384,6 +197411,7 @@
     "BuSk": {
       "uid": "BuSk",
       "name": "Bhikkhu Sekhiyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197398,6 +197426,7 @@
     "BuAs": {
       "uid": "BuAs",
       "name": "Bhikkhu Adhikarana-samatha",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197412,6 +197441,7 @@
     "BiPj": {
       "uid": "BiPj",
       "name": "Bhikkhuni Pārājikā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197426,6 +197456,7 @@
     "BiSs": {
       "uid": "BiSs",
       "name": "Bhikkhuni Saṅghādisesā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197440,6 +197471,7 @@
     "BiNp": {
       "uid": "BiNp",
       "name": "Bhikkhuni Nissaggiyā-pācittiyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197454,6 +197486,7 @@
     "BiPc": {
       "uid": "BiPc",
       "name": "Bhikkhuni Pācittiyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197468,6 +197501,7 @@
     "BiPd": {
       "uid": "BiPd",
       "name": "Bhikkhuni Pāṭidesanīyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197482,6 +197516,7 @@
     "BiSk": {
       "uid": "BiSk",
       "name": "Bhikkhuni Sekhiyā",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197496,6 +197531,7 @@
     "BiAs": {
       "uid": "BiAs",
       "name": "Bhikkhuni Adhikarana-samatha",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197510,6 +197546,7 @@
     "Kd": {
       "uid": "Kd",
       "name": "Khandhaka",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197524,6 +197561,7 @@
     "Pvr": {
       "uid": "Pvr",
       "name": "Parivāra",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -197538,6 +197576,7 @@
     "Mv": {
       "uid": "Mv",
       "name": "Mahāvagga",
+      "wholeTextLink": "",
       "citeFullName": true,
       "sutta": "",
       "vinaya": "Yes",
@@ -198471,7 +198510,7 @@
         "Long-term practice"
       ],
       "excerptCount": 877,
-      "fTagCount": 45
+      "fTagCount": 44
     },
     "skillful": {
       "code": "skillful",
@@ -198850,6 +198889,7 @@
     "suttaCentral": "suttaCentral",
     "uid": "uid",
     "vinaya": "vinaya",
-    "vinayaRule": "vinayaRule"
+    "vinayaRule": "vinayaRule",
+    "wholeTextLink": "wholeTextLink"
   }
 }

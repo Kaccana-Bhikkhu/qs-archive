@@ -128,22 +128,7 @@ def UIDGroupSet(which: str) -> set[str]:
 def SCToExpress(scLink: str) -> str:
     """Convert a link from SuttaCentral to SuttaCentral Express."""
 
-    if scLink.startswith("https://suttacentral.net/"):
-        # Some whole-book links are broken on SC Express, so don't change these links
-        if sutta := re.match(r"https://suttacentral.net/(.*)",scLink):
-            suttaRef = sutta[1]
-            if suttaRef in ("sn","an","thag","thig","mil"):
-                return scLink
-
-        # SuttaCentral Express currently doesn't handle suttas within groups, so don't change these links
-        if sutta := re.match(r"https://suttacentral.net/([asmd]n[0-9]+\.[0-9]+)",scLink):
-            suttaRef = sutta[1]
-            if suttaRef in Suttaplex.InterpolatedSuttaDict(suttaRef[0:2]):
-                return scLink
-
-        return scLink.replace("//suttacentral.net/","//suttacentral.express/")
-    else:
-        return scLink
+    return scLink.replace("//suttacentral.net/","//suttacentral.express/")
 
 class TextReference(NamedTuple):
     text: str           # The name of the text, e.g. 'Dhp'
@@ -234,7 +219,7 @@ class TextReference(NamedTuple):
         """Return the SuttaCentral link for this text."""
         if self.n0 == 0:
             if self.text:
-                return f"https://suttacentral.net/{self.BaseUid()}"
+                return gDatabase["text"][self.text].get("wholeTextLink") or f"https://suttacentral.net/{self.BaseUid()}"
             else:
                 return ""
         mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [translator]
@@ -257,7 +242,7 @@ class TextReference(NamedTuple):
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
             expressLink = SCToExpress(scLink)
             if expressLink != scLink:
-                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Read faster on suttacentral.express","class":"express","target":"_blank"})
+                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Lightweight suttacentral.express","class":"express","target":"_blank"})
                                    (Build.HtmlIcon("SuttaCentralExpress.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
