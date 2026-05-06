@@ -254,7 +254,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         if formNumber >= 0:
             if formNumber >= len(kind["body"]) or kind["body"][formNumber] == "unimplemented":
                 formNumber = kind["defaultForm"] - 1
-                Alert.warning(f"   {kind['kind']} does not implement form {formNumberStr[0]}. Reverting to default form number {formNumber + 1}.")
+                Alert.warning(item,f": {kind['kind']} does not implement form {formNumberStr[0]}. Reverting to default form number {formNumber + 1}.")
     else:
         formNumber = kind["defaultForm"] - 1
 

@@ -1,5 +1,5 @@
 Modified:,2026,,,,,,,,,,,,,,
-Count,221,945,59,451,186,46,80,,48,100,18,983,412,919,919
+Count,221,946,59,451,186,46,80,,48,100,18,984,412,920,920
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -121,7 +121,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Equanimity,,upekkhā,,,,,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
 2,*,Divine Abidings,4,brahmavihārā,,,Mature emotions,,,,,   Divine Abidings,brahmavihārā,Divine Abidings,Divine Abidings [brahmavihārā]
 3,*,Goodwill,,mettā,,,Lovingkindness;Well-wishing,,,,,      Goodwill,mettā,Goodwill,Goodwill [mettā]
-3,*,Compassion,,karuṇā,,,,,,,,      Compassion,karuṇā,Compassion,Compassion [karuṇā]
+3,*,Compassion,,karuṇā,,,,anukampa <i>Pāli</i>,,,,      Compassion,karuṇā,Compassion,Compassion [karuṇā]
 3,*,Empathetic joy,,muditā,,,Sympathetic joy;Gladness,,,,,      Empathetic joy,muditā,Empathetic joy,Empathetic joy [muditā]
 3,*,Equanimity,,upekkhā,,,Serenity,Unshakeability;Balance,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
 2,,Seven Treasures,7,satta dhanā,Treasures,dhana,,,,,,   Seven Treasures,dhana,Treasures,Treasures [dhana]
@@ -215,7 +215,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,*,Restlessness and worry,,uddhacca-kukkucca,,,,Anxiety,,Tranquility,,      Restlessness and worry,uddhacca-kukkucca,Restlessness and worry,Restlessness and worry [uddhacca-kukkucca]
 3,*,Doubt,,vicikiccha,,,,,,Faith,,      Doubt,vicikiccha,Doubt,Doubt [vicikiccha]
 2,,Ten Fetters,10,dasa saṃyojanā,Fetters,dasa samyojana,,,,,,   Ten Fetters,dasa samyojana,Fetters,Fetters [dasa samyojana]
-3,*,Self-identity view,,sakkāya-diṭṭhi,,,,,,Doctrine-of-self clinging,Conceit;Not-self,      Self-identity view,sakkāya-diṭṭhi,Self-identity view,Self-identity view [sakkāya-diṭṭhi]
+3,*,Self-identity view,,sakkāya-diṭṭhi,,,Personality view,,,Doctrine-of-self clinging,Conceit;Not-self,      Self-identity view,sakkāya-diṭṭhi,Self-identity view,Self-identity view [sakkāya-diṭṭhi]
 3,,Doubt,,vicikicchā,,,,,,,,      Doubt,vicikicchā,Doubt,Doubt [vicikicchā]
 3,,Attachment to precepts and practices,,sīlabbata-parāmāsa,,,Attachment to rites and rituals,,,,,      Attachment to precepts and practices,sīlabbata-parāmāsa,Attachment to precepts and practices,Attachment to precepts and practices [sīlabbata-parāmāsa]
 3,,Sensual desire,,kāmacchanda,,,,,,,,      Sensual desire,kāmacchanda,Sensual desire,Sensual desire [kāmacchanda]
@@ -297,7 +297,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,0,Suchness,,tathatā,,,,,,,,      Suchness,tathatā,Suchness,Suchness [tathatā]
 3,0,Non-identification,,atammayatā,,,Non-fashinioning;Not-made-of-that,,,,,      Non-identification,atammayatā,Non-identification,Non-identification [atammayatā]
 2,,Three Aspects of Understanding,3,,Aspects of Understanding,,,,,,,   Three Aspects of Understanding,,Aspects of Understanding,Aspects of Understanding
-3,,Benefit,,assāda,,,Gratification,,,Sensual desire,,      Benefit,assāda,Benefit,Benefit [assāda]
+3,,Benefit/gratification,,assāda,,,,,,Sensual desire,,      Benefit/gratification,assāda,Benefit/gratification,Benefit/gratification [assāda]
 3,,Drawbacks,,ādīnava,,,Danger,,,Spiritual urgency,,      Drawbacks,ādīnava,Drawbacks,Drawbacks [ādīnava]
 3,,Escape,,nissaraṇa,,,,,,Progress of insight,,      Escape,nissaraṇa,Escape,Escape [nissaraṇa]
 ,,,,,,,,,,,,,,,
@@ -408,7 +408,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
-2,,Meditation/Techniques,,,,,,,,,,   Meditation/Techniques,,Meditation/Techniques,Meditation/Techniques
+2,,Meditation/Techniques,,,,,,Kammaṭṭhāna <i>Pāli</i>,,,,   Meditation/Techniques,,Meditation/Techniques,Meditation/Techniques
 3,*,Mindfulness of breathing,,ānāpānasati,,,,,,,,      Mindfulness of breathing,ānāpānasati,Mindfulness of breathing,Mindfulness of breathing [ānāpānasati]
 ,,,,,,,,,,,,,,,
 3,*,Unattractiveness/32 parts,,asubha/dvattiṁsākāra,Unattractiveness,asubha,,,,,,      Unattractiveness/32 parts,asubha,Unattractiveness,Unattractiveness [asubha]
@@ -686,7 +686,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Preah Mahāghosānanda,,,,,,,,,,         Preah Mahāghosānanda,,Preah Mahāghosānanda,Preah Mahāghosānanda
 4,,Bhante Gunaratana,,,,,,,,,,         Bhante Gunaratana,,Bhante Gunaratana,Bhante Gunaratana
 4,,Bhikkhu Bodhi,,,,,,,,,,         Bhikkhu Bodhi,,Bhikkhu Bodhi,Bhikkhu Bodhi
-4,,Venerable Analayo,,,Ven. Analayo,,,,,,,         Venerable Analayo,,Ven. Analayo,Ven. Analayo
+4,,Venerable Anālayo,,,Ven. Anālayo,,,,,,,         Venerable Anālayo,,Ven. Anālayo,Ven. Anālayo
 4,,Ayya Tathālokā,,,,,,,,,,         Ayya Tathālokā,,Ayya Tathālokā,Ayya Tathālokā
 4,,Dr. Hammalawa Saddhatissa,,,Dr. Saddhatissa,,,,,,,         Dr. Hammalawa Saddhatissa,,Dr. Saddhatissa,Dr. Saddhatissa
 4,,Bhante Yogavacara Rahula,,,Bhante Rahula,,,,,,,         Bhante Yogavacara Rahula,,Bhante Rahula,Bhante Rahula
@@ -712,7 +712,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Thich Nhat Hahn,,,,,,,,,,         Thich Nhat Hahn,,Thich Nhat Hahn,Thich Nhat Hahn
 4,,Tsoknyi Rinpoche,,,,,,,,,,         Tsoknyi Rinpoche,,Tsoknyi Rinpoche,Tsoknyi Rinpoche
 4,,Chokyi Nyima Rinpoche,,,,,,,,,,         Chokyi Nyima Rinpoche,,Chokyi Nyima Rinpoche,Chokyi Nyima Rinpoche
-,,,,,,,,,,,,,,,
+4,,Shantideva,,,,,,,,,,         Shantideva,,Shantideva,Shantideva
 3,P,Christian monastics,,,,,,,,,,      Christian monastics,,Christian monastics,Christian monastics
 4,,Father Boniface,,,,,,,,,,         Father Boniface,,Father Boniface,Father Boniface
 4,,Father Damien,,,,,,,,,,         Father Damien,,Father Damien,Father Damien
