@@ -198,6 +198,22 @@ def ParentTagListEntry(listIndex: int) -> dict|None:
 
     return None
 
+def IsSubtag(tag: str,superTag: str) -> bool:
+    """Returns true if superTag is a parent of the primary instance of tag.
+    Both tag and superTag should be keys in gDatabase["tag"]."""
+
+    index = gDatabase["tag"][tag]["listIndex"]
+    level = gDatabase["tagDisplayList"][index]["level"]
+
+    while level > 1:
+        index -= 1
+        if gDatabase["tagDisplayList"][index]["level"] < level:
+            level = gDatabase["tagDisplayList"][index]["level"]
+            if gDatabase["tagDisplayList"][index]["tag"] == superTag:
+                return True
+    
+    return False
+
 
 def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
     "Search for a tag based on any of its various names. Return the base tag name."

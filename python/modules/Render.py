@@ -354,7 +354,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         item["attribution"] = attributionStr
     
     # If the first tag of an indirect quote specifies a teacher, link the last occurence of the teacher in the body
-    if item["kind"] == "Indirect quote" and item["tags"]:
+    if gDatabase["kind"][item["kind"]]["indirectSpeech"] and item["tags"]:
         quotedTeacher = Database.TeacherLookup(item["tags"][0])
         if quotedTeacher:
             parts = re.split(Utils.RegexMatchAny([gDatabase["teacher"][quotedTeacher]["attributionName"]]),item["body"])

@@ -3211,9 +3211,11 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "It's like taking the church with you.",
-          "teachers": [],
+          "teachers": [
+            "JKappel"
+          ],
           "tags": [
             "Ajahn Chah"
           ],
@@ -7365,9 +7367,9 @@
       "fTags": [],
       "annotations": [],
       "tags": [
+        "Ajahn Chah",
         "Culture/West",
-        "Learning",
-        "Ajahn Chah"
+        "Learning"
       ],
       "qTagCount": 3,
       "clips": [
@@ -9195,9 +9197,11 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "People in the world are attached to status. People in the religion are attached to their views.|Thai saying",
-          "teachers": [],
+          "teachers": [
+            "AP"
+          ],
           "tags": [
             "Monastic life",
             "Views"
@@ -12972,6 +12976,7 @@
             "AP"
           ],
           "tags": [
+            "Ajahn Chah",
             "Relinquishment"
           ],
           "indentLevel": 1
@@ -19395,7 +19400,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "The mind aspires to truth and beauty, but pain we obey.|Marcel Proust",
           "teachers": [
             "AP"
@@ -21019,7 +21024,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "For an enlightened being, there is no response to the human condition other than compassion.|Ajahn Māha Boowa",
+          "text": "For an enlightened being, there is no response to the human condition other than compassion.|Ajahn Mahā Boowa",
           "teachers": [
             "AP"
           ],
@@ -21266,7 +21271,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "Is it suffering?",
+          "text": "Is it suffering?|Ajahn Chah",
           "teachers": [
             "AP"
           ],
@@ -24502,7 +24507,7 @@
       "excerptNumber": 8,
       "fileNumber": 8,
       "kind": "Indirect quote",
-      "flags": "",
+      "flags": "q",
       "text": "In the old days, tudong monks would show up at the monastery and ask about almsfood routes, toilets, and meetings. Now the first thing tudong monks ask is, 'Is there a cell phone signal?'|anonymous",
       "teachers": [
         "AP"
@@ -30077,7 +30082,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "-",
+          "flags": "-q",
           "text": "Friends and relatives in old age, sickness and death.|a common way to begin a Dhamma talk in Thailand.",
           "teachers": [
             "AP"
@@ -30526,7 +30531,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "Money for a monk is like having wings to fly.|Anonymous",
           "teachers": [
             "AP"
@@ -31491,7 +31496,7 @@
         {
           "kind": "Reflection from",
           "flags": "",
-          "text": "Someone who is freed wouldn't be able to kill an ant no matter how you enticed or coerced them.",
+          "text": "Someone who is freed wouldn't be able to kill an ant no matter how you enticed or coerced them.|Ajahn Chah",
           "teachers": [
             "AP"
           ],
@@ -38983,7 +38988,7 @@
         },
         {
           "kind": "Simile from",
-          "flags": "",
+          "flags": "q",
           "text": "Being injected with poison.|Collected Teachings p. 159",
           "teachers": [
             "AP"
@@ -49831,7 +49836,7 @@
       "excerptNumber": 1,
       "fileNumber": 1,
       "kind": "Indirect quote",
-      "flags": "",
+      "flags": "q",
       "teachers": [
         "AP"
       ],
@@ -56009,7 +56014,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "In the morning, a healthy friend. In the evening, a wisp of cremation smoke.|unnamed Chan master",
           "teachers": [
             "BSteff"
@@ -58838,7 +58843,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "u",
+          "flags": "uq",
           "text": "\"Do we have to sweep all of this?\" \"No, just sweep what's in front of your broom.\"",
           "teachers": [
             "AP"
@@ -70596,9 +70601,9 @@
             "AP"
           ],
           "tags": [
+            "Ajahn Mahā Boowa",
             "Arahant",
             "Compassion",
-            "Ajahn Mahā Boowa",
             "Wat Pah Nanachat"
           ],
           "indentLevel": 1
@@ -82361,7 +82366,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "0",
+          "flags": "0q",
           "text": "Thai saying: \"That's as far as their merit takes them.\"",
           "teachers": [
             "AP"
@@ -88265,7 +88270,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "teachers": [
             "AP"
           ],
@@ -90571,6 +90576,7 @@
           ],
           "text": "Dhamma is not about the words, about the concepts, about the ideas. It's about the experience.|Ajahn Chah",
           "tags": [
+            "Ajahn Chah",
             "Dhamma",
             "Language",
             "Direct experience"
@@ -90625,11 +90631,12 @@
       ],
       "fTagOrderFlags": "EE",
       "tags": [
+        "Ajahn Chah",
         "Dhamma",
         "Language",
         "Direct experience"
       ],
-      "qTagCount": 3,
+      "qTagCount": 4,
       "clips": [
         [
           "$",
@@ -94850,7 +94857,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "I must hurry, for there they go, and I am their leader.|Sign above a boss's desk",
           "teachers": [
             "AKd"
@@ -98631,7 +98638,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "If you find something you think is a diamond, smash it with a hammer and see if it's really a diamond.|Ajahn Lee",
+          "text": "If you find something you think is a diamond, smash it with a hammer and see if it's really a diamond.|Ajahn Lee Dhammadharo",
           "teachers": [
             "AKc"
           ],
@@ -99809,7 +99816,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "Depression is anger without enthusiasm.|Anonymous",
           "teachers": [
             "TSud"
@@ -100874,10 +100881,9 @@
           "indentLevel": 1
         },
         {
-          "kind": "Indirect quote",
+          "kind": "Sutta",
           "flags": "",
-          "text": "Viññana is to be understood and pañña is to be developed.|MN 43.6",
-          "teachers": [],
+          "text": "MN 43.6: Viññana is to be understood and pañña is to be developed.",
           "tags": [
             "Consciousness",
             "Discernment",
@@ -104768,7 +104774,7 @@
       "excerptNumber": 7,
       "fileNumber": 7,
       "kind": "Indirect quote",
-      "flags": "0",
+      "flags": "0q",
       "text": "A diligent early support of Wat Pah Nanachat reflects, \"I don't have money, but I'm not poor.\"",
       "teachers": [
         "AP"
@@ -106024,7 +106030,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "-",
+          "flags": "-q",
           "text": "I've got nobody to blame anymore.|A junior monk",
           "teachers": [
             "AP"
@@ -108774,7 +108780,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "It's like riding along on a horse and asking, 'Where's the horse? Where's the horse?'",
+          "text": "It's like riding along on a horse and asking, 'Where's the horse? Where's the horse?'|Ajahn Chah",
           "teachers": [
             "AP"
           ],
@@ -119146,6 +119152,7 @@
             "AP"
           ],
           "tags": [
+            "Ajahn Siripañño",
             "Culture/Thailand"
           ],
           "indentLevel": 1
@@ -122624,10 +122631,9 @@
           "indentLevel": 1
         },
         {
-          "kind": "Indirect quote",
+          "kind": "Sutta",
           "flags": "",
-          "text": "That whereby one is a conceiver of the world, a perceiver of the world, that is the world.|SN 35.116",
-          "teachers": [],
+          "text": "SN 35.116: \"That whereby one is a conceiver of the world, a perceiver of the world, that is the world.\"",
           "tags": [
             "Nature of the cosmos",
             "Proliferation",
@@ -123314,12 +123320,9 @@
           "indentLevel": 1
         },
         {
-          "kind": "Indirect quote",
+          "kind": "Sutta",
           "flags": "",
-          "text": "Monks, do not be afraid of puñña.|Iti 22",
-          "teachers": [
-            "AP"
-          ],
+          "text": "Iti 22: \"Monks, do not be afraid of puñña.\"",
           "tags": [
             "Monastic life",
             "Merit",
@@ -123331,7 +123334,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "The happy mind is easily concentrated.",
           "teachers": [
             "AP"
@@ -123696,12 +123699,9 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Indirect quote",
+          "kind": "Sutta",
           "flags": "",
-          "text": "Whatever is of the nature to arise is of the nature to cease.|SN 56.11: Dhammacakkappavattana Sutta",
-          "teachers": [
-            "AP"
-          ],
+          "text": "SN 56.11.11: Dhammacakkappavattana Sutta: \"Whatever is of the nature to arise is of the nature to cease.\"",
           "tags": [
             "Impermanence"
           ],
@@ -127545,7 +127545,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "Being alive has many inherent risks.|Sondra Jewell",
           "teachers": [
             "ANy"
@@ -128279,9 +128279,9 @@
       "sessionNumber": 6,
       "excerptNumber": 13,
       "fileNumber": 13,
-      "kind": "Indirect quote",
+      "kind": "Reflection",
       "flags": "",
-      "text": "If you really want to pay homage to me, do the practice.|The Buddha",
+      "text": "If you really want to pay homage to the Buddha, do the practice.",
       "teachers": [
         "ASd"
       ],
@@ -128295,6 +128295,13 @@
       ],
       "fTagOrderFlags": "EE",
       "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "DN 16.5.2.",
+          "tags": [],
+          "indentLevel": 1
+        },
         {
           "kind": "Sutta",
           "flags": "",
@@ -135441,7 +135448,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "A spark of merit is worth more than a mountain of effort.|Tibetan saying",
           "teachers": [
             "AP"
@@ -137368,7 +137375,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "-",
+          "flags": "-q",
           "text": "What renunciation gives is inexhaustible strength of simplicity.|Martin Heidegger",
           "teachers": [
             "AP"
@@ -137476,6 +137483,7 @@
             "AP"
           ],
           "tags": [
+            "Ajahn Chah",
             "Nibbāna",
             "Relinquishment",
             "Cessation of Suffering"
@@ -138441,7 +138449,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "Two tigers in one cave.|Thai saying",
           "teachers": [
             "ACu"
@@ -143601,7 +143609,7 @@
         },
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "One of my pet peeves is when people say, 'I really love non-duality.'|Eric McCord",
           "teachers": [
             "AA"
@@ -144238,13 +144246,9 @@
       "fTags": [],
       "annotations": [
         {
-          "kind": "Indirect quote",
+          "kind": "Sutta",
           "flags": "",
-          "text": "Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.|Mil 320, quoted in The Island p. 38",
-          "teachers": [
-            "AA",
-            "AKc"
-          ],
+          "text": "Mil 320: \"Nibbāna, once realized, is the source of the beauty of the virtues of all living beings.\" Quoted in The Island p. 38.",
           "tags": [
             "Nibbāna"
           ],
@@ -144253,7 +144257,7 @@
         {
           "kind": "Follow-up",
           "flags": "",
-          "text": "Can you reflect on this? It doesn't quite fit with the Unconditioned, unformed, no footing....",
+          "text": "",
           "teachers": [
             "AA",
             "AKc"
@@ -146075,7 +146079,7 @@
       "excerptNumber": 3,
       "fileNumber": 3,
       "kind": "Indirect quote",
-      "flags": "",
+      "flags": "q",
       "text": "Oh, what joy to know that there is no happiness in the world!|Caption beneath a painting of a dancing monk at Suan Mokh Monastery",
       "teachers": [
         "AA"
@@ -152472,7 +152476,7 @@
       "excerptNumber": 7,
       "fileNumber": 7,
       "kind": "Indirect quote",
-      "flags": "0",
+      "flags": "0q",
       "text": "\"It is, friend, in just this fathom-high carcass endowed with perception and mind that I make known the world, the origin of the world, the cessation of the world, and the way leading to the cessation of the world.\" — SN 2.26.5 [Bhikkhu Bodhi translation].",
       "teachers": [
         "AP",
@@ -152588,7 +152592,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "Anyone who claims they understand quantum mechanics is lying.|Richard Feynman",
           "teachers": [],
           "tags": [
@@ -152694,7 +152698,7 @@
       "annotations": [
         {
           "kind": "Indirect quote",
-          "flags": "",
+          "flags": "q",
           "text": "Desire is a liar.",
           "teachers": [
             "AA"
@@ -153008,7 +153012,7 @@
         {
           "kind": "Indirect quote",
           "flags": "-",
-          "text": "The Five Khandhas exist, but they aren't real. The Dhamma is real, but it doesn't exist.|Ajahn Paññavaḍḍho",
+          "text": "The Five Khandhas exist, but they aren't real. The Dhamma is real, but it doesn't exist.|Ajahn Paññāvaḍḍho",
           "teachers": [
             "AA"
           ],
@@ -160827,6 +160831,7 @@
             "AP"
           ],
           "tags": [
+            "Ajahn Chah",
             "Relinquishment",
             "Tranquility"
           ],
@@ -173230,7 +173235,7 @@
       "group": "Monastics",
       "lineage": "Root teachers",
       "sessionCount": 1,
-      "excerptCount": 234,
+      "excerptCount": 254,
       "htmlFile": "ajahn-chah.html"
     },
     "ALee": {
@@ -173260,7 +173265,7 @@
       "allowTag": true,
       "group": "Monastics",
       "lineage": "Other Thai Forest teachers",
-      "excerptCount": 20,
+      "excerptCount": 21,
       "htmlFile": "ajahn-maha-boowa.html"
     },
     "ABaen": {
@@ -173350,7 +173355,7 @@
       "allowTag": true,
       "group": "Monastics",
       "lineage": "Other Thai Forest teachers",
-      "excerptCount": 1,
+      "excerptCount": 2,
       "htmlFile": ""
     },
     "AThoon": {
@@ -183047,7 +183052,7 @@
       "subtopics": [],
       "eventCount": 6,
       "sessionCount": 41,
-      "excerptCount": 858,
+      "excerptCount": 861,
       "fTagCount": 7,
       "subtopicFTagCount": 7,
       "listIndex": 484
@@ -183917,7 +183922,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "ajahn-siripanno.html",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "listIndex": 539
     },
     "Ajahn Kevali": {
@@ -200375,7 +200380,7 @@
       "text": "Teachers (29)",
       "tag": "Teachers",
       "subtagCount": 177,
-      "subtagExcerptCount": 1676
+      "subtagExcerptCount": 1679
     },
     {
       "level": 2,
@@ -200388,7 +200393,7 @@
       "text": "Monastic teachers (3)",
       "tag": "Monastic teachers",
       "subtagCount": 148,
-      "subtagExcerptCount": 1626
+      "subtagExcerptCount": 1629
     },
     {
       "level": 3,
@@ -200401,7 +200406,7 @@
       "text": "Thai Forest Tradition (103)",
       "tag": "Thai Forest Tradition",
       "subtagCount": 101,
-      "subtagExcerptCount": 1570
+      "subtagExcerptCount": 1573
     },
     {
       "level": 4,
@@ -200431,9 +200436,9 @@
       "flags": "",
       "name": "Ajahn Chah Subhaddo",
       "pali": "",
-      "excerptCount": 858,
+      "excerptCount": 861,
       "subsumed": false,
-      "text": "Ajahn Chah Subhaddo (858)",
+      "text": "Ajahn Chah Subhaddo (861)",
       "tag": "Ajahn Chah"
     },
     {
@@ -200447,7 +200452,7 @@
       "text": "Ajahn Chah lineage (16)",
       "tag": "Ajahn Chah lineage",
       "subtagCount": 60,
-      "subtagExcerptCount": 818
+      "subtagExcerptCount": 819
     },
     {
       "level": 5,
@@ -200715,7 +200720,7 @@
       "text": "Western Ajahn Chah lineage (8)",
       "tag": "Western Ajahn Chah lineage",
       "subtagCount": 36,
-      "subtagExcerptCount": 740
+      "subtagExcerptCount": 741
     },
     {
       "level": 6,
@@ -201042,9 +201047,9 @@
       "flags": "",
       "name": "Ajahn Siripañño",
       "pali": "",
-      "excerptCount": 2,
+      "excerptCount": 3,
       "subsumed": false,
-      "text": "Ajahn Siripañño (2)",
+      "text": "Ajahn Siripañño (3)",
       "tag": "Ajahn Siripañño"
     },
     {
@@ -205947,7 +205952,7 @@
       "sessions": 36,
       "excerpts": 252,
       "answersListenedTo": 252,
-      "tagsApplied": 1725,
+      "tagsApplied": 1726,
       "invalidTags": 0,
       "duration": "10:49:27"
     },
@@ -205958,7 +205963,7 @@
       "sessions": 19,
       "excerpts": 0,
       "answersListenedTo": 0,
-      "tagsApplied": 311,
+      "tagsApplied": 312,
       "invalidTags": 0,
       "duration": "2:09:48"
     },
@@ -206255,7 +206260,7 @@
       "sessions": 8,
       "excerpts": 230,
       "answersListenedTo": 95,
-      "tagsApplied": 594,
+      "tagsApplied": 595,
       "invalidTags": 0,
       "duration": "8:38:19"
     },
@@ -206376,7 +206381,7 @@
       "sessions": 3,
       "excerpts": 35,
       "answersListenedTo": 0,
-      "tagsApplied": 257,
+      "tagsApplied": 258,
       "invalidTags": 0,
       "duration": "2:46:54"
     },
@@ -206563,7 +206568,7 @@
       "sessions": 5,
       "excerpts": 24,
       "answersListenedTo": 24,
-      "tagsApplied": 183,
+      "tagsApplied": 184,
       "invalidTags": 0,
       "duration": "1:36:50"
     },
@@ -206684,7 +206689,7 @@
       "sessions": 2,
       "excerpts": 4,
       "answersListenedTo": 4,
-      "tagsApplied": 13,
+      "tagsApplied": 14,
       "invalidTags": 0,
       "duration": "1:34:57"
     }
@@ -211571,7 +211576,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/ajahn-chah.html",
-      "excerptCount": 858,
+      "excerptCount": 861,
       "fTagCount": 7
     },
     "Ajahn Liem": {
@@ -213685,7 +213690,7 @@
         "Ajahn Sumedho",
         "Ajahn Pasanno"
       ],
-      "excerptCount": 1484,
+      "excerptCount": 1487,
       "fTagCount": 37
     },
     "monastic": {
