@@ -365,13 +365,15 @@ def ItemRepr(item: dict) -> str:
 
     if type(item) == dict:
         if "tag" in item:
+            name = item["tag"]
             if "level" in item:
                 kind = "tagDisplay"
             elif "topicCode" in item:
                 kind = "subtopic"
+                name = item["displayAs"]
             else:
                 kind = "tag"
-            return(f"{kind}({repr(item['tag'])})")
+            return(f"{kind}({repr(name)})")
 
         event = session = fileNumber = None
         args = []

@@ -3741,20 +3741,20 @@
       "sessionNumber": 11,
       "excerptNumber": 6,
       "fileNumber": 7,
-      "kind": "Teaching",
-      "flags": "0",
-      "text": "Most people celebrate birth, but people should be crying. When people die, everyone grieves and sorrows, but they should be celebrating. ++Teaching++ of [Ajahn Chah](teacher:) recollected by [Joseph Kappel](teacher:).",
+      "kind": "Teaching from",
+      "flags": "",
+      "text": "Most people celebrate birth, but people should be crying. When people die, everyone grieves and sorrows, but they should be celebrating.|Ajahn Chah",
       "teachers": [
         "JKappel"
       ],
       "fTags": [],
       "annotations": [],
       "tags": [
+        "Ajahn Chah",
         "Birth",
         "Grief",
         "Death",
         "Happiness",
-        "Ajahn Chah",
         "Fierce/direct teaching"
       ],
       "qTagCount": 5,
@@ -3767,8 +3767,8 @@
       ],
       "duration": "1:11",
       "mirror": "local",
-      "body": "Most people celebrate birth, but people should be crying. When people die, everyone grieves and sorrows, but they should be celebrating. <b>Teaching</b> of <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> recollected by <a href=\"../teachers/joseph-kappel.html\">Joseph Kappel</a>.",
-      "attribution": ""
+      "body": "<b>Teaching</b> from Ajahn Chah: Most people celebrate birth, but people should be crying. When people die, everyone grieves and sorrows, but they should be celebrating.{attribution}",
+      "attribution": " Related by <a href=\"../teachers/joseph-kappel.html\">Joseph Kappel</a>."
     },
     {
       "event": "Chah2001",
@@ -26138,9 +26138,9 @@
         "Devotion to wakefulness"
       ],
       "fTagOrder": [
-        120
+        160
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [
         {
           "kind": "Quote",
@@ -29766,7 +29766,7 @@
         "Devotion to wakefulness"
       ],
       "fTagOrder": [
-        150
+        140
       ],
       "fTagOrderFlags": "E",
       "annotations": [],
@@ -30788,7 +30788,7 @@
         "Cause of Suffering"
       ],
       "fTagOrder": [
-        200
+        250
       ],
       "fTagOrderFlags": "E",
       "annotations": [
@@ -30888,7 +30888,7 @@
       "fTagOrder": [
         150
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Non-return",
@@ -30960,7 +30960,7 @@
         "Ajahn Ṭhānissaro"
       ],
       "fTagOrder": [
-        1001
+        140
       ],
       "fTagOrderFlags": "E",
       "annotations": [
@@ -32388,7 +32388,7 @@
         "Family"
       ],
       "fTagOrder": [
-        1001
+        70
       ],
       "fTagOrderFlags": "E",
       "annotations": [
@@ -32737,7 +32737,7 @@
         "Not-self"
       ],
       "fTagOrder": [
-        1001
+        150
       ],
       "fTagOrderFlags": "E",
       "annotations": [],
@@ -33005,7 +33005,7 @@
         "Energy"
       ],
       "fTagOrder": [
-        1001
+        70
       ],
       "fTagOrderFlags": "E",
       "annotations": [],
@@ -33700,7 +33700,7 @@
         "Insight meditation"
       ],
       "fTagOrder": [
-        1001
+        105
       ],
       "fTagOrderFlags": "E",
       "annotations": [],
@@ -35824,7 +35824,7 @@
       "excerptNumber": 27,
       "fileNumber": 27,
       "kind": "Question",
-      "flags": "C",
+      "flags": "",
       "text": "Thank you for wise and generous teachings. I'm at once grateful and also feeling sad. Every story and reference is about a man. Were there no women at the Fire Sermon (Mahāvagga 1.21)? How come there is no talk of the female disciples? Perhaps the next Buddha will be a woman. Can you speak about this absence of a female presence?",
       "teachers": [
         "AP"
@@ -35862,7 +35862,7 @@
         [
           "$",
           "42:28",
-          "45:00"
+          "45:00.5"
         ]
       ],
       "duration": "2:32",
@@ -35899,11 +35899,11 @@
       "clips": [
         [
           "$",
-          "45:00",
+          "45:00.5",
           "46:26"
         ]
       ],
-      "duration": "1:26",
+      "duration": "1:25",
       "fragmentFTags": [
         "Sense restraint"
       ],
@@ -39890,7 +39890,7 @@
       "fTagOrder": [
         115
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Children",
@@ -39952,7 +39952,7 @@
       "excerptNumber": 13,
       "fileNumber": 13,
       "kind": "Question",
-      "flags": "C",
+      "flags": "",
       "text": "There's a short book at the monastery about using the ever-present high-pitched buzz, also known as the sound of silence. Could you comment on how to use the sound of silence as an insight practice?",
       "teachers": [
         "AP"
@@ -40162,7 +40162,7 @@
       "fileNumber": 3,
       "kind": "Question",
       "flags": "",
-      "text": "Can you talk more about posture? I've noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump. Also, when I notice my body pulsating, should I allow movement or hold steady?",
+      "text": "Can you speak more about posture? I've noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump. Also, when I notice my body pulsating, should I allow movement or hold steady?",
       "teachers": [
         "AP"
       ],
@@ -40193,7 +40193,7 @@
         "Posture/Sitting"
       ],
       "mirror": "local",
-      "body": "“Can you talk more about posture? I’ve noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump. Also, when I notice my body pulsating, should I allow movement or hold steady?” {attribution}",
+      "body": "“Can you speak more about posture? I’ve noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump. Also, when I notice my body pulsating, should I allow movement or hold steady?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -40202,8 +40202,8 @@
       "excerptNumber": 3.1,
       "fileNumber": 4,
       "kind": "Question",
-      "flags": "fC",
-      "text": "Can you talk more about posture? I've noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump.",
+      "flags": "f",
+      "text": "Can you speak more about posture? I've noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump.",
       "teachers": [
         "AP"
       ],
@@ -40239,7 +40239,7 @@
         [
           "$",
           "5:03",
-          "5:51.3"
+          "5:15.4"
         ],
         [
           "$",
@@ -40247,9 +40247,9 @@
           "12:01"
         ]
       ],
-      "duration": "5:43",
+      "duration": "5:07",
       "mirror": "local",
-      "body": "“Can you talk more about posture? I’ve noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump.” {attribution}",
+      "body": "“Can you speak more about posture? I’ve noticed when fatigued and I slump a tad, my breath seems to be most noticeable and stuck at the slump.” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -40425,8 +40425,8 @@
         "Mental illness"
       ],
       "fTagOrder": [
-        150,
-        150
+        180,
+        180
       ],
       "fTagOrderFlags": "EE",
       "annotations": [],
@@ -40478,15 +40478,15 @@
         {
           "kind": "Fragment",
           "flags": "",
-          "startTime": "35:25",
+          "startTime": "35:25.7",
           "endTime": "37:36",
           "text": "",
           "indentLevel": 1,
-          "body": "<audio-chip src=\"../../audio/excerpts/TG2012/TG2012_S03_F11.mp3\" title=\"Thanksgiving Retreat 2012, S3 E9.1\" data-title-link=\"events/TG2012.html#TG2012_S03_F10\" data-duration=\"131\"><a href=\"../../audio/excerpts/TG2012/TG2012_S03_F11.mp3\" download=\"Thanksgiving Retreat 2012, S3 E9.1.mp3\">Download audio</a> (2:11)</audio-chip>"
+          "body": "<audio-chip src=\"../../audio/excerpts/TG2012/TG2012_S03_F11.mp3\" title=\"Thanksgiving Retreat 2012, S3 E9.1\" data-title-link=\"events/TG2012.html#TG2012_S03_F10\" data-duration=\"130\"><a href=\"../../audio/excerpts/TG2012/TG2012_S03_F11.mp3\" download=\"Thanksgiving Retreat 2012, S3 E9.1.mp3\">Download audio</a> (2:10)</audio-chip>"
         },
         {
           "kind": "Reflection",
-          "flags": "C",
+          "flags": "",
           "text": "Ātāpi as an aspect of Right Mindfulness is the application of effort for the burning up of defilements.",
           "teachers": [
             "AP"
@@ -40565,7 +40565,7 @@
       "fileNumber": 11,
       "annotations": [],
       "kind": "Reflection",
-      "flags": "Cf",
+      "flags": "f",
       "teachers": [
         "AP"
       ],
@@ -40588,11 +40588,11 @@
       "clips": [
         [
           "$",
-          "35:25",
+          "35:25.7",
           "37:36"
         ]
       ],
-      "duration": "2:11",
+      "duration": "2:10",
       "mirror": "local",
       "body": "<b>Reflection</b>{attribution}: Ātāpi as an aspect of Right Mindfulness is the application of effort for the burning up of defilements.",
       "attribution": " by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>"
@@ -40984,13 +40984,7 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [
-        "Meditation/Techniques"
-      ],
-      "fTagOrder": [
-        1001
-      ],
-      "fTagOrderFlags": "E",
+      "fTags": [],
       "annotations": [],
       "tags": [
         "Knowing itself",
@@ -41151,23 +41145,43 @@
         "Energy"
       ],
       "fTagOrder": [
-        1001
+        80
       ],
       "fTagOrderFlags": "E",
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "2:34",
+          "text": "Thanksgiving Retreat 2012, S4 E6 edited.mp3",
+          "indentLevel": 1,
+          "body": ""
+        },
+        {
+          "kind": "Note",
+          "flags": "",
+          "text": "Refer to the [earlier question](excerpt:TG2012_S04_F04) about gladdening the mind.",
+          "indentLevel": 1,
+          "body": "<b>Note:</b> Refer to the <a href=\"../events/TG2012.html#TG2012_S04_F04\">earlier question</a> about gladdening the mind."
+        }
+      ],
       "tags": [
         "Energy",
         "Gladdening the mind",
+        "Three Refuges",
+        "Benefit/gratification",
         "Happiness"
       ],
       "qTagCount": 1,
       "clips": [
         [
-          "$",
-          "22:03",
-          "24:37"
+          "Thanksgiving Retreat 2012, S4 E6 edited.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "22:03",
       "duration": "2:34",
       "mirror": "local",
       "body": "“What are skillful ways to increase energy (viriya)?” {attribution}",
@@ -41487,9 +41501,9 @@
         "Animal"
       ],
       "fTagOrder": [
-        1001
+        190
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Animal",
@@ -43318,7 +43332,7 @@
       "excerptNumber": 12,
       "fileNumber": 12,
       "kind": "Indirect quote",
-      "flags": "C",
+      "flags": "",
       "text": "I'm feeling a bit like a prisoner. People take me upstairs to stay and then they bring me down from time to time for questioning.|Ajahn Chah leading the 1979 retreat at Insight Meditation Society",
       "teachers": [
         "AP"
@@ -75625,7 +75639,7 @@
       "fTagOrder": [
         200
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [
         {
           "kind": "Sutta",
@@ -121563,7 +121577,7 @@
       "fTagOrder": [
         120
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Stream entry",
@@ -136349,7 +136363,7 @@
       "fTagOrder": [
         150
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Parents",
@@ -150633,13 +150647,7 @@
       "teachers": [
         "AKd"
       ],
-      "fTags": [
-        "Not-self"
-      ],
-      "fTagOrder": [
-        150
-      ],
-      "fTagOrderFlags": "E",
+      "fTags": [],
       "annotations": [
         {
           "kind": "Cut audio",
@@ -158086,7 +158094,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Meditation/Techniques"
+      ],
+      "fTagOrder": [
+        80
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Meditation/Techniques",
@@ -168246,11 +168260,8 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "s:",
-      "text": "from [_The Island_](), Chapter 13, pp. [226-230](The Island p. 226).",
-      "teachers": [
-        "AP",
-        "AA"
-      ],
+      "text": "",
+      "teachers": [],
       "fTags": [],
       "annotations": [
         {
@@ -168275,7 +168286,7 @@
       "tags": [],
       "qTagCount": 0,
       "duration": "46:23",
-      "body": "<b>Readings</b> from <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf\" target=\"_blank\" data-alt-href=\"../books/the-island.html\"><em>The Island</em></a> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>, Chapter 13, pp. <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf#page=225\" target=\"_blank\" data-alt-href=\"../books/the-island.html\">226-230</a>. {attribution2}",
+      "body": "<b>Readings</b>  {attribution2}",
       "attribution": "",
       "attribution2": "Read by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "teachers2": [
@@ -168288,10 +168299,6 @@
         "Iti 54",
         "MN 107.3",
         "MN 73.14"
-      ],
-      "books": [
-        "The Island",
-        "The Island|226"
       ]
     },
     {
@@ -193394,6 +193401,13 @@
       "url": "https://www.abhayagiri.org/media/discs/APasannoRetreats/2012%20Thanksgiving%20Retreat/AP_11_21_2012_Monastic_Retreat_Questions_and_Answers_4.mp3",
       "mirror": "remote"
     },
+    "Thanksgiving Retreat 2012, S4 E6 edited.mp3": {
+      "filename": "Thanksgiving Retreat 2012, S4 E6 edited.mp3",
+      "duration": "2:34",
+      "event": "TG2012",
+      "url": "",
+      "mirror": "local"
+    },
     "AP_11_21_2012_Monastic_Retreat_Questions_and_Answers_5.mp3": {
       "filename": "AP_11_21_2012_Monastic_Retreat_Questions_and_Answers_5.mp3",
       "duration": "01:20:17",
@@ -196594,9 +196608,9 @@
       "kind": "Story from",
       "category": "Stories",
       "defaultForm": 1,
-      "canBeExcerpt": false,
+      "canBeExcerpt": true,
       "canBeAnnotation": true,
-      "takesTimes": false,
+      "takesTimes": true,
       "takesTeachers": true,
       "takesTags": true,
       "expectsTags": true,
@@ -196690,12 +196704,12 @@
       "kind": "Teaching from",
       "category": "Teachings",
       "defaultForm": 1,
-      "canBeExcerpt": false,
+      "canBeExcerpt": true,
       "canBeAnnotation": true,
-      "takesTimes": false,
+      "takesTimes": true,
       "takesTeachers": true,
       "takesTags": true,
-      "expectsTags": false,
+      "expectsTags": true,
       "indirectSpeech": true,
       "ignoreConsent": false,
       "appendToExcerpt": false,
@@ -196754,12 +196768,12 @@
       "kind": "Reflection from",
       "category": "Teachings",
       "defaultForm": 1,
-      "canBeExcerpt": false,
+      "canBeExcerpt": true,
       "canBeAnnotation": true,
-      "takesTimes": false,
+      "takesTimes": true,
       "takesTeachers": true,
       "takesTags": true,
-      "expectsTags": false,
+      "expectsTags": true,
       "indirectSpeech": true,
       "ignoreConsent": false,
       "appendToExcerpt": false,
@@ -198483,7 +198497,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 67,
       "sessionCount": 356,
-      "excerptCount": 3007,
+      "excerptCount": 3006,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -198590,7 +198604,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 5,
       "sessionCount": 36,
-      "excerptCount": 316,
+      "excerptCount": 315,
       "htmlFile": "ajahn-amaro.html"
     },
     "ANyanadhammo": {
@@ -202640,7 +202654,7 @@
       ],
       "excerptCount": 61,
       "fTagCount": 3,
-      "subtopicFTagCount": 3,
+      "subtopicFTagCount": 2,
       "listIndex": 152
     },
     "Factors for stream entry": {
@@ -202838,7 +202852,6 @@
       ],
       "excerptCount": 15,
       "fTagCount": 1,
-      "subtopicFTagCount": 1,
       "listIndex": 160
     },
     "Arahant": {
@@ -204794,8 +204807,8 @@
       "eventCount": 1,
       "sessionCount": 2,
       "excerptCount": 152,
-      "fTagCount": 6,
-      "subtopicFTagCount": 6,
+      "fTagCount": 5,
+      "subtopicFTagCount": 5,
       "listIndex": 274
     },
     "Naturalness": {
@@ -204949,7 +204962,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "benefitgratification.html",
-      "excerptCount": 9,
+      "excerptCount": 10,
       "listIndex": 282
     },
     "Drawbacks": {
@@ -205238,7 +205251,7 @@
         "Three Refuges"
       ],
       "subtopics": [],
-      "excerptCount": 71,
+      "excerptCount": 72,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
       "listIndex": 295
@@ -212991,7 +213004,6 @@
       ],
       "excerptCount": 40,
       "fTagCount": 2,
-      "subtopicFTagCount": 2,
       "listIndex": 729
     },
     "Hell": {
@@ -215107,7 +215119,7 @@
       ],
       "excerptCount": 34,
       "fTagCount": 3,
-      "subtopicFTagCount": 3,
+      "subtopicFTagCount": 2,
       "listIndex": 840
     },
     "Monastic life": {
@@ -216622,7 +216634,7 @@
       "sessionCount": 2,
       "excerptCount": 42,
       "fTagCount": 2,
-      "subtopicFTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 928
     },
     "Children": {
@@ -216647,7 +216659,7 @@
       ],
       "excerptCount": 21,
       "fTagCount": 4,
-      "subtopicFTagCount": 3,
+      "subtopicFTagCount": 2,
       "listIndex": 929
     },
     "Artistic expression": {
@@ -222931,7 +222943,7 @@
       "text": "Three Aspects of Understanding (8)",
       "tag": "Aspects of Understanding",
       "subtagCount": 3,
-      "subtagExcerptCount": 35
+      "subtagExcerptCount": 36
     },
     {
       "level": 3,
@@ -222939,9 +222951,9 @@
       "flags": "",
       "name": "Benefit/gratification",
       "pali": "assāda",
-      "excerptCount": 9,
+      "excerptCount": 10,
       "subsumed": false,
-      "text": "Benefit/gratification (9) [assāda]",
+      "text": "Benefit/gratification (10) [assāda]",
       "tag": "Benefit/gratification"
     },
     {
@@ -223084,12 +223096,12 @@
       "flags": "",
       "name": "Three Refuges",
       "pali": "tisaraṇa",
-      "excerptCount": 71,
+      "excerptCount": 72,
       "subsumed": false,
-      "text": "Three Refuges (71) [tisaraṇa]",
+      "text": "Three Refuges (72) [tisaraṇa]",
       "tag": "Three Refuges",
       "subtagCount": 6,
-      "subtagExcerptCount": 449
+      "subtagExcerptCount": 450
     },
     {
       "level": 2,
@@ -234282,7 +234294,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/three-refuges.html",
-      "excerptCount": 71,
+      "excerptCount": 72,
       "fTagCount": 2
     },
     "Buddha": {
@@ -234871,7 +234883,7 @@
       },
       "htmlPath": "clusters/energy.html",
       "excerptCount": 106,
-      "fTagCount": 6
+      "fTagCount": 5
     },
     "Mindfulness": {
       "tag": "Mindfulness",
@@ -235253,7 +235265,7 @@
       "subtags": {},
       "htmlPath": "tags/not-self.html",
       "excerptCount": 152,
-      "fTagCount": 6
+      "fTagCount": 5
     },
     "Nature of mind": {
       "tag": "Nature of mind",
@@ -235290,7 +235302,7 @@
       },
       "htmlPath": "clusters/realms-of-existence.html",
       "excerptCount": 196,
-      "fTagCount": 8
+      "fTagCount": 6
     },
     "Dependent origination": {
       "tag": "Dependent origination",
@@ -235514,7 +235526,7 @@
       },
       "htmlPath": "clusters/stages-of-awakening.html",
       "excerptCount": 147,
-      "fTagCount": 8
+      "fTagCount": 6
     },
     "Nibbāna": {
       "tag": "Nibbāna",
@@ -235985,7 +235997,7 @@
       },
       "htmlPath": "clusters/family.html",
       "excerptCount": 130,
-      "fTagCount": 8
+      "fTagCount": 6
     },
     "Relationships": {
       "tag": "Relationships",
@@ -237215,7 +237227,7 @@
         "Dhamma",
         "Saṅgha"
       ],
-      "excerptCount": 370,
+      "excerptCount": 371,
       "fTagCount": 17
     },
     "foundations": {
@@ -237320,7 +237332,7 @@
         "Equanimity"
       ],
       "excerptCount": 1243,
-      "fTagCount": 55
+      "fTagCount": 54
     },
     "unskillful": {
       "code": "unskillful",
@@ -237362,7 +237374,7 @@
         "Realms of existence"
       ],
       "excerptCount": 646,
-      "fTagCount": 29
+      "fTagCount": 26
     },
     "origination": {
       "code": "origination",
@@ -237402,7 +237414,7 @@
         "Nibbāna"
       ],
       "excerptCount": 703,
-      "fTagCount": 27
+      "fTagCount": 25
     },
     "teachers": {
       "code": "teachers",
@@ -237496,7 +237508,7 @@
         "Technology"
       ],
       "excerptCount": 679,
-      "fTagCount": 48
+      "fTagCount": 46
     }
   },
   "textGroup": {
