@@ -29094,7 +29094,17 @@
       "sessionNumber": 1,
       "excerptNumber": 1.1,
       "fileNumber": 2,
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Append audio",
+          "flags": "-",
+          "startTime": "5:42",
+          "endTime": "6:12",
+          "text": "",
+          "indentLevel": 1,
+          "body": ""
+        }
+      ],
       "kind": "Question",
       "flags": "f",
       "teachers": [
@@ -29125,9 +29135,14 @@
           "$",
           "0:01.5",
           "4:14"
+        ],
+        [
+          "$",
+          "5:42",
+          "6:12"
         ]
       ],
-      "duration": "4:12",
+      "duration": "4:42",
       "mirror": "local",
       "body": "“How can one enjoy meditation when one’s knees are on fire?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -197611,7 +197626,7 @@
       "appendToExcerpt": false,
       "inheritTeachersFrom": "",
       "exclude": false,
-      "usageNotes": "A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. If tags are applied to the main fragment annotation, the fragment excerpt tags are replaced by these tags. Main fragments do not display a separate audio player.",
+      "usageNotes": "A main fragment annotation indicates a fragment should be created from the excerpt and any annotations preceding this annotation. If tags are applied to the main fragment annotation, the fragment excerpt tags are replaced by these tags. Sub-annotations describe additional audio edits that are applied only to the fragment. Main fragments do not display a separate audio player.",
       "form": [
         "",
         "unimplemented",
