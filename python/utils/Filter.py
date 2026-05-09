@@ -145,6 +145,16 @@ class FTag(Tag):
         
         return self.negate
 
+class HomepageOnlyTag(Tag):
+    "A filter that passes excerpts that should be displayed on the homepage despite not being featured."
+
+    def Match(self, item: dict) -> bool:        
+        for t in item.get("homepageOnlyTags",()):
+            if t in self.passTags:
+                return not self.negate
+        
+        return self.negate
+
 class ClusterFTag(Filter):
     "A filter that passes excerpts that should be featured on a cluster page."
 

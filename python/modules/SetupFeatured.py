@@ -191,21 +191,25 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
 
-    oldFTags = None
+    oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt)) or []
     if not topicTags: # If there are no current fTags, check for previous fTags
-        oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt),[])
         topicTags = [tag for tag in oldFTags if tag in keyTopicTags]
 
-    if topicTags: # Since we select only featured excerpts from key topic tags, this true unless the excerpt has been demoted
+    if topicTags:
         tag = topicTags[0]
         subtopic = gDatabase["subtopic"][gDatabase["tag"][tag]["partOfSubtopics"][0]]
         isCluster = subtopic["subtags"] # A cluster has subtags; a regular tag doesn't
         if isCluster:
             tagDescription = f"tag cluster {Build.HtmlSubtopicLink(subtopic['tag'])}"
         else:
-            tagDescription = f"tag {Build.HtmlTagLink(tag)}"
+            tagDescription = f"tag [{Build.HtmlTagLink(tag)}]"
 
         html += f"<hr><p>{'Formerly f' if oldFTags else 'F'}eatured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
+    else:
+        if excerpt["fTags"]:
+            html += f"<hr><p>Featured in tag [{Build.HtmlTagLink(excerpt['fTags'][0])}].</p>"
+        elif otherTags := excerpt.get("homepageOnlyTags") or oldFTags:
+            html += f"<hr><p>Other excerpts with tag [{Build.HtmlTagLink(otherTags[0])}].</p>"
 
     return {
         "text": excerpt["text"],
@@ -223,7 +227,9 @@ def FeaturedExcerptFilter() -> Filter.Filter:
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
     return Filter.Or(
         Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter),
-        Filter.Flags("!"))
+        Filter.Flags("!"),
+        Filter.HomepageOnlyTag(Filter.All)
+    )
 
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
