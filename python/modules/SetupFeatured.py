@@ -191,7 +191,10 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
 
-    oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt)) or []
+    if gFeaturedDatabase and gFeaturedDatabase.get("oldFTags"):
+        oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt)) or []
+    else:
+        oldFTags = []
     if not topicTags: # If there are no current fTags, check for previous fTags
         topicTags = [tag for tag in oldFTags if tag in keyTopicTags]
 
