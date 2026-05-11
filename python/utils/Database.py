@@ -223,6 +223,11 @@ def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
         teacherDictCache.update((t,t) for t in teacherDB)
         teacherDictCache.update((teacherDB[t]["attributionName"].lower(),t) for t in teacherDB)
         teacherDictCache.update((teacherDB[t]["fullName"].lower(),t) for t in teacherDB)
+        for teacher in teacherDB.values(): # Match abbreviated tags like Ven. Ñāṇatiloka
+            for name in (teacher["attributionName"],teacher["fullName"]):
+                tag = TagLookup(name)
+                if tag and tag != name:
+                    teacherDictCache[tag.lower()] = teacher["teacher"]
 
     # First try matching case, then not
     return teacherDictCache.get(teacherRef) or teacherDictCache.get(teacherRef.lower()) or None
