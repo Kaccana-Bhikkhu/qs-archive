@@ -50,7 +50,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(51<i class=\"fa fa-star\"></i>)",
+    "suffix": "(50<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -68,7 +68,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(48<i class=\"fa fa-star\"></i>)",
+    "suffix": "(47<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -113,7 +113,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(45<i class=\"fa fa-star\"></i>)",
+    "suffix": "(43<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -1086,7 +1086,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 129
+    "excerptCount": 130
   },
   {
     "short": "Women's monastic forms",
@@ -4488,7 +4488,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 2
   },
   {
     "short": "Ajahn Khao",
@@ -4929,7 +4929,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 3
   },
   {
     "short": "Bhante Gunaratana",
@@ -5753,6 +5753,15 @@
   {
     "short": "Wat Ram Poeng",
     "link": "tags/wat-ram-poeng.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "Wat Sai Ngam (Suphanburi)",
+    "link": "tags/wat-sai-ngam-suphanburi.html",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
@@ -7080,7 +7089,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 91
+    "excerptCount": 92
   },
   {
     "short": "Fasting",
@@ -7449,7 +7458,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 12
+    "excerptCount": 13
   },
   {
     "short": "Pace of life",
@@ -8879,7 +8888,7 @@
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Tudong (91)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Tudong (92)",
     "excerptCount": 0
   },
   {
@@ -9915,7 +9924,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 1
+    "excerptCount": 2
   },
   {
     "short": "Bhikkhu Ñāṇananda",
@@ -10320,7 +10329,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 711
+    "excerptCount": 709
   },
   {
     "short": "All questions",
@@ -10338,7 +10347,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 679
+    "excerptCount": 680
   },
   {
     "short": "All quotes",
@@ -10347,7 +10356,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 574
+    "excerptCount": 569
   },
   {
     "short": "All meditations",
@@ -10365,7 +10374,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 372
+    "excerptCount": 373
   },
   {
     "short": "All readings",
@@ -11121,7 +11130,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 6
+    "excerptCount": 7
   },
   {
     "short": "MN 75: Māgaṇḍiyasutta, To Māgandiya",
@@ -15261,7 +15270,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 113
+    "excerptCount": 114
   },
   {
     "short": "Amaravati Chanting Book Volume 2",
@@ -15342,7 +15351,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 79
+    "excerptCount": 78
   },
   {
     "short": "Catastrophe/Apostrophe by Ajahn Amaro",
@@ -15842,6 +15851,15 @@
   {
     "short": "The Magic of the Mind by Bhikkhu Ñāṇananda",
     "link": "books/Nyanananda.html#nyanananda-magic-of-the-mind",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"book-open\"></i>",
+    "suffix": "",
+    "excerptCount": 2
+  },
+  {
+    "short": "Buddhist Dictionary: A Manual of Buddhist Terms and Doctrines by Venerable Ñāṇatiloka",
+    "link": "books/Nyanatiloka.html#nyanatiloka-buddhist-dictionary",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",

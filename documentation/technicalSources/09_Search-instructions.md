@@ -115,7 +115,7 @@ is converted into these five blobs:
 
 1. `^could you please explain about the death process...how quickly does rebirth occur?^{ajahn pasanno}[death]+[rebirth]//[recollection/death][delusion][self-identity view][recollection][impermanence][not-self][theravada][history/early buddhism][sutta][vajrayana][clinging][culture/thailand][chanting][goodwill][relinquishment][ceremony/ritual][kamma]|#question#verylong#&questions&@metta2008@s01@e3@`
 2. `^chanting book p 55: five recollections; chanting book p 12: the body is impermanent...^{}//[similes][craving][rebirth]|#reference#&references&`
-3. `^fire blown by the wind (mn-72: aggivacchagotta sutta)^{ajahn pasanno}//[]|#simile#&teachings&`
+3. `^fire blown by the wind sn 44.9: kutuhalasala sutta^{ajahn pasanno}//[similes]|#simile#&teachings&`
 4. `^a former monk asks ajahn chah about working with dying people to give them the opportunity for wholesome rebirth.^{ajahn pasanno}//[ajahn chah][death]+[teachers][rebirth][fierce/direct teaching]|#story#&stories&`
 5. `^i practice dying. the dalai lama^{ajahn pasanno}//[dalai lama][recollection/death]|#indirectquote#&quotes&`
 
@@ -153,4 +153,4 @@ With a bit of ingenuity, complex searches can be built up out of simpler compone
 
 4. Finally, combining these with the or operator yields the desired result: `|(&(!{Ajahn Pasanno} !{}) &({Ajahn Pasanno} "{*}{*}"))`.
 
-5. You can test this search [here](search:'|(&(!{Ajahn Pasanno} !{})  &({Ajahn Pasanno} "{*}{*}"))'). Try adding @TG to find the six Thanksgiving Retreat exceprts where another teacher contributed.
+5. You can test this search [here](search:'|(&(!{Ajahn Pasanno} !{})  &({Ajahn Pasanno} "{*}{*}"))'). Try adding @TG to find the Thanksgiving Retreat exceprts where another teacher contributed.

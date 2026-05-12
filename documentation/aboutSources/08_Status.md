@@ -1,23 +1,19 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-## New in the December 2025 release:
+## New in the May 2026 release:
  - New content:
-     - [2013 Winter Retreat](event:WR2013): The first 27 sessions are now available.
-     - [Upāsakā Day 2017: Becoming the Buddha](event:UD2017-1).
- - Search results are [sorted by relevance](about:search-instructions#sorting-by-relevance).
- - Display special excerpts on the homepage on significant anniversaries.
- - Link to Bhante Buddharakkhita's tranlsation of the [Dhammapada](../texts/Dhp.html) and John D. Ireland's translation of the [Itivuttaka](../texts/Iti.html).
- - Ctrl-click on suttas to link to [SuttaCentral Express](https://suttacentral.express).
- - [Boolean search operators](about:search-instructions#boolean-search-operations).
+     - 2010, 2011, and 2012 Thanksgiving Retreat Q&A sessions
+     - Additional sessions from the 2013 and 2025 Winter Retreats
+ - Home page loads faster and uses less data
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 190 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 556 transcribed pages, of which 528 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 210 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
-The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. Untranscribed audio recordings of Ajahn Pasanno question and answer sessions are available for the 2010-2012 Thanksgiving Retreats. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats. If you would like to help transcribe and tag these retreats, see [Want to help?](about:want-to-help) for details.
+The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. The May 2026 release includes all questions from the 2010-2012 retreats. The 2004, 2020, and 2021 retreats are in progress. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats.
 
 ### Winter Retreats
-Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 46 sessions](event:WR2025) are now included in the Archive.
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 49 sessions](event:WR2025) are now included in the Archive.
 
 ### Spirit Rock Daylongs
 Six daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
@@ -111,3 +107,12 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
      - [Kathina Q&A with the Chithurst Community](event:Chithurst2025-2)
  - [Sutta](../texts/Sutta.html), [vinaya](../texts/Vinaya.html), and [book](../books/Modern.html) reference pages list excerpts that refer to these sources.
  - Alt-clicking on sutta, vinaya, or book references takes one to the relevant reference page.
+ ### December 2025 release:
+ - New content:
+     - [2013 Winter Retreat](event:WR2013): The first 27 sessions are now available.
+     - [Upāsakā Day 2017: Becoming the Buddha](event:UD2017-1).
+ - Search results are [sorted by relevance](about:search-instructions#sorting-by-relevance).
+ - Display special excerpts on the homepage on significant anniversaries.
+ - Link to Bhante Buddharakkhita's tranlsation of the [Dhammapada](../texts/Dhp.html) and John D. Ireland's translation of the [Itivuttaka](../texts/Iti.html).
+ - Ctrl-click on suttas to link to [SuttaCentral Express](https://suttacentral.express).
+ - [Boolean search operators](about:search-instructions#boolean-search-operations).

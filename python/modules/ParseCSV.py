@@ -1206,15 +1206,16 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
             baseLevel = fragmentAnnotation["indentLevel"]
             if mainFragment:
                 fragmentExcerptTemplate = excerpt
-                fragmentAnnotations = [copy.copy(a) for a in Database.SubAnnotations(excerpt,baseAnnotations[n])]
+                audioAnnotations = [copy.copy(a) for a in Database.SubAnnotations(excerpt,baseAnnotations[n])]
                     # Copy subannotations to the Main fragment
-                for a in fragmentAnnotations:
+                for a in audioAnnotations:
                     a["indentLevel"] = a["indentLevel"] - baseLevel
                     if gDatabase["kind"][a["kind"]]["category"] != "Audio":
                         Alert.warning(a," to ",excerpt,": Main fragment can only have Audio subannotations.")
 
-                fragmentAnnotations.extend(copy.copy(baseAnnotations[number]) for number in range(n))
-                    # Copy all annotations previous to the Main fragment annotation
+                fragmentAnnotations = [copy.copy(baseAnnotations[number]) for number in range(n)] + audioAnnotations
+                    # Copy all annotations previous to the Main fragment annotation;
+                    # Audio subannotations go after all other annotations
                 fragmentFTagSource = fragmentTagSource = fragmentAnnotation
                 if not fragmentTagSource["qTag"] and not fragmentTagSource["aTag"]:
                     fragmentTagSource = excerpt
