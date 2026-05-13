@@ -1700,8 +1700,14 @@ def main():
         
         if re.match(".*[0-9]{4}",baseName): # Event files contain a four-digit year and are loaded after all other files
             continue
-
-        gDatabase[CamelCase(baseName)] = ListToDict(CSVFileToDictList(fullPath))
+        
+        baseName = CamelCase(baseName)
+        gDatabase[baseName] = ListToDict(CSVFileToDictList(fullPath))
+        
+        # Convert single-column sheets to dicts with blank values
+        if len(next(iter(gDatabase[baseName].values()))) == 1:
+            gDatabase[baseName] = {key:"" for key in gDatabase[baseName]}
+        
     
     LoadTagsFile(gDatabase,os.path.join(gOptions.csvDir,"Tag.csv"))
     PrepareReferences(gDatabase["reference"])

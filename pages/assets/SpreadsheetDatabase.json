@@ -193091,29 +193091,15 @@
     }
   },
   "format": {
-    "Short teaching": {
-      "format": "Short teaching"
-    },
-    "Daylong event": {
-      "format": "Daylong event"
-    },
-    "Multiday event": {
-      "format": "Multiday event"
-    },
-    "Interview": {
-      "format": "Interview"
-    }
+    "Short teaching": "",
+    "Daylong event": "",
+    "Multiday event": "",
+    "Interview": ""
   },
   "medium": {
-    "In-person": {
-      "medium": "In-person"
-    },
-    "Online": {
-      "medium": "Online"
-    },
-    "Hybrid": {
-      "medium": "Hybrid"
-    }
+    "In-person": "",
+    "Online": "",
+    "Hybrid": ""
   },
   "reference": {
     "stillness flowing": {
@@ -206926,53 +206912,23 @@
     }
   },
   "group": {
-    "Communities": {
-      "group": "Communities"
-    },
-    "Monastics": {
-      "group": "Monastics"
-    },
-    "Lay teachers": {
-      "group": "Lay teachers"
-    },
-    "Lay supporters": {
-      "group": "Lay supporters"
-    }
+    "Communities": "",
+    "Monastics": "",
+    "Lay teachers": "",
+    "Lay supporters": ""
   },
   "lineage": {
-    "Root teachers": {
-      "lineage": "Root teachers"
-    },
-    "Disciples of Ajahn Chah": {
-      "lineage": "Disciples of Ajahn Chah"
-    },
-    "Thai disciples of Ajahn Chah": {
-      "lineage": "Thai disciples of Ajahn Chah"
-    },
-    "Western disciples of Ajahn Chah": {
-      "lineage": "Western disciples of Ajahn Chah"
-    },
-    "Other Thai Forest teachers": {
-      "lineage": "Other Thai Forest teachers"
-    },
-    "Other Thai teachers": {
-      "lineage": "Other Thai teachers"
-    },
-    "Other Theravāda teachers": {
-      "lineage": "Other Theravāda teachers"
-    },
-    "Māhayāna teachers": {
-      "lineage": "Māhayāna teachers"
-    },
-    "Vajrayāna teachers": {
-      "lineage": "Vajrayāna teachers"
-    },
-    "Christian monastics": {
-      "lineage": "Christian monastics"
-    },
-    "Other": {
-      "lineage": "Other"
-    }
+    "Root teachers": "",
+    "Disciples of Ajahn Chah": "",
+    "Thai disciples of Ajahn Chah": "",
+    "Western disciples of Ajahn Chah": "",
+    "Other Thai Forest teachers": "",
+    "Other Thai teachers": "",
+    "Other Theravāda teachers": "",
+    "Māhayāna teachers": "",
+    "Vajrayāna teachers": "",
+    "Christian monastics": "",
+    "Other": ""
   },
   "name": {
     "Amaravati Saṅgha": {
@@ -210234,30 +210190,14 @@
     }
   },
   "reviewedTag": {
-    "Food": {
-      "tag": "Food"
-    },
-    "Merit": {
-      "tag": "Merit"
-    },
-    "Perception": {
-      "tag": "Perception"
-    },
-    "Nature of mind": {
-      "tag": "Nature of mind"
-    },
-    "Funerals": {
-      "tag": "Funerals"
-    },
-    "Wat Pah Pong": {
-      "tag": "Wat Pah Pong"
-    },
-    "Self-identity view": {
-      "tag": "Self-identity view"
-    },
-    "Suffering": {
-      "tag": "Suffering"
-    }
+    "Food": "",
+    "Merit": "",
+    "Perception": "",
+    "Nature of mind": "",
+    "Funerals": "",
+    "Wat Pah Pong": "",
+    "Self-identity view": "",
+    "Suffering": ""
   },
   "subtopic": {
     "Impermanence": {
