@@ -20,7 +20,7 @@ Object.keys(PALI_DIACRITICS).forEach((letter) => {
     PALI_DIACRITIC_MATCH_ALL[letter] = `[${letter}${PALI_DIACRITICS[letter]}]`;
 });
 
-const DEBUG = true;
+const DEBUG = false;
 
 export function regExpEscape(literal_string) {
     return literal_string.replace(/[-[\]{}()*+!<>=:?.\/\\^$|#\s,]/g, '\\$&');

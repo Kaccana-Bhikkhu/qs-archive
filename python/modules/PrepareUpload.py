@@ -94,7 +94,8 @@ def CheckPreviousVersionFiles() -> None:
                 Alert.structure("\n".join(sorted(removed)),indent=0,lineSpacing=1)
             if added:
                 Alert.info(len(added),"file(s) were added since the previous release:")
-                Alert.structure("\n".join(sorted(added)),indent=0,lineSpacing=1)
+                if removed or len(added) < 100:
+                    Alert.structure("\n".join(sorted(added)),indent=0,lineSpacing=1)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"

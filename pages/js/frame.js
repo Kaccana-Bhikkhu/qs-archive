@@ -11,7 +11,7 @@ const errorPage = "./about/Page-Not-Found.html";
 const PATH_PART = /[^#?]*/;
 const SEARCH_PART = /\?[^#]*/;
 
-const DEBUG = true;
+const DEBUG = false;
 if (DEBUG) 
 	globalThis.debugLog = console.log.bind(window.console)
 else 
