@@ -621,11 +621,10 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            bits = [reference.BreadCrumbs(level)]
-            bits.append("<hr>")
-            return "\n".join(bits)
+            header = reference.BreadCrumbs(level)
         else:
-            return self.page.info.title + "\n<hr>"
+            header = self.page.info.title
+        return header + f" ({TotalItems(self.references)})\n<hr>"
     
     def FooterHtml(self) -> str:
         """Returns html that goes a the bottom of the page in whole page mode."""
@@ -886,13 +885,16 @@ class PageWithHeadings(ReferencePageMaker):
 def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
     """Return the page information for a given page of references."""
 
+    def FullTitle(title: str) -> str:
+        return f"References – {title}"
+
     if isinstance(firstRef,TextReference):
         text = firstRef.text
         if level == 0:
             if text in TextGroupSet("vinaya"):
-                return Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
+                return Html.PageInfo("Vinaya","texts/Vinaya.html",FullTitle("Vinaya"))
             else:
-                return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
+                return Html.PageInfo("Sutta","texts/Sutta.html",FullTitle("Suttas"))
         
         referenceGroup = firstRef.Truncate(level)
         referenceGroup = ConsecutiveTexts.FromReference(referenceGroup) or referenceGroup
@@ -909,15 +911,15 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
         return Html.PageInfo(
             title,
             f"{directory}{text}{strNumbers}.html",
-            f"References – {title}"
+            FullTitle(title)
         )
     else:
         directory = "books/"
         if level == 0:
             if firstRef.IsCommentary():
-                return Html.PageInfo("Commentary","books/Commentary.html","References – Commentary")
+                return Html.PageInfo("Commentary","books/Commentary.html",FullTitle("Commentary"))
             else:
-                return Html.PageInfo("Modern","books/Modern.html","References – Modern Authors")
+                return Html.PageInfo("Modern","books/Modern.html",FullTitle("Modern Authors"))
         elif level == 1: # An author page
             author = firstRef.author
             if not author:
@@ -927,14 +929,14 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
             return Html.PageInfo(
                 Utils.CapitalizeFirst(authorName),
                 f"{directory}{author}.html",
-                f"References – {authorName}"
+                FullTitle(authorName)
             )
         elif level == 2: # A book page
             title = firstRef.Truncate(level).FullName()
             return Html.PageInfo(
                 Utils.RemoveHtmlTags(title),
                 f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
-                f"References – {title}"
+                FullTitle(title)
             )
 
 def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:

@@ -36799,7 +36799,7 @@
         {
           "kind": "Reference",
           "flags": "",
-          "text": "_Issues Through the Moss_ by Karin Bagøien.",
+          "text": "[Issues Through the Moss]().",
           "tags": [],
           "indentLevel": 1
         }
@@ -193632,7 +193632,7 @@
       "year": "1971",
       "commentary": false,
       "filename": "concept_and_reality.pdf",
-      "remoteUrl": "https://patthana.net/wp-content/uploads/2014/12/concept_and_reality.pdf",
+      "remoteUrl": "",
       "otherUrl": "",
       "author": [
         "Nyanananda"
@@ -209252,6 +209252,18 @@
       "knownMonth": "",
       "knownYear": "",
       "estimatedYear": "1953",
+      "tweak": "",
+      "duplicate": ""
+    },
+    "Karin Bagøien": {
+      "fullName": "Karin Bagøien",
+      "alphabetize": "Bagøien, Karin",
+      "alphabetize2": "",
+      "sortBy": "",
+      "exactDate": "",
+      "knownMonth": "",
+      "knownYear": "",
+      "estimatedYear": "",
       "tweak": "",
       "duplicate": ""
     },
