@@ -1150,7 +1150,9 @@ class Formatter:
 
         a(" ")
         if self.excerptPreferStartTime and excerpt['excerptNumber'] and (excerpt["clips"][0].file == "$" or excerpt.get("startTimeInSession",None)):
-            a(f'[{excerpt.get("startTimeInSession",None) or excerpt["clips"][0].start}] ')
+            startTimeStr = excerpt.get("startTimeInSession",None) or excerpt["clips"][0].start
+            roundedSeconds = round(Mp3DirectCut.ToTimeDelta(startTimeStr).total_seconds())
+            a(f'[{Mp3DirectCut.TimeDeltaToStr(timedelta(seconds=roundedSeconds))}] ')
 
         def ListAttributionKeys() -> Generator[Tuple[str,str]]:
             for num in range(1,10):
