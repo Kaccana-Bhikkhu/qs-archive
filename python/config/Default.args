@@ -41,8 +41,8 @@
 --renderedDatabase pages/assets/RenderedDatabase.json
 
 // Document options:
---info "releaseName:December 2025 release"
---info "releaseDate:December 27, 2025"
+--info "releaseName:May 2026 release"
+--info "releaseDate:May 15, 2026"
 --info "releaseYear:2026"
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"
@@ -52,6 +52,9 @@
 --globalTemplate templates/Global.html
 --maxPlayerTitleLength 1000
 --keyTopicsLinkToTags
+
+// PrepareUpload options:
+--uploadNonSessionAudioSources
 
 // Increase verbosity to maximum
 -vvv
