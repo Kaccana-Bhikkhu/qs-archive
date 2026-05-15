@@ -100,14 +100,14 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
      - [2025 Q&A at Chithurst Monsastery](event:Chithurst2025)
  - Sutta links go directly to [SuttaCentral](https://suttacentral.net).
  - Links to sutta subsections, e.g. MN 26.13.
- ### November 2025 release:
+### November 2025 release:
  - New content:
      - [2025 Winter Retreat](event:WR2025): The first 46 sessions are now available.
      - [Even the Sāsana Will Pass Away](event:Sunday2025-2).
      - [Kathina Q&A with the Chithurst Community](event:Chithurst2025-2)
  - [Sutta](../texts/Sutta.html), [vinaya](../texts/Vinaya.html), and [book](../books/Modern.html) reference pages list excerpts that refer to these sources.
  - Alt-clicking on sutta, vinaya, or book references takes one to the relevant reference page.
- ### December 2025 release:
+### December 2025 release:
  - New content:
      - [2013 Winter Retreat](event:WR2013): The first 27 sessions are now available.
      - [Upāsakā Day 2017: Becoming the Buddha](event:UD2017-1).
