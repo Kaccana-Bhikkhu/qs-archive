@@ -634,6 +634,38 @@ def DeficientTagCount(deficientTags: list[dict[str,str]]) -> str:
 <b>Doubly deficient</b> ({len(doublyDeficient)}): {', '.join(doublyDeficient)}<br>
 <b>Deficient single subtopics</b> ({len(singleTopics)}): {', '.join(singleTopics)}"""
 
+def DetailedFeaturedTagCount() -> str:
+    """Return an html string containing detailed statistics of how many excerpts are featured for each tag."""
+
+    fTagCountDiff = Counter() # The difference between the number of fTags and the optimal value; 0 means within optimal range
+    fTagCountBelowMax = Counter() # For tags with optimal count, the number of fTags we could add before exceeding the optimal range
+    for tag in gDatabase["tag"].values():
+        if tag.get("excerptCount",0) < 12 and not tag.get("fTagCount",0):
+            continue
+        minF,maxF,diff = ReviewDatabase.OptimalFTagCount(tag)
+        fTagCountDiff[diff] += 1
+        if diff == 0:
+            fTagCountBelowMax[maxF - tag.get("fTagCount",0)] += 1
+    
+    countedTags = fTagCountDiff.total()
+
+    def PercentStr(value: int) -> str:
+        "Return a string containing value as a number and as a percentage."
+        return f"{value} ({round(100 * value / countedTags)}%)"
+
+    def DetailStr(diff: int) -> str:
+        "Return a string containing a detailed breakdown of the optimal tags."
+        if diff == 0:
+            return f""" [Additional allowed fTags: {" ".join(f"{d}: {PercentStr(fTagCountBelowMax[d])}" for d in sorted(fTagCountBelowMax))}]"""
+        else:
+            return ""
+        
+
+    return f"""{countedTags}/{len(gDatabase["tag"])} ({round(100 * countedTags / len(gDatabase["tag"]))}%) tags have or should have featured excerpts.<br>
+<span style="text-decoration:underline;">Deficient/excess fTag counts:</span><br>
+{"<br>".join(f"{d}: {PercentStr(fTagCountDiff[d])}{DetailStr(d)}" for d in sorted(fTagCountDiff))}"""
+
+
 def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     """Write a list of tags sorted by number of excerpts."""
     
@@ -664,7 +696,8 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     # Now yield a printable version for tag counting purposes
     tagsSortedByQCount = sorted((tag for tag in gDatabase["tag"] if ExcerptCount(tag) >= gOptions.significantTagThreshold or "fTagCount" in gDatabase["tag"][tag]),
                                 key = lambda tag: (-ExcerptCount(tag),tag))
-    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.FTagStatusCode(gDatabase["tag"][tag]) in ("∅","⊟")]
+    deficientTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])[2] < 0]
+    excessTags = [tag for tag in tagsSortedByQCount if ReviewDatabase.OptimalFTagCount(gDatabase["tag"][tag])[2] > 0]
 
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"SortedTags_print.html")))
     if gOptions.uploadMirror == "preview":
@@ -674,10 +707,14 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.keywords = ["Tags","Most common tags"]
     yield page
 
-    # Make a page with only deficient tags
+    # Make a page with only deficient and excess tags
     page = Html.PageDesc(info._replace(file = Utils.PosixJoin(pageDir,"DeficientTags_print.html")))
     page.AppendContent(Html.Tag("p")(DeficientTagCount(deficientTags)))
+    page.AppendContent(Html.Tag("p")(DetailedFeaturedTagCount()))
+    page.AppendContent('<p style="text-decoration:underline;">Tags deficient in featured excerpts:</p>')
     page.AppendContent(PrintCommonTags(deficientTags,countFirst=True))
+    page.AppendContent('<p style="text-decoration:underline;">Tags with excess featured excerpts:</p>')
+    page.AppendContent(PrintCommonTags(excessTags,countFirst=True))
     page.AppendContent("Deficient tags",section="citationTitle")
     page.keywords = ["Tags","Deficient tags"]
     yield page
@@ -1113,7 +1150,9 @@ class Formatter:
 
         a(" ")
         if self.excerptPreferStartTime and excerpt['excerptNumber'] and (excerpt["clips"][0].file == "$" or excerpt.get("startTimeInSession",None)):
-            a(f'[{excerpt.get("startTimeInSession",None) or excerpt["clips"][0].start}] ')
+            startTimeStr = excerpt.get("startTimeInSession",None) or excerpt["clips"][0].start
+            roundedSeconds = round(Mp3DirectCut.ToTimeDelta(startTimeStr).total_seconds())
+            a(f'[{Mp3DirectCut.TimeDeltaToStr(timedelta(seconds=roundedSeconds))}] ')
 
         def ListAttributionKeys() -> Generator[Tuple[str,str]]:
             for num in range(1,10):
@@ -1554,8 +1593,6 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
         FilteredItem(Filter.Category("Meditations"),"Meditations"),
         FilteredItem(Filter.Category("Teachings"),"Teachings"),
         FilteredItem(Filter.Category("Readings"),"Readings"),
-        FilteredItem(Filter.Kind({"Sutta","Vinaya","Commentary"}),"Texts"),
-        FilteredItem(Filter.Kind("Reference"),"References")
     ]
 
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
@@ -2174,7 +2211,8 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
             with a.div(Class="listing"):
                 lines = []
                 for s in sessions:
-                    titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(str(s['sessionTitle']))
+                    sessionWithoutLinks = re.sub(r"(<a[^>]*?>)|</a[^>]*?>","",str(s['sessionTitle']))
+                    titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(sessionWithoutLinks)
                     lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}"))
 
                 a(Html.TruncatedList(lines,alwaysShow=3,morePrompt="Show all sessions"))

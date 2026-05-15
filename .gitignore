@@ -9,6 +9,7 @@ tools/mp3DirectCut/
 .venv/
 .venv3.9/
 python/config/LocalDefault.args
+*_.json
 
 referencesNoUpload/
 sutta/suttaplex/raw

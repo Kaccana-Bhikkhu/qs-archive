@@ -54,16 +54,6 @@ def MoveItemsIn(items: list[dict]|dict[dict],name: str) -> None:
     if movedToDir or movedToNoUpload or otherFilesMoved:
         Alert.extra(f"Moved {movedToDir} {name}(s) to usual directory; moved {movedToNoUpload} {name}(s) and {otherFilesMoved} other file(s) to NoUpload directory.")
 
-def MinifyDatabases(minify: bool) -> None:
-    """Remove spacing from databases read by Javascript. minify = False restores default spacing."""
-    for databaseFile in ["SearchDatabase.json","AutoCompleteDatabase.json","FeaturedDatabase.json"]:
-        databaseFile = Utils.PosixJoin("pages/assets",databaseFile)
-
-        with open(databaseFile, 'r', encoding='utf-8') as file:
-            database = json.load(file)
-        with open(databaseFile, 'w', encoding='utf-8') as file:
-            json.dump(database,file,ensure_ascii=False,indent = None if minify else 2)
-
 def CheckJavascriptFiles() -> None:
     "Print cautions if debug flags are set in .js files."
 
@@ -93,12 +83,15 @@ def CheckPreviousVersionFiles() -> None:
                 Alert.caution(len(removed),"file(s) were removed since the previous release. Consider redirecting them:",lineSpacing=0)
                 Alert.structure("\n".join(sorted(removed)),indent=0,lineSpacing=1)
             if added:
-                Alert.info(len(added),"file(s) were added since the previous release:")
-                Alert.structure("\n".join(sorted(added)),indent=0,lineSpacing=1)
+                newFileList = Utils.PosixJoin(gOptions.documentationDir,"NewFilesThisRelease.txt")
+                Alert.info(len(added),"file(s) were added since the previous release. Saved to",newFileList)
+                with open(newFileList,"w",encoding="utf8") as file:
+                    for filename in sorted(added):
+                        print(filename,file=file)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
-    parser.add_argument('--minifyDatabases',action=argparse.BooleanOptionalAction,help="Remove spaces from database files.")
+    parser.add_argument('--uploadNonSessionAudioSources',**Utils.STORE_TRUE,help="Upload all audio sources, not just sessions.")
     pass
 
 def ParseArguments() -> None:
@@ -112,16 +105,16 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    # We need only upload audio sources which correspond to sessions; other audio sources are not linked to.
-    sessionFiles = {session["filename"] for session in gDatabase["sessions"] if session["filename"]}
-    sessionSources = {filename:record for filename,record in gDatabase["audioSource"].items() if filename in sessionFiles}
-    MoveItemsIn(sessionSources,"session mp3")
+    if gOptions.uploadNonSessionAudioSources:
+        MoveItemsIn(gDatabase["audioSource"],"audio source mp3")
+        sessionSources = gDatabase["audioSource"]
+    else:
+        sessionFiles = {session["filename"] for session in gDatabase["sessions"] if session["filename"]}
+        sessionSources = {filename:record for filename,record in gDatabase["audioSource"].items() if filename in sessionFiles}
+    MoveItemsIn(sessionSources,"audio source/session mp3")
 
     MoveItemsIn(gDatabase["excerpts"],"excerpt mp3")
     MoveItemsIn(gDatabase["reference"],"reference")
-
-    if gOptions.minifyDatabases is not None:
-        MinifyDatabases(gOptions.minifyDatabases)
 
     if gOptions.uploadMirror != "preview":
         CheckJavascriptFiles()

@@ -198,6 +198,22 @@ def ParentTagListEntry(listIndex: int) -> dict|None:
 
     return None
 
+def IsSubtag(tag: str,superTag: str) -> bool:
+    """Returns true if superTag is a parent of the primary instance of tag.
+    Both tag and superTag should be keys in gDatabase["tag"]."""
+
+    index = gDatabase["tag"][tag]["listIndex"]
+    level = gDatabase["tagDisplayList"][index]["level"]
+
+    while level > 1:
+        index -= 1
+        if gDatabase["tagDisplayList"][index]["level"] < level:
+            level = gDatabase["tagDisplayList"][index]["level"]
+            if gDatabase["tagDisplayList"][index]["tag"] == superTag:
+                return True
+    
+    return False
+
 
 def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
     "Search for a tag based on any of its various names. Return the base tag name."
@@ -207,6 +223,11 @@ def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
         teacherDictCache.update((t,t) for t in teacherDB)
         teacherDictCache.update((teacherDB[t]["attributionName"].lower(),t) for t in teacherDB)
         teacherDictCache.update((teacherDB[t]["fullName"].lower(),t) for t in teacherDB)
+        for teacher in teacherDB.values(): # Match abbreviated tags like Ven. Ñāṇatiloka
+            for name in (teacher["attributionName"],teacher["fullName"]):
+                tag = TagLookup(name)
+                if tag and tag != name:
+                    teacherDictCache[tag.lower()] = teacher["teacher"]
 
     # First try matching case, then not
     return teacherDictCache.get(teacherRef) or teacherDictCache.get(teacherRef.lower()) or None
@@ -365,13 +386,15 @@ def ItemRepr(item: dict) -> str:
 
     if type(item) == dict:
         if "tag" in item:
+            name = item["tag"]
             if "level" in item:
                 kind = "tagDisplay"
             elif "topicCode" in item:
                 kind = "subtopic"
+                name = item["displayAs"]
             else:
                 kind = "tag"
-            return(f"{kind}({repr(item['tag'])})")
+            return(f"{kind}({repr(name)})")
 
         event = session = fileNumber = None
         args = []
@@ -468,24 +491,29 @@ def SubAnnotations(excerpt: dict,annotation: dict|None = None) -> list[dict]:
     return subs
 
 
-def ParentAnnotation(excerpt: dict,annotation: dict) -> dict|None:
-    """Return this annotation's parent."""
+def ParentAnnotation(excerpt: dict,annotation: dict,parentLevel: int = 1) -> dict|None:
+    """Return this annotation's parent; parentLevel = 2 means grandparent, etc."""
+
     if not annotation or annotation is excerpt:
+        searchLevel = -parentLevel
+    else:
+        searchLevel = annotation["indentLevel"] - parentLevel
+    if searchLevel < 0:
         return None
-    if annotation["indentLevel"] == 1:
+    elif searchLevel == 0:
         return excerpt
-    searchForLevel = 0
-    found = False
+
+    encounteredChild = False
     for searchAnnotation in reversed(excerpt["annotations"]):
-        if searchAnnotation["indentLevel"] <= searchForLevel:
-            if searchAnnotation["indentLevel"] < searchForLevel:
-                Alert.error("Annotation",annotation,f"doesn't have a parent at level {searchForLevel}. Returning prior annotation at level {searchAnnotation['indentLevel']}.")
-            return searchAnnotation
         if searchAnnotation is annotation:
-            searchForLevel = annotation["indentLevel"] - 1
-    if not found:
-        Alert.error("Annotation",annotation,"doesn't have a proper parent.")
-        return None
+            encounteredChild = True
+        if encounteredChild and searchAnnotation["indentLevel"] <= searchLevel:
+            if searchAnnotation["indentLevel"] < searchLevel:
+                Alert.error("Annotation",annotation,f"doesn't have a parent at level {searchLevel}. Returning prior annotation at level {searchAnnotation['indentLevel']}.")
+            return searchAnnotation
+    
+    Alert.error("Annotation",annotation,"doesn't have a proper parent.")
+    return None
 
 
 def SubsumesTags() -> dict:

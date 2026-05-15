@@ -130,8 +130,10 @@ def VerifyListCounts() -> None:
 
     # Check for duplicate excerpt tags
     for x in gDatabase["excerpts"]:
-        if len(set(x["tags"])) != len(x["tags"]):
-            Alert.caution(f"Duplicate tags in {x['event']} S{x['sessionNumber']} Q{x['excerptNumber']} {x['tags']}")
+        for item in Filter.AllItems(x):
+            tags = item.get("tags")
+            if tags and (len(set(tags)) != len(tags)):
+                Alert.caution("Duplicate tags in",item)
 
 def AuditNames() -> None:
     """Write assets/NameAudit.csv summarizing the information in the Tag, Teacher, and Name sheets.
@@ -315,6 +317,26 @@ def FeaturedExcerptSummary(subtopicOrTag: str,header: bool = False,printFTag: bo
         lines.append("\t".join(items))
     return "\n".join(lines)
 
+def CheckIndirectSpeech() -> None:
+    """Print alerts for potentially malformed indirect speech items."""
+
+    for x in gDatabase["excerpts"]:
+        for item in Filter.AllItems(x):
+            if not gDatabase["kind"][item["kind"]]["indirectSpeech"]:
+                continue
+            
+            firstTag = item["tags"][0] if item["tags"] else "<no tags>"
+            quotedTeacher = Database.TeacherLookup(firstTag)
+            if quotedTeacher:
+                if ParseCSV.ExcerptFlag.UNNAMED_SPEAKER not in item["flags"]:
+                    name = gDatabase["teacher"][quotedTeacher]["attributionName"]
+                    if name not in item["text"]:
+                        Alert.notice(item,"should credit",repr(name))
+            elif ParseCSV.ExcerptFlag.UNNAMED_SPEAKER not in item["flags"]:
+                if not Database.IsSubtag(firstTag,"Teachers"):
+                    Alert.notice("The first tag",repr(firstTag),"is not a person indirect speech",item)
+
+
 def CheckFTagOrder() -> None:
     """Print alerts when there is ambiguity sorting featured excerpts."""
     for subtopicOrTag in Database.SubtopicsAndTags():
@@ -462,6 +484,7 @@ def main() -> None:
     # CheckAttributions()
     CheckTags()
     CheckRelatedTags()
+    CheckIndirectSpeech()
     CheckFTagOrder()
     LogReviewedFTags()
     NeedsAudioEditing()

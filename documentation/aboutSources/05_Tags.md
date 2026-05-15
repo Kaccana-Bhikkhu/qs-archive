@@ -62,7 +62,7 @@ The root tags [History](tag:) and [Cultural context](tag:) contain many similar 
  - Many of the teachers in the archive have tags corresponding to their names. Searching by teacher shows excerpts taught by the teacher; searching by tag shows excerpts containing biographical information about the teacher.
  - Monastic teacher tags are sorted by date of ordination regardless of gender. Lay teacher tags are sorted by date of birth.
  - The traditional three [Characteristics of existence](tag:) are supplemented with the inclusion of an [additional six](The Island p. 113) by Ajahn Buddhadāsa.
- - The common trio of [Gratification](tag:), [Drawbacks](tag:), and [Escape](tag:) does not appear to have a traditional Pāli designation. The Archive calls them [Three Aspects of Understanding](tag:).
+ - The common trio of [Benefit/gratification](tag:), [Drawbacks](tag:), and [Escape](tag:) does not appear to have a traditional Pāli designation. The Archive calls them [Three Aspects of Understanding](tag:).
 
 
 

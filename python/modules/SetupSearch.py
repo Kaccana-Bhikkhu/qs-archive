@@ -32,6 +32,7 @@ def RawBlobify(item: str) -> str:
     remove html tags, ++Kind++ markers, and Markdown hyperlinks, and normalize whitespace."""
     output = re.sub(r'[‘’"“”]',"'",item) # Convert all quotes to single quotes
     output = output.replace("–","-").replace("—","-") # Conert all dashes to hypens
+    output = re.sub(r"--+","-",output) # Condense multiple hyphens
     output = Utils.RemoveDiacritics(output.lower())
     output = re.sub(r"\<[^>]*\>","",output) # Remove html tags
     output = re.sub(r"\{[^>]*\}","",output) # Remove template evaluation expressions, e.g. {teachers}
@@ -457,7 +458,16 @@ def AllBlobs(database:dict[str]) -> Iterable[str]:
     for search in database["searches"].values():
         for item in search["items"]:
             yield from item["blobs"]
-    
+
+def CompressDatabase(database:dict[str]) -> None:
+    """Reduce the size of database before writing to SearchDatabase_.json."""
+
+    for excerpt in database["searches"]["x"]["items"]:
+        del excerpt["session"]
+        if excerpt["uniqueTeachers"] > 1:
+            excerpt["uT"] = excerpt["uniqueTeachers"]
+        del excerpt["uniqueTeachers"]
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     pass
@@ -508,3 +518,6 @@ def main() -> None:
 
     with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase.json"), 'w', encoding='utf-8') as file:
         json.dump(optimizedDB, file, ensure_ascii=False, indent=2)
+    CompressDatabase(optimizedDB)
+    with open(Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase_.json"), 'w', encoding='utf-8') as file:
+        json.dump(optimizedDB, file, ensure_ascii=False, indent=None)

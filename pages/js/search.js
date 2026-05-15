@@ -1,4 +1,4 @@
-import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition} from './frame.js';
+import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
 
 const TEXT_DELIMITERS = "][{}<>^";
@@ -52,19 +52,14 @@ function decodeSearchQuery(query) {
     return query.replaceAll(decodeRegExp,(c) => decodeDict[c])
 }
 
-
-function nbsp(count) {
-    return "&nbsp;".repeat(count);
-}
-
-function modulus(numerator,denominator) {
-    return ((numerator % denominator) + denominator) % denominator;
+function FirstID(html) {
+    // Returns the first ID attribute within this html code.
+    return html.match(/id\w*=\w*"(.*?)"/)[1];
 }
 
 export async function loadSearchDatabase() {
     if (!gSearchDatabase) {
-        await fetch('./assets/SearchDatabase.json')
-        .then((response) => response.json())
+        await loadDatabase('SearchDatabase_.json')
         .then((json) => {
             gSearchDatabase = json; 
             debugLog("Loaded search database.");
@@ -999,9 +994,9 @@ export class ExcerptSearcher extends PagedSearcher {
             // Minor adjustments: aTag divisor should include all tags
             if (excerpt.sortBlob.aTag && excerpt.sortBlob.qTag)
                 excerpt.sortBlob.aTag.count += excerpt.sortBlob.qTag.count;
-            // Don't count teachers with multiple names twice
+            // Don't count teachers with multiple names twice; uT means uniqueTeachers
             if (excerpt.sortBlob.teacher)
-                excerpt.sortBlob.teacher.count = excerpt.uniqueTeachers;
+                excerpt.sortBlob.teacher.count = excerpt.uT || 1;
         }
     }
 
@@ -1107,9 +1102,10 @@ export class ExcerptSearcher extends PagedSearcher {
             insideFeaturedBlock = true;
         }
         for (const x of displayItems) {
-            if ((x.session !== lastSession) && !headerlessFormat) {
-                bits.push(this.sessionHeader[x.session]);
-                lastSession = x.session;
+            let session = FirstID(x.html).replace(/_F[0-9]*$/,"");
+            if ((session !== lastSession) && !headerlessFormat) {
+                bits.push(this.sessionHeader[session]);
+                lastSession = session;
             }
             if (insideFeaturedBlock && !x.sortBlob.fTag) {
                 bits.pop();

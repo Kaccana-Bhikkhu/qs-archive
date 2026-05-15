@@ -48,6 +48,7 @@ def main():
     
     try:
         Mp3DirectCut.ConfigureMp3DirectCut()
+        defaultSplit = Mp3DirectCut.SplitMethod.MP3_DIRECT_CUT
     except Mp3DirectCut.ExecutableNotFound as error:
         processError = subprocess.call(f"{Mp3DirectCut.mp3spltCommand} -h",shell=True,stdout=subprocess.DEVNULL)
         if processError:
@@ -55,6 +56,7 @@ def main():
             return
         else:        
             Alert.notice(f"Cannot find Mp3DirectCut executable. Will use {Mp3DirectCut.mp3spltCommand}.")
+        defaultSplit = Mp3DirectCut.SplitMethod.MP3_SPLT
     
     Mp3DirectCut.defaultJoin = Mp3DirectCut.JoinMethod.PYDUB if gOptions.joinUsingPydub else Mp3DirectCut.JoinMethod.CONCATENATE
     Mp3DirectCut.joinBitrate = "64k" if gOptions.joinBitRate == AUTO_BIT_RATE else gOptions.joinBitRate
@@ -159,7 +161,7 @@ def main():
                 filePath = Utils.PosixJoin(outputDir,filename)
                 clips = excerptsByFilename[filename]["clips"]
                 splitMethod = TagMp3.SplitMethodDict(
-                    splitMethod = Mp3DirectCut.lastSplitMethod,
+                    splitMethod = Mp3DirectCut.lastSplitMethod or defaultSplit,
                     joinMethod = "" if len(clips) == 1 else Mp3DirectCut.lastJoinMethod,
                     bitRate = AUTO_BIT_RATE if gOptions.joinBitRate == AUTO_BIT_RATE else Mp3DirectCut.lastBitRate
                 )

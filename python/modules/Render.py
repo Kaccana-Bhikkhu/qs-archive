@@ -27,10 +27,10 @@ def FStringToPyratemp(fString: str) -> str:
     
     return fString.replace("{","$!").replace("}","!$")
     
-def ApplyToBodyText(transform: Callable[...,Tuple[str,int]]) -> int:
+def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
     """Apply operation transform on each string considered body text in the database.
     transform can have the form transform(bodyText,item) or transform(bodyText).
-    transform returns a tuple (changedText,changeCount). Return the total number of changes made."""
+    transform returns either a tuple (changedText,changeCount) or the string changedText. Return the total number of changes made."""
 
     if len(signature(transform).parameters) == 1:
         twoVariableTransform = lambda bodyStr,_: transform(bodyStr)
@@ -38,40 +38,43 @@ def ApplyToBodyText(transform: Callable[...,Tuple[str,int]]) -> int:
         twoVariableTransform = transform
 
     changeCount = 0
+    def ApplyTransform(text: str,item: dict) -> str:
+        "Applies transform to text and keeps a tally of the number of changes."
+        nonlocal changeCount
+        result = twoVariableTransform(text,item)
+        if isinstance(result,str):
+            if result != text:
+                changeCount += 1
+            return result
+        else: # result is the tuple (changedText,changeCount)
+            changeCount += result[1]
+            return result[0]
+
     for x in gDatabase["excerpts"]:
-        x["body"],count = twoVariableTransform(x["body"],x)
-        changeCount += count
+        x["body"] = ApplyTransform(x["body"],x)
         for a in x["annotations"]:
-            a["body"],count = twoVariableTransform(a["body"],a)
-            changeCount += count
+            a["body"] = ApplyTransform(a["body"],a)
 
     for e in gDatabase["event"].values():
-        e["description"],count = twoVariableTransform(e["description"],e)
-        changeCount += count
+        e["description"] = ApplyTransform(e["description"],e)
 
     for s in gDatabase["series"].values():
-        s["description"],count = twoVariableTransform(s["description"],s)
-        changeCount += count
+        s["description"] = ApplyTransform(s["description"],s)
 
     for s in gDatabase["sessions"]:
-        s["sessionTitle"],count = twoVariableTransform(s["sessionTitle"],s)
-        changeCount += count
+        s["sessionTitle"] = ApplyTransform(s["sessionTitle"],s)
     
     for t in gDatabase["tag"].values():
         if "note" in t:
-            t["note"],count = twoVariableTransform(t["note"],t)
-            changeCount += count
+            t["note"] = ApplyTransform(t["note"],t)
 
     for t in gDatabase["keyTopic"].values():
-        t["shortNote"],count = twoVariableTransform(t["shortNote"],t)
-        changeCount += count
-        t["longNote"],count = twoVariableTransform(t["longNote"],t)
-        changeCount += count
+        t["shortNote"] = ApplyTransform(t["shortNote"],t)
+        t["longNote"] = ApplyTransform(t["longNote"],t)
     
     for s in gDatabase["subtopic"].values():
         if "clusterNote" in s:
-            s["clusterNote"],count = twoVariableTransform(s["clusterNote"],s)
-            changeCount += count
+            s["clusterNote"] = ApplyTransform(s["clusterNote"],s)
 
     return changeCount
     
@@ -118,7 +121,7 @@ def PrepareTexts() -> None:
 
     gDatabase["textGroup"] = {}
     for textGroup in list(next(iter(gDatabase["text"].values()))):
-        if textGroup in ("uid","name","citeFullName"):
+        if textGroup in ("uid","name","citeFullName","wholeTextLink"):
             continue
         
         newGroup = []
@@ -251,7 +254,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         if formNumber >= 0:
             if formNumber >= len(kind["body"]) or kind["body"][formNumber] == "unimplemented":
                 formNumber = kind["defaultForm"] - 1
-                Alert.warning(f"   {kind['kind']} does not implement form {formNumberStr[0]}. Reverting to default form number {formNumber + 1}.")
+                Alert.warning(item,f": {kind['kind']} does not implement form {formNumberStr[0]}. Reverting to default form number {formNumber + 1}.")
     else:
         formNumber = kind["defaultForm"] - 1
 
@@ -351,7 +354,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         item["attribution"] = attributionStr
     
     # If the first tag of an indirect quote specifies a teacher, link the last occurence of the teacher in the body
-    if item["kind"] == "Indirect quote" and item["tags"]:
+    if gDatabase["kind"][item["kind"]]["indirectSpeech"] and item["tags"]:
         quotedTeacher = Database.TeacherLookup(item["tags"][0])
         if quotedTeacher:
             parts = re.split(Utils.RegexMatchAny([gDatabase["teacher"][quotedTeacher]["attributionName"]]),item["body"])
@@ -955,7 +958,8 @@ def main() -> None:
     LinkReferences()
     AccumulateReferences()
 
-    ApplyToBodyText(SmartQuotes)
+    ApplyToBodyText(Utils.SmartQuotes)
+    ApplyToBodyText(Utils.SmartDashes)
 
     for key in ["tagRedacted","tagRemoved","summary","keyCaseTranslation"]:
         del gDatabase[key]

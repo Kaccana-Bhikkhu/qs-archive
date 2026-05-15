@@ -128,22 +128,7 @@ def UIDGroupSet(which: str) -> set[str]:
 def SCToExpress(scLink: str) -> str:
     """Convert a link from SuttaCentral to SuttaCentral Express."""
 
-    if scLink.startswith("https://suttacentral.net/"):
-        # Some whole-book links are broken on SC Express, so don't change these links
-        if sutta := re.match(r"https://suttacentral.net/(.*)",scLink):
-            suttaRef = sutta[1]
-            if suttaRef in ("sn","an","thag","thig","mil"):
-                return scLink
-
-        # SuttaCentral Express currently doesn't handle suttas within groups, so don't change these links
-        if sutta := re.match(r"https://suttacentral.net/([asmd]n[0-9]+\.[0-9]+)",scLink):
-            suttaRef = sutta[1]
-            if suttaRef in Suttaplex.InterpolatedSuttaDict(suttaRef[0:2]):
-                return scLink
-
-        return scLink.replace("//suttacentral.net/","//suttacentral.express/")
-    else:
-        return scLink
+    return scLink.replace("//suttacentral.net/","//suttacentral.express/")
 
 class TextReference(NamedTuple):
     text: str           # The name of the text, e.g. 'Dhp'
@@ -234,7 +219,7 @@ class TextReference(NamedTuple):
         """Return the SuttaCentral link for this text."""
         if self.n0 == 0:
             if self.text:
-                return f"https://suttacentral.net/{self.BaseUid()}"
+                return gDatabase["text"][self.text].get("wholeTextLink") or f"https://suttacentral.net/{self.BaseUid()}"
             else:
                 return ""
         mockMatch = [str(self),self.text] + [str(n) if n else "" for n in self[1:4]] + [translator]
@@ -257,7 +242,7 @@ class TextReference(NamedTuple):
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
             expressLink = SCToExpress(scLink)
             if expressLink != scLink:
-                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Read faster on suttacentral.express","class":"express","target":"_blank"})
+                returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Lightweight suttacentral.express","class":"express","target":"_blank"})
                                    (Build.HtmlIcon("SuttaCentralExpress.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
@@ -636,11 +621,10 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            bits = [reference.BreadCrumbs(level)]
-            bits.append("<hr>")
-            return "\n".join(bits)
+            header = reference.BreadCrumbs(level)
         else:
-            return self.page.info.title + "\n<hr>"
+            header = self.page.info.title
+        return header + f" ({TotalItems(self.references)})\n<hr>"
     
     def FooterHtml(self) -> str:
         """Returns html that goes a the bottom of the page in whole page mode."""
@@ -901,13 +885,16 @@ class PageWithHeadings(ReferencePageMaker):
 def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
     """Return the page information for a given page of references."""
 
+    def FullTitle(title: str) -> str:
+        return f"References – {title}"
+
     if isinstance(firstRef,TextReference):
         text = firstRef.text
         if level == 0:
             if text in TextGroupSet("vinaya"):
-                return Html.PageInfo("Vinaya","texts/Vinaya.html","References – Vinaya")
+                return Html.PageInfo("Vinaya","texts/Vinaya.html",FullTitle("Vinaya"))
             else:
-                return Html.PageInfo("Sutta","texts/Sutta.html","References – Suttas")
+                return Html.PageInfo("Sutta","texts/Sutta.html",FullTitle("Suttas"))
         
         referenceGroup = firstRef.Truncate(level)
         referenceGroup = ConsecutiveTexts.FromReference(referenceGroup) or referenceGroup
@@ -924,15 +911,15 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
         return Html.PageInfo(
             title,
             f"{directory}{text}{strNumbers}.html",
-            f"References – {title}"
+            FullTitle(title)
         )
     else:
         directory = "books/"
         if level == 0:
             if firstRef.IsCommentary():
-                return Html.PageInfo("Commentary","books/Commentary.html","References – Commentary")
+                return Html.PageInfo("Commentary","books/Commentary.html",FullTitle("Commentary"))
             else:
-                return Html.PageInfo("Modern","books/Modern.html","References – Modern Authors")
+                return Html.PageInfo("Modern","books/Modern.html",FullTitle("Modern Authors"))
         elif level == 1: # An author page
             author = firstRef.author
             if not author:
@@ -942,14 +929,14 @@ def ReferencePageInfo(firstRef: Reference,level: int) -> Html.PageInfo:
             return Html.PageInfo(
                 Utils.CapitalizeFirst(authorName),
                 f"{directory}{author}.html",
-                f"References – {authorName}"
+                FullTitle(authorName)
             )
         elif level == 2: # A book page
             title = firstRef.Truncate(level).FullName()
             return Html.PageInfo(
                 Utils.RemoveHtmlTags(title),
                 f"{directory}{Utils.slugify(firstRef.abbreviation)}.html",
-                f"References – {title}"
+                FullTitle(title)
             )
 
 def ReferencePageDispatch(references: list[LinkedReference],level: int) -> ReferencePageMaker:

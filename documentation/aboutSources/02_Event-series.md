@@ -38,6 +38,7 @@ Ajahn Sumedho was invited to teach at Spirit Rock Meditation Center even before 
 
 Spirit Rock Meditation Center is physically and often culturally more accessible to inhabitants of the San Francisco Bay Area than Abhayagiri Monastery. For this reason, many participants have little experience with Buddhist monastics, and some are new to Buddhist practice in general. These sessions are an opportunity to hear Ajahn Pasanno explain the Ajahn Chah tradition while making few assumptions about the prior experience of his audience. Questions and comments vary widely, but often relate to everyday life.
 
+-----
 [October 2010 Upāsikā Day](photo:Upasika Day 9 Oct 2010.jpg)
 ## Abhayagiri Upāsikā Days (<a id="upasika-days" href="../indexes/EventsBySeries.html#upasika-days">List</a>)
 The term “upāsikā” means “one who sits close by” and it has come to refer to lay people who join with monastics in the practice of the Dhamma. Abhayagiri Upāsikā Days are afternoon teaching sessions held at the monastery organized around a particular theme.
@@ -55,7 +56,7 @@ Occasional Practice and Study Days replaced the Upāsikā Program in 2023. The d
 -----
 [Abhayagiri's 20th Anniversary in the unfinished Reception Hall](photo:05 Father Damien.jpg)
 ## Abhayagiri Anniversary Events (<a id="abhayagiri-anniversary-events" href="../indexes/EventsBySeries.html#abhayagiri-anniversary-events">List</a>)
-Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 4, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
+Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 1, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
 
 -----
 [Interreligious Retreat-Seminar on Dhamma and Non-duality, Rishikesh, India](photo:Rishikesh2023.jpg)

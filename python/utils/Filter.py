@@ -145,6 +145,16 @@ class FTag(Tag):
         
         return self.negate
 
+class HomepageOnlyTag(Tag):
+    "A filter that passes excerpts that should be displayed on the homepage despite not being featured."
+
+    def Match(self, item: dict) -> bool:        
+        for t in item.get("homepageOnlyTags",()):
+            if t in self.passTags:
+                return not self.negate
+        
+        return self.negate
+
 class ClusterFTag(Filter):
     "A filter that passes excerpts that should be featured on a cluster page."
 
@@ -206,12 +216,12 @@ class Teacher(Filter):
             for t in i.get("teachers",()):
                 if t in self.passTeachers:
                     if "kind" in i:
-                        if i["kind"] != "Indirect quote" or self.quotesOthers:
+                        if gDatabase["kind"][i["kind"]]["indirectSpeech"] or self.quotesOthers:
                             return not self.negate
                     else:
                         return not self.negate
 
-            if i.get("kind") == "Indirect quote" and self.quotedBy:
+            if i.get("kind") and gDatabase["kind"][i["kind"]]["indirectSpeech"] and self.quotedBy:
                 if i.get("tags",None) and i["tags"][0] in teacherNames:
                     return not self.negate
                 

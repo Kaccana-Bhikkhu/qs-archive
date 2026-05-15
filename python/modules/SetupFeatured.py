@@ -13,7 +13,6 @@ from dataclasses import dataclass
 import Utils, Alert, Build, Database
 from copy import copy
 import Filter
-import Html2 as Html
 from collections import defaultdict, Counter, deque
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
@@ -64,6 +63,7 @@ def AllHolidays() -> list[Holiday]:
     chahFilter = Filter.And(Filter.Teacher("AChah"),Filter.Flags("!"))
     return [
         Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),chahFilter),
+        Holiday("Abhayagiri's Anniversary",date(1996,6,1),Filter.FTag("Abhayagiri")),
         Holiday("Ajahn Chah's Birthday",date(1918,6,17),chahFilter),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
@@ -106,15 +106,44 @@ def ReadDatabase(backupNumber:int = 0) -> bool:
     except OSError as err:
         Alert.error(f"Could not read {gOptions.featuredDatabase} due to {err}")
         return False
-    
+
+def CompressExcerptKeys(db: FeaturedDatabase) -> None:
+    """Convert excerpt keys like 'Chah2001_S05_F05' to shorter base64 encodings."""
+    excerpts = db["excerpts"]
+    codeBook = {key:str(n) for n,key in enumerate(excerpts)}
+    for key,encoded in codeBook.items():
+        excerpts[encoded] = excerpts[key]
+        del excerpts[key]
+    db["calendar"] = [codeBook[key] for key in db["calendar"]]
+
+def HomepageDatabase(db: FeaturedDatabase) -> dict[str]:
+    """Return a condensed database containing only what is needed to display the home page."""
+
+    returnValue = {key:db[key] for key in ("startDate","calendar","holidays")}
+    returnValue["excerpts"] = {x:db["excerpts"][x]["shortHtml"] for x in db["excerpts"]}
+    return returnValue
+
+def HistoryDatabase(db: FeaturedDatabase) -> dict[str]:
+    """Return a condensed database containing only what is needed to display the home page."""
+
+    returnValue = {key:db[key] for key in ("startDate","calendar","holidays")}
+    returnValue["excerpts"] = {x:db["excerpts"][x]["html"] for x in db["excerpts"]}
+    return returnValue
 
 def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
     """Write newDatabase to the random excerpt .json file"""
     filename = gOptions.featuredDatabase
+    homepageFilename = Utils.AppendToFilename(gOptions.featuredDatabase,"1_")
+    historyFilename = Utils.AppendToFilename(gOptions.featuredDatabase,"2_")
     try:
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump(newDatabase, file, ensure_ascii=False, indent=2)
         Alert.info(f"Wrote featured excerpt database to {filename}.")
+        CompressExcerptKeys(newDatabase)
+        with open(homepageFilename, 'w', encoding='utf-8') as file:
+            json.dump(HomepageDatabase(newDatabase), file, ensure_ascii=False, indent=None)
+        with open(historyFilename, 'w', encoding='utf-8') as file:
+            json.dump(HistoryDatabase(newDatabase), file, ensure_ascii=False, indent=None)
         return True
     except OSError as err:
         Alert.error(f"Could not write {filename} due to {err}")
@@ -162,21 +191,28 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
     keyTopicTags = Database.KeyTopicTags()
     topicTags = [tag for tag in excerpt["fTags"] if tag in keyTopicTags]
 
-    oldFTags = None
+    if gFeaturedDatabase and gFeaturedDatabase.get("oldFTags"):
+        oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt)) or []
+    else:
+        oldFTags = []
     if not topicTags: # If there are no current fTags, check for previous fTags
-        oldFTags = gFeaturedDatabase["oldFTags"].get(Database.ItemCode(excerpt),[])
         topicTags = [tag for tag in oldFTags if tag in keyTopicTags]
 
-    if topicTags: # Since we select only featured excerpts from key topic tags, this true unless the excerpt has been demoted
+    if topicTags:
         tag = topicTags[0]
         subtopic = gDatabase["subtopic"][gDatabase["tag"][tag]["partOfSubtopics"][0]]
         isCluster = subtopic["subtags"] # A cluster has subtags; a regular tag doesn't
         if isCluster:
             tagDescription = f"tag cluster {Build.HtmlSubtopicLink(subtopic['tag'])}"
         else:
-            tagDescription = f"tag {Build.HtmlTagLink(tag)}"
+            tagDescription = f"tag [{Build.HtmlTagLink(tag)}]"
 
         html += f"<hr><p>{'Formerly f' if oldFTags else 'F'}eatured in {tagDescription}, part of key topic {Build.HtmlKeyTopicLink(subtopic['topicCode'])}.</p>"
+    else:
+        if excerpt["fTags"]:
+            html += f"<hr><p>Featured in tag [{Build.HtmlTagLink(excerpt['fTags'][0])}].</p>"
+        elif otherTags := excerpt.get("homepageOnlyTags") or oldFTags:
+            html += f"<hr><p>Other excerpts with tag [{Build.HtmlTagLink(otherTags[0])}].</p>"
 
     return {
         "text": excerpt["text"],
@@ -194,7 +230,9 @@ def FeaturedExcerptFilter() -> Filter.Filter:
     kindFilter = Filter.ExcerptMatch(Filter.Kind("Comment").Not())
     return Filter.Or(
         Filter.And(Filter.HomepageFlags(),keyTopicFilter,teacherFilter,kindFilter),
-        Filter.Flags("!"))
+        Filter.Flags("!"),
+        Filter.HomepageOnlyTag(Filter.All)
+    )
 
 
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
@@ -365,7 +403,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     newFeaturedExcerpts = currentFeaturedExcerpts - excerptsInDatabase
     if newFeaturedExcerpts:
         Alert.info(len(newFeaturedExcerpts),"new featured excerpts do not appear in the database.")
-        Alert.info("Run the remakeFuture module to include them.")
+        Alert.info("Run the RemakeFuture module to include them.")
         Alert.info.ShowFirstItems(sorted(newFeaturedExcerpts),"new excerpt")
 
     return databaseGood
@@ -521,6 +559,7 @@ def Holidays(paramStr: str) -> bool:
     holidayIndices = FutureHolidayIndices()
 
     changeCount = 0
+    errorCount = 0
     # Then check if each holiday has an excerpt that matches the filter
     for index,(holiday,year) in holidayIndices.items():
         if index >= len(future):
@@ -543,11 +582,14 @@ def Holidays(paramStr: str) -> bool:
             changeCount += 1
         else:
             Alert.warning("Unable to find a suitable excerpt for",holiday.name,"in",year)
+            errorCount += 1
 
     if changeCount:
         gFeaturedDatabase["calendar"] = past + future
         Alert.info()
         Alert.info("Moved",changeCount,"relevant excerpts to holidays.")
+    if errorCount:
+        Alert.info("Could not find suitable excerpts for",errorCount,"holiday(s).")
     else:
         Alert.info("All future holidays feature relevant excerpts.")
     return bool(changeCount)
@@ -651,7 +693,7 @@ def main() -> None:
         Alert.warning("Cannot run additional module(s)",[op.__name__ for op in gEnhanceModules],"due to database errors.")
 
 
-    if databaseChanged:
+    if databaseChanged or "write" in gOptions.featured:
         RunSubmodule(Write,alwaysRun=True,goodDatabase=goodDatabase)
     else:
         AnnounceSubmodule(None)

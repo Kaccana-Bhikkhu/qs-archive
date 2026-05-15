@@ -77,6 +77,39 @@ export function openLocalPage(path,query,bookmark) {
 	changeURL(newFullUrl.hash.slice(1));
 }
 
+let gDatabases = {}; // A database of loaded databases.
+export function preloadDatabase(fileName) {
+	// Begin loading a .json database from the assets directory and return immediately.
+	if (gDatabases[fileName])
+		return;
+	gDatabases[fileName] = fetch(`assets/${fileName}`)
+	.then((source) => source.json())
+	.then((json) => {gDatabases[fileName] = json});
+}
+
+export async function loadDatabase(fileName) {
+	// Read and return the contents of a .json database.
+	if (!gDatabases[fileName])
+		preloadDatabase(fileName);
+	else if (!(gDatabases[fileName] instanceof Promise))
+		return gDatabases[fileName];
+
+	await gDatabases[fileName];
+	return gDatabases[fileName];
+}
+
+export function getDatabase(fileName,canFail = false) {
+	// Return an already-loaded database or undefined if the database isn't loaded.
+	// Log a console error if canFail is false and the database isn't loaded.
+
+	if (gDatabases[fileName] instanceof Promise) {
+		if (!canFail)
+			console.error(`assets/${fileName} is not yet loaded.`);
+		return undefined;
+	}
+	return gDatabases[fileName];
+}
+
 function pageText(r,url) {
 	if (r.ok) {
 		return r.text().then((text) => {

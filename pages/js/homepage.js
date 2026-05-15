@@ -1,14 +1,16 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
 // Both pages rely on ./assets/FeaturedDatabase.json
 
-import {configureLinks, openLocalPage, framePage} from './frame.js';
+import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
 const DEBUG = false;
-const PEEK_FUTURE = true;
+const PEEK_FUTURE = false;
 
-let gFeaturedDatabase = null; // The global database, loaded from assets/FeaturedDatabase.json
+let gHomepageDatabase = null; // Featured excerpt html to display on the homepage, loaded from assets/FeaturedDatabase1_.json
+let gHistoryDatabase = null; // Html to display on the history page, loaded from assets/FeaturedDatabase2_.json
+let gFeaturedDatabase = null; // Used to access other properties of the history database, loaded from either version of FeaturedDatabase.json
 let gNavBar = null; // The main navigation bar, set after all DOM content loaded
 
 let gTodaysExcerpt = 0; // the featured excerpt currently displayed on the homepage
@@ -59,7 +61,7 @@ function displayFeaturedExcerpt() {
     let title = "Today's featured excerpt";
     let prefix = "";
     if (gSearchFeaturedOffset > 0 && !(DEBUG && PEEK_FUTURE)) {
-        let excerptCodes = Object.keys(gFeaturedDatabase.excerpts);
+        let excerptCodes = Object.keys(gHistoryDatabase.excerpts);
         while (gRandomExcerpts.length < gSearchFeaturedOffset) {
             let randomIndex = Math.floor(Math.random() * excerptCodes.length);
             gRandomExcerpts.push(excerptCodes[randomIndex]);
@@ -77,7 +79,7 @@ function displayFeaturedExcerpt() {
     }
 
     let displayArea = document.getElementById("random-excerpt");
-    displayArea.innerHTML = prefix + gFeaturedDatabase.excerpts[excerptToDisplay].html;
+    displayArea.innerHTML = prefix + gHistoryDatabase.excerpts[excerptToDisplay];
     configureLinks(displayArea,"search/homepage.html");
 
     let titleArea = document.getElementById("page-title");
@@ -121,7 +123,6 @@ class MeditationTimer {
         this.timeLeft = this.duration * 60;
         this.isActive = false;
         this.interval = null;
-        this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         
         this.reloadPage();
     }
@@ -155,6 +156,8 @@ class MeditationTimer {
     }
 
     startTimer() {
+        if (!this.bell)
+            this.bell = new Audio('assets/sounds/meditation-bell.mp3');
         this.interval = setInterval(() => {
             this.timeLeft--;
             this.updateDisplay();
@@ -201,7 +204,8 @@ class MeditationTimer {
     handleTimerComplete() {
         this.isActive = false;
         this.resetTimer();
-        this.bell.play().catch(error => console.log('Error playing bell:', error));
+        if (this.bell)
+            this.bell.play().catch(error => console.log('Error playing bell:', error));
     }
 }
 
@@ -243,24 +247,34 @@ function configurePopupMenus(loadedFrame) {
     }
 }
 
-function initializeHomepage() {
+async function initializeHomepage() {
     // This code to configure the homepage runs only for homepage.html
     let featuredExcerptContainer = document.getElementById("todays-excerpt");
     if (!featuredExcerptContainer)
         return;
     
+    if (!gHomepageDatabase) {
+        await loadDatabase('FeaturedDatabase1_.json')
+        .then((json) => {
+            gHomepageDatabase = json;
+            gFeaturedDatabase = json; 
+            debugLog("Loaded homepage database.");
+        });
+        initializeTodaysExcerpt()
+    }
+
     gMeditationTimer.reloadPage();
     document.getElementById("details-link").addEventListener("click",function() {
         gSearchFeaturedOffset = 0; // The details link always goes to the excerpt featured on the homepage
     });
-    featuredExcerptContainer.innerHTML = holidayHtml(new Date()) + gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+    featuredExcerptContainer.innerHTML = holidayHtml(new Date()) + gHomepageDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]];
     configureLinks(featuredExcerptContainer,"search/homepage.html");
         // links in excerpts are relative to depth 1 pages
 
     updateDate();
 }
 
-function initializeSearchFeatured() {
+async function initializeSearchFeatured() {
     // This initialization code runs only for search/Featured.html
     let prevButton = document.getElementById("random-prev");
     let nextButton = document.getElementById("random-next");
@@ -270,6 +284,12 @@ function initializeSearchFeatured() {
         });
         nextButton.addEventListener("click", function(event) {
             displayNextFeaturedExcerpt((event.shiftKey && DEBUG) ? 30: 1);
+        });
+        await loadDatabase('FeaturedDatabase2_.json')
+        .then((json) => {
+            gHistoryDatabase = json;
+            gFeaturedDatabase = json; 
+            debugLog("Loaded history page database.");
         });
         initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);
@@ -282,16 +302,6 @@ export async function loadHomepage(loadedFrame) {
 
     dropdownMenuClick(null); // Close all dropdown menus
     gNavBar.querySelector('.main-nav').classList.remove("active");
-    
-    if (!gFeaturedDatabase) {
-        await fetch('./assets/FeaturedDatabase.json')
-        .then((response) => response.json())
-        .then((json) => {
-            gFeaturedDatabase = json; 
-            debugLog("Loaded homepage database.");
-        });
-        initializeTodaysExcerpt()
-    }
 
     highlightNavMenuItem();
     configurePopupMenus(loadedFrame);
@@ -377,7 +387,9 @@ function setupNavMenuTriggers() {
 
     // Clicking the search button toggles the floating search bar
     document.getElementById('nav-search-icon').addEventListener('click', function() {
-        dropdownMenuClick(this); // Close all dropdown menus
+        if (!gAutoComplete)
+            setupAutoComplete();
+        dropdownMenuClick(this);
     });
     // Handle clicking the search button
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
@@ -431,9 +443,7 @@ function setupAutoComplete() {
             src: async () => {
                 try {
                     // Fetch External Data Source
-                    const source = await fetch("assets/AutoCompleteDatabase.json");
-                    gAutoCompleteDatabase = await source.json();
-                    // Returns Fetched data
+                    gAutoCompleteDatabase = loadDatabase("AutoCompleteDatabase_.json")
                     return gAutoCompleteDatabase;
                 } catch (error) {
                     return error;
@@ -575,7 +585,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display the number of excerpts found with this search
     document.getElementById("floating-search-input").addEventListener("input",countFoundExcerpts);
 
-    setupAutoComplete();
     setupOptionalSuttaRefs();
 
     if (DEBUG) { // Configure keyboard shortcuts to change homepage featured excerpt
@@ -593,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 debugDate.setDate(debugDate.getDate() + gDebugDateOffset);
                 initializeTodaysExcerpt(debugDate);
                 featuredExcerptContainer.innerHTML = gTodaysHolidayHtml + 
-                    gFeaturedDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]].shortHtml;
+                    gHomepageDatabase.excerpts[gFeaturedDatabase.calendar[gTodaysExcerpt]];
                 configureLinks(featuredExcerptContainer,"search/homepage.html");
                 updateDate(debugDate);
             }

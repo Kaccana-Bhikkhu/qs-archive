@@ -46,6 +46,7 @@ class ExcerptFlag(StrEnum):
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
     NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
+    UNNAMED_SPEAKER = "q"   # Anonymous indirect speech; not flagged by ReviewDatabase
     END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
     HOMEPAGE_FEATURE = "!"  # Feature this excerpt on the homepage (even if it's not from AP)
         # These flags are informational only:
@@ -59,7 +60,8 @@ class FTagOrderFlag(StrEnum):
     TAG_ONLY = "T"          # Display only on tag pages (no subtopic pages)
     PRIMARY_SUBTOPIC = "P"  # Display on tag pages and when this tag appears in a subtopic
                             # not followed by an apostrophe
-    # Lowercase versions of these flags indicate not to feature the excerpt on the front page
+    HOMEPAGE_ONLY = "H"     # Display this excerpt on the homepage only
+    # Lowercase versions of these flags indicate not to feature the excerpt on the homepage
     
 
 gCamelCaseTranslation = {}
@@ -818,7 +820,12 @@ def FinalizeExcerptTags(x: dict) -> None:
     """Combine qTags and aTags into a single list, but keep track of how many qTags there are."""
     x["tags"] = x["qTag"] + x["aTag"]
     x["qTagCount"] = len(x["qTag"])
-    if len(x["fTagOrder"]) != len(x["fTags"]):
+    if x["fTagOrderFlags"] and FTagOrderFlag.HOMEPAGE_ONLY in x["fTagOrderFlags"]:
+        x["homepageOnlyTags"] = x["fTags"]
+        x["fTags"] = []
+        if not re.match(FTagOrderFlag.HOMEPAGE_ONLY + "+$",x["fTagOrderFlags"]):
+            Alert.warning(x,"mixes H with other fTag order flags. The other flags will be ignored.")
+    elif len(x["fTagOrder"]) != len(x["fTags"]):
         Alert.warning(x,f"has {len(x['fTags'])} fTags but specifies {len(x['fTagOrder'])} fTagOrder numbers. Will fill with 1001E.")
         x["fTagOrder"] = x["fTagOrder"][:len(x["fTags"])] + ([1001] * (len(x["fTags"]) - len(x["fTagOrder"])))
         x["fTagOrderFlags"] = x["fTagOrderFlags"][:len(x["fTags"])] + ("E" * (len(x["fTags"]) - len(x["fTagOrderFlags"])))
@@ -871,19 +878,32 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
         return
     
     kind = database["kind"][annotation["kind"]]
-    
     keysToRemove = ["sessionNumber","offTopic","aListen","exclude"]
+
+    annotation["indentLevel"] = len(annotation["flags"].split(ExcerptFlag.INDENT))
+    if len(excerpt["annotations"]):
+        prevAnnotationLevel = excerpt["annotations"][-1]["indentLevel"]
+    else:
+        prevAnnotationLevel = 0
+    if annotation["indentLevel"] - 1 > prevAnnotationLevel and not excerpt["exclude"]:
+        Alert.warning("Annotation",annotation,"to",excerpt,": Cannot increase indentation level by more than one.")
+    
+    excerpt["annotations"].append(annotation) # Append the annotation to the excerpt so ParentAnnotation works properly
     
     if kind["takesTeachers"]:
         if not annotation["teachers"]:
             defaultTeacher = kind["inheritTeachersFrom"]
             if defaultTeacher == "Anon": # Check if the default teacher is anonymous
                 annotation["teachers"] = ["Anon"]
-            elif defaultTeacher == "Excerpt":
-                annotation["teachers"] = excerpt["teachers"]
+            elif defaultTeacher == "Excerpt": # "Excerpt" means parent; "Session" means grandparent
+                annotation["teachers"] = Database.ParentAnnotation(excerpt,annotation)["teachers"]
             elif defaultTeacher == "Session" or (defaultTeacher == "Session unless text" and not annotation["text"]):
-                ourSession = Database.FindSession(database["sessions"],excerpt["event"],excerpt["sessionNumber"])
-                annotation["teachers"] = ourSession["teachers"]
+                grandparent = Database.ParentAnnotation(excerpt,annotation,parentLevel=2)
+                if grandparent:
+                    annotation["teachers"] = grandparent["teachers"]
+                else:
+                    ourSession = Database.FindSession(database["sessions"],excerpt["event"],excerpt["sessionNumber"])
+                    annotation["teachers"] = ourSession["teachers"]
         
         if not (TeacherConsent(database["teacher"],annotation["teachers"],"indexExcerpts") or database["kind"][annotation["kind"]]["ignoreConsent"]):
             # If a teacher of one of the annotations hasn't given consent, we redact the excerpt itself
@@ -914,16 +934,9 @@ def AddAnnotation(database: dict, excerpt: dict,annotation: dict) -> None:
     
     for key in keysToRemove:
         annotation.pop(key,None)    # Remove keys that aren't relevant for annotations
-    
-    annotation["indentLevel"] = len(annotation["flags"].split(ExcerptFlag.INDENT))
-    if len(excerpt["annotations"]):
-        prevAnnotationLevel = excerpt["annotations"][-1]["indentLevel"]
-    else:
-        prevAnnotationLevel = 0
-    if annotation["indentLevel"] - 1 > prevAnnotationLevel and not excerpt["exclude"]:
-        Alert.warning("Annotation",annotation,"to",excerpt,": Cannot increase indentation level by more than one.")
-    
-    excerpt["annotations"].append(annotation)
+
+    if "tags" in annotation:
+        Utils.ReorderKeys(annotation,(),("tags","indentLevel"))
 
 gAuthorRegexList = None
 def ReferenceAuthors(textToScan: str) -> list[str]:
@@ -1190,10 +1203,19 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
         mainFragment = fragmentAnnotation["kind"] == "Main fragment"
 
         if not ExcerptFlag.MANUAL_FRAGMENTS in excerpt["flags"]:
+            baseLevel = fragmentAnnotation["indentLevel"]
             if mainFragment:
                 fragmentExcerptTemplate = excerpt
-                fragmentAnnotations = [copy.copy(baseAnnotations[number]) for number in range(n)]
-                    # Copy all annotations previous to the Main fragment annotation
+                audioAnnotations = [copy.copy(a) for a in Database.SubAnnotations(excerpt,baseAnnotations[n])]
+                    # Copy subannotations to the Main fragment
+                for a in audioAnnotations:
+                    a["indentLevel"] = a["indentLevel"] - baseLevel
+                    if gDatabase["kind"][a["kind"]]["category"] != "Audio":
+                        Alert.warning(a," to ",excerpt,": Main fragment can only have Audio subannotations.")
+
+                fragmentAnnotations = [copy.copy(baseAnnotations[number]) for number in range(n)] + audioAnnotations
+                    # Copy all annotations previous to the Main fragment annotation;
+                    # Audio subannotations go after all other annotations
                 fragmentFTagSource = fragmentTagSource = fragmentAnnotation
                 if not fragmentTagSource["qTag"] and not fragmentTagSource["aTag"]:
                     fragmentTagSource = excerpt
@@ -1202,7 +1224,6 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
                     Alert.error("Error processing Fragment annotation #",n,"in",excerpt,": an annotation at the same level must follow a Fragment annotation.")
                     return fragmentExcerpts
                 
-                baseLevel = fragmentAnnotation["indentLevel"]
                 fragmentExcerptTemplate = fragmentFTagSource = fragmentTagSource = baseAnnotations[n + 1]
 
                 fragmentAnnotations = [copy.copy(a) for a in Database.SubAnnotations(excerpt,baseAnnotations[n + 1])]
@@ -1679,8 +1700,14 @@ def main():
         
         if re.match(".*[0-9]{4}",baseName): # Event files contain a four-digit year and are loaded after all other files
             continue
-
-        gDatabase[CamelCase(baseName)] = ListToDict(CSVFileToDictList(fullPath))
+        
+        baseName = CamelCase(baseName)
+        gDatabase[baseName] = ListToDict(CSVFileToDictList(fullPath))
+        
+        # Convert single-column sheets to dicts with blank values
+        if len(next(iter(gDatabase[baseName].values()))) == 1:
+            gDatabase[baseName] = {key:"" for key in gDatabase[baseName]}
+        
     
     LoadTagsFile(gDatabase,os.path.join(gOptions.csvDir,"Tag.csv"))
     PrepareReferences(gDatabase["reference"])

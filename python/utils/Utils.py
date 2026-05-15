@@ -188,7 +188,7 @@ def EllideText(s: str,maxLength = 50,endAtWordBoundary = False) -> str:
             return wordBoundaryMatch[0].strip() + "..."
     return s[:maxLength - 3] + "..."
 
-def SmartQuotes(s: str):
+def SmartQuotes(s: str) -> str:
     """Takes a string and returns it with dumb quotes, single and double,
     replaced by smart quotes. Accounts for the possibility of HTML tags
     within the string.
@@ -208,6 +208,15 @@ def SmartQuotes(s: str):
     s = s.replace("'", '‘')
     s = re.sub(r'=‘(.*?)’', r"='\1'", s)
     return s
+
+def SmartDashes(html: str) -> str:
+    """Takes an html string and converts -- to unicode en dash and --- to unicode em dash.
+    Should not be used with markdown text."""
+
+    notInsideTags = r"(?![^<>]*>)"
+    html = re.sub(r"---" + notInsideTags,"—",html)
+    html = re.sub(r"--" + notInsideTags,"–",html)
+    return html
 
 def CapitalizeFirst(s: str) -> str:
     """Capitalize the first letter of str without any other changes."""

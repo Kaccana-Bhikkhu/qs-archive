@@ -95,7 +95,9 @@
             "args": [
                 "All",
                 "--args",
-                "python/config/BuildAbhayagiri.args"
+                "python/config/BuildAbhayagiri.args",
+                "--featured",
+                "update,holidays"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -160,7 +162,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Build",
+                "ReviewDatabase",
                 "--buildOnly",
                 "texts"
             ],

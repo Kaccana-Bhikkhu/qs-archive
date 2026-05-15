@@ -44,8 +44,8 @@ options = parser.parse_args(sys.argv[1:])
 
 for fileName in sorted(os.listdir(options.directory)):
     path = os.path.join(options.directory,fileName)
-    if fileName.endswith(".mp3"):
-        print(os.path.join(options.directory,fileName))
+    if fileName.lower().endswith(".mp3"):
+        # print(os.path.join(options.directory,fileName))
         mp3File = MP3(os.path.join(options.directory,fileName))
         duration = timedelta(seconds=mp3File.info.length)
         bitRate = f"{mp3File.info.bitrate / 1000} kbps"
