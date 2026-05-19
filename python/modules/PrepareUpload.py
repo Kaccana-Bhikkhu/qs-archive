@@ -79,15 +79,22 @@ def CheckPreviousVersionFiles() -> None:
             newFiles = set(newFileRegister.record)
             added = newFiles - oldFiles
             removed = oldFiles - newFiles
+
+            os.makedirs(Utils.PosixJoin(gOptions.documentationDir,"linkChecking"),exist_ok=True)
+            removedFileList = Utils.PosixJoin(gOptions.documentationDir,"linkChecking","RemovedFiles.txt")
             if removed:
                 Alert.caution(len(removed),"file(s) were removed since the previous release. Consider redirecting them:",lineSpacing=0)
                 Alert.structure("\n".join(sorted(removed)),indent=0,lineSpacing=1)
+            with open(removedFileList,"w",encoding="utf8") as file:
+                for filename in sorted(removed):
+                    print(filename,file=file)
+
+            newFileList = Utils.PosixJoin(gOptions.documentationDir,"linkChecking","NewFilesThisRelease.txt")
             if added:
-                newFileList = Utils.PosixJoin(gOptions.documentationDir,"NewFilesThisRelease.txt")
                 Alert.info(len(added),"file(s) were added since the previous release. Saved to",newFileList)
-                with open(newFileList,"w",encoding="utf8") as file:
-                    for filename in sorted(added):
-                        print(filename,file=file)
+            with open(newFileList,"w",encoding="utf8") as file:
+                for filename in sorted(added):
+                    print(filename,file=file)
 
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"

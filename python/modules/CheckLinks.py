@@ -168,7 +168,7 @@ def WriteUrlList(urlList: dict[str,UrlInfo],filename: str) -> None:
 
     os.makedirs(Utils.PosixSplit(filename)[0],exist_ok=True)
     with open(filename,"w") as file:
-        for url,status in urlList.items():
+        for url,status in sorted(urlList.items()):
             print(url,"; linked from",status.linkingPages,file=file)
 
 class StrEnum(str,Enum):
