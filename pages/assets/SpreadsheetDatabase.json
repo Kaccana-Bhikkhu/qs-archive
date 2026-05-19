@@ -205854,6 +205854,28 @@
       "duration": "1:34:57"
     }
   },
+  "browserOnlyUrl": {
+    "https://fontawesome.com/v4/icons/": "",
+    "https://regexr.com/": "",
+    "https://creativecommons.org/publicdomain/zero/1.0/": "",
+    "https://creativecommons.org/licenses/by-nc/4.0/": "",
+    "https://ajahnchah.org/videos.htm": "",
+    "https://media.amaravati.org/*": "",
+    "https://www.suanmokkh.org/*": "",
+    "https://forestdhamma.org/books/english-books/": "",
+    "https://www.buddhism.hku.hk/publication-post/the-path-to-freedom-vimuttimagga/": "",
+    "https://luangporthoon.net/*": "",
+    "https://www.budsas.org/ebud/ajchah_lib/03_meditation.htm": "",
+    "https://bps.lk/olib/bp/*": "",
+    "https://www.bps.lk/olib/bp/*": "",
+    "https://wisdomexperience.org/product/rebirth-early-buddhism-and-current-research/": "",
+    "https://amaravati.org/audio/*": "",
+    "https://bodhimonastery.org/a-study-of-the-paramis.html": "",
+    "https://forestdhamma.org/audio/dhamma-of-ajaan-pannavaddho/": "",
+    "https://www.buddhism.hku.hk/wp-content/uploads/The-Path-to-Freedom.pdf": "",
+    "https://amaravati.org/dhamma-audio-library/*": "",
+    "https://suttacentral.net/*": ""
+  },
   "dispatch": {
     "Key Topics": {
       "title": "Key Topics",
@@ -213051,6 +213073,8 @@
     "Author1": "author1",
     "Author2": "author2",
     "Auto complete": "autoComplete",
+    "Browser only URLs": "browserOnlyURls",
+    "BrowserOnlyUrl": "browserOnlyUrl",
     "Can be annotation?": "canBeAnnotation",
     "Can be excerpt?": "canBeExcerpt",
     "Category": "category",

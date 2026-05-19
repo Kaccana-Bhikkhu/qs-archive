@@ -15,6 +15,7 @@ import Utils
 import Database
 import Render
 import Build
+import Link
 import Alert
 from functools import lru_cache
 
@@ -475,7 +476,7 @@ class BookReference(NamedTuple):
             return [Html.Tag("a",{"href":link,"style":"font-size:65%;"})("more information...")]
 
         if info["filename"]:
-            fileLink = info["remoteUrl"]
+            fileLink = Link.URL(info)
             suffix = info["filename"].split(".")[-1].lower()
             kind = ""
             if suffix == "pdf":

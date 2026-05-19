@@ -14,13 +14,28 @@ from collections import defaultdict
 import itertools
 import BuildReferences
 import Render
+from fnmatch import fnmatchcase
+
+class UrlStatus(Enum):
+    FAIL = 0
+    BROWSER_ONLY = 1
+    GOOD = 2 
 
 class UrlInfo(NamedTuple):
     """Information about a given URL."""
-    good: bool              # Can we read the URL?
+    status: UrlStatus               # Can we read the URL?
+    linkingPages: list[str]         # A list of pages that link to this URL
 
 gCheckedUrl:dict[str,UrlInfo] = {}
 """Dictionary of urls we have checked already."""
+
+def BrowerOnlyUrl(url: str) -> bool:
+    """Returns True if url matches the list of URLs that work in browsers but reject python link checking."""
+    for pattern in gDatabase["browserOnlyUrl"]:
+        if fnmatchcase(url,pattern):
+            return True
+    return False
+
 
 def GetEventLinks() -> list[str]:
     """Return a list of urls for events."""
@@ -79,8 +94,13 @@ def CheckFileCase(posixPath: str):
 def CheckUrl(linkTo:str,linkFrom: list[str],bookmarksToPage: list[str]) -> UrlInfo:
     """Check a URL if we haven't already done so."""
     if linkTo in gCheckedUrl:
+        gCheckedUrl[linkTo].linkingPages += linkFrom
         return gCheckedUrl[linkTo]
     
+    if BrowerOnlyUrl(linkTo):
+        gCheckedUrl[linkTo] = UrlInfo(status=UrlStatus.BROWSER_ONLY,linkingPages=linkFrom)
+        return gCheckedUrl[linkTo]
+
     parsed = urllib.parse.urlparse(linkTo)
     htmlFile = parsed.path.lower().endswith(".html")
 
@@ -95,13 +115,13 @@ def CheckUrl(linkTo:str,linkFrom: list[str],bookmarksToPage: list[str]) -> UrlIn
                 for bookmarkToCheck in bookmarksToPage:
                     if bookmarkToCheck not in bookmarks:
                         Alert.warning("Cannot find bookmark","#" + bookmarkToCheck,"in",linkTo,"; linked from",linkFrom)
-                result = UrlInfo(good=True)
+                result = UrlInfo(status=UrlStatus.GOOD,linkingPages=linkFrom)
             else:
-                result = UrlInfo(good=True)
+                result = UrlInfo(status=UrlStatus.GOOD,linkingPages=linkFrom)
             Alert.debug("Successfully opended",linkTo)
     except (OSError,urllib.error.HTTPError) as error:
         Alert.warning("Error",error,"when trying to access",linkTo,"; linked from",linkFrom)
-        result = UrlInfo(good=False)
+        result = UrlInfo(status=UrlStatus.FAIL,linkingPages=linkFrom)
     
     gCheckedUrl[linkTo] = result
     return result
@@ -142,6 +162,14 @@ def CheckLinksInPages(pages: Iterable[str]) -> None:
     
     Alert.info(len(urlsToCheck),"urls to check.")
     CheckUrls(urlsToCheck)
+
+def WriteUrlList(urlList: dict[str,UrlInfo],filename: str) -> None:
+    """Write a list of urls to a text file."""
+
+    os.makedirs(Utils.PosixSplit(filename)[0],exist_ok=True)
+    with open(filename,"w") as file:
+        for url,status in urlList.items():
+            print(url,"; linked from",status.linkingPages,file=file)
 
 class StrEnum(str,Enum):
     pass
@@ -227,4 +255,14 @@ def main() -> None:
                 Alert.info(text,"has no SuttaCentral link.")
         Alert.info(len(textUrls),"urls to check.")
         CheckUrls(textUrls)
+
+    goodUrls = {url:info for url,info in gCheckedUrl.items() if info.status == UrlStatus.GOOD}
+    browserOnlyUrls = {url:info for url,info in gCheckedUrl.items() if info.status == UrlStatus.BROWSER_ONLY}
+    badUrls = {url:info for url,info in gCheckedUrl.items() if info.status == UrlStatus.FAIL}
+
+    Alert.info("Url status count: ",len(badUrls),"fail; ",len(browserOnlyUrls),"browser only; ",len(goodUrls),"good.")
+    WriteUrlList(badUrls,Utils.PosixJoin(gOptions.documentationDir,"linkChecking","FailedLinkCheck.txt"))
+    WriteUrlList(browserOnlyUrls,Utils.PosixJoin(gOptions.documentationDir,"linkChecking","BrowserOnlyUrls.txt"))
+                 
+
         
