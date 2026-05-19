@@ -12,6 +12,7 @@ import Database
 import Mp3DirectCut
 import TagMp3
 import Utils, Alert
+import CheckLinks
 from urllib.parse import urljoin,urlparse,quote,urlunparse
 import urllib.request, urllib.error
 import shutil
@@ -90,6 +91,8 @@ class RemoteURLChecker(LinkValidator):
         if not url.strip():
             return False
         if Utils.RemoteURL(url):
+            if CheckLinks.BrowerOnlyUrl(url):
+                return True     # Report success for urls which are known to work only in web browsers
             url = Utils.QuotePath(url)
             try:
                 with urllib.request.urlopen(url) as request:
