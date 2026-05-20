@@ -193,8 +193,8 @@ def ConfigureMp3DirectCut() -> str:
 
 def WriteCue(cueTime: timedelta,cueNum: int,cueFile: TextIO):
     "Write a cue to a Mp3DirectCut .cue file"
-    print(f'  TRACK {cueNum:02d} AUDIO',file=cueFile)
-    print(f'    TITLE "(Track {cueNum:02d})"',file=cueFile)
+    print(f'  TRACK {cueNum:03d} AUDIO',file=cueFile)
+    print(f'    TITLE "(Track {cueNum:03d})"',file=cueFile)
     print(f'    INDEX 01 {TimeToCueStr(cueTime)}',file=cueFile)
 
 def RawMp3DirectCut(programName: str,file:str,splitPoints: list[timedelta],deleteCueFile:bool = True) -> list[str]:
@@ -211,8 +211,9 @@ def RawMp3DirectCut(programName: str,file:str,splitPoints: list[timedelta],delet
         
         for trackNumber,splitPoint in enumerate(splitPoints):
             WriteCue(splitPoint,trackNumber + 1,cueFile)
-            
-    trackNames = [fileNameBase + f' Track {track:02d}.mp3' for track in range(1,len(splitPoints) + 1)]
+    
+    decimalFormat = "03d" if len(splitPoints) > 99 else "02d"
+    trackNames = [fileNameBase + f' Track {track:{decimalFormat}}.mp3' for track in range(1,len(splitPoints) + 1)]
     for name in trackNames:
         if os.path.exists(os.path.join(directory,name)):
             os.remove(os.path.join(directory,name))
@@ -244,14 +245,14 @@ def RawMp3splt(file:str,splitPoints: list[timedelta]) -> list[str]:
 
     directory,originalFileName = os.path.split(file)
     fileNameBase,extension = os.path.splitext(originalFileName)
-    trackNames = [fileNameBase + f' {track:02d}.mp3' for track in range(1,len(splitPoints) + 1)]
+    trackNames = [fileNameBase + f' {track:03d}.mp3' for track in range(1,len(splitPoints) + 1)]
     for name in trackNames:
         if os.path.exists(os.path.join(directory,name)):
             os.remove(os.path.join(directory,name))
 
     splitTimes = [TimeToMp3spltFormat(t) for t in splitPoints]
     splitTimes.append(TimeToMp3spltFormat(None))
-    command = f'{mp3spltCommand} -o @f+@N2 "{file}" {" ".join(splitTimes)}'
+    command = f'{mp3spltCommand} -o @f+@N3 "{file}" {" ".join(splitTimes)}'
     result = os.system(command)
     if result:
         raise Mp3CutError(f"{command} returned code {result}; mp3 file not split.")
@@ -444,7 +445,7 @@ def MultiFileSplitJoin(fileClips:dict[str,list[Clip]],inputDir:str = ".",outputD
                 for clip in clips:
                     clipFile = splitOps.get(clip.file,"")
                     if not clipFile:
-                        clipFile = f"{tempFilePrefix}{tempFileCount:02d}.mp3"
+                        clipFile = f"{tempFilePrefix}{tempFileCount:03d}.mp3"
                         tempFileCount += 1
                         splitOps[clip] = clipFile
                 joinOps[outputFile] = clips
