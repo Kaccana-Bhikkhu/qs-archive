@@ -1138,7 +1138,7 @@ class Formatter:
         
         a(Mp3ExcerptLink(excerpt))
         a.br()
-        a(' ')
+        a('\n  ')
         if self.excerptNumbers:
             if excerpt['excerptNumber']:
                 with a.span(Class="excerpt-number"):
