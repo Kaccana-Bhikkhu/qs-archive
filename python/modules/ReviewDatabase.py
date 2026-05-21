@@ -6,7 +6,7 @@ from __future__ import annotations
 import os, bisect, csv, re
 from functools import lru_cache
 from itertools import accumulate
-from datetime import timedelta
+from datetime import timedelta,date
 from Mp3DirectCut import TimeDeltaToStr
 import Database, Filter
 import Utils, Database, Alert
@@ -108,8 +108,31 @@ def FTagStatusCode(tagOrSubtopic: dict[str]) -> str:
             prefixChar = "⊡"
     return prefixChar
 
+def CheckEvents() -> None:
+    "Check that events and sessions are listed in the correct order."
+
+    lastEventDate = date(1900,1,1)
+    for code,event in gDatabase["event"].items():
+        if code != event["code"]:
+            Alert.warning(event,": Event code does not match sheet name.")
+        startDate = Utils.ParseDate(event["startDate"])
+        endDate = Utils.ParseDate(event["endDate"] or event["startDate"])
+
+        if startDate < lastEventDate:
+            Alert.caution(event,"starts before the previous event.")
+        if endDate < startDate:
+            Alert.caution(event,"endDate is before startDate")
+
+        ourSessions = [s for s in gDatabase["sessions"] if s["event"] == code]
+        for s in ourSessions:
+            sessionDate = Utils.ParseDate(s["date"])
+            if sessionDate < startDate or sessionDate > endDate:
+                Alert.caution(s,"falls outside the start and end dates of its event.")
+        
+
+
 def VerifyListCounts() -> None:
-    # Check that the number of items in each numbered tag list matches the supertag item count
+    "Check that the number of items in each numbered tag list matches the supertag item count."
     tagList = gDatabase["tagDisplayList"]
     for tagIndex,subtagIndices in ParseCSV.WalkTags(tagList,returnIndices=True):
         tag = tagList[tagIndex]["tag"]
@@ -479,6 +502,7 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
+    CheckEvents()
     VerifyListCounts()
     AuditNames()
     # CheckAttributions()
