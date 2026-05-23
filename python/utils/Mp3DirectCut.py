@@ -456,7 +456,7 @@ def MultiFileSplitJoin(fileClips:dict[str,list[Clip]],inputDir:str = ".",outputD
                     splitOps[clips[0]] = outputFile
                         # register a new splitOp or redirect an existing splitOp away from the temporary file.
                 else:
-                    joinOps[outputFile] = [existingFilename]
+                    joinOps[outputFile] = [clips[0]]
                         # Otherwise copy an existing file.
         # 2. Run splitOps
         for sourceFile in sourceFiles:

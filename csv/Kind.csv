@@ -16,8 +16,8 @@ Simile,Teachings,2,Yes,Yes,Yes,Yes,Yes,No,,,,Excerpt,unimplemented,++Simile{s}{c
 Simile from,Teachings,1,Yes,Yes,Yes,Yes,Yes,Yes,Yes,,,Excerpt,++Simile{s}{colon if not suffix else ''}++{' from ' + suffix + colon if suffix else ''} {text}|| related by {teachers}.,unimplemented,unimplemented,,
 Dhamma talk,Teachings,2,Yes,Yes,Yes,Yes,Yes,Yes,,,,Excerpt,"++Dhamma talk{s}++|| offered by {teachers}||{colon}{""."" if not text else "" "" + text}",++Dhamma talk{s}{colon}++ {text}|| offered by {teachers}.,{text}|| ++Dhamma talk{s}++ offered by {teachers}.,,
 ,,,,,,,,,,,,,,,,,
-Quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,Yes,,,,Excerpt,unimplemented,++Quote:++ {prefix} “{text}” {suffix}|| — {teachers}.,unimplemented,,A quote from the teacher him/herself.
-Indirect quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,Yes,Yes,,,Excerpt,unimplemented,++Quote:++ {prefix} “{text}”{' — ' if suffix else ''}{suffix}{'.' if suffix else ''}|| Quoted by {teachers}.,unimplemented,,"The teacher quoting someone else. If the person quoted is a teacher, they should get the first tag."
+Quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,Yes,,,,Excerpt,unimplemented,++Quote{s}:++ {prefix} “{text}” {suffix}|| — {teachers}.,unimplemented,,A quote from the teacher him/herself.
+Indirect quote,Quotes,2,Yes,Yes,Yes,Yes,Yes,Yes,Yes,,,Excerpt,unimplemented,++Quote{s}:++ {prefix} “{text}”{' — ' if suffix else ''}{suffix}{'.' if suffix else ''}|| Quoted by {teachers}.,unimplemented,,"The teacher quoting someone else. If the person quoted is a teacher, they should get the first tag."
 ,,,,,,,,,,,,,,,,,
 Meditation instruction,Meditations,2,Yes,Yes,Yes,Yes,Yes,Yes,,,,Excerpt,unimplemented,++Meditation instruction{s}{colon}++ {text}|| offered by {teachers}.,unimplemented,,
 Meditation instruction from,Meditations,1,No,Yes,No,Yes,Yes,Yes,Yes,,,Excerpt,++Meditation instruction{s}{colon if not suffix else ''}++{' from ' + suffix + colon if suffix else ''} {text}|| related by {teachers}.,unimplemented,unimplemented,,
