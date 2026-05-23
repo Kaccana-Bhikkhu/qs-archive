@@ -113,8 +113,6 @@ def CheckEvents() -> None:
 
     lastEventDate = date(1900,1,1)
     for code,event in gDatabase["event"].items():
-        if code != event["code"]:
-            Alert.warning(event,": Event code does not match sheet name.")
         startDate = Utils.ParseDate(event["startDate"])
         endDate = Utils.ParseDate(event["endDate"] or event["startDate"])
 
@@ -124,10 +122,17 @@ def CheckEvents() -> None:
             Alert.caution(event,"endDate is before startDate")
 
         ourSessions = [s for s in gDatabase["sessions"] if s["event"] == code]
+        prevSessionDate = startDate
         for s in ourSessions:
             sessionDate = Utils.ParseDate(s["date"])
-            if sessionDate < startDate or sessionDate > endDate:
-                Alert.caution(s,"falls outside the start and end dates of its event.")
+            if sessionDate < prevSessionDate:
+                if s is ourSessions[0]:
+                    Alert.caution(s,"is before the event start date.")
+                else:
+                    Alert.caution(s,": date is out-of-order.")
+            prevSessionDate = sessionDate
+        if prevSessionDate > endDate:
+            Alert.caution(s,"is after the event end date.")
         
 
 
