@@ -156847,7 +156847,7 @@
       "fileNumber": 4,
       "annotations": [
         {
-          "kind": "Edited audio",
+          "kind": "Alternate audio",
           "flags": "",
           "startTime": "",
           "endTime": "1:51",
@@ -156897,11 +156897,10 @@
         [
           "WR2025_S45_F03.mp3",
           "0:00",
-          ""
+          "1:32"
         ]
       ],
-      "startTimeInSession": "31:58",
-      "duration": "1:51"
+      "duration": "1:32"
     },
     {
       "event": "WR2025",

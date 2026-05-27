@@ -1216,6 +1216,13 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
                 fragmentAnnotations = [copy.copy(baseAnnotations[number]) for number in range(n)] + audioAnnotations
                     # Copy all annotations previous to the Main fragment annotation;
                     # Audio subannotations go after all other annotations
+                for a in fragmentAnnotations:
+                    if a["kind"] == "Edited audio":
+                        a["kind"] = "Alternate audio"
+                        fragmentAnnotation = copy.copy(fragmentAnnotation)
+                        fragmentAnnotation["flags"] = fragmentAnnotation["flags"].replace("r","")
+                    # Convert edited audio annotations in main fragments to non-relative alternate audio annotations
+
                 fragmentFTagSource = fragmentTagSource = fragmentAnnotation
                 if not fragmentTagSource["qTag"] and not fragmentTagSource["aTag"]:
                     fragmentTagSource = excerpt
@@ -1253,7 +1260,7 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
                 exclude = False
             )
 
-            audioEdited = any(a["kind"] == "Edited audio" for a in excerpt["annotations"])
+            audioEdited = any(a["kind"] == "Edited audio" for a in fragmentExcerpt["annotations"])
             relativeAudio = ExcerptFlag.RELATIVE_AUDIO in fragmentAnnotation["flags"]
             if audioEdited and not relativeAudio:
                 Alert.error(excerpt,": Excerpts with edited audio must specify relative fragment times.")
