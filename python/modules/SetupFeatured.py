@@ -13,6 +13,7 @@ from dataclasses import dataclass
 import Utils, Alert, Build, Database
 from copy import copy
 import Filter
+import ParseCSV
 from collections import defaultdict, Counter, deque
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
@@ -445,13 +446,98 @@ def Update(paramStr: str) -> bool:
             updated = "matches; updated"
             databaseChanged = True
         Alert.extra("")
-        Alert.info(f"Excerpt: {code}; ratio:{ratio:.3f}; {updated}.")
+        Alert.info(f"Excerpt: {code}; ratio: {ratio:.3f}; {updated}.")
         Alert.extra("Old:",oldText,indent=6)
         Alert.extra("New:",currentEntry["text"],indent=6)
 
     if not databaseChanged:
         Alert.info("No changes made to database.")
     return databaseChanged
+
+def IsFragment(entryOrExcerpt: ExcerptDict|dict) -> bool:
+    "Returns True if entryOrExcerpt is a fragment."
+
+    if "flags" in entryOrExcerpt:
+        return ParseCSV.ExcerptFlag.FRAGMENT in entryOrExcerpt["flags"]
+    elif "html" in entryOrExcerpt: # Use a regexp that finds decimal excerpt numbers
+        return bool(re.search(r">Excerpt [0-9]+\.[0-9]</a>",entryOrExcerpt["html"]))
+    else:
+        raise ValueError(f"Utils.IsFragment cannot determine the type of argument {entryOrExcerpt}")
+
+def Fix(paramStr: str) -> bool:
+    """Search entries in the current database to match excerpts in gFeaturedDatabase that no longer match the same file number.
+    This most commonly occurs when fragments have been inserted or removed earlier in the session.
+    Return True if we modify gFeaturedDatabase."""
+
+    textMatches,textMismatches,missingEntries = DatabaseMismatches()
+    # At this point, Update will have already taken care of any textMatches
+    
+    databaseChanges:dict[str,str] = {} # The changes we will make to the database: databaseChanges[oldCode] = newCode
+    unmatched:list[str] = [] # A list of excerpt codes we couldn't find matches for
+    for code in textMismatches:
+        mismatchedFragment = IsFragment(gFeaturedDatabase["excerpts"][code])
+        oldText = gFeaturedDatabase["excerpts"][code]["text"]
+        matcher = SequenceMatcher(b=oldText)
+
+        event,sessionNumber,_ = Database.ParseItemCode(code)
+        fileNumber = 1
+        candidates:list[tuple[float,dict]] = [] # The list of tuples (ratio, excerpt)
+        while candidateExcerpt := Database.FindExcerpt(event,sessionNumber,fileNumber):
+            fileNumber += 1
+            if IsFragment(candidateExcerpt) != mismatchedFragment:
+                continue    # Don't allow fragment excerpts to match non-fragments
+                            # This prevents confusion when main fragments have the same text as their origin excerpt.
+
+            matcher.set_seq1(candidateExcerpt["text"])
+            candidates.append((matcher.ratio(),candidateExcerpt))
+        
+        candidates.sort(key=lambda item:item[0],reverse=True)
+
+        if len(candidates) < 1:
+            Alert.error("There are not possible matches for excerpt",code,".")
+            unmatched.append(code)
+            continue
+
+        best = candidates[0]
+        secondBest = candidates[1] if len(candidates) > 1 else (0.0,{"text":""})
+        
+        if best[0] >= gOptions.updateThreshold:
+            Alert.extra("")
+            Alert.info(f"Excerpt: {code} matches {Database.ItemCode(best[1])}; ratio: {best[0]:.3f}.")
+            Alert.extra("Old:",oldText,indent=6)
+            Alert.extra("New:",best[1]["text"],indent=6)
+            if secondBest[0] < gOptions.updateThreshold:
+                databaseChanges[code] = Database.ItemCode(best[1])
+            else:
+                Alert.info(f"However, it also matches {Database.ItemCode(secondBest[1])}; ratio: {secondBest[0]:.3f}.")
+                Alert.extra("Second-best:",secondBest[1]["text"],indent=6)
+                Alert.info("Choose a different threshold or upgrade the Fix module to allow this situation to be resolved manually.")
+                unmatched.append(code)
+        else:
+            Alert.warning(f"No match found for excerpt: {code}.")
+            unmatched.append(code)
+
+    if unmatched:
+        Alert.error("Could not find matches for excerpt(s):",unmatched,". The database will remain unchanged.")
+        return False
+    
+    if databaseChanges:
+        # First rename the keys in the database
+        Utils.RenameKeys(gFeaturedDatabase["excerpts"],databaseChanges)
+        Utils.RenameKeys(gFeaturedDatabase["oldFTags"],databaseChanges)
+
+        # Then update the contents of the entries we have changed
+        for newCode in databaseChanges.values():
+            UpdateEntry(gFeaturedDatabase["excerpts"][newCode],ExcerptEntry(Database.FindExcerpt(newCode)),newCode)
+
+        # Finally change the entries in the calendar
+        gFeaturedDatabase["calendar"] = [databaseChanges.get(code) or code for code in gFeaturedDatabase["calendar"]]
+
+        Alert.info("Updated file numbers for",len(databaseChanges),"excerpts.")
+        return True
+    else:
+        Alert.info("No changes need to be fixed.")
+
 
 def RemakeFuture(paramStr: str) -> bool:
     """Remove any future featured excerpts that are no longer featured and add any newly featured excerpts.
@@ -639,6 +725,8 @@ def ParseArguments() -> None:
     # --featured is a comma-separated list of operations from gOperations optionally followed by non-alphabetic parameters
     gOptions.featured = [re.match(r"([a-z]*)(.*)",op.strip(),re.IGNORECASE) for op in gOptions.featured.split(',')]
     gOptions.featured = {m[1].lower():m[2] for m in gOptions.featured}
+    if "fix" in gOptions.featured and "update" not in gOptions.featured: # Always run update before fix
+        gOptions.featured["update"] = ""
 
     unrecognized = [op for op in gOptions.featured if op not in gSubmodules]
     if unrecognized:
@@ -651,7 +739,7 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 gFeaturedDatabase:FeaturedDatabase = {}
-gRepairModules:list[SubmoduleType] = [Update,RemakeFuture,Trim]
+gRepairModules:list[SubmoduleType] = [Update,Fix,RemakeFuture,Trim]
 gEnhanceModules:list[SubmoduleType] = [Extend,Holidays]
 gSubmodules:dict[str,SubmoduleType] = {op.__name__.lower():op for op in [Remake,Read,Check,Write] + gRepairModules + gEnhanceModules}
 

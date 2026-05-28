@@ -293,6 +293,15 @@ def ReorderKeys(ioDict: dict,firstKeys = [],lastKeys = []) -> None:
     for key in lastKeys:
         ioDict[key] = spareDict[key]
 
+def RenameKeys(ioDict:dict, keyChanges: dict) -> None:
+    "Rename the keys in ioDict without moving them using keyChanges[oldKey] = newKey"
+
+    spareDict = copy.copy(ioDict) # Make a shallow copy
+    ioDict.clear()
+
+    for key,value in spareDict.items():
+        ioDict[keyChanges.get(key) or key] = value
+
 def SummarizeDict(d: dict,printer: Alert.AlertClass) -> None:
     "Print a summary of dict d, one line per key."
     for key,value in d.items():
