@@ -494,7 +494,7 @@ def Fix(paramStr: str) -> bool:
         candidates.sort(key=lambda item:item[0],reverse=True)
 
         if len(candidates) < 1:
-            Alert.error("There are not possible matches for excerpt",code,".")
+            Alert.error("There are no possible matches for excerpt",code,".")
             unmatched.append(code)
             continue
 
