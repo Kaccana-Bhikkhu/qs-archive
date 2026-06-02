@@ -162,7 +162,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "ReviewDatabase",
+                "Render",
                 "--buildOnly",
                 "texts"
             ],

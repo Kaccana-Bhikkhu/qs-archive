@@ -137,7 +137,8 @@ def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {}
     If not, replace it with a single-item set. String operators are left as-is.
     Example: EvaluateSetExpression("Mv|Kd") = {"Mv","Kd},
     If allowableValues is given, then warn if a string literal appears neither in dictionary or allowableValues.
-    If expression is an empty string, return Filter.All, which contains all values"""
+    If expression is an empty string, return Filter.All, which contains all values.
+    If expression is '_blank', return {'None'} (Match empty fields but not filled ones)."""
 
     expression = expression.strip()
     if not expression:
@@ -150,7 +151,9 @@ def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {}
         if text in dictionary:
             return repr(set(dictionary[text]))
         else:
-            if text not in allowableValues:
+            if text == "_blank":
+                return "{'None'}"
+            elif text not in allowableValues:
                 Alert.warning("When evaluating the text matching rule",repr(expression) + ":",repr(text),"is not a known text, text group, or translator.")
             return f"{{'{text}'}}"
 
@@ -159,7 +162,7 @@ def EvaluateSetExpression(expression:str,dictionary:dict[str,Iterable[str]] = {}
     return eval(setExp,{"__builtins__": {}})
 
 class TextRuleMatcher(TypedDict):
-    """This is a docstring."""
+    """A rule corresponding to a single line of the TextLink sheet"""
     uid: set[str]|Filter.InverseSet                 # The set of uids to match, e.g. {"MN"}
     n0: set[str]|Filter.InverseSet                  # The set of primary sutta numbers to match, e.g. {"18"}
     refcount: set[str]|Filter.InverseSet            # The set of refCounts to match, e.g. {"1","2"}
@@ -440,7 +443,7 @@ def ApplySuttaMatchRules(matchObject: re.Match) -> str:
     ruleMatchers = TextRuleMatchers()
     for ruleName in ruleMatchers:
         matcher = ruleMatchers[ruleName]
-        if not all(str(params[which]) in matcher[which] for which in matcher if which in params):
+        if not all(str(params[which]) in matcher[which] for which in matcher if which in TextRuleMatcher.matchFields):
             continue
         try:
             link = str(matcher["linkTemplate"](**params))
