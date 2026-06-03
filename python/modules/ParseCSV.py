@@ -1371,11 +1371,14 @@ def LoadEventFile(database,eventName,directory):
     lastSession = -1
     prevExcerpt = None
     excerpts = []
-    blankExcerpts = 0
+    blankExcerpts:list[str] = []
     redactedTagSet = set(database["tagRedacted"])
     for x in rawExcerpts:
         if all(not value for key,value in x.items() if key != "sessionNumber"): # Skip lines which have a session number and nothing else
-            blankExcerpts += 1
+            if prevExcerpt:
+                blankExcerpts.append(Database.ItemCode(prevExcerpt))
+            else:
+                blankExcerpts.append("Before first excerpt.")
             continue
 
         x["flags"] = x.get("flags","")
@@ -1465,7 +1468,7 @@ def LoadEventFile(database,eventName,directory):
     excerpts.extend(fragments)
 
     if blankExcerpts:
-        Alert.notice(blankExcerpts,"blank excerpts in",eventDesc)
+        Alert.notice("Blank lines in",eventDesc,"appear after excerpts",blankExcerpts)
 
     for x in excerpts:
         FinalizeExcerptTags(x)
