@@ -757,7 +757,7 @@ def main() -> None:
     PrintInfo(gFeaturedDatabase)
     goodDatabase = RunSubmodule(Check)
 
-    databaseRepaired = any(RunSubmodule(m) for m in gRepairModules)
+    databaseRepaired = any([RunSubmodule(m) for m in gRepairModules])
 
     newHolidayRecords = HolidayRecords()
     if newHolidayRecords != gFeaturedDatabase.get("holidays"):
