@@ -444,6 +444,30 @@ def ItemRepr(item: dict) -> str:
         return repr(item)
 
 
+def NextItem(excerpt: dict,thisItem: dict,offset: int = 1) -> dict|None:
+    """Return the item after thisItem in excerpt. If offset is specifed, jump this many items forward or back (if negative)."""
+
+    index = None
+    if thisItem is excerpt:
+        index = -1
+    else:
+        for n,annotation in enumerate(excerpt["annotations"]):
+            if thisItem is annotation:
+                index = n
+    
+    if index is None:
+        Alert.error(thisItem,"is not part of",excerpt)
+        return None
+    
+    index += offset
+    if index == -1:
+        return excerpt
+    elif index < len(excerpt["annotations"]):
+        return excerpt["annotations"][index]
+    else:
+        return None
+
+
 def ChildAnnotations(excerpt: dict,annotation: dict|None = None) -> list[dict]:
     """Return the annotations that are directly under this annotation or excerpt."""
 

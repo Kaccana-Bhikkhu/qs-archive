@@ -797,24 +797,30 @@ def PrepareTeachers(teacherDB) -> None:
         else:
             t["htmlFile"] = ""
 
-itemAllowedFields = {"startTime": "takesTimes", "endTime": "takesTimes", "teachers": "takesTeachers", "aTag": "takesTags", "qTag": "takesTags"}
+itemAllowedFields = {"startTime": "takesTimes", "endTime": "takesTimes", "teachers": "takesTeachers", 
+                     "aTag": "takesTags", "qTag": "takesTags","fTag": "takesTags","fTagOrder": "takesTags"}
 
-def CheckItemContents(item: dict,prevExcerpt: dict|None,kind: dict) -> bool:
+def CheckItemContents(item: dict,owningExcerpt: dict|None,kind: dict) -> bool:
     """Print alerts if there are unexpectedly blank or filled fields in item based on its kind."""
 
-    isExcerpt = bool(item["startTime"]) and kind["canBeExcerpt"]
-        # excerpts specify a start time
-    
-    if not isExcerpt and not kind["canBeAnnotation"]:
-        Alert.warning(item,"to",prevExcerpt,f": Kind {repr(item['kind'])} is not allowed for annotations.")
+    if owningExcerpt and not kind["canBeAnnotation"]:
+        Alert.warning(item,"to",owningExcerpt,f": Kind {repr(item['kind'])} is not allowed for annotations.")
     
     for key,permission in itemAllowedFields.items():
-        if item[key] and not kind[permission]:
+        if item.get(key) and not kind[permission]:
             message = f"has ['{key}'] = {repr(item[key])}, but kind {repr(item['kind'])} does not allow this."
-            if isExcerpt or not prevExcerpt:
+            if not owningExcerpt:
                 Alert.caution(item,message)
             else:
-                Alert.caution(item,"to",prevExcerpt,message)
+                Alert.caution(item,"to",owningExcerpt,message)
+    
+    if owningExcerpt and (item.get("fTags") or item.get("fTagOrder")):
+        # Annotations should specify fTags only when they apply to fragments. The three cases are:
+        # 1. The annotation is a Main fragment
+        # 2. The annotation immediately follows a Fragment annotation
+        # 3. The annotation is Extra tags applied to one of the prior cases
+        if item["kind"] not in ("Extra tags","Main fragment") and (not owningExcerpt["annotations"] or owningExcerpt["annotations"][-1]["kind"] != "Fragment"):
+            Alert.caution(item,"to",owningExcerpt,"specifies fTags which are not used.")
 
 def FinalizeExcerptTags(x: dict) -> None:
     """Combine qTags and aTags into a single list, but keep track of how many qTags there are."""
@@ -847,6 +853,8 @@ def AddExcerptTags(excerpt: dict,annotation: dict) -> None:
     "Combine qTag, aTag, fTag, and fTagOrder keys from an Extra Tags annotation with an existing excerpt."
 
     for key in ("qTag","aTag","fTags","fTagOrder"):
+        if annotation.get(key) and not excerpt.get(key):
+            Alert.caution(excerpt,f"has a blank {key} field but an Extra Tags annotation adds to it. This is likely a mistake.")
         excerpt[key] = excerpt.get(key,[]) + annotation.get(key,[])
     excerpt["fTagOrderFlags"] = excerpt.get("fTagOrderFlags","") + annotation.get("fTagOrderFlags","")
 
