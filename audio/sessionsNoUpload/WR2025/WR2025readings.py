@@ -3,6 +3,7 @@
 import sys, os, re
 import argparse
 import unicodedata
+from datetime import date
 from typing import TypedDict,DefaultDict
 from csv import DictReader,writer
 
@@ -32,12 +33,15 @@ class SessionEntry(TypedDict):
     firstPassage: int
     lastPassage: int
     extraReading: bool
+    sessionDate: date
 
     @staticmethod
     def fromDict(d:dict) -> "SessionEntry":
-        return {key:(value if key in ("pageRange","teacher") 
+        newDict = {key:(value if key in ("pageRange","teacher","date") 
                      else (value.startswith("Yes") if key == "extraReading" 
                            else int(value))) for key,value in d.items()}
+        newDict["date"] = Utils.ParseDate(newDict["date"])
+        return newDict
         
 
 def ExcerptLineDict(session:int,kind:str = "",flags:str = "",startTime:str = "",text:str = "",teachers:str = ""):
@@ -58,7 +62,8 @@ def DownloadSheets():
 
     sheets = {
         "Processed": 21026486,
-        "Sessions": 609110514
+        "Sessions": 609110514,
+        "ChapterTitles": 1096163597
     }
     DownloadCSV.DownloadSheets(sheets,None)
 
@@ -141,6 +146,71 @@ def WriteExcerptCSV(concordance: dict[int,dict[int,ConcordanceEntry]]):
                     text = "xxxxx"
                 ).values())
 
+def DateRange(fromDate: date,toDate: date) -> str:
+    bits =  [f'{fromDate.strftime("%B")} {int(fromDate.day)}']
+    if fromDate != toDate:
+        if fromDate.month == toDate.month:
+            bits.append(str(toDate.day))
+        else:
+            bits.append(f'{toDate.strftime("%B")} {int(toDate.day)}')
+    return ' – '.join(bits)
+
+def HyperlinkSession(session: int,text: str = "") -> str:
+    "Return a markdown hyperlink to session."
+
+    if not text:
+        text = str(session)
+    return f"[{text}](#WR2025_S{session:02d})"
+
+def WriteTOC() -> None:
+    """Read Sessions.csv and write documentation/tableOfContents/WR2025.md.
+    Use the form:
+    Chapter 1: What is it? Read by Ajahn Amaro
+        January 14 - 16; Sessions 4, 5, 6
+    """
+
+    chapterTitles: dict[int,str] = {} 
+    with open("ChapterTitles.csv",encoding='utf8') as titleFile:
+        for line in DictReader(titleFile):
+            chapterTitles[int(line["chapter"])] = line["title"]
+
+    chapterSessions: dict[int,list[int]] = DefaultDict(list) # Lists of sessions for each chapter
+    chapterDates: dict[int,list[date]] = DefaultDict(list) # Lists of dates for each chapter
+    chapterReader: dict[int,str] = {} # The reader for each chapter
+
+    chapterSessions[-2] = [21] # AP reads his Preface
+    chapterDates[-2] = [date(2025,2,8)]
+    chapterReader[-2] = "AP"
+
+    chapterSessions[-1] = [1,2] # AA reads the Introduction
+    chapterDates[-1] = [date(2025,1,5),date(2025,1,8)]
+    chapterReader[-1] = "AA"
+
+    with open("Sessions.csv",encoding='utf8') as sessionFile:
+        for session in DictReader(sessionFile):
+            session:SessionEntry = SessionEntry.fromDict(session)
+            chapter = session["chapter"]
+            chapterSessions[chapter].append(session["session"])
+            chapterDates[chapter].append(session["date"])
+            chapterReader[chapter] = session["teacher"]
+
+    
+    with open("../../../documentation/tableOfContents/WR2025.md","w",encoding='utf8') as outputFile:
+        print("Readings from _[The Island](The Island)_ are listed by chapter rather than by date read.",file = outputFile)
+        print("",file=outputFile)
+        for chapter in sorted(chapterSessions):
+            reader = "Ajahn Amaro" if chapterReader[chapter] == "AA" else "Ajahn Pasanno"
+            chapterStr = f"Chapter {chapter}: " if chapter > 0 else ""
+            firstSession = min(chapterSessions[chapter])
+            print(f"{HyperlinkSession(firstSession,chapterStr + chapterTitles[chapter])}, read by {reader}<br>",file = outputFile)
+
+            startDate = min(chapterDates[chapter])
+            endDate = max(chapterDates[chapter])
+            sessions = [HyperlinkSession(s) for s in chapterSessions[chapter]]
+            sessionHeader = "Sessions" if len(sessions) > 1 else "Session"
+            print(f"{6*'&nbsp;'}{DateRange(startDate,endDate)}, {sessionHeader} {', '.join(sessions)}",file = outputFile)
+            print("",file=outputFile)
+        
 
 parser = argparse.ArgumentParser(description="""Download csv files from Google sheet WR2025 readings and parse them into AP QS Archive excerpt format.""")
 parser.add_argument('--spreadsheet',type=str, default = 'https://docs.google.com/spreadsheets/d/1ikMYrcw-Ro0NIr3X462ZOr-ZOIrHW9ZJ-Jxf3m26YuY/', help='URL of the WR2025 Google Sheet')
@@ -155,3 +225,4 @@ if not options.noDownload:
 concordance = ReadConcordance()
 
 WriteExcerptCSV(concordance)
+WriteTOC()
