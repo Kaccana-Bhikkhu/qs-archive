@@ -8,80 +8,80 @@
     "_modified": "2026-05-20 16:41:50.000000"
   },
   "indexes/KeyTopicDetail.html": {
-    "md5": "bb144092453d93c78116c613ed678864",
-    "_modified": "2026-06-03 14:22:54.000000"
+    "md5": "85c18572435c630770326adbacb29ba3",
+    "_modified": "2026-06-06 15:54:06.000000"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "e1ad5e04cc36730445dc68dceb2b7607",
-    "_modified": "2026-06-03 15:16:18.000000"
+    "md5": "7e813c8fc8d42e27c0f8895fcdb0063a",
+    "_modified": "2026-06-06 15:54:06.000000"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "7e3f21a6df96b846fcf98fa3ad960025",
-    "_modified": "2026-06-03 15:16:18.000000"
+    "md5": "5e790fd476d162110adfa13401484c8d",
+    "_modified": "2026-06-06 15:54:06.000000"
   },
   "indexes/Tags_print.html": {
-    "md5": "66d75cb1bb43b839c758f8d44d97e1bd",
-    "_modified": "2026-06-03 15:16:38.000000"
+    "md5": "7287236bcd201921ee6786659335a28f",
+    "_modified": "2026-06-06 16:11:46.000000"
   },
   "drilldown/root.html": {
-    "md5": "7dfac754ec998b1d1851a3a609bee25b",
-    "_modified": "2026-06-03 15:16:38.000000"
+    "md5": "0b7762e199d3eb496b71863a4ccbe8a1",
+    "_modified": "2026-06-06 15:54:06.000000"
   },
   "indexes/NumericalTags.html": {
-    "md5": "2d6478de20692f4f432b8009c15fe7e2",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "0eae6bf45fbb640254d91326ead95273",
+    "_modified": "2026-06-06 15:54:06.000000"
   },
   "indexes/SortedTags.html": {
-    "md5": "994e984ee0fdf96718dc87750613b5c1",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "43220ffd56945aca07d6a08801116646",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "31c0a61f6eac7b550e21bd3cad78f073",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "5d3e1e2e1d8029f9cd1f413e627feacc",
+    "_modified": "2026-06-06 16:11:46.000000"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "0110183e7e39db5f8351fd04dcfc7093",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "1751252ca29d0230c16457f1a67b3f5f",
+    "_modified": "2026-06-06 16:11:46.000000"
   },
   "indexes/AlphabeticalTags.html": {
-    "md5": "fcb85f19c5d8a36b1261cf630ccc694e",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "e199c83c0cd20473920bdb23ea8e8f53",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/EnglishTags.html": {
-    "md5": "9edc72b2865ec9d870a6c3a42df64551",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "2c4fbce320642efbdd2913ac121a01f6",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/PaliTags.html": {
-    "md5": "2416d1953d138db0297604f0fc58b9cd",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "89f743ef906923a50adbb0dc9541f552",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/OtherTags.html": {
-    "md5": "fc06dd9dc90551f977779ebe53b2a9ef",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "834f3201b8bcc95b3380985c22db4dda",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/ProperTags.html": {
-    "md5": "623bd70a995654e9ebc4889707dda521",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "5117011240740eeab1e0006fe12546f0",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/EventsBySeries.html": {
-    "md5": "7fe7e669e778a1b9e8e72e47826c3a97",
-    "_modified": "2026-06-03 15:19:14.000000"
+    "md5": "4b1b77cad9e005a50bcb808d7e14989b",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/EventsBySubject.html": {
     "md5": "f70159bb48f858385a5e5a41c8566aaf",
     "_modified": "2026-05-20 17:11:58.000000"
   },
   "indexes/EventsChronological.html": {
-    "md5": "9f76579595f902bbb9ee7c22f40c2f76",
-    "_modified": "2026-06-03 15:19:14.000000"
+    "md5": "433cac60f77a4cda1e137a0fcb8788da",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "indexes/EventDetails.html": {
-    "md5": "d79edb09827c653d535e1a2c7d83a362",
-    "_modified": "2026-06-03 15:19:14.000000"
+    "md5": "ce70cf1ee55a3d792a4f68e5b1aa260b",
+    "_modified": "2026-06-06 15:54:08.000000"
   },
   "events/Chah2001.html": {
-    "md5": "72648ff98f4a4a1ef76bd2748b5d8b8f",
-    "_modified": "2026-05-20 16:44:40.000000"
+    "md5": "3c39ab232264e8acd9486049132ac76c",
+    "_modified": "2026-06-05 18:57:44.000000"
   },
   "events/WR2005-1.html": {
     "md5": "33844481fc3f2214dd8a23c0b5403c64",
@@ -128,12 +128,12 @@
     "_modified": "2026-05-20 16:44:40.000000"
   },
   "events/WR2014.html": {
-    "md5": "276bd624f7cdf26549527f5dac35a2bd",
-    "_modified": "2026-05-21 16:25:18.000000"
+    "md5": "7e4475c65790f7ac77fdcd6d4f3ce078",
+    "_modified": "2026-06-05 18:57:46.000000"
   },
   "events/UD2014-1.html": {
-    "md5": "2224b4c193f8508d328a886f942c7352",
-    "_modified": "2026-05-20 16:44:42.000000"
+    "md5": "17141816a9a6bb20f535280703a27b1e",
+    "_modified": "2026-06-05 18:57:46.000000"
   },
   "events/UD2014-2.html": {
     "md5": "9f8d548f2348adfe35a18f7de1ef768b",
@@ -176,8 +176,8 @@
     "_modified": "2026-05-20 16:44:42.000000"
   },
   "events/TG2015.html": {
-    "md5": "018c78d0abbaf93ffe606419742f9422",
-    "_modified": "2026-06-03 15:24:02.000000"
+    "md5": "eec9b0c06d164f02d55a86be9117039a",
+    "_modified": "2026-06-05 17:39:00.000000"
   },
   "events/WR2016.html": {
     "md5": "10d8878cf1e3e061bbda2dee2f0f5e99",
@@ -308,8 +308,8 @@
     "_modified": "2026-05-20 16:44:44.000000"
   },
   "events/WR2025.html": {
-    "md5": "80bd34e4fb531bffcfb400cc3d96ab1f",
-    "_modified": "2026-06-02 18:52:54.000000"
+    "md5": "1d487372e0a76ab9f439315015a77fc6",
+    "_modified": "2026-06-05 18:57:46.000000"
   },
   "events/ChahQA2025.html": {
     "md5": "b85fccb7b98fba75ee7e570922d30369",
@@ -324,8 +324,8 @@
     "_modified": "2026-05-20 16:44:46.000000"
   },
   "sitemap.xml": {
-    "md5": "2814dd2ada18a30a5320a3cddb73df24",
-    "_modified": "2026-06-03 15:24:34.000000"
+    "md5": "ee5b68ba447705186dd4deff19479a46",
+    "_modified": "2026-06-06 16:11:48.000000"
   },
   "index.html": {
     "md5": "1bb86274d323ff34d73877f717d1c9c6",
@@ -2884,8 +2884,8 @@
     "_modified": "2026-06-03 15:16:40.000000"
   },
   "tags/eightfold-path.html": {
-    "md5": "bd2fddbd44e9a76993bb88520fc8b604",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "082e39facee3c6936fbde4c2eafa7c18",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/eightfold-path-relevant.html": {
     "md5": "59450f2fbb5817002140ddc89167074a",
@@ -2948,8 +2948,8 @@
     "_modified": "2026-06-03 15:16:42.000000"
   },
   "tags/right-intention.html": {
-    "md5": "60984cbd11b395025353e0b1a9c82804",
-    "_modified": "2026-06-03 15:16:42.000000"
+    "md5": "d5b0ede5dba4bf832503a55d75b90fc9",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/right-intention-relevant.html": {
     "md5": "c491b54ba33014b5e108c6991b0a2933",
@@ -2964,8 +2964,8 @@
     "_modified": "2026-06-03 15:16:42.000000"
   },
   "tags/renunciation.html": {
-    "md5": "3b422e67c60339f70c3d4a79a0558211",
-    "_modified": "2026-05-20 16:42:16.000000"
+    "md5": "940d91d5d568e615a0989ee412affd99",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/renunciation-relevant.html": {
     "md5": "51008f4ff2ba2d790b75d493141ed814",
@@ -3304,8 +3304,8 @@
     "_modified": "2026-06-03 15:16:46.000000"
   },
   "tags/mindfulness-of-breathing.html": {
-    "md5": "d9a36dd83a9aa939c36b4c54653d7722",
-    "_modified": "2026-06-03 15:16:46.000000"
+    "md5": "ac920e313da917ffea375eb0123575c0",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/mindfulness-of-breathing-2.html": {
     "md5": "4001fdbe5cf0bb36e67128a102766984",
@@ -3400,8 +3400,8 @@
     "_modified": "2026-06-03 15:16:48.000000"
   },
   "tags/unattractiveness.html": {
-    "md5": "720dce6200c568dee04215eac542cbb2",
-    "_modified": "2026-06-03 15:16:48.000000"
+    "md5": "d0fddf3fb4bd4516a7c3ea9146c6c434",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/unattractiveness-relevant.html": {
     "md5": "aa55c58dae12b1ed0ba7c3640aed173a",
@@ -3436,8 +3436,8 @@
     "_modified": "2026-06-03 15:16:48.000000"
   },
   "tags/elements.html": {
-    "md5": "743511c4054a6e0d2ee81424aa7b8c56",
-    "_modified": "2026-06-03 15:16:48.000000"
+    "md5": "27f3a6aa9421f1c0d92ce86bf704d898",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/elements-relevant.html": {
     "md5": "2065bb77cb4f9a2f59d64f74c341fe82",
@@ -3468,8 +3468,8 @@
     "_modified": "2026-06-03 15:16:48.000000"
   },
   "tags/recollectiondeath.html": {
-    "md5": "8160c280c2426f829de7fdda58df6650",
-    "_modified": "2026-06-03 15:16:48.000000"
+    "md5": "c8ccf3242e598de44e767569867b44ae",
+    "_modified": "2026-06-06 16:05:04.000000"
   },
   "tags/recollectiondeath-relevant.html": {
     "md5": "0ee47874ffb52c370aade168c0928775",
@@ -3672,8 +3672,8 @@
     "_modified": "2026-06-03 15:16:52.000000"
   },
   "tags/four-noble-truths.html": {
-    "md5": "272f774555cbe4edf624572637d31542",
-    "_modified": "2026-06-03 15:16:52.000000"
+    "md5": "a768e9d7be9b5223cfadb97ace160bf6",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/four-noble-truths-relevant.html": {
     "md5": "5f09677dd8557266b75996b1e876de49",
@@ -3832,8 +3832,8 @@
     "_modified": "2026-06-03 15:16:54.000000"
   },
   "tags/seclusion.html": {
-    "md5": "56843f09a8827adfc4561e29c9dd8fe5",
-    "_modified": "2026-06-03 15:16:54.000000"
+    "md5": "c1da2d294be22dfceeadd7f6a46be98b",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/seclusion-relevant.html": {
     "md5": "8c55c335ed637c40dc5cf797170a5090",
@@ -3924,8 +3924,8 @@
     "_modified": "2026-06-03 15:16:56.000000"
   },
   "tags/happiness.html": {
-    "md5": "ab4d71b0c236641efd7291c25e2dedfd",
-    "_modified": "2026-06-03 15:16:56.000000"
+    "md5": "83f944a54a95592e8b759e88846f79d8",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/happiness-2.html": {
     "md5": "c624fa2a78ca471713384f6d13fd5efb",
@@ -4136,8 +4136,8 @@
     "_modified": "2026-06-03 15:17:00.000000"
   },
   "tags/sickness.html": {
-    "md5": "fe708b462d2bf8b67b5b434f9ea4577c",
-    "_modified": "2026-06-03 15:17:00.000000"
+    "md5": "cdf2c68c8aa29a455352b7ae91b959c6",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/sickness-relevant.html": {
     "md5": "e12ccb6d1ed0108230fa06b5979db9d6",
@@ -4176,8 +4176,8 @@
     "_modified": "2026-06-03 15:17:00.000000"
   },
   "tags/death.html": {
-    "md5": "71ddd238d250688fe636dba21da70211",
-    "_modified": "2026-06-03 15:17:00.000000"
+    "md5": "57780538ac8be10b8886776934f0f181",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/death-2.html": {
     "md5": "2f79fac11290f0f301985a3adb49b12b",
@@ -4216,8 +4216,8 @@
     "_modified": "2026-06-03 15:17:00.000000"
   },
   "tags/suffering.html": {
-    "md5": "d31cba07eb8c80da5d53cfd6cabf8da8",
-    "_modified": "2026-06-03 15:17:00.000000"
+    "md5": "f613e2950be3fbc6f23006ae1d125ce5",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/suffering-2.html": {
     "md5": "0b7861cfabbf4e915fc62ed65dab495b",
@@ -4264,8 +4264,8 @@
     "_modified": "2026-06-03 15:17:02.000000"
   },
   "tags/pain.html": {
-    "md5": "4183c46d1fae59005ff6b9145887e0ca",
-    "_modified": "2026-06-03 15:17:02.000000"
+    "md5": "43f3e9a859d0ed030548e56458512654",
+    "_modified": "2026-06-06 16:05:06.000000"
   },
   "tags/pain-relevant.html": {
     "md5": "1137f75c6b7026bb1d0565025c3a8efc",
@@ -4324,8 +4324,8 @@
     "_modified": "2026-06-03 15:17:02.000000"
   },
   "tags/cause-of-suffering.html": {
-    "md5": "92dde6bb0a01f82e47f82536858570bd",
-    "_modified": "2026-06-03 15:17:02.000000"
+    "md5": "1d7ca759f422bd4ccb8430cf7829507a",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/cause-of-suffering-relevant.html": {
     "md5": "4d782915de16c501f9bc1cdfad96e9aa",
@@ -4464,8 +4464,8 @@
     "_modified": "2026-06-03 15:17:04.000000"
   },
   "tags/relinquishment.html": {
-    "md5": "c99f67a5321ef3ec120a25a07962a6f0",
-    "_modified": "2026-06-03 15:17:06.000000"
+    "md5": "10f6c0fffb8153212c644689f98c2f77",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/relinquishment-2.html": {
     "md5": "1c658d6f15b94406a82efb43a14b87a1",
@@ -4532,8 +4532,8 @@
     "_modified": "2026-06-03 15:17:06.000000"
   },
   "tags/liberation.html": {
-    "md5": "3080e655d575402f82fea256caaf6394",
-    "_modified": "2026-06-03 15:17:06.000000"
+    "md5": "0d5ace304e65877cd72f01c4b8b36e2f",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/liberation-2.html": {
     "md5": "2922fb0e3effee570f44054e0062e043",
@@ -4572,8 +4572,8 @@
     "_modified": "2026-05-20 16:42:42.000000"
   },
   "tags/bases-of-success.html": {
-    "md5": "75efb7bd1067e1b8e786716c7470c8cf",
-    "_modified": "2026-05-20 16:42:42.000000"
+    "md5": "63b5235f101973e8a44263c075047ac7",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/bases-of-success-relevant.html": {
     "md5": "5015b63dc789d3de4ac57364a3c03597",
@@ -4632,8 +4632,8 @@
     "_modified": "2026-06-03 15:17:08.000000"
   },
   "tags/energy.html": {
-    "md5": "04ece9f7b3f5e1e62dd2d761c55c6749",
-    "_modified": "2026-06-03 15:17:08.000000"
+    "md5": "6163a6968d1aba696de29e46d647676e",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/energy-relevant.html": {
     "md5": "175e5b933b4c7f3d7251baf8c48a19a9",
@@ -4720,8 +4720,8 @@
     "_modified": "2026-06-03 15:17:10.000000"
   },
   "tags/discernment.html": {
-    "md5": "474baab0e943c1e6d174d0e149c7b281",
-    "_modified": "2026-06-03 15:17:10.000000"
+    "md5": "ac49fb6f45134f4256b8c7a4816ab02b",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/discernment-2.html": {
     "md5": "21989e59bd95f65eeb8e3dc113935119",
@@ -4856,8 +4856,8 @@
     "_modified": "2026-06-03 15:17:12.000000"
   },
   "tags/goodwill.html": {
-    "md5": "57c1c5bc49afa67a3e00dd307730649b",
-    "_modified": "2026-06-03 15:17:12.000000"
+    "md5": "030404df27fbe0a74fa660d0fdca81ed",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/goodwill-2.html": {
     "md5": "be7797ad6a8cdd36be57630a367a70e7",
@@ -4952,8 +4952,8 @@
     "_modified": "2026-05-20 16:42:48.000000"
   },
   "tags/virtue.html": {
-    "md5": "bad5b04781ee1128a7c1e36286129671",
-    "_modified": "2026-06-03 15:17:14.000000"
+    "md5": "83b9266565c1bdc5916c77c929c4911d",
+    "_modified": "2026-06-06 16:05:08.000000"
   },
   "tags/virtue-relevant.html": {
     "md5": "17de2ff9a620fbb271e00e4238ef42e0",
@@ -5012,8 +5012,8 @@
     "_modified": "2026-06-03 15:17:14.000000"
   },
   "tags/learning.html": {
-    "md5": "442e934f5681505a31bf6adf28e878b2",
-    "_modified": "2026-06-03 15:17:14.000000"
+    "md5": "d95e2f5992a0363a1b9524304f4de6a5",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/learning-relevant.html": {
     "md5": "ccfe5c4a286ba7ae7192b560deb898c9",
@@ -5072,8 +5072,8 @@
     "_modified": "2026-06-03 15:17:16.000000"
   },
   "tags/vinaya.html": {
-    "md5": "6d348c8d3d035227e23d4d86c5281c90",
-    "_modified": "2026-06-03 15:23:10.000000"
+    "md5": "07f87f5e57961b4ddbf2ceea53ef6d05",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/vinaya-relevant.html": {
     "md5": "f456bf13630db58ab94cb10fd1c4148d",
@@ -5108,8 +5108,8 @@
     "_modified": "2026-06-03 15:17:16.000000"
   },
   "tags/sutta.html": {
-    "md5": "cceb5fe1888c47560abef583532210ed",
-    "_modified": "2026-06-03 15:23:10.000000"
+    "md5": "09a54a17b12e616a395f88954858c6b7",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/sutta-relevant.html": {
     "md5": "514a42e20ec70e448fd1db5bb2c86283",
@@ -5244,8 +5244,8 @@
     "_modified": "2026-05-20 16:42:52.000000"
   },
   "tags/patience.html": {
-    "md5": "1b4fb3b25465718d8ec3ab3de5bf9930",
-    "_modified": "2026-06-03 15:17:18.000000"
+    "md5": "245ce9d889b1a5ed867f9799761c57db",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/patience-relevant.html": {
     "md5": "5fc02661e9b751057cee6b7ecb32c2e4",
@@ -5272,8 +5272,8 @@
     "_modified": "2026-06-03 15:17:18.000000"
   },
   "tags/truth.html": {
-    "md5": "ed976a3e911a11bea8c8c7ed166c00eb",
-    "_modified": "2026-06-03 15:17:18.000000"
+    "md5": "0d10a0fb4ac448b8c110ba8f3f919ada",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/truth-relevant.html": {
     "md5": "e7cbcbe63d7a75b94ca2543933b5d191",
@@ -5300,8 +5300,8 @@
     "_modified": "2026-06-03 15:17:18.000000"
   },
   "tags/determination.html": {
-    "md5": "971b1e602ed5828d357c602185b74cbb",
-    "_modified": "2026-06-03 15:17:18.000000"
+    "md5": "b7a32a16efe600e394c4064289b3d734",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/determination-relevant.html": {
     "md5": "bebf8e9c396447c3f605957c3d0111f2",
@@ -5352,8 +5352,8 @@
     "_modified": "2026-05-20 16:42:54.000000"
   },
   "tags/knowledge-and-vision.html": {
-    "md5": "ee0b09bf4e317dac44b6753c3c3caf47",
-    "_modified": "2026-06-03 15:17:20.000000"
+    "md5": "9e6fbdeae073ceddd6ee46f213b178ca",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/knowledge-and-vision-relevant.html": {
     "md5": "6091f799792063fd201eb0bb3774febf",
@@ -5452,12 +5452,12 @@
     "_modified": "2026-06-03 15:17:20.000000"
   },
   "tags/factors-for-stream-entry.html": {
-    "md5": "e31be9cea2cce4b4216259c52099d4a3",
-    "_modified": "2026-05-20 16:42:54.000000"
+    "md5": "8e0d20b5d767ca5a4af691705f7e45d4",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/association-with-people-of-integrity.html": {
-    "md5": "092be890d7f50e8a321ae53f8877934f",
-    "_modified": "2026-06-03 15:17:20.000000"
+    "md5": "f47ad6096c3f079c44fc745483f93898",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/association-with-people-of-integrity-relevant.html": {
     "md5": "ca608aab7c55109649ff8736b79e747c",
@@ -5480,8 +5480,8 @@
     "_modified": "2026-06-03 15:17:20.000000"
   },
   "tags/spiritual-friendship.html": {
-    "md5": "7b9a81b4f487ce49025e69e504e1e333",
-    "_modified": "2026-06-03 15:17:22.000000"
+    "md5": "84ab5162ec5e65a4e24d06e55c0bc418",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/spiritual-friendship-relevant.html": {
     "md5": "50c8ba984d7d8be9a7b951963a839952",
@@ -5512,8 +5512,8 @@
     "_modified": "2026-06-03 15:17:22.000000"
   },
   "tags/hearing-the-true-dhamma.html": {
-    "md5": "db90d59cfc9a719b0212309b49270b26",
-    "_modified": "2026-06-03 15:17:22.000000"
+    "md5": "edde15e646a20b98e429e2473dead31a",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/hearing-the-true-dhamma-relevant.html": {
     "md5": "09dac611e136fc3b578d8d3269e55585",
@@ -5564,8 +5564,8 @@
     "_modified": "2026-06-03 15:17:22.000000"
   },
   "tags/practicing-in-accordance-with-dhamma.html": {
-    "md5": "3bed0cd0ec198641732f0365a50b5dad",
-    "_modified": "2026-05-20 16:42:56.000000"
+    "md5": "f3dbc06cd05efe986a208cfa50bfc6c2",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/practicing-in-accordance-with-dhamma-relevant.html": {
     "md5": "2cec6eaf47f40bd9435d8258778d9988",
@@ -5692,8 +5692,8 @@
     "_modified": "2026-06-03 15:17:24.000000"
   },
   "tags/heedfulness.html": {
-    "md5": "6a28b835188ff593fe7ccbc20366af05",
-    "_modified": "2026-06-03 15:17:24.000000"
+    "md5": "da8d7e9f5a1ee77bfba81b1f3c0265d0",
+    "_modified": "2026-06-06 16:05:10.000000"
   },
   "tags/heedfulness-relevant.html": {
     "md5": "8c74d4784a6c967615bc08fabdf69190",
@@ -5740,8 +5740,8 @@
     "_modified": "2026-05-20 16:42:58.000000"
   },
   "tags/spiritual-urgency.html": {
-    "md5": "535d1e078622cea41020eca4a86e03d2",
-    "_modified": "2026-06-03 15:17:24.000000"
+    "md5": "2d66c86d162012bc6306103ad53c6ed8",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/spiritual-urgency-relevant.html": {
     "md5": "db332b6c72909607e5410a9d919a0cee",
@@ -5852,8 +5852,8 @@
     "_modified": "2026-06-03 15:17:26.000000"
   },
   "tags/contentment.html": {
-    "md5": "71cb369247e2982893eda6004ce71a73",
-    "_modified": "2026-06-03 15:17:26.000000"
+    "md5": "dd549edecf678c9b8d07213c44a47f93",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/contentment-relevant.html": {
     "md5": "97afef8b58d2bc1313cb292b17d24b15",
@@ -5908,8 +5908,8 @@
     "_modified": "2026-06-03 15:17:26.000000"
   },
   "tags/courage.html": {
-    "md5": "fa61af8ba6da45f6d61c1f53cf85ecde",
-    "_modified": "2026-06-03 15:17:26.000000"
+    "md5": "d7dff4fdbe42b1ac3c0e29e4fec13467",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/humility.html": {
     "md5": "1319b28412b7617d288a63479fd8c861",
@@ -5992,8 +5992,8 @@
     "_modified": "2026-06-03 15:17:28.000000"
   },
   "tags/unwholesome-roots.html": {
-    "md5": "b6db8fe4d6bcb1cbc676ef508f037eb7",
-    "_modified": "2026-06-03 15:17:28.000000"
+    "md5": "dbaea23a97888f62bc220bac600064da",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/unwholesome-roots-relevant.html": {
     "md5": "1aca523d1f8fec765901c93bebc7d628",
@@ -6080,8 +6080,8 @@
     "_modified": "2026-06-03 15:17:28.000000"
   },
   "tags/delusion.html": {
-    "md5": "9aea5a60d4ec8754d239956cb5343fb7",
-    "_modified": "2026-06-03 15:17:28.000000"
+    "md5": "d4247e9d424ba560079df4ad3e0c31f1",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/delusion-relevant.html": {
     "md5": "0cf6a741086264efe8f37db6e787e965",
@@ -6164,8 +6164,8 @@
     "_modified": "2026-06-03 15:17:30.000000"
   },
   "tags/views.html": {
-    "md5": "303ea36687fd71df47d0a1835327f0a5",
-    "_modified": "2026-06-03 15:17:30.000000"
+    "md5": "96ddea4a3b9394378a4a6644bf84d106",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/views-relevant.html": {
     "md5": "9332bc43acb3ab7f4d5dfe542ab22e7f",
@@ -6316,8 +6316,8 @@
     "_modified": "2026-06-03 15:17:32.000000"
   },
   "tags/doubt.html": {
-    "md5": "5e7da809efcedd828d7157e3c736858a",
-    "_modified": "2026-06-03 15:17:32.000000"
+    "md5": "5bfcac1d8267957014af1c5cad8a9c84",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/doubt-relevant.html": {
     "md5": "878c0547f268245cc20cc3e3e2c0bd48",
@@ -6352,8 +6352,8 @@
     "_modified": "2026-06-03 15:17:32.000000"
   },
   "tags/self-identity-view.html": {
-    "md5": "b1a10f6b2b31ddffc215b0b332ebdab4",
-    "_modified": "2026-06-03 15:17:34.000000"
+    "md5": "cc137f7f9c2fd45d90e847374a6446e2",
+    "_modified": "2026-06-06 16:05:12.000000"
   },
   "tags/self-identity-view-2.html": {
     "md5": "009504083e4a5527162545467a9f6887",
@@ -6464,8 +6464,8 @@
     "_modified": "2026-06-03 15:17:34.000000"
   },
   "tags/proliferation.html": {
-    "md5": "db1bbda04408c726c6bc1064e1d28563",
-    "_modified": "2026-06-03 15:17:34.000000"
+    "md5": "587e234cc6f8f1aa7c11f31650cac61f",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/proliferation-2.html": {
     "md5": "0420375610b342991faf3ae4e67061fe",
@@ -6600,8 +6600,8 @@
     "_modified": "2026-05-20 16:43:10.000000"
   },
   "tags/selfishness.html": {
-    "md5": "e060ea4a3c4cb46d8cc3488e0dd5ea9c",
-    "_modified": "2026-06-03 15:17:36.000000"
+    "md5": "5daba9bab74604182d3a4c9ea21b8749",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/guiltshameinadequacy.html": {
     "md5": "b0c793adf9d353c6b9684b1d2ebdf2f3",
@@ -6692,8 +6692,8 @@
     "_modified": "2026-05-20 16:43:12.000000"
   },
   "tags/nutriment.html": {
-    "md5": "9bfe08bf120aeac18c42a0956e82ccdf",
-    "_modified": "2026-06-03 15:23:18.000000"
+    "md5": "e2f2932769219d1d58710be1dfaf9f4b",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/food.html": {
     "md5": "3a5e025ac31648e5967fbf41860aedc9",
@@ -6776,8 +6776,8 @@
     "_modified": "2026-06-03 15:17:40.000000"
   },
   "tags/consciousness.html": {
-    "md5": "092cece8ff70ee44460b1beaac40eec1",
-    "_modified": "2026-06-03 15:23:20.000000"
+    "md5": "672fd9d4e0dc8120828dd0306029e7f8",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/consciousness-relevant.html": {
     "md5": "6d03e63b44a8486ffcb4cb7fca0673f7",
@@ -7000,8 +7000,8 @@
     "_modified": "2026-06-03 15:17:42.000000"
   },
   "tags/clinging.html": {
-    "md5": "00f67c12a18576d6bdf4a5dd400ed529",
-    "_modified": "2026-06-03 15:17:42.000000"
+    "md5": "7f7a6f189a5ecaa251a30bd1bc12c5fc",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/clinging-2.html": {
     "md5": "44eb11a8c33c252ff83e3c26bcc71c83",
@@ -7092,8 +7092,8 @@
     "_modified": "2026-06-03 15:17:44.000000"
   },
   "tags/impermanence.html": {
-    "md5": "4f9739df4e89018fa67366b2bfb87da5",
-    "_modified": "2026-06-03 15:17:44.000000"
+    "md5": "41be5661b33529a656280a56294883c4",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/impermanence-2.html": {
     "md5": "1db3481ba04fb3949bce7014bca2aa20",
@@ -7128,8 +7128,8 @@
     "_modified": "2026-06-03 15:17:44.000000"
   },
   "tags/not-self.html": {
-    "md5": "42db551ea6f89f1ab7f54c254f39e1ec",
-    "_modified": "2026-06-03 15:17:44.000000"
+    "md5": "278d5678df432b5522536a82e84f996a",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/not-self-2.html": {
     "md5": "ee3ff16e250a755ba794fe9b0918e6da",
@@ -7160,8 +7160,8 @@
     "_modified": "2026-05-20 16:43:18.000000"
   },
   "tags/naturalness.html": {
-    "md5": "8644da5740ab6ae6b251027cee0b9cda",
-    "_modified": "2026-05-20 16:43:18.000000"
+    "md5": "39552454d383d042acde6909a0869ddd",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/naturalness-relevant.html": {
     "md5": "b4a657de738bb15721bdfee314244e89",
@@ -7352,8 +7352,8 @@
     "_modified": "2026-06-03 15:17:48.000000"
   },
   "tags/humor.html": {
-    "md5": "4fe9a5ec1e77ad1e92f3f5023ad69261",
-    "_modified": "2026-06-03 15:17:48.000000"
+    "md5": "23443da5d0ad980059a93ae8ab6dfb9d",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/humor-relevant.html": {
     "md5": "cc34626be28c04acdc8ca4fcc6c44446",
@@ -7380,8 +7380,8 @@
     "_modified": "2026-06-03 15:17:48.000000"
   },
   "tags/fear.html": {
-    "md5": "78ef71f0983094fd43cbdc0d86d3dd5a",
-    "_modified": "2026-06-03 15:17:48.000000"
+    "md5": "b776477d486e386e8a09ebee5f9624e3",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/fear-relevant.html": {
     "md5": "69ec39e081b70f34b49ff1aba4508e50",
@@ -7408,8 +7408,8 @@
     "_modified": "2026-06-03 15:17:48.000000"
   },
   "tags/idealism.html": {
-    "md5": "98ee3508241c4307dc0d814db5a18d93",
-    "_modified": "2026-06-03 15:17:48.000000"
+    "md5": "47837be9ba66e05cfcf47a004eadb2e8",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/idealism-relevant.html": {
     "md5": "026b1d0fa187c26743509280f94d020d",
@@ -7432,8 +7432,8 @@
     "_modified": "2026-06-03 15:17:50.000000"
   },
   "tags/intuition.html": {
-    "md5": "afa73f51442dfbc3e9dc4191d83d8512",
-    "_modified": "2026-06-03 15:17:50.000000"
+    "md5": "d2dfddd4f8b413e884d4a065b797ac12",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/beauty.html": {
     "md5": "ea7bc9889319fbce9a101a78b0b18ac7",
@@ -7472,8 +7472,8 @@
     "_modified": "2026-06-03 15:17:50.000000"
   },
   "tags/buddha.html": {
-    "md5": "a1638997b4fb037e477fdb637bb59a7e",
-    "_modified": "2026-06-03 15:17:50.000000"
+    "md5": "46e91e2fe51f0a9db833b84096a53b5e",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/buddha-relevant.html": {
     "md5": "1ad7963c3ef0b1dfc91e7c83c3e3c734",
@@ -7504,8 +7504,8 @@
     "_modified": "2026-06-03 15:17:50.000000"
   },
   "tags/buddhabiography.html": {
-    "md5": "652754e115c5dcee730b591f9ca59d95",
-    "_modified": "2026-06-03 15:17:50.000000"
+    "md5": "65c38657da7c3781a6424e1ba153d904",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/buddhabiography-relevant.html": {
     "md5": "a363e8ff18b2003855496cd047ef182b",
@@ -7552,8 +7552,8 @@
     "_modified": "2026-06-03 15:17:52.000000"
   },
   "tags/buddho-mantra.html": {
-    "md5": "90f183b9f98c538b91d86e50b24b14be",
-    "_modified": "2026-06-03 15:17:52.000000"
+    "md5": "a4097890cf3d5a6922ca77d821eff8ae",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/buddho-mantra-relevant.html": {
     "md5": "93e2c693a6658ac80e35739d107a70fe",
@@ -7584,8 +7584,8 @@
     "_modified": "2026-06-03 15:17:52.000000"
   },
   "tags/dhamma.html": {
-    "md5": "58d315f28d541ec24e548b01f7225504",
-    "_modified": "2026-06-03 15:17:52.000000"
+    "md5": "96ee35ce8acdd89452ef7967a140673b",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/dhamma-relevant.html": {
     "md5": "d120426115fef851cf8722aa5c99ada3",
@@ -7808,8 +7808,8 @@
     "_modified": "2026-06-03 15:17:54.000000"
   },
   "tags/festival-days.html": {
-    "md5": "9c3efd3c27301c0722031d457bd75032",
-    "_modified": "2026-06-03 15:17:54.000000"
+    "md5": "05ff30cdc61d846e5d0b149460bb04c3",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/lunar-observance-days.html": {
     "md5": "a6243cd8de9b2a804001e62f86b48179",
@@ -7840,8 +7840,8 @@
     "_modified": "2026-06-03 15:17:56.000000"
   },
   "tags/kathina.html": {
-    "md5": "a75237743ef79afcc9b5c555cdfb5556",
-    "_modified": "2026-06-03 15:17:56.000000"
+    "md5": "f5264bc25b29e3c2ddd6be74e0c4c294",
+    "_modified": "2026-06-06 16:05:16.000000"
   },
   "tags/ajahn-chah-remembrance-day.html": {
     "md5": "dcaf685402eb5eb136df44171d2ceb72",
@@ -7904,8 +7904,8 @@
     "_modified": "2026-05-20 16:43:30.000000"
   },
   "tags/funerals.html": {
-    "md5": "d6babc0f49bd2e140a6d6fc2bb7137d1",
-    "_modified": "2026-06-03 15:17:56.000000"
+    "md5": "63a00d0cf3abd99980e874047c68b68b",
+    "_modified": "2026-06-06 16:05:18.000000"
   },
   "tags/funerals-relevant.html": {
     "md5": "03847a9bf25dd329a1c81cf2d94eb155",
@@ -7928,8 +7928,8 @@
     "_modified": "2026-06-03 15:17:56.000000"
   },
   "tags/precepts.html": {
-    "md5": "b5e0534cdbd0e91e49a958d256ffee3a",
-    "_modified": "2026-06-03 15:17:56.000000"
+    "md5": "a96c88246be903c14057dc7bf4fe5f3b",
+    "_modified": "2026-06-06 16:05:18.000000"
   },
   "tags/precepts-relevant.html": {
     "md5": "b34124f8e4425ad8dcd9d3cbc7a54f4b",
@@ -8056,8 +8056,8 @@
     "_modified": "2026-06-03 15:17:58.000000"
   },
   "tags/meditation.html": {
-    "md5": "781ae74fc79c2f24f2f38610322c648a",
-    "_modified": "2026-06-03 15:17:58.000000"
+    "md5": "11233c4abee92757aa05ce0af0d969ae",
+    "_modified": "2026-06-06 16:05:18.000000"
   },
   "tags/meditation-relevant.html": {
     "md5": "a55c6519846bf1513359a74378128050",
@@ -8104,8 +8104,8 @@
     "_modified": "2026-06-03 15:17:58.000000"
   },
   "tags/meditationtechniques.html": {
-    "md5": "a697bcd98d7fd865cc5355b6da2e0cf0",
-    "_modified": "2026-06-03 15:17:58.000000"
+    "md5": "c32e405030c2723ef38627f6ceb2ea9e",
+    "_modified": "2026-06-06 16:05:18.000000"
   },
   "tags/meditationtechniques-relevant.html": {
     "md5": "a3ba25ef010baac837233bda4c96f395",
@@ -8248,8 +8248,8 @@
     "_modified": "2026-06-03 15:18:00.000000"
   },
   "tags/insight-meditation.html": {
-    "md5": "f5b92808517dc87fb63d2d8a1ee8d240",
-    "_modified": "2026-06-03 15:18:00.000000"
+    "md5": "8db62110d565ef41e49f8ded2d7d9b4c",
+    "_modified": "2026-06-06 16:05:18.000000"
   },
   "tags/insight-meditation-relevant.html": {
     "md5": "8744d4ce780c2c6ec8329acc767f8459",
@@ -8308,8 +8308,8 @@
     "_modified": "2026-06-03 15:18:02.000000"
   },
   "tags/recollectionbuddha.html": {
-    "md5": "52280ec89fdbebb55e7ac922d0b3b813",
-    "_modified": "2026-06-03 15:18:02.000000"
+    "md5": "9d288981b90c9547a472996baae5fe82",
+    "_modified": "2026-06-06 16:05:18.000000"
   },
   "tags/recollectionbuddha-relevant.html": {
     "md5": "34bfcb6bd9251169eb750615bb457192",
@@ -8468,8 +8468,8 @@
     "_modified": "2026-06-03 15:18:04.000000"
   },
   "tags/posturewalking.html": {
-    "md5": "eadaa77d8d6a25ff7aea14bfbfb4f4f8",
-    "_modified": "2026-06-03 15:18:04.000000"
+    "md5": "90846952d4e8b7bf1fa50d71d45258a2",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/posturewalking-relevant.html": {
     "md5": "75286fc45e3c8cf14fd267e3944ae4ab",
@@ -8512,8 +8512,8 @@
     "_modified": "2026-06-03 15:18:04.000000"
   },
   "tags/meditation-retreats.html": {
-    "md5": "c9d89182ace307d6a95cae879536a14d",
-    "_modified": "2026-06-03 15:18:04.000000"
+    "md5": "fb66b0f32fb2cc1a5cae9d04e02f04e7",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/meditation-retreats-relevant.html": {
     "md5": "a8136291c0001c2bc0b81a9e34c5d3ad",
@@ -8584,8 +8584,8 @@
     "_modified": "2026-06-03 15:18:04.000000"
   },
   "tags/continuity-of-mindfulness.html": {
-    "md5": "412cbb318b3c5e56286e028f1f608228",
-    "_modified": "2026-06-03 15:18:04.000000"
+    "md5": "3d850c1df24ed03c895c0f1647bfec10",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/continuity-of-mindfulness-relevant.html": {
     "md5": "293f5c0e78037a7b7dd778286fcd5ca4",
@@ -8632,8 +8632,8 @@
     "_modified": "2026-06-03 15:18:06.000000"
   },
   "tags/spaciousness.html": {
-    "md5": "ba3740f27554c22744f515e3f392fa6d",
-    "_modified": "2026-06-03 15:18:06.000000"
+    "md5": "eff52cd2a48c585b083d45606ff11122",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/spaciousness-relevant.html": {
     "md5": "bbcd9b31aedd8e3abddcba19f150e8b0",
@@ -8656,8 +8656,8 @@
     "_modified": "2026-06-03 15:18:06.000000"
   },
   "tags/direct-experience.html": {
-    "md5": "2dfd8eab69886de195a3b74d3d0a0d46",
-    "_modified": "2026-06-03 15:18:06.000000"
+    "md5": "246e144f302937493eb2e950c87f387d",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/direct-experience-relevant.html": {
     "md5": "3fc91fab64096aae7b417254ec591978",
@@ -8724,8 +8724,8 @@
     "_modified": "2026-06-03 15:18:06.000000"
   },
   "tags/long-term-practice.html": {
-    "md5": "4b56bf6868c4ba8761910bb29825a7de",
-    "_modified": "2026-06-03 15:18:06.000000"
+    "md5": "c13cb8d7eea63900363520ce398ff9bd",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/long-term-practice-relevant.html": {
     "md5": "7706168dc2caa24250dc7018d5467826",
@@ -8752,8 +8752,8 @@
     "_modified": "2026-06-03 15:18:08.000000"
   },
   "tags/teaching-dhamma.html": {
-    "md5": "cfd4cb9630617fe16e576dc1f2eabe25",
-    "_modified": "2026-06-03 15:18:08.000000"
+    "md5": "3b7a4bcb52fb23b748a7dcd1944a7b8b",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/teaching-dhamma-2.html": {
     "md5": "5fbf16f6a0dfd8c8c8c7302d682d8588",
@@ -8948,8 +8948,8 @@
     "_modified": "2026-06-03 15:18:10.000000"
   },
   "tags/similes.html": {
-    "md5": "58e7da5b4c7f4cfc3828964f8bb35830",
-    "_modified": "2026-06-03 15:18:10.000000"
+    "md5": "97618a4f114099f14ba21f1c6513e726",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/similes-2.html": {
     "md5": "ab5e9b667b253fbe248a908d4f6e1424",
@@ -8984,8 +8984,8 @@
     "_modified": "2026-06-03 15:18:10.000000"
   },
   "tags/dhamma-books.html": {
-    "md5": "81d94b5ccd35d03f18c4b35bdede0315",
-    "_modified": "2026-06-03 15:18:10.000000"
+    "md5": "79f595c86e6646113414299d58e46cd3",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/dhamma-books-relevant.html": {
     "md5": "9a3e89cf004321b134dc1e6145b2dce2",
@@ -9020,8 +9020,8 @@
     "_modified": "2026-05-20 16:43:44.000000"
   },
   "tags/dhamma-online.html": {
-    "md5": "faa8d3fb1ad75c83fa45e2f0cb7f4004",
-    "_modified": "2026-06-03 15:18:10.000000"
+    "md5": "db9336724710d5ec9acbc177deeb6ca6",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/dhamma-online-relevant.html": {
     "md5": "f3493fbb6fcef7f9787735413862de02",
@@ -9076,8 +9076,8 @@
     "_modified": "2026-06-03 15:18:12.000000"
   },
   "tags/thai-forest-tradition.html": {
-    "md5": "5fa74f204877a52bd759254867ef9f47",
-    "_modified": "2026-06-03 15:18:12.000000"
+    "md5": "e98dc7cd6f318045c155504e5c3415e4",
+    "_modified": "2026-06-06 16:05:20.000000"
   },
   "tags/thai-forest-tradition-relevant.html": {
     "md5": "f80150dded61eb471dcced9892d36e55",
@@ -9144,8 +9144,8 @@
     "_modified": "2026-06-03 15:18:12.000000"
   },
   "tags/ajahn-chah.html": {
-    "md5": "ac8daf965cf1cc4ab08fefab91a43b72",
-    "_modified": "2026-06-03 15:18:12.000000"
+    "md5": "c40e108dcf10c25396ee505411205a97",
+    "_modified": "2026-06-06 16:05:22.000000"
   },
   "tags/ajahn-chah-2.html": {
     "md5": "8d47db7bd572cdeb6af4980134ff3b97",
@@ -9296,8 +9296,8 @@
     "_modified": "2026-05-20 16:43:50.000000"
   },
   "tags/ajahn-liem.html": {
-    "md5": "70721f85723f49be35054a9ed8fbd6e5",
-    "_modified": "2026-05-20 16:43:50.000000"
+    "md5": "fab80e7e1dac15f322ae179d7ba55900",
+    "_modified": "2026-06-06 16:05:22.000000"
   },
   "tags/ajahn-liem-relevant.html": {
     "md5": "2ce1e99be159f5cde8e3cbfb19198394",
@@ -9328,8 +9328,8 @@
     "_modified": "2026-05-20 16:43:50.000000"
   },
   "tags/ajahn-boon-choo.html": {
-    "md5": "624e4dbbb94b6f9ba1efb8ecc920f033",
-    "_modified": "2026-05-20 16:43:50.000000"
+    "md5": "1269424a02057d8f26344711a9ac2921",
+    "_modified": "2026-06-06 16:05:22.000000"
   },
   "tags/ajahn-maha-amorn.html": {
     "md5": "0d7b547439932ea178731c4524300443",
@@ -9440,16 +9440,16 @@
     "_modified": "2026-05-20 16:43:50.000000"
   },
   "tags/western-ajahn-chah-lineage.html": {
-    "md5": "c6d7b8990e973d0c2d319ce8dae6b219",
-    "_modified": "2026-06-03 15:18:16.000000"
+    "md5": "8d356d9e4b6e5b8ae4b11558df3f5fef",
+    "_modified": "2026-06-06 16:05:22.000000"
   },
   "tags/ajahn-sumedho-events.html": {
     "md5": "cb16bf5157ccc015cc4525ee4bcd7e7b",
     "_modified": "2026-06-03 15:18:16.000000"
   },
   "tags/ajahn-sumedho.html": {
-    "md5": "0fc32dc1b4717c200566ae16d6ac92c8",
-    "_modified": "2026-06-03 15:18:18.000000"
+    "md5": "f2fc64653f59a58d0316929145be6e0d",
+    "_modified": "2026-06-06 16:05:22.000000"
   },
   "tags/ajahn-sumedho-2.html": {
     "md5": "14d76b761fc294366403b535d477f378",
@@ -9496,8 +9496,8 @@
     "_modified": "2026-06-03 15:18:18.000000"
   },
   "tags/ajahn-pasanno.html": {
-    "md5": "f4127426e4640907ff7c15e89dfb2ad3",
-    "_modified": "2026-06-03 15:18:18.000000"
+    "md5": "53552f4e695d7563011ef342ecf59fe6",
+    "_modified": "2026-06-06 16:05:22.000000"
   },
   "tags/ajahn-pasanno-2.html": {
     "md5": "98e5113cbf70900c17106366543f6499",
@@ -9860,8 +9860,8 @@
     "_modified": "2026-06-03 15:18:24.000000"
   },
   "tags/ajahn-waen.html": {
-    "md5": "f7f4b6ee35554e62536093cf74ffd1b8",
-    "_modified": "2026-06-03 15:18:24.000000"
+    "md5": "ee90edd338846eb5ad686b5518693afd",
+    "_modified": "2026-06-06 16:05:24.000000"
   },
   "tags/ajahn-tongrat.html": {
     "md5": "0079fc324ff0debaaea2acf25ee89303",
@@ -9920,8 +9920,8 @@
     "_modified": "2026-06-03 15:18:24.000000"
   },
   "tags/ajahn-fun.html": {
-    "md5": "646de156febd83b3efea22a2450c529c",
-    "_modified": "2026-06-03 15:18:24.000000"
+    "md5": "4ab5e7c9baf77003cc8c89e3a1a76aeb",
+    "_modified": "2026-06-06 16:05:24.000000"
   },
   "tags/ajahn-dune.html": {
     "md5": "de253de3830dd706544f7bf46ad957de",
@@ -10016,8 +10016,8 @@
     "_modified": "2026-06-03 15:18:26.000000"
   },
   "tags/ajahn-pannananda.html": {
-    "md5": "6602926bc8e5096cc4287957b707cabd",
-    "_modified": "2026-06-03 15:18:26.000000"
+    "md5": "b138cbd82e355caec84b96949552791b",
+    "_modified": "2026-06-06 16:05:24.000000"
   },
   "tags/ajahn-suwat.html": {
     "md5": "3f59bde33eb7caa3f13fa2f15f24215a",
@@ -10336,8 +10336,8 @@
     "_modified": "2026-05-20 16:44:02.000000"
   },
   "tags/upasika-kee-nanayon.html": {
-    "md5": "cc40990b86a9c21b1d9daaf84bb83af5",
-    "_modified": "2026-05-20 16:44:02.000000"
+    "md5": "d4d5bb49e3fa2570a711ac2f42a308d8",
+    "_modified": "2026-06-06 16:05:26.000000"
   },
   "tags/upasika-kee-nanayon-relevant.html": {
     "md5": "2672be17b747775a597e0a22cde71c1d",
@@ -10388,8 +10388,8 @@
     "_modified": "2026-05-20 16:44:02.000000"
   },
   "tags/jack-kornfield.html": {
-    "md5": "7bc7e12c0c221ab5410dd7c9ccb53586",
-    "_modified": "2026-06-03 15:18:30.000000"
+    "md5": "50f64f553569aa05d490113a53ed43b6",
+    "_modified": "2026-06-06 16:05:26.000000"
   },
   "tags/jack-kornfield-relevant.html": {
     "md5": "2773378170a2a708e74cc720f503b400",
@@ -10432,8 +10432,8 @@
     "_modified": "2026-05-20 16:44:02.000000"
   },
   "tags/joseph-kappel.html": {
-    "md5": "1d4f4ee3f2f0a207d58e1ed3297c9fac",
-    "_modified": "2026-05-20 16:44:02.000000"
+    "md5": "24ceb6edf23518caab9ad2cd1b6165bb",
+    "_modified": "2026-06-06 16:05:26.000000"
   },
   "tags/joseph-kappel-relevant.html": {
     "md5": "3839d06eee95fcc022071304d5535069",
@@ -10560,8 +10560,8 @@
     "_modified": "2026-06-03 15:18:32.000000"
   },
   "tags/ajahn-chah-monasteries.html": {
-    "md5": "199c1efe23f36c1fad087575deb5396a",
-    "_modified": "2026-06-03 15:18:32.000000"
+    "md5": "872619c7f94cec92afc5d8b42ba991dc",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/thai-ajahn-chah-monasteries.html": {
     "md5": "01f73a81bb50f1178053ab21177742b6",
@@ -10588,8 +10588,8 @@
     "_modified": "2026-05-20 16:44:04.000000"
   },
   "tags/wat-pah-pong.html": {
-    "md5": "88f31a62edaa094447f494f4ed7dbd45",
-    "_modified": "2026-06-03 15:23:40.000000"
+    "md5": "47667f1baa31da4eb734de3c73eeff6c",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/wat-pah-pong-2.html": {
     "md5": "994883042b42fa8c3e042c963eba4b09",
@@ -10648,8 +10648,8 @@
     "_modified": "2026-05-20 16:44:06.000000"
   },
   "tags/wat-pah-nanachat.html": {
-    "md5": "6f433b5ac81e352dc0a2d819f9d8f3fc",
-    "_modified": "2026-06-03 15:18:34.000000"
+    "md5": "f1072f464da1ff23ffd997819757e919",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/wat-pah-nanachat-relevant.html": {
     "md5": "ed6f2c91fce21c2408d78ac9f3f8b21b",
@@ -10680,16 +10680,16 @@
     "_modified": "2026-05-20 16:44:06.000000"
   },
   "tags/wat-pahk-kut-wai.html": {
-    "md5": "b158faa3d1a3600328c712a73fe06cb5",
-    "_modified": "2026-05-20 16:44:06.000000"
+    "md5": "c2400749785f8ce9f97c2fb3785887ab",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/wat-phu-din-dang.html": {
     "md5": "d9e8b32807c09ee5aa89a0e3b9dfe251",
     "_modified": "2026-05-20 16:44:06.000000"
   },
   "tags/dtao-dum.html": {
-    "md5": "2ed44904431d0ed04746961112e69b99",
-    "_modified": "2026-05-20 16:44:06.000000"
+    "md5": "1bd4ceabd3f94cf00f275704cded825f",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/dtao-dum-relevant.html": {
     "md5": "5168fc922c7afb01eb398377f0f4f39f",
@@ -10804,8 +10804,8 @@
     "_modified": "2026-06-03 15:18:34.000000"
   },
   "tags/abhayagiri.html": {
-    "md5": "7391981359b8a039187905dfd81555a4",
-    "_modified": "2026-06-03 15:18:34.000000"
+    "md5": "b98bf114c6a2a2b31ac420b8e0bd668f",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/abhayagiri-2.html": {
     "md5": "f47a888242e8712b1d9bf52e9f67e71f",
@@ -10876,8 +10876,8 @@
     "_modified": "2026-05-20 16:44:08.000000"
   },
   "tags/thai-forest-monasteries-in-the-west.html": {
-    "md5": "91bd618ec050a496909d9113f7a76004",
-    "_modified": "2026-05-20 16:44:08.000000"
+    "md5": "425ab33d8bc20219a9a88de925574fdb",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/wat-buridat.html": {
     "md5": "fbed1153bfde94fe769431f5942220e1",
@@ -10896,8 +10896,8 @@
     "_modified": "2026-05-20 16:44:08.000000"
   },
   "tags/wat-phleng-vipassana.html": {
-    "md5": "3af80e5dc3782468e6e7755b2819f114",
-    "_modified": "2026-05-20 16:44:08.000000"
+    "md5": "b20075b839bbf90d16480c7d142f9b3b",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "tags/non-thai-buddhist-monasteries.html": {
     "md5": "1eaaf4401ca77bedbe43fc3cbc7001ba",
@@ -10960,8 +10960,8 @@
     "_modified": "2026-05-20 16:44:08.000000"
   },
   "tags/insight-meditation-society.html": {
-    "md5": "07547d649becbb9260cac2258bc7b1cb",
-    "_modified": "2026-05-20 16:44:08.000000"
+    "md5": "896a5ce459111b11c005f137dafd61cd",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/insight-meditation-society-relevant.html": {
     "md5": "8ddb936c80b334583110a37eeaeb4019",
@@ -11020,8 +11020,8 @@
     "_modified": "2026-06-03 15:18:38.000000"
   },
   "tags/kamma.html": {
-    "md5": "60b8c4d39b9f5f50399f16fa11439000",
-    "_modified": "2026-06-03 15:18:38.000000"
+    "md5": "718025a2cbcc4b55f062a6e5a0cbf73a",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/kamma-relevant.html": {
     "md5": "54aace1e1b45d78eddff49a640935d01",
@@ -11056,8 +11056,8 @@
     "_modified": "2026-06-03 15:18:38.000000"
   },
   "tags/rebirth.html": {
-    "md5": "a0beb4cd4d074dbf48b89fc65b9d4568",
-    "_modified": "2026-06-03 15:18:38.000000"
+    "md5": "545bcc0ee1dbcf82ec4f682a5fbb3086",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/rebirth-relevant.html": {
     "md5": "31ced7887e3147a0d18158d7b8a08a53",
@@ -11116,8 +11116,8 @@
     "_modified": "2026-05-20 16:44:10.000000"
   },
   "tags/realms-of-existence.html": {
-    "md5": "5be11d266279f5327083bfb203c7eb64",
-    "_modified": "2026-06-03 15:18:38.000000"
+    "md5": "7b8e9b301283b9c0e76043e60f05f655",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/realms-of-existence-relevant.html": {
     "md5": "cf0c6d3290f278e61c22a035ab32a4fc",
@@ -11140,8 +11140,8 @@
     "_modified": "2026-06-03 15:18:40.000000"
   },
   "tags/deva.html": {
-    "md5": "29cd7463901cdf695ff459c2a0f053d1",
-    "_modified": "2026-06-03 15:18:40.000000"
+    "md5": "086df7ff0d36d83c110138d7f160b461",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/deva-relevant.html": {
     "md5": "e2a9bb219a4c5e0ea78f99f4201df1cd",
@@ -11176,8 +11176,8 @@
     "_modified": "2026-06-03 15:18:40.000000"
   },
   "tags/human.html": {
-    "md5": "1b253f1c61dee1722d6731395f19a38c",
-    "_modified": "2026-06-03 15:18:40.000000"
+    "md5": "520b28edec77dbb371e553f7dadfb6e5",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/human-relevant.html": {
     "md5": "5d6b827ff24f2fbe180c91b0397624e0",
@@ -11224,8 +11224,8 @@
     "_modified": "2026-05-20 16:44:12.000000"
   },
   "tags/animal.html": {
-    "md5": "a5007c0d8951d2c1d781a45ed15f0004",
-    "_modified": "2026-06-03 15:18:40.000000"
+    "md5": "ee4c91167b705d2c601734cc0b6995f8",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/animal-relevant.html": {
     "md5": "e0e04757b08195c453ad8f793ad5a5bf",
@@ -11300,8 +11300,8 @@
     "_modified": "2026-06-03 15:18:40.000000"
   },
   "tags/nature-of-mind.html": {
-    "md5": "235e7da17a7753797335eac1605b7a27",
-    "_modified": "2026-06-03 15:18:40.000000"
+    "md5": "3424cd63d0f2f4e9626fbb90a6bded57",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/nature-of-mind-relevant.html": {
     "md5": "8c3d2686eb090078f3246fa62ebe1c4a",
@@ -11364,8 +11364,8 @@
     "_modified": "2026-06-03 15:18:42.000000"
   },
   "tags/psychic-powers.html": {
-    "md5": "fc821cac087bd99c29b07bb169f4ef93",
-    "_modified": "2026-06-03 15:18:42.000000"
+    "md5": "2c2fa174db08adaa82231c5b3bc83572",
+    "_modified": "2026-06-06 16:05:30.000000"
   },
   "tags/psychic-powers-relevant.html": {
     "md5": "2f89217049c4ad3313657673430df795",
@@ -11520,8 +11520,8 @@
     "_modified": "2026-06-03 15:18:44.000000"
   },
   "tags/historythai-buddhism.html": {
-    "md5": "96fd52e31e71592ba82edbcde4553a67",
-    "_modified": "2026-06-03 15:23:46.000000"
+    "md5": "e4f253195d24e203c914e1e9d502d2be",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/historythai-buddhism-relevant.html": {
     "md5": "be83efd82a6e38b8b7eb71364322ad7c",
@@ -11544,8 +11544,8 @@
     "_modified": "2026-06-03 15:18:44.000000"
   },
   "tags/historyother-theravada-traditions.html": {
-    "md5": "5f911efb478b7f9adf179789e842d901",
-    "_modified": "2026-06-03 15:18:44.000000"
+    "md5": "7f73193aed8b1fa13a9b2f847c107316",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/historymahayana-buddhism.html": {
     "md5": "d585c7e56844d1a93a7633b3740242c1",
@@ -11588,8 +11588,8 @@
     "_modified": "2026-05-20 16:44:16.000000"
   },
   "tags/geographythailand.html": {
-    "md5": "2b76f0658017b85cf45e66bf6201f796",
-    "_modified": "2026-06-03 15:18:44.000000"
+    "md5": "48753eb2eb2012a43d2b622059f7adb1",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/geographythailand-relevant.html": {
     "md5": "07d9da7ae3645b7ca6581fe964d9ad8a",
@@ -11692,8 +11692,8 @@
     "_modified": "2026-06-03 15:18:46.000000"
   },
   "tags/culturethailand.html": {
-    "md5": "792dbcbebefd37d2a642a17711fc8b48",
-    "_modified": "2026-06-03 15:18:46.000000"
+    "md5": "a7fdd33ec283de5367709c6a003eaf84",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/culturethailand-2.html": {
     "md5": "2aafb53ede234d9d1868ff5b115228e8",
@@ -11732,8 +11732,8 @@
     "_modified": "2026-05-20 16:44:18.000000"
   },
   "tags/culturewest.html": {
-    "md5": "d7cc656963e1664b80529af025c483bb",
-    "_modified": "2026-06-03 15:18:46.000000"
+    "md5": "12212b759f29cef3e07bba4d6a93bc12",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/culturewest-2.html": {
     "md5": "c0011a7b82c28033d24037e87f0fd8ba",
@@ -11796,8 +11796,8 @@
     "_modified": "2026-05-20 16:44:20.000000"
   },
   "tags/language.html": {
-    "md5": "93d3d98d507c886e86ce24a3a2c9e1b2",
-    "_modified": "2026-06-03 15:18:48.000000"
+    "md5": "03012997ec1e87fa00010364453e6e79",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/language-relevant.html": {
     "md5": "af47c0935b90f8c43d47ddd8122da051",
@@ -11852,8 +11852,8 @@
     "_modified": "2026-06-03 15:18:48.000000"
   },
   "tags/thai.html": {
-    "md5": "ef9a953441967fb8d100e69e7e82f5f5",
-    "_modified": "2026-06-03 15:18:48.000000"
+    "md5": "6f531b10961c8657a0a48dbc350f6efa",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/thai-relevant.html": {
     "md5": "5fcaf2fceb4c4fe993898e247502293f",
@@ -11884,12 +11884,12 @@
     "_modified": "2026-05-20 16:44:20.000000"
   },
   "tags/isan.html": {
-    "md5": "df0179661cea24049719683f3a9637f0",
-    "_modified": "2026-06-03 15:18:50.000000"
+    "md5": "d0fb990043ac8af9f883fd1c9f77b81d",
+    "_modified": "2026-06-06 16:05:32.000000"
   },
   "tags/translation.html": {
-    "md5": "287cda9aa4f8a053b116535cefaf0c00",
-    "_modified": "2026-06-03 15:18:50.000000"
+    "md5": "5e43916afe7fe9fb7b5619d6da33333b",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/translation-relevant.html": {
     "md5": "8acd1d875d793a521b74afe305d24f69",
@@ -11932,8 +11932,8 @@
     "_modified": "2026-05-20 16:44:20.000000"
   },
   "tags/buddhist-identity.html": {
-    "md5": "defcd9ca344a6373a5d0ea3f572af997",
-    "_modified": "2026-05-20 16:44:20.000000"
+    "md5": "43fd0f41f46675af250a19452b13a2bd",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/buddhist-identity-relevant.html": {
     "md5": "d2e4c1c39c989ce917ea97604130ff33",
@@ -12004,8 +12004,8 @@
     "_modified": "2026-06-03 15:18:50.000000"
   },
   "tags/theravada.html": {
-    "md5": "9339b4609da98ee1cf486fc5793a8b96",
-    "_modified": "2026-06-03 15:23:50.000000"
+    "md5": "cf6c2d9b1b59de2ba7ca4a7dc762ef5d",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/theravada-relevant.html": {
     "md5": "e7596f6b515d235430786cd1d26263c5",
@@ -12212,8 +12212,8 @@
     "_modified": "2026-05-20 16:44:24.000000"
   },
   "tags/simplicity.html": {
-    "md5": "3ca26ed4ea0f0e9ee135361f12cdb920",
-    "_modified": "2026-06-03 15:18:52.000000"
+    "md5": "18e3056daf5a6c825335131c39b59dff",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/simplicity-relevant.html": {
     "md5": "39c2f1329e948245472e521ccdabdde4",
@@ -12312,8 +12312,8 @@
     "_modified": "2026-06-03 15:18:54.000000"
   },
   "tags/almsbowl.html": {
-    "md5": "5148b1be8c07c55f3f880c6d92b14fd3",
-    "_modified": "2026-06-03 15:18:54.000000"
+    "md5": "dd7effe7d45c46d23c9a8913bad5fd3f",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/almsbowl-relevant.html": {
     "md5": "e6d9f428a717c35f5eb2eee1b53fdab7",
@@ -12364,8 +12364,8 @@
     "_modified": "2026-06-03 15:18:54.000000"
   },
   "tags/lodging.html": {
-    "md5": "4c85daa343f6f93b6bdb63b19f881a56",
-    "_modified": "2026-05-20 16:44:24.000000"
+    "md5": "295e8fe4232baf1f111d183051ff2d58",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/lodging-relevant.html": {
     "md5": "2ccc257fed1f283999fd1ec439f531b4",
@@ -12484,8 +12484,8 @@
     "_modified": "2026-06-03 15:18:56.000000"
   },
   "tags/monastic-life.html": {
-    "md5": "cc6903136a7c28a9a061db580d2a25d0",
-    "_modified": "2026-06-03 15:18:56.000000"
+    "md5": "8bb5c22f073bdedad3a338e229da3d20",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/monastic-life-2.html": {
     "md5": "6df89c12dd08c5d8fae5eb68056da372",
@@ -12560,8 +12560,8 @@
     "_modified": "2026-06-03 15:18:58.000000"
   },
   "tags/ordination.html": {
-    "md5": "d9100db3867fad8698d0bd95775ac06c",
-    "_modified": "2026-06-03 15:18:58.000000"
+    "md5": "90eb05891abcc55a2c1135da21fc9b61",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/ordination-relevant.html": {
     "md5": "0d1381e6122c53fdd6622ede8c512c0f",
@@ -12588,8 +12588,8 @@
     "_modified": "2026-06-03 15:18:58.000000"
   },
   "tags/temporary-ordination.html": {
-    "md5": "9c4293369dcf6c9dc0e11581f293000a",
-    "_modified": "2026-06-03 15:18:58.000000"
+    "md5": "f8b6168d1f69d7d5612782173cf57ac8",
+    "_modified": "2026-06-06 16:05:34.000000"
   },
   "tags/temporary-ordination-relevant.html": {
     "md5": "8aa3c31c4a78332baac5449d0509d5b6",
@@ -12652,8 +12652,8 @@
     "_modified": "2026-06-03 15:18:58.000000"
   },
   "tags/sequence-of-training.html": {
-    "md5": "00618fa7c88dc6e62a627779d3de5b22",
-    "_modified": "2026-06-03 15:18:58.000000"
+    "md5": "fd254d6924e780dcdac6714c539e5650",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/sequence-of-training-relevant.html": {
     "md5": "9306a80d180e36af44d894214992f17d",
@@ -12744,8 +12744,8 @@
     "_modified": "2026-05-20 16:44:28.000000"
   },
   "tags/mutual-laysangha-support.html": {
-    "md5": "e779bc6cef74d54294b3ad3c69baa91f",
-    "_modified": "2026-06-03 15:18:58.000000"
+    "md5": "1408ec60989e8ab21642cf41656674bf",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/mutual-laysangha-support-relevant.html": {
     "md5": "76db2f620f6d3c0ef479f8841ae7a650",
@@ -13052,8 +13052,8 @@
     "_modified": "2026-06-03 15:19:02.000000"
   },
   "tags/tudong.html": {
-    "md5": "1294f2d7d60b0db181ec0a1049ab4450",
-    "_modified": "2026-06-03 15:19:02.000000"
+    "md5": "e8d3f33703cda6a22680739bbc22ef82",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/tudong-relevant.html": {
     "md5": "8146db464057e5b8b774813ceec526d4",
@@ -13100,8 +13100,8 @@
     "_modified": "2026-05-20 16:44:32.000000"
   },
   "tags/forest-versus-city-monks.html": {
-    "md5": "e52e02f032f429526d7260b8ef92a237",
-    "_modified": "2026-06-03 15:19:02.000000"
+    "md5": "7ca1f8c1ab7024c751540cb9c34df884",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/forest-versus-city-monks-relevant.html": {
     "md5": "8302d5cc0415a2c587f52ce5c49a9a1e",
@@ -13128,8 +13128,8 @@
     "_modified": "2026-06-03 15:19:02.000000"
   },
   "tags/study-monks.html": {
-    "md5": "db72f42d59b61d02c827127b58793e7c",
-    "_modified": "2026-06-03 15:19:02.000000"
+    "md5": "a7cff28987a7b87185e2e13cfb6f2ba5",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/study-monks-relevant.html": {
     "md5": "1ec0f364c6d672a6392a27b390a5a05d",
@@ -13180,8 +13180,8 @@
     "_modified": "2026-06-03 15:19:02.000000"
   },
   "tags/novices.html": {
-    "md5": "2ef42cd5e4b339b0e6bac8491f9aeff6",
-    "_modified": "2026-06-03 15:19:02.000000"
+    "md5": "54fa355d2c2a53223a09228813334eed",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/novices-relevant.html": {
     "md5": "d0b90ccc76ebf94cc8d797bcad05cc8e",
@@ -13224,8 +13224,8 @@
     "_modified": "2026-05-20 16:44:32.000000"
   },
   "tags/disrobing.html": {
-    "md5": "e8d8752d92d9aa7c57b1bc8f1821d73f",
-    "_modified": "2026-06-03 15:19:02.000000"
+    "md5": "3760a8d7d849dddd0cdb6c026e5539a2",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/disrobing-relevant.html": {
     "md5": "84932610daeff9a7b375bfad197f1362",
@@ -13280,8 +13280,8 @@
     "_modified": "2026-06-03 15:19:04.000000"
   },
   "tags/lay-life.html": {
-    "md5": "f7f127a545fb623b5286f6a4a83c1804",
-    "_modified": "2026-06-03 15:19:04.000000"
+    "md5": "6c6792efcbb938846bc4a3c5dacc5df4",
+    "_modified": "2026-06-06 16:05:36.000000"
   },
   "tags/lay-life-relevant.html": {
     "md5": "256dacbe7382da6c724544911dc3ec8a",
@@ -13396,8 +13396,8 @@
     "_modified": "2026-05-20 16:44:34.000000"
   },
   "tags/purposemeaning.html": {
-    "md5": "8ea9d507f1220852590b159e99f86b65",
-    "_modified": "2026-06-03 15:19:06.000000"
+    "md5": "ddb38b79874a98791d5afd82fa3fba9f",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/purposemeaning-relevant.html": {
     "md5": "de483e12b52b57bdd9923cf2b7f2ab38",
@@ -13448,8 +13448,8 @@
     "_modified": "2026-06-03 15:19:06.000000"
   },
   "tags/work.html": {
-    "md5": "59a370a23cc99388aa76583e2c139ef9",
-    "_modified": "2026-06-03 15:19:06.000000"
+    "md5": "64a0a31cb4e8647665c349a4d32045a5",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/work-relevant.html": {
     "md5": "91dd69880bca533cd13b7d2e0c2e7c42",
@@ -13512,8 +13512,8 @@
     "_modified": "2026-06-03 15:19:06.000000"
   },
   "tags/family.html": {
-    "md5": "c3fd5b43fb930e86f9404fa2d544d1df",
-    "_modified": "2026-06-03 15:19:06.000000"
+    "md5": "080fff6cb0d68b1c490f7db929eedeb7",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/family-relevant.html": {
     "md5": "ded5362890365319fb2741f5469067dd",
@@ -13544,8 +13544,8 @@
     "_modified": "2026-06-03 15:19:06.000000"
   },
   "tags/parents.html": {
-    "md5": "3a86e8f5aa4eff646f5b352a5717af22",
-    "_modified": "2026-06-03 15:19:06.000000"
+    "md5": "6f1752bfdd68be59be661d257559df18",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/parents-relevant.html": {
     "md5": "2e48e08f14cd0c80666949d593aa71ed",
@@ -13648,8 +13648,8 @@
     "_modified": "2026-06-03 15:19:08.000000"
   },
   "tags/travel.html": {
-    "md5": "f27fac219f69652c7a82ae29d6888a48",
-    "_modified": "2026-06-03 15:19:08.000000"
+    "md5": "5b1f34ed87a35a5d93e01eb217e89018",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/travel-relevant.html": {
     "md5": "816dd2236f1693e91ff61db5acd17648",
@@ -13700,12 +13700,12 @@
     "_modified": "2026-05-20 16:44:36.000000"
   },
   "tags/retirement.html": {
-    "md5": "8b65b6a8759f997fefbc6aee25266b16",
-    "_modified": "2026-05-20 16:44:36.000000"
+    "md5": "27e511c06113ad3b7409780ffaf1b4f9",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/community.html": {
-    "md5": "6d531453f57a2db1e5712a584871c6e4",
-    "_modified": "2026-06-03 15:19:08.000000"
+    "md5": "5176dcc7afbf686d49601b592c8d5c34",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/community-relevant.html": {
     "md5": "464e5d8d4b26b456fd03db256f9b3fae",
@@ -13728,8 +13728,8 @@
     "_modified": "2026-06-03 15:19:08.000000"
   },
   "tags/environment.html": {
-    "md5": "b3ff1ff9ec206a9b57e817a0548c29b9",
-    "_modified": "2026-05-20 16:44:36.000000"
+    "md5": "a36977da3d4f37653dc4e447c04fade1",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/environment-relevant.html": {
     "md5": "23f8281f382741591d9bd136003fb3c9",
@@ -13820,8 +13820,8 @@
     "_modified": "2026-06-03 15:19:10.000000"
   },
   "tags/politics-and-society.html": {
-    "md5": "2d3f1651d1cc14a02dfbb0bdf0316c2f",
-    "_modified": "2026-06-03 15:19:10.000000"
+    "md5": "e7f732e12e6f4689720b337ea87f594d",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/politics-and-society-relevant.html": {
     "md5": "da34bba4e79246a942a4ab6a038099d7",
@@ -13880,8 +13880,8 @@
     "_modified": "2026-05-20 16:44:38.000000"
   },
   "tags/military.html": {
-    "md5": "33cb1f7b8af0d0f2cb9fb26cbfcb9204",
-    "_modified": "2026-06-03 15:19:10.000000"
+    "md5": "77f8cc143e81043b5b44890f59e0bffc",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/military-relevant.html": {
     "md5": "58e87367626c6ad8db5482d559467520",
@@ -13964,8 +13964,8 @@
     "_modified": "2026-05-20 16:44:38.000000"
   },
   "tags/poverty.html": {
-    "md5": "8483e7a86082f5f146fb902dde58a7ac",
-    "_modified": "2026-06-03 15:19:12.000000"
+    "md5": "4e49cc4e51bb8bbfcd2d64c6e3f3da82",
+    "_modified": "2026-06-06 16:05:38.000000"
   },
   "tags/poverty-relevant.html": {
     "md5": "d2cf5fef6cfb8b241c48569c45ee549a",
@@ -15920,8 +15920,8 @@
     "_modified": "2026-06-03 15:19:56.000000"
   },
   "events/Sunday2025-2.html": {
-    "md5": "64e2d3d3f7edb138b7a1ae4ac868a73b",
-    "_modified": "2026-05-20 16:44:44.000000"
+    "md5": "833f7a91bf9c8403ab2d360e2937fc9b",
+    "_modified": "2026-06-06 16:11:48.000000"
   },
   "events/Chithurst2025-2.html": {
     "md5": "c87a9c45ed00eda2132614cc3902af16",
@@ -16224,8 +16224,8 @@
     "_modified": "2026-06-03 15:18:50.000000"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "f1f8b02cda68a580e03a37bc23d43459",
-    "_modified": "2026-06-03 15:16:40.000000"
+    "md5": "511d6e3f9f06373fd7eb519d755666e8",
+    "_modified": "2026-06-06 16:11:46.000000"
   },
   "tags/relics-relevant.html": {
     "md5": "8e89d51e900cc90126065900ea2e9f39",
@@ -18300,8 +18300,8 @@
     "_modified": "2026-06-03 15:19:04.000000"
   },
   "events/TG2010.html": {
-    "md5": "471d376bdf97c154a1b6264bd212ea25",
-    "_modified": "2026-06-02 18:52:52.000000"
+    "md5": "6a44f86f3024b2c267223c45d8bed3cd",
+    "_modified": "2026-06-05 17:38:58.000000"
   },
   "clusters/right-intention-4.html": {
     "md5": "94711e5e305422fa32fe872ddf251761",
@@ -18740,8 +18740,8 @@
     "_modified": "2026-06-03 15:17:38.000000"
   },
   "tags/dogmatism.html": {
-    "md5": "574a9ca2ac67f30ba06af820bb179557",
-    "_modified": "2026-05-20 16:43:12.000000"
+    "md5": "29022e2a6ea3be49bf4004bb93cafd73",
+    "_modified": "2026-06-06 16:05:14.000000"
   },
   "tags/bodyform-quote.html": {
     "md5": "d48b37b6d8421f08a93967ae94dc7fc1",
@@ -19332,8 +19332,8 @@
     "_modified": "2026-05-20 16:44:54.000000"
   },
   "tags/wat-sai-ngam-suphanburi.html": {
-    "md5": "a7deacdff29efde156a2e75ea4415169",
-    "_modified": "2026-06-03 15:18:36.000000"
+    "md5": "b79de104fe1e9bfe934665aa78055845",
+    "_modified": "2026-06-06 16:05:28.000000"
   },
   "books/KBagoien.html": {
     "md5": "181690070ed36f54a584a04a1e82c560",
@@ -19448,8 +19448,8 @@
     "_modified": "2026-05-20 16:43:54.000000"
   },
   "tags/debbie-stamp.html": {
-    "md5": "9a6b31f71dc852856a4dba6b7b88c5a7",
-    "_modified": "2026-06-03 15:18:32.000000"
+    "md5": "1d52a5a5e3f5b08020bd8f0297d1b595",
+    "_modified": "2026-06-06 16:05:26.000000"
   },
   "tags/debbie-stamp-relevant.html": {
     "md5": "6670396c824b629afbc327609432f8c2",
@@ -19508,8 +19508,8 @@
     "_modified": "2026-05-20 16:44:54.000000"
   },
   "events/SRD2018.html": {
-    "md5": "bcc69101bc77c9dc4a6760f9c1e7790a",
-    "_modified": "2026-05-21 15:22:18.000000"
+    "md5": "4e80a7fed16ac1ae5961ce62c53baa51",
+    "_modified": "2026-06-05 18:57:46.000000"
   },
   "tags/virtue-2.html": {
     "md5": "31b95e6b538bf0577477100b912e2a84",
@@ -19846,5 +19846,13 @@
   "books/Dhammayut.html": {
     "md5": "2e7f998d21386f9a6a53f1bd5870fcc6",
     "_modified": "2026-06-03 15:24:28.000000"
+  },
+  "events/CMountain2023.html": {
+    "md5": "a4dcd57ac0ce607e8e26c342f3dc9b32",
+    "_modified": "2026-06-06 16:11:48.000000"
+  },
+  "tags/clear-mountain.html": {
+    "md5": "45542de396f0f9f798439c4c5a4356af",
+    "_modified": "2026-06-06 16:05:28.000000"
   }
 }

@@ -7,10 +7,10 @@
  - Home page loads faster and uses less data
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 210 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the computer. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 210 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
-The Archive incorporates previously existing transcriptions of questions asked during the 2013-2016 Thanksgiving Retreats. Some questions have been listened to in detail, but many have been tagged based on the existing transcriptions alone. The May 2026 release includes all questions from the 2010-2012 retreats. The 2004, 2020, and 2021 retreats are in progress. Question and answer sessions with other Abhayagiri teachers have been recorded for four more Thanksgiving Retreats.
+The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions). Ajahn Pasanno held less-frequent Q&A sessions on the 2004, 2020, and 2021 retreats; these retreats have been transcribed but not yet entered into the database.
 
 ### Winter Retreats
 Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 49 sessions](event:WR2025) are now included in the Archive.
