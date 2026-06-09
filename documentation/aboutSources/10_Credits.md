@@ -33,7 +33,7 @@ __Terms of use__: You may copy, reformat, reprint, republish, and redistribute t
 - Want to Help?: Somkid
 - Credits: Jonny Breeze
 - Key topic icons created by Ajahn Kovilo and ChatGPT
-- Other icons from [Lucide](https://lucide.dev/) and [FontAwesome](https://fontawesome.com/v4/icons/)
+- Other icons from [Lucide](https://lucide.dev/), [FontAwesome](https://fontawesome.com/v4/icons/), and [WikiMedia Commons](https://commons.wikimedia.org/wiki/Main_Page)
 
 -----
 

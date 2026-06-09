@@ -63,7 +63,7 @@ def RenderDocumentationFiles(aboutDir: str,destDir:str = "",pathToPages:str = ".
     if html:
         htmlFiles = {}
         for fileName in fileContents:
-            html = markdown.markdown(fileContents[fileName],extensions = ["sane_lists","footnotes","toc",NewTabRemoteExtension()])
+            html = markdown.markdown(fileContents[fileName],extensions = ["smarty","tables","attr_list","sane_lists","footnotes","toc",NewTabRemoteExtension()])
         
             html = re.sub(r"<!--HTML(.*?)-->",r"\1",html) # Remove comments around HTML code
             htmlFiles[Utils.ReplaceExtension(fileName,".html")] = html

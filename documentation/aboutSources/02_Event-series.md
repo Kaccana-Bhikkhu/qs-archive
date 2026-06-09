@@ -40,7 +40,7 @@ Spirit Rock Meditation Center is physically and often culturally more accessible
 
 -----
 [October 2010 Upāsikā Day](photo:Upasika Day 9 Oct 2010.jpg)
-## Abhayagiri Upāsikā Days (<a id="upasika-days" href="../indexes/EventsBySeries.html#upasika-days">List</a>)
+## Abhayagiri Upāsikā Days (<a id="upasika-days" href="../indexes/EventsBySeries.html#upasika-days">List</a>; <a id="upasika-days" href="UpasakaDays.html">Table of themes</a>)
 The term “upāsikā” means “one who sits close by” and it has come to refer to lay people who join with monastics in the practice of the Dhamma. Abhayagiri Upāsikā Days are afternoon teaching sessions held at the monastery organized around a particular theme.
 
 The Upāsikā Program was particularly well-organized between 2012 and 2019. These years a committee of lay and monastic leaders met in early April to plan a series of five Upāsikā Days for the year. Each Upāsikā Day had both a topic (for example [jhāna](event:UD2015-4) or [Buddhist identity](event:UD2015-3)) and an overarching theme or lens through which to view the topic. The five themes repeated each year were formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. The committee kept track of topics covered in previous years so as not to repeat topics. Applying this organizational scheme consistently over the course of eight years (roughly 40 Upāsika Days) resulted in a series of teachings impressive in both breadth and depth.

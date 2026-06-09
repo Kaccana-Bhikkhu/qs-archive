@@ -1289,3 +1289,19 @@ Styles below this line copied and modified from
     width: 18rem;
   }
 }
+
+table, th, td {
+  border: 1px solid grey;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th,td {
+	padding: 4px;
+}
+
+td.dimmed {
+	color: grey
+}
