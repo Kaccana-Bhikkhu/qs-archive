@@ -249,7 +249,7 @@ def AuditNames() -> None:
             alertItems.append(f"This will cause ambiguous sort order in teacher group {g}.")
 
         if len(alertItems) > 2:
-            Alert.caution(*alertItems)
+            Alert.notice(*alertItems)
 
     """ The code below isn't working. Fix it only if needed.
     # Configure sort order
