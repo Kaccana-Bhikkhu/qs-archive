@@ -76652,7 +76652,7 @@
         {
           "kind": "Sutta",
           "flags": "0",
-          "text": "AN 4.184: Janussonī; AN 10.60: Girimananda; SN 35.247: Six Animals; AN 4.45: Rohitassa; Thag 1.104: Khitaka.",
+          "text": "AN 4.184: Janussonī; AN 10.60.8: Girimananda; SN 35.247: Six Animals; AN 4.45: Rohitassa; Thag 1.104: Khitaka.",
           "tags": [],
           "indentLevel": 1
         },
@@ -76725,7 +76725,7 @@
       "fileNumber": 2,
       "kind": "Question",
       "flags": "",
-      "text": "In this passage where the Buddha lists illnesses and calamities (AN 10.60), he separates kamma out as a cause of those things. However the cause of being subject to these things is because of making good or bad kamma. Is kamma [in this list] a direct, proximate cause?",
+      "text": "In this passage where the Buddha lists illnesses and calamities (AN 10.60.8), he separates kamma out as a cause of those things. However the cause of being subject to these things is because of making good or bad kamma. Is kamma [in this list] a direct, proximate cause?",
       "teachers": [
         "AKd"
       ],
@@ -120443,7 +120443,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "AN 10.60: Girimānanda Sutta",
+          "text": "AN 10.60.10-11: Girimānanda Sutta",
           "tags": [
             "Dispassion",
             "Cessation",
@@ -146228,7 +146228,7 @@
         {
           "kind": "Sutta",
           "flags": "s",
-          "text": "MN 26.13; SN 38.1; AN 10.60; Ud 3.10; AN 3.55; AN 6.55; SN 43.1-44.",
+          "text": "MN 26.13; SN 38.1; AN 10.60.11; Ud 3.10; AN 3.55; AN 6.55; SN 43.1-44.",
           "tags": [],
           "indentLevel": 1
         },
@@ -151499,7 +151499,7 @@
         {
           "kind": "Sutta",
           "flags": "s-",
-          "text": "AN 4.179; AN 10.60; AN 1.494.",
+          "text": "AN 4.179; AN 10.60.11; AN 1.494.",
           "tags": [],
           "indentLevel": 2
         },
@@ -151808,7 +151808,7 @@
         {
           "kind": "Sutta",
           "flags": "s-",
-          "text": "AN 10.60.10; AN 1.494.",
+          "text": "AN 10.60.11; AN 1.494.",
           "tags": [],
           "indentLevel": 2
         }
@@ -163466,7 +163466,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "AN 10.60.10: \"This is peaceful, this is sublime ...\"",
+          "text": "AN 10.60.11: \"This is peaceful, this is sublime ...\"",
           "tags": [],
           "indentLevel": 1
         }
@@ -218222,6 +218222,15 @@
       "alert": "",
       "link": "$! ExistsOnSC(uid,n[0:1]) and f'https://suttacentral.net/{uid}{n0}/en/bodhi?reference=main{\"#sc\" + n1}' !$"
     },
+    "AN suttas defaulting to bodhi": {
+      "rule": "AN suttas defaulting to bodhi",
+      "uid": "AN",
+      "n0": "",
+      "refCount": "3",
+      "translator": "_blank",
+      "alert": "",
+      "link": "$! tuple(n[0:2]) == (10,60) and ExistsOnSC(uid,n[0:2]) and f'https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/bodhi?reference=main{\"#sc\" + n2}' !$"
+    },
     "singleRef #sc bookmarks": {
       "rule": "singleRef #sc bookmarks",
       "uid": "singleRef & suttaCentral",
@@ -218258,8 +218267,8 @@
       "alert": "",
       "link": "$! ExistsOnSC(uid,n[0:2]) and f'https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/sujato?reference=main{\"#\" + DotRef(n[2:],2)}' !$"
     },
-    "Link to whole suttas with prefered translator": {
-      "rule": "Link to whole suttas with prefered translator",
+    "Link to whole suttas": {
+      "rule": "Link to whole suttas",
       "uid": "",
       "n0": "",
       "refCount": "",

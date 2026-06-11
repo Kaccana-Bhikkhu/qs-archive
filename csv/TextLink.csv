@@ -14,13 +14,14 @@ Links to PTS verse number,ptsVerses & suttaCentral,,1,,,"$! (mark := SCIndex(uid
 DN suttas with N.N PTS numbering,DN,"1, 3, 10, 14, 16, 17, 21, 24, 30, 33, 34",2|3,,,"$! ExistsOnSC(uid,n[0:1]) and f'https://suttacentral.net/dn{n0}/en/sujato?reference=main{""#"" + DotRef(n[1:],3)}' !$"
 ,,,,,,
 MN suttas defaulting to bodhi,MN,118,2,_blank,,"$! ExistsOnSC(uid,n[0:1]) and f'https://suttacentral.net/{uid}{n0}/en/bodhi?reference=main{""#sc"" + n1}' !$"
+AN suttas defaulting to bodhi,AN,,3,_blank,,"$! tuple(n[0:2]) == (10,60) and ExistsOnSC(uid,n[0:2]) and f'https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/bodhi?reference=main{""#sc"" + n2}' !$"
 ,,,,,,
 singleRef #sc bookmarks,singleRef & suttaCentral,,2,"bodhi,suddhaso",,"$! ExistsOnSC(uid,n[0:1]) and f'https://suttacentral.net/{uid}{n0}/en/{translator}?reference=main{""#sc"" + n1}' !$"
 doubleRef #sc bookmarks,doubleRef & suttaCentral,,3,"bodhi,suddhaso",,"$! ExistsOnSC(uid,n[0:2]) and f'https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/{translator}?reference=main{""#sc"" + n2}' !$"
 singleRef inner references,singleRef & suttaCentral,,2|3,"sujato,_blank",,"$! ExistsOnSC(uid,n[0:1]) and f'https://suttacentral.net/{uid}{n0}/en/sujato?reference=main{""#"" + DotRef(n[1:],2)}' !$"
 doubleRef inner references,doubleRef & suttaCentral,,3,"sujato,_blank",,"$! ExistsOnSC(uid,n[0:2]) and f'https://suttacentral.net/{uid}{DotRef(n[0:2])}/en/sujato?reference=main{""#"" + DotRef(n[2:],2)}' !$"
 ,,,,,,
-Link to whole suttas with prefered translator,,,,,,
+Link to whole suttas,,,,,,
 doubleRef section references,suttaCentral & doubleRef,,1,,,https://suttacentral.net/{uid}{n0}
 Whole sutta references,suttaCentral,,,,,"$! (trans := (translator or PreferredTranslator(uid,n))) and f'https://suttacentral.net/{uid}{DotRef(n)}/en/{trans}' !$"
 ,,,,,,
