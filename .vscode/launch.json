@@ -88,6 +88,25 @@
             "justMyCode": true
         },
         {
+            "name": "CheckRemoteSize",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/QSarchive.py",
+            "args": [
+                "Link",
+                "--linkCheckLevel",
+                "sessionMp3:3",
+                "--sessionMp3",
+                "local,remote",
+                "--linkCheckLevel",
+                "reference:3",
+                "--reference",
+                "local,remote"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "BuildAllAbhayagiri",
             "type": "debugpy",
             "request": "launch",

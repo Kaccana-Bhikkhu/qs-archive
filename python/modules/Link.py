@@ -13,12 +13,12 @@ import Mp3DirectCut
 import TagMp3
 import Utils, Alert
 import CheckLinks
-from urllib.parse import urljoin,urlparse,quote,urlunparse
+from urllib.parse import urljoin,urlparse
 import urllib.request, urllib.error
 import shutil
-import mutagen, mutagen.id3, mutagen.easyid3, mutagen.mp3
+import mutagen, mutagen.mp3
 import json
-from typing import Tuple, Type, Callable, Iterable, BinaryIO
+from typing import BinaryIO
 from enum import Enum
 from collections import Counter
 import copy
@@ -117,6 +117,52 @@ class RemoteURLChecker(LinkValidator):
     def ValidateContents(self,url:str,item:dict,contents:BinaryIO) -> bool:
         """This method should be overriden by subclasses that validate file contents."""
         return True
+
+def FileOrRequestSize(fileOrRequest: BinaryIO) -> int|None:
+    """Returns the size of an open file or http request. Returns None if the size cannot be determined."""
+
+    if hasattr(fileOrRequest,"info"):
+        meta = fileOrRequest.info()
+        lengthStr = meta["Content-Length"]
+        return int(lengthStr) if lengthStr else None
+    else:
+        oldPosition = fileOrRequest.tell()
+        fileOrRequest.seek(0,os.SEEK_END)
+        fileLength = fileOrRequest.tell()
+        fileOrRequest.seek(oldPosition)
+        return fileLength
+        
+class FileLengthChecker(RemoteURLChecker):
+    """Check that the length of this item matches the length of its remote source."""
+
+    def __init__(self):
+        super().__init__(openLocalFiles=True)
+
+    def ValidateContents(self,url:str,item:dict,contents:BinaryIO) -> bool:
+        """Compare the file length of contents to the length of its remote source."""
+        
+        remoteUrl = item.get("url") or item.get("remoteUrl")
+        if not remoteUrl:
+            return True # There's no way to test without a remote source
+        if CheckLinks.BrowerOnlyUrl(remoteUrl):
+            return True # These remote urls cannot be opened with python and checked
+
+        contentsUrl = getattr(contents,"url",None)
+        if contentsUrl == remoteUrl:
+            return True # In the future, we might look for a local file to compare to the remote one
+        
+        contentsLength = FileOrRequestSize(contents)
+        with urllib.request.urlopen(remoteUrl) as remoteRequest:
+            remoteLength = FileOrRequestSize(remoteRequest)
+
+            if contentsLength != remoteLength:
+                Alert.warning(item,"does not match the length of its remote source. Local size:",contentsLength,"Remote size:",remoteLength)
+            #else:
+            #    Alert.notice(item,"matches the length of its remote source. Local size",contentsLength,"Remote size",remoteLength)
+
+        return contentsLength == remoteLength
+        
+
 
 def RemoteMp3Tags(url:str) -> dict:
     """Read the id3 tags from a remote mp3 file.
@@ -689,14 +735,19 @@ def Initialize() -> None:
         if level == 1:
             return LinkValidator()
         if itemType == ItemType.AUDIO_SOURCE:
-            return Mp3LengthChecker() if level >= 4 else RemoteURLChecker()
+            if level == 2:
+                return RemoteURLChecker()
+            elif level == 3:
+                return FileLengthChecker()
+            else:
+                return Mp3LengthChecker()
         if itemType == ItemType.EXCERPT:
             if level >= 4:
                 return Mp3LengthAndClipChecker()
             else:
                 return Mp3ClipChecker(trustCache=False) if level >=3 else Mp3ClipChecker(trustCache=True)
         if itemType == ItemType.REFERENCE:
-            return RemoteURLChecker() if level >= 3 else LinkValidator()
+            return FileLengthChecker() if level >= 3 else RemoteURLChecker()
         
     def MirrorValidatorDict(itemType:ItemType, mirrors:list[str]) -> dict[str,LinkValidator]:
         return {m:ChooseLinkChecker(itemType,gOptions.linkCheckLevel[itemType][m]) for m in mirrors}
