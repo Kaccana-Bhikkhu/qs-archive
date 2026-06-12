@@ -177,14 +177,17 @@ def WriteTOC() -> None:
     chapterSessions: dict[int,list[int]] = DefaultDict(list) # Lists of sessions for each chapter
     chapterDates: dict[int,list[date]] = DefaultDict(list) # Lists of dates for each chapter
     chapterReader: dict[int,str] = {} # The reader for each chapter
+    chapterPages: dict[int,list[int]] = DefaultDict(list) # Page numbers that have been read
 
     chapterSessions[-2] = [21] # AP reads his Preface
     chapterDates[-2] = [date(2025,2,8)]
     chapterReader[-2] = "AP"
+    chapterPages[-2] = [8,9]
 
     chapterSessions[-1] = [1,2] # AA reads the Introduction
     chapterDates[-1] = [date(2025,1,5),date(2025,1,8)]
     chapterReader[-1] = "AA"
+    chapterPages[-1] = [14,18]
 
     with open("Sessions.csv",encoding='utf8') as sessionFile:
         for session in DictReader(sessionFile):
@@ -193,6 +196,7 @@ def WriteTOC() -> None:
             chapterSessions[chapter].append(session["session"])
             chapterDates[chapter].append(session["date"])
             chapterReader[chapter] = session["teacher"]
+            chapterPages[chapter].extend(int(s) for s in session["pageRange"].split("-"))
 
     
     with open("../../../documentation/tableOfContents/WR2025.md","w",encoding='utf8') as outputFile:
@@ -202,7 +206,11 @@ def WriteTOC() -> None:
             reader = "Ajahn Amaro" if chapterReader[chapter] == "AA" else "Ajahn Pasanno"
             chapterStr = f"Chapter {chapter}: " if chapter > 0 else ""
             firstSession = min(chapterSessions[chapter])
-            print(f"{HyperlinkSession(firstSession,chapterStr + chapterTitles[chapter])}, read by {reader}<br>",file = outputFile)
+            pageRange = [str(min(chapterPages[chapter])),str(max(chapterPages[chapter]))]
+            if pageRange[0] == pageRange[1]:
+                del pageRange[1]
+            firstPageLink = f"The Island p. {pageRange[0]}" # The Island has pdf page offset -1
+            print(f"{HyperlinkSession(firstSession,chapterStr + chapterTitles[chapter])}, page{'s' if len(pageRange) > 1 else ''} [{' – '.join(pageRange)}]({firstPageLink}), read by {reader}<br>",file = outputFile)
 
             startDate = min(chapterDates[chapter])
             endDate = max(chapterDates[chapter])
