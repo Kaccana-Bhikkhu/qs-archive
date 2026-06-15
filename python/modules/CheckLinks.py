@@ -154,14 +154,15 @@ def CheckUrls(urls: dict[str,list[str]]) -> None:
         for linkTo,linkInfo in urlsWithBookmarks.items():
             pool.submit(CheckUrl,linkTo,linkInfo.linkFrom,linkInfo.bookmarks)
 
-def CheckLinksInPages(pages: Iterable[str]) -> None:
+def LinksInPages(pages: Iterable[str]) -> dict[str,list[str]]:
+    """Return a dict of the form {htmlFilename:[links]}"""
     urlsToCheck = defaultdict(list)
     for page in pages:
         for link in ScanPageForLinks(page):
             urlsToCheck[link].append(page)
     
-    Alert.info(len(urlsToCheck),"urls to check.")
-    CheckUrls(urlsToCheck)
+    Alert.info("Found",len(urlsToCheck),"urls to check.")
+    return urlsToCheck
 
 def WriteUrlList(urlList: dict[str,UrlInfo],filename: str) -> None:
     """Write a list of urls to a text file."""
@@ -204,36 +205,37 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
+    allUrls:dict[str,list[str]] = {}
     if (LinkType.ABOUT in gOptions.linkCheck):
-        Alert.info("Checking about pages...")
+        Alert.info("Scanning about pages...")
         aboutUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"about")) if filename.lower().endswith(".html")]
         aboutUrls = [Utils.PosixJoin(gOptions.pagesDir,"homepage.html")] + \
             [Utils.PosixJoin(gOptions.pagesDir,"about",filename) for filename in aboutUrls]
-        CheckLinksInPages(aboutUrls)
+        allUrls.update(LinksInPages(aboutUrls))
 
     if (LinkType.DISPATCH in gOptions.linkCheck):
-        Alert.info("Checking dispatch pages...")
+        Alert.info("Scanning dispatch pages...")
         dispatchUrls = [filename for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"dispatch")) if filename.lower().endswith(".html")]
         dispatchUrls = [Utils.PosixJoin(gOptions.pagesDir,"dispatch",filename) for filename in dispatchUrls]
-        CheckLinksInPages(dispatchUrls)
+        allUrls.update(LinksInPages(dispatchUrls))
 
     if (LinkType.BOOKS in gOptions.linkCheck):
-        Alert.info("Checking extra book links...")
+        Alert.info("Scanning extra book links...")
         bookUrls = defaultdict(list)
         for book in gDatabase["reference"].values():
             if book["otherUrl"]:
                 bookUrls[book["otherUrl"]].append(book["abbreviation"])
-        Alert.info(len(bookUrls),"urls to check.")
-        CheckUrls(bookUrls)
+        Alert.info("Found",len(bookUrls),"urls to check.")
+        allUrls.update(bookUrls)
 
     if (LinkType.EVENTS in gOptions.linkCheck):
-        Alert.info("Checking event pages...")
-        CheckLinksInPages(GetEventLinks())
+        Alert.info("Scanning event pages...")
+        allUrls.update(LinksInPages(GetEventLinks()))
     
     if (LinkType.TEXTS in gOptions.linkCheck):
-        Alert.info("Checking sutta links...")
-        BuildReferences.ReadReferenceDatabase()
         textUrls:dict[str,list[str]] = {}
+        Alert.info("Scanning sutta links...")
+        BuildReferences.ReadReferenceDatabase()
         for text in BuildReferences.gSavedReferences["text"]:
             ref = BuildReferences.TextReference.FromString(text)
             translators = [""]
@@ -253,8 +255,25 @@ def main() -> None:
                 textUrls[link] = [text]
             if not links:
                 Alert.info(text,"has no SuttaCentral link.")
-        Alert.info(len(textUrls),"urls to check.")
-        CheckUrls(textUrls)
+        Alert.info("Found",len(textUrls),"urls to check.")
+        allUrls.update(textUrls)
+
+        textUrls.clear()
+        Alert.info("Scanning suttacentral.express links from text pages...")
+        for filename in os.listdir(Utils.PosixJoin(gOptions.pagesDir,"texts")):
+            if not filename.endswith(".html"):
+                continue
+            filepath = Utils.PosixJoin(gOptions.pagesDir,"texts",filename)
+            with open(filepath,encoding="utf8") as file:
+                line = file.readline()
+                while line and not (match := re.search(r'<a href="(https://suttacentral.express/[^"]*)"',line)):
+                    line = file.readline()
+                if match:
+                    textUrls[match[1]] = [filepath]
+        Alert.info("Found",len(textUrls),"urls to check.")
+        allUrls.update(textUrls)
+
+    CheckUrls(allUrls)
 
     goodUrls = {url:info for url,info in gCheckedUrl.items() if info.status == UrlStatus.GOOD}
     browserOnlyUrls = {url:info for url,info in gCheckedUrl.items() if info.status == UrlStatus.BROWSER_ONLY}
