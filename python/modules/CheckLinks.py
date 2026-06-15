@@ -237,7 +237,7 @@ def main() -> None:
         Alert.info("Scanning sutta links...")
         BuildReferences.ReadReferenceDatabase()
         for text in BuildReferences.gSavedReferences["text"]:
-            ref = BuildReferences.TextReference.FromString(text)
+            ref = BuildReferences.TextReference.FromString(text,preferVagga=True)
             translators = [""]
             if len(ref.Numbers()) == 1 and ref.text in BuildReferences.TextGroupSet("namedVaggas"):
                 couldBeVagga = ref.n0 <= len(Render.VaggaUIDs(ref.text))

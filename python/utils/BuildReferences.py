@@ -138,8 +138,9 @@ class TextReference(NamedTuple):
     n2: int = 0
 
     @staticmethod
-    def FromString(reference: str) -> "TextReference":
-        """Create this object from a sutta reference string."""
+    def FromString(reference: str,preferVagga = False) -> "TextReference":
+        """Create this object from a sutta reference string.
+        preferSection means that Snp 4 refers to the fourth vagga rather than the fourth verse"""
         suttaMatch = r"(\w+)\s*([0-9]+)?(?:[.:]([0-9]+))?(?:[.:]([0-9]+))?(?:\{([a-z]+)\})?"
         """ Sutta reference pattern: uid [n0[.n1[.n2]]]
             Matching groups:
@@ -151,7 +152,7 @@ class TextReference(NamedTuple):
         text = "Kd" if matchObject[1] == "Mv" else matchObject[1] # Mv is equivalent to Kd
 
         # For texts referenced by PTS verse, convert verse numbers to sections
-        if len(numbers) == 1 and text in TextGroupSet("ptsVerses") and text in TextGroupSet("doubleRef") and matchObject[5] != "section":
+        if len(numbers) == 1 and text in TextGroupSet("ptsVerses") and text in TextGroupSet("doubleRef") and matchObject[5] != "section" and not preferVagga:
             pageUid = Render.SCIndex(text.lower(),numbers[0]).uid
             newNumbers = re.search("[0-9.]+",pageUid)[0]
             if newNumbers:
@@ -237,7 +238,10 @@ class TextReference(NamedTuple):
     def LinkIcons(self) -> list[str]:
         """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
         returnValue = []
-        scLink = self.SuttaCentralLink(translator="section")
+        translator = ""
+        if self.text in TextGroupSet("namedVaggas") and not self.n1:
+            translator = "section" # Single-number references refer to sections, not verses.
+        scLink = self.SuttaCentralLink(translator=translator)
         if scLink:
             returnValue.append(Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
                         (Build.HtmlIcon("SuttaCentral.png","small-icon")))
