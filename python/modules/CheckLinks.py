@@ -272,7 +272,9 @@ def main() -> None:
                     textUrls[match[1]] = [filepath]
         Alert.info("Found",len(textUrls),"urls to check.")
         allUrls.update(textUrls)
-
+    
+    Alert.info()
+    Alert.info("Checking",len(allUrls),"total urls...")
     CheckUrls(allUrls)
 
     goodUrls = {url:info for url,info in gCheckedUrl.items() if info.status == UrlStatus.GOOD}

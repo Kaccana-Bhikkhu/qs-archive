@@ -36,6 +36,10 @@ def Duplicates(source: Iterable) -> list:
     itemCount = Counter(source)
     return [item for item,count in itemCount.items() if count > 1]
 
+def RemoveDuplicates(source: Iterable) -> list:
+    "Return a list that removes duplicates from source. All items in source must be hashable."
+    return list(dict.fromkeys(source,None))
+
 def SingleItemIterator(source: Iterable,itemNumber: int) -> Iterable:
     "Return an iterator that takes a single indexed item from source"
 

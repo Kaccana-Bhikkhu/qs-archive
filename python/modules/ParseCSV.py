@@ -13,7 +13,7 @@ from typing import List, Iterator, Tuple, Callable, Any, TextIO
 from datetime import timedelta
 import Build, Alert
 from enum import Enum
-from collections import Counter, defaultdict
+from collections import Counter, ChainMap
 import itertools
 
 class StrEnum(str,Enum):
@@ -1234,6 +1234,8 @@ def ProcessFragments(excerpt: dict[str]) -> list[dict[str]]:
                 fragmentFTagSource = fragmentTagSource = fragmentAnnotation
                 if not fragmentTagSource["qTag"] and not fragmentTagSource["aTag"]:
                     fragmentTagSource = excerpt
+                if fragmentAnnotation["teachers"]:
+                    fragmentExcerptTemplate = ChainMap({"teachers":fragmentAnnotation["teachers"]},fragmentExcerptTemplate)
             else:
                 if n + 1 >= len(baseAnnotations) or baseAnnotations[n]["indentLevel"] != baseAnnotations[n + 1]["indentLevel"]:
                     Alert.error("Error processing Fragment annotation #",n,"in",excerpt,": an annotation at the same level must follow a Fragment annotation.")
@@ -1476,7 +1478,7 @@ def LoadEventFile(database,eventName,directory):
     excerpts.extend(fragments)
 
     if blankExcerpts:
-        Alert.notice("Blank lines in",eventDesc,"appear after excerpts",blankExcerpts)
+        Alert.notice("Blank lines in",eventDesc,"appear after excerpts",Utils.RemoveDuplicates(blankExcerpts))
 
     for x in excerpts:
         FinalizeExcerptTags(x)
