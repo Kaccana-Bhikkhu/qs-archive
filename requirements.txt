@@ -5,3 +5,4 @@ mutagen==1.47.0
 beautifulsoup4==4.12.2
 pydub==0.25.1
 audioop-lts; python_version>='3.13'
+icalendar==7.1.3

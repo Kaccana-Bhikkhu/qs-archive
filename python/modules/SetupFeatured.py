@@ -3,8 +3,9 @@
 
 from __future__ import annotations
 
-import os, json, datetime, re
+import shutil, json, datetime, re
 from datetime import timedelta, date
+from enum import Enum
 import random
 import itertools
 from difflib import SequenceMatcher
@@ -15,6 +16,7 @@ from copy import copy
 import Filter
 import ParseCSV
 from collections import defaultdict, Counter, deque
+import icalendar
 
 # A submodule takes a string with its arguments and returns a bool indicating its status or None if the submodule doesn't run
 SubmoduleType = Callable[[str],bool|None]
@@ -60,6 +62,43 @@ class Holiday:
         "Return the message to display for a given year."
         return f"{self.name} – {year - self.date.year} years"
 
+class StrEnum(str,Enum):
+    pass
+
+class BuddhistHoliday(StrEnum):
+    MAGHA = "Māgha Pūjā"
+    VISAKHA = "Visākha Pūjā"
+    ASALHA = "Āsāḷha Pūjā"
+
+HOLIDAY_MEANING = {BuddhistHoliday.MAGHA: "Saṅgha Day",
+                  BuddhistHoliday.VISAKHA: "Buddha Day",
+                  BuddhistHoliday.ASALHA: "Dhamma Day"}
+
+gLunarHolidayDate: dict[BuddhistHoliday,dict[int,date]] = defaultdict(lambda: {})
+
+def LunarHolidayDate(holiday: BuddhistHoliday,year: int) -> date:
+    """Return the date of a lunar holiday on a given year. """
+    if not gLunarHolidayDate:
+        calendar = icalendar.Calendar.from_ical(lunarCalendarFilename)
+        for event in calendar.events:
+            if (holidayName := event.get("summary")) in BuddhistHoliday:
+                holidayDate = event.decoded("dtstart")
+                gLunarHolidayDate[holidayName][holidayDate.year] = holidayDate
+            
+    return gLunarHolidayDate[holiday].get(year)
+
+class LunarHoliday(Holiday):
+    """Information about a lunar observance day. The first two fields of Holiday are redefined as follows:
+    name: one of the three values of BuddhistHoliday
+    date: ignored"""
+
+    def Date(self,year: int) -> date:
+        "Return the date this holiday occurs in a given year."
+        return LunarHolidayDate(self.name,year)
+
+    def Message(self,year) -> str:
+        "Return the message to display for a given year."
+        return f"{self.name.value} – {HOLIDAY_MEANING[self.name]}"
 
 def AllHolidays() -> list[Holiday]:
     "Return a list of all anniversaries, sorted by month and day."
@@ -67,7 +106,10 @@ def AllHolidays() -> list[Holiday]:
     return [
         Holiday("Ajahn Chah's Death Anniversary",date(1992,1,16),chahFilter),
         Holiday("Abhayagiri's Anniversary",date(1996,6,1),Filter.FTag("Abhayagiri")),
+        LunarHoliday(BuddhistHoliday.MAGHA,None,Filter.FTag("Saṅgha")),
+        LunarHoliday(BuddhistHoliday.VISAKHA,None,Filter.FTag("Buddha")),
         Holiday("Ajahn Chah's Birthday",date(1918,6,17),chahFilter),
+        LunarHoliday(BuddhistHoliday.ASALHA,None,Filter.FTag("Dhamma")),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
         Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
@@ -88,7 +130,7 @@ def HolidayIndices(offsetFromPresent: int = 0, entireCalendar: bool = False) -> 
         endYear = baseDate.year + 4 # Four years in the future
     for year in range(baseDate.year,endYear + 1):
         for holiday in holidays:
-            thisYearsDate = date(year,holiday.date.month,holiday.date.day)
+            thisYearsDate = holiday.Date(year)
             index = (thisYearsDate - baseDate).days
             if index < 0:
                 continue # The holiday is in the past
@@ -102,7 +144,6 @@ def HolidayTexts() -> dict[str,str]:
     for index,(holiday,year) in HolidayIndices(entireCalendar=True).items():
         holidayDict[holiday.Date(year).isoformat()] = holiday.Message(year)
     
-    print(holidayDict)
     return holidayDict
 
 
@@ -654,6 +695,31 @@ def Extend(paramStr: str) -> bool:
         Alert.info("Added",addedExcerpts,"new excerpt(s) to the database.")
     return True
 
+lunarCalendarFilename = "tools/mahanikaya.ical"
+
+def SummarizeLunarHolidays() -> None:
+    """Summarize the available lunar holidays """
+    calendar = icalendar.Calendar.from_ical(lunarCalendarFilename)
+    yearSpan = []
+    for event in calendar.events:
+        if event.get("SUMMARY") in BuddhistHoliday:
+            yearSpan.append(event.decoded("dtstart").year)
+    Alert.info("Lunar holidays available from",min(yearSpan),"to",max(yearSpan))
+
+def DownloadLunarCalendar(paramStr: str) -> bool:
+    """Download the lunar calendar to the documentation folder."""
+
+    url = "http://splendidmoons.github.io/ical/mahanikaya.ical"
+    try:
+        with Utils.OpenUrlOrFile("http://splendidmoons.github.io/ical/mahanikaya.ical") as calendarFile:
+            with open(lunarCalendarFilename,"wb") as localFile:
+                shutil.copyfileobj(calendarFile,localFile)
+    except OSError as err:
+        Alert.error(err,"occured when trying to download",url,"to",lunarCalendarFilename)
+    
+    SummarizeLunarHolidays()
+    return True
+
 def Holidays(paramStr: str) -> bool:
     """Swap future calendar entries so that holidays feature relevant excerpts."""    
     past,future = SplitPastAndFuture(gFeaturedDatabase)
@@ -787,6 +853,7 @@ def main() -> None:
     if not goodDatabase or databaseChanged:
         goodDatabase = RunSubmodule(Check,alwaysRun=True)
 
+    RunSubmodule(DownloadLunarCalendar)
     if goodDatabase:
         databaseEnhanced = any(RunSubmodule(m) for m in gEnhanceModules)
         if databaseEnhanced:
