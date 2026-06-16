@@ -5,8 +5,8 @@ import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} fro
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
-const DEBUG = false;
-const PEEK_FUTURE = false;
+const DEBUG = true;
+const PEEK_FUTURE = true;
 
 let gHomepageDatabase = null; // Featured excerpt html to display on the homepage, loaded from assets/FeaturedDatabase1_.json
 let gHistoryDatabase = null; // Html to display on the history page, loaded from assets/FeaturedDatabase2_.json
@@ -27,14 +27,12 @@ function calendarModulus(index) {
 
 function holidayHtml(date) {
     // Return the holiday html (if any) for a given Date object
-    for (let holiday of gFeaturedDatabase.holidays) {
-        let holidayDate = new Date(holiday.date)
-        if ((holidayDate.getDate() === date.getDate()) && (holidayDate.getMonth() === date.getMonth())) {
-            let yearsAgo = date.getFullYear() - holidayDate.getFullYear();
-            return gTodaysHolidayHtml = `<p class = "holiday-banner">${holiday.text.replace("NN",String(yearsAgo))}</p>`;
-        }
-    }
-    return ""
+    let dateStr = date.toISOString().slice(0,10);
+    let message = gFeaturedDatabase.holiday[dateStr];
+    if (message)
+        return `<p class = "holiday-banner">${message}</p>`;
+    else
+        return "";
 }
 
 let gDebugDateOffset = 0;

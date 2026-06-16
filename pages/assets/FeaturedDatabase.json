@@ -1,6 +1,6 @@
 {
   "made": "2025-06-12T17:40:06.295835",
-  "updated": "2026-06-16T15:20:14.616556",
+  "updated": "2026-06-16T15:55:33.047574",
   "mirrors": {
     "local": "./",
     "abhayagiri": "https://www.abhayagiri.org/media/discs/questions/",
@@ -4788,30 +4788,23 @@
       "Energy"
     ]
   },
-  "holidays": [
-    {
-      "date": "1992-01-16",
-      "text": "Ajahn Chah's Death Anniversary – NN years"
-    },
-    {
-      "date": "1996-06-01",
-      "text": "Abhayagiri's Anniversary – NN years"
-    },
-    {
-      "date": "1918-06-17",
-      "text": "Ajahn Chah's Birthday – NN years"
-    },
-    {
-      "date": "1949-07-26",
-      "text": "Ajahn Pasanno's Birthday – NN years"
-    },
-    {
-      "date": "1934-07-27",
-      "text": "Ajahn Sumedho's Birthday – NN years"
-    },
-    {
-      "date": "1941-11-05",
-      "text": "Ajahn Liem's Birthday – NN years"
-    }
-  ]
+  "holiday": {
+    "2025-06-01": "Abhayagiri's Anniversary – 29 years",
+    "2025-06-17": "Ajahn Chah's Birthday – 107 years",
+    "2025-07-26": "Ajahn Pasanno's Birthday – 76 years",
+    "2025-07-27": "Ajahn Sumedho's Birthday – 91 years",
+    "2025-11-05": "Ajahn Liem's Birthday – 84 years",
+    "2026-01-16": "Ajahn Chah's Death Anniversary – 34 years",
+    "2026-06-01": "Abhayagiri's Anniversary – 30 years",
+    "2026-06-17": "Ajahn Chah's Birthday – 108 years",
+    "2026-07-26": "Ajahn Pasanno's Birthday – 77 years",
+    "2026-07-27": "Ajahn Sumedho's Birthday – 92 years",
+    "2026-11-05": "Ajahn Liem's Birthday – 85 years",
+    "2027-01-16": "Ajahn Chah's Death Anniversary – 35 years",
+    "2027-06-01": "Abhayagiri's Anniversary – 31 years",
+    "2027-06-17": "Ajahn Chah's Birthday – 109 years",
+    "2027-07-26": "Ajahn Pasanno's Birthday – 78 years",
+    "2027-07-27": "Ajahn Sumedho's Birthday – 93 years",
+    "2027-11-05": "Ajahn Liem's Birthday – 86 years"
+  }
 }

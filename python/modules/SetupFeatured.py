@@ -43,7 +43,7 @@ class FeaturedDatabase(TypedDict):
     startDate: str                  # The date to display the first exerpt in calendar in iso format
     calendar: list[str]             # The list of excerpt codes to display on each date
 
-    holidays: list[HolidayDisplay]     # Information about the given holidays
+    holiday: dict[str,str]         # holiday[isoDateStr] = holidayText
 
 @dataclass
 class Holiday:
@@ -52,12 +52,14 @@ class Holiday:
     date: date                   # Date of the birth or death
     filter: Filter.Filter        # Feature an excerpt which passes this filter
 
-    def Display(self) -> HolidayDisplay:
-        """Return the ditionary needed to display this holiday on the website."""
-        return HolidayDisplay(
-            date = self.date.isoformat(),
-            text = f"{self.name} – NN years"
-        )
+    def Date(self,year: int) -> date:
+        "Return the date this holiday occurs in a given year."
+        return date(year,self.date.month,self.date.day)
+
+    def Message(self,year) -> str:
+        "Return the message to display for a given year."
+        return f"{self.name} – {year - self.date.year} years"
+
 
 def AllHolidays() -> list[Holiday]:
     "Return a list of all anniversaries, sorted by month and day."
@@ -71,25 +73,38 @@ def AllHolidays() -> list[Holiday]:
         Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
     ]
 
-def HolidayRecords() -> list[HolidayDisplay]:
-    return [holiday.Display() for holiday in AllHolidays()]
-
-def FutureHolidayIndices(offsetFromPresent: int = 0) -> dict[int:tuple(Holiday,int)]:
+def HolidayIndices(offsetFromPresent: int = 0, entireCalendar: bool = False) -> dict[int:tuple(Holiday,int)]:
     """Return a dict of holiday indices of the form: holidayIndices[index] = (Holiday,year).
-    offsetFromPresent has the same meaning as in SplitPastAndFuture."""
+    offsetFromPresent has the same meaning as in SplitPastAndFuture.
+    if wholeDatabase, return holidays for the entire calendar."""
 
     holidayIndices:dict[int:tuple(Holiday,int)] = {}
     holidays = AllHolidays()
-    futureBaseDate = date.today() + timedelta(days=1 + offsetFromPresent)
-    for year in range(futureBaseDate.year,futureBaseDate.year + 5): # Four years in the future is more than enough
+    if entireCalendar:
+        baseDate = date.fromisoformat(gFeaturedDatabase["startDate"])
+        endYear = (baseDate + timedelta(days=len(gFeaturedDatabase["calendar"]))).year
+    else:
+        baseDate = date.today() + timedelta(days=1 + offsetFromPresent)
+        endYear = baseDate.year + 4 # Four years in the future
+    for year in range(baseDate.year,endYear + 1):
         for holiday in holidays:
             thisYearsDate = date(year,holiday.date.month,holiday.date.day)
-            index = (thisYearsDate - futureBaseDate).days
+            index = (thisYearsDate - baseDate).days
             if index < 0:
                 continue # The holiday is in the past
             holidayIndices[index] = (holiday,year)
 
     return holidayIndices
+
+def HolidayTexts() -> dict[str,str]:
+    """Generate the list of holidays and display messages."""
+    holidayDict: dict[str,str] = {}
+    for index,(holiday,year) in HolidayIndices(entireCalendar=True).items():
+        holidayDict[holiday.Date(year).isoformat()] = holiday.Message(year)
+    
+    print(holidayDict)
+    return holidayDict
+
 
 def ReadDatabase(backupNumber:int = 0) -> bool:
     """Read the featured excerpt database from disk.
@@ -120,14 +135,14 @@ def CompressExcerptKeys(db: FeaturedDatabase) -> None:
 def HomepageDatabase(db: FeaturedDatabase) -> dict[str]:
     """Return a condensed database containing only what is needed to display the home page."""
 
-    returnValue = {key:db[key] for key in ("startDate","calendar","holidays")}
+    returnValue = {key:db[key] for key in ("startDate","calendar","holiday")}
     returnValue["excerpts"] = {x:db["excerpts"][x]["shortHtml"] for x in db["excerpts"]}
     return returnValue
 
 def HistoryDatabase(db: FeaturedDatabase) -> dict[str]:
     """Return a condensed database containing only what is needed to display the home page."""
 
-    returnValue = {key:db[key] for key in ("startDate","calendar","holidays")}
+    returnValue = {key:db[key] for key in ("startDate","calendar","holiday")}
     returnValue["excerpts"] = {x:db["excerpts"][x]["html"] for x in db["excerpts"]}
     return returnValue
 
@@ -277,7 +292,7 @@ def Remake(paramStr: str) -> bool:
         excerpts=entries,
         calendar=calendar,
         oldFTags={},
-        holidays=HolidayRecords())
+        holidays=HolidayTexts())
 
     Alert.info("Generated new featured excerpt database with",len(gFeaturedDatabase["excerpts"]),"entries")
     if historyDays:
@@ -546,7 +561,7 @@ def RemakeFuture(paramStr: str) -> bool:
 
     preserveDays = ParseNumericalParameter(paramStr)
     past,future = SplitPastAndFuture(gFeaturedDatabase,offsetFromPresent=preserveDays)
-    holidayIndices = FutureHolidayIndices(offsetFromPresent=preserveDays)
+    holidayIndices = HolidayIndices(offsetFromPresent=preserveDays)
 
     demotedExcerpts,_ = DemotedExcerpts()
     demotedExcerptSet = set(demotedExcerpts)
@@ -642,7 +657,7 @@ def Extend(paramStr: str) -> bool:
 def Holidays(paramStr: str) -> bool:
     """Swap future calendar entries so that holidays feature relevant excerpts."""    
     past,future = SplitPastAndFuture(gFeaturedDatabase)
-    holidayIndices = FutureHolidayIndices()
+    holidayIndices = HolidayIndices()
 
     changeCount = 0
     errorCount = 0
@@ -759,9 +774,9 @@ def main() -> None:
 
     databaseRepaired = any([RunSubmodule(m) for m in gRepairModules])
 
-    newHolidayRecords = HolidayRecords()
-    if newHolidayRecords != gFeaturedDatabase.get("holidays"):
-        gFeaturedDatabase["holidays"] = newHolidayRecords
+    newHolidayRecords = HolidayTexts()
+    if newHolidayRecords != gFeaturedDatabase.get("holiday"):
+        gFeaturedDatabase["holiday"] = newHolidayRecords
         databaseRepaired = True
 
     if databaseRepaired:
