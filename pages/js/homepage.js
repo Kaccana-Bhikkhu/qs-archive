@@ -28,7 +28,8 @@ function calendarModulus(index) {
 function holidayHtml(date) {
     // Return the holiday html (if any) for a given Date object
     let dateStr = date.toISOString().slice(0,10);
-    let message = gFeaturedDatabase.holiday[dateStr];
+    let holiday = gFeaturedDatabase.holiday || {}; // Prevent an exception if holiday is missing
+    let message = holiday[dateStr];
     if (message)
         return `<p class = "holiday-banner">${message}</p>`;
     else

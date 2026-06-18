@@ -178,6 +178,7 @@ def HomepageDatabase(db: FeaturedDatabase) -> dict[str]:
 
     returnValue = {key:db[key] for key in ("startDate","calendar","holiday")}
     returnValue["excerpts"] = {x:db["excerpts"][x]["shortHtml"] for x in db["excerpts"]}
+    returnValue["holidays"] = [] # Prevent an outdated version of homepage.js from crashing
     return returnValue
 
 def HistoryDatabase(db: FeaturedDatabase) -> dict[str]:
@@ -185,6 +186,7 @@ def HistoryDatabase(db: FeaturedDatabase) -> dict[str]:
 
     returnValue = {key:db[key] for key in ("startDate","calendar","holiday")}
     returnValue["excerpts"] = {x:db["excerpts"][x]["html"] for x in db["excerpts"]}
+    returnValue["holidays"] = [] # Prevent an outdated version of homepage.js from crashing
     return returnValue
 
 def WriteDatabase(newDatabase: FeaturedDatabase) -> bool:
@@ -706,10 +708,19 @@ def SummarizeLunarHolidays() -> None:
             yearSpan.append(event.decoded("dtstart").year)
     Alert.info("Lunar holidays available from",min(yearSpan),"to",max(yearSpan))
 
-def DownloadLunarCalendar(paramStr: str) -> bool:
+def DownloadLunarCalendar() -> bool:
     """Download the lunar calendar to the documentation folder."""
 
+    try:
+        calendarAge = datetime.datetime.now() - Utils.ModificationDate(lunarCalendarFilename)
+        if calendarAge < timedelta(days=180):
+            Alert.info("The lunar calendar file is",calendarAge.days,"day(s) old; no need to download it again.")
+            return False
+    except OSError:
+        pass
+
     url = "http://splendidmoons.github.io/ical/mahanikaya.ical"
+    Alert.notice("Downloading the lunar calendar from",url)
     try:
         with Utils.OpenUrlOrFile("http://splendidmoons.github.io/ical/mahanikaya.ical") as calendarFile:
             with open(lunarCalendarFilename,"wb") as localFile:
@@ -722,6 +733,8 @@ def DownloadLunarCalendar(paramStr: str) -> bool:
 
 def Holidays(paramStr: str) -> bool:
     """Swap future calendar entries so that holidays feature relevant excerpts."""    
+    DownloadLunarCalendar()
+    
     past,future = SplitPastAndFuture(gFeaturedDatabase)
     holidayIndices = HolidayIndices()
 
@@ -853,7 +866,6 @@ def main() -> None:
     if not goodDatabase or databaseChanged:
         goodDatabase = RunSubmodule(Check,alwaysRun=True)
 
-    RunSubmodule(DownloadLunarCalendar)
     if goodDatabase:
         databaseEnhanced = any(RunSubmodule(m) for m in gEnhanceModules)
         if databaseEnhanced:
