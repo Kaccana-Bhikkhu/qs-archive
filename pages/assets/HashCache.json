@@ -20,20 +20,20 @@
     "_modified": "2026-06-18 15:04:46.000000"
   },
   "indexes/Tags_print.html": {
-    "md5": "d6a0d7b4aef5ce17f96575fad1f0d857",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "cd65ecdad7a2bc2e1ad47b85b3298156",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/root.html": {
-    "md5": "24fb90c024f82535dfcbf949a6f127e0",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "d29006144a9fce048cc490a238db44d8",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "indexes/NumericalTags.html": {
     "md5": "9ceb6b851732078975aac3436f635143",
     "_modified": "2026-06-18 15:05:04.000000"
   },
   "indexes/SortedTags.html": {
-    "md5": "d9262f157920bbe429cbcc8555d1d5e8",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "af1e805e4a3884f89668cdad3c01d46c",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "indexes/SortedTags_print.html": {
     "md5": "745359fe00b132d7d9620dc280524eb3",
@@ -44,16 +44,16 @@
     "_modified": "2026-06-18 15:05:04.000000"
   },
   "indexes/AlphabeticalTags.html": {
-    "md5": "5432e58ec808e6341cab21d23af892fe",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "74b22b3fe7992f1bc6727967c67ff1f7",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "indexes/EnglishTags.html": {
-    "md5": "4365b92e76f4d6c210a1153d87e9fb76",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "fe1295326952707bdda9b3170abab97f",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "indexes/PaliTags.html": {
-    "md5": "6d150db7d8722c887767694e155f8bd9",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "e99020de18e56eddc656c19252c2ddff",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "indexes/OtherTags.html": {
     "md5": "e269717c87a288739c7d6eb1997e98f5",
@@ -2216,616 +2216,564 @@
     "_modified": "2026-06-18 14:54:44.000000"
   },
   "drilldown/skillful-qualities.html": {
-    "md5": "7fcd5fa0c5bb14382ca7751de6ce85d4",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "99dfa15393aaf1fe2a0145bb1b3dd2e1",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/eightfold-path.html": {
-    "md5": "3e78bc599640640cf7fff9727e0441c6",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "46864951c913e4fd497a330c9481d33e",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/right-intention.html": {
-    "md5": "e98107ad6838ce5e5abf207cf0321bf2",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "489e20a30421002d734d11f2d4f035de",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/right-speech.html": {
-    "md5": "27967783a82bb4b50d6c6abd3f73f861",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "61fc85e73511e0d637c309242de4247b",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/right-action.html": {
-    "md5": "c57f6e86be62b6ac0d77cb84b871f0cc",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "8b5aa47272b06b567cb8a319ca9cc835",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/killing.html": {
-    "md5": "efb7bf4bd1c44a4b9d16eb1611353d6d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "b834dff681def615607eca1f296af1d0",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/right-effort.html": {
-    "md5": "5d0628b64339aeb43a03d49bf6a7ded4",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "da642e215575f00fb1cdd762f780dfce",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/right-mindfulness.html": {
-    "md5": "c45af38074aa97b45e65723bfff21aa2",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "ee6eaf4cd298793013366f89113ea441",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/mindfulness-of-body.html": {
-    "md5": "b20483ce264bac941db0943b712262c1",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "f3d406bc18572351bb6eb0107b676636",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/mindfulness-of-dhammas.html": {
-    "md5": "e602a436ebe5e0d806c601edbcf517b2",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "ca9f6403b39a0895fc8f294a8d488aec",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/right-concentration.html": {
-    "md5": "4e2035cb9b53c3e0be6dc6154bd0daf8",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "906e25c29360b463fdd5f2cd45e35cfb",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/four-noble-truths.html": {
-    "md5": "8beab7871835c7d4a756ae654bf3f9b4",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "e0695da17a6093daf398c85e96add1b5",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/noble-truth-of-suffering.html": {
-    "md5": "e73b7169a2819be9b74885d451d839cf",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "7348261483e8222c25430cd5022561dd",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/cause-of-suffering.html": {
-    "md5": "84a020100c3c5dc7a0bf64a5101959ea",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "351923c6285cf715fdbb20bd7165d274",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/cessation-of-suffering.html": {
-    "md5": "c7191b5caa79928aeb28d331e4fa72c2",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "4e958e845919240e9a71dcc0c1d548da",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/aids-to-awakening.html": {
-    "md5": "218b58f1be138ea27240f5dd561491b1",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "2359e72f36c9deeca2ebad793fb9de60",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/bases-of-success.html": {
-    "md5": "e180047d913f476a359ce6619a9dd472",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "489ca1c543c72f3633e9883fb1b20dd1",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/faculties.html": {
-    "md5": "65f5f8f500bd362b39012e27b17c15fa",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "f49c6cf2c93e251c99a82cb516ff318f",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/factors-of-awakening.html": {
-    "md5": "73b00c58a5c668916b2e4edf8aa281c1",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "2bac926308a3b6683dd56a8ab5dadbed",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/divine-abidings.html": {
-    "md5": "237e3568de137527dcd7f5503472c0c1",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "31562404c7c826b7ecf2489d748fc54d",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/treasures.html": {
-    "md5": "29c97ee0f4d2b01f082ae5aea4552689",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "44f2080dc2d31097ce02bd2953822f30",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/learning.html": {
-    "md5": "c2efe9f4061fc7ab35066bb7b32f311e",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "04199be89d4a69b3ab05575dc8d2da01",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/tipitaka.html": {
-    "md5": "a8773750caa72f1d6aa5721138f84e92",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "e1934cc13fd789986f3b97b197407d5a",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/perfections.html": {
-    "md5": "09e7520c4fd1de413a1747978b1d6f14",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "b5af8544fd010727f9b0ed05b458a6fc",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/progress-of-insight.html": {
-    "md5": "c4eb5fe42135d93d42c5e252a6011dfb",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "82e459c8c247cf9659b1ef8ca5f44c43",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/stages-of-awakening.html": {
-    "md5": "527ee9211bca46beb6b497192b89cf72",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "aeb9a565c7291d23661753094cbf4561",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/stream-entry.html": {
-    "md5": "95b0a8aeefcfe6fa19c32d68313dbee3",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "cfa19897563d364cda273897c4c938fb",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/factors-for-stream-entry.html": {
-    "md5": "782c62edc99afa44a597d38e3e5b1f33",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "416c7addd7f39058cc8c2da6fdbe0e46",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/association-with-people-of-integrity.html": {
-    "md5": "0d2095ad104e57d4611193e7ec5e9c8f",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "09812aa991136b79f428bbb6db4d6cea",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/spiritual-search.html": {
-    "md5": "54cfb6299358530d3f87f8cfe530e310",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "bd779f6cfa0099aaf9953671e4e413e8",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/unskillful-qualities.html": {
-    "md5": "2fcca7cdf483b285ebc8ee7507cef04a",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "d6e4e56d6b6ee3a9746465771fb1cc0a",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/unwholesome-roots.html": {
-    "md5": "96846559f07a13b95b65cb8beb9e3c21",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "637b2c19edebd6ec30cc46d5b13b0fef",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/biases.html": {
-    "md5": "87075ec078faaa915efcfff0342aab24",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "a7f213081cc6ec06d528a7e01abe8b5f",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/outflows.html": {
-    "md5": "8738d1b39a4f829b6283f846173cd8e8",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "dfad28f8ef649f949fa8632b8a42f31e",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/hindrances.html": {
-    "md5": "8330c346e75b7b0159360b17a0083b9f",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "8828e4eeee8ca6c15375c96004d3144b",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/fetters.html": {
-    "md5": "2d3c13519fbea0081a7ac7d4bdd3bbfc",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "e8ccf1654e78b9fafc252f596e572dfb",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/proliferation.html": {
-    "md5": "987c989dfbc7251bb46ecc283467e75c",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "c9f7c4da2224bdad5db6b6227abc750b",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/conceit-related.html": {
-    "md5": "cd1e3a5b0906dfa820fdee38e9ff6ba7",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "28d2d4823bf866379092df8e0ff9c385",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/indeterminate-qualities.html": {
-    "md5": "e9efbc6635fd754be196f45d2c3b627b",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "5bce5da82e5c55eeef4631ec6e892104",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/nutriment.html": {
-    "md5": "793f5cd90dc5e0b0ef2d9fe387100874",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "4c7d67d924598d695b719c5daa1d1c42",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/aggregates.html": {
-    "md5": "c6bf0798a31e7544b26ffe27e2cd93bc",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "2110c4cf749a6f0da9b3ecfb671d310f",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/dependent-origination.html": {
-    "md5": "4bddc1659142ed81d478b2a4219fc5e7",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/feeling-1.html": {
-    "md5": "70c8f93ae078c7ff5a0dd9ff086dee20",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "727a94353248c3e11aca278a3ff91b1c",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/craving.html": {
-    "md5": "630d0ff6f7ee3a2746b847485cb9d525",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "c6e352ee1340e3fb94c644d1c30e8a1e",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/clinging.html": {
-    "md5": "5aea1df266f7349447559e3b8b5611bb",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "086d12cf37bc75bd7c907841eb84a3ee",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/characteristics-of-existence.html": {
-    "md5": "e33950fec09d0c60e105b952cb422b27",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "983ba540bab711f7716f44048ee4fe6f",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/aspects-of-understanding.html": {
-    "md5": "efd8b000d04784c1a08f37a774e226c8",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "345f62c3c2180e23b84287aec7ccbba7",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/personality.html": {
-    "md5": "7853053bc34e574fef2fcbf73c959280",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "2183522671c29e4ef76a0f5350df5ce8",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/three-refuges.html": {
-    "md5": "ca4d39693c5ffe29d93f5c71b09fcdcb",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "639123c39b8765b120cbe1b3fc489fb5",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/buddha.html": {
-    "md5": "2b826e77c177d5afb0ec1a9b413cfef6",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "b91eaa4addda6311a05744a2a86191ec",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/devotional-practice.html": {
-    "md5": "1ed08b4fcf05c0be96e73ac2053f865c",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "fdd8d655e9f48e0259ab174e35b3af95",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/ceremonyritual.html": {
-    "md5": "8b475ba9b7802082a47d7709a5a487b1",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "b5639cb6c901dcff567cdc58812870d4",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/chanting.html": {
-    "md5": "fc97cbab9b433e20346aa8362217500c",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "7c8d7ad99186bcb12aacc75250a4067b",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/festival-days.html": {
-    "md5": "30081beeb63852106686b047bfbc6f59",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "698c3bdfbfabee41686a9406716f9dec",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/objects-of-veneration.html": {
-    "md5": "0fb4b1d9fecff2a96547b2299fcc195d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "7214138f87534a11b44488a32e418a62",
+    "_modified": "2026-06-18 16:59:26.000000"
   },
   "drilldown/precepts.html": {
-    "md5": "6a5cceade9a6ee187ac706e990ca57df",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "cd8191097bc73753ef5e1c22422daf1f",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/five-precepts.html": {
-    "md5": "b073f709335147bd5efa5507dc1fa373",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/killing-1.html": {
-    "md5": "7dd41284ad147090b05ba568c792b02b",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "176796ebcf9a02df26a5541bf962320a",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/eight-precepts.html": {
-    "md5": "27786e41ad5783d8a2d355eea5ad882e",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "716115e53a3ccad167b6255167ee49a4",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/killing-2.html": {
-    "md5": "06b1ca5ba4a02bf970969ca7f1c91a0d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "5bd414f09d0da381822a831959837433",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/meditation.html": {
-    "md5": "7d4a734b9c20e990fbe073e771c342e2",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/right-mindfulness-2.html": {
-    "md5": "0b53fc0e8eef432a9c3f2c949a859e67",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/mindfulness-of-body-1.html": {
-    "md5": "1b035107e35cd9de14528c5b8ffba7ec",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/right-concentration-1.html": {
-    "md5": "7839ea17c2a4068f8a7fcaf40a965a6f",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "ae2f31a8a2557df7d17197e3e16ec959",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/meditationtechniques.html": {
-    "md5": "57c6478dbf622dee039e53d22d05e006",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/divine-abidings-1.html": {
-    "md5": "896280e4443501401613a91e65d01476",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "c4462865d330e87df6732a2eeb98fb0e",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/mantra.html": {
-    "md5": "c12bbabb91d4742eaef8220fb9c8185e",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "bbd967dac29fe53ac5e275381d8faaaf",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/recollection.html": {
-    "md5": "341ae83db966a6020f15ca28686f34df",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "7979f4f66e91c6612b2aa3dd3e500fb2",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/protective-meditations.html": {
-    "md5": "4946580c007c6fe9abe7a31f99935004",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "61a433270c935f61721bae40f413da2b",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/postures.html": {
-    "md5": "20749274dadf394a287327a5292257ee",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "d8a57a7a857eaff6c7118ad697323baf",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/meditationresults.html": {
-    "md5": "a124c7c7fc547cd82a8e1b0de70c339e",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "caed0eb265cb259546500c304e8797a4",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/teaching-dhamma.html": {
-    "md5": "673472d83a72a92549fa10de1fe980cd",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "7d1f21f7ea94bae922b18358f07f9b6f",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/gradual-teaching.html": {
-    "md5": "28b84292c1d3c3fdf37c865b5d30005a",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/four-noble-truths-2.html": {
-    "md5": "04e7d12c01829647d86df83f3b181ace",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/noble-truth-of-suffering-1.html": {
-    "md5": "9cc7fa21b708134eb1d3112258164807",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/cause-of-suffering-1.html": {
-    "md5": "a1c4f7b2e597d55a14134ed7849f5182",
-    "_modified": "2026-06-18 15:05:02.000000"
-  },
-  "drilldown/cessation-of-suffering-1.html": {
-    "md5": "d07e4acdc8dc86f5d955fb8c53e175c4",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "7a344ce19f85eee9b9b8383e8cda8f69",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/stories.html": {
-    "md5": "3c123d5caea5fa9df3a335a07accb1ca",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "85980693075f63ad7e84acb36b81bc64",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/dhamma-books.html": {
-    "md5": "b8e1c6ac000eab7ab88dae52dc23d724",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "b9304e6c45800af22a71be5dd932f248",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/teachers.html": {
-    "md5": "e8dad959ccb40ec8acc23ef33b4cff08",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "9f296fae378c7c890e77291c44575ffd",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/monastic-teachers.html": {
-    "md5": "4deed86ae71a92ddb8ad3e210056db22",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "494901b956c1da052f72f7de93259839",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/thai-forest-tradition.html": {
-    "md5": "f82c3734281d59578ac1eebf7f3ea5d3",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "15746ef20db5a41600b3e00e04c58088",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/ajahn-chah-lineage.html": {
-    "md5": "957119190ae07348b7f024c32e65956d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "f2ec9847c4de13320b1f88eb7cfd4b87",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/thai-ajahn-chah-lineage.html": {
-    "md5": "056f9699e65bde4ede7bd473b6bac254",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "d29263777fc00f6b1f1e445497fbd7ce",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/western-ajahn-chah-lineage.html": {
-    "md5": "1d014afdce9e5a7b65550a7fae07663b",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "f54b3466cc4624cbdc49dacf1e43bec2",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/other-thai-forest-teachers.html": {
-    "md5": "1806d8b29be636fbbe5e530c5029367b",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "f3a731b531062284d45fead7aa1631c1",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/thai-teachers.html": {
-    "md5": "1de0caba0f942f3a4981b5bad580ba3d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "262cf53f2b948047c6bd2b27a40ceb3f",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/western-teachers.html": {
-    "md5": "9f3e2eb68659d1fa644221508d461ff6",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "65a3c0e2da115039dec307ed554a4f4e",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/other-thai-monastics.html": {
-    "md5": "64904e5d974a46197fc5199656e41143",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "df5f2a7ef6ed1351af5750a0afd14297",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/early-teachers.html": {
-    "md5": "d798c1de2f679c028fd1d86fb4191766",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "18600ab9f00ac5bcbe491d33cc0d75c1",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/other-theravada-monastics.html": {
-    "md5": "42709c1cbcb94b27e05c55d46c03bbd8",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "704bbe9af819712ac3804c0e8576b50b",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/mahayana-monastics.html": {
-    "md5": "5fe332d3c6b2f63634850c062f151e6f",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "b6fc29def60a0c4b44f18dfd7bd1f7b5",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/christian-monastics.html": {
-    "md5": "9764597ce0601129851f6b5e3fda58ca",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "bef9eeef8a6859b76998e6cc5b4979be",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/lay-teachers.html": {
-    "md5": "d208f59f8dfe03b97fa1c86f942e4015",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "267e250d4b706cfb188b6383c4300493",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/lay-supporters.html": {
-    "md5": "bc774542c0668452c46616a70221b799",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "882db71837152b14fa8f14cc3fa371a1",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/monasteries.html": {
-    "md5": "e9f44fdf2406bfcfaa6fb8fb03a568b7",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "55f07a770a99943102d8b3973e7ca0a0",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/ajahn-chah-monasteries.html": {
-    "md5": "fb2c9c3167eda560bac1929d4bd6f4d3",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "206b7d26ecc36c594f320a3a746e3b42",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/thai-ajahn-chah-monasteries.html": {
-    "md5": "7f39f5bfc493f01251a38ab079eaa430",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "a8a53a485c5d2d9e583fcdd1d52b6799",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/western-ajahn-chah-monasteries.html": {
-    "md5": "2d1756911a743f5072b3f6f4e0c9cd0c",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "9423c05a30118cc15805008bbf920a7d",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/elders-council.html": {
-    "md5": "89976d3074a09d21297bfe45d25eeb06",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "8eb117e12e14c96915882295158d9061",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/abhayagiri.html": {
-    "md5": "0325418a929b7188ea75526cb9930e2d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "4513719e0a6d86826d3407b3bf46329d",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/other-thai-forest-monasteries.html": {
-    "md5": "b9602e0c6e8c8304a0419f6c890eb707",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "74b6f6d51a582d6a8accb4d383013d36",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/thai-forest-monasteries-in-the-west.html": {
-    "md5": "721b164cadb58923f8b21bc9ff9b1d3f",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "8e3c9202b5917ca290cdab01b92cab39",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/other-thai-monasteries.html": {
-    "md5": "0e623559f09049b5d25b6d2e01e96708",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "bd948a8c81c630e2939111cd144fb33a",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/non-thai-buddhist-monasteries.html": {
-    "md5": "55e8ead254ac340aad14868d532ed873",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "4c784c55a7ed2d623d82d8298c478a58",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/christian-monasteries.html": {
-    "md5": "3db001c7529f360e137bf139f690ec5d",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "c2108a3fd54c17b7a3c6524a62bae5c8",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/non-monastic-centers.html": {
-    "md5": "ea8f6dc4742c015eaf04fbb817a9adb7",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "5d731b41967ac2e7bfd43fd0a3e905d9",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/nature-of-the-cosmos.html": {
-    "md5": "223313861d1ff98aab7b3a778b9ebeb1",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "12e2e7a13fb29fc9d27f40d51b2583dd",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/realms-of-existence.html": {
-    "md5": "22d97fa2915677337b0a737f661aaae2",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "43bd914000efa8fccddc050ee118263a",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/other-beings.html": {
-    "md5": "067cd7ef0b68831c68a1e9b59e17a944",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "3d772c9b1136d1727a521a1f3d0a2cc1",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/nature-of-mind.html": {
-    "md5": "fc94d5d41f621dfb233f32e5aede7657",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "5c63b25a8dbae04ec499a4407bad0177",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/nibbana.html": {
-    "md5": "0777683826a644251895df887514b035",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "575dc97cc3ab13d512eb35193ffeba8b",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/history.html": {
-    "md5": "690388517c503c101a50ddb99379e869",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "c9b644f37f4224eb4cb6cfe4d40b61bd",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/historywestern-buddhism.html": {
-    "md5": "d4b5a3cf1345388de12f946ba82bf316",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "855871cfda2189bc4cdebdf9159fc494",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/cultural-context.html": {
-    "md5": "551485fcf5117d69fa06f14ea1ed30c5",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "acd50fd88dfbed53bf8be7c0dbe9c37f",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/women-in-buddhism.html": {
-    "md5": "5f287d0f7778c8fff514521e7a7250d9",
-    "_modified": "2026-06-18 15:05:04.000000"
-  },
-  "drilldown/womens-monastic-forms-0.html": {
-    "md5": "7627d90fceb992fde9d1db5a1af97d5e",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "0f1f2f99ad604dfe88b9d58b75100ee8",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/language.html": {
-    "md5": "3fbe855f9f302d07b56a264c0947bf19",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "04186970c8a3cb25b6493bef4a4b1ad0",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/thai.html": {
-    "md5": "6dd446e943af4b256b0dc0acb88904fe",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "2895f0b2f9a1fb98fd03055838c80296",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/popular-culture.html": {
-    "md5": "70dbcbf62d830e438d29a9faa7f593b8",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "31d78c22db047398cbb77d84470a0dc7",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/spiritual-traditions.html": {
-    "md5": "3a66bbd362f0b3435553eb4de1b30624",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "a4aba0c9ad539650ed491dd1c2bf10ec",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/mahayana.html": {
-    "md5": "09060dc8dbc01f4701d61d1ae377b73a",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "d0418b793a0d50fc3768b41387416852",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/hinduism.html": {
-    "md5": "9668258a0282eeeabc7b75650cdd3649",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "711d06ebae3ce912e9b06a18fd9d8c78",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/renunciant-practice.html": {
-    "md5": "d50ae06fff58af1aa99d6bf9e724ba4e",
-    "_modified": "2026-06-18 15:05:04.000000"
-  },
-  "drilldown/eight-precepts-1.html": {
-    "md5": "ea2956a5e46d4292cebdb1c9c753e016",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "75be5bd94091ae833e9758243b7865cf",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/killing-3.html": {
-    "md5": "6eb0469258453b173668b5999a936268",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "e24d63f67a3e48d2d1a38c438e219136",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/requisites.html": {
-    "md5": "f79ca84ad54f420ffec5c261f123669b",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "7248f5eca115b5088391459badc0f956",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/almsfood.html": {
-    "md5": "99784feab48c1899d4579422e8837618",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "79717deddbd7609d3f844739090f2148",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/lodging.html": {
-    "md5": "c5538e71ba7a284e72080f44f7035922",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "38f3da816ba840be92ed8bef21f2be37",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/monastic-life.html": {
-    "md5": "28733b22a315d56c7c5912b31fcc3a01",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "6598ca4bcff17d43792bc2935aef9011",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/ordination.html": {
-    "md5": "e4d12d00dce16dbcceb32e5d6cee8b19",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "442d1e661c287d62c679315ca4bebffb",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/vinaya.html": {
-    "md5": "ba2a9f23f9ba2cdbaa5e5a1821930b33",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "3cb6726a3249894bec034fdb32aeac58",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/sangha.html": {
-    "md5": "be9540caea0cac55a6068a4e9cc60aad",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "881714de6003dd4527176c076fb1516b",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/principles-of-cordiality.html": {
-    "md5": "dee10e20c4704861f48c85e783f8947c",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "643ee0f5dd344dd930bfab266ac960f6",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/respect.html": {
-    "md5": "3dccbfc959934f906f26b4a5cc5cb3e9",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "bb56e2e84269499e933dcb9e7179e180",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/ascetic-practices.html": {
-    "md5": "b739864aac15332dd0f372a0b66cb6fa",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "fd71bb2a21d852f4237c7a7f373196da",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/types-of-monks.html": {
-    "md5": "e2f5655d8be3b6e151231150e59c503c",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "5ea0e18927382960f1d4065cfbd238d7",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/womens-monastic-forms.html": {
-    "md5": "52d9e1aafa0e7d494d397da49b3f9b91",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "a93bbe45efe30877f299168ca1675d04",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/everyday-life.html": {
-    "md5": "bc87261c4f64054b3298249330b65cae",
-    "_modified": "2026-06-18 15:05:04.000000"
-  },
-  "drilldown/five-precepts-1.html": {
-    "md5": "ad36429c4a190c626df647bad899d840",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "644a71fa8174ab4f3204781e218ec2b0",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/killing-4.html": {
-    "md5": "172f89da0096204aa4d1cf130685645a",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "ee7130d32b8e9d4b1d8a7f5d37c09d91",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/worldly-conditions.html": {
-    "md5": "15f44b5c0e95c9c648cb40144f8b49ec",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "c292bfb951938bf505a095175ae9aa01",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/personal.html": {
-    "md5": "c75459524774ca8b2ad83739fd951db4",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "66609d2282fb7e779b0123dbd2023fae",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/health.html": {
-    "md5": "ead399a715d50747264f883c8e27611a",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "1f4410b309b86c1cf5bf6c10052feba3",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/family.html": {
-    "md5": "df1f5c2eab5a42d3de5c15c011e2ad2a",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "d28e2010385989ad211117a5ce344713",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/community.html": {
-    "md5": "7a84bae6037d7e731d7e7a7c50a56c3b",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "2a02bfce7e0ee4dab110c63f77fbf3ac",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/environment.html": {
-    "md5": "792e934680ed4875ee02ebce028b71e5",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "6efc6a79c9834ac3aac9e4682f713c3c",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/politics-and-society.html": {
-    "md5": "a2af67dad411f086cb62c5b5fe286549",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "5b0a95ccef17e95099a5d25a6f488d0d",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/crime.html": {
-    "md5": "7f0eb3ede67d26afa93adbc92808377f",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "08f5ee4ccacd3e2a9673bf780fa0cb8e",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/commerceeconomics.html": {
-    "md5": "b6f9090894d6f80e2def844e4daaeb6e",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "96a0adc8eb9c6f219b0c78d992b677e1",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/health-care.html": {
-    "md5": "87f6c5128626e89b3b0aaeec6a978135",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "e23cb8220bc9e329a510ace08d545302",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/technology.html": {
-    "md5": "de423aed7a4cebe1528e557d32356351",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "a51eb9ce4a0659f338fa27f55d220417",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/media.html": {
-    "md5": "ed22691d2f82dec6d5cd1dcb01443402",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "a07e87efee7d6b1a7daa3200723c959e",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "tags/skillful-qualities.html": {
     "md5": "c0f3eea72be75a58c4c5fdaa611c320e",
@@ -16196,8 +16144,8 @@
     "_modified": "2026-05-20 16:44:26.000000"
   },
   "drilldown/incontrovertible-practices.html": {
-    "md5": "4e136ab1be3be6ea0d4e1517b2318a20",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "11be09adc56ee58073714961e3c93e01",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "teachers/ajahn-pannavaddho-quoted-by.html": {
     "md5": "65c5dd9cd6f5728a4c7213942ece2146",
@@ -18264,8 +18212,8 @@
     "_modified": "2026-06-18 15:07:20.000000"
   },
   "drilldown/monastic-titles.html": {
-    "md5": "c937e9af48ad29af3dd3b3cb4952b1e7",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "81a598b976ec76f1bea19e1f77c65622",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "tags/symbolismmetaphor.html": {
     "md5": "4a65d6c380ab38ea6bc5dfeb6fe03b1f",
@@ -18644,12 +18592,12 @@
     "_modified": "2026-06-03 15:16:36.000000"
   },
   "drilldown/stupasmonuments.html": {
-    "md5": "8662028d6239ab24d020bb4ac23dd773",
-    "_modified": "2026-06-18 15:05:02.000000"
+    "md5": "57b406d7ba6809300d91f69ec9046317",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "drilldown/work.html": {
-    "md5": "baef5ffa81ace59e2c2a5530050341a8",
-    "_modified": "2026-06-18 15:05:04.000000"
+    "md5": "e9e664fd3611e3ff80177b094213e0b9",
+    "_modified": "2026-06-18 16:59:28.000000"
   },
   "tags/eightfold-path-reference.html": {
     "md5": "5a5a6361923519892eab9d1c20423132",
@@ -20170,5 +20118,57 @@
   "indexes/AllExcerpts-teaching-5.html": {
     "md5": "1ea90e44b072caa08c229ef51446aca2",
     "_modified": "2026-06-18 15:07:22.000000"
+  },
+  "drilldown/feeling-2.html": {
+    "md5": "d5f59428ec8a1cfaeccc2d16c9530b7d",
+    "_modified": "2026-06-18 16:59:26.000000"
+  },
+  "drilldown/right-mindfulness-3.html": {
+    "md5": "06aaf775d956835a061ea728b802c10a",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/mindfulness-of-body-2.html": {
+    "md5": "17b5bf83898753b2dc1a7629bb738634",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/right-concentration-2.html": {
+    "md5": "db8f1111a8cd6d4a8465abb23fc7d799",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/divine-abidings-2.html": {
+    "md5": "d60d8b3331d93b04d5417d30812a106c",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/four-noble-truths-3.html": {
+    "md5": "91d1b4094967543dd040e2b5a560010d",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/noble-truth-of-suffering-2.html": {
+    "md5": "7c222ef76c34be7022b0e01b2e734218",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/cause-of-suffering-2.html": {
+    "md5": "750880eabf46de7db253b8a3023a623f",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/cessation-of-suffering-2.html": {
+    "md5": "0b3eb02e47fe35297ae652b2e183984e",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/womens-monastic-forms-1.html": {
+    "md5": "d6fbfc0070288d76a271674413e22615",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/eight-precepts-2.html": {
+    "md5": "bc9a09eabbe100b2f996bc35b0c20ab6",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/five-precepts-2.html": {
+    "md5": "78ca1844a83534791647ccfb78f63aef",
+    "_modified": "2026-06-18 16:59:28.000000"
+  },
+  "drilldown/killing-5.html": {
+    "md5": "231f6d974bc3b271f28be9431c11f065",
+    "_modified": "2026-06-18 16:59:28.000000"
   }
 }

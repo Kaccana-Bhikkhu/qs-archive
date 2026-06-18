@@ -370,9 +370,9 @@ def DrilldownTemplate(showStar:bool = False) -> pyratemp.Template:
                         if tagList[reverseIndex]["level"] < item["level"]:
                             tagAtPrevLevel = reverseIndex
                             break
-                    drilldownFile = DrilldownPageFile(index)
+                    drilldownFile = DrilldownPageFile(index,jumpToEntry=True)
                     drilldownID = drilldownFile.replace(".html","-d")
-                    prevLevelDrilldownFile = DrilldownPageFile(tagAtPrevLevel)
+                    prevLevelDrilldownFile = DrilldownPageFile(tagAtPrevLevel,jumpToEntry=True)
                     
                     boxType = f"$!'minus' if {index} in xTagIndexes else 'plus'!$"
                         # Code to be executed by pyratemp
@@ -425,7 +425,7 @@ def DrilldownPageFile(tagNumberOrName: int|str,jumpToEntry:bool = False) -> str:
         fileName = Utils.slugify(displayName) + ".html"
         if tagName and gDatabase["tag"][tagName]["listIndex"] != tagNumber:
             # If this is not a primary tag, append an index number to it
-            indexStr = "-" + str(sum(1 for n in range(tagNumber) if tagList[n]["tag"] == tagName))
+            indexStr = "-" + str(sum(1 for n in range(tagNumber + 1) if tagList[n]["tag"] == tagName))
             fileName = Utils.AppendToFilename(fileName,indexStr)
     else:
         fileName = "root.html"
