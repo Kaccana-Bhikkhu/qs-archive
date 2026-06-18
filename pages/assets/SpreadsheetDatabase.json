@@ -107546,7 +107546,22 @@
         "AP"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Story",
+          "flags": "",
+          "text": "??? meditates through a malarial fever.",
+          "teachers": [
+            "AP"
+          ],
+          "tags": [
+            "Sickness",
+            "Healing",
+            "Concentration"
+          ],
+          "indentLevel": 1
+        }
+      ],
       "tags": [
         "Healing",
         "Sickness",
@@ -164700,8 +164715,7 @@
           "flags": "",
           "text": "I am an unenlightened person who has got to do something now in order to become enlightened in the future.|a wrong framework for practice pointed out by Ajahn Sumedho",
           "teachers": [
-            "AA",
-            "AP"
+            "AA"
           ],
           "tags": [
             "Ajahn Sumedho",
@@ -164752,12 +164766,17 @@
         {
           "kind": "Story",
           "flags": "0",
-          "text": "Commentarial ++story:++ A monk is reborn as a maggot living on his robes.",
+          "text": "Commentarial ++story++: A monk is reborn as a maggot living on his robes.",
           "teachers": [
             "AP",
             "AA"
           ],
-          "tags": [],
+          "tags": [
+            "Commentaries",
+            "Robes",
+            "Clinging",
+            "Rebirth"
+          ],
           "indentLevel": 1
         },
         {
@@ -189196,7 +189215,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 1,
-      "excerptCount": 162,
+      "excerptCount": 163,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
       "listIndex": 263
@@ -199448,7 +199467,7 @@
       "partOfSubtopics": [
         "Requisites"
       ],
-      "excerptCount": 21,
+      "excerptCount": 22,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
       "listIndex": 833
@@ -206815,9 +206834,9 @@
       "flags": "",
       "name": "Selfish love",
       "pali": "piya",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "subsumed": true,
-      "text": "Selfish love [piya] see Clinging (162)",
+      "text": "Selfish love [piya] see Clinging (163)",
       "tag": "Clinging"
     },
     {
@@ -206898,7 +206917,7 @@
       "tag": "",
       "virtualTag": "Indeterminate qualities",
       "subtagCount": 48,
-      "subtagExcerptCount": 1790
+      "subtagExcerptCount": 1791
     },
     {
       "level": 2,
@@ -207047,7 +207066,7 @@
       "text": "Dependent origination (48) [paticca-samuppāda]",
       "tag": "Dependent origination",
       "subtagCount": 20,
-      "subtagExcerptCount": 1195
+      "subtagExcerptCount": 1196
     },
     {
       "level": 3,
@@ -207213,12 +207232,12 @@
       "flags": "",
       "name": "Clinging",
       "pali": "upādāna",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "subsumed": false,
-      "text": "Clinging (162) [upādāna]",
+      "text": "Clinging (163) [upādāna]",
       "tag": "Clinging",
       "subtagCount": 4,
-      "subtagExcerptCount": 347
+      "subtagExcerptCount": 348
     },
     {
       "level": 4,
@@ -213446,7 +213465,7 @@
       "text": "Renunciant practice (2)",
       "tag": "Renunciant practice",
       "subtagCount": 79,
-      "subtagExcerptCount": 1377
+      "subtagExcerptCount": 1378
     },
     {
       "level": 2,
@@ -213651,7 +213670,7 @@
       "text": "Four Requisites (21)",
       "tag": "Requisites",
       "subtagCount": 7,
-      "subtagExcerptCount": 191
+      "subtagExcerptCount": 192
     },
     {
       "level": 3,
@@ -213659,9 +213678,9 @@
       "flags": "",
       "name": "Robes",
       "pali": "cīvara",
-      "excerptCount": 21,
+      "excerptCount": 22,
       "subsumed": false,
-      "text": "Robes (21) [cīvara]",
+      "text": "Robes (22) [cīvara]",
       "tag": "Robes"
     },
     {
@@ -215625,7 +215644,7 @@
       "sessions": 5,
       "excerpts": 38,
       "answersListenedTo": 38,
-      "tagsApplied": 186,
+      "tagsApplied": 185,
       "invalidTags": 0,
       "duration": "7:49:54"
     },
@@ -215988,7 +216007,7 @@
       "sessions": 54,
       "excerpts": 0,
       "answersListenedTo": 0,
-      "tagsApplied": 2272,
+      "tagsApplied": 2276,
       "invalidTags": 0,
       "duration": "46:28:09"
     },
@@ -220874,7 +220893,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/clinging.html",
-      "excerptCount": 162,
+      "excerptCount": 163,
       "fTagCount": 4
     },
     "Becoming": {
@@ -221174,7 +221193,7 @@
         "Building projects": "-"
       },
       "htmlPath": "clusters/requisites.html",
-      "excerptCount": 154,
+      "excerptCount": 155,
       "fTagCount": 7
     },
     "Thai Forest Tradition": {
@@ -223172,7 +223191,7 @@
         "Clinging",
         "Becoming"
       ],
-      "excerptCount": 643,
+      "excerptCount": 644,
       "fTagCount": 30
     },
     "fruits": {
@@ -223230,7 +223249,7 @@
         "Ascetic practices",
         "Women's monastic forms"
       ],
-      "excerptCount": 897,
+      "excerptCount": 898,
       "fTagCount": 45
     },
     "monasteries": {
