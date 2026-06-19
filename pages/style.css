@@ -1305,3 +1305,9 @@ th,td {
 td.dimmed {
 	color: grey
 }
+
+/* For blocks that should be hidden unless javascript is off.
+Overriden by a css block which is removed by javascript.*/
+.script-hide { 
+	display: none;
+}

@@ -2926,6 +2926,8 @@ def WriteIndexPages(writer: FileRegister.HashWriter):
     """Copy the contents of homepage.html into the body of pages/index.html and index.html."""
 
     homepageBody = ExtractHtmlBody(Utils.PosixJoin(gOptions.pagesDir,"homepage.html"))
+    homepageBody = re.sub(r'<div class="sublink script-hide noscript-show">.*?</div>',"",homepageBody,flags=re.DOTALL)
+        # Remove the no script menus from the homepage since index.html has its own menus
 
     indexTemplate = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates","index.html"))
 
