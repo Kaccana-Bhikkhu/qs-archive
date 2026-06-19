@@ -1,5 +1,5 @@
 Modified:,2026,,,,,,,,,,,,,,
-Count,221,949,59,452,188,46,80,,48,100,18,987,413,923,923
+Count,222,953,59,453,190,46,81,,48,101,18,991,413,926,926
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -145,7 +145,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Discernment,,paññā,,,,,,,,      Discernment,paññā,Discernment,Discernment [paññā]
 3,,Energy,,viriya,,,,,,Right Effort,,      Energy,viriya,Energy,Energy [viriya]
 3,,Patience,,khanti,,,,,,,,      Patience,khanti,Patience,Patience [khanti]
-3,,Truth,,sacca,,,,Integrity,,False speech,,      Truth,sacca,Truth,Truth [sacca]
+3,,Truth,,sacca,,,,Integrity;Honesty,,False speech,,      Truth,sacca,Truth,Truth [sacca]
 3,,Determination,,adhiṭṭhāna,,,,Commitment;Resolution,,,,      Determination,adhiṭṭhāna,Determination,Determination [adhiṭṭhāna]
 3,,Goodwill,,mettā,,,,,,,,      Goodwill,mettā,Goodwill,Goodwill [mettā]
 3,,Equanimity,,upekkhā,,,,,,,,      Equanimity,upekkhā,Equanimity,Equanimity [upekkhā]
@@ -180,7 +180,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Spiritual urgency,,saṃvega,,,,,,,,      Spiritual urgency,saṃvega,Spiritual urgency,Spiritual urgency [saṃvega]
 3,,Confidence,,pasāda,,,Inspiration,,Faith,,,      Confidence,pasāda,,
 2,,Gratitude,,kataññu,,,,,,,,   Gratitude,kataññu,Gratitude,Gratitude [kataññu]
-2,,Merit,,puñña,,,,,,,,   Merit,puñña,Merit,Merit [puñña]
+2,,Merit,,puñña,,,Goodness,,,,,   Merit,puñña,Merit,Merit [puñña]
 2,,Forgiveness,,khama,,,,,,,,   Forgiveness,khama,Forgiveness,Forgiveness [khama]
 2,,Contentment,,santuṭṭhi,,,,,,,,   Contentment,santuṭṭhi,Contentment,Contentment [santuṭṭhi]
 ,,,,,,,,,,,,,,,
@@ -243,7 +243,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Guilt/shame/inadequacy,,,,,,Shame;Inadequacy,,,,      Guilt/shame/inadequacy,,Guilt/shame/inadequacy,Guilt/shame/inadequacy
 3,,Self-pity,,,,,,,,,,      Self-pity,,Self-pity,Self-pity
 2,,Selfish love,,piya,,,,,Clinging,,,   Selfish love,piya,,
-2,,Depression,,,,,,Despair,,,,   Depression,,Depression,Depression
+2,,Depression,,,,,,Despair,,Mental illness,,   Depression,,Depression,Depression
 2,,Loneliness,,,,,,,,,,   Loneliness,,Loneliness,Loneliness
 2,,Abuse/violence,,,,,,Violence,,,,   Abuse/violence,,Abuse/violence,Abuse/violence
 2,,Addiction,,,,,,,,,,   Addiction,,Addiction,Addiction
@@ -321,7 +321,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Buddha images,,Buddharūpa,,,,,,,,      Buddha images,Buddharūpa,Buddha images,Buddha images [Buddharūpa]
 3,,Buddho mantra,,,,,,,,,,      Buddho mantra,,Buddho mantra,Buddho mantra
 2,CE,,,Dhamma,,,,,,Teaching Dhamma,Recollection/Dhamma,   Dhamma,,Dhamma,Dhamma
-2,CE,,,Saṅgha,,,,Monastic community,,Recollection/Saṅgha,,   Saṅgha,,Saṅgha,Saṅgha
+2,CE,,,Saṅgha,,,,Monastic Community,,Recollection/Saṅgha,,   Saṅgha,,Saṅgha,Saṅgha
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 1,,Devotional practice,,,,,,,,Faith,,Devotional practice,,Devotional practice,Devotional practice
@@ -645,8 +645,8 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 6,,Ajahn Wanchai Vicitto,,,Ajahn Wanchai,,,,,,,               Ajahn Wanchai Vicitto,,Ajahn Wanchai,Ajahn Wanchai
 6,,Ajahn Fuang Jotiko,,,Ajahn Fuang,,,,,,,               Ajahn Fuang Jotiko,,Ajahn Fuang,Ajahn Fuang
 6,,Ajahn Dohn,,,,,,,,,,               Ajahn Dohn,,Ajahn Dohn,Ajahn Dohn
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
+6,,Ajahn Wan Uttamo,,,Ajahn Wan,,,,,,,               Ajahn Wan Uttamo,,Ajahn Wan,Ajahn Wan
+6,,Ajahn Poot,,,,,,,,,,               Ajahn Poot,,Ajahn Poot,Ajahn Poot
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -817,12 +817,18 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,Wat Phleng Vipassanā,,,,,,,,,,      Wat Phleng Vipassanā,,Wat Phleng Vipassanā,Wat Phleng Vipassanā
 3,,Wat Sai Ngam (Suphanburi),,,,,,,,,,      Wat Sai Ngam (Suphanburi),,Wat Sai Ngam (Suphanburi),Wat Sai Ngam (Suphanburi)
 ,,,,,,,,,,,,,,,
-2,PS,Non-Thai Buddhist monasteries,,,,,,,,,,   Non-Thai Buddhist monasteries,,Non-Thai Buddhist monasteries,Non-Thai Buddhist monasteries
-3,,City of Ten Thousand Buddhas,,,,,,,,,,      City of Ten Thousand Buddhas,,City of Ten Thousand Buddhas,City of Ten Thousand Buddhas
-3,,Gold Mountain Monastery,,,,,,,,,,      Gold Mountain Monastery,,Gold Mountain Monastery,Gold Mountain Monastery
+2,.PS,Non-Thai Buddhist monasteries,,,,,,,,,,   Non-Thai Buddhist monasteries,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,,Three Conditions Monastery,,,,,,,,,,      Three Conditions Monastery,,Three Conditions Monastery,Three Conditions Monastery
 3,,Abhayagiri Monastery (Sri Lanka),,,Abhayagiri (Sri Lanka),,,,,,,      Abhayagiri Monastery (Sri Lanka),,Abhayagiri (Sri Lanka),Abhayagiri (Sri Lanka)
 3,,Gomde California,,,,,,,,,,      Gomde California,,Gomde California,Gomde California
+,,,,,,,,,,,,,,,
+3,,Dharma Realm Buddhist Association monasteries,,,DRBA monsteries,,,,,,,      Dharma Realm Buddhist Association monasteries,,DRBA monsteries,DRBA monsteries
+4,,Gold Mountain Monastery,,,,,,,,,,         Gold Mountain Monastery,,Gold Mountain Monastery,Gold Mountain Monastery
+4,,City of Ten Thousand Buddhas,,,,,,,,,,         City of Ten Thousand Buddhas,,City of Ten Thousand Buddhas,City of Ten Thousand Buddhas
+4,,Berkeley Buddhist Monastery,,,,,,,,,,         Berkeley Buddhist Monastery,,Berkeley Buddhist Monastery,Berkeley Buddhist Monastery
+,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 3,,Dhammadharini Monastery,,,,,,,,,,      Dhammadharini Monastery,,Dhammadharini Monastery,Dhammadharini Monastery
 3,,Aranya Bodhi Hermitage,,,,,,,,,,      Aranya Bodhi Hermitage,,Aranya Bodhi Hermitage,Aranya Bodhi Hermitage
@@ -995,11 +1001,12 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Sequence of training,,,,,,,,,,         Sequence of training,,Sequence of training,Sequence of training
 4,,Protocols,,kiccavatta,,,,korwat <i>Thai</i>,,,,         Protocols,kiccavatta,Protocols,Protocols [kiccavatta]
 4,,Not handling money,,,,,,,,,,         Not handling money,,Not handling money,Not handling money
+4,g,,,sīmā,,,,monastic territory,,,,,,,
 4,,Rains retreat,,vassa,,,,,,,,         Rains retreat,vassa,Rains retreat,Rains retreat [vassa]
 ,,,,,,,,,,,,,,,
 3,,Mutual lay/Saṅgha support,,,,,,,,,,      Mutual lay/Saṅgha support,,Mutual lay/Saṅgha support,Mutual lay/Saṅgha support
 ,,,,,,,,,,,,,,,
-3,*Cg,,,Saṅgha,,,,Monastic community,,Recollection/Saṅgha,,      Saṅgha,,Saṅgha,Saṅgha
+3,*Cg,,,Saṅgha,,,,Monastic Community,,Recollection/Saṅgha,,      Saṅgha,,Saṅgha,Saṅgha
 4,*,Fourfold Assembly,4,,,,,,,,,         Fourfold Assembly,,Fourfold Assembly,Fourfold Assembly
 4,*,Communal harmony,,sāmaggī,,,,,,,,         Communal harmony,sāmaggī,Communal harmony,Communal harmony [sāmaggī]
 4,,Six Principles of Cordiality,6,cha dhammā sārāṇīyā,Principles of Cordiality,dhammā sārāṇīyā,,,,,,         Six Principles of Cordiality,dhammā sārāṇīyā,Principles of Cordiality,Principles of Cordiality [dhammā sārāṇīyā]
@@ -1070,7 +1077,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Chi Gong,,,,,,,,,,         Chi Gong,,Chi Gong,Chi Gong
 4,,Smoking,,,,,,,,,,         Smoking,,Smoking,Smoking
 4,,Mental illness,,,,,,,,,,         Mental illness,,Mental illness,Mental illness
-4,,Gender,,,,,,,,,,         Gender,,Gender,Gender
+3,,Gender,,,,,,,,,,      Gender,,Gender,Gender
 3,,Purpose/meaning,,,,,,Meaning,,,,      Purpose/meaning,,Purpose/meaning,Purpose/meaning
 3,,Cleanliness,,,,,,,,,,      Cleanliness,,Cleanliness,Cleanliness
 3,,Work,,,,,,,,Right Livelihood,,      Work,,Work,Work

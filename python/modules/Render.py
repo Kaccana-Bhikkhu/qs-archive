@@ -86,10 +86,10 @@ def ExtractAttribution(form: str) -> Tuple[str,str]:
     attribution = told by @!teachers!@"""
 
     parts = form.split("++")
-    if len(parts) > 1:
-        parts.insert(2,"</b>")
-        parts.insert(1,"<b>")
-        form = ''.join(parts)
+    for boldIndex in range(1,len(parts),2):
+        parts[boldIndex - 1] += "<b>"
+        parts[boldIndex] += "</b>"
+    form = ''.join(parts)
 
     parts = form.split("||")
     if len(parts) == 1:

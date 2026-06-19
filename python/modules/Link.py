@@ -153,16 +153,16 @@ class FileLengthChecker(RemoteURLChecker):
             if localFile := LocalFile(item):
                 remoteLength = FileOrRequestSize(contents)
                 localLength = os.path.getsize(localFile)
-                if remoteLength != localLength:
+                if remoteLength and remoteLength != localLength:
                     Alert.warning("The local copy of",item,"does not match its remote size. Local size:",localLength,"Remote size:",remoteLength,". Will link the remote url anyway.")
-            else:
-                Alert.info(item, ": Local file not found.")
             return True # Link to the remoteUrl even if the local file doesn't match
         
         contentsLength = FileOrRequestSize(contents)
         with urllib.request.urlopen(remoteUrl) as remoteRequest:
             remoteLength = FileOrRequestSize(remoteRequest)
-
+            if not remoteLength: # The remote http server does not indicate a file length
+                return True
+            
             if contentsLength != remoteLength:
                 Alert.warning(item,"does not match the length of its remote source. Local size:",contentsLength,"Remote size:",remoteLength)
             #else:
