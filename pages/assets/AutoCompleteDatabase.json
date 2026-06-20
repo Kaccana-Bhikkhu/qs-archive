@@ -915,7 +915,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 306
+    "excerptCount": 307
   },
   {
     "short": "Liberation (vimutti)",
@@ -2040,7 +2040,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 306
+    "excerptCount": 307
   },
   {
     "short": "Release (vossagga)",
@@ -4563,15 +4563,6 @@
     "excerptCount": 4
   },
   {
-    "short": "Ajahn Poot",
-    "link": "tags/ajahn-poot.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 3
-  },
-  {
     "short": "Ajahn Paññānanda",
     "link": "tags/ajahn-pannananda.html",
     "long": "Ajahn Paññānanda Padumuttaro",
@@ -4651,6 +4642,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 1
+  },
+  {
+    "short": "Ajahn Phut",
+    "link": "tags/ajahn-phut.html",
+    "long": "Ajahn Phut Thaniyo",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 3
   },
   {
     "short": "Ajahn Gi",
@@ -8231,7 +8231,7 @@
     "long": "",
     "number": "",
     "icon": "",
-    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Relinquishment (306)",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Relinquishment (307)",
     "excerptCount": 0
   },
   {
@@ -12903,7 +12903,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 3
   },
   {
     "short": "SN 48.45: Paṭhamapubbārāmasutta, At the Eastern Monastery (1st)",

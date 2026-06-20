@@ -3070,7 +3070,7 @@
       ],
       "duration": "1:40",
       "mirror": "local",
-      "body": "<b>Story:</b> A radio interviewer says that the account in <em>Venerable Father</em> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial) sounds like a cult.{attribution}",
+      "body": "<b>Story:</b> A radio interviewer says that the account in <a href=\"../books/PBreiter.html#pbreiter-venerable-father\"><em>Venerable Father</em></a> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial) sounds like a cult.{attribution}",
       "attribution": " Told by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a>.",
       "books": [
         "Venerable Father"
@@ -4181,7 +4181,7 @@
           "text": "[_Venerable Father_]() and [_One Monk, Many Masters_]()",
           "tags": [],
           "indentLevel": 2,
-          "body": "<b>References:</b> <em>Venerable Father</em> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial) and <em>One Monk, Many Masters</em> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial)"
+          "body": "<b>References:</b> <a href=\"../books/PBreiter.html#pbreiter-venerable-father\"><em>Venerable Father</em></a> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial) and <a href=\"../books/PBreiter.html#pbreiter-one-monk\"><em>One Monk, Many Masters</em></a> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial)"
         }
       ],
       "tags": [
@@ -7849,7 +7849,7 @@
           "text": "[_Being Dharma_]()",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>Being Dharma</em> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial)"
+          "body": "<b>Reference:</b> <a href=\"../books/being-dharma.html\"><em>Being Dharma</em></a> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial)"
         }
       ],
       "tags": [
@@ -64693,7 +64693,7 @@
       ],
       "duration": "1:57",
       "mirror": "local",
-      "body": "Background information about Paul Brieter and <em><a href=\"#noframe\" target=\"_blank\" data-alt-href=\"../books/being-dharma.html\">Being Dharma</a></em>.",
+      "body": "Background information about Paul Brieter and <em><a href=\"../books/being-dharma.html\" data-alt-href=\"../books/being-dharma.html\">Being Dharma</a></em>.",
       "attribution": "",
       "books": [
         "Being Dharma"
@@ -64734,7 +64734,7 @@
       ],
       "duration": "38:35",
       "mirror": "local",
-      "body": "<b>Reading:</b> “Kondañña Knows” from <em>Being Dharma</em> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial) pp. 151-168. {attribution2}",
+      "body": "<b>Reading:</b> “Kondañña Knows” from <a href=\"../books/being-dharma.html\"><em>Being Dharma</em></a> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial) pp. 151-168. {attribution2}",
       "attribution": "",
       "attribution2": "Read by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "teachers2": [
@@ -66782,7 +66782,7 @@
       "tags": [],
       "qTagCount": 0,
       "duration": "55:22",
-      "body": "<b>Readings</b> from <em>Venerable Father</em> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial), pp. 28-36, 37-45, and 52-54. {attribution2}",
+      "body": "<b>Readings</b> from <a href=\"../books/PBreiter.html#pbreiter-venerable-father\"><em>Venerable Father</em></a> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial), pp. 28-36, 37-45, and 52-54. {attribution2}",
       "attribution": "",
       "attribution2": "Read by Ajahn Pesalo.",
       "teachers2": [
@@ -82666,10 +82666,10 @@
         {
           "kind": "Reference",
           "flags": "0",
-          "text": "Refer to the [previous question](TG2014_S03_F01) for more details.",
+          "text": "Refer to the [previous question](excerpt:TG2014_S03_F01) for more details.",
           "tags": [],
           "indentLevel": 1,
-          "body": "Refer to the <a href=\"TG2014_S03_F01\">previous question</a> for more details."
+          "body": "Refer to the <a href=\"../events/TG2014.html#TG2014_S03_F01\">previous question</a> for more details."
         }
       ],
       "tags": [
@@ -83823,7 +83823,7 @@
             "Health"
           ],
           "indentLevel": 1,
-          "body": "<b>Suttas:</b> <a href=\"https://suttacentral.express/an5.53/en/bodhi\" target=\"_blank\">AN 5.53-54</a>: Health is a support to the practice."
+          "body": "<b>Suttas:</b> <a href=\"https://suttacentral.express/an5.53/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/AN5_53.html\">AN 5.53-54</a>: Health is a support to the practice."
         }
       ],
       "tags": [
@@ -86224,7 +86224,7 @@
           "text": "[_In the Buddha's Words_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>In the Buddha’s Words</em> by Bhikkhu Bodhi (commercial)."
+          "body": "<b>Reference:</b> <a href=\"../books/BBodhi.html#bbodhi-buddhas-words\"><em>In the Buddha’s Words</em></a> by Bhikkhu Bodhi (commercial)."
         }
       ],
       "tags": [
@@ -88392,7 +88392,7 @@
       ],
       "duration": "13:49",
       "mirror": "local",
-      "body": "<b>Readings</b> from the Introduction to <em>Listening to the Heart</em> by <a href=\"../teachers/kittisaro.html\">Kittisaro</a> and <a href=\"../teachers/thanissara.html\">Ṭhānissarā</a> (commercial). {attribution2}",
+      "body": "<b>Readings</b> from the Introduction to <a href=\"../books/Thanissara.html#thanissara-listening-to-the-heart\"><em>Listening to the Heart</em></a> by <a href=\"../teachers/kittisaro.html\">Kittisaro</a> and <a href=\"../teachers/thanissara.html\">Ṭhānissarā</a> (commercial). {attribution2}",
       "attribution": "",
       "attribution2": "Read by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "teachers2": [
@@ -89417,7 +89417,7 @@
           "text": "[_Listening to the Heart_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>Listening to the Heart</em> by <a href=\"../teachers/kittisaro.html\">Kittisaro</a> and <a href=\"../teachers/thanissara.html\">Ṭhānissarā</a> (commercial)."
+          "body": "<b>Reference:</b> <a href=\"../books/Thanissara.html#thanissara-listening-to-the-heart\"><em>Listening to the Heart</em></a> by <a href=\"../teachers/kittisaro.html\">Kittisaro</a> and <a href=\"../teachers/thanissara.html\">Ṭhānissarā</a> (commercial)."
         }
       ],
       "tags": [
@@ -96258,7 +96258,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "“A Matter of Life and Death,” p. 205-212 in <em>The Mind and the Way</em> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). "
+          "body": "“A Matter of Life and Death,” p. 205-212 in <a href=\"../books/mind-and-way.html\"><em>The Mind and the Way</em></a> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). "
         },
         {
           "kind": "Read by",
@@ -96279,7 +96279,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "“Towards the Future,” p. 215-220 in <em>The Mind and the Way</em> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). "
+          "body": "“Towards the Future,” p. 215-220 in <a href=\"../books/mind-and-way.html\"><em>The Mind and the Way</em></a> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). "
         },
         {
           "kind": "Read by",
@@ -103025,10 +103025,10 @@
         {
           "kind": "Reference",
           "flags": "0",
-          "text": "Refers to the [earlier question about forgiveness](WR2015_S02_F03).",
+          "text": "Refers to the [earlier question about forgiveness](excerpt:WR2015_S02_F03).",
           "tags": [],
           "indentLevel": 1,
-          "body": "Refers to the <a href=\"WR2015_S02_F03\">earlier question about forgiveness</a>."
+          "body": "Refers to the <a href=\"../events/WR2015.html#WR2015_S02_F03\">earlier question about forgiveness</a>."
         }
       ],
       "tags": [
@@ -106826,7 +106826,7 @@
           ],
           "text": "A monk with psychic abilities investigates Ajahn Chah's mind after Ajahn Chah loses his mental faculties.",
           "tags": [
-            "Ajahn Poot",
+            "Ajahn Phut",
             "Ajahn Chah",
             "Sickness",
             "Psychic powers"
@@ -110225,7 +110225,7 @@
       ],
       "qTagCount": 1,
       "duration": "39:45",
-      "body": "<b>Reading:</b> “Being Awareness Itself” from <em>Don’t Take Your Life Personally</em> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). {attribution2}",
+      "body": "<b>Reading:</b> “Being Awareness Itself” from <a href=\"../books/dont-take-your-life-personally.html\"><em>Don’t Take Your Life Personally</em></a> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). {attribution2}",
       "attribution": "",
       "attribution2": "Read by Tan Suddhiko.",
       "teachers2": [
@@ -118083,7 +118083,7 @@
       "tags": [],
       "qTagCount": 0,
       "duration": "38:56",
-      "body": "<b>Reading:</b> “Sense the Sacred,” pp.127-137 in <em>Don’t Take Your Life Personally</em> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). {attribution2}",
+      "body": "<b>Reading:</b> “Sense the Sacred,” pp.127-137 in <a href=\"../books/dont-take-your-life-personally.html\"><em>Don’t Take Your Life Personally</em></a> by <a href=\"../teachers/ajahn-sumedho.html\">Ajahn Sumedho</a> (commercial). {attribution2}",
       "attribution": "",
       "attribution2": "Read by Tan Suddhiko.",
       "teachers2": [
@@ -119046,7 +119046,7 @@
           "text": "[_Venerable Father_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>Venerable Father</em> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial)."
+          "body": "<b>Reference:</b> <a href=\"../books/PBreiter.html#pbreiter-venerable-father\"><em>Venerable Father</em></a> by <a href=\"../teachers/paul-breiter.html\">Paul Breiter</a> (commercial)."
         },
         {
           "kind": "Quote",
@@ -121563,7 +121563,7 @@
             "AP"
           ],
           "tags": [
-            "Ajahn Poot",
+            "Ajahn Phut",
             "Ajahn Chah",
             "Psychic powers",
             "Sickness",
@@ -135550,7 +135550,7 @@
           "text": "[_Buddhadhamma_]() p. 1659",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>Buddhadhamma</em> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> (available at <a href=\"https://buddhadhamma.github.io/\" target=\"_blank\">buddhadhamma.github.io</a>) p. 1659"
+          "body": "<b>Reference:</b> <a href=\"../books/Payutto.html#payutto-buddhadhamma\"><em>Buddhadhamma</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> (available at <a href=\"https://buddhadhamma.github.io/\" target=\"_blank\">buddhadhamma.github.io</a>) p. 1659"
         }
       ],
       "tags": [
@@ -179122,7 +179122,7 @@
           ],
           "tags": [],
           "indentLevel": 2,
-          "body": "<em>A Still Forest Pool</em> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial) p. 73. "
+          "body": "<a href=\"../books/still-forest-pool.html\"><em>A Still Forest Pool</em></a> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial) p. 73. "
         },
         {
           "kind": "Read by",
@@ -179626,7 +179626,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "<em>Atulo</em>, collected teachings of <a href=\"../teachers/ajahn-dune.html\">Ajahn Dune</a> compiled by Ajahn Bodhinandamuni (no full English translation). "
+          "body": "<a href=\"../books/atulo.html\"><em>Atulo</em>, collected teachings of <a href=\"../teachers/ajahn-dune.html\">Ajahn Dune</a> compiled by Ajahn Bodhinandamuni</a> (no full English translation). "
         },
         {
           "kind": "Read by",
@@ -182276,7 +182276,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "<em>Atulo</em>, collected teachings of <a href=\"../teachers/ajahn-dune.html\">Ajahn Dune</a> compiled by Ajahn Bodhinandamuni (no full English translation). "
+          "body": "<a href=\"../books/atulo.html\"><em>Atulo</em>, collected teachings of <a href=\"../teachers/ajahn-dune.html\">Ajahn Dune</a> compiled by Ajahn Bodhinandamuni</a> (no full English translation). "
         },
         {
           "kind": "Read by",
@@ -182981,7 +182981,7 @@
           ],
           "tags": [],
           "indentLevel": 2,
-          "body": "<em>Atulo</em>, collected teachings of <a href=\"../teachers/ajahn-dune.html\">Ajahn Dune</a> compiled by Ajahn Bodhinandamuni (no full English translation). "
+          "body": "<a href=\"../books/atulo.html\"><em>Atulo</em>, collected teachings of <a href=\"../teachers/ajahn-dune.html\">Ajahn Dune</a> compiled by Ajahn Bodhinandamuni</a> (no full English translation). "
         },
         {
           "kind": "Read by",
@@ -185533,7 +185533,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "“The Four Noble Truths,” p. 333 in <em>Food for the Heart</em> (Wisdom Publications) by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial). "
+          "body": "“The Four Noble Truths,” p. 333 in <a href=\"../books/food-for-the-heart.html\"><em>Food for the Heart</em> (Wisdom Publications)</a> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial). "
         },
         {
           "kind": "Read by",
@@ -185614,7 +185614,7 @@
           "text": "[_Food for the Heart_ (Wisdom Publications)]() p. 333.",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>Food for the Heart</em> (Wisdom Publications) by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial) p. 333."
+          "body": "<b>Reference:</b> <a href=\"../books/food-for-the-heart.html\"><em>Food for the Heart</em> (Wisdom Publications)</a> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial) p. 333."
         },
         {
           "kind": "Response",
@@ -187632,6 +187632,17 @@
       "fTags": [],
       "annotations": [
         {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "SN 48.9.4: Unification of mind with relinquishment as its object.",
+          "tags": [
+            "Unification",
+            "Relinquishment"
+          ],
+          "indentLevel": 1,
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/sn48.9/en/sujato?reference=main#4.1\" target=\"_blank\" data-alt-href=\"../texts/SN48.html#sn-48-9\">SN 48.9.4</a>: Unification of mind with relinquishment as its object."
+        },
+        {
           "kind": "Indirect quote",
           "flags": "",
           "text": "The point that includes.|Ajahn Sumedho",
@@ -187681,7 +187692,7 @@
           "text": "[_Being Dharma_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <em>Being Dharma</em> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial)."
+          "body": "<b>Reference:</b> <a href=\"../books/being-dharma.html\"><em>Being Dharma</em></a> by <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a> (commercial)."
         }
       ],
       "tags": [
@@ -187703,6 +187714,7 @@
       "body": "“In animitta samādhi, is the mind one-pointed or just sharp? Does it fall into the world of jhāna?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "texts": [
+        "SN 48.9.4",
         "MN 95.20"
       ],
       "books": [
@@ -194847,12 +194859,12 @@
         {
           "kind": "Indirect quote",
           "flags": "-",
-          "text": "You don't have to worry about Ajahn Chah. His mind is bright and pure.|Ajahn Poot",
+          "text": "You don't have to worry about Ajahn Chah. His mind is bright and pure.|Ajahn Phut",
           "teachers": [
             "AP"
           ],
           "tags": [
-            "Ajahn Poot",
+            "Ajahn Phut",
             "Ajahn Chah",
             "Sickness",
             "Heart/mind",
@@ -194861,7 +194873,7 @@
             "Wat Pah Nanachat"
           ],
           "indentLevel": 2,
-          "body": "<b>Quote:</b>  “You don’t have to worry about Ajahn Chah. His mind is bright and pure.” — Ajahn Poot. Quoted by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+          "body": "<b>Quote:</b>  “You don’t have to worry about Ajahn Chah. His mind is bright and pure.” — Ajahn Phut. Quoted by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
         },
         {
           "kind": "Reference",
@@ -212509,7 +212521,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 306,
+      "excerptCount": 307,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
       "listIndex": 148
@@ -220028,7 +220040,7 @@
         "Ajahn Fuang",
         "Ajahn Dohn",
         "Ajahn Wan",
-        "Ajahn Poot",
+        "Ajahn Phut",
         "Mae Chee Kaew",
         "Mae Chee Sansanee"
       ],
@@ -220078,7 +220090,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-chai.html",
       "excerptCount": 1,
-      "listIndex": 569
+      "listIndex": 568
     },
     "Ajahn Gi": {
       "tag": "Ajahn Gi",
@@ -220118,7 +220130,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-puth.html",
       "excerptCount": 1,
-      "listIndex": 568
+      "listIndex": 567
     },
     "Ajahn Jia": {
       "tag": "Ajahn Jia",
@@ -220138,7 +220150,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-jia.html",
       "excerptCount": 2,
-      "listIndex": 565
+      "listIndex": 564
     },
     "Ajahn Sanong": {
       "tag": "Ajahn Sanong",
@@ -220381,7 +220393,7 @@
       "htmlFile": "ajahn-maha-boowa.html",
       "excerptCount": 61,
       "fTagCount": 2,
-      "listIndex": 563
+      "listIndex": 562
     },
     "Ajahn Baen": {
       "tag": "Ajahn Baen",
@@ -220544,7 +220556,7 @@
       "htmlFile": "ajahn-pannananda.html",
       "excerptCount": 9,
       "fTagCount": 1,
-      "listIndex": 562
+      "listIndex": 561
     },
     "Ajahn Suwat": {
       "tag": "Ajahn Suwat",
@@ -220564,7 +220576,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-suwat.html",
       "excerptCount": 3,
-      "listIndex": 567
+      "listIndex": 566
     },
     "Ajahn Wanchai": {
       "tag": "Ajahn Wanchai",
@@ -220604,7 +220616,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-fuang.html",
       "excerptCount": 1,
-      "listIndex": 564
+      "listIndex": 563
     },
     "Ajahn Dohn": {
       "tag": "Ajahn Dohn",
@@ -220644,12 +220656,12 @@
       "primaries": 0,
       "htmlFile": "ajahn-wan.html",
       "excerptCount": 1,
-      "listIndex": 570
+      "listIndex": 569
     },
-    "Ajahn Poot": {
-      "tag": "Ajahn Poot",
+    "Ajahn Phut": {
+      "tag": "Ajahn Phut",
       "pali": "",
-      "fullTag": "Ajahn Poot",
+      "fullTag": "Ajahn Phut Thaniyo",
       "fullPali": "",
       "number": "",
       "alternateTranslations": [],
@@ -220662,9 +220674,9 @@
       ],
       "copies": 1,
       "primaries": 0,
-      "htmlFile": "ajahn-poot.html",
+      "htmlFile": "ajahn-phut.html",
       "excerptCount": 3,
-      "listIndex": 561
+      "listIndex": 570
     },
     "Mae Chee Kaew": {
       "tag": "Mae Chee Kaew",
@@ -220684,7 +220696,7 @@
       "primaries": 0,
       "htmlFile": "mae-chee-kaew.html",
       "excerptCount": 8,
-      "listIndex": 566
+      "listIndex": 565
     },
     "Mae Chee Sansanee": {
       "tag": "Mae Chee Sansanee",
@@ -231507,7 +231519,7 @@
       "text": "Four Noble Truths (91) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 20,
-      "subtagExcerptCount": 1403
+      "subtagExcerptCount": 1404
     },
     {
       "level": 3,
@@ -231667,7 +231679,7 @@
       "text": "Noble Truth of the Cessation of Suffering (98) [dukkha-nirodha ariya-saccaṃ]",
       "tag": "Cessation of Suffering",
       "subtagCount": 5,
-      "subtagExcerptCount": 610
+      "subtagExcerptCount": 611
     },
     {
       "level": 4,
@@ -231697,9 +231709,9 @@
       "flags": "",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "subsumed": false,
-      "text": "Relinquishment (306) [paṭinissagga]",
+      "text": "Relinquishment (307) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -232466,9 +232478,9 @@
       "flags": "*",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "subsumed": false,
-      "text": "Relinquishment (306) [paṭinissagga]",
+      "text": "Relinquishment (307) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -235759,7 +235771,7 @@
       "text": "Teaching Dhamma (249)",
       "tag": "Teaching Dhamma",
       "subtagCount": 40,
-      "subtagExcerptCount": 1847
+      "subtagExcerptCount": 1848
     },
     {
       "level": 2,
@@ -235772,7 +235784,7 @@
       "text": "The Gradual Teaching (22) [anupubbikathā]",
       "tag": "Gradual Teaching",
       "subtagCount": 24,
-      "subtagExcerptCount": 1459
+      "subtagExcerptCount": 1460
     },
     {
       "level": 3,
@@ -235840,7 +235852,7 @@
       "text": "Four Noble Truths (91) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 19,
-      "subtagExcerptCount": 1252
+      "subtagExcerptCount": 1253
     },
     {
       "level": 4,
@@ -235989,7 +236001,7 @@
       "text": "Noble Truth of the Cessation of Suffering (98) [dukkha-nirodha ariya-saccaṃ]",
       "tag": "Cessation of Suffering",
       "subtagCount": 5,
-      "subtagExcerptCount": 610
+      "subtagExcerptCount": 611
     },
     {
       "level": 5,
@@ -236019,9 +236031,9 @@
       "flags": "",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "subsumed": false,
-      "text": "Relinquishment (306) [paṭinissagga]",
+      "text": "Relinquishment (307) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -237138,17 +237150,6 @@
       "level": 6,
       "indexNumber": "",
       "flags": "",
-      "name": "Ajahn Poot",
-      "pali": "",
-      "excerptCount": 3,
-      "subsumed": false,
-      "text": "Ajahn Poot (3)",
-      "tag": "Ajahn Poot"
-    },
-    {
-      "level": 6,
-      "indexNumber": "",
-      "flags": "",
       "name": "Ajahn Paññānanda Padumuttaro",
       "pali": "",
       "excerptCount": 9,
@@ -237243,6 +237244,17 @@
       "subsumed": false,
       "text": "Ajahn Wan Uttamo (1)",
       "tag": "Ajahn Wan"
+    },
+    {
+      "level": 6,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Ajahn Phut Thaniyo",
+      "pali": "",
+      "excerptCount": 3,
+      "subsumed": false,
+      "text": "Ajahn Phut Thaniyo (3)",
+      "tag": "Ajahn Phut"
     },
     {
       "level": 6,
@@ -243148,15 +243160,15 @@
       "tweak": "",
       "duplicate": ""
     },
-    "Ajahn Poot": {
-      "fullName": "Ajahn Poot",
+    "Ajahn Phut Thaniyo": {
+      "fullName": "Ajahn Phut Thaniyo",
       "alphabetize": "",
       "alphabetize2": "",
-      "sortBy": "1930.18",
+      "sortBy": "1942.18",
       "exactDate": "",
       "knownMonth": "",
       "knownYear": "",
-      "estimatedYear": "1930",
+      "estimatedYear": "1942",
       "tweak": "",
       "duplicate": ""
     },
@@ -246761,7 +246773,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/relinquishment.html",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "fTagCount": 4
     },
     "Liberation": {
@@ -248728,7 +248740,7 @@
         "Stages of awakening",
         "Nibbāna"
       ],
-      "excerptCount": 754,
+      "excerptCount": 755,
       "fTagCount": 25
     },
     "teachers": {

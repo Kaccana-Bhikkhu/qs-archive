@@ -72604,7 +72604,7 @@
         {
           "kind": "Reference",
           "flags": "0",
-          "text": "Refer to the [previous question](TG2014_S03_F01) for more details.",
+          "text": "Refer to the [previous question](excerpt:TG2014_S03_F01) for more details.",
           "tags": [],
           "indentLevel": 1
         }
@@ -90050,7 +90050,7 @@
         {
           "kind": "Reference",
           "flags": "0",
-          "text": "Refers to the [earlier question about forgiveness](WR2015_S02_F03).",
+          "text": "Refers to the [earlier question about forgiveness](excerpt:WR2015_S02_F03).",
           "tags": [],
           "indentLevel": 1
         }
@@ -93473,7 +93473,7 @@
           ],
           "text": "A monk with psychic abilities investigates Ajahn Chah's mind after Ajahn Chah loses his mental faculties.",
           "tags": [
-            "Ajahn Poot",
+            "Ajahn Phut",
             "Ajahn Chah",
             "Sickness",
             "Psychic powers"
@@ -106211,7 +106211,7 @@
             "AP"
           ],
           "tags": [
-            "Ajahn Poot",
+            "Ajahn Phut",
             "Ajahn Chah",
             "Psychic powers",
             "Sickness",
@@ -163216,6 +163216,16 @@
       "fTags": [],
       "annotations": [
         {
+          "kind": "Sutta",
+          "flags": "",
+          "text": "SN 48.9.4: Unification of mind with relinquishment as its object.",
+          "tags": [
+            "Unification",
+            "Relinquishment"
+          ],
+          "indentLevel": 1
+        },
+        {
           "kind": "Indirect quote",
           "flags": "",
           "text": "The point that includes.|Ajahn Sumedho",
@@ -169604,12 +169614,12 @@
         {
           "kind": "Indirect quote",
           "flags": "-",
-          "text": "You don't have to worry about Ajahn Chah. His mind is bright and pure.|Ajahn Poot",
+          "text": "You don't have to worry about Ajahn Chah. His mind is bright and pure.|Ajahn Phut",
           "teachers": [
             "AP"
           ],
           "tags": [
-            "Ajahn Poot",
+            "Ajahn Phut",
             "Ajahn Chah",
             "Sickness",
             "Heart/mind",
@@ -186177,7 +186187,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 306,
+      "excerptCount": 307,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
       "listIndex": 148
@@ -193696,7 +193706,7 @@
         "Ajahn Fuang",
         "Ajahn Dohn",
         "Ajahn Wan",
-        "Ajahn Poot",
+        "Ajahn Phut",
         "Mae Chee Kaew",
         "Mae Chee Sansanee"
       ],
@@ -193746,7 +193756,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-chai.html",
       "excerptCount": 1,
-      "listIndex": 569
+      "listIndex": 568
     },
     "Ajahn Gi": {
       "tag": "Ajahn Gi",
@@ -193786,7 +193796,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-puth.html",
       "excerptCount": 1,
-      "listIndex": 568
+      "listIndex": 567
     },
     "Ajahn Jia": {
       "tag": "Ajahn Jia",
@@ -193806,7 +193816,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-jia.html",
       "excerptCount": 2,
-      "listIndex": 565
+      "listIndex": 564
     },
     "Ajahn Sanong": {
       "tag": "Ajahn Sanong",
@@ -194049,7 +194059,7 @@
       "htmlFile": "ajahn-maha-boowa.html",
       "excerptCount": 61,
       "fTagCount": 2,
-      "listIndex": 563
+      "listIndex": 562
     },
     "Ajahn Baen": {
       "tag": "Ajahn Baen",
@@ -194212,7 +194222,7 @@
       "htmlFile": "ajahn-pannananda.html",
       "excerptCount": 9,
       "fTagCount": 1,
-      "listIndex": 562
+      "listIndex": 561
     },
     "Ajahn Suwat": {
       "tag": "Ajahn Suwat",
@@ -194232,7 +194242,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-suwat.html",
       "excerptCount": 3,
-      "listIndex": 567
+      "listIndex": 566
     },
     "Ajahn Wanchai": {
       "tag": "Ajahn Wanchai",
@@ -194272,7 +194282,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-fuang.html",
       "excerptCount": 1,
-      "listIndex": 564
+      "listIndex": 563
     },
     "Ajahn Dohn": {
       "tag": "Ajahn Dohn",
@@ -194312,12 +194322,12 @@
       "primaries": 0,
       "htmlFile": "ajahn-wan.html",
       "excerptCount": 1,
-      "listIndex": 570
+      "listIndex": 569
     },
-    "Ajahn Poot": {
-      "tag": "Ajahn Poot",
+    "Ajahn Phut": {
+      "tag": "Ajahn Phut",
       "pali": "",
-      "fullTag": "Ajahn Poot",
+      "fullTag": "Ajahn Phut Thaniyo",
       "fullPali": "",
       "number": "",
       "alternateTranslations": [],
@@ -194330,9 +194340,9 @@
       ],
       "copies": 1,
       "primaries": 0,
-      "htmlFile": "ajahn-poot.html",
+      "htmlFile": "ajahn-phut.html",
       "excerptCount": 3,
-      "listIndex": 561
+      "listIndex": 570
     },
     "Mae Chee Kaew": {
       "tag": "Mae Chee Kaew",
@@ -194352,7 +194362,7 @@
       "primaries": 0,
       "htmlFile": "mae-chee-kaew.html",
       "excerptCount": 8,
-      "listIndex": 566
+      "listIndex": 565
     },
     "Mae Chee Sansanee": {
       "tag": "Mae Chee Sansanee",
@@ -205050,7 +205060,7 @@
       "text": "Four Noble Truths (91) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 20,
-      "subtagExcerptCount": 1403
+      "subtagExcerptCount": 1404
     },
     {
       "level": 3,
@@ -205210,7 +205220,7 @@
       "text": "Noble Truth of the Cessation of Suffering (98) [dukkha-nirodha ariya-saccaṃ]",
       "tag": "Cessation of Suffering",
       "subtagCount": 5,
-      "subtagExcerptCount": 610
+      "subtagExcerptCount": 611
     },
     {
       "level": 4,
@@ -205240,9 +205250,9 @@
       "flags": "",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "subsumed": false,
-      "text": "Relinquishment (306) [paṭinissagga]",
+      "text": "Relinquishment (307) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -206009,9 +206019,9 @@
       "flags": "*",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "subsumed": false,
-      "text": "Relinquishment (306) [paṭinissagga]",
+      "text": "Relinquishment (307) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -209302,7 +209312,7 @@
       "text": "Teaching Dhamma (249)",
       "tag": "Teaching Dhamma",
       "subtagCount": 40,
-      "subtagExcerptCount": 1847
+      "subtagExcerptCount": 1848
     },
     {
       "level": 2,
@@ -209315,7 +209325,7 @@
       "text": "The Gradual Teaching (22) [anupubbikathā]",
       "tag": "Gradual Teaching",
       "subtagCount": 24,
-      "subtagExcerptCount": 1459
+      "subtagExcerptCount": 1460
     },
     {
       "level": 3,
@@ -209383,7 +209393,7 @@
       "text": "Four Noble Truths (91) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 19,
-      "subtagExcerptCount": 1252
+      "subtagExcerptCount": 1253
     },
     {
       "level": 4,
@@ -209532,7 +209542,7 @@
       "text": "Noble Truth of the Cessation of Suffering (98) [dukkha-nirodha ariya-saccaṃ]",
       "tag": "Cessation of Suffering",
       "subtagCount": 5,
-      "subtagExcerptCount": 610
+      "subtagExcerptCount": 611
     },
     {
       "level": 5,
@@ -209562,9 +209572,9 @@
       "flags": "",
       "name": "Relinquishment",
       "pali": "paṭinissagga",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "subsumed": false,
-      "text": "Relinquishment (306) [paṭinissagga]",
+      "text": "Relinquishment (307) [paṭinissagga]",
       "tag": "Relinquishment"
     },
     {
@@ -210681,17 +210691,6 @@
       "level": 6,
       "indexNumber": "",
       "flags": "",
-      "name": "Ajahn Poot",
-      "pali": "",
-      "excerptCount": 3,
-      "subsumed": false,
-      "text": "Ajahn Poot (3)",
-      "tag": "Ajahn Poot"
-    },
-    {
-      "level": 6,
-      "indexNumber": "",
-      "flags": "",
       "name": "Ajahn Paññānanda Padumuttaro",
       "pali": "",
       "excerptCount": 9,
@@ -210786,6 +210785,17 @@
       "subsumed": false,
       "text": "Ajahn Wan Uttamo (1)",
       "tag": "Ajahn Wan"
+    },
+    {
+      "level": 6,
+      "indexNumber": "",
+      "flags": "",
+      "name": "Ajahn Phut Thaniyo",
+      "pali": "",
+      "excerptCount": 3,
+      "subsumed": false,
+      "text": "Ajahn Phut Thaniyo (3)",
+      "tag": "Ajahn Phut"
     },
     {
       "level": 6,
@@ -217496,15 +217506,15 @@
       "tweak": "",
       "duplicate": ""
     },
-    "Ajahn Poot": {
-      "fullName": "Ajahn Poot",
+    "Ajahn Phut Thaniyo": {
+      "fullName": "Ajahn Phut Thaniyo",
       "alphabetize": "",
       "alphabetize2": "",
-      "sortBy": "1930.18",
+      "sortBy": "1942.18",
       "exactDate": "",
       "knownMonth": "",
       "knownYear": "",
-      "estimatedYear": "1930",
+      "estimatedYear": "1942",
       "tweak": "",
       "duplicate": ""
     },
@@ -221109,7 +221119,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/relinquishment.html",
-      "excerptCount": 306,
+      "excerptCount": 307,
       "fTagCount": 4
     },
     "Liberation": {
@@ -223383,7 +223393,7 @@
         "Stages of awakening",
         "Nibbāna"
       ],
-      "excerptCount": 754,
+      "excerptCount": 755,
       "fTagCount": 25
     },
     "teachers": {
@@ -223483,7 +223493,6 @@
   },
   "tagRemoved": [
     "Ajahn Dee",
-    "Ajahn Phut",
     "Ajahn Samwong",
     "Ven. Ñāṇamoli",
     "James Baraz",

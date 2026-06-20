@@ -639,7 +639,10 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if pagesPath in url:
                 return Utils.PosixNorm(url.replace(pagesPath,""))
             else:
-                return url + "#noframe"
+                if url.endswith(".html"):
+                    return url
+                else:
+                    return url + "#noframe"
 
     def ReferenceForm2(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
@@ -660,8 +663,9 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
 
                 url = ProcessLocalReferences(url)
                 returnValue = BookLinkWrapper(url,reference["abbreviation"])(reference['title'])
-            else:
-                returnValue = f"{reference['title']}"
+            else: # If no text link is available (e.g. a commercial book), link to the page in the books directory
+                bookPage = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())
+                returnValue = f"[{reference['title']}]({bookPage})"
 
             if reference['attribution']:
                 returnValue += " " + Build.LinkTeachersInText(reference['attribution'],reference['author'])
@@ -691,10 +695,13 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 return hyperlinkText
             
             url = Link.URL(reference,directoryDepth=2)
-            
-            page = ParsePageNumber(matchObject[2])
-            if page:
-                url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
+            if url:
+                page = ParsePageNumber(matchObject[2])
+                if page:
+                    url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"""
+            else: # If no text link is available (e.g. a commercial book), link to the page in the books directory
+                page = None
+                url = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())
             AddBookReference(item,reference,page)
 
             url = ProcessLocalReferences(url)
