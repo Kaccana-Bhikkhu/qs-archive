@@ -2,9 +2,14 @@
 
 ## New in the May 2026 release:
  - New content:
-     - 2010, 2011, and 2012 Thanksgiving Retreat Q&A sessions
-     - Additional sessions from the 2013 and 2025 Winter Retreats
- - Home page loads faster and uses less data
+    - [Winter Retreat 2025](event:WR2025) through session 54
+    - [Upākikā Day: Ten Perceptions](event:UD2016-3)
+    - [Recollectings of Ajahn Chah: 100th Birthday Celebration](event:SRD2018)
+    - [Being Dhamma (with Tigers)](event:CMountain2023)
+    - [Samadhi, Memory & Renunciation Q&A](event:SamadhiQA2026)
+ - All [Thanksgiving Retreat](about:event-series#thanksgiving-retreats) questions have been listened to in detail
+ - [Table of all Upāsikā Days](about:UpasikaDays)
+
 
 ## Content
 This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 210 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
@@ -116,3 +121,8 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
  - Link to Bhante Buddharakkhita's tranlsation of the [Dhammapada](../texts/Dhp.html) and John D. Ireland's translation of the [Itivuttaka](../texts/Iti.html).
  - Ctrl-click on suttas to link to [SuttaCentral Express](https://suttacentral.express).
  - [Boolean search operators](about:search-instructions#boolean-search-operations).
+## May 2026 release:
+ - New content:
+     - [2010](event:TG2010), [2011](event:TG2011), and [2012](event:TG2011) Thanksgiving Retreat Q&A sessions
+     - Additional sessions from the [2013](event:WR2013) and [2025](event:WR2025) Winter Retreats
+ - Home page loads faster and uses less data

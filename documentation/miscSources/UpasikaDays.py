@@ -27,14 +27,14 @@ parser.add_argument('--multithread',**Utils.STORE_TRUE,help="Multithread some op
 options = parser.parse_args(sys.argv[1:])
 
 header = """
-## Upāsakā Day Themes
-<!--TITLE:Upāsakā Day Themes-->
+## Upāsikā Day Themes
+<!--TITLE:Upāsikā Day Themes-->
 
-From 2006 to 2019, there were five [Upāsakā Days](about:Event-series#upasika-days) a year, each organized around one of five themes.
+From 2006 to 2019, there were five [Upāsikā Days](about:Event-series#upasika-days) a year, each organized around one of five themes.
 Dimmed entries indicate that no recording is available.
 Links marked ![External link](../images/icons/Link-external-small-ltr-progressive.svg) are recordings outside the Ajahn Pasanno Archive.
 
-### Table of Upāsakā Day themes:
+### Table of Upāsikā Day themes:
 """
 
 footer = """
@@ -47,7 +47,7 @@ AÑ: Ajahn Ñāṇiko <br>
 DS: Debbie Stamp <br>
 JD: Jeanie Daskais <br>
 
-## Later Upāsakā Days in the Archive:
+## Later Upāsikā Days in the Archive:
 
 [Living in a Changing Society](event:UD2020)<br>
 &nbsp;&nbsp;Ajahn Pasanno
@@ -57,7 +57,7 @@ Honoring the Buddha: The Mahāparinibbāna Sutta – April 2021
 
 DownloadSheet()
 
-with (open("MarkdownCode.csv",encoding='utf8') as csvFile,open("UpasakaDays.md","w",encoding='utf8') as markdownFile):
+with (open("MarkdownCode.csv",encoding='utf8') as csvFile,open("UpasikaDays.md","w",encoding='utf8') as markdownFile):
     print(header,file=markdownFile)
     for line in csv.reader(csvFile,dialect=csv.excel):
         if line:

@@ -1,12 +1,12 @@
 
-## Upāsakā Day Themes
-<!--TITLE:Upāsakā Day Themes-->
+## Upāsikā Day Themes
+<!--TITLE:Upāsikā Day Themes-->
 
-From 2006 to 2019, there were five [Upāsakā Days](about:Event-series#upasika-days) a year, each organized around one of five themes.
+From 2006 to 2019, there were five [Upāsikā Days](about:Event-series#upasika-days) a year, each organized around one of five themes.
 Dimmed entries indicate that no recording is available.
 Links marked ![External link](../images/icons/Link-external-small-ltr-progressive.svg) are recordings outside the Ajahn Pasanno Archive.
 
-### Table of Upāsakā Day themes:
+### Table of Upāsikā Day themes:
 
 Year|Devotion/Ritual|Sutta Study|Meditation|Global/Social Context|Daily Life Practice
 --|--|--|--|--|--
@@ -34,10 +34,10 @@ AÑ: Ajahn Ñāṇiko <br>
 DS: Debbie Stamp <br>
 JD: Jeanie Daskais <br>
 
-## Later Upāsakā Days in the Archive:
+## Later Upāsikā Days in the Archive:
 
 [Living in a Changing Society](event:UD2020)<br>
-&nbsp;&nbsp;Ajahn Pasanno and Ajahn Ñāṇiko
+&nbsp;&nbsp;Ajahn Pasanno
 
-[Honoring the Buddha: The Mahāparinibbāna Sutta](event:UD2021-1)<br>
-&nbsp;&nbsp;Ajahn Pasanno and Ajahn Ñāṇiko
+Honoring the Buddha: The Mahāparinibbāna Sutta – April 2021
+

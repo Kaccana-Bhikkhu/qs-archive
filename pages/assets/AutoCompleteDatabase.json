@@ -68,7 +68,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(48<i class=\"fa fa-star\"></i>)",
+    "suffix": "(47<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -95,7 +95,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(26<i class=\"fa fa-star\"></i>)",
+    "suffix": "(25<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -113,7 +113,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(45<i class=\"fa fa-star\"></i>)",
+    "suffix": "(44<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -140,7 +140,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(46<i class=\"fa fa-star\"></i>)",
+    "suffix": "(45<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -3984,7 +3984,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 2
+    "excerptCount": 3
   },
   {
     "short": "Ajahn Koon (Na Pho)",
@@ -4461,7 +4461,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 4
+    "excerptCount": 3
   },
   {
     "short": "Ajahn Dune",
@@ -4563,6 +4563,15 @@
     "excerptCount": 4
   },
   {
+    "short": "Ajahn Poot",
+    "link": "tags/ajahn-poot.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 3
+  },
+  {
     "short": "Ajahn Paññānanda",
     "link": "tags/ajahn-pannananda.html",
     "long": "Ajahn Paññānanda Padumuttaro",
@@ -4629,6 +4638,15 @@
     "short": "Ajahn Chai",
     "link": "tags/ajahn-chai.html",
     "long": "Ajahn Chai Sujīvo",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "Ajahn Wan",
+    "link": "tags/ajahn-wan.html",
+    "long": "Ajahn Wan Uttamo",
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
@@ -6948,7 +6966,7 @@
     "excerptCount": 58
   },
   {
-    "short": "Saṅgha (Monastic community)",
+    "short": "Saṅgha (Monastic Community)",
     "link": "tags/sangha.html",
     "long": "",
     "number": "",
@@ -7323,7 +7341,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 24
+    "excerptCount": 25
   },
   {
     "short": "Healing",
@@ -8163,6 +8181,15 @@
     "excerptCount": 0
   },
   {
+    "short": "Honesty",
+    "link": "tags/truth.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Truth (74)",
+    "excerptCount": 0
+  },
+  {
     "short": "Commitment",
     "link": "tags/determination.html",
     "long": "",
@@ -8250,6 +8277,15 @@
     "number": "",
     "icon": "",
     "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Appropriate attention (34)",
+    "excerptCount": 0
+  },
+  {
+    "short": "Goodness",
+    "link": "tags/merit.html",
+    "long": "",
+    "number": "",
+    "icon": "",
+    "suffix": " – see <i class=\"inline-icon\" data-lucide=\"tag\"></i> Merit (63)",
     "excerptCount": 0
   },
   {
@@ -8883,7 +8919,7 @@
     "excerptCount": 0
   },
   {
-    "short": "Monastic community",
+    "short": "Monastic Community",
     "link": "tags/sangha.html",
     "long": "",
     "number": "",
@@ -9897,7 +9933,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 275
+    "excerptCount": 274
   },
   {
     "short": "Ajahn Lee Dhammadharo",
@@ -13641,7 +13677,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 34
+    "excerptCount": 35
   },
   {
     "short": "AN 5.23: Upakkilesasutta, Defilements",
@@ -13696,6 +13732,15 @@
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
     "excerptCount": 4
+  },
+  {
+    "short": "AN 5.53: Padhāniyaṅgasutta, Factors",
+    "link": "texts/AN5_53.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "AN 5.57: Abhiṇhapaccavekkhitabbaṭhānasutta, Themes",
