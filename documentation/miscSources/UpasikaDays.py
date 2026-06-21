@@ -38,21 +38,22 @@ Links marked ![External link](../images/icons/Link-external-small-ltr-progressiv
 """
 
 footer = """
-<br>
+<p></p>
+### Later Upāsikā Days in the Archive:
+[Living in a Changing Society](event:UD2020) – August 2020<br>
+&nbsp;&nbsp;Ajahn Pasanno
+
+[Honoring the Buddha: The Mahāparinibbāna Sutta](event:UD2021-1) – April 2021<br>
+&nbsp;&nbsp;Ajahn Pasanno and Ajahn Ñāṇiko
+
 ### Teacher abbreviations:
 AP: Ajahn Pasanno <br>
 AY: Ajahn Yatiko <br>
 AKd: Ajahn Karuṇadhammo <br>
+AJ: Ajahn Jotipālo<br>
 AÑ: Ajahn Ñāṇiko <br>
 DS: Debbie Stamp <br>
 JD: Jeanie Daskais <br>
-
-## Later Upāsikā Days in the Archive:
-
-[Living in a Changing Society](event:UD2020)<br>
-&nbsp;&nbsp;Ajahn Pasanno
-
-Honoring the Buddha: The Mahāparinibbāna Sutta – April 2021
 """
 
 DownloadSheet()

@@ -29,23 +29,13 @@ There is so much potential material for the Archive that little proofreading has
 -----
 
 ## Contributions That Require Skill and Commitment:
-### Tag and transcribe Thanksgiving Retreat Questions
-__Requirements:__ English proficiency, Comfortable using computers (spreadsheet experience a plus), Attended at least one retreat with Ajahn Pasanno
-
-__Time commitment:__ Most likely 15 hours to learn the system and transcribe your first retreat.
-
-The Archive currently contains questions from the 2013-2016 Thanksgiving Retreats transcribed and time-stamped by the monks who produced the CDs issued shortly after these retreats. The questions are taged based on the transcribe questions but not the audio content of Ajahn Pasanno's answers. I’m hoping that volunteers might listen to these questions, add tags based on the answers, and annotate noteworthy stories, references, and quotes.
-
-If there is energy and enthusiasm after these retreats are finished, there are another half-dozen Thanksgiving Retreats that haven’t been transcribed at all.
-
-----
 
 ### Help with programming
 __Requirements:__ Proficiency with Javascript web programming, python, and/or Google Sheets gs script
 
 __Time commitment:__ Variable, but programming projects always take longer than you think.
 
-There are many ways a skilled and generous programmer could help with the Archive ([github](https://github.com/Kaccana-Bhikkhu/qs-archive)). Here are some ideas, ranked roughly in order of usefulness with the really big project last.
+There are many ways a skilled and generous programmer could help with the Archive ([github](https://github.com/Kaccana-Bhikkhu/qs-archive)). Here are some ideas, ranked roughly in order of usefulness.
 
 __Fix bugs:__ For the current list, see [About: status](about:status#known-issues-and-limitations) and [Github issues](https://github.com/Kaccana-Bhikkhu/qs-archive/issues).
 
