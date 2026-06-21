@@ -90050,7 +90050,7 @@
         {
           "kind": "Reference",
           "flags": "0",
-          "text": "Refers to the [earlier question about forgiveness](excerpt:WR2015_S02_F03).",
+          "text": "Refers to the [earlier question about forgiveness](excerpt:TG2015_S02_F04).",
           "tags": [],
           "indentLevel": 1
         }
@@ -169760,6 +169760,7 @@
       "venue": "Portola Valley, California",
       "teachers": [
         "ASumedho",
+        "AMahaprasert",
         "AP",
         "AA",
         "ASundara",
@@ -183661,7 +183662,7 @@
       "allowTag": true,
       "group": "Monastics",
       "lineage": "Other Thai teachers",
-      "eventCount": 1,
+      "eventCount": 2,
       "sessionCount": 2,
       "excerptCount": 6,
       "htmlFile": "ajahn-maha-prasert.html"
@@ -215416,7 +215417,7 @@
     "Chah2001": {
       "eventCode": "Chah2001",
       "startDate": "28/4/2001",
-      "teachers": "ASumedho;AP;AA;ASundara;AJitindriya;JKornfield;JKappel;PBreiter;Kittisaro;Thanissara",
+      "teachers": "ASumedho;AMahaprasert;AP;AA;ASundara;AJitindriya;JKornfield;JKappel;PBreiter;Kittisaro;Thanissara",
       "sessions": 36,
       "excerpts": 252,
       "answersListenedTo": 252,
@@ -219798,6 +219799,21 @@
     "texts/AN7_49.html": {
       "oldPage": "texts/AN7_49.html",
       "newPage": "texts/AN7_52.html",
+      "type": "Hard"
+    },
+    "tags/impermanence-reference.html": {
+      "oldPage": "tags/impermanence-reference.html",
+      "newPage": "tags/impermanence.html",
+      "type": "Hard"
+    },
+    "tags/volitional-formations-reference.html": {
+      "oldPage": "tags/volitional-formations-reference.html",
+      "newPage": "tags/volitional-formations.html",
+      "type": "Hard"
+    },
+    "teachers/ajahn-jayasaro-teaching.html": {
+      "oldPage": "teachers/ajahn-jayasaro-teaching.html",
+      "newPage": "teachers/ajahn-jayasaro.html",
       "type": "Hard"
     }
   },

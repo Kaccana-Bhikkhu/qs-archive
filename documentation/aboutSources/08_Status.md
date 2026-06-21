@@ -1,14 +1,14 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-## New in the May 2026 release:
+## New in the June 2026 release:
  - New content:
     - [Winter Retreat 2025](event:WR2025) through session 54
     - [Upākikā Day: Ten Perceptions](event:UD2016-3)
     - [Recollectings of Ajahn Chah: 100th Birthday Celebration](event:SRD2018)
     - [Being Dhamma (with Tigers)](event:CMountain2023)
     - [Samadhi, Memory & Renunciation Q&A](event:SamadhiQA2026)
- - All [Thanksgiving Retreat](about:event-series#thanksgiving-retreats) questions have been listened to in detail
- - [Table of all Upāsikā Days](about:UpasikaDays)
+ - All questions from the [seven classic Thanksgiving Retreats](../indexes/EventsBySeries.html#thanksgiving-retreats) from 2010 to 2016 are included in full detail
+ - A table lists [all Upāsikā Days by theme](about:UpasikaDays)
 
 
 ## Content
@@ -18,13 +18,13 @@ This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDataba
 The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions). Ajahn Pasanno held less-frequent Q&A sessions on the 2004, 2020, and 2021 retreats; these retreats have been transcribed but not yet entered into the database.
 
 ### Winter Retreats
-Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 49 sessions](event:WR2025) are now included in the Archive.
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 54 sessions](event:WR2025) are now included in the Archive.
 
 ### Spirit Rock Daylongs
-Six daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
+Seven daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
 
 ### Upāsikā Days
-All but one of the 23 recorded Upāsikā Days led by Ajahn Pasanno are available in the Archive.
+All but one of the 24 recorded Upāsikā Days led by Ajahn Pasanno are available in the Archive.
 
 ### Abhayagiri Anniversary Events
 The Archive contains material from the [2016](event:Anniversary2016), [2021](event:Anniversary2021), and [2024](event:Anniversary2024) anniversaries.
