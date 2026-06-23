@@ -1,4 +1,4 @@
-"""Download csv files from Google sheet WR2025 readings and parse them into AP QS Archive excerpt format."""
+"""Download csv files from Google sheet Upasika Day table and write documentation/miscSources/UpasikaDays.md."""
 
 import sys, os
 import argparse
@@ -20,7 +20,7 @@ def DownloadSheet():
     }
     DownloadCSV.DownloadSheets(sheets,None)
 
-parser = argparse.ArgumentParser(description="""Download csv files from Google sheet WR2025 readings and parse them into AP QS Archive excerpt format.""")
+parser = argparse.ArgumentParser(description="""Download csv files from Google sheet Upasika Day table and write documentation/miscSources/UpasikaDays.md.""")
 parser.add_argument('--spreadsheet',type=str, default = 'https://docs.google.com/spreadsheets/d/1ZrStmtWWqtc4GWxvqQHifmx1WYhCLbNAeC0VAEWvdME/', help='URL of the Upasaka Day table Google Sheet')
 parser.add_argument('--multithread',**Utils.STORE_TRUE,help="Multithread some operations")
 
@@ -35,9 +35,11 @@ Dimmed entries indicate that no recording is available.
 Links marked ![External link](../images/icons/Link-external-small-ltr-progressive.svg) are recordings outside the Ajahn Pasanno Archive.
 
 ### Table of Upāsikā Day themes:
+<!--HTML <div style="overflow:auto;"> -->
 """
 
 footer = """
+<!--HTML </div> -->
 <p></p>
 ### Later Upāsikā Days in the Archive:
 [Living in a Changing Society](event:UD2020) – August 2020<br>
@@ -47,12 +49,14 @@ footer = """
 &nbsp;&nbsp;Ajahn Pasanno and Ajahn Ñāṇiko
 
 ### Teacher abbreviations:
-AP: Ajahn Pasanno <br>
-AY: Ajahn Yatiko <br>
-AKd: Ajahn Karuṇadhammo <br>
-AJ: Ajahn Jotipālo<br>
-AÑ: Ajahn Ñāṇiko <br>
-DS: Debbie Stamp <br>
+AP: [Ajahn Pasanno](teacher:)<br>
+AY: [Ajahn Yatiko](teacher:)<br>
+AKd: [Ajahn Karuṇadhammo](teacher:)<br>
+AJ: [Ajahn Jotipālo](teacher:)<br>
+AÑ: [Ajahn Ñāṇiko](teacher:)<br>
+AKc: Ajahn Kaccāna<br>
+APes: Ajahn Pesalo<br>
+DS: [Debbie Stamp](teacher:)<br>
 JD: Jeanie Daskais <br>
 """
 
