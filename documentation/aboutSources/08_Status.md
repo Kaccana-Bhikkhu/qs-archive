@@ -12,7 +12,9 @@
 
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 210 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over
+$!int(Database.ExcerptDuration(gDatabase["excerpts"]).total_seconds() // 36_000)!$0
+hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
 The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions). Ajahn Pasanno held less-frequent Q&A sessions on the 2004, 2020, and 2021 retreats; these retreats have been transcribed but not yet entered into the database.

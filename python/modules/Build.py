@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os, time
-from typing import List, Iterator, Iterable, Tuple, Callable
+from typing import Iterator, Iterable, Tuple, Callable
 from airium import Airium
 import Mp3DirectCut
 import Database, ReviewDatabase
@@ -84,7 +84,7 @@ def DeleteUnwrittenHtmlFiles(writer: FileRegister.HashWriter) -> None:
     if deletedFiles:
         Alert.extra(deletedFiles,"html file(s) deleted.")
 
-def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None, capitalize = False):
+def ItemList(items:list[str], joinStr:str = ", ", lastJoinStr:str = None, capitalize = False):
     """Format a list of items"""
     
     if lastJoinStr is None:
@@ -101,7 +101,7 @@ def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None, capita
         returnValue = Utils.CapitalizeFirst(returnValue)
     return returnValue
 
-def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",lastJoinStr:str = None,titleEnd:str = ": ",endStr:str = "<br>") -> str:
+def TitledList(title:str, items:list[str], plural:str = "s", joinStr:str = ", ",lastJoinStr:str = None,titleEnd:str = ": ",endStr:str = "<br>") -> str:
     """Format a list of items with a title as a single line in html code."""
     
     if not items:
@@ -261,7 +261,7 @@ def LinkTeachersInText(text: str,specificTeachers:Iterable[str]|None = None) -> 
     return re.sub(teacherRegex,HtmlTeacherLink,text,flags=re.RegexFlag.IGNORECASE)
 
 
-def ListLinkedTeachers(teachers:List[str],*args,**kwargs) -> str:
+def ListLinkedTeachers(teachers:list[str],*args,**kwargs) -> str:
     """Write a list of hyperlinked teachers.
     teachers is a list of abbreviated teacher names"""
     
@@ -1065,7 +1065,7 @@ def EventVenueStr(event: dict) -> str:
         venueStr += " and online"
     return venueStr
 
-def ExcerptDurationStr(excerpts: List[dict],countEvents = True,countSessions = True,countSessionExcerpts = False,sessionExcerptDuration = True) -> str:
+def ExcerptDurationStr(excerpts: list[dict],countEvents = True,countSessions = True,countSessionExcerpts = False,sessionExcerptDuration = True) -> str:
     "Return a string describing the duration of the excerpts we were passed."
     
     if not excerpts:
@@ -1302,7 +1302,7 @@ class Formatter:
         
         return str(a)
     
-    def HtmlExcerptList(self,excerpts: List[dict]) -> str:
+    def HtmlExcerptList(self,excerpts: list[dict]) -> str:
         """Return a html list of the excerpts."""
         
         a = Airium()
@@ -1364,7 +1364,7 @@ class Formatter:
             
         return str(a)
 
-def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter: Formatter,itemLimit:int = 0) -> Iterator[Html.PageAugmentorType]:
+def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: list[dict],formatter: Formatter,itemLimit:int = 0) -> Iterator[Html.PageAugmentorType]:
     """Split an excerpt list into multiple pages, yielding a series of PageAugmentorType objects
         basePage: Content of the page above the menu and excerpt list. Later pages add "-N" to the file name.
         excerpts, formatter: As in HtmlExcerptList

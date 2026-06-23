@@ -12,6 +12,7 @@ import Alert
 import Filter
 import ParseCSV
 from functools import lru_cache
+from datetime import timedelta
 
 
 gOptions = None
@@ -45,6 +46,19 @@ def CountExcerpts(excerpts: Iterable[dict[str]],countSessionExcerpts:bool = Fals
     """Count excerpts excluding fragments if the list includes their source excerpt."""
 
     return sum(1 for x in RemoveFragments(excerpts) if x["fileNumber"] or countSessionExcerpts)
+
+def ExcerptDuration(excerpts: list[dict],includeSingleSessionExcerpts = False) -> str:
+    """Return a string describing the duration of the excerpts we were passed.
+    includeSingleSessionExcerpts: include the duration of sessions which contain a single session excerpt."""
+
+    duration = timedelta()
+    for _,sessionExcerpts in itertools.groupby(excerpts,lambda x: (x["event"],x["sessionNumber"])):
+        sessionExcerpts = list(sessionExcerpts)
+        duration += sum((Utils.StrToTimedelta(x["duration"]) for x in RemoveFragments(sessionExcerpts) if x["fileNumber"] or (includeSingleSessionExcerpts and len(sessionExcerpts) == 1)),start = timedelta())
+            # Don't sum session excerpts (fileNumber = 0) unless the session excerpt is the only excerpt in the list
+            # This prevents confusing results due to double counting times
+    return duration
+
 
 def GroupFragments(excerpts: Iterable[dict[str]]) -> Iterable[list[dict[str]]]:
     """Yield lists containing non-fragment excerpts followed by their fragments."""

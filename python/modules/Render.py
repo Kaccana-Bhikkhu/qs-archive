@@ -880,7 +880,7 @@ def MarkdownFormat(text: str,element: dict[str]) -> Tuple[str,int]:
     if re.search(r"\]\((\w*:)(?!//)",text):
         badLink = re.search(r"\]\((\w*:[^)]*)\)",text) 
         Alert.warning("Unevaluated reference",repr(badLink[1]),"in",element)
-    md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = ["smarty",NewTabRemoteExtension()]), flags=re.IGNORECASE)
+    md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = ["smarty","attr_list",NewTabRemoteExtension()]), flags=re.IGNORECASE)
     if md != text:
         return md, 1
     else:
