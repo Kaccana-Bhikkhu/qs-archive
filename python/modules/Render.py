@@ -341,7 +341,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         fullStop = "." if re.search(r"[.?!][^a-zA-Z]*\{attribution\}",item["body"]) else ""
         renderDict["fullStop"] = fullStop
         
-        attributionStr = attributionTemplate(**renderDict) # Utils.SmartQuotes(attributionTemplate(**renderDict))
+        attributionStr = attributionTemplate(**renderDict)
 
         # If the template itself doesn't specify how to handle fullStop, capitalize the first letter of the attribution string
         # Avoid capitalizing html tags
@@ -880,7 +880,7 @@ def MarkdownFormat(text: str,element: dict[str]) -> Tuple[str,int]:
     if re.search(r"\]\((\w*:)(?!//)",text):
         badLink = re.search(r"\]\((\w*:[^)]*)\)",text) 
         Alert.warning("Unevaluated reference",repr(badLink[1]),"in",element)
-    md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = [NewTabRemoteExtension()]), flags=re.IGNORECASE)
+    md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = ["smarty",NewTabRemoteExtension()]), flags=re.IGNORECASE)
     if md != text:
         return md, 1
     else:
@@ -967,9 +967,6 @@ def main() -> None:
 
     LinkReferences()
     AccumulateReferences()
-
-    ApplyToBodyText(Utils.SmartQuotes)
-    ApplyToBodyText(Utils.SmartDashes)
 
     for key in ["tagRedacted","tagRemoved","summary","keyCaseTranslation"]:
         del gDatabase[key]
