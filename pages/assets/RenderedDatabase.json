@@ -228606,52 +228606,72 @@
     "Thanksgiving Retreats": {
       "series": "Thanksgiving Retreats",
       "abbreviation": "TG",
-      "description": "The Abhayagiri Monastic Thanksgiving retreat was traditionally an annual ten-day residential retreat held at the Angela Center in Santa Rosa, California during the week of Thanksgiving. After the Angela Center closed due to fire damage in 2017 and the COVID pandemic began in 2020, the location, date, duration, and format of this retreat have varied significantly. <a href=\"../about/Event-series.html#thanksgiving-retreats\">More&hellip;</a>"
+      "description": "The Abhayagiri Monastic Thanksgiving retreat was traditionally an annual ten-day residential retreat held at the Angela Center in Santa Rosa, California during the week of Thanksgiving. After the Angela Center closed due to fire damage in 2017 and the COVID pandemic began in 2020, the location, date, duration, and format of this retreat have varied significantly. <a href=\"../about/Event-series.html#thanksgiving-retreats\">More&hellip;</a>",
+      "localLinkTitle": "Retreat audio on abhayagiri.org",
+      "remoteLinkTitle": "Retreat audio on {site}"
     },
     "Winter Retreats": {
       "series": "Winter Retreats",
       "abbreviation": "WR",
-      "description": "During the months of January, February, and March, the resident community of Abhayagiri Monastery ceases all non-essential work to practice meditation. There are usually Dhamma readings nearly every day, some of which end with questions and answers regarding the teachings. <a href=\"../about/Event-series.html#abhayagiri-winter-retreats\">More&hellip;</a>"
+      "description": "During the months of January, February, and March, the resident community of Abhayagiri Monastery ceases all non-essential work to practice meditation. There are usually Dhamma readings nearly every day, some of which end with questions and answers regarding the teachings. <a href=\"../about/Event-series.html#abhayagiri-winter-retreats\">More&hellip;</a>",
+      "localLinkTitle": "Retreat audio on abhayagiri.org",
+      "remoteLinkTitle": "Retreat audio on {site}"
     },
     "Spirit Rock Daylongs": {
       "series": "Spirit Rock Daylongs",
       "abbreviation": "SRD",
-      "description": "Senior monks from Abhayagiri typically lead several daylong teaching events each year at Spirit Rock Meditation Center in Woodacre, California. <a href=\"../about/Event-series.html#spirit-rock-daylongs\">More&hellip;</a>"
+      "description": "Senior monks from Abhayagiri typically lead several daylong teaching events each year at Spirit Rock Meditation Center in Woodacre, California. <a href=\"../about/Event-series.html#spirit-rock-daylongs\">More&hellip;</a>",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Upāsikā Days": {
       "series": "Upāsikā Days",
       "abbreviation": "UD",
-      "description": "Well-organized afternoon teaching sessions held at Abhayagiri Monastery attended by committed supporters. Themes are chosen in advance and touch upon formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. <a href=\"../about/Event-series.html#upasika-days\">More&hellip;</a>"
+      "description": "Well-organized afternoon teaching sessions held at Abhayagiri Monastery attended by committed supporters. <a href=\"../about/UpasikaDays.html\">Themes are chosen in advance</a> and touch upon formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. <a href=\"../about/Event-series.html#upasika-days\">More&hellip;</a>",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Practice and Study Days": {
       "series": "Practice and Study Days",
       "abbreviation": "PSD",
-      "description": "Daylong teaching sessions at Abhayagiri Monastery. Less organized and less frequent than Upāsikā Days."
+      "description": "Daylong teaching sessions at Abhayagiri Monastery. Less organized and less frequent than Upāsikā Days.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Abhayagiri Anniversary events": {
       "series": "Abhayagiri Anniversary events",
       "abbreviation": "Anniversary",
-      "description": "Commemorations of the founding of Abhayagiri Monastery on June 1, 1996."
+      "description": "Commemorations of the founding of Abhayagiri Monastery on June 1, 1996.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Amaravati Sunday Talks": {
       "series": "Amaravati Sunday Talks",
       "abbreviation": "Sunday",
-      "description": "Weekly afternoon talks at Amaravati during Vassa covering a wide range of topics."
+      "description": "Weekly afternoon talks at Amaravati during Vassa covering a wide range of topics.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Other retreats": {
       "series": "Other retreats",
       "abbreviation": "varies",
-      "description": "Multi-day retreats held at venues around the world."
+      "description": "Multi-day retreats held at venues around the world.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Q&ampA sessions": {
       "series": "Q&ampA sessions",
       "abbreviation": "varies",
-      "description": "Question and answer sessions with groups of visitors or online participants."
+      "description": "Question and answer sessions with groups of visitors or online participants.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Other": {
       "series": "Other",
       "abbreviation": "varies",
-      "description": "Events that don&rsquo;t fit into any of the above categories."
+      "description": "Events that don&rsquo;t fit into any of the above categories.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     }
   },
   "venue": {

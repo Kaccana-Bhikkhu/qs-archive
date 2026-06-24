@@ -202272,52 +202272,72 @@
     "Thanksgiving Retreats": {
       "series": "Thanksgiving Retreats",
       "abbreviation": "TG",
-      "description": "The Abhayagiri Monastic Thanksgiving retreat was traditionally an annual ten-day residential retreat held at the Angela Center in Santa Rosa, California during the week of Thanksgiving. After the Angela Center closed due to fire damage in 2017 and the COVID pandemic began in 2020, the location, date, duration, and format of this retreat have varied significantly. [More...](about:Event-series#thanksgiving-retreats)"
+      "description": "The Abhayagiri Monastic Thanksgiving retreat was traditionally an annual ten-day residential retreat held at the Angela Center in Santa Rosa, California during the week of Thanksgiving. After the Angela Center closed due to fire damage in 2017 and the COVID pandemic began in 2020, the location, date, duration, and format of this retreat have varied significantly. [More...](about:Event-series#thanksgiving-retreats)",
+      "localLinkTitle": "Retreat audio on abhayagiri.org",
+      "remoteLinkTitle": "Retreat audio on {site}"
     },
     "Winter Retreats": {
       "series": "Winter Retreats",
       "abbreviation": "WR",
-      "description": "During the months of January, February, and March, the resident community of Abhayagiri Monastery ceases all non-essential work to practice meditation. There are usually Dhamma readings nearly every day, some of which end with questions and answers regarding the teachings. [More...](about:Event-series#abhayagiri-winter-retreats)"
+      "description": "During the months of January, February, and March, the resident community of Abhayagiri Monastery ceases all non-essential work to practice meditation. There are usually Dhamma readings nearly every day, some of which end with questions and answers regarding the teachings. [More...](about:Event-series#abhayagiri-winter-retreats)",
+      "localLinkTitle": "Retreat audio on abhayagiri.org",
+      "remoteLinkTitle": "Retreat audio on {site}"
     },
     "Spirit Rock Daylongs": {
       "series": "Spirit Rock Daylongs",
       "abbreviation": "SRD",
-      "description": "Senior monks from Abhayagiri typically lead several daylong teaching events each year at Spirit Rock Meditation Center in Woodacre, California. [More...](about:Event-series#spirit-rock-daylongs)"
+      "description": "Senior monks from Abhayagiri typically lead several daylong teaching events each year at Spirit Rock Meditation Center in Woodacre, California. [More...](about:Event-series#spirit-rock-daylongs)",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Upāsikā Days": {
       "series": "Upāsikā Days",
       "abbreviation": "UD",
-      "description": "Well-organized afternoon teaching sessions held at Abhayagiri Monastery attended by committed supporters. Themes are chosen in advance and touch upon formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. [More...](about:Event-series#upasika-days)"
+      "description": "Well-organized afternoon teaching sessions held at Abhayagiri Monastery attended by committed supporters. [Themes are chosen in advance](about:UpasikaDays) and touch upon formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. [More...](about:Event-series#upasika-days)",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Practice and Study Days": {
       "series": "Practice and Study Days",
       "abbreviation": "PSD",
-      "description": "Daylong teaching sessions at Abhayagiri Monastery. Less organized and less frequent than Upāsikā Days."
+      "description": "Daylong teaching sessions at Abhayagiri Monastery. Less organized and less frequent than Upāsikā Days.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Abhayagiri Anniversary events": {
       "series": "Abhayagiri Anniversary events",
       "abbreviation": "Anniversary",
-      "description": "Commemorations of the founding of Abhayagiri Monastery on June 1, 1996."
+      "description": "Commemorations of the founding of Abhayagiri Monastery on June 1, 1996.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Amaravati Sunday Talks": {
       "series": "Amaravati Sunday Talks",
       "abbreviation": "Sunday",
-      "description": "Weekly afternoon talks at Amaravati during Vassa covering a wide range of topics."
+      "description": "Weekly afternoon talks at Amaravati during Vassa covering a wide range of topics.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Other retreats": {
       "series": "Other retreats",
       "abbreviation": "varies",
-      "description": "Multi-day retreats held at venues around the world."
+      "description": "Multi-day retreats held at venues around the world.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Q&ampA sessions": {
       "series": "Q&ampA sessions",
       "abbreviation": "varies",
-      "description": "Question and answer sessions with groups of visitors or online participants."
+      "description": "Question and answer sessions with groups of visitors or online participants.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     },
     "Other": {
       "series": "Other",
       "abbreviation": "varies",
-      "description": "Events that don't fit into any of the above categories."
+      "description": "Events that don't fit into any of the above categories.",
+      "localLinkTitle": "",
+      "remoteLinkTitle": ""
     }
   },
   "venue": {
@@ -223596,6 +223616,7 @@
     "Level": "level",
     "Lineage": "lineage",
     "Link": "link",
+    "Local link title": "localLinkTitle",
     "Location": "location",
     "Long note": "longNote",
     "Medium": "medium",
@@ -223623,6 +223644,7 @@
     "Related": "related",
     "Related 2": "related2",
     "Remote URL": "remoteUrl",
+    "Remote link title": "remoteLinkTitle",
     "Remote mp3 URL": "remoteMp3Url",
     "ReviewedTag": "reviewedTag",
     "Rule": "rule",

@@ -181,9 +181,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Render",
+                "Build",
                 "--buildOnly",
-                "texts"
+                "tags",
+                "--quickBuild"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
