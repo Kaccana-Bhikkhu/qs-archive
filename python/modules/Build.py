@@ -2268,14 +2268,16 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
                     a(eventInfo["description"])
             
             if eventInfo["website"]:
-                with a.a(href = eventInfo["website"],target="_blank"):
-                    a("External website")
+                a("Original recordings available on")
+                with a.a(href = eventInfo["website"],target="_blank",Class="external-link"):
+                    a(urllib.parse.urlsplit(eventInfo["website"]).netloc)
                 a.br()
                 
             tocHtml = TableOfContents(sessions)
             shortToc = not tocHtml or tocHtml.startswith("Sessions: ")
             if tocHtml and shortToc:
                 a(tocHtml)
+                a.br()
         
         if not shortToc:
             a(tocHtml)
