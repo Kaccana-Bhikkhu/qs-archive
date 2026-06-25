@@ -356,6 +356,7 @@ img.portrait {
 	display: block;
 	margin: 20px auto 0px auto;
 	width: 150px;
+	border-radius: 8px;
 }
 
 @media (min-width: 601px) {
@@ -363,6 +364,29 @@ img.portrait {
         grid-template-columns: 1fr 170px;
     }
 	img.portrait {
+		margin-left: auto;
+		margin-top: 0px;
+	}
+}
+
+div.landscape-photo-split {
+	display: grid;
+    grid-template-columns: 1fr;
+}
+
+img.landscape {
+	display: block;
+	margin: 20px auto 0px auto;
+	width: 85%;
+	max-width: 350px;
+	border-radius: 8px;
+}
+
+@media (min-width: 861px) {
+    div.landscape-photo-split {
+        grid-template-columns: 1fr 370px;
+    }
+	img.landscape {
 		margin-left: auto;
 		margin-top: 0px;
 	}

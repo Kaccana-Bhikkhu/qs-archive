@@ -4,7 +4,7 @@
 Most of Ajahn Pasanno’s recorded teachings come from events which recur on a weekly, monthly, or yearly basis. Since the content and tone of Ajahn Pasanno’s teaching depends greatly on his audience, it is helpful to understand these recurring events in detail.
 
 -----
-[Thanksgiving Retreat 2010 at the Angela Center](photo:Thanksgiving Retreat 2010.jpg)
+[Thanksgiving Retreat 2010 at the Angela Center](photo:../events/TG2010.jpg)
 ## Thanksgiving Retreats (<a id="thanksgiving-retreats" href="../indexes/EventsBySeries.html#thanksgiving-retreats">List</a>)
 Ajahn Sumedho and later Ajahn Amaro began leading residential retreats in Northern California years before Abhayagiri Monastery was founded in 1996. Although the duration and venue of early retreats varied, by the early 1990s the event had crystallized into an annual 10-day retreat at the Angela Center in Santa Rosa spanning the weekends on either side of the November Thanksgiving holiday. The name “Thanksgiving Retreat” thus originated from the dates of the retreat, although themes of gratitude commonly arose in the teachings.
 
@@ -54,12 +54,12 @@ Upāsikā Day participants were typically core Abhayagiri lay supporters, many o
 Occasional Practice and Study Days replaced the Upāsikā Program from 2023 to 2025. The daylong format allows longer periods of meditation than afternoon-only Upāsikā Days.
 
 -----
-[Abhayagiri's 20th Anniversary in the unfinished Reception Hall](photo:05 Father Damien.jpg)
+[Abhayagiri's 20th Anniversary in the unfinished Reception Hall](photo:../events/Anniversary2016.jpg)
 ## Abhayagiri Anniversary Events (<a id="abhayagiri-anniversary-events" href="../indexes/EventsBySeries.html#abhayagiri-anniversary-events">List</a>)
 Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 1, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
 
 -----
-[Interreligious Retreat-Seminar on Dhamma and Non-duality, Rishikesh, India](photo:Rishikesh2023.jpg)
+[Interreligious Retreat-Seminar on Dhamma and Non-duality, Rishikesh, India](photo:../events/Rishikesh2023.jpg)
 ## Other Retreats (<a id="other-retreats" href="../indexes/EventsBySeries.html#other-retreats">List</a>)
 Multi-day retreats led by Ajahn Pasanno around the world.
 
@@ -68,6 +68,6 @@ Multi-day retreats led by Ajahn Pasanno around the world.
 Assorted question and answer sessions that are not part of a larger event. Their content and character vary depending on the participants and setting.
 
 -----
-[Ajahn Chah Conference 2001](photo:15 Full Stage.jpg)
+[Ajahn Chah Conference 2001](photo:../events/Chah2001.jpg)
 ## Other (<a id="other" href="../indexes/EventsBySeries.html#other">List</a>)
 Events that don’t fit into any of the above categories. It includes the wonderful and significant [2001 Ajahn Chah Conference](event:Chah2001) in Portola Valley, California.

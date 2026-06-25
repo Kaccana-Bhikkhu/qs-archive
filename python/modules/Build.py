@@ -2180,8 +2180,9 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
         yield page
 
 
-def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
-    """Add a table of contents to the event which is being built."""
+def TableOfContents(sessions: list[dict]) -> str:
+    """Return the table of contents to the event which is being built."""
+    a = Airium()
     tocPath = Utils.PosixJoin(gOptions.documentationDir,"tableOfContents",sessions[0]["event"] + ".md")
     if os.path.isfile(tocPath):
         template = pyratemp.Template(Utils.ReadFile(tocPath))
@@ -2205,9 +2206,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
             a("Table of Contents")
         with a.div(Class="listing javascript-hide",id="TOC.b"):
             a(html)
-        return
-
-    if len(sessions) > 1:
+    elif len(sessions) > 1:
         if all(s["sessionTitle"] for s in sessions):
             # If all sessions have a title, list sessions by title
             a.hr()
@@ -2228,6 +2227,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
                     squish(str(s['sessionNumber']))
             
             a(str(squish))
+    return str(a)
 
 
 def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
@@ -2241,37 +2241,44 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         featuredExcerpts = Filter.FTag(Filter.All)(excerpts)
         a = Airium()
         
-        with a.strong():
-            a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
-        a.br()
+        with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode + ".jpg"),"landscape"):
+            with a.strong():
+                a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
+            a.br()
 
-        a(EventSeriesAndDateStr(eventInfo))
-        a.br()
-        
-        venueInfo = EventVenueStr(eventInfo)
-        if venueInfo:
-            a(venueInfo)
+            a(EventSeriesAndDateStr(eventInfo))
             a.br()
-        
-        a(ExcerptDurationStr(excerpts))
-        a.br()
+            
+            venueInfo = EventVenueStr(eventInfo)
+            if venueInfo:
+                a(venueInfo)
+                a.br()
+            
+            a(ExcerptDurationStr(excerpts))
+            a.br()
 
-        if featuredExcerpts:
-            with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
-                a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
-            a(f"({len(featuredExcerpts)})")
-            a.br()
+            if featuredExcerpts:
+                with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
+                    a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
+                a(f"({len(featuredExcerpts)})")
+                a.br()
+            
+            if eventInfo["description"]:
+                with a.p(Class="smaller"):
+                    a(eventInfo["description"])
+            
+            if eventInfo["website"]:
+                with a.a(href = eventInfo["website"],target="_blank"):
+                    a("External website")
+                a.br()
+                
+            tocHtml = TableOfContents(sessions)
+            shortToc = not tocHtml or tocHtml.startswith("Sessions: ")
+            if tocHtml and shortToc:
+                a(tocHtml)
         
-        if eventInfo["description"]:
-            with a.p(Class="smaller"):
-                a(eventInfo["description"])
-        
-        if eventInfo["website"]:
-            with a.a(href = eventInfo["website"],target="_blank"):
-                a("External website")
-            a.br()
-        
-        AddTableOfContents(sessions,a)
+        if not shortToc:
+            a(tocHtml)
         
         a.hr()
         
