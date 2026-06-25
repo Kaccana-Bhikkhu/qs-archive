@@ -629,7 +629,7 @@ def SecondColumnPhoto(a: Airium,photoPath: str):
         with a.div(Class="portrait-photo-split"):
             with a.div():
                 yield None
-        a.img(Class="portrait",src=Utils.PosixJoin("../images",photoPath))
+            a.img(Class="portrait",src=Utils.PosixJoin("../images",photoPath))
     else:
         yield None
 

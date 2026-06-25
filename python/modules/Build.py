@@ -1930,35 +1930,35 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
 
         a = Airium()
         
-        with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
-            with a.strong():
-                a(TagBreadCrumbs(tagInfo))
-                for subtopic in gDatabase["tag"][tag].get("partOfSubtopics",()):
-                    if len(gDatabase["subtopic"][subtopic]["subtags"]) > 0:
-                        a(f"Part of tag cluster {HtmlSubtopicLink(subtopic)} in key topic {HtmlKeyTopicLink(gDatabase['subtopic'][subtopic]['topicCode'])}")
-                    else:
-                        a(f"Part of key topic {HtmlKeyTopicLink(gDatabase['subtopic'][subtopic]['topicCode'])}")
-                    a.br()
-                if tag in subsumesTags:
-                    a(TitledList("Subsumes",[SubsumedTagDescription(t) for t in subsumesTags[tag]],plural=""))
-                a(TitledList("Alternative translations",tagInfo['alternateTranslations'],plural = ""))
-                if ProperNounTag(tagInfo):
-                    a(TitledList("Other names",[RemoveLanguageTag(name) for name in tagInfo['glosses']],plural = ""))
+        
+        with a.strong():
+            a(TagBreadCrumbs(tagInfo))
+            for subtopic in gDatabase["tag"][tag].get("partOfSubtopics",()):
+                if len(gDatabase["subtopic"][subtopic]["subtags"]) > 0:
+                    a(f"Part of tag cluster {HtmlSubtopicLink(subtopic)} in key topic {HtmlKeyTopicLink(gDatabase['subtopic'][subtopic]['topicCode'])}")
                 else:
-                    a(TitledList("Glosses",tagInfo['glosses'],plural = ""))
-                mainParent = Database.ParentTagListEntry(tagInfo["listIndex"])
-                mainParent = mainParent and (mainParent["tag"] or mainParent["virtualTag"]) # Prevent error if mainParent == None
-                a(ListLinkedTags("Also a subtag of",
-                                (t for t in tagInfo['supertags'] if Database.TagLookup(t) != mainParent),
-                                plural="",lastJoinStr=" and ",titleEnd=" "))
-                subsumedTags = [t["tag"] for t in subsumesTags.get(tag,())]
-                a(ListLinkedTags("Subtag",[t for t in tagInfo['subtags'] if t not in subsumedTags]))
-                a(ListLinkedTags("See also",tagInfo['related'],plural = ""))
-                a(ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False))
-            
-            if "note" in tagInfo:
-                with a.p():
-                    a(tagInfo["note"])
+                    a(f"Part of key topic {HtmlKeyTopicLink(gDatabase['subtopic'][subtopic]['topicCode'])}")
+                a.br()
+            if tag in subsumesTags:
+                a(TitledList("Subsumes",[SubsumedTagDescription(t) for t in subsumesTags[tag]],plural=""))
+            a(TitledList("Alternative translations",tagInfo['alternateTranslations'],plural = ""))
+            if ProperNounTag(tagInfo):
+                a(TitledList("Other names",[RemoveLanguageTag(name) for name in tagInfo['glosses']],plural = ""))
+            else:
+                a(TitledList("Glosses",tagInfo['glosses'],plural = ""))
+            mainParent = Database.ParentTagListEntry(tagInfo["listIndex"])
+            mainParent = mainParent and (mainParent["tag"] or mainParent["virtualTag"]) # Prevent error if mainParent == None
+            a(ListLinkedTags("Also a subtag of",
+                            (t for t in tagInfo['supertags'] if Database.TagLookup(t) != mainParent),
+                            plural="",lastJoinStr=" and ",titleEnd=" "))
+            subsumedTags = [t["tag"] for t in subsumesTags.get(tag,())]
+            a(ListLinkedTags("Subtag",[t for t in tagInfo['subtags'] if t not in subsumedTags]))
+            a(ListLinkedTags("See also",tagInfo['related'],plural = ""))
+            a(ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False))
+        
+        if "note" in tagInfo:
+            with a.p():
+                a(tagInfo["note"])
         
         # Truncate lines in the header, then add the rest of the page
         header = str(a)
@@ -1966,7 +1966,8 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         header = Html.TruncateHtmlText(str(a),alwaysShow = 2 if headerChars < 120 else 1,
                                        morePrompt="details",hideWidth=1)
         a = Airium()
-        a(header)
+        with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
+            a(header)
         a.hr()
         
         tagWithoutHtml = Utils.RemoveHtmlTags(tagInfo["fullTag"])
@@ -1999,8 +2000,9 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
     
         a = Airium()
         
-        excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
-        a(excerptInfo)
+        with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]) + ".jpg")):
+            excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
+            a(excerptInfo)
         a.hr()
 
         formatter = Formatter()

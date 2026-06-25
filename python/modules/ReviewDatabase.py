@@ -464,6 +464,16 @@ def CheckReferences():
         if dateless:
             Alert.caution("The following books by",author,"need dates for proper sorting:",dateless)
 
+def CheckImages():
+    """Check if all images in images/tags and images/events are properly named."""
+
+    slugifiedNames = {Utils.slugify(t["fullTag"]) for t in gDatabase["tag"].values()}
+    slugifiedNames.update(Utils.slugify(t["fullName"]) for t in gDatabase["teacher"].values())
+    tagImageDir = Utils.PosixJoin(gOptions.pagesDir,"images","tags")
+    for filename in sorted(os.listdir(tagImageDir)):
+        if os.path.splitext(filename)[0] not in slugifiedNames:
+            Alert.caution(Utils.PosixJoin(tagImageDir,filename),"does not match any tags or teachers.")
+
 def PrintTagBits():
     """Print the set of words which appear in the tags."""
     words = set()
@@ -518,6 +528,7 @@ def main() -> None:
     LogReviewedFTags()
     NeedsAudioEditing()
     CheckReferences()
+    CheckImages()
 
     if gOptions.debug:
         PrintTagBits()
