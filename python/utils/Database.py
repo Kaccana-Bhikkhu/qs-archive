@@ -247,6 +247,11 @@ def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
     return teacherDictCache.get(teacherRef) or teacherDictCache.get(teacherRef.lower()) or None
 
 
+def TeacherConsent(teacherRef: str,policy: str) -> bool:
+    """Call ParseCSV.TeacherConsent for a single teacher and policy."""
+    teacher = TeacherLookup(teacherRef)
+    return ParseCSV.TeacherConsent(gDatabase["teacher"],[teacher],policy)
+
 @lru_cache(maxsize=None)
 def ExcerptDict() -> dict[str,dict[int,dict[int,dict[str]]]]:
     """Return a dictionary of excerpts that can be referenced as:

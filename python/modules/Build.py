@@ -1929,8 +1929,6 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         relevantExcerpts = Filter.Tag(tag)(gDatabase["excerpts"])
 
         a = Airium()
-        
-        
         with a.strong():
             a(TagBreadCrumbs(tagInfo))
             for subtopic in gDatabase["tag"][tag].get("partOfSubtopics",()):
@@ -1966,7 +1964,11 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         header = Html.TruncateHtmlText(str(a),alwaysShow = 2 if headerChars < 120 else 1,
                                        morePrompt="details",hideWidth=1)
         a = Airium()
-        with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
+        tagIsTeacher = Database.TeacherLookup(tag)
+        if not tagIsTeacher or Database.TeacherConsent(tag,"photo"):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
+                a(header)
+        else:
             a(header)
         a.hr()
         
@@ -1999,9 +2001,11 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
         relevantExcerpts = Filter.Teacher(t)(xDB)
     
         a = Airium()
-        
-        with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]) + ".jpg")):
-            excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
+        excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
+        if Database.TeacherConsent(t,"photo"):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]) + ".jpg")):
+                a(excerptInfo)
+        else:
             a(excerptInfo)
         a.hr()
 
