@@ -355,13 +355,13 @@ div.portrait-photo-split {
 img.portrait {
 	display: block;
 	margin: 20px auto 0px auto;
-	width: 150px;
+	width: 100px;
 	border-radius: 8px;
 }
 
 @media (min-width: 601px) {
     div.portrait-photo-split {
-        grid-template-columns: 1fr 170px;
+        grid-template-columns: 1fr 120px;
     }
 	img.portrait {
 		margin-left: auto;
@@ -390,6 +390,10 @@ img.landscape {
 		margin-left: auto;
 		margin-top: 0px;
 	}
+}
+
+img.square-corners {
+	border-radius: 0px;
 }
 
 .track-title {

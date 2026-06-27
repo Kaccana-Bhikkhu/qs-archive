@@ -236,7 +236,7 @@ class TextReference(NamedTuple):
         return f"https://sutta.readingfaithfully.org/?q={query}"
 
     def LinkIcons(self) -> list[str]:
-        """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
+        """Returns a list of html icons linking to this text."""
         returnValue = []
         translator = ""
         if self.text in TextGroupSet("namedVaggas") and not self.n1:
@@ -262,7 +262,7 @@ class TextReference(NamedTuple):
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
     
-    def BreadCrumbs(self,minLevel:int = 0) -> str:
+    def FullPageHeader(self,minLevel:int = 0,referenceCount:int = 0) -> str:
         """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages.
         level specifies the text level; SN 2.4 is level 3"""
 
@@ -276,7 +276,9 @@ class TextReference(NamedTuple):
         for minLevel in range(len(numbers) + 1):
             bits[minLevel] = Html.Tag("a",{"href":f"../{pageInfo[minLevel].file}"})(bits[minLevel])
         
-        return " / ".join(bits)
+        header = " / ".join(bits)
+        if referenceCount:
+            header += f" ({referenceCount})"
     
     def Citation(self) -> str:
         """Returns the citation information string for this page."""
@@ -441,7 +443,7 @@ class BookReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return self.abbreviation or self.author
 
-    def BreadCrumbs(self,minLevel:int = 0) -> str:
+    def FullPageHeader(self,minLevel:int = 0,referenceCount: int = 0) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
         firstAuthor = self.FirstAuthor()
         bits = []
@@ -456,8 +458,17 @@ class BookReference(NamedTuple):
             pageInfo = ReferencePageInfo(firstAuthor,level)
             bits.append(pageInfo.title)
         
-        returnValue = " / ".join(bits)
-        return returnValue
+        header = " / ".join(bits)
+        header = re.sub(r" \([0-9]+\)","",header) # Remove any trailing parenthetical date
+        if referenceCount:
+            header += f" ({referenceCount})"
+        if self.abbreviation:
+            header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("books",self.abbreviation + ".jpg"),imgClass="square-corners")
+        elif self.author:
+            if Database.TeacherConsent(self.author,"photo"):
+                fullName = gDatabase["teacher"][self.author]["fullName"]
+                header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("tags",Utils.slugify(fullName) + ".jpg"))
+        return header
     
     def Citation(self) -> str:
         """Returns the citation information string for this page."""
@@ -626,10 +637,9 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            header = reference.BreadCrumbs(level)
+            return reference.FullPageHeader(level,TotalItems(self.references)) + "\n<hr>"
         else:
-            header = self.page.info.title
-        return header + f" ({TotalItems(self.references)})\n<hr>"
+            return self.page.info.title + f" ({TotalItems(self.references)})\n<hr>"
     
     def FooterHtml(self) -> str:
         """Returns html that goes a the bottom of the page in whole page mode."""
