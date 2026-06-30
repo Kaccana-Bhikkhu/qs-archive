@@ -463,7 +463,7 @@ class BookReference(NamedTuple):
         if referenceCount:
             header += f" ({referenceCount})"
         if self.abbreviation:
-            header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("books",self.abbreviation + ".jpg"),imgClass="square-corners")
+            header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("books",Utils.slugify(self.abbreviation) + ".jpg"),imgClass="square-corners")
         elif self.author:
             if Database.TeacherConsent(self.author,"photo"):
                 fullName = gDatabase["teacher"][self.author]["fullName"]
