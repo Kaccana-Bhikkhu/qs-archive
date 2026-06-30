@@ -124,7 +124,7 @@ def IncludePending(s:str):
     return s.startswith("Yes") or s.startswith("Pending")
 
 
-def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None,convertBools = True,camelCase = True):
+def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None,convertBools = True,camelCase = True,warnFirstBlank = True):
     for _ in range(skipLines):
         file.readline()
     
@@ -135,7 +135,7 @@ def CSVToDictList(file: TextIO,skipLines = 0,removeKeys = [],endOfSection = None
         if firstDictValue == endOfSection:
             break
         elif not BlankDict(row):
-            if not firstDictValue:
+            if not firstDictValue and warnFirstBlank:
                 Alert.warning("blank first field in",row)
         
             # Increase robustness by stripping values and keys
@@ -1664,6 +1664,33 @@ def CountAndVerify(database):
             Alert.notice(f"None of {tagDesc['copies']} instances of tag {tagDesc['tag']} are designated as primary.")
 
 
+def BookSectionDict(sectionList: list[dict[str,str]]) -> dict[str,dict[str,str]]:
+    """Take the information from the BookSection csv file and convert it to a dict of the form:
+    sectionName = sectionDict[bookAbbreviation][pageNumber]."""
+
+    currentBook = ""
+    sectionDict = {}
+    prevPage = -1
+    for entry in sectionList:
+        if entry["book"] and entry["book"] != currentBook:
+            currentBook = entry["book"].lower()
+            sectionDict[currentBook] = {}
+            prevPage = -1
+        if not currentBook or not entry["page"]:
+            continue
+        try:
+            page = int(entry["page"])
+        except ValueError:
+            Alert.error("Invalid page number",entry["page"],"when parsing the sections of",currentBook)
+            continue
+        if page <= prevPage:
+            Alert.warning("Out of sequence page number",page,"when parsing the sections of",currentBook)
+            continue
+        sectionDict[currentBook][page] = entry["sectionName"]
+    
+    return sectionDict
+
+
 def AddArguments(parser):
     "Add command-line arguments used by this module"
     
@@ -1705,7 +1732,7 @@ def main():
     global gDatabase
     LoadSummary(gDatabase,os.path.join(gOptions.csvDir,"Summary.csv"))
    
-    specialFiles = {'Summary','Tag','EventTemplate'}
+    specialFiles = {'Summary','Tag','BookSections'}
     for fileName in sorted(os.listdir(gOptions.csvDir)):
         fullPath = os.path.join(gOptions.csvDir,fileName)
         if not os.path.isfile(fullPath):
@@ -1731,6 +1758,7 @@ def main():
     
     LoadTagsFile(gDatabase,os.path.join(gOptions.csvDir,"Tag.csv"))
     PrepareReferences(gDatabase["reference"])
+    gDatabase["bookSection"] = BookSectionDict(CSVFileToDictList(Utils.PosixJoin(gOptions.csvDir,"BookSections.csv"),warnFirstBlank = False))
 
     if gOptions.explainExcludes:
         excludeAlert.printAtVerbosity = -999

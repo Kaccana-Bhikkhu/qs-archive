@@ -28,6 +28,10 @@ def LoadDatabase(filename: str) -> dict:
         if "clips" in x:
             x["clips"] = [SplitMp3.Clip(*c) for c in x["clips"]]
     
+    for sectionDB in (newDB["bookSection"],):
+        for book in sectionDB:
+            sectionDB[book] = {int(pageStr):sectionStr for pageStr,sectionStr in sectionDB[book].items()}
+
     return newDB
 
 def RemoveFragments(excerpts: Iterable[dict[str]]) -> Iterable[dict[str]]:

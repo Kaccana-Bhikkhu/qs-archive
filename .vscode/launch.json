@@ -183,7 +183,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "tags",
+                "books",
                 "--quickBuild"
             ],
             "console": "integratedTerminal",

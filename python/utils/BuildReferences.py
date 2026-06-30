@@ -9,6 +9,7 @@ from itertools import chain, groupby
 from airium import Airium
 from enum import Enum
 import re, json
+import bisect, itertools
 import Html2 as Html
 import Suttaplex
 import Utils
@@ -713,6 +714,14 @@ def BoldfaceTextReferences(html: str,text: TextReference) -> str:
 class ExcerptListPage(ReferencePageMaker):
     """Generate a page containing the list of specified excerpts."""
 
+    def RegisterReference(self) -> None:
+        """Register this list in the reference database."""
+
+        truncated = self.references[0].reference.Truncate(self.level)
+        # Don't register references of the form Snp 4.0; the link should go to Snp 4
+        if self.level < 1 or truncated[self.level - 1] != 0:
+            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
+
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         a = Airium()
         formatter = Build.Formatter()
@@ -731,15 +740,71 @@ class ExcerptListPage(ReferencePageMaker):
                 firstLoop = False
                 a(formatter.HtmlExcerptList(excerpts))
 
+        self.RegisterReference()
         truncated = self.references[0].reference.Truncate(self.level)
-        # Don't register references of the form Snp 4.0; the link should go to Snp 4
-        if self.level < 1 or truncated[self.level - 1] != 0:
-            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
-
         html = BoldfaceTextReferences(str(a),truncated)
         self.page.AppendContent(html)
         yield from super().RenderAndYieldSubpages()
 
+
+class ExcerptsGroupedBySection(ExcerptListPage):
+    """Generate a page containing a list of excerpts grouped by section.
+    self.references must all come from the same book or sutta.
+    self.sectionHeadings 
+    """
+    sectionHeading: dict[int,str] # sectionHeadings[page] = pageHeadingStr
+
+    def __init__(self, level:int, references: list[LinkedReference],sectionHeading: dict[int,str]):
+        super().__init__(level, references)
+        self.sectionHeading = sectionHeading
+    
+    def RenderAndYieldSubpages(self):
+        sectionStartPages = list(self.sectionHeading)
+        def SectionStartPage(ref: LinkedReference) -> int:
+            "Given a reference, return the first page of the section it is in."
+            pageOrVerse = ref.reference[self.level]
+            pageIndex = bisect.bisect_right(sectionStartPages,pageOrVerse) - 1
+            return sectionStartPages[pageIndex] if pageIndex >= 0 else 0
+        
+        groupedReferences:dict[int,list[LinkedReference]] = {}
+        for page,refs in itertools.groupby(self.references,key = SectionStartPage):
+            refList = []
+            for ref in refs:
+                refList.extend(ref.items)
+            if refList:
+                groupedReferences[page] = refList
+
+        a = Airium()
+
+        for page in groupedReferences:
+            with a.a(href=f"#{Utils.slugify(self.sectionHeading[page])}"):
+                a(f"{self.sectionHeading[page]}")
+            a(4*"&nbsp;")
+
+        formatter = Build.Formatter()
+        formatter.SetHeaderlessFormat()
+        firstLoop = True
+        for page,items in groupedReferences.items():
+            with a.div(Class="title",id = Utils.slugify(self.sectionHeading[page])):
+                a(f"Page {page}: {self.sectionHeading[page]}")
+
+            events,excerpts = Utils.Partition(items,lambda item: "endDate" in item)
+            for event in events:
+                if not firstLoop:
+                    a.hr()
+                firstLoop = False
+                a(Build.EventDescription(event,showMonth=True,excerptCount=False).replace("<p>","<p><b>Event</b>: "))
+            if excerpts:
+                if not firstLoop:
+                    a.hr()
+                firstLoop = False
+                a(formatter.HtmlExcerptList(excerpts))
+
+        self.RegisterReference()
+        truncated = self.references[0].reference.Truncate(self.level)
+        html = BoldfaceTextReferences(str(a),truncated)
+        self.page.AppendContent(html)
+        yield from ReferencePageMaker.RenderAndYieldSubpages(self)
 
 HeadingGroupCode = Hashable
 """A code to group references together by; can be any hashable type."""
@@ -1016,7 +1081,11 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         pageMaker.innerReferenceLinks = True
         return pageMaker
     elif pageType == PageType.EXCERPTS_ONLY:
-        return ExcerptListPage(level,references)
+        sectionHeading = gDatabase["bookSection"].get(firstReference.abbreviation) if isinstance(firstReference,BookReference) else None
+        if sectionHeading:
+            return ExcerptsGroupedBySection(level,references,sectionHeading)
+        else:
+            return ExcerptListPage(level,references)
     Alert.error("Unknown page type",pageType)
 
 def FirstLevelMenu(references: list[LinkedReference]) -> Html.PageDescriptorMenuItem:
