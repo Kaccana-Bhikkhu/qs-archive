@@ -775,18 +775,28 @@ class ExcerptsGroupedBySection(ExcerptListPage):
                 groupedReferences[page] = refList
 
         a = Airium()
-
-        for page in groupedReferences:
-            with a.a(href=f"#{Utils.slugify(self.sectionHeading[page])}"):
-                a(f"{self.sectionHeading[page]}")
-            a(4*"&nbsp;")
+        with a.h2():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
+            a("Table of Contents")
+        with a.div(Class="toc-list javascript-hide",id="TOC.b"):
+            for page in groupedReferences:
+                if page:
+                    with a.p(Class="indent-1").a(href=f"#{Utils.slugify(self.sectionHeading[page])}"):
+                        with a.span(Class="toc-section"):
+                            a(f"{self.sectionHeading[page]}")
+                            with a.span(**{"Class":"leaders","aria-hidden":"true"}):
+                                pass
+                        with a.span(Class="toc.page"):
+                            a(page)
+        a.hr()
 
         formatter = Build.Formatter()
         formatter.SetHeaderlessFormat()
         firstLoop = True
         for page,items in groupedReferences.items():
-            with a.div(Class="title",id = Utils.slugify(self.sectionHeading[page])):
-                a(f"Page {page}: {self.sectionHeading[page]}")
+            if page:
+                with a.div(Class="title",id = Utils.slugify(self.sectionHeading[page])):
+                    a(f"Page {page}: {self.sectionHeading[page]}")
 
             events,excerpts = Utils.Partition(items,lambda item: "endDate" in item)
             for event in events:

@@ -289,6 +289,40 @@ div.listing img.small-icon {
 	vertical-align: baseline;
 }
 
+div.toc-list p {
+	padding: 8px;
+}
+
+div.toc-list p > a {
+	text-decoration: none;
+ 	display: grid;
+  	grid-template-columns: auto max-content;
+  	align-items: end;
+}
+
+div.toc-list p > a .page {
+	text-align: right;
+}
+
+div.toc-list p > a > .toc-section {
+  	position: relative;
+  	overflow: hidden;
+	margin-right: 5px;
+}
+
+div.toc-list p > a .leaders::after {
+  	position: absolute;
+  	padding-left: .25ch;
+  	content: " . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . ";
+  	text-align: right;
+}
+
 img.small-icon, svg.small-icon {
 	width: 16px;
 	height: 16px;

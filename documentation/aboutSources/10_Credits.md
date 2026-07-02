@@ -20,6 +20,7 @@ The Archive relies upon many common open-source and freeware tools. In addition 
 - [Sutta Central](https://suttacentral.net/): Free, well-organized translations of most of the Pāli Canon
 - [Sutta Central Express](https://suttacentral.express/): A faster version of Sutta Central
 - [Reading Faithfully](https://sutta.readingfaithfully.org/): Easy links to free sutta translations
+- [CSS-Tricks](https://css-tricks.com/a-perfect-table-of-contents-with-html-css/): CSS code for good-looking table of contents
 
 ## Texts
 
