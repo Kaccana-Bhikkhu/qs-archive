@@ -192,7 +192,16 @@ class TextReference(NamedTuple):
     def IsSubreference(self) -> bool:
         """Return true if the reference specifies a subsection within a sutta."""
         return self[self.TextLevel() + 1] != 0
-        
+    
+    def HasTableOfContents(self) -> bool:
+        """Return true gDatabase has a TOC for this text."""
+        return False
+
+    def SectionStartPage(self) -> int|None:
+        """Return the first page/verse of the section this reference is in.
+        Return None if there is no table of contents."""
+        return None
+
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}".strip()
     
@@ -280,6 +289,7 @@ class TextReference(NamedTuple):
         header = " / ".join(bits)
         if referenceCount:
             header += f" ({referenceCount})"
+        return header
     
     def Citation(self) -> str:
         """Returns the citation information string for this page."""
@@ -400,6 +410,24 @@ class BookReference(NamedTuple):
     def IsSubreference(self) -> bool:
         """Return true if the reference specifies a page number."""
         return self.page != 0
+    
+    def HasTableOfContents(self) -> bool:
+        """Return true if this book has a table of contents in gDatabase."""
+        return self.abbreviation in gDatabase["bookSection"]
+
+    def SectionStartPage(self) -> int|None:
+        """Return the first page/verse of the section this reference is in.
+        Return None if there is no table of contents."""
+
+        if not self.abbreviation or self.abbreviation not in gDatabase["bookSection"]:
+            return None
+        if self.page <= 0:
+            return 0
+        tableOfContents = gDatabase["bookSection"][self.abbreviation]
+        for testPage in reversed(range(self.page + 1)):
+            if testPage in tableOfContents:
+                return testPage
+        return 0
 
     def __str__(self) -> str:
         bits = [self.author]
@@ -564,11 +592,16 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
                     referenceDict[authorRef].append(event)
     
     for excerpt in gDatabase["excerpts"]:
-        references = [referenceClass.FromString(ref) for ref in excerpt.get(referenceKind,())]
+        deduplicated = set(excerpt.get(referenceKind,()))
+        references = [referenceClass.FromString(ref) for ref in deduplicated]
         if not references:
             continue
         references.sort(key=referenceClass.SortKey)
-        for group in GroupByBook(references): # Only one excerpt per book
+        for group in GroupByBook(references):
+            if group[0].HasTableOfContents():
+                # Excerpts can be listed more than once in references with TOCs
+                pass # Need to implement this functionality
+            # Otherwise list the excerpt by the lowest page nuber (if any)
             if len(group) > 1 and not group[0].IsSubreference():
                 mainRef = group[1]
             else:
@@ -759,15 +792,8 @@ class ExcerptsGroupedBySection(ExcerptListPage):
         self.sectionHeading = sectionHeading
     
     def RenderAndYieldSubpages(self):
-        sectionStartPages = list(self.sectionHeading)
-        def SectionStartPage(ref: LinkedReference) -> int:
-            "Given a reference, return the first page of the section it is in."
-            pageOrVerse = ref.reference[self.level]
-            pageIndex = bisect.bisect_right(sectionStartPages,pageOrVerse) - 1
-            return sectionStartPages[pageIndex] if pageIndex >= 0 else 0
-        
         groupedReferences:dict[int,list[LinkedReference]] = {}
-        for page,refs in itertools.groupby(self.references,key = SectionStartPage):
+        for page,refs in itertools.groupby(self.references,key = lambda r:r.reference.SectionStartPage()):
             refList = []
             for ref in refs:
                 refList.extend(ref.items)
