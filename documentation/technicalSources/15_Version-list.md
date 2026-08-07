@@ -124,4 +124,4 @@
 
  - 6.6: (May 2026 release) 2010, 2011, and 2012 Winter Retreats. Homepage-only (99H) featured excerpts. Generalized indirect speech, e.g.  "Teaching from" kind. Main fragment sub-annotations specify audio edits. Multiple hyphens indicate n-dash and m-dash.
 
- - 6.7: (June 2026 release) New events: Upākikā Day: Ten Perceptions, Recollectings of Ajahn Chah: 100th Birthday Celebration, Being Dhamma (with Tigers, Samadhi, Memory & Renunciation Q&A. Winter Retreat 2025 through session 54. [Table of all Upāsikā Days](about:UpasikaDays). Display lunar holidays. Link.py compares sizes of local and remote files.
+ - 6.7: (June 2026 release) New events: Upākikā Day: Ten Perceptions, Recollectings of Ajahn Chah: 100th Birthday Celebration, Being Dhamma (with Tigers), Samadhi, Memory & Renunciation Q&A. Winter Retreat 2025 through session 54. [Table of all Upāsikā Days](about:UpasikaDays). Display lunar holidays. Link.py compares sizes of local and remote files.
