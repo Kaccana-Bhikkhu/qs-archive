@@ -8,76 +8,76 @@
     "_modified": "2026-06-21 14:42:22.000000"
   },
   "indexes/KeyTopicDetail.html": {
-    "md5": "b2f39883a8a25bfe07acb7a65b4335c2",
-    "_modified": "2026-06-21 14:42:22.000000"
+    "md5": "11b0076f431d6d995d878a151b0cca4a",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "9476e4cf5e066817a08d7df7d25becb2",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "f08fb0854c913f0dd2dd70e728fb2f0a",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "a243b5b184e85674186ac7be79e3ac8b",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "c7a6d63d531342d8d28912c7c42fc47f",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "indexes/Tags_print.html": {
-    "md5": "9b25848295f099653cc42f5f7b5904b0",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "4c8f4a2a28d19603d76e89c7f2bde7ab",
+    "_modified": "2026-08-08 10:26:28.000000"
   },
   "drilldown/root.html": {
-    "md5": "17f772063bea05e891c4fafb5be2e37e",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "a1e93737afb3d748b486a2a6b9cdc63e",
+    "_modified": "2026-08-08 10:26:28.000000"
   },
   "indexes/NumericalTags.html": {
-    "md5": "5af62410ff2da45c210acfc99eee2726",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "a996d158e0b03704e2683a381bfcb9d6",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "indexes/SortedTags.html": {
-    "md5": "9cfdacea4c46fe4dfd31011c67abc95f",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "5fb556688784e53d7d96b3222dc336f9",
+    "_modified": "2026-08-08 10:26:28.000000"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "2ca87c7a57d75ba67c8e428882427497",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "d5947383d38ae09c7ca74573bf56719d",
+    "_modified": "2026-08-08 10:26:28.000000"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "2669897b158d49d6ba6b8673dae7c542",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "74059e8671768bc5574ac1c1f8d8bcc9",
+    "_modified": "2026-08-08 10:26:28.000000"
   },
   "indexes/AlphabeticalTags.html": {
-    "md5": "1cbe21ea0fbb4d27dbefd503c2a4bda8",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "bdbcc24f55ed7b6ae53f8936758c4aaf",
+    "_modified": "2026-08-08 10:26:30.000000"
   },
   "indexes/EnglishTags.html": {
-    "md5": "d9604fd93cb58a906155bd4c9c5b4a8e",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "3576bf73a9f108ca5f38cc98946d8908",
+    "_modified": "2026-08-08 10:26:30.000000"
   },
   "indexes/PaliTags.html": {
-    "md5": "e679b8bc6cffc9282c7d89a0667f1ea6",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "e2520ae573490c6e19b2e2086838e37c",
+    "_modified": "2026-08-08 10:26:30.000000"
   },
   "indexes/OtherTags.html": {
-    "md5": "32063643bfdaae5bd1332c3f0d17d768",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "a45c3ced955c0dae22dce11506cc8b88",
+    "_modified": "2026-08-08 10:26:30.000000"
   },
   "indexes/ProperTags.html": {
-    "md5": "df0853cce99433d0ffd615cba0726e12",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "89e34c574ec4c96c842581471f47e125",
+    "_modified": "2026-08-08 10:26:30.000000"
   },
   "indexes/EventsBySeries.html": {
-    "md5": "9effddf4cfdaa7be1e9926de3bc8223b",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "d879beb8abc0d10515e22b1eb26edfca",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "indexes/EventsBySubject.html": {
     "md5": "6e5369829847417935fc5d16bc5ef7d5",
     "_modified": "2026-08-07 13:30:04.000000"
   },
   "indexes/EventsChronological.html": {
-    "md5": "2db2a268dde708b56a35c7da86e20bdc",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "7d66f3906ea26ad55a64c8c564b5deeb",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "indexes/EventDetails.html": {
-    "md5": "bfe6a6c3807b370c4ca639f85a521754",
-    "_modified": "2026-08-07 14:01:40.000000"
+    "md5": "c195f775d8a822a7823f594a66a19456",
+    "_modified": "2026-08-07 15:07:00.000000"
   },
   "events/Chah2001.html": {
     "md5": "1186e82d3057015b4b693c824e4979ca",
@@ -324,8 +324,8 @@
     "_modified": "2026-06-25 16:04:56.000000"
   },
   "sitemap.xml": {
-    "md5": "81f31bbb73e7fc70ed6f5dc8c434663b",
-    "_modified": "2026-08-07 13:30:06.000000"
+    "md5": "89b4d44b6bc1947bf4e41bc746f81b2c",
+    "_modified": "2026-08-08 10:26:32.000000"
   },
   "index.html": {
     "md5": "ef3bbccfcfb568c7fccb83ed605d79b4",
@@ -16168,8 +16168,8 @@
     "_modified": "2026-06-24 14:58:12.000000"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "34d9dfc8794a60a620ec644637c99b49",
-    "_modified": "2026-08-07 13:30:04.000000"
+    "md5": "5ceb2fed275f6ff6877732532bf1667e",
+    "_modified": "2026-08-08 10:26:28.000000"
   },
   "tags/relics-relevant.html": {
     "md5": "ba110a6923a2df3fccc963ed093ba3de",
@@ -20222,5 +20222,9 @@
   "texts/SN22_122.html": {
     "md5": "525f77f7d713185388393de68c807f81",
     "_modified": "2026-07-05 10:16:50.000000"
+  },
+  "events/TG2004.html": {
+    "md5": "ce76505b3cce4504c429b11212f1c1b9",
+    "_modified": "2026-08-08 10:26:30.000000"
   }
 }
