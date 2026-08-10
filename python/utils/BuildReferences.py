@@ -591,26 +591,34 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
                 for authorRef in group[0].MultipleAuthors():
                     referenceDict[authorRef].append(event)
     
+    def AppendMultipleBookAuthors(reference: Reference,excerpt: dict) -> None:
+        """Add reference multiple times if it's a book with multiple authors."""
+        if isinstance(reference,TextReference):
+            referenceDict[reference].append(excerpt)
+        else:
+            for authorRef in reference.MultipleAuthors():
+                referenceDict[authorRef].append(excerpt)
+
     for excerpt in gDatabase["excerpts"]:
         deduplicated = set(excerpt.get(referenceKind,()))
-        references = [referenceClass.FromString(ref) for ref in deduplicated]
+        references:list[Reference] = [referenceClass.FromString(ref) for ref in deduplicated]
         if not references:
             continue
         references.sort(key=referenceClass.SortKey)
         for group in GroupByBook(references):
+            if len(group) > 1 and not group[0].IsSubreference():
+                del group[0] # Don't list a reference to the whole if the excerpt also specifies a page/verse number
             if group[0].HasTableOfContents():
                 # Excerpts can be listed more than once in references with TOCs
-                pass # Need to implement this functionality
-            # Otherwise list the excerpt by the lowest page nuber (if any)
-            if len(group) > 1 and not group[0].IsSubreference():
-                mainRef = group[1]
-            else:
-                mainRef = group[0]
-            if isinstance(mainRef,TextReference):
-                referenceDict[mainRef].append(excerpt)
-            else:
-                for authorRef in mainRef.MultipleAuthors():
-                    referenceDict[authorRef].append(excerpt)
+                startPages = [ref.SectionStartPage() for ref in group]
+                lastStartPage = None
+                for startPage,reference in zip(startPages,group):
+                    if startPage != lastStartPage:
+                        AppendMultipleBookAuthors(reference,excerpt)
+                        startPage = lastStartPage
+            else: # Otherwise list the excerpt by the lowest page nuber (if any)
+                AppendMultipleBookAuthors(group[0],excerpt)
+                
 
     collated:list[LinkedReference] = []
     for ref,items in referenceDict.items():
@@ -826,15 +834,12 @@ class ExcerptsGroupedBySection(ExcerptListPage):
 
             events,excerpts = Utils.Partition(items,lambda item: "endDate" in item)
             for event in events:
-                if not firstLoop:
-                    a.hr()
-                firstLoop = False
                 a(Build.EventDescription(event,showMonth=True,excerptCount=False).replace("<p>","<p><b>Event</b>: "))
+                a.hr()
             if excerpts:
-                if not firstLoop:
-                    a.hr()
-                firstLoop = False
                 a(formatter.HtmlExcerptList(excerpts))
+                if page != next(reversed(groupedReferences)): # Don't add <hr> at the end of the page
+                    a.hr()
 
         self.RegisterReference()
         truncated = self.references[0].reference.Truncate(self.level)
