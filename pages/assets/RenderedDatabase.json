@@ -3251,7 +3251,13 @@
       "teachers": [
         "PBreiter"
       ],
-      "fTags": [],
+      "fTags": [
+        "Self-reliance"
+      ],
+      "fTagOrder": [
+        80
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Self-reliance",
@@ -19679,7 +19685,13 @@
       "teachers": [
         "AChah"
       ],
-      "fTags": [],
+      "fTags": [
+        "Conditionality"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Read by",
@@ -19690,6 +19702,14 @@
           ],
           "indentLevel": 1,
           "body": ""
+        },
+        {
+          "kind": "Reference",
+          "flags": "",
+          "text": "_Collected Teachings of [Ajahn Chah](../teachers/ajahn-chah.html)_ p. 470 \"Unshakeable Peace\"",
+          "tags": [],
+          "indentLevel": 1,
+          "body": "<b>Reference:</b> <em>Collected Teachings of <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a></em>, <a href=\"https://www.abhayagiri.org/media/books/Chah_The_Collected_Teachings_of_Ajahn_Chah.pdf#page=508\" target=\"_blank\" data-alt-href=\"../books/collected-teachings.html\">p. 470</a> &ldquo;Unshakeable Peace&rdquo;"
         }
       ],
       "tags": [
@@ -19713,6 +19733,9 @@
       "attribution2": "Read by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "teachers2": [
         "AP"
+      ],
+      "books": [
+        "Collected Teachings|470"
       ]
     },
     {
@@ -45727,7 +45750,7 @@
       "fileNumber": 2,
       "kind": "Question",
       "flags": "",
-      "text": "Sometime ill-will is diffuse and all-encompassing. Attempting to do metta when the mind is experiencing this seems to aggravate rather than soothe.",
+      "text": "Sometimes ill-will is diffuse and all-encompassing. Attempting to do metta when the mind is experiencing this seems to aggravate rather than soothe.",
       "teachers": [
         "AP"
       ],
@@ -45777,7 +45800,7 @@
       ],
       "duration": "8:22",
       "mirror": "local",
-      "body": "“Sometime ill-will is diffuse and all-encompassing. Attempting to do metta when the mind is experiencing this seems to aggravate rather than soothe.” {attribution}",
+      "body": "“Sometimes ill-will is diffuse and all-encompassing. Attempting to do metta when the mind is experiencing this seems to aggravate rather than soothe.” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "texts": [
         "Snp 1.8"
@@ -67862,10 +67885,10 @@
         [
           "$",
           "34:41",
-          ""
+          "37:19"
         ]
       ],
-      "duration": "2:43",
+      "duration": "2:38",
       "mirror": "local",
       "body": "“Would it be possible to give a working definition of saṅkhāra? It seems that saṅkhāra is used by different people in different ways.” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
@@ -88784,7 +88807,7 @@
       "teachers": [
         "AP"
       ],
-      "text": "Can you define / explain saṅkhāras—mental formations? For example, what phenomena does it include? How can one evaluate what is or is not a saṅkhāra? How does it differ from the hindi / yogic samskara? Thank you.",
+      "text": "Can you define / explain saṅkhāras—mental formations? For example, what phenomena does it include? How can one evaluate what is or is not a saṅkhāra? How does it differ from the Hindu / yogic samskara? Thank you.",
       "fTags": [
         "Volitional formations"
       ],
@@ -88823,7 +88846,7 @@
       ],
       "duration": "4:38",
       "mirror": "local",
-      "body": "“Can you define / explain saṅkhāras—mental formations? For example, what phenomena does it include? How can one evaluate what is or is not a saṅkhāra? How does it differ from the hindi / yogic samskara? Thank you.” {attribution}",
+      "body": "“Can you define / explain saṅkhāras—mental formations? For example, what phenomena does it include? How can one evaluate what is or is not a saṅkhāra? How does it differ from the Hindu / yogic samskara? Thank you.” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "books": [
         "Chanting Book|13"
@@ -90663,7 +90686,7 @@
       "flags": "",
       "text": "In this passage where the Buddha lists illnesses and calamities (AN 10.60.8), he separates kamma out as a cause of those things. However the cause of being subject to these things is because of making good or bad kamma. Is kamma [in this list] a direct, proximate cause?",
       "teachers": [
-        "AKd"
+        "AP"
       ],
       "fTags": [],
       "annotations": [
@@ -90688,14 +90711,14 @@
       "clips": [
         [
           "$",
-          "15:21",
+          "15:26.5",
           "17:12"
         ]
       ],
-      "duration": "1:51",
+      "duration": "1:45",
       "mirror": "local",
       "body": "“In this passage where the Buddha lists illnesses and calamities (<a href=\"https://suttacentral.express/an10.60/en/bodhi?reference=main#sc8\" target=\"_blank\" data-alt-href=\"../texts/AN10_60.html\">AN 10.60.8</a>), he separates kamma out as a cause of those things. However the cause of being subject to these things is because of making good or bad kamma. Is kamma [in this list] a direct, proximate cause?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>.",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "texts": [
         "AN 10.60.8",
         "SN 36.21"
@@ -90710,6 +90733,7 @@
       "flags": "",
       "text": "Is mindfulness of the body fabricating a wholesome mental image of the body as opposed to an unwholesome image? But how can we know the body in any way other than vedanā?",
       "teachers": [
+        "AP",
         "AKd"
       ],
       "fTags": [],
@@ -90719,6 +90743,7 @@
           "flags": "",
           "text": "The availability of insight is through stepping back from the assumptions that we make, whether it's around the body or feeling or mind or the sense of self.",
           "teachers": [
+            "AP",
             "AKd"
           ],
           "tags": [
@@ -90754,7 +90779,7 @@
       "duration": "6:31",
       "mirror": "local",
       "body": "“Is mindfulness of the body fabricating a wholesome mental image of the body as opposed to an unwholesome image? But how can we know the body in any way other than vedanā?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>."
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>."
     },
     {
       "event": "WR2015",
@@ -102458,6 +102483,9 @@
         ]
       ],
       "duration": "5:42",
+      "fragmentFTags": [
+        "Self-reliance"
+      ],
       "mirror": "local",
       "body": "“Any advice for cures for burnout? I&rsquo;m in a helping profession and feel depleted and exhausted. I need help getting the balance between giving and receiving.” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
@@ -102468,8 +102496,89 @@
     {
       "event": "SRD2015",
       "sessionNumber": 1,
-      "excerptNumber": 11,
+      "excerptNumber": 10.1,
       "fileNumber": 11,
+      "kind": "Teaching from",
+      "flags": "f",
+      "text": "We have to pay attention to what we need to do to look after ourselves.|Ajahn Chah",
+      "teachers": [
+        "AP"
+      ],
+      "fTags": [
+        "Self-reliance"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
+      "annotations": [
+        {
+          "kind": "Indirect quote",
+          "flags": "",
+          "text": "Don't think you're a ten-wheeled dump truck when all you are is a wheelbarrow.|Ajahn Chah",
+          "teachers": [
+            "AP"
+          ],
+          "tags": [
+            "Ajahn Chah",
+            "Idealism"
+          ],
+          "indentLevel": 1,
+          "body": "<b>Quote:</b>  “Don&rsquo;t think you&rsquo;re a ten-wheeled dump truck when all you are is a wheelbarrow.” — <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>."
+        },
+        {
+          "kind": "Commentary",
+          "flags": "",
+          "text": "_Path of Purification_ p. 291: Classical cultivation of goodwill and compassion, first to yourself.",
+          "tags": [
+            "Commentaries",
+            "Goodwill",
+            "Compassion"
+          ],
+          "indentLevel": 1,
+          "body": "<b>Commentary:</b> <em>Path of Purification</em> by Bhikkhu Ñāṇamoli, <a href=\"https://www.accesstoinsight.org/lib/authors/nanamoli/PathofPurification2011.pdf#page=349\" target=\"_blank\" data-alt-href=\"../books/path-of-purification.html\">p. 291</a>: Classical cultivation of goodwill and compassion, first to yourself."
+        },
+        {
+          "kind": "Quote",
+          "flags": "",
+          "text": "Our ability to be with others and to help and to give is dependent on our being kind and compassionate to ourselves.",
+          "teachers": [
+            "AP"
+          ],
+          "tags": [
+            "Generosity",
+            "Goodwill",
+            "Compassion",
+            "Spiritual friendship",
+            "Self-reliance"
+          ],
+          "indentLevel": 1,
+          "body": "<b>Quote:</b>  “Our ability to be with others and to help and to give is dependent on our being kind and compassionate to ourselves.” "
+        }
+      ],
+      "tags": [
+        "Ajahn Chah",
+        "Self-reliance",
+        "Selfishness"
+      ],
+      "qTagCount": 2,
+      "clips": [
+        [
+          "$",
+          "31:15",
+          "33:57"
+        ]
+      ],
+      "duration": "2:42",
+      "mirror": "local",
+      "body": "<b>Teaching</b> from <a href=\"../teachers/ajahn-chah.html\">Ajahn Chah</a>: We have to pay attention to what we need to do to look after ourselves.{attribution}",
+      "attribution": " Related by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+    },
+    {
+      "event": "SRD2015",
+      "sessionNumber": 1,
+      "excerptNumber": 11,
+      "fileNumber": 12,
       "kind": "Question",
       "flags": "",
       "text": "Is sexuality and wanting an intimate connection with another considered a negative desire?",
@@ -130597,8 +130706,23 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Feeling"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "3:13",
+          "text": "Thanksgiving Retreat 2016, S6 E11 edited.mp3",
+          "indentLevel": 1,
+          "body": ""
+        },
         {
           "kind": "Sutta",
           "flags": "",
@@ -130621,12 +130745,13 @@
       "qTagCount": 3,
       "clips": [
         [
-          "$",
-          "40:07",
-          "43:39"
+          "Thanksgiving Retreat 2016, S6 E11 edited.mp3",
+          "0:00",
+          ""
         ]
       ],
-      "duration": "3:32",
+      "startTimeInSession": "40:07",
+      "duration": "3:13",
       "mirror": "local",
       "body": "“Can you speak more about vedana and whether it is something to be changed, as in from dukkha to sukha?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
@@ -138013,14 +138138,37 @@
         "AP"
       ],
       "fTags": [],
-      "annotations": [],
+      "annotations": [
+        {
+          "kind": "Fragment",
+          "flags": "r",
+          "startTime": "0:37",
+          "endTime": "2:37.5",
+          "text": "",
+          "indentLevel": 1,
+          "body": "<audio-chip src=\"../../audio/excerpts/Teen2017/Teen2017_S00_F31.mp3\" title=\"Teen Weekend 2017, E29.1\" data-title-link=\"events/Teen2017.html#Teen2017_S00_F30\" data-duration=\"120\"><a href=\"../../audio/excerpts/Teen2017/Teen2017_S00_F31.mp3\" download=\"Teen Weekend 2017, E29.1.mp3\">Download audio</a> (2:00)</audio-chip>"
+        },
+        {
+          "kind": "Recollection",
+          "flags": "0",
+          "text": "On lunar observance days, monks confess offenses to each other before reciting the Pāṭimokkha.",
+          "teachers": [
+            "AP"
+          ],
+          "tags": [
+            "Lunar observance days",
+            "Confession",
+            "Pāṭimokkha"
+          ],
+          "indentLevel": 1,
+          "body": "On lunar observance days, monks confess offenses to each other before reciting the Pāṭimokkha."
+        }
+      ],
       "tags": [
         "Monastic life",
         "Vinaya",
         "Saṅgha",
         "Christianity",
-        "Pāṭimokkha",
-        "Confession",
         "Rains retreat",
         "Learning",
         "Abhayagiri",
@@ -138035,9 +138183,49 @@
         ]
       ],
       "duration": "5:42",
+      "fragmentFTags": [
+        "Pāṭimokkha"
+      ],
       "mirror": "local",
       "body": "“Do monastics talk with each other about the precepts they have broken or having wrong thoughts?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+    },
+    {
+      "event": "Teen2017",
+      "sessionNumber": 0,
+      "excerptNumber": 29.1,
+      "fileNumber": 31,
+      "annotations": [],
+      "kind": "Recollection",
+      "flags": "0f",
+      "teachers": [
+        "AP"
+      ],
+      "text": "On lunar observance days, monks confess offenses to each other before reciting the Pāṭimokkha.",
+      "fTags": [
+        "Pāṭimokkha"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "T",
+      "tags": [
+        "Lunar observance days",
+        "Confession",
+        "Pāṭimokkha"
+      ],
+      "qTagCount": 3,
+      "clips": [
+        [
+          "$",
+          "1:56:29",
+          "1:58:29.5"
+        ]
+      ],
+      "duration": "2:00",
+      "mirror": "local",
+      "body": "On lunar observance days, monks confess offenses to each other before reciting the Pāṭimokkha.",
+      "attribution": ""
     },
     {
       "event": "UD2017-4",
@@ -146918,7 +147106,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Pāṭimokkha"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "T",
       "annotations": [
         {
           "kind": "Response",
@@ -146941,7 +147135,6 @@
         "Pāṭimokkha",
         "Ajahn Pasanno",
         "Chanting",
-        "Ajahn Chah",
         "Culture/India"
       ],
       "qTagCount": 3,
@@ -209801,6 +209994,13 @@
       "url": "https://www.abhayagiri.org/media/discs/thanksgiving-retreat-2016/Audio/19%202016-11-24%20AP%20Questions%20and%20Answers%206.mp3",
       "mirror": "remote"
     },
+    "Thanksgiving Retreat 2016, S6 E11 edited.mp3": {
+      "filename": "Thanksgiving Retreat 2016, S6 E11 edited.mp3",
+      "duration": "3:13",
+      "event": "TG2016",
+      "url": "",
+      "mirror": "local"
+    },
     "22 2016-11-25 AP Questions and Answers 7.mp3": {
       "filename": "22 2016-11-25 AP Questions and Answers 7.mp3",
       "duration": "1:26:39",
@@ -213006,7 +213206,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 72,
       "sessionCount": 383,
-      "excerptCount": 3209,
+      "excerptCount": 3211,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -213238,7 +213438,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 23,
       "sessionCount": 38,
-      "excerptCount": 290,
+      "excerptCount": 289,
       "htmlFile": "ajahn-karunadhammo.html"
     },
     "AJoti": {
@@ -217885,6 +218085,7 @@
       "primaries": 0,
       "htmlFile": "self-reliance.html",
       "excerptCount": 33,
+      "fTagCount": 2,
       "listIndex": 178
     },
     "Unskillful qualities": {
@@ -219155,8 +219356,8 @@
       "subtopics": [],
       "sessionCount": 2,
       "excerptCount": 102,
-      "fTagCount": 2,
-      "subtopicFTagCount": 2,
+      "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 243
     },
     "Perception": {
@@ -219239,8 +219440,8 @@
       ],
       "subtopics": [],
       "excerptCount": 156,
-      "fTagCount": 2,
-      "subtopicFTagCount": 2,
+      "fTagCount": 3,
+      "subtopicFTagCount": 3,
       "listIndex": 247
     },
     "Dependent origination": {
@@ -220348,7 +220549,7 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "lunar-observance-days.html",
-      "excerptCount": 35,
+      "excerptCount": 36,
       "fTagCount": 1,
       "listIndex": 312
     },
@@ -222417,7 +222618,7 @@
       "subtopics": [],
       "eventCount": 7,
       "sessionCount": 44,
-      "excerptCount": 942,
+      "excerptCount": 941,
       "fTagCount": 7,
       "subtopicFTagCount": 7,
       "listIndex": 485
@@ -230046,6 +230247,7 @@
         "Vinaya"
       ],
       "excerptCount": 13,
+      "fTagCount": 2,
       "listIndex": 853
     },
     "Confession": {
@@ -238003,7 +238205,7 @@
       "text": "Devotional practice (37)",
       "tag": "Devotional practice",
       "subtagCount": 24,
-      "subtagExcerptCount": 333
+      "subtagExcerptCount": 334
     },
     {
       "level": 2,
@@ -238108,7 +238310,7 @@
       "text": "Festival days (11)",
       "tag": "Festival days",
       "subtagCount": 3,
-      "subtagExcerptCount": 59
+      "subtagExcerptCount": 60
     },
     {
       "level": 3,
@@ -238116,9 +238318,9 @@
       "flags": "*",
       "name": "Lunar observance days",
       "pali": "uposatha",
-      "excerptCount": 35,
+      "excerptCount": 36,
       "subsumed": false,
-      "text": "Lunar observance days (35) [uposatha]",
+      "text": "Lunar observance days (36) [uposatha]",
       "tag": "Lunar observance days"
     },
     {
@@ -240079,9 +240281,9 @@
       "flags": "",
       "name": "Ajahn Chah Subhaddo",
       "pali": "",
-      "excerptCount": 942,
+      "excerptCount": 941,
       "subsumed": false,
-      "text": "Ajahn Chah Subhaddo (942)",
+      "text": "Ajahn Chah Subhaddo (941)",
       "tag": "Ajahn Chah"
     },
     {
@@ -244015,9 +244217,9 @@
       "flags": "",
       "name": "Lunar observance days",
       "pali": "uposatha",
-      "excerptCount": 35,
+      "excerptCount": 36,
       "subsumed": false,
-      "text": "Lunar observance days (35) [uposatha]",
+      "text": "Lunar observance days (36) [uposatha]",
       "tag": "Lunar observance days"
     },
     {
@@ -250295,7 +250497,7 @@
       "subtags": {},
       "htmlPath": "tags/conditionality.html",
       "excerptCount": 156,
-      "fTagCount": 2
+      "fTagCount": 3
     },
     "Kamma": {
       "tag": "Kamma",
@@ -250486,7 +250688,7 @@
       "subtags": {},
       "htmlPath": "tags/feeling.html",
       "excerptCount": 102,
-      "fTagCount": 2
+      "fTagCount": 3
     },
     "Craving": {
       "tag": "Craving",
@@ -250698,7 +250900,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/ajahn-chah.html",
-      "excerptCount": 942,
+      "excerptCount": 941,
       "fTagCount": 7
     },
     "Ajahn Liem": {
@@ -252678,7 +252880,7 @@
         "Realms of existence"
       ],
       "excerptCount": 702,
-      "fTagCount": 27
+      "fTagCount": 28
     },
     "origination": {
       "code": "origination",
@@ -252701,7 +252903,7 @@
         "Becoming"
       ],
       "excerptCount": 678,
-      "fTagCount": 30
+      "fTagCount": 31
     },
     "fruits": {
       "code": "fruits",
