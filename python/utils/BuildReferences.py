@@ -197,10 +197,31 @@ class TextReference(NamedTuple):
         """Return true gDatabase has a TOC for this text."""
         return False
 
+    def TextName(self) -> str:
+        """Returns the name of the text, discarding verse numbers, e.g. SN 1.12."""
+        return str(self.Truncate(self.TextLevel() + 1))
+
     def SectionStartPage(self) -> int|None:
         """Return the first page/verse of the section this reference is in.
         Return None if there is no table of contents."""
-        return None
+
+        if not self.text:
+            return None
+        suttaName = self.TextName()
+        if suttaName not in gDatabase["textSection"]:
+            return None
+
+        verseNumber = self[self.TextLevel() + 1]
+        tableOfContents = gDatabase["textSection"][suttaName]
+        for testVerse in reversed(range(verseNumber + 1)):
+            if testVerse in tableOfContents:
+                return testVerse
+        return 0
+
+    def SectionReference(self,verseNumber: int) -> str:
+        """Return the abbreviated name of the section this reference belongs to, e.g. MN 2.4"""
+        return f"{self.TextName()}.{verseNumber}"
+
 
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}".strip()
@@ -428,6 +449,10 @@ class BookReference(NamedTuple):
             if testPage in tableOfContents:
                 return testPage
         return 0
+
+    def SectionReference(self,verseNumber: int) -> str:
+        """Refer to book sections with a simple page number."""
+        return f"Page {verseNumber}"
 
     def __str__(self) -> str:
         bits = [self.author]
@@ -769,6 +794,7 @@ class ExcerptListPage(ReferencePageMaker):
         formatter = Build.Formatter()
         formatter.SetHeaderlessFormat()
         firstLoop = True
+        truncated = self.references[0].reference.Truncate(self.level)
         for reference in self.references:
             events,excerpts = Utils.Partition(reference.items,lambda item: "endDate" in item)
             for event in events:
@@ -780,12 +806,10 @@ class ExcerptListPage(ReferencePageMaker):
                 if not firstLoop:
                     a.hr()
                 firstLoop = False
-                a(formatter.HtmlExcerptList(excerpts))
+                a(BoldfaceTextReferences(formatter.HtmlExcerptList(excerpts),truncated))
 
         self.RegisterReference()
-        truncated = self.references[0].reference.Truncate(self.level)
-        html = BoldfaceTextReferences(str(a),truncated)
-        self.page.AppendContent(html)
+        self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
 
 
@@ -799,6 +823,12 @@ class ExcerptsGroupedBySection(ExcerptListPage):
     def __init__(self, level:int, references: list[LinkedReference],sectionHeading: dict[int,str]):
         super().__init__(level, references)
         self.sectionHeading = sectionHeading
+        self.isBook = isinstance(references[0].reference,BookReference)
+        if self.isBook:
+            self.baseReference = references[0].reference.Truncate(2)
+        else:
+            self.baseReference = references[0].reference.Truncate(references[0].reference.TextLevel() + 1)
+        
     
     def RenderAndYieldSubpages(self):
         groupedReferences:dict[int,list[LinkedReference]] = {}
@@ -813,38 +843,41 @@ class ExcerptsGroupedBySection(ExcerptListPage):
         with a.h2():
             a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
             a("Table of Contents")
-        with a.div(Class="toc-list javascript-hide",id="TOC.b"):
+        with a.div(Class=f"{'toc-list' if self.isBook else 'listing'} javascript-hide",id="TOC.b"):
             for page in groupedReferences:
                 if page:
                     with a.p(Class="indent-1").a(href=f"#{Utils.slugify(self.sectionHeading[page])}"):
-                        with a.span(Class="toc-section"):
-                            a(f"{self.sectionHeading[page]}")
-                            with a.span(**{"Class":"leaders","aria-hidden":"true"}):
-                                pass
-                        with a.span(Class="toc.page"):
-                            a(page)
+                        if self.isBook:
+                            with a.span(Class="toc-section"):
+                                a(f"{self.sectionHeading[page]}")
+                                with a.span(**{"Class":"leaders","aria-hidden":"true"}):
+                                    pass
+                            with a.span(Class="toc.page"):
+                                a(page)
+                        else:
+                            a(f"<b>{self.baseReference.SectionReference(page)}:</b> {self.sectionHeading[page]}")
         a.hr()
 
         formatter = Build.Formatter()
         formatter.SetHeaderlessFormat()
-        firstLoop = True
         for page,items in groupedReferences.items():
             if page:
                 with a.div(Class="title",id = Utils.slugify(self.sectionHeading[page])):
-                    a(f"Page {page}: {self.sectionHeading[page]}")
+                    a(f"{self.baseReference.SectionReference(page)}: {self.sectionHeading[page]}")
 
             events,excerpts = Utils.Partition(items,lambda item: "endDate" in item)
             for event in events:
                 a(Build.EventDescription(event,showMonth=True,excerptCount=False).replace("<p>","<p><b>Event</b>: "))
                 a.hr()
             if excerpts:
-                a(formatter.HtmlExcerptList(excerpts))
+                htmlExcerpts = formatter.HtmlExcerptList(excerpts)
+                htmlExcerpts = BoldfaceTextReferences(htmlExcerpts,self.baseReference)
+                a(htmlExcerpts)
                 if page != next(reversed(groupedReferences)): # Don't add <hr> at the end of the page
                     a.hr()
 
         self.RegisterReference()
-        truncated = self.references[0].reference.Truncate(self.level)
-        html = BoldfaceTextReferences(str(a),truncated)
+        html = str(a)
         self.page.AppendContent(html)
         yield from ReferencePageMaker.RenderAndYieldSubpages(self)
 
@@ -1123,7 +1156,10 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         pageMaker.innerReferenceLinks = True
         return pageMaker
     elif pageType == PageType.EXCERPTS_ONLY:
-        sectionHeading = gDatabase["bookSection"].get(firstReference.abbreviation) if isinstance(firstReference,BookReference) else None
+        if isinstance(firstReference,BookReference):
+            sectionHeading = gDatabase["bookSection"].get(firstReference.abbreviation)
+        else:
+            sectionHeading = gDatabase["textSection"].get(firstReference.TextName())
         if sectionHeading:
             return ExcerptsGroupedBySection(level,references,sectionHeading)
         else:

@@ -1690,6 +1690,32 @@ def BookSectionDict(sectionList: list[dict[str,str]]) -> dict[str,dict[str,str]]
     
     return sectionDict
 
+def TextSectionDict(sectionList: list[dict[str,str]]) -> dict[str,dict[str,str]]:
+    """Take the information from the TextSection csv file and convert it to a dict of the form:
+    sectionName = sectionDict[textAbbreviation][verseNumber]."""
+
+    currentText = ""
+    sectionDict = {}
+    prevVerse = -1
+    for entry in sectionList:
+        if entry["text"] and entry["text"] != currentText:
+            currentText = entry["text"]
+            sectionDict[currentText] = {}
+            prevVerse = -1
+        if not currentText or not entry["verse"]:
+            continue
+        try:
+            verse = int(entry["verse"])
+        except ValueError:
+            Alert.error("Invalid verse number",entry["verse"],"when parsing the sections of",currentText)
+            continue
+        if verse <= prevVerse:
+            Alert.warning("Out of sequence verse number",verse,"when parsing the sections of",currentText)
+            continue
+        sectionDict[currentText][verse] = entry["sectionName"]
+    
+    return sectionDict
+
 
 def AddArguments(parser):
     "Add command-line arguments used by this module"
@@ -1732,7 +1758,7 @@ def main():
     global gDatabase
     LoadSummary(gDatabase,os.path.join(gOptions.csvDir,"Summary.csv"))
    
-    specialFiles = {'Summary','Tag','BookSections'}
+    specialFiles = {'Summary','Tag','BookSections','TextSections'}
     for fileName in sorted(os.listdir(gOptions.csvDir)):
         fullPath = os.path.join(gOptions.csvDir,fileName)
         if not os.path.isfile(fullPath):
@@ -1759,7 +1785,7 @@ def main():
     LoadTagsFile(gDatabase,os.path.join(gOptions.csvDir,"Tag.csv"))
     PrepareReferences(gDatabase["reference"])
     gDatabase["bookSection"] = BookSectionDict(CSVFileToDictList(Utils.PosixJoin(gOptions.csvDir,"BookSections.csv"),warnFirstBlank = False))
-
+    gDatabase["textSection"] = TextSectionDict(CSVFileToDictList(Utils.PosixJoin(gOptions.csvDir,"TextSections.csv"),warnFirstBlank = False))
     if gOptions.explainExcludes:
         excludeAlert.printAtVerbosity = -999
 
