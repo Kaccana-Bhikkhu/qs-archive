@@ -558,8 +558,9 @@ class LinkedReference():
     items: list[dict[str]]          # A list of events and excerpts that reference it
 
 def TotalItems(references: Iterable[LinkedReference]) -> int:
-    """Return the nubmer of items in references."""
-    return sum(len(group.items) for group in references)
+    """Return the nubmer of unique items in references."""
+    allReferences = list(itertools.chain.from_iterable(group.items for group in references))
+    return len(set(id(ref) for ref in allReferences))
 
 def GroupByBook(references: Iterable[Reference]) -> Iterable[list[LinkedReference]]:
     """Group references by sutta or book and yield a list of each group."""

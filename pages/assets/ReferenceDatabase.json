@@ -2,7 +2,7 @@
   "text": {
     "DN": {
       "link": "texts/DN.html",
-      "count": 61
+      "count": 56
     },
     "DN 1": {
       "link": "texts/DN1.html",
@@ -78,7 +78,7 @@
     },
     "MN": {
       "link": "texts/MN.html",
-      "count": 465
+      "count": 396
     },
     "MN 1": {
       "link": "texts/MN1.html",
@@ -422,7 +422,7 @@
     },
     "SN": {
       "link": "texts/SN.html",
-      "count": 441
+      "count": 331
     },
     "SN 1": {
       "link": "texts/SN1.html",
@@ -546,7 +546,7 @@
     },
     "SN 12": {
       "link": "texts/SN12.html",
-      "count": 29
+      "count": 24
     },
     "SN 12.4": {
       "link": "texts/SN12_4.html",
@@ -646,7 +646,7 @@
     },
     "SN 22": {
       "link": "texts/SN22.html",
-      "count": 105
+      "count": 85
     },
     "SN 22.1": {
       "link": "texts/SN22_1.html",
@@ -782,7 +782,7 @@
     },
     "SN 35": {
       "link": "texts/SN35.html",
-      "count": 82
+      "count": 57
     },
     "SN 35.23": {
       "link": "texts/SN35_23.html",
@@ -934,7 +934,7 @@
     },
     "SN 36": {
       "link": "texts/SN36.html",
-      "count": 16
+      "count": 14
     },
     "SN 36.4": {
       "link": "texts/SN36_4.html",
@@ -1010,7 +1010,7 @@
     },
     "SN 45": {
       "link": "texts/SN45.html",
-      "count": 15
+      "count": 14
     },
     "SN 45.2": {
       "link": "texts/SN45_2.html",
@@ -1082,7 +1082,7 @@
     },
     "SN 47": {
       "link": "texts/SN47.html",
-      "count": 20
+      "count": 19
     },
     "SN 47.3": {
       "link": "texts/SN47_3.html",
@@ -1202,7 +1202,7 @@
     },
     "SN 55": {
       "link": "texts/SN55.html",
-      "count": 21
+      "count": 18
     },
     "SN 55.1": {
       "link": "texts/SN55_1.html",
@@ -1266,11 +1266,11 @@
     },
     "AN": {
       "link": "texts/AN.html",
-      "count": 328
+      "count": 289
     },
     "AN 1": {
       "link": "texts/AN1.html",
-      "count": 16
+      "count": 15
     },
     "AN 1.49": {
       "link": "texts/AN1_41.html",
@@ -1318,7 +1318,7 @@
     },
     "AN 3": {
       "link": "texts/AN3.html",
-      "count": 35
+      "count": 34
     },
     "AN 3.7": {
       "link": "texts/AN3_7.html",
@@ -1398,7 +1398,7 @@
     },
     "AN 4": {
       "link": "texts/AN4.html",
-      "count": 53
+      "count": 51
     },
     "AN 4.17": {
       "link": "texts/AN4_17.html",
@@ -1554,7 +1554,7 @@
     },
     "AN 6": {
       "link": "texts/AN6.html",
-      "count": 30
+      "count": 29
     },
     "AN 6.10": {
       "link": "texts/AN6_10.html",
@@ -1658,7 +1658,7 @@
     },
     "AN 8": {
       "link": "texts/AN8.html",
-      "count": 21
+      "count": 19
     },
     "AN 8.2": {
       "link": "texts/AN8_2.html",
@@ -1706,7 +1706,7 @@
     },
     "AN 9": {
       "link": "texts/AN9.html",
-      "count": 21
+      "count": 20
     },
     "AN 9.3": {
       "link": "texts/AN9_3.html",
@@ -1738,7 +1738,7 @@
     },
     "AN 10": {
       "link": "texts/AN10.html",
-      "count": 78
+      "count": 75
     },
     "AN 10.2": {
       "link": "texts/AN10_2.html",
@@ -1806,7 +1806,7 @@
     },
     "AN 11": {
       "link": "texts/AN11.html",
-      "count": 13
+      "count": 10
     },
     "AN 11.1": {
       "link": "texts/AN11_1.html",
@@ -1918,7 +1918,7 @@
     },
     "Ud": {
       "link": "texts/Ud.html",
-      "count": 48
+      "count": 42
     },
     "Ud 1": {
       "link": "texts/Ud1.html",
@@ -2086,7 +2086,7 @@
     },
     "Snp": {
       "link": "texts/Snp.html",
-      "count": 49
+      "count": 43
     },
     "Snp 1": {
       "link": "texts/Snp1.html",
@@ -2130,7 +2130,7 @@
     },
     "Snp 4": {
       "link": "texts/Snp4.html",
-      "count": 14
+      "count": 10
     },
     "Snp 4.4": {
       "link": "texts/Snp4_4.html",
@@ -2158,30 +2158,30 @@
     },
     "Snp 5": {
       "link": "texts/Snp5.html",
-      "count": 10
+      "count": 1
     },
     "Snp 5.7": {
-      "link": "texts/Snp5_7.html",
+      "link": "texts/Snp5.html#snp-5-7",
       "count": 2
     },
     "Snp 5.9": {
-      "link": "texts/Snp5_9.html",
+      "link": "texts/Snp5.html#snp-5-9",
       "count": 2
     },
     "Snp 5.11": {
-      "link": "texts/Snp5_11.html",
+      "link": "texts/Snp5.html#snp-5-11",
       "count": 1
     },
     "Snp 5.12": {
-      "link": "texts/Snp5_12.html",
+      "link": "texts/Snp5.html#snp-5-12",
       "count": 1
     },
     "Snp 5.14": {
-      "link": "texts/Snp5_14.html",
+      "link": "texts/Snp5.html#snp-5-14",
       "count": 3
     },
     "Snp 5.16": {
-      "link": "texts/Snp5_16.html",
+      "link": "texts/Snp5.html#snp-5-16",
       "count": 1
     },
     "Thag": {
@@ -2198,7 +2198,7 @@
     },
     "Thag 7": {
       "link": "texts/Thag.html#thag-7",
-      "count": 2
+      "count": 1
     },
     "Thag 18": {
       "link": "texts/Thag.html#thag-18",
@@ -2360,11 +2360,11 @@
     },
     "AmSangha": {
       "link": "books/AmSangha.html",
-      "count": 190
+      "count": 185
     },
     "AA": {
       "link": "books/AA.html",
-      "count": 98
+      "count": 97
     },
     "Analayo": {
       "link": "books/Analayo.html",
@@ -2396,7 +2396,7 @@
     },
     "AChah": {
       "link": "books/AChah.html",
-      "count": 65
+      "count": 64
     },
     "AChandako": {
       "link": "books/AChandako.html",
@@ -2424,7 +2424,7 @@
     },
     "AJaya": {
       "link": "books/AJaya.html",
-      "count": 91
+      "count": 72
     },
     "AJundee": {
       "link": "books/AJundee.html",
@@ -2496,7 +2496,7 @@
     },
     "NScott": {
       "link": "books/NScott.html",
-      "count": 11
+      "count": 10
     },
     "GSharp": {
       "link": "books/GSharp.html",
@@ -2508,11 +2508,11 @@
     },
     "ASucitto": {
       "link": "books/ASucitto.html",
-      "count": 23
+      "count": 21
     },
     "ASumedho": {
       "link": "books/ASumedho.html",
-      "count": 15
+      "count": 13
     },
     "ASundara": {
       "link": "books/ASundara.html",
@@ -2528,7 +2528,7 @@
     },
     "AThan": {
       "link": "books/AThan.html",
-      "count": 65
+      "count": 64
     },
     "AThoon": {
       "link": "books/AThoon.html",
