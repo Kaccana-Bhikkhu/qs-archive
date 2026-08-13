@@ -974,5 +974,4 @@ def main() -> None:
     #Alert.extra("Rendered database contents:",indent = 0)
     #Utils.SummarizeDict(gDatabase,Alert.extra)
 
-    with open(gOptions.renderedDatabase, 'w', encoding='utf-8') as file:
-        json.dump(gDatabase, file, ensure_ascii=False, indent=2)
+    Database.WriteDatabase(gDatabase,gOptions.renderedDatabase)

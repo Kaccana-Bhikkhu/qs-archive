@@ -5,6 +5,7 @@ from collections import defaultdict
 import json, re, itertools
 import Html2 as Html
 import Link
+from decimal import Decimal
 from Build import gDatabase
 import SplitMp3
 import Utils
@@ -18,6 +19,16 @@ from datetime import timedelta
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
 
+def VerseNumberFromString(verseStr: str) -> int|Decimal:
+    """Convert a verse string to a number, either an integer or a fixed-precision Decimal.
+    So MN 2.7 has verse number int(7) and DN 16.1.16 has verse number Decimal('1.016')."""
+
+    if "." in verseStr:
+        bits = verseStr.split(".")
+        return Decimal(f"{bits[0]}.{bits[1].zfill(3)}")
+    else:
+        return int(verseStr)
+
 def LoadDatabase(filename: str) -> dict:
     """Read the database indicated by filename"""
 
@@ -30,9 +41,24 @@ def LoadDatabase(filename: str) -> dict:
     
     for sectionDB in (newDB["bookSection"],newDB["textSection"]):
         for book in sectionDB:
-            sectionDB[book] = {int(pageStr):sectionStr for pageStr,sectionStr in sectionDB[book].items()}
+            sectionDB[book] = {VerseNumberFromString(pageStr):sectionStr for pageStr,sectionStr in sectionDB[book].items()}
 
     return newDB
+
+def WriteDatabase(database: dict,filename: str):
+    """Write a database to disk."""
+
+    # Convert text sections numbers to text before writing to disk
+    textSections = database["textSection"]
+    stringKeys = {}
+    for text in textSections:
+        stringKeys[text] = {str(key):value for key,value in textSections[text].items()}
+    database["textSection"] = stringKeys
+
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(database, file, ensure_ascii=False, indent=2)
+
+    database["textSection"] = textSections
 
 def RemoveFragments(excerpts: Iterable[dict[str]]) -> Iterable[dict[str]]:
     """Yield these excerpts but skip fragments if their source excerpt is present."""

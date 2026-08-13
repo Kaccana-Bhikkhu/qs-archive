@@ -1705,7 +1705,10 @@ def TextSectionDict(sectionList: list[dict[str,str]]) -> dict[str,dict[str,str]]
         if not currentText or not entry["verse"]:
             continue
         try:
-            verse = int(entry["verse"])
+            if "." in entry["verse"]:
+                verse = Database.VerseNumberFromString(entry["verse"])
+            else:
+                verse = int(entry["verse"])
         except ValueError:
             Alert.error("Invalid verse number",entry["verse"],"when parsing the sections of",currentText)
             continue
@@ -1713,6 +1716,7 @@ def TextSectionDict(sectionList: list[dict[str,str]]) -> dict[str,dict[str,str]]
             Alert.warning("Out of sequence verse number",verse,"when parsing the sections of",currentText)
             continue
         sectionDict[currentText][verse] = entry["sectionName"]
+        prevVerse = verse
     
     return sectionDict
 
@@ -1840,7 +1844,6 @@ def main():
     Alert.extra("Spreadsheet database contents:",indent = 0)
     Utils.SummarizeDict(gDatabase,Alert.extra)
 
-    with open(gOptions.spreadsheetDatabase, 'w', encoding='utf-8') as file:
-        json.dump(gDatabase, file, ensure_ascii=False, indent=2)
+    Database.WriteDatabase(gDatabase,gOptions.spreadsheetDatabase)
 
     Alert.info(Build.ExcerptDurationStr(gDatabase["excerpts"],countSessionExcerpts=True,sessionExcerptDuration=False),indent = 0)

@@ -10,6 +10,7 @@ from airium import Airium
 from enum import Enum
 import re, json
 import bisect, itertools
+from decimal import Decimal
 import Html2 as Html
 import Suttaplex
 import Utils
@@ -201,7 +202,7 @@ class TextReference(NamedTuple):
         """Returns the name of the text, discarding verse numbers, e.g. SN 1.12."""
         return str(self.Truncate(self.TextLevel() + 1))
 
-    def SectionStartPage(self) -> int|None:
+    def SectionStartPage(self) -> int|Decimal|None:
         """Return the first page/verse of the section this reference is in.
         Return None if there is no table of contents."""
 
@@ -211,16 +212,27 @@ class TextReference(NamedTuple):
         if suttaName not in gDatabase["textSection"]:
             return None
 
-        verseNumber = self[self.TextLevel() + 1]
+        textLevel = self.TextLevel()
+        verseNumber = self[textLevel + 1]
+        if textLevel < 2 and self[textLevel + 2]:
+            subVerseIncrement = Decimal("0.001")
+            verseNumber += subVerseIncrement * self[textLevel + 2]
         tableOfContents = gDatabase["textSection"][suttaName]
-        for testVerse in reversed(range(verseNumber + 1)):
-            if testVerse in tableOfContents:
-                return testVerse
-        return 0
+        testVerse = verseNumber
+        while testVerse > 0 and testVerse not in tableOfContents:
+            if testVerse != int(testVerse):
+                testVerse -= subVerseIncrement
+            else:
+                testVerse -= 1
+        return max(0,testVerse)
 
-    def SectionReference(self,verseNumber: int) -> str:
+    def SectionReference(self,verseNumber: int|Decimal) -> str:
         """Return the abbreviated name of the section this reference belongs to, e.g. MN 2.4"""
-        return f"{self.TextName()}.{verseNumber}"
+        if verseNumber != int(verseNumber):
+            verseText = f"{int(verseNumber)}.{int((verseNumber - int(verseNumber)) * 1000)}"
+        else:
+            verseText = str(verseNumber)
+        return f"{self.TextName()}.{verseText}"
 
 
     def __str__(self) -> str:
