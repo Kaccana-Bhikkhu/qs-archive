@@ -1016,7 +1016,7 @@ class PageWithHeadings(ReferencePageMaker):
             truncated = self.references[0].reference.Truncate(self.level)
             RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
         a = Airium()
-        if self.references[0].reference.text == "Dhp":
+        if getattr(self.references[0].reference,"text","") == "Dhp":
             self.DhammapadaTOC(a)
         with a.div(Class=self.heading.enclosingClass):
             for referenceGroup in self.heading.GroupedReferences(self.references):
