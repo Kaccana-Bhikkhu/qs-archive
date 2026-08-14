@@ -213,10 +213,8 @@ class TextReference(NamedTuple):
             return None
 
         textLevel = self.TextLevel()
-        verseNumber = self[textLevel + 1]
-        if textLevel < 2 and self[textLevel + 2]:
-            subVerseIncrement = Decimal("0.001")
-            verseNumber += subVerseIncrement * self[textLevel + 2]
+        verseNumber = Database.VerseNumber(self[textLevel + 1:])
+        subVerseIncrement = Decimal("0.001")
         tableOfContents = gDatabase["textSection"][suttaName]
         testVerse = verseNumber
         while testVerse > 0 and testVerse not in tableOfContents:
@@ -228,10 +226,7 @@ class TextReference(NamedTuple):
 
     def SectionReference(self,verseNumber: int|Decimal) -> str:
         """Return the abbreviated name of the section this reference belongs to, e.g. MN 2.4"""
-        if verseNumber != int(verseNumber):
-            verseText = f"{int(verseNumber)}.{int((verseNumber - int(verseNumber)) * 1000)}"
-        else:
-            verseText = str(verseNumber)
+        verseText = re.sub(r"\.0+",".",str(verseNumber))
         return f"{self.TextName()}.{verseText}"
 
 
@@ -1021,6 +1016,8 @@ class PageWithHeadings(ReferencePageMaker):
             truncated = self.references[0].reference.Truncate(self.level)
             RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
         a = Airium()
+        if self.references[0].reference.text == "Dhp":
+            self.DhammapadaTOC(a)
         with a.div(Class=self.heading.enclosingClass):
             for referenceGroup in self.heading.GroupedReferences(self.references):
                 a(self.heading.Html())
@@ -1041,7 +1038,28 @@ class PageWithHeadings(ReferencePageMaker):
 
         self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
-    
+
+    def DhammapadaTOC(self,a: Airium) -> None:
+        """Build an html table of contents for the Dhammapada."""
+        with a.h2():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
+            a("Table of Contents")
+        dhpSections = gDatabase["textSection"]["Dhp"]
+
+        # citedSections[verse] is the first cited verse in this section.
+        citedSections = {r.reference.SectionStartPage():r.reference.n0 for r in reversed(self.references)}
+
+        # lastVerses[verse] is the last verse in this section.
+        lastVerses = {firstVerse:nextFirstVerse - 1 for firstVerse,nextFirstVerse in itertools.pairwise(dhpSections)}
+        lastVerses[next(reversed(dhpSections))] = 423
+
+        with a.div(Class=f"listing javascript-hide",id="TOC.b"):
+            for verse,sectionName in dhpSections.items():
+                if verse in citedSections:
+                    with a.p(Class="indent-1").a(href=f"#dhp-{citedSections[verse]}"):
+                        a(f"<b>Dhp {verse}-{lastVerses[verse]}:</b> {sectionName}")
+        a.hr()
+
     def FinishPage(self):
         if self.bookmarkMenu and len(self.bookmarkMenu.items) < 2:
             self.bookmarkMenu.items = []    # Remove the bookmark menu if there is only one item in it.

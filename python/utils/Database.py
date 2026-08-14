@@ -19,15 +19,19 @@ from datetime import timedelta
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
 
-def VerseNumberFromString(verseStr: str) -> int|Decimal:
-    """Convert a verse string to a number, either an integer or a fixed-precision Decimal.
+def VerseNumber(verse: str|tuple) -> int|Decimal:
+    """Convert a verse string or tuple to a number, either an integer or a fixed-precision Decimal.
     So MN 2.7 has verse number int(7) and DN 16.1.16 has verse number Decimal('1.016')."""
 
-    if "." in verseStr:
-        bits = verseStr.split(".")
-        return Decimal(f"{bits[0]}.{bits[1].zfill(3)}")
+    if isinstance(verse,str):
+        verse = tuple(int(v) for v in verse.split("."))
+    if len(verse) <= 1:
+        return verse[0] if len(verse) == 1 else 0
     else:
-        return int(verseStr)
+        if verse[1]:
+            return Decimal(f"{verse[0]}.{str(verse[1]).zfill(3)}")
+        else:
+            return verse[0]
 
 def LoadDatabase(filename: str) -> dict:
     """Read the database indicated by filename"""
@@ -41,7 +45,7 @@ def LoadDatabase(filename: str) -> dict:
     
     for sectionDB in (newDB["bookSection"],newDB["textSection"]):
         for book in sectionDB:
-            sectionDB[book] = {VerseNumberFromString(pageStr):sectionStr for pageStr,sectionStr in sectionDB[book].items()}
+            sectionDB[book] = {VerseNumber(pageStr):sectionStr for pageStr,sectionStr in sectionDB[book].items()}
 
     return newDB
 

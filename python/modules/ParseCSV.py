@@ -1706,7 +1706,7 @@ def TextSectionDict(sectionList: list[dict[str,str]]) -> dict[str,dict[str,str]]
             continue
         try:
             if "." in entry["verse"]:
-                verse = Database.VerseNumberFromString(entry["verse"])
+                verse = Database.VerseNumber(entry["verse"])
             else:
                 verse = int(entry["verse"])
         except ValueError:
