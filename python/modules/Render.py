@@ -115,9 +115,6 @@ def PrepareTemplates() -> None:
 
 def PrepareTexts() -> None:
     """Create gDatabase["textGroups"] based on the content of gDatabase["text"]."""
-    
-    for rule in gDatabase["textLink"].values():
-        rule["link"] = FStringToPyratemp(rule["link"])
 
     gDatabase["textGroup"] = {}
     for textGroup in list(next(iter(gDatabase["text"].values()))):
@@ -185,7 +182,7 @@ def TextRuleMatchers() -> dict[TextRuleMatcher]:
                 n0 = EvaluateSetExpression(rule["n0"]),
                 refCount = EvaluateSetExpression(rule["refCount"],allowableValues = ("1","2","3")),
                 translator = EvaluateSetExpression(rule["translator"]),
-                linkTemplate = pyratemp.Template(rule["link"])
+                linkTemplate = pyratemp.Template(f"$! {rule["link"]}  !$")
             )
         except Exception as error:
             Alert.error(str(error),"occured when evaluating text link rule",rule,lineSpacing=0)

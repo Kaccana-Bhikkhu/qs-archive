@@ -181,7 +181,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Build",
+                "Render",
                 "--buildOnly",
                 "texts",
                 "--quickBuild"
