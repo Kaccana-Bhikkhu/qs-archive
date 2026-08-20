@@ -125,9 +125,9 @@ def LoadDatabaseAndAddMissingOps(opSet: set[str]) -> Tuple[dict,set[str]]:
 
 # The list of code modules/ops to implement
 requireSpreadsheetDB = ['ReviewDatabase','DownloadFiles','SplitMp3','ExportAudio','Link','Render']
-requireRenderedDB = ['Build','SetupSearch','SetupAutoComplete','SetupFeatured','TagMp3','PrepareUpload','CheckLinks']
+requireRenderedDB = ['Build','SetupSearch','SetupAutoComplete','SetupFeatured','TagMp3','PrepareUpload','CheckDiacritics','CheckLinks']
 moduleList = ['DownloadCSV','ParseCSV'] + requireSpreadsheetDB + requireRenderedDB
-optionalModules = {'ExportAudio'} # These aren't included in All
+optionalModules = {'ExportAudio','CheckDiacritics'} # These aren't included in All
 
 modules = {modName:importlib.import_module(modName) for modName in moduleList}
 priorityInitialization = ['Link']
@@ -140,6 +140,7 @@ parser.add_argument('ops',type=str,help="""A comma-separated list of operations 
 DownloadCSV - download csv files from the Google Sheet.
 ParseCSV - convert the csv files downloaded from the Google Sheet to SpreadsheetDatabase.json.
 ReviewDatabase - run various checks on the content of SpreadsheetDatabase.json.
+CheckDiacritics - flag multiple variants of words with diacritics, e.g. Pāli and Pali
 DownloadFiles - download files from remote links or mirrors when needed.
 SplitMp3 - split mp3 files into individual excerpts based on the times in SpreadsheetDatabase.json.
 Link - try to find valid links to excerpt mp3 files, session mp3 files, and references.

@@ -30,7 +30,7 @@ def FStringToPyratemp(fString: str) -> str:
 def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
     """Apply operation transform on each string considered body text in the database.
     transform can have the form transform(bodyText,item) or transform(bodyText).
-    transform returns either a tuple (changedText,changeCount) or the string changedText. Return the total number of changes made."""
+    transform returns either None (no change), a tuple (changedText,changeCount) or the string changedText. Return the total number of changes made."""
 
     if len(signature(transform).parameters) == 1:
         twoVariableTransform = lambda bodyStr,_: transform(bodyStr)
@@ -42,7 +42,9 @@ def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
         "Applies transform to text and keeps a tally of the number of changes."
         nonlocal changeCount
         result = twoVariableTransform(text,item)
-        if isinstance(result,str):
+        if result is None:
+            return text
+        elif isinstance(result,str):
             if result != text:
                 changeCount += 1
             return result
