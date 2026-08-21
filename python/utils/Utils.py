@@ -276,6 +276,10 @@ def SessionIndex(sessions:list, event:str ,sessionNum: int) -> int:
     
     raise ValueError(f"Can't locate session {sessionNum} of event {event}")
 
+def WholeWordRegexp(regexp: str) -> str:
+    """Returns a regexp that matches this as a whole word."""
+    return r"\b" + regexp + r"\b"
+
 def RegexMatchAny(strings: Iterable[str],capturingGroup = True,literal = False):
     """Return a regular expression that matches any item in strings.
     Optionally make it a capturing group."""

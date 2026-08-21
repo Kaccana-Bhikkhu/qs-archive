@@ -13,9 +13,10 @@ from typing import Iterable
 from collections import Counter,defaultdict
 import Render
 
-def ReadCorrectForms() -> None:
-    """Read CorrectDiacritics.csv into gCorrectDiacritics."""
+def ReadCorrectForms() -> dict[str,list[str]]:
+    """Read CorrectDiacritics.csv."""
 
+    correctDiacritics:dict[str,list[str]] = {}
     try:
         with open("documentation/diacritics/CorrectDiacritics.csv",encoding="utf-8") as file:
             for line in file:
@@ -24,9 +25,10 @@ def ReadCorrectForms() -> None:
                 if not words or not words[0]:
                     continue
                 words = [w.strip("*") for w in words]
-                gCorrectDiacritics[Utils.RemoveDiacritics(words[0])] = words
+                correctDiacritics[Utils.RemoveDiacritics(words[0])] = words
     except FileNotFoundError:
         pass
+    return correctDiacritics
 
 
 def BuildDiacriticDatabase(text:str,item:dict) -> str:
@@ -48,8 +50,10 @@ def BuildDiacriticDatabase(text:str,item:dict) -> str:
         if plain in gCorrectDiacritics:
             if word not in gCorrectDiacritics[plain]:
                 Alert.caution(item,"has incorrect form",repr(word))
+                if len(gCorrectDiacritics[plain]) == 1:
+                    gCorrections[word] = gCorrectDiacritics[plain][0]
 
-    return None # Don't change anything
+    return None # Don't change the text
 
 def TagAndTeacherWords() -> dict[str,set[str]]:
     """Return a dict of words used in tag and teacher names. We assume these use diacritics correctly.
@@ -66,8 +70,8 @@ def TagAndTeacherWords() -> dict[str,set[str]]:
             if not plain:
                 continue
             words[plain].add(word)
-            """if len(plainWords[plain]) > 1:
-                Alert.notice(item,"has a differnt form",plainWords[plain])"""
+            """if len(words[plain]) > 1:
+                Alert.notice(item,"has a different form",word,"compared to",words[plain])"""
 
     for tag in gDatabase["tag"].values():
         for key in ("tag","fullTag","pali","fullPali"):
@@ -75,6 +79,9 @@ def TagAndTeacherWords() -> dict[str,set[str]]:
     for teacher in gDatabase["teacher"].values():
             for key in ("fullName","attributionName"):
                 AddWords(teacher[key],teacher)
+    for ref in gDatabase["reference"].values():
+        AddWords(ref["title"].replace("_",""),ref)
+        AddWords(ref["attribution"],ref)
 
     """for plain,allForms in plainWords.items():
         if len(allForms) > 1:
@@ -118,11 +125,18 @@ gDiacriticFrequency:dict[str,dict[str,int]] = defaultdict(Counter)
 # Counts plain words not yet incorporated into gDiacriticFrequency
 gPlainWords = Counter()
 
+# A dictionary read from CorrectDiacritics.csv indicating the allowable forms
 gCorrectDiacritics:dict[str,list[str]] = {}
 
+# gCorrections[incorrectForm] = correctForm
+gCorrections:dict[str,str] = {}
+
 def main() -> None:
-    ReadCorrectForms()
+    global gCorrectDiacritics
+    gCorrectDiacritics = ReadCorrectForms()
+    cautionCount = Alert.caution.count
     Render.ApplyToBodyText(BuildDiacriticDatabase)
+    Alert.info(Alert.caution.count - cautionCount,"mismatched diacritics found.")
 
     sortedFrequency = {word:freq for word,freq in sorted(gDiacriticFrequency.items())}
     os.makedirs("documentation/diacritics",exist_ok=True)
@@ -131,6 +145,17 @@ def main() -> None:
 
     if gOptions.updateCorrectDiacritics:
         UpdateCorrectDiacritics(sortedFrequency)
+
+    with open("documentation/diacritics/CorrectionRegexps.tsv", 'w', encoding='utf-8') as file:
+        for findWord,replaceWord in sorted(gCorrections.items()):
+            if findWord[0] == replaceWord[0]:
+                findRegexp = f"([{findWord[0]}{findWord[0].upper()}]){findWord[1:]}"
+                replaceRegexp = f"$1{replaceWord[1:]}"
+                print("\t".join((Utils.WholeWordRegexp(findRegexp),replaceRegexp)),file=file)
+            else:
+                print("\t".join((Utils.WholeWordRegexp(findWord),replaceWord)),file=file)
+                print("\t".join((Utils.WholeWordRegexp(Utils.CapitalizeFirst(findWord)),
+                                 Utils.CapitalizeFirst(replaceWord))),file=file)
 
 
     

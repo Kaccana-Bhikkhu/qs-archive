@@ -181,7 +181,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Render",
+                "CheckDiacritics",
                 "--buildOnly",
                 "texts",
                 "--quickBuild"
