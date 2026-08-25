@@ -48,10 +48,11 @@ def BuildDiacriticDatabase(text:str,item:dict) -> str:
             gPlainWords[word] += 1
 
         if plain in gCorrectDiacritics:
-            if word not in gCorrectDiacritics[plain]:
-                Alert.caution(item,"has incorrect form",repr(word))
-                if len(gCorrectDiacritics[plain]) == 1:
-                    gCorrections[word] = gCorrectDiacritics[plain][0]
+            correctForms = gCorrectDiacritics[plain]
+            if word not in correctForms:
+                Alert.caution(item,"has incorrect form",repr(word),"->",correctForms[0] if len(correctForms) == 1 else correctForms)
+                if len(correctForms) == 1:
+                    gCorrections[word] = correctForms[0]
 
     return None # Don't change the text
 

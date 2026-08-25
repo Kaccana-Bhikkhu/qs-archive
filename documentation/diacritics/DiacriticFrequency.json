@@ -1,6 +1,6 @@
 {
   "12": {
-    "12": 82,
+    "12": 83,
     "½": 1
   },
   "abbhuta": {
@@ -36,6 +36,9 @@
   },
   "ahimsako": {
     "ahiṃsako": 1
+  },
+  "ajatasattu": {
+    "ajātasattu": 2
   },
   "alara": {
     "āḷāra": 2
@@ -84,6 +87,9 @@
   },
   "angulimala": {
     "aṅgulimāla": 2
+  },
+  "angulimla": {
+    "aṅgulimla": 1
   },
   "anguttara": {
     "aṅguttara": 1
@@ -306,7 +312,7 @@
     "dıghanakha": 1
   },
   "dhamma": {
-    "dhamma": 290,
+    "dhamma": 299,
     "dhammā": 1
   },
   "dhammadinna": {
@@ -341,7 +347,7 @@
     "dtuaṅga": 1
   },
   "dukkha": {
-    "dukkha": 68,
+    "dukkha": 69,
     "dukkhā": 1
   },
   "dukkham": {
@@ -436,7 +442,7 @@
     "jotipālo": 22
   },
   "kaccana": {
-    "kaccāna": 16
+    "kaccāna": 18
   },
   "kaccanagotta": {
     "kaccānagotta": 1
@@ -463,8 +469,7 @@
     "kammaṭṭhāna": 3
   },
   "karika": {
-    "kārikā": 2,
-    "kārika": 1
+    "kārikā": 3
   },
   "karuna": {
     "karuṇā": 3
@@ -553,12 +558,10 @@
     "maggasaṁyutta": 1
   },
   "magha": {
-    "māghā": 1,
-    "māgha": 2
+    "māgha": 3
   },
   "maha": {
-    "maha": 2,
-    "mahā": 68
+    "mahā": 71
   },
   "mahadukkhakkhandha": {
     "mahādukkhakkhandha": 1
@@ -627,7 +630,7 @@
     "māna": 2
   },
   "manasikara": {
-    "manasikāra": 5
+    "manasikāra": 7
   },
   "mangala": {
     "maṅgala": 9
@@ -644,11 +647,11 @@
   "mara": {
     "māra": 18
   },
-  "marananussati": {
-    "maraṇānussati": 1
-  },
   "maranassati": {
-    "maraṇassati": 3
+    "maraṇassati": 2
+  },
+  "maraoanussati": {
+    "maraõānussati": 2
   },
   "maya": {
     "mayā": 1
@@ -664,7 +667,7 @@
     "migajāla": 3
   },
   "milindapanha": {
-    "milindapañha": 4
+    "milindapañha": 5
   },
   "mogallana": {
     "mogallāna": 3
@@ -695,15 +698,13 @@
     "nakulapitā": 1
   },
   "nalam": {
-    "nālaṁ": 1,
-    "nalam": 1
+    "nālaṃ": 2
   },
   "nalanda": {
     "nālandā": 1
   },
   "nama": {
-    "nama": 2,
-    "nāma": 1
+    "nāma": 3
   },
   "nanadhammo": {
     "ñāṇadhammo": 3
@@ -736,7 +737,7 @@
     "nestlé": 1
   },
   "nibbana": {
-    "nibbāna": 81
+    "nibbāna": 84
   },
   "nibbanam": {
     "nibbānaṃ": 2
@@ -760,15 +761,13 @@
     "oghataraṇa": 1
   },
   "ovada": {
-    "ovada": 1,
-    "ovāda": 1
+    "ovāda": 2
   },
   "pacittiya": {
     "pācittiyā": 7
   },
   "pali": {
-    "pali": 15,
-    "pāli": 56
+    "pāli": 71
   },
   "pamojja": {
     "pāmojja": 2
@@ -780,8 +779,7 @@
     "paṇītaṁ": 1
   },
   "panna": {
-    "pañña": 5,
-    "paññā": 3
+    "paññā": 8
   },
   "pannananda": {
     "paññānanda": 5
@@ -790,7 +788,7 @@
     "paññāpessatīti": 1
   },
   "pannavaddho": {
-    "paññāvaḍḍho": 29
+    "paññāvaḍḍho": 30
   },
   "pannayati": {
     "paññāyati": 1
@@ -808,14 +806,11 @@
     "paramaṁ": 1
   },
   "parami": {
-    "paramī": 3,
-    "parami": 1,
+    "pāramī": 4,
     "pārami": 2
   },
   "paramis": {
-    "paramis": 1,
-    "pāramīs": 1,
-    "pāramis": 2
+    "pāramīs": 4
   },
   "patacara": {
     "patācārā": 1
@@ -824,20 +819,16 @@
     "pāṭaliya": 1
   },
   "paticcasamuppada": {
-    "paticcasamuppāda": 1,
-    "paticcasamuppada": 1
+    "paticcasamuppāda": 2
   },
   "patimokkha": {
-    "pāṭimokkha": 9,
-    "pātimokkha": 2,
-    "paṭimokkha": 2
+    "pāṭimokkha": 13
   },
   "patinissagga": {
     "paṭinissagga": 1
   },
   "patipada": {
-    "paṭipadā": 1,
-    "patipada": 1
+    "paṭipadā": 2
   },
   "pavaro": {
     "pāvaro": 1
@@ -849,22 +840,19 @@
     "piṇḍola": 1
   },
   "piti": {
-    "pīti": 26,
-    "piti": 5
+    "pīti": 31
   },
   "piyajatika": {
     "piyajātika": 1
   },
   "pranayama": {
-    "pranayama": 1,
-    "prāṇāyāma": 1
+    "prāṇāyāma": 2
   },
   "pranayamas": {
     "prāṇāyāmas": 1
   },
   "puja": {
-    "pūjā": 16,
-    "puja": 1
+    "pūjā": 17
   },
   "pujas": {
     "pūjās": 2
@@ -873,15 +861,14 @@
     "puṇṇa": 2,
     "puñña": 7
   },
-  "puthujjana": {
-    "puthujjanā": 1,
-    "puthujjana": 1
-  },
   "rahula": {
     "rāhula": 8
   },
   "rajagaha": {
     "rājagaha": 1
+  },
+  "rajagha": {
+    "rājagha": 1
   },
   "ramaputta": {
     "rāmaputta": 1
@@ -893,8 +880,7 @@
     "rūmī": 1
   },
   "rupa": {
-    "rupa": 2,
-    "rūpa": 1
+    "rūpa": 3
   },
   "rupupadanakkhandho": {
     "rūpūpādānakkhandho": 1
@@ -915,9 +901,7 @@
     "sakkāya": 3
   },
   "sakkayaditthi": {
-    "sakkāyadiṭṭhi": 5,
-    "sakkāyaditthi": 1,
-    "sakkāyādiṭṭhi": 1
+    "sakkāyadiṭṭhi": 7
   },
   "sala": {
     "sālā": 1
@@ -926,9 +910,7 @@
     "saḷāyatanasaṁyutta": 28
   },
   "samadhi": {
-    "samādhi": 61,
-    "samadhi": 5,
-    "sāmadhi": 3
+    "samādhi": 69
   },
   "samadhibhavana": {
     "samādhibhāvanā": 1
@@ -959,21 +941,19 @@
     "sāmisa": 1
   },
   "samma": {
-    "sammā": 3,
-    "samma": 1
+    "sammā": 4
   },
   "sammaditthi": {
     "sammādiṭṭhi": 2
   },
   "sampajanna": {
-    "sampajañña": 8
+    "sampajañña": 10
   },
   "samsara": {
     "saṃsāra": 4
   },
   "samvega": {
-    "saṃvega": 7,
-    "saṁvega": 2
+    "saṃvega": 9
   },
   "samyutta": {
     "saṃyutta": 1
@@ -985,9 +965,7 @@
     "saṅgārava": 1
   },
   "sangha": {
-    "saṇgha": 1,
-    "saṅgha": 69,
-    "sangha": 13
+    "saṅgha": 83
   },
   "sanghadisesa": {
     "saṅghādisesā": 5
@@ -1012,26 +990,22 @@
   },
   "sankhara": {
     "saṅkhāra": 24,
-    "saṅkhara": 2,
-    "saṅkhārā": 3
+    "saṅkhārā": 5
   },
   "sankharas": {
-    "saṅkhāras": 5,
-    "sankharas": 2
+    "saṅkhāras": 7
   },
   "sankharic": {
     "saṅkhāric": 1
   },
   "sanna": {
-    "saññā": 4,
-    "sañña": 8
+    "saññā": 12
   },
   "santam": {
     "santaṁ": 1
   },
   "santutthi": {
-    "santuṭṭhi": 1,
-    "santutthi": 1
+    "santuṭṭhi": 2
   },
   "sarakani": {
     "sarakāni": 4
@@ -1043,8 +1017,7 @@
     "sārāṇīyā": 1
   },
   "sariputta": {
-    "sāriputta": 12,
-    "sariputta": 12
+    "sāriputta": 26
   },
   "sasana": {
     "sāsana": 1
@@ -1053,10 +1026,8 @@
     "satipañña": 2
   },
   "satipatthana": {
-    "satipaṭṭhāna": 34,
-    "satipatthana": 1,
-    "satipatthāna": 1,
-    "satipaṭṭhana": 1
+    "satipaṭṭhāna": 36,
+    "satipatthana": 1
   },
   "satipatthanasamyutta": {
     "satipaṭṭhānasaṁyutta": 2
@@ -1080,8 +1051,7 @@
     "sīgālovāda": 1
   },
   "sila": {
-    "sīla": 20,
-    "sila": 3
+    "sīla": 23
   },
   "siladhara": {
     "sīladhara": 1
@@ -1109,14 +1079,13 @@
     "sopāka": 1
   },
   "sotapanna": {
-    "sotāpanna": 6,
-    "sotapanna": 2
+    "sotāpanna": 8
   },
   "sotapattimagga": {
     "sotāpattimagga": 2
   },
   "sotappana": {
-    "sotāppana": 2
+    "sotāppana": 4
   },
   "subha": {
     "subhā": 1
@@ -1156,9 +1125,7 @@
     "taṁ": 1
   },
   "tanha": {
-    "tanha": 1,
-    "taṇhā": 7,
-    "taṇha": 3
+    "taṇhā": 11
   },
   "tathagata": {
     "tathāgata": 1,
@@ -1174,13 +1141,10 @@
     "ṭhānissarā": 10
   },
   "thanissaro": {
-    "ṭhānissaro": 53,
-    "thānissaro": 1,
-    "thanissaro": 2
+    "ṭhānissaro": 56
   },
   "theravada": {
-    "theravada": 5,
-    "theravāda": 13
+    "theravāda": 18
   },
   "theravadin": {
     "theravādin": 1
@@ -1192,8 +1156,7 @@
     "ṭhitabho": 1
   },
   "tipitaka": {
-    "tipitaka": 1,
-    "tipiṭaka": 1
+    "tipiṭaka": 2
   },
   "udayi": {
     "udāyī": 1
@@ -1211,8 +1174,7 @@
     "upādāna": 4
   },
   "upali": {
-    "upāli": 8,
-    "upali": 1
+    "upāli": 9
   },
   "upasika": {
     "upasika": 11,
@@ -1227,8 +1189,7 @@
     "upavāṇa": 1
   },
   "upekkha": {
-    "upekkha": 2,
-    "upekkhā": 3
+    "upekkhā": 5
   },
   "uppada": {
     "uppādā": 2
@@ -1241,8 +1202,7 @@
     "vajira": 1
   },
   "vajrayana": {
-    "vajrayana": 1,
-    "vajrayāna": 1
+    "vajrayāna": 2
   },
   "vangisasamyutta": {
     "vaṅgīsasaṁyutta": 1
@@ -1260,8 +1220,7 @@
     "vāyāma": 1
   },
   "vedana": {
-    "vedanā": 14,
-    "vedana": 5
+    "vedanā": 19
   },
   "veranja": {
     "verañjā": 1
@@ -1270,12 +1229,10 @@
     "vibhavadiṭṭhi": 1
   },
   "vibhavatanha": {
-    "vibhavataṇhā": 1,
-    "vibhavatanha": 2
+    "vibhavataṇhā": 3
   },
   "vicara": {
-    "vicāra": 7,
-    "vicara": 1
+    "vicāra": 8
   },
   "vidudabha": {
     "viḍūḍabha": 1
@@ -1291,10 +1248,7 @@
     "vīmaṃsaka": 1
   },
   "vinnana": {
-    "viññāṇa": 6,
-    "viññana": 4,
-    "vinnana": 1,
-    "viññaṇa": 2
+    "viññāṇa": 13
   },
   "vinnanadhatu": {
     "viññaṇadhatu": 1
