@@ -332,7 +332,12 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
 
         renderDict["player"] = f"[](player:{Database.ItemCode(event=container['event'],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
 
-    item["body"] = bodyTemplate(**renderDict)
+    try:
+        item["body"] = bodyTemplate(**renderDict)
+    except pyratemp.TemplateRenderError as error:
+        Alert.error(error,"\n   occured when rendering",item,"\n   Continuing with the unrendered text...")
+        item["body"] = item["text"]
+        return
 
     if teachers and showAttribution:
 

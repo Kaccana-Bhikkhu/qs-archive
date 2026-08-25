@@ -3110,7 +3110,7 @@ def main():
     if "dispatch" in gOptions.buildOnly:
         sitemapMenu.append(DispatchPages())
 
-    with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
+    with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w",encoding="utf-8") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
         startTime = time.perf_counter()
