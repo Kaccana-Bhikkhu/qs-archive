@@ -8,7 +8,7 @@ Most of Ajahn Pasanno’s recorded teachings come from events which recur on a w
 ## Thanksgiving Retreats (<a id="thanksgiving-retreats" href="../indexes/EventsBySeries.html#thanksgiving-retreats">List</a>)
 Ajahn Sumedho and later Ajahn Amaro began leading residential retreats in Northern California years before Abhayagiri Monastery was founded in 1996. Although the duration and venue of early retreats varied, by the early 1990s the event had crystallized into an annual 10-day retreat at the Angela Center in Santa Rosa spanning the weekends on either side of the November Thanksgiving holiday. The name “Thanksgiving Retreat” thus originated from the dates of the retreat, although themes of gratitude commonly arose in the teachings.
 
-During the co-abbotship years (1997-2010), Ajahn Amaro took on the majority of external teaching events, while Ajahn Pasanno mostly stayed at Abhayagiri to train the junior monks. Thus Ajahn Amaro led all Thanksgiving Retreats during this period except his sabbatical year in 2004.
+During the co-abbotship years (1997-2010), Ajahn Amaro took on the majority of external teaching events, while Ajahn Pasanno mostly stayed at Abhayagiri to train the junior monks. Thus Ajahn Amaro led all Thanksgiving Retreats during this period except his sabbatical year in 2004, when Ajahn Pasanno and Taraniya co-led the retreat.
 
 Ajahn Amaro typically invited one or two senior Sīladharā from England to co-lead the retreat with him. He also invited multiple junior Abhayagiri monastics to participate as retreatants. Ajahn Amaro and the nun(s) gave daily Dhamma talks and occasional Q&A sessions, but most interactions with retreatants occurred in small group interviews. Thus there are fewer recordings suitable for the Archive from this period.
 
@@ -39,19 +39,19 @@ Ajahn Sumedho was invited to teach at Spirit Rock Meditation Center even before 
 Spirit Rock Meditation Center is physically and often culturally more accessible to inhabitants of the San Francisco Bay Area than Abhayagiri Monastery. For this reason, many participants have little experience with Buddhist monastics, and some are new to Buddhist practice in general. These sessions are an opportunity to hear Ajahn Pasanno explain the Ajahn Chah tradition while making few assumptions about the prior experience of his audience. Questions and comments vary widely, but often relate to everyday life.
 
 -----
-[October 2010 Upāsikā Day](photo:Upasika Day 9 Oct 2010.jpg)
-## Abhayagiri Upāsikā Days (<a id="upasika-days" href="../indexes/EventsBySeries.html#upasika-days">List</a>; [Table of themes](about:UpasikaDays))
-The term “upāsikā” means “one who sits close by” and it has come to refer to lay people who join with monastics in the practice of the Dhamma. Abhayagiri Upāsikā Days are afternoon teaching sessions held at the monastery organized around a particular theme.
+[October 2010 Upāsika Day](photo:Upasika Day 9 Oct 2010.jpg)
+## Abhayagiri Upāsika Days (<a id="upasika-days" href="../indexes/EventsBySeries.html#upasika-days">List</a>; [Table of themes](about:UpasikaDays))
+The term “upāsika” means “one who sits close by” and it has come to refer to lay people who join with monastics in the practice of the Dhamma. Abhayagiri Upāsika Days are afternoon teaching sessions held at the monastery organized around a particular theme.
 
-The Upāsikā Program was particularly well-organized between 2006 and 2019. These years a committee of lay and monastic leaders met in early April to plan a series of five Upāsikā Days for the year. Each Upāsikā Day had both a topic (for example [jhāna](event:UD2015-4) or [Buddhist identity](event:UD2015-3)) and an overarching theme or lens through which to view the topic. The five themes repeated each year were formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. The committee kept track of topics covered in previous years so as not to repeat topics. Consistently following this organizational scheme resulted in a series of teachings impressive in both breadth and depth. Early Upāsikā Days were not recorded. Recording began in earnest in 2012, and the Archive contains roughly [20 Upāsikā Days organized by theme](about:UpasikaDays#table-of-upasika-day-themes) from 2012 to 2019.
+The Upāsika Program was particularly well-organized between 2006 and 2019. These years a committee of lay and monastic leaders met in early April to plan a series of five Upāsika Days for the year. Each Upāsika Day had both a topic (for example [jhāna](event:UD2015-4) or [Buddhist identity](event:UD2015-3)) and an overarching theme or lens through which to view the topic. The five themes repeated each year were formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. The committee kept track of topics covered in previous years so as not to repeat topics. Consistently following this organizational scheme resulted in a series of teachings impressive in both breadth and depth. Early Upāsika Days were not recorded. Recording began in earnest in 2012, and the Archive contains roughly [20 Upāsika Days organized by theme](about:UpasikaDays#table-of-upasika-day-themes) from 2012 to 2019.
 
-The coronavirus pandemic disrupted this orderly scheme of Upāsikā Days, and there are only two recordings of online Upāsikā Days on abhayagiri.org from this period.
+The coronavirus pandemic disrupted this orderly scheme of Upāsika Days, and there are only two recordings of online Upāsika Days on abhayagiri.org from this period.
 
-Upāsikā Day participants were typically core Abhayagiri lay supporters, many of whom have made a formal commitment to the Upāsikā Program. One hears the same voices weave through multiple recordings over the years. Some participants were lay Dhamma teachers themselves. Questions and comments often reflect years of committed practice and explore lay practice in more depth than any other series. This is also a good place to hear Ajahn Pasanno’s perspective on various social issues.
+Upāsika Day participants were typically core Abhayagiri lay supporters, many of whom have made a formal commitment to the Upāsika Program. One hears the same voices weave through multiple recordings over the years. Some participants were lay Dhamma teachers themselves. Questions and comments often reflect years of committed practice and explore lay practice in more depth than any other series. This is also a good place to hear Ajahn Pasanno’s perspective on various social issues.
 
 -----
 ## Practice and Study Days (<a id="practice-and-study-days" href="../indexes/EventsBySeries.html#practice-and-study-days">List</a>)
-Occasional Practice and Study Days replaced the Upāsikā Program from 2023 to 2025. The daylong format allows longer periods of meditation than afternoon-only Upāsikā Days.
+Occasional Practice and Study Days replaced the Upāsika Program from 2023 to 2025. The daylong format allows longer periods of meditation than afternoon-only Upāsika Days.
 
 -----
 [Abhayagiri's 20th Anniversary in the unfinished Reception Hall](photo:../events/Anniversary2016.jpg)

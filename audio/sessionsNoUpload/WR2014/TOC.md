@@ -255,7 +255,7 @@
   <a href="#">
     <i class="fa fa-plus-square toggle-view noscript-hide" id="UKee"></i>
   </a>
-  Upasikā Kee Nanayon
+  Upāsikā Kee Nanayon
   (3)
 </h3>
 <div class="listing" style="display:none;" id="UKee.b">
@@ -295,7 +295,7 @@
 <div class="listing" style="display:none;" id="ABaen.b">
   <p>
     <a href="#WR2014_S18">Session 18</a>:
-    The Spirit of a Warrior and Kor Patipada
+    The Spirit of a Warrior and Kor Paṭipadā
   </p>
 </div>
 <h3>
@@ -334,11 +334,11 @@
 <div class="listing" style="display:none;" id="ALiem.b">
   <p>
     <a href="#WR2014_S03">Session 3</a>:
-    Watch Your Mind and Escape Mara's Snare Part 1
+    Watch Your Mind and Escape Māra's Snare Part 1
   </p>
   <p>
     <a href="#WR2014_S04">Session 4</a>:
-    Watch Your Mind and Escape Mara's Snare Part 2
+    Watch Your Mind and Escape Māra's Snare Part 2
   </p>
   <p>
     <a href="#WR2014_S30">Session 30</a>:
@@ -401,7 +401,7 @@
 <div class="listing" style="display:none;" id="AAnan.b">
   <p>
     <a href="#WR2014_S46">Session 46</a>:
-    Maraṇussati: Keeping the End in Mind
+    Maraṇānussati: Keeping the End in Mind
   </p>
   <p>
     <a href="#WR2014_S54">Session 54</a>:
@@ -431,7 +431,7 @@
 <div class="listing" style="display:none;" id="ADtun.b">
   <p>
     <a href="#WR2014_S18">Session 18</a>:
-    The Spirit of a Warrior and Kor Patipada
+    The Spirit of a Warrior and Kor Paṭipadā
   </p>
   <p>
     <a href="#WR2014_S20">Session 20</a>:

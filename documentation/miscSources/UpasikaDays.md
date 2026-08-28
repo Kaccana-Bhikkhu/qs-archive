@@ -1,24 +1,24 @@
 
-## Upāsikā Day Themes
-<!--TITLE:Upāsikā Day Themes-->
+## Upāsika Day Themes
+<!--TITLE:Upāsika Day Themes-->
 
-From 2006 to 2019, there were five [Upāsikā Days](about:Event-series#upasika-days) a year, each organized around one of five themes.
+From 2006 to 2019, there were five [Upāsika Days](about:Event-series#upasika-days) a year, each organized around one of five themes.
 Dimmed entries indicate that no recording is available.
 Links marked ![External link](../images/icons/Link-external-small-ltr-progressive.svg) are recordings outside the Ajahn Pasanno Archive.
 
-### Table of Upāsikā Day themes:
+### Table of Upāsika Day themes:
 <!--HTML <div style="overflow:auto;"> -->
 
 Year|Devotion/Ritual|Sutta Study|Meditation|Global/Social Context|Daily Life Practice
 --|--|--|--|--|--
-2006|Kathina Festival {: .dimmed}|Dhammapada/Right Speech {: .dimmed}||Work Day at ABM {: .dimmed}|
-2007|Three Refuges/Our Lineage {: .dimmed}|Nibbana {: .dimmed}|Metta {: .dimmed}|Peace & Conflict {: .dimmed}|Precepts {: .dimmed}
-2008|Chanting {: .dimmed}|Four Heavenly Messengers {: .dimmed}|“Other” Brahmaviharas {: .dimmed}|Advice to Political Leaders {: .dimmed}|Generosity {: .dimmed}
+2006|Kaṭhina Festival {: .dimmed}|Dhammapada/Right Speech {: .dimmed}||Work Day at ABM {: .dimmed}|
+2007|Three Refuges/Our Lineage {: .dimmed}|Nibbāna {: .dimmed}|Metta {: .dimmed}|Peace & Conflict {: .dimmed}|Precepts {: .dimmed}
+2008|Chanting {: .dimmed}|Four Heavenly Messengers {: .dimmed}|“Other” Brahmavihāras {: .dimmed}|Advice to Political Leaders {: .dimmed}|Generosity {: .dimmed}
 2009|Buddhist Calendar {: .dimmed}|Dependent Origination {: .dimmed}|“Jump Starting” Your Meditation Practice {: .dimmed}|<b>[Buddhism as an Education System](https://www.abhayagiri.org/talks/collections/8/71-buddhism-as-an-education-system-upasika-day-2009){: .external-link}</b><br>&nbsp;&nbsp;Ajahn Jayasaro|Compassion: Death & Dying {: .dimmed}
 2010|Ajahn Chai/Thai Forest Tradition {: .dimmed}|Therigatha & Theragatha {: .dimmed}|Asubha Practice {: .dimmed}|Forgiveness & Reconciliation {: .dimmed}|Relating to Nonspiritual Family/Friends {: .dimmed}
-2011|Elements of Puja (shrines, offerings, etc.) {: .dimmed}|Three Cardinal Suttas {: .dimmed}|Standing, Walking, Lying Down Meditation {: .dimmed}|Fourfold Sangha Engaged in the Community {: .dimmed}|Applying the Four Noble Truths {: .dimmed}
+2011|Elements of Pūjā (shrines, offerings, etc.) {: .dimmed}|Three Cardinal Suttas {: .dimmed}|Standing, Walking, Lying Down Meditation {: .dimmed}|Fourfold Saṅgha Engaged in the Community {: .dimmed}|Applying the Four Noble Truths {: .dimmed}
 2012|<b>[The Buddha](https://www.abhayagiri.org/talks/collections/8/69-the-buddha-upasika-day-2012){: .external-link}</b><br>&nbsp;&nbsp;Ajahn Yatiko|<b>[The Gradual Training](event:UD2012-4)</b><br>&nbsp;&nbsp;AP, AY|<b>[Brightening the Mind](event:UD2012-3)</b><br>&nbsp;&nbsp;AP, AY, AKd|Relating to the Natural Environment {: .dimmed}|Four Right Efforts {: .dimmed}
-2013|<b>[A Monastic’s Life](event:UD2013-2)</b><br>&nbsp;&nbsp;AP, AY|<b>[Mangala Sutta](https://www.abhayagiri.org/talks/collections/8/65-mangala-sutta-upasika-day-2013){: .external-link}</b><br>&nbsp;&nbsp;Ajahn Karuṇadhammo|<b>[Calming the Busy Mind](event:UD2013-3)</b><br>&nbsp;&nbsp;Ajahn Pasanno|<b>[Right Livelihood](event:UD2013-1)</b><br>&nbsp;&nbsp;AP, AY, AKd|Right Speech: Sarcasm, Joking, Idle Chatter {: .dimmed}
+2013|<b>[A Monastic’s Life](event:UD2013-2)</b><br>&nbsp;&nbsp;AP, AY|<b>[Maṅgala Sutta](https://www.abhayagiri.org/talks/collections/8/65-mangala-sutta-upasika-day-2013){: .external-link}</b><br>&nbsp;&nbsp;Ajahn Karuṇadhammo|<b>[Calming the Busy Mind](event:UD2013-3)</b><br>&nbsp;&nbsp;Ajahn Pasanno|<b>[Right Livelihood](event:UD2013-1)</b><br>&nbsp;&nbsp;AP, AY, AKd|Right Speech: Sarcasm, Joking, Idle Chatter {: .dimmed}
 2014|<b>[Thai Forest Tradition](event:UD2014-2)</b><br>&nbsp;&nbsp;AP, AKd|Taking the Suttas to Heart {: .dimmed}|<b>[Mindfulness of Breathing](event:UD2014-3)</b><br>&nbsp;&nbsp;Ajahn Pasanno|<b>[Death and Dying](event:UD2014-1)</b><br>&nbsp;&nbsp;AP, AY, DS, JD|<b>[Personality View in Daily Life](https://www.abhayagiri.org/talks/collections/8/61-personality-view-in-daily-life-upasika-day-2014){: .external-link}</b><br>&nbsp;&nbsp;Ajahn Karuṇadhammo
 2015|<b>[On Pilgrimage and Tudong](event:UD2015-1)</b><br>&nbsp;&nbsp;AP, AKd, AÑ|<b>[The Middle Way of Not-Self](event:UD2015-2)</b><br>&nbsp;&nbsp;Ajahn Pasanno|<b>[Jhāna: A Practical Approach](event:UD2015-4)</b><br>&nbsp;&nbsp;AP, AKd|<b>[Buddhist Identity in the Modern World](event:UD2015-3)</b><br>&nbsp;&nbsp;AP, AKd|The World of the Six Senses: Gratification, Danger, and Escape {: .dimmed}
 2016|<b>[The Art of Being Human](https://www.youtube.com/watch?v=onlshJhImrM){: .external-link}</b><br>&nbsp;&nbsp;Ajahn Jotipālo|<b>[Suttas You've Never Heard Of](event:UD2016-2)</b><br>&nbsp;&nbsp;Ajahn Pasanno|<b>[Meditation on Ten Perceptions](event:UD2016-3)</b><br>&nbsp;&nbsp;Ajahn Pasanno|<b>[Right Speech and Living With Ourselves](event:UD2016-4)</b><br>&nbsp;&nbsp;AP,  AJ|Using the Buddha’s Life in Daily Practice {: .dimmed}
@@ -28,7 +28,7 @@ Year|Devotion/Ritual|Sutta Study|Meditation|Global/Social Context|Daily Life Pra
 
 <!--HTML </div> -->
 <p></p>
-### Later Upāsikā Days in the Archive:
+### Later Upāsika Days in the Archive:
 [Living in a Changing Society](event:UD2020) – August 2020<br>
 &nbsp;&nbsp;Ajahn Pasanno
 

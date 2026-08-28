@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import os, re, json
 import Utils, Alert, Link, FileRegister
-from typing import Iterable
+from typing import Callable
 from collections import Counter,defaultdict
 import Render
 
@@ -23,7 +23,7 @@ def ReadCorrectForms() -> None:
                 words = line.split(",")
                 if not words or not words[0]:
                     continue
-                plainForm = Utils.RemoveDiacritics(words[0])
+                plainForm = Utils.RemoveDiacritics(words[0].strip("*"))
 
                 cannonicalWords = [w for w in words if not w.endswith("*")]
                 gCannonicalDiacritics[plainForm] = cannonicalWords
@@ -56,10 +56,25 @@ def BuildDiacriticDatabase(text:str,item:dict) -> str:
                 Alert.caution(item,"has incorrect form",repr(word),"->",correctForms[0] if len(correctForms) == 1 else correctForms)
                 if len(correctForms) == 1:
                     gCorrections[word] = correctForms[0]
+        elif word != plain and word not in gTagAndTeacherForms:
+            Alert.notice(item,"has new diacritic form",repr(word))
 
     return None # Don't change the text
 
-def TagAndTeacherWords() -> dict[str,set[str]]:
+def ApplyToDocumentation(transform: Callable[...,tuple[str,int]|str]) -> None:
+    documentationDirs = ("aboutSources","technicalSources","miscSources","tableOfContents")
+    for dir in documentationDirs:
+        for filename in sorted(os.listdir(Utils.PosixJoin(gOptions.documentationDir,dir))):
+            if not filename.endswith(".md"):
+                continue
+            with open(Utils.PosixJoin(gOptions.documentationDir,dir,filename),encoding="utf-8") as file:
+                for n,line in enumerate(file,start=1):
+                    line = Utils.RemoveHtmlTags(line)
+                    line = Utils.RemoveMarkdownHyperlinks(line)
+                    line = re.sub(r"`[^`]*`","",line) # Remove code blocks
+                    transform(line,f"{filename} line {n}: '{Utils.EllideText(line)}'")
+
+def TagAndTeacherForms() -> dict[str,set[str]]:
     """Return a dict of words used in tag and teacher names. We assume these use diacritics correctly.
     For example, words['dhamma'] = {'dhamma','dhammā'}"""
 
@@ -95,15 +110,13 @@ def TagAndTeacherWords() -> dict[str,set[str]]:
 
 def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
     """Write or update CorrectDiacritics.csv based on the diacritics we have found in the database"""
-    tagAndTeacherForms = TagAndTeacherWords()
-
     with open(Utils.PosixJoin(gOptions.diacriticsDir,"CorrectDiacritics.csv"), 'w', encoding='utf-8') as file:
         for plainWord,forms in sortedFrequency.items():
             if plainWord in gCorrectDiacritics and not gOptions.newCorrectDiacritics:
                 forms = gCorrectDiacritics[plainWord]
                 cannonicalForms = gCannonicalDiacritics[plainWord]
             else:
-                cannonicalForms = [f for f in forms if f in tagAndTeacherForms[plainWord]]
+                cannonicalForms = [f for f in forms if f in gTagAndTeacherForms[plainWord]]
             if len(cannonicalForms) in (0,len(forms)):
                 print(",".join(sortedFrequency[plainWord]),file = file)
             else: # Add "*" after potentially suspicious forms
@@ -137,7 +150,9 @@ gPlainWords = Counter()
 # A dictionary read from CorrectDiacritics.csv indicating the allowable forms
 gCorrectDiacritics:dict[str,list[str]] = {}
 
-# The forms in gCorrectDiacritics that are found in teacher, tag, and book names
+# Forms found in teacher, tag, and book names
+gTagAndTeacherForms: dict[str,set[str]] = {}
+# The forms in gCorrectDiacritics that are found in gTagAndTeacherForms
 gCannonicalDiacritics:dict[str,list[str]] = {}
 
 # gCorrections[incorrectForm] = correctForm
@@ -146,30 +161,30 @@ gCorrections:dict[str,str] = {}
 def main() -> None:
     gOptions.diacriticsDir = Utils.PosixJoin(gOptions.documentationDir,"diacritics")
 
+    global gTagAndTeacherForms
+    gTagAndTeacherForms = TagAndTeacherForms()
+
     ReadCorrectForms()
     if not gCorrectDiacritics:
         Alert.info("CorrectDiacritics.csv not found. Will remake this file.")
         gOptions.newCorrectDiacritics = True
     
     cautionCount = Alert.caution.count
+    noticeCount = Alert.notice.count
     Render.ApplyToBodyText(BuildDiacriticDatabase)
-    Alert.info(Alert.caution.count - cautionCount,"mismatched diacritics found.")
+    ApplyToDocumentation(BuildDiacriticDatabase)
+    Alert.info(Alert.caution.count - cautionCount,"mismatched diacritic(s) found.")
+    Alert.info(Alert.notice.count - noticeCount,"new diacritic form(s) found.")
 
     sortedFrequency = {word:freq for word,freq in sorted(gDiacriticFrequency.items())}
     os.makedirs(gOptions.diacriticsDir,exist_ok=True)
     with open(Utils.PosixJoin(gOptions.diacriticsDir,"DiacriticFrequency.json"), 'w', encoding='utf-8') as file:
         json.dump(sortedFrequency, file, ensure_ascii=False, indent=2)
 
-    if not gOptions.newCorrectDiacritics:
-        for plainWord,forms in sortedFrequency.items():
-            if plainWord not in gCorrectDiacritics:
-                Alert.notice("New diacritic forms detected:",dict(forms))
-
     if gOptions.newCorrectDiacritics or gOptions.updateCorrectDiacritics:
         if gOptions.updateCorrectDiacritics:
             for plainWord,forms in gCorrectDiacritics.items():
-                if plainWord not in sortedFrequency:
-                    sortedFrequency[plainWord] = dict.fromkeys(forms,1)
+                sortedFrequency[plainWord] = dict.fromkeys(forms,0) | (sortedFrequency.get(plainWord) or {})
             sortedFrequency = {word:freq for word,freq in sorted(sortedFrequency.items())}
         UpdateCorrectDiacritics(sortedFrequency)
         Alert.info("CorrectDiacritics.csv updated.")

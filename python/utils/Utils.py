@@ -83,6 +83,9 @@ PosixNorm = posixpath.normpath
 def RemoveHtmlTags(html: str) -> str:
     return re.sub(r"\<[^>]*\>","",html)
 
+def RemoveMarkdownHyperlinks(markdown: str) -> str:
+    return re.sub(r"\[([^\]]*)\]\([^)]*\)",r"\1",markdown)
+
 def DirectoryURL(url:str) -> str:
     "Ensure that this url specifies a directory path."
     if url.endswith("/"):
