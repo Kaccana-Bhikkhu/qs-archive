@@ -111617,7 +111617,7 @@
         {
           "kind": "Reference",
           "flags": "",
-          "text": "Criteria for admonishment in the _Buddhist Monastic Code's_  [discussion](BMC I p. 199) of BuSs 8.",
+          "text": "Criteria for admonishment in the _Buddhist Monastic Code's_  [discussion](BMC 1 p. 199) of BuSs 8.",
           "tags": [],
           "indentLevel": 1
         }
@@ -112392,7 +112392,7 @@
         {
           "kind": "Commentary",
           "flags": "",
-          "text": "[Vyaghri Jātaka Jatakamala No. 1](https://ignca.gov.in/online-digital-resources/jātaka-stories/025-the-story-of-a-tigeress/): The Bodhisatta feeds himself to a hungry tigress. (This story does not occur in the Pāli Jātaka.)",
+          "text": "[Vyaghri Jātaka Jatakamala No. 1](https://ignca.gov.in/online-digital-resources/jataka-stories/025-the-story-of-a-tigeress/): The Bodhisatta feeds himself to a hungry tigress. (This story does not occur in the Pāli Jātaka.)",
           "tags": [
             "Jātaka Tales"
           ],
@@ -176114,10 +176114,17 @@
       "teachers": [
         "AAh"
       ],
-      "fTags": [],
+      "fTags": [
+        "Monasteries"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Ajahn Pasanno",
+        "Monasteries",
         "Monastic life",
         "Community",
         "Desire",
@@ -176126,7 +176133,7 @@
         "Saṅgha",
         "Abhayagiri"
       ],
-      "qTagCount": 3,
+      "qTagCount": 4,
       "clips": [
         [
           "$",
@@ -176296,6 +176303,7 @@
         "Ajahn Chah",
         "Commerce/economics",
         "Greed",
+        "Wat Pah Pong",
         "Relinquishment",
         "Happiness",
         "Contentment"
@@ -176305,10 +176313,10 @@
         [
           "$",
           "20:42",
-          "22:45.5"
+          "22:40"
         ]
       ],
-      "duration": "2:03"
+      "duration": "1:58"
     },
     {
       "event": "Anniversary2026-1",
@@ -178151,13 +178159,13 @@
       "format": "Short teaching",
       "medium": "In-person",
       "tags": [],
-      "website": "https://www.abhayagiri.org/talks/9050-samādhi-memory-renunciation-qa",
+      "website": "https://www.abhayagiri.org/talks/9050-samadhi-memory-renunciation-qa",
       "description": "A short question and answer session offered at the beginning of Winter Retreat 2026.",
       "sessions": 1,
       "excerpts": 4
     },
     "Anniversary2026-1": {
-      "title": "Abhayagiri's 30th Annivesary Part 1",
+      "title": "Abhayagiri's 30th Anniversary Part 1",
       "subtitle": "",
       "code": "Anniversary2026-1",
       "series": [
@@ -203437,7 +203445,8 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "monasteries.html",
-      "excerptCount": 16,
+      "excerptCount": 17,
+      "fTagCount": 1,
       "listIndex": 663
     },
     "Ajahn Chah monasteries": {
@@ -203521,7 +203530,7 @@
         "Wat Pah Pong"
       ],
       "subtopics": [],
-      "excerptCount": 139,
+      "excerptCount": 140,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
       "listIndex": 667
@@ -210015,7 +210024,7 @@
       "year": "1998",
       "commentary": false,
       "filename": "bp620s_Payutto_A-Constitution-For-Living.pdf",
-      "remoteUrl": "https://www.bps.lk/olib/bp/bp620s_Payutto_A-Constitution-For-Living.pdf",
+      "remoteUrl": "",
       "otherUrl": "",
       "author": [
         "Payutto"
@@ -210719,7 +210728,7 @@
       "year": "1981",
       "commentary": false,
       "filename": "bp201s_Nyanatiloka_life-Of-The-Buddha.pdf",
-      "remoteUrl": "https://www.bps.lk/olib/bp/bp201s_Nyanatiloka_life-Of-The-Buddha.pdf",
+      "remoteUrl": "",
       "otherUrl": "",
       "author": [
         "Nyanatiloka"
@@ -211515,7 +211524,7 @@
       "year": "1974",
       "commentary": false,
       "filename": "bp405s_Nyanananda_Magic-of-the-Mind.pdf",
-      "remoteUrl": "https://www.bps.lk/olib/bp/bp405s_Nyanananda_Magic-of-the-Mind.pdf",
+      "remoteUrl": "",
       "otherUrl": "",
       "author": [
         "Nyanananda"
@@ -211655,7 +211664,7 @@
       "year": "1972",
       "commentary": false,
       "filename": "bp101s_Nyanamoli_Life-Of-The-Buddha.pdf",
-      "remoteUrl": "https://bps.lk/olib/bp/bp101s_Nyanamoli_Life-Of-The-Buddha.pdf",
+      "remoteUrl": "",
       "otherUrl": "",
       "author": [
         "Nyanamoli"
@@ -211683,7 +211692,7 @@
       "year": "1952",
       "commentary": false,
       "filename": "bp601s_Nyanatiloka_Buddhist-Dictonary.pdf",
-      "remoteUrl": "https://www.bps.lk/olib/bp/bp601s_Nyanatiloka_Buddhist-Dictonary.pdf",
+      "remoteUrl": "",
       "otherUrl": "https://buddhistuniversity.net/content/reference/buddhist-dictionary_nyanatiloka",
       "author": [
         "Nyanatiloka"
@@ -211740,7 +211749,7 @@
       "commentary": true,
       "filename": "The-Jataka.pdf",
       "remoteUrl": "https://ancient-buddhist-texts.net/English-Texts/Jataka/The-Jataka.pdf",
-      "otherUrl": "https://ancient-buddhist-texts.net/English-Texts/Jātaka/index.htm",
+      "otherUrl": "https://ancient-buddhist-texts.net/English-Texts/Jataka/index.htm",
       "author": []
     }
   },
@@ -219247,12 +219256,12 @@
       "flags": "",
       "name": "Monasteries",
       "pali": "",
-      "excerptCount": 16,
+      "excerptCount": 17,
       "subsumed": false,
-      "text": "Monasteries (16)",
+      "text": "Monasteries (17)",
       "tag": "Monasteries",
       "subtagCount": 62,
-      "subtagExcerptCount": 625
+      "subtagExcerptCount": 626
     },
     {
       "level": 2,
@@ -219265,7 +219274,7 @@
       "text": "Ajahn Chah monasteries (12)",
       "tag": "Ajahn Chah monasteries",
       "subtagCount": 28,
-      "subtagExcerptCount": 571
+      "subtagExcerptCount": 572
     },
     {
       "level": 3,
@@ -219278,7 +219287,7 @@
       "text": "Thai Ajahn Chah monasteries (28)",
       "tag": "Thai Ajahn Chah monasteries",
       "subtagCount": 13,
-      "subtagExcerptCount": 278
+      "subtagExcerptCount": 279
     },
     {
       "level": 4,
@@ -219297,9 +219306,9 @@
       "flags": "",
       "name": "Wat Nong Pah Pong",
       "pali": "",
-      "excerptCount": 139,
+      "excerptCount": 140,
       "subsumed": false,
-      "text": "Wat Nong Pah Pong (139)",
+      "text": "Wat Nong Pah Pong (140)",
       "tag": "Wat Pah Pong"
     },
     {
@@ -223692,7 +223701,7 @@
       "sessions": 4,
       "excerpts": 18,
       "answersListenedTo": 18,
-      "tagsApplied": 116,
+      "tagsApplied": 118,
       "invalidTags": 0,
       "duration": "1:35:25"
     }
@@ -223719,7 +223728,9 @@
     "https://www.buddhism.hku.hk/wp-content/uploads/The-Path-to-Freedom.pdf": "",
     "https://amaravati.org/dhamma-audio-library/*": "",
     "https://suttacentral.net/*": "",
-    "https://commons.wikimedia.org/": ""
+    "https://commons.wikimedia.org/": "",
+    "https://css-tricks.com/a-perfect-table-of-contents-with-html-css/*": "",
+    "https://www.paliverse.org/*": ""
   },
   "dispatch": {
     "Key Topics": {
@@ -228985,7 +228996,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/wat-pah-pong.html",
-      "excerptCount": 139,
+      "excerptCount": 140,
       "fTagCount": 4
     },
     "Wat Pah Nanachat": {
@@ -229538,7 +229549,7 @@
     "Ja": {
       "uid": "Ja",
       "name": "Jātaka",
-      "wholeTextLink": "",
+      "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/ja",
       "citeFullName": false,
       "sutta": "Yes",
       "vinaya": "",
@@ -231469,7 +231480,7 @@
         "Wat Pah Nanachat",
         "Abhayagiri"
       ],
-      "excerptCount": 462,
+      "excerptCount": 463,
       "fTagCount": 11
     },
     "context": {

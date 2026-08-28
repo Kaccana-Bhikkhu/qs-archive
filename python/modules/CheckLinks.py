@@ -143,6 +143,8 @@ def CheckUrls(urls: dict[str,list[str]]) -> None:
     """Check a list of urls to see if they are valid."""
     urlsWithBookmarks = defaultdict(LinkInfo)
     for linkTo,linkFrom in urls.items():
+        if Utils.RemoveDiacritics(linkTo) != linkTo:
+            Alert.warning("URL:",linkTo,"contains diacritics; linked from",linkFrom)
         parsed = urllib.parse.urlparse(linkTo)
         bookmark = parsed.fragment
         if bookmark == "_keep_scroll":
@@ -168,7 +170,7 @@ def WriteUrlList(urlList: dict[str,UrlInfo],filename: str) -> None:
     """Write a list of urls to a text file."""
 
     os.makedirs(Utils.PosixSplit(filename)[0],exist_ok=True)
-    with open(filename,"w") as file:
+    with open(filename,"w",encoding="utf-8") as file:
         for url,status in sorted(urlList.items()):
             print(url,"; linked from",status.linkingPages,file=file)
 
