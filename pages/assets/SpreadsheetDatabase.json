@@ -6068,7 +6068,13 @@
       "teachers": [
         "JKornfield"
       ],
-      "fTags": [],
+      "fTags": [
+        "Jack Kornfield"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Simile",
@@ -7335,7 +7341,13 @@
       "teachers": [
         "PBreiter"
       ],
-      "fTags": [],
+      "fTags": [
+        "Paul Breiter"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Paul Breiter",
@@ -7487,7 +7499,13 @@
       "teachers": [
         "PBreiter"
       ],
-      "fTags": [],
+      "fTags": [
+        "Paul Breiter"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Indirect quote",
@@ -8913,7 +8931,13 @@
       "teachers": [
         "JKappel"
       ],
-      "fTags": [],
+      "fTags": [
+        "Joseph Kappel"
+      ],
+      "fTagOrder": [
+        200
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Story",
@@ -10059,7 +10083,7 @@
         },
         {
           "kind": "Quote",
-          "flags": "",
+          "flags": "n",
           "text": "On a certain level, we're never going to figure this out.",
           "teachers": [
             "AP"
@@ -15198,7 +15222,7 @@
         }
       ],
       "tags": [
-        "Anumodanā",
+        "Anumodana",
         "Pāli",
         "Translation",
         "Merit",
@@ -17882,7 +17906,7 @@
         }
       ],
       "tags": [
-        "Anumodanā",
+        "Anumodana",
         "Almsfood",
         "Pāli",
         "Gratitude",
@@ -17912,7 +17936,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Anumodanā",
+        "Anumodana",
         "Almsfood",
         "Pāli",
         "Gratitude",
@@ -30118,7 +30142,7 @@
         {
           "kind": "Story",
           "flags": "0",
-          "text": "Bhante Suddhaso finds his way to Abhayagiri through Zen.",
+          "text": "Bhante Suddhāso finds his way to Abhayagiri through Zen.",
           "teachers": [
             "BSuddhaso"
           ],
@@ -49682,11 +49706,10 @@
         "Respect",
         "Culture/Other Theravāda traditions",
         "Asking forgiveness ceremony",
-        "Monastic life",
         "Ajahn Yatiko",
         "Monastic life"
       ],
-      "qTagCount": 5,
+      "qTagCount": 4,
       "clips": [
         [
           "$",
@@ -56670,7 +56693,7 @@
         {
           "kind": "Story",
           "flags": "",
-          "text": "Ajahn Pāvaro decides to practice in Bodh Gaya after receiving worrying medical news.",
+          "text": "Ajahn Pavaro decides to practice in Bodh Gaya after receiving worrying medical news.",
           "teachers": [
             "AP"
           ],
@@ -72567,7 +72590,7 @@
       "fileNumber": 10,
       "kind": "Question",
       "flags": "",
-      "text": "You mentioned how Ajahn Chah cultivated the brahmavihara of metta and Ajahn Liem cultivated the brahmavihara of equilibrium. Could you talk about this?",
+      "text": "You mentioned how Ajahn Chah cultivated the brahmavihāra of metta and Ajahn Liem cultivated the brahmavihāra of equilibrium. Could you talk about this?",
       "teachers": [
         "AP"
       ],
@@ -76464,7 +76487,7 @@
         "Translation",
         "Skillful qualities",
         "Happiness",
-        "Anumodanā"
+        "Anumodana"
       ],
       "qTagCount": 2,
       "clips": [
@@ -76820,7 +76843,7 @@
         }
       ],
       "tags": [
-        "Anumodanā",
+        "Anumodana",
         "Translation",
         "Generosity",
         "Merit",
@@ -93473,7 +93496,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Anumodanā",
+        "Anumodana",
         "Chanting",
         "Translation",
         "Merit",
@@ -101531,7 +101554,7 @@
       "fileNumber": 5,
       "kind": "Story",
       "flags": "",
-      "text": "Ajahn Kalyāno instructs monks to memorize the organs while watching an autopsy.",
+      "text": "Ajahn Kalyāṇo instructs monks to memorize the organs while watching an autopsy.",
       "teachers": [
         "AJoti"
       ],
@@ -102212,7 +102235,7 @@
       "fileNumber": 0,
       "kind": "Reading",
       "flags": "",
-      "text": "“The One Who Knows” an unpublished talk by Ajahn Kalyāno at Bodhinyana Monastery, Melbourne Australia in October 2012 (with permission).",
+      "text": "“The One Who Knows” an unpublished talk by Ajahn Kalyāṇo at Bodhinyana Monastery, Melbourne Australia in October 2012 (with permission).",
       "teachers": [],
       "fTags": [],
       "annotations": [
@@ -108243,7 +108266,13 @@
       "teachers": [
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Joseph Kappel"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Ajahn Amaro",
@@ -115290,7 +115319,7 @@
       "fileNumber": 9,
       "kind": "Question",
       "flags": "",
-      "text": "If a sotāpanna or sakadagami dies and takes birth as a human, are they born as a stream- enterer or once-returner respectively? Or do they return that attainment later in life?",
+      "text": "If a sotāpanna or sakadāgāmī dies and takes birth as a human, are they born as a stream- enterer or once-returner respectively? Or do they return that attainment later in life?",
       "teachers": [
         "AP"
       ],
@@ -117491,7 +117520,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Anumodanā",
+        "Anumodana",
         "Pāli",
         "Chanting"
       ],
@@ -128754,7 +128783,7 @@
       "tags": [
         "Almsfood",
         "Requisites",
-        "Anumodanā",
+        "Anumodana",
         "Generosity",
         "Perception of a samaṇa",
         "Mutual lay/Saṅgha support"
@@ -149981,7 +150010,7 @@
       "fileNumber": 8,
       "kind": "Indirect quote",
       "flags": "0",
-      "text": "Ajahn Chah greets Jack Kornfield: \"I hope you're not afraid to suffer.\"",
+      "text": "Ajahn Chah greets Jack Kornfield: \"I hope you're not afraid to suffer.\"||Quoted by {teachers}.",
       "teachers": [
         "AP"
       ],
@@ -170305,7 +170334,10 @@
           "teachers": [
             "AA"
           ],
-          "tags": [],
+          "tags": [
+            "Impermanence",
+            "Time"
+          ],
           "indentLevel": 1
         }
       ],
@@ -197417,7 +197449,7 @@
       "related": [],
       "flags": "",
       "subtags": [
-        "Anumodanā",
+        "Anumodana",
         "Protective chants"
       ],
       "supertags": [
@@ -197437,11 +197469,11 @@
       "subtopicFTagCount": 5,
       "listIndex": 305
     },
-    "Anumodanā": {
-      "tag": "Anumodanā",
-      "pali": "Anumodanā",
-      "fullTag": "Anumodanā",
-      "fullPali": "Anumodanā",
+    "Anumodana": {
+      "tag": "Anumodana",
+      "pali": "Anumodana",
+      "fullTag": "Anumodana",
+      "fullPali": "Anumodana",
       "number": "",
       "alternateTranslations": [],
       "glosses": [
@@ -203073,6 +203105,7 @@
       "primaries": 0,
       "htmlFile": "jack-kornfield.html",
       "excerptCount": 29,
+      "fTagCount": 1,
       "listIndex": 647
     },
     "Paul Breiter": {
@@ -203093,6 +203126,7 @@
       "primaries": 0,
       "htmlFile": "paul-breiter.html",
       "excerptCount": 26,
+      "fTagCount": 2,
       "listIndex": 650
     },
     "Joseph Kappel": {
@@ -203113,6 +203147,7 @@
       "primaries": 0,
       "htmlFile": "joseph-kappel.html",
       "excerptCount": 30,
+      "fTagCount": 2,
       "listIndex": 649
     },
     "Larry Rosenberg": {
@@ -215236,12 +215271,12 @@
       "level": 3,
       "indexNumber": "",
       "flags": "g",
-      "name": "Anumodanā",
-      "pali": "Anumodanā",
+      "name": "Anumodana",
+      "pali": "Anumodana",
       "excerptCount": 8,
       "subsumed": false,
-      "text": "Anumodanā (8)",
-      "tag": "Anumodanā"
+      "text": "Anumodana (8)",
+      "tag": "Anumodana"
     },
     {
       "level": 3,
@@ -223624,7 +223659,7 @@
       "sessions": 56,
       "excerpts": 0,
       "answersListenedTo": 0,
-      "tagsApplied": 2407,
+      "tagsApplied": 2409,
       "invalidTags": 0,
       "duration": "48:36:35"
     },

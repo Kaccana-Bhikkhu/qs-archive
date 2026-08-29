@@ -56,10 +56,21 @@ def BuildDiacriticDatabase(text:str,item:dict) -> str:
                 Alert.caution(item,"has incorrect form",repr(word),"->",correctForms[0] if len(correctForms) == 1 else correctForms)
                 if len(correctForms) == 1:
                     gCorrections[word] = correctForms[0]
-        elif word != plain and word not in gTagAndTeacherForms:
+        elif word != plain and not gOptions.newCorrectDiacritics:
             Alert.notice(item,"has new diacritic form",repr(word))
 
     return None # Don't change the text
+
+def ApplyToTags(transform: Callable[...,tuple[str,int]|str]) -> None:
+    for tag in gDatabase["tag"].values():
+        for key in ("tag","fullTag","pali","fullPali"):
+            transform(tag[key],tag)
+    for teacher in gDatabase["teacher"].values():
+        for key in ("fullName","attributionName"):
+            transform(teacher[key],teacher)
+    for ref in gDatabase["reference"].values():
+        transform(ref["title"].replace("_",""),ref)
+        transform(ref["attribution"],ref)
 
 def ApplyToDocumentation(transform: Callable[...,tuple[str,int]|str]) -> None:
     documentationDirs = ("aboutSources","technicalSources","miscSources","tableOfContents")
@@ -69,44 +80,10 @@ def ApplyToDocumentation(transform: Callable[...,tuple[str,int]|str]) -> None:
                 continue
             with open(Utils.PosixJoin(gOptions.documentationDir,dir,filename),encoding="utf-8") as file:
                 for n,line in enumerate(file,start=1):
-                    line = Utils.RemoveHtmlTags(line)
                     line = Utils.RemoveMarkdownHyperlinks(line)
                     line = re.sub(r"`[^`]*`","",line) # Remove code blocks
                     transform(line,f"{filename} line {n}: '{Utils.EllideText(line)}'")
-
-def TagAndTeacherForms() -> dict[str,set[str]]:
-    """Return a dict of words used in tag and teacher names. We assume these use diacritics correctly.
-    For example, words['dhamma'] = {'dhamma','dhammā'}"""
-
-    words:dict[str,set[str]] = defaultdict(set)
-
-    def AddWords(text: str,item: dict) -> None:
-        """Add these words to the"""
-        text = Utils.RemoveHtmlTags(text)
-        for word in re.findall(r"\b\w+\b",text):
-            word = word.lower()
-            plain = Utils.RemoveDiacritics(word)
-            if not plain:
-                continue
-            words[plain].add(word)
-            """if len(words[plain]) > 1:
-                Alert.notice(item,"has a different form",word,"compared to",words[plain])"""
-
-    for tag in gDatabase["tag"].values():
-        for key in ("tag","fullTag","pali","fullPali"):
-            AddWords(tag[key],tag)
-    for teacher in gDatabase["teacher"].values():
-            for key in ("fullName","attributionName"):
-                AddWords(teacher[key],teacher)
-    for ref in gDatabase["reference"].values():
-        AddWords(ref["title"].replace("_",""),ref)
-        AddWords(ref["attribution"],ref)
-
-    """for plain,allForms in plainWords.items():
-        if len(allForms) > 1:
-            Alert.notice("Multiple forms in tag/teacher names:",allForms)"""
-
-    return words
+                    
 
 def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
     """Write or update CorrectDiacritics.csv based on the diacritics we have found in the database"""
@@ -161,9 +138,6 @@ gCorrections:dict[str,str] = {}
 def main() -> None:
     gOptions.diacriticsDir = Utils.PosixJoin(gOptions.documentationDir,"diacritics")
 
-    global gTagAndTeacherForms
-    gTagAndTeacherForms = TagAndTeacherForms()
-
     ReadCorrectForms()
     if not gCorrectDiacritics:
         Alert.info("CorrectDiacritics.csv not found. Will remake this file.")
@@ -171,6 +145,11 @@ def main() -> None:
     
     cautionCount = Alert.caution.count
     noticeCount = Alert.notice.count
+    ApplyToTags(BuildDiacriticDatabase)
+
+    global gTagAndTeacherForms
+    gTagAndTeacherForms = {plain:set(forms) for plain,forms in gDiacriticFrequency.items()}
+
     Render.ApplyToBodyText(BuildDiacriticDatabase)
     ApplyToDocumentation(BuildDiacriticDatabase)
     Alert.info(Alert.caution.count - cautionCount,"mismatched diacritic(s) found.")

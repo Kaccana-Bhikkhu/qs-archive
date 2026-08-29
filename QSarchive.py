@@ -125,7 +125,7 @@ def LoadDatabaseAndAddMissingOps(opSet: set[str]) -> Tuple[dict,set[str]]:
 
 # The list of code modules/ops to implement
 requireSpreadsheetDB = ['ReviewDatabase','DownloadFiles','SplitMp3','ExportAudio','Link','Render']
-requireRenderedDB = ['Build','SetupSearch','SetupAutoComplete','SetupFeatured','TagMp3','PrepareUpload','CheckDiacritics','CheckLinks']
+requireRenderedDB = ['CheckDiacritics','Build','SetupSearch','SetupAutoComplete','SetupFeatured','TagMp3','PrepareUpload','CheckLinks']
 moduleList = ['DownloadCSV','ParseCSV'] + requireSpreadsheetDB + requireRenderedDB
 optionalModules = {'ExportAudio'} # These aren't included in All
 
