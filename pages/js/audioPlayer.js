@@ -77,6 +77,11 @@ playBar.addEventListener("input", () => {
 	)}`;
 });
 
+audioPlayer.querySelector("span.close-box a").addEventListener("click", (event) => {
+	event.preventDefault();
+	closePlayer();
+});
+
 playButton.addEventListener("click", () => {
 	clearTimeout(playerTimeout);
 	playButton.classList.toggle("playing");

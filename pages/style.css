@@ -1280,11 +1280,18 @@ div.featured-page button {
 	background-image: url(assets/pause.svg);
 }
 
+#audio-player span.close-box {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+}
+
 #audio-player span.audio-title {
 	grid-area: 1 / 2 / 2 / 3;
 
 	font-size: 15px;
 	vertical-align: middle;
+	margin-right: 10px;
 }
 #audio-player span.audio-title span {
 	float: right;

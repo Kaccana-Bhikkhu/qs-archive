@@ -597,9 +597,12 @@ function floatMenus(shouldFloat,shouldShow) {
     // If shouldFloat, move the menu to the floating menu div
     let fixedMenu = document.getElementById("header-content");
     let floatingMenu = document.getElementById("floating-header");
-    if (shouldFloat & shouldShow)
-        floatingMenu.classList.add("active")
-    else
+    if (shouldFloat & shouldShow) {
+        if (!floatingMenu.classList.contains("active")) {
+            document.querySelector("nav.main-nav").classList.remove("active");
+            floatingMenu.classList.add("active");
+        }
+    } else
         floatingMenu.classList.remove("active")
 
     if (shouldFloat === gMenuFloating)
@@ -618,10 +621,10 @@ window.addEventListener("scrollend", (event) => {
         let searchBarShowing = document.querySelector(".floating-search").classList.contains('active');
         let floatingMenuShowing = document.getElementById("floating-header").classList.contains('active');
         floatMenus(true,(gScrollDirection < 0) && (!searchBarShowing || floatingMenuShowing));
-        console.log("Floating menu");
+        debugLog("Floating menu");
     } else {
         floatMenus(false,false);
-        console.log("Fixed menu.");
+        debugLog("Fixed menu.");
     }
     gLastScrollY = window.scrollY;
     gScrollDirection = 0;
