@@ -656,12 +656,34 @@ body.main-page {
 	text-align: center;
 }
 
-.header-content {
+div#header-content {
     display: flex;
     justify-content: space-between; /* align three items evenly */
     align-items: start;
+	min-height: 78px; /* fixed height even when the menus are in #floating-header */
 }
 
+div#floating-header {
+	background-color: var(--color-bamboo-dark);
+    padding: 0.5rem 0 0.4rem 0;
+	display: flex;
+	justify-content: space-between; /* align three items evenly */
+    align-items: start;
+
+	position: fixed;
+	top: 0;
+	left: 50%;
+	min-width: 350px;
+	z-index: 2000;
+	border-radius: 0 0 0.5rem 0.5rem;
+
+	transform: translateY(-140%) translateX(-50%);
+	transition: transform 200ms ease-out;
+}
+
+#floating-header.active {
+	transform: translateX(-50%);
+}
 /* Common header styles - for consistency */
 h1, h2, h3, h4, h5 {
     font-weight: 450;
@@ -785,6 +807,9 @@ main.main-content p {
     .hamburger {
         display: none;
     }
+	div#floating-header {
+		min-width: 700px;
+	}
 }
 
 .main-menu-icon {
@@ -1122,7 +1147,7 @@ main.main-content p {
 /* Floating search bar styles */
 div.floating-search {
 	position: fixed;
-	z-index: 2;
+	z-index: 3000;
 	top: 10px;
 	left: 16px;
 	width: 85%;

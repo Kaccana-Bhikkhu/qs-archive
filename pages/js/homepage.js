@@ -321,7 +321,7 @@ function dropdownMenuClick(clickedItem) {
     });
 
     // The same for the floating search bar
-    let searchBar = gNavBar.querySelector('.floating-search');
+    let searchBar = document.querySelector('.floating-search');
     if (clickedItem === document.getElementById('nav-search-icon')) {
         searchBar.classList.toggle('active');
     } else
@@ -350,7 +350,7 @@ function dropdownMenuClick(clickedItem) {
 
 function setupNavMenuTriggers() {
     // Configure javascript triggers for header elements
-    gNavBar = document.querySelector('.header-content');
+    gNavBar = document.getElementById('header-content');
 
     // Clicking on the hamburger icon toggles the main nav menu
     gNavBar.querySelector('.hamburger').addEventListener('click', function() {
@@ -413,16 +413,24 @@ function setupNavMenuTriggers() {
     document.addEventListener("keydown", function(event) {
         // '/' key opens the search bar if it's not open already.
         // Don't open the search bar if an input box has focus.
-        if ((event.key === "/") && !gNavBar.querySelector('.floating-search.active')
+        let header = document.querySelector('header');
+        if ((event.key === "/") && !header.querySelector('.floating-search.active')
                 && document.activeElement.nodeName !== "INPUT") {
             event.preventDefault();
             document.getElementById("nav-search-icon").click();
         }
         // Esc key closes all menus if any are open
-        if ((event.key === "Escape") && gNavBar.querySelector('.active')) {
+        if ((event.key === "Escape") && header.querySelector('.active')) {
             event.preventDefault();
-            dropdownMenuClick(null);
-            gNavBar.querySelector('.main-nav').classList.remove("active");
+            if (document.querySelector('.floating-search.active')) {
+                // Close the search bar if it's open.
+                dropdownMenuClick(document.querySelector('.floating-search'));
+            } else {
+                // Otherwise close everything.
+                dropdownMenuClick(null);
+                gNavBar.querySelector('.main-nav').classList.remove("active");
+                floatMenus(gMenuFloating,false);
+            }
         }
     });
 }
@@ -570,6 +578,66 @@ function countFoundExcerpts() {
     gSearchers["x"].search(searchGroups);
     displayExcerptCount(gSearchers["x"].foundItems.length);
 }
+
+function moveToNewParent(oldParent,newParent) {
+    // Move all DOM items from oldParent to newParent
+    while (oldParent.childNodes.length > 0) {
+       newParent.appendChild(oldParent.childNodes[0]);
+    }
+}
+
+// Scroll position to transition to floating menus
+const FLOATING_MENU_THRESHOLD = 150;
+
+let gMenuFloating = false;
+let gLastScrollY = window.scrollY;
+let gScrollDirection = 0; // positive = down, negative = up
+
+function floatMenus(shouldFloat,shouldShow) {
+    // If shouldFloat, move the menu to the floating menu div
+    let fixedMenu = document.getElementById("header-content");
+    let floatingMenu = document.getElementById("floating-header");
+    if (shouldFloat & shouldShow)
+        floatingMenu.classList.add("active")
+    else
+        floatingMenu.classList.remove("active")
+
+    if (shouldFloat === gMenuFloating)
+        return;
+
+    let oldLocation = shouldFloat ? fixedMenu : floatingMenu;
+    let newLocation = shouldFloat ? floatingMenu : fixedMenu;
+    moveToNewParent(oldLocation,newLocation);
+
+    gNavBar = newLocation;
+    gMenuFloating = shouldFloat;
+}
+
+window.addEventListener("scrollend", (event) => {
+    if (window.scrollY > FLOATING_MENU_THRESHOLD) {
+        let searchBarShowing = document.querySelector(".floating-search").classList.contains('active');
+        let floatingMenuShowing = document.getElementById("floating-header").classList.contains('active');
+        floatMenus(true,(gScrollDirection < 0) && (!searchBarShowing || floatingMenuShowing));
+        console.log("Floating menu");
+    } else {
+        floatMenus(false,false);
+        console.log("Fixed menu.");
+    }
+    gLastScrollY = window.scrollY;
+    gScrollDirection = 0;
+});
+
+window.addEventListener("scroll", (event) => {
+    let newScrollY = window.scrollY;
+    if (newScrollY - gLastScrollY)
+        gScrollDirection = newScrollY - gLastScrollY;
+    gLastScrollY = window.scrollY;
+
+    if ((gScrollDirection > 0) && gMenuFloating)
+        floatMenus(true,false);
+    if (window.scrollY < FLOATING_MENU_THRESHOLD)
+        floatMenus(false,false);
+});
 
 let gMeditationTimer = null;
 document.addEventListener('DOMContentLoaded', () => {
