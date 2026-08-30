@@ -10,8 +10,12 @@ let playerTimeout;
 globalThis.playlist = [];
 
 /** @param {number} sec */
-const time = (sec) =>
-	`${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, "0")}`;
+const time = (sec) => {
+	let hours = Math.floor(sec / 3600);
+	let remainder = sec - 3600*hours;
+	let minuteStr = `${Math.floor(remainder / 60)}:${(remainder % 60).toString().padStart(2, "0")}`;
+	return hours ? `${hours}:${minuteStr}` : minuteStr;
+}
 
 /**
  *
