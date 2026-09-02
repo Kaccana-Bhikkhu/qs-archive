@@ -28113,7 +28113,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Kinaree"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Ajahn Kinaree",
@@ -32274,7 +32280,7 @@
             "Buddha/Biography"
           ],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <a href=\"../../references/bp101s_Nyanamoli_Life-Of-The-Buddha.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanamoli.html#nyanamoli-life-of-the-buddha\"><em>The Life of the Buddha According to the Pāli Canon</em></a> by Bhikkhu Ñāṇamoli."
+          "body": "<b>Reference:</b> <a href=\"../books/Nyanamoli.html#nyanamoli-life-of-the-buddha\"><em>The Life of the Buddha According to the Pāli Canon</em></a> by Bhikkhu Ñāṇamoli (pdf unavailable)."
         }
       ],
       "tags": [
@@ -52889,6 +52895,14 @@
         {
           "kind": "Sutta",
           "flags": "",
+          "text": "SN 10.3: \"Your touch is unpleasant.\"",
+          "tags": [],
+          "indentLevel": 1,
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/sn10.3/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/SN10.html#sn-10-3\">SN 10.3</a>: &ldquo;Your touch is unpleasant.&rdquo;"
+        },
+        {
+          "kind": "Sutta",
+          "flags": "",
           "text": "AN 5.208: Five reasons for chewing toothwoods.",
           "tags": [],
           "indentLevel": 1,
@@ -52908,15 +52922,16 @@
       "clips": [
         [
           "$",
-          "24:02",
+          "24:18",
           "32:03"
         ]
       ],
-      "duration": "8:01",
+      "duration": "7:45",
       "mirror": "local",
       "body": "The Buddha is pointing to something beyond the normal functioning of the mind which is a basis for freedom from all dukkha.{attribution}",
       "attribution": " <b>Teaching</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "texts": [
+        "SN 10.3",
         "AN 5.208"
       ],
       "books": [
@@ -56076,7 +56091,7 @@
       ],
       "duration": "3:58",
       "mirror": "local",
-      "body": "<b>Reading:</b> <em>A Constitution for Living</em> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>, <a href=\"../../references/bp620s_Payutto_A-Constitution-For-Living.pdf#page=42#noframe\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-constitution-for-living\">p. 33</a>. {attribution2}",
+      "body": "<b>Reading:</b> <a href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>, p. 33 (pdf unavailable). {attribution2}",
       "attribution": "",
       "attribution2": "Read by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "teachers2": [
@@ -56123,7 +56138,7 @@
       ],
       "duration": "3:28",
       "mirror": "local",
-      "body": "<b>Reading:</b> <em>A Constitution for Living</em> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>, <a href=\"../../references/bp620s_Payutto_A-Constitution-For-Living.pdf#page=44#noframe\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-constitution-for-living\">p. 35</a>. {attribution2}",
+      "body": "<b>Reading:</b> <a href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>, p. 35 (pdf unavailable). {attribution2}",
       "attribution": "",
       "attribution2": "Read by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "teachers2": [
@@ -56223,7 +56238,7 @@
           "text": "DN 31.32: Siṅgālasutta Sutta: Five duties of an employer to employees; interpreted in _A Constitution for Living_ p. 7.",
           "tags": [],
           "indentLevel": 2,
-          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/dn31/en/sujato?reference=main#32.1\" target=\"_blank\" data-alt-href=\"../texts/DN31.html\">DN 31.32</a>: Siṅgālasutta Sutta: Five duties of an employer to employees; interpreted in <em>A Constitution for Living</em> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>, <a href=\"../../references/bp620s_Payutto_A-Constitution-For-Living.pdf#page=16#noframe\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-constitution-for-living\">p. 7</a>."
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/dn31/en/sujato?reference=main#32.1\" target=\"_blank\" data-alt-href=\"../texts/DN31.html\">DN 31.32</a>: Siṅgālasutta Sutta: Five duties of an employer to employees; interpreted in <a href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>, p. 7 (pdf unavailable)."
         }
       ],
       "tags": [
@@ -64759,7 +64774,6 @@
             "AP"
           ],
           "tags": [
-            "Ajahn Pavaro",
             "Sickness",
             "Health care",
             "Visiting holy sites",
@@ -72795,7 +72809,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Wat Keuan"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Story",
@@ -79874,7 +79894,7 @@
             "Death",
             "Skillful qualities",
             "Recollection/Virtue",
-            "History/Sri Lankan Buddhism"
+            "Culture/Sri Lanka"
           ],
           "indentLevel": 1,
           "body": "<b>Story:</b> Sri Lankans keep a lifelong record of the good things they have done. Friends and relatives read this to them at the time of death. Told by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -82135,10 +82155,10 @@
         [
           "$",
           "23:29",
-          "23:54"
+          "23:58"
         ]
       ],
-      "duration": "0:25",
+      "duration": "0:29",
       "mirror": "local",
       "body": "“So the whole country [Thailand] meditates?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -82154,7 +82174,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Upāsikā Kee Nanayon"
+      ],
+      "fTagOrder": [
+        120
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Indirect quote",
@@ -82185,11 +82211,11 @@
       "clips": [
         [
           "$",
-          "23:54",
-          "28:22"
+          "23:58",
+          "28:21.3"
         ]
       ],
-      "duration": "4:28",
+      "duration": "4:23",
       "mirror": "local",
       "body": "Ajahn Pasanno describes Upāsikā Kee Nanayon&rsquo;s life and teachings.",
       "attribution": ""
@@ -89894,7 +89920,7 @@
           "text": "[_Word of the Buddha_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <a href=\"../../references/bp201s_Nyanatiloka_life-Of-The-Buddha.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>."
+          "body": "<b>Reference:</b> <a href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a> (pdf unavailable)."
         },
         {
           "kind": "Reference",
@@ -114110,7 +114136,7 @@
           "text": "[_Word of the Buddha_]().",
           "tags": [],
           "indentLevel": 2,
-          "body": "<b>Reference:</b> <a href=\"../../references/bp201s_Nyanatiloka_life-Of-The-Buddha.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>."
+          "body": "<b>Reference:</b> <a href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a> (pdf unavailable)."
         }
       ],
       "tags": [
@@ -119215,7 +119241,7 @@
           "text": "[_Word of the Buddha_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <a href=\"../../references/bp201s_Nyanatiloka_life-Of-The-Buddha.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>."
+          "body": "<b>Reference:</b> <a href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a> (pdf unavailable)."
         },
         {
           "kind": "Reference",
@@ -120534,7 +120560,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Jayasaro"
+      ],
+      "fTagOrder": [
+        200
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Story",
@@ -122717,7 +122749,13 @@
       "teachers": [
         "HShun"
       ],
-      "fTags": [],
+      "fTags": [
+        "Mahāyāna"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Sutta",
@@ -122756,11 +122794,11 @@
       "clips": [
         [
           "$",
-          "1:50",
-          "3:34"
+          "2:50",
+          "3:50"
         ]
       ],
-      "duration": "1:44",
+      "duration": "1:00",
       "mirror": "local",
       "body": "<b>Recollection:</b> The friendship between disciples of Ajahn Chah and the disciples of Master Hua.{attribution}",
       "attribution": " Recounted by <a href=\"../teachers/bhikshu-heng-shun.html\">Bhikshu Heng Shun</a>.",
@@ -122791,11 +122829,11 @@
       "clips": [
         [
           "$",
-          "3:34",
+          "3:56.5",
           "6:39"
         ]
       ],
-      "duration": "3:05",
+      "duration": "2:42",
       "mirror": "local",
       "body": "<b>Story:</b> Heng Shun meets Ajahn Pasanno at Wat Phleng Vipassanā in 1973.{attribution}",
       "attribution": " Told by <a href=\"../teachers/bhikshu-heng-shun.html\">Bhikshu Heng Shun</a>."
@@ -146613,7 +146651,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Geography/Thailand"
+      ],
+      "fTagOrder": [
+        120
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Geography/Thailand",
@@ -149355,7 +149399,7 @@
         }
       ],
       "tags": [
-        "History/Sri Lankan Buddhism",
+        "Culture/Sri Lanka",
         "Animal",
         "Three Refuges",
         "Chanting"
@@ -151591,7 +151635,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Not handling money"
+      ],
+      "fTagOrder": [
+        200
+      ],
+      "fTagOrderFlags": "T",
       "annotations": [
         {
           "kind": "Story",
@@ -158256,7 +158306,13 @@
       "teachers": [
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Saṅghapāla"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Saṅghapāla",
@@ -158427,7 +158483,13 @@
       "teachers": [
         "AA"
       ],
-      "fTags": [],
+      "fTags": [
+        "Saṅghapāla"
+      ],
+      "fTagOrder": [
+        150
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Saṅghapāla",
@@ -158443,11 +158505,11 @@
       "clips": [
         [
           "$",
-          "15:31",
+          "15:31.8",
           "21:14"
         ]
       ],
-      "duration": "5:43",
+      "duration": "5:42",
       "mirror": "local",
       "body": "<b>Story:</b> Buying the property next to the land Master Hua donated.{attribution}",
       "attribution": " Told by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>."
@@ -159680,12 +159742,14 @@
         "ANy"
       ],
       "fTags": [
-        "Abhayagiri"
+        "Abhayagiri",
+        "Rains retreat"
       ],
       "fTagOrder": [
-        120
+        120,
+        200
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "EE",
       "annotations": [],
       "tags": [
         "Monastic life",
@@ -163490,9 +163554,9 @@
         {
           "kind": "Note",
           "flags": "",
-          "text": "A 14-second silence due to a streaming glitch has been removed.",
+          "text": "A 14-second silence due to a streaming glitch has been removed; the book mentioned has not yet been published.",
           "indentLevel": 1,
-          "body": "<b>Note:</b> A 14-second silence due to a streaming glitch has been removed."
+          "body": "<b>Note:</b> A 14-second silence due to a streaming glitch has been removed; the book mentioned has not yet been published."
         },
         {
           "kind": "Sutta",
@@ -173691,7 +173755,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "&ldquo;Nibbāna,&rdquo; <em>Buddhist Dictionary: A Manual of Buddhist Terms and Doctrines</em> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>, <a href=\"../../references/bp601s_Nyanatiloka_Buddhist-Dictonary.pdf#page=123#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanatiloka.html#nyanatiloka-buddhist-dictionary\">p. 123</a>. "
+          "body": "&ldquo;Nibbāna,&rdquo; <a href=\"../books/Nyanatiloka.html#nyanatiloka-buddhist-dictionary\"><em>Buddhist Dictionary: A Manual of Buddhist Terms and Doctrines</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>, p. 123. "
         },
         {
           "kind": "Read by",
@@ -178255,7 +178319,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "&ldquo;Nibbāna,&rdquo; <em>Buddhist Dictionary: A Manual of Buddhist Terms and Doctrines</em> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>, <a href=\"../../references/bp601s_Nyanatiloka_Buddhist-Dictonary.pdf#page=124#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanatiloka.html#nyanatiloka-buddhist-dictionary\">p. 124</a>. "
+          "body": "&ldquo;Nibbāna,&rdquo; <a href=\"../books/Nyanatiloka.html#nyanatiloka-buddhist-dictionary\"><em>Buddhist Dictionary: A Manual of Buddhist Terms and Doctrines</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>, p. 124. "
         },
         {
           "kind": "Read by",
@@ -181741,7 +181805,7 @@
             "Four Noble Truths"
           ],
           "indentLevel": 2,
-          "body": "<b>Story:</b> Ajahn Sumedho spends his first year as a monk in solitary meditation reading only <a href=\"../../references/bp201s_Nyanatiloka_life-Of-The-Buddha.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a>."
+          "body": "<b>Story:</b> Ajahn Sumedho spends his first year as a monk in solitary meditation reading only <a href=\"../books/Nyanatiloka.html#nyanatiloka-word-of-the-buddha\"><em>Word of the Buddha</em></a> by <a href=\"../teachers/venerable-nanatiloka.html\">Venerable Ñāṇatiloka</a> (pdf unavailable)."
         },
         {
           "kind": "Follow-up",
@@ -185328,7 +185392,7 @@
           ],
           "tags": [],
           "indentLevel": 1,
-          "body": "<a href=\"https://suttacentral.express/an3.40/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/AN3_40.html\">AN 3.40</a> in <a href=\"../../references/bp405s_Nyanananda_Magic-of-the-Mind.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\"><em>The Magic of the Mind</em></a> by <a href=\"../teachers/bhikkhu-nanananda.html\">Bhikkhu Ñāṇananda</a> pp. <a href=\"../../references/bp405s_Nyanananda_Magic-of-the-Mind.pdf#page=57#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\">49</a> &amp; <a href=\"../../references/bp405s_Nyanananda_Magic-of-the-Mind.pdf#page=60#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\">52</a>. "
+          "body": "<a href=\"https://suttacentral.express/an3.40/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/AN3_40.html\">AN 3.40</a> in <a href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\"><em>The Magic of the Mind</em></a> by <a href=\"../teachers/bhikkhu-nanananda.html\">Bhikkhu Ñāṇananda</a> (pdf unavailable) pp. <a href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\">49</a> &amp; <a href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\">52</a>. "
         },
         {
           "kind": "Read by",
@@ -185361,8 +185425,8 @@
         "The Island|117",
         "Atulo",
         "Magic of the Mind",
-        "Magic of the Mind|54",
-        "Magic of the Mind|57"
+        "Magic of the Mind",
+        "Magic of the Mind"
       ]
     },
     {
@@ -187381,12 +187445,14 @@
         "AA"
       ],
       "fTags": [
-        "Nature of the cosmos"
+        "Nature of the cosmos",
+        "Bhikkhu Bodhi"
       ],
       "fTagOrder": [
-        80
+        80,
+        150
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "EE",
       "annotations": [
         {
           "kind": "Indirect quote",
@@ -190041,7 +190107,7 @@
           ],
           "tags": [],
           "indentLevel": 2,
-          "body": "<em>The Magic of the Mind</em> by <a href=\"../teachers/bhikkhu-nanananda.html\">Bhikkhu Ñāṇananda</a>, <a href=\"../../references/bp405s_Nyanananda_Magic-of-the-Mind.pdf#page=61#noframe\" target=\"_blank\" data-alt-href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\">pp. 58-60</a>. "
+          "body": "<a href=\"../books/Nyanananda.html#nyanananda-magic-of-the-mind\"><em>The Magic of the Mind</em></a> by <a href=\"../teachers/bhikkhu-nanananda.html\">Bhikkhu Ñāṇananda</a>, pp. 58-60 (pdf unavailable). "
         },
         {
           "kind": "Read by",
@@ -196570,7 +196636,7 @@
           "text": "[_A Constitution for Living_]().",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> <a href=\"../../references/bp620s_Payutto_A-Constitution-For-Living.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a>."
+          "body": "<b>Reference:</b> <a href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> (pdf unavailable)."
         },
         {
           "kind": "Sutta",
@@ -197131,7 +197197,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Chah lineage"
+      ],
+      "fTagOrder": [
+        200
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Quote",
@@ -197163,6 +197235,19 @@
           ],
           "indentLevel": 1,
           "body": "<b>Quote:</b>  “To be able to lay a foundation that was carried on is really exceptional.” "
+        },
+        {
+          "kind": "Recollection",
+          "flags": "",
+          "text": "There were an equal number of monks and nuns at Wat Pah Pong.",
+          "teachers": [
+            "AP"
+          ],
+          "tags": [
+            "Mae Chee"
+          ],
+          "indentLevel": 1,
+          "body": "<b>Recollection:</b> There were an equal number of monks and nuns at Wat Pah Pong."
         }
       ],
       "tags": [
@@ -197172,8 +197257,7 @@
         "Teaching Dhamma",
         "Ajahn Chah",
         "Humility",
-        "Ajahn Mun",
-        "Mae Chee"
+        "Ajahn Mun"
       ],
       "qTagCount": 5,
       "clips": [
@@ -198158,7 +198242,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Ajahn Chah lineage"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Ajahn Chah lineage",
@@ -202415,12 +202505,11 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Ajahn Pavaro",
         "Ajahn Pasanno",
         "Birken",
         "Personal presence"
       ],
-      "qTagCount": 2,
+      "qTagCount": 1,
       "clips": [
         [
           "$",
@@ -202447,13 +202536,12 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Ajahn Pavaro",
         "Birken",
         "Abhayagiri",
         "Monastic life",
         "Spiritual friendship"
       ],
-      "qTagCount": 5,
+      "qTagCount": 4,
       "clips": [
         [
           "$",
@@ -202480,13 +202568,12 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Ajahn Pavaro",
         "Culture/Thailand",
         "Faith",
         "Respect",
         "Ajahn Pasanno"
       ],
-      "qTagCount": 4,
+      "qTagCount": 3,
       "clips": [
         [
           "$",
@@ -203168,7 +203255,7 @@
         "Right Livelihood"
       ],
       "website": "https://www.abhayagiri.org/talks/collections/8/67-right-livelihood-upasika-day-2013",
-      "description": "Ajahn Pasanno reads from <a href=\"https://www.urbandharma.org/pdf/Buddhist_Economics.pdf\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-buddhist-economics\"><em>Buddhist Economics: A Middle Way for the Market Place</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> and <a href=\"../../references/bp620s_Payutto_A-Constitution-For-Living.pdf#noframe\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> and answers questions related to the topic of Right Livelihood.",
+      "description": "Ajahn Pasanno reads from <a href=\"https://www.urbandharma.org/pdf/Buddhist_Economics.pdf\" target=\"_blank\" data-alt-href=\"../books/Payutto.html#payutto-buddhist-economics\"><em>Buddhist Economics: A Middle Way for the Market Place</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> and <a href=\"../books/Payutto.html#payutto-constitution-for-living\"><em>A Constitution for Living</em></a> by <a href=\"../teachers/p-a-payutto.html\">P. A. Payutto</a> (pdf unavailable) and answers questions related to the topic of Right Livelihood.",
       "sessions": 2,
       "excerpts": 36,
       "books": [
@@ -218345,7 +218432,7 @@
       "searchable": true,
       "teacherPage": false,
       "attribute": true,
-      "allowTag": true,
+      "allowTag": false,
       "photo": false,
       "group": "Monastics",
       "lineage": "Western disciples of Ajahn Chah",
@@ -219521,7 +219608,7 @@
       "primaries": 1,
       "htmlFile": "blame-and-praise.html",
       "excerptCount": 12,
-      "listIndex": 919
+      "listIndex": 918
     },
     "Nonviolent Communication": {
       "tag": "Nonviolent Communication",
@@ -221728,7 +221815,7 @@
       "excerptCount": 125,
       "fTagCount": 5,
       "subtopicFTagCount": 4,
-      "listIndex": 854
+      "listIndex": 853
     },
     "Sutta": {
       "tag": "Sutta",
@@ -222388,7 +222475,7 @@
       "excerptCount": 91,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 752
+      "listIndex": 751
     },
     "Heedfulness": {
       "tag": "Heedfulness",
@@ -224761,7 +224848,7 @@
       "excerptCount": 135,
       "fTagCount": 6,
       "subtopicFTagCount": 6,
-      "listIndex": 758
+      "listIndex": 757
     },
     "Buddha images": {
       "tag": "Buddha images",
@@ -224881,7 +224968,7 @@
       "excerptCount": 92,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 864
+      "listIndex": 863
     },
     "Devotional practice": {
       "tag": "Devotional practice",
@@ -226805,7 +226892,7 @@
       "excerptCount": 30,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 853
+      "listIndex": 852
     },
     "Personal presence": {
       "tag": "Personal presence",
@@ -227236,6 +227323,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-chah-lineage.html",
       "excerptCount": 16,
+      "fTagCount": 2,
       "listIndex": 486
     },
     "Thai Ajahn Chah lineage": {
@@ -227756,7 +227844,6 @@
         "Ajahn Kusalo",
         "Ajahn Siripañño",
         "Ajahn Kevali",
-        "Ajahn Pavaro",
         "Ajahn Sucitto",
         "Ajahn Ñāṇadhammo",
         "Ajahn Soṇa",
@@ -228104,26 +228191,6 @@
       "excerptCount": 1,
       "listIndex": 542
     },
-    "Ajahn Pavaro": {
-      "tag": "Ajahn Pavaro",
-      "pali": "",
-      "fullTag": "Ajahn Pavaro",
-      "fullPali": "",
-      "number": "",
-      "alternateTranslations": [],
-      "glosses": [],
-      "related": [],
-      "flags": "",
-      "subtags": [],
-      "supertags": [
-        "Western Ajahn Chah lineage"
-      ],
-      "copies": 1,
-      "primaries": 0,
-      "htmlFile": "ajahn-pavaro.html",
-      "excerptCount": 4,
-      "listIndex": 545
-    },
     "Ajahn Sucitto": {
       "tag": "Ajahn Sucitto",
       "pali": "",
@@ -228244,6 +228311,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-jayasaro.html",
       "excerptCount": 31,
+      "fTagCount": 1,
       "listIndex": 526
     },
     "Ajahn Visuddhi": {
@@ -228426,7 +228494,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-kovilo.html",
       "excerptCount": 2,
-      "listIndex": 546
+      "listIndex": 545
     },
     "Bhante Sujato": {
       "tag": "Bhante Sujato",
@@ -228549,7 +228617,7 @@
       "primaries": 0,
       "htmlFile": "other-thai-forest-teachers.html",
       "excerptCount": 1,
-      "listIndex": 547
+      "listIndex": 546
     },
     "Thai teachers": {
       "tag": "Thai teachers",
@@ -228602,7 +228670,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "thai-teachers.html",
-      "listIndex": 548
+      "listIndex": 547
     },
     "Ajahn Lee Dhammadharo": {
       "tag": "Ajahn Lee Dhammadharo",
@@ -228622,7 +228690,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-lee-dhammadharo.html",
       "excerptCount": 14,
-      "listIndex": 559
+      "listIndex": 558
     },
     "Ajahn Chai": {
       "tag": "Ajahn Chai",
@@ -228642,7 +228710,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-chai.html",
       "excerptCount": 1,
-      "listIndex": 568
+      "listIndex": 567
     },
     "Ajahn Gi": {
       "tag": "Ajahn Gi",
@@ -228662,7 +228730,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-gi.html",
       "excerptCount": 2,
-      "listIndex": 571
+      "listIndex": 570
     },
     "Ajahn Puth": {
       "tag": "Ajahn Puth",
@@ -228682,7 +228750,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-puth.html",
       "excerptCount": 1,
-      "listIndex": 567
+      "listIndex": 566
     },
     "Ajahn Jia": {
       "tag": "Ajahn Jia",
@@ -228702,7 +228770,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-jia.html",
       "excerptCount": 2,
-      "listIndex": 564
+      "listIndex": 563
     },
     "Ajahn Sanong": {
       "tag": "Ajahn Sanong",
@@ -228722,7 +228790,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-sanong.html",
       "excerptCount": 1,
-      "listIndex": 576
+      "listIndex": 575
     },
     "Ajahn Sim": {
       "tag": "Ajahn Sim",
@@ -228742,7 +228810,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-sim.html",
       "excerptCount": 4,
-      "listIndex": 560
+      "listIndex": 559
     },
     "Ajahn Chorp": {
       "tag": "Ajahn Chorp",
@@ -228762,7 +228830,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-chorp.html",
       "excerptCount": 1,
-      "listIndex": 557
+      "listIndex": 556
     },
     "Ajahn Teean": {
       "tag": "Ajahn Teean",
@@ -228782,7 +228850,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-teean.html",
       "excerptCount": 9,
-      "listIndex": 575
+      "listIndex": 574
     },
     "Ajahn Waen": {
       "tag": "Ajahn Waen",
@@ -228802,7 +228870,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-waen.html",
       "excerptCount": 3,
-      "listIndex": 549
+      "listIndex": 548
     },
     "Ajahn Tongrat": {
       "tag": "Ajahn Tongrat",
@@ -228823,7 +228891,7 @@
       "htmlFile": "ajahn-tongrat.html",
       "excerptCount": 20,
       "fTagCount": 1,
-      "listIndex": 551
+      "listIndex": 550
     },
     "Ajahn Kinaree": {
       "tag": "Ajahn Kinaree",
@@ -228843,7 +228911,8 @@
       "primaries": 0,
       "htmlFile": "ajahn-kinaree.html",
       "excerptCount": 15,
-      "listIndex": 552
+      "fTagCount": 1,
+      "listIndex": 551
     },
     "Ajahn Fun": {
       "tag": "Ajahn Fun",
@@ -228863,7 +228932,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-fun.html",
       "excerptCount": 4,
-      "listIndex": 555
+      "listIndex": 554
     },
     "Ajahn Dune": {
       "tag": "Ajahn Dune",
@@ -228884,7 +228953,7 @@
       "htmlFile": "ajahn-dune.html",
       "excerptCount": 17,
       "fTagCount": 1,
-      "listIndex": 550
+      "listIndex": 549
     },
     "Ajahn Utane": {
       "tag": "Ajahn Utane",
@@ -228904,7 +228973,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-utane.html",
       "excerptCount": 2,
-      "listIndex": 581
+      "listIndex": 580
     },
     "Ajahn Supah": {
       "tag": "Ajahn Supah",
@@ -228924,7 +228993,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-supah.html",
       "excerptCount": 2,
-      "listIndex": 553
+      "listIndex": 552
     },
     "Ajahn Mahā Boowa": {
       "tag": "Ajahn Mahā Boowa",
@@ -228945,7 +229014,7 @@
       "htmlFile": "ajahn-maha-boowa.html",
       "excerptCount": 62,
       "fTagCount": 2,
-      "listIndex": 562
+      "listIndex": 561
     },
     "Ajahn Baen": {
       "tag": "Ajahn Baen",
@@ -228965,7 +229034,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-baen.html",
       "excerptCount": 8,
-      "listIndex": 572
+      "listIndex": 571
     },
     "Ajahn Jumnien": {
       "tag": "Ajahn Jumnien",
@@ -228985,7 +229054,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-jumnien.html",
       "excerptCount": 4,
-      "listIndex": 573
+      "listIndex": 572
     },
     "Ajahn Plien": {
       "tag": "Ajahn Plien",
@@ -229005,7 +229074,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-plien.html",
       "excerptCount": 3,
-      "listIndex": 574
+      "listIndex": 573
     },
     "Ajahn Thate": {
       "tag": "Ajahn Thate",
@@ -229025,7 +229094,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-thate.html",
       "excerptCount": 7,
-      "listIndex": 556
+      "listIndex": 555
     },
     "Ajahn Khao": {
       "tag": "Ajahn Khao",
@@ -229046,7 +229115,7 @@
       "htmlFile": "ajahn-khao.html",
       "excerptCount": 13,
       "fTagCount": 1,
-      "listIndex": 554
+      "listIndex": 553
     },
     "Ajahn Mahā Chatchai": {
       "tag": "Ajahn Mahā Chatchai",
@@ -229066,7 +229135,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-maha-chatchai.html",
       "excerptCount": 1,
-      "listIndex": 578
+      "listIndex": 577
     },
     "Ajahn Buddhadāsa": {
       "tag": "Ajahn Buddhadāsa",
@@ -229087,7 +229156,7 @@
       "htmlFile": "ajahn-buddhadasa.html",
       "excerptCount": 32,
       "fTagCount": 2,
-      "listIndex": 558
+      "listIndex": 557
     },
     "Ajahn Paññānanda": {
       "tag": "Ajahn Paññānanda",
@@ -229108,7 +229177,7 @@
       "htmlFile": "ajahn-pannananda.html",
       "excerptCount": 9,
       "fTagCount": 1,
-      "listIndex": 561
+      "listIndex": 560
     },
     "Ajahn Suwat": {
       "tag": "Ajahn Suwat",
@@ -229128,7 +229197,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-suwat.html",
       "excerptCount": 3,
-      "listIndex": 566
+      "listIndex": 565
     },
     "Ajahn Wanchai": {
       "tag": "Ajahn Wanchai",
@@ -229148,7 +229217,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-wanchai.html",
       "excerptCount": 5,
-      "listIndex": 577
+      "listIndex": 576
     },
     "Ajahn Fuang": {
       "tag": "Ajahn Fuang",
@@ -229168,7 +229237,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-fuang.html",
       "excerptCount": 1,
-      "listIndex": 563
+      "listIndex": 562
     },
     "Ajahn Dohn": {
       "tag": "Ajahn Dohn",
@@ -229188,7 +229257,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-dohn.html",
       "excerptCount": 1,
-      "listIndex": 579
+      "listIndex": 578
     },
     "Ajahn Wan": {
       "tag": "Ajahn Wan",
@@ -229208,7 +229277,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-wan.html",
       "excerptCount": 1,
-      "listIndex": 569
+      "listIndex": 568
     },
     "Ajahn Phut": {
       "tag": "Ajahn Phut",
@@ -229228,7 +229297,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-phut.html",
       "excerptCount": 3,
-      "listIndex": 570
+      "listIndex": 569
     },
     "Mae Chee Kaew": {
       "tag": "Mae Chee Kaew",
@@ -229248,7 +229317,7 @@
       "primaries": 0,
       "htmlFile": "mae-chee-kaew.html",
       "excerptCount": 8,
-      "listIndex": 565
+      "listIndex": 564
     },
     "Mae Chee Sansanee": {
       "tag": "Mae Chee Sansanee",
@@ -229268,7 +229337,7 @@
       "primaries": 0,
       "htmlFile": "mae-chee-sansanee.html",
       "excerptCount": 2,
-      "listIndex": 580
+      "listIndex": 579
     },
     "Western teachers": {
       "tag": "Western teachers",
@@ -229293,7 +229362,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "western-teachers.html",
-      "listIndex": 582
+      "listIndex": 581
     },
     "Ajahn Khantipālo": {
       "tag": "Ajahn Khantipālo",
@@ -229313,7 +229382,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-khantipalo.html",
       "excerptCount": 2,
-      "listIndex": 583
+      "listIndex": 582
     },
     "Ajahn Paññāvaḍḍho": {
       "tag": "Ajahn Paññāvaḍḍho",
@@ -229334,7 +229403,7 @@
       "htmlFile": "ajahn-pannavaddho.html",
       "excerptCount": 11,
       "fTagCount": 1,
-      "listIndex": 584
+      "listIndex": 583
     },
     "Ajahn Piyadhammo": {
       "tag": "Ajahn Piyadhammo",
@@ -229354,7 +229423,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-piyadhammo.html",
       "excerptCount": 1,
-      "listIndex": 587
+      "listIndex": 586
     },
     "Ajahn Santikaro": {
       "tag": "Ajahn Santikaro",
@@ -229374,7 +229443,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-santikaro.html",
       "excerptCount": 1,
-      "listIndex": 586
+      "listIndex": 585
     },
     "Ajahn Ṭhānissaro": {
       "tag": "Ajahn Ṭhānissaro",
@@ -229395,7 +229464,7 @@
       "htmlFile": "ajahn-thanissaro.html",
       "excerptCount": 45,
       "fTagCount": 1,
-      "listIndex": 585
+      "listIndex": 584
     },
     "Other Thai monastics": {
       "tag": "Other Thai monastics",
@@ -229424,7 +229493,7 @@
       "primaries": 0,
       "htmlFile": "other-thai-monastics.html",
       "excerptCount": 1,
-      "listIndex": 588
+      "listIndex": 587
     },
     "Somdet Toh": {
       "tag": "Somdet Toh",
@@ -229444,7 +229513,7 @@
       "primaries": 0,
       "htmlFile": "somdet-toh.html",
       "excerptCount": 2,
-      "listIndex": 589
+      "listIndex": 588
     },
     "Ajahn Vajirayan": {
       "tag": "Ajahn Vajirayan",
@@ -229466,7 +229535,7 @@
       "primaries": 0,
       "htmlFile": "ajahn-vajirayan.html",
       "excerptCount": 2,
-      "listIndex": 590
+      "listIndex": 589
     },
     "Somdet Vajirañāṇavarorasa": {
       "tag": "Somdet Vajirañāṇavarorasa",
@@ -229486,7 +229555,7 @@
       "primaries": 0,
       "htmlFile": "somdet-vajirananavarorasa.html",
       "excerptCount": 2,
-      "listIndex": 592
+      "listIndex": 591
     },
     "Chao Khun Upāli": {
       "tag": "Chao Khun Upāli",
@@ -229506,7 +229575,7 @@
       "primaries": 0,
       "htmlFile": "chao-khun-upali.html",
       "excerptCount": 5,
-      "listIndex": 591
+      "listIndex": 590
     },
     "Chao Khun Nor": {
       "tag": "Chao Khun Nor",
@@ -229526,7 +229595,7 @@
       "primaries": 0,
       "htmlFile": "chao-khun-nor.html",
       "excerptCount": 3,
-      "listIndex": 593
+      "listIndex": 592
     },
     "Chao Khun Prayoon": {
       "tag": "Chao Khun Prayoon",
@@ -229546,7 +229615,7 @@
       "primaries": 0,
       "htmlFile": "chao-khun-prayoon.html",
       "excerptCount": 1,
-      "listIndex": 596
+      "listIndex": 595
     },
     "P. A. Payutto": {
       "tag": "P. A. Payutto",
@@ -229568,7 +229637,7 @@
       "primaries": 0,
       "htmlFile": "p-a-payutto.html",
       "excerptCount": 15,
-      "listIndex": 594
+      "listIndex": 593
     },
     "Ajahn Mahā Prasert": {
       "tag": "Ajahn Mahā Prasert",
@@ -229589,7 +229658,7 @@
       "htmlFile": "ajahn-maha-prasert.html",
       "sessionCount": 1,
       "excerptCount": 10,
-      "listIndex": 595
+      "listIndex": 594
     },
     "Early teachers": {
       "tag": "Early teachers",
@@ -229611,7 +229680,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "early-teachers.html",
-      "listIndex": 597
+      "listIndex": 596
     },
     "Ven. Nāgasena": {
       "tag": "Ven. Nāgasena",
@@ -229631,7 +229700,7 @@
       "primaries": 0,
       "htmlFile": "ven-nagasena.html",
       "excerptCount": 1,
-      "listIndex": 598
+      "listIndex": 597
     },
     "Ācariya Nāgārjuna": {
       "tag": "Ācariya Nāgārjuna",
@@ -229651,7 +229720,7 @@
       "primaries": 0,
       "htmlFile": "acariya-nagarjuna.html",
       "excerptCount": 1,
-      "listIndex": 599
+      "listIndex": 598
     },
     "Other Theravāda monastics": {
       "tag": "Other Theravāda monastics",
@@ -229684,7 +229753,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "other-theravada-monastics.html",
-      "listIndex": 600
+      "listIndex": 599
     },
     "Mahasi Sayadaw": {
       "tag": "Mahasi Sayadaw",
@@ -229704,7 +229773,7 @@
       "primaries": 0,
       "htmlFile": "mahasi-sayadaw.html",
       "excerptCount": 6,
-      "listIndex": 604
+      "listIndex": 603
     },
     "Ven. Ñāṇatiloka": {
       "tag": "Ven. Ñāṇatiloka",
@@ -229724,7 +229793,7 @@
       "primaries": 0,
       "htmlFile": "ven-nanatiloka.html",
       "excerptCount": 1,
-      "listIndex": 601
+      "listIndex": 600
     },
     "Pa Auk Sayadaw": {
       "tag": "Pa Auk Sayadaw",
@@ -229744,7 +229813,7 @@
       "primaries": 0,
       "htmlFile": "pa-auk-sayadaw.html",
       "excerptCount": 2,
-      "listIndex": 609
+      "listIndex": 608
     },
     "Preah Mahāghosānanda": {
       "tag": "Preah Mahāghosānanda",
@@ -229764,7 +229833,7 @@
       "primaries": 0,
       "htmlFile": "preah-mahaghosananda.html",
       "excerptCount": 5,
-      "listIndex": 605
+      "listIndex": 604
     },
     "Bhante Gunaratana": {
       "tag": "Bhante Gunaratana",
@@ -229784,7 +229853,7 @@
       "primaries": 0,
       "htmlFile": "bhante-gunaratana.html",
       "excerptCount": 9,
-      "listIndex": 608
+      "listIndex": 607
     },
     "Bhikkhu Bodhi": {
       "tag": "Bhikkhu Bodhi",
@@ -229804,7 +229873,8 @@
       "primaries": 0,
       "htmlFile": "bhikkhu-bodhi.html",
       "excerptCount": 18,
-      "listIndex": 610
+      "fTagCount": 1,
+      "listIndex": 609
     },
     "Ven. Anālayo": {
       "tag": "Ven. Anālayo",
@@ -229824,7 +229894,7 @@
       "primaries": 0,
       "htmlFile": "ven-analayo.html",
       "excerptCount": 6,
-      "listIndex": 613
+      "listIndex": 612
     },
     "Ayya Tathālokā": {
       "tag": "Ayya Tathālokā",
@@ -229844,7 +229914,7 @@
       "primaries": 0,
       "htmlFile": "ayya-tathaloka.html",
       "excerptCount": 2,
-      "listIndex": 612
+      "listIndex": 611
     },
     "Dr. Saddhatissa": {
       "tag": "Dr. Saddhatissa",
@@ -229864,7 +229934,7 @@
       "primaries": 0,
       "htmlFile": "dr-saddhatissa.html",
       "excerptCount": 2,
-      "listIndex": 606
+      "listIndex": 605
     },
     "Bhante Rahula": {
       "tag": "Bhante Rahula",
@@ -229884,7 +229954,7 @@
       "primaries": 0,
       "htmlFile": "bhante-rahula.html",
       "excerptCount": 1,
-      "listIndex": 611
+      "listIndex": 610
     },
     "Bhante Dharmawara": {
       "tag": "Bhante Dharmawara",
@@ -229904,7 +229974,7 @@
       "primaries": 0,
       "htmlFile": "bhante-dharmawara.html",
       "excerptCount": 3,
-      "listIndex": 607
+      "listIndex": 606
     },
     "Taungpulu Sayadaw": {
       "tag": "Taungpulu Sayadaw",
@@ -229924,7 +229994,7 @@
       "primaries": 0,
       "htmlFile": "taungpulu-sayadaw.html",
       "excerptCount": 1,
-      "listIndex": 603
+      "listIndex": 602
     },
     "Ven. Ananda Maitreya": {
       "tag": "Ven. Ananda Maitreya",
@@ -229944,7 +230014,7 @@
       "primaries": 0,
       "htmlFile": "ven-ananda-maitreya.html",
       "excerptCount": 5,
-      "listIndex": 602
+      "listIndex": 601
     },
     "Mahāyāna monastics": {
       "tag": "Mahāyāna monastics",
@@ -229981,7 +230051,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "mahayana-monastics.html",
-      "listIndex": 614
+      "listIndex": 613
     },
     "Huineng": {
       "tag": "Huineng",
@@ -230001,7 +230071,7 @@
       "primaries": 0,
       "htmlFile": "huineng.html",
       "excerptCount": 2,
-      "listIndex": 616
+      "listIndex": 615
     },
     "Dōgen": {
       "tag": "Dōgen",
@@ -230021,7 +230091,7 @@
       "primaries": 0,
       "htmlFile": "dogen.html",
       "excerptCount": 4,
-      "listIndex": 618
+      "listIndex": 617
     },
     "Master Hsu Yun": {
       "tag": "Master Hsu Yun",
@@ -230041,7 +230111,7 @@
       "primaries": 0,
       "htmlFile": "master-hsu-yun.html",
       "excerptCount": 8,
-      "listIndex": 619
+      "listIndex": 618
     },
     "Master Hsuan Hua": {
       "tag": "Master Hsuan Hua",
@@ -230062,7 +230132,7 @@
       "htmlFile": "master-hsuan-hua.html",
       "excerptCount": 31,
       "fTagCount": 1,
-      "listIndex": 621
+      "listIndex": 620
     },
     "Dalai Lama": {
       "tag": "Dalai Lama",
@@ -230082,7 +230152,7 @@
       "primaries": 0,
       "htmlFile": "dalai-lama.html",
       "excerptCount": 16,
-      "listIndex": 623
+      "listIndex": 622
     },
     "Rev. Heng Sure": {
       "tag": "Rev. Heng Sure",
@@ -230102,7 +230172,7 @@
       "primaries": 0,
       "htmlFile": "rev-heng-sure.html",
       "excerptCount": 8,
-      "listIndex": 627
+      "listIndex": 626
     },
     "Bhikshu Heng Shun": {
       "tag": "Bhikshu Heng Shun",
@@ -230122,7 +230192,7 @@
       "primaries": 0,
       "htmlFile": "bhikshu-heng-shun.html",
       "excerptCount": 7,
-      "listIndex": 628
+      "listIndex": 627
     },
     "Trulshik Rinpoche": {
       "tag": "Trulshik Rinpoche",
@@ -230142,7 +230212,7 @@
       "primaries": 0,
       "htmlFile": "trulshik-rinpoche.html",
       "excerptCount": 1,
-      "listIndex": 620
+      "listIndex": 619
     },
     "Lama Zopa": {
       "tag": "Lama Zopa",
@@ -230162,7 +230232,7 @@
       "primaries": 0,
       "htmlFile": "lama-zopa.html",
       "excerptCount": 1,
-      "listIndex": 625
+      "listIndex": 624
     },
     "Harata Rōshi": {
       "tag": "Harata Rōshi",
@@ -230182,7 +230252,7 @@
       "primaries": 0,
       "htmlFile": "harata-roshi.html",
       "excerptCount": 1,
-      "listIndex": 624
+      "listIndex": 623
     },
     "Bhikshu Heng Lyu": {
       "tag": "Bhikshu Heng Lyu",
@@ -230202,7 +230272,7 @@
       "primaries": 0,
       "htmlFile": "bhikshu-heng-lyu.html",
       "excerptCount": 2,
-      "listIndex": 631
+      "listIndex": 630
     },
     "Thubten Chodron": {
       "tag": "Thubten Chodron",
@@ -230222,7 +230292,7 @@
       "primaries": 0,
       "htmlFile": "thubten-chodron.html",
       "excerptCount": 1,
-      "listIndex": 629
+      "listIndex": 628
     },
     "Master Xuanzang": {
       "tag": "Master Xuanzang",
@@ -230242,7 +230312,7 @@
       "primaries": 0,
       "htmlFile": "master-xuanzang.html",
       "excerptCount": 1,
-      "listIndex": 615
+      "listIndex": 614
     },
     "Thich Nhat Hahn": {
       "tag": "Thich Nhat Hahn",
@@ -230262,7 +230332,7 @@
       "primaries": 0,
       "htmlFile": "thich-nhat-hahn.html",
       "excerptCount": 1,
-      "listIndex": 622
+      "listIndex": 621
     },
     "Tsoknyi Rinpoche": {
       "tag": "Tsoknyi Rinpoche",
@@ -230282,7 +230352,7 @@
       "primaries": 0,
       "htmlFile": "tsoknyi-rinpoche.html",
       "excerptCount": 1,
-      "listIndex": 630
+      "listIndex": 629
     },
     "Chokyi Nyima Rinpoche": {
       "tag": "Chokyi Nyima Rinpoche",
@@ -230302,7 +230372,7 @@
       "primaries": 0,
       "htmlFile": "chokyi-nyima-rinpoche.html",
       "excerptCount": 1,
-      "listIndex": 626
+      "listIndex": 625
     },
     "Shantideva": {
       "tag": "Shantideva",
@@ -230322,7 +230392,7 @@
       "primaries": 0,
       "htmlFile": "shantideva.html",
       "excerptCount": 1,
-      "listIndex": 617
+      "listIndex": 616
     },
     "Christian monastics": {
       "tag": "Christian monastics",
@@ -230345,7 +230415,7 @@
       "primaries": 0,
       "htmlFile": "christian-monastics.html",
       "excerptCount": 1,
-      "listIndex": 632
+      "listIndex": 631
     },
     "Father Boniface": {
       "tag": "Father Boniface",
@@ -230365,7 +230435,7 @@
       "primaries": 0,
       "htmlFile": "father-boniface.html",
       "excerptCount": 1,
-      "listIndex": 633
+      "listIndex": 632
     },
     "Father Damien": {
       "tag": "Father Damien",
@@ -230385,7 +230455,7 @@
       "primaries": 0,
       "htmlFile": "father-damien.html",
       "excerptCount": 4,
-      "listIndex": 634
+      "listIndex": 633
     },
     "Lay teachers": {
       "tag": "Lay teachers",
@@ -230428,7 +230498,7 @@
       "primaries": 0,
       "htmlFile": "lay-teachers.html",
       "excerptCount": 5,
-      "listIndex": 635
+      "listIndex": 634
     },
     "Mahatma Gandhi": {
       "tag": "Mahatma Gandhi",
@@ -230448,7 +230518,7 @@
       "primaries": 0,
       "htmlFile": "mahatma-gandhi.html",
       "excerptCount": 1,
-      "listIndex": 637
+      "listIndex": 636
     },
     "Upāsikā Kee Nanayon": {
       "tag": "Upāsikā Kee Nanayon",
@@ -230468,7 +230538,8 @@
       "primaries": 0,
       "htmlFile": "upasika-kee-nanayon.html",
       "excerptCount": 24,
-      "listIndex": 639
+      "fTagCount": 1,
+      "listIndex": 638
     },
     "S. N. Goenka": {
       "tag": "S. N. Goenka",
@@ -230488,7 +230559,7 @@
       "primaries": 0,
       "htmlFile": "s-n-goenka.html",
       "excerptCount": 3,
-      "listIndex": 642
+      "listIndex": 641
     },
     "Jalāl al-Dīn Rūmī": {
       "tag": "Jalāl al-Dīn Rūmī",
@@ -230508,7 +230579,7 @@
       "primaries": 0,
       "htmlFile": "jalal-al-din-rumi.html",
       "excerptCount": 1,
-      "listIndex": 636
+      "listIndex": 635
     },
     "Krishnamurti": {
       "tag": "Krishnamurti",
@@ -230528,7 +230599,7 @@
       "primaries": 0,
       "htmlFile": "krishnamurti.html",
       "excerptCount": 1,
-      "listIndex": 638
+      "listIndex": 637
     },
     "Maurice Walsh": {
       "tag": "Maurice Walsh",
@@ -230548,7 +230619,7 @@
       "primaries": 0,
       "htmlFile": "maurice-walsh.html",
       "excerptCount": 1,
-      "listIndex": 641
+      "listIndex": 640
     },
     "Dipa Ma": {
       "tag": "Dipa Ma",
@@ -230568,7 +230639,7 @@
       "primaries": 0,
       "htmlFile": "dipa-ma.html",
       "excerptCount": 1,
-      "listIndex": 640
+      "listIndex": 639
     },
     "Ruth Denison": {
       "tag": "Ruth Denison",
@@ -230588,7 +230659,7 @@
       "primaries": 0,
       "htmlFile": "ruth-denison.html",
       "excerptCount": 2,
-      "listIndex": 657
+      "listIndex": 656
     },
     "Ram Dass": {
       "tag": "Ram Dass",
@@ -230608,7 +230679,7 @@
       "primaries": 0,
       "htmlFile": "ram-dass.html",
       "excerptCount": 4,
-      "listIndex": 643
+      "listIndex": 642
     },
     "Jack Kornfield": {
       "tag": "Jack Kornfield",
@@ -230629,7 +230700,7 @@
       "htmlFile": "jack-kornfield.html",
       "excerptCount": 29,
       "fTagCount": 1,
-      "listIndex": 647
+      "listIndex": 646
     },
     "Paul Breiter": {
       "tag": "Paul Breiter",
@@ -230650,7 +230721,7 @@
       "htmlFile": "paul-breiter.html",
       "excerptCount": 26,
       "fTagCount": 2,
-      "listIndex": 650
+      "listIndex": 649
     },
     "Joseph Kappel": {
       "tag": "Joseph Kappel",
@@ -230671,7 +230742,7 @@
       "htmlFile": "joseph-kappel.html",
       "excerptCount": 30,
       "fTagCount": 2,
-      "listIndex": 649
+      "listIndex": 648
     },
     "Larry Rosenberg": {
       "tag": "Larry Rosenberg",
@@ -230691,7 +230762,7 @@
       "primaries": 0,
       "htmlFile": "larry-rosenberg.html",
       "excerptCount": 2,
-      "listIndex": 644
+      "listIndex": 643
     },
     "Rodney Smith": {
       "tag": "Rodney Smith",
@@ -230711,7 +230782,7 @@
       "primaries": 0,
       "htmlFile": "rodney-smith.html",
       "excerptCount": 1,
-      "listIndex": 648
+      "listIndex": 647
     },
     "Joseph Goldstein": {
       "tag": "Joseph Goldstein",
@@ -230731,7 +230802,7 @@
       "primaries": 0,
       "htmlFile": "joseph-goldstein.html",
       "excerptCount": 2,
-      "listIndex": 646
+      "listIndex": 645
     },
     "Stephen Levine": {
       "tag": "Stephen Levine",
@@ -230751,7 +230822,7 @@
       "primaries": 0,
       "htmlFile": "stephen-levine.html",
       "excerptCount": 2,
-      "listIndex": 645
+      "listIndex": 644
     },
     "Mark Epstein": {
       "tag": "Mark Epstein",
@@ -230771,7 +230842,7 @@
       "primaries": 0,
       "htmlFile": "mark-epstein.html",
       "excerptCount": 1,
-      "listIndex": 654
+      "listIndex": 653
     },
     "Kittisaro": {
       "tag": "Kittisaro",
@@ -230791,7 +230862,7 @@
       "primaries": 0,
       "htmlFile": "kittisaro.html",
       "excerptCount": 9,
-      "listIndex": 652
+      "listIndex": 651
     },
     "Ṭhānissarā": {
       "tag": "Ṭhānissarā",
@@ -230811,7 +230882,7 @@
       "primaries": 0,
       "htmlFile": "thanissara.html",
       "excerptCount": 8,
-      "listIndex": 655
+      "listIndex": 654
     },
     "Debbie Stamp": {
       "tag": "Debbie Stamp",
@@ -230831,7 +230902,7 @@
       "primaries": 0,
       "htmlFile": "debbie-stamp.html",
       "excerptCount": 18,
-      "listIndex": 656
+      "listIndex": 655
     },
     "Nick Scott": {
       "tag": "Nick Scott",
@@ -230851,7 +230922,7 @@
       "primaries": 0,
       "htmlFile": "nick-scott.html",
       "excerptCount": 1,
-      "listIndex": 651
+      "listIndex": 650
     },
     "Stephen Batchelor": {
       "tag": "Stephen Batchelor",
@@ -230871,7 +230942,7 @@
       "primaries": 0,
       "htmlFile": "stephen-batchelor.html",
       "excerptCount": 1,
-      "listIndex": 653
+      "listIndex": 652
     },
     "Lay supporters": {
       "tag": "Lay supporters",
@@ -230896,7 +230967,7 @@
       "primaries": 0,
       "htmlFile": "lay-supporters.html",
       "excerptCount": 13,
-      "listIndex": 658
+      "listIndex": 657
     },
     "King Rama IX": {
       "tag": "King Rama IX",
@@ -230916,7 +230987,7 @@
       "primaries": 0,
       "htmlFile": "king-rama-ix.html",
       "excerptCount": 4,
-      "listIndex": 659
+      "listIndex": 658
     },
     "George Sharp": {
       "tag": "George Sharp",
@@ -230936,7 +231007,7 @@
       "primaries": 0,
       "htmlFile": "george-sharp.html",
       "excerptCount": 2,
-      "listIndex": 660
+      "listIndex": 659
     },
     "Saṅghapāla": {
       "tag": "Saṅghapāla",
@@ -230958,7 +231029,8 @@
       "htmlFile": "sanghapala.html",
       "sessionCount": 4,
       "excerptCount": 30,
-      "listIndex": 661
+      "fTagCount": 2,
+      "listIndex": 660
     },
     "CALM Group": {
       "tag": "CALM Group",
@@ -230978,7 +231050,7 @@
       "primaries": 0,
       "htmlFile": "calm-group.html",
       "excerptCount": 2,
-      "listIndex": 662
+      "listIndex": 661
     },
     "Monasteries": {
       "tag": "Monasteries",
@@ -231005,7 +231077,7 @@
       "htmlFile": "monasteries.html",
       "excerptCount": 17,
       "fTagCount": 1,
-      "listIndex": 663
+      "listIndex": 662
     },
     "Ajahn Chah monasteries": {
       "tag": "Ajahn Chah monasteries",
@@ -231029,7 +231101,7 @@
       "htmlFile": "ajahn-chah-monasteries.html",
       "excerptCount": 12,
       "fTagCount": 1,
-      "listIndex": 664
+      "listIndex": 663
     },
     "Thai Ajahn Chah monasteries": {
       "tag": "Thai Ajahn Chah monasteries",
@@ -231063,7 +231135,7 @@
       "primaries": 0,
       "htmlFile": "thai-ajahn-chah-monasteries.html",
       "excerptCount": 28,
-      "listIndex": 665
+      "listIndex": 664
     },
     "Wat Pah Pong": {
       "tag": "Wat Pah Pong",
@@ -231091,7 +231163,7 @@
       "excerptCount": 140,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 667
+      "listIndex": 666
     },
     "Wat Tam Saeng Pet": {
       "tag": "Wat Tam Saeng Pet",
@@ -231111,7 +231183,7 @@
       "primaries": 0,
       "htmlFile": "wat-tam-saeng-pet.html",
       "excerptCount": 10,
-      "listIndex": 668
+      "listIndex": 667
     },
     "Wat Keuan": {
       "tag": "Wat Keuan",
@@ -231131,7 +231203,8 @@
       "primaries": 0,
       "htmlFile": "wat-keuan.html",
       "excerptCount": 13,
-      "listIndex": 669
+      "fTagCount": 1,
+      "listIndex": 668
     },
     "Wat Pah Nanachat": {
       "tag": "Wat Pah Nanachat",
@@ -231157,7 +231230,7 @@
       "excerptCount": 105,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 673
+      "listIndex": 672
     },
     "Wat Fah Krahm": {
       "tag": "Wat Fah Krahm",
@@ -231177,7 +231250,7 @@
       "primaries": 0,
       "htmlFile": "wat-fah-krahm.html",
       "excerptCount": 4,
-      "listIndex": 674
+      "listIndex": 673
     },
     "Wat Pah Supattaram": {
       "tag": "Wat Pah Supattaram",
@@ -231197,7 +231270,7 @@
       "primaries": 0,
       "htmlFile": "wat-pah-supattaram.html",
       "excerptCount": 1,
-      "listIndex": 670
+      "listIndex": 669
     },
     "Wat Pahk Kut Wai": {
       "tag": "Wat Pahk Kut Wai",
@@ -231217,7 +231290,7 @@
       "primaries": 0,
       "htmlFile": "wat-pahk-kut-wai.html",
       "excerptCount": 1,
-      "listIndex": 666
+      "listIndex": 665
     },
     "Wat Pah Boon Lorm": {
       "tag": "Wat Pah Boon Lorm",
@@ -231237,7 +231310,7 @@
       "primaries": 0,
       "htmlFile": "wat-pah-boon-lorm.html",
       "excerptCount": 1,
-      "listIndex": 675
+      "listIndex": 674
     },
     "Wat Phu Din Dang": {
       "tag": "Wat Phu Din Dang",
@@ -231257,7 +231330,7 @@
       "primaries": 0,
       "htmlFile": "wat-phu-din-dang.html",
       "excerptCount": 2,
-      "listIndex": 671
+      "listIndex": 670
     },
     "Dtao Dum": {
       "tag": "Dtao Dum",
@@ -231278,7 +231351,7 @@
       "htmlFile": "dtao-dum.html",
       "excerptCount": 21,
       "fTagCount": 3,
-      "listIndex": 676
+      "listIndex": 675
     },
     "Poo Jum Gom": {
       "tag": "Poo Jum Gom",
@@ -231298,7 +231371,7 @@
       "primaries": 0,
       "htmlFile": "poo-jum-gom.html",
       "excerptCount": 5,
-      "listIndex": 677
+      "listIndex": 676
     },
     "Anandagiri": {
       "tag": "Anandagiri",
@@ -231318,7 +231391,7 @@
       "primaries": 0,
       "htmlFile": "anandagiri.html",
       "excerptCount": 1,
-      "listIndex": 678
+      "listIndex": 677
     },
     "Wat Pah Sai Ngam": {
       "tag": "Wat Pah Sai Ngam",
@@ -231339,7 +231412,7 @@
       "htmlFile": "wat-pah-sai-ngam.html",
       "note": "[<a href=\"../tags/ajahn-anek.html\">Ajahn Anek</a>] founded this monastery in Ubon Ratchathani in 1972.",
       "excerptCount": 1,
-      "listIndex": 672
+      "listIndex": 671
     },
     "Western Ajahn Chah monasteries": {
       "tag": "Western Ajahn Chah monasteries",
@@ -231367,7 +231440,7 @@
       "primaries": 0,
       "htmlFile": "western-ajahn-chah-monasteries.html",
       "excerptCount": 7,
-      "listIndex": 679
+      "listIndex": 678
     },
     "Hampstead Vihara": {
       "tag": "Hampstead Vihara",
@@ -231387,7 +231460,7 @@
       "primaries": 0,
       "htmlFile": "hampstead-vihara.html",
       "excerptCount": 2,
-      "listIndex": 680
+      "listIndex": 679
     },
     "Elders' Council": {
       "tag": "Elders' Council",
@@ -231414,7 +231487,7 @@
       "htmlFile": "elders-council.html",
       "note": "Although the Elders&rsquo; Council organization coalesced in the 1990s, this tag applies retroactively to the group of European monasteries that formed it.",
       "excerptCount": 11,
-      "listIndex": 681
+      "listIndex": 680
     },
     "Chithurst": {
       "tag": "Chithurst",
@@ -231435,7 +231508,7 @@
       "htmlFile": "chithurst.html",
       "sessionCount": 1,
       "excerptCount": 26,
-      "listIndex": 682
+      "listIndex": 681
     },
     "Amaravati": {
       "tag": "Amaravati",
@@ -231456,7 +231529,7 @@
       "htmlFile": "amaravati.html",
       "excerptCount": 31,
       "fTagCount": 1,
-      "listIndex": 684
+      "listIndex": 683
     },
     "Aruna Ratanagiri": {
       "tag": "Aruna Ratanagiri",
@@ -231476,7 +231549,7 @@
       "primaries": 0,
       "htmlFile": "aruna-ratanagiri.html",
       "excerptCount": 1,
-      "listIndex": 683
+      "listIndex": 682
     },
     "Dhammapala": {
       "tag": "Dhammapala",
@@ -231496,7 +231569,7 @@
       "primaries": 0,
       "htmlFile": "dhammapala.html",
       "excerptCount": 2,
-      "listIndex": 685
+      "listIndex": 684
     },
     "Temple Monastery": {
       "tag": "Temple Monastery",
@@ -231516,7 +231589,7 @@
       "primaries": 0,
       "htmlFile": "temple-monastery.html",
       "excerptCount": 1,
-      "listIndex": 686
+      "listIndex": 685
     },
     "Tisarana": {
       "tag": "Tisarana",
@@ -231536,7 +231609,7 @@
       "primaries": 0,
       "htmlFile": "tisarana.html",
       "excerptCount": 1,
-      "listIndex": 691
+      "listIndex": 690
     },
     "Arrow River": {
       "tag": "Arrow River",
@@ -231556,7 +231629,7 @@
       "primaries": 0,
       "htmlFile": "arrow-river.html",
       "excerptCount": 1,
-      "listIndex": 687
+      "listIndex": 686
     },
     "Abhayagiri": {
       "tag": "Abhayagiri",
@@ -231586,7 +231659,7 @@
       "excerptCount": 267,
       "fTagCount": 5,
       "subtopicFTagCount": 5,
-      "listIndex": 689
+      "listIndex": 688
     },
     "Pacific Hermitage": {
       "tag": "Pacific Hermitage",
@@ -231606,7 +231679,7 @@
       "primaries": 0,
       "htmlFile": "pacific-hermitage.html",
       "excerptCount": 8,
-      "listIndex": 692
+      "listIndex": 691
     },
     "Birken": {
       "tag": "Birken",
@@ -231626,7 +231699,7 @@
       "primaries": 0,
       "htmlFile": "birken.html",
       "excerptCount": 2,
-      "listIndex": 688
+      "listIndex": 687
     },
     "Other Thai forest monasteries": {
       "tag": "Other Thai forest monasteries",
@@ -231652,7 +231725,7 @@
       "primaries": 0,
       "htmlFile": "other-thai-forest-monasteries.html",
       "excerptCount": 1,
-      "listIndex": 693
+      "listIndex": 692
     },
     "Wat Khao Wongkot": {
       "tag": "Wat Khao Wongkot",
@@ -231672,7 +231745,7 @@
       "primaries": 0,
       "htmlFile": "wat-khao-wongkot.html",
       "excerptCount": 1,
-      "listIndex": 696
+      "listIndex": 695
     },
     "Wat Asokaram": {
       "tag": "Wat Asokaram",
@@ -231694,7 +231767,7 @@
       "primaries": 0,
       "htmlFile": "wat-asokaram.html",
       "excerptCount": 1,
-      "listIndex": 698
+      "listIndex": 697
     },
     "Wat Pah Ban Tat": {
       "tag": "Wat Pah Ban Tat",
@@ -231716,7 +231789,7 @@
       "primaries": 0,
       "htmlFile": "wat-pah-ban-tat.html",
       "excerptCount": 6,
-      "listIndex": 697
+      "listIndex": 696
     },
     "Wat Suan Mokkh": {
       "tag": "Wat Suan Mokkh",
@@ -231738,7 +231811,7 @@
       "primaries": 0,
       "htmlFile": "wat-suan-mokkh.html",
       "excerptCount": 3,
-      "listIndex": 695
+      "listIndex": 694
     },
     "Wat Burapha": {
       "tag": "Wat Burapha",
@@ -231760,7 +231833,7 @@
       "primaries": 0,
       "htmlFile": "wat-burapha.html",
       "excerptCount": 5,
-      "listIndex": 694
+      "listIndex": 693
     },
     "Thai Forest monasteries in the West": {
       "tag": "Thai Forest monasteries in the West",
@@ -231783,7 +231856,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "thai-forest-monasteries-in-the-west.html",
-      "listIndex": 699
+      "listIndex": 698
     },
     "Wat Buridat": {
       "tag": "Wat Buridat",
@@ -231803,7 +231876,7 @@
       "primaries": 0,
       "htmlFile": "wat-buridat.html",
       "excerptCount": 2,
-      "listIndex": 700
+      "listIndex": 699
     },
     "Wat Metta": {
       "tag": "Wat Metta",
@@ -231823,7 +231896,7 @@
       "primaries": 0,
       "htmlFile": "wat-metta.html",
       "excerptCount": 2,
-      "listIndex": 701
+      "listIndex": 700
     },
     "Clear Mountain": {
       "tag": "Clear Mountain",
@@ -231843,7 +231916,7 @@
       "primaries": 0,
       "htmlFile": "clear-mountain.html",
       "excerptCount": 1,
-      "listIndex": 702
+      "listIndex": 701
     },
     "Other Thai monasteries": {
       "tag": "Other Thai monasteries",
@@ -231866,7 +231939,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "other-thai-monasteries.html",
-      "listIndex": 703
+      "listIndex": 702
     },
     "Wat Ram Poeng": {
       "tag": "Wat Ram Poeng",
@@ -231886,7 +231959,7 @@
       "primaries": 0,
       "htmlFile": "wat-ram-poeng.html",
       "excerptCount": 1,
-      "listIndex": 705
+      "listIndex": 704
     },
     "Wat Phleng Vipassanā": {
       "tag": "Wat Phleng Vipassanā",
@@ -231906,7 +231979,7 @@
       "primaries": 0,
       "htmlFile": "wat-phleng-vipassana.html",
       "excerptCount": 6,
-      "listIndex": 704
+      "listIndex": 703
     },
     "Wat Sai Ngam (Suphanburi)": {
       "tag": "Wat Sai Ngam (Suphanburi)",
@@ -231927,7 +232000,7 @@
       "htmlFile": "wat-sai-ngam-suphanburi.html",
       "note": "[<a href=\"../tags/ajahn-pasanno.html\">Ajahn Pasanno</a>] stayed here in 1974 before going to [<a href=\"../tags/wat-pah-pong.html\">Wat Pah Pong</a>].",
       "excerptCount": 4,
-      "listIndex": 706
+      "listIndex": 705
     },
     "Non-Thai Buddhist monasteries": {
       "tag": "Non-Thai Buddhist monasteries",
@@ -231955,7 +232028,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "non-thai-buddhist-monasteries.html",
-      "listIndex": 707
+      "listIndex": 706
     },
     "Three Conditions Monastery": {
       "tag": "Three Conditions Monastery",
@@ -231975,7 +232048,7 @@
       "primaries": 0,
       "htmlFile": "three-conditions-monastery.html",
       "excerptCount": 2,
-      "listIndex": 709
+      "listIndex": 708
     },
     "Abhayagiri (Sri Lanka)": {
       "tag": "Abhayagiri (Sri Lanka)",
@@ -231995,7 +232068,7 @@
       "primaries": 0,
       "htmlFile": "abhayagiri-sri-lanka.html",
       "excerptCount": 1,
-      "listIndex": 708
+      "listIndex": 707
     },
     "Gomde California": {
       "tag": "Gomde California",
@@ -232015,7 +232088,7 @@
       "primaries": 0,
       "htmlFile": "gomde-california.html",
       "excerptCount": 1,
-      "listIndex": 717
+      "listIndex": 716
     },
     "DRBA monsteries": {
       "tag": "DRBA monsteries",
@@ -232038,7 +232111,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "drba-monsteries.html",
-      "listIndex": 710
+      "listIndex": 709
     },
     "Gold Mountain Monastery": {
       "tag": "Gold Mountain Monastery",
@@ -232058,7 +232131,7 @@
       "primaries": 0,
       "htmlFile": "gold-mountain-monastery.html",
       "excerptCount": 1,
-      "listIndex": 711
+      "listIndex": 710
     },
     "City of Ten Thousand Buddhas": {
       "tag": "City of Ten Thousand Buddhas",
@@ -232079,7 +232152,7 @@
       "htmlFile": "city-of-ten-thousand-buddhas.html",
       "excerptCount": 19,
       "fTagCount": 1,
-      "listIndex": 712
+      "listIndex": 711
     },
     "Berkeley Buddhist Monastery": {
       "tag": "Berkeley Buddhist Monastery",
@@ -232099,7 +232172,7 @@
       "primaries": 0,
       "htmlFile": "berkeley-buddhist-monastery.html",
       "excerptCount": 1,
-      "listIndex": 713
+      "listIndex": 712
     },
     "Dhammadharini Monastery": {
       "tag": "Dhammadharini Monastery",
@@ -232119,7 +232192,7 @@
       "primaries": 0,
       "htmlFile": "dhammadharini-monastery.html",
       "excerptCount": 5,
-      "listIndex": 714
+      "listIndex": 713
     },
     "Aranya Bodhi Hermitage": {
       "tag": "Aranya Bodhi Hermitage",
@@ -232139,7 +232212,7 @@
       "primaries": 0,
       "htmlFile": "aranya-bodhi-hermitage.html",
       "excerptCount": 1,
-      "listIndex": 715
+      "listIndex": 714
     },
     "Karuna Buddhist Vihara": {
       "tag": "Karuna Buddhist Vihara",
@@ -232159,7 +232232,7 @@
       "primaries": 0,
       "htmlFile": "karuna-buddhist-vihara.html",
       "excerptCount": 1,
-      "listIndex": 718
+      "listIndex": 717
     },
     "Aloka Vihara": {
       "tag": "Aloka Vihara",
@@ -232179,7 +232252,7 @@
       "primaries": 0,
       "htmlFile": "aloka-vihara.html",
       "excerptCount": 4,
-      "listIndex": 716
+      "listIndex": 715
     },
     "Christian monasteries": {
       "tag": "Christian monasteries",
@@ -232200,7 +232273,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "christian-monasteries.html",
-      "listIndex": 719
+      "listIndex": 718
     },
     "Holy Transfiguration Monastery": {
       "tag": "Holy Transfiguration Monastery",
@@ -232222,7 +232295,7 @@
       "primaries": 0,
       "htmlFile": "holy-transfiguration-monastery.html",
       "excerptCount": 6,
-      "listIndex": 720
+      "listIndex": 719
     },
     "Non-monastic centers": {
       "tag": "Non-monastic centers",
@@ -232249,7 +232322,7 @@
       "primaries": 0,
       "htmlFile": "non-monastic-centers.html",
       "excerptCount": 1,
-      "listIndex": 721
+      "listIndex": 720
     },
     "Insight Meditation Society": {
       "tag": "Insight Meditation Society",
@@ -232269,7 +232342,7 @@
       "primaries": 0,
       "htmlFile": "insight-meditation-society.html",
       "excerptCount": 15,
-      "listIndex": 722
+      "listIndex": 721
     },
     "Spirit Rock": {
       "tag": "Spirit Rock",
@@ -232289,7 +232362,7 @@
       "primaries": 0,
       "htmlFile": "spirit-rock.html",
       "excerptCount": 8,
-      "listIndex": 725
+      "listIndex": 724
     },
     "Panyaprateep School": {
       "tag": "Panyaprateep School",
@@ -232309,7 +232382,7 @@
       "primaries": 0,
       "htmlFile": "panyaprateep-school.html",
       "excerptCount": 1,
-      "listIndex": 727
+      "listIndex": 726
     },
     "Manjushri Institute": {
       "tag": "Manjushri Institute",
@@ -232329,7 +232402,7 @@
       "primaries": 0,
       "htmlFile": "manjushri-institute.html",
       "excerptCount": 2,
-      "listIndex": 723
+      "listIndex": 722
     },
     "Portland Friends of the Dhamma": {
       "tag": "Portland Friends of the Dhamma",
@@ -232349,7 +232422,7 @@
       "primaries": 0,
       "htmlFile": "portland-friends-of-the-dhamma.html",
       "excerptCount": 2,
-      "listIndex": 726
+      "listIndex": 725
     },
     "Gaia House": {
       "tag": "Gaia House",
@@ -232369,7 +232442,7 @@
       "primaries": 0,
       "htmlFile": "gaia-house.html",
       "excerptCount": 1,
-      "listIndex": 724
+      "listIndex": 723
     },
     "Nature of the cosmos": {
       "tag": "Nature of the cosmos",
@@ -232398,7 +232471,7 @@
       "htmlFile": "nature-of-the-cosmos.html",
       "excerptCount": 24,
       "fTagCount": 2,
-      "listIndex": 728
+      "listIndex": 727
     },
     "Time": {
       "tag": "Time",
@@ -232418,7 +232491,7 @@
       "primaries": 0,
       "htmlFile": "time.html",
       "excerptCount": 7,
-      "listIndex": 729
+      "listIndex": 728
     },
     "Kamma": {
       "tag": "Kamma",
@@ -232446,7 +232519,7 @@
       "excerptCount": 159,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 730
+      "listIndex": 729
     },
     "Rebirth": {
       "tag": "Rebirth",
@@ -232472,7 +232545,7 @@
       "excerptCount": 92,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 731
+      "listIndex": 730
     },
     "Saṃsāra": {
       "tag": "Saṃsāra",
@@ -232493,7 +232566,7 @@
       "htmlFile": "samsara.html",
       "excerptCount": 29,
       "fTagCount": 1,
-      "listIndex": 732
+      "listIndex": 731
     },
     "Realms of existence": {
       "tag": "Realms of existence",
@@ -232525,7 +232598,7 @@
       "excerptCount": 27,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 733
+      "listIndex": 732
     },
     "Deva": {
       "tag": "Deva",
@@ -232553,7 +232626,7 @@
       "excerptCount": 42,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 734
+      "listIndex": 733
     },
     "Human": {
       "tag": "Human",
@@ -232580,7 +232653,7 @@
       "excerptCount": 99,
       "fTagCount": 3,
       "subtopicFTagCount": 2,
-      "listIndex": 735
+      "listIndex": 734
     },
     "Ghost": {
       "tag": "Ghost",
@@ -232605,7 +232678,7 @@
       "excerptCount": 17,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 736
+      "listIndex": 735
     },
     "Animal": {
       "tag": "Animal",
@@ -232629,7 +232702,7 @@
       ],
       "excerptCount": 42,
       "fTagCount": 2,
-      "listIndex": 737
+      "listIndex": 736
     },
     "Hell": {
       "tag": "Hell",
@@ -232652,7 +232725,7 @@
         "Realms of existence"
       ],
       "excerptCount": 3,
-      "listIndex": 738
+      "listIndex": 737
     },
     "Other beings": {
       "tag": "Other beings",
@@ -232677,7 +232750,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "other-beings.html",
-      "listIndex": 739
+      "listIndex": 738
     },
     "God": {
       "tag": "God",
@@ -232697,7 +232770,7 @@
       "primaries": 0,
       "htmlFile": "god.html",
       "excerptCount": 10,
-      "listIndex": 740
+      "listIndex": 739
     },
     "Brahma gods": {
       "tag": "Brahma gods",
@@ -232720,7 +232793,7 @@
         "Realms of existence"
       ],
       "excerptCount": 9,
-      "listIndex": 741
+      "listIndex": 740
     },
     "Metteyya Bodhisatva": {
       "tag": "Metteyya Bodhisatva",
@@ -232740,7 +232813,7 @@
       "primaries": 0,
       "htmlFile": "metteyya-bodhisatva.html",
       "excerptCount": 3,
-      "listIndex": 742
+      "listIndex": 741
     },
     "Māra": {
       "tag": "Māra",
@@ -232761,7 +232834,7 @@
       "htmlFile": "mara.html",
       "excerptCount": 15,
       "fTagCount": 1,
-      "listIndex": 743
+      "listIndex": 742
     },
     "Non-human beings": {
       "tag": "Non-human beings",
@@ -232786,7 +232859,7 @@
         "Realms of existence"
       ],
       "excerptCount": 9,
-      "listIndex": 744
+      "listIndex": 743
     },
     "Nature of mind": {
       "tag": "Nature of mind",
@@ -232821,7 +232894,7 @@
       "excerptCount": 85,
       "fTagCount": 5,
       "subtopicFTagCount": 5,
-      "listIndex": 745
+      "listIndex": 744
     },
     "Memory": {
       "tag": "Memory",
@@ -232843,7 +232916,7 @@
       "sessionCount": 1,
       "excerptCount": 44,
       "fTagCount": 3,
-      "listIndex": 746
+      "listIndex": 745
     },
     "Dreams": {
       "tag": "Dreams",
@@ -232864,7 +232937,7 @@
       "htmlFile": "dreams.html",
       "excerptCount": 14,
       "fTagCount": 1,
-      "listIndex": 749
+      "listIndex": 748
     },
     "Psychic powers": {
       "tag": "Psychic powers",
@@ -232885,7 +232958,7 @@
       "htmlFile": "psychic-powers.html",
       "excerptCount": 33,
       "fTagCount": 3,
-      "listIndex": 750
+      "listIndex": 749
     },
     "Supernatural": {
       "tag": "Supernatural",
@@ -232905,7 +232978,7 @@
       "primaries": 0,
       "htmlFile": "supernatural.html",
       "excerptCount": 3,
-      "listIndex": 751
+      "listIndex": 750
     },
     "Deathless": {
       "tag": "Deathless",
@@ -232928,7 +233001,7 @@
         "Nibbāna"
       ],
       "excerptCount": 8,
-      "listIndex": 753
+      "listIndex": 752
     },
     "Unestablished consciousness": {
       "tag": "Unestablished consciousness",
@@ -232954,7 +233027,7 @@
         "Nibbāna"
       ],
       "excerptCount": 7,
-      "listIndex": 754
+      "listIndex": 753
     },
     "Unconditioned": {
       "tag": "Unconditioned",
@@ -232982,7 +233055,7 @@
       "excerptCount": 33,
       "fTagCount": 3,
       "subtopicFTagCount": 2,
-      "listIndex": 755
+      "listIndex": 754
     },
     "History": {
       "tag": "History",
@@ -233014,7 +233087,7 @@
       "primaries": 0,
       "htmlFile": "history.html",
       "excerptCount": 8,
-      "listIndex": 756
+      "listIndex": 755
     },
     "Previous Buddhas": {
       "tag": "Previous Buddhas",
@@ -233034,7 +233107,7 @@
       "primaries": 0,
       "htmlFile": "previous-buddhas.html",
       "excerptCount": 7,
-      "listIndex": 757
+      "listIndex": 756
     },
     "Great disciples": {
       "tag": "Great disciples",
@@ -233055,7 +233128,7 @@
       "htmlFile": "great-disciples.html",
       "excerptCount": 82,
       "fTagCount": 2,
-      "listIndex": 759
+      "listIndex": 758
     },
     "History/Early Buddhism": {
       "tag": "History/Early Buddhism",
@@ -233076,7 +233149,7 @@
       "htmlFile": "historyearly-buddhism.html",
       "excerptCount": 32,
       "fTagCount": 2,
-      "listIndex": 760
+      "listIndex": 759
     },
     "History/Indian Buddhism": {
       "tag": "History/Indian Buddhism",
@@ -233096,7 +233169,7 @@
       "primaries": 0,
       "htmlFile": "historyindian-buddhism.html",
       "excerptCount": 9,
-      "listIndex": 761
+      "listIndex": 760
     },
     "History/Sri Lankan Buddhism": {
       "tag": "History/Sri Lankan Buddhism",
@@ -233115,9 +233188,9 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "historysri-lankan-buddhism.html",
-      "excerptCount": 19,
+      "excerptCount": 17,
       "fTagCount": 2,
-      "listIndex": 762
+      "listIndex": 761
     },
     "History/Thai Buddhism": {
       "tag": "History/Thai Buddhism",
@@ -233142,7 +233215,7 @@
       "excerptCount": 55,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 763
+      "listIndex": 762
     },
     "History/Other Theravāda traditions": {
       "tag": "History/Other Theravāda traditions",
@@ -233162,7 +233235,7 @@
       "primaries": 0,
       "htmlFile": "historyother-theravada-traditions.html",
       "excerptCount": 5,
-      "listIndex": 764
+      "listIndex": 763
     },
     "History/Mahāyāna Buddhism": {
       "tag": "History/Mahāyāna Buddhism",
@@ -233182,7 +233255,7 @@
       "primaries": 0,
       "htmlFile": "historymahayana-buddhism.html",
       "excerptCount": 4,
-      "listIndex": 765
+      "listIndex": 764
     },
     "History/America": {
       "tag": "History/America",
@@ -233202,7 +233275,7 @@
       "primaries": 0,
       "htmlFile": "historyamerica.html",
       "excerptCount": 3,
-      "listIndex": 766
+      "listIndex": 765
     },
     "History/Western Buddhism": {
       "tag": "History/Western Buddhism",
@@ -233224,7 +233297,7 @@
       "primaries": 0,
       "htmlFile": "historywestern-buddhism.html",
       "excerptCount": 5,
-      "listIndex": 767
+      "listIndex": 766
     },
     "History/Western Buddhist monasticism": {
       "tag": "History/Western Buddhist monasticism",
@@ -233244,7 +233317,7 @@
       "primaries": 0,
       "htmlFile": "historywestern-buddhist-monasticism.html",
       "excerptCount": 23,
-      "listIndex": 768
+      "listIndex": 767
     },
     "Geography/India": {
       "tag": "Geography/India",
@@ -233264,7 +233337,7 @@
       "primaries": 0,
       "htmlFile": "geographyindia.html",
       "excerptCount": 4,
-      "listIndex": 769
+      "listIndex": 768
     },
     "Geography/Thailand": {
       "tag": "Geography/Thailand",
@@ -233284,7 +233357,8 @@
       "primaries": 0,
       "htmlFile": "geographythailand.html",
       "excerptCount": 20,
-      "listIndex": 770
+      "fTagCount": 1,
+      "listIndex": 769
     },
     "Cultural context": {
       "tag": "Cultural context",
@@ -233315,7 +233389,7 @@
       "primaries": 0,
       "htmlFile": "cultural-context.html",
       "excerptCount": 24,
-      "listIndex": 771
+      "listIndex": 770
     },
     "Culture/Natural environment": {
       "tag": "Culture/Natural environment",
@@ -233342,7 +233416,7 @@
       "excerptCount": 60,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 772
+      "listIndex": 771
     },
     "Culture/Asia": {
       "tag": "Culture/Asia",
@@ -233362,7 +233436,7 @@
       "primaries": 0,
       "htmlFile": "cultureasia.html",
       "excerptCount": 3,
-      "listIndex": 773
+      "listIndex": 772
     },
     "Culture/India": {
       "tag": "Culture/India",
@@ -233383,7 +233457,7 @@
       "htmlFile": "cultureindia.html",
       "excerptCount": 47,
       "fTagCount": 3,
-      "listIndex": 774
+      "listIndex": 773
     },
     "Culture/Sri Lanka": {
       "tag": "Culture/Sri Lanka",
@@ -233402,8 +233476,8 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "culturesri-lanka.html",
-      "excerptCount": 7,
-      "listIndex": 775
+      "excerptCount": 9,
+      "listIndex": 774
     },
     "Culture/Thailand": {
       "tag": "Culture/Thailand",
@@ -233429,7 +233503,7 @@
       "excerptCount": 216,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 776
+      "listIndex": 775
     },
     "Culture/Other Theravāda traditions": {
       "tag": "Culture/Other Theravāda traditions",
@@ -233449,7 +233523,7 @@
       "primaries": 0,
       "htmlFile": "cultureother-theravada-traditions.html",
       "excerptCount": 5,
-      "listIndex": 777
+      "listIndex": 776
     },
     "Culture/Native American": {
       "tag": "Culture/Native American",
@@ -233469,7 +233543,7 @@
       "primaries": 0,
       "htmlFile": "culturenative-american.html",
       "excerptCount": 1,
-      "listIndex": 778
+      "listIndex": 777
     },
     "Culture/West": {
       "tag": "Culture/West",
@@ -233495,7 +233569,7 @@
       "excerptCount": 199,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 779
+      "listIndex": 778
     },
     "Women in Buddhism": {
       "tag": "Women in Buddhism",
@@ -233518,7 +233592,7 @@
       "htmlFile": "women-in-buddhism.html",
       "excerptCount": 12,
       "fTagCount": 1,
-      "listIndex": 780
+      "listIndex": 779
     },
     "Women's monastic forms": {
       "tag": "Women's monastic forms",
@@ -233549,7 +233623,7 @@
       "excerptCount": 11,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 897
+      "listIndex": 896
     },
     "Bhikkhunī": {
       "tag": "Bhikkhunī",
@@ -233572,7 +233646,7 @@
         "Women's monastic forms"
       ],
       "excerptCount": 8,
-      "listIndex": 898
+      "listIndex": 897
     },
     "Sīladharā": {
       "tag": "Sīladharā",
@@ -233595,7 +233669,7 @@
         "Women's monastic forms"
       ],
       "excerptCount": 9,
-      "listIndex": 899
+      "listIndex": 898
     },
     "Mae Chee": {
       "tag": "Mae Chee",
@@ -233620,7 +233694,7 @@
       "excerptCount": 9,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 900
+      "listIndex": 899
     },
     "Language": {
       "tag": "Language",
@@ -233653,7 +233727,7 @@
       "excerptCount": 95,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 785
+      "listIndex": 784
     },
     "Pāli": {
       "tag": "Pāli",
@@ -233679,7 +233753,7 @@
       "excerptCount": 165,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 786
+      "listIndex": 785
     },
     "Sinhalese": {
       "tag": "Sinhalese",
@@ -233699,7 +233773,7 @@
       "primaries": 0,
       "htmlFile": "sinhalese.html",
       "excerptCount": 1,
-      "listIndex": 787
+      "listIndex": 786
     },
     "Thai": {
       "tag": "Thai",
@@ -233727,7 +233801,7 @@
       "excerptCount": 68,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 788
+      "listIndex": 787
     },
     "Question in Thai": {
       "tag": "Question in Thai",
@@ -233747,7 +233821,7 @@
       "primaries": 0,
       "htmlFile": "question-in-thai.html",
       "excerptCount": 3,
-      "listIndex": 789
+      "listIndex": 788
     },
     "Thai audio": {
       "tag": "Thai audio",
@@ -233767,7 +233841,7 @@
       "primaries": 0,
       "htmlFile": "thai-audio.html",
       "excerptCount": 4,
-      "listIndex": 790
+      "listIndex": 789
     },
     "Isan": {
       "tag": "Isan",
@@ -233787,7 +233861,7 @@
       "primaries": 0,
       "htmlFile": "isan.html",
       "excerptCount": 7,
-      "listIndex": 791
+      "listIndex": 790
     },
     "Translation": {
       "tag": "Translation",
@@ -233812,7 +233886,7 @@
       "excerptCount": 156,
       "fTagCount": 3,
       "subtopicFTagCount": 2,
-      "listIndex": 792
+      "listIndex": 791
     },
     "Etymology": {
       "tag": "Etymology",
@@ -233833,7 +233907,7 @@
       "htmlFile": "etymology.html",
       "excerptCount": 32,
       "fTagCount": 1,
-      "listIndex": 793
+      "listIndex": 792
     },
     "Buddhist identity": {
       "tag": "Buddhist identity",
@@ -233856,7 +233930,7 @@
       "sessionCount": 1,
       "excerptCount": 33,
       "fTagCount": 2,
-      "listIndex": 794
+      "listIndex": 793
     },
     "Popular culture": {
       "tag": "Popular culture",
@@ -233880,7 +233954,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "popular-culture.html",
-      "listIndex": 795
+      "listIndex": 794
     },
     "Winnie-the-Pooh": {
       "tag": "Winnie-the-Pooh",
@@ -233900,7 +233974,7 @@
       "primaries": 0,
       "htmlFile": "winnie-the-pooh.html",
       "excerptCount": 6,
-      "listIndex": 796
+      "listIndex": 795
     },
     "The Far Side": {
       "tag": "The Far Side",
@@ -233920,7 +233994,7 @@
       "primaries": 0,
       "htmlFile": "the-far-side.html",
       "excerptCount": 1,
-      "listIndex": 798
+      "listIndex": 797
     },
     "The New Yorker": {
       "tag": "The New Yorker",
@@ -233940,7 +234014,7 @@
       "primaries": 0,
       "htmlFile": "the-new-yorker.html",
       "excerptCount": 2,
-      "listIndex": 797
+      "listIndex": 796
     },
     "Calvin and Hobbes": {
       "tag": "Calvin and Hobbes",
@@ -233960,7 +234034,7 @@
       "primaries": 0,
       "htmlFile": "calvin-and-hobbes.html",
       "excerptCount": 1,
-      "listIndex": 799
+      "listIndex": 798
     },
     "Spiritual traditions": {
       "tag": "Spiritual traditions",
@@ -233994,7 +234068,7 @@
       "htmlFile": "spiritual-traditions.html",
       "excerptCount": 26,
       "fTagCount": 3,
-      "listIndex": 800
+      "listIndex": 799
     },
     "Theravāda": {
       "tag": "Theravāda",
@@ -234015,7 +234089,7 @@
       "htmlFile": "theravada.html",
       "excerptCount": 43,
       "fTagCount": 2,
-      "listIndex": 801
+      "listIndex": 800
     },
     "Mahāyāna": {
       "tag": "Mahāyāna",
@@ -234039,7 +234113,8 @@
       "primaries": 0,
       "htmlFile": "mahayana.html",
       "excerptCount": 22,
-      "listIndex": 802
+      "fTagCount": 1,
+      "listIndex": 801
     },
     "Zen": {
       "tag": "Zen",
@@ -234060,7 +234135,7 @@
       "htmlFile": "zen.html",
       "excerptCount": 24,
       "fTagCount": 1,
-      "listIndex": 803
+      "listIndex": 802
     },
     "Pure Land": {
       "tag": "Pure Land",
@@ -234080,7 +234155,7 @@
       "primaries": 0,
       "htmlFile": "pure-land.html",
       "excerptCount": 3,
-      "listIndex": 804
+      "listIndex": 803
     },
     "Nichiren Buddhism": {
       "tag": "Nichiren Buddhism",
@@ -234100,7 +234175,7 @@
       "primaries": 0,
       "htmlFile": "nichiren-buddhism.html",
       "excerptCount": 1,
-      "listIndex": 805
+      "listIndex": 804
     },
     "Vajrayāna": {
       "tag": "Vajrayāna",
@@ -234120,7 +234195,7 @@
       "primaries": 0,
       "htmlFile": "vajrayana.html",
       "excerptCount": 27,
-      "listIndex": 806
+      "listIndex": 805
     },
     "Secular Buddhism": {
       "tag": "Secular Buddhism",
@@ -234142,7 +234217,7 @@
       "primaries": 0,
       "htmlFile": "secular-buddhism.html",
       "excerptCount": 6,
-      "listIndex": 807
+      "listIndex": 806
     },
     "Hinduism": {
       "tag": "Hinduism",
@@ -234164,7 +234239,7 @@
       "primaries": 0,
       "htmlFile": "hinduism.html",
       "excerptCount": 17,
-      "listIndex": 808
+      "listIndex": 807
     },
     "Advaita Vedanta": {
       "tag": "Advaita Vedanta",
@@ -234184,7 +234259,7 @@
       "primaries": 0,
       "htmlFile": "advaita-vedanta.html",
       "excerptCount": 5,
-      "listIndex": 809
+      "listIndex": 808
     },
     "Jainism": {
       "tag": "Jainism",
@@ -234204,7 +234279,7 @@
       "primaries": 0,
       "htmlFile": "jainism.html",
       "excerptCount": 1,
-      "listIndex": 810
+      "listIndex": 809
     },
     "Taoism": {
       "tag": "Taoism",
@@ -234224,7 +234299,7 @@
       "primaries": 0,
       "htmlFile": "taoism.html",
       "excerptCount": 1,
-      "listIndex": 811
+      "listIndex": 810
     },
     "Judaism": {
       "tag": "Judaism",
@@ -234244,7 +234319,7 @@
       "primaries": 0,
       "htmlFile": "judaism.html",
       "excerptCount": 2,
-      "listIndex": 812
+      "listIndex": 811
     },
     "Christianity": {
       "tag": "Christianity",
@@ -234264,7 +234339,7 @@
       "primaries": 0,
       "htmlFile": "christianity.html",
       "excerptCount": 47,
-      "listIndex": 813
+      "listIndex": 812
     },
     "Islam": {
       "tag": "Islam",
@@ -234284,7 +234359,7 @@
       "primaries": 0,
       "htmlFile": "islam.html",
       "excerptCount": 3,
-      "listIndex": 814
+      "listIndex": 813
     },
     "Philosophy": {
       "tag": "Philosophy",
@@ -234305,7 +234380,7 @@
       "htmlFile": "philosophy.html",
       "excerptCount": 11,
       "fTagCount": 1,
-      "listIndex": 815
+      "listIndex": 814
     },
     "Atheism/agnosticism": {
       "tag": "Atheism/agnosticism",
@@ -234325,7 +234400,7 @@
       "primaries": 0,
       "htmlFile": "atheismagnosticism.html",
       "excerptCount": 3,
-      "listIndex": 816
+      "listIndex": 815
     },
     "Western psychology": {
       "tag": "Western psychology",
@@ -234346,7 +234421,7 @@
       "htmlFile": "western-psychology.html",
       "excerptCount": 27,
       "fTagCount": 3,
-      "listIndex": 817
+      "listIndex": 816
     },
     "Cults": {
       "tag": "Cults",
@@ -234366,7 +234441,7 @@
       "primaries": 0,
       "htmlFile": "cults.html",
       "excerptCount": 2,
-      "listIndex": 818
+      "listIndex": 817
     },
     "Renunciant practice": {
       "tag": "Renunciant practice",
@@ -234394,7 +234469,7 @@
       "primaries": 0,
       "htmlFile": "renunciant-practice.html",
       "excerptCount": 2,
-      "listIndex": 819
+      "listIndex": 818
     },
     "Celibacy": {
       "tag": "Celibacy",
@@ -234414,7 +234489,7 @@
       "primaries": 0,
       "htmlFile": "celibacy.html",
       "excerptCount": 3,
-      "listIndex": 834
+      "listIndex": 833
     },
     "Simplicity": {
       "tag": "Simplicity",
@@ -234439,7 +234514,7 @@
       "excerptCount": 52,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 835
+      "listIndex": 834
     },
     "Requisites": {
       "tag": "Requisites",
@@ -234470,7 +234545,7 @@
       "excerptCount": 22,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 837
+      "listIndex": 836
     },
     "Robes": {
       "tag": "Robes",
@@ -234495,7 +234570,7 @@
       "excerptCount": 24,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 838
+      "listIndex": 837
     },
     "Almsfood": {
       "tag": "Almsfood",
@@ -234523,7 +234598,7 @@
       "excerptCount": 33,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 839
+      "listIndex": 838
     },
     "Almsbowl": {
       "tag": "Almsbowl",
@@ -234546,7 +234621,7 @@
         "Requisites"
       ],
       "excerptCount": 13,
-      "listIndex": 840
+      "listIndex": 839
     },
     "Almsround": {
       "tag": "Almsround",
@@ -234571,7 +234646,7 @@
       "excerptCount": 51,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 841
+      "listIndex": 840
     },
     "Lodging": {
       "tag": "Lodging",
@@ -234600,7 +234675,7 @@
       "excerptCount": 61,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 842
+      "listIndex": 841
     },
     "Building projects": {
       "tag": "Building projects",
@@ -234625,7 +234700,7 @@
       "excerptCount": 18,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 843
+      "listIndex": 842
     },
     "Medicinal requisites": {
       "tag": "Medicinal requisites",
@@ -234650,7 +234725,7 @@
       "excerptCount": 21,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 844
+      "listIndex": 843
     },
     "Incontrovertible practices": {
       "tag": "Incontrovertible practices",
@@ -234674,7 +234749,7 @@
       "primaries": 0,
       "htmlFile": "incontrovertible-practices.html",
       "excerptCount": 3,
-      "listIndex": 845
+      "listIndex": 844
     },
     "Sense restraint": {
       "tag": "Sense restraint",
@@ -234697,7 +234772,7 @@
       "htmlFile": "sense-restraint.html",
       "excerptCount": 41,
       "fTagCount": 3,
-      "listIndex": 846
+      "listIndex": 845
     },
     "Moderation in eating": {
       "tag": "Moderation in eating",
@@ -234719,7 +234794,7 @@
       "primaries": 0,
       "htmlFile": "moderation-in-eating.html",
       "excerptCount": 5,
-      "listIndex": 847
+      "listIndex": 846
     },
     "Devotion to wakefulness": {
       "tag": "Devotion to wakefulness",
@@ -234746,7 +234821,7 @@
       "excerptCount": 37,
       "fTagCount": 3,
       "subtopicFTagCount": 2,
-      "listIndex": 848
+      "listIndex": 847
     },
     "Monastic life": {
       "tag": "Monastic life",
@@ -234789,7 +234864,7 @@
       "excerptCount": 257,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 849
+      "listIndex": 848
     },
     "Monastic life/Motivation": {
       "tag": "Monastic life/Motivation",
@@ -234815,7 +234890,7 @@
       "excerptCount": 43,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 850
+      "listIndex": 849
     },
     "Ordination": {
       "tag": "Ordination",
@@ -234842,7 +234917,7 @@
       "excerptCount": 42,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 851
+      "listIndex": 850
     },
     "Temporary ordination": {
       "tag": "Temporary ordination",
@@ -234863,7 +234938,7 @@
       "primaries": 1,
       "htmlFile": "temporary-ordination.html",
       "excerptCount": 20,
-      "listIndex": 893
+      "listIndex": 892
     },
     "Pāṭimokkha": {
       "tag": "Pāṭimokkha",
@@ -234887,7 +234962,7 @@
       ],
       "excerptCount": 15,
       "fTagCount": 2,
-      "listIndex": 855
+      "listIndex": 854
     },
     "Confession": {
       "tag": "Confession",
@@ -234910,7 +234985,7 @@
         "Vinaya"
       ],
       "excerptCount": 4,
-      "listIndex": 856
+      "listIndex": 855
     },
     "Disciplinary transactions": {
       "tag": "Disciplinary transactions",
@@ -234930,7 +235005,7 @@
       "primaries": 0,
       "htmlFile": "disciplinary-transactions.html",
       "excerptCount": 2,
-      "listIndex": 857
+      "listIndex": 856
     },
     "Dependence": {
       "tag": "Dependence",
@@ -234953,7 +235028,7 @@
         "Monastic life"
       ],
       "excerptCount": 3,
-      "listIndex": 858
+      "listIndex": 857
     },
     "Sequence of training": {
       "tag": "Sequence of training",
@@ -234978,7 +235053,7 @@
       "excerptCount": 42,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 859
+      "listIndex": 858
     },
     "Protocols": {
       "tag": "Protocols",
@@ -235005,7 +235080,7 @@
       "excerptCount": 26,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 860
+      "listIndex": 859
     },
     "Not handling money": {
       "tag": "Not handling money",
@@ -235028,7 +235103,8 @@
         "Vinaya"
       ],
       "excerptCount": 14,
-      "listIndex": 861
+      "fTagCount": 1,
+      "listIndex": 860
     },
     "Rains retreat": {
       "tag": "Rains retreat",
@@ -235051,7 +235127,9 @@
         "Vinaya"
       ],
       "excerptCount": 31,
-      "listIndex": 862
+      "fTagCount": 1,
+      "subtopicFTagCount": 1,
+      "listIndex": 861
     },
     "Mutual lay/Saṅgha support": {
       "tag": "Mutual lay/Saṅgha support",
@@ -235077,7 +235155,7 @@
       "excerptCount": 60,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 863
+      "listIndex": 862
     },
     "Fourfold Assembly": {
       "tag": "Fourfold Assembly",
@@ -235103,7 +235181,7 @@
       ],
       "subtopics": [],
       "excerptCount": 4,
-      "listIndex": 865
+      "listIndex": 864
     },
     "Communal harmony": {
       "tag": "Communal harmony",
@@ -235130,7 +235208,7 @@
       "excerptCount": 56,
       "fTagCount": 4,
       "subtopicFTagCount": 2,
-      "listIndex": 866
+      "listIndex": 865
     },
     "Principles of Cordiality": {
       "tag": "Principles of Cordiality",
@@ -235158,7 +235236,7 @@
         "Fourfold Assembly"
       ],
       "excerptCount": 10,
-      "listIndex": 867
+      "listIndex": 866
     },
     "Principles of non-decline": {
       "tag": "Principles of non-decline",
@@ -235179,7 +235257,7 @@
       "primaries": 1,
       "htmlFile": "principles-of-non-decline.html",
       "excerptCount": 1,
-      "listIndex": 872
+      "listIndex": 871
     },
     "Monastery organizational structure": {
       "tag": "Monastery organizational structure",
@@ -235202,7 +235280,7 @@
         "Fourfold Assembly"
       ],
       "excerptCount": 4,
-      "listIndex": 873
+      "listIndex": 872
     },
     "Saṅgha decision making": {
       "tag": "Saṅgha decision making",
@@ -235226,7 +235304,7 @@
       ],
       "excerptCount": 27,
       "fTagCount": 1,
-      "listIndex": 874
+      "listIndex": 873
     },
     "Abbot": {
       "tag": "Abbot",
@@ -235250,7 +235328,7 @@
       ],
       "excerptCount": 43,
       "fTagCount": 3,
-      "listIndex": 875
+      "listIndex": 874
     },
     "Perception of a samaṇa": {
       "tag": "Perception of a samaṇa",
@@ -235275,7 +235353,7 @@
       "excerptCount": 20,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 876
+      "listIndex": 875
     },
     "Respect": {
       "tag": "Respect",
@@ -235301,7 +235379,7 @@
       "htmlFile": "respect.html",
       "excerptCount": 39,
       "fTagCount": 1,
-      "listIndex": 877
+      "listIndex": 876
     },
     "Monastic titles": {
       "tag": "Monastic titles",
@@ -235323,7 +235401,7 @@
       "primaries": 0,
       "htmlFile": "monastic-titles.html",
       "excerptCount": 7,
-      "listIndex": 878
+      "listIndex": 877
     },
     "Chao Khun": {
       "tag": "Chao Khun",
@@ -235343,7 +235421,7 @@
       "primaries": 0,
       "htmlFile": "chao-khun.html",
       "excerptCount": 9,
-      "listIndex": 879
+      "listIndex": 878
     },
     "Respect for elders": {
       "tag": "Respect for elders",
@@ -235364,7 +235442,7 @@
       "htmlFile": "respect-for-elders.html",
       "excerptCount": 26,
       "fTagCount": 1,
-      "listIndex": 880
+      "listIndex": 879
     },
     "Upatakh": {
       "tag": "Upatakh",
@@ -235387,7 +235465,7 @@
       "htmlFile": "upatakh.html",
       "excerptCount": 23,
       "fTagCount": 2,
-      "listIndex": 881
+      "listIndex": 880
     },
     "Hospitality": {
       "tag": "Hospitality",
@@ -235407,7 +235485,7 @@
       "primaries": 0,
       "htmlFile": "hospitality.html",
       "excerptCount": 2,
-      "listIndex": 882
+      "listIndex": 881
     },
     "Monastic routine": {
       "tag": "Monastic routine",
@@ -235432,7 +235510,7 @@
       "excerptCount": 19,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 883
+      "listIndex": 882
     },
     "Ascetic practices": {
       "tag": "Ascetic practices",
@@ -235463,7 +235541,7 @@
       "excerptCount": 37,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 884
+      "listIndex": 883
     },
     "Tudong": {
       "tag": "Tudong",
@@ -235492,7 +235570,7 @@
       "excerptCount": 95,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 885
+      "listIndex": 884
     },
     "Fasting": {
       "tag": "Fasting",
@@ -235515,7 +235593,7 @@
         "Ascetic practices"
       ],
       "excerptCount": 4,
-      "listIndex": 886
+      "listIndex": 885
     },
     "Sitter's practice": {
       "tag": "Sitter's practice",
@@ -235540,7 +235618,7 @@
         "Ascetic practices"
       ],
       "excerptCount": 6,
-      "listIndex": 887
+      "listIndex": 886
     },
     "Monastic crafts": {
       "tag": "Monastic crafts",
@@ -235563,7 +235641,7 @@
         "Requisites"
       ],
       "excerptCount": 5,
-      "listIndex": 888
+      "listIndex": 887
     },
     "Types of monks": {
       "tag": "Types of monks",
@@ -235591,7 +235669,7 @@
       "primaries": 0,
       "htmlFile": "types-of-monks.html",
       "excerptCount": 7,
-      "listIndex": 889
+      "listIndex": 888
     },
     "Forest versus city monks": {
       "tag": "Forest versus city monks",
@@ -235611,7 +235689,7 @@
       "primaries": 0,
       "htmlFile": "forest-versus-city-monks.html",
       "excerptCount": 16,
-      "listIndex": 890
+      "listIndex": 889
     },
     "Study monks": {
       "tag": "Study monks",
@@ -235632,7 +235710,7 @@
       "htmlFile": "study-monks.html",
       "excerptCount": 12,
       "fTagCount": 1,
-      "listIndex": 891
+      "listIndex": 890
     },
     "Older monks": {
       "tag": "Older monks",
@@ -235652,7 +235730,7 @@
       "primaries": 0,
       "htmlFile": "older-monks.html",
       "excerptCount": 8,
-      "listIndex": 892
+      "listIndex": 891
     },
     "Thai sects": {
       "tag": "Thai sects",
@@ -235673,7 +235751,7 @@
       "htmlFile": "thai-sects.html",
       "excerptCount": 24,
       "fTagCount": 1,
-      "listIndex": 894
+      "listIndex": 893
     },
     "Novices": {
       "tag": "Novices",
@@ -235693,7 +235771,7 @@
       "primaries": 0,
       "htmlFile": "novices.html",
       "excerptCount": 18,
-      "listIndex": 895
+      "listIndex": 894
     },
     "Postulants": {
       "tag": "Postulants",
@@ -235715,7 +235793,7 @@
       "primaries": 0,
       "htmlFile": "postulants.html",
       "excerptCount": 15,
-      "listIndex": 896
+      "listIndex": 895
     },
     "Disrobing": {
       "tag": "Disrobing",
@@ -235736,7 +235814,7 @@
       "htmlFile": "disrobing.html",
       "excerptCount": 20,
       "fTagCount": 1,
-      "listIndex": 901
+      "listIndex": 900
     },
     "Everyday life": {
       "tag": "Everyday life",
@@ -235767,7 +235845,7 @@
       "excerptCount": 54,
       "fTagCount": 4,
       "subtopicFTagCount": 3,
-      "listIndex": 902
+      "listIndex": 901
     },
     "Lay life": {
       "tag": "Lay life",
@@ -235793,7 +235871,7 @@
       "excerptCount": 91,
       "fTagCount": 5,
       "subtopicFTagCount": 2,
-      "listIndex": 914
+      "listIndex": 913
     },
     "Conventions": {
       "tag": "Conventions",
@@ -235816,7 +235894,7 @@
       "htmlFile": "conventions.html",
       "excerptCount": 45,
       "fTagCount": 1,
-      "listIndex": 915
+      "listIndex": 914
     },
     "Worldly Conditions": {
       "tag": "Worldly Conditions",
@@ -235845,7 +235923,7 @@
       "htmlFile": "worldly-conditions.html",
       "excerptCount": 11,
       "fTagCount": 1,
-      "listIndex": 916
+      "listIndex": 915
     },
     "Gain and loss": {
       "tag": "Gain and loss",
@@ -235865,7 +235943,7 @@
       "primaries": 0,
       "htmlFile": "gain-and-loss.html",
       "excerptCount": 5,
-      "listIndex": 917
+      "listIndex": 916
     },
     "Fame and disrepute": {
       "tag": "Fame and disrepute",
@@ -235885,7 +235963,7 @@
       "primaries": 0,
       "htmlFile": "fame-and-disrepute.html",
       "excerptCount": 4,
-      "listIndex": 918
+      "listIndex": 917
     },
     "Personal": {
       "tag": "Personal",
@@ -235917,7 +235995,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "personal.html",
-      "listIndex": 922
+      "listIndex": 921
     },
     "Health": {
       "tag": "Health",
@@ -235951,7 +236029,7 @@
       "excerptCount": 25,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 923
+      "listIndex": 922
     },
     "Healing": {
       "tag": "Healing",
@@ -235974,7 +236052,7 @@
         "Health"
       ],
       "excerptCount": 14,
-      "listIndex": 924
+      "listIndex": 923
     },
     "Exercise": {
       "tag": "Exercise",
@@ -235997,7 +236075,7 @@
         "Health"
       ],
       "excerptCount": 6,
-      "listIndex": 925
+      "listIndex": 924
     },
     "Chi Gong": {
       "tag": "Chi Gong",
@@ -236017,7 +236095,7 @@
       "primaries": 0,
       "htmlFile": "chi-gong.html",
       "excerptCount": 3,
-      "listIndex": 926
+      "listIndex": 925
     },
     "Smoking": {
       "tag": "Smoking",
@@ -236040,7 +236118,7 @@
         "Health"
       ],
       "excerptCount": 2,
-      "listIndex": 927
+      "listIndex": 926
     },
     "Mental illness": {
       "tag": "Mental illness",
@@ -236065,7 +236143,7 @@
       "excerptCount": 6,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 928
+      "listIndex": 927
     },
     "Purpose/meaning": {
       "tag": "Purpose/meaning",
@@ -236088,7 +236166,7 @@
       "htmlFile": "purposemeaning.html",
       "excerptCount": 22,
       "fTagCount": 1,
-      "listIndex": 929
+      "listIndex": 928
     },
     "Cleanliness": {
       "tag": "Cleanliness",
@@ -236109,7 +236187,7 @@
       "htmlFile": "cleanliness.html",
       "excerptCount": 27,
       "fTagCount": 2,
-      "listIndex": 930
+      "listIndex": 929
     },
     "Work": {
       "tag": "Work",
@@ -236139,7 +236217,7 @@
       "excerptCount": 55,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
-      "listIndex": 931
+      "listIndex": 930
     },
     "Agriculture": {
       "tag": "Agriculture",
@@ -236159,7 +236237,7 @@
       "primaries": 0,
       "htmlFile": "agriculture.html",
       "excerptCount": 9,
-      "listIndex": 932
+      "listIndex": 931
     },
     "Time management": {
       "tag": "Time management",
@@ -236179,7 +236257,7 @@
       "primaries": 0,
       "htmlFile": "time-management.html",
       "excerptCount": 12,
-      "listIndex": 933
+      "listIndex": 932
     },
     "Relationships": {
       "tag": "Relationships",
@@ -236205,7 +236283,7 @@
       "excerptCount": 38,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 934
+      "listIndex": 933
     },
     "Family": {
       "tag": "Family",
@@ -236234,7 +236312,7 @@
       "excerptCount": 93,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 935
+      "listIndex": 934
     },
     "Parents": {
       "tag": "Parents",
@@ -236260,7 +236338,7 @@
       "excerptCount": 46,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 936
+      "listIndex": 935
     },
     "Children": {
       "tag": "Children",
@@ -236285,7 +236363,7 @@
       "excerptCount": 22,
       "fTagCount": 4,
       "subtopicFTagCount": 2,
-      "listIndex": 937
+      "listIndex": 936
     },
     "Artistic expression": {
       "tag": "Artistic expression",
@@ -236306,7 +236384,7 @@
       "htmlFile": "artistic-expression.html",
       "excerptCount": 25,
       "fTagCount": 3,
-      "listIndex": 938
+      "listIndex": 937
     },
     "Recreation/leisure/sport": {
       "tag": "Recreation/leisure/sport",
@@ -236329,7 +236407,7 @@
       "primaries": 0,
       "htmlFile": "recreationleisuresport.html",
       "excerptCount": 13,
-      "listIndex": 939
+      "listIndex": 938
     },
     "Travel": {
       "tag": "Travel",
@@ -236349,7 +236427,7 @@
       "primaries": 0,
       "htmlFile": "travel.html",
       "excerptCount": 15,
-      "listIndex": 940
+      "listIndex": 939
     },
     "Pace of life": {
       "tag": "Pace of life",
@@ -236372,7 +236450,7 @@
       "htmlFile": "pace-of-life.html",
       "excerptCount": 16,
       "fTagCount": 1,
-      "listIndex": 941
+      "listIndex": 940
     },
     "Retirement": {
       "tag": "Retirement",
@@ -236395,7 +236473,7 @@
         "Work"
       ],
       "excerptCount": 5,
-      "listIndex": 942
+      "listIndex": 941
     },
     "Community": {
       "tag": "Community",
@@ -236438,7 +236516,7 @@
       "excerptCount": 79,
       "fTagCount": 3,
       "subtopicFTagCount": 2,
-      "listIndex": 943
+      "listIndex": 942
     },
     "Environment": {
       "tag": "Environment",
@@ -236467,7 +236545,7 @@
       "excerptCount": 37,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 944
+      "listIndex": 943
     },
     "Weather": {
       "tag": "Weather",
@@ -236487,7 +236565,7 @@
       "primaries": 0,
       "htmlFile": "weather.html",
       "excerptCount": 10,
-      "listIndex": 945
+      "listIndex": 944
     },
     "Leadership": {
       "tag": "Leadership",
@@ -236511,7 +236589,7 @@
       ],
       "excerptCount": 24,
       "fTagCount": 2,
-      "listIndex": 949
+      "listIndex": 948
     },
     "Conflict": {
       "tag": "Conflict",
@@ -236536,7 +236614,7 @@
       "excerptCount": 47,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 950
+      "listIndex": 949
     },
     "Meditation groups": {
       "tag": "Meditation groups",
@@ -236556,7 +236634,7 @@
       "primaries": 0,
       "htmlFile": "meditation-groups.html",
       "excerptCount": 3,
-      "listIndex": 951
+      "listIndex": 950
     },
     "Sharing circles": {
       "tag": "Sharing circles",
@@ -236576,7 +236654,7 @@
       "primaries": 0,
       "htmlFile": "sharing-circles.html",
       "excerptCount": 3,
-      "listIndex": 952
+      "listIndex": 951
     },
     "Politics and society": {
       "tag": "Politics and society",
@@ -236613,7 +236691,7 @@
       "excerptCount": 72,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 953
+      "listIndex": 952
     },
     "Royalty": {
       "tag": "Royalty",
@@ -236633,7 +236711,7 @@
       "primaries": 0,
       "htmlFile": "royalty.html",
       "excerptCount": 10,
-      "listIndex": 954
+      "listIndex": 953
     },
     "Service": {
       "tag": "Service",
@@ -236656,7 +236734,7 @@
         "Politics and society"
       ],
       "excerptCount": 6,
-      "listIndex": 955
+      "listIndex": 954
     },
     "Activism": {
       "tag": "Activism",
@@ -236681,7 +236759,7 @@
       "excerptCount": 9,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 956
+      "listIndex": 955
     },
     "Non-profit organizations": {
       "tag": "Non-profit organizations",
@@ -236704,7 +236782,7 @@
         "Politics and society"
       ],
       "excerptCount": 3,
-      "listIndex": 957
+      "listIndex": 956
     },
     "Corruption": {
       "tag": "Corruption",
@@ -236727,7 +236805,7 @@
         "Politics and society"
       ],
       "excerptCount": 4,
-      "listIndex": 958
+      "listIndex": 957
     },
     "Crime": {
       "tag": "Crime",
@@ -236752,7 +236830,7 @@
         "Politics and society"
       ],
       "excerptCount": 11,
-      "listIndex": 959
+      "listIndex": 958
     },
     "Prisons": {
       "tag": "Prisons",
@@ -236772,7 +236850,7 @@
       "primaries": 0,
       "htmlFile": "prisons.html",
       "excerptCount": 5,
-      "listIndex": 960
+      "listIndex": 959
     },
     "Discrimination": {
       "tag": "Discrimination",
@@ -236798,7 +236876,7 @@
         "Politics and society"
       ],
       "excerptCount": 4,
-      "listIndex": 961
+      "listIndex": 960
     },
     "Military": {
       "tag": "Military",
@@ -236821,7 +236899,7 @@
         "Politics and society"
       ],
       "excerptCount": 19,
-      "listIndex": 962
+      "listIndex": 961
     },
     "Education": {
       "tag": "Education",
@@ -236848,7 +236926,7 @@
       "excerptCount": 11,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 963
+      "listIndex": 962
     },
     "Commerce/economics": {
       "tag": "Commerce/economics",
@@ -236878,7 +236956,7 @@
       "excerptCount": 44,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
-      "listIndex": 964
+      "listIndex": 963
     },
     "Poverty": {
       "tag": "Poverty",
@@ -236903,7 +236981,7 @@
       "excerptCount": 15,
       "fTagCount": 2,
       "subtopicFTagCount": 1,
-      "listIndex": 965
+      "listIndex": 964
     },
     "Health care": {
       "tag": "Health care",
@@ -236930,7 +237008,7 @@
       "excerptCount": 60,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
-      "listIndex": 966
+      "listIndex": 965
     },
     "Pandemic": {
       "tag": "Pandemic",
@@ -236953,7 +237031,7 @@
         "Health"
       ],
       "excerptCount": 11,
-      "listIndex": 967
+      "listIndex": 966
     },
     "Disasters": {
       "tag": "Disasters",
@@ -236973,7 +237051,7 @@
       "primaries": 0,
       "htmlFile": "disasters.html",
       "excerptCount": 7,
-      "listIndex": 968
+      "listIndex": 967
     },
     "Science": {
       "tag": "Science",
@@ -236997,7 +237075,7 @@
       ],
       "excerptCount": 15,
       "fTagCount": 1,
-      "listIndex": 969
+      "listIndex": 968
     },
     "Technology": {
       "tag": "Technology",
@@ -237027,7 +237105,7 @@
       "excerptCount": 16,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 970
+      "listIndex": 969
     },
     "Industry": {
       "tag": "Industry",
@@ -237050,7 +237128,7 @@
         "Technology"
       ],
       "excerptCount": 3,
-      "listIndex": 971
+      "listIndex": 970
     },
     "Online community": {
       "tag": "Online community",
@@ -237075,7 +237153,7 @@
       "excerptCount": 9,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 972
+      "listIndex": 971
     },
     "Artificial intelligence": {
       "tag": "Artificial intelligence",
@@ -237095,7 +237173,7 @@
       "primaries": 0,
       "htmlFile": "artificial-intelligence.html",
       "excerptCount": 1,
-      "listIndex": 973
+      "listIndex": 972
     },
     "Media": {
       "tag": "Media",
@@ -237123,7 +237201,7 @@
         "Technology"
       ],
       "excerptCount": 17,
-      "listIndex": 974
+      "listIndex": 973
     },
     "News": {
       "tag": "News",
@@ -237148,7 +237226,7 @@
       "excerptCount": 6,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 975
+      "listIndex": 974
     },
     "Advertizing": {
       "tag": "Advertizing",
@@ -237171,7 +237249,7 @@
         "Technology"
       ],
       "excerptCount": 4,
-      "listIndex": 976
+      "listIndex": 975
     },
     "Internet": {
       "tag": "Internet",
@@ -237194,7 +237272,7 @@
         "Technology"
       ],
       "excerptCount": 6,
-      "listIndex": 977
+      "listIndex": 976
     },
     "Social media": {
       "tag": "Social media",
@@ -237219,7 +237297,7 @@
       "excerptCount": 4,
       "fTagCount": 1,
       "subtopicFTagCount": 1,
-      "listIndex": 978
+      "listIndex": 977
     }
   },
   "series": {
@@ -237595,13 +237673,12 @@
       "pdfPageOffset": 9,
       "year": "1998",
       "commentary": false,
-      "filename": "bp620s_Payutto_A-Constitution-For-Living.pdf",
-      "remoteUrl": "",
+      "filename": "",
+      "remoteUrl": "(pdf unavailable)",
       "otherUrl": "",
       "author": [
         "Payutto"
-      ],
-      "mirror": "local"
+      ]
     },
     "chithurst story": {
       "abbreviation": "Chithurst Story",
@@ -238344,13 +238421,12 @@
       "pdfPageOffset": 10,
       "year": "1981",
       "commentary": false,
-      "filename": "bp201s_Nyanatiloka_life-Of-The-Buddha.pdf",
-      "remoteUrl": "",
+      "filename": "",
+      "remoteUrl": "(pdf unavailable)",
       "otherUrl": "",
       "author": [
         "Nyanatiloka"
-      ],
-      "mirror": "local"
+      ]
     },
     "noble eightfold path": {
       "abbreviation": "Noble Eightfold Path",
@@ -239194,13 +239270,12 @@
       "pdfPageOffset": 3,
       "year": "1974",
       "commentary": false,
-      "filename": "bp405s_Nyanananda_Magic-of-the-Mind.pdf",
-      "remoteUrl": "",
+      "filename": "",
+      "remoteUrl": "(pdf unavailable)",
       "otherUrl": "",
       "author": [
         "Nyanananda"
-      ],
-      "mirror": "local"
+      ]
     },
     "catastrophe apostrophe": {
       "abbreviation": "Catastrophe Apostrophe",
@@ -239342,13 +239417,12 @@
       "pdfPageOffset": null,
       "year": "1972",
       "commentary": false,
-      "filename": "bp101s_Nyanamoli_Life-Of-The-Buddha.pdf",
-      "remoteUrl": "",
+      "filename": "",
+      "remoteUrl": "(pdf unavailable)",
       "otherUrl": "",
       "author": [
         "Nyanamoli"
-      ],
-      "mirror": "local"
+      ]
     },
     "the last breath": {
       "abbreviation": "The Last Breath",
@@ -239372,13 +239446,12 @@
       "pdfPageOffset": 0,
       "year": "1952",
       "commentary": false,
-      "filename": "bp601s_Nyanatiloka_Buddhist-Dictonary.pdf",
+      "filename": "",
       "remoteUrl": "",
       "otherUrl": "https://buddhistuniversity.net/content/reference/buddhist-dictionary_nyanatiloka",
       "author": [
         "Nyanatiloka"
-      ],
-      "mirror": "local"
+      ]
     },
     "issues through the moss": {
       "abbreviation": "Issues Through the Moss",
@@ -244898,8 +244971,8 @@
       "subsumed": false,
       "text": "Teachers (30)",
       "tag": "Teachers",
-      "subtagCount": 179,
-      "subtagExcerptCount": 1834
+      "subtagCount": 178,
+      "subtagExcerptCount": 1833
     },
     {
       "level": 2,
@@ -244911,8 +244984,8 @@
       "subsumed": false,
       "text": "Monastic teachers (3)",
       "tag": "Monastic teachers",
-      "subtagCount": 150,
-      "subtagExcerptCount": 1783
+      "subtagCount": 149,
+      "subtagExcerptCount": 1782
     },
     {
       "level": 3,
@@ -244924,8 +244997,8 @@
       "subsumed": false,
       "text": "Thai Forest Tradition (113)",
       "tag": "Thai Forest Tradition",
-      "subtagCount": 103,
-      "subtagExcerptCount": 1722
+      "subtagCount": 102,
+      "subtagExcerptCount": 1721
     },
     {
       "level": 4,
@@ -244970,8 +245043,8 @@
       "subsumed": false,
       "text": "Ajahn Chah lineage (16)",
       "tag": "Ajahn Chah lineage",
-      "subtagCount": 60,
-      "subtagExcerptCount": 894
+      "subtagCount": 59,
+      "subtagExcerptCount": 893
     },
     {
       "level": 5,
@@ -245238,8 +245311,8 @@
       "subsumed": false,
       "text": "Western Ajahn Chah lineage (10)",
       "tag": "Western Ajahn Chah lineage",
-      "subtagCount": 36,
-      "subtagExcerptCount": 812
+      "subtagCount": 35,
+      "subtagExcerptCount": 811
     },
     {
       "level": 6,
@@ -245614,17 +245687,6 @@
       "subsumed": false,
       "text": "Ajahn Ñāṇiko (32)",
       "tag": "Ajahn Ñāṇiko"
-    },
-    {
-      "level": 6,
-      "indexNumber": "",
-      "flags": "",
-      "name": "Ajahn Pavaro",
-      "pali": "",
-      "excerptCount": 4,
-      "subsumed": false,
-      "text": "Ajahn Pavaro (4)",
-      "tag": "Ajahn Pavaro"
     },
     {
       "level": 6,
@@ -248009,7 +248071,7 @@
       "text": "History (8)",
       "tag": "History",
       "subtagCount": 14,
-      "subtagExcerptCount": 333
+      "subtagExcerptCount": 331
     },
     {
       "level": 2,
@@ -248072,9 +248134,9 @@
       "flags": "",
       "name": "History/Sri Lankan Buddhism",
       "pali": "",
-      "excerptCount": 19,
+      "excerptCount": 17,
       "subsumed": false,
-      "text": "History/Sri Lankan Buddhism (19)",
+      "text": "History/Sri Lankan Buddhism (17)",
       "tag": "History/Sri Lankan Buddhism"
     },
     {
@@ -248178,7 +248240,7 @@
       "text": "Cultural context (24)",
       "tag": "Cultural context",
       "subtagCount": 28,
-      "subtagExcerptCount": 882
+      "subtagExcerptCount": 884
     },
     {
       "level": 2,
@@ -248219,9 +248281,9 @@
       "flags": "p",
       "name": "Culture/Sri Lanka",
       "pali": "",
-      "excerptCount": 7,
+      "excerptCount": 9,
       "subsumed": false,
-      "text": "Culture/Sri Lanka (7)",
+      "text": "Culture/Sri Lanka (9)",
       "tag": "Culture/Sri Lanka"
     },
     {
@@ -255759,7 +255821,7 @@
       },
       "htmlPath": "clusters/vinaya.html",
       "excerptCount": 187,
-      "fTagCount": 5
+      "fTagCount": 6
     },
     "Fourfold Assembly": {
       "tag": "Fourfold Assembly",
@@ -257994,7 +258056,7 @@
         "Women's monastic forms"
       ],
       "excerptCount": 924,
-      "fTagCount": 43
+      "fTagCount": 44
     },
     "monasteries": {
       "code": "monasteries",

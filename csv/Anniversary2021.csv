@@ -97,14 +97,14 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 8,Extra tags,,,,,,,,,,Abhayagiri,,,,,,,,
 8,Story,,,,Master Hua invites Ajahn Sumedho to help conduct an ordination ceremony at the City of Ten Thousand Buddhas.,,Master Hsuan Hua,Ajahn Sumedho,Ordination,City of Ten Thousand Buddhas,,,,,,,,,
 8,Story,,,,Ajahn Sumedho invites Master Hua to the English monasteries.,,Ajahn Sumedho,Master Hsuan Hua,Elders' Council,,,,,,,,,,
-8,Story,,6:08,7:23,The formation of Saṅghapāla Foundation in December 1988.,,Saṅghapāla,,,,Ajahn Sumedho,,,,,,,,
+8,Story,,6:08,7:23,The formation of Saṅghapāla Foundation in December 1988.,,Saṅghapāla,,,,Ajahn Sumedho,,,,,,,Saṅghapāla,100
 8,Story,,7:27,,Ajahn Sumedho visits the Bay Area in 1990 and chooses Ajahn Amaro to lead the California project.,,Ajahn Sumedho,Ajahn Amaro,,,Ajahn Sundarā,,,,,,,,
 8,Story,,9:17,,Ajahn Amaro leads a series of temporary California vihāras.,,Ajahn Amaro,,,,Saṅghapāla,Elders' Council,Disrobing,,,,,,
 8,Story,,10:14,12:10,"In May 1994, the English Saṅgha Trust gives Ajahn Amaro permission to start looking for property in California. Master Hua offers 125 acres of forest in Mendocino County the next day.",,Elders' Council,Ajahn Amaro,Ajahn Sumedho,Master Hsuan Hua,Amaravati,Ajahn Vīradhammo,,,,,,,
 8,Extra tags,,,,,,Generosity,,,,,,,,,,,,
 8,Story,,12:11,15:32,Ajahn Amaro visits the Abhayagiri property for the first time.,,Ajahn Amaro,Lodging,Culture/Natural environment,,Master Hsuan Hua,Funerals,City of Ten Thousand Buddhas,Debbie Stamp,Lay supporters,,,,
 8,Extra tags,,,,,,,,,,Simplicity,Holy Transfiguration Monastery,,,,,,,
-8,Story,o,15:31,,Buying the property next to the land Master Hua donated.,,Saṅghapāla,Commerce/economics,Generosity,Lodging,Lay supporters,Ajahn Sumedho,Ajahn Amaro,,,,,,
+8,Story,o,15:31.8,,Buying the property next to the land Master Hua donated.,,Saṅghapāla,Commerce/economics,Generosity,Lodging,Lay supporters,Ajahn Sumedho,Ajahn Amaro,,,,,Saṅghapāla,150
 8,Story,,21:14,23:28,Moving onto the Abhayagiri land.,,Lodging,,,,Ajahn Karuṇadhammo,Postulants,Ajahn Amaro,Saṅghapāla,Lay supporters,,,,
 8,Story,,23:37,,Ajahn Pasanno's involvement in the Abhayagiri project.,,Ajahn Pasanno,Abbot,,,Forest versus city monks,Humility,Ajahn Amaro,Personality,City of Ten Thousand Buddhas,,,,
 8,Extra tags,,,,,,,,,,Hua tou,Three Conditions Monastery,Communal harmony,,,,,,
@@ -155,6 +155,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 11,Extra tags,,,,,,Meditation,,,,,,,,,,,Building projects,50
 11,Reflection,,41:16,42:42,The purpose of monastic facilities.,,Lodging,Monastic life,,,Human,Idealism,Culture/Natural environment,Sequence of training,Rains retreat,Yes,,Lodging,70
 11,Reflection,,42:52,49:33,The pulse of the year at Abhayagiri and the annual Vassa Vinaya studies.,,Monastic life,Rains retreat,Vinaya,Learning,Protocols,Not handling money,Kaṭhina,Ajahn Pasanno,Meditation retreats,,,Abhayagiri,120
+11,Extra tags,,,,,,,,,,,,,,,,,Rains retreat,200
 12,,,0:01,6:08,"When everything goes the way you want and you are about to retire, but you feel a subtle, barely detectable dissatisfaction, and you're not sure why. What specific things should you do besides ordaining and becoming a monk?",,Suffering,Lay life,Retirement,,Saṃsāra,Clinging,Cause of Suffering,Relinquishment,,,,Suffering,150
 12,Indirect quote,0,,,"Advice from an aged elder: ""I think you should follow the Eightfold Path."" — Bhante Dharmawara",,Bhante Dharmawara,Eightfold Path,City of Ten Thousand Buddhas,Health care,,,,,,,,,
 12,,,6:28,9:17,"What would be the most difficult thing if you were to go back to lay life? What would be the most enjoyable, fun, nice thing about lay life?",,Ajahn Karuṇadhammo,Lay life,,,Disenchantment,Happiness,,,,,,,

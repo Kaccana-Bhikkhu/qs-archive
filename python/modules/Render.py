@@ -722,22 +722,29 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             except KeyError:
                 Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
                 return matchObject[1]
-            
+
+            bits = [reference['title'],", ",matchObject[2]]
             url = Link.URL(reference,directoryDepth=2)
             page = ParsePageNumber(matchObject[2])
-            if page:
-                url +=  f"#page={page + PdfPageOffset(reference)}"
-                url = ProcessLocalReferences(url)
+            if url:
+                if page:
+                    url +=  f"#page={page + PdfPageOffset(reference)}"
+                    url = ProcessLocalReferences(url)
+                bits[2] = BookLinkWrapper(url,reference["abbreviation"])(bits[2])
+            else: # If the pdf file is missing, link to the page in the books directory
+                url = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())
+                bits[0] = Html.Tag("a",{"href":url})(bits[0])
+                if reference["remoteUrl"]: # and append a suffix such as '(pdf unavailable)'
+                    bits.append(" " + reference["remoteUrl"])
 
-            items = [reference['title'],", " + BookLinkWrapper(url,reference["abbreviation"])(matchObject[2])]
             if reference["attribution"]:
-                items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
+                bits.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
 
             if item and item.get("text"): # Replace abbreviated title with full title for search purposes
                 item["text"] = re.sub(r"\b" + matchObject[1] + r"\b",reference["title"],item["text"])
             AddBookReference(item,reference,page)
 
-            return "".join(items)
+            return "".join(bits)
     
         return re.subn(refForm4,ReferenceForm4Substitution,bodyStr,flags = re.IGNORECASE)
         
