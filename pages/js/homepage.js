@@ -591,12 +591,15 @@ const FLOATING_MENU_THRESHOLD = 150;
 
 let gMenuFloating = false;
 let gLastScrollY = window.scrollY;
+let gLastPage = location.href;
 let gScrollDirection = 0; // positive = down, negative = up
 
 function floatMenus(shouldFloat,shouldShow) {
     // If shouldFloat, move the menu to the floating menu div
     let fixedMenu = document.getElementById("header-content");
     let floatingMenu = document.getElementById("floating-header");
+    if (shouldFloat === null)
+        shouldFloat = gMenuFloating;
     if (shouldFloat & shouldShow) {
         if (!floatingMenu.classList.contains("active")) {
             document.querySelector("nav.main-nav").classList.remove("active");
@@ -616,8 +619,9 @@ function floatMenus(shouldFloat,shouldShow) {
     gMenuFloating = shouldFloat;
 }
 
-window.addEventListener("scrollend", (event) => {
-    if (window.scrollY > FLOATING_MENU_THRESHOLD) {
+function scrollEndHandler(event) {
+    // Float the menu only if we have scrolled down past the threshold on the same page we began with
+    if (window.scrollY > FLOATING_MENU_THRESHOLD && (gLastPage === location.href)) {
         let searchBarShowing = document.querySelector(".floating-search").classList.contains('active');
         let floatingMenuShowing = document.getElementById("floating-header").classList.contains('active');
         floatMenus(true,(gScrollDirection < 0) && (!searchBarShowing || floatingMenuShowing));
@@ -627,14 +631,28 @@ window.addEventListener("scrollend", (event) => {
         debugLog("Fixed menu.");
     }
     gLastScrollY = window.scrollY;
+    gLastPage = location.href;
     gScrollDirection = 0;
-});
+}
+
+if ("onscrollend" in window) {
+    window.addEventListener("scrollend",scrollEndHandler);
+} else {
+    let timeOutID = 0;
+    window.addEventListener("scroll",(event) => {
+        if (timeOutID)
+            window.clearTimeout(timeOutID);
+        timeOutID = window.setTimeout(() => {
+            scrollEndHandler();
+        },500);
+    });
+}
 
 window.addEventListener("scroll", (event) => {
     let newScrollY = window.scrollY;
     if (newScrollY - gLastScrollY)
         gScrollDirection = newScrollY - gLastScrollY;
-    gLastScrollY = window.scrollY;
+    gLastScrollY = newScrollY;
 
     if ((gScrollDirection > 0) && gMenuFloating)
         floatMenus(true,false);
