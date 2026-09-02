@@ -663,9 +663,8 @@ div#header-content {
 	min-height: 78px; /* fixed height even when the menus are in #floating-header */
 }
 
-div#floating-header {
+#floating-header {
 	background-color: var(--color-bamboo-dark);
-    padding: 0.5rem 0 0.4rem 0;
 	display: flex;
 	justify-content: space-between; /* align three items evenly */
     align-items: start;
@@ -673,7 +672,7 @@ div#floating-header {
 	position: fixed;
 	top: 0;
 	left: 50%;
-	min-width: 350px;
+	min-width: 300px;
 	z-index: 2000;
 	border-radius: 0 0 0.5rem 0.5rem;
 
@@ -684,6 +683,13 @@ div#floating-header {
 #floating-header.active {
 	transform: translateX(-50%);
 }
+
+#floating-header .main-menu-icon {
+	transform: scale(75%);
+	padding: 0;
+}
+
+
 /* Common header styles - for consistency */
 h1, h2, h3, h4, h5 {
     font-weight: 450;
@@ -729,7 +735,7 @@ main.main-content p {
     display: flex;
     list-style: none;
     gap: 2rem;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
     padding: 0;
 }
 
@@ -808,7 +814,7 @@ main.main-content p {
         display: none;
     }
 	div#floating-header {
-		min-width: 700px;
+		min-width: 650px;
 	}
 }
 
