@@ -643,7 +643,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if pagesPath in url:
                 return Utils.PosixNorm(url.replace(pagesPath,""))
             else:
-                if url.endswith(".html"):
+                if parsed.path.endswith(".html"):
                     return url
                 else:
                     return url + "#noframe"

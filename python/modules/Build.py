@@ -3057,7 +3057,7 @@ def Initialize() -> None:
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
-gSitemap = HtmlSiteMap() # Make the site map accessible to page-building functions
+gSitemap = None # Make the site map accessible to page-building functions
 
 def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
     "Yield all of iterator if yieldAll, otherwise yield only the first element."
@@ -3067,6 +3067,9 @@ def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
         yield next(iter(iterator))
 
 def main():
+    global gSitemap
+    gSitemap = HtmlSiteMap()
+
     if not os.path.exists(gOptions.pagesDir):
         os.makedirs(gOptions.pagesDir)
     
