@@ -65,12 +65,23 @@ def ApplyToTags(transform: Callable[...,tuple[str,int]|str]) -> None:
     for tag in gDatabase["tag"].values():
         for key in ("tag","fullTag","pali","fullPali"):
             transform(tag[key],tag)
+        for key in ("alternateTranslations","glosses"):
+            for word in tag[key]:
+                transform(word,tag)
     for teacher in gDatabase["teacher"].values():
         for key in ("fullName","attributionName"):
             transform(teacher[key],teacher)
     for ref in gDatabase["reference"].values():
         transform(ref["title"].replace("_",""),ref)
         transform(ref["attribution"],ref)
+
+    for ref,sections in gDatabase["bookSection"].items():
+        for page,sectionName in sections.items():
+            transform(sectionName,f"{ref} p. {page}")
+    for ref,sections in gDatabase["textSection"].items():
+        for page,sectionName in sections.items():
+            transform(sectionName,f"{ref}.{page}")
+    
 
 def ApplyToDocumentation(transform: Callable[...,tuple[str,int]|str]) -> None:
     documentationDirs = ("aboutSources","technicalSources","miscSources","tableOfContents")

@@ -111491,13 +111491,21 @@
       "excerptNumber": 6,
       "fileNumber": 6,
       "kind": "Story",
-      "flags": "Q",
+      "flags": "",
       "text": "Ajahn Sumedho admonishes a misbehaving monk at Pāṭimokkha when Ajahn Chah was away. The monk disappears the next day.",
       "teachers": [
         "AP"
       ],
       "fTags": [],
       "annotations": [
+        {
+          "kind": "Edited audio",
+          "flags": "",
+          "startTime": "",
+          "endTime": "",
+          "text": "UD2016-4_S01_F06_edited.mp3",
+          "indentLevel": 1
+        },
         {
           "kind": "Indirect quote",
           "flags": "",
@@ -111523,11 +111531,12 @@
       "qTagCount": 4,
       "clips": [
         [
-          "$",
-          "45:38",
-          "48:57"
+          "UD2016-4_S01_F06_edited.mp3",
+          "0:00",
+          ""
         ]
       ],
+      "startTimeInSession": "45:38",
       "duration": "3:19"
     },
     {
@@ -140903,7 +140912,7 @@
       "fileNumber": 0,
       "kind": "Summary",
       "flags": "",
-      "text": "Ajahn Karuṇadhammo enumerates the Six Principles of Cordiality and seven reviewing from the Kosambi Sutta (MN 48.6) and describes how they apply to the enduring ethos of communal harmony at Abhayagiri Monastery.",
+      "text": "Ajahn Karuṇadhammo enumerates the Six Principles of Cordiality and seven reviewing from the Kosambī Sutta (MN 48.6) and describes how they apply to the enduring ethos of communal harmony at Abhayagiri Monastery.",
       "teachers": [
         "AKd"
       ],
@@ -141042,7 +141051,7 @@
       "fileNumber": 4,
       "kind": "Teaching",
       "flags": "3",
-      "text": "Background to the sārāṇīyā dhammas: the quarrel at Kosambi.",
+      "text": "Background to the sārāṇīyā dhammas: the quarrel at Kosambī.",
       "teachers": [
         "AKd"
       ],
@@ -141051,7 +141060,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48: Kosambi Sutta.",
+          "text": "MN 48: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141089,7 +141098,7 @@
         {
           "kind": "Sutta",
           "flags": "s",
-          "text": "MN 48.6: Kosambi Sutta; MN 128 Upakkilesa Sutta.",
+          "text": "MN 48.6: Kosambī Sutta; MN 128 Upakkilesa Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141131,7 +141140,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.6: Kosambi Sutta.",
+          "text": "MN 48.6: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141174,7 +141183,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.6: Kosambi Sutta.",
+          "text": "MN 48.6: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         },
@@ -141228,7 +141237,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.6: Kosambi Sutta.",
+          "text": "MN 48.6: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141266,7 +141275,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48: Kosambi Sutta.",
+          "text": "MN 48: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141311,7 +141320,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.6: Kosambi Sutta.",
+          "text": "MN 48.6: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141354,7 +141363,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.8: Kosambi Sutta.",
+          "text": "MN 48.8: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141395,7 +141404,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.10: Kosambi Sutta.",
+          "text": "MN 48.10: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141436,7 +141445,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.11: Kosambi Sutta.",
+          "text": "MN 48.11: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141474,7 +141483,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.12: Kosambi Sutta.",
+          "text": "MN 48.12: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -141512,7 +141521,7 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 48.13: Kosambi Sutta.",
+          "text": "MN 48.13: Kosambī Sutta.",
           "tags": [],
           "indentLevel": 1
         }
@@ -187675,6 +187684,12 @@
       "event": "UD2016-4",
       "url": ""
     },
+    "UD2016-4_S01_F06_edited.mp3": {
+      "filename": "UD2016-4_S01_F06_edited.mp3",
+      "duration": "3:19",
+      "event": "UD2016-4",
+      "url": ""
+    },
     "04 2016-11-19 AP Questions and Answers 1.mp3": {
       "filename": "04 2016-11-19 AP Questions and Answers 1.mp3",
       "duration": "38:01",
@@ -231052,7 +231067,7 @@
     "MN 26": {
       "5": "Two Kinds of Search",
       "13": "The Bodhisattva Leaves Home",
-      "15": "Ālāra Kālāma",
+      "15": "Āḷāra Kālāma",
       "16": "Uddaka Rāmaputta",
       "17": "Awakening",
       "19": "This Generation Delights in Attachment",
@@ -231090,7 +231105,7 @@
       "7": "Identity View",
       "9": "The Noble Eightfold Path",
       "12": "Samādhi",
-      "13": "Formations (saṇkhārā)",
+      "13": "Formations (saṅkhārā)",
       "16": "Cessation",
       "22": "Feeling",
       "25": "Underlying Tendencies",
@@ -231201,10 +231216,10 @@
       "4.013": "The Last Meal",
       "4.021": "Clean Water",
       "4.026": "Pukkusa",
-      "5": "Honoring the Tathāgatha",
+      "5": "Honoring the Tathāgata",
       "5.007": "Pilgrimage Destinations",
       "5.008": "Women",
-      "5.009": "The Tathāgatha's Relics",
+      "5.009": "The Tathāgata's Relics",
       "5.013": "Ānanda",
       "5.019": "The Mallas of Kusinārā",
       "5.023": "The Last Disciple",
