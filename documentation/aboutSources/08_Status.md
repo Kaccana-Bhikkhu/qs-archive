@@ -1,14 +1,15 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-## New in the August 2026 release:
+## New in the September 2026 release:
  - New content:
     - [Thanksgiving Retreat 2004](event:TG2004)
     - [Upāsika Day: A Monastic's Life](event:UD2013-2)
     - [Upāsika Day: Right Speech and Living with Ourselves](event:UD2016-4)
     - [Winter Retreat 2025](event:WR2025) through the end of March (Session 56)
     - [Abhayagiri's 30th Anniversary Part 1](event:Anniversary2026-1)
- - Table of contents for several sutta and book pages
+ - Table of contents for sutta and book pages, e.g. [MN 26](../texts/MN26.html)
  - Images on teacher, tag, and event pages
+ - Interface improvements: menu hovers at the top of the screen; audio player has close box
 
 
 ## Content

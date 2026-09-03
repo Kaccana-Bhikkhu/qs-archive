@@ -126,4 +126,6 @@
 
  - 6.7: (June 2026 release) New events: Upāsika Day: Ten Perceptions, Recollectings of Ajahn Chah: 100th Birthday Celebration, Being Dhamma (with Tigers), Samādhi, Memory & Renunciation Q&A. Winter Retreat 2025 through session 54. [Table of all Upāsika Days](about:UpasikaDays). Display lunar holidays. Link.py compares sizes of local and remote files.
 
-  - 6.8 (August 2026 Release) New events: Upāsika Days: Right Speech and Living with Ourselves and A Monastic's Life; Thanksgiving Retreat 2004; Winter Retreat 2013 through session 44. Winter Retreat 2025 through session 56; Abhayagiri 30th Anniverary Part 1. Table of contents for books and suttas with many references. Add images to teacher, tag, and event pages. Standardize diacritics. Use 'smarty' markdown extension to handle smart quotes and dashes. Python local server for testing purposes.
+  - 6.8 New events: Upāsika Days: Right Speech and Living with Ourselves and A Monastic's Life; Thanksgiving Retreat 2004; Winter Retreat 2013 through session 44. Winter Retreat 2025 through session 56; Abhayagiri 30th Anniverary Part 1. Table of contents for books and suttas with many references. Add images to teacher, tag, and event pages. Standardize diacritics. Use 'smarty' markdown extension to handle smart quotes and dashes. Python local server for testing purposes.
+
+  - 6.8.1 (September 2026 Release) Interface improvements: menu hovers at the top of the screen; audio player has close box.

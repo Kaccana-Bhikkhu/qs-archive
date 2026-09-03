@@ -1,8 +1,5 @@
 // .args file used by the BuildAllAbhayagiri job.
 
-// DownloadCSV options:
---sheets All
-
 // ParseCSV options:
 --no-includePending
 --draftFTags show
