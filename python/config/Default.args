@@ -18,7 +18,7 @@
 --spreadsheetDatabase pages/assets/SpreadsheetDatabase.json
 
 // DownloadCSV options:
---spreadsheet "https://docs.google.com/spreadsheets/d/1nd6iZHZT425TwqHMr6UJcb2WD2O4RhmJS931zxjHEpA/"
+--spreadsheet "https://docs.google.com/spreadsheets/d/1UPBQ8N14akbLD8spc93izJurjM9X6xO_2WdvQsVZ7vA/"
 --summarySheetID 2007732801
 
 // ParseCSV options:
@@ -41,8 +41,8 @@
 --renderedDatabase pages/assets/RenderedDatabase.json
 
 // Document options:
---info "releaseName:August 2026 release"
---info "releaseDate:August 30, 2026"
+--info "releaseName:October 2026 release"
+--info "releaseDate:October 15, 2026"
 --info "releaseYear:2026"
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"

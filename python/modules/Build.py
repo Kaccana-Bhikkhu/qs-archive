@@ -2979,7 +2979,7 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
         if writer.IsRegistered(redirect["oldPage"]):
             Alert.error("Redirect",redirect,"attempts to redirect a file that already exits. Ignoring this redirect.")
             continue
-        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"])):
+        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,urllib.parse.urlparse(redirect["newPage"]).path)):
             Alert.error("Redirect",redirect,"points to non-existant file",redirect["newPage"])
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
