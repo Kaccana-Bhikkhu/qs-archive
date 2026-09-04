@@ -30,7 +30,7 @@ def FStringToPyratemp(fString: str) -> str:
 def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
     """Apply operation transform on each string considered body text in the database.
     transform can have the form transform(bodyText,item) or transform(bodyText).
-    transform returns either a tuple (changedText,changeCount) or the string changedText. Return the total number of changes made."""
+    transform returns either None (no change), a tuple (changedText,changeCount) or the string changedText. Return the total number of changes made."""
 
     if len(signature(transform).parameters) == 1:
         twoVariableTransform = lambda bodyStr,_: transform(bodyStr)
@@ -42,7 +42,9 @@ def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
         "Applies transform to text and keeps a tally of the number of changes."
         nonlocal changeCount
         result = twoVariableTransform(text,item)
-        if isinstance(result,str):
+        if result is None:
+            return text
+        elif isinstance(result,str):
             if result != text:
                 changeCount += 1
             return result
@@ -115,9 +117,6 @@ def PrepareTemplates() -> None:
 
 def PrepareTexts() -> None:
     """Create gDatabase["textGroups"] based on the content of gDatabase["text"]."""
-    
-    for rule in gDatabase["textLink"].values():
-        rule["link"] = FStringToPyratemp(rule["link"])
 
     gDatabase["textGroup"] = {}
     for textGroup in list(next(iter(gDatabase["text"].values()))):
@@ -185,7 +184,7 @@ def TextRuleMatchers() -> dict[TextRuleMatcher]:
                 n0 = EvaluateSetExpression(rule["n0"]),
                 refCount = EvaluateSetExpression(rule["refCount"],allowableValues = ("1","2","3")),
                 translator = EvaluateSetExpression(rule["translator"]),
-                linkTemplate = pyratemp.Template(rule["link"])
+                linkTemplate = pyratemp.Template(f"$! {rule["link"]}  !$")
             )
         except Exception as error:
             Alert.error(str(error),"occured when evaluating text link rule",rule,lineSpacing=0)
@@ -333,7 +332,12 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
 
         renderDict["player"] = f"[](player:{Database.ItemCode(event=container['event'],session=container['sessionNumber'],fileNumber=fragmentFileNumber)})"
 
-    item["body"] = bodyTemplate(**renderDict)
+    try:
+        item["body"] = bodyTemplate(**renderDict)
+    except pyratemp.TemplateRenderError as error:
+        Alert.error(error,"\n   occured when rendering",item,"\n   Continuing with the unrendered text...")
+        item["body"] = item["text"]
+        return
 
     if teachers and showAttribution:
 
@@ -341,7 +345,7 @@ def RenderItem(item: dict,container: dict|None = None) -> None:
         fullStop = "." if re.search(r"[.?!][^a-zA-Z]*\{attribution\}",item["body"]) else ""
         renderDict["fullStop"] = fullStop
         
-        attributionStr = attributionTemplate(**renderDict) # Utils.SmartQuotes(attributionTemplate(**renderDict))
+        attributionStr = attributionTemplate(**renderDict)
 
         # If the template itself doesn't specify how to handle fullStop, capitalize the first letter of the attribution string
         # Avoid capitalizing html tags
@@ -639,7 +643,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if pagesPath in url:
                 return Utils.PosixNorm(url.replace(pagesPath,""))
             else:
-                if url.endswith(".html"):
+                if parsed.path.endswith(".html"):
                     return url
                 else:
                     return url + "#noframe"
@@ -718,22 +722,29 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             except KeyError:
                 Alert.warning(f"Cannot find abbreviated title {matchObject[1]} in the list of references.")
                 return matchObject[1]
-            
+
+            bits = [reference['title'],", ",matchObject[2]]
             url = Link.URL(reference,directoryDepth=2)
             page = ParsePageNumber(matchObject[2])
-            if page:
-                url +=  f"#page={page + PdfPageOffset(reference)}"
-                url = ProcessLocalReferences(url)
+            if url:
+                if page:
+                    url +=  f"#page={page + PdfPageOffset(reference)}"
+                    url = ProcessLocalReferences(url)
+                bits[2] = BookLinkWrapper(url,reference["abbreviation"])(bits[2])
+            else: # If the pdf file is missing, link to the page in the books directory
+                url = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())
+                bits[0] = Html.Tag("a",{"href":url})(bits[0])
+                if reference["remoteUrl"]: # and append a suffix such as '(pdf unavailable)'
+                    bits.append(" " + reference["remoteUrl"])
 
-            items = [reference['title'],", " + BookLinkWrapper(url,reference["abbreviation"])(matchObject[2])]
             if reference["attribution"]:
-                items.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
+                bits.insert(1," " + Build.LinkTeachersInText(reference['attribution'],reference['author']))
 
             if item and item.get("text"): # Replace abbreviated title with full title for search purposes
                 item["text"] = re.sub(r"\b" + matchObject[1] + r"\b",reference["title"],item["text"])
             AddBookReference(item,reference,page)
 
-            return "".join(items)
+            return "".join(bits)
     
         return re.subn(refForm4,ReferenceForm4Substitution,bodyStr,flags = re.IGNORECASE)
         
@@ -880,7 +891,7 @@ def MarkdownFormat(text: str,element: dict[str]) -> Tuple[str,int]:
     if re.search(r"\]\((\w*:)(?!//)",text):
         badLink = re.search(r"\]\((\w*:[^)]*)\)",text) 
         Alert.warning("Unevaluated reference",repr(badLink[1]),"in",element)
-    md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = [NewTabRemoteExtension()]), flags=re.IGNORECASE)
+    md = re.sub("(^<P>|</P>$)", "", markdown.markdown(text,extensions = ["smarty","attr_list",NewTabRemoteExtension()]), flags=re.IGNORECASE)
     if md != text:
         return md, 1
     else:
@@ -968,14 +979,10 @@ def main() -> None:
     LinkReferences()
     AccumulateReferences()
 
-    ApplyToBodyText(Utils.SmartQuotes)
-    ApplyToBodyText(Utils.SmartDashes)
-
     for key in ["tagRedacted","tagRemoved","summary","keyCaseTranslation"]:
         del gDatabase[key]
 
     #Alert.extra("Rendered database contents:",indent = 0)
     #Utils.SummarizeDict(gDatabase,Alert.extra)
 
-    with open(gOptions.renderedDatabase, 'w', encoding='utf-8') as file:
-        json.dump(gDatabase, file, ensure_ascii=False, indent=2)
+    Database.WriteDatabase(gDatabase,gOptions.renderedDatabase)

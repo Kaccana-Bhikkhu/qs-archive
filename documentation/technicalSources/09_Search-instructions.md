@@ -89,7 +89,7 @@ Search for Winter Retreats: `@WR`
 
 Search for Spirit Rock Daylongs: `@SRD`
 
-Search for Upāsikā Days: `@UD`
+Search for Upāsika Days: `@UD`
 
 Search for events from the year 2015: `@*2015`
 

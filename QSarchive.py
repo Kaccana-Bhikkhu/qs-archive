@@ -7,6 +7,7 @@ import argparse, shlex
 import importlib
 import os, sys, re
 import json
+import copy
 from typing import Tuple
 from collections import Counter
 
@@ -123,9 +124,34 @@ def LoadDatabaseAndAddMissingOps(opSet: set[str]) -> Tuple[dict,set[str]]:
     
     return newDB,opSet
 
+def RebuildReferences() -> None:
+    """Build texts and books to see if the reference database changes. If so, run Render again before the full build."""
+
+    storedSections = modules["Build"].gOptions.buildOnly
+    modules["Build"].gOptions.buildOnly = {"texts","books"}
+    BuildReferences.gOptions.buildOnly = {"texts","books"}
+
+    PrintModuleSeparator("Build - first pass")
+    modules["Build"].main()
+
+    modules["Build"].gOptions.buildOnly = storedSections
+    BuildReferences.gOptions.buildOnly = storedSections
+
+    if BuildReferences.gReferencesChanged:
+        Alert.structure("References must be rebuilt...")
+
+        InstallGlobalDatabase(Database.LoadDatabase(clOptions.spreadsheetDatabase))
+        if "Link" in opSet:
+            modules["Link"].gOptions.linkOldMirrors = True
+
+        for mod in ("Link","Render"):
+            PrintModuleSeparator(f"{mod} - second pass")
+            modules[mod].main()
+
+
 # The list of code modules/ops to implement
 requireSpreadsheetDB = ['ReviewDatabase','DownloadFiles','SplitMp3','ExportAudio','Link','Render']
-requireRenderedDB = ['Build','SetupSearch','SetupAutoComplete','SetupFeatured','TagMp3','PrepareUpload','CheckLinks']
+requireRenderedDB = ['CheckDiacritics','Build','SetupSearch','SetupAutoComplete','SetupFeatured','TagMp3','PrepareUpload','CheckLinks']
 moduleList = ['DownloadCSV','ParseCSV'] + requireSpreadsheetDB + requireRenderedDB
 optionalModules = {'ExportAudio'} # These aren't included in All
 
@@ -140,6 +166,7 @@ parser.add_argument('ops',type=str,help="""A comma-separated list of operations 
 DownloadCSV - download csv files from the Google Sheet.
 ParseCSV - convert the csv files downloaded from the Google Sheet to SpreadsheetDatabase.json.
 ReviewDatabase - run various checks on the content of SpreadsheetDatabase.json.
+CheckDiacritics - flag multiple variants of words with diacritics, e.g. Pāli and Pali
 DownloadFiles - download files from remote links or mirrors when needed.
 SplitMp3 - split mp3 files into individual excerpts based on the times in SpreadsheetDatabase.json.
 Link - try to find valid links to excerpt mp3 files, session mp3 files, and references.
@@ -158,6 +185,7 @@ parser.add_argument('--homeDir',type=str,default='.',help='All other pathnames a
 parser.add_argument('--defaults',type=str,default='python/config/Default.args,python/config/LocalDefault.args',help='A comma-separated list of .args default argument files; see python/config/Default.args')
 parser.add_argument("--args",type=str,action="append",default=[],help="Read arguments from an .args file")
 parser.add_argument('--skip',type=str,default='',help='A comma-separated list of operations to skip')
+parser.add_argument('--rebuildReferences',**Utils.STORE_TRUE,help="Run Render twice if needed to ensure reference links are updated")
 parser.add_argument('--events',type=str,default='All',help='A comma-separated list of event codes to process; Default: All')
 parser.add_argument('--spreadsheetDatabase',type=str,default='pages/assets/SpreadsheetDatabase.json',help='Database created from the csv files; keys match spreadsheet headings; Default: pages/assets/SpreadsheetDatabase.json')
 parser.add_argument('--multithread',**Utils.STORE_TRUE,help="Multithread some operations")
@@ -256,11 +284,14 @@ if newOpSet != opSet:
     Alert.info(f"Will run additional module(s): {newOpSet.difference(opSet)}.")
     opSet = newOpSet
 
-# Set up the global namespace for each module - this allows the modules to call each other out of order
-for mod in modules.values():
-    mod.gDatabase = database
-for mod in utilityModules:
-    mod.gDatabase = database
+def InstallGlobalDatabase(db : dict) -> None:
+    """Set up the global namespace for each module - this allows the modules to call each other out of order"""
+    for mod in modules.values():
+        mod.gDatabase = db
+    for mod in utilityModules:
+        mod.gDatabase = db
+
+InstallGlobalDatabase(database)
 
 # Then run the specified operations in sequential order
 initialized = False
@@ -271,8 +302,11 @@ for moduleName in moduleList:
         initialized = True
 
     if moduleName in opSet:
+        if moduleName == "Build" and clOptions.rebuildReferences:
+            RebuildReferences()
         PrintModuleSeparator(moduleName)
         modules[moduleName].main()
+
 PrintModuleSeparator("")
 
 if clOptions.ignoreTeacherConsent:

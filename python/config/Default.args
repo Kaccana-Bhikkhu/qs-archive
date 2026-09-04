@@ -18,7 +18,7 @@
 --spreadsheetDatabase pages/assets/SpreadsheetDatabase.json
 
 // DownloadCSV options:
---spreadsheet "https://docs.google.com/spreadsheets/d/1msJt3ehlSYVubl0OSy7eQ30oHfG0VOVM8d2gn5_jJ1U/"
+--spreadsheet "https://docs.google.com/spreadsheets/d/1nd6iZHZT425TwqHMr6UJcb2WD2O4RhmJS931zxjHEpA/"
 --summarySheetID 2007732801
 
 // ParseCSV options:
@@ -41,8 +41,8 @@
 --renderedDatabase pages/assets/RenderedDatabase.json
 
 // Document options:
---info "releaseName:June 2026 release"
---info "releaseDate:June 21, 2026"
+--info "releaseName:August 2026 release"
+--info "releaseDate:August 30, 2026"
 --info "releaseYear:2026"
 --info "citationURL:https://abhayagiri.org/questions/"
 --info "cannonicalURL:https://www.abhayagiri.org/questions/"
@@ -59,7 +59,7 @@
 // Increase verbosity to maximum
 -vvv
 
---args python/config/BuildPreview.args
+--args python/config/BuildAbhayagiri.args
 --linkCheckLevel 1
 --validateSplitMethod
 --sheets Changed

@@ -252,6 +252,10 @@ def PreferredTranslator(textUid:str,refNumbers:list[int],silentFail = False) -> 
 
     def ChooseTranslator(available:list[str]) -> str:
         "Pick the preferred translator from those available."
+        if textUid.startswith("ja"):
+            for t in available:
+                if t != "sujato": # Sujato translates only the Jataka verses, so pick the other translation
+                    return t
         priorityTranslator = ("bodhi","ireland","kelly","sujato")
         if textUid.startswith("dhp"): # Use Buddharakkhita's translation for dhp only
             priorityTranslator = ("buddharakkhita",) + priorityTranslator

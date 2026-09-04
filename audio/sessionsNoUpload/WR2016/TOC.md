@@ -197,7 +197,7 @@
   </p>
   <p>
     <a href="#WR2016_S11">Session 11</a>:
-    Levels of the Breath; The Four Jhanas
+    Levels of the Breath; The Four Jhānas
   </p>
   <p>
     <a href="#WR2016_S16">Session 16</a>:
@@ -267,7 +267,7 @@
   </p>
   <p>
     <a href="#WR2016_S47">Session 47</a>:
-    Santutthi and the Meaning of Contentment
+    Santuṭṭhi and the Meaning of Contentment
   </p>
 </div>
 <h3>
@@ -293,7 +293,7 @@
 <div class="listing" style="display:none;" id="AJaya.b">
   <p>
     <a href="#WR2016_S10">Session 10</a>:
-    The Beauty of Sila
+    The Beauty of Sīla
   </p>
   <p>
     <a href="#WR2016_S14">Session 14</a>:

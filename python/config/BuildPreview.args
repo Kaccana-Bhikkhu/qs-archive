@@ -2,9 +2,6 @@
 // It includes excerpts from all teachers with pending consent.
 // It can be uploaded for their perusal before consenting.
 
-// DownloadCSV options:
---sheets All
-
 // ParseCSV options:
 --includePending
 --draftFTags number

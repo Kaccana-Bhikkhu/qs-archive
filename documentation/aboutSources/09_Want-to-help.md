@@ -29,25 +29,17 @@ There is so much potential material for the Archive that little proofreading has
 -----
 
 ## Contributions That Require Skill and Commitment:
-### Tag and transcribe Thanksgiving Retreat Questions
-__Requirements:__ English proficiency, Comfortable using computers (spreadsheet experience a plus), Attended at least one retreat with Ajahn Pasanno
-
-__Time commitment:__ Most likely 15 hours to learn the system and transcribe your first retreat.
-
-The Archive currently contains questions from the 2013-2016 Thanksgiving Retreats transcribed and time-stamped by the monks who produced the CDs issued shortly after these retreats. The questions are taged based on the transcribe questions but not the audio content of Ajahn Pasanno's answers. I’m hoping that volunteers might listen to these questions, add tags based on the answers, and annotate noteworthy stories, references, and quotes.
-
-If there is energy and enthusiasm after these retreats are finished, there are another half-dozen Thanksgiving Retreats that haven’t been transcribed at all.
-
-----
 
 ### Help with programming
 __Requirements:__ Proficiency with Javascript web programming, python, and/or Google Sheets gs script
 
 __Time commitment:__ Variable, but programming projects always take longer than you think.
 
-There are many ways a skilled and generous programmer could help with the Archive ([github](https://github.com/Kaccana-Bhikkhu/qs-archive)). Here are some ideas, ranked roughly in order of usefulness with the really big project last.
+There are many ways a skilled and generous programmer could help with the Archive ([github](https://github.com/Kaccana-Bhikkhu/qs-archive)). Here are some ideas, ranked roughly in order of usefulness.
 
 __Fix bugs:__ For the current list, see [About: status](about:status#known-issues-and-limitations) and [Github issues](https://github.com/Kaccana-Bhikkhu/qs-archive/issues).
+
+__Offline app:__ The Ajahn Pasanno Archive can be installed as an app on Android and iOS devices. Currently this is no more than a wrapper around the web page. One monk has expressed interest in accessing the Ajahn Pasanno Archive offline. Implementing this would require more extensive app development.
 
 __Cross-platform mp3 splitting:__ The project currently uses Windows-only [mp3DirectCut](https://mpesch3.de/) or [mp3splt](https://mp3splt.sourceforge.net/mp3splt_page/about.php) to quickly and losslessly split mp3 files. mp3splt is cross-platform but occasionally sets the length metadata incorrectly when splitting variable-length mp3 files, so it isn't reliable enough for production work. [FFcuesplitter](https://github.com/jeanslack/FFcuesplitter) is a python script that uses ffmpeg to split mp3 files. It is possible that rewriting `Mp3DirectCut.SinglePassSplit` to use FFCuesplitter would make the QSArchive software fully functional on multiple platforms.
 

@@ -292,3 +292,18 @@ if (frame) {
 window.addEventListener("scrollend", (event) => {
 	history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
 });
+
+if ("onscrollend" in window) {
+    window.addEventListener("scrollend", (event) => {
+		history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
+	});
+} else {
+    let timeOutID = 0;
+    window.addEventListener("scroll",(event) => {
+        if (timeOutID)
+            window.clearTimeout(timeOutID);
+        timeOutID = window.setTimeout(() => {
+            history.replaceState({"scrollX":window.scrollX,"scrollY":window.scrollY}, "");
+        },500);
+    });
+}

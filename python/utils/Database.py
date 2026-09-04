@@ -5,6 +5,7 @@ from collections import defaultdict
 import json, re, itertools
 import Html2 as Html
 import Link
+from decimal import Decimal
 from Build import gDatabase
 import SplitMp3
 import Utils
@@ -12,10 +13,25 @@ import Alert
 import Filter
 import ParseCSV
 from functools import lru_cache
+from datetime import timedelta
 
 
 gOptions = None
 gDatabase:dict[str] = {} # These will be set later by QSarchive.py
+
+def VerseNumber(verse: str|tuple) -> int|Decimal:
+    """Convert a verse string or tuple to a number, either an integer or a fixed-precision Decimal.
+    So MN 2.7 has verse number int(7) and DN 16.1.16 has verse number Decimal('1.016')."""
+
+    if isinstance(verse,str):
+        verse = tuple(int(v) for v in verse.split("."))
+    if len(verse) <= 1:
+        return verse[0] if len(verse) == 1 else 0
+    else:
+        if verse[1]:
+            return Decimal(f"{verse[0]}.{str(verse[1]).zfill(3)}")
+        else:
+            return verse[0]
 
 def LoadDatabase(filename: str) -> dict:
     """Read the database indicated by filename"""
@@ -27,7 +43,26 @@ def LoadDatabase(filename: str) -> dict:
         if "clips" in x:
             x["clips"] = [SplitMp3.Clip(*c) for c in x["clips"]]
     
+    for sectionDB in (newDB["bookSection"],newDB["textSection"]):
+        for book in sectionDB:
+            sectionDB[book] = {VerseNumber(pageStr):sectionStr for pageStr,sectionStr in sectionDB[book].items()}
+
     return newDB
+
+def WriteDatabase(database: dict,filename: str):
+    """Write a database to disk."""
+
+    # Convert text sections numbers to text before writing to disk
+    textSections = database["textSection"]
+    stringKeys = {}
+    for text in textSections:
+        stringKeys[text] = {str(key):value for key,value in textSections[text].items()}
+    database["textSection"] = stringKeys
+
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(database, file, ensure_ascii=False, indent=2)
+
+    database["textSection"] = textSections
 
 def RemoveFragments(excerpts: Iterable[dict[str]]) -> Iterable[dict[str]]:
     """Yield these excerpts but skip fragments if their source excerpt is present."""
@@ -45,6 +80,19 @@ def CountExcerpts(excerpts: Iterable[dict[str]],countSessionExcerpts:bool = Fals
     """Count excerpts excluding fragments if the list includes their source excerpt."""
 
     return sum(1 for x in RemoveFragments(excerpts) if x["fileNumber"] or countSessionExcerpts)
+
+def ExcerptDuration(excerpts: list[dict],includeSingleSessionExcerpts = False) -> str:
+    """Return a string describing the duration of the excerpts we were passed.
+    includeSingleSessionExcerpts: include the duration of sessions which contain a single session excerpt."""
+
+    duration = timedelta()
+    for _,sessionExcerpts in itertools.groupby(excerpts,lambda x: (x["event"],x["sessionNumber"])):
+        sessionExcerpts = list(sessionExcerpts)
+        duration += sum((Utils.StrToTimedelta(x["duration"]) for x in RemoveFragments(sessionExcerpts) if x["fileNumber"] or (includeSingleSessionExcerpts and len(sessionExcerpts) == 1)),start = timedelta())
+            # Don't sum session excerpts (fileNumber = 0) unless the session excerpt is the only excerpt in the list
+            # This prevents confusing results due to double counting times
+    return duration
+
 
 def GroupFragments(excerpts: Iterable[dict[str]]) -> Iterable[list[dict[str]]]:
     """Yield lists containing non-fragment excerpts followed by their fragments."""
@@ -232,6 +280,11 @@ def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
     # First try matching case, then not
     return teacherDictCache.get(teacherRef) or teacherDictCache.get(teacherRef.lower()) or None
 
+
+def TeacherConsent(teacherRef: str,policy: str) -> bool:
+    """Call ParseCSV.TeacherConsent for a single teacher and policy."""
+    teacher = TeacherLookup(teacherRef)
+    return ParseCSV.TeacherConsent(gDatabase["teacher"],[teacher],policy)
 
 @lru_cache(maxsize=None)
 def ExcerptDict() -> dict[str,dict[int,dict[int,dict[str]]]]:

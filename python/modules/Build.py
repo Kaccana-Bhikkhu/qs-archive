@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os, time
-from typing import List, Iterator, Iterable, Tuple, Callable
+from typing import Iterator, Iterable, Tuple, Callable
 from airium import Airium
 import Mp3DirectCut
 import Database, ReviewDatabase
@@ -84,7 +84,7 @@ def DeleteUnwrittenHtmlFiles(writer: FileRegister.HashWriter) -> None:
     if deletedFiles:
         Alert.extra(deletedFiles,"html file(s) deleted.")
 
-def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None, capitalize = False):
+def ItemList(items:list[str], joinStr:str = ", ", lastJoinStr:str = None, capitalize = False):
     """Format a list of items"""
     
     if lastJoinStr is None:
@@ -101,7 +101,7 @@ def ItemList(items:List[str], joinStr:str = ", ", lastJoinStr:str = None, capita
         returnValue = Utils.CapitalizeFirst(returnValue)
     return returnValue
 
-def TitledList(title:str, items:List[str], plural:str = "s", joinStr:str = ", ",lastJoinStr:str = None,titleEnd:str = ": ",endStr:str = "<br>") -> str:
+def TitledList(title:str, items:list[str], plural:str = "s", joinStr:str = ", ",lastJoinStr:str = None,titleEnd:str = ": ",endStr:str = "<br>") -> str:
     """Format a list of items with a title as a single line in html code."""
     
     if not items:
@@ -261,7 +261,7 @@ def LinkTeachersInText(text: str,specificTeachers:Iterable[str]|None = None) -> 
     return re.sub(teacherRegex,HtmlTeacherLink,text,flags=re.RegexFlag.IGNORECASE)
 
 
-def ListLinkedTeachers(teachers:List[str],*args,**kwargs) -> str:
+def ListLinkedTeachers(teachers:list[str],*args,**kwargs) -> str:
     """Write a list of hyperlinked teachers.
     teachers is a list of abbreviated teacher names"""
     
@@ -1065,7 +1065,7 @@ def EventVenueStr(event: dict) -> str:
         venueStr += " and online"
     return venueStr
 
-def ExcerptDurationStr(excerpts: List[dict],countEvents = True,countSessions = True,countSessionExcerpts = False,sessionExcerptDuration = True) -> str:
+def ExcerptDurationStr(excerpts: list[dict],countEvents = True,countSessions = True,countSessionExcerpts = False,sessionExcerptDuration = True) -> str:
     "Return a string describing the duration of the excerpts we were passed."
     
     if not excerpts:
@@ -1302,7 +1302,7 @@ class Formatter:
         
         return str(a)
     
-    def HtmlExcerptList(self,excerpts: List[dict]) -> str:
+    def HtmlExcerptList(self,excerpts: list[dict]) -> str:
         """Return a html list of the excerpts."""
         
         a = Airium()
@@ -1364,7 +1364,7 @@ class Formatter:
             
         return str(a)
 
-def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: List[dict],formatter: Formatter,itemLimit:int = 0) -> Iterator[Html.PageAugmentorType]:
+def MultiPageExcerptList(basePage: Html.PageDesc,excerpts: list[dict],formatter: Formatter,itemLimit:int = 0) -> Iterator[Html.PageAugmentorType]:
     """Split an excerpt list into multiple pages, yielding a series of PageAugmentorType objects
         basePage: Content of the page above the menu and excerpt list. Later pages add "-N" to the file name.
         excerpts, formatter: As in HtmlExcerptList
@@ -1929,7 +1929,6 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         relevantExcerpts = Filter.Tag(tag)(gDatabase["excerpts"])
 
         a = Airium()
-        
         with a.strong():
             a(TagBreadCrumbs(tagInfo))
             for subtopic in gDatabase["tag"][tag].get("partOfSubtopics",()):
@@ -1948,8 +1947,8 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
             mainParent = Database.ParentTagListEntry(tagInfo["listIndex"])
             mainParent = mainParent and (mainParent["tag"] or mainParent["virtualTag"]) # Prevent error if mainParent == None
             a(ListLinkedTags("Also a subtag of",
-                             (t for t in tagInfo['supertags'] if Database.TagLookup(t) != mainParent),
-                             plural="",lastJoinStr=" and ",titleEnd=" "))
+                            (t for t in tagInfo['supertags'] if Database.TagLookup(t) != mainParent),
+                            plural="",lastJoinStr=" and ",titleEnd=" "))
             subsumedTags = [t["tag"] for t in subsumesTags.get(tag,())]
             a(ListLinkedTags("Subtag",[t for t in tagInfo['subtags'] if t not in subsumedTags]))
             a(ListLinkedTags("See also",tagInfo['related'],plural = ""))
@@ -1965,7 +1964,12 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         header = Html.TruncateHtmlText(str(a),alwaysShow = 2 if headerChars < 120 else 1,
                                        morePrompt="details",hideWidth=1)
         a = Airium()
-        a(header)
+        tagIsTeacher = Database.TeacherLookup(tag)
+        if not tagIsTeacher or Database.TeacherConsent(tag,"photo"):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
+                a(header)
+        else:
+            a(header)
         a.hr()
         
         tagWithoutHtml = Utils.RemoveHtmlTags(tagInfo["fullTag"])
@@ -1997,9 +2001,12 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
         relevantExcerpts = Filter.Teacher(t)(xDB)
     
         a = Airium()
-        
         excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
-        a(excerptInfo)
+        if Database.TeacherConsent(t,"photo"):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]) + ".jpg")):
+                a(excerptInfo)
+        else:
+            a(excerptInfo)
         a.hr()
 
         formatter = Formatter()
@@ -2177,8 +2184,9 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
         yield page
 
 
-def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
-    """Add a table of contents to the event which is being built."""
+def TableOfContents(sessions: list[dict]) -> str:
+    """Return the table of contents to the event which is being built."""
+    a = Airium()
     tocPath = Utils.PosixJoin(gOptions.documentationDir,"tableOfContents",sessions[0]["event"] + ".md")
     if os.path.isfile(tocPath):
         template = pyratemp.Template(Utils.ReadFile(tocPath))
@@ -2202,9 +2210,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
             a("Table of Contents")
         with a.div(Class="listing javascript-hide",id="TOC.b"):
             a(html)
-        return
-
-    if len(sessions) > 1:
+    elif len(sessions) > 1:
         if all(s["sessionTitle"] for s in sessions):
             # If all sessions have a title, list sessions by title
             a.hr()
@@ -2225,6 +2231,7 @@ def AddTableOfContents(sessions: list[dict],a: Airium) -> None:
                     squish(str(s['sessionNumber']))
             
             a(str(squish))
+    return str(a)
 
 
 def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
@@ -2238,37 +2245,46 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         featuredExcerpts = Filter.FTag(Filter.All)(excerpts)
         a = Airium()
         
-        with a.strong():
-            a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
-        a.br()
+        with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode + ".jpg"),"landscape"):
+            with a.strong():
+                a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
+            a.br()
 
-        a(EventSeriesAndDateStr(eventInfo))
-        a.br()
-        
-        venueInfo = EventVenueStr(eventInfo)
-        if venueInfo:
-            a(venueInfo)
+            a(EventSeriesAndDateStr(eventInfo))
             a.br()
-        
-        a(ExcerptDurationStr(excerpts))
-        a.br()
+            
+            venueInfo = EventVenueStr(eventInfo)
+            if venueInfo:
+                a(venueInfo)
+                a.br()
+            
+            a(ExcerptDurationStr(excerpts))
+            a.br()
 
-        if featuredExcerpts:
-            with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
-                a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
-            a(f"({len(featuredExcerpts)})")
-            a.br()
+            if featuredExcerpts:
+                with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
+                    a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
+                a(f"({len(featuredExcerpts)})")
+                a.br()
+            
+            if eventInfo["description"]:
+                with a.p(Class="smaller"):
+                    a(eventInfo["description"])
+            
+            if eventInfo["website"]:
+                a("Original recordings available on")
+                with a.a(href = eventInfo["website"],target="_blank",Class="external-link"):
+                    a(urllib.parse.urlsplit(eventInfo["website"]).netloc)
+                a.br()
+                
+            tocHtml = TableOfContents(sessions)
+            shortToc = not tocHtml or tocHtml.startswith("Sessions: ")
+            if tocHtml and shortToc:
+                a(tocHtml)
+                a.br()
         
-        if eventInfo["description"]:
-            with a.p(Class="smaller"):
-                a(eventInfo["description"])
-        
-        if eventInfo["website"]:
-            with a.a(href = eventInfo["website"],target="_blank"):
-                a("External website")
-            a.br()
-        
-        AddTableOfContents(sessions,a)
+        if not shortToc:
+            a(tocHtml)
         
         a.hr()
         
@@ -2963,7 +2979,7 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
         if writer.IsRegistered(redirect["oldPage"]):
             Alert.error("Redirect",redirect,"attempts to redirect a file that already exits. Ignoring this redirect.")
             continue
-        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"])):
+        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,urllib.parse.urlparse(redirect["newPage"]).path)):
             Alert.error("Redirect",redirect,"points to non-existant file",redirect["newPage"])
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
@@ -3002,6 +3018,8 @@ def AddArguments(parser):
     
     parser.add_argument('--maxPlayerTitleLength',type=int,default = 30,help="Maximum length of title tag for chip audio player.")
     parser.add_argument('--blockRobots',**Utils.STORE_TRUE,help="Use <meta name robots> to prevent crawling staging sites.")
+
+    parser.add_argument('--listPotentialTOC',**Utils.STORE_TRUE,help='Print references that might need a TOC.')
     parser.add_argument('--urlList',type=str,default='',help='Write a list of URLs to this file.')
     parser.add_argument('--keepOldHtmlFiles',**Utils.STORE_TRUE,help="Keep old html files from previous runs; otherwise delete them.")
     
@@ -3039,7 +3057,7 @@ def Initialize() -> None:
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
-gSitemap = HtmlSiteMap() # Make the site map accessible to page-building functions
+gSitemap = None # Make the site map accessible to page-building functions
 
 def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
     "Yield all of iterator if yieldAll, otherwise yield only the first element."
@@ -3049,6 +3067,9 @@ def YieldAllIf(iterator:Iterator,yieldAll:bool) -> Iterator:
         yield next(iter(iterator))
 
 def main():
+    global gSitemap
+    gSitemap = HtmlSiteMap()
+
     if not os.path.exists(gOptions.pagesDir):
         os.makedirs(gOptions.pagesDir)
     
@@ -3092,7 +3113,7 @@ def main():
     if "dispatch" in gOptions.buildOnly:
         sitemapMenu.append(DispatchPages())
 
-    with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w") as urlListFile,
+    with (open(gOptions.urlList if gOptions.urlList else os.devnull,"w",encoding="utf-8") as urlListFile,
             FileRegister.HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as writer):
         
         startTime = time.perf_counter()

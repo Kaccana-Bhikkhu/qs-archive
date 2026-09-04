@@ -1,9 +1,6 @@
 // .args file used by the BuildAllArchival job.
 // All items are downloaded locally to create a standalone archive.
 
-// DownloadCSV options:
---sheets All
-
 // ParseCSV options:
 --ignoreTeacherConsent
 

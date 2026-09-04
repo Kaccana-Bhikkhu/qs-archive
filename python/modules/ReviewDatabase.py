@@ -464,6 +464,34 @@ def CheckReferences():
         if dateless:
             Alert.caution("The following books by",author,"need dates for proper sorting:",dateless)
 
+def MismatchedFiles(directory: str,allowableFilenames: set[str]) -> list[str]:
+    """Return filenames in directory that do not match allowableFilenames."""
+
+    returnValue = []
+    for filename in sorted(os.listdir(directory)):
+        if os.path.splitext(filename)[0] not in allowableFilenames:
+            returnValue.append(filename)
+    return returnValue
+
+def CheckImages():
+    """Check if all images in images/tags and images/events are properly named."""    
+
+    slugifiedNames = {Utils.slugify(t["fullTag"]) for t in gDatabase["tag"].values()}
+    slugifiedNames.update(Utils.slugify(t["fullName"]) for t in gDatabase["teacher"].values())
+    tagImageDir = Utils.PosixJoin(gOptions.pagesDir,"images","tags")
+    if mismatches := MismatchedFiles(tagImageDir,slugifiedNames):
+        Alert.caution(len(mismatches),"files in",tagImageDir,"do not match any tag or teacher:",mismatches)
+    
+    eventImageDir = Utils.PosixJoin(gOptions.pagesDir,"images","events")
+    if mismatches := MismatchedFiles(eventImageDir,gDatabase["event"]):
+        Alert.caution(len(mismatches),"files in",eventImageDir,"are not event codes:",mismatches)
+    
+    slugifiedNames = {Utils.slugify(b) for b in gDatabase["reference"]}
+    bookImageDir = Utils.PosixJoin(gOptions.pagesDir,"images","books")
+    if mismatches := MismatchedFiles(bookImageDir,slugifiedNames):
+        Alert.caution(len(mismatches),"files in",bookImageDir,"do not match any books:",mismatches)
+
+
 def PrintTagBits():
     """Print the set of words which appear in the tags."""
     words = set()
@@ -518,6 +546,7 @@ def main() -> None:
     LogReviewedFTags()
     NeedsAudioEditing()
     CheckReferences()
+    CheckImages()
 
     if gOptions.debug:
         PrintTagBits()

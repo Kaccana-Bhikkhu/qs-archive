@@ -175,6 +175,13 @@ def AboutEntries() -> Iterable[AutoCompleteEntry]:
         if text != "Technical":
             yield Entry("About: " + text,filePath,icon="text")
 
+    otherPages = {
+        "Upāsikā Day Themes": "UpasikaDays.html",
+    } 
+
+    for title,filename in otherPages.items():
+        yield Entry("About: " + title,Utils.PosixJoin("about",filename),icon="text")
+
 def TextEntries() -> Iterable[AutoCompleteEntry]:
     "Yield an entry for each about text (Sutta or Vinaya) referenced."
     

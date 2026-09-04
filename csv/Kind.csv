@@ -34,11 +34,11 @@ Vinaya,References,1,No,Yes,No,No,Yes,No,,,,,++Vinaya{colon}++ {text},{text},unim
 ,,,,,,,,,,,,,,,,,
 Comment,Other,1,Yes,Yes,Yes,Yes,Yes,Yes,,,,Anon,"++Comment{s}++|| by {teachers}||{colon}{""."" if not text else "" "" + text}",++Comment{s}{colon}++ {text}|| contributed by {teachers}.,{text}|| ++Comment{s}++ by {teachers}.,,
 Discussion,Other,2,Yes,Yes,Yes,Yes,Yes,Yes,,,,Anon,"++Discussion{s}++|| led by {teachers}||{colon}{""."" if not text else "" "" + text}",++Discussion{s}{colon}++ {text}|| led by {teachers}.,{text}|| ++Discussion{s}++ led by {teachers}.,,
-Note,Other,1,No,Yes,No,No,No,No,,,,,++Note{s}:++ {text},unimplemented,unimplemented,,
+Note,Other,1,No,Yes,No,No,No,No,,,,,++Note{s}{colon}++ {text},unimplemented,unimplemented,,
 Summary,Other,1,Yes,No,Yes,Yes,Yes,Yes,,,,Session,{text},unimplemented,unimplemented,,"Used for session excerpts; can be blank. If the session excerpt has a list of items (e. g. readings), the items should be annotations to a summary excerpt."
 Other,Other,0,Yes,Yes,Yes,Yes,Yes,No,,,,None,unimplemented,unimplemented,unimplemented,,
 ,,,,,,,,,,,,,,,,,
-Commentary,References,1,No,Yes,No,No,Yes,No,,,,,++Commentary:++ {text},unimplemented,unimplemented,,
+Commentary,References,1,No,Yes,No,No,Yes,No,,,,,++Commentary{colon}++ {text},unimplemented,unimplemented,,
 ,,,,,,,,,,,,,,,,,
 Read by,Attribution,1,No,Yes,No,Yes,No,No,,Yes,Yes,Session unless text,{'Read by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Read by ' + teachers + '.'},unimplemented,unimplemented,,"If the reader is not a teacher, {teachers} should be empty and {text} specifies the name of the reader."
 Translated by,Attribution,1,No,Yes,No,Yes,No,No,,Yes,Yes,None,{'Translated by ' if text else ''}{text}{'.' if text else ''}||{'' if text else 'Translated by ' + teachers + '.'},unimplemented,unimplemented,,

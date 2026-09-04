@@ -60,6 +60,18 @@ def Partition(items:Iterable[T],keyFunc: Callable[[T],bool]) -> tuple[list[T],li
     
     return trueList,falseList
 
+def StrToTimedelta(timeStr: str) -> timedelta:
+    "Convert '[[HH:]MM:]SS' to a timedelta object"
+
+    parts = timeStr.split(":")
+    parts[0],negate = re.subn("^-","",parts[0])
+    seconds = float(parts[-1])
+    minutes = int(parts[-2]) if len(parts) > 1 else 0
+    hours = int(parts[-3]) if len(parts) > 2 else 0
+
+    returnValue = timedelta(hours=hours,minutes=minutes,seconds=seconds)
+    return -returnValue if negate else returnValue
+
 def PosixToNative(path:str) -> str:
     return str(pathlib.PurePath(pathlib.PurePosixPath(path)))
 
@@ -70,6 +82,9 @@ PosixNorm = posixpath.normpath
 
 def RemoveHtmlTags(html: str) -> str:
     return re.sub(r"\<[^>]*\>","",html)
+
+def RemoveMarkdownHyperlinks(markdown: str) -> str:
+    return re.sub(r"\[([^\]]*)\]\([^)]*\)",r"\1",markdown)
 
 def DirectoryURL(url:str) -> str:
     "Ensure that this url specifies a directory path."
@@ -263,6 +278,10 @@ def SessionIndex(sessions:list, event:str ,sessionNum: int) -> int:
             return n
     
     raise ValueError(f"Can't locate session {sessionNum} of event {event}")
+
+def WholeWordRegexp(regexp: str) -> str:
+    """Returns a regexp that matches this as a whole word."""
+    return r"\b" + regexp + r"\b"
 
 def RegexMatchAny(strings: Iterable[str],capturingGroup = True,literal = False):
     """Return a regular expression that matches any item in strings.

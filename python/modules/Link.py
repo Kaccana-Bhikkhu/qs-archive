@@ -91,7 +91,7 @@ class RemoteURLChecker(LinkValidator):
         if not url.strip():
             return False
         if Utils.RemoteURL(url):
-            if CheckLinks.BrowerOnlyUrl(url):
+            if not gOptions.checkBrowserOnlyURLs and CheckLinks.BrowerOnlyUrl(url):
                 return True     # Report success for urls which are known to work only in web browsers
             url = Utils.QuotePath(url)
             try:
@@ -654,6 +654,7 @@ def AddArguments(parser) -> None:
 
     parser.add_argument("--linkCheckLevel",type=str,action="append",default=["1"],help="Integer link check level. [ItemType]:[mirror]:LEVEL")
     parser.add_argument('--validateSplitMethod',**Utils.STORE_TRUE,help="Should mp3 metadata validator check the split method?")
+    parser.add_argument('--checkBrowserOnlyURLs',**Utils.STORE_TRUE,help="Link check browser only urls anyway.")
     parser.add_argument('--linkOldMirrors',**Utils.STORE_TRUE,help="Skip the linking step; use mirrors from the existing RenderedDatabase.json file")
 
     """Link check levels are interpreted as follows:

@@ -1,36 +1,39 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-## New in the May 2026 release:
+## New in the September 2026 release:
  - New content:
-    - [Winter Retreat 2025](event:WR2025) through session 54
-    - [Upākikā Day: Ten Perceptions](event:UD2016-3)
-    - [Recollectings of Ajahn Chah: 100th Birthday Celebration](event:SRD2018)
-    - [Being Dhamma (with Tigers)](event:CMountain2023)
-    - [Samadhi, Memory & Renunciation Q&A](event:SamadhiQA2026)
- - All [Thanksgiving Retreat](about:event-series#thanksgiving-retreats) questions have been listened to in detail
- - [Table of all Upāsikā Days](about:UpasikaDays)
+    - [Thanksgiving Retreat 2004](event:TG2004)
+    - [Upāsika Day: A Monastic's Life](event:UD2013-2)
+    - [Upāsika Day: Right Speech and Living with Ourselves](event:UD2016-4)
+    - [Winter Retreat 2025](event:WR2025) through the end of March (Session 56)
+    - [Abhayagiri's 30th Anniversary Part 1](event:Anniversary2026-1)
+ - Table of contents for sutta and book pages, e.g. [MN 26](../texts/MN26.html)
+ - Images on teacher, tag, and event pages
+ - Interface improvements: menu hovers at the top of the screen; audio player has close box
 
 
 ## Content
-This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over 210 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
+This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over
+$!int(Database.ExcerptDuration(gDatabase["excerpts"]).total_seconds() // 36_000)!$0
+hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 706 transcribed pages, of which 612 have been entered into the Archive. The detailed status of transcription is as follows:
 
 ### Thanksgiving Retreats
-The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions). Ajahn Pasanno held less-frequent Q&A sessions on the 2004, 2020, and 2021 retreats; these retreats have been transcribed but not yet entered into the database.
+The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions) as well as the single Q&A session from the 2004 retreat co-led with Gloria Taraniya. The 2020 and 2021 retreats have been transcribed but not yet entered into the database.
 
 ### Winter Retreats
-Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 49 sessions](event:WR2025) are now included in the Archive.
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 56 sessions](event:WR2025) are now included in the Archive.
 
 ### Spirit Rock Daylongs
-Six daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
+Seven daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
 
-### Upāsikā Days
-All but one of the 23 recorded Upāsikā Days led by Ajahn Pasanno are available in the Archive.
+### Upāsika Days
+All 25 recorded Upāsika Days led by Ajahn Pasanno are available in the Archive.
 
 ### Abhayagiri Anniversary Events
-The Archive contains material from the [2016](event:Anniversary2016), [2021](event:Anniversary2021), and [2024](event:Anniversary2024) anniversaries.
+The Archive contains material from the [2016](event:Anniversary2016), [2021](event:Anniversary2021), [2024](event:Anniversary2024) anniversaries, and the [first part](event:Anniversary2026-1) of the 2026 anniversary celebration.
 
 ### Other
-Almost all teachers have given consent for their [2001 Ajahn Chah Conference](event:Chah2001) audio.
+All teachers have given consent for their [2001 Ajahn Chah Conference](event:Chah2001) audio.
 
 ## Known issues and limitations
 
@@ -53,7 +56,7 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
 - Finalized the [license details](about:license).
 - Allow search engine indexing (we hope!).
 ### August 2024:
-- October 2017 Upāsikā Day: [Can We Function Without Attachement?](event:UD2017-4)
+- October 2017 Upāsika Day: [Can We Function Without Attachement?](event:UD2017-4)
 - Two Q&A sessions with Ajahn Pasanno from [Abhayagiri's 25th Anniversary Retreat](event:Anniversary2021).
 - Almost all excerpts from the [2001 Ajahn Chah Weekend](event:Chah2001) are now available. 
 - [Search for tags](../search/Text-search.html?featured=&relevant=)
@@ -109,20 +112,29 @@ Almost all teachers have given consent for their [2001 Ajahn Chah Conference](ev
  - New content:
      - [2025 Winter Retreat](event:WR2025): The first 46 sessions are now available.
      - [Even the Sāsana Will Pass Away](event:Sunday2025-2).
-     - [Kathina Q&A with the Chithurst Community](event:Chithurst2025-2)
+     - [Kaṭhina Q&A with the Chithurst Community](event:Chithurst2025-2)
  - [Sutta](../texts/Sutta.html), [vinaya](../texts/Vinaya.html), and [book](../books/Modern.html) reference pages list excerpts that refer to these sources.
  - Alt-clicking on sutta, vinaya, or book references takes one to the relevant reference page.
 ### December 2025 release:
  - New content:
      - [2013 Winter Retreat](event:WR2013): The first 27 sessions are now available.
-     - [Upāsakā Day 2017: Becoming the Buddha](event:UD2017-1).
+     - [Upāsika Day 2017: Becoming the Buddha](event:UD2017-1).
  - Search results are [sorted by relevance](about:search-instructions#sorting-by-relevance).
  - Display special excerpts on the homepage on significant anniversaries.
  - Link to Bhante Buddharakkhita's tranlsation of the [Dhammapada](../texts/Dhp.html) and John D. Ireland's translation of the [Itivuttaka](../texts/Iti.html).
  - Ctrl-click on suttas to link to [SuttaCentral Express](https://suttacentral.express).
  - [Boolean search operators](about:search-instructions#boolean-search-operations).
-## May 2026 release:
+### May 2026 release:
  - New content:
      - [2010](event:TG2010), [2011](event:TG2011), and [2012](event:TG2011) Thanksgiving Retreat Q&A sessions
      - Additional sessions from the [2013](event:WR2013) and [2025](event:WR2025) Winter Retreats
  - Home page loads faster and uses less data
+### New in the June 2026 release:
+ - New content:
+    - [Winter Retreat 2025](event:WR2025) through session 54
+    - [Upāsikā Day: Ten Perceptions](event:UD2016-3)
+    - [Recollectings of Ajahn Chah: 100th Birthday Celebration](event:SRD2018)
+    - [Being Dhamma (with Tigers)](event:CMountain2023)
+    - [Samādhi, Memory & Renunciation Q&A](event:SamadhiQA2026)
+ - All questions from the [seven classic Thanksgiving Retreats](../indexes/EventsBySeries.html#thanksgiving-retreats) from 2010 to 2016 are included in full detail
+ - A table lists [all Upāsika Days by theme](about:UpasikaDays)

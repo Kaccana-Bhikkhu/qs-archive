@@ -503,6 +503,8 @@ def Update(paramStr: str) -> bool:
             UpdateEntry(gFeaturedDatabase["excerpts"][code],currentEntry,code)
             updated = "matches; updated"
             databaseChanged = True
+        else:
+            pass
         Alert.extra("")
         Alert.info(f"Excerpt: {code}; ratio: {ratio:.3f}; {updated}.")
         Alert.extra("Old:",oldText,indent=6)

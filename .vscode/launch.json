@@ -116,7 +116,8 @@
                 "--args",
                 "python/config/BuildAbhayagiri.args",
                 "--featured",
-                "update,holidays"
+                "update,holidays",
+                "--rebuildReferences"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -129,7 +130,8 @@
             "args": [
                 "All",
                 "--args",
-                "python/config/BuildPreview.args"
+                "python/config/BuildPreview.args",
+                "--rebuildReferences"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -142,7 +144,8 @@
             "args": [
                 "All",
                 "--args",
-                "python/config/BuildGithub.args"
+                "python/config/BuildGithub.args",
+                "--rebuildReferences"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -155,7 +158,8 @@
             "args": [
                 "All",
                 "--args",
-                "python/config/BuildArchival.args"
+                "python/config/BuildArchival.args",
+                "--rebuildReferences"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
@@ -181,9 +185,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Render",
+                "Build",
                 "--buildOnly",
-                "texts"
+                "about",
+                "--rebuildReferences"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

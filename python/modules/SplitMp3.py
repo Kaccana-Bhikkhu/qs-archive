@@ -12,6 +12,7 @@ from Mp3DirectCut import Clip, ClipTD
 from typing import List, Union, NamedTuple
 from datetime import timedelta
 from mutagen.mp3 import MP3
+from mutagen import MutagenError
 
 Mp3DirectCut.SetExecutable(Utils.PosixToNative(Utils.PosixJoin('tools','Mp3DirectCut')))
 
@@ -133,25 +134,25 @@ def main():
         # If there is an error, this lets us continue to split the remaining files.
         for sources,clipsDict in Mp3DirectCut.GroupBySourceFiles(excerptClipsDict):
             # Calculate the required bit rate
-            maxClipCount = max(len(clipList) for clipList in clipsDict.values())
-            if maxClipCount > 1 and gOptions.joinUsingPydub and gOptions.joinBitRate == AUTO_BIT_RATE:
-                maxBitRate = 64
-                for source in sources:
-                    mp3File = MP3(source)
-                    maxBitRate = max(mp3File.info.bitrate / 1000,maxBitRate)
-                roundedBitRate = min(16 * math.ceil(0.95 * maxBitRate / 16),128)
-                Alert.info("Pydub join bit rate:",roundedBitRate,"k")
-                Mp3DirectCut.joinBitrate = str(roundedBitRate) + "k"
+            try:
+                maxClipCount = max(len(clipList) for clipList in clipsDict.values())
+                if maxClipCount > 1 and gOptions.joinUsingPydub and gOptions.joinBitRate == AUTO_BIT_RATE:
+                    maxBitRate = 64
+                    for source in sources:
+                        mp3File = MP3(source)
+                        maxBitRate = max(mp3File.info.bitrate / 1000,maxBitRate)
+                    roundedBitRate = min(16 * math.ceil(0.95 * maxBitRate / 16),128)
+                    Alert.info("Pydub join bit rate:",roundedBitRate,"k")
+                    Mp3DirectCut.joinBitrate = str(roundedBitRate) + "k"
 
             # Invoke Mp3DirectCut on each group of clips:
-            try:
                 nativeClipsDict = NativeFilePaths(clipsDict)
                 Mp3DirectCut.MultiFileSplitJoin(nativeClipsDict,outputDir=Utils.PosixToNative(outputDir))
             except Mp3DirectCut.ExecutableNotFound as err:
                 Alert.error(err)
                 Alert.status("Continuing to next module.")
                 return
-            except (Mp3DirectCut.Mp3CutError,ValueError,OSError) as err:
+            except (Mp3DirectCut.Mp3CutError,MutagenError,ValueError,OSError) as err:
                 Alert.error(f"{eventName}: {err} occured when splitting source files {sources}.")
                 Alert.status("Continuing to next source file(s).")
                 errorCount += 1

@@ -17,6 +17,7 @@ with open(f"buddharakkhita/Copyright.xhtml",encoding="utf-8") as file:
     for number,paragraph in enumerate(soup.find_all("p"),start=1):
         dhammapada[f"info{number}"] = paragraph.get_text()
 
+sections = {}
 sectionNumber = 1
 while (True):
     try:
@@ -24,6 +25,10 @@ while (True):
             soup = BeautifulSoup(file,"html.parser")
     except OSError:
         break
+
+    section = re.search(": ([^()]*) \(([0-9]+)",soup.h2["title"])
+    if section:
+        sections[section[1].strip()] = section[2]
 
     for paragraph in soup.find_all("p"):
         link = paragraph.a
@@ -40,3 +45,7 @@ while (True):
 
 with open("Dhammapada.json", 'w', encoding='utf-8') as file:
     json.dump(dhammapada, file, ensure_ascii=False, indent=2)
+
+with open("DhammapadaSections.tsv", 'w', encoding='utf-8') as file:
+    for title,verse in sections.items():
+        print(f"{title}\t{verse}",file=file)

@@ -4,13 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>The Ajahn Pasanno Archive</title>
-		<meta name="robots" content="noindex, nofollow" />
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap">
 	    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+            <link rel="manifest" href="assets/site.webmanifest">
 
         <style id="script-style-block">
             .noscript-show {
@@ -33,15 +33,14 @@
             <div class="container">
                 <h1>The Ajahn Pasanno Archive</h1>
                 <h2>Audio Questions, Stories, and Quotes</h2>
-                <h4>Pre-release version; please share and link to the <a href="https://abhayagiri.org/questions/">main site</a>.</h4>
-                <div class="header-content">
-                    <div class="floating-search keep-nav-menu-open">
-                        <form id="floating-search-form">
-                            <input type="text" id="floating-search-input" placeholder="Search the teachings..." autocomplete="off"/>
-                            <button type="submit" id="floating-search-go"><i class="fa fa-arrow-right fa-lg"></i></button>
-                            <span id="found-count"></span>
-                        </form>
-                    </div>
+                <div class="floating-search keep-nav-menu-open">
+                    <form id="floating-search-form">
+                        <input type="text" id="floating-search-input" placeholder="Search the teachings..." autocomplete="off"/>
+                        <button type="submit" id="floating-search-go"><i class="fa fa-arrow-right fa-lg"></i></button>
+                        <span id="found-count"></span>
+                    </form>
+                </div>
+                <div id="header-content">
                     <span class="main-menu-icon keep-nav-menu-open" id="nav-search-icon">
                         <i class="fa fa-search fa-3x"></i>
                         <br>
@@ -107,6 +106,8 @@
                     </span>
                 </div>
             </div>
+            <div id="floating-header">
+            </div>
         </header>
 
 
@@ -135,7 +136,7 @@
                 </div>
                 <div class="featured-excerpt">
                     <p>
-                        <span id="todays-excerpt"><audio-chip src="../audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" title="The Teaching and the Training, S3 E1" data-title-link="events/WR2018-2.html#WR2018-2_S03_F01" data-duration="141"><a href="../audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" download="The Teaching and the Training, S3 E1.mp3">Download audio</a> (2:21)</audio-chip><br />
+                        <span id="todays-excerpt"><audio-chip src="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" title="The Teaching and the Training, S3 E1" data-title-link="events/WR2018-2.html#WR2018-2_S03_F01" data-duration="141"><a href="https://www.abhayagiri.org/media/discs/questions/audio/excerpts/WR2018-2/WR2018-2_S03_F01.mp3" download="The Teaching and the Training, S3 E1.mp3">Download audio</a> (2:21)</audio-chip><br />
    “Why are the precepts worded as things not to do rather than as aspirations?”  </span>
                         <i><a id="details-link" href="search/Featured.html">details...</a></i>
                     </p>
@@ -242,6 +243,7 @@
 
 	<div id="audio-player" class="overlay">
 		<button class="play"></button>
+        <span class="close-box"><a href = "#"><i class="fa fa-times" aria-hidden="true"></i></a></span>
 		<span class="audio-title"> <span> </span></span>
 		<input type="range" />
 	</div>

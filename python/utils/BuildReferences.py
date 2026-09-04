@@ -9,6 +9,8 @@ from itertools import chain, groupby
 from airium import Airium
 from enum import Enum
 import re, json
+import bisect, itertools
+from decimal import Decimal
 import Html2 as Html
 import Suttaplex
 import Utils
@@ -82,6 +84,7 @@ def WriteReferenceDatabase() -> bool:
     global gSavedReferences, gReferencesChanged
     ReadReferenceDatabase()
     if not gNewReferences:
+        gReferencesChanged = False
         return False
     
     changed = False
@@ -89,6 +92,7 @@ def WriteReferenceDatabase() -> bool:
         if not CompareDicts(gSavedReferences[kind],gNewReferences[kind],f"{kind} reference database"):
             changed = True
     if not changed:
+        gReferencesChanged = False
         return False
     
     with open(Utils.PosixJoin(gOptions.pagesDir,"assets/ReferenceDatabase.json"), 'w', encoding='utf-8') as file:
@@ -191,7 +195,43 @@ class TextReference(NamedTuple):
     def IsSubreference(self) -> bool:
         """Return true if the reference specifies a subsection within a sutta."""
         return self[self.TextLevel() + 1] != 0
-        
+    
+    def HasTableOfContents(self) -> bool:
+        """Return true gDatabase has a TOC for this text."""
+        return False
+
+    def TextName(self) -> str:
+        """Returns the name of the text, discarding verse numbers, e.g. SN 1.12."""
+        return str(self.Truncate(self.TextLevel() + 1))
+
+    def SectionStartPage(self) -> int|Decimal|None:
+        """Return the first page/verse of the section this reference is in.
+        Return None if there is no table of contents."""
+
+        if not self.text:
+            return None
+        suttaName = self.TextName()
+        if suttaName not in gDatabase["textSection"]:
+            return None
+
+        textLevel = self.TextLevel()
+        verseNumber = Database.VerseNumber(self[textLevel + 1:])
+        subVerseIncrement = Decimal("0.001")
+        tableOfContents = gDatabase["textSection"][suttaName]
+        testVerse = verseNumber
+        while testVerse > 0 and testVerse not in tableOfContents:
+            if testVerse != int(testVerse):
+                testVerse -= subVerseIncrement
+            else:
+                testVerse -= 1
+        return max(0,testVerse)
+
+    def SectionReference(self,verseNumber: int|Decimal) -> str:
+        """Return the abbreviated name of the section this reference belongs to, e.g. MN 2.4"""
+        verseText = re.sub(r"\.0+",".",str(verseNumber))
+        return f"{self.TextName()}.{verseText}"
+
+
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}".strip()
     
@@ -236,7 +276,7 @@ class TextReference(NamedTuple):
         return f"https://sutta.readingfaithfully.org/?q={query}"
 
     def LinkIcons(self) -> list[str]:
-        """Returns a list of html icons linking to this text. Usually comes after bread crumbs."""
+        """Returns a list of html icons linking to this text."""
         returnValue = []
         translator = ""
         if self.text in TextGroupSet("namedVaggas") and not self.n1:
@@ -262,7 +302,7 @@ class TextReference(NamedTuple):
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
     
-    def BreadCrumbs(self,minLevel:int = 0) -> str:
+    def FullPageHeader(self,minLevel:int = 0,referenceCount:int = 0) -> str:
         """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages.
         level specifies the text level; SN 2.4 is level 3"""
 
@@ -276,7 +316,10 @@ class TextReference(NamedTuple):
         for minLevel in range(len(numbers) + 1):
             bits[minLevel] = Html.Tag("a",{"href":f"../{pageInfo[minLevel].file}"})(bits[minLevel])
         
-        return " / ".join(bits)
+        header = " / ".join(bits)
+        if referenceCount:
+            header += f" ({referenceCount})"
+        return header
     
     def Citation(self) -> str:
         """Returns the citation information string for this page."""
@@ -397,6 +440,28 @@ class BookReference(NamedTuple):
     def IsSubreference(self) -> bool:
         """Return true if the reference specifies a page number."""
         return self.page != 0
+    
+    def HasTableOfContents(self) -> bool:
+        """Return true if this book has a table of contents in gDatabase."""
+        return self.abbreviation in gDatabase["bookSection"]
+
+    def SectionStartPage(self) -> int|None:
+        """Return the first page/verse of the section this reference is in.
+        Return None if there is no table of contents."""
+
+        if not self.abbreviation or self.abbreviation not in gDatabase["bookSection"]:
+            return None
+        if self.page <= 0:
+            return 0
+        tableOfContents = gDatabase["bookSection"][self.abbreviation]
+        for testPage in reversed(range(self.page + 1)):
+            if testPage in tableOfContents:
+                return testPage
+        return 0
+
+    def SectionReference(self,verseNumber: int) -> str:
+        """Refer to book sections with a simple page number."""
+        return f"Page {verseNumber}"
 
     def __str__(self) -> str:
         bits = [self.author]
@@ -441,7 +506,7 @@ class BookReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return self.abbreviation or self.author
 
-    def BreadCrumbs(self,minLevel:int = 0) -> str:
+    def FullPageHeader(self,minLevel:int = 0,referenceCount: int = 0) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
         firstAuthor = self.FirstAuthor()
         bits = []
@@ -456,8 +521,17 @@ class BookReference(NamedTuple):
             pageInfo = ReferencePageInfo(firstAuthor,level)
             bits.append(pageInfo.title)
         
-        returnValue = " / ".join(bits)
-        return returnValue
+        header = " / ".join(bits)
+        header = re.sub(r" \([0-9]+\)","",header) # Remove any trailing parenthetical date
+        if referenceCount:
+            header += f" ({referenceCount})"
+        if self.abbreviation:
+            header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("books",Utils.slugify(self.abbreviation) + ".jpg"),imgClass="square-corners")
+        elif self.author:
+            if Database.TeacherConsent(self.author,"photo"):
+                fullName = gDatabase["teacher"][self.author]["fullName"]
+                header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("tags",Utils.slugify(fullName) + ".jpg"))
+        return header
     
     def Citation(self) -> str:
         """Returns the citation information string for this page."""
@@ -518,8 +592,13 @@ class LinkedReference():
     items: list[dict[str]]          # A list of events and excerpts that reference it
 
 def TotalItems(references: Iterable[LinkedReference]) -> int:
-    """Return the nubmer of items in references."""
-    return sum(len(group.items) for group in references)
+    """Return the nubmer of unique items in references."""
+    allReferences = list(itertools.chain.from_iterable(group.items for group in references))
+    return len(set(id(ref) for ref in allReferences))
+
+def CountVerseReferences(references: Iterable[LinkedReference],textLevel: int) -> int:
+    """Return the number of excerpts in references which specify a specific page or verse."""
+    return sum(len(group.items) for group in references if group.reference[textLevel])
 
 def GroupByBook(references: Iterable[Reference]) -> Iterable[list[LinkedReference]]:
     """Group references by sutta or book and yield a list of each group."""
@@ -551,21 +630,34 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
                 for authorRef in group[0].MultipleAuthors():
                     referenceDict[authorRef].append(event)
     
+    def AppendMultipleBookAuthors(reference: Reference,excerpt: dict) -> None:
+        """Add reference multiple times if it's a book with multiple authors."""
+        if isinstance(reference,TextReference):
+            referenceDict[reference].append(excerpt)
+        else:
+            for authorRef in reference.MultipleAuthors():
+                referenceDict[authorRef].append(excerpt)
+
     for excerpt in gDatabase["excerpts"]:
-        references = [referenceClass.FromString(ref) for ref in excerpt.get(referenceKind,())]
+        deduplicated = set(excerpt.get(referenceKind,()))
+        references:list[Reference] = [referenceClass.FromString(ref) for ref in deduplicated]
         if not references:
             continue
         references.sort(key=referenceClass.SortKey)
-        for group in GroupByBook(references): # Only one excerpt per book
+        for group in GroupByBook(references):
             if len(group) > 1 and not group[0].IsSubreference():
-                mainRef = group[1]
-            else:
-                mainRef = group[0]
-            if isinstance(mainRef,TextReference):
-                referenceDict[mainRef].append(excerpt)
-            else:
-                for authorRef in mainRef.MultipleAuthors():
-                    referenceDict[authorRef].append(excerpt)
+                del group[0] # Don't list a reference to the whole if the excerpt also specifies a page/verse number
+            if group[0].HasTableOfContents():
+                # Excerpts can be listed more than once in references with TOCs
+                startPages = [ref.SectionStartPage() for ref in group]
+                lastStartPage = None
+                for startPage,reference in zip(startPages,group):
+                    if startPage != lastStartPage:
+                        AppendMultipleBookAuthors(reference,excerpt)
+                        startPage = lastStartPage
+            else: # Otherwise list the excerpt by the lowest page nuber (if any)
+                AppendMultipleBookAuthors(group[0],excerpt)
+                
 
     collated:list[LinkedReference] = []
     for ref,items in referenceDict.items():
@@ -626,10 +718,9 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            header = reference.BreadCrumbs(level)
+            return reference.FullPageHeader(level,TotalItems(self.references)) + "\n<hr>"
         else:
-            header = self.page.info.title
-        return header + f" ({TotalItems(self.references)})\n<hr>"
+            return self.page.info.title + f" ({TotalItems(self.references)})\n<hr>"
     
     def FooterHtml(self) -> str:
         """Returns html that goes a the bottom of the page in whole page mode."""
@@ -703,11 +794,20 @@ def BoldfaceTextReferences(html: str,text: TextReference) -> str:
 class ExcerptListPage(ReferencePageMaker):
     """Generate a page containing the list of specified excerpts."""
 
+    def RegisterReference(self) -> None:
+        """Register this list in the reference database."""
+
+        truncated = self.references[0].reference.Truncate(self.level)
+        # Don't register references of the form Snp 4.0; the link should go to Snp 4
+        if self.level < 1 or truncated[self.level - 1] != 0:
+            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
+
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
         a = Airium()
         formatter = Build.Formatter()
         formatter.SetHeaderlessFormat()
         firstLoop = True
+        truncated = self.references[0].reference.Truncate(self.level)
         for reference in self.references:
             events,excerpts = Utils.Partition(reference.items,lambda item: "endDate" in item)
             for event in events:
@@ -719,17 +819,80 @@ class ExcerptListPage(ReferencePageMaker):
                 if not firstLoop:
                     a.hr()
                 firstLoop = False
-                a(formatter.HtmlExcerptList(excerpts))
+                a(BoldfaceTextReferences(formatter.HtmlExcerptList(excerpts),truncated))
 
-        truncated = self.references[0].reference.Truncate(self.level)
-        # Don't register references of the form Snp 4.0; the link should go to Snp 4
-        if self.level < 1 or truncated[self.level - 1] != 0:
-            RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
-
-        html = BoldfaceTextReferences(str(a),truncated)
-        self.page.AppendContent(html)
+        self.RegisterReference()
+        self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
 
+
+class ExcerptsGroupedBySection(ExcerptListPage):
+    """Generate a page containing a list of excerpts grouped by section.
+    self.references must all come from the same book or sutta.
+    self.sectionHeadings 
+    """
+    sectionHeading: dict[int,str] # sectionHeadings[page] = pageHeadingStr
+
+    def __init__(self, level:int, references: list[LinkedReference],sectionHeading: dict[int,str]):
+        super().__init__(level, references)
+        self.sectionHeading = sectionHeading
+        self.isBook = isinstance(references[0].reference,BookReference)
+        if self.isBook:
+            self.baseReference = references[0].reference.Truncate(2)
+        else:
+            self.baseReference = references[0].reference.Truncate(references[0].reference.TextLevel() + 1)
+        
+    
+    def RenderAndYieldSubpages(self):
+        groupedReferences:dict[int,list[LinkedReference]] = {}
+        for page,refs in itertools.groupby(self.references,key = lambda r:r.reference.SectionStartPage()):
+            refList = []
+            for ref in refs:
+                refList.extend(ref.items)
+            if refList:
+                groupedReferences[page] = refList
+
+        a = Airium()
+        with a.h2():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
+            a("Table of Contents")
+        with a.div(Class=f"{'toc-list' if self.isBook else 'listing'} javascript-hide",id="TOC.b"):
+            for page in groupedReferences:
+                if page:
+                    with a.p(Class="indent-1").a(href=f"#{Utils.slugify(self.sectionHeading[page])}"):
+                        if self.isBook:
+                            with a.span(Class="toc-section"):
+                                a(f"{self.sectionHeading[page]}")
+                                with a.span(**{"Class":"leaders","aria-hidden":"true"}):
+                                    pass
+                            with a.span(Class="toc.page"):
+                                a(page)
+                        else:
+                            a(f"<b>{self.baseReference.SectionReference(page)}:</b> {self.sectionHeading[page]}")
+        a.hr()
+
+        formatter = Build.Formatter()
+        formatter.SetHeaderlessFormat()
+        for page,items in groupedReferences.items():
+            if page:
+                with a.div(Class="title",id = Utils.slugify(self.sectionHeading[page])):
+                    a(f"{self.baseReference.SectionReference(page)}: {self.sectionHeading[page]}")
+
+            events,excerpts = Utils.Partition(items,lambda item: "endDate" in item)
+            for event in events:
+                a(Build.EventDescription(event,showMonth=True,excerptCount=False).replace("<p>","<p><b>Event</b>: "))
+                a.hr()
+            if excerpts:
+                htmlExcerpts = formatter.HtmlExcerptList(excerpts)
+                htmlExcerpts = BoldfaceTextReferences(htmlExcerpts,self.baseReference)
+                a(htmlExcerpts)
+                if page != next(reversed(groupedReferences)): # Don't add <hr> at the end of the page
+                    a.hr()
+
+        self.RegisterReference()
+        html = str(a)
+        self.page.AppendContent(html)
+        yield from ReferencePageMaker.RenderAndYieldSubpages(self)
 
 HeadingGroupCode = Hashable
 """A code to group references together by; can be any hashable type."""
@@ -859,6 +1022,8 @@ class PageWithHeadings(ReferencePageMaker):
             truncated = self.references[0].reference.Truncate(self.level)
             RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
         a = Airium()
+        if getattr(self.references[0].reference,"text","") == "Dhp":
+            self.DhammapadaTOC(a)
         with a.div(Class=self.heading.enclosingClass):
             for referenceGroup in self.heading.GroupedReferences(self.references):
                 a(self.heading.Html())
@@ -879,7 +1044,28 @@ class PageWithHeadings(ReferencePageMaker):
 
         self.page.AppendContent(str(a))
         yield from super().RenderAndYieldSubpages()
-    
+
+    def DhammapadaTOC(self,a: Airium) -> None:
+        """Build an html table of contents for the Dhammapada."""
+        with a.h2():
+            a.a(href="#").i(Class="fa fa-plus-square toggle-view noscript-hide",id="TOC")
+            a("Table of Contents")
+        dhpSections = gDatabase["textSection"]["Dhp"]
+
+        # citedSections[verse] is the first cited verse in this section.
+        citedSections = {r.reference.SectionStartPage():r.reference.n0 for r in reversed(self.references)}
+
+        # lastVerses[verse] is the last verse in this section.
+        lastVerses = {firstVerse:nextFirstVerse - 1 for firstVerse,nextFirstVerse in itertools.pairwise(dhpSections)}
+        lastVerses[next(reversed(dhpSections))] = 423
+
+        with a.div(Class=f"listing javascript-hide",id="TOC.b"):
+            for verse,sectionName in dhpSections.items():
+                if verse in citedSections:
+                    with a.p(Class="indent-1").a(href=f"#dhp-{citedSections[verse]}"):
+                        a(f"<b>Dhp {verse}-{lastVerses[verse]}:</b> {sectionName}")
+        a.hr()
+
     def FinishPage(self):
         if self.bookmarkMenu and len(self.bookmarkMenu.items) < 2:
             self.bookmarkMenu.items = []    # Remove the bookmark menu if there is only one item in it.
@@ -1006,7 +1192,21 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         pageMaker.innerReferenceLinks = True
         return pageMaker
     elif pageType == PageType.EXCERPTS_ONLY:
-        return ExcerptListPage(level,references)
+        if isinstance(firstReference,BookReference):
+            sectionHeading = gDatabase["bookSection"].get(firstReference.abbreviation)
+        else:
+            sectionHeading = gDatabase["textSection"].get(firstReference.TextName())
+        if sectionHeading:
+            return ExcerptsGroupedBySection(level,references,sectionHeading)
+        else:
+            if gOptions.listPotentialTOC:
+                verseReferences = CountVerseReferences(references,level)
+                if verseReferences >= 4:
+                    kind = "verses" if isinstance(references[0].reference,TextReference) else "pages"
+                    Alert.notice(Utils.RemoveHtmlTags(references[0].reference.Truncate(level).FullName()),
+                                "has",CountVerseReferences(references,level),"references to specific",kind,"but no TOC; it references",
+                                TotalItems(references),"total excerpts.")
+            return ExcerptListPage(level,references)
     Alert.error("Unknown page type",pageType)
 
 def FirstLevelMenu(references: list[LinkedReference]) -> Html.PageDescriptorMenuItem:
