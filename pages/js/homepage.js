@@ -246,6 +246,19 @@ function configurePopupMenus(loadedFrame) {
     }
 }
 
+function loadFullDatabase(json) {
+    // Fill gHomepageDatabase and gHistoryDatabase from FeaturedDatabase.json
+
+    gFeaturedDatabase = json;
+    gHomepageDatabase = {"excerpts":{}};
+    gHistoryDatabase = {"excerpts":{}};
+    for (let excerptCode in json.excerpts) {
+        gHomepageDatabase.excerpts[excerptCode] = json.excerpts[excerptCode].shortHtml;
+        gHistoryDatabase.excerpts[excerptCode] = json.excerpts[excerptCode].html;
+    }
+    debugLog("Loaded homepage and history databases.")
+}
+
 async function initializeHomepage() {
     // This code to configure the homepage runs only for homepage.html
     let featuredExcerptContainer = document.getElementById("todays-excerpt");
@@ -255,9 +268,13 @@ async function initializeHomepage() {
     if (!gHomepageDatabase) {
         await loadDatabase('FeaturedDatabase1_.json')
         .then((json) => {
-            gHomepageDatabase = json;
-            gFeaturedDatabase = json; 
-            debugLog("Loaded homepage database.");
+            if ("made" in json) // Did we read the full database?
+                loadFullDatabase(json)
+            else {
+                gHomepageDatabase = json;
+                gFeaturedDatabase = json; 
+                debugLog("Loaded homepage database.");
+            }
         });
         initializeTodaysExcerpt()
     }
@@ -286,9 +303,13 @@ async function initializeSearchFeatured() {
         });
         await loadDatabase('FeaturedDatabase2_.json')
         .then((json) => {
-            gHistoryDatabase = json;
-            gFeaturedDatabase = json; 
-            debugLog("Loaded history page database.");
+            if ("made" in json) // Did we read the full database?
+                loadFullDatabase(json)
+            else {
+                gHistoryDatabase = json;
+                gFeaturedDatabase = json; 
+                debugLog("Loaded history page database.");
+            }
         });
         initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);

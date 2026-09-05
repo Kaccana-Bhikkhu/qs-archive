@@ -11,7 +11,7 @@ const errorPage = "./about/Page-Not-Found.html";
 const PATH_PART = /[^#?]*/;
 const SEARCH_PART = /\?[^#]*/;
 
-const DEBUG = false;
+const DEBUG = true;
 if (DEBUG) 
 	globalThis.debugLog = console.log.bind(window.console)
 else 
@@ -83,7 +83,18 @@ export function preloadDatabase(fileName) {
 	if (gDatabases[fileName])
 		return;
 	gDatabases[fileName] = fetch(`assets/${fileName}`)
-	.then((source) => source.json())
+	.then((request) => {
+		if (request.ok)
+			return request.json()
+		else {
+			let baseFileName = fileName.replace(/[0-9]*_.json$/,".json");
+			if (baseFileName != fileName) {
+				return fetch(`assets/${baseFileName}`)
+				.then((source) => source.json());
+			} else
+				throw new Error(`Error opening ${fileName}`);
+		}
+	})
 	.then((json) => {gDatabases[fileName] = json});
 }
 
