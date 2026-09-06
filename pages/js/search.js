@@ -308,7 +308,7 @@ class SearchGroup extends SearchBase {
     }
 
     toString() {
-        console.log(this)
+        debugLog(this);
         return `${this.negate ? "!" : ""}${this.prefixChar}(${this.terms.map((term) => String(term)).join(" ")})`;
     }
 }

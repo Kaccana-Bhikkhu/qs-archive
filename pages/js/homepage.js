@@ -607,13 +607,16 @@ function moveToNewParent(oldParent,newParent) {
     }
 }
 
-// Scroll position to transition to floating menus
-const FLOATING_MENU_THRESHOLD = 150;
-
 let gMenuFloating = false;
 let gLastScrollY = window.scrollY;
 let gLastPage = location.href;
 let gScrollDirection = 0; // positive = down, negative = up
+
+function closeFloatingSubmenus() {
+    gNavBar.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        dropdownMenu.classList.remove('menu-open');
+    });
+}
 
 function floatMenus(shouldFloat,shouldShow) {
     // If shouldFloat, move the menu to the floating menu div
@@ -624,13 +627,23 @@ function floatMenus(shouldFloat,shouldShow) {
     if (shouldFloat & shouldShow) {
         if (!floatingMenu.classList.contains("active")) {
             document.querySelector("nav.main-nav").classList.remove("active");
+            fixedMenu.style.minHeight = "";
             floatingMenu.classList.add("active");
         }
-    } else
-        floatingMenu.classList.remove("active")
+    } else if (floatingMenu.classList.contains("active")) {
+        closeFloatingSubmenus();
+        floatingMenu.classList.remove("active");
+    }
 
     if (shouldFloat === gMenuFloating)
         return;
+
+    closeFloatingSubmenus();
+    if (shouldFloat && fixedMenu.querySelector(".main-nav.active"))
+        fixedMenu.style.minHeight = `${fixedMenu.getBoundingClientRect().height}px`; 
+            // Keep occupying the space of the open menu
+    else
+        fixedMenu.style.minHeight = "";
 
     let oldLocation = shouldFloat ? fixedMenu : floatingMenu;
     let newLocation = shouldFloat ? floatingMenu : fixedMenu;
@@ -640,9 +653,19 @@ function floatMenus(shouldFloat,shouldShow) {
     gMenuFloating = shouldFloat;
 }
 
+function bottomOfHeader() {
+    // Return the Y coordinate of the bottom of the header in the viewport
+    let header = document.getElementById("header-content");
+    let headerBottom = header.getBoundingClientRect().bottom;
+    for (let menu of header.querySelectorAll(".dropdown.menu-open .dropdown-content")) {
+        headerBottom = Math.max(headerBottom,menu.getBoundingClientRect().bottom);
+    }
+    return headerBottom;
+}
+
 function scrollEndHandler(event) {
     // Float the menu only if we have scrolled down past the threshold on the same page we began with
-    if (window.scrollY > FLOATING_MENU_THRESHOLD && (gLastPage === location.href)) {
+    if ((bottomOfHeader() < 0) && (gLastPage === location.href)) {
         let searchBarShowing = document.querySelector(".floating-search").classList.contains('active');
         let floatingMenuShowing = document.getElementById("floating-header").classList.contains('active');
         floatMenus(true,(gScrollDirection < 0) && (!searchBarShowing || floatingMenuShowing));
@@ -677,7 +700,7 @@ window.addEventListener("scroll", (event) => {
 
     if ((gScrollDirection > 0) && gMenuFloating)
         floatMenus(true,false);
-    if (window.scrollY < FLOATING_MENU_THRESHOLD)
+    if (bottomOfHeader() > 0)
         floatMenus(false,false);
 });
 
