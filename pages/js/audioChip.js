@@ -46,9 +46,12 @@ const css = `
 /** @param {number} sec */
 const time = (sec) => {
 	let hours = Math.floor(sec / 3600);
-	let remainder = sec - 3600*hours;
-	let minuteStr = `${Math.floor(remainder / 60)}:${(remainder % 60).toString().padStart(2, "0")}`;
-	return hours ? `${hours}:${minuteStr}` : minuteStr;
+	let remainder = sec % 3600;
+	let secondStr = `${(remainder % 60).toString().padStart(2, "0")}`;
+	if (hours) 
+		return `${hours}:${Math.floor(remainder / 60).toString().padStart(2, "0")}:${secondStr}`
+	else
+		return `${Math.floor(remainder / 60)}:${secondStr}`;
 }
 
 class AudioChip extends HTMLElement {

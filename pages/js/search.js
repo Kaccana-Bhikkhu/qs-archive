@@ -308,7 +308,7 @@ class SearchGroup extends SearchBase {
     }
 
     toString() {
-        console.log(this)
+        debugLog(this);
         return `${this.negate ? "!" : ""}${this.prefixChar}(${this.terms.map((term) => String(term)).join(" ")})`;
     }
 }
@@ -996,7 +996,7 @@ export class ExcerptSearcher extends PagedSearcher {
                 excerpt.sortBlob.aTag.count += excerpt.sortBlob.qTag.count;
             // Don't count teachers with multiple names twice; uT means uniqueTeachers
             if (excerpt.sortBlob.teacher)
-                excerpt.sortBlob.teacher.count = excerpt.uT || 1;
+                excerpt.sortBlob.teacher.count = excerpt.uT || excerpt.uniqueTeachers || 1;
         }
     }
 
