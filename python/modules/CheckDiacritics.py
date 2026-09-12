@@ -104,7 +104,7 @@ def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
                 forms = gCorrectDiacritics[plainWord]
                 cannonicalForms = gCannonicalDiacritics[plainWord]
             else:
-                cannonicalForms = [f for f in forms if f in gTagAndTeacherForms[plainWord]]
+                cannonicalForms = [f for f in forms if f in gTagAndTeacherForms.get(plainWord,())]
             if len(cannonicalForms) in (0,len(forms)):
                 print(",".join(sortedFrequency[plainWord]),file = file)
             else: # Add "*" after potentially suspicious forms
