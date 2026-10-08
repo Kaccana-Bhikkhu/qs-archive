@@ -806,6 +806,11 @@ def CheckItemContents(item: dict,owningExcerpt: dict|None,kind: dict) -> bool:
     if owningExcerpt and not kind["canBeAnnotation"]:
         Alert.warning(item,"to",owningExcerpt,f": Kind {repr(item['kind'])} is not allowed for annotations.")
     
+    if owningExcerpt and item.get("offTopic"):
+        if not owningExcerpt["annotations"] or owningExcerpt["annotations"][-1]["kind"] != "Fragment":
+            Alert.caution(item,"to",owningExcerpt,": annotations should not have the off-topic flag set.")
+                # The off-topic flag applies only to fragment annotations
+
     for key,permission in itemAllowedFields.items():
         if item.get(key) and not kind[permission]:
             message = f"has ['{key}'] = {repr(item[key])}, but kind {repr(item['kind'])} does not allow this."
