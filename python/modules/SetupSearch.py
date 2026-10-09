@@ -144,6 +144,8 @@ def OptimizedExcerpts() -> list[dict]:
                  "uniqueTeachers": len(Filter.AllTeachers(x))}
         if featuredFilter(fragmentGroup):
             xDict["blobs"][0] = xDict["blobs"][0].replace("|#","|#homepage#")
+        if ParseCSV.ExcerptFlag.DEMOTE in x["flags"]:
+            xDict["demote"] = len(x["flags"].split(ParseCSV.ExcerptFlag.DEMOTE)) - 1
         returnValue.append(xDict)
     return returnValue
 

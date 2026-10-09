@@ -1059,6 +1059,10 @@ export class ExcerptSearcher extends PagedSearcher {
                             explanationBits.push(`${blobKind}:[(${matcher.explanation})(${weight}*/${item.sortBlob[blobKind].count.toFixed(1)})]`);
                     }
                 }
+                if (item.demote) {
+                    item.searchWeight -= 10 * item.demote;
+                    explanationBits.push(`demote:[-10 * ${item.demote}]`);
+                }
                 if (DEBUG)
                     item.searchExplanation = explanationBits.join(" + ");
             }

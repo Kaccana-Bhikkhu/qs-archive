@@ -383,7 +383,8 @@ class ExcerptMatch(FilterGroup):
 def MostRelevant(tags:str|Iterable[str]) -> Filter:
     "Return a filter that passes the most relevant excerpts for the given tag(s)."
     t = FrozenSet(tags)
-    return Or(FTag(t),QTag(t),SingleItemMatch(Tag(t),Category(("Quotes","Stories"))))
+    relevanceFilter = Or(FTag(t),QTag(t),SingleItemMatch(Tag(t),Category(("Quotes","Stories"))))
+    return And(relevanceFilter,Flags(ParseCSV.ExcerptFlag.DEMOTE).Not())
 
 def AllTags(item: dict) -> set:
     """Return the set of all tags in item, which is either an excerpt or an annotation."""
