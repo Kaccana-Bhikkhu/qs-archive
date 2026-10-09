@@ -47,12 +47,14 @@ class ExcerptFlag(StrEnum):
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
     NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
     UNNAMED_SPEAKER = "q"   # Anonymous indirect speech; not flagged by ReviewDatabase
+    DEMOTE = "d"            # Lower search priority for inferior excerpts 
     END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
     HOMEPAGE_FEATURE = "!"  # Feature this excerpt on the homepage (even if it's not from AP)
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
     CHECK_SPLIT = "C"       # Check beginning, end, and cut split points
+    BIOGRAPHY = "B"         # Flag for LPP biography
 
 # Each fTagOrder integer is followed by a single character flag specifying where to display this featured excerpt
 class FTagOrderFlag(StrEnum):
@@ -807,9 +809,7 @@ def CheckItemContents(item: dict,owningExcerpt: dict|None,kind: dict) -> bool:
         Alert.warning(item,"to",owningExcerpt,f": Kind {repr(item['kind'])} is not allowed for annotations.")
     
     if owningExcerpt and item.get("offTopic"):
-        if not owningExcerpt["annotations"] or owningExcerpt["annotations"][-1]["kind"] != "Fragment":
-            Alert.caution(item,"to",owningExcerpt,": annotations should not have the off-topic flag set.")
-                # The off-topic flag applies only to fragment annotations
+        Alert.caution(item,"to",owningExcerpt,": annotations should not have the off-topic flag set.")
 
     for key,permission in itemAllowedFields.items():
         if item.get(key) and not kind[permission]:
