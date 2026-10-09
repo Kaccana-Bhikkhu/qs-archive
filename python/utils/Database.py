@@ -143,9 +143,16 @@ def EventLink(event:str, session: int|None = None, fileNumber:int|None = None) -
         return f"{directory}{event}.html"
 
 
-def ItemCitation(item: dict) -> str:
+def ItemCitation(item: dict,htmlLink = True) -> str:
     """Return html code with the name of the event, session number, and file number.
     item can be an event, session or excerpt"""
+
+    def Link(text:str, href: str) -> str:
+        "Link to href if requested, otherwise just return text."
+        if htmlLink:
+            return Html.Tag("a",{"href":href})(text)
+        else:
+            return text
 
     event = item.get("event",item.get("code",None))
     session = item.get("sessionNumber",None)
@@ -155,13 +162,13 @@ def ItemCitation(item: dict) -> str:
         eventYear = re.search(r"[0-9]{4}",event)
         if eventYear:
             eventName += f" [{eventYear[0]}]"
-    parts = [Html.Tag("a",{"href":EventLink(event)})(eventName)]
+    parts = [Link(eventName,EventLink(event))]
     if session:
-        parts.append(Html.Tag("a",{"href":EventLink(event,session)})(f"Session {session}"))
+        parts.append(Link(f"Session {session}",EventLink(event,session)))
     excerptNumber = item.get("excerptNumber",None)
     if excerptNumber:
         fileNumber = FragmentSource(item)["fileNumber"]
-        parts.append(Html.Tag("a",{"href":EventLink(event,session,fileNumber)})(f"Excerpt {excerptNumber}"))
+        parts.append(Link(f"Excerpt {excerptNumber}",EventLink(event,session,fileNumber)))
     return ", ".join(parts)
 
 
@@ -385,6 +392,18 @@ def PairWithSession(excerpts: list[dict],sessions: list[dict]|None = None) -> It
 
     for session,excerptList in GroupBySession(excerpts,sessions):
         yield from ((session,x) for x in excerptList)
+
+
+def MergedEventsAndSections() -> Iterable[dict]:
+    """Returns a chronological iterator of events and event sections."""
+
+    sections = list(gDatabase["eventSection"].values())
+    sectionIndex = 0
+    for event in gDatabase["event"].values():
+        yield event
+        while (sectionIndex < len(sections) and sections[sectionIndex]["event"] == event["code"]):
+            yield sections[sectionIndex]
+            sectionIndex += 1
 
 
 def ItemCode(item:dict|None = None, event:str = "", session:int|None = None, fileNumber:int|None = None) -> str:

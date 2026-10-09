@@ -799,6 +799,18 @@ def PrepareTeachers(teacherDB) -> None:
         else:
             t["htmlFile"] = ""
 
+def PrepareEventSections(eventSectionDB: dict) -> dict:
+    """Prepare database["eventSection] for use. Returns a new sorted database."""
+
+    ListifyKey(eventSectionDB,"tags")
+    ConvertToInteger(eventSectionDB,"firstSession")
+    ConvertToInteger(eventSectionDB,"lastSession")
+
+    eventIndex = {event:index for index,event in enumerate(gDatabase["event"])}
+    sections = list(eventSectionDB.values())
+    sections.sort(key=lambda s: (eventIndex[s["event"]],s["firstSession"]))
+    return {s["code"]:s for s in sections}
+
 itemAllowedFields = {"startTime": "takesTimes", "endTime": "takesTimes", "teachers": "takesTeachers", 
                      "aTag": "takesTags", "qTag": "takesTags","fTag": "takesTags","fTagOrder": "takesTags"}
 
@@ -1836,6 +1848,7 @@ def main():
         gDatabase["tagRemoved"] = []
 
     PrepareTeachers(gDatabase["teacher"])
+    gDatabase["eventSection"] = PrepareEventSections(gDatabase["eventSection"])
 
     CreateTagDisplayList(gDatabase)
     SortTags(gDatabase)

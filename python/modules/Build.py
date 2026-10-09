@@ -1660,7 +1660,7 @@ def ListEventsBySubject(events: list[dict]) -> str:
     """Return html code listing these events by series."""
     
     eventsByTag:dict[str,list[str]] = defaultdict(list) # tag:list[event["code"]]
-    for e in events:
+    for e in Database.MergedEventsAndSections():
         for tags in e["tags"]:
             eventsByTag[tags].append(e["code"])
 
@@ -1679,10 +1679,17 @@ def ListEventsBySubject(events: list[dict]) -> str:
     eventListByTags:list[tuple[tuple[str],str]] = []
     for tags in sorted(eventsByMultiTags,key=TagOrderKey):
         for e in eventsByMultiTags[tags]:
+            if e in gDatabase["eventSection"]:
+                section = gDatabase["eventSection"][e]
+                titleLink = Html.Tag("a",{"href":Database.EventLink(section["event"],section["firstSession"])})(section["title"])
+                sectionLink = f", Sessions {section['firstSession']} – {section['lastSession']}: {titleLink}"
+                itemLink = Html.Tag("p")(Database.ItemCitation(gDatabase["event"][section["event"]],htmlLink=False) + sectionLink)
+            else:
+                itemLink = Html.Tag("p")(Database.ItemCitation(gDatabase["event"][e]))
             listItem = (ListLinkedTags("",tags,lastJoinStr = " and "),
-                        Html.Tag("p")(Database.ItemCitation(gDatabase["event"][e])),
-                        "-".join(tags),
-                        (" and ".join(tags) if len(tags) <= 2 else tags[0] + ", etc.").replace(" ","&nbsp;"))
+                itemLink,
+                "-".join(tags),
+                (" and ".join(tags) if len(tags) <= 2 else tags[0] + ", etc.").replace(" ","&nbsp;"))
             eventListByTags.append(listItem)
             
     

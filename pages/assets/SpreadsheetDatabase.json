@@ -179871,7 +179871,7 @@
       "excerptNumber": 2,
       "fileNumber": 2,
       "kind": "Other",
-      "flags": "a0",
+      "flags": "a",
       "text": "{teachers} compares his experience of Buddhism at university with that of a Three Jewels visitor.",
       "teachers": [
         "AP"
@@ -180245,7 +180245,7 @@
       "fileNumber": 10,
       "kind": "Question",
       "flags": "",
-      "text": "People encourage my children to follow their passion. How doest this relate to dispassion? Do you have any advice for kids growing up?",
+      "text": "People encourage my children to follow their passion. How does this relate to dispassion? Do you have any advice for kids growing up?",
       "teachers": [
         "AP"
       ],
@@ -180260,7 +180260,7 @@
         {
           "kind": "Quote",
           "flags": "",
-          "text": "You can't really pursue a path of virute, integrity, meditation, wisdom, and reflection if you're not passionate about it.",
+          "text": "You can't really pursue a path of virtue, integrity, meditation, wisdom, and reflection if you're not passionate about it.",
           "teachers": [
             "AP"
           ],
@@ -181379,10 +181379,7 @@
       "format": "Multiday event",
       "medium": "In-person",
       "tags": [
-        "Mindfulness of dhammas",
-        "Hindrances",
-        "Aggregates",
-        "Sense bases"
+        "Mindfulness of dhammas"
       ],
       "website": "https://www.abhayagiri.org/media/discs/APasannoRetreats/2013%20Fourth%20Foundation%20of%20Mindfulness/Index.html",
       "description": "Mindfulness of dhammas as described in the Satipaṭṭhāna Sutta (MN 10) encompases the [Five Hindrances](tag:Hindrances), [Five Aggregates](tag:Aggregates), [Six Sense Bases](tag:Six Sense Bases), [Seven Factors of Awakening](tag:Factors of Awakening) and the [Four Noble Truths](tag:Four Noble Truths). Ajahn Pasanno, Ajahn Karuṇadhammo, and Ajahn Jotipālo take turns reading suttas and teachings about these subjects.",
@@ -181415,7 +181412,7 @@
       "excerpts": 36
     },
     "UD2013-2": {
-      "title": "A Monastic's Life",
+      "title": "A Monastic’s Life",
       "subtitle": "",
       "code": "UD2013-2",
       "series": [
@@ -181692,10 +181689,7 @@
       "format": "Multiday event",
       "medium": "In-person",
       "tags": [
-        "Right Mindfulness",
-        "Mindfulness of body",
-        "Mindfulness of feeling",
-        "Mindfulness of mind"
+        "Right Mindfulness"
       ],
       "website": "https://www.abhayagiri.org/media/discs/2015WinterRetreat/Index.html",
       "description": "Ajahn Pasanno, Ajahn Karuṇadhammo, and Ajahn Ñāṇiko take turns reading suttas and teachings regarding the Four Foundations of Mindfulness. The structure often follows  _Right Mindfulness_ by Ajahn Ṭhānissaro. There are noteworthy [slideshows](#WR2015_S07) illustrating the 32 parts of the body.",
@@ -181875,7 +181869,7 @@
       "excerpts": 165
     },
     "Anniversary2016": {
-      "title": "Abhayagiri's 20th Anniversary",
+      "title": "Abhayagiri’s 20th Anniversary",
       "subtitle": "",
       "code": "Anniversary2016",
       "series": [
@@ -181906,7 +181900,7 @@
       "excerpts": 64
     },
     "UD2016-2": {
-      "title": "Suttas You've Never Heard Of",
+      "title": "Suttas You’ve Never Heard Of",
       "subtitle": "",
       "code": "UD2016-2",
       "series": [
@@ -182522,7 +182516,7 @@
       "excerpts": 18
     },
     "Sudhana2023": {
-      "title": "Q&ampA at Sudhana Center",
+      "title": "Q&A at Sudhana Center",
       "subtitle": "",
       "code": "Sudhana2023",
       "series": [
@@ -182925,7 +182919,7 @@
       "excerpts": 4
     },
     "Anniversary2026-1": {
-      "title": "Abhayagiri's 30th Anniversary Part 1",
+      "title": "Abhayagiri’s 30th Anniversary Part 1",
       "subtitle": "",
       "code": "Anniversary2026-1",
       "series": [
@@ -197351,7 +197345,6 @@
         "Mindfulness of body"
       ],
       "subtopics": [],
-      "eventCount": 1,
       "sessionCount": 1,
       "excerptCount": 169,
       "fTagCount": 5,
@@ -197553,7 +197546,6 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "mindfulness-of-feeling.html",
-      "eventCount": 1,
       "sessionCount": 2,
       "excerptCount": 41,
       "fTagCount": 1,
@@ -197579,7 +197571,6 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "mindfulness-of-mind.html",
-      "eventCount": 1,
       "sessionCount": 1,
       "excerptCount": 61,
       "fTagCount": 2,
@@ -197643,7 +197634,6 @@
         "Hindrances"
       ],
       "subtopics": [],
-      "eventCount": 1,
       "sessionCount": 5,
       "excerptCount": 97,
       "fTagCount": 5,
@@ -197678,7 +197668,6 @@
         "Aggregates"
       ],
       "subtopics": [],
-      "eventCount": 1,
       "sessionCount": 5,
       "excerptCount": 143,
       "fTagCount": 5,
@@ -197707,7 +197696,6 @@
         "Sense bases"
       ],
       "subtopics": [],
-      "eventCount": 1,
       "sessionCount": 2,
       "excerptCount": 102,
       "fTagCount": 2,
@@ -229060,6 +229048,148 @@
       "icon": "calendar"
     }
   },
+  "eventSection": {
+    "WR2005-1_S04": {
+      "code": "WR2005-1_S04",
+      "event": "WR2005-1",
+      "firstSession": 4,
+      "lastSession": 8,
+      "tags": [
+        "Hindrances"
+      ],
+      "title": "Recognizing and Relinquishing the Hindrances"
+    },
+    "WR2005-1_S14": {
+      "code": "WR2005-1_S14",
+      "event": "WR2005-1",
+      "firstSession": 14,
+      "lastSession": 18,
+      "tags": [
+        "Mindfulness of dhammas"
+      ],
+      "title": "The Fourth Ānāpānasati Tetrad"
+    },
+    "WR2013_S12": {
+      "code": "WR2013_S12",
+      "event": "WR2013",
+      "firstSession": 12,
+      "lastSession": 20,
+      "tags": [
+        "Hindrances"
+      ],
+      "title": "The Five Hindrances"
+    },
+    "WR2013_S21": {
+      "code": "WR2013_S21",
+      "event": "WR2013",
+      "firstSession": 21,
+      "lastSession": 36,
+      "tags": [
+        "Aggregates"
+      ],
+      "title": "The Five Khandhas"
+    },
+    "WR2013_S37": {
+      "code": "WR2013_S37",
+      "event": "WR2013",
+      "firstSession": 37,
+      "lastSession": 44,
+      "tags": [
+        "Sense bases"
+      ],
+      "title": "The Six Sense Bases"
+    },
+    "WR2015_S05": {
+      "code": "WR2015_S05",
+      "event": "WR2015",
+      "firstSession": 5,
+      "lastSession": 13,
+      "tags": [
+        "Mindfulness of body"
+      ],
+      "title": "Mindfulness of the Body"
+    },
+    "WR2015_S22": {
+      "code": "WR2015_S22",
+      "event": "WR2015",
+      "firstSession": 22,
+      "lastSession": 26,
+      "tags": [
+        "Mindfulness of breathing"
+      ],
+      "title": "The Structure of Breath Meditation"
+    },
+    "WR2015_S36": {
+      "code": "WR2015_S36",
+      "event": "WR2015",
+      "firstSession": 36,
+      "lastSession": 37,
+      "tags": [
+        "Mindfulness of body"
+      ],
+      "title": "Fleshing Out the Four Tetrads: Body"
+    },
+    "WR2015_S37": {
+      "code": "WR2015_S37",
+      "event": "WR2015",
+      "firstSession": 37,
+      "lastSession": 40,
+      "tags": [
+        "Mindfulness of feeling"
+      ],
+      "title": "Fleshing Out the Four Tetrads: Feeling"
+    },
+    "WR2015_S40": {
+      "code": "WR2015_S40",
+      "event": "WR2015",
+      "firstSession": 40,
+      "lastSession": 43,
+      "tags": [
+        "Mindfulness of mind"
+      ],
+      "title": "Fleshing Out the Four Tetrads: Mind"
+    },
+    "WR2015_S45": {
+      "code": "WR2015_S45",
+      "event": "WR2015",
+      "firstSession": 45,
+      "lastSession": 47,
+      "tags": [
+        "Feeling"
+      ],
+      "title": "Vedanā"
+    },
+    "Anniversary2016_S07": {
+      "code": "Anniversary2016_S07",
+      "event": "Anniversary2016",
+      "firstSession": 7,
+      "lastSession": 13,
+      "tags": [
+        "Saṅghapāla"
+      ],
+      "title": "Reflections by Saṅghapāla Board Members"
+    },
+    "WR2025_S36": {
+      "code": "WR2025_S36",
+      "event": "WR2025",
+      "firstSession": 36,
+      "lastSession": 37,
+      "tags": [
+        "Non-identification"
+      ],
+      "title": "Attamayatā: “Not Made of That”"
+    },
+    "WR2025_S53": {
+      "code": "WR2025_S53",
+      "event": "WR2025",
+      "firstSession": 53,
+      "lastSession": 56,
+      "tags": [
+        "Stream entry"
+      ],
+      "title": "Sotāpanna: The Spiritual Turning Point"
+    }
+  },
   "group": {
     "Communities": "",
     "Monastics": "",
@@ -236784,7 +236914,9 @@
     "End date": "endDate",
     "End time": "endTime",
     "Estimated year": "estimatedYear",
+    "Event": "event",
     "Event Code": "eventCode",
+    "EventSection": "eventSection",
     "Exact date": "exactDate",
     "Excerpts": "excerpts",
     "Exclude?": "exclude",
@@ -236792,6 +236924,7 @@
     "FTagOrder": "fTagOrder",
     "FTags": "fTags",
     "Filename": "filename",
+    "First session": "firstSession",
     "Flags": "flags",
     "Form 1": "form1",
     "Form 2": "form2",
@@ -236816,6 +236949,7 @@
     "Kind": "kind",
     "Known month": "knownMonth",
     "Known year": "knownYear",
+    "Last session": "lastSession",
     "Level": "level",
     "Lineage": "lineage",
     "Link": "link",
