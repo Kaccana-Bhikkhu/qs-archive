@@ -1859,7 +1859,7 @@ def main():
 
     Utils.ReorderKeys(gDatabase,["excerpts","event","sessions","audioSource","kind","category","teacher","tag","series","venue","format","medium","reference","tagDisplayList"])
 
-    Alert.extra("Spreadsheet database contents:",indent = 0)
+    Alert.extra(f"Spreadsheet database contents: dict[{len(gDatabase)}]",indent = 0)
     Utils.SummarizeDict(gDatabase,Alert.extra)
 
     Database.WriteDatabase(gDatabase,gOptions.spreadsheetDatabase)
