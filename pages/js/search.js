@@ -89,6 +89,11 @@ export async function loadSearchPage() {
     if (!searchButtonsFound)
         return;
 
+    document.getElementById("show-code-button").addEventListener("click",event => {
+        moveFiltersToSearch();
+        event.preventDefault();
+    });
+
     let params = frameSearch();
     let query = params.has("q") ? decodeURIComponent(params.get("q")) : "";
     if (!query)
@@ -1207,6 +1212,103 @@ class MultiSearcher {
     }
 }
 
+function removeFilter(clickEvent) {
+    // Remove a filter when its close box is clicked.
+    clickEvent.preventDefault();
+    let targetSpan = clickEvent.target;
+    while (targetSpan.localName != "span") {
+        targetSpan = targetSpan.parentElement;
+    }
+    let filterNumber = 1;
+    while (targetSpan.previousSibling) {
+        targetSpan = targetSpan.previousSibling;
+        while (targetSpan.localName != "span") {
+            targetSpan = targetSpan.previousSibling;
+        }
+        filterNumber += 1;
+    }
+    console.log("Clicked filter number",filterNumber);
+
+    let params = frameSearch();
+    let filters = [];
+    let filterStr;
+    while (filterStr = params.get(`filter${filters.length + 1}`)) {
+        filters.push(filterStr);
+    }
+    filters.splice(filterNumber - 1,1);
+    for (let index = 0; index < filters.length; index++) {
+        params.set(`filter${index + 1}`,filters[index]);
+    }
+    params.delete(`filter${filters.length + 1}`);
+
+    history.pushState({},"",location.href); // First push a new history frame
+    setFrameSearch(params); // Then replace the history with the search query
+    searchFromURL();
+}
+
+function parseFilters(params) {
+    // Parse search filters from params.
+
+    let queries = [];
+    let names = [];
+    let filterStr,name,query;
+    while (filterStr = params.get(`filter${queries.length + 1}`)) {
+        [name,query] = filterStr.split("_",2);
+        queries.push(decodeSearchQuery(decodeURIComponent(query)));
+        names.push(name);
+    }
+    return [names,queries];
+}
+
+function loadFilters(params) {
+    // Read filters from params.
+    // Update the filters bar and return the combined filter query.
+
+    let names,queries;
+    [names,queries] = parseFilters(params);
+    let chips = [];
+    for (let name of names) {
+        chips.push(`<span>${name} <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
+    }
+    
+    let filterBar = document.querySelector("div.search-filters");
+    let filterChipBar = document.querySelector("span.search-filter-list");
+    if (chips.length > 0) {
+        filterChipBar.innerHTML = chips.join(" ");
+        filterBar.style.display = "block";
+        for (let closeBox of document.querySelectorAll("span.search-filter-list span a")) {
+            closeBox.addEventListener("click",removeFilter);
+        }
+    } else {
+        filterBar.style.display = "none";
+        filterChipBar.innerHTML = "";
+    }
+    return (queries.length > 0) ? queries.join(" ") : "";
+}
+
+function moveFiltersToSearch() {
+    // Copy the filter codes to the search bar.
+
+    let params = frameSearch();
+    let names,queries;
+    [names,queries] = parseFilters(params);
+    if (queries.length < 1)
+        return;
+
+    let fullQuery = queries.join(" ");
+    if (params.has("q"))
+        fullQuery += " " + decodeSearchQuery(decodeURIComponent(params.get("q")));
+    params.set("q",encodeURIComponent(encodeSearchQuery(fullQuery)));
+    
+    for (let index = 1; index <= queries.length; index++) {
+        params.delete(`filter${index}`);
+    }
+
+    history.pushState({},"",location.href); // First push a new history frame
+    setFrameSearch(params); // Then replace the history with the search query
+    searchFromURL();
+}
+
 function searchFromURL() {
     // Find excerpts matching the search query from the page URL.
     if (!gSearchDatabase) {
@@ -1220,6 +1322,10 @@ function searchFromURL() {
 
     debugLog("Called searchFromURL. Query:",query);
     frame.querySelector('#search-text').value = query;
+
+    let filter = loadFilters(params);
+    if (filter)
+        query = `${filter} ${query}`
 
     if (!query.trim()) {
         clearSearchResults();
@@ -1256,14 +1362,10 @@ function searchButtonClick(searchKind) {
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
     let params = frameSearch();
-    let newSearch = {q : query,search : searchKind};
-    if (params.has("featured"))
-        newSearch.featured = "";
-    if (params.has("relevant"))
-        newSearch.relevant = "";
-    let search = new URLSearchParams(newSearch);
+    params.set("q",query);
+    params.set("search",searchKind);
     history.pushState({},"",location.href); // First push a new history frame
-    setFrameSearch(search); // Then replace the history with the search query
+    setFrameSearch(params); // Then replace the history with the search query
 
     searchFromURL();
 }

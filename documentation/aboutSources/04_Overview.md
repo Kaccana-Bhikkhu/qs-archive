@@ -45,7 +45,7 @@ Ajahn Pasanno frequently mentions teachings from the Pāli Canon in his teaching
 The November 2025 release adds reference pages which collect excerpts which refer to the same [suttas](../texts/Sutta.html), [vinaya texts](../texts/Vinaya.html), and [books](../books/Modern.html). Holding down the alt or option key when clicking a link brings you to these pages rather than SuttaCentral translations or pdf book content. For some reason, Chrome frequently requires two alt-clicks before this works. Sutta titles in the reference pages come from the translations on SuttaCentral.
 
 ## Searching the Archive
-[The search page](../search/Text-search.html?featured=&relevant=) is the best way to search the archive. The June 2025 release added a floating search bar to the main menu which can be accessed anywhere by pressing '/'.
+[The search page](../search/Text-search.html?featured=&relevant=) is the best way to search the archive. The June 2025 release added a floating search bar to the main menu which can be accessed anywhere by pressing '/'. Detailed search instructions can be found in the [technical documentation](about:Search-instructions).
 
 The static pages accessible through the main menu and [site map](../sitemap.html) allow the user to browse the tags, events, and teachers contained in the archive in a variety of ways. Tag, event, and teacher pages list each relevant excerpt. Event pages list each excerpt in each of the event sessions. The tag and teacher pages group excerpts by event and session and additionally allow the user to narrow the search by excerpt kind. (Pages containing fewer than 10 excerpts don’t have this feature.)
 

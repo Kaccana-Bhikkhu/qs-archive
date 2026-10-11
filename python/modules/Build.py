@@ -220,11 +220,14 @@ def EncodeSearchQuery(query: str) -> str:
     encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
     return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
 
-def SearchLink(query:str,searchType:str = "x",featured:bool = True,relevant: bool = True) -> str:
-    """Returns a link to the search page with a specifed search string."""
+def SearchLink(query:str = "",searchType:str = "x",filters:Iterable[tuple[str,str]] = (),featured:bool = True,relevant: bool = True) -> str:
+    """Returns a link to the search page with a specifed search string.
+    filters is an iterable of searcg filters of the form (name,query)"""
 
     query = EncodeSearchQuery(query)
     queryDict = {"q":query,"search":searchType}
+    for n,(name,filterQuery) in enumerate(filters,start = 1):
+        queryDict[f"filter{n}"] = "_".join((name,EncodeSearchQuery(filterQuery)))
     if featured:
         queryDict["featured"] = ""
     if relevant:
@@ -2269,7 +2272,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             a.br()
 
             if featuredExcerpts:
-                with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
+                with a.a(href=SearchLink(filters = ((f"Event {Utils.RemoveHtmlTags(eventInfo['title'])}",f"@{eventCode}"),("Featured","+")),featured=False,relevant=False)):
                     a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
                 a(f"({len(featuredExcerpts)})")
                 a.br()

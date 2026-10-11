@@ -1208,6 +1208,35 @@ div.floating-search.active {
 	font-weight: lighter;
 }
 
+/* Search page styles */
+div.search-filters {
+	display: grid; 
+  	grid-template-columns: 58px 1fr 48px; 
+  	grid-template-rows: 1fr; 
+  	gap: 0px 0px; 
+  	grid-template-areas: 
+    ". . ."; 
+	margin-bottom: 10px;
+	font-size: 90%;
+}
+
+span.search-filter-list span {
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding: 0 10px 0 10px;
+	border-radius: 5px;
+	background-color: #f0f0f0;
+	white-space: nowrap;
+}
+
+button#show-code-button {
+	padding: 0 2px;
+	margin: 2px 0 0 0;
+	float: right;
+	font-size: 90%;
+}
+
 /* Abhayagiri grid menu styles */
 div.abhayagiri-grid-menu {
 	position: absolute;
