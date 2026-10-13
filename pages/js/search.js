@@ -89,7 +89,7 @@ export async function loadSearchPage() {
     if (!searchButtonsFound)
         return;
 
-    document.getElementById("show-code-button").addEventListener("click",event => {
+    document.getElementById("show-code-button")?.addEventListener("click",event => {
         moveFiltersToSearch();
         event.preventDefault();
     });
@@ -1272,16 +1272,13 @@ function loadFilters(params) {
     }
     
     let filterBar = document.querySelector("div.search-filters");
-    let filterChipBar = document.querySelector("span.search-filter-list");
-    if (chips.length > 0) {
+    if (filterBar) {
+        let filterChipBar = document.querySelector("span.search-filter-list");
         filterChipBar.innerHTML = chips.join(" ");
         filterBar.style.display = "block";
         for (let closeBox of document.querySelectorAll("span.search-filter-list span a")) {
             closeBox.addEventListener("click",removeFilter);
         }
-    } else {
-        filterBar.style.display = "none";
-        filterChipBar.innerHTML = "";
     }
     return (queries.length > 0) ? queries.join(" ") : "";
 }

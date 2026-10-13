@@ -1217,7 +1217,6 @@ div.search-filters {
   	grid-template-areas: 
     ". . ."; 
 	margin-bottom: 10px;
-	font-size: 90%;
 }
 
 span.search-filter-list span {
@@ -1232,9 +1231,8 @@ span.search-filter-list span {
 
 button#show-code-button {
 	padding: 0 2px;
-	margin: 2px 0 0 0;
+	margin: 2px 0 2px 0;
 	float: right;
-	font-size: 90%;
 }
 
 /* Abhayagiri grid menu styles */

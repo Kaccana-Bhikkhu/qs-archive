@@ -224,16 +224,23 @@ def SearchLink(query:str = "",searchType:str = "x",filters:Iterable[tuple[str,st
     """Returns a link to the search page with a specifed search string.
     filters is an iterable of searcg filters of the form (name,query)"""
 
-    query = EncodeSearchQuery(query)
-    queryDict = {"q":query,"search":searchType}
-    for n,(name,filterQuery) in enumerate(filters,start = 1):
-        queryDict[f"filter{n}"] = "_".join((name,EncodeSearchQuery(filterQuery)))
+    queryDict = {"search":searchType}
+    advancedSearch = False
+    if gOptions.advancedSearch:
+        for n,(name,filterQuery) in enumerate(filters,start = 1):
+            queryDict[f"filter{n}"] = "_".join((name,EncodeSearchQuery(filterQuery)))
+            advancedSearch = True
+    else:
+        filterQueries = [f[1] for f in filters]
+        query = " ".join(itertools.chain((query,),filterQueries))
+
+    queryDict["q"] = EncodeSearchQuery(query.strip())
     if featured:
         queryDict["featured"] = ""
     if relevant:
         queryDict["relevant"] = ""
     htmlQuery = urllib.parse.urlencode(queryDict,doseq=True,quote_via=urllib.parse.quote)
-    return f"../search/Text-search.html?{htmlQuery}"
+    return f"../search/{'Advanced' if advancedSearch else 'Text'}-search.html?{htmlQuery}"
 
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
     "Write a list of hyperlinked tags"
@@ -2176,6 +2183,17 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     searchPage = Html.PageDesc(pageInfo)
     searchPage.AppendContent(searchHtml)
     gSitemap.RegisterPageQuery(pageInfo.file,"featured=&relevant=")
+    searchMenu = [(pageInfo.AddQuery("_keep_query"), searchPage)]
+
+    if gOptions.advancedSearch:
+        advancedPageName = "Advanced-search.html"
+        searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",advancedPageName)
+        searchHtml = Utils.ReadFile(searchTemplate)
+        advancedPageInfo = Html.PageInfo("Advanced search",Utils.PosixJoin(searchDir,advancedPageName),titleIB="Advanced search")
+        advancedSearchPage = Html.PageDesc(advancedPageInfo)
+        advancedSearchPage.AppendContent(searchHtml)
+        gSitemap.RegisterPageQuery(advancedPageInfo.file,"featured=&relevant=")
+        searchMenu.append((advancedPageInfo.AddQuery("_keep_query"), advancedSearchPage))
 
     featuredPageName = "Featured.html"
     featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
@@ -2183,11 +2201,7 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     featuredPage = Html.PageDesc(featuredExcerptPageInfo)
     featuredPage.AppendContent(featuredHtml)
     gSitemap.RegisterPageQuery(featuredExcerptPageInfo.file,"")
-
-    searchMenu = [
-        (pageInfo.AddQuery("_keep_query"), searchPage),
-        (featuredExcerptPageInfo.AddQuery("_keep_query"),featuredPage)
-    ]
+    searchMenu.append((featuredExcerptPageInfo.AddQuery("_keep_query"),featuredPage))
     
     basePage = Html.PageDesc()
     for page in basePage.AddMenuAndYieldPages(searchMenu,**SUBMENU_STYLE):
@@ -3012,6 +3026,7 @@ def AddArguments(parser):
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
 
+    parser.add_argument('--advancedSearch',**Utils.STORE_TRUE,help="Include an advanced search page.")
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")
