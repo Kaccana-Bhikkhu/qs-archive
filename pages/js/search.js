@@ -1247,28 +1247,26 @@ function removeFilter(clickEvent) {
 }
 
 function parseFilters(params) {
-    // Parse search filters from params.
+    // Parse search filters from params. Returns a list of objects.
 
-    let queries = [];
-    let names = [];
-    let filterStr,name,query;
-    while (filterStr = params.get(`filter${queries.length + 1}`)) {
-        [name,query] = filterStr.split("_",2);
-        queries.push(decodeSearchQuery(decodeURIComponent(query)));
-        names.push(name);
+    let chips = [];
+    let filterStr,name,query,icon,flags;
+    while (filterStr = params.get(`filter${chips.length + 1}`)) {
+        filterStr = decodeSearchQuery(decodeURIComponent(filterStr));
+        [icon,name,flags,query] = filterStr.split("_",4);
+        chips.push({"icon":icon,"name":name,"flags":flags,"query":query});
     }
-    return [names,queries];
+    return chips;
 }
 
 function loadFilters(params) {
     // Read filters from params.
     // Update the filters bar and return the combined filter query.
 
-    let names,queries;
-    [names,queries] = parseFilters(params);
+    let queries = parseFilters(params);
     let chips = [];
-    for (let name of names) {
-        chips.push(`<span>${name} <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
+    for (let query of queries) {
+        chips.push(`<span>${query.name} <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
     }
     
     let filterBar = document.querySelector("div.search-filters");
@@ -1280,19 +1278,18 @@ function loadFilters(params) {
             closeBox.addEventListener("click",removeFilter);
         }
     }
-    return (queries.length > 0) ? queries.join(" ") : "";
+    return (queries.length > 0) ? queries.map(q => q.query).join(" ") : "";
 }
 
 function moveFiltersToSearch() {
     // Copy the filter codes to the search bar.
 
     let params = frameSearch();
-    let names,queries;
-    [names,queries] = parseFilters(params);
+    let queries = parseFilters(params);
     if (queries.length < 1)
         return;
 
-    let fullQuery = queries.join(" ");
+    let fullQuery = queries.map(q => q.query).join(" ");
     if (params.has("q"))
         fullQuery += " " + decodeSearchQuery(decodeURIComponent(params.get("q")));
     params.set("q",encodeURIComponent(encodeSearchQuery(fullQuery)));
