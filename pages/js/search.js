@@ -1222,24 +1222,18 @@ function removeFilter(clickEvent) {
     let filterNumber = 1;
     while (targetSpan.previousSibling) {
         targetSpan = targetSpan.previousSibling;
-        while (targetSpan.localName != "span") {
-            targetSpan = targetSpan.previousSibling;
-        }
-        filterNumber += 1;
+        if (targetSpan.localName == "span")
+            filterNumber += 1;
     }
-    console.log("Clicked filter number",filterNumber);
 
     let params = frameSearch();
-    let filters = [];
+    let nextFilter = 2;
     let filterStr;
-    while (filterStr = params.get(`filter${filters.length + 1}`)) {
-        filters.push(filterStr);
+    while (filterStr = params.get(`filter${nextFilter}`)) {
+        params.set(`filter${nextFilter - 1}`,filterStr);
+        nextFilter += 1;
     }
-    filters.splice(filterNumber - 1,1);
-    for (let index = 0; index < filters.length; index++) {
-        params.set(`filter${index + 1}`,filters[index]);
-    }
-    params.delete(`filter${filters.length + 1}`);
+    params.delete(`filter${nextFilter - 1}`);
 
     history.pushState({},"",location.href); // First push a new history frame
     setFrameSearch(params); // Then replace the history with the search query
@@ -1264,15 +1258,15 @@ function loadFilters(params) {
     // Update the filters bar and return the combined filter query.
 
     let queries = parseFilters(params);
-    let chips = [];
-    for (let query of queries) {
-        chips.push(`<span>${query.name} <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
-    }
+    let chips = queries.map((q,n) => `<span><span id="filter-query${n+1}"></span> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
     
     let filterBar = document.querySelector("div.search-filters");
     if (filterBar) {
         let filterChipBar = document.querySelector("span.search-filter-list");
         filterChipBar.innerHTML = chips.join(" ");
+        queries.forEach((q,n) => {
+            document.getElementById(`filter-query${n+1}`).innerText = q.name;
+        });
         filterBar.style.display = "block";
         for (let closeBox of document.querySelectorAll("span.search-filter-list span a")) {
             closeBox.addEventListener("click",removeFilter);

@@ -1219,7 +1219,7 @@ div.search-filters {
 	margin-bottom: 10px;
 }
 
-span.search-filter-list span {
+span.search-filter-list > span {
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 10px;
