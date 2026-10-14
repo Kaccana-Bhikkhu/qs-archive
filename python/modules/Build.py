@@ -1452,9 +1452,16 @@ def FilteredEventsMenuItem(filter:Filter.Filter, mainPageInfo:Html.PageInfo, fil
     menutitle: the title in the menu.
     fileExt: the extension to add to the main page file for the filtered page."""
 
-    filteredEvents = list(filter.Apply(gDatabase["event"].values()))
+    filteredEvents = list(filter.Apply(Database.MergedEventsAndSections()))
 
-    filteredSessions = Filter.And(filter,Filter.Event(e["code"] for e in filteredEvents).Not())(gDatabase["sessions"])
+    fullEvents,eventSections = Utils.Partition(filteredEvents,lambda e: e.get("venue"))
+    eventSectionSessions = defaultdict(set)
+    for section in eventSections:
+        eventCode,firstSession,_ = Database.ParseItemCode(section["code"])
+        eventSectionSessions[eventCode].update(range(firstSession,section["lastSession"] + 1))
+
+    filteredSessions = Filter.And(filter,Filter.Event(e["code"] for e in fullEvents).Not())(gDatabase["sessions"])
+    filteredSessions = [s for s in filteredSessions if s["sessionNumber"] not in eventSectionSessions.get(s["event"],())]
     filteredSessions = [s for s in filteredSessions if s["sessionTitle"]]
         # Find titled sessions not in these events that match filter
 
@@ -1463,11 +1470,16 @@ def FilteredEventsMenuItem(filter:Filter.Filter, mainPageInfo:Html.PageInfo, fil
 
     htmlBits = []
     if filteredEvents:
-        if len(filteredEvents) <= 3 and not filteredSessions: # Provide full details if there are few events
+        if len(filteredEvents) <= 3 and not (filteredSessions or eventSections): # Provide full details if there are few events
             htmlBits.append(ListDetailedEvents(filteredEvents,showTags=False))
         else:
+            header = ["events"] if fullEvents else []
+            if eventSections:
+                header.append("event sections")
+            header = " and ".join(header).capitalize()
             if filteredSessions:
-                htmlBits.append(Html.Tag("h3")(f"Events ({len(filteredEvents)})"))
+                htmlBits.append(Html.Tag("h3")
+                    (f"{header} ({len(filteredEvents)})"))
             eventList = "\n".join(EventDescription(e,showMonth=True,excerptCount=False) for e in filteredEvents)
             htmlBits.append(Html.Tag("div",{"class":"listing"})(eventList))
 
@@ -1491,7 +1503,12 @@ def FilteredEventsMenuItem(filter:Filter.Filter, mainPageInfo:Html.PageInfo, fil
     else:
         pageInfo = mainPageInfo
 
-    menuItem = pageInfo._replace(title=(f"Events ({len(filteredEvents)})" if filteredEvents else f"Sessions ({len(filteredSessions)})"))
+    itemCount = 0
+    for itemName,items in (("Events",fullEvents),("Event sections",eventSections),("Sessions",filteredSessions)):
+        if items:
+            itemCount = len(items)
+            break
+    menuItem = pageInfo._replace(title=f"{itemName} ({itemCount})")
 
     return menuItem,"".join(htmlBits)
 
@@ -1619,11 +1636,21 @@ def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
 
 def EventDescription(event: dict,showMonth = False,excerptCount = True) -> str:
     href = Html.Wrapper(f"<a href = {Database.EventLink(event['code'])}>","</a>")
+    monthStr = ""
     if showMonth:
-        startDate = Utils.ParseDate(event["startDate"])
+        endDate = None
+        if "series" in event:
+            startDate = Utils.ParseDate(event["startDate"])
+            if event["endDate"]:
+                endDate = Utils.ParseDate(event["endDate"])
+        else:
+            sessions = Database.SessionDict()
+            eventCode,firstSession,_ = Database.ParseItemCode(event["code"])
+            startDate = Utils.ParseDate(sessions[eventCode][firstSession]["date"])
+            endDate = Utils.ParseDate(sessions[eventCode][event["lastSession"]]["date"])
+
         monthStr = f'{startDate.strftime("%B")} {int(startDate.year)}'
-        if event["endDate"]:
-            endDate = Utils.ParseDate(event["endDate"])
+        if endDate:
             endMonthStr = f'{endDate.strftime("%B")} {int(endDate.year)}'
             if endMonthStr != monthStr:
                 if startDate.year == endDate.year:
@@ -1631,10 +1658,8 @@ def EventDescription(event: dict,showMonth = False,excerptCount = True) -> str:
                 else:
                     monthStr = f'{monthStr} to {endMonthStr}'
         monthStr = ' – ' + monthStr
-
-    else:
-        monthStr = ""
-    excerptCountStr = f"({event['excerpts']})" if excerptCount else ""
+    
+    excerptCountStr = f"({event['excerpts']})" if ("series" in event and excerptCount) else ""
     return f"<p>{href.Wrap(event['title'])} {excerptCountStr}{monthStr}</p>"
 
 def ListEventsBySubject(events: list[dict]) -> str:
@@ -1858,7 +1883,7 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
         if len(filterMenu) > 1:
             pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE)
             if gOptions.skipSubsearchPages: # Write only the main page if this is the case
-                pageIterator = Utils.SingleItemIterator(pageIterator,1 if hasEventsPage else 0)
+                pageIterator = Utils.SingleItemIterator(pageIterator,0) # 1 if hasEventsPage else 0)
             yield from map(LinkToPeoplePages,pageIterator)
             return
     

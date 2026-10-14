@@ -137,6 +137,8 @@ def EventLink(event:str, session: int|None = None, fileNumber:int|None = None) -
     "Return a link to a given event, session, and fileNumber. If session == None, link to the top of the event page"
 
     directory = "../events/"
+    if "_" in event:
+        event,session,fileNumber = ParseItemCode(event)
     if session or fileNumber:
         return f"{directory}{event}.html#{ItemCode(event=event,session=session,fileNumber=fileNumber)}"
     else:
