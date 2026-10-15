@@ -20,7 +20,7 @@ Object.keys(PALI_DIACRITICS).forEach((letter) => {
     PALI_DIACRITIC_MATCH_ALL[letter] = `[${letter}${PALI_DIACRITICS[letter]}]`;
 });
 
-const DEBUG = false;
+const DEBUG = true;
 
 export function regExpEscape(literal_string) {
     return literal_string.replace(/[-[\]{}()*+!<>=:?.\/\\^$|#\s,]/g, '\\$&');
@@ -571,7 +571,10 @@ class Searcher {
     query = null; // A searchQuery object describing the search
     foundItems = []; // The items we have found.
     multiSearcher = null; // Set to the MultiSearcher object we are part of.
-    
+    subitemFilter = null; // A function which takes a found member of item and returns
+        // the tuple [code (str),isMain (bool)]. If the main item with a given code appears
+        // in the search results, remove subsequent subitems with the same code.
+
     constructor(code,name) {
         // Configure a search with a given code and name
         this.code = code;
@@ -588,6 +591,24 @@ class Searcher {
         debugLog(this.name,"search.");
         this.query = searchQuery
         this.foundItems = searchQuery.filterItems(this.items);
+        if (this.subitemFilter) {
+            let prevMainCode = "";
+            this.foundItems = this.foundItems.filter(item => {
+                let code,mainItem;
+                [code,mainItem] = this.subitemFilter(item);
+                if (mainItem) {
+                    prevMainCode = code;
+                    return true;
+                } else {
+                    if (code == prevMainCode)
+                        return false;
+                    else {
+                        prevMainCode = "";
+                        return true;
+                    }
+                }
+            })
+        }
     }
 
     renderItems(startItem = 0,endItem = null) {
@@ -1064,9 +1085,11 @@ export class ExcerptSearcher extends PagedSearcher {
                             explanationBits.push(`${blobKind}:[(${matcher.explanation})(${weight}*/${item.sortBlob[blobKind].count.toFixed(1)})]`);
                     }
                 }
-                if (item.demote) {
-                    item.searchWeight -= 10 * item.demote;
-                    explanationBits.push(`demote:[-10 * ${item.demote}]`);
+                let demoteFlag = item.blobs[0].match(/#-+#/);
+                if (demoteFlag) {
+                    let demoteCount = demoteFlag[0].length - 2;
+                    item.searchWeight -= 10 * demoteCount;
+                    explanationBits.push(`demote:[-10 * ${demoteCount}]`);
                 }
                 if (DEBUG)
                     item.searchExplanation = explanationBits.join(" + ");
@@ -1358,12 +1381,23 @@ function searchButtonClick(searchKind) {
     searchFromURL();
 }
 
+function eventCode(item) {
+    // Return the event code corresponding to this item
+    let codeMatch = item.blobs[0].match(/@([^@]+)@([^@]+@)?$/);
+    return [codeMatch[1],!codeMatch[2]];
+}
+
 let gSearchDatabase = null; // The global search database, loaded from assets/SearchDatabase.json
 
 let gTextSearcher = new TruncatedSearcher("p","text",8);
 gTextSearcher.nameInResults = "Sutta and Vinaya texts";
+
 let gAllTextSearcher = new TruncatedSearcher("p","text",-2);
 gAllTextSearcher.nameInResults = "Sutta and Vinaya texts";
+
+let gAllEventSearcher = new TruncatedSearcher("e","event",3);
+gAllEventSearcher.subitemFilter = eventCode;
+
 export let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",
@@ -1378,7 +1412,7 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("b","subtopic",5),
         new TruncatedSearcher("g","tag",5),
         new TruncatedSearcher("t","teacher",5),
-        new TruncatedSearcher("e","event",3),
+        gAllEventSearcher,
         new SessionSearcher(),
         gAllTextSearcher,
         new TruncatedSearcher("o","book",-2),
@@ -1390,3 +1424,4 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("a","author",4),
     ),
 };
+gSearchers["e"].subitemFilter = eventCode;

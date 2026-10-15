@@ -143,9 +143,10 @@ def OptimizedExcerpts() -> list[dict]:
                  "html": formatter.HtmlExcerptList([x]),
                  "uniqueTeachers": len(Filter.AllTeachers(x))}
         if featuredFilter(fragmentGroup):
-            xDict["blobs"][0] = xDict["blobs"][0].replace("|#","|#homepage#")
+            xDict["blobs"][0] = xDict["blobs"][0].replace("#","#homepage#",count=1)
         if ParseCSV.ExcerptFlag.DEMOTE in x["flags"]:
-            xDict["demote"] = len(x["flags"].split(ParseCSV.ExcerptFlag.DEMOTE)) - 1
+            demoteCount = len(x["flags"].split(ParseCSV.ExcerptFlag.DEMOTE)) - 1
+            xDict["blobs"][0] = xDict["blobs"][0].replace("#",f"#{'-' * demoteCount}#",count=1)
         returnValue.append(xDict)
     return returnValue
 
@@ -277,42 +278,57 @@ def TeacherBlobs() -> Iterator[dict]:
                 # Remove the paragraph markers added by TeacherDescription
         }
 
-def EventBlob(event: dict[str],listedTeachers: list[str]) -> str:
+def EventBlob(event: dict[str],eventSection: dict[str],listedTeachers: list[str]) -> str:
     """Return a search blob for this event."""
     titles = [event["title"]]
-    if event["subtitle"]:
+    if eventSection:
+        titles.append(eventSection["title"])
+    elif event.get("subtitle"):
         titles.append(event["subtitle"])
 
     bits = [
         Enclose(Blobify(titles),"^"),
         Enclose(Blobify(AllNames(listedTeachers)),"{}"),
-        Enclose(Blobify(event["tags"]),"[]"),
+        Enclose(Blobify((eventSection or event)["tags"]),"[]"),
         "|",
         Enclose(Blobify(event["series"],alphanumericOnly=True),"#"),
         Enclose(Blobify([event["venue"]],alphanumericOnly=True),"&"),
-        Enclose(Blobify([event["code"]]),"@")
+        Enclose(Blobify((eventSection or event)["code"].split("_")),"@")
     ]
     return "".join(bits)
 
 def EventBlobs() -> Iterator[dict]:
     """Return a blob for each event."""
-    for event in gDatabase["event"].values():
-        sessionTeachers = set()
-        for session in Database.SessionDict()[event["code"]].values():
-            sessionTeachers.update(session["teachers"])
-        listedTeachers = [teacherCode for teacherCode in event["teachers"] if teacherCode in sessionTeachers]
-        if not listedTeachers:
-            listedTeachers = event["teachers"]
+    sessionDB = Database.SessionDict()
+    for event in Database.MergedEventsAndSections():
+        if "series" in event:
+            eventSection = None
+            sessionTeachers = set()
+            for session in sessionDB[event["code"]].values():
+                sessionTeachers.update(session["teachers"])
+            listedTeachers = [teacherCode for teacherCode in event["teachers"] if teacherCode in sessionTeachers]
+            if not listedTeachers:
+                listedTeachers = event["teachers"]
+        else: # It's an event section
+            eventCode,firstSession,_ = Database.ParseItemCode(event["code"])
+            event,eventSection = gDatabase["event"][eventCode],event
+            listedTeachers = []
+            for sessionNumber in range(firstSession,eventSection["lastSession"] + 1):
+                session = sessionDB[eventCode][sessionNumber]
+                Utils.ExtendUnique(listedTeachers,session["teachers"])
+            
+        tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in (eventSection or event)["tags"])
 
-        tagString = " ".join(f'[{Build.HtmlTagLink(tag)}]' for tag in event["tags"])
-
-        lines = [
-            Build.HtmlIcon("calendar") + " " + f"{Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}",
-            Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers]),lastJoinStr = " and ")
-        ]
+        if eventSection:
+            dateRange = f"Sessions {firstSession} – {eventSection['lastSession']}"
+            titleLink = Html.Tag("a",{"href":Database.EventLink(eventCode,firstSession)})(f"{dateRange}: {eventSection['title']}")
+            lines = [f"{Build.HtmlIcon("calendar")} {event['title']}, {titleLink} {tagString}"]
+        else:
+            lines = [f"{Build.HtmlIcon("calendar")} {Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}"]
+        lines.append(Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers]),lastJoinStr = " and "))
 
         yield {
-            "blobs": [EventBlob(event,listedTeachers)],
+            "blobs": [EventBlob(event,eventSection,listedTeachers)],
             "html": "<br>".join(lines)
         } 
 
@@ -324,7 +340,7 @@ def SessionBlob(session: dict[str]) -> str:
         Enclose(Blobify(AllNames(session["teachers"])),"{}"),
         Enclose(Blobify(session["tags"]),"[]"),
         "|",
-        Enclose(Blobify([Database.ItemCode(session).replace("_","@")]),"@")
+        Enclose(Blobify(Database.ItemCode(session).split("_")),"@")
     ]
     return "".join(bits)
 
