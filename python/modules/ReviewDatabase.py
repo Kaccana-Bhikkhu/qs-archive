@@ -317,7 +317,6 @@ def CheckFlags() -> None:
         FLAG.NO_TAGS: {kind for kind in kindDB if kindDB[kind]["expectsTags"]},
         FLAG.UNNAMED_SPEAKER: {kind for kind in kindDB if kindDB[kind]["indirectSpeech"]}
     }
-    print(flagAllowedKinds[FLAG.UNNAMED_SPEAKER])
 
     allowedKindsSet = set(flagAllowedKinds)
     for excerpt in gDatabase["excerpts"]:
