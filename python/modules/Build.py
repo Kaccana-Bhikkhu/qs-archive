@@ -1338,6 +1338,9 @@ class Formatter:
                     If a blank session excerpt has only one annotation, [Session] will be added below."""
                 with a.p(id = Database.ItemCode(x)):
                     a(localFormatter.FormatExcerpt(x))
+            else: # Add a blank span with excerpt id
+                with a.span(id = Database.ItemCode(x)):
+                    pass
             
             tagsAlreadyPrinted = set(x["tags"])
             for annotation in x["annotations"]:
