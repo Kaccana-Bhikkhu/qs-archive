@@ -1319,6 +1319,9 @@ class Formatter:
                     If a blank session excerpt has only one annotation, [Session] will be added below."""
                 with a.p(id = Database.ItemCode(x)):
                     a(localFormatter.FormatExcerpt(x))
+            else: # Add a blank span with excerpt id
+                with a.span(id = Database.ItemCode(x)):
+                    pass
             
             tagsAlreadyPrinted = set(x["tags"])
             for annotation in x["annotations"]:
@@ -1883,7 +1886,7 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
         if len(filterMenu) > 1:
             pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**EXTRA_MENU_STYLE)
             if gOptions.skipSubsearchPages: # Write only the main page if this is the case
-                pageIterator = Utils.SingleItemIterator(pageIterator,0) # 1 if hasEventsPage else 0)
+                pageIterator = Utils.SingleItemIterator(pageIterator,1 if hasEventsPage else 0)
             yield from map(LinkToPeoplePages,pageIterator)
             return
     
