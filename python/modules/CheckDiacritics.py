@@ -75,14 +75,6 @@ def ApplyToTags(transform: Callable[...,tuple[str,int]|str]) -> None:
         transform(ref["title"].replace("_",""),ref)
         transform(ref["attribution"],ref)
 
-    for ref,sections in gDatabase["bookSection"].items():
-        for page,sectionName in sections.items():
-            transform(sectionName,f"{ref} p. {page}")
-    for ref,sections in gDatabase["textSection"].items():
-        for page,sectionName in sections.items():
-            transform(sectionName,f"{ref}.{page}")
-    
-
 def ApplyToDocumentation(transform: Callable[...,tuple[str,int]|str]) -> None:
     documentationDirs = ("aboutSources","technicalSources","miscSources","tableOfContents")
     for dir in documentationDirs:
@@ -157,6 +149,7 @@ def main() -> None:
     cautionCount = Alert.caution.count
     noticeCount = Alert.notice.count
     ApplyToTags(BuildDiacriticDatabase)
+    Render.ApplyToTitleText(BuildDiacriticDatabase)
 
     global gTagAndTeacherForms
     gTagAndTeacherForms = {plain:set(forms) for plain,forms in gDiacriticFrequency.items()}
