@@ -12,6 +12,7 @@ import Utils, Alert, Link, FileRegister
 from typing import Callable
 from collections import Counter,defaultdict
 import Render
+import itertools
 
 def ReadCorrectForms() -> None:
     """Read CorrectDiacritics.csv gCorrectDiacritics and gCannonicalDiacritics."""
@@ -104,6 +105,29 @@ def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
                 nonCannonicalStr = "*,".join(f for f in forms if f not in cannonicalForms)
                 print(f"{cannonicalStr},{nonCannonicalStr}*",file=file)
 
+def CheckQuotes(text: str,item: dict) -> None:
+    """Scan text for mismatched smart quotes and report errors."""
+
+    quotes = re.findall(r"""["'“”‘]|’(?!\w)""",Utils.RemoveHtmlTags(text))
+    quoteCount = Counter()
+    for quote in quotes:
+        quoteCount[quote] += 1
+        if quoteCount['’'] > quoteCount['‘'] or quoteCount['”'] > quoteCount['“']:
+            Alert.caution(item,"has excess end quotes.")
+            return
+
+    if quoteCount['’'] != quoteCount['‘'] or quoteCount['”'] != quoteCount['“']:
+        Alert.caution(item,"contains mismatched quotes.")
+        return
+    if quoteCount["'"] or quoteCount['"']:
+        Alert.caution(item,"contains dumb quotes.")
+        return
+
+    for first,second in itertools.pairwise(quotes):
+        if first == second:
+            Alert.caution(item,"should alternate between double and single quotes.")
+            return
+        
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--newCorrectDiacritics',**Utils.STORE_TRUE,help="Overwrite CorrectDiacritics.csv")
@@ -183,5 +207,5 @@ def main() -> None:
                 print("\t".join((Utils.WholeWordRegexp(Utils.CapitalizeFirst(findWord)),
                                  Utils.CapitalizeFirst(replaceWord))),file=file)
 
-
-    
+    Render.ApplyToBodyText(CheckQuotes)
+    Render.ApplyToTitleText(CheckQuotes)

@@ -129,3 +129,5 @@
   - 6.8 New events: Upāsika Days: Right Speech and Living with Ourselves and A Monastic's Life; Thanksgiving Retreat 2004; Winter Retreat 2013 through session 44. Winter Retreat 2025 through session 56; Abhayagiri 30th Anniverary Part 1. Table of contents for books and suttas with many references. Add images to teacher, tag, and event pages. Standardize diacritics. Use 'smarty' markdown extension to handle smart quotes and dashes. Python local server for testing purposes.
 
   - 6.8.1 (September 2026 Release) Interface improvements: menu hovers at the top of the screen; audio player has close box.
+
+  - 6.9 New events: Thansgiving Retreat 2021; Three Clear Mountain podcasts; Santa Cruz daylong in 2020; Q&A at Three Jewels; ALBA Q&A; Winter Retreat 2025 through session 60; Abhayagiri 30th Anniverary Part 2. Event sections allow a tag to be applied to a group of sessions. Excerpt demotion flag. Advanced search page (beta).
