@@ -12,6 +12,7 @@ import Utils, Alert, Link, FileRegister
 from typing import Callable
 from collections import Counter,defaultdict
 import Render
+import itertools
 
 def ReadCorrectForms() -> None:
     """Read CorrectDiacritics.csv gCorrectDiacritics and gCannonicalDiacritics."""
@@ -104,6 +105,45 @@ def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
                 nonCannonicalStr = "*,".join(f for f in forms if f not in cannonicalForms)
                 print(f"{cannonicalStr},{nonCannonicalStr}*",file=file)
 
+def CheckQuotes(text: str,item: dict) -> None:
+    """Scan text for mismatched smart quotes and report errors."""
+    
+    htmlQuoteDict = {"&rsquo;":"’", "&lsquo;":"‘",
+                     "&rdquo;":'”', "&ldquo;":"“"}  
+    for code,quote in htmlQuoteDict.items():
+        text = text.replace(code,quote)
+    
+    text = Utils.RemoveHtmlTags(text)
+    quotes = list(re.finditer(r"""["'“”‘]|s?’(?!\w)""",text))
+        # Plural possessives may end in s’, so consider them separately
+    quoteCount = Counter()
+    for quote in quotes:
+        quoteCount[quote[0]] += 1
+        possiblePluralPossessives = quoteCount['s’']
+        if quoteCount['’'] - possiblePluralPossessives > quoteCount['‘'] or quoteCount['”'] > quoteCount['“']:
+            print(Alert.caution.count,"Text:",text)
+            span = quote.span()
+            Alert.caution(item,"has excess end quotes.",quoteCount,text[max(span[0] - 5,0):span[1] + 5])
+            return
+    possiblePluralPossessives = quoteCount['s’']
+    if quoteCount['’'] <  quoteCount['‘'] < quoteCount['’'] + possiblePluralPossessives or quoteCount['”'] != quoteCount['“']:
+        print(Alert.caution.count,"Text:",text)
+        Alert.caution(item,"contains mismatched quotes.",quoteCount)
+        return
+    if quoteCount["'"] or quoteCount['"']:
+        print(Alert.caution.count,"Text:",text)
+        Alert.caution(item,"contains dumb quotes.")
+        return
+
+    for first,second in itertools.pairwise(q[0] for q in quotes):
+        if first == second:
+            print(Alert.caution.count,"Text:",text)
+            Alert.caution(item,"should alternate between double and single quotes.")
+            return
+        if (first,second) in (('‘','”'),('“','’')):
+            print(Alert.caution.count,"Text:",text)
+            Alert.caution(item,"has mismatched open and closing quotes.","Mismatch:",(first,second))
+        
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--newCorrectDiacritics',**Utils.STORE_TRUE,help="Overwrite CorrectDiacritics.csv")
@@ -183,5 +223,5 @@ def main() -> None:
                 print("\t".join((Utils.WholeWordRegexp(Utils.CapitalizeFirst(findWord)),
                                  Utils.CapitalizeFirst(replaceWord))),file=file)
 
-
-    
+    Render.ApplyToBodyText(CheckQuotes)
+    Render.ApplyToTitleText(CheckQuotes)
