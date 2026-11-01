@@ -115,18 +115,21 @@ def CheckQuotes(text: str,item: dict) -> None:
     
     text = Utils.RemoveHtmlTags(text)
     quotes = list(re.finditer(r"""["'“”‘]|s?’(?!\w)""",text))
-        # Plural possessives may end in s’, so consider them separately
+        # Ignore single end quotes followed by a letter (e.g. don’t)
+        # Plural possessives may end in s’, so consider this case separately
     quoteCount = Counter()
     for quote in quotes:
         quoteCount[quote[0]] += 1
         possiblePluralPossessives = quoteCount['s’']
         if quoteCount['’'] - possiblePluralPossessives > quoteCount['‘'] or quoteCount['”'] > quoteCount['“']:
             print(Alert.caution.count,"Text:",text)
+            
+            print("Rendered:",item.get("body"))
             span = quote.span()
             Alert.caution(item,"has excess end quotes.",quoteCount,text[max(span[0] - 5,0):span[1] + 5])
             return
     possiblePluralPossessives = quoteCount['s’']
-    if quoteCount['’'] <  quoteCount['‘'] < quoteCount['’'] + possiblePluralPossessives or quoteCount['”'] != quoteCount['“']:
+    if not (quoteCount['’'] <=  quoteCount['‘'] <= quoteCount['’'] + possiblePluralPossessives) or quoteCount['”'] != quoteCount['“']:
         print(Alert.caution.count,"Text:",text)
         Alert.caution(item,"contains mismatched quotes.",quoteCount)
         return
