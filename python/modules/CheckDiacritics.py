@@ -12,6 +12,7 @@ import Utils, Alert, Link, FileRegister
 from typing import Callable
 from collections import Counter,defaultdict
 import Render
+import ParseCSV
 import itertools
 
 def ReadCorrectForms() -> None:
@@ -108,6 +109,9 @@ def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
 def CheckQuotes(text: str,item: dict) -> None:
     """Scan text for mismatched smart quotes and report errors."""
     
+    if hasattr(item,"get") and ParseCSV.ExcerptFlag.NO_TAGS in item.get("flags",""):
+        return
+    
     htmlQuoteDict = {"&rsquo;":"’", "&lsquo;":"‘",
                      "&rdquo;":'”', "&ldquo;":"“"}  
     for code,quote in htmlQuoteDict.items():
@@ -123,8 +127,6 @@ def CheckQuotes(text: str,item: dict) -> None:
         possiblePluralPossessives = quoteCount['s’']
         if quoteCount['’'] - possiblePluralPossessives > quoteCount['‘'] or quoteCount['”'] > quoteCount['“']:
             print(Alert.caution.count,"Text:",text)
-            
-            print("Rendered:",item.get("body"))
             span = quote.span()
             Alert.caution(item,"has excess end quotes.",quoteCount,text[max(span[0] - 5,0):span[1] + 5])
             return

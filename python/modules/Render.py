@@ -406,41 +406,20 @@ def RenderExcerpts() -> None:
             RenderItem(a,x)
             if kinds[a["kind"]]["appendToExcerpt"]:
                 AppendAnnotationToExcerpt(a,x)
+                
+        nonBlankAnnotations = [a for a in x["annotations"] if len(a["body"]) > 0]
+        if not x["body"] and not nonBlankAnnotations:
+            Alert.caution(x,"contains no text.")
+            continue
         
         # Add [Session] before thee body of session excerpts
         if not x["fileNumber"]:
             sessionLink = Html.Tag('span',{'class':'session-excerpt-header'})('Session')
-            nonBlankAnnotations = [a for a in x["annotations"] if len(a["body"]) > 0]
             if x["body"] or len(nonBlankAnnotations) > 1:
                 x["body"] = f"[{sessionLink}] {x['body']}"
             else:
                 x["body"] = f"[sessionLink] {nonBlankAnnotations[0]['body']}"
                 nonBlankAnnotations[0]["body"] = ""
-                
-    """hasMultipleAnnotations = sum(len(a["body"]) > 0 for a in x["annotations"]) > 1
-            if x["body"] or (not x["fileNumber"] and hasMultipleAnnotations):
-                " Render blank session excerpts which have more than one annotation as [Session].
-                    If a blank session excerpt has only one annotation, [Session] will be added below."
-                with a.p(id = Database.ItemCode(x)):
-                    a(localFormatter.FormatExcerpt(x))
-            else: # Add a blank span with excerpt id
-                with a.span(id = Database.ItemCode(x)):
-                    pass
-            
-            tagsAlreadyPrinted = set(x["tags"])
-            for annotation in x["annotations"]:
-                if annotation["body"] and not (annotation["kind"] == "Fragment" and not self.excerptShowFragmentPlayers):
-                    indentLevel = annotation['indentLevel']
-                    if not x["fileNumber"] and not x["body"] and not hasMultipleAnnotations:
-                        # If a single annotation follows a blank session excerpt, don't indent and add [Session] in front of it
-                        indentLevel = 0
-                    if ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
-                        indentLevel = 0
-
-                    with a.p(Class = f"indent-{indentLevel}"):
-                        if not indentLevel and not ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
-                            a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
-"""
 
 
 class SCBookmark(NamedTuple):
