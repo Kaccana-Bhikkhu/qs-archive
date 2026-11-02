@@ -5023,7 +5023,7 @@
         "Culture/Thailand",
         "Aversion",
         "Rains retreat",
-        "Types of monks"
+        "Temporary ordination"
       ],
       "qTagCount": 4,
       "clips": [
@@ -38212,7 +38212,7 @@
       "excerptNumber": 5,
       "fileNumber": 5,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "Sometimes you hear something ... [audio unclear]. ... What is your opinion?",
       "teachers": [
         "AP"
@@ -55288,12 +55288,14 @@
         "AP"
       ],
       "fTags": [
-        "Right Livelihood"
+        "Right Livelihood",
+        "Military"
       ],
       "fTagOrder": [
-        100
+        100,
+        115
       ],
-      "fTagOrderFlags": "E",
+      "fTagOrderFlags": "ET",
       "annotations": [
         {
           "kind": "Story",
@@ -63069,7 +63071,7 @@
       "fTags": [],
       "annotations": [],
       "tags": [
-        "Release",
+        "Liberation",
         "Cessation of Suffering",
         "Emptiness",
         "Concentration"
@@ -77362,7 +77364,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Temporary ordination"
+      ],
+      "fTagOrder": [
+        120
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Follow-up",
@@ -92045,10 +92053,10 @@
         {
           "kind": "Reference",
           "flags": "",
-          "text": "Stillness Flowing p.123 .",
+          "text": "_Stillness Flowing_ p. 123.",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Reference:</b> Stillness Flowing p.123 ."
+          "body": "<b>Reference:</b> <em>Stillness Flowing</em> by <a href=\"../teachers/ajahn-jayasaro.html\">Ajahn Jayasaro</a>, <a href=\"https://www.abhayagiri.org/media/books/stillness-flowing%20-%202018-08-31.pdf#page=145\" target=\"_blank\" data-alt-href=\"../books/stillness-flowing.html\">p. 123</a>."
         }
       ],
       "tags": [
@@ -92073,7 +92081,8 @@
         "AP"
       ],
       "books": [
-        "draft biography"
+        "draft biography",
+        "Stillness Flowing|123"
       ]
     },
     {
@@ -93036,7 +93045,7 @@
       "fileNumber": 1,
       "kind": "Question",
       "flags": "",
-      "text": "What does 'headed by' refer to?",
+      "text": "What does 'headed by' refer to (AN 10.58)?",
       "teachers": [
         "AP"
       ],
@@ -93058,8 +93067,11 @@
       ],
       "duration": "2:32",
       "mirror": "local",
-      "body": "“What does &lsquo;headed by&rsquo; refer to?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+      "body": "“What does &lsquo;headed by&rsquo; refer to (<a href=\"https://suttacentral.express/an10.58/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/AN10_58.html\">AN 10.58</a>)?” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
+      "texts": [
+        "AN 10.58"
+      ]
     },
     {
       "event": "WR2015",
@@ -94599,12 +94611,12 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 119: Simile of the bathman.",
+          "text": "MN 119.18: Simile of the bathman.",
           "tags": [
             "Similes"
           ],
           "indentLevel": 1,
-          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/mn119/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/MN119.html\">MN 119</a>: Simile of the bathman."
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/mn119/en/sujato?reference=main#18.1\" target=\"_blank\" data-alt-href=\"../texts/MN119.html\">MN 119.18</a>: Simile of the bathman."
         }
       ],
       "tags": [
@@ -94627,7 +94639,7 @@
       "body": "“Does the consistency of vicāra correlate with samādhi?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>.",
       "texts": [
-        "MN 119"
+        "MN 119.18"
       ]
     },
     {
@@ -94806,7 +94818,7 @@
         {
           "kind": "Quote",
           "flags": "",
-          "text": "To push away the world is also to reifying it. One gives it power when one is afraid of it.",
+          "text": "To push away the world is also to reify it. One gives it power when one is afraid of it.",
           "teachers": [
             "AP"
           ],
@@ -94816,7 +94828,7 @@
             "Fear"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b>  “To push away the world is also to reifying it. One gives it power when one is afraid of it.” "
+          "body": "<b>Quote:</b>  “To push away the world is also to reify it. One gives it power when one is afraid of it.” "
         },
         {
           "kind": "Comment",
@@ -138620,7 +138632,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Media"
+      ],
+      "fTagOrder": [
+        180
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Media",
@@ -139863,7 +139881,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Media"
+      ],
+      "fTagOrder": [
+        160
+      ],
+      "fTagOrderFlags": "T",
       "annotations": [],
       "tags": [
         "Ajahn Pasanno",
@@ -168205,7 +168229,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Travel"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Follow-up",
@@ -169380,7 +169410,7 @@
       "excerptNumber": 9,
       "fileNumber": 9,
       "kind": "Question",
-      "flags": "",
+      "flags": "m",
       "text": "It's understandable that we crave happiness through the senses. Attaching to a certain type of happiness through the senses is not helpful for cultivation. But there's also the emphasis on joy in the Buddha's teachings. So there should be a balance, and where to find that?",
       "teachers": [
         "AP"
@@ -169400,6 +169430,15 @@
           ],
           "indentLevel": 1,
           "body": "<b>Quote:</b>  “All the elements of the path are a source of happiness and well-being.” "
+        },
+        {
+          "kind": "Fragment",
+          "flags": "",
+          "startTime": "",
+          "endTime": "",
+          "text": "",
+          "indentLevel": 1,
+          "body": "<audio-chip src=\"\" title=\"Q&A at Sudhana Center, E9.1\" data-title-link=\"events/Sudhana2023.html#Sudhana2023_S00_F09\" data-duration=\"84\"><a href=\"\" download=\"Q&A at Sudhana Center, E9.1.mp3\">Download audio</a> (1:24)</audio-chip>"
         },
         {
           "kind": "Follow-up",
@@ -169436,8 +169475,51 @@
         ]
       ],
       "duration": "2:54",
+      "fragmentFTags": [
+        "Beauty"
+      ],
       "mirror": "local",
       "body": "“It&rsquo;s understandable that we crave happiness through the senses. Attaching to a certain type of happiness through the senses is not helpful for cultivation. But there&rsquo;s also the emphasis on joy in the Buddha&rsquo;s teachings. So there should be a balance, and where to find that?” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+    },
+    {
+      "event": "Sudhana2023",
+      "sessionNumber": 0,
+      "excerptNumber": 9.1,
+      "fileNumber": 10,
+      "kind": "Question",
+      "flags": "f",
+      "text": "What about the joy that comes from enjoying sensual things like music, painting, scents, and water?",
+      "teachers": [
+        "AP"
+      ],
+      "fTags": [
+        "Beauty"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
+      "annotations": [],
+      "tags": [
+        "Sensual desire",
+        "Artistic expression",
+        "Beauty",
+        "Happiness",
+        "Clinging",
+        "Spaciousness"
+      ],
+      "qTagCount": 4,
+      "clips": [
+        [
+          "$",
+          "22:03",
+          "23:27"
+        ]
+      ],
+      "duration": "1:24",
+      "mirror": "",
+      "body": "“What about the joy that comes from enjoying sensual things like music, painting, scents, and water?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
@@ -178818,7 +178900,7 @@
       "fileNumber": 1,
       "kind": "Question",
       "flags": "",
-      "text": "When it comes to what is being reborn [in the metaphor from SN 44.9, _The Island_ p. 52]. What sustains [the flame] is the air of oxygen, but this is still quite vague. Can you elaborate on this> Often when we talk about reincarnation but there is no self this question comes up again and again. So I’d love to hear what is actually reborn?",
+      "text": "When it comes to what is being reborn [in the metaphor from SN 44.9, _The Island_ p. 52]. What sustains [the flame] is the air of oxygen, but this is still quite vague. Can you elaborate on this?  Often when we talk about reincarnation but there is no self this question comes up again and again. So I’d love to hear what is actually reborn?",
       "teachers": [
         "AA"
       ],
@@ -178878,7 +178960,7 @@
       ],
       "duration": "7:21",
       "mirror": "local",
-      "body": "“When it comes to what is being reborn [in the metaphor from <a href=\"https://suttacentral.express/sn44.9/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN44.html#sn-44-9\">SN 44.9</a>, <em>The Island</em> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>, <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf#page=51\" target=\"_blank\" data-alt-href=\"../books/the-island.html\">p. 52</a>]. What sustains [the flame] is the air of oxygen, but this is still quite vague. Can you elaborate on this&gt; Often when we talk about reincarnation but there is no self this question comes up again and again. So I’d love to hear what is actually reborn?” {attribution}",
+      "body": "“When it comes to what is being reborn [in the metaphor from <a href=\"https://suttacentral.express/sn44.9/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN44.html#sn-44-9\">SN 44.9</a>, <em>The Island</em> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>, <a href=\"https://www.abhayagiri.org/media/books/The-Island-Web-2020%20ed..pdf#page=51\" target=\"_blank\" data-alt-href=\"../books/the-island.html\">p. 52</a>]. What sustains [the flame] is the air of oxygen, but this is still quite vague. Can you elaborate on this?  Often when we talk about reincarnation but there is no self this question comes up again and again. So I’d love to hear what is actually reborn?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>.",
       "texts": [
         "SN 44.9",
@@ -179036,7 +179118,9 @@
           "kind": "Vinaya",
           "flags": "",
           "text": "Bhikkhu Pārājika 4.1.2: A harsh rebuke by the Buddha.",
-          "tags": [],
+          "tags": [
+            "Buddha/Biography"
+          ],
           "indentLevel": 1,
           "body": "<b>Vinaya:</b> <a href=\"https://suttacentral.express/pli-tv-bu-vb-pj4/en/brahmali?reference=main#1.2.1\" target=\"_blank\" data-alt-href=\"../texts/BuPj.html#bupj-4\">Bhikkhu Pārājika 4.1.2</a>: A harsh rebuke by the Buddha."
         }
@@ -179125,7 +179209,7 @@
       "excerptNumber": 1,
       "fileNumber": 1,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "This is a bit pedantic, but shouldn’t it be 1,003? It says the three Kassapa brothers and their 1,000 disciples.",
       "teachers": [
         "AA"
@@ -180103,10 +180187,10 @@
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "SN 1.25{bodhi}: \"Skilful, knowing the world’s parlance, he uses such terms as mere expressions.\"",
+          "text": "SN 1.25{bodhi}: \"Skillful, knowing the world’s parlance, he uses such terms as mere expressions.\"",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/sn1.25/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN1_25.html\">SN 1.25</a>: &ldquo;Skilful, knowing the world’s parlance, he uses such terms as mere expressions.&rdquo;"
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/sn1.25/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN1_25.html\">SN 1.25</a>: &ldquo;Skillful, knowing the world’s parlance, he uses such terms as mere expressions.&rdquo;"
         },
         {
           "kind": "Follow-up",
@@ -181370,7 +181454,7 @@
         {
           "kind": "Follow-up",
           "flags": "",
-          "text": "",
+          "text": "Can you reflect on this? It doesn't quite fit with the Unconditioned, unformed, no footing ...",
           "teachers": [
             "AA",
             "AKc"
@@ -181379,7 +181463,7 @@
             "Unconditioned"
           ],
           "indentLevel": 1,
-          "body": "<b>Follow-up</b> “”"
+          "body": "<b>Follow-up:</b> “Can you reflect on this? It doesn&rsquo;t quite fit with the Unconditioned, unformed, no footing &hellip;”"
         },
         {
           "kind": "Response",
@@ -181678,7 +181762,7 @@
       "excerptNumber": 4,
       "fileNumber": 4,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "When you talked about the little girl crying, was she really crying because she was miserable?",
       "teachers": [
         "AA"
@@ -182660,7 +182744,7 @@
         {
           "kind": "Indirect quote",
           "flags": "",
-          "text": "I don't deny that the Buddha speaks about past life and present life and future life, but in most circumstances that's irrelevant.|Ajahn Buddhadāsa|answering a sincere inquiry about rebirth",
+          "text": "I don't deny that the Buddha speaks about past life and present life and future life, but in most circumstances that's irrelevant.|Ajahn Buddhadāsa answering a sincere inquiry about rebirth",
           "teachers": [
             "AA"
           ],
@@ -182670,7 +182754,7 @@
             "Tipiṭaka"
           ],
           "indentLevel": 1,
-          "body": "<b>Quote:</b> I don&rsquo;t deny that the Buddha speaks about past life and present life and future life, but in most circumstances that&rsquo;s irrelevant. “<a href=\"../teachers/ajahn-buddhadasa.html\">Ajahn Buddhadāsa</a>” — answering a sincere inquiry about rebirth."
+          "body": "<b>Quote:</b>  “I don&rsquo;t deny that the Buddha speaks about past life and present life and future life, but in most circumstances that&rsquo;s irrelevant.” — <a href=\"../teachers/ajahn-buddhadasa.html\">Ajahn Buddhadāsa</a> answering a sincere inquiry about rebirth."
         }
       ],
       "tags": [
@@ -183444,11 +183528,17 @@
       "fileNumber": 3,
       "kind": "Comment",
       "flags": "",
-      "text": "anatta is a middle-way word between atthā and niratthā.",
+      "text": "anatta is a middle-way word between atta and niratta.",
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Etymology"
+      ],
+      "fTagOrder": [
+        120
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Pāli",
@@ -183466,7 +183556,7 @@
       ],
       "duration": "1:14",
       "mirror": "local",
-      "body": "<b>Comment</b>{attribution} anatta is a middle-way word between atthā and niratthā.",
+      "body": "<b>Comment</b>{attribution} anatta is a middle-way word between atta and niratta.",
       "attribution": " by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>"
     },
     {
@@ -184739,7 +184829,7 @@
       "fileNumber": 3,
       "kind": "Question",
       "flags": "",
-      "text": "What does 'Seeing fear and blame in the other world' refer to?",
+      "text": "What does 'Seeing fear and blame in the other world' (MN 26.21) refer to?",
       "teachers": [
         "AP"
       ],
@@ -184760,8 +184850,11 @@
       ],
       "duration": "0:49",
       "mirror": "local",
-      "body": "“What does &lsquo;Seeing fear and blame in the other world&rsquo; refer to?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+      "body": "“What does &lsquo;Seeing fear and blame in the other world&rsquo; (<a href=\"https://suttacentral.express/mn26/en/sujato?reference=main#21.1\" target=\"_blank\" data-alt-href=\"../texts/MN26.html\">MN 26.21</a>) refer to?” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
+      "texts": [
+        "MN 26.21"
+      ]
     },
     {
       "event": "WR2025",
@@ -187363,7 +187456,7 @@
       "fileNumber": 2,
       "kind": "Question",
       "flags": "",
-      "text": "When the term unworldly is used, does that refer to non-identification?",
+      "text": "When the term unworldly is used (in MN 10.32), does that refer to non-identification?",
       "teachers": [
         "AP"
       ],
@@ -187383,8 +187476,11 @@
       ],
       "duration": "0:28",
       "mirror": "local",
-      "body": "“When the term unworldly is used, does that refer to non-identification?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+      "body": "“When the term unworldly is used (in <a href=\"https://suttacentral.express/mn10/en/sujato?reference=main#32.1\" target=\"_blank\" data-alt-href=\"../texts/MN10.html\">MN 10.32</a>), does that refer to non-identification?” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
+      "texts": [
+        "MN 10.32"
+      ]
     },
     {
       "event": "WR2025",
@@ -189199,7 +189295,7 @@
       "fileNumber": 1,
       "kind": "Question",
       "flags": "",
-      "text": "Ānanda's answer (in SN 35.116) defines the world, but what did the Buddha mean by the end of the world?",
+      "text": "Ānanda's answer (in SN 35.116) defines the world, but what did the Buddha mean by the end of the world (SN 35.119)?",
       "teachers": [
         "AP"
       ],
@@ -189219,10 +189315,11 @@
       ],
       "duration": "0:33",
       "mirror": "local",
-      "body": "“Ānanda&rsquo;s answer (in <a href=\"https://suttacentral.express/sn35.116/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN35_116.html\">SN 35.116</a>) defines the world, but what did the Buddha mean by the end of the world?” {attribution}",
+      "body": "“Ānanda&rsquo;s answer (in <a href=\"https://suttacentral.express/sn35.116/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/SN35_116.html\">SN 35.116</a>) defines the world, but what did the Buddha mean by the end of the world (<a href=\"https://suttacentral.express/sn35.119/en/bodhi\" target=\"_blank\">SN 35.119</a>)?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "texts": [
-        "SN 35.116"
+        "SN 35.116",
+        "SN 35.119"
       ]
     },
     {
@@ -189495,7 +189592,7 @@
       "excerptNumber": 9,
       "fileNumber": 9,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "In MN 138.3, what does 'positioned' mean?",
       "teachers": [
         "AP"
@@ -189528,7 +189625,7 @@
       "excerptNumber": 10,
       "fileNumber": 10,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "The phrase, 'the knot of grasping' (in Snp 794); is that upādāna?",
       "teachers": [
         "AP"
@@ -190019,7 +190116,7 @@
       "excerptNumber": 7,
       "fileNumber": 7,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "Can you say, ‘Why do you go out and bother the thoughts?’",
       "teachers": [
         "AA"
@@ -191446,7 +191543,7 @@
       "excerptNumber": 2,
       "fileNumber": 2,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "Are [the links of Dependent Origination] from the perspective of the mind or is it also from the perspective of the jhānas where you have the cessation of appearances altogether? Or is it strictly on the level of volition?",
       "teachers": [
         "AA",
@@ -193380,7 +193477,7 @@
       "excerptNumber": 8,
       "fileNumber": 8,
       "kind": "Comment",
-      "flags": "",
+      "flags": "d",
       "text": "describing conceptual versus co-emergent ignorance.",
       "teachers": [],
       "fTags": [],
@@ -194861,7 +194958,7 @@
       "excerptNumber": 9,
       "fileNumber": 9,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "Where did you (Ajahn Amaro) say, 'Vanish; the truth sustains itself,' in relation to Ajahn Chah's conundrum, 'If you can't go forward, if you can't go backwards, if you can't stand still, where do you go?'",
       "teachers": [
         "AA"
@@ -197061,7 +197158,7 @@
       "excerptNumber": 10,
       "fileNumber": 10,
       "kind": "Question",
-      "flags": "",
+      "flags": "d",
       "text": "Of these three pairs (impermanence and signlessness; unsatisfactoriness and desirelessness; selflessness and emptiness; Visuddhimagga 21.70, quoted in _The Island_ p. 686), is it skillful to direct the mind towards one or will one appear naturally?",
       "teachers": [
         "AP"
@@ -200157,7 +200254,7 @@
       "fileNumber": 7,
       "kind": "Question",
       "flags": "",
-      "text": "What should we do when we are stuck in aversion and no able to see the anatta aspect of it?",
+      "text": "What should we do when we are stuck in aversion and not able to see the anatta aspect of it?",
       "teachers": [
         "AP",
         "AA"
@@ -200233,7 +200330,7 @@
       ],
       "duration": "6:18",
       "mirror": "local",
-      "body": "“What should we do when we are stuck in aversion and no able to see the anatta aspect of it?” {attribution}",
+      "body": "“What should we do when we are stuck in aversion and not able to see the anatta aspect of it?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>.",
       "texts": [
         "MN 20"
@@ -222983,6 +223080,7 @@
         "AP"
       ],
       "sessionTitle": "Introduction",
+      "sessionStart": "42:12",
       "tags": []
     },
     {
@@ -222995,6 +223093,7 @@
         "AKd"
       ],
       "sessionTitle": "A Place of Refuge",
+      "sessionStart": "55:11",
       "tags": [
         "Abhayagiri"
       ]
@@ -223009,6 +223108,7 @@
         "DS"
       ],
       "sessionTitle": "How I Became Committed to Developing a Monastery",
+      "sessionStart": "1:16:31",
       "tags": [
         "Debbie Stamp"
       ]
@@ -223023,6 +223123,7 @@
         "FDamian"
       ],
       "sessionTitle": "Neighbors on the Same Mountain",
+      "sessionStart": "1:50:14",
       "tags": [
         "Holy Transfiguration Monastery"
       ]
@@ -223037,6 +223138,7 @@
         "Sakula"
       ],
       "sessionTitle": "",
+      "sessionStart": "2:04:08",
       "tags": []
     },
     {
@@ -223049,6 +223151,7 @@
         "ASd"
       ],
       "sessionTitle": "Following Ajahn Pasanno from Thailand to California",
+      "sessionStart": "2:37:02",
       "tags": [
         "Ajahn Sudanto"
       ]
@@ -223063,6 +223166,7 @@
         "AA"
       ],
       "sessionTitle": "From &lsquo;Coming of Age&rsquo; to &lsquo;Vanishing Point&rsquo;",
+      "sessionStart": "",
       "tags": []
     },
     {
@@ -223075,6 +223179,7 @@
         "ADamrong"
       ],
       "sessionTitle": "Beyond Home: What Are We Really Seeking?",
+      "sessionStart": "",
       "tags": []
     },
     {
@@ -223087,6 +223192,7 @@
         "AJundee"
       ],
       "sessionTitle": "The Live-Saving Refuges",
+      "sessionStart": "",
       "tags": []
     },
     {
@@ -232812,7 +232918,7 @@
       "partOfSubtopics": [
         "Liberation"
       ],
-      "excerptCount": 18,
+      "excerptCount": 17,
       "listIndex": 149
     },
     "Liberation": {
@@ -232842,7 +232948,7 @@
       ],
       "subtopics": [],
       "sessionCount": 1,
-      "excerptCount": 207,
+      "excerptCount": 208,
       "fTagCount": 5,
       "subtopicFTagCount": 5,
       "listIndex": 150
@@ -236389,6 +236495,7 @@
       "primaries": 0,
       "htmlFile": "beauty.html",
       "excerptCount": 19,
+      "fTagCount": 1,
       "listIndex": 294
     },
     "Three Refuges": {
@@ -236477,7 +236584,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 1,
-      "excerptCount": 143,
+      "excerptCount": 144,
       "fTagCount": 6,
       "subtopicFTagCount": 6,
       "listIndex": 760
@@ -245609,7 +245716,7 @@
       "primaries": 0,
       "htmlFile": "etymology.html",
       "excerptCount": 34,
-      "fTagCount": 1,
+      "fTagCount": 2,
       "listIndex": 795
     },
     "Buddhist identity": {
@@ -246642,7 +246749,8 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "temporary-ordination.html",
-      "excerptCount": 22,
+      "excerptCount": 23,
+      "fTagCount": 1,
       "listIndex": 896
     },
     "Pāṭimokkha": {
@@ -247395,7 +247503,7 @@
       "copies": 1,
       "primaries": 0,
       "htmlFile": "types-of-monks.html",
-      "excerptCount": 7,
+      "excerptCount": 6,
       "listIndex": 892
     },
     "Forest versus city monks": {
@@ -248175,6 +248283,7 @@
       "primaries": 0,
       "htmlFile": "travel.html",
       "excerptCount": 20,
+      "fTagCount": 1,
       "listIndex": 944
     },
     "Pace of life": {
@@ -248647,6 +248756,7 @@
         "Politics and society"
       ],
       "excerptCount": 19,
+      "fTagCount": 1,
       "listIndex": 966
     },
     "Education": {
@@ -248949,6 +249059,8 @@
         "Technology"
       ],
       "excerptCount": 18,
+      "fTagCount": 2,
+      "subtopicFTagCount": 1,
       "listIndex": 978
     },
     "News": {
@@ -252217,9 +252329,9 @@
       "flags": "",
       "name": "Release",
       "pali": "vossagga",
-      "excerptCount": 18,
+      "excerptCount": 17,
       "subsumed": false,
-      "text": "Release (18) [vossagga]",
+      "text": "Release (17) [vossagga]",
       "tag": "Release"
     },
     {
@@ -252228,9 +252340,9 @@
       "flags": "",
       "name": "Liberation",
       "pali": "vimutti",
-      "excerptCount": 207,
+      "excerptCount": 208,
       "subsumed": false,
-      "text": "Liberation (207) [vimutti]",
+      "text": "Liberation (208) [vimutti]",
       "tag": "Liberation"
     },
     {
@@ -252986,9 +253098,9 @@
       "flags": "*",
       "name": "Release",
       "pali": "vossagga",
-      "excerptCount": 18,
+      "excerptCount": 17,
       "subsumed": false,
-      "text": "Release (18) [vossagga]",
+      "text": "Release (17) [vossagga]",
       "tag": "Release"
     },
     {
@@ -252997,9 +253109,9 @@
       "flags": "*",
       "name": "Liberation",
       "pali": "vimutti",
-      "excerptCount": 207,
+      "excerptCount": 208,
       "subsumed": false,
-      "text": "Liberation (207) [vimutti]",
+      "text": "Liberation (208) [vimutti]",
       "tag": "Liberation"
     },
     {
@@ -254666,9 +254778,9 @@
       "flags": "",
       "name": "Buddha/Biography",
       "pali": "",
-      "excerptCount": 143,
+      "excerptCount": 144,
       "subsumed": false,
-      "text": "Buddha/Biography (143)",
+      "text": "Buddha/Biography (144)",
       "tag": "Buddha/Biography"
     },
     {
@@ -256539,9 +256651,9 @@
       "flags": "",
       "name": "Release",
       "pali": "vossagga",
-      "excerptCount": 18,
+      "excerptCount": 17,
       "subsumed": false,
-      "text": "Release (18) [vossagga]",
+      "text": "Release (17) [vossagga]",
       "tag": "Release"
     },
     {
@@ -256550,9 +256662,9 @@
       "flags": "",
       "name": "Liberation",
       "pali": "vimutti",
-      "excerptCount": 207,
+      "excerptCount": 208,
       "subsumed": false,
-      "text": "Liberation (207) [vimutti]",
+      "text": "Liberation (208) [vimutti]",
       "tag": "Liberation"
     },
     {
@@ -259878,7 +259990,7 @@
       "text": "History (8)",
       "tag": "History",
       "subtagCount": 14,
-      "subtagExcerptCount": 349
+      "subtagExcerptCount": 350
     },
     {
       "level": 2,
@@ -259897,9 +260009,9 @@
       "flags": "*",
       "name": "Buddha/Biography",
       "pali": "",
-      "excerptCount": 143,
+      "excerptCount": 144,
       "subsumed": false,
-      "text": "Buddha/Biography (143)",
+      "text": "Buddha/Biography (144)",
       "tag": "Buddha/Biography"
     },
     {
@@ -260962,7 +261074,7 @@
       "text": "Ordination (49) [upasampadā]",
       "tag": "Ordination",
       "subtagCount": 1,
-      "subtagExcerptCount": 68
+      "subtagExcerptCount": 69
     },
     {
       "level": 4,
@@ -260970,9 +261082,9 @@
       "flags": "",
       "name": "Temporary ordination",
       "pali": "",
-      "excerptCount": 22,
+      "excerptCount": 23,
       "subsumed": false,
-      "text": "Temporary ordination (22)",
+      "text": "Temporary ordination (23)",
       "tag": "Temporary ordination"
     },
     {
@@ -261400,9 +261512,9 @@
       "flags": "",
       "name": "Types of monks",
       "pali": "",
-      "excerptCount": 7,
+      "excerptCount": 6,
       "subsumed": false,
-      "text": "Types of monks (7)",
+      "text": "Types of monks (6)",
       "tag": "Types of monks",
       "subtagCount": 7,
       "subtagExcerptCount": 105
@@ -261446,9 +261558,9 @@
       "flags": "*",
       "name": "Temporary ordination",
       "pali": "",
-      "excerptCount": 22,
+      "excerptCount": 23,
       "subsumed": false,
-      "text": "Temporary ordination (22)",
+      "text": "Temporary ordination (23)",
       "tag": "Temporary ordination"
     },
     {
@@ -267624,7 +267736,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/buddhabiography.html",
-      "excerptCount": 143,
+      "excerptCount": 144,
       "fTagCount": 6
     },
     "Ajahn Mun": {
@@ -268149,7 +268261,7 @@
       },
       "htmlPath": "clusters/technology.html",
       "excerptCount": 75,
-      "fTagCount": 4
+      "fTagCount": 5
     }
   },
   "tagNote": {
@@ -270090,7 +270202,7 @@
         "Technology"
       ],
       "excerptCount": 782,
-      "fTagCount": 46
+      "fTagCount": 47
     }
   },
   "textGroup": {

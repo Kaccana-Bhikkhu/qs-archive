@@ -185,39 +185,43 @@ def ListifyKey(dictList: list|dict,key: str,delimiter:str = ';',removeBlank = Tr
     Remove any other keys found."""
     
     for d in Utils.Contents(dictList):
-        if key not in d:
-            d[key] = []
-            continue
+        try:
+            if key not in d:
+                d[key] = []
+                continue
 
-        keyList = [key]
-        if key[-1] == '1': # Does the key name end in 1?
-            baseKey = key[:-1].strip()
-        else:
-            baseKey = key
+            keyList = [key]
+            if key[-1] == '1': # Does the key name end in 1?
+                baseKey = key[:-1].strip()
+            else:
+                 baseKey = key
         
-        keyIndex = 1
-        foundKey = True
-        while foundKey:
-            keyIndex += 1
-            foundKey = False
-            for testKey in [baseKey + str(keyIndex),baseKey + ' ' + str(keyIndex)]:
-                if testKey in d:
-                    keyList.append(testKey)
-                    foundKey = True
+            keyIndex = 1
+            foundKey = True
+            while foundKey:
+                keyIndex += 1
+                foundKey = False
+                for testKey in [baseKey + str(keyIndex),baseKey + ' ' + str(keyIndex)]:
+                    if testKey in d:
+                        keyList.append(testKey)
+                        foundKey = True
         
-        items = []
-        for sequentialKey in keyList:
-            items += d[sequentialKey].split(delimiter)
-        if removeBlank:
-            items = [s.strip() for s in items if s.strip()]
-        d[baseKey] = items
+            items = []
+            for sequentialKey in keyList:
+                items += d[sequentialKey].split(delimiter)
+            if removeBlank:
+                items = [s.strip() for s in items if s.strip()]
+            d[baseKey] = items
                     
-        if baseKey == key:
-            delStart = 1
-        else:
-            delStart = 0
-        for index in range(delStart,len(keyList)):
-            del d[keyList[index]]
+            if baseKey == key:
+                delStart = 1
+            else:
+                delStart = 0
+            for index in range(delStart,len(keyList)):
+                del d[keyList[index]]
+        except Exception as err:
+            Alert.error("Error when listifying",d)
+            raise err
 
 def ConvertToInteger(dictList,key,defaultValue = None,reportError:Alert.AlertClass|None = None):
     "Convert the values in key to ints"
@@ -232,10 +236,14 @@ def ConvertToInteger(dictList,key,defaultValue = None,reportError:Alert.AlertCla
 
     sequences = frozenset((list,tuple))
     for d in Utils.Contents(dictList):
-        if type(d[key]) in sequences:
-            d[key] = [Convert(item) for item in d[key]]
-        else:
-            d[key] = Convert(d[key])
+        try:
+            if type(d[key]) in sequences:
+                d[key] = [Convert(item) for item in d[key]]
+            else:
+                d[key] = Convert(d[key])
+        except Exception as err:
+            Alert.error("ConvertToInterger: Error when converting",d)
+            raise err
 
 def ListToDict(inList,key = None):
     """Convert a list of dicts to a dict of dicts using key. If key is None, use the first key
@@ -1821,9 +1829,13 @@ def main():
     gDatabase["audioSource"] = {}
     gDatabase["excerpts"] = []
     for event in gDatabase["summary"]:
-        if not gOptions.parseOnlySpecifiedEvents or gOptions.events == "All" or event in gOptions.events:
-            if not event.startswith("Test") or gOptions.includeTestEvent:
-                LoadEventFile(gDatabase,event,gOptions.csvDir)
+        try:
+            if not gOptions.parseOnlySpecifiedEvents or gOptions.events == "All" or event in gOptions.events:
+                if not event.startswith("Test") or gOptions.includeTestEvent:
+                    LoadEventFile(gDatabase,event,gOptions.csvDir)
+        except Exception as err:
+            Alert.error("Error when loading event",event,":")
+            raise err
     ListifyKey(gDatabase["event"],"series")
     excludeAlert(f": {gRemovedSessions} sessions, {gRemovedExcerpts} excerpts, and {gRemovedAnnotations} annotations in all.")
     excludeAlert(f": {gEmptySessions} sessions do not appear because they have no excerpts.")

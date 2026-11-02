@@ -5,9 +5,9 @@ from __future__ import annotations
 
 import os, bisect, csv, re
 from functools import lru_cache
-from itertools import accumulate
+from itertools import accumulate,pairwise
 from datetime import timedelta,date
-from Mp3DirectCut import TimeDeltaToStr
+from Mp3DirectCut import TimeDeltaToStr,ToTimeDelta,Mp3CutError
 import Database, Filter
 import Utils, Database, Alert
 import FileRegister
@@ -134,6 +134,19 @@ def CheckEvents() -> None:
         if prevSessionDate > endDate:
             Alert.caution(s,"is after the event end date.")
         
+        audioSources = defaultdict(list)
+        for s in ourSessions:
+            if s["filename"]:
+                try:
+                    audioSources[s["filename"]].append(ToTimeDelta(s.get("sessionStart",0)))
+                except err as Mp3CutError:
+                    Alert.error(err,"when parsing Session start in",s)
+        
+        for filename,times in audioSources.items():
+            for time1,time2 in pairwise(times):
+                if time1 >= time2:
+                    Alert.caution("Audio source",repr(filename),"in event",code,"contains multiple sessions without specifying unique, increasing start times.")
+                    break
 
 
 def VerifyListCounts() -> None:

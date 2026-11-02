@@ -8,60 +8,60 @@
     "_modified": "2026-11-01 18:09:22.013697"
   },
   "indexes/KeyTopicDetail.html": {
-    "md5": "1cc9fad7cb4ea88d0ccea88a9d2af0b8",
-    "_modified": "2026-11-01 18:09:22.051833"
+    "md5": "a818c773f47daaab929052ebb3fe1ed5",
+    "_modified": "2026-11-02 19:27:12.075144"
   },
   "indexes/KeyTopicDetail_print.html": {
-    "md5": "ba1d5e817ab94fdcddab968379f25215",
-    "_modified": "2026-11-01 18:09:22.052601"
+    "md5": "793489c923bb642aa488acb3c989667e",
+    "_modified": "2026-11-02 19:27:12.076533"
   },
   "indexes/KeyTopicMemos_print.html": {
-    "md5": "9f82f4837867b48a3b00befc17d29661",
-    "_modified": "2026-11-01 18:09:22.053257"
+    "md5": "25b0c5d5fe711e7197732c0ae26d004b",
+    "_modified": "2026-11-02 19:27:12.077675"
   },
   "indexes/Tags_print.html": {
-    "md5": "3aa9046aa7eb5bfc58c2be20e1c06618",
-    "_modified": "2026-11-01 18:09:22.092584"
+    "md5": "f3429ee8a72fe798fa83111946128657",
+    "_modified": "2026-11-02 19:27:12.118299"
   },
   "drilldown/root.html": {
-    "md5": "ce237109513164ad098af947f4994c52",
-    "_modified": "2026-11-01 18:09:22.130780"
+    "md5": "6ccbdb0c6bda031898b0badd9dee2ec8",
+    "_modified": "2026-11-02 19:27:12.158284"
   },
   "indexes/NumericalTags.html": {
     "md5": "29d3f49b0cd5f1d4df5f20da2e982d6a",
     "_modified": "2026-11-01 18:09:22.136699"
   },
   "indexes/SortedTags.html": {
-    "md5": "4b8920afe4811ed495e70a391f0e6930",
-    "_modified": "2026-11-01 18:09:22.152949"
+    "md5": "ca26dc1b001a3ef07a93128515cb5f2d",
+    "_modified": "2026-11-02 19:27:12.180963"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "7c2f27fc85c49b99fe98bf7051673212",
-    "_modified": "2026-11-01 18:09:22.161089"
+    "md5": "9959db15ba44f77ea31e993e21f02f7c",
+    "_modified": "2026-11-02 19:27:12.189809"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "e5a226aeba13f16c8f3f0b273912dfa3",
-    "_modified": "2026-11-01 18:09:22.171447"
+    "md5": "474cd4ec075c6afe58421800bc28d9c6",
+    "_modified": "2026-11-02 19:27:12.201283"
   },
   "indexes/AlphabeticalTags.html": {
-    "md5": "fb0a2a1e6bfe9a54af7f75c98811d56d",
-    "_modified": "2026-11-01 18:09:22.189368"
+    "md5": "beff00f8250c209ae6def18407799380",
+    "_modified": "2026-11-02 19:27:12.219517"
   },
   "indexes/EnglishTags.html": {
-    "md5": "a6ad9a36d9f1caea1bf9172bb94bbda0",
-    "_modified": "2026-11-01 18:09:22.190700"
+    "md5": "8272ba2809d69246c9079d48588cc8f9",
+    "_modified": "2026-11-02 19:27:12.221411"
   },
   "indexes/PaliTags.html": {
-    "md5": "695e67b33fc80a16d524ba16652095e4",
-    "_modified": "2026-11-01 18:09:22.191859"
+    "md5": "db88901e7bb6e1029bf87c39bb918c85",
+    "_modified": "2026-11-02 19:27:12.222877"
   },
   "indexes/OtherTags.html": {
     "md5": "f09d76805a9e4745a4cc342413d9db55",
     "_modified": "2026-11-01 18:09:22.192850"
   },
   "indexes/ProperTags.html": {
-    "md5": "5f7f6079fd9d0d7144fad3781ecde756",
-    "_modified": "2026-11-01 18:09:22.193986"
+    "md5": "39fa0b0456afc2a33c3e574b16c4b41e",
+    "_modified": "2026-11-02 19:27:12.225498"
   },
   "indexes/EventsBySeries.html": {
     "md5": "c5e5d5da3f048089a53ff6f55438d62d",
@@ -80,8 +80,8 @@
     "_modified": "2026-11-01 18:09:22.319660"
   },
   "events/Chah2001.html": {
-    "md5": "36f77ab8ef94b374524d61f974567d58",
-    "_modified": "2026-11-01 18:51:14.383723"
+    "md5": "6cad07e28afe90a873891f73b8e34a30",
+    "_modified": "2026-11-02 19:27:12.303617"
   },
   "events/WR2005-1.html": {
     "md5": "1a3ddc73cd64d63b3f217688990ebd9b",
@@ -108,8 +108,8 @@
     "_modified": "2026-11-01 18:46:07.718959"
   },
   "events/UD2013-1.html": {
-    "md5": "92e4665a2ae2bed472d04381bf4a2743",
-    "_modified": "2026-11-01 18:51:14.557614"
+    "md5": "83c7370cb674d9c4377374d55bcd2c81",
+    "_modified": "2026-11-02 19:27:12.483039"
   },
   "events/SRD2013.html": {
     "md5": "b0c3dea33714269ef27f7c1e8ef2964a",
@@ -120,16 +120,16 @@
     "_modified": "2026-11-01 18:46:07.794362"
   },
   "events/TG2013.html": {
-    "md5": "d0683cd85abea2b9a93018ba848a936f",
-    "_modified": "2026-11-01 18:46:07.818323"
+    "md5": "aca23ac9fa58a36883da0aa36a43eb29",
+    "_modified": "2026-11-02 19:27:12.517908"
   },
   "events/BIA2013.html": {
     "md5": "755acacc2d1e1df49a6e765951cb2283",
     "_modified": "2026-11-01 18:46:07.821402"
   },
   "events/WR2014.html": {
-    "md5": "cc5f39bc864a3a797d448df90e490940",
-    "_modified": "2026-11-01 18:51:14.672645"
+    "md5": "ccaa4cda75314870edbf0d7da2d8fcad",
+    "_modified": "2026-11-02 19:27:12.598434"
   },
   "events/UD2014-1.html": {
     "md5": "bcd40f1147f4e4386d032e6b43fce6fa",
@@ -149,11 +149,11 @@
   },
   "events/TG2014.html": {
     "md5": "64a7f66bb50a95c7e1db72ddc702de47",
-    "_modified": "2026-11-01 18:46:07.950532"
+    "_modified": "2026-11-02 19:27:12.668436"
   },
   "events/WR2015.html": {
-    "md5": "3ef6cb7ce07cc05cc9e0d814a2f852b8",
-    "_modified": "2026-11-01 18:51:14.768113"
+    "md5": "da976ad3a8556fa7786503915c01ad9b",
+    "_modified": "2026-11-02 19:27:12.709530"
   },
   "events/UD2015-1.html": {
     "md5": "dc4923ca32100fb36968315f465e5083",
@@ -200,12 +200,12 @@
     "_modified": "2026-11-01 18:46:08.207381"
   },
   "events/UD2017-3.html": {
-    "md5": "79592f861734465380caa96491954cf7",
-    "_modified": "2026-11-01 18:51:14.989015"
+    "md5": "f44c0e811741f0322c668a0723447562",
+    "_modified": "2026-11-02 19:27:12.918159"
   },
   "events/Teen2017.html": {
-    "md5": "b830b9f76684c84a54045bf178d6c60c",
-    "_modified": "2026-11-01 18:46:08.219337"
+    "md5": "ebfd4ea8440232c3c4a873bb84377ae3",
+    "_modified": "2026-11-02 19:27:12.925426"
   },
   "events/UD2017-4.html": {
     "md5": "83a784517a9c643299f4f0245a0b3449",
@@ -264,12 +264,12 @@
     "_modified": "2026-11-01 18:46:08.360471"
   },
   "events/Podcast2023.html": {
-    "md5": "bb290924159ff368a9084fa5f82c2ffa",
-    "_modified": "2026-11-01 18:46:08.390849"
+    "md5": "31ea7f4cfa2606d85482fed09b7bb93b",
+    "_modified": "2026-11-02 19:27:13.099122"
   },
   "events/Sudhana2023.html": {
-    "md5": "0c4f11aae70a1bdb343ff29f97323c4d",
-    "_modified": "2026-11-01 18:46:08.394259"
+    "md5": "2b9a8907a22d7109adac5c34c81b12fe",
+    "_modified": "2026-11-02 19:27:13.102829"
   },
   "events/SRD2023.html": {
     "md5": "70982096602d53f1b0aa7156a6094b72",
@@ -308,8 +308,8 @@
     "_modified": "2026-11-01 18:46:08.443045"
   },
   "events/WR2025.html": {
-    "md5": "eecbdfc7ede8a2881bf18a5947845420",
-    "_modified": "2026-11-01 18:51:15.338277"
+    "md5": "49cc0689d7fe69e6d328f8e78498686a",
+    "_modified": "2026-11-02 19:27:13.275973"
   },
   "events/ChahQA2025.html": {
     "md5": "fcb1ff6e98d3182b1669df168cc794be",
@@ -324,8 +324,8 @@
     "_modified": "2026-11-01 18:46:08.591542"
   },
   "sitemap.xml": {
-    "md5": "79f607206056601d16cc9149206678f5",
-    "_modified": "2026-11-01 18:34:48.425961"
+    "md5": "bd70da4f8b7b6684ff5666aa1f33820a",
+    "_modified": "2026-11-02 19:27:13.356001"
   },
   "index.html": {
     "md5": "597a0e52b3a9493a08b45cb67cbc3ef3",
@@ -16140,8 +16140,8 @@
     "_modified": "2026-10-29 08:14:10.000000"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "c3819702dd87ae23c9f1241ab1206466",
-    "_modified": "2026-11-01 18:09:22.163967"
+    "md5": "d0845369947d4a58e10ea4523f595ab6",
+    "_modified": "2026-11-02 19:27:12.193142"
   },
   "tags/relics-relevant.html": {
     "md5": "21873085846b29d49d8dc22ae6daad86",
