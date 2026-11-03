@@ -383,7 +383,8 @@ export class SearchQuery {
         queryText = queryText.replaceAll(/\\.|[^\\]+/g,(s) => s.startsWith("\\") ? s : s.toLowerCase());
             // Regular expressions may include character classes with capital letters such as \W
             // Blobs do not contain the character "\", so a non-RegExp query containing "\" won't match anything anyway. 
-        queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+        queryText = queryText.normalize("NFD").replaceAll(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+        queryText = queryText.replaceAll(/[“”]/g,'"');
         this.queryText = queryText;
 
         // 1. Build a regex to parse queryText into items
