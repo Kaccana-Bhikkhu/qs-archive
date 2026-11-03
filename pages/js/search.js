@@ -515,7 +515,7 @@ function clearSearchResults(message) {
     resultsFrame.innerHTML = "";
 
     if (message) {
-        messageFrame.innerHTML = message;
+        messageFrame.innerText = message;
         messageFrame.style.display = "block";
     } else
         messageFrame.style.display = "none";
@@ -1323,28 +1323,27 @@ function moveFiltersToSearch() {
 
 function searchFromURL() {
     // Find excerpts matching the search query from the page URL.
-    if (!gSearchDatabase) {
-        debugLog("Error: database not loaded.");
-        return;
-    }
-
-    let params = frameSearch();
-    let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
-    let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
-
-    debugLog("Called searchFromURL. Query:",query);
-    frame.querySelector('#search-text').value = query;
-
-    let filter = loadFilters(params);
-    if (filter)
-        query = `${filter} ${query}`
-
-    if (!query.trim()) {
-        clearSearchResults();
-        return;
-    }
-
     try {
+        if (!gSearchDatabase) {
+            debugLog("Error: database not loaded.");
+            return;
+        }
+        let params = frameSearch();
+        let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
+        let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
+
+        debugLog("Called searchFromURL. Query:",query);
+        frame.querySelector('#search-text').value = query;
+
+        let filter = loadFilters(params);
+        if (filter)
+            query = `${filter} ${query}`
+
+        if (!query.trim()) {
+            clearSearchResults();
+            return;
+        }
+
         let searchGroups = new SearchQuery(query,params.has("strict"));
         debugLog(searchGroups);
     
@@ -1353,8 +1352,15 @@ function searchFromURL() {
     } catch (err) {
         if (err.message.startsWith("Invalid regular expression")) {
             clearSearchResults(err.message);
-        } else
+        } else {
+            let vDebug = ""; 
+            for (let prop in err) {  
+                vDebug += "property: "+ prop + " value: ["+ err[prop]+ "]\n"; 
+            } 
+            vDebug += "toString(): " + " value: [" + err.toString() + "]"; 
+            clearSearchResults("Javascript error: " + vDebug);
             throw err;
+        }
     }
 }
 
