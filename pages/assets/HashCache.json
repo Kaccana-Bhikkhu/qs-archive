@@ -20,8 +20,8 @@
     "_modified": "2026-11-02 19:27:12.077675"
   },
   "indexes/Tags_print.html": {
-    "md5": "f3429ee8a72fe798fa83111946128657",
-    "_modified": "2026-11-02 19:27:12.118299"
+    "md5": "00733184b49913914d6557ba1be17a92",
+    "_modified": "2026-11-04 06:57:51.144922"
   },
   "drilldown/root.html": {
     "md5": "6ccbdb0c6bda031898b0badd9dee2ec8",
@@ -36,12 +36,12 @@
     "_modified": "2026-11-02 19:27:12.180963"
   },
   "indexes/SortedTags_print.html": {
-    "md5": "9959db15ba44f77ea31e993e21f02f7c",
-    "_modified": "2026-11-02 19:27:12.189809"
+    "md5": "2d4d69a0305d924fb8335ff6fc76ef32",
+    "_modified": "2026-11-04 06:57:51.221354"
   },
   "indexes/AlphabeticalTags_print.html": {
-    "md5": "474cd4ec075c6afe58421800bc28d9c6",
-    "_modified": "2026-11-02 19:27:12.201283"
+    "md5": "19d1f273cac724b3cc31341c684234f7",
+    "_modified": "2026-11-04 06:57:51.233470"
   },
   "indexes/AlphabeticalTags.html": {
     "md5": "beff00f8250c209ae6def18407799380",
@@ -64,8 +64,8 @@
     "_modified": "2026-11-02 19:27:12.225498"
   },
   "indexes/EventsBySeries.html": {
-    "md5": "c5e5d5da3f048089a53ff6f55438d62d",
-    "_modified": "2026-11-01 18:09:22.316612"
+    "md5": "7d41085f8c32809b48ab5f425b9ea79b",
+    "_modified": "2026-11-04 13:16:33.804933"
   },
   "indexes/EventsBySubject.html": {
     "md5": "752d25cd6a0c7c11e0619bf87c482901",
@@ -76,12 +76,12 @@
     "_modified": "2026-11-01 18:09:22.318737"
   },
   "indexes/EventDetails.html": {
-    "md5": "156a25cca0b8e47c76308ad1077c4aef",
-    "_modified": "2026-11-01 18:09:22.319660"
+    "md5": "1b20018e520cc0b98f50712b62ca0344",
+    "_modified": "2026-11-04 13:16:33.808078"
   },
   "events/Chah2001.html": {
     "md5": "6cad07e28afe90a873891f73b8e34a30",
-    "_modified": "2026-11-02 19:27:12.303617"
+    "_modified": "2026-11-04 13:45:41.798338"
   },
   "events/WR2005-1.html": {
     "md5": "1a3ddc73cd64d63b3f217688990ebd9b",
@@ -185,7 +185,7 @@
   },
   "events/Anniversary2016.html": {
     "md5": "fcaaad3060638611e68a8540eb0f5107",
-    "_modified": "2026-11-01 18:46:08.136975"
+    "_modified": "2026-11-04 13:45:42.332013"
   },
   "events/UD2016-2.html": {
     "md5": "b3dd1dcf941db9afd885f43a7274e07f",
@@ -264,8 +264,8 @@
     "_modified": "2026-11-01 18:46:08.360471"
   },
   "events/Podcast2023.html": {
-    "md5": "31ea7f4cfa2606d85482fed09b7bb93b",
-    "_modified": "2026-11-02 19:27:13.099122"
+    "md5": "d6358624fce638164b0d956b47bb6084",
+    "_modified": "2026-11-04 13:16:34.571781"
   },
   "events/Sudhana2023.html": {
     "md5": "2b9a8907a22d7109adac5c34c81b12fe",
@@ -285,7 +285,7 @@
   },
   "events/Rishikesh2023.html": {
     "md5": "5e4c0a85a46e25dfd1cffdb51f6549dd",
-    "_modified": "2026-11-01 18:46:08.418280"
+    "_modified": "2026-11-04 13:45:42.612336"
   },
   "events/Anniversary2024.html": {
     "md5": "0bda60e0cedb490288c44170ee71a149",
@@ -324,8 +324,8 @@
     "_modified": "2026-11-01 18:46:08.591542"
   },
   "sitemap.xml": {
-    "md5": "bd70da4f8b7b6684ff5666aa1f33820a",
-    "_modified": "2026-11-02 19:27:13.356001"
+    "md5": "de16bc757966a21cd4db241e4595e2ff",
+    "_modified": "2026-11-04 13:37:38.088301"
   },
   "index.html": {
     "md5": "597a0e52b3a9493a08b45cb67cbc3ef3",
@@ -14068,968 +14068,968 @@
     "_modified": "2026-10-29 08:14:18.000000"
   },
   "teachers/TeachersLineage.html": {
-    "md5": "c74438df1453870d16221edf28c34280",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "d3c1054743485831cfdb1a430f94f7ce",
+    "_modified": "2026-11-04 13:51:06.260256"
   },
   "teachers/TeachersByExcerpts.html": {
-    "md5": "f75a35fd31748a2a2ee357c4e379ca02",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "b6b5684238628839ea51d4bd8ce1f3ad",
+    "_modified": "2026-11-04 13:51:06.261332"
   },
   "teachers/TeachersAlphabetical.html": {
-    "md5": "a4db66959f7e038cae471c71d95a8cf0",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "687c3a0900dfc81d5e78e8d1901e64fc",
+    "_modified": "2026-11-04 13:51:06.262195"
   },
   "teachers/TeachersChronological.html": {
-    "md5": "5386676d9a72b0d9371870ee92ee97dc",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "7cf7ee5370c714a5b78ec730b94ca127",
+    "_modified": "2026-11-04 13:51:06.263030"
   },
   "teachers/the-abhayagiri-sangha.html": {
     "md5": "4247fa65d821c4d279a5ddf32fd8f919",
-    "_modified": "2026-10-28 14:36:02.000000"
+    "_modified": "2026-11-04 13:51:06.263868"
   },
   "teachers/ajahn-mun.html": {
-    "md5": "76e174a8041a92076e9b43b907ac0c50",
-    "_modified": "2026-10-28 14:36:02.000000"
+    "md5": "c62877b8d5e68cd658b5161bef38cba5",
+    "_modified": "2026-11-04 13:51:06.269744"
   },
   "teachers/ajahn-chah.html": {
-    "md5": "250ae9730ecce8750fc56add1f166c15",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "64af57b8201104859b3429473e7e1cf2",
+    "_modified": "2026-11-04 13:51:06.351982"
   },
   "teachers/ajahn-chah-2.html": {
-    "md5": "7e972f0e7013156ba9a0460dcd2140b0",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "5588eaacac5e05a237a2994eaeca57d3",
+    "_modified": "2026-11-04 13:51:06.353542"
   },
   "teachers/ajahn-chah-featured.html": {
-    "md5": "784d8e5f871ca7d498b278a54a347526",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "2b3d6694ef3205da513d0b1c1c71a5d0",
+    "_modified": "2026-11-04 13:51:06.373254"
   },
   "teachers/ajahn-chah-d-quote.html": {
     "md5": "2abe2f5ea8c3be326c7f37e8ced31d4e",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.377206"
   },
   "teachers/ajahn-chah-quoted-by.html": {
-    "md5": "81c899637bda90a2214378b74e16b4df",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "05922aa83f43c0fc22b6f5a7583ec3b2",
+    "_modified": "2026-11-04 13:51:06.423483"
   },
   "teachers/ajahn-chah-quoted-by-2.html": {
-    "md5": "484683255861505bf2402676aefd5796",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "088f55a8dd6f92c4055ea946c6779727",
+    "_modified": "2026-11-04 13:51:06.425034"
   },
   "teachers/ajahn-chah-meditation.html": {
     "md5": "d0b97dab490ad4e2dae1f19c7dbdba5b",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.428249"
   },
   "teachers/ajahn-chah-teaching.html": {
-    "md5": "66eae1c28844cf7be82a3defa6e50cd7",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "d5430eca30359753d7610cbf58b98d92",
+    "_modified": "2026-11-04 13:51:06.437632"
   },
   "teachers/ajahn-chah-read-from.html": {
-    "md5": "6a0cf4dfdb6d419862dcaf4a26f7472f",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "66fcba55dffda21d66afd0129f092085",
+    "_modified": "2026-11-04 13:51:06.444450"
   },
   "teachers/ajahn-lee-dhammadharo.html": {
-    "md5": "f4f62a2000235b34999c51f8a4425302",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "7561bc0306917a4f09db10d0be4bbb9b",
+    "_modified": "2026-11-04 13:51:06.449503"
   },
   "teachers/ajahn-maha-boowa.html": {
-    "md5": "b150a1601711ed4e9eadc3094d884b18",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "35043807d1d7062aa2e0dc871a5d03c7",
+    "_modified": "2026-11-04 13:51:06.459898"
   },
   "teachers/ajahn-maha-boowa-featured.html": {
     "md5": "ee6bab4a0e91ef8aff90aa77313da291",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.462188"
   },
   "teachers/ajahn-maha-boowa-quoted-by.html": {
-    "md5": "8e75f3c0cbe4d6e9e24c01784e1db5a6",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "b6ffb6f25b8e0ace05f75d4cffe2fa11",
+    "_modified": "2026-11-04 13:51:06.466279"
   },
   "teachers/ajahn-maha-boowa-read-from.html": {
-    "md5": "e784332f5d7654f1ff6d94c77b35b234",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "5704af67e914b1e5f3d1a8395903953c",
+    "_modified": "2026-11-04 13:51:06.468793"
   },
   "teachers/ajahn-baen.html": {
-    "md5": "2396f26d254c534fcde933196c49086e",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "7e0211ccc5e08895b74bed3478327bdf",
+    "_modified": "2026-11-04 13:51:06.474593"
   },
   "teachers/ajahn-tong-jan.html": {
-    "md5": "a73587b3c4de26839c63de3a3367052f",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "2a89cdfcb55781ae35d42e24534b31b5",
+    "_modified": "2026-11-04 13:51:06.479105"
   },
   "teachers/chao-khun-upali.html": {
-    "md5": "dfddf51ee2ac8eec29107d1ceda0f2a6",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "41c33051b58807cf89b490ab70038c48",
+    "_modified": "2026-11-04 13:51:06.483784"
   },
   "teachers/ajahn-dune.html": {
-    "md5": "2bdf260a1bfb5ff42ef1d5864a90b0cf",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "27107cc22e04fb207bc92b15fae77f82",
+    "_modified": "2026-11-04 13:51:06.491766"
   },
   "teachers/ajahn-gi.html": {
     "md5": "df9e690d8ff2c0e4bcfaaedc275807a6",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.503841"
   },
   "teachers/ajahn-pannavaddho.html": {
-    "md5": "abca4aa5c3d011a08f75e81c72eaf30e",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "ef44d725de7c7dc68135bf6f89bab467",
+    "_modified": "2026-11-04 13:51:06.511354"
   },
   "teachers/venerable-nanatiloka.html": {
-    "md5": "2f8c1bab472b63a45895feb505499387",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "4eb399251fb8620fe6740535a72bfd88",
+    "_modified": "2026-11-04 13:51:06.520056"
   },
   "teachers/upasika-kee-nanayon.html": {
-    "md5": "fbafc53f2696e3b39b57affb01c3685e",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "55fe15bdf2af654da73afb93f8be8e2c",
+    "_modified": "2026-11-04 13:51:06.530872"
   },
   "teachers/p-a-payutto.html": {
-    "md5": "84c2ff1ba1b007de09c9cdb1dca1a983",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "ce5d65d3d5b0ccd054f8495eda90f656",
+    "_modified": "2026-11-04 13:51:06.541406"
   },
   "teachers/ajahn-dick-silaratano.html": {
-    "md5": "bae9a3766780c7bffc30191c8c8c76ca",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "8af699bd03eea1d39d160438dec62e2e",
+    "_modified": "2026-11-04 13:51:06.546074"
   },
   "teachers/venerable-analayo.html": {
-    "md5": "c22c665d0ee86bcf056105d34c4b19f3",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "30f6b38a375b81a56bcbd152bf320514",
+    "_modified": "2026-11-04 13:51:06.551169"
   },
   "teachers/ajahn-buddhadasa.html": {
-    "md5": "50a0d5f13e5f21df001b06ea606fe15b",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "961107b946eb3c030a6bae3fc1f94039",
+    "_modified": "2026-11-04 13:51:06.556949"
   },
   "teachers/ajahn-plien.html": {
-    "md5": "7845a30d1a24dc6d257bfa8dba37c440",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "79e9826f1a7ff3f06aefb30a6cdab52e",
+    "_modified": "2026-11-04 13:51:06.561543"
   },
   "teachers/ajahn-suwat.html": {
     "md5": "095f3e821d0a330d27fcef88bff587fc",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.565884"
   },
   "teachers/ajahn-wanchai.html": {
-    "md5": "562a0698391c1102387e97289b0be438",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "ba44bf47968865c9612ef43eb998c95a",
+    "_modified": "2026-11-04 13:51:06.570336"
   },
   "teachers/ajahn-sim.html": {
     "md5": "c747c04499f2d0fb90108eb9c6e0858b",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.574830"
   },
   "teachers/ajahn-boon-choo.html": {
-    "md5": "a08a4fc366b06936f8083f11727c25b7",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "90af2270ccb3e69de21ad41881aa1765",
+    "_modified": "2026-11-04 13:51:06.588898"
   },
   "teachers/ajahn-koon-na-pho.html": {
     "md5": "bdd8f1956dba2be0ed57c27b6c1467fb",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.593522"
   },
   "teachers/ajahn-toon.html": {
     "md5": "f92b26a7132fed22d8f5fc21ca4a4f53",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.598417"
   },
   "teachers/ajahn-liem.html": {
-    "md5": "8e57d4bca32b987cc6d83fc090009f52",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "65275982e59719a08022f55d7003a947",
+    "_modified": "2026-11-04 13:51:06.606916"
   },
   "teachers/ajahn-liem-featured.html": {
     "md5": "2bc4282e00d7a77ec06cb0497621cbef",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.608611"
   },
   "teachers/ajahn-liem-quoted-by.html": {
     "md5": "0474d4107f5c77c1e754eb722068bc24",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.611301"
   },
   "teachers/ajahn-liem-read-from.html": {
-    "md5": "e1bd61587de4f91a5207e9fc12e7be3f",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "cf69a0895119ceca800a55cfded159e6",
+    "_modified": "2026-11-04 13:51:06.614189"
   },
   "teachers/ajahn-piak.html": {
-    "md5": "9143bb7756cfe658cef193e84392ab00",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "99aa01d2c355457a6d3c0931a94f233c",
+    "_modified": "2026-11-04 13:51:06.618665"
   },
   "teachers/ajahn-dtun.html": {
     "md5": "edfb0038eacb611e60425831de82da59",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.623157"
   },
   "teachers/ajahn-anan.html": {
-    "md5": "d571967614949cc7a375fdccb3de1a30",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "c881ca93346672bd8dde9992e9722c57",
+    "_modified": "2026-11-04 13:51:06.627862"
   },
   "teachers/ajahn-sumedho.html": {
-    "md5": "15cf62ada9f99f5af8e523328c9f4190",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "4c8fd67f34e9d407b5e7f5c4d38f3cfd",
+    "_modified": "2026-11-04 13:51:06.663512"
   },
   "teachers/ajahn-sumedho-featured.html": {
-    "md5": "8e827e2413f5ae2039b54580639edfc6",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "d7026e22901a818b0b0c3e765e962e7d",
+    "_modified": "2026-11-04 13:51:06.667545"
   },
   "teachers/ajahn-sumedho-question.html": {
     "md5": "d8734e3b9afa96091bb0957285c3e4a3",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.669672"
   },
   "teachers/ajahn-sumedho-story.html": {
-    "md5": "1b39c6db3f9f2c875886ad9a580512d7",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "f596b6db967aeb583dfb30442199f1f3",
+    "_modified": "2026-11-04 13:51:06.673476"
   },
   "teachers/ajahn-sumedho-d-quote.html": {
     "md5": "6f904ada9ab1d0f690ae78ea9a8eb0f4",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.676081"
   },
   "teachers/ajahn-sumedho-i-quote.html": {
     "md5": "2f0bc518c732b72e3d10e22fde5acb47",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.677567"
   },
   "teachers/ajahn-sumedho-quoted-by.html": {
-    "md5": "cd73d3a0977962f8f5190ce3d15c08f3",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "b1fc73682c57b9d9b73c3ac69371e838",
+    "_modified": "2026-11-04 13:51:06.683290"
   },
   "teachers/ajahn-sumedho-teaching.html": {
     "md5": "0ad8d46f2b756a03594b1a764d94f162",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.686415"
   },
   "teachers/ajahn-sumedho-read-from.html": {
-    "md5": "9801790f870421c5695e1035dbc933d6",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "8b5c7fc0d8c3bfb6cdf12df8d723dd11",
+    "_modified": "2026-11-04 13:51:06.689944"
   },
   "teachers/ajahn-khemadhammo.html": {
     "md5": "5ed7654b85b59f263db82ac53897ab62",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.694418"
   },
   "teachers/ajahn-pasanno.html": {
-    "md5": "0cf4eac4661bcd38058de3a6b8c4c687",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "7505a199f0f3684e5e16689e571a5ca8",
+    "_modified": "2026-11-04 13:51:07.279466"
   },
   "teachers/ajahn-pasanno-2.html": {
-    "md5": "fd0c377ba6af8db41536b7eab3e32e97",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "366827e14391e2bfd7b3338f35ff74b1",
+    "_modified": "2026-11-04 13:51:07.281309"
   },
   "teachers/ajahn-pasanno-3.html": {
-    "md5": "69b676097c47cc8d3c30b8a97b19fea9",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "581638cb76039226f6e36d9879e446b2",
+    "_modified": "2026-11-04 13:51:07.283325"
   },
   "teachers/ajahn-pasanno-4.html": {
-    "md5": "a5fde7ff0472cdfe295684fe310839a8",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "11185002cd7aa28721214e165a0c71d4",
+    "_modified": "2026-11-04 13:51:07.285418"
   },
   "teachers/ajahn-pasanno-5.html": {
-    "md5": "86e4ac855be6ee3ea924ca423b23f6e0",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "f3017ceaaaa5806fe6f5040fe298ea5c",
+    "_modified": "2026-11-04 13:51:07.287358"
   },
   "teachers/ajahn-pasanno-6.html": {
-    "md5": "3d239b79751e9c59e94eb4185be3f2fd",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "7c1f8bf5aa06e47ebb10e87685d730a3",
+    "_modified": "2026-11-04 13:51:07.289092"
   },
   "teachers/ajahn-pasanno-7.html": {
-    "md5": "61167d0036cdc8729c7e15e607b34b66",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "90c20de9f6787f698f4fdb688eb44abc",
+    "_modified": "2026-11-04 13:51:07.290826"
   },
   "teachers/ajahn-pasanno-8.html": {
-    "md5": "b12c2d029a8acdfba9b7b0611e9f01f1",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "bb26e82679606851b084eb6ddfbf2a49",
+    "_modified": "2026-11-04 13:51:07.292521"
   },
   "teachers/ajahn-pasanno-9.html": {
-    "md5": "92e4aaa1691d1ef0b96b4b33f70da522",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "fac5fa00de48c880b749a791ae1f2572",
+    "_modified": "2026-11-04 13:51:07.294231"
   },
   "teachers/ajahn-pasanno-10.html": {
-    "md5": "6bbd81afd2b2fa294d45558647ad7f9b",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "1bc9bbd377ee98b2f8bde32baefd5277",
+    "_modified": "2026-11-04 13:51:07.296135"
   },
   "teachers/ajahn-pasanno-11.html": {
-    "md5": "fb5dadd79006b35f021ceb11d6dffa79",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "7b1150ac86027ed44121112f8da4d7a6",
+    "_modified": "2026-11-04 13:51:07.298073"
   },
   "teachers/ajahn-pasanno-12.html": {
-    "md5": "da63c47b12915db81cc60f1c6853610a",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "b1615ce184982ff6434c9087f08dedd3",
+    "_modified": "2026-11-04 13:51:07.300014"
   },
   "teachers/ajahn-pasanno-13.html": {
-    "md5": "dd854dfccc19dd598107b13eae95a842",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "fea5e64683bad8d8f0365cb240d3962c",
+    "_modified": "2026-11-04 13:51:07.301708"
   },
   "teachers/ajahn-pasanno-14.html": {
-    "md5": "e9236058e0ca735a9f822185e50bc159",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "20fb0b6a5bf637be8bcf53f237198b15",
+    "_modified": "2026-11-04 13:51:07.303410"
   },
   "teachers/ajahn-pasanno-15.html": {
-    "md5": "cb797422d37032d668e4526def6a2b4d",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "ae3dd0d8938de452a19c3bfa6d70c4e2",
+    "_modified": "2026-11-04 13:51:07.305315"
   },
   "teachers/ajahn-pasanno-16.html": {
-    "md5": "8ecf5bf733bc3c30b7ad1065851ae26d",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "2b23be43048b43f8f28dfc396227e2d9",
+    "_modified": "2026-11-04 13:51:07.306993"
   },
   "teachers/ajahn-pasanno-17.html": {
-    "md5": "b035602b2d567f7a966e9a2afd73aea6",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "2f613a115b1e02913cd9c76176083488",
+    "_modified": "2026-11-04 13:51:07.308663"
   },
   "teachers/ajahn-pasanno-18.html": {
-    "md5": "1c32978608351e5fe92bf1ca657ac916",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "7ab651ee72ffd19addf4a1d03cc18d8d",
+    "_modified": "2026-11-04 13:51:07.310387"
   },
   "teachers/ajahn-pasanno-19.html": {
-    "md5": "cc18f95076b278f233648809b489ab1d",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "3fe7b8a78f695d426d390b7ab26245b7",
+    "_modified": "2026-11-04 13:51:07.312318"
   },
   "teachers/ajahn-pasanno-20.html": {
-    "md5": "73bf1a6e18e08fcfe833212a7d446117",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "769841900393f584344591712560efaf",
+    "_modified": "2026-11-04 13:51:07.314315"
   },
   "teachers/ajahn-pasanno-21.html": {
-    "md5": "94e642406e1e04dc11721bd25f70133d",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "994cf582413a1900a8ff0201514f55b5",
+    "_modified": "2026-11-04 13:51:07.316007"
   },
   "teachers/ajahn-pasanno-22.html": {
-    "md5": "dca651f6804cd01887292d8f1f7d905e",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "709e3f85c8f56cfadd48114756fa2bcb",
+    "_modified": "2026-11-04 13:51:07.317720"
   },
   "teachers/ajahn-pasanno-23.html": {
-    "md5": "0bc998d5cff4543da152e7e2e718b7d0",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "34d223eb7ccc99a47beddff515a447a7",
+    "_modified": "2026-11-04 13:51:07.319817"
   },
   "teachers/ajahn-pasanno-featured.html": {
-    "md5": "ad89a0cff3a7ae786b23fcff6b3a8e3e",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "008d86eb7bb37cc01002a1d616db83f5",
+    "_modified": "2026-11-04 13:51:07.453875"
   },
   "teachers/ajahn-pasanno-featured-2.html": {
-    "md5": "4920497984fdd06d2a83146adb72a442",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "81336f2ec41fa9a3f72539d4f2fc60d0",
+    "_modified": "2026-11-04 13:51:07.455405"
   },
   "teachers/ajahn-pasanno-featured-3.html": {
-    "md5": "468e0a362e927bc88aee9f711d7f52fe",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "9e5966df34eb9115558475540f3790e7",
+    "_modified": "2026-11-04 13:51:07.456913"
   },
   "teachers/ajahn-pasanno-featured-4.html": {
-    "md5": "4d11e2961225e301d976098187fa542b",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "c80b81f6673457a54f4dbc285589d436",
+    "_modified": "2026-11-04 13:51:07.458403"
   },
   "teachers/ajahn-pasanno-featured-5.html": {
-    "md5": "bd925892918478996b61eb5e45832059",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "6137f74c38ef3fe813c45e999221de5a",
+    "_modified": "2026-11-04 13:51:07.459865"
   },
   "teachers/ajahn-pasanno-question.html": {
-    "md5": "0afb79d02fe5c52a7aaf9130a90ce836",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "415a500fc9c05d9f297ceebbe76f2b2a",
+    "_modified": "2026-11-04 13:51:07.840069"
   },
   "teachers/ajahn-pasanno-question-2.html": {
-    "md5": "525ecea12a25fb98964ac61967922023",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "f2176aa6dbc8ae3c5dea97cec66726ec",
+    "_modified": "2026-11-04 13:51:07.841779"
   },
   "teachers/ajahn-pasanno-question-3.html": {
-    "md5": "238653229bce3c3c4d13ec2a5b4a8a7b",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "8476ac539db4fd83797f196ceac6d7fc",
+    "_modified": "2026-11-04 13:51:07.843593"
   },
   "teachers/ajahn-pasanno-question-4.html": {
-    "md5": "207fcfe58b094f0c3557eaa42da319de",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "22e4f8136fa1bafbe5a4f8a5fcbc95e9",
+    "_modified": "2026-11-04 13:51:07.845324"
   },
   "teachers/ajahn-pasanno-question-5.html": {
-    "md5": "fd93c0fd277781358daa60e3d7195c28",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "043fcbe70538fe2763bdeb49106d943c",
+    "_modified": "2026-11-04 13:51:07.847097"
   },
   "teachers/ajahn-pasanno-question-6.html": {
-    "md5": "005ccb5ebb80d1279049587b070b0e9a",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "1418cbf5c003d9d075e3564ebdd571ea",
+    "_modified": "2026-11-04 13:51:07.849070"
   },
   "teachers/ajahn-pasanno-question-7.html": {
-    "md5": "7c22f648a25c241df065ced4124a5136",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "d778a155ff1ed1e493f59bc42770e48d",
+    "_modified": "2026-11-04 13:51:07.850748"
   },
   "teachers/ajahn-pasanno-question-8.html": {
-    "md5": "cec2c82683a4da92212e56cf0099a9a4",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "343ad80b073e28381ef3a626cf962710",
+    "_modified": "2026-11-04 13:51:07.852499"
   },
   "teachers/ajahn-pasanno-question-9.html": {
-    "md5": "46cead9c068abcbb3e60d4650f5fbf4b",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "a6c4f16436d6c35f8fccba18c31cee83",
+    "_modified": "2026-11-04 13:51:07.854222"
   },
   "teachers/ajahn-pasanno-question-10.html": {
-    "md5": "5646df3a43a61a1cc6ed03bd2acb75cc",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "723aef81824c149e4010ad1d8e655fc8",
+    "_modified": "2026-11-04 13:51:07.855863"
   },
   "teachers/ajahn-pasanno-question-11.html": {
-    "md5": "c63288eedbf0a8fc2ed3ef4732b60075",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "a6cc96b3aaab3d6d4e2e7a2e7548e547",
+    "_modified": "2026-11-04 13:51:07.857595"
   },
   "teachers/ajahn-pasanno-question-12.html": {
-    "md5": "7fd92643f80f69b9d85eca2a879b69df",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "0474f18b055240bfdfccfe68d9f6ead7",
+    "_modified": "2026-11-04 13:51:07.859298"
   },
   "teachers/ajahn-pasanno-question-13.html": {
-    "md5": "2cbad51b50401c76b35ecf67dca5e893",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "791d98808466b24d1e86abff46eed0df",
+    "_modified": "2026-11-04 13:51:07.861046"
   },
   "teachers/ajahn-pasanno-question-14.html": {
-    "md5": "d431cd988580b00b093bd21bb1f99c17",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "831f21b21392349201c813dd75644298",
+    "_modified": "2026-11-04 13:51:07.862738"
   },
   "teachers/ajahn-pasanno-question-15.html": {
-    "md5": "79ee0148460457ab3a143b70f42baf03",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "a3bcd03a58accf2573c0ecadbcb4d32a",
+    "_modified": "2026-11-04 13:51:07.864476"
   },
   "teachers/ajahn-pasanno-question-16.html": {
-    "md5": "b9817222a751528c7aa60d13f536dea5",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "f80b6c8d3358202566c479e524ceee7a",
+    "_modified": "2026-11-04 13:51:07.866213"
   },
   "teachers/ajahn-pasanno-question-17.html": {
-    "md5": "b268abc0a24ca2275326f9c4adf9ab7d",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "450590bfae33c4616136c94c709db7d8",
+    "_modified": "2026-11-04 13:51:07.868229"
   },
   "teachers/ajahn-pasanno-question-18.html": {
-    "md5": "ab3391edaf5ac66d2e8c78e3cba6b1d2",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "8c066578586352e5ba148fc66a3de322",
+    "_modified": "2026-11-04 13:51:07.869945"
   },
   "teachers/ajahn-pasanno-question-19.html": {
-    "md5": "48bea035a0d195f905f7aac853683b98",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "16e1e2f0cdaaba3b719cafd43bfc6b4a",
+    "_modified": "2026-11-04 13:51:07.871580"
   },
   "teachers/ajahn-pasanno-story.html": {
-    "md5": "f3df16763b759b060f36961afda50bbe",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "c2f0c89aa47ab2758228ed6f6046591d",
+    "_modified": "2026-11-04 13:51:07.973712"
   },
   "teachers/ajahn-pasanno-story-2.html": {
-    "md5": "e68e3d7158e8510cf48bcae670a5025c",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "eb3bd0e48959ed6c7e75de9cf87ba1c7",
+    "_modified": "2026-11-04 13:51:07.976834"
   },
   "teachers/ajahn-pasanno-story-3.html": {
-    "md5": "0f9bb9965df34850405711d6b8d3a99a",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "0c97fcd83ec4a15df632177711c53190",
+    "_modified": "2026-11-04 13:51:07.978323"
   },
   "teachers/ajahn-pasanno-story-4.html": {
-    "md5": "a318a1b11c739e145c4d1bcf706cdd83",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "bacd4ba7a9e226f306a2412813b127ef",
+    "_modified": "2026-11-04 13:51:07.979818"
   },
   "teachers/ajahn-pasanno-d-quote.html": {
-    "md5": "8b439651cce0bbb81f044f2a4cf066a9",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "08d031f1e1094d0c9e97e23302b7b504",
+    "_modified": "2026-11-04 13:51:08.033860"
   },
   "teachers/ajahn-pasanno-d-quote-2.html": {
-    "md5": "be36e1a6532ed706a9958d63fc030cfa",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "cfd1ee70cfc52e2925d5e055fba9afc6",
+    "_modified": "2026-11-04 13:51:08.035403"
   },
   "teachers/ajahn-pasanno-i-quote.html": {
-    "md5": "88e099d461ef73dcbd3594423a4fad03",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "f6cfa1b5d01d3ebf541d13032740cfdf",
+    "_modified": "2026-11-04 13:51:08.086679"
   },
   "teachers/ajahn-pasanno-i-quote-2.html": {
-    "md5": "042de6e9e41956b7e14f88342b49cb09",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "daa4abedcbf713d449097e0615dc516f",
+    "_modified": "2026-11-04 13:51:08.088248"
   },
   "teachers/ajahn-pasanno-quoted-by.html": {
-    "md5": "a60d97460a752009cdaf069f074af1bf",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "faaa9fcdee665138a26cc276773b4ad0",
+    "_modified": "2026-11-04 13:51:08.140912"
   },
   "teachers/ajahn-pasanno-meditation.html": {
-    "md5": "c4ea9d073d142db539487bf4500132aa",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "c7ece39beaa1fb84ad64982c2eef6421",
+    "_modified": "2026-11-04 13:51:08.149223"
   },
   "teachers/ajahn-pasanno-teaching.html": {
-    "md5": "209d42939a28f275614e4887f5bef58a",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "fe0092964f9e4f54f2b196ee951134f5",
+    "_modified": "2026-11-04 13:51:08.203701"
   },
   "teachers/ajahn-pasanno-teaching-2.html": {
-    "md5": "52252d66b645c3022991c356827c8b6c",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "813a2059cf6e2ced367f45e1b5baf74c",
+    "_modified": "2026-11-04 13:51:08.206006"
   },
   "teachers/ajahn-pasanno-read-from.html": {
-    "md5": "86074d84238612aa58e6e139c7904289",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "1f0ce44cbe42ba1f52603917eaa0bc00",
+    "_modified": "2026-11-04 13:51:08.232698"
   },
   "teachers/ajahn-pasanno-read-by.html": {
-    "md5": "d0440fdf875de69f7eeeb34a8de587bb",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "63ccdfd30825482e00e6e4e7becb7234",
+    "_modified": "2026-11-04 13:51:08.263310"
   },
   "teachers/ajahn-viradhammo.html": {
-    "md5": "8aa0b5927cf11ae5b0a2a94c4fc134bf",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "md5": "a68e814b95c0257ac432960df6c8fa3c",
+    "_modified": "2026-11-04 13:51:08.269752"
   },
   "teachers/ajahn-sucitto.html": {
-    "md5": "7bac867f895f7976cf2a073d443c4fb0",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "md5": "08ec29f2726c9b1c2a05e3112ca875e5",
+    "_modified": "2026-11-04 13:51:08.287363"
   },
   "teachers/ajahn-sucitto-featured.html": {
     "md5": "d06521f3c17a0c99ddb60a82e776c386",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.289181"
   },
   "teachers/ajahn-sucitto-quoted-by.html": {
     "md5": "21cde7f14d928eeaf7a5dd18ba8b73bd",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.291642"
   },
   "teachers/ajahn-sucitto-read-from.html": {
-    "md5": "af0a62f0a6a28bdf5acf0473a3710597",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "md5": "70227bec3048c42ada4fec7c0a5bf273",
+    "_modified": "2026-11-04 13:51:08.294301"
   },
   "teachers/ajahn-thanissaro.html": {
-    "md5": "ab50045e5404f2613438d8cd8642e746",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "28013668199392045032141e2bdc8f8f",
+    "_modified": "2026-11-04 13:51:08.311113"
   },
   "teachers/ajahn-thanissaro-read-from.html": {
-    "md5": "83309117b8b807e04cac7e54afb1deae",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "6830a577d7bde6e6fe07dabd32113965",
+    "_modified": "2026-11-04 13:51:08.321173"
   },
   "teachers/ajahn-amaro.html": {
-    "md5": "4bfce270524444ec545891fe198cb0c3",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "0a54bea7253db7c78ef403d40b8fb276",
+    "_modified": "2026-11-04 13:51:08.403521"
   },
   "teachers/ajahn-amaro-2.html": {
-    "md5": "45edc758b766e6d279eeea7dcf0529a7",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "c2e65fca6b951afb7cdc9fd0e3efc4c9",
+    "_modified": "2026-11-04 13:51:08.405077"
   },
   "teachers/ajahn-amaro-3.html": {
-    "md5": "e86c5153b772445436dbb9dd69a64a03",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "e87cbe7ea407964cb7ecd54378de3596",
+    "_modified": "2026-11-04 13:51:08.406972"
   },
   "teachers/ajahn-amaro-featured.html": {
     "md5": "c694659886d5d03a5452c05297f4c24c",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.420348"
   },
   "teachers/ajahn-amaro-question.html": {
-    "md5": "580efcce357f96103d61e0c3d9e8b7c9",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "6cd2ca7efa5db2edcd1ecc8873274488",
+    "_modified": "2026-11-04 13:51:08.452085"
   },
   "teachers/ajahn-amaro-story.html": {
-    "md5": "8d32af068ba373d8f357f15d2272fc6a",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "98f8a91b04886c3c785bdff82eb0009a",
+    "_modified": "2026-11-04 13:51:08.468235"
   },
   "teachers/ajahn-amaro-d-quote.html": {
-    "md5": "52491ccbe8f453cba01ad538d8a67c22",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "66d9f4a964ca7db7f5804fb1ae4623fe",
+    "_modified": "2026-11-04 13:51:08.472789"
   },
   "teachers/ajahn-amaro-i-quote.html": {
-    "md5": "e6ddc4c842a12bb0010e8780ba28ce54",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "f41f72fa5662571aa0b489090ac1600a",
+    "_modified": "2026-11-04 13:51:08.482703"
   },
   "teachers/ajahn-amaro-quoted-by.html": {
-    "md5": "4a7b37b19d998c9c1926400535ff4947",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "401c51e852d753d17664b4feb4fae64e",
+    "_modified": "2026-11-04 13:51:08.492689"
   },
   "teachers/ajahn-amaro-meditation.html": {
     "md5": "452d2a499326535a68f20fe14493acde",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.494313"
   },
   "teachers/ajahn-amaro-teaching.html": {
-    "md5": "015d59f4cccfbb938f509eb08b77c35b",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "5d8a6c921c8962b47334189d16f29403",
+    "_modified": "2026-11-04 13:51:08.502715"
   },
   "teachers/ajahn-amaro-read-from.html": {
-    "md5": "ff96b6ff3a25ee84020790b256a8487c",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "757d918316486dc6a10732e7b665d53d",
+    "_modified": "2026-11-04 13:51:08.520875"
   },
   "teachers/ajahn-amaro-read-by.html": {
-    "md5": "0c42bccbcb770800c7da4e719c21f66a",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "c10070acc24b59c3f7a0f3fa77c49ef5",
+    "_modified": "2026-11-04 13:51:08.530428"
   },
   "teachers/ajahn-nanadhammo.html": {
-    "md5": "ac3414218e05819d29bf0f1a1ea9039e",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "md5": "394ce6126ca1b1b7552a4875ecc5d581",
+    "_modified": "2026-11-04 13:51:08.535018"
   },
   "teachers/ajahn-jayasaro.html": {
-    "md5": "c99cceed648086206f1c175e05b74224",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "md5": "b1ee55c69ad4ff59e64dcae93016e88f",
+    "_modified": "2026-11-04 13:51:08.550210"
   },
   "teachers/ajahn-jayasaro-featured.html": {
     "md5": "a7d07ab4929fb37c361500853d700633",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.552846"
   },
   "teachers/ajahn-jayasaro-story.html": {
     "md5": "aab467ebc5058c3206360c1491a10ea7",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.555225"
   },
   "teachers/ajahn-jayasaro-i-quote.html": {
     "md5": "979a0fe32cb9615092751dd2d4ad82ba",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.557478"
   },
   "teachers/ajahn-jayasaro-read-from.html": {
-    "md5": "ec55d8c6d052b2da1c48a5c53aca51bd",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "md5": "c47c2bbd2b6943535575cee4f43c3a63",
+    "_modified": "2026-11-04 13:51:08.568741"
   },
   "teachers/ajahn-sudanto.html": {
     "md5": "141bb8c51e2fcba3ab5f4824eee75c3f",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.576583"
   },
   "teachers/ajahn-sudanto-featured.html": {
     "md5": "ed49a0fa4d2898f03fcd2c9e61773f95",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.578186"
   },
   "teachers/ajahn-sudanto-story.html": {
     "md5": "be2fa72857fe5938d40d177b2d4e347f",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.581086"
   },
   "teachers/ajahn-sudanto-d-quote.html": {
     "md5": "d7a66d7468afd91f076a46c5f3ed7f35",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.582623"
   },
   "teachers/ajahn-sudanto-teaching.html": {
     "md5": "2f2be6fbdf6adfd8a6aaae7a00de0065",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.584563"
   },
   "teachers/ajahn-yatiko.html": {
     "md5": "2ad75659fff927e3dcedd1e24cf63643",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.595411"
   },
   "teachers/ajahn-yatiko-question.html": {
     "md5": "92e2d9591bbfd68334aa4982959f6aea",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.602459"
   },
   "teachers/ajahn-yatiko-story.html": {
     "md5": "f0e4d9535f0b97c230e89358236ac236",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.604354"
   },
   "teachers/ajahn-yatiko-teaching.html": {
     "md5": "3a1ed426bb089d360fedfaadb187f95d",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.606882"
   },
   "teachers/ajahn-karunadhammo.html": {
-    "md5": "19352749c26ba32b3bc4244a418cd025",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "ccd0b08a558eb88bc3a7f0ff73a5680b",
+    "_modified": "2026-11-04 13:51:08.672996"
   },
   "teachers/ajahn-karunadhammo-2.html": {
-    "md5": "00fb45147c6cc56bb84839bde4d8cede",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "8c1dffa02822ec8d16fcd0665da2b90d",
+    "_modified": "2026-11-04 13:51:08.674497"
   },
   "teachers/ajahn-karunadhammo-3.html": {
-    "md5": "9f9b6b4c1a72df6b5446ce177fb95bea",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "ec967c19aeb6c65ca2d0d4713d11a965",
+    "_modified": "2026-11-04 13:51:08.675962"
   },
   "teachers/ajahn-karunadhammo-featured.html": {
-    "md5": "b4bcc6bd6eea11fe16813f29137a524b",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "6186391e18efdc90dc176ede6b6f156f",
+    "_modified": "2026-11-04 13:51:08.688065"
   },
   "teachers/ajahn-karunadhammo-question.html": {
-    "md5": "83d8c450df45cab7bc0faa148ec1fdd8",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "69fa08f895e43d2b7183dd7c57c18448",
+    "_modified": "2026-11-04 13:51:08.723282"
   },
   "teachers/ajahn-karunadhammo-question-2.html": {
     "md5": "9bf1fafe5423ead4ea560439beaa7914",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.725184"
   },
   "teachers/ajahn-karunadhammo-story.html": {
     "md5": "2482e227c338cfa6e4afb0090fcdb73c",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.730983"
   },
   "teachers/ajahn-karunadhammo-d-quote.html": {
     "md5": "a39776bb8b1ffbddf7eac0983c4f9456",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.734194"
   },
   "teachers/ajahn-karunadhammo-i-quote.html": {
     "md5": "f999356a4a8f3696d40288ca6856ff4c",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.737266"
   },
   "teachers/ajahn-karunadhammo-teaching.html": {
-    "md5": "989611fcf5c7c41dcf3276e0864b7759",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "b9aed1f1ebb047d687f9a987852d6a4c",
+    "_modified": "2026-11-04 13:51:08.747952"
   },
   "teachers/ajahn-karunadhammo-read-from.html": {
-    "md5": "22df5e5b6d45910265e6ebfcf8aa4a78",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "29f09ba4909dc8b1adebbf053169f2df",
+    "_modified": "2026-11-04 13:51:08.753048"
   },
   "teachers/ajahn-karunadhammo-read-by.html": {
-    "md5": "ba8cdeaff811afd30b0ebafd7b0ea150",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "8e8500f0af4c16a90cc9b66322558bbf",
+    "_modified": "2026-11-04 13:51:08.758704"
   },
   "teachers/ajahn-jotipalo.html": {
-    "md5": "a9d1c67ca3ff1acfbb12e115e348fcfa",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "8bf2ff412bf9aca0c4e338b0ac4f5193",
+    "_modified": "2026-11-04 13:51:08.780792"
   },
   "teachers/ajahn-jotipalo-featured.html": {
     "md5": "8d29d2e60e6ac53c89501262e66f622a",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.783451"
   },
   "teachers/ajahn-jotipalo-question.html": {
-    "md5": "c3a50964f59fd8c5e15065ba1954b9db",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "765d13844d68c24c672638b840911a40",
+    "_modified": "2026-11-04 13:51:08.790711"
   },
   "teachers/ajahn-jotipalo-story.html": {
     "md5": "c131cbf3270a75709222109fb66fb868",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.797024"
   },
   "teachers/ajahn-jotipalo-i-quote.html": {
     "md5": "113e2bd75cb8925beec6d3f2b32ebd93",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.798338"
   },
   "teachers/ajahn-jotipalo-teaching.html": {
     "md5": "85c5c20e60499729b04da4b595e194b9",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.801762"
   },
   "teachers/ajahn-jotipalo-read-by.html": {
-    "md5": "366ca43377d0feee457b8d32dae759c2",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "4574d91cebb8b24395ff40db4572122a",
+    "_modified": "2026-11-04 13:51:08.804143"
   },
   "teachers/ajahn-naniko.html": {
-    "md5": "4df8e13b6d76fa1a2c5b265d25cd35cc",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "25f420018fb676a1479d134e457f72c6",
+    "_modified": "2026-11-04 13:51:08.842472"
   },
   "teachers/ajahn-naniko-2.html": {
-    "md5": "6a4c2b761084447f45d62b97e0a54074",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "eba699a9fa36a2886ca2fefd3e443bc2",
+    "_modified": "2026-11-04 13:51:08.843835"
   },
   "teachers/ajahn-naniko-featured.html": {
-    "md5": "780945424b0fa59c9a73e477dabef556",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "54332910466a5ff3d0ddbe2e9535b487",
+    "_modified": "2026-11-04 13:51:08.849380"
   },
   "teachers/ajahn-naniko-question.html": {
-    "md5": "222a269082991c91cb086327b7ff902d",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "e2a6a7158b4230f326938d9294f7730b",
+    "_modified": "2026-11-04 13:51:08.865342"
   },
   "teachers/ajahn-naniko-story.html": {
     "md5": "dea2a427089273f9a5b8929906839ec6",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.872000"
   },
   "teachers/ajahn-naniko-d-quote.html": {
     "md5": "945a303f2b067302cf7a7fb98af336f6",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.874166"
   },
   "teachers/ajahn-naniko-i-quote.html": {
     "md5": "b3a16ca58c6934500a9d13ed1062136a",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.876801"
   },
   "teachers/ajahn-naniko-teaching.html": {
     "md5": "3d94bd9d89e232e06875f9a2db4cbbb0",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.883351"
   },
   "teachers/ajahn-naniko-read-from.html": {
-    "md5": "09c1d94e821db0c0824304914f94c0f4",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "md5": "0463228232c7bac496f411b09aefa8ad",
+    "_modified": "2026-11-04 13:51:08.885998"
   },
   "teachers/ajahn-naniko-read-by.html": {
-    "md5": "7a535934b1aef3c4b8eb61fef70de061",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "md5": "42deb2c2e8769c510df2410c2c60b0f2",
+    "_modified": "2026-11-04 13:51:08.890766"
   },
   "teachers/ajahn-jitindriya.html": {
     "md5": "77ffbbb957f1b2dd70cbcd0ab4dee569",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.902423"
   },
   "teachers/ajahn-jitindriya-featured.html": {
     "md5": "88d768086665fda40484278f24649207",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.903824"
   },
   "teachers/ajahn-jitindriya-story.html": {
     "md5": "64b72e19492ec60375961da0bc2d324a",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.906030"
   },
   "teachers/ajahn-jitindriya-d-quote.html": {
     "md5": "c93fc31db33f45a37863eefec3f7d762",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.907444"
   },
   "teachers/ajahn-jitindriya-i-quote.html": {
     "md5": "30c96ed86a285bd59b4002bbc1b8a33f",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.908795"
   },
   "teachers/ajahn-jitindriya-read-by.html": {
     "md5": "6279ef4ed805a8f6a7dd9b4262877209",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.911580"
   },
   "teachers/ajahn-sundara.html": {
-    "md5": "2577200e0d0c298e9cbd0ae1e6b42425",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "6be7b9e7f171b3c663bf1436060538f6",
+    "_modified": "2026-11-04 13:51:08.919384"
   },
   "teachers/ajahn-sundara-featured.html": {
     "md5": "e4b6da17e7cd127d57ddac5c0b6ba307",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.921639"
   },
   "teachers/ajahn-sundara-question.html": {
     "md5": "dea7a9f61c22ad742e095524b61a5b2d",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.923405"
   },
   "teachers/ajahn-sundara-story.html": {
     "md5": "f436cd5f08fa9ab814cd7d291df2a287",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.925209"
   },
   "teachers/ajahn-sundara-d-quote.html": {
     "md5": "d730114a5806084325bb45cfae6e731c",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.926702"
   },
   "teachers/ajahn-sundara-i-quote.html": {
     "md5": "37b9818db41df1e4aa60d729d858b02c",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.928419"
   },
   "teachers/ajahn-sundara-meditation.html": {
-    "md5": "f556064cb2775ae790b0e6772a92609a",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "8ee591cd8ffa87d51d802478bb9f440c",
+    "_modified": "2026-11-04 13:51:08.931331"
   },
   "teachers/ajahn-sundara-teaching.html": {
     "md5": "c68efd455ad70527e04a18186ad817b6",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.933061"
   },
   "teachers/bhikshu-heng-shun.html": {
     "md5": "9647816994ec5f785b2e2a9099fc76b1",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.943410"
   },
   "teachers/debbie-stamp.html": {
-    "md5": "ecf3bac7978c67de0f0759ac85e17a88",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "md5": "d5f9cab1e8d83f35c2c737676d5d2638",
+    "_modified": "2026-11-04 13:51:08.959727"
   },
   "teachers/debbie-stamp-question.html": {
     "md5": "c897dedf3d30d9a145a53b1d7bd3a5fc",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.962229"
   },
   "teachers/debbie-stamp-story.html": {
     "md5": "df04920c29ca71a6cb25beb0a274bcd1",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.965377"
   },
   "teachers/debbie-stamp-i-quote.html": {
     "md5": "7d380cbcf64b29bf0881b338e6adf695",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.967026"
   },
   "teachers/debbie-stamp-teaching.html": {
     "md5": "e4e3c972be9b9b8b4e9419bc38633c32",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.970140"
   },
   "teachers/debbie-stamp-read-by.html": {
-    "md5": "7d75458c11c6ae29c893f714c4ec414b",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "md5": "b4ead4a8094832d28195b34ce0df20ff",
+    "_modified": "2026-11-04 13:51:08.972253"
   },
   "teachers/jack-kornfield.html": {
-    "md5": "d53e3575fae6c1c23994ad2d21b9c4bb",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "9bd0d275fd81c10d6125daff4cead30b",
+    "_modified": "2026-11-04 13:51:08.981138"
   },
   "teachers/jack-kornfield-featured.html": {
     "md5": "8a38f6de919da38be0867e3f7e8e38bd",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.982990"
   },
   "teachers/jack-kornfield-story.html": {
-    "md5": "9105b9df8c7447c126f2801e26cf0ad9",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "6fc2fb657a3d0934d7814a81d7f0120b",
+    "_modified": "2026-11-04 13:51:08.985908"
   },
   "teachers/jack-kornfield-d-quote.html": {
     "md5": "7d1c1089038b8021a842d215d244c3e2",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.987673"
   },
   "teachers/jack-kornfield-i-quote.html": {
-    "md5": "b9e81a395ae3513bc463b7ce1d7d85f9",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "9fe01f9d9429a1587a6282284c688ecc",
+    "_modified": "2026-11-04 13:51:08.990224"
   },
   "teachers/jack-kornfield-teaching.html": {
-    "md5": "8339c9ea3277d4fd6bce27b79f10e40e",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "7f6f8d4811cb88b95a69d3ff2afc576f",
+    "_modified": "2026-11-04 13:51:08.995282"
   },
   "teachers/joseph-kappel.html": {
     "md5": "9750ba5a27219c45aba0e4457a711171",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.003576"
   },
   "teachers/joseph-kappel-featured.html": {
     "md5": "956a975d76f2ccc4e64c10476666dff7",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.005350"
   },
   "teachers/joseph-kappel-question.html": {
     "md5": "607e46b5050e8ab6efb9419626143f1e",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.006630"
   },
   "teachers/joseph-kappel-story.html": {
     "md5": "e06437d58858ac4cb700c6891c1e93b4",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.009060"
   },
   "teachers/joseph-kappel-d-quote.html": {
     "md5": "9e99dd004aa159151e4f1e9945a6109a",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.010675"
   },
   "teachers/joseph-kappel-i-quote.html": {
     "md5": "33c253bd1eb314c19bc6e6070b127aa3",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.012092"
   },
   "teachers/joseph-kappel-teaching.html": {
     "md5": "bcb1686611499f5dc043a674b265c8d3",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.016228"
   },
   "teachers/joseph-kappel-read-by.html": {
     "md5": "d50f48bf83b6e9e53e0d933cacdc076b",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.017479"
   },
   "teachers/kittisaro.html": {
     "md5": "e09aee32460492edc72f5247fa336dfe",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.023763"
   },
   "teachers/kittisaro-featured.html": {
     "md5": "14333e9315e5a7230d1a593579c9afe2",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.026205"
   },
   "teachers/kittisaro-story.html": {
     "md5": "3ad19781bde08980809406cdd95bec93",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.028277"
   },
   "teachers/kittisaro-d-quote.html": {
     "md5": "37c9821c3215659c11c5ddc35ced29af",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.029563"
   },
   "teachers/kittisaro-i-quote.html": {
     "md5": "6c552f95121adcd23ebea92e4dcddeb2",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.030844"
   },
   "teachers/kittisaro-teaching.html": {
     "md5": "b4953a19177ab881587e4f0e473aa980",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.034071"
   },
   "teachers/kittisaro-read-from.html": {
     "md5": "7ac63bfbd45c377c93374be39bbbcfa1",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.035352"
   },
   "teachers/kittisaro-read-by.html": {
     "md5": "9a2bdc315bfbfadca29b9947b56e59c5",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.036875"
   },
   "teachers/thanissara.html": {
     "md5": "6f610974e256d761bbda81cf6fc704eb",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.043621"
   },
   "teachers/thanissara-featured.html": {
     "md5": "13dd48b10ca0ead3b83867f5aa825950",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.045092"
   },
   "teachers/thanissara-question.html": {
     "md5": "18f53b145c50719a24d1e5ef38d8bba8",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.046382"
   },
   "teachers/thanissara-story.html": {
     "md5": "2c0f3023fff2433568a5ca37acbe21d5",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.049137"
   },
   "teachers/thanissara-d-quote.html": {
     "md5": "1135a2fe2bcc3168e7a2a79dccacfa1b",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.050417"
   },
   "teachers/thanissara-i-quote.html": {
     "md5": "bb35e98602fb486b67be3e5b2c703748",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.051886"
   },
   "teachers/thanissara-teaching.html": {
     "md5": "a3b2e31317adf07fc4101ad723cfd988",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.054846"
   },
   "teachers/thanissara-read-from.html": {
     "md5": "55b87f00a1db5a2815ef3fa5ee50fdd6",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.056121"
   },
   "teachers/paul-breiter.html": {
-    "md5": "8fea264a9d81e32bb8beede4531fcba5",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "6e52accea6f957a2e51bcbbf300c1e5e",
+    "_modified": "2026-11-04 13:51:09.065912"
   },
   "teachers/paul-breiter-featured.html": {
     "md5": "e3fedf5b61ec20b3df8b62594dd19b09",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.068156"
   },
   "teachers/paul-breiter-question.html": {
     "md5": "31b5793f72615b17599730e38cadb6ce",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.070227"
   },
   "teachers/paul-breiter-story.html": {
     "md5": "f754d3b303614b00472650696f652f3c",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.072799"
   },
   "teachers/paul-breiter-d-quote.html": {
     "md5": "25a17c42e8bfc14088956628944daf5a",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.075236"
   },
   "teachers/paul-breiter-i-quote.html": {
     "md5": "49cf90dc76cf0cca346c9b61b0a9b8a9",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.077493"
   },
   "teachers/paul-breiter-quoted-by.html": {
     "md5": "3e285400259b98a0cd23ce9e9492b868",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.080267"
   },
   "teachers/paul-breiter-teaching.html": {
     "md5": "612b749041f24a05cd3f1d65493382f5",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.082325"
   },
   "teachers/paul-breiter-read-from.html": {
-    "md5": "05126cdbc9f23bb30bbb1ad1a90ad51c",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "87cc7e26e767a31e9d0d967bc40457ce",
+    "_modified": "2026-11-04 13:51:09.083576"
   },
   "texts/Sutta.html": {
     "md5": "7409ec18f11fa0aa796fa7c1f2117432",
@@ -15460,48 +15460,48 @@
     "_modified": "2026-10-28 14:36:28.000000"
   },
   "about/Introduction.html": {
-    "md5": "242f15cd2cfb2aa0604c671d43eca9d1",
-    "_modified": "2026-10-29 08:14:46.000000"
+    "md5": "33d2df78aaf871dc55036c9b75f582b6",
+    "_modified": "2026-11-04 13:18:17.576510"
   },
   "about/Event-series.html": {
-    "md5": "53120d17b8c8ad7d92f4387bff3e829d",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "md5": "0d552df2998dd88a6f2c2407a788193a",
+    "_modified": "2026-11-04 20:04:53.000003"
   },
   "about/Overview.html": {
     "md5": "de04e22f36d486b2b793f2383a06753f",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.579309"
   },
   "about/Tags.html": {
-    "md5": "bc2fc1f7c1afe3e854775663465f30ab",
-    "_modified": "2026-10-29 08:14:46.000000"
+    "md5": "1466bb80262abf8ffc121f2d0c907792",
+    "_modified": "2026-11-04 13:18:17.580595"
   },
   "about/Status.html": {
-    "md5": "25413549b16348342929ba7ef3b238c4",
-    "_modified": "2026-10-29 08:14:46.000000"
+    "md5": "8b51e63bcd8db820351b3d6153cde491",
+    "_modified": "2026-11-04 13:18:17.581884"
   },
   "about/Want-to-help.html": {
     "md5": "ad19b7cce0f7f07bcd94327f54c7e95f",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.583204"
   },
   "about/Credits.html": {
     "md5": "08dc83fea75a0be8ca8246b238506bd6",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.584429"
   },
   "about/Contact.html": {
     "md5": "b826a4b3b37c7463285746a3e233a76d",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.585643"
   },
   "about/Search-instructions.html": {
     "md5": "b99a3a4fd9db15853638358d586f728c",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.587014"
   },
   "about/License.html": {
     "md5": "927ec32fb64d5781366e2c9340dd4eb6",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.588527"
   },
   "about/Version-list.html": {
     "md5": "0babc07d7ba271f11648f9bad30d11e3",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-04 13:18:17.590211"
   },
   "indexes/AllExcerpts.html": {
     "md5": "7d5ed8bd55e9831d42ea8cc06c919ea7",
@@ -15805,19 +15805,19 @@
   },
   "about/DraftBiography.html": {
     "md5": "d975179e126674382b7b801f88b1ee8f",
-    "_modified": "2026-10-28 14:36:32.000000"
+    "_modified": "2026-11-04 13:18:17.591339"
   },
   "about/KroobaAjahn.html": {
     "md5": "860d24cc0304d4cadd8776e94fe91612",
-    "_modified": "2026-10-28 14:36:32.000000"
+    "_modified": "2026-11-04 13:18:17.592552"
   },
   "about/Page-Not-Found.html": {
     "md5": "73bc2b765bc16de977e8634f456b7335",
-    "_modified": "2026-10-28 14:36:32.000000"
+    "_modified": "2026-11-04 13:18:17.593562"
   },
   "about/TwigsAndBranches.html": {
     "md5": "7ba19eb3d16bf83b6f77e56fafc29325",
-    "_modified": "2026-10-28 14:36:32.000000"
+    "_modified": "2026-11-04 13:18:17.594583"
   },
   "dispatch/Tags.html": {
     "md5": "b1060a56bf0780bbb9197ee405e5de7a",
@@ -15868,12 +15868,12 @@
     "_modified": "2026-10-28 14:35:48.000000"
   },
   "teachers/ajahn-chah-3.html": {
-    "md5": "616d8092b90a5bb3195e5055d43e19c8",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "918187c2a3c7fa10e22af3d5f9e0741e",
+    "_modified": "2026-11-04 13:51:06.355078"
   },
   "teachers/bhikkhu-nanananda.html": {
-    "md5": "17abd5dd2644cfc03f5c06e87f6d16b3",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "63aeb05fd43e43396f995906a6987de8",
+    "_modified": "2026-11-04 13:51:06.525455"
   },
   "books/still-forest-pool.html": {
     "md5": "904115ea3c08485afbf6873e455215a4",
@@ -15920,8 +15920,8 @@
     "_modified": "2026-10-28 14:35:58.000000"
   },
   "teachers/ajahn-amaro-question-2.html": {
-    "md5": "da179ed6b4f8d4817d65fcbeaba14939",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "70cc139cb224b6233864848a5d008b8d",
+    "_modified": "2026-11-04 13:51:08.453985"
   },
   "books/catastrophe-apostrophe.html": {
     "md5": "585296ef93c8708b81e492f5b258dc7e",
@@ -16072,8 +16072,8 @@
     "_modified": "2026-10-28 14:35:42.000000"
   },
   "teachers/ajahn-pasanno-24.html": {
-    "md5": "075a01131e788189d93bb224d8b4fa91",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "00412acd6eabae72b99229eb9e229cac",
+    "_modified": "2026-11-04 13:51:07.321460"
   },
   "books/wisdom-develops-samadhi.html": {
     "md5": "90ecb7c6a289a013b24917665d52ebed",
@@ -16121,27 +16121,27 @@
   },
   "teachers/ajahn-pannavaddho-quoted-by.html": {
     "md5": "d3954d4bcb633ac5ad2141dfb96ccf94",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.513130"
   },
   "teachers/ajahn-pannavaddho-read-from.html": {
-    "md5": "5b19bbaba14d601a5e089b7039afb2d1",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "77ec492661c11fbbc6b9ee6592618138",
+    "_modified": "2026-11-04 13:51:06.515374"
   },
   "teachers/ajahn-thate.html": {
-    "md5": "3514b63533c11947ded314a49f8eadfe",
-    "_modified": "2026-10-28 14:36:02.000000"
+    "md5": "9a572517dbbc00fa3f7fe866b6979491",
+    "_modified": "2026-11-04 13:51:06.274323"
   },
   "teachers/ajahn-yatiko-featured.html": {
     "md5": "5b3cad75cc9f6c87166beef10bdbf0f0",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.597264"
   },
   "tags/translation-2.html": {
     "md5": "164e389577fb0df8be73e2f9ca947b14",
     "_modified": "2026-10-29 08:14:10.000000"
   },
   "indexes/DeficientTags_print.html": {
-    "md5": "d0845369947d4a58e10ea4523f595ab6",
-    "_modified": "2026-11-02 19:27:12.193142"
+    "md5": "301f1ebb7a33c585d9a1e908f34769c7",
+    "_modified": "2026-11-04 06:57:51.224519"
   },
   "tags/relics-relevant.html": {
     "md5": "21873085846b29d49d8dc22ae6daad86",
@@ -16224,8 +16224,8 @@
     "_modified": "2026-10-29 08:14:14.000000"
   },
   "teachers/ajahn-pasanno-read-by-2.html": {
-    "md5": "7f9ef809ce45f675b949d7da62c1f874",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "2346ff7cfb34e2ebc9945b1d885b05ea",
+    "_modified": "2026-11-04 13:51:08.264703"
   },
   "indexes/AllExcerpts-quote-6.html": {
     "md5": "827d5ad1da57a81d1870ade20c936fe0",
@@ -16416,16 +16416,16 @@
     "_modified": "2026-10-29 08:14:16.000000"
   },
   "teachers/pa-auk-sayadaw.html": {
-    "md5": "c64b185d94f5439ebae0bb10036dcaf5",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "6710c3e6c6d1fcf5b7c1dc5e178e131e",
+    "_modified": "2026-11-04 13:51:06.535197"
   },
   "teachers/ajahn-pasanno-25.html": {
-    "md5": "a84924eda8256f71bf897b13764da34d",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "74189868a79e8574f5fe6763f82cc5f0",
+    "_modified": "2026-11-04 13:51:07.323165"
   },
   "teachers/ajahn-pasanno-question-20.html": {
-    "md5": "739b6bc2ad1fc8da2ed9ba2ff04d8769",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "fcbcef53fd60281f497e22804882fe14",
+    "_modified": "2026-11-04 13:51:07.873199"
   },
   "indexes/AllExcerpts-33.html": {
     "md5": "bdaa3e55319f22b605a721825c6fdfb0",
@@ -16457,51 +16457,51 @@
   },
   "teachers/i-b-horner.html": {
     "md5": "e721a4e9a7b5cc0b52dd84acf05dbc6a",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:51:09.104318"
   },
   "about/01_Introduction.html": {
     "md5": "53cf3f0e7ce8691eb4f5a8420839cd19",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.610605"
   },
   "about/02_Event-series.html": {
     "md5": "ac31e97217ba0550f7e55e6cc948b61b",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.611208"
   },
   "about/04_Overview.html": {
     "md5": "47954ed3ea66b72edea96ce202b91b23",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.611793"
   },
   "about/05_Tags.html": {
     "md5": "e8a02f992c7a4025344ee5161bfcecfa",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.612447"
   },
   "about/09_Want-to-help.html": {
     "md5": "841805b2532f75fca8ccfbc50c7c80d3",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.613070"
   },
   "about/08_Status.html": {
     "md5": "a07be2080174b1a622c93303b87ecfbf",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.613831"
   },
   "about/09_Search-instructions.html": {
     "md5": "47b8776fb022d90889fc3ee904092c71",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.614436"
   },
   "about/10_Acknowledgements.html": {
     "md5": "b69735e7b51c2ee775257941df5c1dd2",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.615043"
   },
   "about/11_Contact.html": {
     "md5": "a08b879e47155081a977fedba96d7142",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.615679"
   },
   "about/12_License.html": {
     "md5": "c2b17f297f5e44023c5d80a538fa0d71",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.616270"
   },
   "about/15_Version-list.html": {
     "md5": "35d708617cfc715ad0da136d947bdda5",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:18:17.616900"
   },
   "tags/not-made-of-that.html": {
     "md5": "4c89ad91e3905e4a82057e2508958a1a",
@@ -16513,7 +16513,7 @@
   },
   "teachers/ajahn-koon.html": {
     "md5": "805fa3852957b949daebca9705a3feed",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:51:09.103648"
   },
   "tags/form-atag.html": {
     "md5": "49467206c26760e180a58da8ebf5f79e",
@@ -16537,7 +16537,7 @@
   },
   "teachers/abhayagiri-sangha.html": {
     "md5": "a48e991c111c2537273159aaceb9e39c",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:51:09.103994"
   },
   "tags/bodhisattva-atag.html": {
     "md5": "183258c7b485496b2eb4cabeec122842",
@@ -18213,7 +18213,7 @@
   },
   "events/TG2010.html": {
     "md5": "a371e475c721fbc2d44594d91a20c3d0",
-    "_modified": "2026-11-01 18:46:07.674224"
+    "_modified": "2026-11-04 13:45:41.863370"
   },
   "clusters/right-intention-4.html": {
     "md5": "e5be60e7bed4ca1053354930cc998ed4",
@@ -18440,24 +18440,24 @@
     "_modified": "2026-10-28 14:35:34.000000"
   },
   "teachers/ajahn-pasanno-26.html": {
-    "md5": "07b908fe0283902440b44b532d6f666b",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "4382c01b4a34505e364c9d98bc5edd74",
+    "_modified": "2026-11-04 13:51:07.324868"
   },
   "teachers/ajahn-pasanno-27.html": {
-    "md5": "0344b52d7566cef65012c2e853bdee45",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "8850bbca4a95d13b2a1a93a4db7a5888",
+    "_modified": "2026-11-04 13:51:07.326585"
   },
   "teachers/ajahn-pasanno-featured-6.html": {
-    "md5": "352d4fce4efbb8c08fe3cb1cd970983d",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "20b22892652b57ab340d71b97d898e2f",
+    "_modified": "2026-11-04 13:51:07.461394"
   },
   "teachers/ajahn-pasanno-question-21.html": {
-    "md5": "e536b2177ff3dd8c7479ad1b04fd0279",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "4785e013065cde0b9820a99b14e5b0d6",
+    "_modified": "2026-11-04 13:51:07.874904"
   },
   "teachers/ajahn-pasanno-d-quote-3.html": {
-    "md5": "5030e76287a4d509c83018bdf56b4d45",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "68d65688bea1a7875ce7b042851259c8",
+    "_modified": "2026-11-04 13:51:08.037156"
   },
   "texts/MN21.html": {
     "md5": "03f42f5dfb886af11a36cdb1828e7857",
@@ -18500,12 +18500,12 @@
     "_modified": "2026-10-29 08:14:50.000000"
   },
   "events/TG2011.html": {
-    "md5": "f6f352d2416ea9a434e3b612ed8e5f76",
-    "_modified": "2026-11-01 18:46:07.710252"
+    "md5": "0aa6fd50b92bc09dd04f1d7b569a0c80",
+    "_modified": "2026-11-04 06:57:51.450728"
   },
   "events/TG2012.html": {
-    "md5": "1b18bfe13ee65e18b521d7423c55345c",
-    "_modified": "2026-11-01 18:46:07.740640"
+    "md5": "d905ed4570f5abdeebe34a296fc00a02",
+    "_modified": "2026-11-04 06:57:51.483194"
   },
   "clusters/sangha-text.html": {
     "md5": "62f52334d484b5b3247c209bd185afd9",
@@ -18949,67 +18949,67 @@
   },
   "teachers/ajahn-dune-featured.html": {
     "md5": "64257a8f7caf99a824393b008bdeb094",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.493235"
   },
   "teachers/ajahn-dune-d-quote.html": {
     "md5": "741bfab8b8a82c128db2e2312267ca7f",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.494471"
   },
   "teachers/ajahn-dune-quoted-by.html": {
     "md5": "90cbc084408215e50a0eaabca99e55cc",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "_modified": "2026-11-04 13:51:06.496392"
   },
   "teachers/ajahn-dune-read-from.html": {
-    "md5": "25f2a1b50e910fa507b27989bd21cf17",
-    "_modified": "2026-10-28 14:36:04.000000"
+    "md5": "4ef934a904e6aa732dc6f108f14ef600",
+    "_modified": "2026-11-04 13:51:06.499416"
   },
   "teachers/ajahn-pasanno-28.html": {
-    "md5": "92f50f615579510564e2535789ea9104",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "cec108b80180c02402908a0ab6e699d7",
+    "_modified": "2026-11-04 13:51:07.328317"
   },
   "teachers/ajahn-pasanno-29.html": {
-    "md5": "4efb3745c92c15e505525870c3600c9a",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "e8aba8b70cf976e1c47f008bf97045a8",
+    "_modified": "2026-11-04 13:51:07.330069"
   },
   "teachers/ajahn-pasanno-30.html": {
-    "md5": "82287e731930eb4b7d2cc56fcef9ada4",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "7a08faaf6a17d69be0f983cfa66c770f",
+    "_modified": "2026-11-04 13:51:07.332316"
   },
   "teachers/ajahn-pasanno-featured-7.html": {
-    "md5": "c0d9f8480e856e2957357abd4196a3de",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "64a31f4ea2ca917100b9c0050c720605",
+    "_modified": "2026-11-04 13:51:07.463279"
   },
   "teachers/ajahn-pasanno-question-22.html": {
-    "md5": "c227780f8db20b4c8e8dcb137a21a48f",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "427a01289abfda3222cd8a8b5dc8f2ba",
+    "_modified": "2026-11-04 13:51:07.876685"
   },
   "teachers/ajahn-pasanno-question-23.html": {
-    "md5": "c05215710c7fb11196cfa9aec87efaa2",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "be468d3d2c7cc24f9e58efae87233686",
+    "_modified": "2026-11-04 13:51:07.878506"
   },
   "teachers/ajahn-pasanno-question-24.html": {
-    "md5": "78ecfaecd8761c9a0e2959eb21d712db",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "ca1ce7564f7f60faa16c5c4aaff8db3b",
+    "_modified": "2026-11-04 13:51:07.880194"
   },
   "teachers/ajahn-pasanno-story-5.html": {
-    "md5": "7cdfc831bc8e7aeab88b2c9358f9f3be",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "264d1a1b6bda4b099302a4353b5bc4b9",
+    "_modified": "2026-11-04 13:51:07.981782"
   },
   "teachers/ajahn-pasanno-i-quote-3.html": {
-    "md5": "fa72ad5f00beca2aea3a05d73a569866",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "a248233f2e92ff996b7041e91149e89d",
+    "_modified": "2026-11-04 13:51:08.089779"
   },
   "teachers/ajahn-pasanno-teaching-3.html": {
-    "md5": "b2983bd706c284cd80bf1ace0e0f92e2",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "520494226dfee076c881ead608b5c0c6",
+    "_modified": "2026-11-04 13:51:08.207537"
   },
   "teachers/ajahn-amaro-4.html": {
-    "md5": "e4c85dcb70242f46965451391101a403",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "9212f37c69836bbf67e539d2d1d6ab0e",
+    "_modified": "2026-11-04 13:51:08.408883"
   },
   "teachers/ajahn-yatiko-d-quote.html": {
     "md5": "ad9a23ca1166ae92c3553bd188487ab3",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.605664"
   },
   "texts/MN32.html": {
     "md5": "472352c405b4c0176953bcec73c06371",
@@ -19189,59 +19189,59 @@
   },
   "teachers/ajahn-chah-story.html": {
     "md5": "1393da10c8e058e1dfd44818abffdc47",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "_modified": "2026-11-04 13:51:06.375067"
   },
   "teachers/ajahn-pasanno-quoted-by-2.html": {
-    "md5": "ad68c2f0d3d96cf6c128f1f7d1fbc450",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "3f75395eb7076f40dd40df90b87739f3",
+    "_modified": "2026-11-04 13:51:08.142497"
   },
   "teachers/ajahn-pasanno-quoted-by-3.html": {
-    "md5": "07eb4b4d5a4b9e5de9359f33bd82d431",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "6d13a1ca7c6388fa09cc784231e79ddb",
+    "_modified": "2026-11-04 13:51:08.144256"
   },
   "teachers/ajahn-jayasaro-quoted-by.html": {
     "md5": "426bcff906b791c004d1b334a57bde68",
-    "_modified": "2026-10-28 14:36:08.000000"
+    "_modified": "2026-11-04 13:51:08.560326"
   },
   "teachers/ajahn-karunadhammo-quoted-by.html": {
     "md5": "2d2bf48ae2b3b85d9e420d49c410480b",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.740518"
   },
   "teachers/ajahn-jotipalo-quoted-by.html": {
     "md5": "2ed39cee4e330b09412f2243e52212cc",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.800033"
   },
   "teachers/ajahn-naniko-quoted-by.html": {
     "md5": "8ddbeb49c3f5734e2b258c84d15920bd",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.879853"
   },
   "teachers/ajahn-jitindriya-quoted-by.html": {
     "md5": "22a2dae9316c87755f681e9b2c8e1204",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.910144"
   },
   "teachers/ajahn-sundara-quoted-by.html": {
     "md5": "23c598b95d0219ece6b3129c558c0a37",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.929772"
   },
   "teachers/debbie-stamp-quoted-by.html": {
     "md5": "570a32465237e05a507164a0a84897e1",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.968306"
   },
   "teachers/jack-kornfield-quoted-by.html": {
-    "md5": "6b5f065dcfa708711edc1a0820c2c705",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "da8335b4e3659e250fff172d5df05ac9",
+    "_modified": "2026-11-04 13:51:08.993130"
   },
   "teachers/joseph-kappel-quoted-by.html": {
     "md5": "57f8ea7e0064a5138dd5d3c82f521d61",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.013507"
   },
   "teachers/kittisaro-quoted-by.html": {
     "md5": "55220e67452f9451e3d993c8e09070b4",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.032151"
   },
   "teachers/thanissara-quoted-by.html": {
     "md5": "957e16010defd7fc1acee31d2fe23720",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.053342"
   },
   "tags/wat-sai-ngam-suphanburi.html": {
     "md5": "b003dfcab104ecf1859a7065dd00101a",
@@ -19329,7 +19329,7 @@
   },
   "teachers/ajahn-sudanto-i-quote.html": {
     "md5": "8cc233e34af8085e047a9a727f14491e",
-    "_modified": "2026-06-21 14:44:52.000000"
+    "_modified": "2026-11-04 13:51:09.104638"
   },
   "texts/AN7_49.html": {
     "md5": "c1aa1b9a39d5eb742c245d87343865a8",
@@ -19417,7 +19417,7 @@
   },
   "teachers/ajahn-maha-prasert.html": {
     "md5": "7262becdbbdbf7e760b28b9bdb94e88d",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:08.938450"
   },
   "events/SRD2018.html": {
     "md5": "8ec6509b4dfacc0fb7ebdd5712f715db",
@@ -19748,8 +19748,8 @@
     "_modified": "2026-10-28 14:35:58.000000"
   },
   "teachers/ajahn-chah-quoted-by-3.html": {
-    "md5": "7f4c09832e21f3c2a94d5b6f04c51e3c",
-    "_modified": "2026-10-29 08:14:22.000000"
+    "md5": "625c22b930f5483726f250b5037e497f",
+    "_modified": "2026-11-04 13:51:06.426313"
   },
   "texts/AN10_27.html": {
     "md5": "ce5644e0ac3fa83fe87ed30c4f77085c",
@@ -19760,8 +19760,8 @@
     "_modified": "2026-10-28 14:34:26.000000"
   },
   "events/CMountain2023.html": {
-    "md5": "adfdeb79678888620c0d267b8caf0d95",
-    "_modified": "2026-11-01 18:46:08.385792"
+    "md5": "54513228072f3d4ee38602884b48f553",
+    "_modified": "2026-11-04 06:57:52.169006"
   },
   "tags/clear-mountain.html": {
     "md5": "35444550ee89f8c2651928b82411c735",
@@ -20020,16 +20020,16 @@
     "_modified": "2026-10-28 14:35:58.000000"
   },
   "teachers/ajahn-pasanno-31.html": {
-    "md5": "006376609f2554bc01f83abb94185821",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "1a75a934b4cb9d2999ae7742afa5d5e7",
+    "_modified": "2026-11-04 13:51:07.334221"
   },
   "teachers/ajahn-pasanno-question-25.html": {
-    "md5": "92021b4945d7dacecff36f32cb667769",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "1c84ae60030787e15d91cd5511ae69b6",
+    "_modified": "2026-11-04 13:51:07.882068"
   },
   "teachers/ajahn-kovilo.html": {
-    "md5": "195a4e108268dece7a548a817340b0a9",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "md5": "73291be06ee13f927c947a97c3d85519",
+    "_modified": "2026-11-04 13:51:08.896353"
   },
   "indexes/AllExcerpts-39.html": {
     "md5": "d90a66657a9c199bd5b03f502512791d",
@@ -20129,7 +20129,7 @@
   },
   "about/UpasikaDays.html": {
     "md5": "90640e59c160e383ca35242c3f092c61",
-    "_modified": "2026-10-28 14:36:32.000000"
+    "_modified": "2026-11-04 13:18:17.595784"
   },
   "tags/unification-text.html": {
     "md5": "9a8ef3684ed07a44eab4854f9576779b",
@@ -20149,7 +20149,7 @@
   },
   "teachers/ajahn-jayasaro-teaching.html": {
     "md5": "e45110abc0434606f9f26f2ac1d7fc63",
-    "_modified": "2026-10-14 15:41:58.000000"
+    "_modified": "2026-11-04 13:51:09.104947"
   },
   "tags/ajahn-thate.html": {
     "md5": "190fa51e19dba72b6a289efa748a463f",
@@ -20544,12 +20544,12 @@
     "_modified": "2026-10-28 14:36:00.000000"
   },
   "teachers/ajahn-pasanno-32.html": {
-    "md5": "73f64847106f0688fb3404fb34210214",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "f163a3f4e7f960bc4c312da6ec2e437f",
+    "_modified": "2026-11-04 13:51:07.335997"
   },
   "teachers/gloria-taraniya-ambrosia.html": {
     "md5": "c8d1e483ccc4ef79705c62a3c9d665dc",
-    "_modified": "2026-10-28 14:36:10.000000"
+    "_modified": "2026-11-04 13:51:09.087996"
   },
   "books/Analayo.html": {
     "md5": "932a36e01ad0cba5b113b43218923be6",
@@ -20564,16 +20564,16 @@
     "_modified": "2026-10-29 08:14:50.000000"
   },
   "events/TG2021.html": {
-    "md5": "50e22f0e0fd3e16906b05a6548b5b558",
-    "_modified": "2026-11-01 18:46:08.377063"
+    "md5": "476ab7f3ed4926364c0cd2a585de2232",
+    "_modified": "2026-11-04 06:57:52.158206"
   },
   "events/ALBA2025.html": {
-    "md5": "1c6a21bbec69bfb096de8b382b735c08",
-    "_modified": "2026-11-01 18:46:08.576182"
+    "md5": "050683a541a659c9bbb6630644fa82f9",
+    "_modified": "2026-11-04 13:16:34.758581"
   },
   "events/CMountain2026-2.html": {
-    "md5": "3b03c7ef4a0d85a6dcc1afa311540cee",
-    "_modified": "2026-11-01 18:46:08.634428"
+    "md5": "6906ad4245b9a57d215b6d0426fdeb8c",
+    "_modified": "2026-11-04 13:45:42.826308"
   },
   "events/ThreeJewels2026.html": {
     "md5": "dd0a29836d36af89f10a4c07b75544a0",
@@ -20764,8 +20764,8 @@
     "_modified": "2026-10-14 15:34:08.000000"
   },
   "events/CMountain2022.html": {
-    "md5": "3bb7399aab3144a2b9e0fc064a0fde6d",
-    "_modified": "2026-11-01 18:46:08.381337"
+    "md5": "42cb1ad9ab219aee4bc38ce20c8e8314",
+    "_modified": "2026-11-04 06:57:52.163867"
   },
   "search/Advanced-search.html": {
     "md5": "c3ac75902ec80750057750f670b88e66",
@@ -20848,20 +20848,20 @@
     "_modified": "2026-10-29 08:14:10.000000"
   },
   "teachers/ajahn-pasanno-33.html": {
-    "md5": "c6d931ba906dcfe61a049b6d81feb724",
-    "_modified": "2026-10-29 08:14:24.000000"
+    "md5": "9bb13f4aaa877fe7d8120b3da6b73380",
+    "_modified": "2026-11-04 13:51:07.337682"
   },
   "teachers/ajahn-pasanno-question-26.html": {
-    "md5": "40e5c846beae8ddf85f5aa51c083c70e",
-    "_modified": "2026-10-29 08:14:26.000000"
+    "md5": "6d3c317fea904d2adf150a09318279a7",
+    "_modified": "2026-11-04 13:51:07.883810"
   },
   "teachers/ajahn-karunadhammo-4.html": {
     "md5": "d0f6dcda469dd1bdf605b81f68345346",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.677493"
   },
   "teachers/ajahn-karunadhammo-question-3.html": {
     "md5": "09933ddf3e2a69ccfe337a7bf31fa1ca",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "_modified": "2026-11-04 13:51:08.726348"
   },
   "texts/SN13.html": {
     "md5": "bf093ebc9ddf2c399aa76222ebef5a4a",
@@ -20900,12 +20900,12 @@
     "_modified": "2026-10-29 08:14:50.000000"
   },
   "events/CMountain2026-1.html": {
-    "md5": "5b82aa051bf9373a7718b49f46a2ca1d",
-    "_modified": "2026-11-01 18:46:08.624639"
+    "md5": "37cdc1809947a0b5742ed368295f4ad3",
+    "_modified": "2026-11-04 06:57:52.418462"
   },
   "events/Anniversary2026-2.html": {
-    "md5": "46707f613314dc7cb776b8c7da6841a4",
-    "_modified": "2026-11-01 18:51:15.391453"
+    "md5": "59a247781f0bb8b953a98d627db3eed2",
+    "_modified": "2026-11-04 06:57:52.413670"
   },
   "texts/DN5.html": {
     "md5": "bac2505f024cc6608eef69c64d9af5d2",
@@ -21108,12 +21108,12 @@
     "_modified": "2026-10-29 08:14:18.000000"
   },
   "teachers/ajahn-pasanno-teaching-4.html": {
-    "md5": "44d073dc09f025ac6d8d9b0eb3fa9f52",
-    "_modified": "2026-10-29 08:14:28.000000"
+    "md5": "6a6f03b842198d0bd0376cb2ffc5eb7c",
+    "_modified": "2026-11-04 13:51:08.208735"
   },
   "teachers/father-damian.html": {
     "md5": "2fc97eb2fd76178505cbc47b423135a1",
-    "_modified": "2026-10-29 08:14:30.000000"
+    "_modified": "2026-11-04 13:51:08.948479"
   },
   "indexes/AllExcerpts-43.html": {
     "md5": "8ac7c28e66d3b7713334eeb5602773a2",
@@ -21154,5 +21154,13 @@
   "indexes/AllExcerpts-question-30.html": {
     "md5": "802d3d4bafed10e9e3e1447a15087be3",
     "_modified": "2026-10-29 08:14:50.000000"
+  },
+  "teachers/ajahn-damrong.html": {
+    "md5": "895303adaf4d0236d9729acaa5e6df14",
+    "_modified": "2026-11-04 13:51:06.584607"
+  },
+  "teachers/ajahn-jundee.html": {
+    "md5": "b5aa750065942b2964b68c7dafe619f9",
+    "_modified": "2026-11-04 13:51:08.279246"
   }
 }

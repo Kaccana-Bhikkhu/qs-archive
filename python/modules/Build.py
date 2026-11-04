@@ -1969,7 +1969,7 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a = Airium()
         tagIsTeacher = Database.TeacherLookup(tag)
         if not tagIsTeacher or Database.TeacherConsent(tag,"photo"):
-            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]))):
                 a(header)
         else:
             a(header)
@@ -2006,7 +2006,7 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
         a = Airium()
         excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
         if Database.TeacherConsent(t,"photo"):
-            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]) + ".jpg")):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]))):
                 a(excerptInfo)
         else:
             a(excerptInfo)
@@ -2255,7 +2255,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         featuredExcerpts = Filter.FTag(Filter.All)(excerpts)
         a = Airium()
         
-        with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode + ".jpg"),"landscape"):
+        with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode),"landscape"):
             with a.strong():
                 a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
             a.br()

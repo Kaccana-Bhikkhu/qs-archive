@@ -27751,7 +27751,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Heedlessness"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "News",
@@ -37964,7 +37970,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Perception of light"
+      ],
+      "fTagOrder": [
+        100
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Sutta",
@@ -144528,13 +144540,7 @@
       "teachers": [
         "ACu"
       ],
-      "fTags": [
-        "Meditation retreats"
-      ],
-      "fTagOrder": [
-        120
-      ],
-      "fTagOrderFlags": "E",
+      "fTags": [],
       "annotations": [],
       "tags": [
         "Monastic life",
@@ -187535,7 +187541,7 @@
       "subtitle": "",
       "code": "CMountain2022",
       "series": [
-        "Interviews"
+        "Clear Mountain Podcasts"
       ],
       "venue": "None",
       "teachers": [
@@ -187556,7 +187562,7 @@
       "subtitle": "",
       "code": "CMountain2023",
       "series": [
-        "Interviews"
+        "Clear Mountain Podcasts"
       ],
       "venue": "Clear Mountain Monastery Project",
       "teachers": [
@@ -187577,7 +187583,7 @@
       "subtitle": "A Treasure Mountain podcast",
       "code": "Podcast2023",
       "series": [
-        "Interviews"
+        "Other"
       ],
       "venue": "None",
       "teachers": [
@@ -187871,7 +187877,7 @@
       "subtitle": "",
       "code": "ALBA2025",
       "series": [
-        "Other retreats"
+        "Other"
       ],
       "venue": "Amaravati Buddhist Monastery",
       "teachers": [
@@ -188060,7 +188066,7 @@
       "subtitle": "",
       "code": "CMountain2026-1",
       "series": [
-        "Interviews"
+        "Clear Mountain Podcasts"
       ],
       "venue": "Clear Mountain Monastery Project",
       "teachers": [
@@ -188104,7 +188110,7 @@
       "subtitle": "",
       "code": "CMountain2026-2",
       "series": [
-        "Interviews"
+        "Clear Mountain Podcasts"
       ],
       "venue": "Clear Mountain Monastery Project",
       "teachers": [
@@ -195342,7 +195348,7 @@
       "teachers": [
         "Sakula"
       ],
-      "sessionTitle": "",
+      "sessionTitle": "Bringing Monastic Dhamma to Portland",
       "sessionStart": "2:04:08",
       "tags": []
     },
@@ -200493,7 +200499,7 @@
       "indexExcerpts": true,
       "indexSessions": true,
       "searchable": true,
-      "teacherPage": false,
+      "teacherPage": true,
       "attribute": true,
       "allowTag": true,
       "photo": true,
@@ -200502,7 +200508,7 @@
       "eventCount": 1,
       "sessionCount": 1,
       "excerptCount": 7,
-      "htmlFile": ""
+      "htmlFile": "ajahn-damrong.html"
     },
     "ABoonChoo": {
       "teacher": "ABoonChoo",
@@ -200707,7 +200713,7 @@
       "indexExcerpts": true,
       "indexSessions": true,
       "searchable": true,
-      "teacherPage": false,
+      "teacherPage": true,
       "attribute": true,
       "allowTag": true,
       "photo": true,
@@ -200716,7 +200722,7 @@
       "eventCount": 1,
       "sessionCount": 1,
       "excerptCount": 6,
-      "htmlFile": ""
+      "htmlFile": "ajahn-jundee.html"
     },
     "AMunindo": {
       "teacher": "AMunindo",
@@ -206269,6 +206275,7 @@
       "primaries": 0,
       "htmlFile": "heedlessness.html",
       "excerptCount": 13,
+      "fTagCount": 1,
       "listIndex": 211
     },
     "Proliferation": {
@@ -208689,6 +208696,7 @@
       "primaries": 0,
       "htmlFile": "perception-of-light.html",
       "excerptCount": 13,
+      "fTagCount": 1,
       "listIndex": 384
     },
     "Kasiṇa": {
@@ -209340,7 +209348,7 @@
       "primaries": 0,
       "htmlFile": "meditation-retreats.html",
       "excerptCount": 79,
-      "fTagCount": 6,
+      "fTagCount": 5,
       "listIndex": 426
     },
     "Meditation/Results": {
@@ -220316,6 +220324,11 @@
       "abbreviation": "Anniversary",
       "description": "Commemorations of the founding of Abhayagiri Monastery on June 1, 1996."
     },
+    "Clear Mountain Podcasts": {
+      "series": "Clear Mountain Podcasts",
+      "abbreviation": "CMountain",
+      "description": "Online interviews with Ajahn Kovilo and Ajahn Nisabho."
+    },
     "Amaravati Sunday Talks": {
       "series": "Amaravati Sunday Talks",
       "abbreviation": "Sunday",
@@ -220330,11 +220343,6 @@
       "series": "Q&ampA sessions",
       "abbreviation": "varies",
       "description": "Question and answer sessions with groups of visitors or online participants."
-    },
-    "Interviews": {
-      "series": "Interviews",
-      "abbreviation": "varies",
-      "description": "One-on-one questions and answers with Ajahn Pasanno, online or in person."
     },
     "Other": {
       "series": "Other",

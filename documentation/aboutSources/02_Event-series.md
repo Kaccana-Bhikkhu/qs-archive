@@ -59,6 +59,11 @@ Occasional Practice and Study Days replaced the Upāsika Program from 2023 to 20
 Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 1, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
 
 -----
+[Clear Mountain Podcast](photo:../events/CMountain2026-2.png)
+## Clear Mountain Podcasts (<a id="clear-mountain-podcasts" href="../indexes/EventsBySeries.html#clear-mountain-podcasts">List</a>)
+Online interviews hosted by Ajahn Kovilo, a student of Ajahn Pasanno, and Ajahn Nisabho, who trained with Ajahn Anan. Their questions are informed by years of monastic training and also reflect the concerns of the Clear Mountain lay community.
+
+-----
 [Interreligious Retreat-Seminar on Dhamma and Non-duality, Rishikesh, India](photo:../events/Rishikesh2023.jpg)
 ## Other Retreats (<a id="other-retreats" href="../indexes/EventsBySeries.html#other-retreats">List</a>)
 Multi-day retreats led by Ajahn Pasanno around the world.
