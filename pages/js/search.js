@@ -531,7 +531,10 @@ function displaySearchResults(message,searchResults) {
     instructionsFrame.style.display = "none";
 
     resultsFrame.innerHTML = searchResults;
-    lucide.createIcons(lucide.icons);
+    try {
+        lucide.createIcons(lucide.icons);
+    } catch (err) { }
+    
     // If we find a subtopic that is itself a tag, change "Tags" to "Other tags"
     let subtopicResults = document.getElementById("results-b");
     if (subtopicResults && document.getElementById("results-g")) {

@@ -328,7 +328,9 @@ export async function loadHomepage(loadedFrame) {
 
     initializeHomepage();
     initializeSearchFeatured();
-    lucide.createIcons(lucide.icons);
+    try {
+         lucide.createIcons(lucide.icons);
+    } catch (err) { }
 }
 
 function dropdownMenuClick(clickedItem) {
@@ -517,7 +519,9 @@ function setupAutoComplete() {
                     info.innerHTML = `Showing <b>${data.results.length}</b> out of <b>${data.matches.length}</b> results`;
                     list.append(info);
                 }
-                lucide.createIcons(lucide.icons); // Render the icons after building the list
+                try {
+                    lucide.createIcons(lucide.icons); // Render the icons after building the list
+                } catch (err) { }
             }
         },
         events: {
