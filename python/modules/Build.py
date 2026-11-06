@@ -2194,7 +2194,7 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
         yield page
 
 
-def TableOfContents(sessions: list[dict]) -> str:
+def TableOfContents(event: dict, sessions: list[dict]) -> str:
     """Return the table of contents to the event which is being built."""
     a = Airium()
     tocPath = Utils.PosixJoin(gOptions.documentationDir,"tableOfContents",sessions[0]["event"] + ".md")
@@ -2229,7 +2229,11 @@ def TableOfContents(sessions: list[dict]) -> str:
                 for s in sessions:
                     sessionWithoutLinks = re.sub(r"(<a[^>]*?>)|</a[^>]*?>","",str(s['sessionTitle']))
                     titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(sessionWithoutLinks)
-                    lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}"))
+                    teacherStr = ""
+                    if ParseCSV.EventFlag.TOC_NAME_TEACHERS in event["flags"]:
+                        fullNameList = [gDatabase["teacher"][t]["attributionName"] for t in s["teachers"]]
+                        teacherStr = f" – {ItemList(fullNameList,lastJoinStr = " and ")}"
+                    lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}{teacherStr}"))
 
                 a(Html.TruncatedList(lines,alwaysShow=3,morePrompt="Show all sessions"))
         else:
@@ -2291,7 +2295,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
                     a(urllib.parse.urlsplit(eventInfo["website"]).netloc)
                 a.br()
                 
-            tocHtml = TableOfContents(sessions)
+            tocHtml = TableOfContents(eventInfo,sessions)
             shortToc = not tocHtml or tocHtml.startswith("Sessions: ")
             if tocHtml and shortToc:
                 a(tocHtml)

@@ -19,6 +19,9 @@ import itertools
 class StrEnum(str,Enum):
     pass
 
+class EventFlag(StrEnum):
+    TOC_NAME_TEACHERS = "t"     # Include teacher's names in the automatically generated table of contents
+    
 class TagFlag(StrEnum):
     VIRTUAL = "."               # A virtual tag can't be applied to excerpts but can have subtags
     PRIMARY = "*"               # The primary instance of this tag in the hierarchical tag list
@@ -1343,6 +1346,7 @@ def LoadEventFile(database,eventName,directory):
 
     eventDesc = DictFromPairs(rawEventDesc,"key","value")
     eventDesc["code"] = eventName
+    eventDesc.setdefault("flags","")
 
     for key in ["teachers","tags"]:
         eventDesc[key] = [s.strip() for s in eventDesc[key].split(';') if s.strip()]
