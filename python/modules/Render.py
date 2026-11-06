@@ -414,11 +414,11 @@ def RenderExcerpts() -> None:
         
         # Add [Session] before thee body of session excerpts
         if not x["fileNumber"]:
-            sessionLink = Html.Tag('span',{'class':'session-excerpt-header'})('Session')
+            sessionHeader = Html.Tag('span',{'class':'session-excerpt-header'})('Session')
             if x["body"] or len(nonBlankAnnotations) > 1:
-                x["body"] = f"[{sessionLink}] {x['body']}"
+                x["body"] = f"[{sessionHeader}] {x['body']}"
             else:
-                x["body"] = f"[sessionLink] {nonBlankAnnotations[0]['body']}"
+                x["body"] = f"[{sessionHeader}] {nonBlankAnnotations[0]['body']}"
                 nonBlankAnnotations[0]["body"] = ""
 
 

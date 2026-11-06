@@ -124883,7 +124883,7 @@
       ],
       "qTagCount": 2,
       "duration": "1:05:37",
-      "body": "[sessionLink] <b>Reference:</b> &ldquo;<a href=\"https://www.accesstoinsight.org/befriending.html\" target=\"_blank\">Befriending the Suttas</a>&rdquo; at <a href=\"https://accesstoinsight.org\" target=\"_blank\">accesstoinsight.org</a>.",
+      "body": "[<span class=\"session-excerpt-header\">Session</span>] <b>Reference:</b> &ldquo;<a href=\"https://www.accesstoinsight.org/befriending.html\" target=\"_blank\">Befriending the Suttas</a>&rdquo; at <a href=\"https://accesstoinsight.org\" target=\"_blank\">accesstoinsight.org</a>.",
       "attribution": ""
     },
     {
@@ -135201,7 +135201,7 @@
       "tags": [],
       "qTagCount": 0,
       "duration": "2:58:09",
-      "body": "[sessionLink] <b>Reference:</b> <em>Becoming the Buddha</em> by Donald Swearer (commercial).",
+      "body": "[<span class=\"session-excerpt-header\">Session</span>] <b>Reference:</b> <em>Becoming the Buddha</em> by Donald Swearer (commercial).",
       "attribution": ""
     },
     {
@@ -210444,6 +210444,35 @@
     },
     {
       "event": "Anniversary2026-2",
+      "sessionNumber": 7,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Summary",
+      "flags": "",
+      "text": "30th Anniversary Slideshow Part 1 on Abhayagiri's YouTube channel:",
+      "teachers": [
+        "AbhSangha"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Other",
+          "flags": "z",
+          "text": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/EO2OpQ0Cg8Y?si=Xq0Rygr9t6fn2Mj1&amp;start=12734&rel=0\" title=\"30th Anniversary Slideshow Part 1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+          "teachers": [],
+          "tags": [],
+          "indentLevel": 1,
+          "body": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/EO2OpQ0Cg8Y?si=Xq0Rygr9t6fn2Mj1&amp;start=12734&rel=0\" title=\"30th Anniversary Slideshow Part 1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "6:04:15",
+      "body": "[<span class=\"session-excerpt-header\">Session</span>] 30th Anniversary Slideshow Part 1 on Abhayagiri&rsquo;s YouTube channel:",
+      "attribution": ""
+    },
+    {
+      "event": "Anniversary2026-2",
       "sessionNumber": 8,
       "excerptNumber": 1,
       "fileNumber": 1,
@@ -211287,6 +211316,35 @@
       "mirror": "local",
       "body": "<b>Recollection:</b> Ajahn Amaro loses the ability to read due to a temporary ischemic attack.{attribution}",
       "attribution": " Recounted by <a href=\"../teachers/ajahn-amaro.html\">Ajahn Amaro</a>."
+    },
+    {
+      "event": "Anniversary2026-2",
+      "sessionNumber": 9,
+      "excerptNumber": 0,
+      "fileNumber": 0,
+      "kind": "Summary",
+      "flags": "",
+      "text": "30th Anniversary Slideshow Part 2 on Abhayagiri's YouTube channel:",
+      "teachers": [
+        "AbhSangha"
+      ],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Other",
+          "flags": "z",
+          "text": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/bPwhpgEqiUQ?si=sxR6zhomLRe0oIYU&rel=0\" title=\"30th Anniversary Slideshow Part 1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+          "teachers": [],
+          "tags": [],
+          "indentLevel": 1,
+          "body": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/bPwhpgEqiUQ?si=sxR6zhomLRe0oIYU&rel=0\" title=\"30th Anniversary Slideshow Part 1\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+        }
+      ],
+      "tags": [],
+      "qTagCount": 0,
+      "duration": "38:23",
+      "body": "[<span class=\"session-excerpt-header\">Session</span>] 30th Anniversary Slideshow Part 2 on Abhayagiri&rsquo;s YouTube channel:",
+      "attribution": ""
     },
     {
       "event": "Anniversary2026-2",
@@ -215878,7 +215936,7 @@
       ],
       "website": "https://www.youtube.com/live/EO2OpQ0Cg8Y",
       "description": "",
-      "sessions": 9,
+      "sessions": 11,
       "excerpts": 53
     },
     "CMountain2026-1": {
@@ -223214,6 +223272,19 @@
     },
     {
       "event": "Anniversary2026-2",
+      "sessionNumber": 7,
+      "date": "27/06/2026",
+      "filename": "Abhayagiri 30th Anniversary Part Two Day 1 - Afternoon Session.mp3",
+      "duration": "6:04:15",
+      "teachers": [
+        "AbhSangha"
+      ],
+      "sessionTitle": "30th Anniversary Slideshow Part One",
+      "sessionStart": "3:32:14",
+      "tags": []
+    },
+    {
+      "event": "Anniversary2026-2",
       "sessionNumber": 8,
       "date": "27/06/2026",
       "filename": "FromComingOfAgeToVanishingPoint_AA_06.27.2026.mp3",
@@ -223222,6 +223293,19 @@
         "AA"
       ],
       "sessionTitle": "From &lsquo;Coming of Age&rsquo; to &lsquo;Vanishing Point&rsquo;",
+      "sessionStart": "",
+      "tags": []
+    },
+    {
+      "event": "Anniversary2026-2",
+      "sessionNumber": 9,
+      "date": "28/06/2026",
+      "filename": "Abhayagiri 30th Anniversary Part Two Day 2 - Afternoon Session.mp3",
+      "duration": "38:23",
+      "teachers": [
+        "AbhSangha"
+      ],
+      "sessionTitle": "30th Anniversary Slideshow Part Two",
       "sessionStart": "",
       "tags": []
     },
@@ -227458,6 +227542,13 @@
       "url": "https://www.abhayagiri.org/media/audio/2026/Dhamma%20Talks%202026/FromComingOfAgeToVanishingPoint_AA_06.27.2026.mp3",
       "mirror": "remote"
     },
+    "Abhayagiri 30th Anniversary Part Two Day 2 - Afternoon Session.mp3": {
+      "filename": "Abhayagiri 30th Anniversary Part Two Day 2 - Afternoon Session.mp3",
+      "duration": "38:23",
+      "event": "Anniversary2026-2",
+      "url": "",
+      "mirror": "local"
+    },
     "BeyondHomeWhatAreWeReallySeeking_LPDamrongSucitto_06.28.2026.mp3": {
       "filename": "BeyondHomeWhatAreWeReallySeeking_LPDamrongSucitto_06.28.2026.mp3",
       "duration": "1:10:46",
@@ -228837,7 +228928,8 @@
       "group": "Communities",
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 3,
-      "excerptCount": 5,
+      "sessionCount": 2,
+      "excerptCount": 7,
       "htmlFile": "the-abhayagiri-sangha.html"
     },
     "AmSangha": {

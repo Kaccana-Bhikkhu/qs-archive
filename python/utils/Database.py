@@ -88,9 +88,20 @@ def ExcerptDuration(excerpts: list[dict],includeSingleSessionExcerpts = False) -
     duration = timedelta()
     for _,sessionExcerpts in itertools.groupby(excerpts,lambda x: (x["event"],x["sessionNumber"])):
         sessionExcerpts = list(sessionExcerpts)
-        duration += sum((Utils.StrToTimedelta(x["duration"]) for x in RemoveFragments(sessionExcerpts) if x["fileNumber"] or (includeSingleSessionExcerpts and len(sessionExcerpts) == 1)),start = timedelta())
-            # Don't sum session excerpts (fileNumber = 0) unless the session excerpt is the only excerpt in the list
-            # This prevents confusing results due to double counting times
+        for x in RemoveFragments(sessionExcerpts):
+            if x["fileNumber"]:
+                duration += Utils.StrToTimedelta(x["duration"])
+            elif includeSingleSessionExcerpts and len(sessionExcerpts) == 1:
+                # Don't sum session excerpts (fileNumber = 0) unless the session excerpt is the only excerpt in the list
+                # This prevents confusing results due to double counting times
+                session = SessionDict()[x["event"]][x["sessionNumber"]]
+                nextSession = SessionDict()[x["event"]].get(x["sessionNumber"] + 1)
+                if nextSession and nextSession["filename"] == session["filename"]:
+                    sessionEnd = nextSession.get("sessionStart",session["duration"])
+                else:
+                    sessionEnd = session["duration"]
+                duration += Utils.StrToTimedelta(sessionEnd) - Utils.StrToTimedelta(session.get("sessionStart") or "0:00")
+
     return duration
 
 

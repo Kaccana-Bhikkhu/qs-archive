@@ -1061,12 +1061,7 @@ def ExcerptDurationStr(excerpts: list[dict],countEvents = True,countSessions = T
     events = set(x["event"] for x in excerpts)
     sessions = set((x["event"],x["sessionNumber"]) for x in excerpts) # Use sets to count unique elements
 
-    duration = timedelta()
-    for _,sessionExcerpts in itertools.groupby(excerpts,lambda x: (x["event"],x["sessionNumber"])):
-        sessionExcerpts = list(sessionExcerpts)
-        duration += sum((Mp3DirectCut.ToTimeDelta(x["duration"]) for x in Database.RemoveFragments(sessionExcerpts) if x["fileNumber"] or (sessionExcerptDuration and len(sessionExcerpts) == 1)),start = timedelta())
-            # Don't sum session excerpts (fileNumber = 0) unless the session excerpt is the only excerpt in the list
-            # This prevents confusing results due to double counting times
+    duration = Database.ExcerptDuration(excerpts,sessionExcerptDuration)
     
     strItems = []
     
