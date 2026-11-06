@@ -33,13 +33,13 @@ const playAudio = (title, audio, onPlaylist = false) => {
 	
 	let duration = Math.round(audio.duration);
 
-	audioTitle.innerHTML = `${title} <span>${time(0)} / ${time(duration)}</span>`;
+	audioTitle.innerHTML = `${title} <span>${time(audio.currentTime)} / ${time(duration)}</span>`;
 	durationTitle = audioTitle.querySelector("span");
 
 	audioPlayer.classList.add("show");
 	playButton.classList.add("playing");
 
-	if (currentlyPlaying instanceof HTMLAudioElement) {
+	if (currentlyPlaying instanceof HTMLAudioElement && currentlyPlaying != audio) {
 		currentlyPlaying.pause();
 		currentlyPlaying.currentTime = 0;
 	}
@@ -48,7 +48,7 @@ const playAudio = (title, audio, onPlaylist = false) => {
 	audio.play();
 
 	playBar.max = duration;
-	playBar.value = 0;
+	playBar.value = audio.currentTime;
 };
 
 const closePlayer = () => {

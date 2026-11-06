@@ -957,7 +957,7 @@ def PlayerTitle(item:dict) -> str:
     return " ".join(titleItems)
     
 
-def AudioIcon(hyperlink: str,title: str,titleLink:str = "",dataDuration:str = "",downloadAs:str = "") -> str:
+def AudioIcon(hyperlink: str,title: str,titleLink:str = "",duration:str = "",startTime:str = "",downloadAs:str = "") -> str:
     "Return an audio icon with the given hyperlink"
     filename = title + ".mp3"
 
@@ -965,14 +965,16 @@ def AudioIcon(hyperlink: str,title: str,titleLink:str = "",dataDuration:str = ""
     dataDict = {}
     if titleLink:
         dataDict["data-title-link"] = titleLink
-    if dataDuration:
-        dataDict["data-duration"] = str(Mp3DirectCut.ToTimeDelta(dataDuration).seconds)
+    if duration:
+        dataDict["data-duration"] = str(Mp3DirectCut.ToTimeDelta(duration).seconds)
+    if startTime:
+        dataDict["data-start"] = str(Mp3DirectCut.ToTimeDelta(startTime).seconds)
     if downloadAs:
         dataDict["download-as"] = downloadAs
     with a.get_tag_('audio-chip')(src = hyperlink, title = title, **dataDict):
         with a.a(href = hyperlink,download=filename):
             a(f"Download audio")
-        a(f" ({dataDuration})")
+        a(f" ({duration})")
 	
     return str(a)
 
@@ -980,7 +982,10 @@ def Mp3ExcerptLink(excerpt: dict) -> str:
     """Return an html-formatted audio icon linking to a given excerpt."""
     
     excerptLink = f"events/{excerpt['event']}.html#{Database.ItemCode(Database.FragmentSource(excerpt))}"
-    return AudioIcon(Database.Mp3Link(excerpt),title=PlayerTitle(excerpt),titleLink=excerptLink,dataDuration = excerpt["duration"])
+    startTime = ""
+    if not excerpt["excerptNumber"]: # Look up the start time for session excerpts
+        startTime = Database.SessionDict()[excerpt["event"]][excerpt["sessionNumber"]].get("sessionStart","") 
+    return AudioIcon(Database.Mp3Link(excerpt),title=PlayerTitle(excerpt),titleLink=excerptLink,duration=excerpt["duration"],startTime=startTime)
     
 def Mp3SessionLink(session: dict) -> str:
     """Return an html-formatted audio icon linking to a given session."""
@@ -989,7 +994,8 @@ def Mp3SessionLink(session: dict) -> str:
     return AudioIcon(Database.Mp3Link(session),
                      title=PlayerTitle(session),
                      titleLink = sessionLink,
-                     dataDuration = session["duration"],
+                     duration = session["duration"],
+                     startTime = session.get("sessionStart",""),
                      downloadAs = session["filename"])
     
 def TeacherLink(teacher:str) -> str:
@@ -1311,7 +1317,6 @@ class Formatter:
                 else:
                     localFormatter.excerptDefaultTeacher = self.excerptDefaultTeacher
                 
-            hasMultipleAnnotations = sum(len(a["body"]) > 0 for a in x["annotations"]) > 1
             with a.p(id = Database.ItemCode(x)):
                 a(localFormatter.FormatExcerpt(x))
             

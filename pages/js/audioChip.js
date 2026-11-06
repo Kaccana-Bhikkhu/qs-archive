@@ -3,11 +3,7 @@ const css = `
 		height: 40px;
 		width: max-content;
 
-		display: grid;
-		grid-template-columns: 40px 50px 40px;
-		grid-template-rows: 1fr;
-		grid-column-gap: 5px;
-		grid-row-gap: 0px; 
+		display: flex;
 		align-items: center;
 	}
 
@@ -83,7 +79,8 @@ class AudioChip extends HTMLElement {
 			this.audio.load()
 		else
 			this.audio.preload = "none";
-
+		
+		this.playStart = this.dataset.start || 0;
 		const wrapper = document.createElement("div");
 		wrapper.classList.add("wrapper");
 		const button = document.createElement("button");
@@ -122,6 +119,7 @@ class AudioChip extends HTMLElement {
 	}
 
 	play(onPlaylist = false) {
+		this.audio.currentTime = this.playStart;
 		if (this.audio.readyState >= 3) {
 			debugLog("audio already loaded; begin playing");
 			playAudio(this.#titleWithLink, this.audio, onPlaylist);
@@ -135,6 +133,7 @@ class AudioChip extends HTMLElement {
 				{ once: true },
 			);
 			this.audio.load();
+			this.audio.currentTime = this.playStart;
 			debugLog("waiting for audio loading");
 		}
 	}
