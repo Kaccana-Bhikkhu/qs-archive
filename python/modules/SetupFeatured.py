@@ -112,6 +112,8 @@ def AllHolidays() -> list[Holiday]:
         LunarHoliday(BuddhistHoliday.ASALHA,None,Filter.FTag("Dhamma")),
         Holiday("Ajahn Pasanno's Birthday",date(1949,7,26),Filter.FTag("Ajahn Pasanno")),
         Holiday("Ajahn Sumedho's Birthday",date(1934,7,27),Filter.FTag("Ajahn Sumedho")),
+        Holiday("Ajahn Amaro's Birthday",date(1956,9,2),Filter.And(
+            Filter.Tag("Ajahn Amaro"),Filter.Tag("Abhayagiri"))),
         Holiday("Ajahn Liem's Birthday",date(1941,11,5),Filter.FTag("Ajahn Liem")),
     ]
 

@@ -819,6 +819,8 @@ class PagedSearcher extends Searcher {
         // message is an optional message to display.
         
         if (DEBUG)
+            // The statement below puts iOS Chrome in an infinite loop; not sure why.
+            // It works fine iOS Safari and all other browsers I've tested.
             message += `Processed query: ${String(this.query.searcher)}<br>`
 
         if (this.foundItems.length > 0) {

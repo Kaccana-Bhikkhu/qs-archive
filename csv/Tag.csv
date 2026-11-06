@@ -1,5 +1,5 @@
 Modified:,2026,,,,,,,,,,,,,,
-Count,222,957,59,453,191,46,81,,48,101,18,996,413,931,931
+Count,223,958,59,453,191,46,81,,48,101,18,997,413,932,932
 Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translations,Glosses,Subsumed under,Related,Related 2,Indented tags,Pali term,Tag menu,Pali tag menu
 1,,Skillful qualities,,kusalā dhammā,,,Wholesome qualities,,,,,Skillful qualities,kusalā dhammā,Skillful qualities,Skillful qualities [kusalā dhammā]
 2,,Middle Path,,majjhimā paṭipadā,,,Middle Way,,,,,   Middle Path,majjhimā paṭipadā,Middle Path,Middle Path [majjhimā paṭipadā]
@@ -700,19 +700,29 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Dōgen,,,,,,,,,,         Dōgen,,Dōgen,Dōgen
 4,,Master Hsu Yun,,,,,,,,,,         Master Hsu Yun,,Master Hsu Yun,Master Hsu Yun
 4,,Master Hsuan Hua,,,,,,,,,,         Master Hsuan Hua,,Master Hsuan Hua,Master Hsuan Hua
-4,,The Dalai Lama,,,Dalai Lama,,,,,,,         The Dalai Lama,,Dalai Lama,Dalai Lama
+,,,,,,,,,,,,,,,
 4,,Reverend Heng Sure,,,Rev. Heng Sure,,,,,,,         Reverend Heng Sure,,Rev. Heng Sure,Rev. Heng Sure
 4,,Bhikshu Heng Shun,,,,,,,,,,         Bhikshu Heng Shun,,Bhikshu Heng Shun,Bhikshu Heng Shun
-4,,Trulshik Rinpoche,,,,,,,,,,         Trulshik Rinpoche,,Trulshik Rinpoche,Trulshik Rinpoche
-4,,Lama Zopa Rinpoche,,,Lama Zopa,,,,,,,         Lama Zopa Rinpoche,,Lama Zopa,Lama Zopa
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 4,,Harata Rōshi,,,,,,,,,,         Harata Rōshi,,Harata Rōshi,Harata Rōshi
 4,,Bhikshu Heng Lyu,,,,,,,,,,         Bhikshu Heng Lyu,,Bhikshu Heng Lyu,Bhikshu Heng Lyu
-4,,Thubten Chodron,,,,,,,,,,         Thubten Chodron,,Thubten Chodron,Thubten Chodron
+,,,,,,,,,,,,,,,
 4,,Master Xuanzang,,,,,,,,,,         Master Xuanzang,,Master Xuanzang,Master Xuanzang
 4,,Thich Nhat Hahn,,,,,,,,,,         Thich Nhat Hahn,,Thich Nhat Hahn,Thich Nhat Hahn
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+4,,Shantideva,,,,,,,,,,         Shantideva,,Shantideva,Shantideva
+3,PS,Vajrayāna monastics,,,,,,,,,,      Vajrayāna monastics,,Vajrayāna monastics,Vajrayāna monastics
+4,,The Dalai Lama,,,Dalai Lama,,,,,,,         The Dalai Lama,,Dalai Lama,Dalai Lama
+4,,Trulshik Rinpoche,,,,,,,,,,         Trulshik Rinpoche,,Trulshik Rinpoche,Trulshik Rinpoche
+4,,Lama Zopa Rinpoche,,,Lama Zopa,,,,,,,         Lama Zopa Rinpoche,,Lama Zopa,Lama Zopa
+4,,Thubten Chodron,,,,,,,,,,         Thubten Chodron,,Thubten Chodron,Thubten Chodron
 4,,Tsoknyi Rinpoche,,,,,,,,,,         Tsoknyi Rinpoche,,Tsoknyi Rinpoche,Tsoknyi Rinpoche
 4,,Chokyi Nyima Rinpoche,,,,,,,,,,         Chokyi Nyima Rinpoche,,Chokyi Nyima Rinpoche,Chokyi Nyima Rinpoche
-4,,Shantideva,,,,,,,,,,         Shantideva,,Shantideva,Shantideva
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,P,Christian monastics,,,,,,,,,,      Christian monastics,,Christian monastics,Christian monastics
 4,,Father Boniface,,,,,,,,,,         Father Boniface,,Father Boniface,Father Boniface
 4,,Father Damian,,,,,,,,,,         Father Damian,,Father Damian,Father Damian
@@ -743,7 +753,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,James Baraz,,,,,,,,,,      James Baraz,,James Baraz,James Baraz
 3,,Stephen Batchelor,,,,,,,,,,      Stephen Batchelor,,Stephen Batchelor,Stephen Batchelor
 3,,Gloria Taraniya Ambrosia,,,Taraniya,,,,,,,      Gloria Taraniya Ambrosia,,Taraniya,Taraniya
-,,,,,,,,,,,,,,,
+3,,Community of Abhayagiri Lay Ministers,,,CALM Group,,,,,,,      Community of Abhayagiri Lay Ministers,,CALM Group,CALM Group
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -753,7 +763,7 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 3,,George Sharp,,,,,,,,,,      George Sharp,,George Sharp,George Sharp
 ,,,,,,,,,,,,,,,
 3,*,Saṅghapāla Foundation,,,Saṅghapāla,,,,,,,      Saṅghapāla Foundation,,Saṅghapāla,Saṅghapāla
-3,,Community of Abhayagiri Lay Ministers,,,CALM Group,,,,,,,      Community of Abhayagiri Lay Ministers,,CALM Group,CALM Group
+,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
@@ -1077,16 +1087,21 @@ Level,Flags,Full tag,#,Pāli,Abbreviation,Pāli abbreviation,Alternate translati
 4,,Chi Gong,,,,,,,,,,         Chi Gong,,Chi Gong,Chi Gong
 4,,Smoking,,,,,,,,,,         Smoking,,Smoking,Smoking
 4,,Mental illness,,,,,,,,,,         Mental illness,,Mental illness,Mental illness
+3,,Family,,,,,,,,,,      Family,,Family,Family
+4,,Parents,,,,,,,,,,         Parents,,Parents,Parents
+4,,Children,,,,,,,,,,         Children,,Children,Children
+,,,,,,,,,,,,,,,
 3,,Gender,,,,,,,,,,      Gender,,Gender,Gender
+3,,Relationships,,,,,,,,,,      Relationships,,Relationships,Relationships
 3,,Purpose/meaning,,,,,,Meaning,,,,      Purpose/meaning,,Purpose/meaning,Purpose/meaning
 3,,Cleanliness,,,,,,,,,,      Cleanliness,,Cleanliness,Cleanliness
 3,,Work,,,,,,,,Right Livelihood,,      Work,,Work,Work
 4,,Agriculture,,,,,,,,,,         Agriculture,,Agriculture,Agriculture
 3,,Time management,,,,,,,,,,      Time management,,Time management,Time management
-3,,Relationships,,,,,,,,,,      Relationships,,Relationships,Relationships
-3,,Family,,,,,,,,,,      Family,,Family,Family
-4,,Parents,,,,,,,,,,         Parents,,Parents,Parents
-4,,Children,,,,,,,,,,         Children,,Children,Children
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
 3,,Artistic expression,,,,,,,,,,      Artistic expression,,Artistic expression,Artistic expression
 3,,Recreation/leisure/sport,,,,,,Leisure;Sport,,,,      Recreation/leisure/sport,,Recreation/leisure/sport,Recreation/leisure/sport
 3,,Travel,,,,,,,,,,      Travel,,Travel,Travel
