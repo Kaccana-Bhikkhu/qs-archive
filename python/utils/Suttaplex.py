@@ -304,6 +304,7 @@ def TitleDict(textUid:str) -> dict[str,SuttaTitle]:
     def ProcessTitle(title: str) -> str:
         title = title.strip()
         title = re.sub(r"^[0-9]+\.?","",title)
+        title = title.replace("ṁ","ṃ")
         return title.strip()
 
     for sutta in suttaplex:
@@ -368,7 +369,7 @@ def DhammapadaVerses() -> dict[int,str]:
     with open("sutta/dhammapada/Dhammapada.json", 'r', encoding='utf-8') as file:
         dhammapada = json.load(file)
 
-    return {int(n):verse for n,verse in dhammapada.items() if re.match(r"[0-9]",n)}
+    return {int(n):verse.replace("ṁ","ṃ") for n,verse in dhammapada.items() if re.match(r"[0-9]",n)}
 
 if __name__ == "__main__":
     Alert.verbosity = 3
