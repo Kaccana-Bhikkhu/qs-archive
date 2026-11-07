@@ -5,7 +5,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(33<i class=\"fa fa-star\"></i>)",
+    "suffix": "(36<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -104,7 +104,7 @@
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/Key.png\">",
-    "suffix": "(41<i class=\"fa fa-star\"></i>)",
+    "suffix": "(45<i class=\"fa fa-star\"></i>)",
     "excerptCount": 0
   },
   {
@@ -160,6 +160,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 386
+  },
+  {
+    "short": "Pain (dukkha)",
+    "link": "tags/pain.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 74
   },
   {
     "short": "Fear (bhaya)",
@@ -1017,6 +1026,15 @@
     "excerptCount": 499
   },
   {
+    "short": "Ajahn Amaro",
+    "link": "tags/ajahn-amaro.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 133
+  },
+  {
     "short": "Monastic life (brahmacariyā)",
     "link": "clusters/monastic-life.html",
     "long": "",
@@ -1122,7 +1140,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 299
+    "excerptCount": 301
   },
   {
     "short": "Natural environment",
@@ -1140,7 +1158,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 363
+    "excerptCount": 362
   },
   {
     "short": "Thai culture",
@@ -1248,7 +1266,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/Cluster.png\">",
     "suffix": "",
-    "excerptCount": 75
+    "excerptCount": 76
   },
   {
     "short": "Skillful qualities (kusalā dhammā)",
@@ -5067,15 +5085,6 @@
     "excerptCount": 8
   },
   {
-    "short": "Trulshik Rinpoche",
-    "link": "tags/trulshik-rinpoche.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
     "short": "Master Hsuan Hua",
     "link": "tags/master-hsuan-hua.html",
     "long": "",
@@ -5094,35 +5103,8 @@
     "excerptCount": 1
   },
   {
-    "short": "Dalai Lama",
-    "link": "tags/dalai-lama.html",
-    "long": "The Dalai Lama",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 16
-  },
-  {
     "short": "Harata Rōshi",
     "link": "tags/harata-roshi.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Lama Zopa",
-    "link": "tags/lama-zopa.html",
-    "long": "Lama Zopa Rinpoche",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 1
-  },
-  {
-    "short": "Chokyi Nyima Rinpoche",
-    "link": "tags/chokyi-nyima-rinpoche.html",
     "long": "",
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
@@ -5148,6 +5130,51 @@
     "excerptCount": 7
   },
   {
+    "short": "Bhikshu Heng Lyu",
+    "link": "tags/bhikshu-heng-lyu.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 2
+  },
+  {
+    "short": "Trulshik Rinpoche",
+    "link": "tags/trulshik-rinpoche.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "Dalai Lama",
+    "link": "tags/dalai-lama.html",
+    "long": "The Dalai Lama",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 16
+  },
+  {
+    "short": "Lama Zopa",
+    "link": "tags/lama-zopa.html",
+    "long": "Lama Zopa Rinpoche",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
+    "short": "Chokyi Nyima Rinpoche",
+    "link": "tags/chokyi-nyima-rinpoche.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 1
+  },
+  {
     "short": "Thubten Chodron",
     "link": "tags/thubten-chodron.html",
     "long": "",
@@ -5164,15 +5191,6 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 1
-  },
-  {
-    "short": "Bhikshu Heng Lyu",
-    "link": "tags/bhikshu-heng-lyu.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 2
   },
   {
     "short": "Christian monastics",
@@ -5418,6 +5436,15 @@
     "excerptCount": 2
   },
   {
+    "short": "CALM Group",
+    "link": "tags/calm-group.html",
+    "long": "Community of Abhayagiri Lay Ministers",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 4
+  },
+  {
     "short": "Lay supporters",
     "link": "tags/lay-supporters.html",
     "long": "",
@@ -5452,15 +5479,6 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 34
-  },
-  {
-    "short": "CALM Group",
-    "link": "tags/calm-group.html",
-    "long": "Community of Abhayagiri Lay Ministers",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 4
   },
   {
     "short": "Monasteries",
@@ -5703,7 +5721,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 299
+    "excerptCount": 301
   },
   {
     "short": "Pre-Abhayagiri vihāras",
@@ -6459,7 +6477,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 98
+    "excerptCount": 97
   },
   {
     "short": "Pāli",
@@ -6513,7 +6531,7 @@
     "number": "",
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
-    "excerptCount": 7
+    "excerptCount": 8
   },
   {
     "short": "Translation",
@@ -7452,6 +7470,33 @@
     "excerptCount": 6
   },
   {
+    "short": "Family",
+    "link": "tags/family.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 98
+  },
+  {
+    "short": "Parents",
+    "link": "tags/parents.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 51
+  },
+  {
+    "short": "Children",
+    "link": "tags/children.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 24
+  },
+  {
     "short": "Gender",
     "link": "tags/gender.html",
     "long": "",
@@ -7459,6 +7504,15 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 1
+  },
+  {
+    "short": "Relationships",
+    "link": "tags/relationships.html",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tag\"></i>",
+    "suffix": "",
+    "excerptCount": 41
   },
   {
     "short": "Purpose/meaning",
@@ -7504,42 +7558,6 @@
     "icon": "<i data-lucide=\"tag\"></i>",
     "suffix": "",
     "excerptCount": 13
-  },
-  {
-    "short": "Relationships",
-    "link": "tags/relationships.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 41
-  },
-  {
-    "short": "Family",
-    "link": "tags/family.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 98
-  },
-  {
-    "short": "Parents",
-    "link": "tags/parents.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 51
-  },
-  {
-    "short": "Children",
-    "link": "tags/children.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 24
   },
   {
     "short": "Artistic expression",
@@ -10104,7 +10122,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 5
+    "excerptCount": 7
   },
   {
     "short": "Ajahn Mun",
@@ -10314,6 +10332,15 @@
     "excerptCount": 2
   },
   {
+    "short": "Ajahn Damrong",
+    "link": "teachers/ajahn-damrong.html",
+    "long": "Ajahn Damrong Sucitto",
+    "number": "",
+    "icon": "<i data-lucide=\"user\"></i>",
+    "suffix": "",
+    "excerptCount": 7
+  },
+  {
     "short": "Ajahn Boon Choo",
     "link": "teachers/ajahn-boon-choo.html",
     "long": "Ajahn Boon Choo Ṭhitaguṇo",
@@ -10401,7 +10428,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 3388
+    "excerptCount": 3387
   },
   {
     "short": "Ajahn Vīradhammo",
@@ -10411,6 +10438,15 @@
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
     "excerptCount": 4
+  },
+  {
+    "short": "Ajahn Jundee",
+    "link": "teachers/ajahn-jundee.html",
+    "long": "Ajahn Jundee Kantasāro",
+    "number": "",
+    "icon": "<i data-lucide=\"user\"></i>",
+    "suffix": "",
+    "excerptCount": 6
   },
   {
     "short": "Ajahn Sucitto",
@@ -10500,7 +10536,7 @@
     "number": "",
     "icon": "<i data-lucide=\"user\"></i>",
     "suffix": "",
-    "excerptCount": 166
+    "excerptCount": 167
   },
   {
     "short": "Ajahn Kovilo",
@@ -10626,7 +10662,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 4492
+    "excerptCount": 4494
   },
   {
     "short": "All featured excerpts",
@@ -10635,7 +10671,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 826
+    "excerptCount": 833
   },
   {
     "short": "All questions",
@@ -11049,7 +11085,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 44
+    "excerptCount": 45
   },
   {
     "short": "MN 11: Cūḷasīhanādasutta, The Shorter Discourse on the Lion’s Roar",
@@ -11166,7 +11202,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 23
+    "excerptCount": 24
   },
   {
     "short": "MN 28: Mahāhatthipadopamasutta, The Greater Discourse on the Simile of the Elephant’s Footprint",
@@ -12841,6 +12877,15 @@
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
     "excerptCount": 6
+  },
+  {
+    "short": "SN 35.119: Pañcasikhasutta, Pañcasikha",
+    "link": "texts/SN35_119.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1
   },
   {
     "short": "SN 35.120: Sāriputtasaddhivihārikasutta, Sāriputta",
@@ -14973,7 +15018,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 81
+    "excerptCount": 82
   },
   {
     "short": "AN 10.1: Kimatthiyasutta, What Purpose?",
@@ -15072,7 +15117,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/DhammaWheel.png\">",
     "suffix": "",
-    "excerptCount": 5
+    "excerptCount": 6
   },
   {
     "short": "AN 10.60: Girimānandasutta, Girimānanda",
@@ -16746,7 +16791,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 54
+    "excerptCount": 58
   },
   {
     "short": "In Simple Terms by Ajahn Chah",
@@ -16872,7 +16917,7 @@
     "number": "",
     "icon": "<i data-lucide=\"book-open\"></i>",
     "suffix": "",
-    "excerptCount": 64
+    "excerptCount": 66
   },
   {
     "short": "Twigs and Branches of the Bodhinyana",
