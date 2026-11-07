@@ -1,4 +1,4 @@
-"""A template for creating new modules.
+"""An optional module to export selected excerpt audio files with tsv catalogs.
 """
 
 from __future__ import annotations

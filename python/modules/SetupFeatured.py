@@ -499,7 +499,7 @@ def Update(paramStr: str) -> bool:
     for code in textMismatches:
         currentEntry = ExcerptEntry(Database.FindExcerpt(code))
         oldText = gFeaturedDatabase["excerpts"][code]["text"]
-        ratio = SequenceMatcher(a=oldText,b=currentEntry["text"]).ratio()
+        ratio = SequenceMatcher(a=oldText,b=currentEntry["text"],autojunk=False).ratio()
         updated = "does not match; not updated"
         if ratio >= gOptions.updateThreshold:
             UpdateEntry(gFeaturedDatabase["excerpts"][code],currentEntry,code)
@@ -539,7 +539,7 @@ def Fix(paramStr: str) -> bool:
     for code in textMismatches:
         mismatchedFragment = IsFragment(gFeaturedDatabase["excerpts"][code])
         oldText = gFeaturedDatabase["excerpts"][code]["text"]
-        matcher = SequenceMatcher(b=oldText)
+        matcher = SequenceMatcher(b=oldText,autojunk=False)
 
         event,sessionNumber,_ = Database.ParseItemCode(code)
         fileNumber = 1

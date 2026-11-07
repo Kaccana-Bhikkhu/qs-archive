@@ -1,4 +1,5 @@
-"""A template for creating new modules.
+"""Write pages/assets/AutoCompleteDatabase.json which contains the information needed for
+homepage.js to build the search dropdown list.
 """
 
 from __future__ import annotations
