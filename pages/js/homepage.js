@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} fro
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
-const DEBUG = true;
+const DEBUG = false;
 const PEEK_FUTURE = false;
 
 let gHomepageDatabase = null; // Featured excerpt html to display on the homepage, loaded from assets/FeaturedDatabase1_.json
