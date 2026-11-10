@@ -17,22 +17,22 @@ This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDataba
 $!int(Database.ExcerptDuration(gDatabase["excerpts"]).total_seconds() // 36_000)!$0
 hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 795 transcribed pages, of which 771 have been entered into the Archive. The detailed status of transcription is as follows:
 
-### Thanksgiving Retreats
+### [Thanksgiving Retreats](../indexes/EventsBySeries.html#thanksgiving-retreats)
 The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions) as well as the single Q&A session from the 2004 retreat co-led with Gloria Taraniya. The 2021 hybrid retreat is also included. The 2020 retreat has been transcribed but not yet entered into the database.
 
-### Winter Retreats
+### [Winter Retreats](../indexes/EventsBySeries.html#winter-retreats)
 Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 60 sessions](event:WR2025) are now included in the Archive.
 
-### Spirit Rock Daylongs
+### [Spirit Rock Daylongs](../indexes/EventsBySeries.html#spirit-rock-daylongs)
 Seven daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
 
-### Upāsika Days
+### [Upāsika Days](../indexes/EventsBySeries.html#upasika-days)
 All 25 recorded Upāsika Days led by Ajahn Pasanno are available in the Archive.
 
-### Abhayagiri Anniversary Events
+### [Abhayagiri Anniversary Events](../indexes/EventsBySeries.html#abhayagiri-anniversary-events)
 The Archive contains material from the [2016](event:Anniversary2016), [2021](event:Anniversary2021), [2024](event:Anniversary2024) anniversaries, and the [first](event:Anniversary2026-1) and [second](event:Anniversary2026-2) parts of the 2026 anniversary celebration.
 
-### Other
+### [Other](../indexes/EventsBySeries.html#other)
 All teachers have given consent for their [2001 Ajahn Chah Conference](event:Chah2001) audio.
 
 ## Known issues and limitations
