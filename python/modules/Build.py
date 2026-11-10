@@ -213,25 +213,6 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 
     return ", ".join(bits)
 
-def EncodeSearchQuery(query: str) -> str:
-    """Encode special URL characters (?=#&:) as other characters to make URL decoding more robust."""
-
-    charsToEncode = "?=#&:/%"
-    encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
-    return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
-
-def SearchLink(query:str,searchType:str = "x",featured:bool = True,relevant: bool = True) -> str:
-    """Returns a link to the search page with a specifed search string."""
-
-    query = EncodeSearchQuery(query)
-    queryDict = {"q":query,"search":searchType}
-    if featured:
-        queryDict["featured"] = ""
-    if relevant:
-        queryDict["relevant"] = ""
-    htmlQuery = urllib.parse.urlencode(queryDict,doseq=True,quote_via=urllib.parse.quote)
-    return f"../search/Text-search.html?{htmlQuery}"
-
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
     "Write a list of hyperlinked tags"
     
@@ -976,7 +957,7 @@ def PlayerTitle(item:dict) -> str:
     return " ".join(titleItems)
     
 
-def AudioIcon(hyperlink: str,title: str,titleLink:str = "",dataDuration:str = "",downloadAs:str = "") -> str:
+def AudioIcon(hyperlink: str,title: str,titleLink:str = "",duration:str = "",startTime:str = "",downloadAs:str = "") -> str:
     "Return an audio icon with the given hyperlink"
     filename = title + ".mp3"
 
@@ -984,14 +965,16 @@ def AudioIcon(hyperlink: str,title: str,titleLink:str = "",dataDuration:str = ""
     dataDict = {}
     if titleLink:
         dataDict["data-title-link"] = titleLink
-    if dataDuration:
-        dataDict["data-duration"] = str(Mp3DirectCut.ToTimeDelta(dataDuration).seconds)
+    if duration:
+        dataDict["data-duration"] = str(Mp3DirectCut.ToTimeDelta(duration).seconds)
+    if startTime:
+        dataDict["data-start"] = str(Mp3DirectCut.ToTimeDelta(startTime).seconds)
     if downloadAs:
         dataDict["download-as"] = downloadAs
     with a.get_tag_('audio-chip')(src = hyperlink, title = title, **dataDict):
         with a.a(href = hyperlink,download=filename):
             a(f"Download audio")
-        a(f" ({dataDuration})")
+        a(f" ({duration})")
 	
     return str(a)
 
@@ -999,7 +982,10 @@ def Mp3ExcerptLink(excerpt: dict) -> str:
     """Return an html-formatted audio icon linking to a given excerpt."""
     
     excerptLink = f"events/{excerpt['event']}.html#{Database.ItemCode(Database.FragmentSource(excerpt))}"
-    return AudioIcon(Database.Mp3Link(excerpt),title=PlayerTitle(excerpt),titleLink=excerptLink,dataDuration = excerpt["duration"])
+    startTime = ""
+    if not excerpt["excerptNumber"]: # Look up the start time for session excerpts
+        startTime = Database.SessionDict()[excerpt["event"]][excerpt["sessionNumber"]].get("sessionStart","") 
+    return AudioIcon(Database.Mp3Link(excerpt),title=PlayerTitle(excerpt),titleLink=excerptLink,duration=excerpt["duration"],startTime=startTime)
     
 def Mp3SessionLink(session: dict) -> str:
     """Return an html-formatted audio icon linking to a given session."""
@@ -1008,7 +994,8 @@ def Mp3SessionLink(session: dict) -> str:
     return AudioIcon(Database.Mp3Link(session),
                      title=PlayerTitle(session),
                      titleLink = sessionLink,
-                     dataDuration = session["duration"],
+                     duration = session["duration"],
+                     startTime = session.get("sessionStart",""),
                      downloadAs = session["filename"])
     
 def TeacherLink(teacher:str) -> str:
@@ -1074,12 +1061,7 @@ def ExcerptDurationStr(excerpts: list[dict],countEvents = True,countSessions = T
     events = set(x["event"] for x in excerpts)
     sessions = set((x["event"],x["sessionNumber"]) for x in excerpts) # Use sets to count unique elements
 
-    duration = timedelta()
-    for _,sessionExcerpts in itertools.groupby(excerpts,lambda x: (x["event"],x["sessionNumber"])):
-        sessionExcerpts = list(sessionExcerpts)
-        duration += sum((Mp3DirectCut.ToTimeDelta(x["duration"]) for x in Database.RemoveFragments(sessionExcerpts) if x["fileNumber"] or (sessionExcerptDuration and len(sessionExcerpts) == 1)),start = timedelta())
-            # Don't sum session excerpts (fileNumber = 0) unless the session excerpt is the only excerpt in the list
-            # This prevents confusing results due to double counting times
+    duration = Database.ExcerptDuration(excerpts,sessionExcerptDuration)
     
     strItems = []
     
@@ -1143,8 +1125,6 @@ class Formatter:
             if excerpt['excerptNumber']:
                 with a.span(Class="excerpt-number"):
                     a(f"{excerpt['excerptNumber']}.")
-            else:
-                a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
         if self.showFTagOrder and set(excerpt["fTags"]) & set(self.showFTagOrder):
             a(" {" + str(Database.FTagAndOrder(excerpt,self.showFTagOrder)[3]) + "}")
 
@@ -1332,26 +1312,17 @@ class Formatter:
                 else:
                     localFormatter.excerptDefaultTeacher = self.excerptDefaultTeacher
                 
-            hasMultipleAnnotations = sum(len(a["body"]) > 0 for a in x["annotations"]) > 1
-            if x["body"] or (not x["fileNumber"] and hasMultipleAnnotations):
-                """ Render blank session excerpts which have more than one annotation as [Session].
-                    If a blank session excerpt has only one annotation, [Session] will be added below."""
-                with a.p(id = Database.ItemCode(x)):
-                    a(localFormatter.FormatExcerpt(x))
+            with a.p(id = Database.ItemCode(x)):
+                a(localFormatter.FormatExcerpt(x))
             
             tagsAlreadyPrinted = set(x["tags"])
             for annotation in x["annotations"]:
                 if annotation["body"] and not (annotation["kind"] == "Fragment" and not self.excerptShowFragmentPlayers):
                     indentLevel = annotation['indentLevel']
-                    if not x["fileNumber"] and not x["body"] and not hasMultipleAnnotations:
-                        # If a single annotation follows a blank session excerpt, don't indent and add [Session] in front of it
-                        indentLevel = 0
                     if ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
                         indentLevel = 0
 
                     with a.p(Class = f"indent-{indentLevel}"):
-                        if not indentLevel and not ParseCSV.ExcerptFlag.ZERO_MARGIN in annotation['flags']:
-                            a(f"[{Html.Tag('span',{'class':'session-excerpt-header'})('Session')}]")
                         a(localFormatter.FormatAnnotation(x,annotation,tagsAlreadyPrinted))
                     tagsAlreadyPrinted.update(annotation.get("tags",()))
             
@@ -1471,9 +1442,16 @@ def FilteredEventsMenuItem(filter:Filter.Filter, mainPageInfo:Html.PageInfo, fil
     menutitle: the title in the menu.
     fileExt: the extension to add to the main page file for the filtered page."""
 
-    filteredEvents = list(filter.Apply(gDatabase["event"].values()))
+    filteredEvents = list(filter.Apply(Database.MergedEventsAndSections()))
 
-    filteredSessions = Filter.And(filter,Filter.Event(e["code"] for e in filteredEvents).Not())(gDatabase["sessions"])
+    fullEvents,eventSections = Utils.Partition(filteredEvents,lambda e: e.get("venue"))
+    eventSectionSessions = defaultdict(set)
+    for section in eventSections:
+        eventCode,firstSession,_ = Database.ParseItemCode(section["code"])
+        eventSectionSessions[eventCode].update(range(firstSession,section["lastSession"] + 1))
+
+    filteredSessions = Filter.And(filter,Filter.Event(e["code"] for e in fullEvents).Not())(gDatabase["sessions"])
+    filteredSessions = [s for s in filteredSessions if s["sessionNumber"] not in eventSectionSessions.get(s["event"],())]
     filteredSessions = [s for s in filteredSessions if s["sessionTitle"]]
         # Find titled sessions not in these events that match filter
 
@@ -1482,11 +1460,16 @@ def FilteredEventsMenuItem(filter:Filter.Filter, mainPageInfo:Html.PageInfo, fil
 
     htmlBits = []
     if filteredEvents:
-        if len(filteredEvents) <= 3 and not filteredSessions: # Provide full details if there are few events
+        if len(filteredEvents) <= 3 and not (filteredSessions or eventSections): # Provide full details if there are few events
             htmlBits.append(ListDetailedEvents(filteredEvents,showTags=False))
         else:
+            header = ["events"] if fullEvents else []
+            if eventSections:
+                header.append("event sections")
+            header = " and ".join(header).capitalize()
             if filteredSessions:
-                htmlBits.append(Html.Tag("h3")(f"Events ({len(filteredEvents)})"))
+                htmlBits.append(Html.Tag("h3")
+                    (f"{header} ({len(filteredEvents)})"))
             eventList = "\n".join(EventDescription(e,showMonth=True,excerptCount=False) for e in filteredEvents)
             htmlBits.append(Html.Tag("div",{"class":"listing"})(eventList))
 
@@ -1510,7 +1493,12 @@ def FilteredEventsMenuItem(filter:Filter.Filter, mainPageInfo:Html.PageInfo, fil
     else:
         pageInfo = mainPageInfo
 
-    menuItem = pageInfo._replace(title=(f"Events ({len(filteredEvents)})" if filteredEvents else f"Sessions ({len(filteredSessions)})"))
+    itemCount = 0
+    for itemName,items in (("Events",fullEvents),("Event sections",eventSections),("Sessions",filteredSessions)):
+        if items:
+            itemCount = len(items)
+            break
+    menuItem = pageInfo._replace(title=f"{itemName} ({itemCount})")
 
     return menuItem,"".join(htmlBits)
 
@@ -1638,11 +1626,21 @@ def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
 
 def EventDescription(event: dict,showMonth = False,excerptCount = True) -> str:
     href = Html.Wrapper(f"<a href = {Database.EventLink(event['code'])}>","</a>")
+    monthStr = ""
     if showMonth:
-        startDate = Utils.ParseDate(event["startDate"])
+        endDate = None
+        if "series" in event:
+            startDate = Utils.ParseDate(event["startDate"])
+            if event["endDate"]:
+                endDate = Utils.ParseDate(event["endDate"])
+        else:
+            sessions = Database.SessionDict()
+            eventCode,firstSession,_ = Database.ParseItemCode(event["code"])
+            startDate = Utils.ParseDate(sessions[eventCode][firstSession]["date"])
+            endDate = Utils.ParseDate(sessions[eventCode][event["lastSession"]]["date"])
+
         monthStr = f'{startDate.strftime("%B")} {int(startDate.year)}'
-        if event["endDate"]:
-            endDate = Utils.ParseDate(event["endDate"])
+        if endDate:
             endMonthStr = f'{endDate.strftime("%B")} {int(endDate.year)}'
             if endMonthStr != monthStr:
                 if startDate.year == endDate.year:
@@ -1650,17 +1648,15 @@ def EventDescription(event: dict,showMonth = False,excerptCount = True) -> str:
                 else:
                     monthStr = f'{monthStr} to {endMonthStr}'
         monthStr = ' – ' + monthStr
-
-    else:
-        monthStr = ""
-    excerptCountStr = f"({event['excerpts']})" if excerptCount else ""
+    
+    excerptCountStr = f"({event['excerpts']})" if ("series" in event and excerptCount) else ""
     return f"<p>{href.Wrap(event['title'])} {excerptCountStr}{monthStr}</p>"
 
 def ListEventsBySubject(events: list[dict]) -> str:
     """Return html code listing these events by series."""
     
     eventsByTag:dict[str,list[str]] = defaultdict(list) # tag:list[event["code"]]
-    for e in events:
+    for e in Database.MergedEventsAndSections():
         for tags in e["tags"]:
             eventsByTag[tags].append(e["code"])
 
@@ -1679,10 +1675,17 @@ def ListEventsBySubject(events: list[dict]) -> str:
     eventListByTags:list[tuple[tuple[str],str]] = []
     for tags in sorted(eventsByMultiTags,key=TagOrderKey):
         for e in eventsByMultiTags[tags]:
+            if e in gDatabase["eventSection"]:
+                section = gDatabase["eventSection"][e]
+                titleLink = Html.Tag("a",{"href":Database.EventLink(section["event"],section["firstSession"])})(section["title"])
+                sectionLink = f", Sessions {section['firstSession']} – {section['lastSession']}: {titleLink}"
+                itemLink = Html.Tag("p")(Database.ItemCitation(gDatabase["event"][section["event"]],htmlLink=False) + sectionLink)
+            else:
+                itemLink = Html.Tag("p")(Database.ItemCitation(gDatabase["event"][e]))
             listItem = (ListLinkedTags("",tags,lastJoinStr = " and "),
-                        Html.Tag("p")(Database.ItemCitation(gDatabase["event"][e])),
-                        "-".join(tags),
-                        (" and ".join(tags) if len(tags) <= 2 else tags[0] + ", etc.").replace(" ","&nbsp;"))
+                itemLink,
+                "-".join(tags),
+                (" and ".join(tags) if len(tags) <= 2 else tags[0] + ", etc.").replace(" ","&nbsp;"))
             eventListByTags.append(listItem)
             
     
@@ -1966,7 +1969,7 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         a = Airium()
         tagIsTeacher = Database.TeacherLookup(tag)
         if not tagIsTeacher or Database.TeacherConsent(tag,"photo"):
-            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]) + ".jpg")):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tagInfo["fullTag"]))):
                 a(header)
         else:
             a(header)
@@ -2003,7 +2006,7 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
         a = Airium()
         excerptInfo = ExcerptDurationStr(relevantExcerpts,countEvents=False,countSessions=False,countSessionExcerpts=True)
         if Database.TeacherConsent(t,"photo"):
-            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]) + ".jpg")):
+            with Html.SecondColumnPhoto(a,Utils.PosixJoin("tags",Utils.slugify(tInfo["fullName"]))):
                 a(excerptInfo)
         else:
             a(excerptInfo)
@@ -2166,6 +2169,17 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     searchPage = Html.PageDesc(pageInfo)
     searchPage.AppendContent(searchHtml)
     gSitemap.RegisterPageQuery(pageInfo.file,"featured=&relevant=")
+    searchMenu = [(pageInfo.AddQuery("_keep_query"), searchPage)]
+
+    if gOptions.advancedSearch:
+        advancedPageName = "Advanced-search.html"
+        searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",advancedPageName)
+        searchHtml = Utils.ReadFile(searchTemplate)
+        advancedPageInfo = Html.PageInfo("Advanced search",Utils.PosixJoin(searchDir,advancedPageName),titleIB="Advanced search")
+        advancedSearchPage = Html.PageDesc(advancedPageInfo)
+        advancedSearchPage.AppendContent(searchHtml)
+        gSitemap.RegisterPageQuery(advancedPageInfo.file,"featured=&relevant=")
+        searchMenu.append((advancedPageInfo.AddQuery("_keep_query"), advancedSearchPage))
 
     featuredPageName = "Featured.html"
     featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
@@ -2173,18 +2187,14 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     featuredPage = Html.PageDesc(featuredExcerptPageInfo)
     featuredPage.AppendContent(featuredHtml)
     gSitemap.RegisterPageQuery(featuredExcerptPageInfo.file,"")
-
-    searchMenu = [
-        (pageInfo.AddQuery("_keep_query"), searchPage),
-        (featuredExcerptPageInfo.AddQuery("_keep_query"),featuredPage)
-    ]
+    searchMenu.append((featuredExcerptPageInfo.AddQuery("_keep_query"),featuredPage))
     
     basePage = Html.PageDesc()
     for page in basePage.AddMenuAndYieldPages(searchMenu,**SUBMENU_STYLE):
         yield page
 
 
-def TableOfContents(sessions: list[dict]) -> str:
+def TableOfContents(event: dict, sessions: list[dict]) -> str:
     """Return the table of contents to the event which is being built."""
     a = Airium()
     tocPath = Utils.PosixJoin(gOptions.documentationDir,"tableOfContents",sessions[0]["event"] + ".md")
@@ -2219,7 +2229,11 @@ def TableOfContents(sessions: list[dict]) -> str:
                 for s in sessions:
                     sessionWithoutLinks = re.sub(r"(<a[^>]*?>)|</a[^>]*?>","",str(s['sessionTitle']))
                     titleLink = Html.Tag("a",{"href":f"#{Database.ItemCode(s)}"})(sessionWithoutLinks)
-                    lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}"))
+                    teacherStr = ""
+                    if ParseCSV.EventFlag.TOC_NAME_TEACHERS in event["flags"]:
+                        fullNameList = [gDatabase["teacher"][t]["attributionName"] for t in s["teachers"]]
+                        teacherStr = f" – {ItemList(fullNameList,lastJoinStr = " and ")}"
+                    lines.append(Html.Tag("p")(f"Session {s['sessionNumber']}: {titleLink}{teacherStr}"))
 
                 a(Html.TruncatedList(lines,alwaysShow=3,morePrompt="Show all sessions"))
         else:
@@ -2245,7 +2259,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         featuredExcerpts = Filter.FTag(Filter.All)(excerpts)
         a = Airium()
         
-        with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode + ".jpg"),"landscape"):
+        with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode),"landscape"):
             with a.strong():
                 a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
             a.br()
@@ -2262,7 +2276,11 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             a.br()
 
             if featuredExcerpts:
-                with a.a(href=SearchLink(f"@{eventCode} +",featured=False,relevant=False)):
+                query = Filter.SearchQuery(filters = [
+                    Filter.QueryChip(f"Event {Utils.RemoveHtmlTags(eventInfo['title'])}",f"@{eventCode}"),
+                    Filter.QueryChip("Featured","+")
+                ],featuredFirst=False,relevantFirst=False)
+                with a.a(href=query.SearchPageLink()):
                     a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
                 a(f"({len(featuredExcerpts)})")
                 a.br()
@@ -2277,7 +2295,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
                     a(urllib.parse.urlsplit(eventInfo["website"]).netloc)
                 a.br()
                 
-            tocHtml = TableOfContents(sessions)
+            tocHtml = TableOfContents(eventInfo,sessions)
             shortToc = not tocHtml or tocHtml.startswith("Sessions: ")
             if tocHtml and shortToc:
                 a(tocHtml)
@@ -2979,7 +2997,7 @@ def WriteRedirectPages(writer: FileRegister.HashWriter):
         if writer.IsRegistered(redirect["oldPage"]):
             Alert.error("Redirect",redirect,"attempts to redirect a file that already exits. Ignoring this redirect.")
             continue
-        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"])):
+        if not os.path.isfile(Utils.PosixJoin(gOptions.pagesDir,urllib.parse.urlparse(redirect["newPage"]).path)):
             Alert.error("Redirect",redirect,"points to non-existant file",redirect["newPage"])
         if redirect["type"] == "Soft":
             newPageHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,redirect["newPage"]))
@@ -3002,6 +3020,7 @@ def AddArguments(parser):
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
 
+    parser.add_argument('--advancedSearch',**Utils.STORE_TRUE,help="Include an advanced search page.")
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")

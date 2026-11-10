@@ -89,6 +89,11 @@ export async function loadSearchPage() {
     if (!searchButtonsFound)
         return;
 
+    document.getElementById("show-code-button")?.addEventListener("click",event => {
+        moveFiltersToSearch();
+        event.preventDefault();
+    });
+
     let params = frameSearch();
     let query = params.has("q") ? decodeURIComponent(params.get("q")) : "";
     if (!query)
@@ -308,7 +313,7 @@ class SearchGroup extends SearchBase {
     }
 
     toString() {
-        console.log(this)
+        debugLog(this);
         return `${this.negate ? "!" : ""}${this.prefixChar}(${this.terms.map((term) => String(term)).join(" ")})`;
     }
 }
@@ -378,7 +383,8 @@ export class SearchQuery {
         queryText = queryText.replaceAll(/\\.|[^\\]+/g,(s) => s.startsWith("\\") ? s : s.toLowerCase());
             // Regular expressions may include character classes with capital letters such as \W
             // Blobs do not contain the character "\", so a non-RegExp query containing "\" won't match anything anyway. 
-        queryText = queryText.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+        queryText = queryText.normalize("NFD").replaceAll(/[\u0300-\u036f]/g, ""); // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+        queryText = queryText.replaceAll(/[“”]/g,'"');
         this.queryText = queryText;
 
         // 1. Build a regex to parse queryText into items
@@ -509,7 +515,7 @@ function clearSearchResults(message) {
     resultsFrame.innerHTML = "";
 
     if (message) {
-        messageFrame.innerHTML = message;
+        messageFrame.innerText = message;
         messageFrame.style.display = "block";
     } else
         messageFrame.style.display = "none";
@@ -525,7 +531,10 @@ function displaySearchResults(message,searchResults) {
     instructionsFrame.style.display = "none";
 
     resultsFrame.innerHTML = searchResults;
-    lucide.createIcons(lucide.icons);
+    try {
+        lucide.createIcons(lucide.icons);
+    } catch (err) { }
+    
     // If we find a subtopic that is itself a tag, change "Tags" to "Other tags"
     let subtopicResults = document.getElementById("results-b");
     if (subtopicResults && document.getElementById("results-g")) {
@@ -566,7 +575,10 @@ class Searcher {
     query = null; // A searchQuery object describing the search
     foundItems = []; // The items we have found.
     multiSearcher = null; // Set to the MultiSearcher object we are part of.
-    
+    subitemFilter = null; // A function which takes a found member of item and returns
+        // the tuple [code (str),isMain (bool)]. If the main item with a given code appears
+        // in the search results, remove subsequent subitems with the same code.
+
     constructor(code,name) {
         // Configure a search with a given code and name
         this.code = code;
@@ -583,6 +595,24 @@ class Searcher {
         debugLog(this.name,"search.");
         this.query = searchQuery
         this.foundItems = searchQuery.filterItems(this.items);
+        if (this.subitemFilter) {
+            let prevMainCode = "";
+            this.foundItems = this.foundItems.filter(item => {
+                let code,mainItem;
+                [code,mainItem] = this.subitemFilter(item);
+                if (mainItem) {
+                    prevMainCode = code;
+                    return true;
+                } else {
+                    if (code == prevMainCode)
+                        return false;
+                    else {
+                        prevMainCode = "";
+                        return true;
+                    }
+                }
+            })
+        }
     }
 
     renderItems(startItem = 0,endItem = null) {
@@ -789,6 +819,8 @@ class PagedSearcher extends Searcher {
         // message is an optional message to display.
         
         if (DEBUG)
+            // The statement below puts iOS Chrome in an infinite loop; not sure why.
+            // It works fine iOS Safari and all other browsers I've tested.
             message += `Processed query: ${String(this.query.searcher)}<br>`
 
         if (this.foundItems.length > 0) {
@@ -996,7 +1028,7 @@ export class ExcerptSearcher extends PagedSearcher {
                 excerpt.sortBlob.aTag.count += excerpt.sortBlob.qTag.count;
             // Don't count teachers with multiple names twice; uT means uniqueTeachers
             if (excerpt.sortBlob.teacher)
-                excerpt.sortBlob.teacher.count = excerpt.uT || 1;
+                excerpt.sortBlob.teacher.count = excerpt.uT || excerpt.uniqueTeachers || 1;
         }
     }
 
@@ -1058,6 +1090,12 @@ export class ExcerptSearcher extends PagedSearcher {
                         if (DEBUG)
                             explanationBits.push(`${blobKind}:[(${matcher.explanation})(${weight}*/${item.sortBlob[blobKind].count.toFixed(1)})]`);
                     }
+                }
+                let demoteFlag = item.blobs[0].match(/#-+#/);
+                if (demoteFlag) {
+                    let demoteCount = demoteFlag[0].length - 2;
+                    item.searchWeight -= 10 * demoteCount;
+                    explanationBits.push(`demote:[-10 * ${demoteCount}]`);
                 }
                 if (DEBUG)
                     item.searchExplanation = explanationBits.join(" + ");
@@ -1203,26 +1241,114 @@ class MultiSearcher {
     }
 }
 
-function searchFromURL() {
-    // Find excerpts matching the search query from the page URL.
-    if (!gSearchDatabase) {
-        debugLog("Error: database not loaded.");
-        return;
+function removeFilter(clickEvent) {
+    // Remove a filter when its close box is clicked.
+    clickEvent.preventDefault();
+    let targetSpan = clickEvent.target;
+    while (targetSpan.localName != "span") {
+        targetSpan = targetSpan.parentElement;
+    }
+    let filterNumber = 1;
+    while (targetSpan.previousSibling) {
+        targetSpan = targetSpan.previousSibling;
+        if (targetSpan.localName == "span")
+            filterNumber += 1;
     }
 
     let params = frameSearch();
-    let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
-    let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
+    let nextFilter = 2;
+    let filterStr;
+    while (filterStr = params.get(`filter${nextFilter}`)) {
+        params.set(`filter${nextFilter - 1}`,filterStr);
+        nextFilter += 1;
+    }
+    params.delete(`filter${nextFilter - 1}`);
 
-    debugLog("Called searchFromURL. Query:",query);
-    frame.querySelector('#search-text').value = query;
+    history.pushState({},"",location.href); // First push a new history frame
+    setFrameSearch(params); // Then replace the history with the search query
+    searchFromURL();
+}
 
-    if (!query.trim()) {
-        clearSearchResults();
+function parseFilters(params) {
+    // Parse search filters from params. Returns a list of objects.
+
+    let chips = [];
+    let filterStr,name,query,icon,flags;
+    while (filterStr = params.get(`filter${chips.length + 1}`)) {
+        filterStr = decodeSearchQuery(decodeURIComponent(filterStr));
+        [icon,name,flags,query] = filterStr.split("_",4);
+        chips.push({"icon":icon,"name":name,"flags":flags,"query":query});
+    }
+    return chips;
+}
+
+function loadFilters(params) {
+    // Read filters from params.
+    // Update the filters bar and return the combined filter query.
+
+    let queries = parseFilters(params);
+    let chips = queries.map((q,n) => `<span><span id="filter-query${n+1}"></span> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
+    
+    let filterBar = document.querySelector("div.search-filters");
+    if (filterBar) {
+        let filterChipBar = document.querySelector("span.search-filter-list");
+        filterChipBar.innerHTML = chips.join(" ");
+        queries.forEach((q,n) => {
+            document.getElementById(`filter-query${n+1}`).innerText = q.name;
+        });
+        filterBar.style.display = "block";
+        for (let closeBox of document.querySelectorAll("span.search-filter-list span a")) {
+            closeBox.addEventListener("click",removeFilter);
+        }
+    }
+    return (queries.length > 0) ? queries.map(q => q.query).join(" ") : "";
+}
+
+function moveFiltersToSearch() {
+    // Copy the filter codes to the search bar.
+
+    let params = frameSearch();
+    let queries = parseFilters(params);
+    if (queries.length < 1)
         return;
+
+    let fullQuery = queries.map(q => q.query).join(" ");
+    if (params.has("q"))
+        fullQuery += " " + decodeSearchQuery(decodeURIComponent(params.get("q")));
+    params.set("q",encodeURIComponent(encodeSearchQuery(fullQuery)));
+    
+    for (let index = 1; index <= queries.length; index++) {
+        params.delete(`filter${index}`);
     }
 
+    history.pushState({},"",location.href); // First push a new history frame
+    setFrameSearch(params); // Then replace the history with the search query
+    searchFromURL();
+}
+
+function searchFromURL() {
+    // Find excerpts matching the search query from the page URL.
     try {
+        if (!gSearchDatabase) {
+            debugLog("Error: database not loaded.");
+            return;
+        }
+        let params = frameSearch();
+        let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
+        let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
+
+        debugLog("Called searchFromURL. Query:",query);
+        frame.querySelector('#search-text').value = query;
+
+        let filter = loadFilters(params);
+        if (filter)
+            query = `${filter} ${query}`
+
+        if (!query.trim()) {
+            clearSearchResults();
+            return;
+        }
+
         let searchGroups = new SearchQuery(query,params.has("strict"));
         debugLog(searchGroups);
     
@@ -1231,8 +1357,15 @@ function searchFromURL() {
     } catch (err) {
         if (err.message.startsWith("Invalid regular expression")) {
             clearSearchResults(err.message);
-        } else
+        } else {
+            let vDebug = ""; 
+            for (let prop in err) {  
+                vDebug += "property: "+ prop + " value: ["+ err[prop]+ "]\n"; 
+            } 
+            vDebug += "toString(): " + " value: [" + err.toString() + "]"; 
+            clearSearchResults("Javascript error: " + vDebug);
             throw err;
+        }
     }
 }
 
@@ -1252,24 +1385,31 @@ function searchButtonClick(searchKind) {
     debugLog("Called runFromURLSearch. Query:",query,"Kind:",searchKind);
 
     let params = frameSearch();
-    let newSearch = {q : query,search : searchKind};
-    if (params.has("featured"))
-        newSearch.featured = "";
-    if (params.has("relevant"))
-        newSearch.relevant = "";
-    let search = new URLSearchParams(newSearch);
+    params.set("q",query);
+    params.set("search",searchKind);
     history.pushState({},"",location.href); // First push a new history frame
-    setFrameSearch(search); // Then replace the history with the search query
+    setFrameSearch(params); // Then replace the history with the search query
 
     searchFromURL();
+}
+
+function eventCode(item) {
+    // Return the event code corresponding to this item
+    let codeMatch = item.blobs[0].match(/@([^@]+)@([^@]+@)?$/);
+    return [codeMatch[1],!codeMatch[2]];
 }
 
 let gSearchDatabase = null; // The global search database, loaded from assets/SearchDatabase.json
 
 let gTextSearcher = new TruncatedSearcher("p","text",8);
 gTextSearcher.nameInResults = "Sutta and Vinaya texts";
+
 let gAllTextSearcher = new TruncatedSearcher("p","text",-2);
 gAllTextSearcher.nameInResults = "Sutta and Vinaya texts";
+
+let gAllEventSearcher = new TruncatedSearcher("e","event",3);
+gAllEventSearcher.subitemFilter = eventCode;
+
 export let gSearchers = { // A dictionary of searchers by item code
     "x": new ExcerptSearcher(),
     "multi-tag": new MultiSearcher("multi-tag",
@@ -1284,7 +1424,7 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("b","subtopic",5),
         new TruncatedSearcher("g","tag",5),
         new TruncatedSearcher("t","teacher",5),
-        new TruncatedSearcher("e","event",3),
+        gAllEventSearcher,
         new SessionSearcher(),
         gAllTextSearcher,
         new TruncatedSearcher("o","book",-2),
@@ -1296,3 +1436,4 @@ export let gSearchers = { // A dictionary of searchers by item code
         new TruncatedSearcher("a","author",4),
     ),
 };
+gSearchers["e"].subitemFilter = eventCode;

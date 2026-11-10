@@ -5,7 +5,7 @@ import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} fro
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
 
-const DEBUG = true;
+const DEBUG = false;
 const PEEK_FUTURE = false;
 
 let gHomepageDatabase = null; // Featured excerpt html to display on the homepage, loaded from assets/FeaturedDatabase1_.json
@@ -246,6 +246,19 @@ function configurePopupMenus(loadedFrame) {
     }
 }
 
+function loadFullDatabase(json) {
+    // Fill gHomepageDatabase and gHistoryDatabase from FeaturedDatabase.json
+
+    gFeaturedDatabase = json;
+    gHomepageDatabase = {"excerpts":{}};
+    gHistoryDatabase = {"excerpts":{}};
+    for (let excerptCode in json.excerpts) {
+        gHomepageDatabase.excerpts[excerptCode] = json.excerpts[excerptCode].shortHtml;
+        gHistoryDatabase.excerpts[excerptCode] = json.excerpts[excerptCode].html;
+    }
+    debugLog("Loaded homepage and history databases.")
+}
+
 async function initializeHomepage() {
     // This code to configure the homepage runs only for homepage.html
     let featuredExcerptContainer = document.getElementById("todays-excerpt");
@@ -255,9 +268,13 @@ async function initializeHomepage() {
     if (!gHomepageDatabase) {
         await loadDatabase('FeaturedDatabase1_.json')
         .then((json) => {
-            gHomepageDatabase = json;
-            gFeaturedDatabase = json; 
-            debugLog("Loaded homepage database.");
+            if ("made" in json) // Did we read the full database?
+                loadFullDatabase(json)
+            else {
+                gHomepageDatabase = json;
+                gFeaturedDatabase = json; 
+                debugLog("Loaded homepage database.");
+            }
         });
         initializeTodaysExcerpt()
     }
@@ -286,9 +303,13 @@ async function initializeSearchFeatured() {
         });
         await loadDatabase('FeaturedDatabase2_.json')
         .then((json) => {
-            gHistoryDatabase = json;
-            gFeaturedDatabase = json; 
-            debugLog("Loaded history page database.");
+            if ("made" in json) // Did we read the full database?
+                loadFullDatabase(json)
+            else {
+                gHistoryDatabase = json;
+                gFeaturedDatabase = json; 
+                debugLog("Loaded history page database.");
+            }
         });
         initializeTodaysExcerpt();
         displayNextFeaturedExcerpt(0);
@@ -307,7 +328,9 @@ export async function loadHomepage(loadedFrame) {
 
     initializeHomepage();
     initializeSearchFeatured();
-    lucide.createIcons(lucide.icons);
+    try {
+         lucide.createIcons(lucide.icons);
+    } catch (err) { }
 }
 
 function dropdownMenuClick(clickedItem) {
@@ -496,7 +519,9 @@ function setupAutoComplete() {
                     info.innerHTML = `Showing <b>${data.results.length}</b> out of <b>${data.matches.length}</b> results`;
                     list.append(info);
                 }
-                lucide.createIcons(lucide.icons); // Render the icons after building the list
+                try {
+                    lucide.createIcons(lucide.icons); // Render the icons after building the list
+                } catch (err) { }
             }
         },
         events: {
@@ -586,13 +611,16 @@ function moveToNewParent(oldParent,newParent) {
     }
 }
 
-// Scroll position to transition to floating menus
-const FLOATING_MENU_THRESHOLD = 150;
-
 let gMenuFloating = false;
 let gLastScrollY = window.scrollY;
 let gLastPage = location.href;
 let gScrollDirection = 0; // positive = down, negative = up
+
+function closeFloatingSubmenus() {
+    gNavBar.querySelectorAll('.dropdown').forEach(function(dropdownMenu) {
+        dropdownMenu.classList.remove('menu-open');
+    });
+}
 
 function floatMenus(shouldFloat,shouldShow) {
     // If shouldFloat, move the menu to the floating menu div
@@ -603,13 +631,23 @@ function floatMenus(shouldFloat,shouldShow) {
     if (shouldFloat & shouldShow) {
         if (!floatingMenu.classList.contains("active")) {
             document.querySelector("nav.main-nav").classList.remove("active");
+            fixedMenu.style.minHeight = "";
             floatingMenu.classList.add("active");
         }
-    } else
-        floatingMenu.classList.remove("active")
+    } else if (floatingMenu.classList.contains("active")) {
+        closeFloatingSubmenus();
+        floatingMenu.classList.remove("active");
+    }
 
     if (shouldFloat === gMenuFloating)
         return;
+
+    closeFloatingSubmenus();
+    if (shouldFloat && fixedMenu.querySelector(".main-nav.active"))
+        fixedMenu.style.minHeight = `${fixedMenu.getBoundingClientRect().height}px`; 
+            // Keep occupying the space of the open menu
+    else
+        fixedMenu.style.minHeight = "";
 
     let oldLocation = shouldFloat ? fixedMenu : floatingMenu;
     let newLocation = shouldFloat ? floatingMenu : fixedMenu;
@@ -619,9 +657,19 @@ function floatMenus(shouldFloat,shouldShow) {
     gMenuFloating = shouldFloat;
 }
 
+function bottomOfHeader() {
+    // Return the Y coordinate of the bottom of the header in the viewport
+    let header = document.getElementById("header-content");
+    let headerBottom = header.getBoundingClientRect().bottom;
+    for (let menu of header.querySelectorAll(".dropdown.menu-open .dropdown-content")) {
+        headerBottom = Math.max(headerBottom,menu.getBoundingClientRect().bottom);
+    }
+    return headerBottom;
+}
+
 function scrollEndHandler(event) {
     // Float the menu only if we have scrolled down past the threshold on the same page we began with
-    if (window.scrollY > FLOATING_MENU_THRESHOLD && (gLastPage === location.href)) {
+    if ((bottomOfHeader() < 0) && (gLastPage === location.href)) {
         let searchBarShowing = document.querySelector(".floating-search").classList.contains('active');
         let floatingMenuShowing = document.getElementById("floating-header").classList.contains('active');
         floatMenus(true,(gScrollDirection < 0) && (!searchBarShowing || floatingMenuShowing));
@@ -656,7 +704,7 @@ window.addEventListener("scroll", (event) => {
 
     if ((gScrollDirection > 0) && gMenuFloating)
         floatMenus(true,false);
-    if (window.scrollY < FLOATING_MENU_THRESHOLD)
+    if (bottomOfHeader() > 0)
         floatMenus(false,false);
 });
 

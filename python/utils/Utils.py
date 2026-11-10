@@ -223,7 +223,7 @@ def SmartQuotes(s: str) -> str:
     # attributes (following =) and replace them with dumb quotes.
     s = re.sub(r'=“(.*?)”', r'="\1"', s)
     # Follow the same process with dumb/smart single quotes
-    s = re.sub(r"([a-zA-Z0-9.,?!;:)>%/\"\'])'", r'\1’', s)
+    s = re.sub(r"([a-zA-Z0-9āĀīĪūŪṃ.,?!;:)>%/\"\'])'", r'\1’', s)
     s = s.replace("'", '‘')
     s = re.sub(r'=‘(.*?)’', r"='\1'", s)
     return s

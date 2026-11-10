@@ -158,16 +158,20 @@ class FileLengthChecker(RemoteURLChecker):
             return True # Link to the remoteUrl even if the local file doesn't match
         
         contentsLength = FileOrRequestSize(contents)
-        with urllib.request.urlopen(remoteUrl) as remoteRequest:
-            remoteLength = FileOrRequestSize(remoteRequest)
-            if not remoteLength: # The remote http server does not indicate a file length
-                return True
-            
-            if contentsLength != remoteLength:
-                Alert.warning(item,"does not match the length of its remote source. Local size:",contentsLength,"Remote size:",remoteLength)
-            #else:
-            #    Alert.notice(item,"matches the length of its remote source. Local size",contentsLength,"Remote size",remoteLength)
-
+        try:
+            with urllib.request.urlopen(remoteUrl) as remoteRequest:
+                remoteLength = FileOrRequestSize(remoteRequest)
+                if not remoteLength: # The remote http server does not indicate a file length
+                    return True
+                
+                if contentsLength != remoteLength:
+                    Alert.warning(item,"does not match the length of its remote source. Local size:",contentsLength,"Remote size:",remoteLength)
+                #else:
+                #    Alert.notice(item,"matches the length of its remote source. Local size",contentsLength,"Remote size",remoteLength)
+        except OSError as error:
+            Alert.caution("Cannot open",remoteUrl,"to check the size of",item,"due to",error,". Will use the local file anyway.")
+            return True
+        
         return contentsLength == remoteLength
         
 

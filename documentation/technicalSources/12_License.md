@@ -15,7 +15,7 @@ __1. The audio and transcribed teachings__ as a unified whole are © $!gOptions.
 
 Please contact [questionsandstories@abhayagiri.org](mailto:questionsandstories@abhayagiri.org) for technical instructions to duplicate the Archive or for permission to reformat or distribute partial copies of the teachings within the Archive.
 
-__2. The hierarchical tagging scheme and documentation__ are © $!gOptions.info.releaseYear!$ Abhayagiri Monastery and licensed under [_CC BY-NC_](https://creativecommons.org/licenses/by-nc/4.0/). This consists of the Tags and TagCluster sheets in the Ajahn Pasanno Archive main spreadsheet and the markdown files in the documentation directory.
+__2. The hierarchical tagging scheme and documentation__ are © $!gOptions.info.releaseYear!$ Abhayagiri Monastery and licensed under [_CC BY-NC_](https://creativecommons.org/licenses/by-nc/4.0/). This consists of the Tag, TagNote, and Subtopic sheets in the Ajahn Pasanno Archive main spreadsheet and the markdown files in the documentation directory.
 
 __3. The database format and website generation engine__ are dedicated to the public domain under [_CC 0_](https://creativecommons.org/publicdomain/zero/1.0/). This includes all source code and all sheets in the Ajahn Pasanno Archive main spreadsheet except the Tags and TagCluster sheets and sheets containing transcribed audio recordings. It explicitly excludes all audio files and any file or spreadsheet sheet which contains transcribed audio recordings.
 

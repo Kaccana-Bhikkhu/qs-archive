@@ -79,7 +79,34 @@ def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
             s["clusterNote"] = ApplyTransform(s["clusterNote"],s)
 
     return changeCount
-    
+
+def ApplyToTitleText(transform: Callable[...,str]) -> None:
+    """Apply operation transform on each string considered title text in the database.
+    Title text does not receive full Markdown rendering so that it can be displayed in windows titles, etc.
+    transform can have the form transform(bodyText,item) or transform(bodyText).
+    transform returns either None (no change) or the string changedText."""
+
+    if len(signature(transform).parameters) == 1:
+        twoVariableTransform = lambda bodyStr,_: transform(bodyStr)
+    else:
+        twoVariableTransform = transform
+
+    def ApplyTransform(text: str,item: dict) -> str:
+        "Applies transform to text."
+        result = twoVariableTransform(text,item)
+        if result is None:
+            return text
+        else:
+            return result
+
+    for e in gDatabase["event"].values():
+        e["title"] = ApplyTransform(e["title"],e)
+        e["subtitle"] = ApplyTransform(e["subtitle"],e)
+
+    for textDB in (gDatabase["textSection"],gDatabase["bookSection"]):
+        for text,textSections in textDB.items():
+            for ref,title in textSections.items():
+                textSections[ref] = ApplyTransform(title,f"{text}.{ref}")
 
 def ExtractAttribution(form: str) -> Tuple[str,str]:
     """Split the form into body and attribution parts, which are separated by ||.
@@ -379,6 +406,20 @@ def RenderExcerpts() -> None:
             RenderItem(a,x)
             if kinds[a["kind"]]["appendToExcerpt"]:
                 AppendAnnotationToExcerpt(a,x)
+                
+        nonBlankAnnotations = [a for a in x["annotations"] if len(a["body"]) > 0]
+        if not x["body"] and not nonBlankAnnotations:
+            Alert.caution(x,"contains no text.")
+            continue
+        
+        # Add [Session] before thee body of session excerpts
+        if not x["fileNumber"]:
+            sessionHeader = Html.Tag('span',{'class':'session-excerpt-header'})('Session')
+            if x["body"] or len(nonBlankAnnotations) > 1:
+                x["body"] = f"[{sessionHeader}] {x['body']}"
+            else:
+                x["body"] = f"[{sessionHeader}] {nonBlankAnnotations[0]['body']}"
+                nonBlankAnnotations[0]["body"] = ""
 
 
 class SCBookmark(NamedTuple):
@@ -866,7 +907,7 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
             else:
                 Alert.warning("Cannot link to key topic",link,"in link",matchObject[0])
         elif pageType == "search":
-            linkTo = Build.SearchLink(fullLink).replace("../","")
+            linkTo = Filter.SearchQuery(fullLink).SearchPageLink().replace("../","")
             hashTag = ""
 
         if linkTo:
@@ -968,6 +1009,8 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
+    ApplyToTitleText(Utils.SmartQuotes)
+    ApplyToTitleText(Utils.SmartDashes)
 
     PrepareTemplates()
     PrepareTexts()

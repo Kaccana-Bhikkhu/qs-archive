@@ -4,10 +4,13 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Callable, Iterator
 from collections import ChainMap
-from typing import Any, Tuple
+from dataclasses import dataclass
+from typing import Any, Tuple, NamedTuple
 from datetime import timedelta
-import Utils, ParseCSV, Mp3DirectCut
 import copy
+import re, itertools
+import urllib.parse
+import Utils, ParseCSV, Mp3DirectCut
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
 
@@ -167,7 +170,7 @@ class ClusterFTag(Filter):
         for n,t in enumerate(item.get("fTags",())):
             if t in self.passTags:
                 flag = item["fTagOrderFlags"][n].upper()
-                if len(self.passTags) == 1 or flag == ParseCSV.FTagOrderFlag.EVERYWHERE:
+                if flag == ParseCSV.FTagOrderFlag.EVERYWHERE:
                     return not self.negate
                 if flag == ParseCSV.FTagOrderFlag.PRIMARY_SUBTOPIC and not t in gDatabase["subtopic"][self.cluster].get("secondarySubtags",()):
                     return not self.negate
@@ -383,7 +386,8 @@ class ExcerptMatch(FilterGroup):
 def MostRelevant(tags:str|Iterable[str]) -> Filter:
     "Return a filter that passes the most relevant excerpts for the given tag(s)."
     t = FrozenSet(tags)
-    return Or(FTag(t),QTag(t),SingleItemMatch(Tag(t),Category(("Quotes","Stories"))))
+    relevanceFilter = Or(FTag(t),QTag(t),SingleItemMatch(Tag(t),Category(("Quotes","Stories"))))
+    return And(relevanceFilter,Flags(ParseCSV.ExcerptFlag.DEMOTE).Not())
 
 def AllTags(item: dict) -> set:
     """Return the set of all tags in item, which is either an excerpt or an annotation."""
@@ -411,3 +415,57 @@ def AllTeachers(item: dict) -> set:
         allTeachers.update(annotation.get("teachers",()))
 
     return allTeachers
+
+class QueryChip(NamedTuple):
+    """Information about a single query filter chip on Advanced-search.html"""
+    name: str               # The name of the filter chip
+    query: str              # The query itself
+    icon: str = ""          # The icon name passed to Build.HtmlIcon
+    flags: str = ""         # Search chip flags
+
+    def __str__(self):
+        return "_".join((self.icon,self.name,self.flags,self.query))
+
+def EncodeSearchQuery(query: str) -> str:
+    """Encode special URL characters (?=#&:) as other characters to make URL decoding more robust."""
+
+    charsToEncode = "?=#&:/%"
+    encoding = {charsToEncode[n]:chr(0xA4 + n) for n in range(len(charsToEncode))}
+    return re.sub(f"[{charsToEncode}]",lambda m:encoding[m[0]],query)
+
+@dataclass
+class SearchQuery():
+    """Information about a search query. Returned by Filter.QueryGroup()."""
+    query:str = ""
+    searchType:str = "x"
+    strictSearch:bool = False
+    featuredFirst:bool = True
+    relevantFirst:bool = True
+    filters:list[QueryChip] = ()
+    filtersStrict:bool = False
+
+    def SearchPageLink(self) -> str:
+        """Return the link to the search page corresponding to this query."""
+
+        if not isinstance(self.filters,list):
+            self.filters = list(self.filters)
+
+        queryDict = {"search":self.searchType, "q": self.query}
+        if self.featuredFirst:
+            queryDict["featured"] = ""
+        if self.relevantFirst:
+            queryDict["relevant"] = ""
+
+        advancedSearch = False
+        if Utils.gOptions.advancedSearch:
+            for n,query in enumerate(self.filters,start = 1):
+                queryDict[f"filter{n}"] = EncodeSearchQuery(str(query))
+                advancedSearch = True
+        else:
+            filterQueries = [f.query for f in self.filters]
+            queryDict["q"] = " ".join(itertools.chain((queryDict["q"],),filterQueries))
+    
+        queryDict["q"] = EncodeSearchQuery(queryDict["q"].strip())
+        htmlQuery = urllib.parse.urlencode(queryDict,doseq=True,quote_via=urllib.parse.quote)
+        return f"../search/{'Advanced' if advancedSearch else 'Text'}-search.html?{htmlQuery}"
+        

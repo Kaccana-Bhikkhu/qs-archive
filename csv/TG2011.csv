@@ -32,7 +32,7 @@ Session #,Date,Filename,Duration,Teachers,Session title,Remote mp3 URL,Excerpts,
 Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,ATag1,ATag2,ATag3,ATag4,ATag5,Off topic?,Exclude?,FTags,FTagOrder
 1,,,0:01.5,,How can one enjoy meditation when one's knees are on fire?,,Meditation,Happiness,Pain,,Ajahn Pasanno,Posture/Sitting,Body/form,Mindfulness of breathing,Visualization,,,,
 1,Extra tags,,,,,,,,,,Discernment,,,,,,,,
-1,Main fragment,,0:01.5,4:14,,,,,,,,,,,,,,Pain,90
+1,Main fragment,,0:01.5,4:14,,,,,,,,,,,,,,Pain,90T
 1,Append audio,-,5:42,6:12,,,,,,,,,,,,,,,
 1,Story,,,,The monks at Winchester Cathedral used props during long chanting sessions.,,Christianity,Posture/Standing,Chanting,,,,,,,,,,
 1,,,6:12,,Thank you for this morning's talk on the recollections and faith. Could you elaborate on your point about faith and anāgamī? Has anyone been fully liberated through faith?,,Faith,Non-return,Liberation,,Discernment,Energy,Faculties,The New Yorker,Culture/West,,,,
@@ -82,7 +82,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 3,,,8:59,,How do you expand your concentration and awareness beyond the breath when other conditions arise?,,Mindfulness of breathing,Concentration,Mindfulness,,Everyday life,Clear comprehension,Perception of light,,,,,,
 3,Quote,,,,"The object of attention needs to be appropriate to the quality of mind. ... As the mind becomes more refined, we need to pay attention to a more refined object.",,Meditation/Techniques,,,,,,,,,,,,
 3,,,13:48,,Can you talk about how different hand positions or mudras are used in meditation?,,Mudra,,,,Spiritual traditions,Posture/Sitting,Sloth and torpor,,,,,,
-3,,,17:04,22:15,Eight Precepts illuminates the vanity within.' Could you offer some encouragements or reflections on the beauty of the Dhamma as a remedy?,,Eight Precepts,Conceit,Beauty,Dhamma,Recollection/Dhamma,Faith,Learning,Sutta,,,,,
+3,,,17:04,22:15,‘Eight Precepts illuminates the vanity within.’ Could you offer some encouragements or reflections on the beauty of the Dhamma as a remedy?),,Eight Precepts,Conceit,Beauty,Dhamma,Recollection/Dhamma,Faith,Learning,Sutta,,,,,
 3,Reference,,,,Chanting Book p. 6: Recollection of the Dhamma.,,,,,,,,,,,,,,
 3,Story,,,,Ajahn Khao's realization came from reflecting on rice.,,Ajahn Khao,Liberation,Symbolism/metaphor,Recollection/Dhamma,Gratitude,Bodhi Tree,,,,,,,
 3,,,22:15,29:44,"Could you review again what the antidotes to the Five Hindrances are? Also, if one has not correctly identified the hindrance at the moment and uses the incorrect remedy, so what?",,Hindrances,Investigation of states,,,Desire,Unattractiveness,Dispassion,Ill-will,Goodwill,,,,
@@ -91,7 +91,7 @@ Session #,Kind,Flags,Start time,End time,Text,Teachers,QTag1,QTag2,QTag3,QTag4,A
 3,Sutta,,,,SN 46.51: Starving the hindrances.,,,,,,,,,,,,,,
 3,Simile,,,,Throwing dust into the wind (Dhp 125).,,Ill-will,Drawbacks,Similes,,,,,,,,,,
 3,Sutta,,,,AN 7.61: Antidotes for sloth and torpor.,,Sloth and torpor,,,,,,,,,,,,
-3,,,29:46,31:44.3,"Late night news, sports, and a sleeping pill. Any suggestions how my mind is going to be affected in the long run?",,News,Media,Devotion to wakefulness,,Heedlessness,Self-reliance,,,,,,,
+3,,,29:46,31:44.3,"Late night news, sports, and a sleeping pill. Any suggestions how my mind is going to be affected in the long run?",,News,Media,Devotion to wakefulness,,Heedlessness,Self-reliance,,,,,,Heedlessness,100
 3,,,31:47,34:56.5,What is the difference between abandoning personality view (sakkāya-diṭṭhi) and realizing anatta?,,Self-identity view,Not-self,,,Aggregates,Stream entry,Conceit,Arahant,Cause of Suffering,,,,
 3,,,34:56.5,,What is hasituppāda citta---consciousness producing mirth---that is the Buddha's smile?,,Humor,Buddha/Biography,,,Teaching Dhamma,,,,,,,Humor,70
 3,Sutta,s,,,MN 81; MN 83; AN 5.180: Examples of the Buddha's smile.,,Humor,,,,,,,,,,,,

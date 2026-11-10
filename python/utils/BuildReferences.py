@@ -84,6 +84,7 @@ def WriteReferenceDatabase() -> bool:
     global gSavedReferences, gReferencesChanged
     ReadReferenceDatabase()
     if not gNewReferences:
+        gReferencesChanged = False
         return False
     
     changed = False
@@ -91,6 +92,7 @@ def WriteReferenceDatabase() -> bool:
         if not CompareDicts(gSavedReferences[kind],gNewReferences[kind],f"{kind} reference database"):
             changed = True
     if not changed:
+        gReferencesChanged = False
         return False
     
     with open(Utils.PosixJoin(gOptions.pagesDir,"assets/ReferenceDatabase.json"), 'w', encoding='utf-8') as file:

@@ -8,7 +8,7 @@ If you would like to contribute to the Ajahn Pasanno Archive, here are some poss
 ## Ways Anyone Can Contribute:
 
 ### Find stories in Dhamma talks
-The Ajahn Pasanno Archive indexes stories told in Q&A sessions and Dhamma discussions. Ajahn Pasanno tells many stories during Dhamma talks, but we’re not planning to hunt for them all. If you remember inspiring stories told by or about Ajahn Pasanno contained in recordings on [abhayagiri.org](https://www.abhayagiri.org/talks), please send them to us. If the story isn’t duplicated elsewhere in the archive and seems worthy to be included, we’ll aim to add it to a future version of the Archive.
+The Ajahn Pasanno Archive indexes stories told in Q&A sessions and Dhamma discussions. Ajahn Pasanno tells many stories during Dhamma talks, but we’re not planning to hunt for them all. If you remember inspiring stories told by or about Ajahn Pasanno contained in recordings on [abhayagiri.org](https://www.abhayagiri.org/talks), please send them to us at [questionsandstories@abhayagiri.org](mailto:questionsandstories@abhayagiri.org). If the story isn’t duplicated elsewhere in the archive and seems worthy to be included, we’ll aim to add it to a future version of the Archive.
 
 When you submit stories, please include:
 
@@ -20,6 +20,27 @@ When you submit stories, please include:
 For example: “Master Hsu Yun and the Bandits,” 13:49 in the talk “Developing in Virtue” given by Ajahn Pasanno on May 19, 2012.
 
 [Master Hsu Yun and the Bandits](player:https://www.abhayagiri.org/media/discs/questions/audio/talks/2012-05-19%20Master%20Hsu%20Yun%20and%20the%20Bandits.mp3)
+
+----
+
+### Select images for event pages
+Event pages can include images as of the September 2026 release. However, most events don't have an image. Many events have video available on YouTube. A diligent volunteer could look through these videos for images that characterize the event and save these as .jpg files to include in the event pages.
+
+----
+
+### Demote poor-quality excerpts
+Some questions and answers in the Ajahn Pasanno Archive are substantially lower quality than the rest. These are often included anyway for completeness, but it would be best for these not to show up first in search results. Thus the November 2026 release allows excerpts to be flagged as demoted. Demoted excerpts appear later in the search results and do not appear under the "Most relevant" tab even if they would otherwise qualify.
+
+Demoted excerpts generally have two or more of these characteristics:
+
+1. Poor overall audio quality
+2. Unclear questions, either due to audio quality or the questioner's confusion or personal views
+      (If the answer is really good, the question can often be amplified to make it intelligible)
+3. The question is relevant only to the specific discussion at hand
+4. The answer is tangential to the question
+5. Another excerpt better answers the same question
+
+If you come across excerpts that you think should be demoted, please let us know.
 
 ----
 

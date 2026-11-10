@@ -19,6 +19,9 @@ import itertools
 class StrEnum(str,Enum):
     pass
 
+class EventFlag(StrEnum):
+    TOC_NAME_TEACHERS = "t"     # Include teacher's names in the automatically generated table of contents
+    
 class TagFlag(StrEnum):
     VIRTUAL = "."               # A virtual tag can't be applied to excerpts but can have subtags
     PRIMARY = "*"               # The primary instance of this tag in the hierarchical tag list
@@ -46,13 +49,16 @@ class ExcerptFlag(StrEnum):
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
     NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
+                            # Also skip checking smart quotes
     UNNAMED_SPEAKER = "q"   # Anonymous indirect speech; not flagged by ReviewDatabase
+    DEMOTE = "d"            # Lower search priority for inferior excerpts 
     END_COLON = ":"         # Add a colon to the end of this excerpt or annotation
     HOMEPAGE_FEATURE = "!"  # Feature this excerpt on the homepage (even if it's not from AP)
         # These flags are informational only:
     AMPLIFY_QUESTION = "Q"  # The question needs to be amplified
     AUDIO_EDITING = "E"     # Would benefit from audio editing
     CHECK_SPLIT = "C"       # Check beginning, end, and cut split points
+    BIOGRAPHY = "B"         # Flag for LPP biography
 
 # Each fTagOrder integer is followed by a single character flag specifying where to display this featured excerpt
 class FTagOrderFlag(StrEnum):
@@ -182,39 +188,43 @@ def ListifyKey(dictList: list|dict,key: str,delimiter:str = ';',removeBlank = Tr
     Remove any other keys found."""
     
     for d in Utils.Contents(dictList):
-        if key not in d:
-            d[key] = []
-            continue
+        try:
+            if key not in d:
+                d[key] = []
+                continue
 
-        keyList = [key]
-        if key[-1] == '1': # Does the key name end in 1?
-            baseKey = key[:-1].strip()
-        else:
-            baseKey = key
+            keyList = [key]
+            if key[-1] == '1': # Does the key name end in 1?
+                baseKey = key[:-1].strip()
+            else:
+                 baseKey = key
         
-        keyIndex = 1
-        foundKey = True
-        while foundKey:
-            keyIndex += 1
-            foundKey = False
-            for testKey in [baseKey + str(keyIndex),baseKey + ' ' + str(keyIndex)]:
-                if testKey in d:
-                    keyList.append(testKey)
-                    foundKey = True
+            keyIndex = 1
+            foundKey = True
+            while foundKey:
+                keyIndex += 1
+                foundKey = False
+                for testKey in [baseKey + str(keyIndex),baseKey + ' ' + str(keyIndex)]:
+                    if testKey in d:
+                        keyList.append(testKey)
+                        foundKey = True
         
-        items = []
-        for sequentialKey in keyList:
-            items += d[sequentialKey].split(delimiter)
-        if removeBlank:
-            items = [s.strip() for s in items if s.strip()]
-        d[baseKey] = items
+            items = []
+            for sequentialKey in keyList:
+                items += d[sequentialKey].split(delimiter)
+            if removeBlank:
+                items = [s.strip() for s in items if s.strip()]
+            d[baseKey] = items
                     
-        if baseKey == key:
-            delStart = 1
-        else:
-            delStart = 0
-        for index in range(delStart,len(keyList)):
-            del d[keyList[index]]
+            if baseKey == key:
+                delStart = 1
+            else:
+                delStart = 0
+            for index in range(delStart,len(keyList)):
+                del d[keyList[index]]
+        except Exception as err:
+            Alert.error("Error when listifying",d)
+            raise err
 
 def ConvertToInteger(dictList,key,defaultValue = None,reportError:Alert.AlertClass|None = None):
     "Convert the values in key to ints"
@@ -229,10 +239,14 @@ def ConvertToInteger(dictList,key,defaultValue = None,reportError:Alert.AlertCla
 
     sequences = frozenset((list,tuple))
     for d in Utils.Contents(dictList):
-        if type(d[key]) in sequences:
-            d[key] = [Convert(item) for item in d[key]]
-        else:
-            d[key] = Convert(d[key])
+        try:
+            if type(d[key]) in sequences:
+                d[key] = [Convert(item) for item in d[key]]
+            else:
+                d[key] = Convert(d[key])
+        except Exception as err:
+            Alert.error("ConvertToInterger: Error when converting",d)
+            raise err
 
 def ListToDict(inList,key = None):
     """Convert a list of dicts to a dict of dicts using key. If key is None, use the first key
@@ -797,6 +811,18 @@ def PrepareTeachers(teacherDB) -> None:
         else:
             t["htmlFile"] = ""
 
+def PrepareEventSections(eventSectionDB: dict) -> dict:
+    """Prepare database["eventSection] for use. Returns a new sorted database."""
+
+    ListifyKey(eventSectionDB,"tags")
+    ConvertToInteger(eventSectionDB,"firstSession")
+    ConvertToInteger(eventSectionDB,"lastSession")
+
+    eventIndex = {event:index for index,event in enumerate(gDatabase["event"])}
+    sections = list(eventSectionDB.values())
+    sections.sort(key=lambda s: (eventIndex[s["event"]],s["firstSession"]))
+    return {s["code"]:s for s in sections}
+
 itemAllowedFields = {"startTime": "takesTimes", "endTime": "takesTimes", "teachers": "takesTeachers", 
                      "aTag": "takesTags", "qTag": "takesTags","fTag": "takesTags","fTagOrder": "takesTags"}
 
@@ -806,6 +832,9 @@ def CheckItemContents(item: dict,owningExcerpt: dict|None,kind: dict) -> bool:
     if owningExcerpt and not kind["canBeAnnotation"]:
         Alert.warning(item,"to",owningExcerpt,f": Kind {repr(item['kind'])} is not allowed for annotations.")
     
+    if owningExcerpt and item.get("offTopic"):
+        Alert.caution(item,"to",owningExcerpt,": annotations should not have the off-topic flag set.")
+
     for key,permission in itemAllowedFields.items():
         if item.get(key) and not kind[permission]:
             message = f"has ['{key}'] = {repr(item[key])}, but kind {repr(item['kind'])} does not allow this."
@@ -1317,6 +1346,7 @@ def LoadEventFile(database,eventName,directory):
 
     eventDesc = DictFromPairs(rawEventDesc,"key","value")
     eventDesc["code"] = eventName
+    eventDesc.setdefault("flags","")
 
     for key in ["teachers","tags"]:
         eventDesc[key] = [s.strip() for s in eventDesc[key].split(';') if s.strip()]
@@ -1803,9 +1833,13 @@ def main():
     gDatabase["audioSource"] = {}
     gDatabase["excerpts"] = []
     for event in gDatabase["summary"]:
-        if not gOptions.parseOnlySpecifiedEvents or gOptions.events == "All" or event in gOptions.events:
-            if not event.startswith("Test") or gOptions.includeTestEvent:
-                LoadEventFile(gDatabase,event,gOptions.csvDir)
+        try:
+            if not gOptions.parseOnlySpecifiedEvents or gOptions.events == "All" or event in gOptions.events:
+                if not event.startswith("Test") or gOptions.includeTestEvent:
+                    LoadEventFile(gDatabase,event,gOptions.csvDir)
+        except Exception as err:
+            Alert.error("Error when loading event",event,":")
+            raise err
     ListifyKey(gDatabase["event"],"series")
     excludeAlert(f": {gRemovedSessions} sessions, {gRemovedExcerpts} excerpts, and {gRemovedAnnotations} annotations in all.")
     excludeAlert(f": {gEmptySessions} sessions do not appear because they have no excerpts.")
@@ -1831,6 +1865,7 @@ def main():
         gDatabase["tagRemoved"] = []
 
     PrepareTeachers(gDatabase["teacher"])
+    gDatabase["eventSection"] = PrepareEventSections(gDatabase["eventSection"])
 
     CreateTagDisplayList(gDatabase)
     SortTags(gDatabase)
@@ -1841,7 +1876,7 @@ def main():
 
     Utils.ReorderKeys(gDatabase,["excerpts","event","sessions","audioSource","kind","category","teacher","tag","series","venue","format","medium","reference","tagDisplayList"])
 
-    Alert.extra("Spreadsheet database contents:",indent = 0)
+    Alert.extra(f"Spreadsheet database contents: dict[{len(gDatabase)}]",indent = 0)
     Utils.SummarizeDict(gDatabase,Alert.extra)
 
     Database.WriteDatabase(gDatabase,gOptions.spreadsheetDatabase)

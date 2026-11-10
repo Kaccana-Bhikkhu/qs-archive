@@ -5,9 +5,9 @@ from __future__ import annotations
 
 import os, bisect, csv, re
 from functools import lru_cache
-from itertools import accumulate
+from itertools import accumulate,pairwise
 from datetime import timedelta,date
-from Mp3DirectCut import TimeDeltaToStr
+from Mp3DirectCut import TimeDeltaToStr,ToTimeDelta,Mp3CutError
 import Database, Filter
 import Utils, Database, Alert
 import FileRegister
@@ -134,6 +134,19 @@ def CheckEvents() -> None:
         if prevSessionDate > endDate:
             Alert.caution(s,"is after the event end date.")
         
+        audioSources = defaultdict(list)
+        for s in ourSessions:
+            if s["filename"]:
+                try:
+                    audioSources[s["filename"]].append(ToTimeDelta(s.get("sessionStart",0)))
+                except err as Mp3CutError:
+                    Alert.error(err,"when parsing Session start in",s)
+        
+        for filename,times in audioSources.items():
+            for time1,time2 in pairwise(times):
+                if time1 >= time2:
+                    Alert.caution("Audio source",repr(filename),"in event",code,"contains multiple sessions without specifying unique, increasing start times.")
+                    break
 
 
 def VerifyListCounts() -> None:
@@ -292,6 +305,50 @@ def CheckAttributions() -> None:
         for item in Filter.AllItems(x):
             if item["kind"] == "Other" and not item["teachers"]:
                 Alert.caution(item,"takes teachers but does not have any.")
+
+def CheckFlags() -> None:
+    """Check that flags are applied only to items for which they have meaning."""
+    excerptFlags = set("aosufmnqd:!QECB0123")
+    annotationFlags = set("-asurznq:0123")
+    fragmentFlags = annotationFlags | {"!"}
+
+    knownFlags = excerptFlags | annotationFlags
+    for flag in set(ParseCSV.ExcerptFlag) - knownFlags:
+        Alert.caution("Detected new flag",repr(flag.value),". This should be added to ReviewDatabase.CheckFlags.")
+
+    def MergedForms(kind: str) -> str:
+        "Return the concatenation of all forms for this kind for searching purposes."
+        template = gDatabase["kind"][kind]
+        return " ".join((template["form1"],template["form2"],template["form3"]))
+
+    kindDB = gDatabase["kind"]
+    FLAG = ParseCSV.ExcerptFlag
+    flagAllowedKinds = {
+        FLAG.PLURAL: {kind for kind in kindDB if re.search(r"[ {]s[ }]",MergedForms(kind))},
+        FLAG.UNQUOTE: {kind for kind in kindDB if "“" in MergedForms(kind)},
+        FLAG.RELATIVE_AUDIO: {"Cut audio","Fragment","Main fragment"},
+        FLAG.NO_TAGS: {kind for kind in kindDB if kindDB[kind]["expectsTags"]},
+        FLAG.UNNAMED_SPEAKER: {kind for kind in kindDB if kindDB[kind]["indirectSpeech"]}
+    }
+
+    allowedKindsSet = set(flagAllowedKinds)
+    for excerpt in gDatabase["excerpts"]:
+        for item in Filter.AllItems(excerpt):
+            if "annotations" in item:
+                for flag in set(item["flags"]) - excerptFlags:
+                    Alert.caution(item,": Flag",repr(flag),"is not allowed for excerpts.")
+            else:
+                for flag in set(item["flags"]) - (fragmentFlags if item["kind"] in ("Fragment","Main fragment") else annotationFlags):
+                    Alert.caution(item,": Flag",repr(flag),"is not allowed for annotations.")
+
+            if FLAG.ATTRIBUTE in item["flags"] and not item["teachers"]:
+                Alert.caution(item,": has flag 'a' (always attribute) but does not specify any teachers.")
+            if FLAG.DEMOTE in item["flags"] and (item["fTags"] or item.get("fragmentFTags") or item.get("homepageOnlyTags")):
+                Alert.caution(item,": featured excerpts should not be demoted.")
+
+            for flag in set(item["flags"]) & allowedKindsSet:
+                if item["kind"] not in flagAllowedKinds[flag]:
+                    Alert.caution(item,": Flag",repr(flag.value),"is not allowed for kind",item["kind"])
 
 def CheckTags() -> None:
     """Check that all items expecting tags have them. Raise a caution if there are unsorted tags."""
@@ -539,6 +596,7 @@ def main() -> None:
     VerifyListCounts()
     AuditNames()
     # CheckAttributions()
+    CheckFlags()
     CheckTags()
     CheckRelatedTags()
     CheckIndirectSpeech()

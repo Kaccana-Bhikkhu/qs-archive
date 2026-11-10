@@ -2,6 +2,7 @@
 from __future__ import annotations
 from typing import Any, List
 from contextlib import contextmanager
+import re
 verbosity = 0
 ObjectPrinter = repr # Call this function to convert items to print into strings
 
@@ -31,17 +32,17 @@ class AlertClass:
                 indent = self.indent
             strings = []
             if indent:
-                strings.append(" " * (indent - 1))
+                strings.append(" " * indent)
             if self.message:
                 strings.append(self.message)
             for item in items:
-                if type(item) == str:
-                    strings.append(item)
-                else:
-                    strings.append(ObjectPrinter(item))
+                newString = item if isinstance(item,str) else ObjectPrinter(item)
+                if strings and not strings[-1].endswith(" ") and not re.match("^[.?!:]",newString):
+                    strings.append(" ")
+                strings.append(newString)
             
             if verbosity >= self.printAtVerbosity:
-                print(" ".join(strings))
+                print("".join(strings))
                 if lineSpacing is None:
                     lineSpacing = self.lineSpacing
                 for _ in range(lineSpacing):

@@ -187,8 +187,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "about",
-                "--rebuildReferences"
+                "events"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
