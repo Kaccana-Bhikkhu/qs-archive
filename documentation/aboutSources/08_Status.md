@@ -9,6 +9,7 @@
     - [Winter Retreat 2025](event:WR2025) through the end of May (Session 60)
     - [Abhayagiri's 30th Anniversary Part 2](event:Anniversary2026-2)
  - Tags can be applied to partial events; e.g. [Stream Entry] applied to Ajahn Pasanno's [readings of _The Island_ Chapters 16--19](../tags/stream-entry-events.html).
+ - Fix many inconsistent Pāli diacritics.
 
 
 ## Content

@@ -169,7 +169,7 @@ class FileLengthChecker(RemoteURLChecker):
                 #else:
                 #    Alert.notice(item,"matches the length of its remote source. Local size",contentsLength,"Remote size",remoteLength)
         except OSError as error:
-            Alert.warning("Cannot open",remoteUrl,"to check the size of",item,"due to",error,". Will use the local file anyway.")
+            Alert.caution("Cannot open",remoteUrl,"to check the size of",item,"due to",error,". Will use the local file anyway.")
             return True
         
         return contentsLength == remoteLength
