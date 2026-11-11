@@ -38,6 +38,8 @@ def MoveItemsIfNeeded(items: Iterable[dict]) -> tuple[int,int,int]:
     noUploadDir = Link.NoUploadPath(itemType)
     for root,_,files in os.walk(itemDir):
         for file in files:
+            if file.startswith("."):
+                continue
             path = Utils.PosixJoin(root,file)
             if path not in neededFiles:
                 Utils.MoveFile(path,path.replace(itemDir,noUploadDir))
