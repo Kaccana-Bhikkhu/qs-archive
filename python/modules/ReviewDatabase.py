@@ -139,7 +139,7 @@ def CheckEvents() -> None:
             if s["filename"]:
                 try:
                     audioSources[s["filename"]].append(ToTimeDelta(s.get("sessionStart",0)))
-                except err as Mp3CutError:
+                except Mp3CutError as err:
                     Alert.error(err,"when parsing Session start in",s)
         
         for filename,times in audioSources.items():
@@ -327,7 +327,6 @@ def CheckFlags() -> None:
         FLAG.PLURAL: {kind for kind in kindDB if re.search(r"[ {]s[ }]",MergedForms(kind))},
         FLAG.UNQUOTE: {kind for kind in kindDB if "“" in MergedForms(kind)},
         FLAG.RELATIVE_AUDIO: {"Cut audio","Fragment","Main fragment"},
-        FLAG.NO_TAGS: {kind for kind in kindDB if kindDB[kind]["expectsTags"]},
         FLAG.UNNAMED_SPEAKER: {kind for kind in kindDB if kindDB[kind]["indirectSpeech"]}
     }
 
@@ -354,7 +353,7 @@ def CheckTags() -> None:
     """Check that all items expecting tags have them. Raise a caution if there are unsorted tags."""
     for x in gDatabase["excerpts"]:
         for item in Filter.AllItems(x):
-            if gDatabase["kind"][item["kind"]]["expectsTags"] and not item.get("tags") and ParseCSV.ExcerptFlag.NO_TAGS not in item["flags"]:
+            if gDatabase["kind"][item["kind"]]["expectsTags"] and not item.get("tags") and ParseCSV.ExcerptFlag.NO_CHECK not in item["flags"]:
                 Alert.notice(item,"expects tags but doesn't have any.")
 
     unsortedTags = gDatabase["tag"].get("New unsorted tags",None)

@@ -495,7 +495,7 @@ def Join(fileList: List[str],outputFile: str,heal = True) -> None:
             lastBitRate = joinBitrate
             return
         except (OSError,ModuleNotFoundError) as error:
-            print(error.args[0]," occured when attempting to join ",fileList," with pydub. Will join using Mp3DirectCut.")
+            print(error.args[0]," occured when attempting to join ",fileList," with pydub. Will join by concatenating files.")
 
     if len(fileList) == 1:
         heal = False # In this case, we're just copying the file

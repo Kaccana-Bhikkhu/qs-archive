@@ -1010,11 +1010,19 @@ def TeacherLink(teacher:str) -> str:
     
 def EventDateStr(event: dict) -> str:
     "Return a string describing when the event occured"
-    
-    dateStr = Utils.ReformatDate(event["startDate"])
+
     if event["endDate"] and event["endDate"] != event["startDate"]:
-        dateStr += " to " + Utils.ReformatDate(event["endDate"])
-    return dateStr
+        startDate = Utils.ParseDate(event["startDate"])
+        endDate = Utils.ParseDate(event["endDate"])
+        if startDate.year == endDate.year:
+            if startDate.month == endDate.month:
+                return f"{startDate.strftime('%B')} {startDate.day} – {endDate.day}, {endDate.year}"
+            else:
+                return f"{startDate.strftime('%B')} {startDate.day} – {endDate.strftime('%B')} {endDate.day}, {endDate.year}"
+        else:
+            return f'{Utils.ReformatDate(event["startDate"])} – {Utils.ReformatDate(event["endDate"])}'
+    else:
+        return Utils.ReformatDate(event["startDate"])
 
 def EventSeriesAndDateStr(event: dict) -> str:
     "Return a string describing the event series and date"

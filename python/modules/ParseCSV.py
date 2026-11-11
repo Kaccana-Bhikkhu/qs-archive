@@ -48,7 +48,7 @@ class ExcerptFlag(StrEnum):
     MANUAL_FRAGMENTS = "m"  # Don't automatically extract fragments from this excerpt.
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
-    NO_TAGS = "n"           # ReviewDatabase won't flag this excerpt for having no tags
+    NO_CHECK = "n"          # ReviewDatabase won't flag this excerpt for having no tags
                             # Also skip checking smart quotes
     UNNAMED_SPEAKER = "q"   # Anonymous indirect speech; not flagged by ReviewDatabase
     DEMOTE = "d"            # Lower search priority for inferior excerpts 

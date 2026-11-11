@@ -109,7 +109,7 @@ def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
 def CheckQuotes(text: str,item: dict) -> None:
     """Scan text for mismatched smart quotes and report errors."""
     
-    if hasattr(item,"get") and ParseCSV.ExcerptFlag.NO_TAGS in item.get("flags",""):
+    if hasattr(item,"get") and ParseCSV.ExcerptFlag.NO_CHECK in item.get("flags",""):
         return
     
     htmlQuoteDict = {"&rsquo;":"’", "&lsquo;":"‘",

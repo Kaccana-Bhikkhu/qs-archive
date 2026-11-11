@@ -134,4 +134,4 @@
 
    - 6.9.1 CheckDiacritics flags mismatched smart quotes.
 
-   - 6.9.2 (November 2026 Release) Sessions can start midway through the audio file. Add Ajahn Amaro's birthday. Display Javascript search errors. Consistently use ṃ instead of ṁ. 
+   - 6.9.2 (November 2026 Release) Sessions can start midway through the audio file. Add Ajahn Amaro's birthday. Display Javascript search errors. Consistently use ṃ instead of &#7745;. 

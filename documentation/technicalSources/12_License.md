@@ -17,7 +17,7 @@ Please contact [questionsandstories@abhayagiri.org](mailto:questionsandstories@a
 
 __2. The hierarchical tagging scheme and documentation__ are © $!gOptions.info.releaseYear!$ Abhayagiri Monastery and licensed under [_CC BY-NC_](https://creativecommons.org/licenses/by-nc/4.0/). This consists of the Tag, TagNote, and Subtopic sheets in the Ajahn Pasanno Archive main spreadsheet and the markdown files in the documentation directory.
 
-__3. The database format and website generation engine__ are dedicated to the public domain under [_CC 0_](https://creativecommons.org/publicdomain/zero/1.0/). This includes all source code and all sheets in the Ajahn Pasanno Archive main spreadsheet except the Tags and TagCluster sheets and sheets containing transcribed audio recordings. It explicitly excludes all audio files and any file or spreadsheet sheet which contains transcribed audio recordings.
+__3. The database format and website generation engine__ are dedicated to the public domain under [_CC 0_](https://creativecommons.org/publicdomain/zero/1.0/). This includes all source code and all sheets in the Ajahn Pasanno Archive main spreadsheet except the Tags, Tag Note, and Subtopic sheets all and sheets containing transcribed audio recordings. It explicitly excludes all audio files and any file or spreadsheet sheet which contains transcribed audio recordings.
 
 This license applies to all versions of the Archive that have been posted on abhayagiri.org. However, we encourage anyone distributing or mirroring the Archive to keep your distribution up to date.
 
