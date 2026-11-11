@@ -599,9 +599,13 @@ function countFoundExcerpts() {
         displayExcerptCount(0);
         return;
     }
-    let searchGroups = new SearchQuery(query);
-    gSearchers["x"].search(searchGroups);
-    displayExcerptCount(gSearchers["x"].foundItems.length);
+    try {
+        let searchGroups = new SearchQuery(query);
+        gSearchers["x"].search(searchGroups);
+        displayExcerptCount(gSearchers["x"].foundItems.length);
+    } catch (err) {
+        displayExcerptCount(0);
+    }
 }
 
 function moveToNewParent(oldParent,newParent) {
