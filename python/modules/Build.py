@@ -2438,9 +2438,16 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
                 lines = []
                 if clusterInfo["subtags"]:
                     lines.append("Cluster includes: " + HtmlSubtopicTagList(clusterInfo,summarize=5))
-                relatedEvents = list(Filter.Tag([clusterInfo["tag"]] + list(clusterInfo["subtags"]))(gDatabase["event"].values()))
-                if relatedEvents:
-                    lines.append("Related events: " + ", ".join(Database.ItemCitation(e) for e in relatedEvents))
+                relatedEventsAndSections = list(Filter.Tag([clusterInfo["tag"]] + list(clusterInfo["subtags"]))(Database.MergedEventsAndSections()))
+                if relatedEventsAndSections:
+                    relatedSectionCount = len([e for e in relatedEventsAndSections if e.get("firstSession")])
+                    relatedEventCount = len(relatedEventsAndSections) - relatedSectionCount
+                    plural = "s" if len(relatedEventsAndSections) > 1 else ""
+                    contentParts = [f"event{plural}"] if relatedEventCount else []
+                    if relatedSectionCount:
+                        contentParts.append(f"event section{plural}")
+                    lines.append(f"Related {' and '.join(contentParts)}: " 
+                                 + ", ".join(Database.ItemCitation(e) for e in relatedEventsAndSections))
 
                 if lines:
                     lines.append("")

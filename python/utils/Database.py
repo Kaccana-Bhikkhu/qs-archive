@@ -158,7 +158,7 @@ def EventLink(event:str, session: int|None = None, fileNumber:int|None = None) -
 
 def ItemCitation(item: dict,htmlLink = True) -> str:
     """Return html code with the name of the event, session number, and file number.
-    item can be an event, session or excerpt"""
+    item can be an event, event section, session or excerpt"""
 
     def Link(text:str, href: str) -> str:
         "Link to href if requested, otherwise just return text."
@@ -167,8 +167,11 @@ def ItemCitation(item: dict,htmlLink = True) -> str:
         else:
             return text
 
-    event = item.get("event",item.get("code",None))
-    session = item.get("sessionNumber",None)
+    event = item.get("code",item.get("event"))
+    if "_" in event: # code = 'WR2025_S04' means an event section
+        return Link(f"{item['title']}",EventLink(item['event'],item['firstSession']))
+
+    session = item.get("sessionNumber")
 
     eventName = gDatabase["event"][event]["title"]
     if not re.search(r"[0-9]{4}",eventName):
@@ -178,7 +181,7 @@ def ItemCitation(item: dict,htmlLink = True) -> str:
     parts = [Link(eventName,EventLink(event))]
     if session:
         parts.append(Link(f"Session {session}",EventLink(event,session)))
-    excerptNumber = item.get("excerptNumber",None)
+    excerptNumber = item.get("excerptNumber")
     if excerptNumber:
         fileNumber = FragmentSource(item)["fileNumber"]
         parts.append(Link(f"Excerpt {excerptNumber}",EventLink(event,session,fileNumber)))
