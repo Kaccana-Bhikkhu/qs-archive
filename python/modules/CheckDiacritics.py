@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import os, re, json
 import Utils, Alert, Link, FileRegister
-from typing import Callable
+from typing import Callable, Any
 from collections import Counter,defaultdict
 import Render
 import ParseCSV
@@ -106,6 +106,7 @@ def UpdateCorrectDiacritics(sortedFrequency: dict[str,dict[str,int]]) -> None:
                 nonCannonicalStr = "*,".join(f for f in forms if f not in cannonicalForms)
                 print(f"{cannonicalStr},{nonCannonicalStr}*",file=file)
 
+gQuoteErrorCount = 0
 def CheckQuotes(text: str,item: dict) -> None:
     """Scan text for mismatched smart quotes and report errors."""
     
@@ -116,7 +117,19 @@ def CheckQuotes(text: str,item: dict) -> None:
                      "&rdquo;":'”', "&ldquo;":"“"}  
     for code,quote in htmlQuoteDict.items():
         text = text.replace(code,quote)
-    
+    RIGHT_SINGLE,LEFT_SINGLE,RIGHT_DOUBLE,LEFT_DOUBLE = htmlQuoteDict.values()
+
+    def Report(*details: Any):
+        """Report a mismatched diacritic error."""
+        global gQuoteErrorCount
+        if Alert.caution.Printing():
+            if gQuoteErrorCount == 0:
+                print()
+                print("Poorly formed smart quotes:")
+            gQuoteErrorCount += 1
+            print(gQuoteErrorCount,"Text:",text)
+        Alert.caution(item,*details)
+
     text = Utils.RemoveHtmlTags(text)
     quotes = list(re.finditer(r"""["'“”‘]|s?’(?!\w)""",text))
         # Ignore single end quotes followed by a letter (e.g. don’t)
@@ -125,29 +138,28 @@ def CheckQuotes(text: str,item: dict) -> None:
     for quote in quotes:
         quoteCount[quote[0]] += 1
         possiblePluralPossessives = quoteCount['s’']
-        if quoteCount['’'] - possiblePluralPossessives > quoteCount['‘'] or quoteCount['”'] > quoteCount['“']:
-            print(Alert.caution.count,"Text:",text)
+        if quoteCount[RIGHT_SINGLE] - possiblePluralPossessives > quoteCount[LEFT_SINGLE] or quoteCount[RIGHT_DOUBLE] > quoteCount[LEFT_DOUBLE]:
             span = quote.span()
-            Alert.caution(item,"has excess end quotes.",quoteCount,text[max(span[0] - 5,0):span[1] + 5])
+            Report("has excess end quotes.",quoteCount,text[max(span[0] - 5,0):span[1] + 5])
             return
+        if (quoteCount[LEFT_SINGLE] - quoteCount[RIGHT_SINGLE] - possiblePluralPossessives > 0) \
+                and (quoteCount[LEFT_DOUBLE] - quoteCount[RIGHT_DOUBLE] <= 0):
+            Report("has text begining with single quotes. Double quotes are preferred.")
     possiblePluralPossessives = quoteCount['s’']
-    if not (quoteCount['’'] <=  quoteCount['‘'] <= quoteCount['’'] + possiblePluralPossessives) or quoteCount['”'] != quoteCount['“']:
-        print(Alert.caution.count,"Text:",text)
-        Alert.caution(item,"contains mismatched quotes.",quoteCount)
+    if not (quoteCount[RIGHT_SINGLE] <=  quoteCount[LEFT_SINGLE] <= quoteCount[RIGHT_SINGLE] + possiblePluralPossessives) \
+            or quoteCount[RIGHT_DOUBLE] != quoteCount[LEFT_DOUBLE]:
+        Report("contains mismatched quotes.",quoteCount)
         return
     if quoteCount["'"] or quoteCount['"']:
-        print(Alert.caution.count,"Text:",text)
-        Alert.caution(item,"contains dumb quotes.")
+        Report("contains dumb quotes.")
         return
 
     for first,second in itertools.pairwise(q[0] for q in quotes):
         if first == second:
-            print(Alert.caution.count,"Text:",text)
-            Alert.caution(item,"should alternate between double and single quotes.")
+            Report("should alternate between double and single quotes.")
             return
-        if (first,second) in (('‘','”'),('“','’')):
-            print(Alert.caution.count,"Text:",text)
-            Alert.caution(item,"has mismatched open and closing quotes.","Mismatch:",(first,second))
+        if (first,second) in ((LEFT_SINGLE,RIGHT_DOUBLE),(LEFT_DOUBLE,RIGHT_SINGLE)):
+            Report("has mismatched open and closing quotes.","Mismatch:",(first,second))
         
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"

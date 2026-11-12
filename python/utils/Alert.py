@@ -22,12 +22,16 @@ class AlertClass:
         self.indent = indent # print this many spaces before the message
         self.lineSpacing = lineSpacing # print this many blank lines after the alert
 
+    def Printing(self) -> bool:
+        """Returns True if verbosity is high enough to print alerts."""
+        return verbosity >= self.printAtVerbosity
+
     def Show(self,*items,indent:int|None = None,lineSpacing:int|None = None) -> None:
         """Generate an alert from a list of items to print.
         Print it if verbosity is high enough."""
         if items:
             self.count += 1
-        if verbosity >= self.printAtVerbosity:
+        if self.Printing():
             if indent is None:
                 indent = self.indent
             strings = []
