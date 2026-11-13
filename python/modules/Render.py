@@ -649,6 +649,22 @@ def BookLinkWrapper(url: str,book: str,altLink: bool = True) -> Html.Wrapper:
         linkData["data-alt-href"] = textPageLink
     return Html.Tag("a",linkData)
 
+def ProcessLocalReference(url:str) -> str:
+    """Remove the redundant ../pages portion of local references to html pages;
+    add #noframe to the end of local references to non-html pages to break out of frame.js."""
+    parsed = urllib.parse.urlparse(url)
+    if parsed.netloc:
+        return url
+    else:
+        pagesPath = Utils.PosixNorm(Utils.PosixJoin("../",gOptions.pagesDir))
+        if pagesPath in url:
+            return Utils.PosixNorm(url.replace(pagesPath,""))
+        else:
+            if parsed.path.endswith(".html"):
+                return url
+            else:
+                return url + "#noframe"
+    
 def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
     """Search for references of the form [abbreviation]() OR abbreviation page|p. N, add author and link information.
     ApplyToFunction allows us to apply these same operations to other collections of text (e.g. documentation)"""
@@ -673,22 +689,6 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 Alert.warning(reference,"does not specify pdfPageOffset.")
         return pageOffset
 
-    def ProcessLocalReferences(url:str) -> str:
-        """Remove the redundant ../pages portion of local references to html pages;
-        add #noframe to the end of local references to non-html pages to break out of frame.js."""
-        parsed = urllib.parse.urlparse(url)
-        if parsed.netloc:
-            return url
-        else:
-            pagesPath = Utils.PosixNorm(Utils.PosixJoin("../",gOptions.pagesDir))
-            if pagesPath in url:
-                return Utils.PosixNorm(url.replace(pagesPath,""))
-            else:
-                if parsed.path.endswith(".html"):
-                    return url
-                else:
-                    return url + "#noframe"
-
     def ReferenceForm2(bodyStr: str,item: dict[str] = None) -> tuple[str,int]:
         """Search for references of the form: [title]() or [title](page N)"""
 
@@ -706,7 +706,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 if page:
                     url +=  f"#page={page + PdfPageOffset(reference,giveWarning=False)}"
 
-                url = ProcessLocalReferences(url)
+                url = ProcessLocalReference(url)
                 returnValue = BookLinkWrapper(url,reference["abbreviation"])(reference['title'])
             else: # If no text link is available (e.g. a commercial book), link to the page in the books directory
                 bookPage = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())
@@ -749,7 +749,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
                 url = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())
             AddBookReference(item,reference,page)
 
-            url = ProcessLocalReferences(url)
+            url = ProcessLocalReference(url)
             return BookLinkWrapper(url,reference["abbreviation"])(hyperlinkText)
 
         return re.subn(refForm3,ReferenceForm3Substitution,bodyStr,flags = re.IGNORECASE)
@@ -770,7 +770,7 @@ def LinkKnownReferences(ApplyToFunction:Callable = ApplyToBodyText) -> None:
             if url:
                 if page:
                     url +=  f"#page={page + PdfPageOffset(reference)}"
-                    url = ProcessLocalReferences(url)
+                    url = ProcessLocalReference(url)
                 bits[2] = BookLinkWrapper(url,reference["abbreviation"])(bits[2])
             else: # If the pdf file is missing, link to the page in the books directory
                 url = BuildReferences.ReferenceLink("book",reference["abbreviation"].lower())

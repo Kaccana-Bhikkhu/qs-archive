@@ -554,14 +554,15 @@ class BookReference(NamedTuple):
             return [Html.Tag("a",{"href":link,"style":"font-size:65%;"})("more information...")]
 
         if info["filename"]:
-            fileLink = Link.URL(info)
+            fileLink = Link.URL(info,directoryDepth=2)
             suffix = info["filename"].split(".")[-1].lower()
             kind = ""
             if suffix == "pdf":
                 kind = "pdf"
             elif suffix in ("html","htm"):
                 kind = "html"
-            if fileLink and suffix:
+            fileLink = Render.ProcessLocalReference(fileLink)
+            if fileLink and suffix and kind:
                 returnValue.append(Html.Tag("a",{"href":fileLink,"title":f"Read {kind}","target":"_blank"})
                             (Build.HtmlIcon(f"file-{kind}.png","small-icon")))
         otherLink = info["otherUrl"]
