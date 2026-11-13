@@ -601,6 +601,12 @@ def CountVerseReferences(references: Iterable[LinkedReference],textLevel: int) -
     """Return the number of excerpts in references which specify a specific page or verse."""
     return sum(len(group.items) for group in references if group.reference[textLevel])
 
+def UniqueVerseReferences(references: Iterable[LinkedReference],textLevel: int) -> int:
+    """Return the number of excerpts in references which specify a specific page or verse."""
+    uniqueRefs = {group.reference[textLevel] for group in references}
+    uniqueRefs.discard(0)
+    return len(uniqueRefs)
+
 def GroupByBook(references: Iterable[Reference]) -> Iterable[list[LinkedReference]]:
     """Group references by sutta or book and yield a list of each group."""
 
@@ -1202,10 +1208,11 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
         else:
             if gOptions.listPotentialTOC:
                 verseReferences = CountVerseReferences(references,level)
+                uniqueReferences = UniqueVerseReferences(references,level)
                 if verseReferences >= 4:
                     kind = "verses" if isinstance(references[0].reference,TextReference) else "pages"
                     Alert.notice(Utils.RemoveHtmlTags(references[0].reference.Truncate(level).FullName()),
-                                "has",CountVerseReferences(references,level),"references to specific",kind,"but no TOC; it references",
+                                "has",CountVerseReferences(references,level),f"references ({uniqueReferences} unique) to specific",kind,"but no TOC; it references",
                                 TotalItems(references),"total excerpts.")
             return ExcerptListPage(level,references)
     Alert.error("Unknown page type",pageType)
