@@ -1127,7 +1127,7 @@ export class ExcerptSearcher extends PagedSearcher {
 
         let displayItems = this.foundItems.slice(startItem,endItem);
         let insideFeaturedBlock = false;
-        if (params.has("featured") && this.foundItems[startItem].sortBlob.fTag) {
+        if (params.has("featured") && this.foundItems[startItem].sortBlob.fTag && startItem === 0) {
             let featuredCount = 0;
             while ((featuredCount < displayItems.length) && displayItems[featuredCount].sortBlob.fTag) {
                 featuredCount += 1;
