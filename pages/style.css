@@ -1233,6 +1233,11 @@ span.search-filter-list svg.lucide {
 	vertical-align: middle;
 }
 
+span.search-filter-list img {
+	vertical-align: -10%;
+	width: 16px;
+}
+
 button#show-code-button {
 	padding: 0 2px;
 	margin: 2px 0 2px 0;

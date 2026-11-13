@@ -715,7 +715,7 @@ def Icon(iconName:str,iconClass:str = "",directoryDepth:int = 1) -> str:
     if "<" in iconName: # Return raw html unchanged, but do not cache the results
         return iconName
     elif iconName.lower().split(".")[-1] in ("png","svg","jpg","jpeg"):
-        gIconCache[iconName] =  f'''<img src="../images/icons/{iconName}">'''
+        gIconCache[iconName] =  f'''<img src="images/icons/{iconName}">'''
         return f'''<img src="{'../'*directoryDepth}images/icons/{iconName}"{f' class="{iconClass}"' if iconClass else ""}>'''
     elif iconName.startswith("fa-"):
         gIconCache[iconName] = f'<i class="fa {iconName}"></i>'

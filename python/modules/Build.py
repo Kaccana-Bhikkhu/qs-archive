@@ -1554,11 +1554,22 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     formatter.headingShowTags = False
     formatter.headingShowTeacher = False
 
-    def SimpleDuration(page: Html.PageDesc,excerpts: list[dict]):
+    def RemoveAll(text: str) -> str:
+        text = text.replace("All ","")
+        return Utils.CapitalizeFirst(text)
+
+    def AppendSearchWithin(page: Html.PageDesc,filter:Filter.Filter) -> None:
+        "Append a search within link to page."
+        page.AppendContent(SearchWithin(RemoveAll(page.info.title),filter))
+        page.AppendContent("<br>")
+        RegisterSearchWithin(page)
+
+    def FeaturedHeader(page: Html.PageDesc,excerpts: list[dict]) -> None:
         "Append the number of excerpts and duration to page."
         durationStr = ExcerptDurationStr(excerpts,countEvents=False,countSessions=False,sessionExcerptDuration=False)
         page.AppendContent(Html.Tag("p")(durationStr))
-
+        AppendSearchWithin(page,Filter.FTag(Filter.All))
+        
     def FilteredItem(filter:Filter.Filter,name:str) -> Html.PageDescriptorMenuItem:
         newTitle = "All " + name.lower()
         singular = Utils.Singular(name).lower()
@@ -1568,9 +1579,13 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     def MostCommonTags(page: Html.PageDesc,excerpts: list[dict],filter:Filter.Filter = Filter.PassAll, kind: str = "") -> None:
         "Append a list of the most common tags to the beginning of each section"
         ShowDuration(page,excerpts)
+        if filter is not Filter.PassAll:
+            AppendSearchWithin(page,filter)
         if len(excerpts) < gOptions.minSubsearchExcerpts * 3:
             return
         if kind not in {"","Questions","Stories","Quotes","Readings","Texts","References"}:
+            if len(excerpts) < gOptions.excerptsPerPage:
+                page.AppendContent("<br>")
             return
         
         tagCount = Counter()
@@ -1614,7 +1629,7 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
         FilteredExcerptsMenuItem(excerpts,Filter.PassAll,formatter,pageInfo,"All excerpts",pageAugmentor=MostCommonTags),
         FilteredExcerptsMenuItem(excerpts,Filter.FTag(Filter.All),formatter,
                                  Html.PageInfo("Featured",Utils.PosixJoin(pageDir,"AllExcerpts.html"),"All featured excerpts"),
-                                 "Featured","featured",pageAugmentor=SimpleDuration),
+                                 "Featured","featured",pageAugmentor=FeaturedHeader),
         FilteredItem(Filter.Category("Questions"),"Questions"),
         FilteredItem(Filter.Category("Stories"),"Stories"),
         FilteredItem(Filter.Category("Quotes"),"Quotes"),
@@ -1626,11 +1641,14 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
 
     basePage = Html.PageDesc(pageInfo)
-    basePage.AppendContent(Icon("All.png"),section="titleIcon")
+    basePage.AppendContent("All.png",section="titleIcon")
     pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**LONG_SUBMENU_STYLE)
     if gOptions.skipSubsearchPages:
         pageIterator = Utils.SingleItemIterator(pageIterator,0)
-    yield from pageIterator
+    for page in pageIterator:
+        if page.info.title == "Featured":
+            page.section["titleIcon"] = "fa-star"
+        yield page
 
 def ListDetailedEvents(events: Iterable[dict],showTags = True) -> str:
     """Generate html containing a detailed list of all events."""

@@ -128,10 +128,6 @@ class Filter:
         kind indicates what form the query will take."""
         raise NotImplementedError("Base classes must define Filter.Query")
 
-
-
-"Returns whether the dict matches our filter function."
-
 PassAll = Filter()
 PassNone = Filter().Not()
 
@@ -150,6 +146,14 @@ class Tag(Filter):
         
         return self.negate
 
+    def Query(self,kind: QueryType = QueryType.READABLE) -> str:
+        tagStrs = map(lambda t:f"[{t}]",sorted(self.passTags))
+        if len(tagStrs) == 1:
+            return tagStrs[0]
+        else:
+            return f"|({' '.join(tagStrs)})"
+            
+
 class FTag(Tag):
     "A filter that passes excerpts containing particular featured tags."
 
@@ -159,6 +163,12 @@ class FTag(Tag):
                 return not self.negate
         
         return self.negate
+
+    def Query(self,kind: QueryType = QueryType.READABLE) -> str:
+            if self.passTags is All:
+                return "+"
+            else:
+                return super().Query().replace("]","]+")
 
 class HomepageOnlyTag(Tag):
     "A filter that passes excerpts that should be displayed on the homepage despite not being featured."
@@ -285,6 +295,12 @@ class Category(Filter):
         
         return self.negate
 
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        if len(self.passCategories) == 1:
+            return f"&{next(iter(self.passCategories))}&"
+        else:
+            raise NotImplementedError("Filter.Category: Multi-category queries are not yet supported.")
+
 
 class Event(Filter):
     "A filter that passes items within a particular event."
@@ -304,7 +320,7 @@ class Event(Filter):
         if len(self.passEvents) == 1:
             return f"@{next(iter(self.passEvents))}"
         else:
-            raise NotImplementedError("Filter.Event: Multi-event queries are not implemented.")
+            raise NotImplementedError("Filter.Event: Multi-event queries are not yet supported.")
 
 class Flags(Filter):
     """A filter that passes items which contain any of a specified list of flags.
