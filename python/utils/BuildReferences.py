@@ -284,15 +284,15 @@ class TextReference(NamedTuple):
         scLink = self.SuttaCentralLink(translator=translator)
         if scLink:
             returnValue.append(Html.Tag("a",{"href":scLink,"title":"Read on SuttaCentral","target":"_blank"})
-                        (Build.HtmlIcon("SuttaCentral.png","small-icon")))
+                        (Html.Icon("SuttaCentral.png","small-icon")))
             expressLink = SCToExpress(scLink)
             if expressLink != scLink:
                 returnValue.append(Html.Tag("a",{"href":expressLink,"title":"Lightweight suttacentral.express","class":"express","target":"_blank"})
-                                   (Build.HtmlIcon("SuttaCentralExpress.png","small-icon")))
+                                   (Html.Icon("SuttaCentralExpress.png","small-icon")))
         rfLink = self.ReadingFaithfullyLink()
         if rfLink:
             returnValue.append(Html.Tag("a",{"href":rfLink,"title":"Browse more translations online","target":"_blank"})
-                        (Build.HtmlIcon("ReadingFaithfully.png","small-icon")))
+                        (Html.Icon("ReadingFaithfully.png","small-icon")))
         return returnValue
 
 
@@ -564,11 +564,11 @@ class BookReference(NamedTuple):
             fileLink = Render.ProcessLocalReference(fileLink)
             if fileLink and suffix and kind:
                 returnValue.append(Html.Tag("a",{"href":fileLink,"title":f"Read {kind}","target":"_blank"})
-                            (Build.HtmlIcon(f"file-{kind}.png","small-icon")))
+                            (Html.Icon(f"file-{kind}.png","small-icon")))
         otherLink = info["otherUrl"]
         if otherLink:
             returnValue.append(Html.Tag("a",{"href":otherLink,"title":"Browse other formats","target":"_blank"})
-                        (Build.HtmlIcon("file-other.png","small-icon")))
+                        (Html.Icon("file-other.png","small-icon")))
         return returnValue
         
 Reference = TextReference | BookReference
@@ -702,7 +702,7 @@ class ReferencePageMaker:
             firstReference = references[0].reference
             self.SetPageInfo(firstReference)
             self.page.AppendContent(self.HeaderHtml())
-            self.page.AppendContent(Build.HtmlIcon("book-open" if isinstance(firstReference,BookReference) else "DhammaWheel.png")
+            self.page.AppendContent(Html.Icon("book-open" if isinstance(firstReference,BookReference) else "DhammaWheel.png")
                                     ,section="titleIcon")
             
             truncated = firstReference.Truncate(self.level)

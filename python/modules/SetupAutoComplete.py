@@ -5,9 +5,10 @@ homepage.js to build the search dropdown list.
 from __future__ import annotations
 
 import os,json,itertools,re
+from Html2 import Icon
 import Utils, Alert, Database
 from typing import TypedDict, Iterable
-from Build import FA_STAR, RemoveLanguageTag, HtmlIcon
+from Build import FA_STAR, RemoveLanguageTag
 from ParseCSV import TagFlag
 import BuildReferences, Suttaplex
 from bs4 import BeautifulSoup
@@ -36,7 +37,7 @@ def NumberFromText(text:str) -> int|None:
 def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = "",suffix:str = "",excerptCount:int = 0) -> AutoCompleteEntry:
     "Return an AutoCompleteEntry corresponding to these parameters."
     number = "" if number is None else str(number)
-    return dict(short=short,link=link,long=long,number=number,icon=HtmlIcon(icon,directoryDepth=0),suffix=suffix,excerptCount=excerptCount)
+    return dict(short=short,link=link,long=long,number=number,icon=Icon(icon,directoryDepth=0),suffix=suffix,excerptCount=excerptCount)
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"

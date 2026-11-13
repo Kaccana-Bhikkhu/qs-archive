@@ -907,7 +907,7 @@ def LinkSubpages(ApplyToFunction:Callable = ApplyToBodyText,pathToPages:str = ".
             else:
                 Alert.warning("Cannot link to key topic",link,"in link",matchObject[0])
         elif pageType == "search":
-            linkTo = Filter.SearchQuery(fullLink).SearchPageLink().replace("../","")
+            linkTo = Filter.SearchQuery(fullLink,featuredFirst=True,relevantFirst=True).SearchPageLink().replace("../","")
             hashTag = ""
 
         if linkTo:

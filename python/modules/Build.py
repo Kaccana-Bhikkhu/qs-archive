@@ -5,6 +5,7 @@ from __future__ import annotations
 import os, time
 from typing import Iterator, Iterable, Tuple, Callable
 from airium import Airium
+from Html2 import Icon
 import Mp3DirectCut
 import Database, ReviewDatabase
 import Utils, Alert, Filter, ParseCSV, Document, Render, SetupFeatured, BuildReferences
@@ -54,9 +55,40 @@ def WriteIndentedTagDisplayList(fileName):
 
 def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     """Write an html file for page using the global template"""
+    
+    # 1. Replace SEARCH_WITHIN_LINK (if found) with a link to the advanced search page
+
+    def SearchWithinLink(match: re.Match[str]) -> str:
+        "Add extra details to this page's search within link."
+        icon = page.section.get("titleIcon","")
+        chip = Filter.QueryChip(name = match[1],query = match[2],icon=icon)
+        query = Filter.SearchQuery(filters = [chip])
+        return match[0].replace("SEARCH_WITHIN_LINK",query.SearchPageLink(),count = 1)
+
+    def RecursiveReplace(pagedesc: Html.PageDesc) -> bool:
+        "Recursively search pagedesc for a search within link."
+        sectionNumber = 0
+        while pagedesc.HasSection(sectionNumber):
+            section = pagedesc.section[sectionNumber]
+            if type(section) == str:
+                pagedesc.section[sectionNumber],replaced = re.subn(r'<a href="SEARCH_WITHIN_LINK" data-name="([^"]*)" data-query="([^"]*)">',
+                                                    SearchWithinLink,pagedesc.section[sectionNumber],count = 1)
+                if replaced:
+                    return True
+            elif isinstance(section,Html.PageDesc):
+                if RecursiveReplace(section):
+                    return True
+            sectionNumber += 1
+        return False
+    
+    if page.HasSection("searchWithin"):
+        if not RecursiveReplace(page):
+            Alert.caution(page.info.file,"registered a search within link, but we can't find it.")
+
+    # 2. Substitute the appropriate title icon
     page.gOptions = gOptions
     if page.HasSection("titleIcon"):
-        page.section["titleIcon"] = HtmlIcon(page.section["titleIcon"]) + " "
+        page.section["titleIcon"] = Icon(page.section["titleIcon"]) + " "   
 
     template = Utils.PosixJoin(gOptions.pagesDir,gOptions.globalTemplate)
     if page.info.file.endswith("_print.html"):
@@ -115,20 +147,6 @@ def TitledList(title:str, items:list[str], plural:str = "s", joinStr:str = ", ",
     #listStr = joinStr.join(items)
     
     return title + titleEnd + listStr + endStr
-
-def HtmlIcon(iconName:str,iconClass:str = "",directoryDepth:int = 1) -> str:
-    "Return html code for an icon"
-    if not iconName:
-        return ""
-    if "<" in iconName: # Return raw html unchanged
-        return iconName
-    elif iconName.lower().split(".")[-1] in ("png","svg","jpg","jpeg"):
-        return f'''<img src="{'../'*directoryDepth}images/icons/{iconName}"{f' class="{iconClass}"' if iconClass else ""}>'''
-    else:
-        attributes = {"data-lucide":iconName}
-        if iconClass:
-            attributes["class"] = iconClass
-        return Html.Tag("i",attributes)("")
 
 def HtmlTagLink(tag:str, fullTag: bool = False,text:str = "",link = True,showStar = False) -> str:
     """Turn a tag name into a hyperlink to that tag.
@@ -212,6 +230,20 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
         bits.append(f"and {len(subtopic['subtags']) + 1 - len(bits)} subtags")
 
     return ", ".join(bits)
+
+def SearchWithin(title: str,filter: Filter.Filter) -> str:
+    """Returns html for a search within link. Some aspects of the link depend on properties of the page not immediately
+    accessible, so we return a placeholder that WritePage will later replace.
+    page: the page we are in the process of generating
+    title: what we are searching within;
+    filter: the filter that produced the page we are searching."""
+
+    link = Html.Tag("a",{"href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
+    return link(f'<i class="fa fa-search"></i> Search within {title}')
+
+def RegisterSearchWithin(page: Html.PageDesc) -> None:
+    """Add a section to page indicating that it contains a search within link."""
+    page.AppendContent("True",section="searchWithin")
 
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
     "Write a list of hyperlinked tags"
@@ -417,7 +449,7 @@ def DrilldownPageFile(tagNumberOrName: int|str,jumpToEntry:bool = False) -> str:
 
 def DrilldownIconLink(tag: str,iconWidth = 20):
     drillDownPage = "../drilldown/" + DrilldownPageFile(gDatabase["tag"][tag]["listIndex"],jumpToEntry=True)
-    return Html.Tag("a",dict(href=drillDownPage,title="Show in tag hierarchy"))(HtmlIcon("text-bullet-list-tree.svg",iconClass="small-icon"))
+    return Html.Tag("a",dict(href=drillDownPage,title="Show in tag hierarchy"))(Icon("text-bullet-list-tree.svg",iconClass="small-icon"))
 
 def DrilldownTags(pageInfo: Html.PageInfo) -> Iterator[Html.PageAugmentorType]:
     """Write a series of html files to create a hierarchial drill-down list of tags."""
@@ -551,7 +583,7 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
     page = Html.PageDesc(info)
     page.AppendContent(pageContent)
-    page.AppendContent(HtmlIcon("tags"),section="titleIcon")
+    page.AppendContent(Icon("tags"),section="titleIcon")
     page.AppendContent("Numerical tags",section="citationTitle")
     page.keywords = ["Tags","Numerical tags"]
     yield page 
@@ -669,7 +701,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
-    page.AppendContent(HtmlIcon("tags"),section="titleIcon")
+    page.AppendContent(Icon("tags"),section="titleIcon")
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
     yield page
@@ -928,7 +960,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
     basePage = Html.PageDesc()
     basePage.keywords = ["Tags","Alphabetical"]
-    basePage.AppendContent(HtmlIcon("tags"),section="titleIcon")
+    basePage.AppendContent(Icon("tags"),section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(subMenu,**EXTRA_MENU_STYLE):
         titleWithoutLength = " ".join(page.info.title.split(" ")[:-1])
         page.keywords.append(titleWithoutLength)
@@ -1594,7 +1626,7 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
     filterMenu = [f for f in filterMenu if f] # Remove blank menu items
 
     basePage = Html.PageDesc(pageInfo)
-    basePage.AppendContent(HtmlIcon("All.png"),section="titleIcon")
+    basePage.AppendContent(Icon("All.png"),section="titleIcon")
     pageIterator = basePage.AddMenuAndYieldPages(filterMenu,**LONG_SUBMENU_STYLE)
     if gOptions.skipSubsearchPages:
         pageIterator = Utils.SingleItemIterator(pageIterator,0)
@@ -1987,7 +2019,7 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
         pageInfo = Html.PageInfo(tag,Utils.PosixJoin(tagPageDir,tagInfo["htmlFile"]),tagPlusPali)
         basePage = Html.PageDesc(pageInfo)
-        basePage.AppendContent(HtmlIcon("tag"),section="titleIcon")
+        basePage.AppendContent(Icon("tag"),section="titleIcon")
         basePage.AppendContent(str(a))
         basePage.keywords = ["Tag",tagWithoutHtml]
         if tagInfo["fullPali"]:
@@ -2153,10 +2185,10 @@ def TeacherMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     basePage = Html.PageDesc()
-    basePage.AppendContent(HtmlIcon("user"),section="titleIcon")
+    basePage.AppendContent(Icon("user"),section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(teacherMenu,**SUBMENU_STYLE):
         if "Teachers" in page.info.file: # Index files use the plural icon
-            page.section["titleIcon"] = HtmlIcon("users")
+            page.section["titleIcon"] = Icon("users")
         if page.info.titleInBody.startswith("Teachers – "):
             _,subSection = page.info.titleInBody.split(" – ")
             page.AppendContent(f"Teachers: {subSection}",section="citationTitle")
@@ -2260,13 +2292,14 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
     """Generate html for each event in the database"""
     if gOptions.buildOnlyIndexes:
         return
+    Html.Icon("fa-star") # Make sure this icon is cached
 
     for eventCode,eventInfo in gDatabase["event"].items():
         sessions = [s for s in gDatabase["sessions"] if s["event"] == eventCode]
         excerpts = [x for x in gDatabase["excerpts"] if x["event"] == eventCode]
-        featuredExcerpts = Filter.FTag(Filter.All)(excerpts)
-        a = Airium()
+        featuredExcerpts = list(Database.RemoveFragments(Filter.FTag(Filter.All)(excerpts),multipleFragments=False))
         
+        a = Airium()
         with Html.SecondColumnPhoto(a,Utils.PosixJoin("events",eventCode),"landscape"):
             with a.strong():
                 a(ListLinkedTeachers(eventInfo["teachers"],lastJoinStr = " and ",capitalize = True))
@@ -2283,11 +2316,14 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             a(ExcerptDurationStr(excerpts))
             a.br()
 
+            a(SearchWithin(eventInfo["title"],Filter.Event(eventCode)))
+            a.br()
+
             if featuredExcerpts:
                 query = Filter.SearchQuery(filters = [
-                    Filter.QueryChip(f"Event {Utils.RemoveHtmlTags(eventInfo['title'])}",f"@{eventCode}"),
-                    Filter.QueryChip("Featured","+")
-                ],featuredFirst=False,relevantFirst=False)
+                    Filter.QueryChip(f"{Utils.RemoveHtmlTags(eventInfo['title'])}",f"@{eventCode}",icon="calendar"),
+                    Filter.QueryChip("Featured","+",icon="fa-star")
+                ])
                 with a.a(href=query.SearchPageLink()):
                     a(f"Show featured excerpt{'s' if len(featuredExcerpts) > 1 else ''}")
                 a(f"({len(featuredExcerpts)})")
@@ -2329,6 +2365,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
         titleWithoutTags = Utils.RemoveHtmlTags(eventInfo["title"])
         page = Html.PageDesc(Html.PageInfo(titleWithoutTags,Utils.PosixJoin(eventPageDir,eventCode+'.html'),titleInBody))
         page.AppendContent(str(a))
+        RegisterSearchWithin(page)
         page.keywords = ["Event",titleWithoutTags]
         page.AppendContent(f"Event: {titleWithoutTags}",section="citationTitle")
         yield page
@@ -2464,7 +2501,7 @@ def KeyTopicExcerptLists(indexDir: str, topicDir: str):
                 excerptHtml += "\n<hr>"
 
             isCluster = bool(clusterInfo["subtags"])
-            heading = HtmlIcon("Cluster.png") if isCluster else HtmlIcon("tag")
+            heading = Icon("Cluster.png") if isCluster else Icon("tag")
             heading += " "
             text = clusterInfo["displayAs"] if isCluster else tag
             heading += HtmlSubtopicLink(tag,text=text).replace(".html","-relevant.html")
@@ -2571,7 +2608,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
                     a.a(Class='path-overlay',href=Utils.PosixJoin("../",topicDir,topic["listFile"]))
 
                     with a.h3():
-                        a(HtmlIcon(Utils.PosixJoin("topics",
+                        a(Icon(Utils.PosixJoin("topics",
                                 topic["code"] + ".png")))
                         a(topic["topic"])
                 
@@ -2590,7 +2627,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
 
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
     page.AppendContent(str(a))
-    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
+    page.AppendContent(Icon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics",section="citationTitle")
@@ -2616,7 +2653,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
                 if not printPage:
                     with a.a().i(Class = "fa fa-minus-square toggle-view",id=topicCode):
                         pass
-                    a("&nbsp;" + HtmlIcon(Utils.PosixJoin("topics",topicCode + ".png")))
+                    a("&nbsp;" + Icon(Utils.PosixJoin("topics",topicCode + ".png")))
                 with a.span(style="text-decoration: underline;" if printPage else ""):
                     a(HtmlKeyTopicLink(topicCode,count=True))
             with a.div(id=topicCode + ".b"):
@@ -2670,7 +2707,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
         AddTopicButtons(page)
 
     page.AppendContent(str(a))
-    page.AppendContent(HtmlIcon("Key.png"),section="titleIcon")
+    page.AppendContent(Icon("Key.png"),section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics in detail",section="citationTitle")
@@ -2769,7 +2806,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         basePage.AppendContent('</div>')
 
         basePage.AppendContent(f"Numbers in parentheses: (Excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
-        basePage.AppendContent(HtmlIcon("tags"),section="titleIcon")
+        basePage.AppendContent(Icon("tags"),section="titleIcon")
 
         rootPage = Html.PageDesc(contractAllItem)
         rootPage.AppendContent(EvaluateDrilldownTemplate())
@@ -2849,7 +2886,7 @@ def DispatchIterator():
                     with a.a(Class='path-card', href=Utils.PosixJoin("../",link["link"])):
                         with a.h3():
                             if link["icon"]:
-                                a(HtmlIcon(link["icon"]))
+                                a(Icon(link["icon"]))
                             a(link["title"])
                         a.p(_t=link["description"])
         

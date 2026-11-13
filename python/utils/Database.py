@@ -64,14 +64,17 @@ def WriteDatabase(database: dict,filename: str):
 
     database["textSection"] = textSections
 
-def RemoveFragments(excerpts: Iterable[dict[str]]) -> Iterable[dict[str]]:
-    """Yield these excerpts but skip fragments if their source excerpt is present."""
+def RemoveFragments(excerpts: Iterable[dict[str]],multipleFragments:bool = True) -> Iterable[dict[str]]:
+    """Yield these excerpts but skip fragments if their source excerpt is present.
+    If onlyOneFragment, yield only the first fragment from an excerpt that has more than one."""
 
     lastNonFragment = ()
     for x in excerpts:
         if ParseCSV.ExcerptFlag.FRAGMENT in x["flags"]:
             if (x["event"],x["sessionNumber"],int(x["excerptNumber"])) != lastNonFragment:
                 yield x
+                if not multipleFragments:
+                    lastNonFragment = (x["event"],x["sessionNumber"],int(x["excerptNumber"]))
         else:
             yield x
             lastNonFragment = (x["event"],x["sessionNumber"],x["excerptNumber"])

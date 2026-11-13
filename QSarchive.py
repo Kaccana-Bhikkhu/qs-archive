@@ -299,6 +299,9 @@ for moduleName in moduleList:
     if database and not initialized:
         for modName in priorityInitialization:
             modules[modName].Initialize() # Run each module's initialize function when the database fills up
+        for modName in moduleList:
+            if modName not in priorityInitialization:
+                modules[modName].Initialize()
         initialized = True
 
     if moduleName in opSet:
@@ -315,6 +318,12 @@ if clOptions.includePending:
     Alert.warning("Pending teacher consent has been treated as yes. This should only be used for testing and debugging purposes.")
 if clOptions.ignoreExcludes:
     Alert.warning("Session/excerpt exclusion flags have been ignored. This should only be used for testing and debugging purposes.")
+
+for moduleName in moduleList:
+    try:
+        modules[moduleName].CleanUp()
+    except AttributeError: # Do not require all modules to have a CleanUp function
+        pass
 
 errorCountList = []
 for error in [Alert.error, Alert.warning, Alert.caution, Alert.notice]:

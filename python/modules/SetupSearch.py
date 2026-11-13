@@ -180,7 +180,7 @@ def KeyTopicBlobs() -> Iterator[dict]:
                 Enclose(Blobify([topic["topic"]]),"^"),
                 Enclose(Blobify([topic["pali"]]),"<>")
                 ])],
-            "html": Build.HtmlIcon("Key.png") + " " + Build.HtmlKeyTopicLink(topic["code"],count=True)
+            "html": Html.Icon("Key.png") + " " + Build.HtmlKeyTopicLink(topic["code"],count=True)
         }
 
 def SubtopicBlob(subtopic:str) -> str:
@@ -210,12 +210,12 @@ def SubtopicBlobs() -> Iterator[dict]:
                 blob += Enclose([RawBlobify(s["displayAs"])],"^")
             yield {
                 "blobs": [blob],
-                "html": Build.HtmlIcon("tag") + " " + Build.TagDescription(gDatabase["tag"][s["tag"]],listAs=s["displayAs"])
+                "html": Html.Icon("tag") + " " + Build.TagDescription(gDatabase["tag"][s["tag"]],listAs=s["displayAs"])
             }
             continue
 
         htmlParts = [
-            Build.HtmlIcon("Cluster.png"),
+            Html.Icon("Cluster.png"),
             Build.HtmlSubtopicLink(subtopic),
             f"({s['excerptCount']})"
         ]
@@ -249,7 +249,7 @@ def TagBlob(tagName:str) -> str:
 def TagBlobEntry(tagName:str) -> dict:
     return {
         "blobs": [TagBlob(tagName)],
-        "html": Build.HtmlIcon("tag") + " " + Build.TagDescription(gDatabase["tag"][tagName],fullTag=True)
+        "html": Html.Icon("tag") + " " + Build.TagDescription(gDatabase["tag"][tagName],fullTag=True)
     }
 
 def TagBlobs() -> Iterator[dict]:
@@ -274,7 +274,7 @@ def TeacherBlobs() -> Iterator[dict]:
     for name,teacher in alphabetizedTeachers:
         yield {
             "blobs": [Enclose(Blobify(AllNames([teacher["teacher"]])),"{}")],
-            "html": Build.HtmlIcon("user") + " " + re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
+            "html": Html.Icon("user") + " " + re.sub("(^<p>|</p>$)","",Build.TeacherDescription(teacher,name)).strip()
                 # Remove the paragraph markers added by TeacherDescription
         }
 
@@ -322,9 +322,9 @@ def EventBlobs() -> Iterator[dict]:
         if eventSection:
             dateRange = f"Sessions {firstSession} – {eventSection['lastSession']}"
             titleLink = Html.Tag("a",{"href":Database.EventLink(eventCode,firstSession)})(f"{dateRange}: {eventSection['title']}")
-            lines = [f"{Build.HtmlIcon("calendar")} {event['title']}, {titleLink} {tagString}"]
+            lines = [f"{Html.Icon("calendar")} {event['title']}, {titleLink} {tagString}"]
         else:
-            lines = [f"{Build.HtmlIcon("calendar")} {Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}"]
+            lines = [f"{Html.Icon("calendar")} {Database.ItemCitation(event)}{': ' + event['subtitle'] if event['subtitle'] else ''} {tagString}"]
         lines.append(Build.ItemList(([gDatabase["teacher"][t]["attributionName"] for t in listedTeachers]),lastJoinStr = " and "))
 
         yield {
@@ -356,7 +356,7 @@ def SessionBlobs() -> Iterator[dict]:
         title = Html.Tag("a",{"href":Database.EventLink(session["event"],session["sessionNumber"])})(title)
 
         lines = [
-            Build.HtmlIcon("Cushion-black.png") + f" {title}{teacherList} {tagString}",
+            Html.Icon("Cushion-black.png") + f" {title}{teacherList} {tagString}",
         ]
 
         yield {
@@ -400,7 +400,7 @@ def TextBlobs() -> Iterator[dict]:
         htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^")],
-            "html": Build.HtmlIcon("DhammaWheel.png") + " " + htmlLink
+            "html": Html.Icon("DhammaWheel.png") + " " + htmlLink
         }
 
 def BookBlobs() -> Iterator[dict]:
@@ -430,7 +430,7 @@ def BookBlobs() -> Iterator[dict]:
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^") + 
                       Enclose(Blobify(AllNames(book["author"])),"{}")],
-            "html": Build.HtmlIcon("book-open") + " " + htmlLink
+            "html": Html.Icon("book-open") + " " + htmlLink
         }
 
 def AuthorBlobs() -> Iterator[dict]:
@@ -450,7 +450,7 @@ def AuthorBlobs() -> Iterator[dict]:
         htmlLink = Html.Tag("a",{"href":BuildReferences.ReferenceLink("author",author)})(name)
         yield {
             "blobs": [Enclose(Blobify(AllNames([author])),"{}")],
-            "html": Build.HtmlIcon("user") + " " + htmlLink + f" ({bookCount[author]})"
+            "html": Html.Icon("user") + " " + htmlLink + f" ({bookCount[author]})"
         }
 
 def AddSearch(searchList: dict[str,dict],code: str,name: str,blobsAndHtml: Iterator[dict]) -> None:
@@ -492,10 +492,12 @@ def AddArguments(parser) -> None:
 
 def ParseArguments() -> None:
     pass
-    
 
 def Initialize() -> None:
-    pass
+    Html.gIconCacheFile = Utils.PosixJoin(gOptions.pagesDir,"assets","IconCache.json")
+
+def CleanUp() -> None:
+    Html.WriteIconCache()
 
 gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
@@ -516,6 +518,8 @@ def main() -> None:
     AddSearch(optimizedDB["searches"],"x","excerpt",OptimizedExcerpts())
     optimizedDB["searches"]["x"]["sessionHeader"] = SessionHeader()
     optimizedDB["searches"]["x"]["commonWordBlob"] = CommonWordBlob()
+
+    optimizedDB["icons"] = Html.IconCache()
 
     if gOptions.debug:        
         Alert.debug("Removed these chars:","".join(sorted(gInputChars - gOutputChars)))

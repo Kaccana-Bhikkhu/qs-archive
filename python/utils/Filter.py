@@ -7,6 +7,7 @@ from collections import ChainMap
 from dataclasses import dataclass
 from typing import Any, Tuple, NamedTuple
 from datetime import timedelta
+from enum import Enum
 import copy
 import re, itertools
 import urllib.parse
@@ -56,6 +57,11 @@ def AllSingularItems(excerpt: dict) -> Iterator[dict]:
         yield from excerpt["annotations"]
     else:
         yield excerpt
+
+class QueryType:
+    READABLE = 0
+    REGEXP = 1
+    OPTIMIZED_REGEXP = 2
 
 class Filter:
     """A filter for excerpts and other dicts.
@@ -116,6 +122,12 @@ class Filter:
             return newExcerpt
         else:
             return excerpt
+
+    def Query(self,kind: QueryType = QueryType.READABLE) -> str:
+        """Return a search query equivalent to this filter.
+        kind indicates what form the query will take."""
+        raise NotImplementedError("Base classes must define Filter.Query")
+
 
 
 "Returns whether the dict matches our filter function."
@@ -288,6 +300,12 @@ class Event(Filter):
         else:
             return self.negate
 
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        if len(self.passEvents) == 1:
+            return f"@{next(iter(self.passEvents))}"
+        else:
+            raise NotImplementedError("Filter.Event: Multi-event queries are not implemented.")
+
 class Flags(Filter):
     """A filter that passes items which contain any of a specified list of flags.
     Does not match flags in annotations."""
@@ -435,12 +453,12 @@ def EncodeSearchQuery(query: str) -> str:
 
 @dataclass
 class SearchQuery():
-    """Information about a search query. Returned by Filter.QueryGroup()."""
+    """Information about a search query. Returned by Filter.Query()."""
     query:str = ""
     searchType:str = "x"
     strictSearch:bool = False
-    featuredFirst:bool = True
-    relevantFirst:bool = True
+    featuredFirst:bool = False
+    relevantFirst:bool = False
     filters:list[QueryChip] = ()
     filtersStrict:bool = False
 

@@ -1,4 +1,4 @@
-import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase} from './frame.js';
+import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase, getDatabase} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
 
 const TEXT_DELIMITERS = "][{}<>^";
@@ -1287,7 +1287,8 @@ function loadFilters(params) {
     // Update the filters bar and return the combined filter query.
 
     let queries = parseFilters(params);
-    let chips = queries.map((q,n) => `<span><span id="filter-query${n+1}"></span> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
+    let iconDB = gSearchDatabase.icons;
+    let chips = queries.map((q,n) => `<span>${iconDB[q.icon]} <span id="filter-query${n+1}"></span> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
     
     let filterBar = document.querySelector("div.search-filters");
     if (filterBar) {

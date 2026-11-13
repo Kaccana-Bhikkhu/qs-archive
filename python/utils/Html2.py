@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import NamedTuple, TypeVar, Union, Type, Literal
+from functools import lru_cache
 import pyratemp
 from airium import Airium
 import itertools
@@ -10,6 +11,7 @@ from pathlib import Path
 from collections.abc import Iterator, Generator, Iterable, Callable
 from typing import List
 import copy
+import json
 import Utils
 import re
 from contextlib import contextmanager
@@ -253,6 +255,13 @@ For each page associated with the menu it then yields one of the following:
     PageDesc: The description of the page after the menu, which will be merged with the base page and menu.
 """
 
+@lru_cache(maxsize=None)
+def CachedTemplate(templateFile: str) -> pyratemp.Template:
+    with open(templateFile,encoding='utf-8') as file:
+        temp = file.read()
+
+    return pyratemp.Template(temp)
+
 class PageDesc(Renderable):
     """A PageDesc object is used to gradually build a complete description of the content of a page.
     When complete, the object will be passed to a pyratemp template to generate a page and write it to disk."""
@@ -374,10 +383,7 @@ class PageDesc(Renderable):
 
     def RenderWithTemplate(self,templateFile: str) -> str:
         """Render the page by passing it to a pyratemp template."""
-        with open(templateFile,encoding='utf-8') as file:
-            temp = file.read()
-
-        pageHtml = pyratemp.Template(temp)(page = self,RemoveHtml = Utils.RemoveHtmlTags)
+        pageHtml = CachedTemplate(templateFile)(page = self,RemoveHtml = Utils.RemoveHtmlTags)
         
         directoryDepth = len(Path(self.info.file).parents) - 1
         # All relative file paths in the template, menus, and sections are written as if the page is at directory depth 1.
@@ -664,4 +670,60 @@ def BoldfaceMatches(html: str,searchRegex: str) -> str:
             return re.sub(searchRegex,r"<b>\g<0></b>",text,flags=re.IGNORECASE)
 
     return re.sub(r"<b>[^>]*</b>|<[^>]*>|[^<>]*",BoldText,html)
+
+# A global, disk-backed icon cache
+gIconCache:dict[str,str] = {}
+gIconCacheFile = ""
+
+def IconCache(fromDiskOnly:bool = False) -> dict[str,str]:
+    """Return the current icon cache merged with the icon cache on disk."""
+    global gIconCache
+    try:
+        jsonData = Utils.ReadFile(gIconCacheFile)
+        diskCache = json.loads(jsonData)
+    except Exception as err:
+        print(err,"when reading",gIconCacheFile,". Ignoring any icons cached to disk.")
+        diskCache = {}
+    
+    if fromDiskOnly:
+        return diskCache
+    else:
+        gIconCache = diskCache | gIconCache
+        return gIconCache
+    
+
+def WriteIconCache(overwrite:bool = False) -> None:
+    """Write the icon cache to disk."""
+    if not gIconCacheFile:
+        return
+    
+    if not overwrite:
+        oldCache = copy.copy(gIconCache)
+        newCache = IconCache(fromDiskOnly=True)
+        if oldCache == newCache:
+            return
+        
+    with open(gIconCacheFile, 'w', encoding='utf-8') as file:
+        json.dump(gIconCache, file, ensure_ascii=False, indent=2)
+
+
+def Icon(iconName:str,iconClass:str = "",directoryDepth:int = 1) -> str:
+    """Return html code for an icon. Add function results to gIconCache.
+    These icon names can then take the place of html code in (potentially unsafe) URLs"""
+    if not iconName:
+        return ""
+    if "<" in iconName: # Return raw html unchanged, but do not cache the results
+        return iconName
+    elif iconName.lower().split(".")[-1] in ("png","svg","jpg","jpeg"):
+        gIconCache[iconName] =  f'''<img src="../images/icons/{iconName}">'''
+        return f'''<img src="{'../'*directoryDepth}images/icons/{iconName}"{f' class="{iconClass}"' if iconClass else ""}>'''
+    elif iconName.startswith("fa-"):
+        gIconCache[iconName] = f'<i class="fa {iconName}"></i>'
+        return gIconCache[iconName]
+    else:
+        attributes = {"data-lucide":iconName}
+        if iconClass:
+            attributes["class"] = iconClass
+        gIconCache[iconName] = Tag("i",attributes)("")
+        return gIconCache[iconName]
     

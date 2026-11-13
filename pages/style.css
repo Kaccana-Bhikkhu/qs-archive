@@ -1229,6 +1229,10 @@ span.search-filter-list > span {
 	white-space: nowrap;
 }
 
+span.search-filter-list svg.lucide {
+	vertical-align: middle;
+}
+
 button#show-code-button {
 	padding: 0 2px;
 	margin: 2px 0 2px 0;
