@@ -3,7 +3,7 @@
 
 import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} from './frame.js';
 import './autoComplete.js';
-import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery} from './search.js';
+import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery,addFilter,queryFromParams} from './search.js';
 
 const DEBUG = true;
 const PEEK_FUTURE = false;
@@ -343,25 +343,16 @@ function dropdownMenuClick(clickedItem) {
             dropdownMenu.classList.remove('menu-open');
     });
 
-    // The same for the floating search bar
-    let searchBar = document.querySelector('.floating-search');
+    // The same for the floating search window
+    let searchWindow = document.querySelector('.floating-search');
     if (clickedItem === document.getElementById('nav-search-icon')) {
-        searchBar.classList.toggle('active');
+        searchWindow.classList.toggle('active');
     } else
-        searchBar.classList.remove('active');
-    if (searchBar.classList.contains('active')) {
-        let searchBar = document.getElementById('floating-search-input');
-        searchBar.focus();
-        searchBar.value = gQuery;
-        loadSearchDatabase(); // load the search database in preparation for displaying how many excerpts we've found
-        if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
-            setTimeout(function() {
-                gAutoComplete.start();
-                countFoundExcerpts();
-            },200);
+        searchWindow.classList.remove('active');
+    if (searchWindow.classList.contains('active')) {
+        showFloatingSearch();
     } else {
-        document.getElementById('floating-search-input').blur();
-        displayExcerptCount(0);
+        closeFloatingSearch();
     }
     
     // and the Abhayagiri nav menu
@@ -409,8 +400,6 @@ function setupNavMenuTriggers() {
 
     // Clicking the search button toggles the floating search bar
     document.getElementById('nav-search-icon').addEventListener('click', function() {
-        if (!gAutoComplete)
-            setupAutoComplete();
         dropdownMenuClick(this);
     });
     // Handle clicking the search button
@@ -458,16 +447,67 @@ function setupNavMenuTriggers() {
     });
 }
 
-let gAutoCompleteDatabase = {};
-let gQuery = "";
-let gAutoComplete = null;
+// Global variables used by the auto complete system
+let gAutoCompleteDatabase = {}; // The database loaded 
+let gQuery = "";                // The query corresponding to the text currently contained in the floating search bar
+let gSearchWithinQuery = null;  // The params query we are searching within, corresponding either to the current search page query or
+                                // the query corresponding to the current excerpt page. When non-null, clicking an autocomplete item
+                                // will open the advanced search page with that item's query as an additional filter.
+                                // When null, clicking an autocomplete item jumps to the corresponding html page.
+let gSearchWithinExcerpts = []; // The excerpts found by gSearchWithinQuery (all excerpts if it's null)
+let gAutoComplete = null;       // The autoComplete.js object, initialized just below
+
+export function showFloatingSearch(query = null,searchWithin = null) {
+    // Show the floating search window.
+    // query: Display this as the initial query; if null, keep what the user already typed
+    // searchWithin: see gSearchWithinQuery for the meaning of this parameter
+    // The same for the floating search window
+    
+    let searchWindow = document.querySelector('.floating-search');
+    searchWindow.classList.add('active');
+    
+    let searchBar = document.getElementById('floating-search-input');
+    searchBar.focus();
+    if (query === null)
+        searchBar.value = gQuery;
+    else
+        searchBar.value = query;
+    gSearchWithinQuery = searchWithin;
+
+    loadSearchDatabase(); // load the search database in preparation for displaying how many excerpts we've found
+    if (!gAutoComplete)
+        setupAutoComplete();
+
+    if (searchWithin) {
+        searchBar.placeholder = "Narrow this search...";
+        let searchGroups = new SearchQuery(queryFromParams(searchWithin,false,true),searchWithin.has("strict"));
+        gSearchers["x"].search(searchGroups);
+        gSearchWithinExcerpts = gSearchers["x"].foundItems;
+    } else {
+        searchBar.placeholder = "Search the teachings...";
+        gSearchWithinExcerpts = gSearchers["x"].items;
+    }
+        if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
+        setTimeout(function() {
+            gAutoComplete.start();
+            countFoundExcerpts();
+        },200);
+}
+
+export function closeFloatingSearch() {
+    // Close the floating search window.
+    let searchWindow = document.querySelector('.floating-search');
+    searchWindow.classList.remove('active');
+    document.getElementById('floating-search-input').blur();
+    displayExcerptCount(0);
+}
 
 function setupAutoComplete() {
     // Code to configure floating menu autocomplete functionality
     // See https://tarekraafat.github.io/autoComplete.js/#/usage for details
     gAutoComplete = new autoComplete({
         selector: "#floating-search-input",
-        placeHolder: "Search the teachings...",
+        //placeHolder: "Search the teachings...",
         diacritics: true, // Don't be picky about diacritics
         data: {
             src: async () => {
@@ -484,14 +524,18 @@ function setupAutoComplete() {
             filter: (results) => {
                 // Filter entries that link to the same file
                 let links = new Set();
-                return results.filter((item) => {
+                let filtered = results.filter((item) => {
                     if (item.key === "number" && item.value.number !== gQuery)
                         return false; // Number search must match exactly
+                    if (gSearchWithinQuery !== null && !item.value.chip)
+                        return false; // Page-only items should not be displayed when searching within a query
                     if (links.has(item.value.link))
                         return false; // Remove items that link to identical pages
                     links.add(item.value.link);
                     return true;
                 });
+                debugLog(filtered.length,"items in the menu.");
+                return filtered;
             },
         },
         submit: true,
@@ -534,7 +578,12 @@ function setupAutoComplete() {
                     inputBox.blur();
                     inputBox.value = "";
                     gQuery = "";
-                    openLocalPage(selection.link)
+                    if (gSearchWithinQuery) {
+                        addFilter(gSearchWithinQuery,selection.chip);
+                        openLocalPage("search/Advanced-search.html",String(gSearchWithinQuery));
+                        gSearchWithinQuery = null;
+                    } else
+                        openLocalPage(selection.link);
                 },
             }
         },
@@ -601,7 +650,7 @@ function countFoundExcerpts() {
     }
     try {
         let searchGroups = new SearchQuery(query);
-        gSearchers["x"].search(searchGroups);
+        gSearchers["x"].search(searchGroups,gSearchWithinExcerpts);
         displayExcerptCount(gSearchers["x"].foundItems.length);
     } catch (err) {
         displayExcerptCount(0);

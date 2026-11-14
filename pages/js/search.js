@@ -1,5 +1,6 @@
 import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase, getDatabase} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
+import { showFloatingSearch } from './homepage.js'
 
 const TEXT_DELIMITERS = "][{}<>^";
 const METADATA_DELIMITERS = "#&@";
@@ -91,6 +92,10 @@ export async function loadSearchPage() {
 
     document.getElementById("show-code-button")?.addEventListener("click",event => {
         moveFiltersToSearch();
+        event.preventDefault();
+    });
+    document.getElementById("add-filter-button")?.addEventListener("click",event => {
+        showFloatingSearch("",frameSearch()); // Search within the current list of found excerpts
         event.preventDefault();
     });
 
@@ -519,6 +524,9 @@ function clearSearchResults(message) {
         messageFrame.style.display = "block";
     } else
         messageFrame.style.display = "none";
+    try {
+        lucide.createIcons(lucide.icons);
+    } catch (err) { }
 }
 
 function displaySearchResults(message,searchResults) {
@@ -591,10 +599,12 @@ class Searcher {
         this.items = database.searches[this.code].items;
     }
 
-    search(searchQuery) {
+    search(searchQuery,items = null) {
         debugLog(this.name,"search.");
-        this.query = searchQuery
-        this.foundItems = searchQuery.filterItems(this.items);
+        this.query = searchQuery;
+        if (!items)
+            items = this.items;
+        this.foundItems = searchQuery.filterItems(items);
         if (this.subitemFilter) {
             let prevMainCode = "";
             this.foundItems = this.foundItems.filter(item => {
@@ -1032,9 +1042,9 @@ export class ExcerptSearcher extends PagedSearcher {
         }
     }
 
-    search(searchQuery) {
+    search(searchQuery,items = null) {
         // Sort the results after searching
-        super.search(searchQuery);
+        super.search(searchQuery,items);
         let params = frameSearch();
         if (!(params.has("featured") || params.has("relevant")))
             return;
@@ -1269,6 +1279,16 @@ function removeFilter(clickEvent) {
     searchFromURL();
 }
 
+export function addFilter(params,newFilterStr) {
+    // Add newFilter to the existing params object, modifying it in place.
+
+    let newFilterNumber = 1;
+    while (params.get(`filter${newFilterNumber}`)) {
+        newFilterNumber += 1;
+    }
+    params.set(`filter${newFilterNumber}`,newFilterStr);
+}
+
 function parseFilters(params) {
     // Parse search filters from params. Returns a list of objects.
 
@@ -1282,16 +1302,16 @@ function parseFilters(params) {
     return chips;
 }
 
-function loadFilters(params) {
-    // Read filters from params.
-    // Update the filters bar and return the combined filter query.
+function loadFilters(params,update=false) {
+    // Read filters from params and return the combined filter query.
+    // Optionally update the filters bar. 
 
     let queries = parseFilters(params);
-    let iconDB = gSearchDatabase.icons;
-    let chips = queries.map((q,n) => `<span>${iconDB[q.icon]} <span id="filter-query${n+1}"></span> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
     
     let filterBar = document.querySelector("div.search-filters");
-    if (filterBar) {
+    if (filterBar && update) {
+        let iconDB = gSearchDatabase.icons;
+        let chips = queries.map((q,n) => `<span>${iconDB[q.icon]} <span id="filter-query${n+1}"></span> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></span>`);
         let filterChipBar = document.querySelector("span.search-filter-list");
         filterChipBar.innerHTML = chips.join(" ");
         queries.forEach((q,n) => {
@@ -1327,6 +1347,19 @@ function moveFiltersToSearch() {
     searchFromURL();
 }
 
+export function queryFromParams(params,updateFilters = false,includeFilters = true) {
+    // Convert URLSearchParams object (usually from frameSearch) into a string query.
+
+    let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
+
+    if (includeFilters) {
+        let filter = loadFilters(params,updateFilters);
+        if (filter)
+            query = `${filter} ${query}`;
+    }
+    return query;
+}
+
 function searchFromURL() {
     // Find excerpts matching the search query from the page URL.
     try {
@@ -1335,15 +1368,11 @@ function searchFromURL() {
             return;
         }
         let params = frameSearch();
-        let query = params.has("q") ? decodeSearchQuery(decodeURIComponent(params.get("q"))) : "";
+        let query = queryFromParams(params,true,true);
         let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
 
         debugLog("Called searchFromURL. Query:",query);
-        frame.querySelector('#search-text').value = query;
-
-        let filter = loadFilters(params);
-        if (filter)
-            query = `${filter} ${query}`
+        frame.querySelector('#search-text').value = queryFromParams(params,false,false);
 
         if (!query.trim()) {
             clearSearchResults();
