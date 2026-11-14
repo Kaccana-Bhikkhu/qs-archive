@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from typing import Any, Tuple, NamedTuple
 from datetime import timedelta
 from enum import Enum
+from functools import lru_cache
 import copy
 import re, itertools
 import urllib.parse
@@ -133,7 +134,7 @@ class Filter:
     def Query(self,kind: QueryType = QueryType.READABLE) -> str:
         """Return a search query equivalent to this filter.
         kind indicates what form the query will take."""
-        raise NotImplementedError("Base classes must define Filter.Query")
+        raise NotImplementedError(f"Filter.Query is not defined for {type(self)}")
 
 PassAll = Filter()
 PassNone = Filter().Not()
@@ -233,6 +234,12 @@ class MaxFTagOrder(Filter):
             return self.negate
         else:
             return not self.negate
+
+@lru_cache(maxsize=None)
+def IndirectSpeechQuery(queryType: QueryType = QueryType.READABLE) -> str:
+    "Return a query that matches indirect speech kinds."
+    indirectSpeech = Kind(k for k in gDatabase["kind"] if gDatabase["kind"][k]["indirectSpeech"])
+    return indirectSpeech.Query(queryType)
 class Teacher(Filter):
     "A filter that passes items containing particular teacher(s)."
 
@@ -249,7 +256,7 @@ class Teacher(Filter):
             for t in i.get("teachers",()):
                 if t in self.passTeachers:
                     if "kind" in i:
-                        if gDatabase["kind"][i["kind"]]["indirectSpeech"] or self.quotesOthers:
+                        if self.quotesOthers or not gDatabase["kind"][i["kind"]]["indirectSpeech"]:
                             return not self.negate
                     else:
                         return not self.negate
@@ -259,6 +266,26 @@ class Teacher(Filter):
                     return not self.negate
                 
         return self.negate
+
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        if len(self.passTeachers) > 1:
+            raise NotImplementedError("Filter.Teacher.Query() currently supports only one teacher.")
+        teacher = gDatabase["teacher"][next(iter(self.passTeachers))]["attributionName"]
+        
+        directPart = "{" + teacher + "}"
+        if not self.quotesOthers:
+            directPart = CombinedQuery([directPart,"!" + IndirectSpeechQuery(kind)],operator="~")
+        parts = [directPart]
+
+        if self.quotedBy:
+            firstTagRegexp = r"`\}/?/?\[" + teacher + r"\]`"
+                # The first tag follows the last teacher, so search for '}'.
+                # Annotations have the form {Last Teacher}//[First tag], so permit matching '//'
+            indirectPart = CombinedQuery([firstTagRegexp,IndirectSpeechQuery(kind)],operator="~")
+            parts.append(indirectPart)
+
+        return CombinedQuery(parts,negate=self.negate)    
+    
 
 class FirstTeacher(Filter):
     "A filter that passes items matching a particular first teacher."
@@ -290,7 +317,7 @@ class Kind(Filter):
         return self.negate
 
     def Query(self, kind: QueryType = QueryType.READABLE) -> str:
-        tagStrs = list(map(lambda c:f"#{c}#",sorted(self.passKinds)))
+        tagStrs = list(map(lambda c:f"#{c}#",sorted(k.replace(" ","") for k in self.passKinds)))
         return CombinedQuery(tagStrs,negate=self.negate)
     
 

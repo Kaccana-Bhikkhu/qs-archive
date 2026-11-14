@@ -185,9 +185,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "ReviewDatabase",
+                "Build",
                 "--buildOnly",
-                "clusters"
+                "teachers"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

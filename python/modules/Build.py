@@ -1949,6 +1949,7 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             return
     
     basePage.AppendContent("",newSection=True)
+    BaseSearchWithin(basePage,tagExcerpts)
     yield from map(LinkToPeoplePages,HoistFTags(MultiPageExcerptList(basePage,tagExcerpts,formatter),tagExcerpts,tags))
 
 def TagBreadCrumbs(tagInfo: dict) -> tuple[str,list[str]]:
@@ -2095,18 +2096,31 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
         basePage.AppendContent(f"Teacher: {tInfo['fullName']}",section="citationTitle")
         basePage.keywords = ["Teacher",tInfo["fullName"]]
 
-        def FilteredTeacherMenuItem(excerpts: Iterable[dict],filter: Filter.Filter,menuTitle: str,fileExt:str = "") -> Html.PageDescriptorMenuItem:
-            if not fileExt:
+        def FilteredTeacherMenuItem(excerpts: list[dict],filter: Filter.Filter,menuTitle: str,fileExt:str = "") -> Html.PageDescriptorMenuItem:
+            subsearchExt = " – " + menuTitle
+            if menuTitle == "All excerpts":
+                fileExt = ""
+                subsearchExt = ""
+            elif not fileExt:
                 fileExt = Utils.Singular(menuTitle).lower()
-            
-            return FilteredExcerptsMenuItem(excerpts=excerpts,filter=filter,formatter=formatter,mainPageInfo=pageInfo,menuTitle=menuTitle,fileExt=fileExt,pageAugmentor=AddSearchCategory(menuTitle))
+                
+            def AddSearchWithin(page: Html.PageDesc,excerpts: list[dict]) -> None:
+                "Add a search within link to a filtered teacher page."
+    
+                page.AppendContent(SearchWithin(f"{page.info.title}{subsearchExt}",filter))
+                if len(excerpts) <= gOptions.excerptsPerPage:
+                    page.AppendContent("<br><br>")
+                RegisterSearchWithin(page)
+                if fileExt:
+                    AddSearchCategory(menuTitle)(page,excerpts)
+
+            return FilteredExcerptsMenuItem(excerpts=excerpts,filter=filter,formatter=formatter,mainPageInfo=pageInfo,menuTitle=menuTitle,fileExt=fileExt,pageAugmentor=AddSearchWithin)
 
 
         if len(relevantExcerpts) >= gOptions.minSubsearchExcerpts:
-
             filterMenu = [
-                FilteredExcerptsMenuItem(relevantExcerpts,Filter.PassAll,formatter,pageInfo,"All excerpts"),
-                FilteredTeacherMenuItem(relevantExcerpts,Filter.FTag(Filter.All),"Featured"),
+                FilteredTeacherMenuItem(relevantExcerpts,Filter.Teacher(t),"All excerpts"),
+                FilteredTeacherMenuItem(relevantExcerpts,Filter.And(Filter.Teacher(t),Filter.FTag(Filter.All)),"Featured"),
                 FilteredTeacherMenuItem(relevantExcerpts,Filter.SingleItemMatch(Filter.Teacher(t),Filter.Category("Questions")),"Questions"),
                 FilteredTeacherMenuItem(relevantExcerpts,Filter.SingleItemMatch(Filter.Teacher(t),Filter.Category("Stories")),"Stories"),
                 FilteredTeacherMenuItem(relevantExcerpts,Filter.SingleItemMatch(Filter.Teacher(t),Filter.Kind("Quote")),"Direct quotes","d-quote"),
@@ -2124,6 +2138,10 @@ def TeacherPages(teacherPageDir: str) -> Html.PageDescriptorMenuItem:
                 pageIterator = Utils.SingleItemIterator(pageIterator,0)
             yield from map(LinkToPeoplePages,pageIterator)
         else:
+            basePage.AppendContent(SearchWithin(f"{basePage.info.title}",Filter.Teacher(t)))
+            if len(relevantExcerpts) <= gOptions.excerptsPerPage:
+                basePage.AppendContent("<br><br>")
+            RegisterSearchWithin(basePage)
             yield from map(LinkToPeoplePages,MultiPageExcerptList(basePage,relevantExcerpts,formatter))
 
 def TeacherDescription(teacher: dict,nameStr: str = "") -> str:
