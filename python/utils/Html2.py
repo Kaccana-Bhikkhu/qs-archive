@@ -696,12 +696,16 @@ def WriteIconCache(overwrite:bool = False) -> None:
     """Write the icon cache to disk."""
     if not gIconCacheFile:
         return
-    
+
+    global gIconCache
     if not overwrite:
-        oldCache = copy.copy(gIconCache)
-        newCache = IconCache(fromDiskOnly=True)
-        if oldCache == newCache:
+        oldCache = IconCache(fromDiskOnly=True)
+        if oldCache == gIconCache:
+            print("No change to the icon cache. It still has",len(gIconCache),"icons.")
             return
+        else:
+            gIconCache = oldCache | gIconCache
+            print("Icon cache changed. Old:",len(oldCache),"icons. New:",len(gIconCache),"icons.")
         
     with open(gIconCacheFile, 'w', encoding='utf-8') as file:
         json.dump(gIconCache, file, ensure_ascii=False, indent=2)

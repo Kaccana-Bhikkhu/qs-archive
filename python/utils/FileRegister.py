@@ -220,6 +220,8 @@ class HashWriter(FileRegister):
     disk only if the md5 hash has changed."""
     defaultMode: Write              # Default writing mode
 
+    KEYS = ("_status","_modified","md5") # The reserved keys used by this class
+
     def __init__(self,basePath: str,cacheFile: str = "HashCache.json",exactDates = False,defaultMode = Write.DESTINATION_CHANGED):
         super().__init__(basePath,cacheFile,exactDates)
         self.defaultMode = defaultMode
@@ -353,3 +355,16 @@ class HashWriter(FileRegister):
 
         return deleteCount
                      
+    def GetMetadata(self,fileName: str) -> dict:
+        """Returns any metadata associated with fileName."""
+        data = copy.copy(self.record[fileName])
+        for key in HashWriter.KEYS:
+            data.pop(key)
+        return data
+
+    def SetMetadata(self,fileName: str,data: dict[str]) -> None:
+        """Overwrites the metadata associated with fileName; pass data = {} to delete all metadata."""
+        if fileName not in self.record:
+            raise KeyError(f"HashWriter: No such record '{fileName}'")
+        newRecord = data | {"md5":self.record[fileName]["md5"]}
+        self.Register(fileName,newRecord)

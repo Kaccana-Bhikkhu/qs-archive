@@ -57,10 +57,13 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     
     # 1. Replace SEARCH_WITHIN_LINK (if found) with a link to the advanced search page
 
+    pageChipQuery = ""
     def SearchWithinLink(match: re.Match[str]) -> str:
         "Add extra details to this page's search within link."
+        nonlocal pageChipQuery
         icon = page.section.get("titleIcon","")
         chip = Filter.QueryChip(name = match[1],query = match[2],icon=icon)
+        pageChipQuery = str(chip)
         query = Filter.SearchQuery(filters = [chip])
         return match[0].replace("SEARCH_WITHIN_LINK",query.SearchPageLink(),count = 1) + " " + Html.Icon(icon)
 
@@ -94,6 +97,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
         template = Utils.AppendToFilename(template,"_print")
     pageHtml = page.RenderWithTemplate(template)
     writer.WriteTextFile(page.info.file,pageHtml)
+    writer.SetMetadata(page.info.file,{"searchChip":pageChipQuery} if pageChipQuery else {})
 
 
 def DirectoriesToDeleteFrom() -> set[str]:
@@ -2383,6 +2387,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
                 a("Original recordings available on")
                 with a.a(href = eventInfo["website"],target="_blank",Class="external-link"):
                     a(urllib.parse.urlsplit(eventInfo["website"]).netloc)
+                a.br()
                 a.br()
 
             a(SearchWithin(eventInfo["title"],Filter.Event(eventCode)))

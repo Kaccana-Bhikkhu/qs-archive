@@ -1,327 +1,388 @@
 {
   "homepage.html": {
     "md5": "f58343c78c246f2ba1f1a6ac2443d6f5",
-    "_modified": "2026-11-11 12:45:06.461860"
+    "_modified": "2026-11-14 16:53:57.179735"
   },
   "indexes/KeyTopics.html": {
     "md5": "bf7bab62befc465e47a3aef2c6615666",
-    "_modified": "2026-11-14 07:56:41.764328"
+    "_modified": "2026-11-14 16:53:57.480615"
   },
   "indexes/KeyTopicDetail.html": {
     "md5": "fe4cf5ccd7dd119070407875fb79db38",
-    "_modified": "2026-11-14 13:24:09.185419"
+    "_modified": "2026-11-14 16:53:57.598228"
   },
   "indexes/KeyTopicDetail_print.html": {
     "md5": "ff2896391e763d751559244095ab88ad",
-    "_modified": "2026-11-14 13:24:09.188850"
+    "_modified": "2026-11-14 16:53:57.600776"
   },
   "indexes/KeyTopicMemos_print.html": {
     "md5": "bc608c2700f428f9cc98999389e13e87",
-    "_modified": "2026-11-14 13:24:09.190346"
+    "_modified": "2026-11-14 16:53:57.601893"
   },
   "indexes/Tags_print.html": {
     "md5": "c9b8de9ad194b6336311901154d40b2d",
-    "_modified": "2026-11-14 13:24:09.294689"
+    "_modified": "2026-11-14 16:53:57.704130"
   },
   "drilldown/root.html": {
     "md5": "730100e61f3f4a47dbcef12d05efbe8f",
-    "_modified": "2026-11-14 13:24:09.385705"
+    "_modified": "2026-11-14 16:53:57.797445"
   },
   "indexes/NumericalTags.html": {
     "md5": "c1fa6b4b816d4eaf5d739754b31c0105",
-    "_modified": "2026-11-14 13:24:09.402121"
+    "_modified": "2026-11-14 16:53:57.812425"
   },
   "indexes/SortedTags.html": {
     "md5": "26955fcae6e82e3dbecea1e4fea8f91f",
-    "_modified": "2026-11-14 13:24:09.450657"
+    "_modified": "2026-11-14 16:53:57.856890"
   },
   "indexes/SortedTags_print.html": {
     "md5": "e27689dd7e7548468739d4691526ea85",
-    "_modified": "2026-11-14 13:24:09.471950"
+    "_modified": "2026-11-14 16:53:57.876340"
   },
   "indexes/AlphabeticalTags_print.html": {
     "md5": "69fcc9cb74b21c8bf90f22b0329563b3",
-    "_modified": "2026-11-14 13:24:09.499721"
+    "_modified": "2026-11-14 16:53:57.898494"
   },
   "indexes/AlphabeticalTags.html": {
     "md5": "1d729cd8e6d1327077e0bb27ebd3fe45",
-    "_modified": "2026-11-14 13:24:09.549239"
+    "_modified": "2026-11-14 16:53:57.948038"
   },
   "indexes/EnglishTags.html": {
     "md5": "6150c7878ddbdcd7cdd2affb0bc84907",
-    "_modified": "2026-11-14 13:24:09.552070"
+    "_modified": "2026-11-14 16:53:57.949865"
   },
   "indexes/PaliTags.html": {
     "md5": "7c79a5bdf9f7230c728d499ea635db9c",
-    "_modified": "2026-11-14 13:24:09.554719"
+    "_modified": "2026-11-14 16:53:57.951455"
   },
   "indexes/OtherTags.html": {
     "md5": "d03d2f618727302dd90ff3ff49d3bda5",
-    "_modified": "2026-11-13 12:10:47.197334"
+    "_modified": "2026-11-14 16:53:57.952664"
   },
   "indexes/ProperTags.html": {
     "md5": "9c68cc3e7f3c2e3335be955a92b87f04",
-    "_modified": "2026-11-13 12:10:47.200258"
+    "_modified": "2026-11-14 16:53:57.954134"
   },
   "indexes/EventsBySeries.html": {
     "md5": "49cb0a33d33faf021c8a15b750dbfd87",
-    "_modified": "2026-11-14 13:24:09.746611"
+    "_modified": "2026-11-14 16:53:58.190725"
   },
   "indexes/EventsBySubject.html": {
     "md5": "40bb63cf3a74d1205a047ef3915e19d1",
-    "_modified": "2026-11-12 17:43:10.559876"
+    "_modified": "2026-11-14 16:53:58.192053"
   },
   "indexes/EventsChronological.html": {
     "md5": "f50afd8ae02c0e36a30bfefafa1d590b",
-    "_modified": "2026-11-14 13:24:09.747909"
+    "_modified": "2026-11-14 16:53:58.192730"
   },
   "indexes/EventDetails.html": {
     "md5": "d9945e164ef4f4e2426d23f0e9982673",
-    "_modified": "2026-11-14 13:24:09.749086"
+    "_modified": "2026-11-14 16:53:58.193728"
   },
   "events/Chah2001.html": {
-    "md5": "f6ba751e044f272c5e8ded6734fe05ba",
-    "_modified": "2026-11-14 00:56:27.979082"
+    "searchChip": "calendar_Remembering Ajahn Chah Weekend__@Chah2001",
+    "md5": "c445142699113d012c7d0b23c5be9fed",
+    "_modified": "2026-11-14 16:53:58.196208"
   },
   "events/WR2005-1.html": {
-    "md5": "d3a12941334308f24d79a5f7b291a86c",
-    "_modified": "2026-11-14 08:23:44.445181"
+    "searchChip": "calendar_Ānāpānasati: Mindfulness of In-and-Out Breathing__@WR2005-1",
+    "md5": "9db9b65d79b8638b0da2c0beec63920d",
+    "_modified": "2026-11-14 16:53:58.255261"
   },
   "events/Metta2008.html": {
-    "md5": "943192f9efef61fae528d8f35a588a6e",
-    "_modified": "2026-11-14 00:56:28.087333"
+    "searchChip": "calendar_Metta Retreat__@Metta2008",
+    "md5": "eda15ae3c16b3f0c986f8b08ac4a279c",
+    "_modified": "2026-11-14 16:53:58.300617"
   },
   "events/SRD2010.html": {
-    "md5": "fd741f1eeda4d27864d037730026d725",
-    "_modified": "2026-11-14 00:56:28.152552"
+    "searchChip": "calendar_Recollections of Ajahn Chah__@SRD2010",
+    "md5": "c2c24bea09f259e56c0ff0e4d8438c81",
+    "_modified": "2026-11-14 16:53:58.338767"
   },
   "events/SRD2011.html": {
-    "md5": "f2aae2eebe5783820d3e8539a16916e9",
-    "_modified": "2026-11-14 00:56:28.379348"
+    "searchChip": "calendar_Tudong Stories at Spirit Rock__@SRD2011",
+    "md5": "d49d69da3efb42501ba22fdbe6b96f16",
+    "_modified": "2026-11-14 16:53:58.495493"
   },
   "events/UD2012-3.html": {
-    "md5": "a5723544fb297d9ec10dc44cb8d396f0",
-    "_modified": "2026-11-14 00:56:28.591419"
+    "searchChip": "calendar_Brightening the Mind__@UD2012-3",
+    "md5": "163b0838a43ad129806a7ccb5e2d46de",
+    "_modified": "2026-11-14 16:53:58.601473"
   },
   "events/UD2012-4.html": {
-    "md5": "a46e191968a00b9a927bcc8e61f52fbe",
-    "_modified": "2026-11-14 00:56:28.609984"
+    "searchChip": "calendar_The Gradual Training__@UD2012-4",
+    "md5": "d9c3c29878c3aca241bbeef84cb1f8e6",
+    "_modified": "2026-11-14 16:53:58.620696"
   },
   "events/UD2013-1.html": {
-    "md5": "6cc9b363b718498bfff24743e69da271",
-    "_modified": "2026-11-14 00:56:28.881347"
+    "searchChip": "calendar_Right Livelihood__@UD2013-1",
+    "md5": "6d575d9884bbb33e9a18091b2edacbb5",
+    "_modified": "2026-11-14 16:53:58.920045"
   },
   "events/SRD2013.html": {
-    "md5": "ea239b15aa2df59eae70c137c5a146bd",
-    "_modified": "2026-11-14 00:56:28.911257"
+    "searchChip": "calendar_The Whole of the Path__@SRD2013",
+    "md5": "82c8bb0a1b462b449fcf20963788eccd",
+    "_modified": "2026-11-14 16:53:58.951439"
   },
   "events/UD2013-3.html": {
-    "md5": "714e0f43c66cda876967b80d7b68f7c2",
-    "_modified": "2026-11-14 00:56:28.925092"
+    "searchChip": "calendar_Calming the Busy Mind__@UD2013-3",
+    "md5": "31ace59a4096badf83c56e77d4754d64",
+    "_modified": "2026-11-14 16:53:58.968729"
   },
   "events/TG2013.html": {
-    "md5": "1f36a5e1f14046cf1a1ca1752575dd86",
-    "_modified": "2026-11-14 00:56:29.005493"
+    "searchChip": "calendar_Abhayagiri Monastic Retreat 2013__@TG2013",
+    "md5": "c9c23f265648264b10962be2cb8b0458",
+    "_modified": "2026-11-14 16:53:59.101442"
   },
   "events/BIA2013.html": {
-    "md5": "377362fb0ac888dee5c44c2061eb1894",
-    "_modified": "2026-11-14 00:56:29.016842"
+    "searchChip": "calendar_New Year, New Life__@BIA2013",
+    "md5": "a45ff35ccaa6142401673a40c3d7f50d",
+    "_modified": "2026-11-14 16:53:59.110500"
   },
   "events/WR2014.html": {
-    "md5": "70bb9adf4bbd470aa8ae44c12d29ace7",
-    "_modified": "2026-11-14 00:56:29.318159"
+    "searchChip": "calendar_Our Roots in the Thai Forest Tradition__@WR2014",
+    "md5": "029f630e67f0e4c4acf13a5c8051a203",
+    "_modified": "2026-11-14 16:53:59.457013"
   },
   "events/UD2014-1.html": {
-    "md5": "7e01101efa426861b33b5dcd11489ab6",
-    "_modified": "2026-11-14 00:56:29.344763"
+    "searchChip": "calendar_Death and Dying__@UD2014-1",
+    "md5": "2e74c74918be5d070139b5f0cf84f564",
+    "_modified": "2026-11-14 16:53:59.486455"
   },
   "events/UD2014-2.html": {
-    "md5": "017cedc82d855070ac35ba59d4d9a562",
-    "_modified": "2026-11-14 00:56:29.368397"
+    "searchChip": "calendar_Thai Forest Tradition__@UD2014-2",
+    "md5": "d4cc2c9614ac77e88da99125670f6f2b",
+    "_modified": "2026-11-14 16:53:59.521069"
   },
   "events/UD2014-3.html": {
-    "md5": "6f96dfc7894d72fdda94e02f7c32d419",
-    "_modified": "2026-11-14 00:56:29.381984"
+    "searchChip": "calendar_Mindfulness of Breathing__@UD2014-3",
+    "md5": "aa9b8d267db288661e174b9490cdfc2e",
+    "_modified": "2026-11-14 16:53:59.540510"
   },
   "events/DRBU2014.html": {
-    "md5": "6d28f0c0ded441d381d60f2ef6d17ddb",
-    "_modified": "2026-11-14 00:56:29.398418"
+    "searchChip": "calendar_Questions and Answers with Dharma Realm Buddhist University__@DRBU2014",
+    "md5": "79042479a2b96d542f78f31f80768972",
+    "_modified": "2026-11-14 16:53:59.566891"
   },
   "events/TG2014.html": {
-    "md5": "dc2fc8ba36e933f3ce72734dd097d408",
-    "_modified": "2026-11-14 08:23:45.278096"
+    "searchChip": "calendar_2014 Thanksgiving Monastic Retreat__@TG2014",
+    "md5": "ae4a3c5d4224f2e0032ceb7d72e723aa",
+    "_modified": "2026-11-14 16:53:59.638641"
   },
   "events/WR2015.html": {
-    "md5": "01ffdd23dabcb939130c175e50773f75",
-    "_modified": "2026-11-14 00:56:29.599510"
+    "searchChip": "calendar_The Four Foundations of Mindfulness__@WR2015",
+    "md5": "ba7d4174eae14cfecef32cf84ec873a0",
+    "_modified": "2026-11-14 16:53:59.752704"
   },
   "events/UD2015-1.html": {
-    "md5": "7029cf66870074750f679f386ab3f393",
-    "_modified": "2026-11-14 00:56:29.617171"
+    "searchChip": "calendar_On Pilgrimage and Tudong__@UD2015-1",
+    "md5": "de947d570d0afc4b9de42b3ed90eee07",
+    "_modified": "2026-11-14 16:53:59.768967"
   },
   "events/UD2015-2.html": {
-    "md5": "588148011120a6cad6b32099dfcb938e",
-    "_modified": "2026-11-14 00:56:29.635828"
+    "searchChip": "calendar_The Middle Way of Not-Self__@UD2015-2",
+    "md5": "478f880b2a036062288e804f393e78f1",
+    "_modified": "2026-11-14 16:53:59.786533"
   },
   "events/SRD2015.html": {
-    "md5": "718f3d3d8dfda6968ce44f9db05d1085",
-    "_modified": "2026-11-14 00:56:29.648057"
+    "searchChip": "calendar_Desire or Aspiration__@SRD2015",
+    "md5": "f5f006925614fc740de0ec5018105ba9",
+    "_modified": "2026-11-14 16:53:59.798884"
   },
   "events/UD2015-3.html": {
-    "md5": "b0d8be017525f7a7a2e1e4667c92be65",
-    "_modified": "2026-11-14 00:56:29.661073"
+    "searchChip": "calendar_Buddhist Identity in the Modern World__@UD2015-3",
+    "md5": "c2be737c4cb5979cf6cc4bb1b4e4de95",
+    "_modified": "2026-11-14 16:53:59.811080"
   },
   "events/UD2015-4.html": {
-    "md5": "25ef6620e010485e92df031471cf5c8f",
-    "_modified": "2026-11-14 00:56:29.693156"
+    "searchChip": "calendar_Jhāna: A Practical Approach__@UD2015-4",
+    "md5": "00fbed4f87326b4399745c313d27adea",
+    "_modified": "2026-11-14 16:53:59.837831"
   },
   "events/TG2015.html": {
-    "md5": "183df4947be3a2a5d0983f06e6bdb7d1",
-    "_modified": "2026-11-14 00:56:29.769821"
+    "searchChip": "calendar_2015 Thanksgiving Monastic Retreat__@TG2015",
+    "md5": "13759e8b3d179608a092a1e6a054ca5a",
+    "_modified": "2026-11-14 16:53:59.908637"
   },
   "events/WR2016.html": {
-    "md5": "a553f6fb09c32820cb17098dd91bc63d",
-    "_modified": "2026-11-14 13:24:11.038759"
+    "searchChip": "calendar_Western Disciples of the Thai Forest Tradition__@WR2016",
+    "md5": "699c8592971e5a43d6a5644aab414388",
+    "_modified": "2026-11-14 16:54:00.051089"
   },
   "events/Anniversary2016.html": {
-    "md5": "de282fa2c4880bdfb01000e55c89d423",
-    "_modified": "2026-11-14 00:56:30.534417"
+    "searchChip": "calendar_Abhayagiri’s 20th Anniversary__@Anniversary2016",
+    "md5": "086feab6a9c2afca6f729ee0f915356f",
+    "_modified": "2026-11-14 16:54:00.090013"
   },
   "events/UD2016-2.html": {
-    "md5": "21f865e57e1ee066f61f0733b5f3a1d3",
-    "_modified": "2026-11-14 13:24:11.119963"
+    "searchChip": "calendar_Suttas You’ve Never Heard Of__@UD2016-2",
+    "md5": "41dea19c0d109f0e9ffc9b8bf8874958",
+    "_modified": "2026-11-14 16:54:00.107965"
   },
   "events/TG2016.html": {
-    "md5": "8457bfcdac5d57e177fba1a43fd5b6e9",
-    "_modified": "2026-11-14 00:56:30.914136"
+    "searchChip": "calendar_Thanksgiving Retreat 2016__@TG2016",
+    "md5": "56c2c999656ee370c5c8e3c68a61e246",
+    "_modified": "2026-11-14 16:54:00.234857"
   },
   "events/UD2017-2.html": {
-    "md5": "a72c084fa641145cc29337c694f6e8ca",
-    "_modified": "2026-11-14 00:56:31.467044"
+    "searchChip": "calendar_Two Kinds of Thought and the Removal of Distracting Thoughts__@UD2017-2",
+    "md5": "ee655674fd81600d7be2ad8e19237cde",
+    "_modified": "2026-11-14 16:54:00.279767"
   },
   "events/UD2017-3.html": {
-    "md5": "b992e3926d99b5ded6a6829217c3bbae",
-    "_modified": "2026-11-14 00:56:31.522755"
+    "searchChip": "calendar_Practice in a Global Context__@UD2017-3",
+    "md5": "bf3384abaccc66943d629fc7cd93306a",
+    "_modified": "2026-11-14 16:54:00.293016"
   },
   "events/Teen2017.html": {
-    "md5": "6c649cb4e1d0219316f178d0f65b0ce0",
-    "_modified": "2026-11-14 00:56:31.622370"
+    "searchChip": "calendar_Teen Weekend 2017__@Teen2017",
+    "md5": "0966bfc29557d9854c986c15365a710f",
+    "_modified": "2026-11-14 16:54:00.312749"
   },
   "events/UD2017-4.html": {
-    "md5": "07f6c0e35ba6bc52e43c3e4a0752d463",
-    "_modified": "2026-11-14 00:56:31.678390"
+    "searchChip": "calendar_Can We Function without Attachment?__@UD2017-4",
+    "md5": "2b00f642f458c802261afa0af2def281",
+    "_modified": "2026-11-14 16:54:00.327152"
   },
   "events/WR2018-2.html": {
-    "md5": "ebb023d4495f42fb775b002bba2423f7",
-    "_modified": "2026-11-14 00:56:31.947371"
+    "searchChip": "calendar_The Teaching and the Training__@WR2018-2",
+    "md5": "f497eea3c04d1d1f6bab5e260e2f61fd",
+    "_modified": "2026-11-14 16:54:00.376542"
   },
   "events/UD2018-1.html": {
-    "md5": "dfb2f22681f37727d45a58fc91d03a96",
-    "_modified": "2026-11-14 00:56:32.103232"
+    "searchChip": "calendar_The New Ajahn Chah Biography__@UD2018-1",
+    "md5": "02f7b3b0676588f7b66903641b0a37ef",
+    "_modified": "2026-11-14 16:54:00.398718"
   },
   "events/UD2018-2.html": {
-    "md5": "5b4862fd4133be55f84b5f8009c20664",
-    "_modified": "2026-11-14 00:56:32.365369"
+    "searchChip": "calendar_Chanting__@UD2018-2",
+    "md5": "13544749dc2d75ae2770b3ed6ef3fa2a",
+    "_modified": "2026-11-14 16:54:00.448392"
   },
   "events/Path2019.html": {
-    "md5": "47297fff91035450502119b725fb5929",
-    "_modified": "2026-11-14 00:56:32.506124"
+    "searchChip": "calendar_The Path of Practice__@Path2019",
+    "md5": "8e6025bb42ea822a02b4b7689fe4c965",
+    "_modified": "2026-11-14 16:54:00.477466"
   },
   "events/UD2019-4.html": {
-    "md5": "74461faa1633bf15d8cfeeba013d2197",
-    "_modified": "2026-11-14 00:56:32.537436"
+    "searchChip": "calendar_Love, Attachment, and Friendship__@UD2019-4",
+    "md5": "509d5142412fb0b0d95acebaca27eb4a",
+    "_modified": "2026-11-14 16:54:00.492954"
   },
   "events/UD2019-5.html": {
-    "md5": "f2569bc1a0355c0c49bc1951125fc42d",
-    "_modified": "2026-11-14 00:56:32.575809"
+    "searchChip": "calendar_Developing Skill in Reflective Meditation__@UD2019-5",
+    "md5": "7bb70df0c3b7fa8dfbca685e27c3d6f2",
+    "_modified": "2026-11-14 16:54:00.507828"
   },
   "events/Stanford2020.html": {
-    "md5": "25d5856e780f34dd29f08457e2691b1d",
-    "_modified": "2026-11-14 00:56:32.606792"
+    "searchChip": "calendar_Stanford Community Dhamma Discussion__@Stanford2020",
+    "md5": "bb4e51d8637f20222aa9f7be52d2072b",
+    "_modified": "2026-11-14 16:54:00.517163"
   },
   "events/UD2020.html": {
-    "md5": "da0ccf07dbc98006d627f804b983de66",
-    "_modified": "2026-11-14 00:56:32.625145"
+    "searchChip": "calendar_Living in a Changing Society__@UD2020",
+    "md5": "f39d9c6d8021c445a4b9197634745254",
+    "_modified": "2026-11-14 16:54:00.527429"
   },
   "events/Awaken2021.html": {
-    "md5": "954f786ebc598d033db6328b6eb3466b",
-    "_modified": "2026-11-14 00:56:32.988704"
+    "searchChip": "calendar_Awaken to the New Year Retreat__@Awaken2021",
+    "md5": "cc5d6ececc03ea25b6bd4dccc266c892",
+    "_modified": "2026-11-14 16:54:00.594508"
   },
   "events/UD2021-1.html": {
-    "md5": "dbc7f4c035daf68ec6aacdd780d846ad",
-    "_modified": "2026-11-14 00:56:33.031624"
+    "searchChip": "calendar_Honoring the Buddha: The Mahāparinibbāna Sutta__@UD2021-1",
+    "md5": "522f298e3f828d4675655c68e8723f3c",
+    "_modified": "2026-11-14 16:54:00.603289"
   },
   "events/MValley2021.html": {
-    "md5": "fbd8b6dd13909d2c4c3c1ce28ed988c8",
-    "_modified": "2026-11-14 00:56:33.062247"
+    "searchChip": "calendar_Tea Time Q&A with Ajahn Pasanno__@MValley2021",
+    "md5": "46a16312738605afa35ec7109ebf3c41",
+    "_modified": "2026-11-14 16:54:00.611803"
   },
   "events/Anniversary2021.html": {
-    "md5": "0eaa5aa96644971816685d5190be9035",
-    "_modified": "2026-11-14 00:56:33.339112"
+    "searchChip": "calendar_Abhayagiri 25th Anniversary Retreat__@Anniversary2021",
+    "md5": "684e030d98cf0638083fcd85e8d6de5e",
+    "_modified": "2026-11-14 16:54:00.701003"
   },
   "events/Kathina2021.html": {
-    "md5": "fe9fc15d97966725840abcaf4085c005",
-    "_modified": "2026-11-14 00:56:33.362365"
+    "searchChip": "calendar_Abhayagiri Kaṭhina 2021__@Kathina2021",
+    "md5": "75cb5057c3e7940a961a95fc21a59c47",
+    "_modified": "2026-11-14 16:54:00.711925"
   },
   "events/Podcast2023.html": {
-    "md5": "98cb6ef7898d07f1ec1da05774ce204f",
-    "_modified": "2026-11-14 00:56:33.540143"
+    "searchChip": "calendar_Following the Path of a Forest Monk__@Podcast2023",
+    "md5": "0f6ab227befbe7a8e88cf299d609b585",
+    "_modified": "2026-11-14 16:54:00.791079"
   },
   "events/Sudhana2023.html": {
+    "searchChip": "calendar_Q&A at Sudhana Center__@Sudhana2023",
     "md5": "f62584d5be5ab939548a863cab04a493",
-    "_modified": "2026-11-14 00:56:33.553954"
+    "_modified": "2026-11-14 16:54:00.800122"
   },
   "events/SRD2023.html": {
-    "md5": "96bead6fb64243e2ad869fafe1b0adce",
-    "_modified": "2026-11-14 00:56:33.568322"
+    "searchChip": "calendar_Happiness on the Buddhist Path__@SRD2023",
+    "md5": "e3c6b3e8a5beb406583af48e4267f866",
+    "_modified": "2026-11-14 16:54:00.809556"
   },
   "events/PSD2023.html": {
-    "md5": "88492d0496bcd7c88d4eedee69006de0",
-    "_modified": "2026-11-14 00:56:33.594348"
+    "searchChip": "calendar_Ānāpānasati Daylong at Abhayagiri__@PSD2023",
+    "md5": "ae06448166cfd0eabce83528783e281b",
+    "_modified": "2026-11-14 16:54:00.821145"
   },
   "events/Madison2023.html": {
-    "md5": "45ea91a73c699d5b71a7591268b88d2b",
-    "_modified": "2026-11-14 00:56:33.648999"
+    "searchChip": "calendar_Madison Insight Retreat 2023__@Madison2023",
+    "md5": "45096dcd2220227809a5075297b39570",
+    "_modified": "2026-11-14 16:54:00.848376"
   },
   "events/Rishikesh2023.html": {
-    "md5": "1f5cfcece2d56900b29e17ba0c4ae0ef",
-    "_modified": "2026-11-14 00:56:33.678344"
+    "searchChip": "calendar_Interreligious Retreat-Seminar on Dhamma and Non-duality__@Rishikesh2023",
+    "md5": "2f3e632e8dbf693af6be266bba7b9959",
+    "_modified": "2026-11-14 16:54:00.864520"
   },
   "events/Anniversary2024.html": {
-    "md5": "504bd4c3cc955c73c88925a5cc300446",
-    "_modified": "2026-11-14 00:56:33.710681"
+    "searchChip": "calendar_28th Anniversary Practice and Study Day__@Anniversary2024",
+    "md5": "a9983f643dc026cddf86c5ea545c40c8",
+    "_modified": "2026-11-14 16:54:00.883110"
   },
   "events/BuddhaDhamma2024.html": {
-    "md5": "d70e5633911eace08ea8874c2e579388",
-    "_modified": "2026-11-14 00:56:33.722306"
+    "searchChip": "calendar_On Nibbāna__@BuddhaDhamma2024",
+    "md5": "62936e1c0fef95020b0cb56dbe655a7e",
+    "_modified": "2026-11-14 16:54:00.890677"
   },
   "events/SRD2024.html": {
-    "md5": "9bcf37f00ba81e5c5291b120fe5fb54c",
-    "_modified": "2026-11-14 00:56:33.748480"
+    "searchChip": "calendar_Perspectives on Buddhist Practice from Ajahn Chah__@SRD2024",
+    "md5": "fd96495e743e01e12d1b39c5d78983e2",
+    "_modified": "2026-11-14 16:54:00.912697"
   },
   "events/Appamada2024.html": {
-    "md5": "6dea13febaf0add3227b3e3df20bf55a",
-    "_modified": "2026-11-14 00:56:33.754763"
+    "searchChip": "calendar_Using the Mind to Recollect__@Appamada2024",
+    "md5": "4d815740c89a6f4bd6446a4e72075d45",
+    "_modified": "2026-11-14 16:54:00.916943"
   },
   "events/Nanachat2025.html": {
-    "md5": "39f592876fe430ed2e721b5cc895c3b5",
-    "_modified": "2026-11-14 00:56:33.769379"
+    "searchChip": "calendar_Questions and Answers at Wat Pah Nanachat__@Nanachat2025",
+    "md5": "dc1abe915b1de1b02ff46f8bef4e001a",
+    "_modified": "2026-11-14 16:54:00.928665"
   },
   "events/WR2025.html": {
-    "md5": "727b98cd83d2db82be32268ce60c70cb",
-    "_modified": "2026-11-14 00:56:34.151515"
+    "searchChip": "calendar_Readings from <i>The Island</i>__@WR2025",
+    "md5": "b25276ffcbb45e192f7ca0d07eef558e",
+    "_modified": "2026-11-14 16:54:01.235337"
   },
   "events/ChahQA2025.html": {
-    "md5": "95efcdf031632e652bcc236326d57f19",
-    "_modified": "2026-11-14 00:56:34.177515"
+    "searchChip": "calendar_Questions and Answers about Ajahn Chah__@ChahQA2025",
+    "md5": "f548e491a4d8fbf299290cda37137298",
+    "_modified": "2026-11-14 16:54:01.253850"
   },
   "events/Sunday2025-1.html": {
-    "md5": "1c62ee7e170d23803b27d905361c8772",
-    "_modified": "2026-11-14 00:56:34.207770"
+    "searchChip": "calendar_What Luang Por Chah Taught__@Sunday2025-1",
+    "md5": "6e38fff7636ac94a4f5f699ba7c696a7",
+    "_modified": "2026-11-14 16:54:01.281033"
   },
   "events/Chithurst2025.html": {
-    "md5": "a89247c996f8a63f9201759773d132d9",
-    "_modified": "2026-11-14 00:56:34.231894"
+    "searchChip": "calendar_Q&A with the Chithurst Community__@Chithurst2025",
+    "md5": "dfc79c4149cb8f80a339dc96e4da703b",
+    "_modified": "2026-11-14 16:54:01.303968"
   },
   "sitemap.xml": {
     "md5": "59b5019461206560ff23075ae94296c2",
@@ -15249,7 +15310,7 @@
   },
   "search/Text-search.html": {
     "md5": "3b0d7ae9533e76cd2cccdff03fe6e3c7",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-14 17:42:34.990675"
   },
   "about/Introduction.html": {
     "md5": "afec6ac8e11c7c22c4d3bf4426cf3916",
@@ -15628,12 +15689,14 @@
     "_modified": "2026-11-07 14:14:08.000000"
   },
   "events/Sunday2025-2.html": {
-    "md5": "d79a898d94a5475e117fe9cec5869bb7",
-    "_modified": "2026-11-14 00:56:34.219786"
+    "searchChip": "calendar_Even the Sāsana Will Pass Away__@Sunday2025-2",
+    "md5": "7a80d08177496d437fc08e2f1151bf3b",
+    "_modified": "2026-11-14 16:54:01.292181"
   },
   "events/Chithurst2025-2.html": {
-    "md5": "addba1106a04b9b9a9a7e0119fd4fde3",
-    "_modified": "2026-11-14 00:56:34.249684"
+    "searchChip": "calendar_Kaṭhina Q&A with the Chithurst Community__@Chithurst2025-2",
+    "md5": "25b2419bbc29a5a2a4295d9f08b43fab",
+    "_modified": "2026-11-14 16:54:01.323783"
   },
   "tags/right-speech-quote.html": {
     "md5": "f5a0bc7d7a321e98f10356db35d6127b",
@@ -15925,7 +15988,7 @@
   },
   "indexes/DeficientTags_print.html": {
     "md5": "34eaa2a4fe68b73f67fd58033cbc7ba7",
-    "_modified": "2026-11-14 13:24:09.479519"
+    "_modified": "2026-11-14 16:53:57.880901"
   },
   "tags/relics-relevant.html": {
     "md5": "733a6c08504cf06a6c172af5af93bbe2",
@@ -15980,8 +16043,9 @@
     "_modified": "2026-11-14 00:57:47.795489"
   },
   "events/WR2013.html": {
-    "md5": "227a271f79fb79fbe57726acde4335da",
-    "_modified": "2026-11-14 13:25:54.013791"
+    "searchChip": "calendar_The Fourth Foundation of Mindfulness__@WR2013",
+    "md5": "9030940a2b16837c083bd65cd228f11d",
+    "_modified": "2026-11-14 16:53:58.881138"
   },
   "tags/unattractiveness-quote.html": {
     "md5": "4534076c8ae8080190e601660e2d422e",
@@ -16025,7 +16089,7 @@
   },
   "search/Featured.html": {
     "md5": "b2a79047c6c8fff5e466b2c7398f1656",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "_modified": "2026-11-14 17:42:34.993431"
   },
   "books/abhayagiri-chanting-book.html": {
     "md5": "801a71ab5698a3d2ef221c5afcc79b71",
@@ -16044,8 +16108,9 @@
     "_modified": "2026-11-13 08:58:16.245201"
   },
   "events/UD2017-1.html": {
-    "md5": "36cd0fb38203175f6a0540f2b53c6744",
-    "_modified": "2026-11-14 00:56:31.399528"
+    "searchChip": "calendar_Devotion and Ritual: Becoming the Buddha__@UD2017-1",
+    "md5": "987d089da5c4e52b7713832a6f715efc",
+    "_modified": "2026-11-14 16:54:00.255627"
   },
   "tags/dr-saddhatissa.html": {
     "md5": "b4f6d1263f06f2597b40f8520816e120",
@@ -17992,8 +18057,9 @@
     "_modified": "2026-11-14 15:26:42.598927"
   },
   "events/TG2010.html": {
-    "md5": "ee6a070041b9746b93e89645b15a4013",
-    "_modified": "2026-11-14 00:56:28.269603"
+    "searchChip": "calendar_Thanksgiving Retreat 2010__@TG2010",
+    "md5": "0c3cde3db0d3394bfba654bfdde76c7d",
+    "_modified": "2026-11-14 16:53:58.425200"
   },
   "clusters/right-intention-4.html": {
     "md5": "c1422f4810340caf56710d5d384a665f",
@@ -18272,12 +18338,14 @@
     "_modified": "2026-11-14 00:57:47.804388"
   },
   "events/TG2011.html": {
+    "searchChip": "calendar_Thanksgiving Retreat 2011__@TG2011",
     "md5": "f18cba12b8a9307f7c7044cad88d21d0",
-    "_modified": "2026-11-14 00:56:28.575258"
+    "_modified": "2026-11-14 16:53:58.590357"
   },
   "events/TG2012.html": {
-    "md5": "fee9d76768e2eeea3922674255eb4c66",
-    "_modified": "2026-11-14 00:56:28.675867"
+    "searchChip": "calendar_Thanksgiving Retreat 2012__@TG2012",
+    "md5": "1d479d48d4ecd0b2d009449c6decdedf",
+    "_modified": "2026-11-14 16:53:58.694364"
   },
   "clusters/sangha-text.html": {
     "md5": "db32924f822192d5573a5bf29c018d41",
@@ -19128,8 +19196,9 @@
     "_modified": "2026-11-14 15:18:21.989580"
   },
   "events/SRD2018.html": {
-    "md5": "67832e3acf4a2995507c998bd56be0e0",
-    "_modified": "2026-11-14 00:56:32.271554"
+    "searchChip": "calendar_Recollections of Ajahn Chah: 100th Birthday Anniversary Celebration__@SRD2018",
+    "md5": "97a24b8ed2ddd7faa85e4e927102c3b0",
+    "_modified": "2026-11-14 16:54:00.430116"
   },
   "tags/virtue-2.html": {
     "md5": "73a1335396d3b6e3ea270108617d3901",
@@ -19468,20 +19537,23 @@
     "_modified": "2026-11-13 08:58:15.178660"
   },
   "events/CMountain2023.html": {
-    "md5": "dcfa88ac1d4d9f9b35bc36b53046abcb",
-    "_modified": "2026-11-14 00:56:33.514740"
+    "searchChip": "calendar_Being Dhamma (with Tigers)__@CMountain2023",
+    "md5": "1f9171f107411166db8fe5cfa846ebf8",
+    "_modified": "2026-11-14 16:54:00.776725"
   },
   "tags/clear-mountain.html": {
     "md5": "015b72972af146397656aa6fa7d29b6f",
     "_modified": "2026-11-14 15:26:34.602616"
   },
   "events/SamadhiQA2026.html": {
-    "md5": "c583f862f4a7b49083103aec6b28e626",
-    "_modified": "2026-11-14 00:56:34.255701"
+    "searchChip": "calendar_Samādhi, Memory & Renunciation Q&A__@SamadhiQA2026",
+    "md5": "6aaf3f926af0c8b73512e7d83e271ec6",
+    "_modified": "2026-11-14 16:54:01.331195"
   },
   "events/UD2016-3.html": {
-    "md5": "119d0d6476f10a16ef47de893eb4a7d9",
-    "_modified": "2026-11-14 00:56:30.712728"
+    "searchChip": "calendar_Meditation on the Ten Perceptions__@UD2016-3",
+    "md5": "a5340ce349fd4aadac5c92b40291474e",
+    "_modified": "2026-11-14 16:54:00.142281"
   },
   "clusters/realms-of-existence-3.html": {
     "md5": "4befcceb1b16d753d732442d679beb3a",
@@ -19872,8 +19944,9 @@
     "_modified": "2026-11-13 08:52:47.999773"
   },
   "events/TG2004.html": {
+    "searchChip": "calendar_Thanksgiving Retreat 2004__@TG2004",
     "md5": "8e839221c2725a2ebed959dc7828a41c",
-    "_modified": "2026-11-14 00:56:27.987422"
+    "_modified": "2026-11-14 16:53:58.204695"
   },
   "texts/SN35_26.html": {
     "md5": "5331337a5cf77fcb90e35380ce5aaa64",
@@ -19988,12 +20061,14 @@
     "_modified": "2026-11-13 08:58:16.062083"
   },
   "events/UD2013-2.html": {
-    "md5": "97bbc78b67497c8de51fd9a3d07178e7",
-    "_modified": "2026-11-14 00:56:28.890339"
+    "searchChip": "calendar_A Monastic’s Life__@UD2013-2",
+    "md5": "ccf98d654ee18792bc66c872d7af8471",
+    "_modified": "2026-11-14 16:53:58.931885"
   },
   "events/UD2016-4.html": {
-    "md5": "ffe86f7395a3bb987959d90e7d4537be",
-    "_modified": "2026-11-14 00:56:30.763570"
+    "searchChip": "calendar_Right Speech and Living with Ourselves__@UD2016-4",
+    "md5": "fb7f75574c57784170dcf00d3cac4b55",
+    "_modified": "2026-11-14 16:54:00.166037"
   },
   "texts/MN82.html": {
     "md5": "9726091f147b9e3c810d84079a042790",
@@ -20024,8 +20099,9 @@
     "_modified": "2026-11-13 08:58:14.435443"
   },
   "events/Anniversary2026-1.html": {
-    "md5": "951c263f620c7b22ad830a950e160e16",
-    "_modified": "2026-11-14 00:56:34.272655"
+    "searchChip": "calendar_Abhayagiri’s 30th Anniversary Part 1__@Anniversary2026-1",
+    "md5": "9efdf2a62dc1e1218a3dd8fcf88f8769",
+    "_modified": "2026-11-14 16:54:01.347883"
   },
   "texts/MN6.html": {
     "md5": "0f2d2439358c969d40c33ac7ecfea6e1",
@@ -20264,20 +20340,24 @@
     "_modified": "2026-11-14 00:57:47.822871"
   },
   "events/TG2021.html": {
-    "md5": "09eb2700bacee28110c4f8d20e1b5194",
-    "_modified": "2026-11-14 00:56:33.464539"
+    "searchChip": "calendar_2021 Abhayagiri Online Thanksgiving Retreat__@TG2021",
+    "md5": "1ea7b67575e24974f828da907cbe8e1c",
+    "_modified": "2026-11-14 16:54:00.755332"
   },
   "events/ALBA2025.html": {
-    "md5": "ef9cbb7d028a6bb70118ba41e92c97e7",
-    "_modified": "2026-11-14 00:56:34.186414"
+    "searchChip": "calendar_Amaravati Lay Buddhist Association Day Retreat__@ALBA2025",
+    "md5": "a26d85b0348191265e500314e5b9436f",
+    "_modified": "2026-11-14 16:54:01.263747"
   },
   "events/CMountain2026-2.html": {
-    "md5": "64070b835660eef7e2e9dc20e18c8769",
-    "_modified": "2026-11-14 00:56:34.393429"
+    "searchChip": "calendar_Hello Dukkha, My Old Friend__@CMountain2026-2",
+    "md5": "9772414e90f188dcc3be55fba16794f1",
+    "_modified": "2026-11-14 16:54:01.433970"
   },
   "events/ThreeJewels2026.html": {
-    "md5": "63a49e2c9943d5c9dd002ae44085d038",
-    "_modified": "2026-11-14 00:56:34.369330"
+    "searchChip": "calendar_Trying to Be Pure Consciousness Is Tiring__@ThreeJewels2026",
+    "md5": "2ebc3808c7591597cd3e5b7b39525777",
+    "_modified": "2026-11-14 16:54:01.420517"
   },
   "tags/harsh-speech-relevant.html": {
     "md5": "1502c17adf56abd78aedc7bbd948742c",
@@ -20464,12 +20544,13 @@
     "_modified": "2026-11-14 00:40:41.752288"
   },
   "events/CMountain2022.html": {
-    "md5": "114fcd2d9af7f697151f2265ce32660b",
-    "_modified": "2026-11-14 00:56:33.491850"
+    "searchChip": "calendar_On Newsfeeds, Kindness, and the Bodhisattva__@CMountain2022",
+    "md5": "582f55086dd56dcf5b92e7e01a2d5530",
+    "_modified": "2026-11-14 16:54:00.765904"
   },
   "search/Advanced-search.html": {
-    "md5": "c3ac75902ec80750057750f670b88e66",
-    "_modified": "2026-10-28 14:36:28.000000"
+    "md5": "b60adb656f676d7bf8794321a4b0a0f5",
+    "_modified": "2026-11-14 17:42:34.992482"
   },
   "clusters/stages-of-awakening-events.html": {
     "md5": "9d1721cb2875ef86a3cba6df5301be12",
@@ -20592,12 +20673,14 @@
     "_modified": "2026-11-14 00:57:47.826736"
   },
   "events/CMountain2026-1.html": {
-    "md5": "98306ed5d1120c3e9aa7b1e5d6e7ab0b",
-    "_modified": "2026-11-14 00:56:34.331307"
+    "searchChip": "calendar_Ordaining, Remaining, & Training in Robes__@CMountain2026-1",
+    "md5": "40b9fd7449ea25ce23d337b9d07557ed",
+    "_modified": "2026-11-14 16:54:01.398691"
   },
   "events/Anniversary2026-2.html": {
-    "md5": "0f4fb0d1fa416f8b166b16ffc9fbecbf",
-    "_modified": "2026-11-14 00:56:34.316696"
+    "searchChip": "calendar_Abhayagiri’s 30th Anniversary Part 2__@Anniversary2026-2",
+    "md5": "f3192d06c10d3b66ac494a630f54a695",
+    "_modified": "2026-11-14 16:54:01.387316"
   },
   "texts/DN5.html": {
     "md5": "22c7715ff6be4c8ed23d34293537f9c1",
@@ -20836,8 +20919,9 @@
     "_modified": "2026-11-14 01:19:42.245972"
   },
   "events/SantaCruz2020.html": {
-    "md5": "e4db1a71c78958b10728bf22317bfd9c",
-    "_modified": "2026-11-14 00:56:32.681534"
+    "searchChip": "calendar_A Day With Ajahn Pasanno__@SantaCruz2020",
+    "md5": "31ea77f41908503524486f44ec6f7911",
+    "_modified": "2026-11-14 16:54:00.552088"
   },
   "indexes/AllExcerpts-featured-9.html": {
     "md5": "27f287f007dc173905361400bee0c68d",
@@ -20868,20 +20952,24 @@
     "_modified": "2026-11-14 15:26:32.490627"
   },
   "events/UD2026-3.html": {
-    "md5": "e034a6ed5999f1c69c0767e86be76388",
-    "_modified": "2026-11-14 00:56:34.352271"
+    "searchChip": "calendar_Dāna Pārami__@UD2026-3",
+    "md5": "954ead99fff48ec778ce1eae99d01e61",
+    "_modified": "2026-11-14 16:54:01.410947"
   },
   "events/TG2020.html": {
-    "md5": "144c15ba684704880c085884090003f8",
-    "_modified": "2026-11-14 00:56:32.825286"
+    "searchChip": "calendar_Online Thanksgiving Retreat__@TG2020",
+    "md5": "4c4a0fe0d96a52c6739088d56a07cf3d",
+    "_modified": "2026-11-14 16:54:00.576887"
   },
   "events/SRD2016.html": {
-    "md5": "70c7e3d0cdb7f2376fc0154cd4e45366",
-    "_modified": "2026-11-14 00:56:30.665056"
+    "searchChip": "calendar_The Anxiety of Impermanence and the Impermanence of Anxiety__@SRD2016",
+    "md5": "b724e05f7e0ff18e9bbbd3cf13224683",
+    "_modified": "2026-11-14 16:54:00.120065"
   },
   "events/Dhammarama2018.html": {
-    "md5": "58848a7552e6a289fb99b440a9dc7739",
-    "_modified": "2026-11-14 00:56:32.384354"
+    "searchChip": "calendar_2018 AVT Retreat in Delhi__@Dhammarama2018",
+    "md5": "4ecb549c4500d899aae3c3dca75737d7",
+    "_modified": "2026-11-14 16:54:00.454640"
   },
   "texts/MN132.html": {
     "md5": "80d0bd008585b40ba9861fc8bbdbc2fd",
@@ -21116,8 +21204,9 @@
     "_modified": "2026-11-14 01:19:04.989930"
   },
   "events/MValley2020.html": {
-    "md5": "acac7c7b1757d55671968cfa0ac6daeb",
-    "_modified": "2026-11-14 00:56:32.662929"
+    "searchChip": "calendar_Q & A with Dr. Manijeh Motaghy__@MValley2020",
+    "md5": "73feb03397d63ed3b49e0ddaadef204c",
+    "_modified": "2026-11-14 16:54:00.543346"
   },
   "texts/Ud8_1.html": {
     "md5": "9a41f120ee2571380ca75d6082871aca",

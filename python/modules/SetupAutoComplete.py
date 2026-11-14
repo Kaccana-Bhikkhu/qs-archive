@@ -12,13 +12,14 @@ from Build import FA_STAR, RemoveLanguageTag
 from ParseCSV import TagFlag
 import BuildReferences, Suttaplex
 from bs4 import BeautifulSoup
-
+from FileRegister import HashWriter
 
 class AutoCompleteEntry(TypedDict):
     long: str           # The long (or only) entry, e.g. Ajahn Chah Subadho
     short: str          # The shorter tag or name, e.g. Ajahn Chah
     number: str         # Digit(s) associated with this entry; e.g. Four Noble Truths
     link: str           # Link to page, e.g. teachers/ajahn-chah.html
+    chip: str           # The search chip query corresponding to the page
     icon: str           # Icon to display to the left of the auto complete entry
     suffix: str         # Text to display after the entry
     excerptCount: int   # The number of excerpts on this page
@@ -238,6 +239,14 @@ def main() -> None:
     entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),
                     EventEntries(),TeacherEntries(),CategoryEntries(),AboutEntries(),TextEntries(),BookEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
+
+    with HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as pageDatabase:
+        for entry in newDatabase:
+            if entry["link"] in pageDatabase.record:
+                metadata = pageDatabase.GetMetadata(entry["link"])
+                if "searchChip" in metadata:
+                    entry["chip"] = metadata["searchChip"]
+                    
 
     characters = set()
     for entry in newDatabase:
