@@ -187,7 +187,7 @@
             "args": [
                 "Build",
                 "--buildOnly",
-                "events"
+                "clusters"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

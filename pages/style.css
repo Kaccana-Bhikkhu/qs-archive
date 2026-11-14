@@ -1238,6 +1238,12 @@ span.search-filter-list img {
 	width: 16px;
 }
 
+a.search-within img, a.search-within svg.lucide {
+	width: 22px;
+	padding-right: 5px;
+	vertical-align: middle;
+}
+
 button#show-code-button {
 	padding: 0 2px;
 	margin: 2px 0 2px 0;

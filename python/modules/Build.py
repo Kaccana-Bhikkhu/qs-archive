@@ -44,7 +44,6 @@ def WriteIndentedTagDisplayList(fileName):
             indent = "    " * (item["level"] - 1)
             indexStr = item["indexNumber"] + ". " if item["indexNumber"] else ""
             
-            
             tagFromText = item['text'].split(' [')[0].split(' {')[0] # Extract the text before either ' [' or ' {'
             if tagFromText != item['tag']:
                 reference = " -> " + item['tag']
@@ -63,7 +62,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
         icon = page.section.get("titleIcon","")
         chip = Filter.QueryChip(name = match[1],query = match[2],icon=icon)
         query = Filter.SearchQuery(filters = [chip])
-        return match[0].replace("SEARCH_WITHIN_LINK",query.SearchPageLink(),count = 1)
+        return match[0].replace("SEARCH_WITHIN_LINK",query.SearchPageLink(),count = 1) + " " + Html.Icon(icon)
 
     def RecursiveReplace(pagedesc: Html.PageDesc) -> bool:
         "Recursively search pagedesc for a search within link."
@@ -71,7 +70,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
         while pagedesc.HasSection(sectionNumber):
             section = pagedesc.section[sectionNumber]
             if type(section) == str:
-                pagedesc.section[sectionNumber],replaced = re.subn(r'<a href="SEARCH_WITHIN_LINK" data-name="([^"]*)" data-query="([^"]*)">',
+                pagedesc.section[sectionNumber],replaced = re.subn(r'<a class="search-within" href="SEARCH_WITHIN_LINK" data-name="([^"]*)" data-query="([^"]*)">',
                                                     SearchWithinLink,pagedesc.section[sectionNumber],count = 1)
                 if replaced:
                     return True
@@ -238,8 +237,8 @@ def SearchWithin(title: str,filter: Filter.Filter) -> str:
     title: what we are searching within;
     filter: the filter that produced the page we are searching."""
 
-    link = Html.Tag("a",{"href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
-    return link(f'<i class="fa fa-search"></i> Search within {title}')
+    link = Html.Tag("a",{"class":"search-within","href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
+    return f'<i class="fa fa-search"></i> Search within&ensp;{link(title)}'
 
 def RegisterSearchWithin(page: Html.PageDesc) -> None:
     """Add a section to page indicating that it contains a search within link."""
@@ -583,7 +582,7 @@ def NumericalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
     page = Html.PageDesc(info)
     page.AppendContent(pageContent)
-    page.AppendContent(Icon("tags"),section="titleIcon")
+    page.AppendContent("tags",section="titleIcon")
     page.AppendContent("Numerical tags",section="citationTitle")
     page.keywords = ["Tags","Numerical tags"]
     yield page 
@@ -701,7 +700,7 @@ def MostCommonTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
     page.AppendContent(Html.Tag("span",{"class":"floating-menu hide-thin-screen-1 noscript-show"})(printableLinks))
 
     page.AppendContent(str(a))
-    page.AppendContent(Icon("tags"),section="titleIcon")
+    page.AppendContent("tags",section="titleIcon")
     page.AppendContent("Most common tags",section="citationTitle")
     page.keywords = ["Tags","Most common tags"]
     yield page
@@ -960,7 +959,7 @@ def AlphabeticalTagList(pageDir: str) -> Html.PageDescriptorMenuItem:
 
     basePage = Html.PageDesc()
     basePage.keywords = ["Tags","Alphabetical"]
-    basePage.AppendContent(Icon("tags"),section="titleIcon")
+    basePage.AppendContent("tags",section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(subMenu,**EXTRA_MENU_STYLE):
         titleWithoutLength = " ".join(page.info.title.split(" ")[:-1])
         page.keywords.append(titleWithoutLength)
@@ -1584,7 +1583,7 @@ def AllExcerpts(pageDir: str) -> Html.PageDescriptorMenuItem:
         if len(excerpts) < gOptions.minSubsearchExcerpts * 3:
             return
         if kind not in {"","Questions","Stories","Quotes","Readings","Texts","References"}:
-            if len(excerpts) < gOptions.excerptsPerPage:
+            if len(excerpts) <= gOptions.excerptsPerPage:
                 page.AppendContent("<br>")
             return
         
@@ -1848,12 +1847,20 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
     def FilteredTagMenuItem(excerpts: Iterable[dict],filter: Filter.Filter,menuTitle: str,fileExt:str = "") -> Html.PageDescriptorMenuItem:
         if not fileExt:
             fileExt = Utils.Singular(menuTitle).lower()
-        
-        return FilteredExcerptsMenuItem(excerpts=excerpts,filter=filter,formatter=formatter,mainPageInfo=basePage.info,menuTitle=menuTitle,fileExt=fileExt,pageAugmentor=AddSearchCategory(menuTitle))
 
-    def HoistFTags(pageGenerator: Html.PageDescriptorMenuItem,excerpts: Iterable[dict],tags: list[str],skipSections:int = 0):
-        """Insert featured excerpts at the top of the first page.
-        skipSections allows inserting the featured excerpts between blocks of text."""
+        def AddSearchWithin(page: Html.PageDesc,excerpts: list[dict]) -> None:
+            "Add a search within link to a filtered tag page."
+
+            page.AppendContent(SearchWithin(f"{page.info.title} – {menuTitle}",filter))
+            if len(excerpts) <= gOptions.excerptsPerPage:
+                page.AppendContent("<br><br>")
+            RegisterSearchWithin(page)
+            AddSearchCategory(menuTitle)(page,excerpts)
+
+        return FilteredExcerptsMenuItem(excerpts=excerpts,filter=filter,formatter=formatter,mainPageInfo=basePage.info,menuTitle=menuTitle,fileExt=fileExt,pageAugmentor=AddSearchWithin)
+
+    def HoistFTags(pageGenerator: Html.PageDescriptorMenuItem,excerpts: Iterable[dict],tags: list[str]):
+        """Insert featured excerpts before the main excerpts on the first page."""
         
         menuItemAndPages = iter(pageGenerator)
         firstPage = next(menuItemAndPages,None)
@@ -1886,18 +1893,28 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             headerHtml.append(featuredFormatter.HtmlExcerptList(featuredExcerpts))
             headerHtml.append("</div>\n<hr>\n")
 
-            firstTextSection = 0 # The first section could be a menu, in which case we skip it
-            while type(firstPage.section[firstTextSection]) != str:
-                firstTextSection += 1
-            firstTextSection += skipSections
+            excerptSection = 0 # Search for the first section containing excerpts
+            try:
+                while type(firstPage.section[excerptSection]) != str or '<div class="title"' not in firstPage.section[excerptSection]:
+                    excerptSection += 1
+            except KeyError:
+                Alert.error("HoistFTags: No header found on page",tags)
+                excerptSection = 0
 
-            if firstTextSection in firstPage.section:
-                firstPage.section[firstTextSection] = "\n".join(headerHtml + [firstPage.section[firstTextSection]])
+            if excerptSection in firstPage.section and type(firstPage.section[excerptSection]) == str:
+                firstPage.section[excerptSection] = "\n".join(headerHtml + [firstPage.section[excerptSection]])
             else:
                 firstPage.AppendContent("\n".join(headerHtml))
                                                             
         yield firstPage
         yield from menuItemAndPages
+
+    def BaseSearchWithin(page: Html.PageDesc,excerpts: list[dict]) -> None:
+        "Append a search within link to page."
+        page.AppendContent(SearchWithin(basePage.info.title,Filter.Tag(tags)))
+        if len(excerpts) <= gOptions.excerptsPerPage:
+            page.AppendContent("<br><br>")
+        RegisterSearchWithin(page)
 
     formatter = Formatter()
     formatter.excerptBoldTags = Filter.FrozenSet(tags)
@@ -1909,16 +1926,12 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
         tags = [tags]
 
     if len(tagExcerpts) >= gOptions.minSubsearchExcerpts:
-        questions = Filter.Category("Questions")(tagExcerpts)
-        qTags,aTags = Filter.QTag(tags).Partition(questions)
-        mostRelevant = Filter.MostRelevant(tags)(tagExcerpts)
-
         filterMenu = [
             FilteredEventsMenuItem(Filter.Tag(tags),basePage.info,"events"),
-            HoistFTags(FilteredExcerptsMenuItem(tagExcerpts,Filter.PassAll,formatter,basePage.info,"All excerpts"),tagExcerpts,tags),
-            HoistFTags(FilteredTagMenuItem(mostRelevant,Filter.PassAll,"Most relevant","relevant"),mostRelevant,tags),
-            FilteredTagMenuItem(qTags,Filter.PassAll,"Questions about","qtag"),
-            FilteredTagMenuItem(aTags,Filter.PassAll,"Answers involving","atag"),
+            HoistFTags(FilteredExcerptsMenuItem(tagExcerpts,Filter.PassAll,formatter,basePage.info,"All excerpts",pageAugmentor=BaseSearchWithin),tagExcerpts,tags),
+            HoistFTags(FilteredTagMenuItem(tagExcerpts,Filter.MostRelevant(tags),"Most relevant","relevant"),tagExcerpts,tags),
+            FilteredTagMenuItem(tagExcerpts,Filter.And(Filter.Category("Questions"),Filter.QTag(tags)),"Questions about","qtag"),
+            FilteredTagMenuItem(tagExcerpts,Filter.And(Filter.Category("Questions"),Filter.Tag(tags),Filter.QTag(tags).Not()),"Answers involving","atag"),
             FilteredTagMenuItem(tagExcerpts,Filter.SingleItemMatch(Filter.Tag(tags),Filter.Category("Stories")),"Stories"),
             FilteredTagMenuItem(tagExcerpts,Filter.SingleItemMatch(Filter.Tag(tags),Filter.Category("Quotes")),"Quotes"),
             FilteredTagMenuItem(tagExcerpts,Filter.SingleItemMatch(Filter.Tag(tags),Filter.Category("Readings")),"Readings"),
@@ -1936,7 +1949,7 @@ def TagSubsearchPages(tags: str|Iterable[str],tagExcerpts: list[dict],basePage: 
             return
     
     basePage.AppendContent("",newSection=True)
-    yield from map(LinkToPeoplePages,HoistFTags(MultiPageExcerptList(basePage,tagExcerpts,formatter),tagExcerpts,tags,skipSections=1))
+    yield from map(LinkToPeoplePages,HoistFTags(MultiPageExcerptList(basePage,tagExcerpts,formatter),tagExcerpts,tags))
 
 def TagBreadCrumbs(tagInfo: dict) -> tuple[str,list[str]]:
     "Return a hyperlinked string of the form: 'grandparent / parent / tag'"
@@ -2037,7 +2050,7 @@ def TagPages(tagPageDir: str) -> Iterator[Html.PageAugmentorType]:
         tagPlusPali = TagDescription(tagInfo,fullTag=True,flags=TagDescriptionFlag.NO_COUNT,link = False)
         pageInfo = Html.PageInfo(tag,Utils.PosixJoin(tagPageDir,tagInfo["htmlFile"]),tagPlusPali)
         basePage = Html.PageDesc(pageInfo)
-        basePage.AppendContent(Icon("tag"),section="titleIcon")
+        basePage.AppendContent("tag",section="titleIcon")
         basePage.AppendContent(str(a))
         basePage.keywords = ["Tag",tagWithoutHtml]
         if tagInfo["fullPali"]:
@@ -2203,10 +2216,10 @@ def TeacherMenu(indexDir: str) -> Html.PageDescriptorMenuItem:
     ]
 
     basePage = Html.PageDesc()
-    basePage.AppendContent(Icon("user"),section="titleIcon")
+    basePage.AppendContent("user",section="titleIcon")
     for page in basePage.AddMenuAndYieldPages(teacherMenu,**SUBMENU_STYLE):
         if "Teachers" in page.info.file: # Index files use the plural icon
-            page.section["titleIcon"] = Icon("users")
+            page.section["titleIcon"] = "users"
         if page.info.titleInBody.startswith("Teachers – "):
             _,subSection = page.info.titleInBody.split(" – ")
             page.AppendContent(f"Teachers: {subSection}",section="citationTitle")
@@ -2334,9 +2347,6 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
             a(ExcerptDurationStr(excerpts))
             a.br()
 
-            a(SearchWithin(eventInfo["title"],Filter.Event(eventCode)))
-            a.br()
-
             if featuredExcerpts:
                 query = Filter.SearchQuery(filters = [
                     Filter.QueryChip(f"{Utils.RemoveHtmlTags(eventInfo['title'])}",f"@{eventCode}",icon="calendar"),
@@ -2356,7 +2366,10 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
                 with a.a(href = eventInfo["website"],target="_blank",Class="external-link"):
                     a(urllib.parse.urlsplit(eventInfo["website"]).netloc)
                 a.br()
-                
+
+            a(SearchWithin(eventInfo["title"],Filter.Event(eventCode)))
+            a.br()
+
             tocHtml = TableOfContents(eventInfo,sessions)
             shortToc = not tocHtml or tocHtml.startswith("Sessions: ")
             if tocHtml and shortToc:
@@ -2645,7 +2658,7 @@ def CompactKeyTopics(indexDir: str,topicDir: str) -> Html.PageDescriptorMenuItem
 
     page = Html.PageDesc(menuItem._replace(title="Key topics"))
     page.AppendContent(str(a))
-    page.AppendContent(Icon("Key.png"),section="titleIcon")
+    page.AppendContent("Key.png",section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics",section="citationTitle")
@@ -2725,7 +2738,7 @@ def DetailedKeyTopics(indexDir: str,topicDir: str,printPage = False,progressMemo
         AddTopicButtons(page)
 
     page.AppendContent(str(a))
-    page.AppendContent(Icon("Key.png"),section="titleIcon")
+    page.AppendContent("Key.png",section="titleIcon")
 
     page.keywords = ["Key topics"]
     page.AppendContent(f"Key topics in detail",section="citationTitle")
@@ -2824,7 +2837,7 @@ def TagHierarchyMenu(indexDir:str, drilldownDir: str) -> Html.PageDescriptorMenu
         basePage.AppendContent('</div>')
 
         basePage.AppendContent(f"Numbers in parentheses: (Excerpts tagged/excerpts tagged with this tag or its subtags).<br><br>")
-        basePage.AppendContent(Icon("tags"),section="titleIcon")
+        basePage.AppendContent("tags",section="titleIcon")
 
         rootPage = Html.PageDesc(contractAllItem)
         rootPage.AppendContent(EvaluateDrilldownTemplate())

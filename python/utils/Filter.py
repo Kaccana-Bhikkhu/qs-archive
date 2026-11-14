@@ -63,6 +63,13 @@ class QueryType:
     REGEXP = 1
     OPTIMIZED_REGEXP = 2
 
+def CombinedQuery(queries: list[str],operator: str = "|",negate: bool = False):
+    "Combine search queries using operator."
+    negOp = "!" if negate else ""
+    if len(queries) == 1:
+        return negOp + queries[0]
+    else:
+        return f"{negOp}{operator}({' '.join(queries)})"
 class Filter:
     """A filter for excerpts and other dicts.
     Subclasses provide the necessary details."""
@@ -147,12 +154,8 @@ class Tag(Filter):
         return self.negate
 
     def Query(self,kind: QueryType = QueryType.READABLE) -> str:
-        tagStrs = map(lambda t:f"[{t}]",sorted(self.passTags))
-        if len(tagStrs) == 1:
-            return tagStrs[0]
-        else:
-            return f"|({' '.join(tagStrs)})"
-            
+        tagStrs = list(map(lambda t:f"[{t}]",sorted(self.passTags)))
+        return CombinedQuery(tagStrs,negate=self.negate)    
 
 class FTag(Tag):
     "A filter that passes excerpts containing particular featured tags."
@@ -165,10 +168,10 @@ class FTag(Tag):
         return self.negate
 
     def Query(self,kind: QueryType = QueryType.READABLE) -> str:
-            if self.passTags is All:
-                return "+"
-            else:
-                return super().Query().replace("]","]+")
+        if self.passTags is All:
+            return "+"
+        else:
+            return super().Query().replace("]","]+")
 
 class HomepageOnlyTag(Tag):
     "A filter that passes excerpts that should be displayed on the homepage despite not being featured."
@@ -209,6 +212,11 @@ class QTag(Tag):
                 return not self.negate
 
         return self.negate
+    
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        tagStrs = list(map(lambda t:f"[{t}]//",sorted(self.passTags)))
+        return CombinedQuery(tagStrs,negate=self.negate)    
+    
     
 class MaxFTagOrder(Filter):
     """A class that passes featured excerpts having fTagOrder less than a specified value."""
@@ -281,6 +289,11 @@ class Kind(Filter):
         
         return self.negate
 
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        tagStrs = list(map(lambda c:f"#{c}#",sorted(self.passKinds)))
+        return CombinedQuery(tagStrs,negate=self.negate)
+    
+
 class Category(Filter):
     "A filter that passes excerpts of a particular category."
 
@@ -296,11 +309,8 @@ class Category(Filter):
         return self.negate
 
     def Query(self, kind: QueryType = QueryType.READABLE) -> str:
-        if len(self.passCategories) == 1:
-            return f"&{next(iter(self.passCategories))}&"
-        else:
-            raise NotImplementedError("Filter.Category: Multi-category queries are not yet supported.")
-
+        tagStrs = list(map(lambda c:f"&{c}&",sorted(self.passCategories)))
+        return CombinedQuery(tagStrs,negate=self.negate)    
 
 class Event(Filter):
     "A filter that passes items within a particular event."
@@ -317,11 +327,9 @@ class Event(Filter):
             return self.negate
 
     def Query(self, kind: QueryType = QueryType.READABLE) -> str:
-        if len(self.passEvents) == 1:
-            return f"@{next(iter(self.passEvents))}"
-        else:
-            raise NotImplementedError("Filter.Event: Multi-event queries are not yet supported.")
-
+        tagStrs = list(map(lambda c:f"@{c}",sorted(self.passEvents)))
+        return CombinedQuery(tagStrs,negate=self.negate)    
+        
 class Flags(Filter):
     """A filter that passes items which contain any of a specified list of flags.
     Does not match flags in annotations."""
@@ -335,6 +343,12 @@ class Flags(Filter):
             return not self.negate
     
         return self.negate
+
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        if self.passFlags == "d":
+            tagStrs = ["#-"]
+            return CombinedQuery(tagStrs,negate=self.negate)    
+    
 
 class HomepageFlags(Filter):
     "A Filter that passes excerpts that should be diplayed on the homepage based on their fTagOrderFlags."
@@ -373,6 +387,7 @@ class FilterGroup(Filter):
     def __init__(self,*subFilters:Filter):
         super().__init__()
         self.subFilters = subFilters
+        self.operator = "&"
     
     def Match(self, item: dict) -> bool:
         for filter in self.subFilters:
@@ -380,6 +395,11 @@ class FilterGroup(Filter):
                 return self.negate
         
         return not self.negate
+
+    def Query(self, kind: QueryType = QueryType.READABLE) -> str:
+        tagStrs = [s.Query(kind) for s in self.subFilters]
+        return CombinedQuery(tagStrs,operator=self.operator,negate=self.negate)    
+    
     
 class And(FilterGroup):
     "Pass items which match all specified filters."
@@ -387,7 +407,11 @@ class And(FilterGroup):
 
 class Or(FilterGroup):
     "Pass items which match any of the specified filters."
-    
+
+    def __init__(self,*subFilters:Filter):
+        super().__init__(*subFilters)
+        self.operator = "|"
+
     def Match(self, item: dict) -> bool:
         for filter in self.subFilters:
             if filter.Match(item):
@@ -397,7 +421,11 @@ class Or(FilterGroup):
 
 class SingleItemMatch(FilterGroup):
     "Pass excerpts for which the excerpt itself or a single annotation  matches all these conditions."
-    
+
+    def __init__(self,*subFilters:Filter):
+        super().__init__(*subFilters)
+        self.operator = "~"
+
     def Match(self, item: dict) -> bool:
         for i in AllSingularItems(item):
             matchesAllFilters = True
