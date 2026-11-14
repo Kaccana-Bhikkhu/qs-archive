@@ -420,6 +420,28 @@ def CheckIndirectSpeech() -> None:
                 if not Database.IsSubtag(firstTag,"Teachers"):
                     Alert.notice("The first tag",repr(firstTag),"is not a person indirect speech",item)
 
+def CheckResponses() -> None:
+    """Response annotations should come immediately after the item they respond to and should be one indentation level higher."""
+    for x in gDatabase["excerpts"]:
+        if "n" in x["flags"]:
+            continue
+        items = list(Filter.AllItems(x))
+        for n,item in enumerate(items):
+            if item["kind"] == "Response":
+                itemLevel = item.get("indentLevel",0)
+                # Search for what item responded to
+                for candidate in reversed(items[0:n]):
+                    if gDatabase["kind"][candidate["kind"]]["category"] in ("Audio","Attribution","References"):
+                        continue
+                    if candidate["kind"] == "Note":
+                        continue
+                    candidateLevel = candidate.get("indentLevel",0)
+                    if candidateLevel == itemLevel - 1: # We have found what item refers to
+                        break
+                    if candidateLevel == itemLevel:
+                        if candidate["kind"] != "Response": # Skip past other responses
+                            Alert.caution(x,"has responses with unexpected indentation. Flag this excerpt 'n' if this is intended.")
+                            break
 
 def CheckFTagOrder() -> None:
     """Print alerts when there is ambiguity sorting featured excerpts."""
@@ -599,6 +621,7 @@ def main() -> None:
     CheckTags()
     CheckRelatedTags()
     CheckIndirectSpeech()
+    CheckResponses()
     CheckFTagOrder()
     LogReviewedFTags()
     NeedsAudioEditing()

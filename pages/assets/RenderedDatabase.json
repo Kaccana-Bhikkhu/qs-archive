@@ -5979,7 +5979,7 @@
       "excerptNumber": 2,
       "fileNumber": 2,
       "kind": "Question",
-      "flags": "",
+      "flags": "n",
       "text": "Did Ajahn Chah pass his teaching style to you or do you use your own separate style?",
       "teachers": [
         "ASumedho",
@@ -12768,11 +12768,11 @@
       "clips": [
         [
           "$",
-          "19:33",
+          "19:30",
           "24:01"
         ]
       ],
-      "duration": "4:28",
+      "duration": "4:31",
       "mirror": "local",
       "body": "Relaxing into the breath when experiencing pain in meditation.{attribution}",
       "attribution": " <b>Teaching</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
@@ -47379,7 +47379,7 @@
       "fileNumber": 3,
       "kind": "Question",
       "flags": "",
-      "text": "How does good conduct bring about the Four Foundations of Mindfulness in AN 10.61?",
+      "text": "new",
       "teachers": [
         "AP"
       ],
@@ -47400,11 +47400,8 @@
       ],
       "duration": "1:14",
       "mirror": "local",
-      "body": "“How does good conduct bring about the Four Foundations of Mindfulness in <a href=\"https://suttacentral.express/an10.61/en/bodhi\" target=\"_blank\" data-alt-href=\"../texts/AN10_61.html\">AN 10.61</a>?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
-      "texts": [
-        "AN 10.61"
-      ]
+      "body": "“new” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
     },
     {
       "event": "WR2013",
@@ -47597,23 +47594,40 @@
           ],
           "indentLevel": 1,
           "body": "<b>Follow-up:</b> “How do we uproot clinging?”"
-        },
-        {
-          "kind": "Comment",
-          "flags": "",
-          "text": "One can only apply the concept of inverted perception from MN 75.29 to the other sense bases.",
-          "teachers": [
-            "ANy"
-          ],
-          "tags": [
-            "Delusion",
-            "Perception",
-            "Sense bases",
-            "Ajahn Khao"
-          ],
-          "indentLevel": 1,
-          "body": "<b>Comment</b> by <a href=\"../teachers/ajahn-naniko.html\">Ajahn Ñāṇiko</a>: One can only apply the concept of inverted perception from <a href=\"https://suttacentral.express/mn75/en/sujato?reference=main#29.1\" target=\"_blank\" data-alt-href=\"../texts/MN75.html\">MN 75.29</a> to the other sense bases."
-        },
+        }
+      ],
+      "tags": [
+        "Clinging",
+        "Sense bases",
+        "Sensual desire",
+        "Aggregates"
+      ],
+      "qTagCount": 3,
+      "clips": [
+        [
+          "$",
+          "35:06",
+          "40:14"
+        ]
+      ],
+      "duration": "5:08",
+      "mirror": "local",
+      "body": "“Would you say that clinging is around the senses and not the sensual desires?” {attribution}",
+      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>."
+    },
+    {
+      "event": "WR2013",
+      "sessionNumber": 17,
+      "excerptNumber": 3,
+      "fileNumber": 3,
+      "kind": "Comment",
+      "flags": "",
+      "text": "One can apply the concept of inverted perception from MN 75.29 to the other sense bases.",
+      "teachers": [
+        "ANy"
+      ],
+      "fTags": [],
+      "annotations": [
         {
           "kind": "Response",
           "flags": "",
@@ -47658,23 +47672,23 @@
         }
       ],
       "tags": [
-        "Clinging",
+        "Delusion",
+        "Perception",
         "Sense bases",
-        "Sensual desire",
-        "Aggregates"
+        "Ajahn Khao"
       ],
       "qTagCount": 3,
       "clips": [
         [
           "$",
-          "35:06",
-          "40:14"
+          "40:15",
+          "44:14"
         ]
       ],
-      "duration": "5:08",
+      "duration": "3:59",
       "mirror": "local",
-      "body": "“Would you say that clinging is around the senses and not the sensual desires?” {attribution}",
-      "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and <a href=\"../teachers/ajahn-karunadhammo.html\">Ajahn Karuṇadhammo</a>.",
+      "body": "<b>Comment</b>{attribution}: One can apply the concept of inverted perception from <a href=\"https://suttacentral.express/mn75/en/sujato?reference=main#29.1\" target=\"_blank\" data-alt-href=\"../texts/MN75.html\">MN 75.29</a> to the other sense bases.",
+      "attribution": " by <a href=\"../teachers/ajahn-naniko.html\">Ajahn Ñāṇiko</a>",
       "texts": [
         "MN 75.29"
       ]
@@ -49524,12 +49538,18 @@
       "excerptNumber": 5,
       "fileNumber": 5,
       "kind": "Question",
-      "flags": "",
+      "flags": "Q",
       "text": "MN 44.14 defines perception and feeling as mental formations. I thought those were just conditional arising on account of contact (MN 109.9)?",
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Volitional formations"
+      ],
+      "fTagOrder": [
+        180
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [
         {
           "kind": "Teaching",
@@ -49571,31 +49591,6 @@
           ],
           "indentLevel": 1,
           "body": "<b>Follow-up:</b> “The bodily fabrication doesn&rsquo;t seem to involve volition, but vitakka and vicāra do.”"
-        },
-        {
-          "kind": "Comment",
-          "flags": "",
-          "text": "In the Ānāpānasati Sutta, much of the practice is intentionally calming different saṅkhāras.",
-          "teachers": [],
-          "tags": [
-            "Mindfulness of breathing",
-            "Volitional formations",
-            "Tranquility",
-            "Mindfulness of body"
-          ],
-          "indentLevel": 1,
-          "body": "<b>Comment</b>: In the Ānāpānasati Sutta, much of the practice is intentionally calming different saṅkhāras."
-        },
-        {
-          "kind": "Response",
-          "flags": "",
-          "text": "",
-          "teachers": [
-            "AP"
-          ],
-          "tags": [],
-          "indentLevel": 1,
-          "body": "<b>Response</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
         }
       ],
       "tags": [
@@ -49611,10 +49606,10 @@
         [
           "$",
           "14:33",
-          "20:43"
+          "19:11"
         ]
       ],
-      "duration": "6:10",
+      "duration": "4:38",
       "mirror": "local",
       "body": "“<a href=\"https://suttacentral.express/mn44/en/sujato?reference=main#14.1\" target=\"_blank\" data-alt-href=\"../texts/MN44.html\">MN 44.14</a> defines perception and feeling as mental formations. I thought those were just conditional arising on account of contact (<a href=\"https://suttacentral.express/mn109/en/sujato?reference=main#9.1\" target=\"_blank\" data-alt-href=\"../texts/MN109.html\">MN 109.9</a>)?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
@@ -49633,6 +49628,48 @@
       "sessionNumber": 24,
       "excerptNumber": 6,
       "fileNumber": 6,
+      "kind": "Comment",
+      "flags": "",
+      "text": "In the Ānāpānasati Sutta, much of the practice is intentionally calming different saṅkhāras.",
+      "teachers": [],
+      "fTags": [],
+      "annotations": [
+        {
+          "kind": "Response",
+          "flags": "",
+          "text": "",
+          "teachers": [
+            "AP"
+          ],
+          "tags": [],
+          "indentLevel": 1,
+          "body": "<b>Response</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+        }
+      ],
+      "tags": [
+        "Mindfulness of breathing",
+        "Volitional formations",
+        "Tranquility",
+        "Mindfulness of body"
+      ],
+      "qTagCount": 4,
+      "clips": [
+        [
+          "$",
+          "19:11",
+          "20:41"
+        ]
+      ],
+      "duration": "1:30",
+      "mirror": "local",
+      "body": "<b>Comment</b>: In the Ānāpānasati Sutta, much of the practice is intentionally calming different saṅkhāras.",
+      "attribution": ""
+    },
+    {
+      "event": "WR2013",
+      "sessionNumber": 24,
+      "excerptNumber": 7,
+      "fileNumber": 7,
       "kind": "Discussion",
       "flags": "",
       "text": "about different meanings and contexts of saṅkhāra.",
@@ -73070,7 +73107,7 @@
       "excerptNumber": 12,
       "fileNumber": 12,
       "kind": "Comment",
-      "flags": "0",
+      "flags": "0n",
       "text": "A retreatant expresses appreciation for Upāsikā Kee Nanayon's exhortation to be honest with ourselves.",
       "teachers": [],
       "fTags": [],
@@ -82660,7 +82697,7 @@
       "excerptNumber": 12,
       "fileNumber": 12,
       "kind": "Comment",
-      "flags": "",
+      "flags": "n",
       "text": "In Western culture, we're not given enough space to be with death.",
       "teachers": [],
       "fTags": [],
@@ -87541,16 +87578,51 @@
       "teachers": [
         "AP"
       ],
-      "text": "I didn't totally understand the difference between the mind and mental qualities in regards to the four foundations. Would you elaborate?",
+      "text": "I didn't totally understand the difference between the mind and mental qualities in regards to the Four Foundations [of Mindfulness]. Would you elaborate?",
       "fTags": [],
       "annotations": [
         {
           "kind": "Sutta",
           "flags": "",
-          "text": "MN 10.34: Satipaṭṭhānasutta Sutta, Mindfulness of Mind.",
+          "text": "MN 10.34: Satipaṭṭhānasutta Sutta: Mindfulness of mind.",
           "tags": [],
           "indentLevel": 1,
-          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/mn10/en/sujato?reference=main#34.1\" target=\"_blank\" data-alt-href=\"../texts/MN10.html\">MN 10.34</a>: Satipaṭṭhānasutta Sutta, Mindfulness of Mind."
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/mn10/en/sujato?reference=main#34.1\" target=\"_blank\" data-alt-href=\"../texts/MN10.html\">MN 10.34</a>: Satipaṭṭhānasutta Sutta: Mindfulness of mind."
+        },
+        {
+          "kind": "Fragment",
+          "flags": "r",
+          "startTime": "1:36",
+          "endTime": "3:24",
+          "text": "",
+          "indentLevel": 1,
+          "body": "<audio-chip src=\"../../audio/excerpts/TG2014/TG2014_S02_F06.mp3\" title=\"2014 Thanksgiving Monastic Retreat, S2 E5.1\" data-title-link=\"events/TG2014.html#TG2014_S02_F05\" data-duration=\"108\"><a href=\"../../audio/excerpts/TG2014/TG2014_S02_F06.mp3\" download=\"2014 Thanksgiving Monastic Retreat, S2 E5.1.mp3\">Download audio</a> (1:48)</audio-chip>"
+        },
+        {
+          "kind": "Teaching",
+          "flags": "",
+          "teachers": [
+            "AP"
+          ],
+          "text": "Mindfulness of mental qualities or phenomena.",
+          "tags": [
+            "Mindfulness of dhammas",
+            "Hindrances",
+            "Factors of Awakening",
+            "Aggregates",
+            "Sense bases",
+            "Four Noble Truths"
+          ],
+          "indentLevel": 1,
+          "body": "Mindfulness of mental qualities or phenomena."
+        },
+        {
+          "kind": "Sutta",
+          "flags": "-",
+          "text": "MN 10.36: Satipaṭṭhānasutta Sutta: Mindfulness of dhammas.",
+          "tags": [],
+          "indentLevel": 2,
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/mn10/en/sujato?reference=main#36.1\" target=\"_blank\" data-alt-href=\"../texts/MN10.html\">MN 10.36</a>: Satipaṭṭhānasutta Sutta: Mindfulness of dhammas."
         }
       ],
       "tags": [
@@ -87566,18 +87638,71 @@
         ]
       ],
       "duration": "3:31",
+      "fragmentFTags": [
+        "Mindfulness of dhammas"
+      ],
       "mirror": "local",
-      "body": "“I didn&rsquo;t totally understand the difference between the mind and mental qualities in regards to the four foundations. Would you elaborate?” {attribution}",
+      "body": "“I didn&rsquo;t totally understand the difference between the mind and mental qualities in regards to the Four Foundations [of Mindfulness]. Would you elaborate?” {attribution}",
       "attribution": " Answered by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>.",
       "texts": [
-        "MN 10.34"
+        "MN 10.34",
+        "MN 10.36"
       ]
     },
     {
       "event": "TG2014",
       "sessionNumber": 2,
-      "excerptNumber": 6,
+      "excerptNumber": 5.1,
       "fileNumber": 6,
+      "annotations": [
+        {
+          "kind": "Sutta",
+          "flags": "-",
+          "text": "MN 10.36: Satipaṭṭhānasutta Sutta: Mindfulness of dhammas.",
+          "tags": [],
+          "indentLevel": 1,
+          "body": "<b>Sutta:</b> <a href=\"https://suttacentral.express/mn10/en/sujato?reference=main#36.1\" target=\"_blank\" data-alt-href=\"../texts/MN10.html\">MN 10.36</a>: Satipaṭṭhānasutta Sutta: Mindfulness of dhammas."
+        }
+      ],
+      "kind": "Teaching",
+      "flags": "f",
+      "teachers": [
+        "AP"
+      ],
+      "text": "Mindfulness of mental qualities or phenomena.",
+      "fTags": [
+        "Mindfulness of dhammas"
+      ],
+      "fTagOrder": [
+        160
+      ],
+      "fTagOrderFlags": "E",
+      "tags": [
+        "Mindfulness of dhammas",
+        "Hindrances",
+        "Factors of Awakening",
+        "Aggregates",
+        "Sense bases",
+        "Four Noble Truths"
+      ],
+      "qTagCount": 1,
+      "clips": [
+        [
+          "$",
+          "16:34",
+          "18:22"
+        ]
+      ],
+      "duration": "1:48",
+      "mirror": "local",
+      "body": "Mindfulness of mental qualities or phenomena.{attribution}",
+      "attribution": " <b>Teaching</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+    },
+    {
+      "event": "TG2014",
+      "sessionNumber": 2,
+      "excerptNumber": 6,
+      "fileNumber": 7,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87610,7 +87735,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 7,
-      "fileNumber": 7,
+      "fileNumber": 8,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87648,7 +87773,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 8,
-      "fileNumber": 8,
+      "fileNumber": 9,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87686,7 +87811,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 9,
-      "fileNumber": 9,
+      "fileNumber": 10,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87718,7 +87843,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 10,
-      "fileNumber": 10,
+      "fileNumber": 11,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87756,7 +87881,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 11,
-      "fileNumber": 11,
+      "fileNumber": 12,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87790,7 +87915,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 12,
-      "fileNumber": 12,
+      "fileNumber": 13,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87865,7 +87990,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 12.1,
-      "fileNumber": 13,
+      "fileNumber": 14,
       "annotations": [
         {
           "kind": "Sutta",
@@ -87927,7 +88052,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 13,
-      "fileNumber": 14,
+      "fileNumber": 15,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -87977,7 +88102,7 @@
       "event": "TG2014",
       "sessionNumber": 2,
       "excerptNumber": 14,
-      "fileNumber": 15,
+      "fileNumber": 16,
       "kind": "Question",
       "flags": "",
       "teachers": [
@@ -117108,7 +117233,7 @@
         },
         {
           "kind": "Response",
-          "flags": "",
+          "flags": "-",
           "text": "",
           "teachers": [
             "AP"
@@ -117116,7 +117241,7 @@
           "tags": [
             "Right View"
           ],
-          "indentLevel": 1,
+          "indentLevel": 2,
           "body": "<b>Response</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
         }
       ],
@@ -120076,7 +120201,7 @@
       "excerptNumber": 5,
       "fileNumber": 5,
       "kind": "Comment",
-      "flags": "",
+      "flags": "n",
       "text": "The Thai Forest Tradition is looking for something that really works.",
       "teachers": [
         "AKc"
@@ -123430,18 +123555,19 @@
         },
         {
           "kind": "Response",
-          "flags": "",
+          "flags": "-",
           "text": "",
           "teachers": [
-            "AP"
+            "AP",
+            "AKc"
           ],
           "tags": [
             "Desire",
             "Contentment",
             "Happiness"
           ],
-          "indentLevel": 1,
-          "body": "<b>Response</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a>."
+          "indentLevel": 2,
+          "body": "<b>Response</b> by <a href=\"../teachers/ajahn-pasanno.html\">Ajahn Pasanno</a> and Ajahn Kaccāna."
         }
       ],
       "tags": [
@@ -126758,7 +126884,13 @@
       "teachers": [
         "AP"
       ],
-      "fTags": [],
+      "fTags": [
+        "Healing"
+      ],
+      "fTagOrder": [
+        70
+      ],
+      "fTagOrderFlags": "E",
       "annotations": [],
       "tags": [
         "Meditation",
@@ -220442,7 +220574,7 @@
       "description": "Mindfulness of dhammas as described in the Satipaṭṭhāna Sutta (<a href=\"https://suttacentral.express/mn10/en/sujato\" target=\"_blank\" data-alt-href=\"../texts/MN10.html\">MN 10</a>) encompases the <a href=\"../tags/hindrances.html\">Five Hindrances</a>, <a href=\"../tags/aggregates.html\">Five Aggregates</a>, <a href=\"../tags/sense-bases.html\">Six Sense Bases</a>, <a href=\"../tags/factors-of-awakening.html\">Seven Factors of Awakening</a> and the <a href=\"../tags/four-noble-truths.html\">Four Noble Truths</a>. Ajahn Pasanno, Ajahn Karuṇadhammo, and Ajahn Jotipālo take turns reading suttas and teachings about these subjects.",
       "flags": "",
       "sessions": 55,
-      "excerpts": 181,
+      "excerpts": 183,
       "texts": [
         "MN 10"
       ]
@@ -236523,7 +236655,7 @@
       "lineage": "Western disciples of Ajahn Chah",
       "eventCount": 88,
       "sessionCount": 414,
-      "excerptCount": 3453,
+      "excerptCount": 3455,
       "htmlFile": "ajahn-pasanno.html"
     },
     "AVira": {
@@ -238733,7 +238865,7 @@
       "subtopics": [],
       "eventCount": 3,
       "sessionCount": 12,
-      "excerptCount": 277,
+      "excerptCount": 278,
       "fTagCount": 7,
       "subtopicFTagCount": 7,
       "listIndex": 381
@@ -238903,9 +239035,14 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "mindfulness-of-feeling.html",
+      "partOfSubtopics": [
+        "Mindfulness of feeling"
+      ],
+      "subtopics": [],
       "sessionCount": 2,
       "excerptCount": 42,
       "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 42
     },
     "Mindfulness of mind": {
@@ -238928,9 +239065,13 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "mindfulness-of-mind.html",
+      "partOfSubtopics": [
+        "Mindfulness of feeling"
+      ],
       "sessionCount": 1,
       "excerptCount": 64,
       "fTagCount": 2,
+      "subtopicFTagCount": 2,
       "listIndex": 43
     },
     "Mindfulness of dhammas": {
@@ -238959,8 +239100,13 @@
       "copies": 2,
       "primaries": 1,
       "htmlFile": "mindfulness-of-dhammas.html",
+      "partOfSubtopics": [
+        "Mindfulness of feeling"
+      ],
       "eventCount": 1,
       "excerptCount": 17,
+      "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 44
     },
     "Hindrances": {
@@ -238992,7 +239138,7 @@
       ],
       "subtopics": [],
       "sessionCount": 5,
-      "excerptCount": 98,
+      "excerptCount": 99,
       "fTagCount": 5,
       "subtopicFTagCount": 5,
       "listIndex": 194
@@ -239026,7 +239172,7 @@
       ],
       "subtopics": [],
       "sessionCount": 5,
-      "excerptCount": 146,
+      "excerptCount": 147,
       "fTagCount": 5,
       "subtopicFTagCount": 5,
       "listIndex": 241
@@ -239054,7 +239200,7 @@
       ],
       "subtopics": [],
       "sessionCount": 2,
-      "excerptCount": 105,
+      "excerptCount": 107,
       "fTagCount": 2,
       "subtopicFTagCount": 2,
       "listIndex": 253
@@ -239087,7 +239233,7 @@
       "primaries": 1,
       "htmlFile": "factors-of-awakening.html",
       "sessionCount": 1,
-      "excerptCount": 28,
+      "excerptCount": 29,
       "fTagCount": 1,
       "listIndex": 104
     },
@@ -239119,7 +239265,7 @@
         "Four Noble Truths"
       ],
       "subtopics": [],
-      "excerptCount": 104,
+      "excerptCount": 105,
       "fTagCount": 3,
       "subtopicFTagCount": 3,
       "listIndex": 63
@@ -242820,9 +242966,9 @@
         "Volitional formations"
       ],
       "subtopics": [],
-      "excerptCount": 92,
-      "fTagCount": 3,
-      "subtopicFTagCount": 3,
+      "excerptCount": 93,
+      "fTagCount": 4,
+      "subtopicFTagCount": 4,
       "listIndex": 245
     },
     "Conditionality": {
@@ -242945,7 +243091,7 @@
       "subtopics": [],
       "eventCount": 1,
       "sessionCount": 1,
-      "excerptCount": 185,
+      "excerptCount": 186,
       "fTagCount": 4,
       "subtopicFTagCount": 4,
       "listIndex": 263
@@ -254953,6 +255099,8 @@
         "Health"
       ],
       "excerptCount": 15,
+      "fTagCount": 1,
+      "subtopicFTagCount": 1,
       "listIndex": 930
     },
     "Exercise": {
@@ -258518,7 +258666,7 @@
       "text": "Skillful qualities (145) [kusalā dhammā]",
       "tag": "Skillful qualities",
       "subtagCount": 129,
-      "subtagExcerptCount": 3487
+      "subtagExcerptCount": 3489
     },
     {
       "level": 2,
@@ -258542,7 +258690,7 @@
       "text": "Noble Eightfold Path (83) [ariya aṭṭaṅgika magga]",
       "tag": "Eightfold Path",
       "subtagCount": 52,
-      "subtagExcerptCount": 2153
+      "subtagExcerptCount": 2155
     },
     {
       "level": 3,
@@ -258909,7 +259057,7 @@
       "text": "Right Mindfulness (90) [sammā-sati]",
       "tag": "Right Mindfulness",
       "subtagCount": 17,
-      "subtagExcerptCount": 1207
+      "subtagExcerptCount": 1209
     },
     {
       "level": 4,
@@ -258922,7 +259070,7 @@
       "text": "Mindfulness of body (178) [kāyagatā-sati]",
       "tag": "Mindfulness of body",
       "subtagCount": 6,
-      "subtagExcerptCount": 601
+      "subtagExcerptCount": 602
     },
     {
       "level": 5,
@@ -258930,9 +259078,9 @@
       "flags": "",
       "name": "Mindfulness of breathing",
       "pali": "ānāpānasati",
-      "excerptCount": 277,
+      "excerptCount": 278,
       "subsumed": false,
-      "text": "Mindfulness of breathing (277) [ānāpānasati]",
+      "text": "Mindfulness of breathing (278) [ānāpānasati]",
       "tag": "Mindfulness of breathing"
     },
     {
@@ -259023,7 +259171,7 @@
       "text": "Mindfulness of dhammas (17) [dhammā-sati]",
       "tag": "Mindfulness of dhammas",
       "subtagCount": 5,
-      "subtagExcerptCount": 441
+      "subtagExcerptCount": 442
     },
     {
       "level": 5,
@@ -259031,9 +259179,9 @@
       "flags": "",
       "name": "Five Hindrances",
       "pali": "pañca nīvaraṇāni",
-      "excerptCount": 98,
+      "excerptCount": 99,
       "subsumed": false,
-      "text": "Five Hindrances (98) [pañca nīvaraṇāni]",
+      "text": "Five Hindrances (99) [pañca nīvaraṇāni]",
       "tag": "Hindrances"
     },
     {
@@ -259042,9 +259190,9 @@
       "flags": "",
       "name": "Five Aggregates",
       "pali": "pañcakkhandhā",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "subsumed": false,
-      "text": "Five Aggregates (146) [pañcakkhandhā]",
+      "text": "Five Aggregates (147) [pañcakkhandhā]",
       "tag": "Aggregates"
     },
     {
@@ -259053,9 +259201,9 @@
       "flags": "",
       "name": "Six Sense Bases",
       "pali": "saḷ-āyatana",
-      "excerptCount": 105,
+      "excerptCount": 107,
       "subsumed": false,
-      "text": "Six Sense Bases (105) [saḷ-āyatana]",
+      "text": "Six Sense Bases (107) [saḷ-āyatana]",
       "tag": "Sense bases"
     },
     {
@@ -259064,9 +259212,9 @@
       "flags": "",
       "name": "Seven Factors of Awakening",
       "pali": "satta bojjhaṅgā",
-      "excerptCount": 28,
+      "excerptCount": 29,
       "subsumed": false,
-      "text": "Seven Factors of Awakening (28) [satta bojjhaṅgā]",
+      "text": "Seven Factors of Awakening (29) [satta bojjhaṅgā]",
       "tag": "Factors of Awakening"
     },
     {
@@ -259075,9 +259223,9 @@
       "flags": "",
       "name": "Four Noble Truths",
       "pali": "cattāri ariya-saccāni",
-      "excerptCount": 104,
+      "excerptCount": 105,
       "subsumed": false,
-      "text": "Four Noble Truths (104) [cattāri ariya-saccāni]",
+      "text": "Four Noble Truths (105) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths"
     },
     {
@@ -259231,12 +259379,12 @@
       "flags": "*",
       "name": "Four Noble Truths",
       "pali": "cattāri ariya-saccāni",
-      "excerptCount": 104,
+      "excerptCount": 105,
       "subsumed": false,
-      "text": "Four Noble Truths (104) [cattāri ariya-saccāni]",
+      "text": "Four Noble Truths (105) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 20,
-      "subtagExcerptCount": 1569
+      "subtagExcerptCount": 1571
     },
     {
       "level": 3,
@@ -259249,7 +259397,7 @@
       "text": "Noble Truth of Suffering (35) [dukkha ariya-sacca]",
       "tag": "Noble Truth of Suffering",
       "subtagCount": 8,
-      "subtagExcerptCount": 876
+      "subtagExcerptCount": 877
     },
     {
       "level": 4,
@@ -259334,9 +259482,9 @@
       "flags": "",
       "name": "Five aggregates affected by clinging",
       "pali": "pañcupādānakkhandhā",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "subsumed": true,
-      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (146)",
+      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (147)",
       "tag": "Aggregates"
     },
     {
@@ -259475,7 +259623,7 @@
       "text": "Aids to Awakening (7) [bodhipakkhiyādhammā]",
       "tag": "Aids to Awakening",
       "subtagCount": 6,
-      "subtagExcerptCount": 353
+      "subtagExcerptCount": 354
     },
     {
       "level": 3,
@@ -259538,9 +259686,9 @@
       "flags": "7",
       "name": "Seven Factors of Awakening",
       "pali": "satta bojjhaṅgā",
-      "excerptCount": 28,
+      "excerptCount": 29,
       "subsumed": false,
-      "text": "Seven Factors of Awakening (28) [satta bojjhaṅgā]",
+      "text": "Seven Factors of Awakening (29) [satta bojjhaṅgā]",
       "tag": "Factors of Awakening"
     },
     {
@@ -259634,7 +259782,7 @@
       "text": "Five Faculties (11) [pañca indriyā]",
       "tag": "Faculties",
       "subtagCount": 5,
-      "subtagExcerptCount": 774
+      "subtagExcerptCount": 775
     },
     {
       "level": 3,
@@ -259697,12 +259845,12 @@
       "flags": "*",
       "name": "Seven Factors of Awakening",
       "pali": "satta bojjhaṅgā",
-      "excerptCount": 28,
+      "excerptCount": 29,
       "subsumed": false,
-      "text": "Seven Factors of Awakening (28) [satta bojjhaṅgā]",
+      "text": "Seven Factors of Awakening (29) [satta bojjhaṅgā]",
       "tag": "Factors of Awakening",
       "subtagCount": 7,
-      "subtagExcerptCount": 731
+      "subtagExcerptCount": 732
     },
     {
       "level": 3,
@@ -260551,7 +260699,7 @@
       "text": "Unskillful qualities (86) [akusalā dhammā]",
       "tag": "Unskillful qualities",
       "subtagCount": 40,
-      "subtagExcerptCount": 1577
+      "subtagExcerptCount": 1579
     },
     {
       "level": 2,
@@ -260719,12 +260867,12 @@
       "flags": "*",
       "name": "Five Hindrances",
       "pali": "pañca nīvaraṇāni",
-      "excerptCount": 98,
+      "excerptCount": 99,
       "subsumed": false,
-      "text": "Five Hindrances (98) [pañca nīvaraṇāni]",
+      "text": "Five Hindrances (99) [pañca nīvaraṇāni]",
       "tag": "Hindrances",
       "subtagCount": 5,
-      "subtagExcerptCount": 431
+      "subtagExcerptCount": 432
     },
     {
       "level": 3,
@@ -261102,9 +261250,9 @@
       "flags": "",
       "name": "Selfish love",
       "pali": "piya",
-      "excerptCount": 185,
+      "excerptCount": 186,
       "subsumed": true,
-      "text": "Selfish love [piya] see Clinging (185)",
+      "text": "Selfish love [piya] see Clinging (186)",
       "tag": "Clinging"
     },
     {
@@ -261185,7 +261333,7 @@
       "tag": "",
       "virtualTag": "Indeterminate qualities",
       "subtagCount": 48,
-      "subtagExcerptCount": 2019
+      "subtagExcerptCount": 2022
     },
     {
       "level": 2,
@@ -261250,12 +261398,12 @@
       "flags": "*",
       "name": "Five Aggregates",
       "pali": "pañcakkhandhā",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "subsumed": false,
-      "text": "Five Aggregates (146) [pañcakkhandhā]",
+      "text": "Five Aggregates (147) [pañcakkhandhā]",
       "tag": "Aggregates",
       "subtagCount": 5,
-      "subtagExcerptCount": 435
+      "subtagExcerptCount": 438
     },
     {
       "level": 3,
@@ -261296,9 +261444,9 @@
       "flags": "*",
       "name": "Volitional formations",
       "pali": "saṅkhārā",
-      "excerptCount": 92,
+      "excerptCount": 93,
       "subsumed": false,
-      "text": "Volitional formations (92) [saṅkhārā]",
+      "text": "Volitional formations (93) [saṅkhārā]",
       "tag": "Volitional formations"
     },
     {
@@ -261334,7 +261482,7 @@
       "text": "Dependent origination (55) [paticca-samuppāda]",
       "tag": "Dependent origination",
       "subtagCount": 20,
-      "subtagExcerptCount": 1361
+      "subtagExcerptCount": 1364
     },
     {
       "level": 3,
@@ -261353,9 +261501,9 @@
       "flags": "",
       "name": "Volitional formations",
       "pali": "saṅkhāra",
-      "excerptCount": 92,
+      "excerptCount": 93,
       "subsumed": false,
-      "text": "Volitional formations (92) [saṅkhāra]",
+      "text": "Volitional formations (93) [saṅkhāra]",
       "tag": "Volitional formations"
     },
     {
@@ -261375,9 +261523,9 @@
       "flags": "",
       "name": "Name and form",
       "pali": "nāma-rūpa",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "subsumed": true,
-      "text": "Name and form [nāma-rūpa] see Aggregates (146)",
+      "text": "Name and form [nāma-rūpa] see Aggregates (147)",
       "tag": "Aggregates"
     },
     {
@@ -261386,9 +261534,9 @@
       "flags": "*",
       "name": "Six Sense Bases",
       "pali": "saḷ-āyatana",
-      "excerptCount": 105,
+      "excerptCount": 107,
       "subsumed": false,
-      "text": "Six Sense Bases (105) [saḷ-āyatana]",
+      "text": "Six Sense Bases (107) [saḷ-āyatana]",
       "tag": "Sense bases"
     },
     {
@@ -261500,12 +261648,12 @@
       "flags": "",
       "name": "Clinging",
       "pali": "upādāna",
-      "excerptCount": 185,
+      "excerptCount": 186,
       "subsumed": false,
-      "text": "Clinging (185) [upādāna]",
+      "text": "Clinging (186) [upādāna]",
       "tag": "Clinging",
       "subtagCount": 4,
-      "subtagExcerptCount": 391
+      "subtagExcerptCount": 392
     },
     {
       "level": 4,
@@ -262542,7 +262690,7 @@
       "text": "Meditation (133) [bhāvanā]",
       "tag": "Meditation",
       "subtagCount": 70,
-      "subtagExcerptCount": 2158
+      "subtagExcerptCount": 2159
     },
     {
       "level": 2,
@@ -262577,7 +262725,7 @@
       "text": "Four Foundations of Mindfulness [cattāro satipaṭṭhānā] see Right Mindfulness (90)",
       "tag": "Right Mindfulness",
       "subtagCount": 12,
-      "subtagExcerptCount": 877
+      "subtagExcerptCount": 878
     },
     {
       "level": 3,
@@ -262590,7 +262738,7 @@
       "text": "Mindfulness of body (178) [kāyagatā-sati]",
       "tag": "Mindfulness of body",
       "subtagCount": 6,
-      "subtagExcerptCount": 601
+      "subtagExcerptCount": 602
     },
     {
       "level": 4,
@@ -262598,9 +262746,9 @@
       "flags": "",
       "name": "Mindfulness of breathing",
       "pali": "ānāpānasati",
-      "excerptCount": 277,
+      "excerptCount": 278,
       "subsumed": false,
-      "text": "Mindfulness of breathing (277) [ānāpānasati]",
+      "text": "Mindfulness of breathing (278) [ānāpānasati]",
       "tag": "Mindfulness of breathing"
     },
     {
@@ -262836,7 +262984,7 @@
       "text": "Meditation/Techniques (53)",
       "tag": "Meditation/Techniques",
       "subtagCount": 19,
-      "subtagExcerptCount": 886
+      "subtagExcerptCount": 887
     },
     {
       "level": 3,
@@ -262844,9 +262992,9 @@
       "flags": "*",
       "name": "Mindfulness of breathing",
       "pali": "ānāpānasati",
-      "excerptCount": 277,
+      "excerptCount": 278,
       "subsumed": false,
-      "text": "Mindfulness of breathing (277) [ānāpānasati]",
+      "text": "Mindfulness of breathing (278) [ānāpānasati]",
       "tag": "Mindfulness of breathing"
     },
     {
@@ -263095,7 +263243,7 @@
       "text": "Recollection (98) [anusati]",
       "tag": "Recollection",
       "subtagCount": 10,
-      "subtagExcerptCount": 631
+      "subtagExcerptCount": 632
     },
     {
       "level": 3,
@@ -263169,9 +263317,9 @@
       "flags": "",
       "name": "Mindfulness of breathing",
       "pali": "ānāpānasati",
-      "excerptCount": 277,
+      "excerptCount": 278,
       "subsumed": false,
-      "text": "Mindfulness of breathing (277) [ānāpānasati]",
+      "text": "Mindfulness of breathing (278) [ānāpānasati]",
       "tag": "Mindfulness of breathing"
     },
     {
@@ -263488,7 +263636,7 @@
       "text": "Teaching Dhamma (259)",
       "tag": "Teaching Dhamma",
       "subtagCount": 40,
-      "subtagExcerptCount": 2080
+      "subtagExcerptCount": 2082
     },
     {
       "level": 2,
@@ -263501,7 +263649,7 @@
       "text": "The Gradual Teaching (25) [anupubbikathā]",
       "tag": "Gradual Teaching",
       "subtagCount": 24,
-      "subtagExcerptCount": 1646
+      "subtagExcerptCount": 1648
     },
     {
       "level": 3,
@@ -263564,12 +263712,12 @@
       "flags": "",
       "name": "Four Noble Truths",
       "pali": "cattāri ariya-saccāni",
-      "excerptCount": 104,
+      "excerptCount": 105,
       "subsumed": false,
-      "text": "Four Noble Truths (104) [cattāri ariya-saccāni]",
+      "text": "Four Noble Truths (105) [cattāri ariya-saccāni]",
       "tag": "Four Noble Truths",
       "subtagCount": 19,
-      "subtagExcerptCount": 1398
+      "subtagExcerptCount": 1400
     },
     {
       "level": 4,
@@ -263582,7 +263730,7 @@
       "text": "Noble Truth of Suffering (35) [dukkha ariya-sacca]",
       "tag": "Noble Truth of Suffering",
       "subtagCount": 7,
-      "subtagExcerptCount": 558
+      "subtagExcerptCount": 559
     },
     {
       "level": 5,
@@ -263656,9 +263804,9 @@
       "flags": "",
       "name": "Five aggregates affected by clinging",
       "pali": "pañcupādānakkhandhā",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "subsumed": true,
-      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (146)",
+      "text": "Five aggregates affected by clinging [pañcupādānakkhandhā] see Aggregates (147)",
       "tag": "Aggregates"
     },
     {
@@ -273811,7 +273959,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/four-noble-truths.html",
-      "excerptCount": 104,
+      "excerptCount": 105,
       "fTagCount": 3
     },
     "Noble Truth of Suffering": {
@@ -274073,8 +274221,25 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/mindfulness-of-breathing.html",
-      "excerptCount": 277,
+      "excerptCount": 278,
       "fTagCount": 7
+    },
+    "Mindfulness of feeling": {
+      "tag": "Mindfulness of feeling",
+      "displayAs": "Mindfulness of feeling and mind",
+      "pali": "",
+      "related": [],
+      "status": "",
+      "autoComplete": "Display",
+      "topicCode": "meditation",
+      "progressMemo": "",
+      "subtags": {
+        "Mindfulness of mind": "+",
+        "Mindfulness of dhammas": "+"
+      },
+      "htmlPath": "clusters/mindfulness-of-feeling.html",
+      "excerptCount": 111,
+      "fTagCount": 4
     },
     "Posture/Walking": {
       "tag": "Posture/Walking",
@@ -274409,7 +274574,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/hindrances.html",
-      "excerptCount": 98,
+      "excerptCount": 99,
       "fTagCount": 5
     },
     "Sensual desire": {
@@ -274696,8 +274861,8 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/volitional-formations.html",
-      "excerptCount": 92,
-      "fTagCount": 3
+      "excerptCount": 93,
+      "fTagCount": 4
     },
     "Consciousness": {
       "tag": "Consciousness",
@@ -274724,7 +274889,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/aggregates.html",
-      "excerptCount": 146,
+      "excerptCount": 147,
       "fTagCount": 5
     },
     "Sense bases": {
@@ -274738,7 +274903,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/sense-bases.html",
-      "excerptCount": 105,
+      "excerptCount": 107,
       "fTagCount": 2
     },
     "Contact": {
@@ -274794,7 +274959,7 @@
       "progressMemo": "",
       "subtags": {},
       "htmlPath": "tags/clinging.html",
-      "excerptCount": 185,
+      "excerptCount": 186,
       "fTagCount": 4
     },
     "Becoming": {
@@ -275347,7 +275512,7 @@
       },
       "htmlPath": "clusters/health.html",
       "excerptCount": 131,
-      "fTagCount": 6
+      "fTagCount": 7
     },
     "Family": {
       "tag": "Family",
@@ -277237,7 +277402,7 @@
         "Cause of Suffering",
         "Cessation of Suffering"
       ],
-      "excerptCount": 296,
+      "excerptCount": 297,
       "fTagCount": 13
     },
     "path": {
@@ -277273,6 +277438,7 @@
         "Meditation",
         "Mindfulness of body",
         "Mindfulness of breathing",
+        "Mindfulness of feeling",
         "Posture/Walking",
         "Chanting",
         "Recollection",
@@ -277282,8 +277448,8 @@
         "Knowing itself",
         "Long-term practice"
       ],
-      "excerptCount": 1153,
-      "fTagCount": 51
+      "excerptCount": 1200,
+      "fTagCount": 55
     },
     "skillful": {
       "code": "skillful",
@@ -277307,7 +277473,7 @@
         "Compassion",
         "Equanimity"
       ],
-      "excerptCount": 1505,
+      "excerptCount": 1506,
       "fTagCount": 58
     },
     "unskillful": {
@@ -277331,7 +277497,7 @@
         "Self-identity view",
         "Conceit"
       ],
-      "excerptCount": 1256,
+      "excerptCount": 1258,
       "fTagCount": 49
     },
     "perspectives": {
@@ -277372,8 +277538,8 @@
         "Clinging",
         "Becoming"
       ],
-      "excerptCount": 735,
-      "fTagCount": 31
+      "excerptCount": 738,
+      "fTagCount": 32
     },
     "fruits": {
       "code": "fruits",
@@ -277485,7 +277651,7 @@
         "Technology"
       ],
       "excerptCount": 808,
-      "fTagCount": 47
+      "fTagCount": 48
     }
   },
   "textGroup": {

@@ -49,7 +49,7 @@ class ExcerptFlag(StrEnum):
     RELATIVE_AUDIO = "r"    # Interpret Cut Audio and Fragment times relative to excerpt start time.
     ZERO_MARGIN = "z"       # Annotations have zero leftmost margins - useful for videos
     NO_CHECK = "n"          # ReviewDatabase won't flag this excerpt for having no tags
-                            # Also skip checking smart quotes
+                            # Also skip checking smart quotes and response indentation
     UNNAMED_SPEAKER = "q"   # Anonymous indirect speech; not flagged by ReviewDatabase
     DEMOTE = "d"            # Lower search priority for inferior excerpts 
     END_COLON = ":"         # Add a colon to the end of this excerpt or annotation

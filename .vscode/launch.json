@@ -185,7 +185,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "Build",
+                "ReviewDatabase",
                 "--buildOnly",
                 "clusters"
             ],
