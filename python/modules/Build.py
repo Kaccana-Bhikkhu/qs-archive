@@ -96,8 +96,8 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
     if page.info.file.endswith("_print.html"):
         template = Utils.AppendToFilename(template,"_print")
     pageHtml = page.RenderWithTemplate(template)
-    writer.WriteTextFile(page.info.file,pageHtml)
-    writer.SetMetadata(page.info.file,{"searchChip":pageChipQuery} if pageChipQuery else {})
+    metadata = {"searchChip":pageChipQuery} if pageChipQuery else {}
+    writer.WriteTextFile(page.info.file,pageHtml,metadata=metadata)
 
 
 def DirectoriesToDeleteFrom() -> set[str]:
@@ -2390,7 +2390,7 @@ def EventPages(eventPageDir: str) -> Iterator[Html.PageAugmentorType]:
                 a.br()
                 a.br()
 
-            a(SearchWithin(eventInfo["title"],Filter.Event(eventCode)))
+            a(SearchWithin(Utils.RemoveHtmlTags(eventInfo["title"]),Filter.Event(eventCode)))
             a.br()
 
             tocHtml = TableOfContents(eventInfo,sessions)

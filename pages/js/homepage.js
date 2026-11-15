@@ -504,6 +504,11 @@ export function showFloatingSearch(query = null,searchWithin = null,placeholder 
         if (gSearchWithinExcerpts.length === gSearchers["x"].items.length)
             gSearchWithinExcerpts = null; // Special case for a search which finds all excerpts
         gDropDownFilters = new Map();
+
+        let searchPageInput = document.querySelector("input#search-text");
+        if (searchPageInput) {
+            searchPageInput.value = searchWithin.get("q").trim() || "";
+        }
     } else {
         searchBar.placeholder = placeholder || "Search the teachings...";
         gSearchWithinExcerpts = null;
@@ -556,9 +561,10 @@ function searchWithinThisPage() {
 
 function runFloatingSearch (searchText) {
     // Called when the user clicks Search in the floating search bar.
+    searchText = searchText.trim();
     if (gSearchWithinQuery) { // Append searchText to the existing search query
-        let existingQuery = queryFromParams(gSearchWithinQuery,false,false);
-        existingQuery += " " + searchText;
+        let existingQuery = queryFromParams(gSearchWithinQuery,false,false).trim();
+        existingQuery = [existingQuery,searchText].filter(s => s).join(" "); // don't add a space if one string is empty
         gSearchWithinQuery.set("q",encodeURIComponent(encodeSearchQuery(existingQuery)));
         openLocalPage("search/Advanced-search.html",String(gSearchWithinQuery));
         gSearchWithinQuery = null;

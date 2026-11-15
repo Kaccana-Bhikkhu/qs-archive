@@ -1403,7 +1403,7 @@ export function readSearchBar() {
     // Returns the query string corresponding to what's in the search bar right now.
 
     let searchInput = frame.querySelector('#search-text');
-    let query = searchInput.value;
+    let query = searchInput.value.trim();
     return encodeURIComponent(encodeSearchQuery(query));
 }
 

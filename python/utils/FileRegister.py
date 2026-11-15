@@ -234,7 +234,7 @@ class HashWriter(FileRegister):
     def __enter__(self) -> HashWriter:
         return self
 
-    def _UpdateFile(self,fileName: str,newHash: str,writeFunction: Callable[[],None],mode:Write|None = None) -> Status:
+    def _UpdateFile(self,fileName: str,newHash: str,writeFunction: Callable[[],None],mode:Write|None = None,metadata: dict[str] = {}) -> Status:
         """Abstract function which implements the file update logic.
         Determine whether fileName needs to be updated, given newHash and mode.
         If so, call writeFunction to update the file on disk.
@@ -257,7 +257,7 @@ class HashWriter(FileRegister):
                     self.record[fileName]["_status"] = Status.BLOCKED
                     return Status.BLOCKED
 
-        newRecord = {"md5":newHash}
+        newRecord = metadata | {"md5":newHash}
         status = self.Register(fileName,newRecord)
         if mode == Write.DESTINATION_CHANGED and updatedOnDisk:
             status = Status.UPDATED
@@ -276,7 +276,7 @@ class HashWriter(FileRegister):
         
         return status
 
-    def WriteBinaryFile(self,fileName: str,fileContents: bytes,mode:Write|None = None) -> Status:
+    def WriteBinaryFile(self,fileName: str,fileContents: bytes,mode:Write|None = None,metadata: dict[str] = {}) -> Status:
         """Write binary data to fileName if the stored hash differs from fileContents."""
         
         fullPath = posixpath.join(self.basePath,fileName)
@@ -287,14 +287,14 @@ class HashWriter(FileRegister):
                 file.write(fileContents)
 
         newHash = hashlib.md5(fileContents,usedforsecurity=False).hexdigest()
-        return self._UpdateFile(fileName,newHash,WriteBinary,mode)
+        return self._UpdateFile(fileName,newHash,WriteBinary,mode,metadata)
 
-    def WriteTextFile(self,fileName: str,fileContents: str,mode:Write|None = None) -> Status:
+    def WriteTextFile(self,fileName: str,fileContents: str,mode:Write|None = None,metadata: dict[str] = {}) -> Status:
         """Write text fileContents to fileName in utf-8 encoding if the stored hash differs."""
 
         fileContents += "\n" # Append a newline to mimic printing the string.
         utf8Encoded = fileContents.encode("utf-8")
-        return self.WriteBinaryFile(fileName,utf8Encoded,mode)
+        return self.WriteBinaryFile(fileName,utf8Encoded,mode,metadata)
     
     def DownloadFile(self,fileName: str,url: str,mode:Write|None = None,retries: int = 2) -> Status:
         """Download file contents from url; update the file on disk only if the md5 checksum differs.
@@ -371,5 +371,6 @@ class HashWriter(FileRegister):
         """Overwrites the metadata associated with fileName; pass data = {} to delete all metadata."""
         if fileName not in self.record:
             raise KeyError(f"HashWriter: No such record '{fileName}'")
-        newRecord = data | {"md5":self.record[fileName]["md5"]}
+        newRecord = data | {key:self.record[fileName][key] for key in HashWriter.KEYS}
         self.Register(fileName,newRecord)
+
