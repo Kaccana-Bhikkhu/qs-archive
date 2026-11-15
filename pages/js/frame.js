@@ -190,7 +190,7 @@ export function configureLinks(frame,url) {
 					bookmarkedItem.scrollIntoView();
 				}
 			});
-		} else {
+		} else if (!el.classList.contains("search-within")) { // loadHomepage() configures search-within links
 			let url = href;
 			let newLocation = new URL(locationNoQuery);
 			newLocation.hash = "#" + url;

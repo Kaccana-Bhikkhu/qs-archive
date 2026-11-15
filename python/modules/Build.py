@@ -73,7 +73,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
         while pagedesc.HasSection(sectionNumber):
             section = pagedesc.section[sectionNumber]
             if type(section) == str:
-                pagedesc.section[sectionNumber],replaced = re.subn(r'<a class="search-within" href="SEARCH_WITHIN_LINK" data-name="([^"]*)" data-query="([^"]*)">',
+                pagedesc.section[sectionNumber],replaced = re.subn(r'<a class="search-within keep-nav-menu-open" href="SEARCH_WITHIN_LINK" data-name="([^"]*)" data-query="([^"]*)">',
                                                     SearchWithinLink,pagedesc.section[sectionNumber],count = 1)
                 if replaced:
                     return True
@@ -241,7 +241,7 @@ def SearchWithin(title: str,filter: Filter.Filter) -> str:
     title: what we are searching within;
     filter: the filter that produced the page we are searching."""
 
-    link = Html.Tag("a",{"class":"search-within","href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
+    link = Html.Tag("a",{"class":"search-within keep-nav-menu-open","href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
     return f'<i class="fa fa-search"></i> Search within&ensp;{link(title)}'
 
 def RegisterSearchWithin(page: Html.PageDesc) -> None:

@@ -1417,6 +1417,14 @@ function searchButtonClick(searchKind) {
     let params = frameSearch();
     params.set("q",query);
     params.set("search",searchKind);
+    if (framePage() === "search/Text-search.html") {
+        let filterNumber = 1; // Remove filters hiding in the URL query when the simple search button is pressed
+        while (params.has(`filter${filterNumber}`)) {
+            params.delete(`filter${filterNumber}`);
+            filterNumber += 1;
+        }
+    }
+
     history.pushState({},"",location.href); // First push a new history frame
     setFrameSearch(params); // Then replace the history with the search query
 

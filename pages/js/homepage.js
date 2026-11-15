@@ -1,7 +1,7 @@
 // homepage.js scripts the pages homepage.html and search/Featured.html
 // Both pages rely on ./assets/FeaturedDatabase.json
 
-import {configureLinks, openLocalPage, framePage, loadDatabase, getDatabase} from './frame.js';
+import {configureLinks, openLocalPage, framePage, loadDatabase, frameSearch} from './frame.js';
 import './autoComplete.js';
 import {SearchQuery,gSearchers,loadSearchDatabase,encodeSearchQuery,addFilter,queryFromParams} from './search.js';
 
@@ -331,6 +331,11 @@ export async function loadHomepage(loadedFrame) {
     try {
          lucide.createIcons(lucide.icons);
     } catch (err) { }
+
+    document.querySelector("a.search-within")?.addEventListener("click",(event) => {
+        event.preventDefault();
+        searchWithinThisPage();
+    });
 }
 
 function dropdownMenuClick(clickedItem) {
@@ -426,10 +431,13 @@ function setupNavMenuTriggers() {
         // '/' key opens the search bar if it's not open already.
         // Don't open the search bar if an input box has focus.
         let header = document.querySelector('header');
-        if ((event.key === "/") && !header.querySelector('.floating-search.active')
+        if ((["/","?"].includes(event.key)) && !header.querySelector('.floating-search.active')
                 && document.activeElement.nodeName !== "INPUT") {
             event.preventDefault();
-            document.getElementById("nav-search-icon").click();
+            if (event.key === "/")
+                document.getElementById("nav-search-icon").click();
+            else
+                searchWithinThisPage();
         }
         // Esc key closes all menus if any are open
         if ((event.key === "Escape") && header.querySelector('.active')) {
@@ -451,9 +459,9 @@ function setupNavMenuTriggers() {
 let gAutoCompleteDatabase = {};     // The database loaded 
 let gQuery = "";                    // The query corresponding to the text currently contained in the floating search bar
 let gSearchWithinQuery = null;      // The params query we are searching within, corresponding either to the current search page query or
-                                // the query corresponding to the current excerpt page. When non-null, clicking an autocomplete item
-                                // will open the advanced search page with that item's query as an additional filter.
-                                // When null, clicking an autocomplete item jumps to the corresponding html page.
+                                    // the query corresponding to the current excerpt page. When non-null, clicking an autocomplete item
+                                    // will open the advanced search page with that item's query as an additional filter.
+                                    // When null, clicking an autocomplete item jumps to the corresponding html page.
 let gSearchWithinExcerpts = null;   // The excerpts found by gSearchWithinQuery (all excerpts if it's null)
 let gDropDownFilters = null;        // A Map describing the filters that (might) display in the auto complete box
                                     // keys (str): the filter chip values in AutoCompleteDatabase.json
@@ -463,10 +471,11 @@ let gDropDownFilters = null;        // A Map describing the filters that (might)
                                     // null when gSearchQuery is null
 let gAutoComplete = null;           // The autoComplete.js object, initialized just below
 
-export function showFloatingSearch(query = null,searchWithin = null) {
+export function showFloatingSearch(query = null,searchWithin = null,placeholder = "") {
     // Show the floating search window.
     // query: Display this as the initial query; if null, keep what the user already typed
     // searchWithin: see gSearchWithinQuery for the meaning of this parameter
+    // placeholder: replaces the default prompt if provided
     // The same for the floating search window
     
     let searchWindow = document.querySelector('.floating-search');
@@ -485,18 +494,23 @@ export function showFloatingSearch(query = null,searchWithin = null) {
 
     searchBar.focus();
     if (searchWithin) {
-        searchBar.placeholder = "Narrow this search...";
+        if (searchWithin.get("q").trim() || searchWithin.get("filter1"))
+            searchBar.placeholder = placeholder || "Narrow this search...";
+        else
+            searchBar.placeholder = placeholder || "Choose a search filter...";
         let searchGroups = new SearchQuery(queryFromParams(searchWithin,false,true),searchWithin.has("strict"));
         gSearchers["x"].search(searchGroups);
         gSearchWithinExcerpts = gSearchers["x"].foundItems;
+        if (gSearchWithinExcerpts.length === gSearchers["x"].items.length)
+            gSearchWithinExcerpts = null; // Special case for a search which finds all excerpts
         gDropDownFilters = new Map();
     } else {
-        searchBar.placeholder = "Search the teachings...";
+        searchBar.placeholder = placeholder || "Search the teachings...";
         gSearchWithinExcerpts = null;
         gDropDownFilters = null;
     }
 
-        if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
+    if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
         setTimeout(function() {
             gAutoComplete.start();
             countFoundExcerpts();
@@ -509,6 +523,35 @@ export function closeFloatingSearch() {
     searchWindow.classList.remove('active');
     document.getElementById('floating-search-input').blur();
     displayExcerptCount(0);
+}
+
+function searchWithinThisPage() {
+    // Called when the user types '?' on any page; what we do depends on which page it is.
+
+    let page = framePage();
+    
+    if (page === "search/Advanced-search.html") {
+        showFloatingSearch(null,frameSearch()); // Search within the current list of found excerpts
+    } else if (page === "search/Text-search.html") {
+        let params = frameSearch();
+        let filterNumber = 1;
+        while (params.has(`filter${filterNumber}`)) { // Don't apply filters hiding in the URL query when the simple search page is displayed
+            params.delete(`filter${filterNumber}`);
+            filterNumber += 1;
+        }
+        showFloatingSearch(null,params);
+    } else {
+        let searchWithinLink = document.querySelector("a.search-within");
+        if (searchWithinLink) {
+            debugLog(searchWithinLink);
+            let hashRemoved = searchWithinLink.href.replace(/#[^?]*/,""); // frame.js # notation confuses the URL parser.
+            let params = new URL(hashRemoved).searchParams;
+            showFloatingSearch(null,params,"Search within " + searchWithinLink.innerText.trim());
+        } else {
+            showFloatingSearch(null,new URLSearchParams("?q=&search=all&featured&relevant"));
+        }
+    }
+
 }
 
 function runFloatingSearch (searchText) {
@@ -525,14 +568,16 @@ function runFloatingSearch (searchText) {
     }
 }
 
-function excerptsMatchingChip(chip) {
+function excerptsMatchingItem(autoCompleteEntry) {
     // Returns the number of excerpts that match this chip in the current search within environement.
 
-    let queryText = chip.split("_",4)[3]; // The last part of the chip is the query text
+    if (!gSearchWithinExcerpts) // null when we are searching within all excerpts
+        return autoCompleteEntry.excerptCount;
+    let queryText = autoCompleteEntry.chip.split("_",4)[3]; // The last part of the chip is the query text
     if (gDropDownFilters.get(queryText) === undefined) {
         let searchQuery = new SearchQuery(queryText);
         gSearchers["x"].search(searchQuery,gSearchWithinExcerpts);
-        gDropDownFilters.set(queryText,gSearchers["x"].foundItems.length);
+        gDropDownFilters.set(queryText,gSearchers["x"].foundItems.length); // Cache the found item count
     }
     return gDropDownFilters.get(queryText);
 }
@@ -564,8 +609,8 @@ function setupAutoComplete() {
                         return false; // Number search must match exactly
                     if (gSearchWithinQuery !== null) {
                         if (!item.value.chip)
-                        return false; // Page-only items should not be displayed when searching within a query
-                        if (excerptsMatchingChip(item.value.chip) === 0)
+                            return false; // Page-only items should not be displayed when searching within a query
+                        if (excerptsMatchingItem(item.value) === 0)
                             return false; // Don't display filters which match no excerpts
                     }
                     if (links.has(item.value.link))
@@ -637,12 +682,10 @@ function setupAutoComplete() {
                     icon = `<i data-lucide="${icon}"></i>`
                 let suffix = data.value.suffix;
                 if (gSearchWithinQuery) {
-                    if (data.value.chip) {
-                        suffix += ` (${excerptsMatchingChip(data.value.chip)})`;
-                    }
+                    suffix += ` (${excerptsMatchingItem(data.value)})`;
                 } else {
-                if (data.value.excerptCount)
-                    suffix += ` (${data.value.excerptCount})`;
+                    if (data.value.excerptCount)
+                        suffix += ` (${data.value.excerptCount})`;
                 }
                 item.innerHTML = `${icon} ${matchText} ${suffix}`;
             },
