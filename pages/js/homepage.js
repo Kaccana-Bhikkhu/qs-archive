@@ -448,14 +448,20 @@ function setupNavMenuTriggers() {
 }
 
 // Global variables used by the auto complete system
-let gAutoCompleteDatabase = {}; // The database loaded 
-let gQuery = "";                // The query corresponding to the text currently contained in the floating search bar
-let gSearchWithinQuery = null;  // The params query we are searching within, corresponding either to the current search page query or
+let gAutoCompleteDatabase = {};     // The database loaded 
+let gQuery = "";                    // The query corresponding to the text currently contained in the floating search bar
+let gSearchWithinQuery = null;      // The params query we are searching within, corresponding either to the current search page query or
                                 // the query corresponding to the current excerpt page. When non-null, clicking an autocomplete item
                                 // will open the advanced search page with that item's query as an additional filter.
                                 // When null, clicking an autocomplete item jumps to the corresponding html page.
-let gSearchWithinExcerpts = []; // The excerpts found by gSearchWithinQuery (all excerpts if it's null)
-let gAutoComplete = null;       // The autoComplete.js object, initialized just below
+let gSearchWithinExcerpts = null;   // The excerpts found by gSearchWithinQuery (all excerpts if it's null)
+let gDropDownFilters = null;        // A Map describing the filters that (might) display in the auto complete box
+                                    // keys (str): the filter chip values in AutoCompleteDatabase.json
+                                    // values (int): the number of excerpts in gSearchWithinExcerpts this filter matches
+                                    //    null means not calculated yet
+                                    // We hide filters that match no objects
+                                    // null when gSearchQuery is null
+let gAutoComplete = null;           // The autoComplete.js object, initialized just below
 
 export function showFloatingSearch(query = null,searchWithin = null) {
     // Show the floating search window.
@@ -483,10 +489,13 @@ export function showFloatingSearch(query = null,searchWithin = null) {
         let searchGroups = new SearchQuery(queryFromParams(searchWithin,false,true),searchWithin.has("strict"));
         gSearchers["x"].search(searchGroups);
         gSearchWithinExcerpts = gSearchers["x"].foundItems;
+        gDropDownFilters = new Map();
     } else {
         searchBar.placeholder = "Search the teachings...";
-        gSearchWithinExcerpts = gSearchers["x"].items;
+        gSearchWithinExcerpts = null;
+        gDropDownFilters = null;
     }
+
         if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
         setTimeout(function() {
             gAutoComplete.start();
@@ -516,6 +525,18 @@ function runFloatingSearch (searchText) {
     }
 }
 
+function excerptsMatchingChip(chip) {
+    // Returns the number of excerpts that match this chip in the current search within environement.
+
+    let queryText = chip.split("_",4)[3]; // The last part of the chip is the query text
+    if (gDropDownFilters.get(queryText) === undefined) {
+        let searchQuery = new SearchQuery(queryText);
+        gSearchers["x"].search(searchQuery,gSearchWithinExcerpts);
+        gDropDownFilters.set(queryText,gSearchers["x"].foundItems.length);
+    }
+    return gDropDownFilters.get(queryText);
+}
+
 function setupAutoComplete() {
     // Code to configure floating menu autocomplete functionality
     // See https://tarekraafat.github.io/autoComplete.js/#/usage for details
@@ -541,8 +562,12 @@ function setupAutoComplete() {
                 let filtered = results.filter((item) => {
                     if (item.key === "number" && item.value.number !== gQuery)
                         return false; // Number search must match exactly
-                    if (gSearchWithinQuery !== null && !item.value.chip)
+                    if (gSearchWithinQuery !== null) {
+                        if (!item.value.chip)
                         return false; // Page-only items should not be displayed when searching within a query
+                        if (excerptsMatchingChip(item.value.chip) === 0)
+                            return false; // Don't display filters which match no excerpts
+                    }
                     if (links.has(item.value.link))
                         return false; // Remove items that link to identical pages
                     links.add(item.value.link);
@@ -611,8 +636,14 @@ function setupAutoComplete() {
                 if (icon && !icon.match("<"))
                     icon = `<i data-lucide="${icon}"></i>`
                 let suffix = data.value.suffix;
+                if (gSearchWithinQuery) {
+                    if (data.value.chip) {
+                        suffix += ` (${excerptsMatchingChip(data.value.chip)})`;
+                    }
+                } else {
                 if (data.value.excerptCount)
                     suffix += ` (${data.value.excerptCount})`;
+                }
                 item.innerHTML = `${icon} ${matchText} ${suffix}`;
             },
             highlight: true,
@@ -664,7 +695,7 @@ function countFoundExcerpts() {
     }
     try {
         let searchGroups = new SearchQuery(query);
-        gSearchers["x"].search(searchGroups,gSearchWithinExcerpts);
+        gSearchers["x"].search(searchGroups,gSearchWithinExcerpts ? gSearchWithinExcerpts : gSearchers["x"].items);
         displayExcerptCount(gSearchers["x"].foundItems.length);
     } catch (err) {
         displayExcerptCount(0);
