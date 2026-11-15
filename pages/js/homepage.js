@@ -406,12 +406,12 @@ function setupNavMenuTriggers() {
     document.getElementById('floating-search-go').addEventListener('click', function(event) {
         let inputBox = document.getElementById('floating-search-input');
         inputBox.blur();
-        let searchQuery = encodeURIComponent(encodeSearchQuery(inputBox.value));
+        let searchText = inputBox.value;
         inputBox.value = "";
         gQuery = "";
-        debugLog('Search bar search for',searchQuery);
+        debugLog('Search bar search for',searchText);
         event.preventDefault();
-        openLocalPage("search/Text-search.html",`q=${searchQuery}&search=all&featured&relevant`);
+        runFloatingSearch(searchText)
     });
 
     /* Uncomment this code to begin working on #113: Grid menu matching abhayagiri.org
@@ -467,7 +467,6 @@ export function showFloatingSearch(query = null,searchWithin = null) {
     searchWindow.classList.add('active');
     
     let searchBar = document.getElementById('floating-search-input');
-    searchBar.focus();
     if (query === null)
         searchBar.value = gQuery;
     else
@@ -478,6 +477,7 @@ export function showFloatingSearch(query = null,searchWithin = null) {
     if (!gAutoComplete)
         setupAutoComplete();
 
+    searchBar.focus();
     if (searchWithin) {
         searchBar.placeholder = "Narrow this search...";
         let searchGroups = new SearchQuery(queryFromParams(searchWithin,false,true),searchWithin.has("strict"));
@@ -500,6 +500,20 @@ export function closeFloatingSearch() {
     searchWindow.classList.remove('active');
     document.getElementById('floating-search-input').blur();
     displayExcerptCount(0);
+}
+
+function runFloatingSearch (searchText) {
+    // Called when the user clicks Search in the floating search bar.
+    if (gSearchWithinQuery) { // Append searchText to the existing search query
+        let existingQuery = queryFromParams(gSearchWithinQuery,false,false);
+        existingQuery += " " + searchText;
+        gSearchWithinQuery.set("q",encodeURIComponent(encodeSearchQuery(existingQuery)));
+        openLocalPage("search/Advanced-search.html",String(gSearchWithinQuery));
+        gSearchWithinQuery = null;
+    } else { // Just open the simple search page
+        let query = encodeURIComponent(encodeSearchQuery(searchText));
+        openLocalPage("search/Text-search.html",`q=${query}&search=all&featured&relevant`);
+    }
 }
 
 function setupAutoComplete() {

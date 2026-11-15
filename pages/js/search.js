@@ -1,4 +1,4 @@
-import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase, getDatabase} from './frame.js';
+import {configureLinks,frameSearch,setFrameSearch,scrollToInitialPosition, loadDatabase, framePage} from './frame.js';
 import { loadToggleView } from './toggle-view.js';
 import { showFloatingSearch } from './homepage.js'
 
@@ -1368,9 +1368,9 @@ function searchFromURL() {
             return;
         }
         let params = frameSearch();
-        let query = queryFromParams(params,true,true);
+        let query = queryFromParams(params,true,framePage() === "search/Advanced-search.html");
         let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
-
+        
         debugLog("Called searchFromURL. Query:",query);
         frame.querySelector('#search-text').value = queryFromParams(params,false,false);
 
