@@ -35,6 +35,9 @@ Year|Devotion/Ritual|Sutta Study|Meditation|Global/Social Context|Daily Life Pra
 [Honoring the Buddha: The Mahāparinibbāna Sutta](event:UD2021-1) – April 2021<br>
 &nbsp;&nbsp;Ajahn Pasanno and Ajahn Ñāṇiko
 
+[Dāna Pārami](event:UD2026-3) – August 2026<br>
+&nbsp;&nbsp;Ajahn Pasanno and Ajahn Ñāṇiko
+
 ### Teacher abbreviations:
 AP: [Ajahn Pasanno](teacher:)<br>
 AY: [Ajahn Yatiko](teacher:)<br>

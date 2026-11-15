@@ -45,13 +45,9 @@ The term “upāsika” means “one who sits close by” and it has come to ref
 
 The Upāsika Program was particularly well-organized between 2006 and 2019. These years a committee of lay and monastic leaders met in early April to plan a series of five Upāsika Days for the year. Each Upāsika Day had both a topic (for example [jhāna](event:UD2015-4) or [Buddhist identity](event:UD2015-3)) and an overarching theme or lens through which to view the topic. The five themes repeated each year were formal meditation practice, devotional practice, sutta study, daily life practice, and social aspects of Dhamma practice. The committee kept track of topics covered in previous years so as not to repeat topics. Consistently following this organizational scheme resulted in a series of teachings impressive in both breadth and depth. Early Upāsika Days were not recorded. Recording began in earnest in 2012, and the Archive contains roughly [20 Upāsika Days organized by theme](about:UpasikaDays#table-of-upasika-day-themes) from 2012 to 2019.
 
-The coronavirus pandemic disrupted this orderly scheme of Upāsika Days, and there are only two recordings of online Upāsika Days on abhayagiri.org from this period.
+The coronavirus pandemic disrupted this orderly scheme of Upāsika Days, and there are only two recordings of online Upāsika Days on abhayagiri.org from this period. Occasional [Practice and Study Days](../indexes/EventsBySeries.html#practice-and-study-days){#practice-and-study-days} replaced the Upāsika Program from 2023 to 2025. Upāsika Days resumed in 2026.
 
-Upāsika Day participants were typically core Abhayagiri lay supporters, many of whom have made a formal commitment to the Upāsika Program. One hears the same voices weave through multiple recordings over the years. Some participants were lay Dhamma teachers themselves. Questions and comments often reflect years of committed practice and explore lay practice in more depth than any other series. This is also a good place to hear Ajahn Pasanno’s perspective on various social issues.
-
------
-## Practice and Study Days (<a id="practice-and-study-days" href="../indexes/EventsBySeries.html#practice-and-study-days">List</a>)
-Occasional Practice and Study Days replaced the Upāsika Program from 2023 to 2025. The daylong format allows longer periods of meditation than afternoon-only Upāsika Days.
+Upāsika Day participants are typically core Abhayagiri lay supporters, many of whom have made a formal commitment to the Upāsika Program. One hears the same voices weave through multiple recordings over the years. Some participants are lay Dhamma teachers themselves. Questions and comments often reflect years of committed practice and explore lay practice in more depth than any other series. This is also a good place to hear Ajahn Pasanno’s perspective on various social issues.
 
 -----
 [Abhayagiri's 20th Anniversary in the unfinished Reception Hall](photo:../events/Anniversary2016.jpg)
@@ -59,7 +55,7 @@ Occasional Practice and Study Days replaced the Upāsika Program from 2023 to 20
 Ajahn Amaro, Ajahn Visuddhi, and Anagārika Tom took up residence on the Abhayagiri land on June 1, 1996. The five-year anniversaries of this event are often marked by large gatherings of old and new Abhayagiri supporters, friends, and neighbors.
 
 -----
-[Clear Mountain Podcast](photo:../events/CMountain2026-2.jpg)
+[Clear Mountain Podcast: Hello Dukkha, My Old Friend](photo:../events/CMountain2026-2.jpg)
 ## Clear Mountain Podcasts (<a id="clear-mountain-podcasts" href="../indexes/EventsBySeries.html#clear-mountain-podcasts">List</a>)
 Online interviews hosted by Ajahn Kovilo, a student of Ajahn Pasanno, and Ajahn Nisabho, who trained with Ajahn Anan. Their questions are informed by years of monastic training and also reflect the concerns of the Clear Mountain lay community.
 

@@ -1,33 +1,32 @@
 [Ajahn Pasanno's 2019 Chao Khun Ceremony](photo:LPP Chao Khun Ceremony.jpg)
 
-## New in the November 2026 release:
+## New in the December 2026 release:
  - New content:
-    - [Thanksgiving Retreat 2021](event:TG2021)
-    - Three [Clear Mountain Podcasts](../indexes/EventsBySeries.html#clear-mountain-podcasts)
-    - Q&A hosted by [Amaravati Lay Buddhist Association](event:ALBA2025)
-    - Q&A at [Three Jewels](event:ThreeJewels2026)
-    - [Winter Retreat 2025](event:WR2025) through the end of May (Session 60)
-    - [Abhayagiri's 30th Anniversary Part 2](event:Anniversary2026-2)
- - Tags can be applied to partial events; e.g. [Stream Entry] applied to Ajahn Pasanno's [readings of _The Island_ Chapters 16--19](../tags/stream-entry-events.html).
- - Fix many inconsistent Pāli diacritics.
+    - Finished [Winter Retreat 2013](event:WR2013)
+    - [Winter Retreat 2025](event:WR2025) through the end of ??? (Session ??)
+    - Spirit Rock Daylong [The Anxiety of Impermanence and the Impermanence of Anxiety](event:SRD2016)
+    - [Q & A with Dr. Manijeh Motaghy](event:MValley2020)
+    - [Thanksgiving Retreat 2020](event:TG2020) -- unfortunate audio glitches make Ajahn Pasanno's Q&A sessions unusable
+    - Upāsika Day [Dāna Pārami](event:UD2026-3)
+ - Search filters
 
 
 ## Content
 This release contains $!len(gDatabase["excerpts"])!$ excerpts from $!len(gDatabase["event"])!$ events, comprising over
 $!int(Database.ExcerptDuration(gDatabase["excerpts"]).total_seconds() // 36_000)!$0
-hours of audio. Ajahn Kaccāna typically transcribes audio by hand and later types these transcriptions into the database. As of this release there are 795 transcribed pages, of which 771 have been entered into the Archive. The detailed status of transcription is as follows:
+hours of audio. The December 2026 release includes all historical recordings that Ajahn Kaccāna could find aside from Winter Retreats which he does not intend to transcribe. The Archive continues to grow as recent teachings are included. The details of what's here are as follows:
 
 ### [Thanksgiving Retreats](../indexes/EventsBySeries.html#thanksgiving-retreats)
-The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions) as well as the single Q&A session from the 2004 retreat co-led with Gloria Taraniya. The 2021 hybrid retreat is also included. The 2020 retreat has been transcribed but not yet entered into the database.
+The seven Thanksgiving Retreats between 2010 and 2016 featured daily Q&A sessions with Ajahn Pasanno. The Archive includes these in full (over 900 questions) as well as the single Q&A session from the 2004 retreat co-led with Gloria Taraniya. The 2020 and 2021 online retreats are also included.
 
 ### [Winter Retreats](../indexes/EventsBySeries.html#winter-retreats)
-Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from [The Island](The Island) during Amaravati's 2025 Winter Retreat; the [first 60 sessions](event:WR2025) are now included in the Archive.
+Ajahn Pasanno's detailed [2005 Ānāpānasati teachings](event:WR2005-1) and the [2014](event:WR2014), [2015](event:WR2015), and [2016](event:WR2016) Winter Retreats are included in the Archive. The [2013 Winter Retreat](event:WR2013) is halfway done. A series of interviews and discussions with Ajahn Pasanno at the end of the 2018 Winter Retreat is included as [The Teaching and the Training](event:WR2018-2). Audio recordings are available of many more Winter Retreats on [abhayagiri.org](https://www.abhayagiri.org/talks/collections/1-winter-retreats). Ajahn Pasanno and Ajahn Amaro read from _[The Island](The Island)_ during Amaravati's 2025 Winter Retreat and the following months; the [first 60 sessions](event:WR2025) are now included in the Archive.
 
 ### [Spirit Rock Daylongs](../indexes/EventsBySeries.html#spirit-rock-daylongs)
-Seven daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
+Eight daylong events led by Ajahn Pasanno at Spirit Rock Meditation Center from 2010 to 2024 are included in the Archive.
 
 ### [Upāsika Days](../indexes/EventsBySeries.html#upasika-days)
-All 25 recorded Upāsika Days led by Ajahn Pasanno are available in the Archive.
+All $!len([e for e in gDatabase["event"].values() if e["code"].startswith("UD")])!$ recorded Upāsika Days led by Ajahn Pasanno are available in the Archive.
 
 ### [Abhayagiri Anniversary Events](../indexes/EventsBySeries.html#abhayagiri-anniversary-events)
 The Archive contains material from the [2016](event:Anniversary2016), [2021](event:Anniversary2021), [2024](event:Anniversary2024) anniversaries, and the [first](event:Anniversary2026-1) and [second](event:Anniversary2026-2) parts of the 2026 anniversary celebration.
@@ -148,3 +147,13 @@ All teachers have given consent for their [2001 Ajahn Chah Conference](event:Cha
  - Table of contents for sutta and book pages, e.g. [MN 26](../texts/MN26.html)
  - Images on teacher, tag, and event pages
  - Interface improvements: menu hovers at the top of the screen; audio player has close box
+ ### November 2026 release:
+ - New content:
+    - [Thanksgiving Retreat 2021](event:TG2021)
+    - Three [Clear Mountain Podcasts](../indexes/EventsBySeries.html#clear-mountain-podcasts)
+    - Q&A hosted by [Amaravati Lay Buddhist Association](event:ALBA2025)
+    - Q&A at [Three Jewels](event:ThreeJewels2026)
+    - [Winter Retreat 2025](event:WR2025) through the end of May (Session 60)
+    - [Abhayagiri's 30th Anniversary Part 2](event:Anniversary2026-2)
+ - Tags can be applied to partial events; e.g. [Stream Entry] applied to Ajahn Pasanno's [readings of _The Island_ Chapters 16--19](../tags/stream-entry-events.html).
+ - Fix many inconsistent Pāli diacritics.

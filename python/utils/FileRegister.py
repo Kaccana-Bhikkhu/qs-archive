@@ -25,9 +25,14 @@ class Status(Enum):
 
 Record = TypedDict("Record",{"_status": Status,"_modified": datetime})
 """Stores the information about a file. The elements requred by FileRegister are:
-_status: the file status as described above
+_status: the file status as described above relative to the cache stored on disk;
+    if one registers a file twice with the same record, its status will remain UPDATED 
 _modified: the date/time the file was last modified or registered
 """
+
+def MergeStatus(s1: Status,s2: Status) -> Status:
+    "Return the more significant status."
+    return s1 if s1.value >= s2.value else s2
 
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
@@ -129,7 +134,7 @@ class FileRegister():
             self.record[fileName] = recordData
             self.UpdateModifiedDate(fileName)
         
-        self.record[fileName]["_status"] = returnValue
+        self.record[fileName]["_status"] = MergeStatus(self.record[fileName].get("_status",Status.STALE),returnValue)
         return returnValue
 
     def UpdateModifiedDate(self,fileName) -> None:
