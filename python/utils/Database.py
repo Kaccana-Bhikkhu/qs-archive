@@ -331,7 +331,23 @@ def IsSubtag(tag: str,superTag: str) -> bool:
     
     return False
 
+def Subtags(tag:str) -> set[str]:
+    """Returns the set of subtags of tag."""
+    tagDL = gDatabase["tagDisplayList"]
 
+    index = gDatabase["tag"][tag]["listIndex"]
+    baseLevel = tagDL[index]["level"]
+
+    subtags = set()
+    index += 1
+    while (index < len(tagDL) and tagDL[index]["level"] > baseLevel):
+        if tagDL[index]["tag"]:
+            subtags.add(tagDL[index]["tag"])
+        index += 1
+
+    return subtags
+
+    
 def TeacherLookup(teacherRef:str,teacherDictCache:dict = {}) -> str|None:
     "Search for a tag based on any of its various names. Return the base tag name."
 

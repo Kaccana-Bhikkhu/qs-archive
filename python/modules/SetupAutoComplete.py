@@ -41,15 +41,20 @@ def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = ""
     number = "" if number is None else str(number)
     return dict(short=short,link=link,long=long,number=number,icon=Icon(icon,directoryDepth=0),suffix=suffix,excerptCount=excerptCount)
 
-def FilterOnlyEntry(short: str,regexp: str,long: str = "", query: str = "",number: int = None,icon: str = "",suffix:str = "") -> AutoCompleteEntry:
+def FilterOnlyEntry(short: str,regexp: str = "",long: str = "", query: str = "",number: int = None,icon: str = "",suffix:str = "",excerptCount: int = 0) -> AutoCompleteEntry:
     "Return an AutoCompleteEntry representing a search defined by a query or regexp without a corresponding html page."
     number = "" if number is None else str(number)
     if not query:
+        if not regexp:
+            raise ValueError("FilterOnlyEntry requires either regexp or query")
         query = f"`{regexp}`"
-    chip = Filter.QueryChip(short,query,icon)
+    chip = Filter.QueryChip(short + suffix,query,icon)
 
-    foundExcerpts = list(Filter.RegexpFilter(regexp)(gDatabase["excerpts"]))
-    excerptCount = len(foundExcerpts)
+    if not excerptCount:
+        if not regexp:
+            raise ValueError("FilterOnlyEntry must specify excerptCount if regexp is missing")
+        foundExcerpts = list(Filter.RegexpFilter(regexp)(gDatabase["excerpts"]))
+        excerptCount = len(foundExcerpts)
     return dict(short=short,chip=str(chip),long=long,number=number,icon=Icon(icon,directoryDepth=0),suffix=suffix,excerptCount = excerptCount)
 
 
@@ -57,13 +62,13 @@ def FilterOnlyEntries() -> Iterable[AutoCompleteEntry]:
     "Yield entries for searches without corresponding pages."
 
     # Featured and homepage excerpts
-    featuredExcerpts = len(list(Filter.RegexpFilter(r"\+")(gDatabase["excerpts"])))
-    yield Entry("Featured excerpts","indexes/AllExcerpts-featured.html",icon="fa-star",excerptCount=featuredExcerpts)
+    yield FilterOnlyEntry("Featured excerpts",r"\+",query="+",icon="fa-star")
     yield FilterOnlyEntry("Homepage excerpts","#homepage",query="#homepage",icon="fa-star")
-    
-    # Filters for each decade
-    for decade in range(3):
-        yield FilterOnlyEntry(f"Decade: 20{decade}0s",f"20{decade}[0-9]-?[1-9]?@",icon="calendar")
+
+    # Categories
+    for category in ("Questions","Stories","Quotes","Teachings","Meditations","Readings"):
+        query = f"&{category.lower()}&"
+        yield FilterOnlyEntry(category,regexp=query,query=query,icon="All.png")
 
     # Filters for event series
     for series in gDatabase["series"].values():
@@ -71,6 +76,10 @@ def FilterOnlyEntries() -> Iterable[AutoCompleteEntry]:
             continue
         query = f"@{series['abbreviation']}"
         yield FilterOnlyEntry(f"Event series: {series['series']}",regexp=query.lower(),query=query,icon="calendar")
+    
+    # Filters for each decade
+    for decade in range(3):
+        yield FilterOnlyEntry(f"Decade: 20{decade}0s",f"20{decade}[0-9]-?[1-9]?@",icon="calendar")
 
     # Filters for excerpt duration
     DURATION_NAMES = ("Very short","Short","Medium","Long","Very long")
@@ -78,7 +87,6 @@ def FilterOnlyEntries() -> Iterable[AutoCompleteEntry]:
     for name,desc in zip(DURATION_NAMES,DURATION_DESCRIPTION):
         tag = f"#{name.replace(' ','').lower()}"
         yield FilterOnlyEntry(f"Duration: {name} ({desc})",tag,query=tag,icon="clock")
-
  
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
@@ -102,10 +110,41 @@ def SutopicEntries() -> Iterable[AutoCompleteEntry]:
         if pali:
             text += f" ({pali})"
 
-        yield Entry(text,subtopic["htmlPath"],
+        yield (entry := Entry(text,subtopic["htmlPath"],
                     icon = "Cluster.png" if isCluster else "tag",
                     excerptCount = subtopic['excerptCount'],
-                    number=NumberFromText(text))
+                    number=NumberFromText(text)))
+        if not isCluster:
+            yield from SubtagQueryEntry(subtopic["tag"],entry)
+
+def SubtagQueryEntry(tag: str,tagEntry:Entry) -> Iterable[AutoCompleteEntry]:
+    """Return a filter-only entry which matches tag and all subtags.
+    tagEntry is the entry generated for the tag so we can copy its form exactly."""
+
+    subtags = Database.Subtags(tag)
+    if not subtags:
+        return
+    subtags.add(tag)
+    tagFilter = Filter.Tag(subtags)
+    filterFound = list(tagFilter(Database.RemoveFragments(gDatabase["excerpts"])))
+    filterCount = len(filterFound)
+
+    """regexpFilter = Filter.RegexpFilter(tagFilter.Query(Filter.QueryType.REGEXP)) # Check regexp functionality
+    regexpFound = list(regexpFilter(Database.RemoveFragments(gDatabase["excerpts"])))
+    regexpCount = len(regexpFound)
+    if (filterCount != regexpCount):
+        Alert.warning(f"For tag {tag}, tag filter finds {filterCount} excerpts; regexp filter finds {regexpCount} excerpts")
+        filterFound = {Database.ItemCode(x) for x in filterFound}
+        regexpFound = {Database.ItemCode(x) for x in regexpFound}
+        print("tag - regexp = ",filterFound - regexpFound)
+        print("regep - tag = ",regexpFound - filterFound) """
+
+    subtagDesc = f" and its {len(subtags) - 1} subtags" if len(subtags) > 2 else "subtag"
+    if len(subtags) <= 20: # Too many tags and the search engine starts glitching; regexps are faster and seem to always work.
+        yield FilterOnlyEntry(tagEntry["short"],long=tagEntry["long"],suffix = subtagDesc,query = tagFilter.Query(),icon="tags",excerptCount=filterCount)
+    else:
+        yield FilterOnlyEntry(tagEntry["short"],long=tagEntry["long"],suffix = subtagDesc,regexp=tagFilter.Query(Filter.QueryType.REGEXP),icon="tags")
+
 
 def TagEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for tags"
@@ -143,7 +182,8 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
     soloSubtopics = Database.SoloSubtopics()
     for tag in tags:
         if tag["tag"] not in soloSubtopics: # SubtopicEntries already yielded these above
-            yield TagEntry(tag)
+            yield (entry := TagEntry(tag))
+            yield from SubtagQueryEntry(tag["tag"],entry)
 
     # Yield glosses and alternate translations
     for tag in tags:
@@ -199,10 +239,11 @@ def CategoryEntries() -> Iterable[AutoCompleteEntry]:
         splitText = re.match(r"(.*) \(([0-9]+)\)$",text) # Split category and number
         text = splitText[1]
 
-        if text == "Featured":
-            continue # We generate this entry in FilterOnlyEntries
         if not text.startswith("All"):
-            text = "All " + text.lower()
+            if text == "Featured":
+                text = "All featured excerpts"
+            else:
+                text = "All " + text.lower()
 
         yield Entry(text,href,
                     excerptCount = int(splitText[2]),
@@ -285,7 +326,7 @@ def main() -> None:
 
     with HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as pageDatabase:
         for entry in newDatabase:
-            if entry.get("link") in pageDatabase.record:
+            if entry.get("link") in pageDatabase.record and not entry["link"].startswith("indexes/AllExcerpts"):
                 metadata = pageDatabase.GetMetadata(entry["link"])
                 if "searchChip" in metadata:
                     entry["chip"] = metadata["searchChip"]

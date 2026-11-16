@@ -95,8 +95,8 @@ export async function loadSearchPage() {
         event.preventDefault();
     });
     document.getElementById("add-filter-button")?.addEventListener("click",event => {
-        showFloatingSearch("",frameSearch()); // Search within the current list of found excerpts
         event.preventDefault();
+        showFloatingSearch("",frameSearch()); // Search within the current list of found excerpts
     });
 
     let params = frameSearch();

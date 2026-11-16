@@ -1,13 +1,12 @@
 [
   {
     "short": "Featured excerpts",
-    "link": "indexes/AllExcerpts-featured.html",
+    "chip": "fa-star_Featured excerpts__+",
     "long": "",
     "number": "",
     "icon": "<i class=\"fa fa-star\"></i>",
     "suffix": "",
-    "excerptCount": 834,
-    "chip": "fa-star_Featured__+"
+    "excerptCount": 834
   },
   {
     "short": "Homepage excerpts",
@@ -19,31 +18,58 @@
     "excerptCount": 508
   },
   {
-    "short": "Decade: 2000s",
-    "chip": "calendar_Decade: 2000s__`200[0-9]-?[1-9]?@`",
+    "short": "Questions",
+    "chip": "All.png_Questions__&questions&",
     "long": "",
     "number": "",
-    "icon": "<i data-lucide=\"calendar\"></i>",
+    "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 389
+    "excerptCount": 3148
   },
   {
-    "short": "Decade: 2010s",
-    "chip": "calendar_Decade: 2010s__`201[0-9]-?[1-9]?@`",
+    "short": "Stories",
+    "chip": "All.png_Stories__&stories&",
     "long": "",
     "number": "",
-    "icon": "<i data-lucide=\"calendar\"></i>",
+    "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 3026
+    "excerptCount": 800
   },
   {
-    "short": "Decade: 2020s",
-    "chip": "calendar_Decade: 2020s__`202[0-9]-?[1-9]?@`",
+    "short": "Quotes",
+    "chip": "All.png_Quotes__&quotes&",
     "long": "",
     "number": "",
-    "icon": "<i data-lucide=\"calendar\"></i>",
+    "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 1201
+    "excerptCount": 680
+  },
+  {
+    "short": "Teachings",
+    "chip": "All.png_Teachings__&teachings&",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/All.png\">",
+    "suffix": "",
+    "excerptCount": 500
+  },
+  {
+    "short": "Meditations",
+    "chip": "All.png_Meditations__&meditations&",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/All.png\">",
+    "suffix": "",
+    "excerptCount": 29
+  },
+  {
+    "short": "Readings",
+    "chip": "All.png_Readings__&readings&",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/All.png\">",
+    "suffix": "",
+    "excerptCount": 375
   },
   {
     "short": "Event series: Thanksgiving Retreats",
@@ -116,6 +142,33 @@
     "icon": "<i data-lucide=\"calendar\"></i>",
     "suffix": "",
     "excerptCount": 37
+  },
+  {
+    "short": "Decade: 2000s",
+    "chip": "calendar_Decade: 2000s__`200[0-9]-?[1-9]?@`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 389
+  },
+  {
+    "short": "Decade: 2010s",
+    "chip": "calendar_Decade: 2010s__`201[0-9]-?[1-9]?@`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 3026
+  },
+  {
+    "short": "Decade: 2020s",
+    "chip": "calendar_Decade: 2020s__`202[0-9]-?[1-9]?@`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 1201
   },
   {
     "short": "Duration: Very short (< 1 minute)",
@@ -397,6 +450,15 @@
     "chip": "tag_Three Refuges__[Three Refuges]"
   },
   {
+    "short": "Three Refuges (tisaraṇa)",
+    "chip": "tags_Three Refuges (tisaraṇa) and its 6 subtags__|([Buddha] [Buddha images] [Buddha/Biography] [Buddho mantra] [Dhamma] [Saṅgha] [Three Refuges])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 548
+  },
+  {
     "short": "Buddha (Buddha)",
     "link": "clusters/buddha.html",
     "long": "",
@@ -497,6 +559,15 @@
     "chip": "tag_Four Noble Truths__[Four Noble Truths]"
   },
   {
+    "short": "Four Noble Truths (cattāri ariya-saccāni)",
+    "chip": "tags_Four Noble Truths (cattāri ariya-saccāni) and its 20 subtags__`\\[(ageing|aggregates|becoming|birth|cause of suffering|cessation|cessation of suffering|craving not to become|death|dispassion|eightfold path|four noble truths|grief|liberation|noble truth of suffering|pain|release|relinquishment|sensual desire|sickness|suffering)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 20 subtags",
+    "excerptCount": 1571
+  },
+  {
     "short": "Noble Truth of Suffering (dukkha ariya-sacca)",
     "link": "tags/noble-truth-of-suffering.html",
     "long": "",
@@ -505,6 +576,15 @@
     "suffix": "",
     "excerptCount": 35,
     "chip": "tag_Noble Truth of Suffering__[Noble Truth of Suffering]"
+  },
+  {
+    "short": "Noble Truth of Suffering (dukkha ariya-sacca)",
+    "chip": "tags_Noble Truth of Suffering (dukkha ariya-sacca) and its 8 subtags__|([Ageing] [Aggregates] [Birth] [Death] [Grief] [Noble Truth of Suffering] [Pain] [Sickness] [Suffering])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 8 subtags",
+    "excerptCount": 877
   },
   {
     "short": "Cause of Suffering (dukkha-samudayo)",
@@ -517,6 +597,15 @@
     "chip": "tag_Cause of Suffering__[Cause of Suffering]"
   },
   {
+    "short": "Cause of Suffering (dukkha-samudayo)",
+    "chip": "tags_Cause of Suffering (dukkha-samudayo) and its 3 subtags__|([Becoming] [Cause of Suffering] [Craving not to become] [Sensual desire])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 261
+  },
+  {
     "short": "Cessation of Suffering (dukkha-nirodho)",
     "link": "tags/cessation-of-suffering.html",
     "long": "",
@@ -525,6 +614,15 @@
     "suffix": "",
     "excerptCount": 114,
     "chip": "tag_Cessation of Suffering__[Cessation of Suffering]"
+  },
+  {
+    "short": "Cessation of Suffering (dukkha-nirodho)",
+    "chip": "tags_Cessation of Suffering (dukkha-nirodho) and its 5 subtags__|([Cessation] [Cessation of Suffering] [Dispassion] [Liberation] [Release] [Relinquishment])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 684
   },
   {
     "short": "Middle Path (majjhimā paṭipadā)",
@@ -545,6 +643,15 @@
     "suffix": "",
     "excerptCount": 83,
     "chip": "tag_Eightfold Path__[Eightfold Path]"
+  },
+  {
+    "short": "Eightfold Path (aṭṭaṅgika magga)",
+    "chip": "tags_Eightfold Path (aṭṭaṅgika magga) and its 52 subtags__`\\[(abortion|admonishment/feedback|aggregates|ardency|blame and praise|clear comprehension|compassion|concentration|directed thought and evaluation|eightfold path|elements|equanimity|euthanasia|factors of awakening|false speech|formless attainments|four noble truths|goodwill|happiness|harsh speech|hindrances|idle chatter|jhana|killing|listening|malicious speech|mindfulness|mindfulness of body|mindfulness of breathing|mindfulness of dhammas|mindfulness of feeling|mindfulness of mind|nonviolent communication|postures|rapture|recollection/death|renunciation|right action|right concentration|right effort|right intention|right livelihood|right mindfulness|right speech|right view|seclusion|sense bases|sexual misconduct|stealing|suicide|unattractiveness|unification|vegetarianism)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 52 subtags",
+    "excerptCount": 2155
   },
   {
     "short": "Right View (sammā-diṭṭhi)",
@@ -605,6 +712,15 @@
     "suffix": "",
     "excerptCount": 153,
     "chip": "tag_Right Effort__[Right Effort]"
+  },
+  {
+    "short": "Right Effort (sammā-vāyāma)",
+    "chip": "tags_Right Effort (sammā-vāyāma)subtag__[Right Effort]",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 153
   },
   {
     "short": "Right Mindfulness (sammā-sati)",
@@ -687,6 +803,15 @@
     "chip": "tag_Chanting__[Chanting]"
   },
   {
+    "short": "Chanting",
+    "chip": "tags_Chanting and its 2 subtags__|([Anumodana] [Chanting] [Protective chants])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 135
+  },
+  {
     "short": "Recollection (anusati)",
     "link": "tags/recollection.html",
     "long": "",
@@ -695,6 +820,15 @@
     "suffix": "",
     "excerptCount": 98,
     "chip": "tag_Recollection__[Recollection]"
+  },
+  {
+    "short": "Recollection (anusati)",
+    "chip": "tags_Recollection (anusati) and its 10 subtags__|([Mindfulness of body] [Mindfulness of breathing] [Recollection] [Recollection/Buddha] [Recollection/Death] [Recollection/Devas] [Recollection/Dhamma] [Recollection/Generosity] [Recollection/Peace] [Recollection/Saṅgha] [Recollection/Virtue])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 10 subtags",
+    "excerptCount": 632
   },
   {
     "short": "Tranquility and insight (samatha-vipassanā)",
@@ -755,6 +889,15 @@
     "suffix": "",
     "excerptCount": 145,
     "chip": "tag_Skillful qualities__[Skillful qualities]"
+  },
+  {
+    "short": "Skillful qualities (kusalā dhammā)",
+    "chip": "tags_Skillful qualities (kusalā dhammā) and its 129 subtags__`\\[(abhidhamma|abortion|admonishment/feedback|agama|ageing|aggregates|aids to awakening|appropriate attention|arahant|ardency|association with people of integrity|bases of success|becoming|birth|blame and praise|bodhisattva|cause of suffering|cessation|cessation of suffering|clear comprehension|commentaries|compassion|concentration|conscience and prudence|contentment|courage|craving not to become|death|desire|determination|dignity|directed thought and evaluation|discernment|disenchantment|dispassion|divine abidings|eightfold path|elements|empathetic joy|energy|equanimity|euthanasia|factors for stream entry|factors of awakening|faculties|faith|false speech|forgiveness|formless attainments|four noble truths|generosity|goodwill|gratitude|grief|happiness|harsh speech|hearing the true dhamma|heart/mind|heedfulness|hindrances|humility|idle chatter|investigation of states|jhana|killing|knowledge and vision|learning|liberation|listening|malicious speech|merit|middle path|mindfulness|mindfulness of body|mindfulness of breathing|mindfulness of dhammas|mindfulness of feeling|mindfulness of mind|nibbana|noble truth of suffering|non-contention|non-return|nonviolent communication|once return|paccekabuddha|pain|patience|perfections|postures|practicing in accordance with dhamma|progress of insight|rapture|recollection/death|release|relinquishment|renunciation|right action|right concentration|right effort|right intention|right livelihood|right mindfulness|right speech|right view|seclusion|self-reliance|sense bases|sensual desire|sexual misconduct|sickness|skillful qualities|spiritual friendship|spiritual search|spiritual urgency|stages of awakening|stealing|stream entry|suffering|suicide|sutta|tipitaka|tranquility|treasures|trust|truth|unattractiveness|unification|vegetarianism|vinaya|virtue)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 129 subtags",
+    "excerptCount": 3489
   },
   {
     "short": "Faith (saddhā)",
@@ -897,6 +1040,15 @@
     "chip": "tag_Hindrances__[Hindrances]"
   },
   {
+    "short": "The Five Hindrances (pañca nīvaraṇāni)",
+    "chip": "tags_The Five Hindrances (pañca nīvaraṇāni) and its 5 subtags__|([Doubt] [Hindrances] [Ill-will] [Restlessness and worry] [Sensual desire] [Sloth and torpor])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 432
+  },
+  {
     "short": "Sensual desire (kāmacchanda)",
     "link": "clusters/sensual-desire.html",
     "long": "",
@@ -965,6 +1117,15 @@
     "suffix": "",
     "excerptCount": 214,
     "chip": "tag_Proliferation__[Proliferation]"
+  },
+  {
+    "short": "Proliferation (papañca)",
+    "chip": "tags_Proliferation (papañca) and its 3 subtags__|([Conceit] [Craving] [Proliferation] [Views])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 456
   },
   {
     "short": "Views (diṭṭhī)",
@@ -1047,6 +1208,15 @@
     "chip": "tag_Nature of mind__[Nature of mind]"
   },
   {
+    "short": "Nature of mind",
+    "chip": "tags_Nature of mind and its 5 subtags__|([Devotion to wakefulness] [Dreams] [Memory] [Moods of the mind] [Nature of mind] [Psychic powers])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 222
+  },
+  {
     "short": "Realms of existence",
     "link": "clusters/realms-of-existence.html",
     "long": "",
@@ -1065,6 +1235,15 @@
     "suffix": "",
     "excerptCount": 55,
     "chip": "tag_Dependent origination__[Dependent origination]"
+  },
+  {
+    "short": "Dependent origination (paticca-samuppāda)",
+    "chip": "tags_Dependent origination (paticca-samuppāda) and its 20 subtags__`\\[(aggregates|attachment to precepts and practices|becoming|birth|clinging|consciousness|contact|craving|craving not to become|dependent origination|doctrine-of-self clinging|feeling|happiness|ignorance|neutral feeling|pain|sense bases|sensual desire|suffering|views|volitional formations)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 20 subtags",
+    "excerptCount": 1364
   },
   {
     "short": "Ignorance (avijjā)",
@@ -1107,6 +1286,15 @@
     "chip": "tag_Aggregates__[Aggregates]"
   },
   {
+    "short": "Name and form (nāma-rūpa)",
+    "chip": "tags_Name and form (nāma-rūpa) and its 5 subtags__|([Aggregates] [Body/form] [Consciousness] [Feeling] [Perception] [Volitional formations])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 438
+  },
+  {
     "short": "Sense bases (āyatana)",
     "link": "tags/sense-bases.html",
     "long": "",
@@ -1147,6 +1335,15 @@
     "chip": "tag_Craving__[Craving]"
   },
   {
+    "short": "Craving (taṇhā)",
+    "chip": "tags_Craving (taṇhā) and its 3 subtags__|([Becoming] [Craving] [Craving not to become] [Sensual desire])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 284
+  },
+  {
     "short": "Clinging (upādāna)",
     "link": "tags/clinging.html",
     "long": "",
@@ -1155,6 +1352,15 @@
     "suffix": "",
     "excerptCount": 186,
     "chip": "tag_Clinging__[Clinging]"
+  },
+  {
+    "short": "Clinging (upādāna)",
+    "chip": "tags_Clinging (upādāna) and its 4 subtags__|([Attachment to precepts and practices] [Clinging] [Doctrine-of-self clinging] [Sensual desire] [Views])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 392
   },
   {
     "short": "Becoming (bhava)",
@@ -1357,6 +1563,15 @@
     "chip": "tag_Thai Forest Tradition__[Thai Forest Tradition]"
   },
   {
+    "short": "Thai Forest Tradition",
+    "chip": "tags_Thai Forest Tradition and its 103 subtags__`\\[(ajahn achalo|ajahn amaro|ajahn anan|ajahn anando|ajahn anek|ajahn baen|ajahn bahnkow|ajahn boon choo|ajahn brahmavamso|ajahn buddhadasa|ajahn bunjong|ajahn candasiri|ajahn chah|ajahn chah lineage|ajahn chai|ajahn chorp|ajahn damrong|ajahn dohn|ajahn dtun|ajahn dune|ajahn fuang|ajahn fun|ajahn gavesako|ajahn gi|ajahn gunha|ajahn jagaro|ajahn jayanto|ajahn jayasaro|ajahn jia|ajahn jitindriya|ajahn jotipalo|ajahn jumnien|ajahn jun|ajahn jundee|ajahn kalyano|ajahn karunadhammo|ajahn kevali|ajahn khantipalo|ajahn khao|ajahn khemadhammo|ajahn kinaree|ajahn koon chiang rai|ajahn koon na pho|ajahn kovilo|ajahn kusalo|ajahn lee dhammadharo|ajahn liem|ajahn maha adisak|ajahn maha amorn|ajahn maha boowa|ajahn maha chatchai|ajahn maha in|ajahn maha suporn|ajahn mun|ajahn munindo|ajahn nanadhammo|ajahn naniko|ajahn pannananda|ajahn pannavaddho|ajahn pasanno|ajahn phut|ajahn piak|ajahn piyadhammo|ajahn plien|ajahn preecha|ajahn puriso|ajahn sanong|ajahn santikaro|ajahn sao|ajahn sim|ajahn sinuan|ajahn siripanno|ajahn somboon|ajahn sona|ajahn sucitto|ajahn sudanto|ajahn sumedho|ajahn sundara|ajahn supah|ajahn suwat|ajahn teean|ajahn thanissaro|ajahn thate|ajahn thoon|ajahn tiradhammo|ajahn tongrat|ajahn toon|ajahn utane|ajahn vajiro|ajahn viradhammo|ajahn visuddhi|ajahn waen|ajahn wan|ajahn wanchai|ajahn yatiko|bhante sujato|mae chee kaew|mae chee kumfah|mae chee sansanee|mae somchai|other thai forest teachers|thai ajahn chah lineage|thai forest tradition|western ajahn chah lineage)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 103 subtags",
+    "excerptCount": 1859
+  },
+  {
     "short": "Vinaya (Vinaya)",
     "link": "clusters/vinaya.html",
     "long": "",
@@ -1425,6 +1640,15 @@
     "suffix": "",
     "excerptCount": 305,
     "chip": "tag_Abhayagiri__[Abhayagiri]"
+  },
+  {
+    "short": "Abhayagiri",
+    "chip": "tags_Abhayagiri and its 2 subtags__|([Abhayagiri] [Pre-Abhayagiri vihāras] [Saṅghapāla])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 316
   },
   {
     "short": "Natural environment",
@@ -1527,6 +1751,15 @@
     "chip": "tag_Environment__[Environment]"
   },
   {
+    "short": "Environment",
+    "chip": "tags_Environmentsubtag__|([Environment] [Weather])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 49
+  },
+  {
     "short": "Work",
     "link": "clusters/work.html",
     "long": "",
@@ -1577,6 +1810,15 @@
     "chip": "tag_Right Intention__[Right Intention]"
   },
   {
+    "short": "Right Intention (sammā-saṅkappa)",
+    "chip": "tags_Right Intention (sammā-saṅkappa) and its 3 subtags__|([Compassion] [Goodwill] [Renunciation] [Right Intention])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 403
+  },
+  {
     "short": "Right Speech (sammā-vācā)",
     "link": "tags/right-speech.html",
     "long": "",
@@ -1585,6 +1827,15 @@
     "suffix": "",
     "excerptCount": 69,
     "chip": "tag_Right Speech__[Right Speech]"
+  },
+  {
+    "short": "Right Speech (sammā-vācā)",
+    "chip": "tags_Right Speech (sammā-vācā) and its 8 subtags__|([Admonishment/feedback] [Blame and praise] [False speech] [Harsh speech] [Idle chatter] [Listening] [Malicious speech] [Nonviolent Communication] [Right Speech])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 8 subtags",
+    "excerptCount": 151
   },
   {
     "short": "False speech (musā-vādā)",
@@ -1667,6 +1918,15 @@
     "chip": "tag_Right Action__[Right Action]"
   },
   {
+    "short": "Right Action (sammā-kammanta)",
+    "chip": "tags_Right Action (sammā-kammanta) and its 7 subtags__|([Abortion] [Euthanasia] [Killing] [Right Action] [Sexual misconduct] [Stealing] [Suicide] [Vegetarianism])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 7 subtags",
+    "excerptCount": 90
+  },
+  {
     "short": "Killing (pāṇātipāta)",
     "link": "tags/killing.html",
     "long": "",
@@ -1675,6 +1935,15 @@
     "suffix": "",
     "excerptCount": 40,
     "chip": "tag_Killing__[Killing]"
+  },
+  {
+    "short": "Killing (pāṇātipāta)",
+    "chip": "tags_Killing (pāṇātipāta) and its 4 subtags__|([Abortion] [Euthanasia] [Killing] [Suicide] [Vegetarianism])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 60
   },
   {
     "short": "Vegetarianism",
@@ -1747,6 +2016,15 @@
     "chip": "tag_Right Mindfulness__[Right Mindfulness]"
   },
   {
+    "short": "Right Mindfulness (sammā-sati)",
+    "chip": "tags_Right Mindfulness (sammā-sati) and its 17 subtags__|([Aggregates] [Ardency] [Clear comprehension] [Elements] [Factors of Awakening] [Four Noble Truths] [Hindrances] [Mindfulness] [Mindfulness of body] [Mindfulness of breathing] [Mindfulness of dhammas] [Mindfulness of feeling] [Mindfulness of mind] [Postures] [Recollection/Death] [Right Mindfulness] [Sense bases] [Unattractiveness])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 17 subtags",
+    "excerptCount": 1209
+  },
+  {
     "short": "Mindfulness of body (kāyagatā-sati)",
     "link": "tags/mindfulness-of-body.html",
     "long": "",
@@ -1755,6 +2033,15 @@
     "suffix": "",
     "excerptCount": 178,
     "chip": "tag_Mindfulness of body__[Mindfulness of body]"
+  },
+  {
+    "short": "Mindfulness of body (kāyagatā-sati)",
+    "chip": "tags_Mindfulness of body (kāyagatā-sati) and its 6 subtags__|([Clear comprehension] [Elements] [Mindfulness of body] [Mindfulness of breathing] [Postures] [Recollection/Death] [Unattractiveness])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 602
   },
   {
     "short": "Mindfulness of feeling (vedanā-sati)",
@@ -1787,6 +2074,15 @@
     "chip": "tag_Mindfulness of dhammas__[Mindfulness of dhammas]"
   },
   {
+    "short": "Mindfulness of dhammas (dhammā-sati)",
+    "chip": "tags_Mindfulness of dhammas (dhammā-sati) and its 5 subtags__|([Aggregates] [Factors of Awakening] [Four Noble Truths] [Hindrances] [Mindfulness of dhammas] [Sense bases])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 442
+  },
+  {
     "short": "Ardency (ātāpi)",
     "link": "tags/ardency.html",
     "long": "",
@@ -1815,6 +2111,15 @@
     "suffix": "",
     "excerptCount": 27,
     "chip": "tag_Right Concentration__[Right Concentration]"
+  },
+  {
+    "short": "Right Concentration (sammā-samādhi)",
+    "chip": "tags_Right Concentration (sammā-samādhi) and its 9 subtags__|([Concentration] [Directed thought and evaluation] [Equanimity] [Formless attainments] [Happiness] [Jhāna] [Rapture] [Right Concentration] [Seclusion] [Unification])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 9 subtags",
+    "excerptCount": 719
   },
   {
     "short": "Jhāna",
@@ -1897,6 +2202,15 @@
     "chip": "tag_Aids to Awakening__[Aids to Awakening]"
   },
   {
+    "short": "Aids to Awakening (bodhipakkhiyādhammā)",
+    "chip": "tags_Aids to Awakening (bodhipakkhiyādhammā) and its 6 subtags__|([Aids to Awakening] [Bases of Success] [Eightfold Path] [Factors of Awakening] [Faculties] [Right Effort] [Right Mindfulness])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 354
+  },
+  {
     "short": "Bases of Success (iddhipādā)",
     "link": "tags/bases-of-success.html",
     "long": "Four Bases of Success (cattāro iddhipādā)",
@@ -1905,6 +2219,15 @@
     "suffix": "",
     "excerptCount": 19,
     "chip": "tag_Bases of Success__[Bases of Success]"
+  },
+  {
+    "short": "Bases of Success (iddhipādā)",
+    "chip": "tags_Bases of Success (iddhipādā) and its 4 subtags__|([Bases of Success] [Desire] [Discernment] [Energy] [Heart/mind])",
+    "long": "Four Bases of Success (cattāro iddhipādā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 513
   },
   {
     "short": "Heart/mind (citta)",
@@ -1925,6 +2248,15 @@
     "suffix": "",
     "excerptCount": 11,
     "chip": "tag_Faculties__[Faculties]"
+  },
+  {
+    "short": "Faculties (indriyā)",
+    "chip": "tags_Faculties (indriyā) and its 5 subtags__|([Concentration] [Discernment] [Energy] [Faculties] [Faith] [Mindfulness])",
+    "long": "Five Faculties (pañca indriyā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 775
   },
   {
     "short": "Energy (viriya)",
@@ -1955,6 +2287,15 @@
     "suffix": "",
     "excerptCount": 29,
     "chip": "tag_Factors of Awakening__[Factors of Awakening]"
+  },
+  {
+    "short": "Factors of Awakening (bojjhaṅgā)",
+    "chip": "tags_Factors of Awakening (bojjhaṅgā) and its 7 subtags__|([Concentration] [Energy] [Equanimity] [Factors of Awakening] [Investigation of states] [Mindfulness] [Rapture] [Tranquility])",
+    "long": "Seven Factors of Awakening (satta bojjhaṅgā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 7 subtags",
+    "excerptCount": 732
   },
   {
     "short": "Investigation of states (dhamma-vicaya)",
@@ -1997,6 +2338,15 @@
     "chip": "tag_Divine Abidings__[Divine Abidings]"
   },
   {
+    "short": "Divine Abidings (brahmavihārā)",
+    "chip": "tags_Divine Abidings (brahmavihārā) and its 4 subtags__|([Compassion] [Divine Abidings] [Empathetic joy] [Equanimity] [Goodwill])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 456
+  },
+  {
     "short": "Empathetic joy (muditā)",
     "link": "tags/empathetic-joy.html",
     "long": "",
@@ -2015,6 +2365,15 @@
     "suffix": "",
     "excerptCount": 9,
     "chip": "tag_Treasures__[Treasures]"
+  },
+  {
+    "short": "Treasures (dhanā)",
+    "chip": "tags_Treasures (dhanā) and its 12 subtags__|([Abhidhamma] [Commentaries] [Conscience and prudence] [Discernment] [Faith] [Generosity] [Learning] [Sutta] [Tipiṭaka] [Treasures] [Vinaya] [Virtue] [Āgama])",
+    "long": "Seven Treasures (satta dhanā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 12 subtags",
+    "excerptCount": 1025
   },
   {
     "short": "Virtue (sīla)",
@@ -2047,6 +2406,15 @@
     "chip": "tag_Learning__[Learning]"
   },
   {
+    "short": "Learning (suta)",
+    "chip": "tags_Learning (suta) and its 6 subtags__|([Abhidhamma] [Commentaries] [Learning] [Sutta] [Tipiṭaka] [Vinaya] [Āgama])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 429
+  },
+  {
     "short": "Tipiṭaka (Pāli Canon)",
     "link": "tags/tipitaka.html",
     "long": "",
@@ -2055,6 +2423,15 @@
     "suffix": "",
     "excerptCount": 36,
     "chip": "tag_Tipiṭaka__[Tipiṭaka]"
+  },
+  {
+    "short": "Tipiṭaka (Pāli Canon)",
+    "chip": "tags_Tipiṭaka (Pāli Canon) and its 3 subtags__|([Abhidhamma] [Sutta] [Tipiṭaka] [Vinaya])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 281
   },
   {
     "short": "Sutta",
@@ -2117,6 +2494,15 @@
     "chip": "tag_Perfections__[Perfections]"
   },
   {
+    "short": "Perfections (pāramiyo)",
+    "chip": "tags_Perfections (pāramiyo) and its 10 subtags__|([Determination] [Discernment] [Energy] [Equanimity] [Generosity] [Goodwill] [Patience] [Perfections] [Renunciation] [Truth] [Virtue])",
+    "long": "Ten Perfections (dasa pāramiyo)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 10 subtags",
+    "excerptCount": 1036
+  },
+  {
     "short": "Truth (sacca)",
     "link": "tags/truth.html",
     "long": "",
@@ -2145,6 +2531,15 @@
     "suffix": "",
     "excerptCount": 20,
     "chip": "tag_Progress of insight__[Progress of insight]"
+  },
+  {
+    "short": "Progress of insight",
+    "chip": "tags_Progress of insight and its 9 subtags__|([Cessation] [Concentration] [Disenchantment] [Dispassion] [Knowledge and vision] [Liberation] [Progress of insight] [Release] [Relinquishment] [Seclusion])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 9 subtags",
+    "excerptCount": 838
   },
   {
     "short": "Seclusion (viveka)",
@@ -2227,6 +2622,15 @@
     "chip": "tag_Stages of awakening__[Stages of awakening]"
   },
   {
+    "short": "Stages of awakening",
+    "chip": "tags_Stages of awakening and its 13 subtags__|([Appropriate attention] [Arahant] [Association with people of integrity] [Bodhisattva] [Factors for stream entry] [Hearing the true Dhamma] [Nibbāna] [Non-return] [Once return] [Paccekabuddha] [Practicing in accordance with Dhamma] [Spiritual friendship] [Stages of awakening] [Stream entry])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 13 subtags",
+    "excerptCount": 486
+  },
+  {
     "short": "Stream entry (sotāpanna)",
     "link": "tags/stream-entry.html",
     "long": "",
@@ -2235,6 +2639,15 @@
     "suffix": "",
     "excerptCount": 91,
     "chip": "tag_Stream entry__[Stream entry]"
+  },
+  {
+    "short": "Stream entry (sotāpanna)",
+    "chip": "tags_Stream entry (sotāpanna) and its 6 subtags__|([Appropriate attention] [Association with people of integrity] [Factors for stream entry] [Hearing the true Dhamma] [Practicing in accordance with Dhamma] [Spiritual friendship] [Stream entry])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 302
   },
   {
     "short": "Factors for stream entry (sotāpattiyaṅga)",
@@ -2247,6 +2660,15 @@
     "chip": "tag_Factors for stream entry__[Factors for stream entry]"
   },
   {
+    "short": "Factors for stream entry (sotāpattiyaṅga)",
+    "chip": "tags_Factors for stream entry (sotāpattiyaṅga) and its 5 subtags__|([Appropriate attention] [Association with people of integrity] [Factors for stream entry] [Hearing the true Dhamma] [Practicing in accordance with Dhamma] [Spiritual friendship])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 231
+  },
+  {
     "short": "Association with people of integrity (sappurisasaṃseva)",
     "link": "tags/association-with-people-of-integrity.html",
     "long": "",
@@ -2255,6 +2677,15 @@
     "suffix": "",
     "excerptCount": 29,
     "chip": "tag_Association with people of integrity__[Association with people of integrity]"
+  },
+  {
+    "short": "Association with people of integrity (sappurisasaṃseva)",
+    "chip": "tags_Association with people of integrity (sappurisasaṃseva)subtag__|([Association with people of integrity] [Spiritual friendship])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 113
   },
   {
     "short": "Spiritual friendship (kalyāṇa-mittatā)",
@@ -2367,6 +2798,15 @@
     "chip": "tag_Spiritual search__[Spiritual search]"
   },
   {
+    "short": "Spiritual search (ariya-pariyesanā)",
+    "chip": "tags_Spiritual search (ariya-pariyesanā) and its 2 subtags__|([Faith] [Spiritual search] [Spiritual urgency])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 222
+  },
+  {
     "short": "Spiritual urgency (saṃvega)",
     "link": "tags/spiritual-urgency.html",
     "long": "",
@@ -2467,6 +2907,15 @@
     "chip": "tag_Unskillful qualities__[Unskillful qualities]"
   },
   {
+    "short": "Unskillful qualities (akusalā dhammā)",
+    "chip": "tags_Unskillful qualities (akusalā dhammā) and its 40 subtags__`\\[(abuse/violence|addiction|attachment to precepts and practices|aversion|becoming|biases|clinging|competitiveness|conceit|craving|craving for immaterial existence|craving for material existence|delusion|depression|desire|dogmatism|doubt|fear|fetters|greed|guilt/shame/inadequacy|heedlessness|hindrances|ignorance|ill-will|jealousy|judgementalism|loneliness|outflows|perfectionism|proliferation|restlessness and worry|self-identity view|self-pity|selfishness|sensual desire|sloth and torpor|spiritual bypass|unskillful qualities|unwholesome roots|views)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 40 subtags",
+    "excerptCount": 1579
+  },
+  {
     "short": "Unwholesome Roots (akusala-mūlā)",
     "link": "tags/unwholesome-roots.html",
     "long": "Three Unwholesome Roots (ti-akusala-mūlā)",
@@ -2475,6 +2924,15 @@
     "suffix": "",
     "excerptCount": 111,
     "chip": "tag_Unwholesome Roots__[Unwholesome Roots]"
+  },
+  {
+    "short": "Unwholesome Roots (akusala-mūlā)",
+    "chip": "tags_Unwholesome Roots (akusala-mūlā) and its 3 subtags__|([Aversion] [Delusion] [Greed] [Unwholesome Roots])",
+    "long": "Three Unwholesome Roots (ti-akusala-mūlā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 340
   },
   {
     "short": "Greed (lobha)",
@@ -2507,6 +2965,15 @@
     "chip": "tag_Biases__[Biases]"
   },
   {
+    "short": "Biases (agatī)",
+    "chip": "tags_Biases (agatī) and its 4 subtags__|([Aversion] [Biases] [Delusion] [Desire] [Fear])",
+    "long": "Four Biases (catarī agatī)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 430
+  },
+  {
     "short": "Outflows (āsava)",
     "link": "tags/outflows.html",
     "long": "",
@@ -2515,6 +2982,15 @@
     "suffix": "",
     "excerptCount": 10,
     "chip": "tag_Outflows__[Outflows]"
+  },
+  {
+    "short": "Outflows (āsava)",
+    "chip": "tags_Outflows (āsava) and its 4 subtags__|([Becoming] [Ignorance] [Outflows] [Sensual desire] [Views])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 288
   },
   {
     "short": "Sensual desire (kāmacchanda)",
@@ -2545,6 +3021,15 @@
     "suffix": "",
     "excerptCount": 22,
     "chip": "tag_Fetters__[Fetters]"
+  },
+  {
+    "short": "Fetters (saṃyojanā)",
+    "chip": "tags_Fetters (saṃyojanā) and its 10 subtags__|([Attachment to precepts and practices] [Conceit] [Craving for immaterial existence] [Craving for material existence] [Doubt] [Fetters] [Ignorance] [Ill-will] [Restlessness and worry] [Self-identity view] [Sensual desire])",
+    "long": "Ten Fetters (dasa saṃyojanā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 10 subtags",
+    "excerptCount": 669
   },
   {
     "short": "Attachment to precepts and practices (sīlabbata-parāmāsa)",
@@ -2737,6 +3222,15 @@
     "chip": "tag_Nutriment__[Nutriment]"
   },
   {
+    "short": "Nutriment (āhāra)",
+    "chip": "tags_Nutriment (āhāra) and its 4 subtags__|([Consciousness] [Contact] [Food] [Nutriment] [Volition])",
+    "long": "Four Nutriments (cattāro āhārā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 260
+  },
+  {
     "short": "Food (āhāra)",
     "link": "tags/food.html",
     "long": "Physical food (kabaliṅkāra āhāra)",
@@ -2817,6 +3311,15 @@
     "chip": "tag_Characteristics of existence__[Characteristics of existence]"
   },
   {
+    "short": "Characteristics of existence",
+    "chip": "tags_Characteristics of existence and its 9 subtags__|([Characteristics of existence] [Conditionality] [Emptiness] [Impermanence] [Lawfulness] [Naturalness] [Non-identification] [Not-self] [Suchness] [Suffering])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 9 subtags",
+    "excerptCount": 914
+  },
+  {
     "short": "Naturalness (dhammaṭṭhitatā)",
     "link": "tags/naturalness.html",
     "long": "",
@@ -2875,6 +3378,15 @@
     "suffix": "",
     "excerptCount": 13,
     "chip": "tag_Aspects of Understanding__[Aspects of Understanding]"
+  },
+  {
+    "short": "Aspects of Understanding",
+    "chip": "tags_Aspects of Understanding and its 3 subtags__|([Aspects of Understanding] [Benefit/gratification] [Drawbacks] [Escape])",
+    "long": "Three Aspects of Understanding",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 57
   },
   {
     "short": "Benefit/gratification (assāda)",
@@ -2947,6 +3459,15 @@
     "chip": "tag_Personality__[Personality]"
   },
   {
+    "short": "Personality",
+    "chip": "tags_Personality and its 2 subtags__|([Habits] [Humor] [Personality])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 184
+  },
+  {
     "short": "Habits",
     "link": "tags/habits.html",
     "long": "",
@@ -3007,6 +3528,15 @@
     "chip": "tag_Buddha__[Buddha]"
   },
   {
+    "short": "Buddha",
+    "chip": "tags_Buddha and its 3 subtags__|([Buddha] [Buddha images] [Buddha/Biography] [Buddho mantra])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 295
+  },
+  {
     "short": "Dhamma",
     "link": "tags/dhamma.html",
     "long": "",
@@ -3027,6 +3557,15 @@
     "chip": "tag_Devotional practice__[Devotional practice]"
   },
   {
+    "short": "Devotional practice",
+    "chip": "tags_Devotional practice and its 24 subtags__`\\[(ajahn chah remembrance day|ajahn chah stupa|amulets|anumodana|asking forgiveness ceremony|bodhi tree|bowing|buddha images|ceremony/ritual|chanting|devotional practice|festival days|funerals|icons|kathina|lunar observance days|malas|objects of veneration|prayer|protective chants|puja|relics|stupas/monuments|superstition|visiting holy sites)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 24 subtags",
+    "excerptCount": 351
+  },
+  {
     "short": "Ceremony/ritual",
     "link": "tags/ceremonyritual.html",
     "long": "",
@@ -3035,6 +3574,15 @@
     "suffix": "",
     "excerptCount": 23,
     "chip": "tag_Ceremony/ritual__[Ceremony/ritual]"
+  },
+  {
+    "short": "Ceremony/ritual",
+    "chip": "tags_Ceremony/ritualsubtag__|([Ceremony/ritual] [Pūjā])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 37
   },
   {
     "short": "Pūjā",
@@ -3097,6 +3645,15 @@
     "chip": "tag_Festival days__[Festival days]"
   },
   {
+    "short": "Festival days",
+    "chip": "tags_Festival days and its 3 subtags__|([Ajahn Chah Remembrance Day] [Festival days] [Kaṭhina] [Lunar observance days])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 63
+  },
+  {
     "short": "Lunar observance days (uposatha)",
     "link": "tags/lunar-observance-days.html",
     "long": "",
@@ -3155,6 +3712,15 @@
     "suffix": "",
     "excerptCount": 5,
     "chip": "tag_Stupas/monuments__[Stupas/monuments]"
+  },
+  {
+    "short": "Stupas/monuments (thūpaṃ)",
+    "chip": "tags_Stupas/monuments (thūpaṃ)subtag__|([Ajahn Chah Stupa] [Stupas/monuments])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 13
   },
   {
     "short": "Ajahn Chah Stupa",
@@ -3247,6 +3813,15 @@
     "chip": "tag_Precepts__[Precepts]"
   },
   {
+    "short": "Precepts (sikkhāpada)",
+    "chip": "tags_Precepts (sikkhāpada) and its 16 subtags__|([Abortion] [Celibacy] [Eating after noon] [Eight Precepts] [Entertainment and adornment] [Euthanasia] [False speech] [Five Precepts] [High and luxurious beds] [Intoxicants] [Killing] [Precepts] [Sexual misconduct] [Stealing] [Suicide] [Vegetarianism] [Vinaya])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 16 subtags",
+    "excerptCount": 332
+  },
+  {
     "short": "Five Precepts (pañca sikkhāpadāni)",
     "link": "tags/five-precepts.html",
     "long": "",
@@ -3255,6 +3830,15 @@
     "suffix": "",
     "excerptCount": 29,
     "chip": "tag_Five Precepts__[Five Precepts]"
+  },
+  {
+    "short": "Five Precepts (pañca sikkhāpadāni)",
+    "chip": "tags_Five Precepts (pañca sikkhāpadāni) and its 9 subtags__|([Abortion] [Euthanasia] [False speech] [Five Precepts] [Intoxicants] [Killing] [Sexual misconduct] [Stealing] [Suicide] [Vegetarianism])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 9 subtags",
+    "excerptCount": 143
   },
   {
     "short": "Intoxicants (surāmeraya-majja-pamādaṭṭhānā)",
@@ -3275,6 +3859,15 @@
     "suffix": "",
     "excerptCount": 21,
     "chip": "tag_Eight Precepts__[Eight Precepts]"
+  },
+  {
+    "short": "Eight Precepts (aṭṭha sikkhāpadāni)",
+    "chip": "tags_Eight Precepts (aṭṭha sikkhāpadāni) and its 12 subtags__|([Abortion] [Celibacy] [Eating after noon] [Eight Precepts] [Entertainment and adornment] [Euthanasia] [False speech] [High and luxurious beds] [Intoxicants] [Killing] [Stealing] [Suicide] [Vegetarianism])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 12 subtags",
+    "excerptCount": 150
   },
   {
     "short": "Eating after noon (vikāla-bhojana)",
@@ -3317,6 +3910,15 @@
     "chip": "tag_Meditation__[Meditation]"
   },
   {
+    "short": "Meditation (bhāvanā)",
+    "chip": "tags_Meditation (bhāvanā) and its 70 subtags__`\\[(ardency|body scanning|bowing|buddho mantra|calming meditation|clear comprehension|compassion|continuity of mindfulness|defilements of insight|direct experience|directed thought and evaluation|divine abidings|elements|empathetic joy|equanimity|formless attainments|gladdening the mind|goodwill|happiness|hua tou|insight meditation|jhana|kasina|knowing itself|koan|long-term practice|mantra|meditation|meditation retreats|meditation/general advice|meditation/results|meditation/techniques|meditation/unusual experiences|mindfulness|mindfulness of body|mindfulness of breathing|mindfulness of dhammas|mindfulness of feeling|mindfulness of mind|movement meditation|mudra|nimitta|noting|perception of light|posture/lying down|posture/sitting|posture/standing|posture/walking|postures|present moment awareness|protective meditations|rapture|recollection|recollection/buddha|recollection/death|recollection/devas|recollection/dhamma|recollection/generosity|recollection/peace|recollection/sangha|recollection/virtue|right concentration|right effort|right mindfulness|seclusion|sound of silence|spaciousness|unattractiveness|unification|visualization|wrong concentration)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 70 subtags",
+    "excerptCount": 2159
+  },
+  {
     "short": "Meditation/General advice",
     "link": "tags/meditationgeneral-advice.html",
     "long": "",
@@ -3335,6 +3937,15 @@
     "suffix": "",
     "excerptCount": 53,
     "chip": "tag_Meditation/Techniques__[Meditation/Techniques]"
+  },
+  {
+    "short": "Meditation/Techniques",
+    "chip": "tags_Meditation/Techniques and its 19 subtags__|([Body scanning] [Buddho mantra] [Compassion] [Divine Abidings] [Elements] [Empathetic joy] [Equanimity] [Goodwill] [Hua tou] [Kasiṇa] [Koan] [Mantra] [Meditation/Techniques] [Mindfulness of breathing] [Movement meditation] [Noting] [Perception of light] [Sound of silence] [Unattractiveness] [Visualization])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 19 subtags",
+    "excerptCount": 887
   },
   {
     "short": "Unattractiveness (asubha)",
@@ -3415,6 +4026,15 @@
     "suffix": "",
     "excerptCount": 10,
     "chip": "tag_Mantra__[Mantra]"
+  },
+  {
+    "short": "Mantra",
+    "chip": "tags_Mantrasubtag__|([Buddho mantra] [Mantra])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 37
   },
   {
     "short": "Buddho mantra",
@@ -3587,6 +4207,15 @@
     "chip": "tag_Protective Meditations__[Protective Meditations]"
   },
   {
+    "short": "Protective Meditations (rakkhā bhāvanā)",
+    "chip": "tags_Protective Meditations (rakkhā bhāvanā) and its 4 subtags__|([Goodwill] [Mindfulness of body] [Protective Meditations] [Recollection/Buddha] [Unattractiveness])",
+    "long": "Four Protective Meditations (caturārakkhā bhāvanā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 459
+  },
+  {
     "short": "Postures",
     "link": "tags/postures.html",
     "long": "Four Postures",
@@ -3595,6 +4224,15 @@
     "suffix": "",
     "excerptCount": 21,
     "chip": "tag_Postures__[Postures]"
+  },
+  {
+    "short": "Postures",
+    "chip": "tags_Postures and its 6 subtags__|([Bowing] [Mudra] [Posture/Lying down] [Posture/Sitting] [Posture/Standing] [Posture/Walking] [Postures])",
+    "long": "Four Postures",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 136
   },
   {
     "short": "Posture/Sitting (nisinna)",
@@ -3665,6 +4303,15 @@
     "suffix": "",
     "excerptCount": 21,
     "chip": "tag_Meditation/Results__[Meditation/Results]"
+  },
+  {
+    "short": "Meditation/Results",
+    "chip": "tags_Meditation/Results and its 8 subtags__|([Continuity of mindfulness] [Defilements of insight] [Direct experience] [Knowing itself] [Meditation/Results] [Nimitta] [Present moment awareness] [Spaciousness] [Wrong concentration])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 8 subtags",
+    "excerptCount": 394
   },
   {
     "short": "Wrong concentration (micchā-samādhi)",
@@ -3747,6 +4394,15 @@
     "chip": "tag_Teaching Dhamma__[Teaching Dhamma]"
   },
   {
+    "short": "Teaching Dhamma",
+    "chip": "tags_Teaching Dhamma and its 40 subtags__`\\[(admonishment/feedback|ageing|aggregates|becoming|birth|cause of suffering|cessation|cessation of suffering|craving not to become|death|deva|dhamma books|dhamma discussion|dhamma online|dhamma recordings|dispassion|eightfold path|fierce/direct teaching|four noble truths|free distribution|generosity|gradual teaching|grief|jataka tales|liberation|mentoring|noble truth of suffering|pain|personal presence|questions|release|relinquishment|renunciation|sensual desire|sickness|similes|stories|symbolism/metaphor|teaching dhamma|verses|virtue)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 40 subtags",
+    "excerptCount": 2082
+  },
+  {
     "short": "Gradual Teaching (anupubbikathā)",
     "link": "tags/gradual-teaching.html",
     "long": "The Gradual Teaching (anupubbikathā)",
@@ -3755,6 +4411,15 @@
     "suffix": "",
     "excerptCount": 25,
     "chip": "tag_Gradual Teaching__[Gradual Teaching]"
+  },
+  {
+    "short": "Gradual Teaching (anupubbikathā)",
+    "chip": "tags_Gradual Teaching (anupubbikathā) and its 24 subtags__`\\[(ageing|aggregates|becoming|birth|cause of suffering|cessation|cessation of suffering|craving not to become|death|deva|dispassion|eightfold path|four noble truths|generosity|gradual teaching|grief|liberation|noble truth of suffering|pain|release|relinquishment|renunciation|sensual desire|sickness|virtue)\\]`",
+    "long": "The Gradual Teaching (anupubbikathā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 24 subtags",
+    "excerptCount": 1648
   },
   {
     "short": "Questions (pañhā)",
@@ -3817,6 +4482,15 @@
     "chip": "tag_Stories__[Stories]"
   },
   {
+    "short": "Stories",
+    "chip": "tags_Storiessubtag__|([Jātaka Tales] [Stories])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 16
+  },
+  {
     "short": "Jātaka Tales",
     "link": "tags/jataka-tales.html",
     "long": "",
@@ -3855,6 +4529,15 @@
     "suffix": "",
     "excerptCount": 59,
     "chip": "tag_Dhamma books__[Dhamma books]"
+  },
+  {
+    "short": "Dhamma books",
+    "chip": "tags_Dhamma bookssubtag__|([Dhamma books] [Free distribution])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 62
   },
   {
     "short": "Free distribution",
@@ -3897,6 +4580,15 @@
     "chip": "tag_Teachers__[Teachers]"
   },
   {
+    "short": "Teachers",
+    "chip": "tags_Teachers and its 182 subtags__`\\[(acariya nagarjuna|ajahn achalo|ajahn amaro|ajahn anan|ajahn anando|ajahn anek|ajahn baen|ajahn bahnkow|ajahn boon choo|ajahn brahmavamso|ajahn buddhadasa|ajahn bunjong|ajahn candasiri|ajahn chah|ajahn chah lineage|ajahn chai|ajahn chorp|ajahn damrong|ajahn dohn|ajahn dtun|ajahn dune|ajahn fuang|ajahn fun|ajahn gavesako|ajahn gi|ajahn gunha|ajahn jagaro|ajahn jayanto|ajahn jayasaro|ajahn jia|ajahn jitindriya|ajahn jotipalo|ajahn jumnien|ajahn jun|ajahn jundee|ajahn kalyano|ajahn karunadhammo|ajahn kevali|ajahn khantipalo|ajahn khao|ajahn khemadhammo|ajahn kinaree|ajahn koon chiang rai|ajahn koon na pho|ajahn kovilo|ajahn kusalo|ajahn lee dhammadharo|ajahn liem|ajahn maha adisak|ajahn maha amorn|ajahn maha boowa|ajahn maha chatchai|ajahn maha in|ajahn maha prasert|ajahn maha suporn|ajahn mun|ajahn munindo|ajahn nanadhammo|ajahn naniko|ajahn pannananda|ajahn pannavaddho|ajahn pasanno|ajahn phut|ajahn piak|ajahn piyadhammo|ajahn plien|ajahn preecha|ajahn puriso|ajahn sanong|ajahn santikaro|ajahn sao|ajahn sim|ajahn sinuan|ajahn siripanno|ajahn somboon|ajahn sona|ajahn sucitto|ajahn sudanto|ajahn sumedho|ajahn sundara|ajahn supah|ajahn suwat|ajahn teean|ajahn thanissaro|ajahn thate|ajahn thoon|ajahn tiradhammo|ajahn tongrat|ajahn toon|ajahn utane|ajahn vajirayan|ajahn vajiro|ajahn viradhammo|ajahn visuddhi|ajahn waen|ajahn wan|ajahn wanchai|ajahn yatiko|ayya tathaloka|bhante dharmawara|bhante gunaratana|bhante rahula|bhante sujato|bhikkhu bodhi|bhikshu heng lyu|bhikshu heng shun|calm group|chao khun nor|chao khun prayoon|chao khun upali|chokyi nyima rinpoche|christian monastics|dalai lama|debbie stamp|dipa ma|dogen|dr. saddhatissa|father boniface|father damian|george sharp|harata roshi|huineng|jack kornfield|jalal al-din rumi|james baraz|joseph goldstein|joseph kappel|king rama ix|kittisaro|krishnamurti|lama zopa|larry rosenberg|lay supporters|lay teachers|mae chee kaew|mae chee kumfah|mae chee sansanee|mae somchai|mahasi sayadaw|mahatma gandhi|mahayana monastics|mark epstein|master hsu yun|master hsuan hua|master xuanzang|maurice walsh|monastic teachers|nick scott|other thai forest teachers|other thai monastics|other theravada monastics|p. a. payutto|pa auk sayadaw|paul breiter|preah mahaghosananda|ram dass|rev. heng sure|rodney smith|ruth denison|s. n. goenka|sanghapala|shantideva|somdet toh|somdet vajirananavarorasa|stephen batchelor|stephen levine|taungpulu sayadaw|teachers|thai ajahn chah lineage|thai forest tradition|thanissara|thich nhat hahn|thubten chodron|trulshik rinpoche|tsoknyi rinpoche|upasika kee nanayon|vajrayana monastics|ven. analayo|ven. ananda maitreya|ven. nagasena|ven. nanamoli|ven. nanatiloka|western ajahn chah lineage)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 182 subtags",
+    "excerptCount": 1978
+  },
+  {
     "short": "Monastic teachers",
     "link": "tags/monastic-teachers.html",
     "long": "",
@@ -3905,6 +4597,15 @@
     "suffix": "",
     "excerptCount": 4,
     "chip": "tag_Monastic teachers__[Monastic teachers]"
+  },
+  {
+    "short": "Monastic teachers",
+    "chip": "tags_Monastic teachers and its 152 subtags__`\\[(acariya nagarjuna|ajahn achalo|ajahn amaro|ajahn anan|ajahn anando|ajahn anek|ajahn baen|ajahn bahnkow|ajahn boon choo|ajahn brahmavamso|ajahn buddhadasa|ajahn bunjong|ajahn candasiri|ajahn chah|ajahn chah lineage|ajahn chai|ajahn chorp|ajahn damrong|ajahn dohn|ajahn dtun|ajahn dune|ajahn fuang|ajahn fun|ajahn gavesako|ajahn gi|ajahn gunha|ajahn jagaro|ajahn jayanto|ajahn jayasaro|ajahn jia|ajahn jitindriya|ajahn jotipalo|ajahn jumnien|ajahn jun|ajahn jundee|ajahn kalyano|ajahn karunadhammo|ajahn kevali|ajahn khantipalo|ajahn khao|ajahn khemadhammo|ajahn kinaree|ajahn koon chiang rai|ajahn koon na pho|ajahn kovilo|ajahn kusalo|ajahn lee dhammadharo|ajahn liem|ajahn maha adisak|ajahn maha amorn|ajahn maha boowa|ajahn maha chatchai|ajahn maha in|ajahn maha prasert|ajahn maha suporn|ajahn mun|ajahn munindo|ajahn nanadhammo|ajahn naniko|ajahn pannananda|ajahn pannavaddho|ajahn pasanno|ajahn phut|ajahn piak|ajahn piyadhammo|ajahn plien|ajahn preecha|ajahn puriso|ajahn sanong|ajahn santikaro|ajahn sao|ajahn sim|ajahn sinuan|ajahn siripanno|ajahn somboon|ajahn sona|ajahn sucitto|ajahn sudanto|ajahn sumedho|ajahn sundara|ajahn supah|ajahn suwat|ajahn teean|ajahn thanissaro|ajahn thate|ajahn thoon|ajahn tiradhammo|ajahn tongrat|ajahn toon|ajahn utane|ajahn vajirayan|ajahn vajiro|ajahn viradhammo|ajahn visuddhi|ajahn waen|ajahn wan|ajahn wanchai|ajahn yatiko|ayya tathaloka|bhante dharmawara|bhante gunaratana|bhante rahula|bhante sujato|bhikkhu bodhi|bhikshu heng lyu|bhikshu heng shun|chao khun nor|chao khun prayoon|chao khun upali|chokyi nyima rinpoche|christian monastics|dalai lama|dogen|dr. saddhatissa|father boniface|father damian|harata roshi|huineng|lama zopa|mae chee kaew|mae chee kumfah|mae chee sansanee|mae somchai|mahasi sayadaw|mahayana monastics|master hsu yun|master hsuan hua|master xuanzang|monastic teachers|other thai forest teachers|other thai monastics|other theravada monastics|p. a. payutto|pa auk sayadaw|preah mahaghosananda|rev. heng sure|shantideva|somdet toh|somdet vajirananavarorasa|taungpulu sayadaw|thai ajahn chah lineage|thai forest tradition|thich nhat hahn|thubten chodron|trulshik rinpoche|tsoknyi rinpoche|vajrayana monastics|ven. analayo|ven. ananda maitreya|ven. nagasena|ven. nanamoli|ven. nanatiloka|western ajahn chah lineage)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 152 subtags",
+    "excerptCount": 1925
   },
   {
     "short": "Ajahn Sao",
@@ -3927,6 +4628,15 @@
     "chip": "tag_Ajahn Chah lineage__[Ajahn Chah lineage]"
   },
   {
+    "short": "Ajahn Chah lineage",
+    "chip": "tags_Ajahn Chah lineage and its 60 subtags__`\\[(ajahn achalo|ajahn amaro|ajahn anan|ajahn anando|ajahn anek|ajahn bahnkow|ajahn boon choo|ajahn brahmavamso|ajahn bunjong|ajahn candasiri|ajahn chah lineage|ajahn damrong|ajahn dtun|ajahn gavesako|ajahn gunha|ajahn jagaro|ajahn jayanto|ajahn jayasaro|ajahn jitindriya|ajahn jotipalo|ajahn jun|ajahn jundee|ajahn kalyano|ajahn karunadhammo|ajahn kevali|ajahn khemadhammo|ajahn koon chiang rai|ajahn koon na pho|ajahn kovilo|ajahn kusalo|ajahn liem|ajahn maha adisak|ajahn maha amorn|ajahn maha in|ajahn maha suporn|ajahn munindo|ajahn nanadhammo|ajahn naniko|ajahn pasanno|ajahn piak|ajahn preecha|ajahn puriso|ajahn sinuan|ajahn siripanno|ajahn somboon|ajahn sona|ajahn sucitto|ajahn sudanto|ajahn sumedho|ajahn sundara|ajahn tiradhammo|ajahn toon|ajahn vajiro|ajahn viradhammo|ajahn visuddhi|ajahn yatiko|bhante sujato|mae chee kumfah|mae somchai|thai ajahn chah lineage|western ajahn chah lineage)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 60 subtags",
+    "excerptCount": 986
+  },
+  {
     "short": "Thai Ajahn Chah lineage",
     "link": "tags/thai-ajahn-chah-lineage.html",
     "long": "",
@@ -3935,6 +4645,15 @@
     "suffix": "",
     "excerptCount": 1,
     "chip": "tag_Thai Ajahn Chah lineage__[Thai Ajahn Chah lineage]"
+  },
+  {
+    "short": "Thai Ajahn Chah lineage",
+    "chip": "tags_Thai Ajahn Chah lineage and its 23 subtags__`\\[(ajahn anan|ajahn anek|ajahn bahnkow|ajahn boon choo|ajahn bunjong|ajahn damrong|ajahn dtun|ajahn gunha|ajahn jun|ajahn jundee|ajahn koon chiang rai|ajahn koon na pho|ajahn liem|ajahn maha adisak|ajahn maha amorn|ajahn maha in|ajahn maha suporn|ajahn piak|ajahn preecha|ajahn sinuan|ajahn somboon|ajahn toon|mae somchai|thai ajahn chah lineage)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 23 subtags",
+    "excerptCount": 112
   },
   {
     "short": "Ajahn Mahā Amorn",
@@ -4165,6 +4884,15 @@
     "suffix": "",
     "excerptCount": 11,
     "chip": "tag_Western Ajahn Chah lineage__[Western Ajahn Chah lineage]"
+  },
+  {
+    "short": "Western Ajahn Chah lineage",
+    "chip": "tags_Western Ajahn Chah lineage and its 35 subtags__`\\[(ajahn achalo|ajahn amaro|ajahn anando|ajahn brahmavamso|ajahn candasiri|ajahn gavesako|ajahn jagaro|ajahn jayanto|ajahn jayasaro|ajahn jitindriya|ajahn jotipalo|ajahn kalyano|ajahn karunadhammo|ajahn kevali|ajahn khemadhammo|ajahn kovilo|ajahn kusalo|ajahn munindo|ajahn nanadhammo|ajahn naniko|ajahn pasanno|ajahn puriso|ajahn siripanno|ajahn sona|ajahn sucitto|ajahn sudanto|ajahn sumedho|ajahn sundara|ajahn tiradhammo|ajahn vajiro|ajahn viradhammo|ajahn visuddhi|ajahn yatiko|bhante sujato|mae chee kumfah|western ajahn chah lineage)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 35 subtags",
+    "excerptCount": 899
   },
   {
     "short": "Ajahn Khemadhammo",
@@ -4877,6 +5605,15 @@
     "chip": "tag_Other Thai monastics__[Other Thai monastics]"
   },
   {
+    "short": "Other Thai monastics",
+    "chip": "tags_Other Thai monastics and its 8 subtags__|([Ajahn Mahā Prasert] [Ajahn Vajirayan] [Chao Khun Nor] [Chao Khun Prayoon] [Chao Khun Upāli] [Other Thai monastics] [P. A. Payutto] [Somdet Toh] [Somdet Vajirañāṇavarorasa])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 8 subtags",
+    "excerptCount": 40
+  },
+  {
     "short": "Somdet Toh",
     "link": "tags/somdet-toh.html",
     "long": "Somdet Toh Brahmaramsi",
@@ -5297,6 +6034,15 @@
     "chip": "tag_Christian monastics__[Christian monastics]"
   },
   {
+    "short": "Christian monastics",
+    "chip": "tags_Christian monastics and its 2 subtags__|([Christian monastics] [Father Boniface] [Father Damian])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 8
+  },
+  {
     "short": "Father Boniface",
     "link": "tags/father-boniface.html",
     "long": "",
@@ -5325,6 +6071,15 @@
     "suffix": "",
     "excerptCount": 7,
     "chip": "tag_Lay teachers__[Lay teachers]"
+  },
+  {
+    "short": "Lay teachers",
+    "chip": "tags_Lay teachers and its 24 subtags__`\\[(calm group|debbie stamp|dipa ma|jack kornfield|jalal al-din rumi|james baraz|joseph goldstein|joseph kappel|kittisaro|krishnamurti|larry rosenberg|lay teachers|mahatma gandhi|mark epstein|maurice walsh|nick scott|paul breiter|ram dass|rodney smith|ruth denison|s. n. goenka|stephen batchelor|stephen levine|thanissara|upasika kee nanayon)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 24 subtags",
+    "excerptCount": 178
   },
   {
     "short": "Jalāl al-Dīn Rūmī",
@@ -5577,6 +6332,15 @@
     "chip": "tag_Lay supporters__[Lay supporters]"
   },
   {
+    "short": "Lay supporters",
+    "chip": "tags_Lay supporters and its 3 subtags__|([George Sharp] [King Rama IX] [Lay supporters] [Saṅghapāla])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 51
+  },
+  {
     "short": "King Rama IX",
     "link": "tags/king-rama-ix.html",
     "long": "King Bhumibol Adulyadej (Rama IX)",
@@ -5617,6 +6381,15 @@
     "chip": "tag_Monasteries__[Monasteries]"
   },
   {
+    "short": "Monasteries",
+    "chip": "tags_Monasteries and its 64 subtags__`\\[(abhayagiri|abhayagiri sri lanka|ajahn chah monasteries|aloka vihara|amaravati|anandagiri|aranya bodhi hermitage|arrow river|aruna ratanagiri|berkeley buddhist monastery|bhavana society|birken|chithurst|christian monasteries|city of ten thousand buddhas|clear mountain|dhammadharini monastery|dhammapala|drba monsteries|dtao dum|elders' council|gaia house|gold mountain monastery|gomde california|hampstead vihara|holy transfiguration monastery|insight meditation society|karuna buddhist vihara|manjushri institute|monasteries|non-monastic centers|other thai forest monasteries|pacific hermitage|panyaprateep school|poo jum gom|portland friends of the dhamma|pre-abhayagiri viharas|sanghapala|spirit rock|temple monastery|thai ajahn chah monasteries|thai forest monasteries in the west|three conditions monastery|tisarana|wat asokaram|wat burapha|wat buridat|wat fah krahm|wat keuan|wat khao wongkot|wat metta|wat pah ban tat|wat pah boon lorm|wat pah nanachat|wat pah pong|wat pah sai ngam|wat pah supattaram|wat pahk kut wai|wat phleng vipassana|wat phu din dang|wat ram poeng|wat sai ngam suphanburi|wat suan mokkh|wat tam saeng pet|western ajahn chah monasteries)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 64 subtags",
+    "excerptCount": 695
+  },
+  {
     "short": "Ajahn Chah monasteries",
     "link": "tags/ajahn-chah-monasteries.html",
     "long": "",
@@ -5627,6 +6400,15 @@
     "chip": "tag_Ajahn Chah monasteries__[Ajahn Chah monasteries]"
   },
   {
+    "short": "Ajahn Chah monasteries",
+    "chip": "tags_Ajahn Chah monasteries and its 29 subtags__`\\[(abhayagiri|ajahn chah monasteries|amaravati|anandagiri|arrow river|aruna ratanagiri|birken|chithurst|dhammapala|dtao dum|elders' council|hampstead vihara|pacific hermitage|poo jum gom|pre-abhayagiri viharas|sanghapala|temple monastery|thai ajahn chah monasteries|tisarana|wat fah krahm|wat keuan|wat pah boon lorm|wat pah nanachat|wat pah pong|wat pah sai ngam|wat pah supattaram|wat pahk kut wai|wat phu din dang|wat tam saeng pet|western ajahn chah monasteries)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 29 subtags",
+    "excerptCount": 629
+  },
+  {
     "short": "Thai Ajahn Chah monasteries",
     "link": "tags/thai-ajahn-chah-monasteries.html",
     "long": "",
@@ -5635,6 +6417,15 @@
     "suffix": "",
     "excerptCount": 28,
     "chip": "tag_Thai Ajahn Chah monasteries__[Thai Ajahn Chah monasteries]"
+  },
+  {
+    "short": "Thai Ajahn Chah monasteries",
+    "chip": "tags_Thai Ajahn Chah monasteries and its 13 subtags__|([Anandagiri] [Dtao Dum] [Poo Jum Gom] [Thai Ajahn Chah monasteries] [Wat Fah Krahm] [Wat Keuan] [Wat Pah Boon Lorm] [Wat Pah Nanachat] [Wat Pah Pong] [Wat Pah Sai Ngam] [Wat Pah Supattaram] [Wat Pahk Kut Wai] [Wat Phu Din Dang] [Wat Tam Saeng Pet])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 13 subtags",
+    "excerptCount": 294
   },
   {
     "short": "Wat Pahk Kut Wai",
@@ -5757,6 +6548,15 @@
     "chip": "tag_Western Ajahn Chah monasteries__[Western Ajahn Chah monasteries]"
   },
   {
+    "short": "Western Ajahn Chah monasteries",
+    "chip": "tags_Western Ajahn Chah monasteries and its 14 subtags__|([Abhayagiri] [Amaravati] [Arrow River] [Aruna Ratanagiri] [Birken] [Chithurst] [Dhammapala] [Elders' Council] [Hampstead Vihara] [Pacific Hermitage] [Pre-Abhayagiri vihāras] [Saṅghapāla] [Temple Monastery] [Tisarana] [Western Ajahn Chah monasteries])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 14 subtags",
+    "excerptCount": 371
+  },
+  {
     "short": "Hampstead Vihara",
     "link": "tags/hampstead-vihara.html",
     "long": "",
@@ -5775,6 +6575,15 @@
     "suffix": "",
     "excerptCount": 12,
     "chip": "tag_Elders' Council__[Elders' Council]"
+  },
+  {
+    "short": "Elders' Council",
+    "chip": "tags_Elders' Council and its 5 subtags__|([Amaravati] [Aruna Ratanagiri] [Chithurst] [Dhammapala] [Elders' Council] [Temple Monastery])",
+    "long": "Elders' Council monasteries",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 67
   },
   {
     "short": "Chithurst",
@@ -5885,6 +6694,15 @@
     "suffix": "",
     "excerptCount": 1,
     "chip": "tag_Other Thai forest monasteries__[Other Thai forest monasteries]"
+  },
+  {
+    "short": "Other Thai forest monasteries",
+    "chip": "tags_Other Thai forest monasteries and its 5 subtags__|([Other Thai forest monasteries] [Wat Asokaram] [Wat Burapha] [Wat Khao Wongkot] [Wat Pah Ban Tat] [Wat Suan Mokkh])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 18
   },
   {
     "short": "Wat Burapha",
@@ -6127,6 +6945,15 @@
     "chip": "tag_Non-monastic centers__[Non-monastic centers]"
   },
   {
+    "short": "Non-monastic centers",
+    "chip": "tags_Non-monastic centers and its 6 subtags__|([Gaia House] [Insight Meditation Society] [Manjushri Institute] [Non-monastic centers] [Panyaprateep School] [Portland Friends of the Dhamma] [Spirit Rock])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 6 subtags",
+    "excerptCount": 36
+  },
+  {
     "short": "Insight Meditation Society",
     "link": "tags/insight-meditation-society.html",
     "long": "",
@@ -6197,6 +7024,15 @@
     "chip": "tag_Nature of the cosmos__[Nature of the cosmos]"
   },
   {
+    "short": "Nature of the cosmos",
+    "chip": "tags_Nature of the cosmos and its 26 subtags__`\\[(animal|brahma gods|deathless|deva|devotion to wakefulness|dreams|ghost|god|hell|human|kamma|mara|memory|metteyya bodhisatva|moods of the mind|nature of mind|nature of the cosmos|nibbana|non-human beings|psychic powers|realms of existence|rebirth|samsara|supernatural|time|unconditioned|unestablished consciousness)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 26 subtags",
+    "excerptCount": 775
+  },
+  {
     "short": "Time (kāla)",
     "link": "tags/time.html",
     "long": "",
@@ -6225,6 +7061,15 @@
     "suffix": "",
     "excerptCount": 28,
     "chip": "tag_Realms of existence__[Realms of existence]"
+  },
+  {
+    "short": "Realms of existence",
+    "chip": "tags_Realms of existence and its 5 subtags__|([Animal] [Deva] [Ghost] [Hell] [Human] [Realms of existence])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 201
   },
   {
     "short": "Deva",
@@ -6377,6 +7222,15 @@
     "chip": "tag_Nibbāna__[Nibbāna]"
   },
   {
+    "short": "Nibbāna",
+    "chip": "tags_Nibbāna and its 3 subtags__|([Deathless] [Nibbāna] [Unconditioned] [Unestablished consciousness])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 139
+  },
+  {
     "short": "Deathless (amata)",
     "link": "tags/deathless.html",
     "long": "The Deathless (amata)",
@@ -6415,6 +7269,15 @@
     "suffix": "",
     "excerptCount": 8,
     "chip": "tag_History__[History]"
+  },
+  {
+    "short": "History",
+    "chip": "tags_History and its 14 subtags__|([Buddha/Biography] [Geography/India] [Geography/Thailand] [Great disciples] [History] [History/America] [History/Early Buddhism] [History/Indian Buddhism] [History/Mahāyāna Buddhism] [History/Other Theravāda traditions] [History/Sri Lankan Buddhism] [History/Thai Buddhism] [History/Western Buddhism] [History/Western Buddhist monasticism] [Previous Buddhas])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 14 subtags",
+    "excerptCount": 354
   },
   {
     "short": "Previous Buddhas",
@@ -6517,6 +7380,15 @@
     "chip": "tag_History/Western Buddhism__[History/Western Buddhism]"
   },
   {
+    "short": "History/Western Buddhism",
+    "chip": "tags_History/Western Buddhismsubtag__|([History/Western Buddhism] [History/Western Buddhist monasticism])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 29
+  },
+  {
     "short": "History/Western Buddhist monasticism",
     "link": "tags/historywestern-buddhist-monasticism.html",
     "long": "",
@@ -6555,6 +7427,15 @@
     "suffix": "",
     "excerptCount": 24,
     "chip": "tag_Cultural context__[Cultural context]"
+  },
+  {
+    "short": "Cultural context",
+    "chip": "tags_Cultural context and its 28 subtags__`\\[(bhikkhuni|buddhist identity|calvin and hobbes|cultural context|culture/asia|culture/india|culture/native american|culture/natural environment|culture/other theravada traditions|culture/sri lanka|culture/thailand|culture/west|etymology|isan|language|mae chee|pali|popular culture|question in thai|siladhara|sinhalese|thai|thai audio|the far side|the new yorker|translation|winnie-the-pooh|women in buddhism|women's monastic forms)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 28 subtags",
+    "excerptCount": 945
   },
   {
     "short": "Culture/Asia",
@@ -6627,6 +7508,15 @@
     "chip": "tag_Women in Buddhism__[Women in Buddhism]"
   },
   {
+    "short": "Women in Buddhism",
+    "chip": "tags_Women in Buddhism and its 4 subtags__|([Bhikkhunī] [Mae Chee] [Sīladharā] [Women in Buddhism] [Women's monastic forms])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 39
+  },
+  {
     "short": "Language",
     "link": "tags/language.html",
     "long": "",
@@ -6635,6 +7525,15 @@
     "suffix": "",
     "excerptCount": 98,
     "chip": "tag_Language__[Language]"
+  },
+  {
+    "short": "Language",
+    "chip": "tags_Language and its 8 subtags__|([Etymology] [Isan] [Language] [Pāli] [Question in Thai] [Sinhalese] [Thai] [Thai audio] [Translation])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 8 subtags",
+    "excerptCount": 444
   },
   {
     "short": "Pāli",
@@ -6665,6 +7564,15 @@
     "suffix": "",
     "excerptCount": 74,
     "chip": "tag_Thai__[Thai]"
+  },
+  {
+    "short": "Thai",
+    "chip": "tags_Thai and its 2 subtags__|([Question in Thai] [Thai] [Thai audio])",
+    "long": "Thai language",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 82
   },
   {
     "short": "Question in Thai",
@@ -6737,6 +7645,15 @@
     "chip": "tag_Popular culture__[Popular culture]"
   },
   {
+    "short": "Popular culture",
+    "chip": "tags_Popular culture and its 4 subtags__|([Calvin and Hobbes] [Popular culture] [The Far Side] [The New Yorker] [Winnie-the-Pooh])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 12
+  },
+  {
     "short": "Winnie-the-Pooh",
     "link": "tags/winnie-the-pooh.html",
     "long": "",
@@ -6787,6 +7704,15 @@
     "chip": "tag_Spiritual traditions__[Spiritual traditions]"
   },
   {
+    "short": "Spiritual traditions",
+    "chip": "tags_Spiritual traditions and its 18 subtags__|([Advaita Vedanta] [Atheism/agnosticism] [Christianity] [Cults] [Hinduism] [Islam] [Jainism] [Judaism] [Mahāyāna] [Nichiren Buddhism] [Philosophy] [Pure Land] [Secular Buddhism] [Spiritual traditions] [Taoism] [Theravāda] [Vajrayāna] [Western psychology] [Zen])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 18 subtags",
+    "excerptCount": 248
+  },
+  {
     "short": "Theravāda",
     "link": "tags/theravada.html",
     "long": "",
@@ -6805,6 +7731,15 @@
     "suffix": "",
     "excerptCount": 24,
     "chip": "tag_Mahāyāna__[Mahāyāna]"
+  },
+  {
+    "short": "Mahāyāna",
+    "chip": "tags_Mahāyāna and its 3 subtags__|([Mahāyāna] [Nichiren Buddhism] [Pure Land] [Zen])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 55
   },
   {
     "short": "Zen",
@@ -6865,6 +7800,15 @@
     "suffix": "",
     "excerptCount": 17,
     "chip": "tag_Hinduism__[Hinduism]"
+  },
+  {
+    "short": "Hinduism",
+    "chip": "tags_Hinduismsubtag__|([Advaita Vedanta] [Hinduism])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 22
   },
   {
     "short": "Advaita Vedanta",
@@ -6977,6 +7921,15 @@
     "chip": "tag_Renunciant practice__[Renunciant practice]"
   },
   {
+    "short": "Renunciant practice",
+    "chip": "tags_Renunciant practice and its 80 subtags__`\\[(abbot|abortion|almsbowl|almsfood|almsround|ascetic practices|bhikkhuni|building projects|celibacy|chao khun|communal harmony|confession|dependence|devotion to wakefulness|disciplinary transactions|disrobing|eating after noon|eight precepts|entertainment and adornment|euthanasia|false speech|fasting|forest versus city monks|fourfold assembly|generosity|goodwill|high and luxurious beds|hospitality|incontrovertible practices|intoxicants|killing|lodging|lunar observance days|mae chee|medicinal requisites|mentoring|moderation in eating|monastery organizational structure|monastic crafts|monastic life|monastic life/motivation|monastic routine|monastic titles|mutual lay/sangha support|not handling money|novices|older monks|ordination|patimokkha|perception of a samana|postulants|principles of cordiality|principles of non-decline|protocols|rains retreat|renunciant practice|requisites|respect|respect for elders|right view|robes|sangha|sangha decision making|sense restraint|sequence of training|siladhara|sima|simplicity|sitter's practice|stealing|study monks|suicide|temporary ordination|thai sects|tudong|types of monks|upatakh|vegetarianism|vinaya|virtue|women's monastic forms)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 80 subtags",
+    "excerptCount": 1559
+  },
+  {
     "short": "Celibacy (brahmacariyā)",
     "link": "tags/celibacy.html",
     "long": "",
@@ -7007,6 +7960,15 @@
     "chip": "tag_Requisites__[Requisites]"
   },
   {
+    "short": "Requisites",
+    "chip": "tags_Requisites and its 7 subtags__|([Almsbowl] [Almsfood] [Almsround] [Building projects] [Lodging] [Medicinal requisites] [Requisites] [Robes])",
+    "long": "Four Requisites",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 7 subtags",
+    "excerptCount": 214
+  },
+  {
     "short": "Robes (cīvara)",
     "link": "tags/robes.html",
     "long": "",
@@ -7025,6 +7987,15 @@
     "suffix": "",
     "excerptCount": 37,
     "chip": "tag_Almsfood__[Almsfood]"
+  },
+  {
+    "short": "Almsfood (piṇḍapāta)",
+    "chip": "tags_Almsfood (piṇḍapāta) and its 2 subtags__|([Almsbowl] [Almsfood] [Almsround])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 88
   },
   {
     "short": "Almsbowl (patta)",
@@ -7057,6 +8028,15 @@
     "chip": "tag_Lodging__[Lodging]"
   },
   {
+    "short": "Lodging (senāsana)",
+    "chip": "tags_Lodging (senāsana)subtag__|([Building projects] [Lodging])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 76
+  },
+  {
     "short": "Building projects",
     "link": "tags/building-projects.html",
     "long": "",
@@ -7085,6 +8065,15 @@
     "suffix": "",
     "excerptCount": 4,
     "chip": "tag_Incontrovertible practices__[Incontrovertible practices]"
+  },
+  {
+    "short": "Incontrovertible practices (apaṇṇaka dhammā)",
+    "chip": "tags_Incontrovertible practices (apaṇṇaka dhammā) and its 3 subtags__|([Devotion to wakefulness] [Incontrovertible practices] [Moderation in eating] [Sense restraint])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 86
   },
   {
     "short": "Sense restraint (indriyesu guttadvāro)",
@@ -7127,6 +8116,15 @@
     "chip": "tag_Monastic life__[Monastic life]"
   },
   {
+    "short": "Monastic life (brahmacariyā)",
+    "chip": "tags_Monastic life (brahmacariyā) and its 52 subtags__`\\[(abbot|ascetic practices|bhikkhuni|chao khun|communal harmony|confession|dependence|disciplinary transactions|disrobing|fasting|forest versus city monks|fourfold assembly|generosity|goodwill|hospitality|mae chee|mentoring|monastery organizational structure|monastic crafts|monastic life|monastic life/motivation|monastic routine|monastic titles|mutual lay/sangha support|not handling money|novices|older monks|ordination|patimokkha|perception of a samana|postulants|principles of cordiality|principles of non-decline|protocols|rains retreat|respect|respect for elders|right view|sangha|sangha decision making|sequence of training|siladhara|sima|sitter's practice|study monks|temporary ordination|thai sects|tudong|types of monks|upatakh|vinaya|virtue|women's monastic forms)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 52 subtags",
+    "excerptCount": 1321
+  },
+  {
     "short": "Ordination (upasampadā)",
     "link": "tags/ordination.html",
     "long": "",
@@ -7135,6 +8133,15 @@
     "suffix": "",
     "excerptCount": 49,
     "chip": "tag_Ordination__[Ordination]"
+  },
+  {
+    "short": "Ordination (upasampadā)",
+    "chip": "tags_Ordination (upasampadā)subtag__|([Ordination] [Temporary ordination])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 69
   },
   {
     "short": "Mentoring",
@@ -7155,6 +8162,15 @@
     "suffix": "",
     "excerptCount": 132,
     "chip": "tag_Vinaya__[Vinaya]"
+  },
+  {
+    "short": "Vinaya",
+    "chip": "tags_Vinaya and its 9 subtags__|([Confession] [Dependence] [Disciplinary transactions] [Not handling money] [Protocols] [Pāṭimokkha] [Rains retreat] [Sequence of training] [Sīmā] [Vinaya])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 9 subtags",
+    "excerptCount": 232
   },
   {
     "short": "Pāṭimokkha",
@@ -7267,6 +8283,15 @@
     "chip": "tag_Saṅgha__[Saṅgha]"
   },
   {
+    "short": "Saṅgha (Monastic Community)",
+    "chip": "tags_Saṅgha (Monastic Community) and its 11 subtags__|([Abbot] [Communal harmony] [Fourfold Assembly] [Generosity] [Goodwill] [Monastery organizational structure] [Principles of Cordiality] [Principles of non-decline] [Right View] [Saṅgha] [Saṅgha decision making] [Virtue])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 11 subtags",
+    "excerptCount": 688
+  },
+  {
     "short": "Fourfold Assembly",
     "link": "tags/fourfold-assembly.html",
     "long": "",
@@ -7295,6 +8320,15 @@
     "suffix": "",
     "excerptCount": 10,
     "chip": "tag_Principles of Cordiality__[Principles of Cordiality]"
+  },
+  {
+    "short": "Principles of Cordiality (dhammā sārāṇīyā)",
+    "chip": "tags_Principles of Cordiality (dhammā sārāṇīyā) and its 4 subtags__|([Generosity] [Goodwill] [Principles of Cordiality] [Right View] [Virtue])",
+    "long": "Six Principles of Cordiality (cha dhammā sārāṇīyā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 520
   },
   {
     "short": "Principles of non-decline (aparihānāya dhammā)",
@@ -7357,6 +8391,15 @@
     "chip": "tag_Respect__[Respect]"
   },
   {
+    "short": "Respect",
+    "chip": "tags_Respect and its 5 subtags__|([Chao Khun] [Hospitality] [Monastic titles] [Respect] [Respect for elders] [Upatakh])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 108
+  },
+  {
     "short": "Monastic titles",
     "link": "tags/monastic-titles.html",
     "long": "",
@@ -7365,6 +8408,15 @@
     "suffix": "",
     "excerptCount": 9,
     "chip": "tag_Monastic titles__[Monastic titles]"
+  },
+  {
+    "short": "Monastic titles",
+    "chip": "tags_Monastic titlessubtag__|([Chao Khun] [Monastic titles])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 16
   },
   {
     "short": "Chao Khun",
@@ -7427,6 +8479,15 @@
     "chip": "tag_Ascetic practices__[Ascetic practices]"
   },
   {
+    "short": "Ascetic practices (dhutaṅga)",
+    "chip": "tags_Ascetic practices (dhutaṅga) and its 3 subtags__|([Ascetic practices] [Fasting] [Sitter's practice] [Tudong])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 139
+  },
+  {
     "short": "Tudong (ascetic wandering)",
     "link": "tags/tudong.html",
     "long": "Tudong (ascetic wandering)",
@@ -7475,6 +8536,15 @@
     "suffix": "",
     "excerptCount": 6,
     "chip": "tag_Types of monks__[Types of monks]"
+  },
+  {
+    "short": "Types of monks",
+    "chip": "tags_Types of monks and its 7 subtags__|([Forest versus city monks] [Novices] [Older monks] [Postulants] [Study monks] [Temporary ordination] [Thai sects] [Types of monks])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 7 subtags",
+    "excerptCount": 105
   },
   {
     "short": "Forest versus city monks",
@@ -7557,6 +8627,15 @@
     "chip": "tag_Women's monastic forms__[Women's monastic forms]"
   },
   {
+    "short": "Women's monastic forms",
+    "chip": "tags_Women's monastic forms and its 3 subtags__|([Bhikkhunī] [Mae Chee] [Sīladharā] [Women's monastic forms])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 31
+  },
+  {
     "short": "Bhikkhunī",
     "link": "tags/bhikkhuni.html",
     "long": "",
@@ -7607,6 +8686,15 @@
     "chip": "tag_Everyday life__[Everyday life]"
   },
   {
+    "short": "Everyday life",
+    "chip": "tags_Everyday life and its 75 subtags__`\\[(abortion|activism|advertizing|agriculture|artificial intelligence|artistic expression|blame and praise|chi gong|children|cleanliness|commerce/economics|communal harmony|community|conflict|conventions|corruption|crime|disasters|discrimination|education|environment|euthanasia|everyday life|exercise|false speech|fame and disrepute|family|five precepts|fourfold assembly|gain and loss|gender|happiness|healing|health|health care|industry|internet|intoxicants|killing|lay life|leadership|media|meditation groups|mental illness|military|news|non-profit organizations|online community|pace of life|pain|pandemic|parents|politics and society|poverty|principles of non-decline|prisons|purpose/meaning|recreation/leisure/sport|relationships|retirement|royalty|science|service|sexual misconduct|sharing circles|smoking|social media|stealing|suicide|technology|time management|travel|vegetarianism|weather|work|worldly conditions)\\]`",
+    "long": "Everyday life practice",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 75 subtags",
+    "excerptCount": 1319
+  },
+  {
     "short": "Lay life",
     "link": "tags/lay-life.html",
     "long": "",
@@ -7635,6 +8723,15 @@
     "suffix": "",
     "excerptCount": 15,
     "chip": "tag_Worldly Conditions__[Worldly Conditions]"
+  },
+  {
+    "short": "Worldly Conditions (lokadhammā)",
+    "chip": "tags_Worldly Conditions (lokadhammā) and its 5 subtags__|([Blame and praise] [Fame and disrepute] [Gain and loss] [Happiness] [Pain] [Worldly Conditions])",
+    "long": "Eight Worldly Conditions (aṭṭha lokadhammā)",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 358
   },
   {
     "short": "Gain and loss (lābho ca alābho ca)",
@@ -7675,6 +8772,15 @@
     "suffix": "",
     "excerptCount": 29,
     "chip": "tag_Health__[Health]"
+  },
+  {
+    "short": "Health",
+    "chip": "tags_Health and its 5 subtags__|([Chi Gong] [Exercise] [Healing] [Health] [Mental illness] [Smoking])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 5 subtags",
+    "excerptCount": 60
   },
   {
     "short": "Healing",
@@ -7737,6 +8843,15 @@
     "chip": "tag_Family__[Family]"
   },
   {
+    "short": "Family",
+    "chip": "tags_Family and its 2 subtags__|([Children] [Family] [Parents])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 2 subtags",
+    "excerptCount": 154
+  },
+  {
     "short": "Parents",
     "link": "tags/parents.html",
     "long": "",
@@ -7795,6 +8910,15 @@
     "suffix": "",
     "excerptCount": 60,
     "chip": "tag_Work__[Work]"
+  },
+  {
+    "short": "Work",
+    "chip": "tags_Worksubtag__|([Agriculture] [Work])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 68
   },
   {
     "short": "Agriculture",
@@ -7877,6 +9001,15 @@
     "chip": "tag_Community__[Community]"
   },
   {
+    "short": "Community",
+    "chip": "tags_Community and its 35 subtags__`\\[(activism|advertizing|artificial intelligence|commerce/economics|communal harmony|community|conflict|corruption|crime|disasters|discrimination|education|environment|fourfold assembly|health care|industry|internet|leadership|media|meditation groups|military|news|non-profit organizations|online community|pandemic|politics and society|poverty|principles of non-decline|prisons|royalty|science|service|sharing circles|social media|technology|weather)\\]`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 35 subtags",
+    "excerptCount": 489
+  },
+  {
     "short": "Weather (utu)",
     "link": "tags/weather.html",
     "long": "",
@@ -7935,6 +9068,15 @@
     "suffix": "",
     "excerptCount": 75,
     "chip": "tag_Politics and society__[Politics and society]"
+  },
+  {
+    "short": "Politics and society",
+    "chip": "tags_Politics and society and its 9 subtags__|([Activism] [Corruption] [Crime] [Discrimination] [Military] [Non-profit organizations] [Politics and society] [Prisons] [Royalty] [Service])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 9 subtags",
+    "excerptCount": 122
   },
   {
     "short": "Royalty",
@@ -7997,6 +9139,15 @@
     "chip": "tag_Crime__[Crime]"
   },
   {
+    "short": "Crime",
+    "chip": "tags_Crimesubtag__|([Crime] [Prisons])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 15
+  },
+  {
     "short": "Prisons",
     "link": "tags/prisons.html",
     "long": "",
@@ -8047,6 +9198,15 @@
     "chip": "tag_Commerce/economics__[Commerce/economics]"
   },
   {
+    "short": "Commerce/economics",
+    "chip": "tags_Commerce/economicssubtag__|([Commerce/economics] [Poverty])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 64
+  },
+  {
     "short": "Poverty",
     "link": "tags/poverty.html",
     "long": "",
@@ -8065,6 +9225,15 @@
     "suffix": "",
     "excerptCount": 64,
     "chip": "tag_Health care__[Health care]"
+  },
+  {
+    "short": "Health care",
+    "chip": "tags_Health caresubtag__|([Health care] [Pandemic])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": "subtag",
+    "excerptCount": 79
   },
   {
     "short": "Pandemic",
@@ -8107,6 +9276,15 @@
     "chip": "tag_Technology__[Technology]"
   },
   {
+    "short": "Technology",
+    "chip": "tags_Technology and its 3 subtags__|([Artificial intelligence] [Industry] [Online community] [Technology])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 3 subtags",
+    "excerptCount": 31
+  },
+  {
     "short": "Industry",
     "link": "tags/industry.html",
     "long": "",
@@ -8145,6 +9323,15 @@
     "suffix": "",
     "excerptCount": 19,
     "chip": "tag_Media__[Media]"
+  },
+  {
+    "short": "Media",
+    "chip": "tags_Media and its 4 subtags__|([Advertizing] [Internet] [Media] [News] [Social media])",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"tags\"></i>",
+    "suffix": " and its 4 subtags",
+    "excerptCount": 35
   },
   {
     "short": "News",
@@ -11316,14 +12503,22 @@
     "excerptCount": 4494
   },
   {
+    "short": "All featured excerpts",
+    "link": "indexes/AllExcerpts-featured.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/All.png\">",
+    "suffix": "",
+    "excerptCount": 833
+  },
+  {
     "short": "All questions",
     "link": "indexes/AllExcerpts-question.html",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 3048,
-    "chip": "All.png_Questions__&Questions&"
+    "excerptCount": 3048
   },
   {
     "short": "All stories",
@@ -11332,8 +12527,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 794,
-    "chip": "All.png_Stories__&Stories&"
+    "excerptCount": 794
   },
   {
     "short": "All quotes",
@@ -11342,8 +12536,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 665,
-    "chip": "All.png_Quotes__&Quotes&"
+    "excerptCount": 665
   },
   {
     "short": "All meditations",
@@ -11352,8 +12545,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 30,
-    "chip": "All.png_Meditations__&Meditations&"
+    "excerptCount": 30
   },
   {
     "short": "All teachings",
@@ -11362,8 +12554,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 496,
-    "chip": "All.png_Teachings__&Teachings&"
+    "excerptCount": 496
   },
   {
     "short": "All readings",
@@ -11372,8 +12563,7 @@
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
-    "excerptCount": 361,
-    "chip": "All.png_Readings__&Readings&"
+    "excerptCount": 361
   },
   {
     "short": "About: Introduction",

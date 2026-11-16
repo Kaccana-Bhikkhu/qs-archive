@@ -1473,7 +1473,7 @@ th,td {
 	padding: 4px;
 }
 
-td.dimmed {
+td.dimmed, span.dimmed  {
 	color: grey
 }
 

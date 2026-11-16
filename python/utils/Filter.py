@@ -13,6 +13,7 @@ import copy
 import re, itertools
 import urllib.parse
 import Utils, ParseCSV, Mp3DirectCut, Database
+import SetupSearch
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
 
@@ -59,7 +60,7 @@ def AllSingularItems(excerpt: dict) -> Iterator[dict]:
     else:
         yield excerpt
 
-class QueryType:
+class QueryType(Enum):
     READABLE = 1
     OPTIMIZED = 2
     REGEXP = 3
@@ -72,6 +73,10 @@ def CombinedQuery(queries: list[str],operator: str = "|",negate: bool = False):
         return negOp + queries[0]
     else:
         return f"{negOp}{operator}({' '.join(queries)})"
+
+def IsRegexp(q: QueryType) -> bool:
+    return q.value >= QueryType.REGEXP.value
+    
 class Filter:
     """A filter for excerpts and other dicts.
     Subclasses provide the necessary details."""
@@ -156,8 +161,12 @@ class Tag(Filter):
         return self.negate
 
     def Query(self,kind: QueryType = QueryType.READABLE) -> str:
-        tagStrs = list(map(lambda t:f"[{t}]",sorted(self.passTags)))
-        return CombinedQuery(tagStrs,negate=self.negate)    
+        if IsRegexp(kind):
+            mergedTags = "|".join(sorted(SetupSearch.RawBlobify(t) for t in self.passTags))
+            return r"\[(" + mergedTags + r")\]"
+        else:
+            tagStrs = list(map(lambda t:f"[{t}]",sorted(self.passTags)))
+            return CombinedQuery(tagStrs,negate=self.negate)    
 
 class FTag(Tag):
     "A filter that passes excerpts containing particular featured tags."

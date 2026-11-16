@@ -471,7 +471,7 @@ let gDropDownFilters = null;        // A Map describing the filters that (might)
                                     // null when gSearchQuery is null
 let gAutoComplete = null;           // The autoComplete.js object, initialized just below
 
-export function showFloatingSearch(query = null,searchWithin = null,placeholder = "") {
+export async function showFloatingSearch(query = null,searchWithin = null,placeholder = "") {
     // Show the floating search window.
     // query: Display this as the initial query; if null, keep what the user already typed
     // searchWithin: see gSearchWithinQuery for the meaning of this parameter
@@ -488,7 +488,7 @@ export function showFloatingSearch(query = null,searchWithin = null,placeholder 
         searchBar.value = query;
     gSearchWithinQuery = searchWithin;
 
-    loadSearchDatabase(); // load the search database in preparation for displaying how many excerpts we've found
+    let loader = loadSearchDatabase(); // load the search database in preparation for displaying how many excerpts we've found
     if (!gAutoComplete)
         setupAutoComplete();
 
@@ -499,6 +499,8 @@ export function showFloatingSearch(query = null,searchWithin = null,placeholder 
         else
             searchBar.placeholder = placeholder || "Choose a search filter...";
         let searchGroups = new SearchQuery(queryFromParams(searchWithin,false,true),searchWithin.has("strict"));
+
+        await loader; // Make sure we have loaded the search database before proceeding.
         gSearchers["x"].search(searchGroups);
         gSearchWithinExcerpts = gSearchers["x"].foundItems;
         if (gSearchWithinExcerpts.length === gSearchers["x"].items.length)
@@ -618,6 +620,10 @@ function setupAutoComplete() {
                             return false; // Page-only items should not be displayed when searching within a query
                         if (excerptsMatchingItem(item.value) === 0)
                             return false; // Don't display filters which match no excerpts
+                        let query = item.value.chip.split("_",4)[3];
+                        if (links.has(query))
+                            return false; // Remove items with identical queries
+                        links.add(query);
                     } else {
                         if (!item.value.link)
                             return false; // Filter-only items should only be displayed when searching within a query
@@ -687,16 +693,23 @@ function setupAutoComplete() {
                 // Modify Results Item Content
                 let matchText = data.key === "number" ? data.value.short : data.match;
                 let icon = data.value.icon;
+                let dimmed = false;
                 if (icon && !icon.match("<"))
                     icon = `<i data-lucide="${icon}"></i>`
                 let suffix = data.value.suffix;
                 if (gSearchWithinQuery) {
-                    suffix += ` (${excerptsMatchingItem(data.value)})`;
+                    let matchingExcerpts = excerptsMatchingItem(data.value);
+                    suffix += ` (${matchingExcerpts})`;
+                    if (gSearchWithinExcerpts && (matchingExcerpts === gSearchWithinExcerpts.length))
+                        dimmed = true;
                 } else {
                     if (data.value.excerptCount)
                         suffix += ` (${data.value.excerptCount})`;
                 }
-                item.innerHTML = `${icon} ${matchText} ${suffix}`;
+                let entryHtml = `${icon} ${matchText} ${suffix}`;
+                if (dimmed)
+                    entryHtml = `<span class="dimmed">${entryHtml}</span>`
+                item.innerHTML = entryHtml;
             },
             highlight: true,
         }
