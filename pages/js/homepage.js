@@ -618,10 +618,13 @@ function setupAutoComplete() {
                             return false; // Page-only items should not be displayed when searching within a query
                         if (excerptsMatchingItem(item.value) === 0)
                             return false; // Don't display filters which match no excerpts
+                    } else {
+                        if (!item.value.link)
+                            return false; // Filter-only items should only be displayed when searching within a query
+                        if (links.has(item.value.link))
+                            return false; // Remove items that link to identical pages
+                        links.add(item.value.link);
                     }
-                    if (links.has(item.value.link))
-                        return false; // Remove items that link to identical pages
-                    links.add(item.value.link);
                     return true;
                 });
                 debugLog(filtered.length,"items in the menu.");

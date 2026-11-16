@@ -13,10 +13,11 @@ from ParseCSV import TagFlag
 import BuildReferences, Suttaplex
 from bs4 import BeautifulSoup
 from FileRegister import HashWriter
+import Filter
 
 class AutoCompleteEntry(TypedDict):
-    long: str           # The long (or only) entry, e.g. Ajahn Chah Subadho
-    short: str          # The shorter tag or name, e.g. Ajahn Chah
+    short: str          # The short (or only) entry, e.g. Ajahn Chah
+    long: str           # The longer teacher or tag name, e.g. Ajahn Chah Subadho
     number: str         # Digit(s) associated with this entry; e.g. Four Noble Truths
     link: str           # Link to page, e.g. teachers/ajahn-chah.html
     chip: str           # The search chip query corresponding to the page
@@ -39,6 +40,46 @@ def Entry(short: str,link: str,long: str = "", number: int = None,icon: str = ""
     "Return an AutoCompleteEntry corresponding to these parameters."
     number = "" if number is None else str(number)
     return dict(short=short,link=link,long=long,number=number,icon=Icon(icon,directoryDepth=0),suffix=suffix,excerptCount=excerptCount)
+
+def FilterOnlyEntry(short: str,regexp: str,long: str = "", query: str = "",number: int = None,icon: str = "",suffix:str = "") -> AutoCompleteEntry:
+    "Return an AutoCompleteEntry representing a search defined by a query or regexp without a corresponding html page."
+    number = "" if number is None else str(number)
+    if not query:
+        query = f"`{regexp}`"
+    chip = Filter.QueryChip(short,query,icon)
+
+    foundExcerpts = list(Filter.RegexpFilter(regexp)(gDatabase["excerpts"]))
+    excerptCount = len(foundExcerpts)
+    return dict(short=short,chip=str(chip),long=long,number=number,icon=Icon(icon,directoryDepth=0),suffix=suffix,excerptCount = excerptCount)
+
+
+def FilterOnlyEntries() -> Iterable[AutoCompleteEntry]:
+    "Yield entries for searches without corresponding pages."
+
+    # Featured and homepage excerpts
+    featuredExcerpts = len(list(Filter.RegexpFilter(r"\+")(gDatabase["excerpts"])))
+    yield Entry("Featured excerpts","indexes/AllExcerpts-featured.html",icon="fa-star",excerptCount=featuredExcerpts)
+    yield FilterOnlyEntry("Homepage excerpts","#homepage",query="#homepage",icon="fa-star")
+    
+    # Filters for each decade
+    for decade in range(3):
+        yield FilterOnlyEntry(f"Decade: 20{decade}0s",f"20{decade}[0-9]-?[1-9]?@",icon="calendar")
+
+    # Filters for event series
+    for series in gDatabase["series"].values():
+        if series["abbreviation"] == "varies":
+            continue
+        query = f"@{series['abbreviation']}"
+        yield FilterOnlyEntry(f"Event series: {series['series']}",regexp=query.lower(),query=query,icon="calendar")
+
+    # Filters for excerpt duration
+    DURATION_NAMES = ("Very short","Short","Medium","Long","Very long")
+    DURATION_DESCRIPTION = ("< 1 minute","1-2 minutes","2-5 minutes","5-10 minutes","> 10 minutes")
+    for name,desc in zip(DURATION_NAMES,DURATION_DESCRIPTION):
+        tag = f"#{name.replace(' ','').lower()}"
+        yield FilterOnlyEntry(f"Duration: {name} ({desc})",tag,query=tag,icon="clock")
+
+ 
 
 def KeyTopicEntries() -> Iterable[AutoCompleteEntry]:
     "Yield auto complete entries for the key topics"
@@ -99,8 +140,10 @@ def TagEntries() -> Iterable[AutoCompleteEntry]:
                     number=tag["number"])
         
     # First yield basic tag information
+    soloSubtopics = Database.SoloSubtopics()
     for tag in tags:
-        yield TagEntry(tag)
+        if tag["tag"] not in soloSubtopics: # SubtopicEntries already yielded these above
+            yield TagEntry(tag)
 
     # Yield glosses and alternate translations
     for tag in tags:
@@ -156,11 +199,10 @@ def CategoryEntries() -> Iterable[AutoCompleteEntry]:
         splitText = re.match(r"(.*) \(([0-9]+)\)$",text) # Split category and number
         text = splitText[1]
 
+        if text == "Featured":
+            continue # We generate this entry in FilterOnlyEntries
         if not text.startswith("All"):
-            if text == "Featured":
-                text = "All featured excerpts"
-            else:
-                text = "All " + text.lower()
+            text = "All " + text.lower()
 
         yield Entry(text,href,
                     excerptCount = int(splitText[2]),
@@ -220,7 +262,8 @@ def BookEntries() -> Iterable[AutoCompleteEntry]:
         reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
         entry = re.sub(r'["“”]',"",Utils.RemoveHtmlTags(reference.FullName(showAuthors=True,showYear=False)))
         yield Entry(entry,bookData["link"],icon="book-open",excerptCount=bookData["count"])
-    
+   
+
 def AddArguments(parser) -> None:
     "Add command-line arguments used by this module"
     parser.add_argument('--autoCompleteDatabase',type=str,default="pages/assets/AutoCompleteDatabase.json",help="AutoComplete database filename.")
@@ -236,13 +279,13 @@ gOptions = None
 gDatabase:dict[str] = {} # These globals are overwritten by QSArchive.py, but we define them to keep Pylance happy
 
 def main() -> None:
-    entrySources = [KeyTopicEntries(),SutopicEntries(),TagEntries(),
+    entrySources = [FilterOnlyEntries(),KeyTopicEntries(),SutopicEntries(),TagEntries(),
                     EventEntries(),TeacherEntries(),CategoryEntries(),AboutEntries(),TextEntries(),BookEntries()]
     newDatabase:list[AutoCompleteEntry] = list(itertools.chain.from_iterable(entrySources))
 
     with HashWriter(gOptions.pagesDir,"assets/HashCache.json",exactDates=True) as pageDatabase:
         for entry in newDatabase:
-            if entry["link"] in pageDatabase.record:
+            if entry.get("link") in pageDatabase.record:
                 metadata = pageDatabase.GetMetadata(entry["link"])
                 if "searchChip" in metadata:
                     entry["chip"] = metadata["searchChip"]

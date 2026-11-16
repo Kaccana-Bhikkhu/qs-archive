@@ -700,15 +700,15 @@ def WriteIconCache(overwrite:bool = False) -> None:
     global gIconCache
     if not overwrite:
         oldCache = IconCache(fromDiskOnly=True)
-        if oldCache == gIconCache:
-            print("No change to the icon cache. It still has",len(gIconCache),"icons.")
+        updatedCache = oldCache | gIconCache
+        if updatedCache == oldCache:
+            print("No change to the icon cache. It still has",len(oldCache),"icons.")
             return
         else:
-            gIconCache = oldCache | gIconCache
+            gIconCache = updatedCache
             print("Icon cache changed. Old:",len(oldCache),"icons. New:",len(gIconCache),"icons.")
-        
-    with open(gIconCacheFile, 'w', encoding='utf-8') as file:
-        json.dump(gIconCache, file, ensure_ascii=False, indent=2)
+            with open(gIconCacheFile, 'w', encoding='utf-8') as file:
+                json.dump(gIconCache, file, ensure_ascii=False, indent=2)
 
 
 def Icon(iconName:str,iconClass:str = "",directoryDepth:int = 1) -> str:

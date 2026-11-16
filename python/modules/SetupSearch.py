@@ -12,7 +12,7 @@ import itertools
 from collections import Counter
 from datetime import timedelta
 from bisect import bisect_right
-from SetupFeatured import FeaturedExcerptFilter
+from SetupFeatured import HomepageExcerptFilter
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
     """Enclose the strings in items in the specified characters:
@@ -135,7 +135,7 @@ def OptimizedExcerpts() -> list[dict]:
     formatter = Build.Formatter()
     formatter.SetHeaderlessFormat()
     formatter.excerptNumbers = True
-    featuredFilter = FeaturedExcerptFilter()
+    featuredFilter = HomepageExcerptFilter()
     for fragmentGroup in Database.GroupFragments(gDatabase["excerpts"]):
         x = fragmentGroup[0]
         xDict = {"session": Database.ItemCode(event=x["event"],session=x["sessionNumber"]),

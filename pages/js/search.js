@@ -1266,7 +1266,7 @@ function removeFilter(clickEvent) {
     }
 
     let params = frameSearch();
-    let nextFilter = 2;
+    let nextFilter = filterNumber + 1;
     let filterStr;
     while (filterStr = params.get(`filter${nextFilter}`)) {
         params.set(`filter${nextFilter - 1}`,filterStr);

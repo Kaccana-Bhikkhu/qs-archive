@@ -1,5 +1,168 @@
 [
   {
+    "short": "Featured excerpts",
+    "link": "indexes/AllExcerpts-featured.html",
+    "long": "",
+    "number": "",
+    "icon": "<i class=\"fa fa-star\"></i>",
+    "suffix": "",
+    "excerptCount": 834,
+    "chip": "fa-star_Featured__+"
+  },
+  {
+    "short": "Homepage excerpts",
+    "chip": "fa-star_Homepage excerpts__#homepage",
+    "long": "",
+    "number": "",
+    "icon": "<i class=\"fa fa-star\"></i>",
+    "suffix": "",
+    "excerptCount": 508
+  },
+  {
+    "short": "Decade: 2000s",
+    "chip": "calendar_Decade: 2000s__`200[0-9]-?[1-9]?@`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 389
+  },
+  {
+    "short": "Decade: 2010s",
+    "chip": "calendar_Decade: 2010s__`201[0-9]-?[1-9]?@`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 3026
+  },
+  {
+    "short": "Decade: 2020s",
+    "chip": "calendar_Decade: 2020s__`202[0-9]-?[1-9]?@`",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 1201
+  },
+  {
+    "short": "Event series: Thanksgiving Retreats",
+    "chip": "calendar_Event series: Thanksgiving Retreats__@TG",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 1063
+  },
+  {
+    "short": "Event series: Winter Retreats",
+    "chip": "calendar_Event series: Winter Retreats__@WR",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 1599
+  },
+  {
+    "short": "Event series: Spirit Rock Daylongs",
+    "chip": "calendar_Event series: Spirit Rock Daylongs__@SRD",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 224
+  },
+  {
+    "short": "Event series: Upāsika Days",
+    "chip": "calendar_Event series: Upāsika Days__@UD",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 673
+  },
+  {
+    "short": "Event series: Practice and Study Days",
+    "chip": "calendar_Event series: Practice and Study Days__@PSD",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 11
+  },
+  {
+    "short": "Event series: Abhayagiri Anniversary events",
+    "chip": "calendar_Event series: Abhayagiri Anniversary events__@Anniversary",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 308
+  },
+  {
+    "short": "Event series: Clear Mountain Podcasts",
+    "chip": "calendar_Event series: Clear Mountain Podcasts__@CMountain",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 55
+  },
+  {
+    "short": "Event series: Amaravati Sunday Talks",
+    "chip": "calendar_Event series: Amaravati Sunday Talks__@Sunday",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"calendar\"></i>",
+    "suffix": "",
+    "excerptCount": 37
+  },
+  {
+    "short": "Duration: Very short (< 1 minute)",
+    "chip": "clock_Duration: Very short (< 1 minute)__#veryshort",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"clock\"></i>",
+    "suffix": "",
+    "excerptCount": 516
+  },
+  {
+    "short": "Duration: Short (1-2 minutes)",
+    "chip": "clock_Duration: Short (1-2 minutes)__#short",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"clock\"></i>",
+    "suffix": "",
+    "excerptCount": 1062
+  },
+  {
+    "short": "Duration: Medium (2-5 minutes)",
+    "chip": "clock_Duration: Medium (2-5 minutes)__#medium",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"clock\"></i>",
+    "suffix": "",
+    "excerptCount": 1809
+  },
+  {
+    "short": "Duration: Long (5-10 minutes)",
+    "chip": "clock_Duration: Long (5-10 minutes)__#long",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"clock\"></i>",
+    "suffix": "",
+    "excerptCount": 794
+  },
+  {
+    "short": "Duration: Very long (> 10 minutes)",
+    "chip": "clock_Duration: Very long (> 10 minutes)__#verylong",
+    "long": "",
+    "number": "",
+    "icon": "<i data-lucide=\"clock\"></i>",
+    "suffix": "",
+    "excerptCount": 435
+  },
+  {
     "short": "The Human Dillema",
     "link": "topics/human.html",
     "long": "",
@@ -1404,46 +1567,6 @@
     "chip": "Cluster.png_Technology and media__|([Advertizing] [Artificial intelligence] [Industry] [Internet] [Media] [News] [Online community] [Science] [Social media] [Technology])"
   },
   {
-    "short": "Skillful qualities (kusalā dhammā)",
-    "link": "tags/skillful-qualities.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 145,
-    "chip": "tag_Skillful qualities__[Skillful qualities]"
-  },
-  {
-    "short": "Middle Path (majjhimā paṭipadā)",
-    "link": "tags/middle-path.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 51,
-    "chip": "tag_Middle Path__[Middle Path]"
-  },
-  {
-    "short": "Eightfold Path (aṭṭaṅgika magga)",
-    "link": "tags/eightfold-path.html",
-    "long": "Noble Eightfold Path (ariya aṭṭaṅgika magga)",
-    "number": "8",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 83,
-    "chip": "tag_Eightfold Path__[Eightfold Path]"
-  },
-  {
-    "short": "Right View (sammā-diṭṭhi)",
-    "link": "tags/right-view.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 70,
-    "chip": "tag_Right View__[Right View]"
-  },
-  {
     "short": "Right Intention (sammā-saṅkappa)",
     "link": "tags/right-intention.html",
     "long": "",
@@ -1452,16 +1575,6 @@
     "suffix": "",
     "excerptCount": 38,
     "chip": "tag_Right Intention__[Right Intention]"
-  },
-  {
-    "short": "Renunciation (nekkhamma)",
-    "link": "tags/renunciation.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 35,
-    "chip": "tag_Renunciation__[Renunciation]"
   },
   {
     "short": "Right Speech (sammā-vācā)",
@@ -1624,26 +1737,6 @@
     "chip": "tag_Sexual misconduct__[Sexual misconduct]"
   },
   {
-    "short": "Right Livelihood (sammā-ājīva)",
-    "link": "tags/right-livelihood.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 43,
-    "chip": "tag_Right Livelihood__[Right Livelihood]"
-  },
-  {
-    "short": "Right Effort (sammā-vāyāma)",
-    "link": "tags/right-effort.html",
-    "long": "",
-    "number": "4",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 153,
-    "chip": "tag_Right Effort__[Right Effort]"
-  },
-  {
     "short": "Right Mindfulness (sammā-sati)",
     "link": "tags/right-mindfulness.html",
     "long": "",
@@ -1714,16 +1807,6 @@
     "chip": "tag_Clear comprehension__[Clear comprehension]"
   },
   {
-    "short": "Mindfulness (sati)",
-    "link": "tags/mindfulness.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 211,
-    "chip": "tag_Mindfulness__[Mindfulness]"
-  },
-  {
     "short": "Right Concentration (sammā-samādhi)",
     "link": "tags/right-concentration.html",
     "long": "",
@@ -1754,26 +1837,6 @@
     "chip": "tag_Directed thought and evaluation__[Directed thought and evaluation]"
   },
   {
-    "short": "Happiness (sukha)",
-    "link": "tags/happiness.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 257,
-    "chip": "tag_Happiness__[Happiness]"
-  },
-  {
-    "short": "Concentration (samādhi)",
-    "link": "tags/concentration.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 172,
-    "chip": "tag_Concentration__[Concentration]"
-  },
-  {
     "short": "Unification (ekaggatā)",
     "link": "tags/unification.html",
     "long": "",
@@ -1794,26 +1857,6 @@
     "chip": "tag_Formless attainments__[Formless attainments]"
   },
   {
-    "short": "Four Noble Truths (cattāri ariya-saccāni)",
-    "link": "tags/four-noble-truths.html",
-    "long": "",
-    "number": "4",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 105,
-    "chip": "tag_Four Noble Truths__[Four Noble Truths]"
-  },
-  {
-    "short": "Noble Truth of Suffering (dukkha ariya-sacca)",
-    "link": "tags/noble-truth-of-suffering.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 35,
-    "chip": "tag_Noble Truth of Suffering__[Noble Truth of Suffering]"
-  },
-  {
     "short": "Birth (jāti)",
     "link": "tags/birth.html",
     "long": "",
@@ -1822,26 +1865,6 @@
     "suffix": "",
     "excerptCount": 21,
     "chip": "tag_Birth__[Birth]"
-  },
-  {
-    "short": "Ageing (jarā)",
-    "link": "tags/ageing.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 54,
-    "chip": "tag_Ageing__[Ageing]"
-  },
-  {
-    "short": "Sickness (byādhi)",
-    "link": "tags/sickness.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 132,
-    "chip": "tag_Sickness__[Sickness]"
   },
   {
     "short": "Death (māraṇa)",
@@ -1854,36 +1877,6 @@
     "chip": "tag_Death__[Death]"
   },
   {
-    "short": "Pain (dukkha)",
-    "link": "tags/pain.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 82,
-    "chip": "tag_Pain__[Pain]"
-  },
-  {
-    "short": "Grief (domanassa)",
-    "link": "tags/grief.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 57,
-    "chip": "tag_Grief__[Grief]"
-  },
-  {
-    "short": "Cause of Suffering (dukkha-samudayo)",
-    "link": "tags/cause-of-suffering.html",
-    "long": "Noble Truth of the Cause of Suffering (dukkha-samudaya ariya-sacca)",
-    "number": "3",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 76,
-    "chip": "tag_Cause of Suffering__[Cause of Suffering]"
-  },
-  {
     "short": "Craving not to become (vibhava-taṇhā)",
     "link": "tags/craving-not-to-become.html",
     "long": "",
@@ -1892,16 +1885,6 @@
     "suffix": "",
     "excerptCount": 39,
     "chip": "tag_Craving not to become__[Craving not to become]"
-  },
-  {
-    "short": "Cessation of Suffering (dukkha-nirodho)",
-    "link": "tags/cessation-of-suffering.html",
-    "long": "Noble Truth of the Cessation of Suffering (dukkha-nirodha ariya-saccaṃ)",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 114,
-    "chip": "tag_Cessation of Suffering__[Cessation of Suffering]"
   },
   {
     "short": "Aids to Awakening (bodhipakkhiyādhammā)",
@@ -1924,16 +1907,6 @@
     "chip": "tag_Bases of Success__[Bases of Success]"
   },
   {
-    "short": "Desire (chanda)",
-    "link": "tags/desire.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 96,
-    "chip": "tag_Desire__[Desire]"
-  },
-  {
     "short": "Heart/mind (citta)",
     "link": "tags/heartmind.html",
     "long": "",
@@ -1952,16 +1925,6 @@
     "suffix": "",
     "excerptCount": 11,
     "chip": "tag_Faculties__[Faculties]"
-  },
-  {
-    "short": "Faith (saddhā)",
-    "link": "tags/faith.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 178,
-    "chip": "tag_Faith__[Faith]"
   },
   {
     "short": "Energy (viriya)",
@@ -2034,26 +1997,6 @@
     "chip": "tag_Divine Abidings__[Divine Abidings]"
   },
   {
-    "short": "Goodwill (mettā)",
-    "link": "tags/goodwill.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 211,
-    "chip": "tag_Goodwill__[Goodwill]"
-  },
-  {
-    "short": "Compassion (karuṇā)",
-    "link": "tags/compassion.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 178,
-    "chip": "tag_Compassion__[Compassion]"
-  },
-  {
     "short": "Empathetic joy (muditā)",
     "link": "tags/empathetic-joy.html",
     "long": "",
@@ -2062,16 +2005,6 @@
     "suffix": "",
     "excerptCount": 14,
     "chip": "tag_Empathetic joy__[Empathetic joy]"
-  },
-  {
-    "short": "Equanimity (upekkhā)",
-    "link": "tags/equanimity.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 94,
-    "chip": "tag_Equanimity__[Equanimity]"
   },
   {
     "short": "Treasures (dhanā)",
@@ -2184,16 +2117,6 @@
     "chip": "tag_Perfections__[Perfections]"
   },
   {
-    "short": "Patience (khanti)",
-    "link": "tags/patience.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 105,
-    "chip": "tag_Patience__[Patience]"
-  },
-  {
     "short": "Truth (sacca)",
     "link": "tags/truth.html",
     "long": "",
@@ -2272,16 +2195,6 @@
     "suffix": "",
     "excerptCount": 69,
     "chip": "tag_Cessation__[Cessation]"
-  },
-  {
-    "short": "Relinquishment (paṭinissagga)",
-    "link": "tags/relinquishment.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 343,
-    "chip": "tag_Relinquishment__[Relinquishment]"
   },
   {
     "short": "Release (vossagga)",
@@ -2464,16 +2377,6 @@
     "chip": "tag_Spiritual urgency__[Spiritual urgency]"
   },
   {
-    "short": "Gratitude (kataññu)",
-    "link": "tags/gratitude.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 138,
-    "chip": "tag_Gratitude__[Gratitude]"
-  },
-  {
     "short": "Merit (puñña)",
     "link": "tags/merit.html",
     "long": "",
@@ -2492,16 +2395,6 @@
     "suffix": "",
     "excerptCount": 20,
     "chip": "tag_Forgiveness__[Forgiveness]"
-  },
-  {
-    "short": "Contentment (santuṭṭhi)",
-    "link": "tags/contentment.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 45,
-    "chip": "tag_Contentment__[Contentment]"
   },
   {
     "short": "Trust",
@@ -2604,16 +2497,6 @@
     "chip": "tag_Aversion__[Aversion]"
   },
   {
-    "short": "Delusion (moha)",
-    "link": "tags/delusion.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 86,
-    "chip": "tag_Delusion__[Delusion]"
-  },
-  {
     "short": "Biases (agatī)",
     "link": "tags/biases.html",
     "long": "Four Biases (catarī agatī)",
@@ -2632,16 +2515,6 @@
     "suffix": "",
     "excerptCount": 10,
     "chip": "tag_Outflows__[Outflows]"
-  },
-  {
-    "short": "Hindrances (nīvaraṇāni)",
-    "link": "tags/hindrances.html",
-    "long": "Five Hindrances (pañca nīvaraṇāni)",
-    "number": "5",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 99,
-    "chip": "tag_Hindrances__[Hindrances]"
   },
   {
     "short": "Sensual desire (kāmacchanda)",
@@ -2664,36 +2537,6 @@
     "chip": "tag_Ill-will__[Ill-will]"
   },
   {
-    "short": "Sloth and torpor (thīna-middha)",
-    "link": "tags/sloth-and-torpor.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 76,
-    "chip": "tag_Sloth and torpor__[Sloth and torpor]"
-  },
-  {
-    "short": "Restlessness and worry (uddhacca-kukkucca)",
-    "link": "tags/restlessness-and-worry.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 105,
-    "chip": "tag_Restlessness and worry__[Restlessness and worry]"
-  },
-  {
-    "short": "Doubt (vicikiccha)",
-    "link": "tags/doubt.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 76,
-    "chip": "tag_Doubt__[Doubt]"
-  },
-  {
     "short": "Fetters (saṃyojanā)",
     "link": "tags/fetters.html",
     "long": "Ten Fetters (dasa saṃyojanā)",
@@ -2702,16 +2545,6 @@
     "suffix": "",
     "excerptCount": 22,
     "chip": "tag_Fetters__[Fetters]"
-  },
-  {
-    "short": "Self-identity view (sakkāya-diṭṭhi)",
-    "link": "tags/self-identity-view.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 313,
-    "chip": "tag_Self-identity view__[Self-identity view]"
   },
   {
     "short": "Attachment to precepts and practices (sīlabbata-parāmāsa)",
@@ -2762,26 +2595,6 @@
     "suffix": "",
     "excerptCount": 14,
     "chip": "tag_Heedlessness__[Heedlessness]"
-  },
-  {
-    "short": "Proliferation (papañca)",
-    "link": "tags/proliferation.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 214,
-    "chip": "tag_Proliferation__[Proliferation]"
-  },
-  {
-    "short": "Views (diṭṭhī)",
-    "link": "tags/views.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 92,
-    "chip": "tag_Views__[Views]"
   },
   {
     "short": "Judgementalism",
@@ -2944,16 +2757,6 @@
     "chip": "tag_Volition__[Volition]"
   },
   {
-    "short": "Aggregates (khandhā)",
-    "link": "tags/aggregates.html",
-    "long": "Five Aggregates (pañcakkhandhā)",
-    "number": "5",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 147,
-    "chip": "tag_Aggregates__[Aggregates]"
-  },
-  {
     "short": "Body/form (rūpa)",
     "link": "tags/bodyform.html",
     "long": "",
@@ -2962,16 +2765,6 @@
     "suffix": "",
     "excerptCount": 52,
     "chip": "tag_Body/form__[Body/form]"
-  },
-  {
-    "short": "Feeling (vedanā)",
-    "link": "tags/feeling.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 105,
-    "chip": "tag_Feeling__[Feeling]"
   },
   {
     "short": "Perception (saññā)",
@@ -2984,76 +2777,6 @@
     "chip": "tag_Perception__[Perception]"
   },
   {
-    "short": "Volitional formations (saṅkhārā)",
-    "link": "tags/volitional-formations.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 93,
-    "chip": "tag_Volitional formations__[Volitional formations]"
-  },
-  {
-    "short": "Consciousness (viññāṇa)",
-    "link": "tags/consciousness.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 67,
-    "chip": "tag_Consciousness__[Consciousness]"
-  },
-  {
-    "short": "Conditionality (idappaccayatā)",
-    "link": "tags/conditionality.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 173,
-    "chip": "tag_Conditionality__[Conditionality]"
-  },
-  {
-    "short": "Dependent origination (paticca-samuppāda)",
-    "link": "tags/dependent-origination.html",
-    "long": "",
-    "number": "12",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 55,
-    "chip": "tag_Dependent origination__[Dependent origination]"
-  },
-  {
-    "short": "Ignorance (avijjā)",
-    "link": "tags/ignorance.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 34,
-    "chip": "tag_Ignorance__[Ignorance]"
-  },
-  {
-    "short": "Sense bases (āyatana)",
-    "link": "tags/sense-bases.html",
-    "long": "Six Sense Bases (saḷ-āyatana)",
-    "number": "6",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 107,
-    "chip": "tag_Sense bases__[Sense bases]"
-  },
-  {
-    "short": "Contact (phassa)",
-    "link": "tags/contact.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 37,
-    "chip": "tag_Contact__[Contact]"
-  },
-  {
     "short": "Neutral feeling (adukkhamasukhā vedanā)",
     "link": "tags/neutral-feeling.html",
     "long": "Neither-painful-nor-pleasant feeling (adukkhamasukhā vedanā)",
@@ -3062,26 +2785,6 @@
     "suffix": "",
     "excerptCount": 20,
     "chip": "tag_Neutral feeling__[Neutral feeling]"
-  },
-  {
-    "short": "Craving (taṇhā)",
-    "link": "tags/craving.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 113,
-    "chip": "tag_Craving__[Craving]"
-  },
-  {
-    "short": "Clinging (upādāna)",
-    "link": "tags/clinging.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 186,
-    "chip": "tag_Clinging__[Clinging]"
   },
   {
     "short": "Doctrine-of-self clinging (attavādupādāna)",
@@ -3112,36 +2815,6 @@
     "suffix": "",
     "excerptCount": 71,
     "chip": "tag_Characteristics of existence__[Characteristics of existence]"
-  },
-  {
-    "short": "Impermanence (anicca)",
-    "link": "tags/impermanence.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 223,
-    "chip": "tag_Impermanence__[Impermanence]"
-  },
-  {
-    "short": "Suffering (dukkha)",
-    "link": "tags/suffering.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 399,
-    "chip": "tag_Suffering__[Suffering]"
-  },
-  {
-    "short": "Not-self (anatta)",
-    "link": "tags/not-self.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 175,
-    "chip": "tag_Not-self__[Not-self]"
   },
   {
     "short": "Naturalness (dhammaṭṭhitatā)",
@@ -3294,16 +2967,6 @@
     "chip": "tag_Humor__[Humor]"
   },
   {
-    "short": "Fear (bhaya)",
-    "link": "tags/fear.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 122,
-    "chip": "tag_Fear__[Fear]"
-  },
-  {
     "short": "Idealism",
     "link": "tags/idealism.html",
     "long": "",
@@ -3332,16 +2995,6 @@
     "suffix": "",
     "excerptCount": 19,
     "chip": "tag_Beauty__[Beauty]"
-  },
-  {
-    "short": "Three Refuges (tisaraṇa)",
-    "link": "tags/three-refuges.html",
-    "long": "",
-    "number": "3",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 92,
-    "chip": "tag_Three Refuges__[Three Refuges]"
   },
   {
     "short": "Buddha",
@@ -3392,16 +3045,6 @@
     "suffix": "",
     "excerptCount": 14,
     "chip": "tag_Pūjā__[Pūjā]"
-  },
-  {
-    "short": "Chanting",
-    "link": "tags/chanting.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 123,
-    "chip": "tag_Chanting__[Chanting]"
   },
   {
     "short": "Anumodana (Delighting in goodness)",
@@ -3694,16 +3337,6 @@
     "chip": "tag_Meditation/Techniques__[Meditation/Techniques]"
   },
   {
-    "short": "Mindfulness of breathing (ānāpānasati)",
-    "link": "tags/mindfulness-of-breathing.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 278,
-    "chip": "tag_Mindfulness of breathing__[Mindfulness of breathing]"
-  },
-  {
     "short": "Unattractiveness (asubha)",
     "link": "tags/unattractiveness.html",
     "long": "Unattractiveness/32 parts (asubha/dvattiṃsākāra)",
@@ -3864,16 +3497,6 @@
     "chip": "tag_Insight meditation__[Insight meditation]"
   },
   {
-    "short": "Recollection (anusati)",
-    "link": "tags/recollection.html",
-    "long": "",
-    "number": "10",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 98,
-    "chip": "tag_Recollection__[Recollection]"
-  },
-  {
     "short": "Recollection/Buddha (buddhānussati)",
     "link": "tags/recollectionbuddha.html",
     "long": "",
@@ -3982,16 +3605,6 @@
     "suffix": "",
     "excerptCount": 39,
     "chip": "tag_Posture/Sitting__[Posture/Sitting]"
-  },
-  {
-    "short": "Posture/Walking (caranta)",
-    "link": "tags/posturewalking.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 62,
-    "chip": "tag_Posture/Walking__[Posture/Walking]"
   },
   {
     "short": "Posture/Lying down (sayāna)",
@@ -4114,26 +3727,6 @@
     "chip": "tag_Spaciousness__[Spaciousness]"
   },
   {
-    "short": "Direct experience",
-    "link": "tags/direct-experience.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 70,
-    "chip": "tag_Direct experience__[Direct experience]"
-  },
-  {
-    "short": "Knowing itself",
-    "link": "tags/knowing-itself.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 122,
-    "chip": "tag_Knowing itself__[Knowing itself]"
-  },
-  {
     "short": "Meditation/Unusual experiences",
     "link": "tags/meditationunusual-experiences.html",
     "long": "",
@@ -4142,16 +3735,6 @@
     "suffix": "",
     "excerptCount": 27,
     "chip": "tag_Meditation/Unusual experiences__[Meditation/Unusual experiences]"
-  },
-  {
-    "short": "Long-term practice",
-    "link": "tags/long-term-practice.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 59,
-    "chip": "tag_Long-term practice__[Long-term practice]"
   },
   {
     "short": "Teaching Dhamma",
@@ -4324,16 +3907,6 @@
     "chip": "tag_Monastic teachers__[Monastic teachers]"
   },
   {
-    "short": "Thai Forest Tradition",
-    "link": "tags/thai-forest-tradition.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 121,
-    "chip": "tag_Thai Forest Tradition__[Thai Forest Tradition]"
-  },
-  {
     "short": "Ajahn Sao",
     "link": "tags/ajahn-sao.html",
     "long": "Ajahn Sao Kantasīlo",
@@ -4342,26 +3915,6 @@
     "suffix": "",
     "excerptCount": 7,
     "chip": "tag_Ajahn Sao__[Ajahn Sao]"
-  },
-  {
-    "short": "Ajahn Mun",
-    "link": "tags/ajahn-mun.html",
-    "long": "Ajahn Mun Bhūridatto",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 87,
-    "chip": "tag_Ajahn Mun__[Ajahn Mun]"
-  },
-  {
-    "short": "Ajahn Chah",
-    "link": "tags/ajahn-chah.html",
-    "long": "Ajahn Chah Subhaddo",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 992,
-    "chip": "tag_Ajahn Chah__[Ajahn Chah]"
   },
   {
     "short": "Ajahn Chah lineage",
@@ -4412,16 +3965,6 @@
     "suffix": "",
     "excerptCount": 3,
     "chip": "tag_Ajahn Sinuan__[Ajahn Sinuan]"
-  },
-  {
-    "short": "Ajahn Liem",
-    "link": "tags/ajahn-liem.html",
-    "long": "Ajahn Liem Ṭhitadhammo",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 51,
-    "chip": "tag_Ajahn Liem__[Ajahn Liem]"
   },
   {
     "short": "Ajahn Boon Choo",
@@ -4624,16 +4167,6 @@
     "chip": "tag_Western Ajahn Chah lineage__[Western Ajahn Chah lineage]"
   },
   {
-    "short": "Ajahn Sumedho",
-    "link": "tags/ajahn-sumedho.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 201,
-    "chip": "tag_Ajahn Sumedho__[Ajahn Sumedho]"
-  },
-  {
     "short": "Ajahn Khemadhammo",
     "link": "tags/ajahn-khemadhammo.html",
     "long": "",
@@ -4652,16 +4185,6 @@
     "suffix": "",
     "excerptCount": 3,
     "chip": "tag_Ajahn Jāgaro__[Ajahn Jāgaro]"
-  },
-  {
-    "short": "Ajahn Pasanno",
-    "link": "tags/ajahn-pasanno.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 506,
-    "chip": "tag_Ajahn Pasanno__[Ajahn Pasanno]"
   },
   {
     "short": "Ajahn Anando",
@@ -4752,16 +4275,6 @@
     "suffix": "",
     "excerptCount": 3,
     "chip": "tag_Mae Chee Kumfah__[Mae Chee Kumfah]"
-  },
-  {
-    "short": "Ajahn Amaro",
-    "link": "tags/ajahn-amaro.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 133,
-    "chip": "tag_Ajahn Amaro__[Ajahn Amaro]"
   },
   {
     "short": "Ajahn Ñāṇadhammo",
@@ -6134,16 +5647,6 @@
     "chip": "tag_Wat Pahk Kut Wai__[Wat Pahk Kut Wai]"
   },
   {
-    "short": "Wat Pah Pong",
-    "link": "tags/wat-pah-pong.html",
-    "long": "Wat Nong Pah Pong",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 145,
-    "chip": "tag_Wat Pah Pong__[Wat Pah Pong]"
-  },
-  {
     "short": "Wat Tam Saeng Pet",
     "link": "tags/wat-tam-saeng-pet.html",
     "long": "",
@@ -6192,16 +5695,6 @@
     "suffix": "",
     "excerptCount": 1,
     "chip": "tag_Wat Pah Sai Ngam__[Wat Pah Sai Ngam]"
-  },
-  {
-    "short": "Wat Pah Nanachat",
-    "link": "tags/wat-pah-nanachat.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 114,
-    "chip": "tag_Wat Pah Nanachat__[Wat Pah Nanachat]"
   },
   {
     "short": "Wat Fah Krahm",
@@ -6352,16 +5845,6 @@
     "suffix": "",
     "excerptCount": 2,
     "chip": "tag_Birken__[Birken]"
-  },
-  {
-    "short": "Abhayagiri",
-    "link": "tags/abhayagiri.html",
-    "long": "Abhayagiri Monastery",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 305,
-    "chip": "tag_Abhayagiri__[Abhayagiri]"
   },
   {
     "short": "Pre-Abhayagiri vihāras",
@@ -6724,26 +6207,6 @@
     "chip": "tag_Time__[Time]"
   },
   {
-    "short": "Kamma",
-    "link": "tags/kamma.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 174,
-    "chip": "tag_Kamma__[Kamma]"
-  },
-  {
-    "short": "Rebirth",
-    "link": "tags/rebirth.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 97,
-    "chip": "tag_Rebirth__[Rebirth]"
-  },
-  {
     "short": "Saṃsāra",
     "link": "tags/samsara.html",
     "long": "",
@@ -6864,16 +6327,6 @@
     "chip": "tag_Non-human beings__[Non-human beings]"
   },
   {
-    "short": "Nature of mind",
-    "link": "tags/nature-of-mind.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 90,
-    "chip": "tag_Nature of mind__[Nature of mind]"
-  },
-  {
     "short": "Memory (sati)",
     "link": "tags/memory.html",
     "long": "",
@@ -6972,16 +6425,6 @@
     "suffix": "",
     "excerptCount": 8,
     "chip": "tag_Previous Buddhas__[Previous Buddhas]"
-  },
-  {
-    "short": "Buddha/Biography",
-    "link": "tags/buddhabiography.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 145,
-    "chip": "tag_Buddha/Biography__[Buddha/Biography]"
   },
   {
     "short": "Great disciples",
@@ -7114,16 +6557,6 @@
     "chip": "tag_Cultural context__[Cultural context]"
   },
   {
-    "short": "Culture/Natural environment",
-    "link": "tags/culturenatural-environment.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 62,
-    "chip": "tag_Culture/Natural environment__[Culture/Natural environment]"
-  },
-  {
     "short": "Culture/Asia",
     "link": "tags/cultureasia.html",
     "long": "",
@@ -7182,16 +6615,6 @@
     "suffix": "",
     "excerptCount": 1,
     "chip": "tag_Culture/Native American__[Culture/Native American]"
-  },
-  {
-    "short": "Culture/West",
-    "link": "tags/culturewest.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 218,
-    "chip": "tag_Culture/West__[Culture/West]"
   },
   {
     "short": "Women in Buddhism",
@@ -7702,16 +7125,6 @@
     "suffix": "",
     "excerptCount": 281,
     "chip": "tag_Monastic life__[Monastic life]"
-  },
-  {
-    "short": "Monastic life/Motivation",
-    "link": "tags/monastic-lifemotivation.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 43,
-    "chip": "tag_Monastic life/Motivation__[Monastic life/Motivation]"
   },
   {
     "short": "Ordination (upasampadā)",
@@ -8354,16 +7767,6 @@
     "chip": "tag_Gender__[Gender]"
   },
   {
-    "short": "Relationships",
-    "link": "tags/relationships.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 43,
-    "chip": "tag_Relationships__[Relationships]"
-  },
-  {
     "short": "Purpose/meaning",
     "link": "tags/purposemeaning.html",
     "long": "",
@@ -8472,16 +7875,6 @@
     "suffix": "",
     "excerptCount": 96,
     "chip": "tag_Community__[Community]"
-  },
-  {
-    "short": "Environment",
-    "link": "tags/environment.html",
-    "long": "",
-    "number": "",
-    "icon": "<i data-lucide=\"tag\"></i>",
-    "suffix": "",
-    "excerptCount": 39,
-    "chip": "tag_Environment__[Environment]"
   },
   {
     "short": "Weather (utu)",
@@ -11171,7 +10564,7 @@
     "icon": "<i data-lucide=\"calendar\"></i>",
     "suffix": "",
     "excerptCount": 380,
-    "chip": "calendar_Readings from <i>The Island</i>__@WR2025"
+    "chip": "calendar_Readings from The Island__@WR2025"
   },
   {
     "short": "Questions and Answers about Ajahn Chah [2025]",
@@ -11921,16 +11314,6 @@
     "icon": "<img src=\"images/icons/All.png\">",
     "suffix": "",
     "excerptCount": 4494
-  },
-  {
-    "short": "All featured excerpts",
-    "link": "indexes/AllExcerpts-featured.html",
-    "long": "",
-    "number": "",
-    "icon": "<img src=\"images/icons/All.png\">",
-    "suffix": "",
-    "excerptCount": 833,
-    "chip": "fa-star_Featured__+"
   },
   {
     "short": "All questions",

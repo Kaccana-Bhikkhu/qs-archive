@@ -282,7 +282,7 @@ def ExcerptEntry(excerpt:dict[str]) -> ExcerptDict:
         "shortHtml": shortHtml
     }
 
-def FeaturedExcerptFilter() -> Filter.Filter:
+def HomepageExcerptFilter() -> Filter.Filter:
     """Returns a filter that passes front-page excerpts."""
     keyTopicFilter = Filter.FTag(Database.KeyTopicTags().keys())
     teacherFilter = Filter.Or(Filter.ExcerptMatch(Filter.FirstTeacher("AP")),
@@ -299,7 +299,7 @@ def FeaturedExcerptFilter() -> Filter.Filter:
 def FeaturedExcerptEntries() -> dict[str,ExcerptDict]:
     """Return a list of entries corresponding to featured excerpts in key topics."""
 
-    featuredExcerpts =  [x for x in FeaturedExcerptFilter()(gDatabase["excerpts"])]
+    featuredExcerpts =  [x for x in HomepageExcerptFilter()(gDatabase["excerpts"])]
     return {Database.ItemCode(x):ExcerptEntry(x) for x in featuredExcerpts}
 
 def Header() -> FeaturedDatabase:
@@ -385,7 +385,7 @@ def DemotedExcerpts() -> tuple[list[str],dict[str,list[str]]]:
     when: a dictionary describing when these excerpts occur in the calendar."""
 
     demoted = []
-    featuredfilter = FeaturedExcerptFilter()
+    featuredfilter = HomepageExcerptFilter()
     for excerptCode,databaseEntry in gFeaturedDatabase["excerpts"].items():
         currentExcerpt = Database.FindExcerpt(excerptCode)
         if not featuredfilter.Match(currentExcerpt):
@@ -449,7 +449,7 @@ These may require the Fix module if excerpts have moved or the Remove module if 
     
     excerptsInCalendar = set(gFeaturedDatabase["calendar"])
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
-    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in HomepageExcerptFilter()(gDatabase["excerpts"]))
 
     missingCalendarItems = excerptsInCalendar - excerptsInDatabase
     if missingCalendarItems:
@@ -615,7 +615,7 @@ def RemakeFuture(paramStr: str) -> bool:
     excerptsRemoved = sorted(demotedExcerptSet & set(future))
 
     excerptsInDatabase = set(gFeaturedDatabase["excerpts"])
-    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in FeaturedExcerptFilter()(gDatabase["excerpts"]))
+    currentFeaturedExcerpts = set(Database.ItemCode(x) for x in HomepageExcerptFilter()(gDatabase["excerpts"]))
     newExcerpts = sorted(currentFeaturedExcerpts - excerptsInDatabase)
     
     databaseChanged = bool(excerptsRemoved or newExcerpts)

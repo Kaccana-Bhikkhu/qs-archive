@@ -36,7 +36,7 @@ def VerseNumber(verse: str|tuple) -> int|Decimal:
 def LoadDatabase(filename: str) -> dict:
     """Read the database indicated by filename"""
 
-    with open(filename, 'r', encoding='utf-8') as file: # Otherwise read the database from disk
+    with open(filename, 'r', encoding='utf-8') as file:
         newDB = json.load(file)
     
     for x in newDB["excerpts"]:
@@ -64,9 +64,52 @@ def WriteDatabase(database: dict,filename: str):
 
     database["textSection"] = textSections
 
+gBlobsLoaded = False
+def LoadBlobs() -> None:
+    """Add a blobs key to non-fragment excerpts by reading SearchDatabase.json.
+    Call this only after the Render module has completed to avoid writing these to disk."""
+
+    global gBlobsLoaded
+    if gBlobsLoaded:
+        return
+    gBlobsLoaded = True # Try only once even if we fail
+
+    filename = Utils.PosixJoin(gOptions.pagesDir,"assets","SearchDatabase.json")
+    try:
+        with open(filename,'r',encoding='utf-8') as file:
+            searchDB = json.load(file)
+    except (OSError,json.JSONDecodeError) as err:
+        Alert.error(err,"when loading",filename)
+        return
+    
+    for record in searchDB["searches"]["x"]["items"]:
+        excerptID = re.search(r'id="(.*?)"',record["html"])[1]
+        excerpt = FindExcerpt(excerptID)
+
+        if not excerpt:
+            Alert.error("Could not find",excerptID,". Run module SetupSearch to synchronize SearchDatabase.json.")
+
+        try:
+            currentBlob = 0
+            for item in Filter.AllItems(excerpt):
+                if gDatabase["kind"][item["kind"]]["category"] in ("Fragment","Audio"):
+                    continue  # Items of these kinds don't receive blobs
+                item["blob"] = record["blobs"][currentBlob]
+                currentBlob += 1
+        except IndexError:
+            Alert.error("Ran out of blobs when assigning blobs to",excerpt)
+
+        if currentBlob != len(record["blobs"]):
+            Alert.error("Excess blobs remain when assigning blobs to",excerpt)
+
+    for excerpt in RemoveFragments(gDatabase["excerpts"]):
+        if not excerpt.get("blob"):
+            Alert.error(excerpt,"was not assigned a blob. Run module SetupSearch to synchronize SearchDatabase.json.")
+
+
 def RemoveFragments(excerpts: Iterable[dict[str]],multipleFragments:bool = True) -> Iterable[dict[str]]:
     """Yield these excerpts but skip fragments if their source excerpt is present.
-    If onlyOneFragment, yield only the first fragment from an excerpt that has more than one."""
+    If not multipleFragments, yield only the first fragment from an excerpt that has more than one."""
 
     lastNonFragment = ()
     for x in excerpts:

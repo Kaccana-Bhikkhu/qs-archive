@@ -12,7 +12,7 @@ from functools import lru_cache
 import copy
 import re, itertools
 import urllib.parse
-import Utils, ParseCSV, Mp3DirectCut
+import Utils, ParseCSV, Mp3DirectCut, Database
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
 
@@ -60,9 +60,10 @@ def AllSingularItems(excerpt: dict) -> Iterator[dict]:
         yield excerpt
 
 class QueryType:
-    READABLE = 0
-    REGEXP = 1
-    OPTIMIZED_REGEXP = 2
+    READABLE = 1
+    OPTIMIZED = 2
+    REGEXP = 3
+    OPTIMIZED_REGEXP = 4
 
 def CombinedQuery(queries: list[str],operator: str = "|",negate: bool = False):
     "Combine search queries using operator."
@@ -504,6 +505,25 @@ def AllTeachers(item: dict) -> set:
         allTeachers.update(annotation.get("teachers",()))
 
     return allTeachers
+
+
+class RegexpFilter(Filter):
+    """A filter which passes items which have a 'blob' key matching a given regexp."""
+
+    def __init__(self,regexp:str) -> None:
+        super().__init__()
+        self.regexp = regexp
+    
+    def Match(self, item: dict) -> bool:
+        Database.LoadBlobs()
+        for i in AllItems(item):
+            if re.search(self.regexp,i.get("blob","")):
+                return not self.negate
+        
+        return self.negate
+
+    def Query(self,kind: QueryType = QueryType.READABLE) -> str:
+        return f"`{self.regexp}`" 
 
 class QueryChip(NamedTuple):
     """Information about a single query filter chip on Advanced-search.html"""
