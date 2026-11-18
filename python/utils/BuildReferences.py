@@ -236,6 +236,13 @@ class TextReference(NamedTuple):
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}".strip()
     
+    def SearchBlob(self) -> str:
+        "Return text to render into a search blob for this reference."
+        return self.TextName().replace(" ","")
+
+    def BlobJoinChar(self) -> str:
+        return "$"
+
     def BaseUid(self) -> str:
         if self.text == "Kd":
             return "pli-tv-kd"
@@ -479,6 +486,12 @@ class BookReference(NamedTuple):
         html,_ = Render.MarkdownFormat(markdown,self)
         return Utils.RemoveHtmlTags(html)
 
+    def SearchBlob(self) -> str:
+        return Utils.slugify(self.TextTitle())
+    
+    def BlobJoinChar(self) -> str:
+        return "%"
+    
     def FullName(self,showAuthors = False,showYear = True) -> str:
         """Return the full text name of this reference."""
         if self.author and not self.abbreviation:

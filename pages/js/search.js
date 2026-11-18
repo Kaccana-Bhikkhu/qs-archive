@@ -3,7 +3,7 @@ import { loadToggleView } from './toggle-view.js';
 import { showFloatingSearch } from './homepage.js'
 
 const TEXT_DELIMITERS = "][{}<>^";
-const METADATA_DELIMITERS = "#&@#$";
+const METADATA_DELIMITERS = "#&@$%";
 const METADATA_SEPERATOR = "|"
 const SPECIAL_SEARCH_CHARS = TEXT_DELIMITERS + METADATA_DELIMITERS + "()";
 

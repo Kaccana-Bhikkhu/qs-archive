@@ -6,6 +6,7 @@ from __future__ import annotations
 import os, json, re
 import Database, BuildReferences, Suttaplex
 import Utils, Alert, ParseCSV, Build, Filter, Mp3DirectCut
+import BuildReferences
 import Html2 as Html
 from typing import Iterable, Iterator, Callable
 import itertools
@@ -46,7 +47,7 @@ def RawBlobify(item: str) -> str:
 gInputChars:set[str] = set()
 gOutputChars:set[str] = set()
 gNonSearchableTeacherRegex = None
-def Blobify(items: Iterable[str],alphanumericOnly = False) -> Iterator[str]:
+def Blobify(items: Iterable[str],slugify = False) -> Iterator[str]:
     """Convert strings to lowercase, remove diacritics, special characters, 
     remove html tags, ++ markers, and Markdown hyperlinks, and normalize whitespace.
     Also remove teacher names who haven't given search consent."""
@@ -74,8 +75,8 @@ def Blobify(items: Iterable[str],alphanumericOnly = False) -> Iterator[str]:
         gInputChars.update(item)
         blob = re.sub(gNonSearchableTeacherRegex,"",RawBlobify(item)) # Remove nonconsenting teachers
         blob = re.sub(r"\s+"," ",blob.strip()) # Normalize or remove whitespace
-        if alphanumericOnly:
-            blob = re.sub(r"\W","",blob.strip()) # Remove all non-alphanumeric characters
+        if slugify:
+            blob = Utils.slugify(blob) # Remove all non-alphanumeric characters
         gOutputChars.update(blob)
         if blob:
             yield blob
@@ -88,6 +89,18 @@ def AllNames(teachers:Iterable[str]) -> Iterator[str]:
         if teacherDB[t]["attributionName"] != teacherDB[t]["fullName"]:
             yield teacherDB[t]["attributionName"]
 
+def ReferenceBlobs(item: dict) -> list[str]:
+    "Returns a list of str containing the reference blobs for this item."
+
+    bits = []
+    for key,refClass in (("texts",BuildReferences.TextReference),
+                              ("books",BuildReferences.BookReference)):
+        if key not in item:
+            continue
+        refs = [refClass.FromString(ref) for ref in item[key]]
+        bits.append(Enclose(Blobify((r.SearchBlob() for r in refs)),refs[0].BlobJoinChar()))
+    return bits
+             
 DURATION_BOUNDARIES = tuple(timedelta(minutes = n) for n in (1,2,5,10))
 DURATION_NAMES = ("veryshort","short","medium","long","verylong")
 
@@ -117,10 +130,10 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             "//",
             Enclose(Blobify(aTags),"[]"),
             "|",
-            Enclose(Blobify(kindList,alphanumericOnly=True),"#"),
-            Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
+            Enclose(Blobify(kindList,slugify=True),"#"),
+            Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],slugify=True),"&")
         ]
-        
+        bits.extend(ReferenceBlobs(item))   
         if item is excerpt:
             bits.append(Enclose(Blobify(Database.ExcerptNumberCode(excerpt).split("_")),"@"))
         
@@ -292,10 +305,11 @@ def EventBlob(event: dict[str],eventSection: dict[str],listedTeachers: list[str]
         Enclose(Blobify(AllNames(listedTeachers)),"{}"),
         Enclose(Blobify((eventSection or event)["tags"]),"[]"),
         "|",
-        Enclose(Blobify(event["series"],alphanumericOnly=True),"#"),
-        Enclose(Blobify([event["venue"]],alphanumericOnly=True),"&"),
+        Enclose(Blobify(event["series"],slugify=True),"#"),
+        Enclose(Blobify([event["venue"]],slugify=True),"&"),
         Enclose(Blobify((eventSection or event)["code"].split("_")),"@")
     ]
+    bits[-1:-1] = ReferenceBlobs(event) # Insert just before the last entry
     return "".join(bits)
 
 def EventBlobs() -> Iterator[dict]:
@@ -400,7 +414,7 @@ def TextBlobs() -> Iterator[dict]:
         suffix += f" ({linkInfo['count']})"
         htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
-            "blobs": [Enclose(Blobify(textSearches),"^")],
+            "blobs": [Enclose(Blobify(textSearches),"^") + Enclose(Blobify((reference.SearchBlob(),)),"$")],
             "html": Html.Icon("DhammaWheel.png") + " " + htmlLink
         }
 
@@ -430,7 +444,8 @@ def BookBlobs() -> Iterator[dict]:
         htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^") + 
-                      Enclose(Blobify(AllNames(book["author"])),"{}")],
+                      Enclose(Blobify(AllNames(book["author"])),"{}") +
+                      Enclose(Blobify((reference.SearchBlob(),)),"%")],
             "html": Html.Icon("book-open") + " " + htmlLink
         }
 
