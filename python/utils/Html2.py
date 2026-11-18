@@ -58,6 +58,16 @@ class Wrapper(NamedTuple):
 
     __call__ = Wrap
 
+def Quote(text: str) -> str:
+    "Use single or double quotes depending on the content of text"
+    if '"' in text:
+        if "'" in text:
+            raise ValueError("Cannot quote strings containing both kinds of quotes")
+        return f"'{text}'"
+    else:
+        return f'"{text}"'
+
+
 def Tag(*tagData: str|dict) -> Wrapper:
     "Return a wrapper corresponding to a series of html tags."
     if not tagData:
@@ -66,7 +76,7 @@ def Tag(*tagData: str|dict) -> Wrapper:
     if len(tagData) == 1 or type(tagData[1]) == str:
         return Wrapper(f"<{tag}>",f"</{tag}>")(Tag(*tagData[1:]))
     else:
-        attributes = " ".join(f'{attr}="{value}"' for attr,value in tagData[1].items())
+        attributes = " ".join(f'{attr}={Quote(value)}' for attr,value in tagData[1].items())
         return Wrapper(f"<{tag} {attributes}>",f"</{tag}>")(Tag(*tagData[2:]))
 
 

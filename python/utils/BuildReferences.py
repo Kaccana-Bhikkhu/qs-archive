@@ -20,6 +20,7 @@ import Build
 import Link
 import Alert
 import Filter
+import SetupSearch
 from functools import lru_cache
 
 gOptions = None
@@ -236,9 +237,19 @@ class TextReference(NamedTuple):
     def __str__(self) -> str:
         return f"{self.text} {'.'.join(map(str,self.Numbers()))}".strip()
     
-    def SearchBlob(self) -> str:
-        "Return text to render into a search blob for this reference."
-        return self.TextName().replace(" ","")
+    def SearchQuery(self) -> str:
+        "Return text to render into a search query for this reference."
+        if self.n0:
+            return f'"${self.TextName().replace(" ","")}"' # Quote so that 'SN2' doesn't also match 'SN22'
+        else:
+            if self.text == "SN":
+                return "&($SN !$Snp)" # Explicitly exclude Snp which would otherwise match
+            else:
+                return f'${self.TextName().replace(" ","")}'
+
+    def Blob(self) -> str:
+        "Return a search blob representing this reference."
+        return f'${self.TextName().lower().replace(" ","")}' 
 
     def BlobJoinChar(self) -> str:
         return "$"
@@ -310,12 +321,13 @@ class TextReference(NamedTuple):
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
     
-    def FullPageHeader(self,minLevel:int = 0,referenceCount:int = 0) -> str:
+    def FullPageHeader(self,minLevel:int,allRefs: list[LinkedReference]) -> str:
         """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages.
         level specifies the text level; SN 2.4 is level 3"""
 
         if not self.text:
             return ""
+        referenceCount = TotalItems(allRefs)
         numbers = self.Numbers(minLength=minLevel - 1)
         pageInfo = [ReferencePageInfo(self,level) for level in range(0,len(numbers) + 2)]
         bits = [info.title for info in pageInfo[0:2]]
@@ -327,6 +339,10 @@ class TextReference(NamedTuple):
         header = " / ".join(bits)
         if referenceCount:
             header += f" ({referenceCount})"
+
+        filter = Filter.TextFilter(self.Truncate(minLevel + 1))
+        header += f"\n<br/\n><br/>\n{Build.SearchWithin(bits[-1],filter)}"
+
         return header
     
     def Citation(self) -> str:
@@ -441,9 +457,12 @@ class BookReference(NamedTuple):
         else:
             return (9999,year,sortTitle,self.page)
 
-    def IsCommentary(self) -> bool:
+    def IsCommentary(self) -> bool|None:
         """Return True if this reference refers to a commentarial work."""
-        return self.abbreviation and gDatabase["reference"][self.abbreviation]["commentary"]
+        if self.abbreviation:
+            return gDatabase["reference"][self.abbreviation]["commentary"]
+        else:
+            return None
 
     def IsSubreference(self) -> bool:
         """Return true if the reference specifies a page number."""
@@ -484,10 +503,14 @@ class BookReference(NamedTuple):
         markdown = gDatabase["reference"][self.abbreviation]["title"]
         markdown = re.sub(r"\[([^]]*)\]\([^)]*\)",r"\1",markdown) # Extract text from Markdown hyperlinks
         html,_ = Render.MarkdownFormat(markdown,self)
-        return Utils.RemoveHtmlTags(html)
+        html = html.replace("&amp;","and")
+        return Utils.RemoveHtmlTags(html,removeSpecialChars=True)
 
-    def SearchBlob(self) -> str:
+    def SearchQuery(self) -> str:
         return Utils.slugify(self.TextTitle())
+
+    def Blob(self) -> str:
+        return f"%{self.SearchQuery()}%"
     
     def BlobJoinChar(self) -> str:
         return "%"
@@ -520,11 +543,12 @@ class BookReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return self.abbreviation or self.author
 
-    def FullPageHeader(self,minLevel:int = 0,referenceCount: int = 0) -> str:
+    def FullPageHeader(self,minLevel:int,allRefs: list[LinkedReference]) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
         firstAuthor = self.FirstAuthor()
         bits = []
         pageInfo = None
+        referenceCount = TotalItems(allRefs)
         for level in range(3):
             if level >= 1 and not firstAuthor[level - 1]:
                 break
@@ -545,6 +569,12 @@ class BookReference(NamedTuple):
             if Database.TeacherConsent(self.author,"photo"):
                 fullName = gDatabase["teacher"][self.author]["fullName"]
                 header = Html.EncloseSecondColumnPhoto(header,Utils.PosixJoin("tags",Utils.slugify(fullName) + ".jpg"))
+
+        isCommentary = set(r.reference.IsCommentary() for r in allRefs)
+        isCommentary = next(iter(isCommentary)) if len(isCommentary) == 1 else None
+        filter = Filter.BookFilter(self.Truncate(minLevel + 1),isCommentary=isCommentary)
+        header += f"\n<br/\n><br/>\n{Build.SearchWithin(bits[-1],filter)}"
+        
         return header
     
     def Citation(self) -> str:
@@ -719,7 +749,7 @@ class ReferencePageMaker:
             firstReference = references[0].reference
             self.SetPageInfo(firstReference)
             self.page.AppendContent(self.HeaderHtml())
-            self.page.AppendContent(Html.Icon("book-open" if isinstance(firstReference,BookReference) else "DhammaWheel.png")
+            self.page.AppendContent("book-open" if isinstance(firstReference,BookReference) else "DhammaWheel.png"
                                     ,section="titleIcon")
             
             truncated = firstReference.Truncate(self.level)
@@ -742,7 +772,7 @@ class ReferencePageMaker:
             level = self.level
         if level > 0:
             reference = self.references[0].reference.Truncate(level)
-            return reference.FullPageHeader(level,TotalItems(self.references)) + "\n<hr>"
+            return reference.FullPageHeader(level,self.references) + "\n<hr>"
         else:
             return self.page.info.title + f" ({TotalItems(self.references)})\n<hr>"
     
@@ -1240,9 +1270,9 @@ def FirstLevelMenu(references: list[LinkedReference]) -> Html.PageDescriptorMenu
     yield ReferencePageInfo(references[0].reference,0)
     pageGenerator = ReferencePageDispatch(references,0)
     if isinstance(references[0].reference,BookReference):
-        yield from map(Build.LinkToPeoplePages,pageGenerator.AllPages())
+        yield from map(Build.RegisterSearchWithin,map(Build.LinkToPeoplePages,pageGenerator.AllPages()))
     else:
-        yield from pageGenerator.AllPages()
+        yield from map(Build.RegisterSearchWithin,pageGenerator.AllPages())
 
 def TextMenu() -> Html.PageDescriptorMenuItem:
     """Return a list containing the sutta and vinaya reference pages."""

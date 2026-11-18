@@ -185,9 +185,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/QSarchive.py",
             "args": [
-                "SetupAutoComplete",
+                "Build",
                 "--buildOnly",
-                "teachers"
+                "books"
             ],
             "console": "integratedTerminal",
             "justMyCode": true

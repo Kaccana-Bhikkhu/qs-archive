@@ -13,7 +13,8 @@ import itertools
 from collections import Counter
 from datetime import timedelta
 from bisect import bisect_right
-from SetupFeatured import HomepageExcerptFilter
+import SetupFeatured
+
 
 def Enclose(items: Iterable[str],encloseChars: str = "()") -> str:
     """Enclose the strings in items in the specified characters:
@@ -98,7 +99,7 @@ def ReferenceBlobs(item: dict) -> list[str]:
         if key not in item:
             continue
         refs = [refClass.FromString(ref) for ref in item[key]]
-        bits.append(Enclose(Blobify((r.SearchBlob() for r in refs)),refs[0].BlobJoinChar()))
+        bits.append(Enclose((r.Blob() for r in refs),refs[0].BlobJoinChar()))
     return bits
              
 DURATION_BOUNDARIES = tuple(timedelta(minutes = n) for n in (1,2,5,10))
@@ -149,7 +150,7 @@ def OptimizedExcerpts() -> list[dict]:
     formatter = Build.Formatter()
     formatter.SetHeaderlessFormat()
     formatter.excerptNumbers = True
-    featuredFilter = HomepageExcerptFilter()
+    featuredFilter = SetupFeatured.HomepageExcerptFilter()
     for fragmentGroup in Database.GroupFragments(gDatabase["excerpts"]):
         x = fragmentGroup[0]
         xDict = {"session": Database.ItemCode(event=x["event"],session=x["sessionNumber"]),
@@ -414,7 +415,7 @@ def TextBlobs() -> Iterator[dict]:
         suffix += f" ({linkInfo['count']})"
         htmlLink = Html.Tag("a",{"href":"../" + linkInfo["link"]})(linkedPart) + suffix
         yield {
-            "blobs": [Enclose(Blobify(textSearches),"^") + Enclose(Blobify((reference.SearchBlob(),)),"$")],
+            "blobs": [Enclose(Blobify(textSearches),"^") + Enclose(Blobify((reference.SearchQuery(),)),"$")],
             "html": Html.Icon("DhammaWheel.png") + " " + htmlLink
         }
 
@@ -445,7 +446,7 @@ def BookBlobs() -> Iterator[dict]:
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^") + 
                       Enclose(Blobify(AllNames(book["author"])),"{}") +
-                      Enclose(Blobify((reference.SearchBlob(),)),"%")],
+                      Enclose(Blobify((reference.SearchQuery(),)),"%")],
             "html": Html.Icon("book-open") + " " + htmlLink
         }
 

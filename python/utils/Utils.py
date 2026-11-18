@@ -80,8 +80,13 @@ PosixSplit = posixpath.split
 PosixRelpath = posixpath.relpath
 PosixNorm = posixpath.normpath
 
-def RemoveHtmlTags(html: str) -> str:
-    return re.sub(r"\<[^>]*\>","",html)
+def RemoveHtmlTags(html: str,removeSpecialChars: bool = False) -> str:
+    "Removes html tags. If removeSpecialChars, also removes escaped characters, e.g. &amp;"
+    html = re.sub(r"\<[^>]*\>","",html)
+    if removeSpecialChars:
+        html = re.sub(r"&.*?;","",html)
+    return html
+
 
 def RemoveMarkdownHyperlinks(markdown: str) -> str:
     return re.sub(r"\[([^\]]*)\]\([^)]*\)",r"\1",markdown)

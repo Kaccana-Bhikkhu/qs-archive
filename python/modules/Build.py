@@ -5,6 +5,7 @@ from __future__ import annotations
 import os, time
 from typing import Iterator, Iterable, Tuple, Callable
 from airium import Airium
+from bs4 import BeautifulSoup
 from Html2 import Icon
 import Mp3DirectCut
 import Database, ReviewDatabase
@@ -62,7 +63,9 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
         "Add extra details to this page's search within link."
         nonlocal pageChipQuery
         icon = page.section.get("titleIcon","")
-        chip = Filter.QueryChip(name = match[1],query = match[2],icon=icon)
+        soup = BeautifulSoup(match[0],"html.parser")
+            # Use BeautifulSoup to parse properties which may include quotation marks
+        chip = Filter.QueryChip(name = soup.a.get("data-name"),query = soup.a.get("data-query"),icon=icon)
         pageChipQuery = str(chip)
         query = Filter.SearchQuery(filters = [chip])
         return match[0].replace("SEARCH_WITHIN_LINK",query.SearchPageLink(),count = 1) + " " + Html.Icon(icon)
@@ -73,7 +76,7 @@ def WritePage(page: Html.PageDesc,writer: FileRegister.HashWriter) -> None:
         while pagedesc.HasSection(sectionNumber):
             section = pagedesc.section[sectionNumber]
             if type(section) == str:
-                pagedesc.section[sectionNumber],replaced = re.subn(r'<a class="search-within keep-nav-menu-open" href="SEARCH_WITHIN_LINK" data-name="([^"]*)" data-query="([^"]*)">',
+                pagedesc.section[sectionNumber],replaced = re.subn(r'<a class="search-within keep-nav-menu-open"[^>]*>',
                                                     SearchWithinLink,pagedesc.section[sectionNumber],count = 1)
                 if replaced:
                     return True
@@ -244,9 +247,10 @@ def SearchWithin(title: str,filter: Filter.Filter) -> str:
     link = Html.Tag("a",{"class":"search-within keep-nav-menu-open","href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
     return f'<i class="fa fa-search"></i> Search within&ensp;{link(title)}'
 
-def RegisterSearchWithin(page: Html.PageDesc) -> None:
+def RegisterSearchWithin(page: Html.PageDesc) -> Html.PageDesc:
     """Add a section to page indicating that it contains a search within link."""
     page.AppendContent("True",section="searchWithin")
+    return page
 
 def ListLinkedTags(title:str, tags:Iterable[str],*args,**kwargs) -> str:
     "Write a list of hyperlinked tags"

@@ -14,6 +14,7 @@ import re, itertools
 import urllib.parse
 import Utils, ParseCSV, Mp3DirectCut, Database
 import SetupSearch
+import BuildReferences
 
 gDatabase:dict[str] = {} # This will be overwritten by the main program
 
@@ -416,6 +417,63 @@ class Duration(Filter):
             return not self.negate
         else:
             return self.negate
+
+class TextFilter(Filter):
+    """Filter items which contain matching text references."""
+
+    def __init__(self,text: BuildReferences.TextReference):
+        super().__init__()
+        self.text = text
+
+    def Match(self, item: dict) -> bool:
+        for i in Filter.AllItems(item):
+            for t in i.get("texts",()):
+                if all(self.text[index] == t[index] for index in range(self.text.TextLevel() + 1)):
+                    return not self.negate
+        
+        return self.negate
+
+    def Query(self,kind: QueryType = QueryType.READABLE) -> str:
+        return self.text.SearchQuery()
+
+
+
+class BookFilter(Filter):
+    """Filter items which contain matching text references."""
+
+    def __init__(self,book: BuildReferences.BookReference,isCommentary:bool = None):
+        """Filter either books, authors, or commentary/modern.
+        If book.title, then filter references to only this book,
+        otherwise filter references that have the same author as book.
+        if isCommentary is not None, pass only items which match the given commentatarial status.
+        """
+        super().__init__()
+        self.book = book
+        self.isCommentary = isCommentary
+
+    def Match(self, item: dict) -> bool:
+        raise NotImplemented("Code not written.")
+        for i in Filter.AllItems(item):
+            for t in i.get("books",()):
+                if all(self.book[index] == t[index] for index in range(self.book.TextLevel() + 1)):
+                       return not self.negate
+        
+        return self.negate
+
+    def Query(self,kind: QueryType = QueryType.READABLE) -> str:
+        if self.book.abbreviation:
+            return f"%{SetupSearch.RawBlobify(self.book.SearchQuery())}%"
+        else:
+            books = [b for b in gDatabase["reference"].values() if self.book.author in b["author"]]
+            bookRefs = [BuildReferences.BookReference(self.book.author,b["abbreviation"].lower()) for b in books]
+            if self.isCommentary is not None:
+                bookRefs = [b for b in bookRefs if b.IsCommentary() == self.isCommentary]
+            bookStrs = [f"%{b.SearchQuery()}%" for b in bookRefs]
+            if len(bookStrs) > 1:
+                return f"|({' '.join(bookStrs)})"
+            else:
+                return bookStrs[0]
+
 
 class FilterGroup(Filter):
     """A group of filters to operate on items using boolean operations.
