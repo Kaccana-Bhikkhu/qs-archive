@@ -975,21 +975,6 @@ def LinkReferences() -> None:
     Alert.extra(f"{markdownChanges} items changed by markdown")
     ApplyToBodyText(RemoveHTMLPassthroughComments)
 
-def AccumulateReferences() -> None:
-    """Combine text references in annotations with their parent excerpt;
-    remove text references from fragments."""
-
-    for refKind in ("texts","books"):
-        for excerpt in gDatabase["excerpts"]:
-            accumulatedTexts = []
-            for item in Filter.AllItems(excerpt):
-                accumulatedTexts += item.get(refKind) or []
-                item.pop(refKind,None)
-            
-            if accumulatedTexts and ParseCSV.ExcerptFlag.FRAGMENT not in excerpt["flags"]:
-                excerpt[refKind] = accumulatedTexts
-
-
 def SmartQuotes(text: str) -> tuple[str,int]:
     newText = Utils.SmartQuotes(text)
     changeCount = 0 if text == newText else 1
@@ -1020,7 +1005,6 @@ def main() -> None:
     RenderExcerpts()
 
     LinkReferences()
-    AccumulateReferences()
 
     for key in ["tagRedacted","tagRemoved","summary","keyCaseTranslation"]:
         del gDatabase[key]

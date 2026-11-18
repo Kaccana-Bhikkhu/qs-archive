@@ -19,6 +19,7 @@ import Render
 import Build
 import Link
 import Alert
+import Filter
 from functools import lru_cache
 
 gOptions = None
@@ -645,9 +646,12 @@ def CollateReferences(referenceKind: str) -> list[LinkedReference]:
             for authorRef in reference.MultipleAuthors():
                 referenceDict[authorRef].append(excerpt)
 
-    for excerpt in gDatabase["excerpts"]:
-        deduplicated = set(excerpt.get(referenceKind,()))
-        references:list[Reference] = [referenceClass.FromString(ref) for ref in deduplicated]
+    for excerpt in Database.RemoveFragments(gDatabase["excerpts"]):
+        referenceStrings = set()
+        for item in Filter.AllItems(excerpt):
+            referenceStrings.update(item.get(referenceKind) or [])
+
+        references:list[Reference] = [referenceClass.FromString(ref) for ref in referenceStrings]
         if not references:
             continue
         references.sort(key=referenceClass.SortKey)

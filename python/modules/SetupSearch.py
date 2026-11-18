@@ -120,6 +120,7 @@ def ExcerptBlobs(excerpt: dict) -> list[str]:
             Enclose(Blobify(kindList,alphanumericOnly=True),"#"),
             Enclose(Blobify([gDatabase["kind"][item["kind"]]["category"]],alphanumericOnly=True),"&")
         ]
+        
         if item is excerpt:
             bits.append(Enclose(Blobify(Database.ExcerptNumberCode(excerpt).split("_")),"@"))
         
