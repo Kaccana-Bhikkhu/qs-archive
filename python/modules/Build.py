@@ -237,14 +237,15 @@ def HtmlSubtopicTagList(subtopic:dict,summarize:int = 0,group:bool = False,showS
 
     return ", ".join(bits)
 
-def SearchWithin(title: str,filter: Filter.Filter) -> str:
+def SearchWithin(title: str,filterOrQuery: Filter.Filter|str) -> str:
     """Returns html for a search within link. Some aspects of the link depend on properties of the page not immediately
     accessible, so we return a placeholder that WritePage will later replace.
     page: the page we are in the process of generating
     title: what we are searching within;
-    filter: the filter that produced the page we are searching."""
+    filterOrQuery: the filter that produced the page we are searching or an equivalent query."""
 
-    link = Html.Tag("a",{"class":"search-within keep-nav-menu-open","href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":filter.Query()})
+    query = filterOrQuery.Query() if isinstance(filterOrQuery,Filter.Filter) else filterOrQuery
+    link = Html.Tag("a",{"class":"search-within keep-nav-menu-open","href":"SEARCH_WITHIN_LINK","data-name":title,"data-query":query})
     return f'<i class="fa fa-search"></i> Search within&ensp;{link(title)}'
 
 def RegisterSearchWithin(page: Html.PageDesc) -> Html.PageDesc:
@@ -1835,8 +1836,11 @@ def LinkToPeoplePages(page: Html.PageDesc) -> Html.PageDesc:
         link = BuildReferences.ReferenceLink("author",teacher)
         if link and directory != "books":
             outputLinks.append(Html.Tag("a",{"href":link})(f'→ Books by {gDatabase["teacher"][teacher]["attributionName"]}'))
-        
-        tag = Database.TagLookup(page.info.title)
+
+        teacherName = gDatabase["teacher"][teacher]["fullName"]
+        tag = Database.TagLookup(teacherName)
+        if not tag and teacherName.startswith("Bhikkhu"):
+            tag = Database.TagLookup(teacherName.replace("Bhikkhu","Venerable"))
         if tag and directory not in ("tags","clusters"):
             outputLinks.append(HtmlTagLink(tag,text = f'→ Tag [{tag}]'))
 

@@ -729,6 +729,28 @@ def WriteReferences(references:list[LinkedReference],filename:str) -> None:
                 print("   ",Database.ItemRepr(item),file=file)
 
 
+def TopLevelHeader(pageInfo: Html.PageInfo,refs: list[LinkedReference]) -> str:
+    """Return html strings for the headers of the top level pages: Sutta, Vinaya, Commentary, and Modern."""
+
+    firstLine = pageInfo.title + f" ({TotalItems(refs)})"
+
+    firstRef = refs[0].reference
+    if isinstance(firstRef,TextReference):
+        vinayaQuery = '|($Bu $Bi $Kd $Pvr)' # This query matches any Vinaya text
+        if firstRef.text in TextGroupSet("vinaya"):
+            query = vinayaQuery
+        else:
+            query = f'&($ !{vinayaQuery})'
+    else:
+        commentaryBlobs = [BookReference("x",r).Blob() for r in gDatabase["reference"] if gDatabase["reference"][r]["commentary"]]
+        commentaryQuery = f"|({' '.join(commentaryBlobs)})"
+        if firstRef.IsCommentary():
+            query = commentaryQuery
+        else:
+            query = f'&(% !{commentaryQuery})'
+
+    return firstLine + f"\n<br/\n><br/>\n{Build.SearchWithin(pageInfo.title,query)}" + "\n<hr>"
+
 class ReferencePageMaker:
     """A class to create html pages from lists of LinkedReference.
     Can be used in two ways:
@@ -774,7 +796,7 @@ class ReferencePageMaker:
             reference = self.references[0].reference.Truncate(level)
             return reference.FullPageHeader(level,self.references) + "\n<hr>"
         else:
-            return self.page.info.title + f" ({TotalItems(self.references)})\n<hr>"
+            return TopLevelHeader(self.page.info,self.references)
     
     def FooterHtml(self) -> str:
         """Returns html that goes a the bottom of the page in whole page mode."""

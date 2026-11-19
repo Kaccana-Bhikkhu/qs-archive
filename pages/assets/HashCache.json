@@ -18245,12 +18245,14 @@
     "_modified": "2026-11-15 17:27:57.117292"
   },
   "texts/Sutta.html": {
-    "md5": "36986ac1b663d06bbfd48c087d2da616",
-    "_modified": "2026-11-18 14:42:10.862626"
+    "searchChip": "DhammaWheel.png_Sutta__&($ !|($Bu $Bi $Kd $Pvr))",
+    "md5": "b1a7bf92b684dc042284c2cb2ec55660",
+    "_modified": "2026-11-18 21:27:34.436990"
   },
   "texts/Vinaya.html": {
-    "md5": "da6f8440ae362671fa2f820730595025",
-    "_modified": "2026-11-18 14:42:10.949754"
+    "searchChip": "DhammaWheel.png_Vinaya__|($Bu $Bi $Kd $Pvr)",
+    "md5": "42bb31d437a0c62a203493f332f6d8cc",
+    "_modified": "2026-11-18 21:27:34.522774"
   },
   "books/AbhSangha.html": {
     "searchChip": "book-open_The Abhayagiri Saṅgha__|(%abhayagiri-chanting-book% %beginning-our-day-vol-1% %beginning-our-day-vol-2%)",
@@ -18768,8 +18770,9 @@
     "_modified": "2026-11-18 20:44:29.665861"
   },
   "books/Modern.html": {
-    "md5": "88a74fbc1f96e2440c0f8092dfc28374",
-    "_modified": "2026-11-13 14:31:30.504597"
+    "searchChip": "book-open_Modern__&(% !|(%path-of-purification% %path-to-freedom% %the-dictionary-of-pali-proper-names% %dhamma-verses-commentary% %the-birth-stories%))",
+    "md5": "96f0f5b940ed6548700aa664818182bb",
+    "_modified": "2026-11-18 21:47:45.535543"
   },
   "search/Text-search.html": {
     "md5": "3b0d7ae9533e76cd2cccdff03fe6e3c7",
@@ -19321,8 +19324,9 @@
     "_modified": "2026-11-18 17:53:44.169086"
   },
   "books/Commentary.html": {
-    "md5": "0645fbda927822ab3a17ecb5a15ff7c6",
-    "_modified": "2026-11-13 14:31:28.991174"
+    "searchChip": "book-open_Commentary__|(%path-of-purification% %path-to-freedom% %the-dictionary-of-pali-proper-names% %dhamma-verses-commentary% %the-birth-stories%)",
+    "md5": "732a761b47c59bcb8d46ae8f6ff5309b",
+    "_modified": "2026-11-18 21:47:44.343839"
   },
   "books/pali-proper-names.html": {
     "searchChip": "book-open_The Dictionary of Pāli Proper Names__%the-dictionary-of-pali-proper-names%",
@@ -23237,8 +23241,8 @@
   },
   "books/Nyanamoli.html": {
     "searchChip": "book-open_Bhikkhu Ñāṇamoli__%the-life-of-the-buddha-according-to-the-pali-canon%",
-    "md5": "d9b8944709a780589d7f87db3110e298",
-    "_modified": "2026-11-18 20:44:28.562912"
+    "md5": "d249d5315627d59b85e304986e2458ea",
+    "_modified": "2026-11-18 20:59:38.138340"
   },
   "indexes/AllExcerpts-36.html": {
     "md5": "cb5a8f0a649457a6808ebd00f9c386f3",
