@@ -590,6 +590,35 @@ function excerptsMatchingItem(autoCompleteEntry) {
     return gDropDownFilters.get(queryText);
 }
 
+function calcExcerptsMatchingItems(entries,timeout) {
+    // Call excerptsMatchingItems on all items in entries. This caches the values of that function for later use.
+    // Throw a "Timeout" exception if more than timeout milliseconds pass during the exceution.
+
+    let start = performance.now();
+    for (let entry of entries) {
+        excerptsMatchingItem(entry);
+        if ((performance.now() - start) > timeout)
+            throw Error("Timeout");
+    }
+}
+
+let gItemMatchingCallbackRef = 0; // The reference number used for this callback function
+function calcMatchingItemsCallback(entries) {
+    // Continue calculating matching items asynchronously using a series of callbacks until finished.
+
+    try {
+        calcExcerptsMatchingItems(entries,300);
+    } catch (err) {
+        if (err.message === "Timeout") { // Continue the calculation with another callback if it hasn't completed.
+            gItemMatchingCallbackRef = window.setTimeout(calcMatchingItemsCallback,100,entries);
+            return;
+        } else
+            throw(err);
+    }
+    gItemMatchingCallbackRef = 0;
+    gAutoComplete.start();
+}
+
 function setupAutoComplete() {
     // Code to configure floating menu autocomplete functionality
     // See https://tarekraafat.github.io/autoComplete.js/#/usage for details
@@ -613,26 +642,46 @@ function setupAutoComplete() {
                 // Filter entries that link to the same file
                 let links = new Set();
                 let filtered = results.filter((item) => {
-                    if (item.key === "number" && item.value.number !== gQuery)
-                        return false; // Number search must match exactly
-                    if (gSearchWithinQuery !== null) {
-                        if (!item.value.chip)
-                            return false; // Page-only items should not be displayed when searching within a query
+                    return !(item.key === "number" && item.value.number !== gQuery); // Number search must match exactly
+                });
+                if (gSearchWithinQuery) {
+                    let spinner = document.getElementById("progress-spinner");
+                    if (gItemMatchingCallbackRef) {
+                        window.clearTimeout(gItemMatchingCallbackRef);
+                        gItemMatchingCallbackRef = 0;
+                    }
+                    filtered = filtered.filter((item) => item.value.chip); // Remove page-only items
+                    let items = filtered.map((item) => item.value);
+                    try { // Run a potentially long calculation to cache the matching item counts
+                        calcExcerptsMatchingItems(items,300);
+                    } catch (err) {
+                        if (err.message == "Timeout") {
+                            spinner.style.display = "block";
+                            gItemMatchingCallbackRef = window.setTimeout(calcMatchingItemsCallback,100,items)
+                            return [];
+                        } else
+                            throw(err);
+                    }
+                    filtered = filtered.filter((item) => {
                         if (excerptsMatchingItem(item.value) === 0)
                             return false; // Don't display filters which match no excerpts
                         let query = item.value.chip.split("_",4)[3];
                         if (links.has(query))
                             return false; // Remove items with identical queries
                         links.add(query);
-                    } else {
+                        return true;
+                    });
+                    spinner.style.display = "none";
+                } else {
+                    filtered = filtered.filter((item) => {
                         if (!item.value.link)
                             return false; // Filter-only items should only be displayed when searching within a query
                         if (links.has(item.value.link))
                             return false; // Remove items that link to identical pages
                         links.add(item.value.link);
-                    }
-                    return true;
-                });
+                        return true;
+                    });
+                }
                 debugLog(filtered.length,"items in the menu.");
                 return filtered;
             },
@@ -756,6 +805,8 @@ function countFoundExcerpts() {
     let query = document.getElementById("floating-search-input").value.trim();
     if (!query) {
         displayExcerptCount(0);
+        let spinner = document.getElementById("progress-spinner");
+        spinner.style.display = "none"; // Hide the spinner when there is no search query.
         return;
     }
     try {
