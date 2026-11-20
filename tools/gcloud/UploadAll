@@ -1,0 +1,5 @@
+gcloud storage rsync -r --delete-unmatched-destination-objects audio/excerpts gs://apqs_archive/audio/excerpts
+
+gcloud storage rsync -r --delete-unmatched-destination-objects pages gs://apqs_archive/pages
+
+gcloud storage cp index.html gs://apqs_archive
