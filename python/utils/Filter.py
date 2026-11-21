@@ -462,13 +462,13 @@ class BookFilter(Filter):
 
     def Query(self,kind: QueryType = QueryType.READABLE) -> str:
         if self.book.abbreviation:
-            return f"%{SetupSearch.RawBlobify(self.book.SearchQuery())}%"
+            return self.book.SearchQuery()
         else:
             books = [b for b in gDatabase["reference"].values() if self.book.author in b["author"]]
             bookRefs = [BuildReferences.BookReference(self.book.author,b["abbreviation"].lower()) for b in books]
             if self.isCommentary is not None:
                 bookRefs = [b for b in bookRefs if b.IsCommentary() == self.isCommentary]
-            bookStrs = [f"%{b.SearchQuery()}%" for b in bookRefs]
+            bookStrs = [b.SearchQuery() for b in bookRefs]
             if len(bookStrs) > 1:
                 return f"|({' '.join(bookStrs)})"
             else:

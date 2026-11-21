@@ -276,8 +276,14 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
 
     dhammapada = Suttaplex.DhammapadaVerses()
     BuildReferences.ReadReferenceDatabase()
+
+    for textData in gDatabase["text"].values():
+        textRecord = BuildReferences.gSavedReferences["text"].get(textData["uid"])
+        if textRecord:
+            yield Entry(textData["name"] + f" ({textData['uid']})",textRecord["link"],icon="DhammaWheel.png",excerptCount=textRecord["count"])
+
     for text,textData in BuildReferences.gSavedReferences["text"].items():
-        if re.search(r"[0-9]$",text): # Don't link to whole texts links
+        if re.search(r"[0-9]$",text): # We already linked to full texts above
             ref = BuildReferences.TextReference.FromString(text)
             uid = ref.Uid()
             if gDatabase["text"][ref.text]["citeFullName"]:

@@ -507,10 +507,10 @@ class BookReference(NamedTuple):
         return Utils.RemoveHtmlTags(html,removeSpecialChars=True)
 
     def SearchQuery(self) -> str:
-        return Utils.slugify(self.TextTitle())
+        return f"%{Utils.slugify(self.TextTitle())}%"
 
     def Blob(self) -> str:
-        return f"{self.SearchQuery()}"
+        return Utils.slugify(self.TextTitle())
     
     def BlobJoinChar(self) -> str:
         return "%"
@@ -742,8 +742,8 @@ def TopLevelHeader(pageInfo: Html.PageInfo,refs: list[LinkedReference]) -> str:
         else:
             query = f'&($ !{vinayaQuery})'
     else:
-        commentaryBlobs = [BookReference("x",r).Blob() for r in gDatabase["reference"] if gDatabase["reference"][r]["commentary"]]
-        commentaryQuery = f"|({' '.join(commentaryBlobs)})"
+        queries = [BookReference("x",r).SearchQuery() for r in gDatabase["reference"] if gDatabase["reference"][r]["commentary"]]
+        commentaryQuery = f"|({' '.join(queries)})"
         if firstRef.IsCommentary():
             query = commentaryQuery
         else:
@@ -875,7 +875,7 @@ class ExcerptListPage(ReferencePageMaker):
 
         truncated = self.references[0].reference.Truncate(self.level)
         # Don't register references of the form Snp 4.0; the link should go to Snp 4
-        if self.level < 1 or truncated[self.level - 1] != 0:
+        if self.level > 1 and truncated[self.level - 1] != 0:
             RegisterReference(truncated,self.page.info.file,TotalItems(self.references))
 
     def RenderAndYieldSubpages(self) -> Iterator[Html.PageDesc]:
@@ -1266,6 +1266,7 @@ def ReferencePageDispatch(references: list[LinkedReference],level: int) -> Refer
     elif pageType == PageType.EXCERPTS_WITH_HEADINGS:
         pageMaker = PageWithHeadings(SingleLevelHeadings(level),ExcerptListPage(level),references,bookmarkLinks)
         pageMaker.innerReferenceLinks = True
+        pageMaker.pageReferenceLink = True
         return pageMaker
     elif pageType == PageType.EXCERPTS_ONLY:
         if isinstance(firstReference,BookReference):

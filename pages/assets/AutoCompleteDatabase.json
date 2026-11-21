@@ -12694,6 +12694,176 @@
     "chip": "DhammaWheel.png_Vinaya__|($Bu $Bi $Kd $Pvr)"
   },
   {
+    "short": "Dīgha Nikāya (DN)",
+    "link": "texts/DN.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 66,
+    "chip": "DhammaWheel.png_Dīgha Nikāya __$DN"
+  },
+  {
+    "short": "Majjhima Nikāya (MN)",
+    "link": "texts/MN.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 444,
+    "chip": "DhammaWheel.png_Majjhima Nikāya __$MN"
+  },
+  {
+    "short": "Saṃyutta Nikāya (SN)",
+    "link": "texts/SN.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 377,
+    "chip": "DhammaWheel.png_Saṃyutta Nikāya __&($SN !$Snp)"
+  },
+  {
+    "short": "Aṅguttara Nikāya (AN)",
+    "link": "texts/AN.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 346,
+    "chip": "DhammaWheel.png_Aṅguttara Nikāya __$AN"
+  },
+  {
+    "short": "Dhammapada (Dhp)",
+    "link": "texts/Dhp.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 26,
+    "chip": "DhammaWheel.png_Dhammapada __$Dhp"
+  },
+  {
+    "short": "Udāna (Ud)",
+    "link": "texts/Ud.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 50,
+    "chip": "DhammaWheel.png_Udāna __$Ud"
+  },
+  {
+    "short": "Itivuttaka (Iti)",
+    "link": "texts/Iti.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 22,
+    "chip": "DhammaWheel.png_Itivuttaka __$Iti"
+  },
+  {
+    "short": "Sutta Nipāta (Snp)",
+    "link": "texts/Snp.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 48,
+    "chip": "DhammaWheel.png_Sutta Nipāta __$Snp"
+  },
+  {
+    "short": "Theragātha (Thag)",
+    "link": "texts/Thag.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 6,
+    "chip": "DhammaWheel.png_Theragātha __$Thag"
+  },
+  {
+    "short": "Therīgāthā (Thig)",
+    "link": "texts/Thig.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 5,
+    "chip": "DhammaWheel.png_Therīgāthā __$Thig"
+  },
+  {
+    "short": "Jātaka (Ja)",
+    "link": "texts/Ja.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 2,
+    "chip": "DhammaWheel.png_Jātaka __$Ja"
+  },
+  {
+    "short": "Milindapañha (Mil)",
+    "link": "texts/Mil.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 5,
+    "chip": "DhammaWheel.png_Milindapañha __$Mil"
+  },
+  {
+    "short": "Bhikkhu Pārājika (BuPj)",
+    "link": "texts/BuPj.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 3,
+    "chip": "DhammaWheel.png_Bhikkhu Pārājika __$BuPj"
+  },
+  {
+    "short": "Bhikkhu Saṅghādisesa (BuSs)",
+    "link": "texts/BuSs.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 5,
+    "chip": "DhammaWheel.png_Bhikkhu Saṅghādisesa __$BuSs"
+  },
+  {
+    "short": "Bhikkhu Nissaggiya-pācittiya (BuNp)",
+    "link": "texts/BuNp.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 1,
+    "chip": "DhammaWheel.png_Bhikkhu Nissaggiya-pācittiya __$BuNp"
+  },
+  {
+    "short": "Bhikkhu Pācittiya (BuPc)",
+    "link": "texts/BuPc.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 6,
+    "chip": "DhammaWheel.png_Bhikkhu Pācittiya __$BuPc"
+  },
+  {
+    "short": "Khandhaka (Kd)",
+    "link": "texts/Kd.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 49,
+    "chip": "DhammaWheel.png_Khandhaka __$Kd"
+  },
+  {
     "short": "DN 1: Brahmajālasutta, The All-embracing Net of Views",
     "link": "texts/DN1.html",
     "long": "",
