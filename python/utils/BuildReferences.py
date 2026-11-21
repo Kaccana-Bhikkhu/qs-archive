@@ -249,7 +249,7 @@ class TextReference(NamedTuple):
 
     def Blob(self) -> str:
         "Return a search blob representing this reference."
-        return f'${self.TextName().lower().replace(" ","")}' 
+        return f'{self.TextName().lower().replace(" ","")}' 
 
     def BlobJoinChar(self) -> str:
         return "$"
@@ -510,7 +510,7 @@ class BookReference(NamedTuple):
         return Utils.slugify(self.TextTitle())
 
     def Blob(self) -> str:
-        return f"%{self.SearchQuery()}%"
+        return f"{self.SearchQuery()}"
     
     def BlobJoinChar(self) -> str:
         return "%"
