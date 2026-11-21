@@ -142,17 +142,17 @@ function substituteWildcards(regExpString) {
     // Convert the following wildcards to RegExp strings:
     // * Match any or no characters
     // _ Match exactly one character
-    // $ Match word boundaries
+    // = Match word boundaries
 
-    // Strip off leading and trailing * and £. The innermost symbol determines whether to match a word boundary.
-    let bounded = regExpEscape(regExpString.replace(/^[£*]+/,"").replace(/[£*]+$/,""));
-    if (regExpString.match(/^[£*]*/)[0].endsWith("£"))
+    // Strip off leading and trailing * and =. The innermost symbol determines whether to match a word boundary.
+    let bounded = regExpEscape(regExpString.replace(/^[=*]+/,"").replace(/[=*]+$/,""));
+    if (regExpString.match(/^[=*]*/)[0].endsWith("="))
         bounded = "\\b" + bounded;
-    if (regExpString.match(/[£*]*$/)[0].startsWith("£"))
+    if (regExpString.match(/[=*]*$/)[0].startsWith("="))
     bounded += "\\b";
 
     // Replace inner * and _ and $ with appropriate operators.
-    return bounded.replaceAll("\\*",`[^${ESCAPED_HTML_CHARS}]*?`).replaceAll("_",`[^${ESCAPED_HTML_CHARS}]`).replaceAll("£","\\b");
+    return bounded.replaceAll("\\*",`[^${ESCAPED_HTML_CHARS}]*?`).replaceAll("_",`[^${ESCAPED_HTML_CHARS}]`).replaceAll("=","\\b");
 }
 
 class SearchBase {
@@ -217,12 +217,12 @@ class SearchTerm extends SearchBase {
             }
             
             // The Dec. 2026 release changes the meaning of '$' from word boundary to sutta reference;
-            // '£' becomes (undocumented) the word boundary symbol.
-            // Replace quote marks at beginning and end with word boundary markers '£' 
-            let unwrapped = searchElement.replace(/^"+/,'£').replace(/"+$/,'£');
-            // Remove £ boundary markers if the first/last character is not a word character
-            unwrapped = unwrapped.replace(/^\£(?=\W)/,"");
-            unwrapped = unwrapped.replace(/(\W)\£$/,"$1");
+            // '=' becomes the word boundary symbol.
+            // Replace quote marks at beginning and end with word boundary markers '=' 
+            let unwrapped = searchElement.replace(/^"+/,'=').replace(/"+$/,'=');
+            // Remove = boundary markers if the first/last character is not a word character
+            unwrapped = unwrapped.replace(/^\=(?=\W)/,"");
+            unwrapped = unwrapped.replace(/(\W)\=$/,"$1");
             // Replace inner * and $ with appropriate operators.
             escaped = substituteWildcards(unwrapped);
             
