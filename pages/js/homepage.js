@@ -510,7 +510,7 @@ export async function showFloatingSearch(query = null,searchWithin = null,placeh
 
         let searchPageInput = document.querySelector("input#search-text");
         if (searchPageInput) {
-            searchPageInput.value = searchWithin.get("q").trim() || "";
+            searchPageInput.value = queryFromParams(searchWithin,false,false) || "";
         }
     } else {
         searchBar.placeholder = placeholder || "Search the teachings...";
@@ -738,7 +738,7 @@ function setupAutoComplete() {
                     inputBox.value = "";
                     gQuery = "";
                     if (gSearchWithinQuery) {
-                        addFilter(gSearchWithinQuery,selection.chip);
+                        addFilter(gSearchWithinQuery,encodeURIComponent(encodeSearchQuery(selection.chip)));
                         openLocalPage("search/Advanced-search.html",String(gSearchWithinQuery));
                         gSearchWithinQuery = null;
                     } else

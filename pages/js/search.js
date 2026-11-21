@@ -243,13 +243,20 @@ class SearchTerm extends SearchBase {
             throw new Error(`Invalid ${this.rawRegExp ? "regular expression" : "search term"}: ${searchElement}`);
         }
         
-
-        if (this.matchesMetadata)
-            return; // Don't apply boldface to metadata searches or negated character classes
-
-        // Start processing again to create RegExps for bold text
         let boldItem = escaped;
         debugLog("boldItem before:",boldItem);
+        if (this.matchesMetadata) {
+            boldItem = boldItem.replaceAll("\\-","-").replaceAll("\\$","$");
+            if (boldItem.startsWith("$")) // Boldface text names
+                boldItem = boldItem.replaceAll("$","").replace(/^([A-Za-z]+)([1-9])/,"$1 $2");
+                    // Add a space between the text name and the subsequent number
+            else if (boldItem.match(/%[A-Za-z-]+/)) // Boldface book titles
+                boldItem = boldItem.replaceAll("%","").replaceAll("-"," ");
+            else
+                return; // Don't boldface other regexps matching metadata.
+        }
+
+        // Start processing again to create RegExps for bold text
         boldItem = boldItem.replaceAll(MATCH_END_DELIMITERS,"");
 
         for (const letter in PALI_DIACRITIC_MATCH_ALL) {
