@@ -469,7 +469,8 @@ let gDropDownFilters = null;        // A Map describing the filters that (might)
                                     //    null means not calculated yet
                                     // We hide filters that match no objects
                                     // null when gSearchQuery is null
-let gAutoComplete = null;           // The autoComplete.js object, initialized just below
+let gAutoComplete = null;           // The autoComplete.js object, initialized below
+const MAX_RESULTS = 15              // The maximum number of results to display
 
 export async function showFloatingSearch(query = null,searchWithin = null,placeholder = "") {
     // Show the floating search window.
@@ -576,13 +577,14 @@ function runFloatingSearch (searchText) {
     }
 }
 
-function excerptsMatchingItem(autoCompleteEntry) {
+function excerptsMatchingItem(autoCompleteEntry,cacheOnly = false) {
     // Returns the number of excerpts that match this chip in the current search within environement.
+    // If cacheOnly, do not run any new calculations
 
     if (!gSearchWithinExcerpts) // null when we are searching within all excerpts
         return autoCompleteEntry.excerptCount;
     let queryText = autoCompleteEntry.chip.split("_",4)[3]; // The last part of the chip is the query text
-    if (gDropDownFilters.get(queryText) === undefined) {
+    if (gDropDownFilters.get(queryText) === undefined && !cacheOnly) {
         let searchQuery = new SearchQuery(queryText);
         gSearchers["x"].search(searchQuery,gSearchWithinExcerpts);
         gDropDownFilters.set(queryText,gSearchers["x"].foundItems.length); // Cache the found item count
@@ -592,31 +594,39 @@ function excerptsMatchingItem(autoCompleteEntry) {
 
 function calcExcerptsMatchingItems(entries,timeout) {
     // Call excerptsMatchingItems on all items in entries. This caches the values of that function for later use.
-    // Throw a "Timeout" exception if more than timeout milliseconds pass during the exceution.
+    // Throw a "Timeout" exception if more than timeout milliseconds pass during the exceution and we have
+    // already found enough items to populate the list.
+    // Return the number of entries with unique search queries.
 
     let start = performance.now();
+    let uniqueQueries = new Set();
     for (let entry of entries) {
-        excerptsMatchingItem(entry);
-        if ((performance.now() - start) > timeout)
-            throw Error("Timeout");
+        if (excerptsMatchingItem(entry))
+            uniqueQueries.add(entry.chip.split("_",4)[3]);
+        if ((performance.now() - start) > timeout && uniqueQueries.size >= MAX_RESULTS)
+            throw Error(`Timeout - ${uniqueQueries.size} found.`);
     }
+    return uniqueQueries.size;
 }
 
 let gItemMatchingCallbackRef = 0; // The reference number used for this callback function
 function calcMatchingItemsCallback(entries) {
     // Continue calculating matching items asynchronously using a series of callbacks until finished.
 
+    let matchingItems;
     try {
-        calcExcerptsMatchingItems(entries,300);
+        matchingItems = calcExcerptsMatchingItems(entries,300);
     } catch (err) {
-        if (err.message === "Timeout") { // Continue the calculation with another callback if it hasn't completed.
+        if (err.message.startsWith("Timeout")) { // Continue the calculation with another callback if it hasn't completed.
             gItemMatchingCallbackRef = window.setTimeout(calcMatchingItemsCallback,100,entries);
+            matchingItems = err.message.match(/[0-9]+/)[0];
+            document.getElementById("autocomplete-total-items").innerText = matchingItems + "+";
             return;
         } else
             throw(err);
     }
     gItemMatchingCallbackRef = 0;
-    gAutoComplete.start();
+    document.getElementById("autocomplete-total-items").innerText = String(matchingItems);
 }
 
 function setupAutoComplete() {
@@ -645,7 +655,6 @@ function setupAutoComplete() {
                     return !(item.key === "number" && item.value.number !== gQuery); // Number search must match exactly
                 });
                 if (gSearchWithinQuery) {
-                    let spinner = document.getElementById("progress-spinner");
                     if (gItemMatchingCallbackRef) {
                         window.clearTimeout(gItemMatchingCallbackRef);
                         gItemMatchingCallbackRef = 0;
@@ -655,15 +664,13 @@ function setupAutoComplete() {
                     try { // Run a potentially long calculation to cache the matching item counts
                         calcExcerptsMatchingItems(items,300);
                     } catch (err) {
-                        if (err.message == "Timeout") {
-                            spinner.style.display = "block";
-                            gItemMatchingCallbackRef = window.setTimeout(calcMatchingItemsCallback,100,items)
-                            return [];
+                        if (err.message.startsWith("Timeout")) {
+                            gItemMatchingCallbackRef = window.setTimeout(calcMatchingItemsCallback,100,items);
                         } else
                             throw(err);
                     }
                     filtered = filtered.filter((item) => {
-                        if (excerptsMatchingItem(item.value) === 0)
+                        if (!excerptsMatchingItem(item.value,true))
                             return false; // Don't display filters which match no excerpts
                         let query = item.value.chip.split("_",4)[3];
                         if (links.has(query))
@@ -671,11 +678,10 @@ function setupAutoComplete() {
                         links.add(query);
                         return true;
                     });
-                    spinner.style.display = "none";
                 } else {
                     filtered = filtered.filter((item) => {
                         if (!item.value.link)
-                            return false; // Filter-only items should only be displayed when searching within a query
+                            return false; // Remove filter-only items
                         if (links.has(item.value.link))
                             return false; // Remove items that link to identical pages
                         links.add(item.value.link);
@@ -704,11 +710,16 @@ function setupAutoComplete() {
             highlight: true
         },
         resultsList: {
-            maxResults: 15,
+            maxResults: MAX_RESULTS,
             element: (list,data) => {
-                if (data.results.length < data.matches.length) {
+                let listLength = "";
+                if (data.results.length < data.matches.length || gItemMatchingCallbackRef)
+                    listLength = String(data.matches.length);
+                if (gItemMatchingCallbackRef) // We are in process of calculating the whole list
+                    listLength += "+";
+                if (listLength) {
                     const info = document.createElement("p");
-                    info.innerHTML = `Showing <b>${data.results.length}</b> out of <b>${data.matches.length}</b> results`;
+                    info.innerHTML = `Showing <b>${data.results.length}</b> out of <b id="autocomplete-total-items">${listLength}</b> results`;
                     list.append(info);
                 }
                 try {
