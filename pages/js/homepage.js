@@ -518,7 +518,7 @@ export async function showFloatingSearch(query = null,searchWithin = null,placeh
         gDropDownFilters = null;
     }
 
-    if (searchBar.value.trim()) // If the search bar contains text, display the auto complete menu
+    if (searchBar.value.trim() || searchWithin) // If the search bar contains text, display the auto complete menu
         setTimeout(function() {
             gAutoComplete.start();
             countFoundExcerpts();
@@ -695,14 +695,19 @@ function setupAutoComplete() {
         submit: true,
         query: (input) => {
             // Don't search if the input contains blob control characters not used for other purposes
-            if (/[\]\[(){}<>&^#]/.test(input)) {
+            if (/[\]\[(){}<>&^#$%]/.test(input)) {
                 gQuery = "";
                 return "";
             }
 
             input = input.replace(/^\s+/,""); // Strip leading whitespace
             input = input.replace(/\s+/," ") // Convert all whitespace to single spaces
-            input = input.trim() ? input : ""; // Don't search if it's only whitespace
+            if (!input.trim()) {
+                if (gSearchWithinQuery)
+                    input = " " // Show examples immediately if we're applying filters
+                else
+                    input = input.trim() ? input : ""; // Otherwise don't display the autocomplete menu unless there's input
+            }
             gQuery = input;
             return input;
         },

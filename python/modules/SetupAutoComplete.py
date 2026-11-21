@@ -63,12 +63,11 @@ def FilterOnlyEntries() -> Iterable[AutoCompleteEntry]:
 
     # Featured and homepage excerpts
     yield FilterOnlyEntry("Featured excerpts",r"\+",query="+",icon="fa-star")
-    yield FilterOnlyEntry("Homepage excerpts","#homepage",query="#homepage",icon="fa-star")
 
     # Categories
     for category in ("Questions","Stories","Quotes","Teachings","Meditations","Readings"):
         query = f"&{category.lower()}&"
-        yield FilterOnlyEntry(category,regexp=query,query=query,icon="All.png")
+        yield FilterOnlyEntry(f"Category: {category}",regexp=query,query=query,icon="All.png")
 
     # Filters for event series
     for series in gDatabase["series"].values():
@@ -76,10 +75,12 @@ def FilterOnlyEntries() -> Iterable[AutoCompleteEntry]:
             continue
         query = f"@{series['abbreviation']}"
         yield FilterOnlyEntry(f"Event series: {series['series']}",regexp=query.lower(),query=query,icon="calendar")
-    
+
     # Filters for each decade
     for decade in range(3):
         yield FilterOnlyEntry(f"Decade: 20{decade}0s",f"20{decade}[0-9]-?[1-9]?@",icon="calendar")
+
+    yield FilterOnlyEntry("Homepage excerpts","#homepage",query="#homepage",icon="fa-star")
 
     # Filters for excerpt duration
     DURATION_NAMES = ("Very short","Short","Medium","Long","Very long")
@@ -281,6 +282,8 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
         textRecord = BuildReferences.gSavedReferences["text"].get(textData["uid"])
         if textRecord:
             yield Entry(textData["name"] + f" ({textData['uid']})",textRecord["link"],icon="DhammaWheel.png",excerptCount=textRecord["count"])
+        if textData["uid"] == 'Kd':
+            yield Entry("Mahāvagga (Mv)",textRecord["link"],icon="DhammaWheel.png",excerptCount=textRecord["count"])
 
     for text,textData in BuildReferences.gSavedReferences["text"].items():
         if re.search(r"[0-9]$",text): # We already linked to full texts above

@@ -234140,7 +234140,7 @@
       "duration": "1:02:00",
       "event": "SRD2016",
       "url": "https://dharmaseed.org/talks/66308/20160702-Ajahn_Pasanno-SR-the_anxiety_of_impermanence_and_the_impermanence_of_anxiety-66308.mp3",
-      "mirror": "local"
+      "mirror": "remote"
     },
     "Upasika Day Meditation on Ten Perceptions.mp3": {
       "filename": "Upasika Day Meditation on Ten Perceptions.mp3",
@@ -234413,7 +234413,7 @@
       "duration": "4:20:56",
       "event": "SRD2018",
       "url": "https://dharmaseed.org/talks/50181/20180527-Ajahn_Pasanno-SR-recollections_of_ajahn_chah_100th_birthday_anniversary_celebration-50181.mp3",
-      "mirror": ""
+      "mirror": "remote"
     },
     "2018-06-02 Upasika day Chanting (Part 1 of 3).mp3": {
       "filename": "2018-06-02 Upasika day Chanting (Part 1 of 3).mp3",
@@ -276825,199 +276825,232 @@
       "uid": "DN",
       "name": "Dīgha Nikāya",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "MN": {
       "uid": "MN",
       "name": "Majjhima Nikāya",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "SN": {
       "uid": "SN",
       "name": "Saṃyutta Nikāya",
       "wholeTextLink": "https://suttacentral.net/pitaka/sutta/linked/sn",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "AN": {
       "uid": "AN",
       "name": "Aṅguttara Nikāya",
       "wholeTextLink": "https://suttacentral.net/pitaka/sutta/numbered/an",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Kp": {
       "uid": "Kp",
       "name": "Khuddakapāṭha",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Dhp": {
       "uid": "Dhp",
       "name": "Dhammapada",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Ud": {
       "uid": "Ud",
       "name": "Udāna",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Iti": {
       "uid": "Iti",
       "name": "Itivuttaka",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Snp": {
       "uid": "Snp",
       "name": "Sutta Nipāta",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Vv": {
       "uid": "Vv",
       "name": "Vimānavatthu",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Pv": {
       "uid": "Pv",
       "name": "Petavatthu",
       "wholeTextLink": "",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Thag": {
       "uid": "Thag",
       "name": "Theragātha",
       "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/thag",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Thig": {
       "uid": "Thig",
       "name": "Therīgāthā",
       "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/thig",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Ja": {
       "uid": "Ja",
       "name": "Jātaka",
       "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/ja",
-      "citeFullName": false
+      "citeFullName": false,
+      "textNote": ""
     },
     "Mil": {
       "uid": "Mil",
       "name": "Milindapañha",
       "wholeTextLink": "https://suttacentral.net/pitaka/sutta/minor/kn/mil",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuPj": {
       "uid": "BuPj",
       "name": "Bhikkhu Pārājika",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuSs": {
       "uid": "BuSs",
       "name": "Bhikkhu Saṅghādisesa",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuAy": {
       "uid": "BuAy",
       "name": "Bhikkhu Aniyata",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuNp": {
       "uid": "BuNp",
       "name": "Bhikkhu Nissaggiya-pācittiya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuPc": {
       "uid": "BuPc",
       "name": "Bhikkhu Pācittiya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuPd": {
       "uid": "BuPd",
       "name": "Bhikkhu Pāṭidesanīya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuSk": {
       "uid": "BuSk",
       "name": "Bhikkhu Sekhiya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BuAs": {
       "uid": "BuAs",
       "name": "Bhikkhu Adhikarana-samatha",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiPj": {
       "uid": "BiPj",
       "name": "Bhikkhuni Pārājika",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiSs": {
       "uid": "BiSs",
       "name": "Bhikkhuni Saṅghādisesa",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiNp": {
       "uid": "BiNp",
       "name": "Bhikkhuni Nissaggiya-pācittiya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiPc": {
       "uid": "BiPc",
       "name": "Bhikkhuni Pācittiya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiPd": {
       "uid": "BiPd",
       "name": "Bhikkhuni Pāṭidesanīya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiSk": {
       "uid": "BiSk",
       "name": "Bhikkhuni Sekhiya",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "BiAs": {
       "uid": "BiAs",
       "name": "Bhikkhuni Adhikarana-samatha",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "Kd": {
       "uid": "Kd",
       "name": "Khandhaka",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": "The Mahāvagga comprises the first 10 chapters of the Khandakas; the next 12 chapters form the Cūḷavagga."
     },
     "Pvr": {
       "uid": "Pvr",
       "name": "Parivāra",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     },
     "Mv": {
       "uid": "Mv",
       "name": "Mahāvagga",
       "wholeTextLink": "",
-      "citeFullName": true
+      "citeFullName": true,
+      "textNote": ""
     }
   },
   "textLink": {

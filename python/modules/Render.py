@@ -78,6 +78,9 @@ def ApplyToBodyText(transform: Callable[...,Tuple[str,int]|str]) -> int:
         if "clusterNote" in s:
             s["clusterNote"] = ApplyTransform(s["clusterNote"],s)
 
+    for t in gDatabase["text"].values():
+        t["textNote"] = ApplyTransform(t["textNote"],t)
+
     return changeCount
 
 def ApplyToTitleText(transform: Callable[...,str]) -> None:
@@ -147,7 +150,7 @@ def PrepareTexts() -> None:
 
     gDatabase["textGroup"] = {}
     for textGroup in list(next(iter(gDatabase["text"].values()))):
-        if textGroup in ("uid","name","citeFullName","wholeTextLink"):
+        if textGroup in ("uid","name","citeFullName","wholeTextLink","textNote"):
             continue
         
         newGroup = []

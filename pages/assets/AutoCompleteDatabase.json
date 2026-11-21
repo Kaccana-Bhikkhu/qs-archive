@@ -9,17 +9,8 @@
     "excerptCount": 834
   },
   {
-    "short": "Homepage excerpts",
-    "chip": "fa-star_Homepage excerpts__#homepage",
-    "long": "",
-    "number": "",
-    "icon": "<i class=\"fa fa-star\"></i>",
-    "suffix": "",
-    "excerptCount": 508
-  },
-  {
-    "short": "Questions",
-    "chip": "All.png_Questions__&questions&",
+    "short": "Category: Questions",
+    "chip": "All.png_Category: Questions__&questions&",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
@@ -27,8 +18,8 @@
     "excerptCount": 3148
   },
   {
-    "short": "Stories",
-    "chip": "All.png_Stories__&stories&",
+    "short": "Category: Stories",
+    "chip": "All.png_Category: Stories__&stories&",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
@@ -36,8 +27,8 @@
     "excerptCount": 800
   },
   {
-    "short": "Quotes",
-    "chip": "All.png_Quotes__&quotes&",
+    "short": "Category: Quotes",
+    "chip": "All.png_Category: Quotes__&quotes&",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
@@ -45,8 +36,8 @@
     "excerptCount": 680
   },
   {
-    "short": "Teachings",
-    "chip": "All.png_Teachings__&teachings&",
+    "short": "Category: Teachings",
+    "chip": "All.png_Category: Teachings__&teachings&",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
@@ -54,8 +45,8 @@
     "excerptCount": 500
   },
   {
-    "short": "Meditations",
-    "chip": "All.png_Meditations__&meditations&",
+    "short": "Category: Meditations",
+    "chip": "All.png_Category: Meditations__&meditations&",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
@@ -63,8 +54,8 @@
     "excerptCount": 29
   },
   {
-    "short": "Readings",
-    "chip": "All.png_Readings__&readings&",
+    "short": "Category: Readings",
+    "chip": "All.png_Category: Readings__&readings&",
     "long": "",
     "number": "",
     "icon": "<img src=\"images/icons/All.png\">",
@@ -169,6 +160,15 @@
     "icon": "<i data-lucide=\"calendar\"></i>",
     "suffix": "",
     "excerptCount": 1201
+  },
+  {
+    "short": "Homepage excerpts",
+    "chip": "fa-star_Homepage excerpts__#homepage",
+    "long": "",
+    "number": "",
+    "icon": "<i class=\"fa fa-star\"></i>",
+    "suffix": "",
+    "excerptCount": 508
   },
   {
     "short": "Duration: Very short (< 1 minute)",
@@ -12855,6 +12855,16 @@
   },
   {
     "short": "Khandhaka (Kd)",
+    "link": "texts/Kd.html",
+    "long": "",
+    "number": "",
+    "icon": "<img src=\"images/icons/DhammaWheel.png\">",
+    "suffix": "",
+    "excerptCount": 49,
+    "chip": "DhammaWheel.png_Khandhaka __$Kd"
+  },
+  {
+    "short": "Mahāvagga (Mv)",
     "link": "texts/Kd.html",
     "long": "",
     "number": "",

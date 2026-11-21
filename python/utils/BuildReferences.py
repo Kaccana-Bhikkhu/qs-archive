@@ -340,8 +340,13 @@ class TextReference(NamedTuple):
         if referenceCount:
             header += f" ({referenceCount})"
 
+        if not self.n0 and gDatabase["text"][self.text].get("textNote"):
+            header += f"\n{Html.Tag("p")(gDatabase["text"][self.text].get("textNote"))}\n"
+        else:
+            header += "\n<br/\n><br/>\n"
+
         filter = Filter.TextFilter(self.Truncate(minLevel + 1))
-        header += f"\n<br/\n><br/>\n{Build.SearchWithin(bits[-1],filter)}"
+        header += f"{Build.SearchWithin(bits[-1],filter)}"
 
         return header
     
