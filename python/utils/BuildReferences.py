@@ -622,19 +622,25 @@ class BookReference(NamedTuple):
         
 Reference = TextReference | BookReference
 
-def RegisterReference(reference: Reference,link: str,count: int) -> None:
+def RegisterReference(reference: Reference|str,link: str,count: int) -> None:
     """Register link as a reference page.
-    reference:  The reference to register
+    reference:  The reference to register (or a string reference name)
     link:       The link (possibly including a bookmark) relative to pages/
     count:      The number of excerpts referenced"""
 
     global gNewReferences
     if gNewReferences is None:
         gNewReferences = ReferenceLinkDatabase(text={},author={},book={})
-    
-    key = reference.Key()
+
+    if isinstance(reference,Reference):
+        key = reference.Key()
+        kind = reference.Kind()
+    else:
+        key = reference
+        kind = "text" if link.startswith("texts/") else "book"
+
     if key:
-        gNewReferences[reference.Kind()][key] = ReferenceItem(link=link,count=count)
+        gNewReferences[kind][key] = ReferenceItem(link=link,count=count)
 
 @dataclass
 class LinkedReference():
@@ -737,7 +743,9 @@ def WriteReferences(references:list[LinkedReference],filename:str) -> None:
 def TopLevelHeader(pageInfo: Html.PageInfo,refs: list[LinkedReference]) -> str:
     """Return html strings for the headers of the top level pages: Sutta, Vinaya, Commentary, and Modern."""
 
-    firstLine = pageInfo.title + f" ({TotalItems(refs)})"
+    referenceCount = TotalItems(refs)
+    RegisterReference(pageInfo.title,pageInfo.file,referenceCount)
+    firstLine = pageInfo.title + f" ({referenceCount})"
 
     firstRef = refs[0].reference
     if isinstance(firstRef,TextReference):
@@ -745,14 +753,14 @@ def TopLevelHeader(pageInfo: Html.PageInfo,refs: list[LinkedReference]) -> str:
         if firstRef.text in TextGroupSet("vinaya"):
             query = vinayaQuery
         else:
-            query = f'&($ !{vinayaQuery})'
+            query = f'~($ !{vinayaQuery})'
     else:
         queries = [BookReference("x",r).SearchQuery() for r in gDatabase["reference"] if gDatabase["reference"][r]["commentary"]]
         commentaryQuery = f"|({' '.join(queries)})"
         if firstRef.IsCommentary():
             query = commentaryQuery
         else:
-            query = f'&(% !{commentaryQuery})'
+            query = f'~(% !{commentaryQuery})'
 
     return firstLine + f"\n<br/\n><br/>\n{Build.SearchWithin(pageInfo.title,query)}" + "\n<hr>"
 

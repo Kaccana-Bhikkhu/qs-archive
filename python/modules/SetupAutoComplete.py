@@ -271,21 +271,22 @@ def AboutEntries() -> Iterable[AutoCompleteEntry]:
 
 def TextEntries() -> Iterable[AutoCompleteEntry]:
     "Yield an entry for each about text (Sutta or Vinaya) referenced."
-    
-    yield Entry("Sutta references","texts/Sutta.html",icon="DhammaWheel.png")
-    yield Entry("Vinaya references","texts/Vinaya.html",icon="DhammaWheel.png")
 
     dhammapada = Suttaplex.DhammapadaVerses()
     BuildReferences.ReadReferenceDatabase()
+    savedTexts = BuildReferences.gSavedReferences["text"]
+    
+    yield Entry("Sutta references","texts/Sutta.html",icon="DhammaWheel.png",excerptCount=savedTexts["Sutta"]["count"])
+    yield Entry("Vinaya references","texts/Vinaya.html",icon="DhammaWheel.png",excerptCount=savedTexts["Vinaya"]["count"])
 
     for textData in gDatabase["text"].values():
-        textRecord = BuildReferences.gSavedReferences["text"].get(textData["uid"])
+        textRecord = savedTexts.get(textData["uid"])
         if textRecord:
             yield Entry(textData["name"] + f" ({textData['uid']})",textRecord["link"],icon="DhammaWheel.png",excerptCount=textRecord["count"])
         if textData["uid"] == 'Kd':
             yield Entry("Mahāvagga (Mv)",textRecord["link"],icon="DhammaWheel.png",excerptCount=textRecord["count"])
 
-    for text,textData in BuildReferences.gSavedReferences["text"].items():
+    for text,textData in savedTexts.items():
         if re.search(r"[0-9]$",text): # We already linked to full texts above
             ref = BuildReferences.TextReference.FromString(text)
             uid = ref.Uid()
@@ -304,14 +305,19 @@ def TextEntries() -> Iterable[AutoCompleteEntry]:
 
 def BookEntries() -> Iterable[AutoCompleteEntry]:
     "Yield an entry for each about book referenced."
-    
-    yield Entry("Commentary references","books/Commentary.html",icon="book-open")
-    yield Entry("Modern book references","books/Modern.html",icon="book-open")
+
     BuildReferences.ReadReferenceDatabase()
-    for book,bookData in BuildReferences.gSavedReferences["book"].items():
-        reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
-        entry = re.sub(r'["“”]',"",Utils.RemoveHtmlTags(reference.FullName(showAuthors=True,showYear=False)))
-        yield Entry(entry,bookData["link"],icon="book-open",excerptCount=bookData["count"])
+    savedBooks = BuildReferences.gSavedReferences["book"]
+    yield Entry("Commentary references","books/Commentary.html",icon="book-open",excerptCount=savedBooks["Commentary"]["count"])
+    yield Entry("Modern book references","books/Modern.html",icon="book-open",excerptCount=savedBooks["Modern"]["count"])
+
+    for book,bookData in savedBooks.items():
+        try:
+            reference = BuildReferences.BookReference.FromString(gDatabase["reference"][book]["abbreviation"])
+            entry = re.sub(r'["“”]',"",Utils.RemoveHtmlTags(reference.FullName(showAuthors=True,showYear=False)))
+            yield Entry(entry,bookData["link"],icon="book-open",excerptCount=bookData["count"])
+        except KeyError: # Commentary.html and Modern.html aren't in the reference database, but were registered earlier
+            pass
    
 
 def AddArguments(parser) -> None:

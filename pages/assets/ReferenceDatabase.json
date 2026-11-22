@@ -1,5 +1,9 @@
 {
   "text": {
+    "Sutta": {
+      "link": "texts/Sutta.html",
+      "count": 1104
+    },
     "DN": {
       "link": "texts/DN.html",
       "count": 66
@@ -2520,6 +2524,10 @@
       "link": "texts/Mil.html#mil-327",
       "count": 1
     },
+    "Vinaya": {
+      "link": "texts/Vinaya.html",
+      "count": 62
+    },
     "BuPj": {
       "link": "texts/BuPj.html",
       "count": 3
@@ -2836,6 +2844,10 @@
     }
   },
   "book": {
+    "Commentary": {
+      "link": "books/Commentary.html",
+      "count": 42
+    },
     "path of purification": {
       "link": "books/path-of-purification.html",
       "count": 32
@@ -2855,6 +2867,10 @@
     "birth stories": {
       "link": "books/birth-stories.html",
       "count": 3
+    },
+    "Modern": {
+      "link": "books/Modern.html",
+      "count": 693
     },
     "abhayagiri chanting book": {
       "link": "books/abhayagiri-chanting-book.html",
