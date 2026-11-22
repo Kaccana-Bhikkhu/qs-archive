@@ -321,7 +321,7 @@ class TextReference(NamedTuple):
         fullName = gDatabase["text"][self.text]["name"]
         return f"{fullName} {'.'.join(map(str,numbers))}"
     
-    def FullPageHeader(self,minLevel:int,allRefs: list[LinkedReference]) -> str:
+    def FullPageHeader(self,minLevel:int,allRefs: list["LinkedReference"]) -> str:
         """Returns an html string like 'Sutta / MN / MN 10' that goes at the top of reference pages.
         level specifies the text level; SN 2.4 is level 3"""
 
@@ -548,7 +548,7 @@ class BookReference(NamedTuple):
         """Returns the key in the ReferenceLinkDatabase."""
         return self.abbreviation or self.author
 
-    def FullPageHeader(self,minLevel:int,allRefs: list[LinkedReference]) -> str:
+    def FullPageHeader(self,minLevel:int,allRefs: list["LinkedReference"]) -> str:
         """Return an html string like 'Modern / Ajahn Pasanno / The Island'"""
         firstAuthor = self.FirstAuthor()
         bits = []

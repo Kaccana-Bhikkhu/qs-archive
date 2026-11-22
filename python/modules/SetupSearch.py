@@ -446,7 +446,7 @@ def BookBlobs() -> Iterator[dict]:
         yield {
             "blobs": [Enclose(Blobify(textSearches),"^") + 
                       Enclose(Blobify(AllNames(book["author"])),"{}") +
-                      Enclose(Blobify((reference.SearchQuery(),)),"%")],
+                      Enclose(Blobify((reference.Blob(),)),"%")],
             "html": Html.Icon("book-open") + " " + htmlLink
         }
 
