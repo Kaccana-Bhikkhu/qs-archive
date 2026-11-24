@@ -2272,16 +2272,6 @@ def SearchMenu(searchDir: str) -> Html.PageDescriptorMenuItem:
     gSitemap.RegisterPageQuery(pageInfo.file,"featured=&relevant=")
     searchMenu = [(pageInfo.AddQuery("_keep_query"), searchPage)]
 
-    if gOptions.advancedSearch:
-        advancedPageName = "Advanced-search.html"
-        searchTemplate = Utils.PosixJoin(gOptions.pagesDir,"templates",advancedPageName)
-        searchHtml = Utils.ReadFile(searchTemplate)
-        advancedPageInfo = Html.PageInfo("Advanced search",Utils.PosixJoin(searchDir,advancedPageName),titleIB="Advanced search")
-        advancedSearchPage = Html.PageDesc(advancedPageInfo)
-        advancedSearchPage.AppendContent(searchHtml)
-        gSitemap.RegisterPageQuery(advancedPageInfo.file,"featured=&relevant=")
-        searchMenu.append((advancedPageInfo.AddQuery("_keep_query"), advancedSearchPage))
-
     featuredPageName = "Featured.html"
     featuredExcerptPageInfo = Html.PageInfo("Daily featured excerpts",Utils.PosixJoin(searchDir,featuredPageName),titleIB="Featured excerpts")
     featuredHtml = Utils.ReadFile(Utils.PosixJoin(gOptions.pagesDir,"templates",featuredPageName))
@@ -3134,7 +3124,6 @@ def AddArguments(parser):
     parser.add_argument('--globalTemplate',type=str,default='templates/Global.html',help='Template for all pages relative to pagesDir; Default: templates/Global.html')
     parser.add_argument('--homepageDefaultExcerpt',type=str,default="WR2018-2_S03_F01",help="Item code of exerpt to embed in homepage.html.")
 
-    parser.add_argument('--advancedSearch',**Utils.STORE_TRUE,help="Include an advanced search page.")
     parser.add_argument('--buildOnly',type=str,default='',help='Build only specified sections. Set of topics,tags,clusters,drilldown,events,teachers,search,allexcerpts.')
     parser.add_argument('--buildOnlyIndexes',**Utils.STORE_TRUE,help="Build only index pages")
     parser.add_argument('--buildOnlyFirstPage',**Utils.STORE_TRUE,help="Build only the first page of multi-page lists")

@@ -1377,7 +1377,8 @@ function searchFromURL() {
             return;
         }
         let params = frameSearch();
-        let query = queryFromParams(params,true,framePage() === "search/Advanced-search.html");
+        let query = queryFromParams(params,true,true);
+        document.getElementById("show-code-button").disabled = !params.has("filter1");
         let searchKind = params.has("search") ? decodeURIComponent(params.get("search")) : "all";
         
         debugLog("Called searchFromURL. Query:",query);
@@ -1426,13 +1427,6 @@ function searchButtonClick(searchKind) {
     let params = frameSearch();
     params.set("q",query);
     params.set("search",searchKind);
-    if (framePage() === "search/Text-search.html") {
-        let filterNumber = 1; // Remove filters hiding in the URL query when the simple search button is pressed
-        while (params.has(`filter${filterNumber}`)) {
-            params.delete(`filter${filterNumber}`);
-            filterNumber += 1;
-        }
-    }
 
     history.pushState({},"",location.href); // First push a new history frame
     setFrameSearch(params); // Then replace the history with the search query

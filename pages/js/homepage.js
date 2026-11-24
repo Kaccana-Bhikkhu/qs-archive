@@ -538,16 +538,8 @@ function searchWithinThisPage() {
 
     let page = framePage();
     
-    if (page === "search/Advanced-search.html") {
+    if (page === "search/Text-search.html") {
         showFloatingSearch(null,frameSearch()); // Search within the current list of found excerpts
-    } else if (page === "search/Text-search.html") {
-        let params = frameSearch();
-        let filterNumber = 1;
-        while (params.has(`filter${filterNumber}`)) { // Don't apply filters hiding in the URL query when the simple search page is displayed
-            params.delete(`filter${filterNumber}`);
-            filterNumber += 1;
-        }
-        showFloatingSearch(null,params);
     } else {
         let searchWithinLink = document.querySelector("a.search-within");
         if (searchWithinLink) {
@@ -569,7 +561,7 @@ function runFloatingSearch (searchText) {
         let existingQuery = queryFromParams(gSearchWithinQuery,false,false).trim();
         existingQuery = [existingQuery,searchText].filter(s => s).join(" "); // don't add a space if one string is empty
         gSearchWithinQuery.set("q",encodeURIComponent(encodeSearchQuery(existingQuery)));
-        openLocalPage("search/Advanced-search.html",String(gSearchWithinQuery));
+        openLocalPage("search/Text-search.html",String(gSearchWithinQuery));
         gSearchWithinQuery = null;
     } else { // Just open the simple search page
         let query = encodeURIComponent(encodeSearchQuery(searchText));
@@ -744,7 +736,7 @@ function setupAutoComplete() {
                     gQuery = "";
                     if (gSearchWithinQuery) {
                         addFilter(gSearchWithinQuery,encodeURIComponent(encodeSearchQuery(selection.chip)));
-                        openLocalPage("search/Advanced-search.html",String(gSearchWithinQuery));
+                        openLocalPage("search/Text-search.html",String(gSearchWithinQuery));
                         gSearchWithinQuery = null;
                     } else
                         openLocalPage(selection.link);
@@ -821,8 +813,6 @@ function countFoundExcerpts() {
     let query = document.getElementById("floating-search-input").value.trim();
     if (!query) {
         displayExcerptCount(0);
-        let spinner = document.getElementById("progress-spinner");
-        spinner.style.display = "none"; // Hide the spinner when there is no search query.
         return;
     }
     try {

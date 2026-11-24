@@ -593,7 +593,7 @@ class RegexpFilter(Filter):
         return f"`{self.regexp}`" 
 
 class QueryChip(NamedTuple):
-    """Information about a single query filter chip on Advanced-search.html"""
+    """Information about a single query filter chip"""
     name: str               # The name of the filter chip
     query: str              # The query itself
     icon: str = ""          # The icon name passed to Build.HtmlIcon
@@ -632,16 +632,10 @@ class SearchQuery():
         if self.relevantFirst:
             queryDict["relevant"] = ""
 
-        advancedSearch = False
-        if Utils.gOptions.advancedSearch:
-            for n,query in enumerate(self.filters,start = 1):
-                queryDict[f"filter{n}"] = EncodeSearchQuery(str(query))
-                advancedSearch = True
-        else:
-            filterQueries = [f.query for f in self.filters]
-            queryDict["q"] = " ".join(itertools.chain((queryDict["q"],),filterQueries))
+        for n,query in enumerate(self.filters,start = 1):
+            queryDict[f"filter{n}"] = EncodeSearchQuery(str(query))
     
         queryDict["q"] = EncodeSearchQuery(queryDict["q"].strip())
         htmlQuery = urllib.parse.urlencode(queryDict,doseq=True,quote_via=urllib.parse.quote)
-        return f"../search/{'Advanced' if advancedSearch else 'Text'}-search.html?{htmlQuery}"
+        return f"../search/Text-search.html?{htmlQuery}"
         
